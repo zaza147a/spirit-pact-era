@@ -5,3 +5,19 @@ button,input,select,summary{touch-action:manipulation}button:focus-visible,summa
 @media(max-width:1150px){.layout{grid-template-columns:210px minmax(360px,1fr) 340px;padding:0 14px;gap:10px}.quick-nav{margin-left:14px;margin-right:14px}.panel{padding:12px}.tabs button{font-size:11px}.character .hero:has(.art-hero){padding-left:88px}.character .art-hero{width:80px}.topright .status{display:none}}
 @media(max-width:1000px){.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,360px)}.battle{grid-column:1;grid-row:1}.collection{grid-column:2;grid-row:1;top:68px}.character{grid-column:1/-1;grid-row:2;position:static;max-height:none;display:block}.character #character{max-width:650px}.top h1 span{font-size:15px}.topright{gap:6px}.character-tools{max-width:650px}}
 @media(max-width:700px){.layout{display:flex;flex-direction:column;padding:0 10px}.battle{order:0;width:100%}.collection{order:1;width:100%;height:76dvh;position:static;max-height:none}.character{order:2;width:100%}.quick-nav{margin:0 10px 10px;gap:2px;padding:4px}.quick-nav button{font-size:12px;min-height:42px;padding:5px 2px}.top{padding:12px 10px}.top h1{font-size:20px}.top h1 span{display:none}.top .eyebrow{display:none}.topright .active-slot{display:none}.smallbtn{min-height:36px;padding:6px 9px}.area{padding:12px}.mapnav select{font-size:12px}.mapnav .travel-shortcuts{width:100%}.travel-shortcuts button{flex:1}.tabs{grid-template-columns:repeat(3,minmax(0,1fr))}.tabs button{font-size:13px}.actiongrid{bottom:6px;grid-template-columns:repeat(2,minmax(0,1fr))}.actiongrid button{font-size:12px;min-height:42px}.character .hero:has(.art-hero){min-height:135px;padding-left:120px}.character .art-hero{width:110px;height:120px}.character .hero strong{font-size:20px}.character .character-name{font-size:20px}.battle-details summary small{display:none}#encounter .encounter-heading>span{font-size:10px;max-width:45%}.compact-roles{gap:4px}.compact-roles>div{font-size:10px;padding:3px 5px}}
+
+/* Portrait and labels stack inside narrow character columns. */
+.character .hero:first-child:has(.art-hero){padding:12px 8px;min-height:0;text-align:center;overflow:hidden}
+.character .hero:first-child .art-hero{position:static;display:block;width:100%;max-width:190px;height:170px;margin:0 auto 10px}
+.character .hero:first-child .eyebrow{font-size:9px;letter-spacing:1.5px;overflow-wrap:anywhere}
+.character .character-name{width:100%;white-space:normal;overflow-wrap:anywhere;line-height:1.5;margin:0 auto 8px}
+.character .hero:first-child .pill{max-width:100%;white-space:normal}
+.character .meterline{flex-wrap:wrap;row-gap:2px;font-size:11px}
+.character .meterline span:first-child{white-space:normal}
+.character .meterline span:last-child{margin-left:auto;white-space:nowrap}
+.character #character{min-width:0}.character{overflow-x:hidden}
+.character .hero:has(.art-hero){padding:12px 8px;min-height:0;text-align:center;overflow:hidden}
+.character .hero .art-hero{position:static;display:block;width:100%;max-width:190px;height:170px;margin:0 auto 10px}
+.character .hero .companion-art{max-width:145px;height:145px;object-fit:contain}
+.character .hero .eyebrow{font-size:9px;letter-spacing:1.5px;overflow-wrap:anywhere}
+.character .hero .pill{max-width:100%;white-space:normal}

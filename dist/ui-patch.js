@@ -27,3 +27,9 @@ function syncChildren(current,next){
  for(const n of old)if(!used.has(n)&&n.parentNode===current)current.removeChild(n);
 }
 export function patchHtml(container,html){const template=container.ownerDocument.createElement('template');template.innerHTML=html;syncChildren(container,template.content);}
+
+// Combat and inventory changes must not touch any ancestor of an active editor.
+export function panelIsEditing(container){
+ const active=container.ownerDocument.activeElement;
+ return !!active&&container.contains(active)&&['SELECT','INPUT','TEXTAREA'].includes(active.tagName);
+}
