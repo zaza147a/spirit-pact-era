@@ -28,7 +28,7 @@ test('old five-tier migration is simultaneous, quantity-preserving and version-g
 });
 test('archer ATK primarily follows DEX; magic and healing UI uses MATK and every skill exposes CD and multiplier',()=>{
  const a={STR:1,DEX:1,INT:1},base=playerAttackValue('archer',15,1,a);assert.equal(playerAttackValue('archer',15,1,{...a,DEX:11})-base,20);assert.equal(playerAttackValue('archer',15,1,{...a,STR:11})-base,2);assert.equal(playerMagicAttackValue(1,{...a,INT:11})-playerMagicAttackValue(1,a),20);
- for(const [job,skills] of Object.entries(JOB_SKILLS))for(const skill of skills.filter(s=>!['passive','buff'].includes(s.kind))){const spec=jobSkillSpec(skill,1,job);assert.match(spec.text,/% · (?:ASPD連發 · )?CD [\d.]+ 秒/);if(skill.kind==='magic'&&!skill.source||skill.kind==='heal'&&['acolyte','priest'].includes(job))assert.equal(spec.source,'MATK');}
+ for(const [job,skills] of Object.entries(JOB_SKILLS))for(const skill of skills.filter(s=>!['passive','buff'].includes(s.kind))){const spec=jobSkillSpec(skill,1,job);assert.match(spec.text,/%(?:（[^）]*）)? · CD [\d.]+ 秒/);if(skill.kind==='magic'&&!skill.source||skill.kind==='heal'&&['acolyte','priest'].includes(job))assert.equal(spec.source,'MATK');}
 });
 test('pet gear affects own-stat blessing, healing, shields, mana, DoTs and core resonance',()=>{
  for(const [species,role] of [['fang','attack'],['wisp','magic'],['shell','defense'],['sprout','support']]){const p=makePet(species);p.level=20;const before=petStats(p);p.gear.head={id:'petCirclet',affixes:{matk:100,atk:100,INT:20}};p.gear.body={id:'petArmor',affixes:{hp:400,def:100,mdef:100}};const after=petStats(p);assert.ok(after.healPower>before.healPower);

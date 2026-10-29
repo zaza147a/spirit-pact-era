@@ -1,8 +1,10 @@
-# 靈契紀元 V4.0.1
+# 靈契紀元 V4.0.2
 
 正式公開網址：https://zaza147a.github.io/spirit-pact-era/
 
 正式更新來源：https://github.com/zaza147a/spirit-pact-era 。推送 main 後由 GitHub Actions 自動發布 dist；不再以 Sites 私密站作為正式更新入口。
+
+V4.0.2：修正人物護盾的HP限制、寵物技能因普攻一擊擊殺而不施放、傷害隨機在防禦扣除前被放大與尾刀顯示；零CD攻擊技能改為CD0＋獨立ASPD動作間隔；新增職業不符自動分解；同分區全部怪物可遭遇，避免任務目標因玩家等級而永不出現。詳見 [修正與技能驗證](docs/v402-release.md)。
 
 V4.0.1：人物配點統一於角色→人物能力，移除左側重複配點；人物能力頁補回完整戰鬥數值（HP／SP／護盾、ATK／MATK／DEF／MDEF、ASPD與普攻間隔、HIT／FLEE、暴擊、穿防、魔傷與固定減傷）。左側護盾獨立顯示數值與護盾條，ATK／MATK移至人物能力。僅調整顯示，戰鬥數值與存檔機制不變。
 

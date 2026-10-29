@@ -28,10 +28,10 @@ for(const skills of Object.values(JOB_SKILLS))for(const skill of skills)if(skill
 for(const [job,skills] of Object.entries(SECOND_SKILLS))for(const skill of skills)if(skill.aoe){skill.power*=job==='wizard'?.62:.6;skill.targets=job==='wizard'?(skill.id==='arcaneStorm'?5:4):3;}
 // A rapid skill replaces one normal-attack cycle; it never adds a free second attack.
 const rapid={bash:[.78,3],double:[.8,3],aimShot:[.75,3],pierce:[.72,3],dualStrike:[.32,3],daggerDance:[.42,2],chainCombo:[.95,3],falconStrike:[.46,3],sonicNote:[.36,3],spellFist:[.5,2]};
-for(const skill of [...Object.values(JOB_SKILLS).flat(),...Object.values(SECOND_SKILLS).flat()])if(rapid[skill.id]){[skill.power,skill.mp]=rapid[skill.id];skill.attackCycle=true;skill.desc+=' · 按ASPD連發，取代一次普攻';}
+for(const skill of [...Object.values(JOB_SKILLS).flat(),...Object.values(SECOND_SKILLS).flat()])if(rapid[skill.id]){[skill.power,skill.mp]=rapid[skill.id];skill.attackCycle=true;skill.desc+=' · 無獨立CD，與普攻共用動作間隔，由ASPD限制';}
 for(const [id,power,castMs] of [['thunder',1.344,1800],['meteor',1.66,2400],['arcaneStorm',1.98,3000]]){const s=SECOND_SKILLS.wizard.find(s=>s.id===id);Object.assign(s,{power,castMs});}
 Object.assign(SECOND_SKILLS.sage.find(s=>s.id==='autoSpell'),{duration:12000,cooldown:12000,mp:12,desc:'12秒普攻／魔力拳有45%機率追加MATK60%魔法，最多3目標；頻率依ASPD'});
-Object.assign(SECOND_SKILLS.sage.find(s=>s.id==='spellFist'),{aoe:true,targets:3,desc:'MATK魔力拳按ASPD連發，最多3目標，取代一次普攻'});
+Object.assign(SECOND_SKILLS.sage.find(s=>s.id==='spellFist'),{aoe:true,targets:3,desc:'MATK魔力拳無獨立CD，最多3目標，與普攻共用ASPD動作間隔'});
 SECOND_SKILLS.crusader.find(s=>s.id==='holyCross').power=2.4;SECOND_SKILLS.priest.find(s=>s.id==='exorcism').power=2.7;
 SECOND_SKILLS.rogue.find(s=>s.id==='gangAmbush').power=2.6;SECOND_SKILLS.rogue.find(s=>s.id==='snatch').event='snatch';
 const REBORN_SKILLS={

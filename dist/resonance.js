@@ -39,7 +39,7 @@ export const SECOND_RESONANCE_PLAYS={
    {
     "armor": 1.3
    },
-   "衝鋒後6秒：連發穿刺追加DEF130%傷害"
+   "衝鋒後6秒：零CD穿刺追加DEF130%傷害"
   ],
   [
    "skill",
