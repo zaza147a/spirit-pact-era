@@ -1,7 +1,7 @@
 {
   "version": 40,
   "revision": "4.0.2",
-  "sourceDigest": "470fc55f3a5803814716ae29f8729f1fc8274d92352da697c14de5ce2909c2e5",
+  "sourceDigest": "efce0872bf4d9ede98bd4e2420365c6b5f3c3fe0aaf4ec6b3a02f27af86a1380",
   "seeds": [
     42,
     137,
@@ -12,7 +12,7 @@
   "rebornLevel": 120,
   "seconds": 120,
   "runCount": 1440,
-  "method": "Actual combatTick. 40 job/pet pairs separately evaluated at normal99 and reborn120, in field/boss/pack scenarios, three fixed seeds. Matching uncommon character and pet gear at Lv99, IV3, no cards. Legal attribute budgets (normal196, reborn258), full paid branch skill budgets plus two free rebirth unlocks. Normal default priority; reborn priority enables buffs before new main then existing skills, no exhaustive optimization. Petland capture and economic rewards are outside frozen-progression combat scoring. HP-equivalent actual damage, prevention and effective healing; mana/gold are not damage. Scenario-normalized equal-weight composite. No class or pet-role damage coefficients.",
+  "method": "Actual combatTick. 40 job/pet pairs separately evaluated at normal99 and reborn120, in field/boss/pack scenarios, three fixed seeds. Matching uncommon character and pet gear at Lv99, IV3, no cards. Legal attribute budgets (normal196, reborn258), full paid branch skill budgets plus two free rebirth unlocks. Normal default priority; reborn priority enables buffs before new main then existing skills, no exhaustive optimization. Petland capture and economic rewards are outside frozen-progression combat scoring. HP-equivalent actual damage, prevention and effective healing; mana/gold are not damage. Scenario-normalized equal-weight composite. No class or pet-role damage coefficients. V4.0.3 non-default shared shield skills are outside this default-pair matrix; independently validated by actual runtime tests.",
   "scenarios": [
     {
       "reborn": false,
@@ -7368,5 +7368,12 @@
   "nonCombatRevision": {
     "auditedDigest": "53a1926915044c05676ec9d4e4d8b659fd32e655741e292d3055fcdebcfda588",
     "reason": "NPC presentation, town-only guild routing and sequential quest acceptance added after combat audit. Seven exact replacements were reversed and every dist JS file verified byte-identical to the audited source. Combat simulation never calls NPC renderers or quest acceptance; all combat, drops and encounter logic unchanged."
+  },
+  "presentationRevision": "4.0.3",
+  "sourceRevision": {
+    "auditedDigest": "470fc55f3a5803814716ae29f8729f1fc8274d92352da697c14de5ce2909c2e5",
+    "trackedEditsReversed": 47,
+    "defaultMatrixUnchanged": true,
+    "reason": "Explicit log categories, bulk selection, quest tracking, card previews and manual shortcut/readiness presentation. Shared pet shield targeting changed only kind=shield skills; none are in the default pairs of the 1440-run matrix. Guard skills already targeted pets and are unchanged. Shield skills validated separately across twelve role/family variants; no claim of full balance for those alternative loadouts."
   }
 }
