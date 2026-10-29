@@ -1,7 +1,7 @@
 import {captureQuality,MYTHIC_MUTATION} from './pet-acquisition.js?v=4.0';
 import {SECOND_JOBS,parentJob} from './jobs.js?v=4.0';
 import {MAP_BOSSES} from './map-bosses.js?v=4.0';
-import {createWorldCards} from './card-effects.js?v=4.0';
+import {createWorldCards,LEGACY_CARD_SLOTS} from './card-effects.js?v=4.0.4';
 import {PETLAND_MONSTERS} from './catalog-petland.js?v=4.0';
 export {PETLAND_MONSTERS};
 import {petForm} from './pet-evolution.js?v=4.0';
@@ -29,6 +29,7 @@ Object.assign(CARDS,createWorldCards(WORLD_MONSTERS,MAP_BOSSES));
 CARDS.boss_petland={name:'森境聖角獸紀念卡',stat:'LUK',bonus:0,effect:'hpPct',amount:10,effects:{hpPct:10,mpPct:8},theme:'舊版紀念',boss:true,map:'legacy',description:'舊版紀念卡片：HP +10%、SP +8%。已停止掉落，既有卡片仍可使用。'};
 SPECIES.boss_petland={name:'森境聖角獸（舊版）',icon:'♛',role:'none',roleName:'舊版首領',level:10};
 for(const [id,effect,amount] of [['fang','atkPct',4],['wisp','matkPct',4],['shell','defPct',6],['sprout','hpPct',5],['sandbug','defPct',6],['dog','fleePct',6],['guardian','hpPct',5]]){CARDS[id].effect=effect;CARDS[id].amount=amount;CARDS[id].description+=`，${({atkPct:'ATK',matkPct:'MATK',defPct:'DEF',fleePct:'FLEE',hpPct:'HP'})[effect]} +${amount}%`;}
+for(const [id,slots] of Object.entries(LEGACY_CARD_SLOTS))CARDS[id].slots=[...slots];
 SPECIES.town={name:'安全城鎮',icon:'🏰',role:'none',roleName:'安全區域',level:1};
 export const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
 export const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
