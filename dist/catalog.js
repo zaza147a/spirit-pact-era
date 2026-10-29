@@ -1,12 +1,12 @@
-import {SECOND_JOBS,parentJob} from './jobs.js?v=3.0';
-import {MAP_BOSSES} from './map-bosses.js?v=3.0';
-import {createWorldCards} from './card-effects.js?v=3.0';
-import {PETLAND_MONSTERS} from './catalog-petland.js?v=3.0';
+import {SECOND_JOBS,parentJob} from './jobs.js?v=3.1';
+import {MAP_BOSSES} from './map-bosses.js?v=3.1';
+import {createWorldCards} from './card-effects.js?v=3.1';
+import {PETLAND_MONSTERS} from './catalog-petland.js?v=3.1';
 export {PETLAND_MONSTERS};
-import {petForm} from './pet-evolution.js?v=3.0';
+import {petForm} from './pet-evolution.js?v=3.1';
 // Shared definitions: UI, future server combat engine and 2D renderer can consume the same IDs.
-import {WORLD_MONSTERS,WORLD_MAPS} from './world-data.js?v=3.0';
-import {LOOT_ITEMS,GEAR_BASE,PET_GEAR_BASE,PET_SLOTS} from './loot.js?v=3.0';
+import {WORLD_MONSTERS,WORLD_MAPS} from './world-data.js?v=3.1';
+import {LOOT_ITEMS,GEAR_BASE,PET_GEAR_BASE,PET_SLOTS} from './loot.js?v=3.1';
 export const CLASSES={swordsman:{name:'劍士',symbol:'⚔',hp:145,mp:55,atk:13,def:7,skill:'重擊',skill2:'狂擊'},acolyte:{name:'服事',symbol:'✚',hp:115,mp:105,atk:9,def:5,skill:'聖光攻擊',skill2:'治癒術'},mage:{name:'法師',symbol:'✧',hp:95,mp:125,atk:14,def:3,skill:'火箭術',skill2:'冰箭術'},thief:{name:'盜賊',symbol:'◆',hp:115,mp:70,atk:16,def:4,skill:'二連擊',skill2:'殘影'},archer:{name:'弓箭手',symbol:'🏹',hp:108,mp:83,atk:15,def:4,skill:'精準射擊',skill2:'二連矢'}};
 for(const [id,job] of Object.entries(SECOND_JOBS))CLASSES[id]={...CLASSES[job.parent],name:job.name,symbol:CLASSES[job.parent].symbol};
 export const ATTRS={STR:'力量',AGI:'敏捷',VIT:'體質',INT:'智力',DEX:'靈巧',LUK:'幸運'};

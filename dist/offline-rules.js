@@ -1,5 +1,5 @@
 export const OFFLINE_CAP_MS=24*60*60*1000;
-export const OFFLINE_STEP_MS=200;
+export const OFFLINE_STEP_MS=100;
 export function offlineWindow(state,now=Date.now()){
  const at=state?.offline?.at;
  if(!Number.isFinite(at)||at<=0||at>now)return {elapsed:0,duration:0,capped:false,eligible:false};

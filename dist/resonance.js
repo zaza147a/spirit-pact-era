@@ -11,6 +11,421 @@ export const RESONANCE_MAX=100,ULTIMATE_COST=60,ULTIMATE_COOLDOWN=30000;
 export const RESONANCE_EVENTS={attack:'普攻命中',skill:'攻擊技能命中',crit:'爆擊命中',block:'實際格擋',dodge:'實際閃避',heal:'有效治療',shield:'施放護盾',mana:'有效回復SP',pet_guard:'坦寵實際受擊',pet:'寵物行動',tactic:'使用職業戰術'};
 export const resonanceRule=(job,role)=>RESONANCE_RULES[job]?.[role]||null;
 export const resonanceTriggered=(rule,event)=>!!rule&&(rule.events||[rule.event]).includes(event);
-export const SECOND_RESONANCE_PLAYS={"knight": [["charge", "衝鋒獵襲", "strike", 1.05, "cleave", 0.4, "衝鋒後戰獸橫掃鄰敵"], ["skill", "焰槍烙印", "magic", 0.85, "bleed", 0.22, "槍擊引燃三段灼傷"], ["charge", "戰騎護陣", "shield", 0.8, "intercept", 4000, "衝鋒時坦寵接管前線"], ["attack", "凱旋戰歌", "heal", 0.65, "chorus", 0.07, "有效治療後加強後續三擊"]], "crusader": [["block", "守誓反擊", "strike", 0.9, "drain", 0.18, "格擋與盾擊帶動吸血反擊"], ["shield", "聖盾耀光", "magic", 0.9, "expose", 0.1, "施盾後聖光破甲"], ["pet_guard", "雙重壁壘", "shield", 0.65, "counter", 0.22, "坦寵受擊展開有限反擊護盾"], ["shield", "守護祈願", "heal", 0.75, "ward", 0.07, "治療並短暫降低雙方受傷"]], "wizard": [["skill", "元素獵域", "strike", 0.9, "expose", 0.14, "法術標記弱點供物理追擊"], ["skill", "星火連鎖", "magic", 0.65, "cleave", 0.65, "與主人一起進行多目標轟炸"], ["skill", "詠唱護城", "shield", 0.75, "interrupt", 450, "護盾同步延後敵人下一次攻擊"], ["mana", "法潮回響", "mana", 0.8, "reset", 650, "補魔並縮短既有法術冷卻"]], "sage": [["fist", "魔拳獵牙", "strike", 0.9, "tempo", 0.08, "魔拳命中加速雙方普攻"], ["autospell", "自詠迴響", "magic", 0.95, "manaPet", 0.08, "自詠追擊並回復夥伴SP"], ["fist", "近身魔壁", "shield", 0.75, "ward", 0.06, "近戰護盾附帶短暫減傷"], ["autospell", "靈泉拳意", "mana", 0.7, "chorus", 0.08, "回魔後為後續拳擊附魔"]], "assassin": [["crit", "暗影雙獵", "strike", 0.9, "execute", 0.4, "暴擊追獵低血量敵人"], ["crit", "魔毒連爆", "magic", 0.8, "bleed", 0.3, "暴擊引爆持續魔毒"], ["dodge", "殘影甲幕", "shield", 0.65, "tempo", 0.1, "迴避展開護幕並提高節奏"], ["crit", "夜行回生", "heal", 0.7, "crit", 6, "有效回血後提升暴擊機率"]], "rogue": [["steal", "掠影追擊", "strike", 0.85, "bounty", 1, "短劍掠奪增加額外金幣"], ["skill", "暗印突襲", "magic", 0.9, "expose", 0.12, "短劍技能與魔法破甲連動"], ["skill", "煙幕重甲", "shield", 0.65, "interrupt", 600, "煙幕延後敵人攻擊"], ["steal", "奪寶靈歌", "mana", 0.7, "drain", 0.25, "掠奪補充SP並治療隊伍"]], "priest": [["heal", "聖獵祝福", "strike", 0.85, "chorus", 0.09, "治療啟動戰獸追擊與後續祝福"], ["skill", "神恩星耀", "magic", 0.8, "drain", 0.3, "聖光追擊轉為有效團隊治療"], ["heal", "慈悲護城", "shield", 0.65, "intercept", 3000, "治療後由坦寵接管攻勢"], ["heal", "雙聖祈禱", "heal", 0.65, "manaPet", 0.1, "雙方治療並補充夥伴SP"]], "monk": [["combo", "猛虎連拳", "strike", 1, "execute", 0.3, "拳套連段追擊殘血目標"], ["combo", "靈氣魔拳", "magic", 0.85, "expose", 0.11, "連段破甲接魔法拳波"], ["combo", "金剛護體", "shield", 0.65, "counter", 0.18, "連段凝盾並提供有限反擊"], ["combo", "調息共振", "heal", 0.7, "reset", 500, "調息縮短拳技冷卻"]], "hunter": [["falcon", "鷹狼合獵", "strike", 0.85, "crit", 7, "獵鷹與戰狼共同瞄準弱點"], ["skill", "靈羽元素箭", "magic", 0.8, "cleave", 0.45, "元素箭波及多個目標"], ["falcon", "獵場護幕", "shield", 0.7, "expose", 0.1, "護幕保護獵手並暴露獵物"], ["attack", "巡林靈泉", "mana", 0.7, "tempo", 0.07, "巡林補魔加速射擊"]], "performer": [["song", "戰獸協奏", "strike", 0.85, "tempo", 0.09, "樂曲加速戰獸與演奏者攻勢"], ["song", "星光交響", "magic", 0.75, "cleave", 0.5, "樂曲引發多目標魔法交響"], ["song", "不破舞台", "shield", 0.7, "ward", 0.08, "舞台護盾附帶有限減傷"], ["buff", "生命合唱", "heal", 0.65, "chorus", 0.1, "治療合唱增幅後續音刃"]]};
-for(const [job,plays] of Object.entries(SECOND_RESONANCE_PLAYS))RESONANCE_RULES[job]=Object.fromEntries(['attack','magic','defense','support'].map((role,i)=>{const [event,name,effect,power,mode,value,description]=plays[i];const fallback=role==='defense'?['pet_guard','skill']:role==='support'?['attack','heal']:['attack','skill'];return [role,{...rule([...new Set([event,...fallback])],name,effect,power,6500,description),mode,value,playId:job+'_'+role}];}));
-Object.assign(RESONANCE_EVENTS,{charge:'衝鋒命中',fist:'魔力拳命中',autospell:'自動念咒命中',steal:'成功偷取物品',buff:'施放增益',combo:'拳套連段命中',falcon:'獵鷹協攻',song:'樂曲協奏'});
+export const SECOND_RESONANCE_PLAYS={
+ "knight": [
+  [
+   "charge",
+   "裂陣衝鋒",
+   "charge",
+   {
+    "bonus": 0.45,
+    "targets": 1
+   },
+   "衝鋒後6秒：衝鋒倍率+45%、多打1體"
+  ],
+  [
+   "skill",
+   "符焰槍陣",
+   "brandish",
+   {
+    "magic": 1.4
+   },
+   "技能命中後6秒：槍陣追加寵物MATK140%魔焰"
+  ],
+  [
+   "charge",
+   "重甲穿刺",
+   "pierce",
+   {
+    "armor": 1.3
+   },
+   "衝鋒後6秒：連發穿刺追加DEF130%傷害"
+  ],
+  [
+   "skill",
+   "凱旋節奏",
+   "pierce",
+   {
+    "haste": 0.12,
+    "refund": 1
+   },
+   "技能命中後6秒：穿刺攻擊週期縮短12%、每擊退1SP"
+  ]
+ ],
+ "crusader": [
+  [
+   "block",
+   "復仇盾鋒",
+   "shieldBash",
+   {
+    "bonus": 0.6
+   },
+   "格擋後6秒：盾擊倍率+60%"
+  ],
+  [
+   "skill",
+   "審判聖印",
+   "holyCross",
+   {
+    "targets": 2
+   },
+   "技能命中後6秒：聖十字額外命中2體"
+  ],
+  [
+   "pet_guard",
+   "堡壘反震",
+   "shieldBash",
+   {
+    "counter": 0.45
+   },
+   "坦寵受擊後6秒：寵物以自身DEF45%反擊受擊敵人"
+  ],
+  [
+   "buff",
+   "誓約轉輪",
+   "holyCross",
+   {
+    "refund": 12,
+    "cooldown": 0.45
+   },
+   "犧牲守護後6秒：聖十字退12SP、冷卻縮短45%"
+  ]
+ ],
+ "wizard": [
+  [
+   "castStart",
+   "孤星獵殺",
+   "*",
+   {
+    "single": 0.65
+   },
+   "開始詠唱／無詠唱施法後6秒：單一敵人時法術倍率+65%"
+  ],
+  [
+   "castComplete",
+   "元素擴散",
+   "*",
+   {
+    "targets": 2
+   },
+   "完成法術後6秒：元素法術額外擴散2體"
+  ],
+  [
+   "castStart",
+   "蓄魔堡壘",
+   "*",
+   {
+    "castPower": 2
+   },
+   "開始詠唱後6秒：依實際原始詠唱時間每秒增加200%技能倍率；無詠唱失去此收益"
+  ],
+  [
+   "castStart",
+   "靈泉速詠",
+   "*",
+   {
+    "castFactor": 0.55,
+    "cooldown": 0.2
+   },
+   "開始詠唱／無詠唱施法後6秒：後續詠唱縮短45%、冷卻縮短20%"
+  ]
+ ],
+ "sage": [
+  [
+   "fist",
+   "疾牙魔拳",
+   "spellFist",
+   {
+    "haste": 0.08
+   },
+   "魔拳命中後6秒：魔拳攻擊週期縮短8%"
+  ],
+  [
+   "autospell",
+   "元素湧流",
+   "spellFist",
+   {
+    "autoTargets": 2,
+    "autoPower": 0.35
+   },
+   "自詠觸發後6秒：自詠追加2體、倍率+35%"
+  ],
+  [
+   "fist",
+   "震甲拳意",
+   "spellFist",
+   {
+    "armor": 0.25,
+    "counter": 0.12
+   },
+   "魔拳命中後6秒：魔拳追加DEF25%，寵物受擊反擊自身DEF12%"
+  ],
+  [
+   "autospell",
+   "循環法脈",
+   "spellFist",
+   {
+    "refund": 2,
+    "autoMana": 4,
+    "manaBurst": 0.2
+   },
+   "自詠後6秒：魔拳每擊退2SP、自詠回4SP；SP達80%時魔拳倍率+20%"
+  ]
+ ],
+ "assassin": [
+  [
+   "crit",
+   "獵殺終結",
+   "sonicBlow",
+   {
+    "execute": 1.2
+   },
+   "暴擊後6秒：音速投擲對30%以下目標倍率+120%"
+  ],
+  [
+   "skill",
+   "魔毒迴旋",
+   "katarSlash",
+   {
+    "magic": 0.8,
+    "targets": 1,
+    "leech": 0.12
+   },
+   "技能命中後6秒：旋斬追加寵物MATK80%、多打1體，主目標有效傷害12%吸血"
+  ],
+  [
+   "dodge",
+   "殘影突進",
+   "dualStrike",
+   {
+    "haste": 0.2,
+    "leech": 0.06,
+    "bonus": 0.5
+   },
+   "閃避後6秒：雙刃倍率+50%、攻擊週期縮短20%、主目標有效傷害6%吸血"
+  ],
+  [
+   "crit",
+   "夜行續刃",
+   "dualStrike",
+   {
+    "refund": 2,
+    "bonus": 0.15
+   },
+   "暴擊後6秒：雙刃退2SP、倍率+15%"
+  ]
+ ],
+ "rogue": [
+  [
+   "snatch",
+   "奪寶追刃",
+   "daggerDance",
+   {
+    "bonus": 0.15,
+    "bounty": 0.04
+   },
+   "掠奪突襲命中後6秒：遊擊倍率+15%，有效命中按等級獲少量金幣"
+  ],
+  [
+   "skill",
+   "咒印伏擊",
+   "gangAmbush",
+   {
+    "magic": 1,
+    "targets": 1
+   },
+   "短劍技能後6秒：伏擊追加寵物MATK100%、多打1體"
+  ],
+  [
+   "shield",
+   "煙幕誘敵",
+   "daggerDance",
+   {
+    "armor": 0.5,
+    "haste": 0.1
+   },
+   "煙幕後6秒：遊擊追加DEF50%、攻擊週期縮短10%"
+  ],
+  [
+   "snatch",
+   "影步回收",
+   "daggerDance",
+   {
+    "refund": 2,
+    "leech": 0.05,
+    "haste": 0.12
+   },
+   "掠奪突襲命中後6秒：遊擊退2SP、攻擊週期縮短12%、有效傷害5%吸血"
+  ]
+ ],
+ "priest": [
+  [
+   "heal",
+   "聖獵裁決",
+   "holyJudgment",
+   {
+    "bonus": 0.7,
+    "cooldown": 0.15
+   },
+   "有效治療後6秒：審判倍率+70%、冷卻縮短15%"
+  ],
+  [
+   "skill",
+   "星域驅魔",
+   "exorcism",
+   {
+    "targets": 2,
+    "bonus": 0.25
+   },
+   "聖光技能後6秒：驅魔多打2體、倍率+25%"
+  ],
+  [
+   "pet_guard",
+   "苦修審判",
+   "holyJudgment",
+   {
+    "petArmor": 12
+   },
+   "坦寵受擊後6秒：審判追加寵物DEF1200%傷害，防禦裝備與寵物品質會提升威力"
+  ],
+  [
+   "heal",
+   "恩典轉化",
+   "exorcism",
+   {
+    "refund": 12,
+    "cooldown": 0.25
+   },
+   "有效治療後6秒：驅魔退12SP、冷卻縮短25%"
+  ]
+ ],
+ "monk": [
+  [
+   "combo",
+   "猛虎斷空",
+   "asura",
+   {
+    "bonus": 1.2
+   },
+   "拳套連段後6秒：阿修羅倍率+120%"
+  ],
+  [
+   "combo",
+   "靈氣擴散",
+   "spiritPalm",
+   {
+    "targets": 2,
+    "magic": 1.2
+   },
+   "連段後6秒：氣功多打2體、追加寵物MATK120%"
+  ],
+  [
+   "combo",
+   "金剛拳勢",
+   "chainCombo",
+   {
+    "armor": 0.85,
+    "leech": 0.04
+   },
+   "連段後6秒：連環拳追加DEF85%、有效傷害4%吸血"
+  ],
+  [
+   "combo",
+   "吐納連拳",
+   "chainCombo",
+   {
+    "refund": 2,
+    "haste": 0.12
+   },
+   "連段後6秒：連環拳退2SP、攻擊週期縮短12%"
+  ]
+ ],
+ "hunter": [
+  [
+   "falcon",
+   "鷹狼獵首",
+   "beastMark",
+   {
+    "single": 0.9
+   },
+   "獵鷹協攻後6秒：單一敵人時標記倍率+90%"
+  ],
+  [
+   "skill",
+   "元素箭幕",
+   "arrowRain",
+   {
+    "magic": 3.0,
+    "targets": 2
+   },
+   "箭技後6秒：箭雨追加寵物MATK300%、多打2體"
+  ],
+  [
+   "falcon",
+   "定點狙擊",
+   "falconStrike",
+   {
+    "bonus": 1.1,
+    "haste": -0.12
+   },
+   "獵鷹協攻後6秒：定點突襲倍率+110%，攻擊週期延長12%"
+  ],
+  [
+   "buff",
+   "巡林連射",
+   "falconStrike",
+   {
+    "refund": 2,
+    "haste": 0.25,
+    "bonus": 0.15
+   },
+   "獵手專注後6秒：突襲倍率+15%、退2SP、攻擊週期縮短25%"
+  ]
+ ],
+ "performer": [
+  [
+   "song",
+   "狂想終曲",
+   "encore",
+   {
+    "bonus": 0.8,
+    "cooldown": 0.15
+   },
+   "樂曲後6秒：終曲倍率+80%、冷卻縮短15%"
+  ],
+  [
+   "song",
+   "星光交響",
+   "dissonance",
+   {
+    "targets": 2,
+    "magic": 0.7,
+    "cooldown": 0.25
+   },
+   "演奏後6秒：不協和音多打2體、追加寵物MATK70%、冷卻縮短25%"
+  ],
+  [
+   "song",
+   "重拍舞台",
+   "sonicNote",
+   {
+    "armor": 1.1,
+    "leech": 0.05
+   },
+   "樂曲後6秒：音刃追加DEF110%、有效傷害5%吸血"
+  ],
+  [
+   "song",
+   "無盡安可",
+   "sonicNote",
+   {
+    "refund": 2,
+    "haste": 0.15,
+    "bonus": 0.2
+   },
+   "樂曲後6秒：音刃倍率+20%、退2SP、攻擊週期縮短15%"
+  ]
+ ]
+};
+for(const [job,plays] of Object.entries(SECOND_RESONANCE_PLAYS))RESONANCE_RULES[job]=Object.fromEntries(['attack','magic','defense','support'].map((role,i)=>{const [event,name,skillId,transform,description]=plays[i];return [role,{...rule([event],name,'stance',0,5000,description),mode:'pact',skillId,transform,playId:job+'_'+role}];}));
+Object.assign(RESONANCE_EVENTS,{snatch:'掠奪突襲命中',castStart:'開始詠唱／無詠唱施法',castComplete:'法術完成',charge:'衝鋒命中',fist:'魔力拳命中',autospell:'自動念咒命中',steal:'成功偷取物品',buff:'施放增益',combo:'拳套連段命中',falcon:'獵鷹協攻',song:'樂曲協奏'});
