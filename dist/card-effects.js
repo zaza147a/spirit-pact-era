@@ -8,8 +8,7 @@ export const CARD_PROFILES={
  abyss:{theme:'均衡續航',profiles:[{hpPct:7,mpPct:7},{defPct:7,mdefPct:7},{matkPct:5,mpPct:5}],boss:{hpPct:12,mpPct:12}},
  ruins:{theme:'機巧穿透',profiles:[{ignoreDef:8,aspd:-.5},{hit:14,critDmg:8},{DEX:4,INT:4}],boss:{ignoreDef:12,aspd:-.3}},
  eclipse:{theme:'殘影奇襲',profiles:[{fleePct:13,hpPct:-5},{crit:7,hit:-10},{aspd:2,defPct:-8}],boss:{crit:10,fleePct:15,hpPct:-6}},
- celestial:{theme:'全能協調',profiles:[{atkPct:4,matkPct:4},{hpPct:5,defPct:5},{mpPct:5,mdefPct:5}],boss:{atkPct:7,matkPct:7,hpPct:7}},
- petland:{theme:'夥伴守護',profiles:[{hpPct:5}],boss:{hpPct:10,mpPct:8}}
+ celestial:{theme:'全能協調',profiles:[{atkPct:4,matkPct:4},{hpPct:5,defPct:5},{mpPct:5,mdefPct:5}],boss:{atkPct:7,matkPct:7,hpPct:7}}
 };
 const LABELS={atkPct:'ATK',matkPct:'MATK',hpPct:'HP',mpPct:'SP',defPct:'DEF',mdefPct:'MDEF',fleePct:'FLEE',hit:'HIT',flee:'FLEE',aspd:'ASPD',crit:'暴擊率',critDmg:'暴擊傷害',ignoreDef:'無視防禦',magicDamage:'魔法傷害',DEX:'DEX',INT:'INT'};
 export const describeCardEffects=effects=>Object.entries(effects).map(([key,v])=>`${LABELS[key]||key} ${v>=0?'+':''}${v}${key.endsWith('Pct')||['crit','critDmg','ignoreDef','magicDamage'].includes(key)?'%':''}`).join('、');

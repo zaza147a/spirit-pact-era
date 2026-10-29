@@ -17,13 +17,16 @@ export const MONSTERS=[{id:'sandbug',hp:55,atk:7,def:1,xp:22},{id:'dog',hp:85,at
 Object.assign(SPECIES.fang,{speed:880});Object.assign(SPECIES.wisp,{speed:1020});Object.assign(SPECIES.shell,{speed:1150});Object.assign(SPECIES.sprout,{speed:1090});
 SPECIES.fang.growth.atk=3;SPECIES.wisp.growth.atk=3;
 
-export const MAPS={town:{name:'靈契主城',eyebrow:'SAFE ZONE / CITY',description:'安全的補給與整備據點，沒有敵人。可查看背包、調整技能與購買藥水，再從地圖選單出發。',capture:false},petland:{name:'寵物之地',eyebrow:'SECTOR 00 / SANCTUARY',description:'四條寵物成長路線的起點。這裡的野生夥伴可以捕捉，捕捉球可在商店補充。',capture:true},wasteland:{name:'赤砂邊境',eyebrow:'SECTOR 01 / ICARUS',description:'危險的荒野戰鬥區。可以練功、挑戰怪物與蒐集卡片，但此地禁止捕捉寵物。',capture:false}};
+export const MAPS={town:{name:'靈契主城',eyebrow:'SAFE ZONE / CITY',description:'安全的補給與整備據點，沒有敵人。可查看背包、調整技能與購買藥水，再從地圖選單出發。',capture:false},petland:{name:'寵物之地',eyebrow:'SECTOR 00 / SANCTUARY',description:'四條寵物成長路線的起點，可直接丟球捕捉。此區不會出現地圖首領，也不掉落卡片；捕捉球可在補給商店補充。',capture:true},wasteland:{name:'赤砂邊境',eyebrow:'SECTOR 01 / ICARUS',description:'危險的荒野戰鬥區。可以練功、挑戰怪物與蒐集卡片，但此地禁止捕捉寵物。',capture:false}};
 export const CARDS={sandbug:{name:'變異蟲卡片',stat:'VIT',bonus:2,description:'VIT +2，增加生命力'},dog:{name:'機械犬卡片',stat:'AGI',bonus:2,description:'AGI +2，加快攻擊節奏'},guardian:{name:'守衛機卡片',stat:'STR',bonus:2,description:'STR +2，提高物理傷害'},fang:{name:'赤牙卡片',stat:'STR',bonus:1,description:'STR +1'},wisp:{name:'星光卡片',stat:'INT',bonus:1,description:'INT +1'},shell:{name:'岩甲卡片',stat:'VIT',bonus:1,description:'VIT +1'},sprout:{name:'芽靈卡片',stat:'LUK',bonus:1,description:'LUK +1'}};
 export const SLOTS={headUpper:'頭上',headMiddle:'頭中',headLower:'頭下',armor:'盔甲',rightHand:'右手（武器）',leftHand:'左手（盾牌／副手）',garment:'披風',shoes:'鞋子',accessory1:'飾品1',accessory2:'飾品2'};
 Object.assign(ITEMS,LOOT_ITEMS);
 Object.assign(MAPS,WORLD_MAPS);
 for(const m of [...WORLD_MONSTERS,...Object.values(MAP_BOSSES)])SPECIES[m.id]={name:m.name,icon:m.icon,role:m.role,roleName:m.roleName,level:m.level};
 Object.assign(CARDS,createWorldCards(WORLD_MONSTERS,MAP_BOSSES));
+// Retain already-earned legacy cards without leaving a spawn or drop route.
+CARDS.boss_petland={name:'森境聖角獸紀念卡',stat:'LUK',bonus:0,effect:'hpPct',amount:10,effects:{hpPct:10,mpPct:8},theme:'舊版紀念',boss:true,map:'legacy',description:'舊版紀念卡片：HP +10%、SP +8%。已停止掉落，既有卡片仍可使用。'};
+SPECIES.boss_petland={name:'森境聖角獸（舊版）',icon:'♛',role:'none',roleName:'舊版首領',level:10};
 for(const [id,effect,amount] of [['fang','atkPct',4],['wisp','matkPct',4],['shell','defPct',6],['sprout','hpPct',5],['sandbug','defPct',6],['dog','fleePct',6],['guardian','hpPct',5]]){CARDS[id].effect=effect;CARDS[id].amount=amount;CARDS[id].description+=`，${({atkPct:'ATK',matkPct:'MATK',defPct:'DEF',fleePct:'FLEE',hpPct:'HP'})[effect]} +${amount}%`;}
 SPECIES.town={name:'安全城鎮',icon:'🏰',role:'none',roleName:'安全區域',level:1};
 export const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));

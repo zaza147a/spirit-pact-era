@@ -2,7 +2,7 @@
 
 本專案為純 HTML/CSS/JavaScript，使用相對資源路徑，支援GitHub Pages的專案子目錄。玩家不需GitHub帳號即可玩公開網站。發布後仍是每個瀏覽器各自存檔。
 
-建議新建獨立公開專案 `spirit-pact-era`，避免改動既有其他用途的專案。推送本專案後，在 Settings → Pages → Build and deployment → Source 選 GitHub Actions。`.github/workflows/github-pages.yml` 會在推送 main 時發布 `dist/`，也可從Actions手動執行。
+正式公開專案為 https://github.com/zaza147a/spirit-pact-era ，遊戲網址為 https://zaza147a.github.io/spirit-pact-era/ 。後續更新統一使用此專案，不再更新舊 Sites 私密站。推送本專案後，在 Settings → Pages → Build and deployment → Source 選 GitHub Actions。`.github/workflows/github-pages.yml` 會在推送 main 時發布 `dist/`，也可從Actions手動執行。
 
 對於新建的空白GitHub專案，先將原始碼套件解壓至本機，再使用GitHub Desktop的Add Local Repository／Publish Repository，或依新專案頁的Git推送指令上傳。不要把整份ZIP當成遊戲入口直接上傳；Pages需要其中的實際檔案。
 

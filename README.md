@@ -1,4 +1,10 @@
-# 靈契紀元 V2.5
+# 靈契紀元 V2.6
+
+正式公開網址：https://zaza147a.github.io/spirit-pact-era/
+
+正式更新來源：https://github.com/zaza147a/spirit-pact-era 。推送 main 後由 GitHub Actions 自動發布 dist；不再以 Sites 私密站作為正式更新入口。
+
+V2.6：快捷導覽、獨立掛機設定、折疊技能與紀錄、穩定戰鬥區、寵物之地無首領且不掉卡、進化圖鑑隱藏傳說及神話外觀。
 
 本次更新（2026-10-29）：改名《靈契紀元》，補給商店精簡為六款藥水及捕捉球。裝備由掉落及融合取得。舊存檔鍵維持相容。GitHub Pages 發布方式見 docs/github-pages.md。
 
