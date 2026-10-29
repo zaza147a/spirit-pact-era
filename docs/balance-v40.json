@@ -1,6 +1,6 @@
 {
   "version": 40,
-  "sourceDigest": "53cc703b5176a26d42091090aef9157be9dd557c6bd6ac9066b2322711b7594b",
+  "sourceDigest": "58fe42523f507a7e6ddea330477488e3909a55959786b89ffddfa1d3b21c42c6",
   "seeds": [
     42,
     137,
@@ -7363,5 +7363,9 @@
         }
       ]
     }
-  ]
+  ],
+  "presentationRevision": {
+    "previousDigest": "53cc703b5176a26d42091090aef9157be9dd557c6bd6ac9066b2322711b7594b",
+    "reason": "V4.0.1 only changes renderCharacterAttributes, removes duplicate sidebar allocation, separates shield meter, moves ATK/MATK into character stats and updates displayed version. All other game.js code is byte-identical after removing these presentation spans. Simulation replaces render with a no-op; combat/economy mechanics unchanged."
+  }
 }
