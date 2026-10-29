@@ -22,3 +22,8 @@ button,input,select,summary{touch-action:manipulation}button:focus-visible,summa
 .character .hero .eyebrow{font-size:9px;letter-spacing:1.5px;overflow-wrap:anywhere}
 .character .hero .pill{max-width:100%;white-space:normal}
 .offline-modal{z-index:10}.offline-modal .modal{width:min(650px,100%);max-height:88dvh;overflow:auto}.offline-totals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.offline-totals>div{border:1px solid #365565;padding:12px;border-radius:8px;color:#9eb8c4;font-size:12px}.offline-totals b{display:block;font-size:19px;color:#e7dfba;overflow-wrap:anywhere}.offline-modal details{margin:15px 0;border:1px solid #365565;border-radius:8px;padding:10px}.offline-modal summary{cursor:pointer}.offline-modal p{overflow-wrap:anywhere}#offlineProgress{z-index:11}
+/* Keep the complete creation form reachable on short screens and with zoom. */
+#createModal{align-items:center;justify-content:center;padding:16px;overflow-y:auto;overscroll-behavior:contain}
+#createModal .modal{width:min(550px,100%);min-height:0;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-gutter:stable;flex-shrink:1;-webkit-overflow-scrolling:touch}
+#createModal .classchoices{min-width:0}
+@media(max-width:700px){#createModal{padding:10px}#createModal .modal{padding:20px;max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px)}}
