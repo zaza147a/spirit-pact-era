@@ -1,6 +1,6 @@
 {
   "version": 32,
-  "sourceDigest": "53ea992b02181a16063a702020fb28e31010e38ab5ca308f9edb2983e6100355",
+  "sourceDigest": "802e563ad4112649a0c55253bc35cad385c912c23e1c81fdf4044ebac539076b",
   "seedCount": 3,
   "seeds": [
     42,
@@ -3930,7 +3930,7 @@
     }
   ],
   "presentationVerification": {
-    "version": "3.2.1",
-    "method": "Only render() HUD markup changed; all non-render game.js code and every other JS module identical to V3.2 audited source. Existing 720 combat results retained."
+    "version": "3.2.2",
+    "method": "Only render() HUD, capture settings copy and autoCapturePet() petland capacity guard differ from audited V3.2. All other game code and JS modules identical. Petland auto capture is excluded from all three audit scenarios; existing 720 combat results retained."
   }
 }
