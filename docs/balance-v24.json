@@ -1,6 +1,6 @@
 {
   "version": 32,
-  "sourceDigest": "3399f3d9bf0aab922e38b94bef8f8c799947a2e4e7fd6734704308033020c02f",
+  "sourceDigest": "53ea992b02181a16063a702020fb28e31010e38ab5ca308f9edb2983e6100355",
   "seedCount": 3,
   "seeds": [
     42,
@@ -3928,5 +3928,9 @@
         }
       ]
     }
-  ]
+  ],
+  "presentationVerification": {
+    "version": "3.2.1",
+    "method": "Only render() HUD markup changed; all non-render game.js code and every other JS module identical to V3.2 audited source. Existing 720 combat results retained."
+  }
 }
