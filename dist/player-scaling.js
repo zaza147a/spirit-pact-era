@@ -1,7 +1,7 @@
-import {parentJob} from './jobs.js';
+import {parentJob} from './jobs.js?v=3.0';
 export const playerAttackValue=(job,base,level,attributes,gear=0)=>base+(level-1)*3+(parentJob(job)==='archer'?attributes.DEX*2+Math.floor(attributes.STR/5):attributes.STR*2+Math.floor(attributes.DEX/3))+gear;
 export const playerMagicAttackValue=(level,attributes,gear=0)=>6+level*2+attributes.INT*2+gear;
 export const GLOBAL_SKILL_COOLDOWN=850;
 export const jobSkillCooldownMs=skill=>skill.cooldown??3600+skill.unlock*120;
-export function jobSkillMultiplier(skill,rank=1){const growth=skill.kind==='heal'?.22:['shield','mana'].includes(skill.kind)?.2:.08;return skill.power*(1+growth*(Math.max(1,rank)-1));}
+export function jobSkillMultiplier(skill,rank=1){const growth=skill.kind==='heal'?.22:['shield','mana'].includes(skill.kind)?.2:.08;return skill.power*(skill.branch==='second'&&['physical','magic'].includes(skill.kind)?1.4:1)*(1+growth*(Math.max(1,rank)-1));}
 export function jobSkillSpec(skill,rank=1,job='mage'){if(skill.kind==='passive')return {text:'被動技能 · 學習後常駐生效',cooldown:0,percent:0};if(skill.kind==='buff')return {text:`增益 ${(skill.power*100).toFixed(0)}% · ${skill.duration/1000}秒 · CD ${(jobSkillCooldownMs(skill)/1000).toFixed(1)}秒`,cooldown:jobSkillCooldownMs(skill),percent:skill.power*100};const multiplier=jobSkillMultiplier(skill,rank),source=skill.source==='shield'?'ATK65%＋DEF35%':skill.kind==='magic'||skill.kind==='mana'||skill.kind==='heal'&&!['recover','breathing'].includes(skill.id)?'MATK':skill.kind==='shield'?'最大HP':'ATK',percent=multiplier*(skill.kind==='shield'?10:100),verb=skill.kind==='heal'?'治療':skill.kind==='shield'?'護盾':skill.kind==='mana'?'回復SP':'傷害';return {multiplier,source,percent,cooldown:jobSkillCooldownMs(skill),text:`${verb} ${source} ${Number(percent.toFixed(1))}% · CD ${(jobSkillCooldownMs(skill)/1000).toFixed(1)} 秒`};}

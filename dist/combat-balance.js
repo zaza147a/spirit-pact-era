@@ -3,7 +3,7 @@
 export function incomingMonsterDamage(attack,defense,roll=1){
  const attackValue=Math.max(0,Number(attack)||0),armor=Math.max(0,Number(defense)||0);
  const damage=Math.round(attackValue*Math.max(.75,Math.min(1.25,roll))-armor*.35);
- return Math.max(3,Math.round(attackValue*.08),damage);
+ return Math.max(3,Math.round(attackValue*.35),damage);
 }
 export const aspdAttackIntervalMs=aspd=>Math.max(140,Math.round((200-Math.min(193,Math.max(100,aspd)))*20));
 export const roStyleCritRate=(luk,gearCrit=0)=>Math.min(100,Math.round((1+Math.max(0,luk)*.3+gearCrit)*10)/10);

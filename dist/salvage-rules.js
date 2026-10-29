@@ -1,7 +1,7 @@
-import {RARITIES,gearTier} from './loot.js';
+import {RARITIES,gearTier} from './loot.js?v=3.0';
 export const SALVAGE_STATS=['STR','AGI','VIT','INT','DEX','LUK','atk','matk','def','hit','flee','crit'];
 export function shouldAutoSalvage(gear,settings){
- if(!gear||gear.fusionMatch||!settings?.autoSalvage)return false;
+ if(!gear||gear.swapProtected||gear.fusionMatch||!settings?.autoSalvage)return false;
  const conditions=[];
  if(settings.keepRarity){
   const rank=RARITIES.findIndex(r=>r.id===gear.rarity);

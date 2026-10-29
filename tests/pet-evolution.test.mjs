@@ -49,7 +49,7 @@ test('V1.4 save migrates without losing pet evolution, mythic rarity, nickname, 
 test('continuous encounters spawn while another enemy remains, obey capacity, do not spawn in town, and do not reward twice',async()=>{
  let source=readFileSync(new URL('game.js',root),'utf8'),context={console,document:{getElementById:()=>({innerHTML:'',scrollHeight:0,scrollTop:0})},localStorage:{setItem:()=>{}},Date};
  for(const match of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const module=await import(new URL(match[2],root));for(const name of match[1].split(',').map(n=>n.trim()))context[name]=module[name];}
- source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,setEnemy:e=>enemy=e,enemies:()=>enemies,setNext:n=>nextEncounterAt=n,tickEncounters,addEncounter,award,rawStat,stat};render=()=>{};message=()=>{};');
+ source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,setEnemy:e=>enemy=e,enemies:()=>enemies,setNext:n=>{nextEncounterAt=n;encounterSlots=Array.from({length:encounterLimit(player.location)},()=>n);},tickEncounters,addEncounter,award,rawStat,stat};render=()=>{};message=()=>{};');
  context.canEncounterBoss=()=>false;vm.createContext(context);vm.runInContext(source,context);const a=context.api,p=a.normalize(a.fresh('遭遇測試','swordsman'));p.location='starter';a.setPlayer(p);
  a.addEncounter(100);const first=a.enemies()[0];a.setNext(101);a.tickEncounters(101);assert.equal(a.enemies().length,2);assert.equal(a.enemies()[0],first);assert.ok(first.hp>0);
  for(let n=0;n<10;n++){a.setNext(n);a.tickEncounters(102+n);}assert.equal(a.enemies().length,2);

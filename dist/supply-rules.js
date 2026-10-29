@@ -1,3 +1,5 @@
 export const POTION_KEYS=['playerHp','playerSp','petHp','petSp'];
 export function normalizePotionThresholds(value){return Object.fromEntries(POTION_KEYS.map(key=>[key,Number.isFinite(Number(value?.[key]))?Math.min(100,Math.max(1,Math.round(Number(value[key])))):45]));}
 export function purchaseQuote(item,quantity,gold){const qty=Number(quantity);if(!Number.isInteger(qty)||qty<1||qty>999)return {error:'購買數量請輸入 1～999 的整數'};const total=item.cost*qty;if(gold<total)return {error:`金幣不足，需要 ${total} 金`};return {qty,total};}
+export function preferredPotion(bag,items,field,priority='high',maximum=0){const list=bag.filter(e=>e.qty>0&&items[e.id]?.[field==='hp'?'heal':'energy']);if(priority!=='high'&&priority!=='low'){const exact=list.find(e=>e.id===priority);if(exact)return exact;}return list.sort((a,b)=>{const power=id=>{const it=items[id];return (field==='hp'?it.heal+(it.healPct||0)*maximum:it.energy+(it.energyPct||0)*maximum);};return (priority==='low'?1:-1)*(power(a.id)-power(b.id));})[0];}
+export const retrainCost=level=>1000+Math.max(1,level)*100;

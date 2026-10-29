@@ -14,5 +14,3 @@ export const parentJob=job=>SECOND_JOBS[job]?.parent||job;
 export const secondJobChoices=job=>Object.entries(SECOND_JOBS).filter(([,s])=>s.parent===job);
 export const SECOND_JOB_REQUIREMENTS={base:50,job:40};
 export function transferEligibility(player,target){const choice=SECOND_JOBS[target];if(!choice||player.job!==choice.parent)return '職業分支不符';if(player.location!=='town')return '請回城鎮辦理二轉';if(player.level<50||player.jobLevel<40)return '需要 Base Lv.50、Job Lv.40';return null;}
-export const JOB_TUNING={knight:.42,crusader:.448,wizard:.48,sage:.4201,assassin:.42,rogue:.3696,priest:.66,monk:.5852,hunter:.2341,performer:.24};
-export const PET_ROLE_TUNING={attack:.63,magic:.85,defense:1,support:1};
