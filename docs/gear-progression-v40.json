@@ -1,0 +1,125 @@
+{
+  "method": "30 builds per point: 10 jobs with attack pet, 3 seeds, 45s four-target pressure; uncommon reference gear, nonspecial affixes scaled on character and pet. Potions unlimited; no revival. This is not a travel gate.",
+  "rows": [
+    {
+      "level": 71,
+      "referenceGearLevel": 70,
+      "strength": 0.4,
+      "runs": 30,
+      "survival": 0.8666666666666667,
+      "petDeaths": 2.7333333333333334,
+      "potions": 35.8,
+      "meanContribution": 4913.2148148148135
+    },
+    {
+      "level": 71,
+      "referenceGearLevel": 70,
+      "strength": 0.65,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0.5,
+      "potions": 33.5,
+      "meanContribution": 5969.711111111113
+    },
+    {
+      "level": 71,
+      "referenceGearLevel": 70,
+      "strength": 0.7,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0.3,
+      "potions": 32.03333333333333,
+      "meanContribution": 6224.3933333333325
+    },
+    {
+      "level": 71,
+      "referenceGearLevel": 70,
+      "strength": 1,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0.06666666666666667,
+      "potions": 23.8,
+      "meanContribution": 6817.343703703704
+    },
+    {
+      "level": 81,
+      "referenceGearLevel": 80,
+      "strength": 0.4,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0.23333333333333334,
+      "potions": 31.933333333333334,
+      "meanContribution": 6972.449629629628
+    },
+    {
+      "level": 81,
+      "referenceGearLevel": 80,
+      "strength": 0.65,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0,
+      "potions": 20.6,
+      "meanContribution": 8115.057037037038
+    },
+    {
+      "level": 81,
+      "referenceGearLevel": 80,
+      "strength": 0.7,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0,
+      "potions": 19.1,
+      "meanContribution": 8285.974074074073
+    },
+    {
+      "level": 81,
+      "referenceGearLevel": 80,
+      "strength": 1,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0,
+      "potions": 12.2,
+      "meanContribution": 9438.203703703704
+    },
+    {
+      "level": 91,
+      "referenceGearLevel": 90,
+      "strength": 0.4,
+      "runs": 30,
+      "survival": 0.7333333333333333,
+      "petDeaths": 2.3666666666666667,
+      "potions": 37,
+      "meanContribution": 7118.5496296296305
+    },
+    {
+      "level": 91,
+      "referenceGearLevel": 90,
+      "strength": 0.65,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0.4,
+      "potions": 32.9,
+      "meanContribution": 9450.933333333332
+    },
+    {
+      "level": 91,
+      "referenceGearLevel": 90,
+      "strength": 0.7,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0.36666666666666664,
+      "potions": 30.666666666666668,
+      "meanContribution": 9711.484444444444
+    },
+    {
+      "level": 91,
+      "referenceGearLevel": 90,
+      "strength": 1,
+      "runs": 30,
+      "survival": 1,
+      "petDeaths": 0,
+      "potions": 21.633333333333333,
+      "meanContribution": 11009.72962962963
+    }
+  ]
+}

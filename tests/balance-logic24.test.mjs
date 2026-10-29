@@ -61,7 +61,7 @@ test('monk retains MATK-based first-job healing while breathing uses ATK',async(
 });
 
 test('shop only sells seven useful supplies and rejects hidden equipment or legacy consumable purchases',async()=>{
- const {SHOP_IDS}=await import('../dist/shop-catalog.js');assert.equal(SHOP_IDS.length,7);const c=await app(),a=c.api,p=a.normalize(a.fresh('補給','mage'));p.gold=10000;a.setup(p,foe());const before=JSON.stringify(p.bag);for(const id of ['med','cell','twoStaff','petCirclet','essence_1','shard_weapon_1','scrap'])a.buy(id);assert.equal(p.gold,10000);assert.equal(JSON.stringify(p.bag),before);const held=p.bag.find(e=>e.id==='orb').qty;a.buy('orb');assert.equal(p.bag.find(e=>e.id==='orb').qty,held+1);assert.equal(p.gold,9965);assert.ok(p.bag.some(e=>e.id==='med'));
+ const {SHOP_IDS}=await import('../dist/shop-catalog.js');assert.equal(SHOP_IDS.length,7);const c=await app(),a=c.api,p=a.normalize(a.fresh('補給','mage'));p.location='town';p.gold=10000;a.setup(p,foe());const before=JSON.stringify(p.bag);for(const id of ['med','cell','twoStaff','petCirclet','essence_1','shard_weapon_1','scrap'])a.buy(id);assert.equal(p.gold,10000);assert.equal(JSON.stringify(p.bag),before);const held=p.bag.find(e=>e.id==='orb').qty;a.buy('orb');assert.equal(p.bag.find(e=>e.id==='orb').qty,held+1);assert.equal(p.gold,9965);assert.ok(p.bag.some(e=>e.id==='med'));
 });
 
 test('capture zone has no boss route or card drops, including a forced zero random roll; field zones keep both card rates',async()=>{
@@ -80,8 +80,8 @@ test('overview and automation settings are separate and legacy capture-zone card
 });
 
 test('shop purchases requested quantities atomically and rejects insufficient funds or invalid quantities',async()=>{
- const c=await app(),a=c.api,p=a.normalize(a.fresh('大量購買','mage'));p.gold=240;a.setup(p,foe());a.buy('red_small',10);assert.equal(p.gold,0);assert.equal(p.bag.find(e=>e.id==='red_small').qty,10);const before=JSON.stringify(p);for(const qty of [0,-1,1.5,1000,NaN])a.buy('orb',qty);a.buy('orb',1);assert.equal(JSON.stringify(p),before);
- const q=a.normalize(a.fresh('儲存失敗','mage'));q.gold=100;a.setup(q,foe());a.setSaveResult(false);a.buy('orb',2);assert.equal(a.state().player.gold,100);assert.equal(a.state().player.bag.find(e=>e.id==='orb').qty,3);
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('大量購買','mage'));p.location='town';p.gold=240;a.setup(p,foe());a.buy('red_small',10);assert.equal(p.gold,0);assert.equal(p.bag.find(e=>e.id==='red_small').qty,10);const before=JSON.stringify(p);for(const qty of [0,-1,1.5,1000,NaN])a.buy('orb',qty);a.buy('orb',1);assert.equal(JSON.stringify(p),before);
+ const q=a.normalize(a.fresh('儲存失敗','mage'));q.location='town';q.gold=100;a.setup(q,foe());a.setSaveResult(false);a.buy('orb',2);assert.equal(a.state().player.gold,100);assert.equal(a.state().player.bag.find(e=>e.id==='orb').qty,3);
 });
 test('throwing a ball automatically purchases exactly one missing ball and never charges when gold is insufficient',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('自動捕捉補給','mage'));p.location='petland';p.gold=35;p.bag=[];a.setup(p,{...foe(),id:'fang',hp:50,maxHp:100});c.Math.random=()=>.99;a.capture();assert.equal(p.gold,0);assert.ok(!p.bag.some(e=>e.id==='orb'));const before=JSON.stringify(p);a.capture();assert.equal(JSON.stringify(p),before);

@@ -1,4 +1,4 @@
-import {SECOND_JOBS,parentJob} from './jobs.js?v=3.2';
+import {SECOND_JOBS,parentJob} from './jobs.js?v=4.0';
 const make=(id,name,kind,unlock,mp,power,desc,weapons=[],extra={})=>({id,name,kind,unlock,mp,power,desc,weapons,maxRank:10,branch:'first',...extra});
 const passive=(id,name,unlock,bonuses,desc,branch='first')=>make(id,name,'passive',unlock,0,0,desc,[],{bonuses,branch,maxRank:5});
 export const JOB_SKILLS={
@@ -34,6 +34,23 @@ Object.assign(SECOND_SKILLS.sage.find(s=>s.id==='autoSpell'),{duration:12000,coo
 Object.assign(SECOND_SKILLS.sage.find(s=>s.id==='spellFist'),{aoe:true,targets:3,desc:'MATK魔力拳按ASPD連發，最多3目標，取代一次普攻'});
 SECOND_SKILLS.crusader.find(s=>s.id==='holyCross').power=2.4;SECOND_SKILLS.priest.find(s=>s.id==='exorcism').power=2.7;
 SECOND_SKILLS.rogue.find(s=>s.id==='gangAmbush').power=2.6;SECOND_SKILLS.rogue.find(s=>s.id==='snatch').event='snatch';
+const REBORN_SKILLS={
+ knight:['蒼穹戰意',{atkPct:20,aspdPct:8},'天槍破陣','physical',3.8,'charge'],
+ crusader:['聖誓堅城',{defPct:25,damageReduction:8},'裁決盾陣','physical',10.0,'skill'],
+ wizard:['元素超載',{matkPct:25,castReduction:.25},'天穹隕滅','magic',6.0,'skill'],
+ sage:['賢者極意',{aspdPct:15,autoSpellChance:.15},'奧術連環拳','magic',.72,'fist'],
+ assassin:['致命覺醒',{crit:15,critDmg:20},'幻影滅殺','physical',7.0,'skill'],
+ rogue:['暗巷王權',{atkPct:20,goldPct:15},'掠影絕刃','physical',7.0,'snatch'],
+ priest:['神恩降臨',{matkPct:15,healingPct:30},'聖裁光域','magic',7.0,'skill'],
+ monk:['龍魂鬥氣',{atkPct:25,crit:8},'龍虎崩拳','physical',4.3,'combo'],
+ hunter:['蒼鷹戰魂',{atkPct:20,hitPct:15},'蒼穹獵殺','physical',3.9,'falcon'],
+ performer:['永恆協奏',{spRegen:2},'星河終章','physical',3.8,'song']
+};
+for(const [job,[buffName,modifiers,mainName,kind,power,event]] of Object.entries(REBORN_SKILLS)){
+ const desc=Object.entries(modifiers).map(([key,n])=>`${({atkPct:'ATK',defPct:'DEF',matkPct:'MATK',aspdPct:'攻速',damageReduction:'最終減傷',castReduction:'詠唱縮短',autoSpellChance:'自詠機率',crit:'暴擊率',critDmg:'暴擊傷害',goldPct:'金幣收益',hitPct:'命中',healingPct:'治療',spRegen:'每4秒回SP'})[key]} +${key==='castReduction'||key==='autoSpellChance'?n*100:n}${key==='spRegen'?'':'%'}`).join('、');
+ SECOND_SKILLS[job].push(S('rebirthBuff_'+job,buffName,'buff',10,25,job==='performer'?.2:0,`轉生二轉 Job10自動習得；10秒${desc}${job==='performer'?'、主人與寵物傷害+20%':''}`,[],{rebornOnly:true,maxRank:1,buff:'rebirth_'+job,modifiers,duration:10000,cooldown:18000,teamDamage:job==='performer',event:job==='performer'?'song':'buff'}));
+ SECOND_SKILLS[job].push(S('rebirthMain_'+job,mainName,kind,20,32,power,`轉生二轉 Job20自動習得；承接本職業共鳴（額外能力傷害係數50%，CD縮短最多20%）${job==='sage'?'，可觸發自動念咒':job==='hunter'?'，由獵鷹協同射擊':job==='rogue'?'，可嘗試偷取物品':''}`,[],{rebornOnly:true,maxRank:1,cooldown:9000,event,aoe:true,targets:job==='wizard'?5:3,...(job==='wizard'?{castMs:2400}:{}),...(job==='sage'?{attackCycle:true,mp:4}:{}),...(job==='crusader'?{source:'holyShield'}:{}),...(job==='rogue'?{steal:true}:{})}));
+}
 for(const [id,meta] of Object.entries(SECOND_JOBS))JOB_SKILLS[id]=[...JOB_SKILLS[meta.parent],...SECOND_SKILLS[id]];
 export const jobSkillById=(job,id)=>JOB_SKILLS[job]?.find(s=>s.id===id);
 export const activeJobSkills=job=>JOB_SKILLS[job].filter(s=>s.kind!=='passive');

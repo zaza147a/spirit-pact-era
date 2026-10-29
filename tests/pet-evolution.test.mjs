@@ -20,7 +20,7 @@ test('all four fixed families retain their full routes; five rarities map to the
 test('all four evolutions consume exactly the required material and preserve identity, nickname, IVs, gear, skills and XP',()=>{
  const p=makePet('fang');Object.assign(p,{level:80,rarity:'common',nickname:'我的狼',xp:123,equippedSkills:['bleed','fang']});
  const snapshot=structuredClone(p),bag=PET_EVOLUTIONS.map(s=>({id:s.id,qty:s.count+1}));
- for(let i=0;i<4;i++){const before=petStats(p).atk,r=evolveCompanion(p,bag,'town',PET_EVOLUTIONS,PET_RARITIES,()=>0);assert.ok(!r.error);assert.equal(p.evolution,i+1);assert.equal(bag[i].qty,1);assert.ok(petStats(p).atk>before);}
+ for(let i=0;i<4;i++){const before=petStats(p).atk,r=evolveCompanion(p,bag,'town',PET_EVOLUTIONS,PET_RARITIES,()=>.999);assert.ok(!r.error);assert.equal(p.evolution,i+1);assert.equal(bag[i].qty,1);assert.ok(petStats(p).atk>before);}
  assert.equal(p.rarity,'mythic');assert.equal(petForm(p),'終焉龍神');
  for(const key of ['id','nickname','iv','gear','equippedSkills','xp','level','species'])assert.deepEqual(p[key],snapshot[key]);
  const copy=JSON.stringify({p,bag});assert.ok(evolveCompanion(p,bag,'town',PET_EVOLUTIONS,PET_RARITIES).error);assert.equal(JSON.stringify({p,bag}),copy);
@@ -31,7 +31,7 @@ test('evolution rejects out of town, low level and missing material without muta
   assert.ok(evolveCompanion(p,bag,location,PET_EVOLUTIONS,PET_RARITIES).error);assert.equal(JSON.stringify({p,bag}),copy);
  }
  const p={...makePet('wisp'),level:20,rarity:'mythic'},bag=[{id:'essence_1',qty:8}];evolveCompanion(p,bag,'town',PET_EVOLUTIONS,PET_RARITIES,()=>0);assert.equal(p.rarity,'mythic');assert.equal(bag.length,0);
- const q={...makePet('sprout'),level:20,rarity:'common'};evolveCompanion(q,[{id:'essence_1',qty:8}],'town',PET_EVOLUTIONS,PET_RARITIES,()=>.99);assert.equal(q.rarity,'common');
+ const q={...makePet('sprout'),level:20,rarity:'common'};evolveCompanion(q,[{id:'essence_1',qty:8}],'town',PET_EVOLUTIONS,PET_RARITIES,()=>.5);assert.equal(q.rarity,'common');
 });
 test('3:1 synthesis makes the final evolution material reachable with existing maps, and enforces location and quantity',()=>{
  const bag=[{id:'essence_3',qty:60}];for(let i=0;i<20;i++)assert.equal(synthesizeEssence(bag,3,'town').id,'essence_4');assert.deepEqual(bag,[{id:'essence_4',qty:20}]);
@@ -75,8 +75,8 @@ test('legendary and mythic mutations have forty unique names independent from no
   assert.equal(petForm(p,stage,'mythic'),PET_MUTATIONS.mythic[role][stage]);
  }
  const p={...makePet('fang'),level:80,rarity:'uncommon',evolution:2,nickname:'我的夥伴'};const old=structuredClone(p);
- evolveCompanion(p,[{id:'essence_3',qty:16}],'town',PET_EVOLUTIONS,PET_RARITIES,()=>0);assert.equal(petForm(p),'聖翼獅鷲王');
- evolveCompanion(p,[{id:'essence_4',qty:20}],'town',PET_EVOLUTIONS,PET_RARITIES,()=>0);assert.equal(petForm(p),'終焉龍神');
+ evolveCompanion(p,[{id:'essence_3',qty:16}],'town',PET_EVOLUTIONS,PET_RARITIES,()=>.85);assert.equal(petForm(p),'聖翼獅鷲王');
+ evolveCompanion(p,[{id:'essence_4',qty:20}],'town',PET_EVOLUTIONS,PET_RARITIES,()=>.999);assert.equal(petForm(p),'終焉龍神');
  for(const key of ['nickname','species','id','level','iv','gear'])assert.deepEqual(p[key],old[key]);
 });
 

@@ -28,9 +28,9 @@ export const SECOND_RESONANCE_PLAYS={
    "符焰槍陣",
    "brandish",
    {
-    "magic": 1.4
+    "magic": 2.2
    },
-   "技能命中後6秒：槍陣追加寵物MATK140%魔焰"
+   "技能命中後6秒：槍陣追加寵物MATK220%魔焰"
   ],
   [
    "charge",
@@ -97,9 +97,9 @@ export const SECOND_RESONANCE_PLAYS={
    "孤星獵殺",
    "*",
    {
-    "single": 0.65
+    "single": 0.35
    },
-   "開始詠唱／無詠唱施法後6秒：單一敵人時法術倍率+65%"
+   "開始詠唱／無詠唱施法後6秒：單一敵人時法術倍率+35%"
   ],
   [
    "castComplete",
@@ -115,9 +115,9 @@ export const SECOND_RESONANCE_PLAYS={
    "蓄魔堡壘",
    "*",
    {
-    "castPower": 2
+    "castPower": 3
    },
-   "開始詠唱後6秒：依實際原始詠唱時間每秒增加200%技能倍率；無詠唱失去此收益"
+   "開始詠唱後6秒：依實際原始詠唱時間每秒增加300%技能倍率；無詠唱失去此收益"
   ],
   [
    "castStart",
@@ -155,10 +155,10 @@ export const SECOND_RESONANCE_PLAYS={
    "震甲拳意",
    "spellFist",
    {
-    "armor": 0.25,
+    "armor": 0.45,
     "counter": 0.12
    },
-   "魔拳命中後6秒：魔拳追加DEF25%，寵物受擊反擊自身DEF12%"
+   "魔拳命中後6秒：魔拳追加DEF45%，寵物受擊反擊自身DEF12%"
   ],
   [
    "autospell",
@@ -294,9 +294,9 @@ export const SECOND_RESONANCE_PLAYS={
    "exorcism",
    {
     "refund": 12,
-    "cooldown": 0.25
+    "cooldown": 0.35
    },
-   "有效治療後6秒：驅魔退12SP、冷卻縮短25%"
+   "有效治療後6秒：驅魔退12SP、冷卻縮短35%"
   ]
  ],
  "monk": [

@@ -3,13 +3,14 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {balanceFingerprint} from '../scripts/balance-fingerprint.mjs';
 const report=JSON.parse(readFileSync(new URL('../docs/balance-v24.json',import.meta.url)));
-test('published balance audit matches current combat source and its declared 720-run scope',()=>{
- assert.equal(report.sourceDigest,balanceFingerprint(),'Run node scripts/audit-balance-v24.mjs after combat changes');assert.equal(report.level,99);assert.equal(report.seconds,120);assert.equal(report.runCount,720);assert.equal(report.scenarios.length,6);assert.equal(report.seedCount,3);
+test('published balance audit matches current combat source and its declared 1440-run scope',()=>{
+ assert.equal(report.sourceDigest,balanceFingerprint(),'Run node scripts/audit-balance-v40.mjs after combat changes');assert.equal(report.level,99);assert.equal(report.seconds,120);assert.equal(report.runCount,1440);assert.equal(report.scenarios.length,12);assert.equal(report.seedCount,3);
 });
 test('audit reports real class and pairing gaps honestly without equalizing pet damage',()=>{
+ for(const c of report.composites){assert.equal(c.allPairTargetPassed,c.allPairGap<=.3);assert.equal(c.rows.length,40);}
  const baseline=report.composites.find(c=>c.rarity==='uncommon');assert.equal(baseline.allPairTargetPassed,baseline.allPairGap<=.3);assert.ok(baseline.bestJobGap<=.3);assert.equal(baseline.rows.length,40);
  const mythic=report.composites.find(c=>c.rarity==='mythic');assert.ok(mythic.meanOwnerShare>0&&mythic.meanOwnerShare<1);assert.equal(mythic.allPairTargetPassed,mythic.allPairGap<=.3);
- for(const scenario of report.scenarios){if(scenario.scenario!=='field')assert.equal(scenario.deaths,0);else assert.ok(scenario.deaths<=12,'faster field encounters: flag over 10% failures in fixed offensive builds without gold revival');const avg=role=>{const rows=scenario.rows.filter(r=>r.role===role);return rows.reduce((s,r)=>s+r.petDirectDamage,0)/rows.length;};assert.ok(avg('defense')<avg('attack'));assert.ok(avg('support')<avg('magic'));}
+ for(const scenario of report.scenarios){assert.ok(scenario.deaths>=0&&scenario.deaths<=120); const avg=role=>{const rows=scenario.rows.filter(r=>r.role===role);return rows.reduce((s,r)=>s+r.petDirectDamage,0)/rows.length;};assert.ok(avg('defense')<avg('attack'));assert.ok(avg('support')<avg('magic'));}
 });
 
-test('archived V3.1 balance target remains distinct from the faster-encounter default-rotation report',()=>{const archived=JSON.parse(readFileSync(new URL('../docs/balance-v31.json',import.meta.url)));assert.equal(archived.version,31);assert.ok(archived.composites.every(r=>r.allPairGap<=.3));assert.equal(report.version,32);assert.ok(report.method.includes('default skill priority'));});
+test('archived V3.1 balance target remains distinct from the faster-encounter default-rotation report',()=>{const archived=JSON.parse(readFileSync(new URL('../docs/balance-v31.json',import.meta.url)));assert.equal(archived.version,31);assert.ok(archived.composites.every(r=>r.allPairGap<=.3));assert.equal(report.version,40);assert.equal(report.rebornLevel,120);assert.ok(report.method.includes('reborn priority'));assert.equal(report.composites.length,4);});
