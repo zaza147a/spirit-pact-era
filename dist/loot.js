@@ -12,7 +12,7 @@ export const GEAR_BASE={
  oneSpear:{name:'單手槍',slot:'rightHand',weaponType:'spear',atk:7,cost:95,jobs:['swordsman']},twoSpear:{name:'雙手長槍',slot:'rightHand',weaponType:'greatspear',hands:2,atk:17,cost:190,jobs:['swordsman']},
  offDagger:{name:'副手匕首',slot:'leftHand',weaponType:'dagger',atk:5,cost:95,jobs:['thief']},katar:{name:'拳刃',slot:'rightHand',weaponType:'katar',hands:2,atk:17,cost:195,jobs:['thief']},
  oneStaff:{name:'單手法杖',slot:'rightHand',weaponType:'staff',matk:9,cost:85,jobs:['mage']},twoStaff:{name:'雙手法杖',slot:'rightHand',weaponType:'greatstaff',hands:2,matk:19,cost:195,jobs:['mage']},
- mace:{name:'單手拳杖',slot:'rightHand',weaponType:'mace',atk:6,matk:5,cost:90,jobs:['acolyte']},
+ mace:{name:'單手權杖',slot:'rightHand',weaponType:'mace',atk:6,matk:5,cost:90,jobs:['acolyte']},
  shortBow:{name:'獵人短弓',slot:'rightHand',weaponType:'bow',hands:2,atk:10,hit:3,cost:90,jobs:['archer']},longBow:{name:'長弓',slot:'rightHand',weaponType:'bow',hands:2,atk:18,hit:5,cost:190,jobs:['archer']},crossbow:{name:'重型十字弩',slot:'rightHand',weaponType:'crossbow',hands:2,atk:23,hit:2,cost:215,jobs:['archer']},
  shield:{name:'守衛盾牌',slot:'leftHand',def:7,cost:105},cloak:{name:'旅者披風',slot:'garment',def:2,cost:65},boots:{name:'輕步長靴',slot:'shoes',def:2,cost:65},
  chip:{name:'戰術紋章',slot:'accessory1',atk:3,cost:95},ring:{name:'靈巧指環',slot:'accessory2',matk:3,cost:95}
