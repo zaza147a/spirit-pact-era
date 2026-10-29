@@ -1,0 +1,370 @@
+{
+  "version": "1.3",
+  "evolutionLevels": [
+    20,
+    40,
+    60,
+    80
+  ],
+  "rarities": [
+    {
+      "id": "common",
+      "name": "普通",
+      "color": "#F2F2F2",
+      "art": "normal"
+    },
+    {
+      "id": "rare",
+      "name": "稀有",
+      "color": "#45C873",
+      "art": "rare"
+    },
+    {
+      "id": "uncommon",
+      "name": "罕見",
+      "color": "#AF78ED",
+      "art": "uncommon"
+    },
+    {
+      "id": "legendary",
+      "name": "傳說",
+      "color": "#F5C04D",
+      "art": "legendary"
+    },
+    {
+      "id": "mythic",
+      "name": "神話",
+      "color": "#EB5555",
+      "art": "mythic"
+    }
+  ],
+  "species": [
+    {
+      "type": "attack",
+      "stage": 0,
+      "level": 1,
+      "speciesName": "火狼幼獸",
+      "normalSprite": "assets/pets/normal-attack-0.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-attack-0.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-attack-0.png",
+      "legendaryName": "曦羽幼獅鷲",
+      "mythicName": "赤鱗幼龍",
+      "rareSprite": "assets/pets/palette-v19-rare-attack-0.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-attack-0.png"
+    },
+    {
+      "type": "attack",
+      "stage": 1,
+      "level": 20,
+      "speciesName": "炎牙狼",
+      "normalSprite": "assets/pets/normal-attack-1.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-attack-1.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-attack-1.png",
+      "legendaryName": "金翼獅鷲",
+      "mythicName": "燼翼飛龍",
+      "rareSprite": "assets/pets/palette-v19-rare-attack-1.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-attack-1.png"
+    },
+    {
+      "type": "attack",
+      "stage": 2,
+      "level": 40,
+      "speciesName": "烈焰戰狼",
+      "normalSprite": "assets/pets/normal-attack-2.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-attack-2.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-attack-2.png",
+      "legendaryName": "曜羽戰獅鷲",
+      "mythicName": "劫焰戰龍",
+      "rareSprite": "assets/pets/palette-v19-rare-attack-2.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-attack-2.png"
+    },
+    {
+      "type": "attack",
+      "stage": 3,
+      "level": 60,
+      "speciesName": "煉獄狼王",
+      "normalSprite": "assets/pets/normal-attack-3.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-attack-3.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-attack-3.png",
+      "legendaryName": "聖翼獅鷲王",
+      "mythicName": "滅世龍王",
+      "rareSprite": "assets/pets/palette-v19-rare-attack-3.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-attack-3.png"
+    },
+    {
+      "type": "attack",
+      "stage": 4,
+      "level": 80,
+      "speciesName": "太陽神狼",
+      "normalSprite": "assets/pets/normal-attack-4.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-attack-4.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-attack-4.png",
+      "legendaryName": "日冕獅鷲皇",
+      "mythicName": "終焉龍神",
+      "rareSprite": "assets/pets/palette-v19-rare-attack-4.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-attack-4.png"
+    },
+    {
+      "type": "magic",
+      "stage": 0,
+      "level": 1,
+      "speciesName": "星光幼靈",
+      "normalSprite": "assets/pets/normal-magic-0.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-magic-0.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-magic-0.png",
+      "legendaryName": "月尾幼狐",
+      "mythicName": "星火雛鳳",
+      "rareSprite": "assets/pets/palette-v19-rare-magic-0.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-magic-0.png"
+    },
+    {
+      "type": "magic",
+      "stage": 1,
+      "level": 20,
+      "speciesName": "星霧精靈",
+      "normalSprite": "assets/pets/normal-magic-1.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-magic-1.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-magic-1.png",
+      "legendaryName": "月華靈狐",
+      "mythicName": "紫焰靈鳳",
+      "rareSprite": "assets/pets/palette-v19-rare-magic-1.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-magic-1.png"
+    },
+    {
+      "type": "magic",
+      "stage": 2,
+      "level": 40,
+      "speciesName": "星月術靈",
+      "normalSprite": "assets/pets/normal-magic-2.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-magic-2.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-magic-2.png",
+      "legendaryName": "銀月三尾狐",
+      "mythicName": "星灼天鳳",
+      "rareSprite": "assets/pets/palette-v19-rare-magic-2.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-magic-2.png"
+    },
+    {
+      "type": "magic",
+      "stage": 3,
+      "level": 60,
+      "speciesName": "星界賢靈",
+      "normalSprite": "assets/pets/normal-magic-3.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-magic-3.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-magic-3.png",
+      "legendaryName": "幻月六尾狐",
+      "mythicName": "虛空鳳凰",
+      "rareSprite": "assets/pets/palette-v19-rare-magic-3.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-magic-3.png"
+    },
+    {
+      "type": "magic",
+      "stage": 4,
+      "level": 80,
+      "speciesName": "星辰主宰",
+      "normalSprite": "assets/pets/normal-magic-4.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-magic-4.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-magic-4.png",
+      "legendaryName": "九尾月神狐",
+      "mythicName": "星界不滅凰",
+      "rareSprite": "assets/pets/palette-v19-rare-magic-4.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-magic-4.png"
+    },
+    {
+      "type": "defense",
+      "stage": 0,
+      "level": 1,
+      "speciesName": "岩甲幼龜",
+      "normalSprite": "assets/pets/normal-defense-0.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-defense-0.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-defense-0.png",
+      "legendaryName": "晶角幼犀",
+      "mythicName": "符石幼像",
+      "rareSprite": "assets/pets/palette-v19-rare-defense-0.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-defense-0.png"
+    },
+    {
+      "type": "defense",
+      "stage": 1,
+      "level": 20,
+      "speciesName": "岩甲龜",
+      "normalSprite": "assets/pets/normal-defense-1.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-defense-1.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-defense-1.png",
+      "legendaryName": "琥珀岩犀",
+      "mythicName": "玄岩石衛",
+      "rareSprite": "assets/pets/palette-v19-rare-defense-1.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-defense-1.png"
+    },
+    {
+      "type": "defense",
+      "stage": 2,
+      "level": 40,
+      "speciesName": "巨岩戰龜",
+      "normalSprite": "assets/pets/normal-defense-2.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-defense-2.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-defense-2.png",
+      "legendaryName": "晶鎧戰犀",
+      "mythicName": "黑曜戰魔像",
+      "rareSprite": "assets/pets/palette-v19-rare-defense-2.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-defense-2.png"
+    },
+    {
+      "type": "defense",
+      "stage": 3,
+      "level": 60,
+      "speciesName": "山岳守護龜",
+      "normalSprite": "assets/pets/normal-defense-3.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-defense-3.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-defense-3.png",
+      "legendaryName": "山晶巨犀",
+      "mythicName": "天隕泰坦",
+      "rareSprite": "assets/pets/palette-v19-rare-defense-3.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-defense-3.png"
+    },
+    {
+      "type": "defense",
+      "stage": 4,
+      "level": 80,
+      "speciesName": "聖域玄龜",
+      "normalSprite": "assets/pets/normal-defense-4.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-defense-4.png",
+      "mythicSprite": "assets/pets/mutation-v18-mythic-defense-4.png",
+      "legendaryName": "聖晶堡壘犀",
+      "mythicName": "創世巨神像",
+      "rareSprite": "assets/pets/palette-v19-rare-defense-4.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-defense-4.png"
+    },
+    {
+      "type": "support",
+      "stage": 0,
+      "level": 1,
+      "speciesName": "生命芽靈",
+      "normalSprite": "assets/pets/normal-support-0.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-support-0.png",
+      "mythicSprite": "assets/pets/qilin-v18-mythic-support-0.png",
+      "legendaryName": "皓光幼駒",
+      "mythicName": "玉麟幼獸",
+      "rareSprite": "assets/pets/palette-v19-rare-support-0.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-support-0.png"
+    },
+    {
+      "type": "support",
+      "stage": 1,
+      "level": 20,
+      "speciesName": "森林花靈",
+      "normalSprite": "assets/pets/normal-support-1.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-support-1.png",
+      "mythicSprite": "assets/pets/qilin-v18-mythic-support-1.png",
+      "legendaryName": "銀鬃獨角獸",
+      "mythicName": "雲鬃麒麟",
+      "rareSprite": "assets/pets/palette-v19-rare-support-1.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-support-1.png"
+    },
+    {
+      "type": "support",
+      "stage": 2,
+      "level": 40,
+      "speciesName": "翠林精靈",
+      "normalSprite": "assets/pets/normal-support-2.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-support-2.png",
+      "mythicSprite": "assets/pets/qilin-v18-mythic-support-2.png",
+      "legendaryName": "曦光靈角獸",
+      "mythicName": "瑞光靈麟",
+      "rareSprite": "assets/pets/palette-v19-rare-support-2.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-support-2.png"
+    },
+    {
+      "type": "support",
+      "stage": 3,
+      "level": 60,
+      "speciesName": "古木守護者",
+      "normalSprite": "assets/pets/normal-support-3.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-support-3.png",
+      "mythicSprite": "assets/pets/qilin-v18-mythic-support-3.png",
+      "legendaryName": "聖域獨角獸",
+      "mythicName": "聖霄麒麟王",
+      "rareSprite": "assets/pets/palette-v19-rare-support-3.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-support-3.png"
+    },
+    {
+      "type": "support",
+      "stage": 4,
+      "level": 80,
+      "speciesName": "世界樹靈",
+      "normalSprite": "assets/pets/normal-support-4.png",
+      "legendarySprite": "assets/pets/mutation-v18-legendary-support-4.png",
+      "mythicSprite": "assets/pets/qilin-v18-mythic-support-4.png",
+      "legendaryName": "天穹聖角皇",
+      "mythicName": "太初祥瑞神麟",
+      "rareSprite": "assets/pets/palette-v19-rare-support-4.png",
+      "uncommonSprite": "assets/pets/palette-v19-uncommon-support-4.png"
+    }
+  ],
+  "notes": [
+    "普通、稀有、罕見沿用相同種族與進化名稱，但稀有與罕見依各物種設計專屬配色立繪，不使用整體色相濾鏡。",
+    "傳說與神話為兩條獨立跨種族變異路線，每階段各有專屬名稱和獨立立繪。",
+    "species保留原存檔識別，職能、暱稱、等級、裝備、技能與個體值不因物種變異重置。"
+  ],
+  "mutationRoutes": {
+    "legendary": {
+      "attack": [
+        "曦羽幼獅鷲",
+        "金翼獅鷲",
+        "曜羽戰獅鷲",
+        "聖翼獅鷲王",
+        "日冕獅鷲皇"
+      ],
+      "magic": [
+        "月尾幼狐",
+        "月華靈狐",
+        "銀月三尾狐",
+        "幻月六尾狐",
+        "九尾月神狐"
+      ],
+      "defense": [
+        "晶角幼犀",
+        "琥珀岩犀",
+        "晶鎧戰犀",
+        "山晶巨犀",
+        "聖晶堡壘犀"
+      ],
+      "support": [
+        "皓光幼駒",
+        "銀鬃獨角獸",
+        "曦光靈角獸",
+        "聖域獨角獸",
+        "天穹聖角皇"
+      ]
+    },
+    "mythic": {
+      "attack": [
+        "赤鱗幼龍",
+        "燼翼飛龍",
+        "劫焰戰龍",
+        "滅世龍王",
+        "終焉龍神"
+      ],
+      "magic": [
+        "星火雛鳳",
+        "紫焰靈鳳",
+        "星灼天鳳",
+        "虛空鳳凰",
+        "星界不滅凰"
+      ],
+      "defense": [
+        "符石幼像",
+        "玄岩石衛",
+        "黑曜戰魔像",
+        "天隕泰坦",
+        "創世巨神像"
+      ],
+      "support": [
+        "玉麟幼獸",
+        "雲鬃麒麟",
+        "瑞光靈麟",
+        "聖霄麒麟王",
+        "太初祥瑞神麟"
+      ]
+    }
+  }
+}

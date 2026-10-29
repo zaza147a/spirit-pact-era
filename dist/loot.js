@@ -1,0 +1,54 @@
+import {SECOND_JOBS} from './jobs.js';
+import {GEAR_TIERS,gearTierForLevel} from './progression.js';
+const rand=(a,b,rng=Math.random)=>Math.floor(Math.min(.999999,Math.max(0,rng()))*(b-a+1))+a;
+export const STACK_IDS=['med','cell','orb','red_small','red_mid','red_large','blue_small','blue_mid','blue_large','scrap','herb','ore','crystal','relic'];
+export const STACK_SET=new Set(STACK_IDS);
+export const LOOT_ITEMS={red_small:{name:'紅色藥水',heal:60,cost:24},red_mid:{name:'濃縮紅藥水',heal:180,cost:65},red_large:{name:'高級紅藥水',heal:420,healPct:.15,cost:140},blue_small:{name:'藍色藥水',energy:35,cost:30},blue_mid:{name:'濃縮藍藥水',energy:95,cost:85},blue_large:{name:'高級藍藥水',energy:220,energyPct:.1,cost:190},scrap:{name:'異獸碎片',junk:true,cost:5},herb:{name:'月光藥草',junk:true,cost:13},ore:{name:'赤晶礦塊',junk:true,cost:25},crystal:{name:'霜晶石',junk:true,cost:42},relic:{name:'墜星遺物',junk:true,cost:75}};
+for(let i=1;i<=4;i++){const id=`essence_${i}`;LOOT_ITEMS[id]={name:['','初生靈核','凝聚靈核','覺醒靈核','超越靈核'][i],evolution:true,cost:0,description:`Lv.${(i-1)*20+1}–${i*20} 野外怪物掉落，供寵物第 ${i} 次進化`};STACK_IDS.push(id);STACK_SET.add(id);}
+export const GEAR_BASE={
+ helm:{name:'輕型頭盔',slot:'headUpper',def:2,cost:45},visor:{name:'瞄準護目鏡',slot:'headMiddle',cost:50},mask:{name:'防護口罩',slot:'headLower',def:1,cost:40},
+ vest:{name:'旅行防具',slot:'armor',def:4,cost:75},plate:{name:'堅甲',slot:'armor',def:8,hp:15,cost:150},
+ blade:{name:'單手劍',slot:'rightHand',weaponType:'sword',atk:5,cost:45,jobs:['swordsman']},rifle:{name:'獵獸匕首',slot:'rightHand',weaponType:'dagger',atk:7,cost:100,jobs:['thief']},twoSword:{name:'雙手巨劍',slot:'rightHand',weaponType:'greatsword',hands:2,atk:15,cost:185,jobs:['swordsman']},
+ oneSpear:{name:'單手槍',slot:'rightHand',weaponType:'spear',atk:7,cost:95,jobs:['swordsman']},twoSpear:{name:'雙手長槍',slot:'rightHand',weaponType:'greatspear',hands:2,atk:17,cost:190,jobs:['swordsman']},
+ offDagger:{name:'副手匕首',slot:'leftHand',weaponType:'dagger',atk:5,cost:95,jobs:['thief']},katar:{name:'拳刃',slot:'rightHand',weaponType:'katar',hands:2,atk:17,cost:195,jobs:['thief']},
+ oneStaff:{name:'單手法杖',slot:'rightHand',weaponType:'staff',matk:9,cost:85,jobs:['mage']},twoStaff:{name:'雙手法杖',slot:'rightHand',weaponType:'greatstaff',hands:2,matk:19,cost:195,jobs:['mage']},
+ mace:{name:'單手拳杖',slot:'rightHand',weaponType:'mace',atk:6,matk:5,cost:90,jobs:['acolyte']},
+ shortBow:{name:'獵人短弓',slot:'rightHand',weaponType:'bow',hands:2,atk:10,hit:3,cost:90,jobs:['archer']},longBow:{name:'長弓',slot:'rightHand',weaponType:'bow',hands:2,atk:18,hit:5,cost:190,jobs:['archer']},crossbow:{name:'重型十字弩',slot:'rightHand',weaponType:'crossbow',hands:2,atk:23,hit:2,cost:215,jobs:['archer']},
+ shield:{name:'守衛盾牌',slot:'leftHand',def:7,cost:105},cloak:{name:'旅者披風',slot:'garment',def:2,cost:65},boots:{name:'輕步長靴',slot:'shoes',def:2,cost:65},
+ chip:{name:'戰術紋章',slot:'accessory1',atk:3,cost:95},ring:{name:'靈巧指環',slot:'accessory2',matk:3,cost:95}
+};
+Object.assign(GEAR_BASE,{spellFist:{name:'符紋魔拳套',slot:'rightHand',weaponType:'spellfist',hands:2,matk:12,cost:190,jobs:['sage']},knuckles:{name:'修行拳套',slot:'rightHand',weaponType:'knuckle',hands:2,atk:12,cost:190,jobs:['monk']},instrument:{name:'旅歌豎琴',slot:'rightHand',weaponType:'instrument',hands:2,atk:12,cost:190,jobs:['performer']}});
+for(const [id,meta] of Object.entries(SECOND_JOBS))for(const base of Object.values(GEAR_BASE))if(base.jobs?.includes(meta.parent)&&!base.jobs.includes(id))base.jobs.push(id);
+GEAR_BASE.katar.jobs=['assassin'];GEAR_BASE.offDagger.jobs=['assassin'];GEAR_BASE.twoSword.jobs=['knight'];GEAR_BASE.twoSpear.jobs=['knight'];GEAR_BASE.oneSpear.jobs=['knight','crusader'];GEAR_BASE.mace.jobs=['acolyte','priest'];GEAR_BASE.crossbow.jobs=['hunter'];
+export const PET_GEAR_BASE={petHelm:{name:'靈獸角冠',petSlot:'head',cost:65},petCirclet:{name:'靈獸星環',petSlot:'head',cost:65},petArmor:{name:'靈獸戰甲',petSlot:'body',cost:105},petRobe:{name:'靈獸法袍',petSlot:'body',cost:105},petBoots:{name:'靈獸迅足',petSlot:'shoes',cost:70},petGreaves:{name:'靈獸護足',petSlot:'shoes',cost:70}};
+export const PET_SLOTS={head:'頭部',body:'身體',shoes:'鞋'};
+export const RARITIES=[{id:'common',name:'普通',count:2,weight:700,color:'common'},{id:'rare',name:'稀有',count:3,weight:250,color:'rare'},{id:'uncommon',name:'罕見',count:4,weight:40,color:'uncommon'},{id:'legendary',name:'傳說',count:5,weight:9,color:'legendary'},{id:'mythic',name:'神話',count:6,weight:1,color:'mythic'}];
+export const TIER_NAMES=GEAR_TIERS.map(t=>t.name);
+export const AFFIX_NAMES={atk:'ATK 物攻',matk:'MATK 魔攻',def:'DEF 防禦',mdef:'MDEF 魔防',hit:'HIT 命中',flee:'FLEE 迴避',crit:'CRIT 暴擊率',STR:'STR 力量',AGI:'AGI 敏捷',VIT:'VIT 體質',INT:'INT 智力',DEX:'DEX 靈巧',LUK:'LUK 幸運',ignoreDef:'無視防禦',critDmg:'暴擊傷害',aspd:'ASPD 攻速',magicDamage:'魔法傷害加成',fleePct:'FLEE 加成',defPct:'防禦加成',hpPct:'HP 加成'};
+export const PERCENT_AFFIXES=new Set(['ignoreDef','critDmg','magicDamage','fleePct','defPct','hpPct','crit']);
+export const SPECIAL_AFFIXES=new Set(['ignoreDef','critDmg','aspd','magicDamage','fleePct','defPct','hpPct']);
+export const gearTier=gearTierForLevel;
+export const gearGroup=id=>GEAR_BASE[id]?.weaponType?'weapon':'armor';
+export const shardId=(group,tier)=>`shard_${group}_${tier}`;
+for(let tier=1;tier<=6;tier++)for(const group of ['weapon','armor']){const id=shardId(group,tier);LOOT_ITEMS[id]={name:`${TIER_NAMES[tier-1]}${group==='weapon'?'鋒刃':'護甲'}碎晶`,craft:true,tier,group,cost:0};STACK_IDS.push(id);STACK_SET.add(id);}
+export const rarityForRoll=(value=Math.random()*1000)=>{let cursor=0;return RARITIES.find(r=>(cursor+=r.weight)>value)||RARITIES.at(-1);};
+export const gearLabel=item=>`${TIER_NAMES[gearTier(item.level)-1]}階 · Lv.${item.level||1} · ${RARITIES.find(r=>r.id===item.rarity)?.name||'普通'} · ${Object.keys(item.affixes||{}).length}詞`;
+export const affixLabel=(key,value)=>`${AFFIX_NAMES[key]||key} +${value}${PERCENT_AFFIXES.has(key)?'%':''}`;
+export const QUALITY_POWER={common:1,rare:1.12,uncommon:1.28,legendary:1.48,mythic:1.72};
+export const PRIMARY_VALUES={atk:12,matk:14,def:5,mdef:4,hp:45,hit:5,flee:5};
+function uniqueAttrs(rng){const keys=['STR','AGI','VIT','INT','DEX','LUK'];const first=keys.splice(rand(0,5,rng),1)[0];return [first,keys[rand(0,4,rng)]];}
+export function affixRange(key,tier,rarity){const rank=Math.max(0,RARITIES.findIndex(r=>r.id===rarity)),quality=QUALITY_POWER[rarity]||1,power=GEAR_TIERS[tier-1].power;if(PRIMARY_VALUES[key]){const value=PRIMARY_VALUES[key]*power*quality;return [Math.ceil(value*.98),Math.ceil(value*1.02)];}const value=key==='crit'?2+tier+rank:key==='aspd'?1+tier*.35+rank*.3:key==='critDmg'?4+tier*2+rank*2:key==='ignoreDef'||key==='magicDamage'?2+tier+rank:key.endsWith('Pct')?2+tier+rank:1+tier*.7+rank*.5;return [Math.max(1,Math.round(value)),Math.max(1,Math.round(value*1.12))];}
+function rollValue(key,tier,rarity,rng){const [min,max]=affixRange(key,tier,rarity);return rand(min,max,rng);}
+export const primaryAffix=id=>{const base=GEAR_BASE[id]||PET_GEAR_BASE[id];return base?.petSlot?(base.petSlot==='head'?(id==='petCirclet'?'matk':'atk'):base.petSlot==='body'?'hp':'flee'):base?.weaponType?(base.weaponType==='mace'||base.matk>=(base.atk||0)?'matk':'atk'):'def';};
+function buildGear(id,level,forceRarity,rng,pet){const base=(pet?PET_GEAR_BASE:GEAR_BASE)[id];if(!base)return null;level=Math.max(1,Math.min(99,Math.floor(level)));const tier=gearTier(level),rarity=RARITIES.find(r=>r.id===forceRarity)||rarityForRoll(Math.min(.999999,rng())*1000),attrs=uniqueAttrs(rng),primary=primaryAffix(id),weapon=!!base.weaponType,magic=primary==='matk',core=pet?(base.petSlot==='head'?[primary,'hit','crit']:base.petSlot==='body'?['hp','def','mdef']:['flee','hit','def']):weapon?[primary,'hit','crit']:['def','mdef','flee'],special=pet?(base.petSlot==='shoes'?'aspd':'hpPct'):weapon?(magic?'magicDamage':'ignoreDef'):'hpPct',keys=[...core,...attrs,special];let chosen;
+ if(rarity.count===6)chosen=keys;else if(rarity.id==='legendary')chosen=[primary,core[1],...attrs,special];else{const pool=keys.slice(1,5);chosen=[primary];while(chosen.length<rarity.count)chosen.push(pool.splice(rand(0,pool.length-1,rng),1)[0]);}
+ return {id,uid:`${pet?'pg':'g'}-${Date.now()}-${Math.random().toString(36).slice(2,10)}`,level,tier,rarity:rarity.id,name:`${rarity.name} ${TIER_NAMES[tier-1]}·${base.name}`,affixes:Object.fromEntries(chosen.map(k=>[k,rollValue(k,tier,rarity.id,rng)])),powerVersion:23};}
+export function rollGear(id,level=1,forceRarity=null,rng=Math.random){return buildGear(id,level,forceRarity,rng,false);}
+export function rollPetGear(id,level=1,forceRarity=null,rng=Math.random){return buildGear(id,level,forceRarity,rng,true);}
+export function rebalanceGear(item){if(!item||item.powerVersion===23)return item;let seed=2166136261;for(const ch of String(item.uid||item.id))seed=Math.imul(seed^ch.charCodeAt(0),16777619);const rng=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};const upgraded=PET_GEAR_BASE[item.id]?rollPetGear(item.id,item.level,item.rarity,rng):rollGear(item.id,item.level,item.rarity,rng);if(!upgraded)return item;const affixes={...upgraded.affixes};for(const key of Object.keys(item.affixes||{})){if(SPECIAL_AFFIXES.has(key)&&!['legendary','mythic'].includes(item.rarity))continue;if(!Object.hasOwn(affixes,key)){const replace=Object.keys(affixes).find(k=>k!==primaryAffix(item.id)&&!Object.hasOwn(item.affixes,k));if(replace)delete affixes[replace];else continue;}affixes[key]=rollValue(key,upgraded.tier,upgraded.rarity,rng);}return {...item,...upgraded,affixes,uid:item.uid||upgraded.uid,fusionMatch:item.fusionMatch};}
+export const asStack=(id,qty=1)=>({id,qty});
+export const normalizeBag=(bag,items)=>{const out=[];for(const item of Array.isArray(bag)?bag:[]){const entry=typeof item==='string'?{id:item}:item;if(!entry||!items[entry.id])continue;if(items[entry.id].slot||items[entry.id].petSlot){const invalidSpecial=!['legendary','mythic'].includes(entry.rarity)&&Object.keys(entry.affixes||{}).some(k=>SPECIAL_AFFIXES.has(k));const gear=entry.uid&&entry.rarity&&entry.affixes&&!invalidSpecial?entry:items[entry.id].petSlot?rollPetGear(entry.id,entry.level||1,entry.rarity):rollGear(entry.id,entry.level||1,entry.rarity);gear.tier=gearTier(gear.level);out.push(gear);}else{const quantity=Math.max(1,Math.min(100000,Math.floor(entry.qty||1))),old=out.find(x=>x.id===entry.id&&!x.uid);if(old)old.qty=Math.min(100000,old.qty+quantity);else out.push(asStack(entry.id,quantity));}}return out;};
+export function addStack(bag,id,qty=1){const existing=bag.find(x=>x.id===id&&!x.uid);if(existing)existing.qty+=qty;else bag.push(asStack(id,qty));}
+export function consumeStack(bag,id){const i=bag.findIndex(x=>x.id===id&&!x.uid&&x.qty>0);if(i<0)return false;bag[i].qty--;if(bag[i].qty<=0)bag.splice(i,1);return true;}
+
+export function gearStatValue(item,type){if(!item)return 0;const base=GEAR_BASE[item.id]||PET_GEAR_BASE[item.id];return (item.powerVersion===23&&type===primaryAffix(item.id)?0:base?.[type]||0)+(item.affixes?.[type]||0);}

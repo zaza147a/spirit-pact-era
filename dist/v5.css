@@ -1,0 +1,10 @@
+.report-card{border:1px solid rgba(125,157,194,.25);border-radius:12px;padding:13px;margin:9px 0;background:rgba(13,30,47,.38)}
+.report-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.report-metric{border-radius:8px;padding:9px;background:rgba(122,151,182,.1);min-width:0}
+.report-metric small{display:block;color:#a4b9cc;line-height:1.3;font-size:11px}
+.report-metric strong{display:block;font-size:18px;margin-top:4px;font-variant-numeric:tabular-nums}
+.report-notice{font-size:12px;line-height:1.7;color:#a6b9cb}
+.report-history{max-height:300px;overflow:auto}
+.report-history summary{cursor:pointer;font-size:12px;line-height:1.6;padding:8px 0}
+.report-history details{border-top:1px solid rgba(125,157,194,.2)}
