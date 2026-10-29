@@ -35,3 +35,5 @@ button,input,select,summary{touch-action:manipulation}button:focus-visible,summa
 .attribute-bonus{color:#82d9c0;font-size:12px}.statrow>span:last-child{white-space:nowrap}.statrow{gap:4px}#returnLastMap{font-size:11px}.codex-tabs .active{background:#1e655b}.empty-slot small{font-size:10px}.shield-status{font-variant-numeric:tabular-nums}
 
 .pact-status{padding:14px;margin:12px 0;border:1px solid #ac945a;border-radius:12px;background:#30362e}.pact-status p{margin-bottom:0;line-height:1.8}
+
+.auto-skill-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid #ffffff15}.auto-skill-row label{display:flex;flex-wrap:wrap;align-items:center;gap:7px}.auto-skill-row small{width:100%;padding-left:22px;color:#b1c7c9}.auto-skill-row>div{display:flex;gap:5px;flex-shrink:0}.auto-skill-row button{min-width:38px;min-height:38px}.auto-skill-row input{width:18px;height:18px}

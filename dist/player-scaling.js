@@ -1,4 +1,4 @@
-import {parentJob} from './jobs.js?v=3.1';
+import {parentJob} from './jobs.js?v=3.2';
 export const playerAttackValue=(job,base,level,attributes,gear=0)=>base+(level-1)*3+(parentJob(job)==='archer'?attributes.DEX*2+Math.floor(attributes.STR/5):attributes.STR*2+Math.floor(attributes.DEX/3))+gear;
 export const playerMagicAttackValue=(level,attributes,gear=0)=>6+level*2+attributes.INT*2+gear;
 export const GLOBAL_SKILL_COOLDOWN=850;

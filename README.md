@@ -1,8 +1,10 @@
-# 靈契紀元 V3.1
+# 靈契紀元 V3.2
 
 正式公開網址：https://zaza147a.github.io/spirit-pact-era/
 
 正式更新來源：https://github.com/zaza147a/spirit-pact-era 。推送 main 後由 GitHub Actions 自動發布 dist；不再以 Sites 私密站作為正式更新入口。
+
+V3.2：加快各欄位隨機遇怪與補位；角色獨立保存的技能自動優先順序與開關；寵物之地依類型自動丟球捕捉。詳見 [V3.2說明](docs/v32-release.md)。
 
 V3.1：40組改造職業技能的專屬共鳴、巫師詠唱／無詠唱、賢者ASPD魔力拳與自詠AOE、低SP連發、寵物來源貢獻歸屬。詳見 [V3.1版本與平衡說明](docs/v31-release.md)。
 
