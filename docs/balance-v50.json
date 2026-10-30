@@ -1,6 +1,6 @@
 {
   "version": 50,
-  "sourceDigest": "4d216d04b5d023aaeabedbdc7112bef308330b0e3b41ae2dc09fa8e038a7184e",
+  "sourceDigest": "c2ecb40dc835364403463b7af33b8cb35e053f27996ac4d2ff66dd599721105f",
   "recipeDigest": "5b1812dfa64b78b83e0a0db1b4a6d7e6f97f4cb8d32acd1fce554ddf4c6663b9",
   "selectorDigest": "26da52472a6451c61039340dd8781d64483d2afec5d2f2dc89588ac948a9f266",
   "verifiedCachedBaseline": false,
@@ -13604,6 +13604,16 @@
           "potions": 32
         }
       ]
+    }
+  ],
+  "presentationOnlyChanges": [
+    {
+      "previousSourceDigest": "4d216d04b5d023aaeabedbdc7112bef308330b0e3b41ae2dc09fa8e038a7184e",
+      "reason": "Only display labels in renderCharacterAttributes changed: melee/ranged/magic names expanded; existing magicDamage percent renamed to avoid duplicate object key. Combat formulas and audit inputs unchanged; existing840 samples retained."
+    },
+    {
+      "previousSourceDigest": "50cf85eb1ad21d2065260ae7e7a526f0d24cde2f5c6de40a18d93044755f6e0d",
+      "reason": "renderBag now hides manual sale controls on character and pet equipment; dismantle retained. Combat and audit inputs unchanged."
     }
   ]
 }
