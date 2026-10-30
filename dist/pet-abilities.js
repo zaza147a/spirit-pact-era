@@ -1,3 +1,4 @@
+import {FUSION_SKILLS,fusionSkills} from './pet-fusion.js';
 // Each role offers six independent skills; each pet equips two auto-cast skills.
 const make=(id,name,kind,cooldown,unlock,power,description)=>({id,name,kind,cooldown,unlock,power,description});
 export const PET_SKILLS={
@@ -6,7 +7,7 @@ export const PET_SKILLS={
  defense:[make('wall','守護壁壘','guard',11000,1,2,'產生護盾並提高攔截機率，守護期間依自身DEF回復生命'),make('bash','盾甲反擊','strike',8000,1,1.25,'造成反擊傷害'),make('fortify','石甲祝福','shield',12000,3,3.5,'提供更厚的護盾'),make('rescue','危機救援','heal',10000,5,2.4,'恢復主人生命'),make('pressure','重甲壓制','mark',12000,8,.55,'強化後續追擊'),make('vigil','不屈守望','guard',14000,12,3,'更強的守護攔截，期間依自身DEF回復生命')],
  support:[make('blessing','戰意祝福','blessing',12000,1,.48,'依寵物能力短暫提高主人傷害'),make('heal','生命綻放','heal',8000,1,2.6,'額外治療主人'),make('mana','清泉祈禱','mana',10000,3,2.7,'額外恢復主人 MP'),make('ward','慈悲護盾','shield',13000,5,2.5,'協助主人承受傷害'),make('star','激勵之光','mark',11000,8,.6,'讓主人攻擊附帶星光傷害'),make('thorn','荊棘花語','magic',11500,12,1.7,'提供魔法輸出')]
 };
-export const petSkillById=(role,id)=>[...PET_SKILLS[role],...(LEGENDARY_PET_SKILLS[role]||[]),...(MYTHIC_PET_SKILLS[role]||[])].find(skill=>skill.id===id);
+export const petSkillById=(role,id)=>[...Object.values(FUSION_SKILLS).flat(),...PET_SKILLS[role],...(LEGENDARY_PET_SKILLS[role]||[]),...(MYTHIC_PET_SKILLS[role]||[])].find(skill=>skill.id===id);
 export const defaultPetSkills=(role,rarity='common')=>petSkillsFor(role,rarity).slice(0,2).map(skill=>skill.id);
 const LEGENDARY_NAMES={attack:['曜羽獵印','獅鷲俯衝','王者戰吼','聖翼汲取','日耀獵印','金羽護幕'],magic:['月狐靈印','月華星爆','狐靈清泉','月炎餘燼','幻月共振','銀月護幕'],defense:['晶鎧堡壘','犀角震擊','聖晶重盾','大地援護','晶角鎖印','不動晶域'],support:['聖角頌歌','晨光祝禱','聖泉洗禮','聖域羽盾','天穹靈印','聖光奔流']};
 const MYTHIC_NAMES={attack:['龍神烙印','終焉龍襲','龍皇戰吼','劫焰汲魂','滅世龍印','赤鱗神域'],magic:['不滅鳳印','星凰天焰','涅槃清泉','虛空鳳炎','星界共振','天鳳護域'],defense:['創世石壁','泰坦重擊','神像壁壘','巨神援護','符石天印','創世神域'],support:['祥瑞天歌','麒麟甘霖','瑞雲清泉','聖霄麟盾','太初靈印','祥光奔流']};
@@ -14,4 +15,4 @@ export const LEGENDARY_PET_SKILLS=Object.fromEntries(Object.entries(PET_SKILLS).
 export const MYTHIC_PET_SKILLS=Object.fromEntries(Object.entries(LEGENDARY_PET_SKILLS).map(([role,skills])=>[role,skills.map((s,i)=>({...s,id:`mythic_${role}_${i}`,name:MYTHIC_NAMES[role][i],family:'mythic',description:s.description+'；傳說技能的神話進化，強度隨神話面板提升'}))]));
 export const petSkillsFor=(role,rarity='common')=>(rarity==='mythic'?MYTHIC_PET_SKILLS:rarity==='legendary'?LEGENDARY_PET_SKILLS:PET_SKILLS)[role]||[];
 export const petAbilitySetName=rarity=>rarity==='mythic'?'神話進化技能':rarity==='legendary'?'傳說變異技能':'基礎成長技能';
-export function migratePetSkills(pet,role){const all=[PET_SKILLS[role],LEGENDARY_PET_SKILLS[role],MYTHIC_PET_SKILLS[role]],target=petSkillsFor(role,pet.rarity),indices=(pet.equippedSkills||[]).map(id=>all.map(set=>set.findIndex(s=>s.id===id)).find(i=>i>=0)).filter(i=>Number.isInteger(i));pet.equippedSkills=[...new Set((indices.length?indices:Array.isArray(pet.equippedSkills)&&pet.equippedSkills.length===0?[]:[0,1]).slice(0,2).map(i=>target[i].id))];return pet;}
+export function migratePetSkills(pet,role){if(fusionSkills(pet)){const skills=fusionSkills(pet);pet.equippedSkills=(pet.equippedSkills||[]).filter(id=>skills.some(s=>s.id===id)).slice(0,2);return pet;}const all=[PET_SKILLS[role],LEGENDARY_PET_SKILLS[role],MYTHIC_PET_SKILLS[role]],target=petSkillsFor(role,pet.rarity),indices=(pet.equippedSkills||[]).map(id=>all.map(set=>set.findIndex(s=>s.id===id)).find(i=>i>=0)).filter(i=>Number.isInteger(i));pet.equippedSkills=[...new Set((indices.length?indices:Array.isArray(pet.equippedSkills)&&pet.equippedSkills.length===0?[]:[0,1]).slice(0,2).map(i=>target[i].id))];return pet;}

@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import{readFileSync}from'node:fs';import{createHash}from'node:crypto';import{combatFingerprintV50}from'../scripts/balance-fingerprint.mjs';
 const report=()=>JSON.parse(readFileSync(new URL('../docs/balance-v50.json',import.meta.url)));
-test('V5 acceptance audit matches current source and all40 pair means stay within30% at99 and150',()=>{
- const r=report();assert.equal(r.sourceDigest,combatFingerprintV50());assert.equal(r.recipeDigest,createHash('sha256').update(readFileSync(new URL('../scripts/audit-balance-v50.mjs',import.meta.url))).digest('hex'));assert.equal(r.runCount,2120);assert.equal(r.seconds,120);assert.deepEqual(r.seeds,[42,137,731]);assert.equal(r.baselines.length,4);
+test('archived V5.0.8 acceptance audit retains its recorded source and all40 pair means stay within30% at99 and150',()=>{
+ const r=report();assert.equal(r.sourceDigest,'f11873f036cc7b936ab00a7205afcd5f61f4682608418833c42f33dec12be643');assert.equal(r.recipeDigest,createHash('sha256').update(readFileSync(new URL('../scripts/audit-balance-v50.mjs',import.meta.url))).digest('hex'));assert.equal(r.runCount,2120);assert.equal(r.seconds,120);assert.deepEqual(r.seeds,[42,137,731]);assert.equal(r.baselines.length,4);
  for(const b of r.baselines){assert.equal(b.pet,b.level>99?'ascended legendary':'uncommon');assert.equal(b.rows.length,40);assert.equal(b.samples.length,120);assert.ok(b.rows.every(x=>x.killsPerMinute>0&&x.deaths===0));for(const row of b.rows){const sample=b.samples.filter(s=>s.job===row.job&&s.role===row.role);assert.equal(sample.length,3);assert.ok(Math.abs(row.killsPerMinute-sample.reduce((n,s)=>n+s.kills/2,0)/3)<1e-10);}assert.equal(b.passed,b.gap<=.3);assert.ok(b.passed,`Lv.${b.level}: ${b.gap}`);assert.ok(Math.abs(b.gap-b.fastest.killsPerMinute/b.slowest.killsPerMinute+1)<1e-10);}
  assert.equal(r.stress.length,4);for(const c of r.stress)assert.equal(c.passed,c.gap<=.3);
 });

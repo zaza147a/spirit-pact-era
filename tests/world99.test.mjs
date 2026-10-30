@@ -10,9 +10,9 @@ import {monsterCombatStats,incomingMonsterDamage,aspdAttackIntervalMs} from '../
 const dist=new URL('../dist/',import.meta.url);
 async function app(){const c={console,Math:Object.create(Math)};let source=readFileSync(new URL('game.js',dist),'utf8');for(const m of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const mod=await import(new URL(m[2],dist));for(const key of m[1].split(',').map(x=>x.trim()))c[key]=mod[key];}source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,addEncounter,award,spriteHtml,state:()=>({player,enemy,enemies}),setup:p=>{player=p;enemies=[];enemy=null;report=null;activeSlot=null;}};message=()=>{};render=()=>{};renderSide=()=>{};save=()=>true;');c.canEncounterBoss=()=>false;vm.createContext(c);vm.runInContext(source,c);c.Math.random=()=>1;return c;}
 test('fifteen zones cover1-99 and101-150 without overlaps; the99 zone has nine creatures',()=>{
- assert.equal(ZONES.length,15);assert.equal(WORLD_MONSTERS.length,149);assert.deepEqual(WORLD_MONSTERS.map(m=>m.level),[...Array.from({length:99},(_,i)=>i+1),...Array.from({length:50},(_,i)=>i+101)]);assert.equal(new Set(WORLD_MONSTERS.map(m=>m.name)).size,149);
+ assert.equal(ZONES.length,20);assert.equal(WORLD_MONSTERS.length,199);assert.deepEqual(WORLD_MONSTERS.map(m=>m.level),[...Array.from({length:99},(_,i)=>i+1),...Array.from({length:100},(_,i)=>i+101)]);assert.equal(new Set(WORLD_MONSTERS.map(m=>m.name)).size,199);
  for(const z of ZONES){assert.equal(z.names.length,z.max-z.min+1);const pool=WORLD_MONSTERS.filter(m=>m.map===z.id);assert.equal(pool.length,z.names.length);assert.equal(pool.at(-1).elite,true);assert.equal(pool.filter(m=>m.elite).length,1);assert.equal(WORLD_MAPS[z.id].novice,z.max<=50);assert.equal(encounterLimit(z.id),z.min>50?4:z.max<=20?2:3);}
- assert.equal(ZONES.at(-1).max,150);assert.equal(ZONES.find(z=>z.id==='celestial').names.length,9);
+ assert.equal(ZONES.at(-1).max,200);assert.equal(ZONES.find(z=>z.id==='celestial').names.length,9);
 });
 test('novice stats remain untouched; 51 starts normal difficulty, high-level rewards and sustained enemy pressure grow',()=>{
  for(const m of WORLD_MONSTERS.filter(m=>m.level<=50)){const expected=noviceMonsterStats(m.level,m.elite);for(const k of ['hp','atk','def','xp'])assert.equal(m[k],expected[k]);}

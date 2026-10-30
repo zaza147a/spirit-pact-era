@@ -1,4 +1,5 @@
-import {SECOND_JOBS,parentJob} from './jobs.js?v=5.0.8';
+import {thirdSkills} from './third-jobs.js';
+import {SECOND_JOBS,parentJob} from './jobs.js?v=6.0.0';
 const make=(id,name,kind,unlock,mp,power,desc,weapons=[],extra={})=>({id,name,kind,unlock,mp,power,desc,weapons,maxRank:10,branch:'first',...extra});
 const passive=(id,name,unlock,bonuses,desc,branch='first')=>make(id,name,'passive',unlock,0,0,desc,[],{bonuses,branch,maxRank:5});
 export const JOB_SKILLS={
@@ -53,19 +54,20 @@ for(const [job,[buffName,modifiers,mainName,kind,,event]] of Object.entries(REBO
  SECOND_SKILLS[job].push(S('rebirthBuff_'+job,buffName,'passive',51,0,0,`永久常駐；每級 ${Object.entries(rankModifiers).map(([k,v])=>`${({atkPct:'ATK',matkPct:'MATK',defPct:'DEF',aspdPct:'攻擊速度',damageReduction:'最終減傷',castReduction:'詠唱縮短',autoSpellChance:'自詠機率',crit:'暴擊率',critDmg:'暴擊傷害',goldPct:'金幣收益',hitPct:'命中',healingPct:'治療',aspd:'ASPD',spRegen:'每4秒回SP',teamDamagePct:'主人與夥伴傷害'})[k]||k} +${Number((['castReduction','autoSpellChance'].includes(k)?v*100:v).toFixed(2))}${['spRegen','aspd'].includes(k)?'':'%'}`).join('、')}。最多10級；使用轉生技能點。`,[],{rebornOnly:true,maxRank:10,bonuses:rankModifiers}));
  SECOND_SKILLS[job].push(S('rebirthMain_'+job,mainName,kind,51,job==='wizard'?18:3,REBIRTH_MAIN_POWER[job],'取代原主攻技能；完整繼承本職共鳴。使用轉生技能點，每級提高倍率，最多10級。',[],{rebornOnly:true,maxRank:10,cooldown:0,attackCycle:true,event,aoe:true,targets:job==='wizard'?5:['knight','hunter','performer'].includes(job)?2:3,...(job==='wizard'?{castMs:2200,recovery:900}:{}),...(job==='crusader'?{source:'holyShield'}:{}),...(job==='rogue'?{steal:true}:{})}));
 }
-export const supersededSkill=(player,skill)=>!!player.reborn&&skill?.id===REBIRTH_MAIN_REPLACES[player.job]&&(player.jobSkills?.['rebirthMain_'+player.job]||0)>0;
+export const supersededSkill=(player,skill)=>!!((player.thirdJob&&(player.jobSkills?.['thirdMain_'+player.job]||0)>0&&[REBIRTH_MAIN_REPLACES[player.job],'rebirthMain_'+player.job].includes(skill?.id))||(player.reborn&&skill?.id===REBIRTH_MAIN_REPLACES[player.job]&&(player.jobSkills?.['rebirthMain_'+player.job]||0)>0));
 // Explicit skill ratios keep AOE per-target damage below focused attacks.
 const updatedPowers={pierce:.93,shieldBash:.75,holyCross:2.8,thunder:1.04,meteor:1.32,arcaneStorm:1.58,spellFist:.40,elementStrike:1.45,dualStrike:.46,katarSlash:1.9,sonicBlow:4.0,daggerDance:.48,gangAmbush:3.1,holyJudgment:1.20,exorcism:3.4,chainCombo:1.40,spiritPalm:2.30,asura:4.3,falconStrike:.68,arrowRain:1.8,beastMark:2.8,sonicNote:.64,dissonance:1.9,encore:3.2};
 for(const skills of Object.values(SECOND_SKILLS))for(const skill of skills)if(updatedPowers[skill.id]!==undefined)skill.power=updatedPowers[skill.id];
 for(const [job,id] of [['crusader','shieldBash'],['priest','holyJudgment']]){const skill=SECOND_SKILLS[job].find(s=>s.id===id);Object.assign(skill,{attackCycle:true,cooldown:0,mp:3,aoe:true,targets:2});skill.desc+=' · 兩體低倍率主攻，無獨立CD、依ASPD動作間隔';}
 SECOND_SKILLS.crusader.find(s=>s.id==='fortress').bonuses.aspd=2;
 for(const [id,meta] of Object.entries(SECOND_JOBS))JOB_SKILLS[id]=[...JOB_SKILLS[meta.parent],...SECOND_SKILLS[id]];
+for(const job of Object.keys(SECOND_JOBS))JOB_SKILLS[job].push(...thirdSkills(job));
 export const jobSkillById=(job,id)=>JOB_SKILLS[job]?.find(s=>s.id===id);
 export const activeJobSkills=job=>JOB_SKILLS[job].filter(s=>s.kind!=='passive');
 export const initialJobSkills=job=>({[activeJobSkills(job).find(s=>!SECOND_JOBS[job]||s.branch==='second').id]:1});
 export const weaponSkillAllowed=(skill,right,left)=>skill.kind==='passive'||!skill.weapons?.length||skill.weapons.some(type=>type==='dual'?right==='dagger'&&left==='dagger':right===type);
-export function jobPassives(player){const bonuses={};for(const skill of JOB_SKILLS[player.job]||[])if(skill.kind==='passive'){const rank=player.jobSkills?.[skill.id]||0;for(const [key,value] of Object.entries(skill.bonuses))bonuses[key]=(bonuses[key]||0)+value*rank;}return bonuses;}
-export const skillUnlocked=(player,skill)=>(skill.branch==='first'&&SECOND_JOBS[player.job]?player.firstJobLevel||50:player.jobLevel)>=skill.unlock;
+export function jobPassives(player){const bonuses={};for(const skill of JOB_SKILLS[player.job]||[])if(skill.kind==='passive'&&(!skill.thirdOnly||player.thirdJob)){const rank=player.jobSkills?.[skill.id]||0;for(const [key,value] of Object.entries(skill.bonuses))bonuses[key]=(bonuses[key]||0)+value*rank;}return bonuses;}
+export const skillUnlocked=(player,skill)=>!!skill&&(!skill.thirdOnly||player.thirdJob)&&(!skill.rebornOnly||player.reborn)&&(skill.thirdOnly?player.jobLevel:skill.branch==='first'&&SECOND_JOBS[player.job]?player.firstJobLevel||50:player.thirdJob?player.secondJobLevel||70:player.jobLevel)>=skill.unlock;
 
 // One shield family: the advanced equivalent recovers sooner.
-for(const skills of Object.values(JOB_SKILLS))for(const skill of skills)if(skill.kind==='shield'){skill.cooldown=skill.branch==='second'?3600:4800;skill.exclusiveGroup='personalShield';}
+for(const skills of Object.values(JOB_SKILLS))for(const skill of skills)if(skill.kind==='shield'){skill.cooldown=skill.branch==='third'?2800:skill.branch==='second'?3600:4800;skill.exclusiveGroup='personalShield';}

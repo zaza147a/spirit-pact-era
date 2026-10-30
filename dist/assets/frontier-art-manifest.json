@@ -1,0 +1,178 @@
+{
+  "version": 600,
+  "generator": "built-in image_gen",
+  "style": "ornate painterly chibi JRPG monster cutouts",
+  "assets": [
+    {
+      "id": "starshore",
+      "file": "monsters-starshore.webp",
+      "cols": 5,
+      "rows": 2,
+      "width": 2000,
+      "height": 800,
+      "alpha": true,
+      "sourceSize": [
+        1983,
+        793
+      ],
+      "prompt": "A luminous astral ocean coast, navy and turquoise with pearl gold. Row1 left-to-right: tiny star anemone spirit, moon-shell hermit crab, cometfin eel, sailwing stingray, armored coral walrus. Row2: tidal spear siren, deepglass nautilus, constellation shark, sixarmed pearl sentinel, huge star-crowned abyssal turtle.",
+      "promptTemplate": "Use case stylized-concept. Production RPG sprite sheet. Exactly10monsters5cols2rows or5standalonebosses5cols1row. Genuine transparent background. Equalcell layout; fullbody premium detailed painterly chibi fantasy, distinct silhouettes, no text/UI/watermark.",
+      "processing": "WebP format conversion and uniform resize",
+      "names": [
+        "星冠海葵靈",
+        "月貝寄居蟹",
+        "彗鰭海蛇",
+        "星帆魔魟",
+        "珊甲巨海象",
+        "潮槍海巫",
+        "星渦螺靈",
+        "星座獵鯊",
+        "六臂珠衛",
+        "星冠玄潮龜"
+      ]
+    },
+    {
+      "id": "oathwood",
+      "file": "monsters-oathwood.webp",
+      "cols": 5,
+      "rows": 2,
+      "width": 2000,
+      "height": 800,
+      "alpha": true,
+      "sourceSize": [
+        1983,
+        793
+      ],
+      "prompt": "An ancient enchanted runic forest, emerald leaves and warm amber wood. Row1 left-to-right: rune acorn sprite, moss-backed beetle, silverthorn hare, antlered forest cat, bark plated boar. Row2: owl-faced wood oracle, thorn mantis warrior, rootbound centaur, colossal rune bear, walking ancient tree colossus.",
+      "promptTemplate": "Use case stylized-concept. Production RPG sprite sheet. Exactly10monsters5cols2rows or5standalonebosses5cols1row. Genuine transparent background. Equalcell layout; fullbody premium detailed painterly chibi fantasy, distinct silhouettes, no text/UI/watermark.",
+      "processing": "WebP format conversion and uniform resize",
+      "names": [
+        "橡實符靈",
+        "苔甲聖蟲",
+        "銀荊月兔",
+        "翡翠森貓",
+        "樹甲獠豬",
+        "古誓梟巫",
+        "荊刃螳侍",
+        "翠枝半人馬",
+        "符紋巨熊",
+        "千誓古木衛"
+      ]
+    },
+    {
+      "id": "nightclock",
+      "file": "monsters-nightclock.webp",
+      "cols": 5,
+      "rows": 2,
+      "width": 2000,
+      "height": 800,
+      "alpha": true,
+      "sourceSize": [
+        1983,
+        793
+      ],
+      "prompt": "An eerie nightglass clocktower realm, midnight violet, silver steel and teal clockwork light. Row1 left-to-right: hourglass wisp, brass key moth, pendulum bat, glass shell spider, clockwork raven. Row2: timeblade automaton, candleface reaper, mirror-armored knight, mechanical midnight sphinx, astral gear titan.",
+      "promptTemplate": "Use case stylized-concept. Production RPG sprite sheet. Exactly10monsters5cols2rows or5standalonebosses5cols1row. Genuine transparent background. Equalcell layout; fullbody premium detailed painterly chibi fantasy, distinct silhouettes, no text/UI/watermark.",
+      "processing": "WebP format conversion and uniform resize",
+      "names": [
+        "時沙幽靈",
+        "鑰紋時蛾",
+        "擺錘夜蝠",
+        "黑鏡機蛛",
+        "銅羽刻鴉",
+        "刻刃行刑者",
+        "提燈時鐮使",
+        "鏡鎧守衛",
+        "永夜獅身獸",
+        "星軌齒輪泰坦"
+      ]
+    },
+    {
+      "id": "sungrave",
+      "file": "monsters-sungrave.webp",
+      "cols": 5,
+      "rows": 2,
+      "width": 2000,
+      "height": 800,
+      "alpha": true,
+      "sourceSize": [
+        1983,
+        793
+      ],
+      "prompt": "A solar dragon necropolis, weathered ivory bones, burned gold armor, ember orange and deep red. Row1 left-to-right: ember scarab, sunbone lizard, cinder vulture, ash-horn hyena, ossuary scorpion. Row2: blazing bone hound, gilded spear revenant, obsidian wing drake, skeletal sun mammoth, armored dragon-bone colossus.",
+      "promptTemplate": "Use case stylized-concept. Production RPG sprite sheet. Exactly10monsters5cols2rows or5standalonebosses5cols1row. Genuine transparent background. Equalcell layout; fullbody premium detailed painterly chibi fantasy, distinct silhouettes, no text/UI/watermark.",
+      "processing": "WebP format conversion and uniform resize",
+      "names": [
+        "燼甲聖蟲",
+        "曜骨火蜥",
+        "灰冠骨鷲",
+        "灰鬃骨鬣犬",
+        "龍墓骨蠍",
+        "焰骨龍犬",
+        "鎏金誓矛亡衛",
+        "黑曜骨飛龍",
+        "曜骨猛瑪",
+        "骸甲龍巨像"
+      ]
+    },
+    {
+      "id": "worldroot",
+      "file": "monsters-worldroot.webp",
+      "cols": 5,
+      "rows": 2,
+      "width": 2000,
+      "height": 800,
+      "alpha": true,
+      "sourceSize": [
+        1983,
+        793
+      ],
+      "prompt": "A cosmic worldroot at the edge of creation, cosmic ivory and platinum with emerald teal life light and violet stars. Row1 left-to-right: seedstar sprite, prism cicada, nebula fawn, winged root fox, void lotus serpent. Row2: worldroot oracle, six-winged pearl automaton, constellation stag warrior, interstellar winged chimera, huge celestial root guardian.",
+      "promptTemplate": "Use case stylized-concept. Production RPG sprite sheet. Exactly10monsters5cols2rows or5standalonebosses5cols1row. Genuine transparent background. Equalcell layout; fullbody premium detailed painterly chibi fantasy, distinct silhouettes, no text/UI/watermark.",
+      "processing": "WebP format conversion and uniform resize",
+      "names": [
+        "界芽靈",
+        "星稜蟬",
+        "星雲幼鹿",
+        "翼根幻狐",
+        "虛蓮靈蛇",
+        "界根先知",
+        "六翼珠衛",
+        "星座聖角使",
+        "群星翼獅",
+        "界源古樹衛"
+      ]
+    },
+    {
+      "id": "bosses-frontier",
+      "file": "bosses-frontier.webp",
+      "cols": 5,
+      "rows": 1,
+      "width": 3000,
+      "height": 600,
+      "alpha": true,
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: stylized-concept. Asset: production fantasyRPG boss character sprite sheet. EXACTLY FIVE individual fullbody characters in ONE horizontal row, each centered in its OWN isolated vertical column. Transparent background, no scenery, no platforms, no floor. Wide landscape3:1 image with five equal vertical columns. CRITICAL SPACING: huge blank transparent gutters, at least25%emptyspace on BOTH SIDES of EACH character. Every design must fit safely inside only the central50%of its own column; maintain all hands, feet, staffs, antlers and wings within that narrow silhouette. No overlapping. All FIVE same standingheight with15%blankaboveandbelow. Fold wings vertically and hold weapons upright. Delicate crisp detailed ornate chibi high-fantasy paintedgame illustration. No text UI numbers. Left-right: 1 royal blue-and-pearl astral ocean leviathan king humanoid with upright trident, curled vertical tail and sea crown; 2 emerald and amber ancient forest goddess with compact wooden rootgown and smallantlers, hanging lanterns; 3 silver violet clock empress with narrow blackclockhalo and two uprightscythes, foldedrobewings; 4 crimson ivory gold skeletal solar dragon archlich with FOUR wings folded tightly downward, uprightbonesword; 5 platinumwhite emerald worldseed seraph with SIX wings tightlyfolded downward, smallorbitingringsand suspendedgreenheart. These5bosses original, fullbodyfullyvisible, never cropanypart, MUST have large transparentgaps between allfivecharacters.",
+      "promptTemplate": "Use case stylized-concept. Production RPG sprite sheet. Exactly10monsters5cols2rows or5standalonebosses5cols1row. Genuine transparent background. Equalcell layout; fullbody premium detailed painterly chibi fantasy, distinct silhouettes, no text/UI/watermark.",
+      "processing": "Five characters sliced at observed transparent gutters, fitted without distortion into equal transparent square cells; WebP conversion",
+      "names": [
+        "星潮海皇・涅瑞昂",
+        "古誓森母・艾薇拉",
+        "永夜時后・克羅妮",
+        "曜骨龍皇・索拉斯",
+        "界源熾天使・奧瑞亞"
+      ],
+      "sourceCropBounds": [
+        0,
+        435,
+        843,
+        1313,
+        1774,
+        2172
+      ]
+    }
+  ]
+}

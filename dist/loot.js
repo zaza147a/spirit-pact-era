@@ -1,10 +1,11 @@
-import {JUNK_ITEMS,PROOF_ITEMS} from './adventure-economy.js?v=5.0.8';
-import {SECOND_JOBS} from './jobs.js?v=5.0.8';
-import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=5.0.8';
+import {FRONTIER_ITEMS} from './frontier.js';
+import {JUNK_ITEMS,PROOF_ITEMS} from './adventure-economy.js?v=6.0.0';
+import {SECOND_JOBS} from './jobs.js?v=6.0.0';
+import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=6.0.0';
 const rand=(a,b,rng=Math.random)=>Math.floor(Math.min(.999999,Math.max(0,rng()))*(b-a+1))+a;
 export const STACK_IDS=['med','cell','orb','red_small','red_mid','red_large','blue_small','blue_mid','blue_large','scrap','herb','ore','crystal','relic'];
 export const STACK_SET=new Set(STACK_IDS);
-export const LOOT_ITEMS={...JUNK_ITEMS,...PROOF_ITEMS,red_small:{name:'紅色藥水',heal:60,cost:24},red_mid:{name:'濃縮紅藥水',heal:180,cost:65},red_large:{name:'高級紅藥水',heal:420,healPct:.15,cost:140},blue_small:{name:'藍色藥水',energy:35,cost:30},blue_mid:{name:'濃縮藍藥水',energy:95,cost:85},blue_large:{name:'高級藍藥水',energy:220,energyPct:.1,cost:190},scrap:{name:'異獸碎片',junk:true,cost:5},herb:{name:'月光藥草',junk:true,cost:13},ore:{name:'赤晶礦塊',junk:true,cost:25},crystal:{name:'霜晶石',junk:true,cost:42},relic:{name:'墜星遺物',junk:true,cost:75}};
+export const LOOT_ITEMS={...JUNK_ITEMS,...PROOF_ITEMS,...FRONTIER_ITEMS,red_small:{name:'紅色藥水',heal:60,cost:24},red_mid:{name:'濃縮紅藥水',heal:180,cost:65},red_large:{name:'高級紅藥水',heal:420,healPct:.15,cost:140},blue_small:{name:'藍色藥水',energy:35,cost:30},blue_mid:{name:'濃縮藍藥水',energy:95,cost:85},blue_large:{name:'高級藍藥水',energy:220,energyPct:.1,cost:190},scrap:{name:'異獸碎片',junk:true,cost:5},herb:{name:'月光藥草',junk:true,cost:13},ore:{name:'赤晶礦塊',junk:true,cost:25},crystal:{name:'霜晶石',junk:true,cost:42},relic:{name:'墜星遺物',junk:true,cost:75}};
 LOOT_ITEMS.ascension_core={name:'蒼穹界限靈髓',evolution:true,cost:1200,description:'101–150級小怪8%、首領必掉，用於99級傳說／神話寵物界限進化與異化'};STACK_IDS.push('ascension_core');STACK_SET.add('ascension_core');
 for(let i=1;i<=4;i++){const id=`essence_${i}`;LOOT_ITEMS[id]={name:['','初生靈核','凝聚靈核','覺醒靈核','超越靈核'][i],evolution:true,cost:0,description:`Lv.${(i-1)*20+1}–${i*20} 野外怪物掉落，供寵物第 ${i} 次進化`};STACK_IDS.push(id);STACK_SET.add(id);}
 export const GEAR_BASE={
@@ -32,7 +33,7 @@ export const SPECIAL_AFFIXES=new Set(['ignoreDef','critDmg','aspdPct','crit','fl
 export const gearTier=gearTierForLevel;
 export const gearGroup=id=>GEAR_BASE[id]?.weaponType?'weapon':'armor';
 export const shardId=(group,tier)=>`shard_${group}_${tier}`;
-for(let tier=1;tier<=8;tier++)for(const group of ['weapon','armor']){const id=shardId(group,tier);LOOT_ITEMS[id]={name:`${TIER_NAMES[tier-1]}${group==='weapon'?'鋒刃':'護甲'}碎晶`,craft:true,tier,group,cost:0};STACK_IDS.push(id);STACK_SET.add(id);}
+for(let tier=1;tier<=11;tier++)for(const group of ['weapon','armor']){const id=shardId(group,tier);LOOT_ITEMS[id]={name:`${TIER_NAMES[tier-1]}${group==='weapon'?'鋒刃':'護甲'}碎晶`,craft:true,tier,group,cost:0};STACK_IDS.push(id);STACK_SET.add(id);}
 export const rarityForRoll=(value=Math.random()*1000)=>{let cursor=0;return RARITIES.find(r=>(cursor+=r.weight)>value)||RARITIES.at(-1);};
 export const gearLabel=item=>`${TIER_NAMES[gearTier(item.level)-1]}階 · Lv.${item.level||1} · ${RARITIES.find(r=>r.id===item.rarity)?.name||'普通'} · ${Object.keys(item.affixes||{}).length}詞`;
 export const affixLabel=(key,value)=>`${AFFIX_NAMES[key]||key} +${value}${PERCENT_AFFIXES.has(key)?'%':''}`;
@@ -42,7 +43,7 @@ function uniqueAttrs(rng){const keys=['STR','AGI','VIT','INT','DEX','LUK'];const
 export function affixRange(key,tier,rarity){const rank=Math.max(0,RARITIES.findIndex(r=>r.id===rarity)),quality=QUALITY_POWER[rarity]||1,power=GEAR_TIERS[tier-1].power;if(PRIMARY_VALUES[key]){const value=PRIMARY_VALUES[key]*power*quality;return [Math.ceil(value*.98),Math.ceil(value*1.02)];}const budgets={hpPct:8,damageReduction:7,fleePct:22,aspdPct:8,crit:24,critDmg:20,ignoreDef:16};if(budgets[key]){const v=budgets[key]*(.4+tier*.1);return [Math.max(1,Math.round(v*.95)),Math.max(1,Math.round(v*1.05))];}const value=key==='crit'?2+tier+rank:key==='aspd'?1+tier*.35+rank*.3:key==='critDmg'?4+tier*2+rank*2:key==='ignoreDef'||key==='magicDamage'?2+tier+rank:key.endsWith('Pct')?2+tier+rank:1+tier*.7+rank*.5;return [Math.max(1,Math.round(value)),Math.max(1,Math.round(value*1.12))];}
 function rollValue(key,tier,rarity,rng){const [min,max]=affixRange(key,tier,rarity);return rand(min,max,rng);}
 export const primaryAffix=id=>{const base=GEAR_BASE[id]||PET_GEAR_BASE[id];return base?.petSlot?(base.petSlot==='head'?(id==='petCirclet'?'matk':'atk'):base.petSlot==='body'?'hp':'flee'):base?.weaponType?(base.weaponType==='mace'||base.matk>=(base.atk||0)?'matk':'atk'):'def';};
-function buildGear(id,level,forceRarity,rng,pet){const base=(pet?PET_GEAR_BASE:GEAR_BASE)[id];if(!base)return null;level=Math.max(1,Math.min(150,Math.floor(level)));const tier=gearTier(level),rarity=RARITIES.find(r=>r.id===forceRarity)||rarityForRoll(Math.min(.999999,rng())*1000),attrs=uniqueAttrs(rng),primary=primaryAffix(id),weapon=!!base.weaponType||pet&&base.petSlot==='head',core=pet?(base.petSlot==='head'?[primary,'hit','DEX']:base.petSlot==='body'?['hp','def','mdef']:['flee','hit','def']):weapon?[primary,'hit','DEX']:['def','mdef','flee'];
+function buildGear(id,level,forceRarity,rng,pet){const base=(pet?PET_GEAR_BASE:GEAR_BASE)[id];if(!base)return null;level=Math.max(1,Math.min(200,Math.floor(level)));const tier=gearTier(level),rarity=RARITIES.find(r=>r.id===forceRarity)||rarityForRoll(Math.min(.999999,rng())*1000),attrs=uniqueAttrs(rng),primary=primaryAffix(id),weapon=!!base.weaponType||pet&&base.petSlot==='head',core=pet?(base.petSlot==='head'?[primary,'hit','DEX']:base.petSlot==='body'?['hp','def','mdef']:['flee','hit','def']):weapon?[primary,'hit','DEX']:['def','mdef','flee'];
  const pool=[...new Set([...core,...attrs,'VIT','INT','LUK','STR','AGI','DEX'])],chosen=weapon?[primary,'hit']:[primary];while(chosen.length<Math.min(5,rarity.count)){const choices=pool.filter(k=>!chosen.includes(k));chosen.push(choices[rand(0,choices.length-1,rng)]);}if(rarity.id==='mythic'){const specials=weapon?['aspdPct','crit','critDmg','ignoreDef']:['fleePct','damageReduction','hpPct'];chosen.push(specials[rand(0,specials.length-1,rng)]);}
  const affixes=Object.fromEntries(chosen.map(k=>[k,rollValue(k,tier,rarity.id,rng)]));if(pet)for(const k of Object.keys(affixes))if(!SPECIAL_AFFIXES.has(k))affixes[k]=Math.round(affixes[k]*(['atk','matk'].includes(k)?1:10/3));
  return {id,uid:`${pet?'pg':'g'}-${Date.now()}-${Math.random().toString(36).slice(2,10)}`,level,tier,rarity:rarity.id,name:`${rarity.name} ${TIER_NAMES[tier-1]}·${base.name}`,affixes,powerVersion:50};}

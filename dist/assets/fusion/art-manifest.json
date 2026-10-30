@@ -1,0 +1,294 @@
+{
+  "version": 6,
+  "description": "12 ordered visual forms for6unordered gameplay pairs. Main role determines silhouette; reverse order shares gameplay.",
+  "assets": [
+    {
+      "id": "attack-magic",
+      "name": "星焰裂界龍皇",
+      "primary": "attack",
+      "secondary": "magic",
+      "path": "assets/fusion/attack-magic.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-c17ea809-b77c-423d-a487-cef794cc9b9d.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body RPG pet sprite, transparent background. Create a mythic fusion creature for the game Spirit Pact Era: PRIMARY ATTACK DRAGON + SECONDARY MAGIC PHOENIX. Main silhouette MUST be an upright powerful crimson-black dragon emperor, with four limbs, horned dragon head, long tail and broad wings; add elegant violet-blue phoenix feather layers along wings, astral gems and purple starfire flowing from tail. Highly detailed hand-painted polished fantasy game illustration, slightly compact/chibi heroic proportions, crisp readable silhouette at small size, gold engraved armor, three-quarter front view, centered whole creature with 8% transparent padding, dramatic luminous rim details. A beautiful unique hybrid, not two separate animals. Primary dragon silhouette dominates. No text, no labels, no ground, no frame, no scenery, no watermark, no cropped wings/tail. Genuine alpha transparency.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "708bd62bef68ce12b0756cb5d837d67ef89ecc3614fc5ad943c0b3bd0c788166",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "attack-defense",
+      "name": "鎮界玄鎧龍皇",
+      "primary": "attack",
+      "secondary": "defense",
+      "path": "assets/fusion/attack-defense.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-152557ed-8f9f-46f2-b12e-2146163c3736.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: fierce bulky crimson dragon emperor, horned dragon head, four clawed limbs, dragon wings and long tail. Fusion with earth titan: enormous faceted obsidian shield-like pauldrons, ruby fault-line armor, stone-crystal plated wing fingers, fortified dragon stance. Colors black basalt/crimson/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "de9bd8b2cd8a9f7bdd3d6f8b5a0875c3522414af78be089615406cc2cf246cb7",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "attack-support",
+      "name": "聖瑞玉麟龍皇",
+      "primary": "attack",
+      "secondary": "support",
+      "path": "assets/fusion/attack-support.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-b2738e44-56b7-465d-a058-03c74bfbd9c7.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: noble powerful ivory-gold dragon emperor, horned DRAGON head, broad dragon wings, four clawed limbs and long dragon tail. Fusion with holy qilin: flowing jade-cloud mane, antler-shaped gold crown, emerald jewels, cloud-shaped armor and green healing light. Dragon dominates; not a quadruped qilin. Colors ivory/gold/jade with crimson dragon-scale accents. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "28584354c92f19cdc745a590dba13816546a275a01766f55bd29c0f973a031ac",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "magic-attack",
+      "name": "赤曜星翼神凰",
+      "primary": "magic",
+      "secondary": "attack",
+      "path": "assets/fusion/magic-attack.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-6e92a6e2-c875-4aa7-b003-825a80f754b4.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: magnificent large PHOENIX BIRD, avian head and curved beak, two talons, huge feathered wings and long layered feather tail. Fusion with dragon emperor: crimson dragon scale plates and small sweeping horns, gold shoulder armor, red-black starfire edging on violet wings. Phoenix silhouette dominates, no dragon body. Colors violet/crimson/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "f30fe2544e7da604a16c9860f28404783119d8b993e1a0b908ea35213792bb57",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "magic-defense",
+      "name": "星岩晶翼神凰",
+      "primary": "magic",
+      "secondary": "defense",
+      "path": "assets/fusion/magic-defense.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-2827f3b8-d546-4a48-9695-1c6339af13fc.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: majestic PHOENIX BIRD with curved beak, feather crest, two bird legs, wide swept feathered wings and flowing tail plumage. Fusion with earth titan: glowing sapphire crystal breastplate, floating angular stone feather tips, faceted starlit blue mineral armor on wings. Phoenix dominates, not a golem. Colors indigo/cobalt/silver/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "96870e29ca881f68241c8b5df384f8bd7a7ba46c7e3090873eafa52087f41c78",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "magic-support",
+      "name": "聖光星羽神凰",
+      "primary": "magic",
+      "secondary": "support",
+      "path": "assets/fusion/magic-support.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-745dcfaf-7db8-4983-9436-8336cd816eda.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: graceful celestial PHOENIX BIRD, avian face and beak, two talons, sweeping feathered wings and elaborate flowing feather tail. Fusion with holy qilin: ivory-jade sacred plumage, gold antler-shaped crest, emerald teardrop gems, soft jade healing wisps and purple starry feathers. Phoenix silhouette dominates. Colors ivory/jade/lavender/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "67a5fc4713d1c8ac07aa832b75e60403bd0da074f5fa6422ff482285c8420f52",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "defense-attack",
+      "name": "赤曜龍鎧泰坦",
+      "primary": "defense",
+      "secondary": "attack",
+      "path": "assets/fusion/defense-attack.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-f99f6cf3-0211-43f3-93ce-1ff8f28016cb.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: massive stocky HUMANOID EARTH TITAN, two huge arms, two short heavy legs, rocky helmet face, fortress-shaped shoulders. Fusion with dragon emperor: crimson draconic scale armor, dragon-head pauldrons, horned helmet, fiery ruby chest core, thick dragon claw gauntlets. Titan dominates, no broad wings or dragon body. Colors basalt/crimson/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "5b16a6a42c76ad302a00c1f64a2ef89de4e14ef7bb611442979c6047b80307ae",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "defense-magic",
+      "name": "星曜符晶泰坦",
+      "primary": "defense",
+      "secondary": "magic",
+      "path": "assets/fusion/defense-magic.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-8189b8f5-463b-428f-b6aa-8f6f24a2b33a.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: massive compact HUMANOID EARTH TITAN, two huge shield forearms, two short heavy legs, stone helmet face and fortress shoulders. Fusion with phoenix: violet astral crystalline feathers around shoulders and crown, gold rings orbiting a star-sapphire core, blue-purple nebula cracks in obsidian armor. Titan silhouette dominates, not a bird. Colors obsidian/violet/sapphire/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "551f2be67897ea449a0ed960aa8a2a00f610427f4b48d8ecd468c317c02228a0",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "defense-support",
+      "name": "碧玉聖域泰坦",
+      "primary": "defense",
+      "secondary": "support",
+      "path": "assets/fusion/defense-support.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-11bf2d18-2c10-4768-b480-7a37633b5224.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: massive compact HUMANOID EARTH TITAN guardian with two enormous arms, two short heavy legs, stone helmet face, fortified broad shoulders. Fusion with holy qilin: ivory jade carved stone armor, emerald heart gem, gold antler crown, cloud-shaped gilded seams, flowing pale mint cloud mane behind the neck. Titan dominates, not a quadruped. Colors marble white/jade/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "fdf18478116beba464ed0dac8b359174ef6ed60a9798bd9d599ced06c60bf969",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "support-attack",
+      "name": "赤曜麟角聖君",
+      "primary": "support",
+      "secondary": "attack",
+      "path": "assets/fusion/support-attack.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-ad80ce28-0a84-47bc-9b04-85a4c788c158.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: elegant QUADRUPED QILIN, graceful deer-horse proportions, long neck, dragon-deer face, antlers, four hooved legs, flowing cloud mane and ornate cloud tail. Fusion with dragon emperor: red-black scaled armor, small folded dragon wing fins, ruby ornaments, ember-tipped mane and gold claws decorating hooves. Qilin silhouette dominates, not a bipedal dragon. Colors ivory/crimson/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "d5e06df5c05eaedc3478ec92ba9be15dcc196d772bd77e2d385e4c9df29a2eb0",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "support-magic",
+      "name": "星羽瑞雲玉麟",
+      "primary": "support",
+      "secondary": "magic",
+      "path": "assets/fusion/support-magic.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-eabee7ee-7b77-4199-9eca-60c68de3f500.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: elegant QUADRUPED QILIN, deer-horse body, long neck, dragon-deer face, ornate antlers, four hooved legs and long cloud tail. Fusion with phoenix: layered purple-blue feather mane, long peacock-like astral feather tail woven with clouds, small feather wing fans at shoulders, star gems. Qilin silhouette dominates, not a bird. Colors ivory/lavender/blue/jade/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "1e1be0a3fefdbcdcfcc12902ae93f15d167a7e453529e80d8ff3fce1d2ea3b73",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    },
+    {
+      "id": "support-defense",
+      "name": "聖岩鎧麟聖君",
+      "primary": "support",
+      "secondary": "defense",
+      "path": "assets/fusion/support-defense.webp",
+      "generatedSource": "/workspace/scratch/9e5253b67cac/generated_images/exec-7d2e9c42-5fad-4fb7-adbf-a866655abaa3.png",
+      "prompt": "Use case: stylized-concept. Asset type: single full-body transparent RPG mythic fusion pet sprite for Spirit Pact Era. Create one unique beautiful hybrid creature. Main silhouette: sturdy but graceful QUADRUPED QILIN, deer-horse body, long neck, dragon-deer face, branching antlers, four hooved legs and flowing cloud tail. Fusion with earth titan: faceted jade-crystal armor over shoulders/chest/flanks, heavy ornate stone hoof guards, floating tiny emerald mineral shards, fortress-like carved plates. Qilin dominates, no humanoid body. Colors ivory/jade/obsidian/gold. Highly detailed polished hand-painted fantasy game creature illustration, compact/chibi heroic proportions with an expressive dignified face, ornate engraved metallic details, crisp clean silhouette readable at small size, luminous magical accents, three-quarter front view. Center whole creature with 8% genuine transparent padding. Match an Asian fantasy RPG inventory pet portrait style. Exactly one creature. Genuine alpha transparency, no background or floor, no scenery, no frame, no text, no labels, no logo, no watermark. Do not crop antlers, wings, feet or tail.",
+      "tool": "image_gen",
+      "transparent": true,
+      "qa": {
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "uniqueSha256": "2eb33e3c118284ec6c4eaf5475c050f90e238a9c2118d4ff1bc63556b033b1c4",
+        "visualInspection": "Passed: distinct dominant silhouette, subordinate fusion motifs, full creature visible; transparent512x512 WebP."
+      }
+    }
+  ]
+}

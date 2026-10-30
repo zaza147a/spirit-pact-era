@@ -1,4 +1,4 @@
-import {noviceMonsterStats,normalMonsterStats} from './progression.js?v=5.0.8';
+import {noviceMonsterStats,normalMonsterStats} from './progression.js?v=6.0.0';
 // Fifteen progression zones cover every Base level once; the final zone ends at the level cap.
 export const ZONES=[
  {id:'starter',name:'初始謎域',min:1,max:10,icon:'🌫️',names:['霧芽史萊姆','迷途野兔','青苔幼蟲','小石靈','尖耳魔鼠','幽光飛蛾','泥沼獵犬','藤蔓守衛','迷霧行者','謎域巨角獸']},
@@ -15,7 +15,12 @@ export const ZONES=[
  {'id': 'gearfell', 'name': '千輪機關城', min: 111, max: 120, 'icon': '⚙️', 'continent': 'sky', 'names': ['銅甲齒蟎', '機巧蛛', '鋸輪甲蟲', '齒牙機狼', '鐵軌戰兵', '巨盾構裝體', '鋼鐵半人馬', '鑽岩魔像', '攻城機蠍', '千輪巨像']},
  {'id': 'aether', 'name': '以太晶海', min: 121, max: 130, 'icon': '💎', 'continent': 'sky', 'names': ['以太微光', '晶翅靈蛾', '稜晶月兔', '符尾晶狐', '碎晶長蛇', '秘術星梟', '星紋靈鹿', '稜鏡騎士', '晶翼飛龍', '以太巨靈']},
  {'id': 'stormforge', 'name': '雷霆熔爐', min: 131, max: 140, 'icon': '⚡', 'continent': 'sky', 'names': ['火花小鬼', '雷羽冥鴉', '暴風電鰻', '熔爐火蜥', '霆甲猛貓', '閃電巨螳', '熔爐守衛', '蒼角雷犀', '轟雷飛龍', '風暴泰坦']},
- {'id': 'zenith', 'name': '天極斷界', min: 141, max: 150, 'icon': '☀️', 'continent': 'sky', 'names': ['虛空蛾', '蝕日鴉', '環軌探機', '星痕魔狼', '天極聖獅', '熾翼構裝體', '重力巨像', '耀日龍', '天門神衛', '斷界空鯨']}
+ {'id': 'zenith', 'name': '天極斷界', min: 141, max: 150, 'icon': '☀️', 'continent': 'sky', 'names': ['虛空蛾', '蝕日鴉', '環軌探機', '星痕魔狼', '天極聖獅', '熾翼構裝體', '重力巨像', '耀日龍', '天門神衛', '斷界空鯨']},
+ {"id": "starshore", "name": "星瀾裂岸", "min": 151, "max": 160, "icon": "🌠", "continent": "sky", "names": ["星冠海葵靈", "月貝寄居蟹", "彗鰭海蛇", "星帆魔魟", "珊甲巨海象", "潮槍海巫", "星渦螺靈", "星座獵鯊", "六臂珠衛", "星冠玄潮龜"]},
+ {"id": "oathwood", "name": "古誓森庭", "min": 161, "max": 170, "icon": "🌳", "continent": "sky", "names": ["橡實符靈", "苔甲聖蟲", "銀荊月兔", "翡翠森貓", "樹甲獠豬", "古誓梟巫", "荊刃螳侍", "翠枝半人馬", "符紋巨熊", "千誓古木衛"]},
+ {"id": "nightclock", "name": "永夜時庭", "min": 171, "max": 180, "icon": "🕰️", "continent": "sky", "names": ["時沙幽靈", "鑰紋時蛾", "擺錘夜蝠", "黑鏡機蛛", "銅羽刻鴉", "刻刃行刑者", "提燈時鐮使", "鏡鎧守衛", "永夜獅身獸", "星軌齒輪泰坦"]},
+ {"id": "sungrave", "name": "曜龍葬原", "min": 181, "max": 190, "icon": "🐲", "continent": "sky", "names": ["燼甲聖蟲", "曜骨火蜥", "灰冠骨鷲", "灰鬃骨鬣犬", "龍墓骨蠍", "焰骨龍犬", "鎏金誓矛亡衛", "黑曜骨飛龍", "曜骨猛瑪", "骸甲龍巨像"]},
+ {"id": "worldroot", "name": "界源天穹", "min": 191, "max": 200, "icon": "🌌", "continent": "sky", "names": ["界芽靈", "星稜蟬", "星雲幼鹿", "翼根幻狐", "虛蓮靈蛇", "界根先知", "六翼珠衛", "星座聖角使", "群星翼獅", "界源古樹衛"]}
 ];
 export const worldMonsterArt=level=>{const zone=ZONES.find(z=>level>=z.min&&level<=z.max);return zone?{file:`monsters-${zone.id}`,format:level>=101?'webp':'png',cols:5,rows:2,index:level-zone.min}:null;};
 export const WORLD_MONSTERS=ZONES.flatMap(zone=>zone.names.map((name,i)=>{const level=zone.min+i,id=`world_${level}`,elite=level===zone.max,novice=level<=50;return {id,level,map:zone.id,name,icon:zone.icon,role:'attack',roleName:elite?'區域精英':'敵對生物',boss:false,elite,novice,...(novice?noviceMonsterStats(level,elite):normalMonsterStats(level,elite)),gold:Math.round(2+level*.35),drops:level<=10?['red_small','blue_small','scrap']:level<=20?['red_small','blue_small','red_mid','herb']:level<=30?['red_mid','blue_mid','ore']:level<=40?['red_mid','blue_mid','red_large','crystal']:['red_large','blue_large','crystal','relic']};}));

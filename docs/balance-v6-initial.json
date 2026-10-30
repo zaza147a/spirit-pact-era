@@ -1,0 +1,3694 @@
+{
+  "version": "6.0.0",
+  "seconds": 120,
+  "seeds": [
+    42,
+    137,
+    731
+  ],
+  "sourceDigest": "0b8611f878966b44d450e8e973131dc41efc8517ca80694b6d21bb37fe3ae705",
+  "recipeDigest": "d06cd8cfecea28bf1444a712b95de1a1c8e5e75a8a594e17b97b14559f61f4a1",
+  "runCount": 2460,
+  "method": "Real combatTick;120seconds;four real-zone ordinary monsters with immediate replacement, no encounter wait/loot/progression;70thirdJob points with authored priority utility/stance/main/wide/finish. Prior-tier top mythic max legal five regular affixes plus one legal mythic special;gear+legal allocated attributes+prior-region legal-slot card heuristic scaled to coverage;intrinsic level/Job/pet bases are not scaled. All151+ cases use one of6canonical fusiontypes (12visual forms do not change skills/stats). Large potion inventory, survival does not imply sustainable gold income. Card selection is declared heuristic, not exhaustive globalbest. Boss diagnostics use actualboss ATK/DEF but stationary highHP to measure sustainedpressure rather than timedactualbosskill.",
+  "baselines": [
+    {
+      "level": 151,
+      "gearLevel": 150,
+      "coverage": 0.9,
+      "rows": [
+        {
+          "id": "assassin/magic-support",
+          "killsPerMinute": 28.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 6.666666666666667,
+          "ownerDps": 715647.2361111111,
+          "petDps": 305892.5333333333
+        },
+        {
+          "id": "knight/magic-support",
+          "killsPerMinute": 29.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 9.666666666666666,
+          "ownerDps": 938168.9111111112,
+          "petDps": 106327.63055555556
+        },
+        {
+          "id": "knight/attack-support",
+          "killsPerMinute": 29.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14.666666666666666,
+          "ownerDps": 679299.6694444445,
+          "petDps": 376927.55
+        },
+        {
+          "id": "assassin/magic-defense",
+          "killsPerMinute": 29.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 723295.7111111111,
+          "petDps": 339572.15
+        },
+        {
+          "id": "knight/attack-magic",
+          "killsPerMinute": 29.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 11.5,
+          "ownerDps": 939067.3416666667,
+          "petDps": 118357.04444444443
+        },
+        {
+          "id": "assassin/attack-support",
+          "killsPerMinute": 29.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 15.5,
+          "ownerDps": 767880.3472222221,
+          "petDps": 300995.1111111111
+        },
+        {
+          "id": "monk/magic-defense",
+          "killsPerMinute": 29.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 8.166666666666666,
+          "ownerDps": 714470.5361111112,
+          "petDps": 341688.31666666665
+        },
+        {
+          "id": "monk/magic-support",
+          "killsPerMinute": 29.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 22.333333333333332,
+          "ownerDps": 723895.2111111111,
+          "petDps": 327731.86111111107
+        },
+        {
+          "id": "assassin/attack-magic",
+          "killsPerMinute": 30,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 8.666666666666666,
+          "ownerDps": 708949.997222222,
+          "petDps": 358781.3722222222
+        },
+        {
+          "id": "monk/attack-magic",
+          "killsPerMinute": 30,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 23.666666666666668,
+          "ownerDps": 706972.8333333334,
+          "petDps": 361949.10555555555
+        },
+        {
+          "id": "assassin/attack-defense",
+          "killsPerMinute": 30.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.166666666666667,
+          "ownerDps": 772177.4583333334,
+          "petDps": 300042.275
+        },
+        {
+          "id": "knight/attack-defense",
+          "killsPerMinute": 30.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 721263.9416666668,
+          "petDps": 363719.94444444444
+        },
+        {
+          "id": "knight/magic-defense",
+          "killsPerMinute": 30.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.1666666666666665,
+          "ownerDps": 962024.8333333334,
+          "petDps": 118678.13888888888
+        },
+        {
+          "id": "rogue/magic-support",
+          "killsPerMinute": 30.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14.5,
+          "ownerDps": 743192.0611111112,
+          "petDps": 344069.7583333333
+        },
+        {
+          "id": "crusader/magic-support",
+          "killsPerMinute": 31,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 820534.5222222222,
+          "petDps": 295242.45
+        },
+        {
+          "id": "priest/magic-support",
+          "killsPerMinute": 31.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.833333333333333,
+          "ownerDps": 770900.75,
+          "petDps": 341543.99166666664
+        },
+        {
+          "id": "sage/magic-defense",
+          "killsPerMinute": 31.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 43,
+          "ownerDps": 1043779.8527777778,
+          "petDps": 91427.28611111111
+        },
+        {
+          "id": "rogue/magic-defense",
+          "killsPerMinute": 31.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 7.833333333333333,
+          "ownerDps": 747309.4166666666,
+          "petDps": 377381.5416666667
+        },
+        {
+          "id": "performer/magic-support",
+          "killsPerMinute": 32,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 54,
+          "ownerDps": 733176.9333333332,
+          "petDps": 433895.5111111111
+        },
+        {
+          "id": "rogue/attack-defense",
+          "killsPerMinute": 32.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.3333333333333335,
+          "ownerDps": 950772.2916666666,
+          "petDps": 189764.91111111114
+        },
+        {
+          "id": "rogue/attack-support",
+          "killsPerMinute": 32.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 15.833333333333334,
+          "ownerDps": 923027.3777777777,
+          "petDps": 212877.25833333333
+        },
+        {
+          "id": "knight/defense-support",
+          "killsPerMinute": 32.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1060182.4527777778,
+          "petDps": 88338.78055555555
+        },
+        {
+          "id": "sage/attack-magic",
+          "killsPerMinute": 32.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 57.333333333333336,
+          "ownerDps": 1039495.5388888889,
+          "petDps": 105445.22500000002
+        },
+        {
+          "id": "rogue/attack-magic",
+          "killsPerMinute": 32.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 16.5,
+          "ownerDps": 745257.9249999999,
+          "petDps": 408617.8361111111
+        },
+        {
+          "id": "sage/magic-support",
+          "killsPerMinute": 32.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 56.166666666666664,
+          "ownerDps": 1058757.6083333334,
+          "petDps": 74343.10555555555
+        },
+        {
+          "id": "hunter/attack-defense",
+          "killsPerMinute": 32.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 10.333333333333334,
+          "ownerDps": 1000046.3027777778,
+          "petDps": 141039.48611111112
+        },
+        {
+          "id": "hunter/attack-support",
+          "killsPerMinute": 32.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 25,
+          "ownerDps": 975187.225,
+          "petDps": 173529.36944444446
+        },
+        {
+          "id": "sage/defense-support",
+          "killsPerMinute": 32.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1061274.5916666668,
+          "petDps": 78370.07222222221
+        },
+        {
+          "id": "hunter/defense-support",
+          "killsPerMinute": 32.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 992758.1749999999,
+          "petDps": 173292.65
+        },
+        {
+          "id": "priest/magic-defense",
+          "killsPerMinute": 33,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 808372.2861111112,
+          "petDps": 380100.10555555555
+        },
+        {
+          "id": "monk/attack-defense",
+          "killsPerMinute": 33.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.6666666666666667,
+          "ownerDps": 1026034.5055555556,
+          "petDps": 142098.08333333334
+        },
+        {
+          "id": "priest/attack-magic",
+          "killsPerMinute": 33.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.833333333333333,
+          "ownerDps": 797785.5416666666,
+          "petDps": 390211.14999999997
+        },
+        {
+          "id": "wizard/magic-support",
+          "killsPerMinute": 33.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 56.5,
+          "ownerDps": 1176114.2222222222,
+          "petDps": 20211.344444444447
+        },
+        {
+          "id": "wizard/magic-defense",
+          "killsPerMinute": 33.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 33.166666666666664,
+          "ownerDps": 1167638.888888889,
+          "petDps": 30860.980555555554
+        },
+        {
+          "id": "priest/attack-defense",
+          "killsPerMinute": 34,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1054134.513888889,
+          "petDps": 129443.28055555555
+        },
+        {
+          "id": "wizard/attack-magic",
+          "killsPerMinute": 34.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 58.666666666666664,
+          "ownerDps": 1166854.7944444446,
+          "petDps": 44143.53333333333
+        },
+        {
+          "id": "sage/attack-defense",
+          "killsPerMinute": 34.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 21.5,
+          "ownerDps": 1059920.425,
+          "petDps": 138424.70555555556
+        },
+        {
+          "id": "assassin/defense-support",
+          "killsPerMinute": 34.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 902682.9416666668,
+          "petDps": 322781.8027777778
+        },
+        {
+          "id": "rogue/defense-support",
+          "killsPerMinute": 34.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1031678.5472222222,
+          "petDps": 184089.8361111111
+        },
+        {
+          "id": "crusader/attack-magic",
+          "killsPerMinute": 34.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 817615.2194444444,
+          "petDps": 396674.2805555556
+        },
+        {
+          "id": "crusader/magic-defense",
+          "killsPerMinute": 34.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 858216.5555555555,
+          "petDps": 376281.875
+        },
+        {
+          "id": "crusader/attack-support",
+          "killsPerMinute": 34.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 955655.6083333334,
+          "petDps": 268595.4027777778
+        },
+        {
+          "id": "wizard/attack-support",
+          "killsPerMinute": 35,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 25.333333333333332,
+          "ownerDps": 1160935.6583333332,
+          "petDps": 89828.20000000001
+        },
+        {
+          "id": "sage/attack-support",
+          "killsPerMinute": 35,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14,
+          "ownerDps": 1035718.488888889,
+          "petDps": 190646.99722222224
+        },
+        {
+          "id": "performer/magic-defense",
+          "killsPerMinute": 35,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 29.333333333333332,
+          "ownerDps": 739442.9416666665,
+          "petDps": 493839.0833333333
+        },
+        {
+          "id": "priest/attack-support",
+          "killsPerMinute": 35.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.3333333333333333,
+          "ownerDps": 1003034.1722222222,
+          "petDps": 239046.3361111111
+        },
+        {
+          "id": "hunter/magic-support",
+          "killsPerMinute": 35.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 24.5,
+          "ownerDps": 785137.6194444444,
+          "petDps": 467376.7111111111
+        },
+        {
+          "id": "performer/attack-magic",
+          "killsPerMinute": 35.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 55.5,
+          "ownerDps": 733661.025,
+          "petDps": 544881.4722222222
+        },
+        {
+          "id": "wizard/attack-defense",
+          "killsPerMinute": 35.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 15.333333333333334,
+          "ownerDps": 1196900.9972222222,
+          "petDps": 66679.09999999999
+        },
+        {
+          "id": "wizard/defense-support",
+          "killsPerMinute": 35.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1199906.7055555556,
+          "petDps": 58680.76111111111
+        },
+        {
+          "id": "crusader/defense-support",
+          "killsPerMinute": 36,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1063563.0694444443,
+          "petDps": 198862.9611111111
+        },
+        {
+          "id": "performer/attack-defense",
+          "killsPerMinute": 36.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14.333333333333334,
+          "ownerDps": 1049056.2416666667,
+          "petDps": 243591.4611111111
+        },
+        {
+          "id": "performer/defense-support",
+          "killsPerMinute": 36.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1050613.5,
+          "petDps": 253234.46388888886
+        },
+        {
+          "id": "priest/defense-support",
+          "killsPerMinute": 37.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1099461.4722222222,
+          "petDps": 206983.39444444445
+        },
+        {
+          "id": "hunter/magic-defense",
+          "killsPerMinute": 37.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 9.5,
+          "ownerDps": 821769.8194444444,
+          "petDps": 509839.0111111111
+        },
+        {
+          "id": "performer/attack-support",
+          "killsPerMinute": 37.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 23,
+          "ownerDps": 1064785.6083333332,
+          "petDps": 255137.96944444443
+        },
+        {
+          "id": "monk/defense-support",
+          "killsPerMinute": 37.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1149143.2833333334,
+          "petDps": 188116.00555555554
+        },
+        {
+          "id": "monk/attack-support",
+          "killsPerMinute": 37.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 13.5,
+          "ownerDps": 1141002.8499999999,
+          "petDps": 205015.5611111111
+        },
+        {
+          "id": "hunter/attack-magic",
+          "killsPerMinute": 37.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 26.666666666666668,
+          "ownerDps": 799168.0277777779,
+          "petDps": 534371.1555555556
+        },
+        {
+          "id": "crusader/attack-defense",
+          "killsPerMinute": 38.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 1051529.0555555557,
+          "petDps": 297351.4583333334
+        }
+      ],
+      "gap": 0.3529411764705883,
+      "passed": false,
+      "alive": 180,
+      "total": 180,
+      "meanKillsPerMinute": 33.34166666666667,
+      "meanPotionsPerMinute": 14.686111111111112
+    },
+    {
+      "level": 161,
+      "gearLevel": 150,
+      "coverage": 0.9,
+      "rows": [
+        {
+          "id": "crusader/magic-support",
+          "killsPerMinute": 25.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 827018.1555555556,
+          "petDps": 299636.30555555556
+        },
+        {
+          "id": "rogue/magic-support",
+          "killsPerMinute": 25.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 16.666666666666668,
+          "ownerDps": 753613.9222222222,
+          "petDps": 348749.28055555554
+        },
+        {
+          "id": "rogue/attack-support",
+          "killsPerMinute": 26.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 16.666666666666668,
+          "ownerDps": 925320.6805555555,
+          "petDps": 214252.95833333334
+        },
+        {
+          "id": "rogue/magic-defense",
+          "killsPerMinute": 26.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 9.833333333333334,
+          "ownerDps": 767726.761111111,
+          "petDps": 388231.69444444444
+        },
+        {
+          "id": "rogue/attack-magic",
+          "killsPerMinute": 26.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 18.833333333333332,
+          "ownerDps": 744858.2111111111,
+          "petDps": 409507.075
+        },
+        {
+          "id": "rogue/attack-defense",
+          "killsPerMinute": 26.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3,
+          "ownerDps": 953945.7250000001,
+          "petDps": 191215.18055555553
+        },
+        {
+          "id": "crusader/attack-magic",
+          "killsPerMinute": 28,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 818158.3888888889,
+          "petDps": 397684.6638888889
+        },
+        {
+          "id": "rogue/defense-support",
+          "killsPerMinute": 28.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1030904.5638888889,
+          "petDps": 188730.69722222222
+        },
+        {
+          "id": "crusader/attack-support",
+          "killsPerMinute": 28.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 958854.3083333332,
+          "petDps": 279631.0833333333
+        },
+        {
+          "id": "crusader/magic-defense",
+          "killsPerMinute": 28.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 861356.2083333334,
+          "petDps": 378107.77777777775
+        },
+        {
+          "id": "crusader/defense-support",
+          "killsPerMinute": 30.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1082581.7499999998,
+          "petDps": 204136.83333333334
+        },
+        {
+          "id": "wizard/magic-defense",
+          "killsPerMinute": 30.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 36.166666666666664,
+          "ownerDps": 1312124.411111111,
+          "petDps": 34078.43611111111
+        },
+        {
+          "id": "wizard/magic-support",
+          "killsPerMinute": 30.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 60.833333333333336,
+          "ownerDps": 1312034.8722222222,
+          "petDps": 21684.258333333335
+        },
+        {
+          "id": "crusader/attack-defense",
+          "killsPerMinute": 31.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1049364.8583333334,
+          "petDps": 311591.2138888889
+        },
+        {
+          "id": "wizard/attack-magic",
+          "killsPerMinute": 31.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 62.166666666666664,
+          "ownerDps": 1339778.7333333334,
+          "petDps": 49242.76944444445
+        },
+        {
+          "id": "monk/magic-support",
+          "killsPerMinute": 32,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 25.166666666666668,
+          "ownerDps": 953337.8222222222,
+          "petDps": 429130.43055555556
+        },
+        {
+          "id": "wizard/defense-support",
+          "killsPerMinute": 32.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1325229.161111111,
+          "petDps": 63609.87777777778
+        },
+        {
+          "id": "monk/magic-defense",
+          "killsPerMinute": 32.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 10.666666666666666,
+          "ownerDps": 950233.136111111,
+          "petDps": 457554.56944444444
+        },
+        {
+          "id": "knight/magic-support",
+          "killsPerMinute": 32.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 12,
+          "ownerDps": 1275117.7833333334,
+          "petDps": 140190.61944444443
+        },
+        {
+          "id": "wizard/attack-defense",
+          "killsPerMinute": 33,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 17,
+          "ownerDps": 1355966.2944444446,
+          "petDps": 69973.4361111111
+        },
+        {
+          "id": "assassin/magic-support",
+          "killsPerMinute": 33,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 7.166666666666667,
+          "ownerDps": 966147.75,
+          "petDps": 474725.76111111115
+        },
+        {
+          "id": "knight/attack-defense",
+          "killsPerMinute": 33.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.3333333333333335,
+          "ownerDps": 973889.1527777779,
+          "petDps": 473077.5611111112
+        },
+        {
+          "id": "monk/attack-magic",
+          "killsPerMinute": 33.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 25.333333333333332,
+          "ownerDps": 948195.736111111,
+          "petDps": 488039.6277777778
+        },
+        {
+          "id": "knight/attack-magic",
+          "killsPerMinute": 33.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 13.5,
+          "ownerDps": 1288645.7666666666,
+          "petDps": 154219.38333333333
+        },
+        {
+          "id": "knight/attack-support",
+          "killsPerMinute": 33.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 16.333333333333332,
+          "ownerDps": 952916.5777777778,
+          "petDps": 512006.6722222222
+        },
+        {
+          "id": "wizard/attack-support",
+          "killsPerMinute": 33.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 26.833333333333332,
+          "ownerDps": 1344791.05,
+          "petDps": 107652.75555555556
+        },
+        {
+          "id": "monk/attack-defense",
+          "killsPerMinute": 34,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.3333333333333335,
+          "ownerDps": 1315292.4944444445,
+          "petDps": 173079.6083333333
+        },
+        {
+          "id": "knight/magic-defense",
+          "killsPerMinute": 34.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.5,
+          "ownerDps": 1316701.0972222222,
+          "petDps": 157144.34722222222
+        },
+        {
+          "id": "priest/magic-support",
+          "killsPerMinute": 34.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.666666666666667,
+          "ownerDps": 1039258.3111111112,
+          "petDps": 452856.39444444445
+        },
+        {
+          "id": "assassin/attack-support",
+          "killsPerMinute": 34.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 15.166666666666666,
+          "ownerDps": 1027859.011111111,
+          "petDps": 451239.8277777778
+        },
+        {
+          "id": "assassin/magic-defense",
+          "killsPerMinute": 34.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 967653.4027777776,
+          "petDps": 524002.6361111111
+        },
+        {
+          "id": "assassin/defense-support",
+          "killsPerMinute": 34.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1302149.7194444444,
+          "petDps": 177065.46944444443
+        },
+        {
+          "id": "assassin/attack-magic",
+          "killsPerMinute": 35,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 9.333333333333334,
+          "ownerDps": 964935.0944444444,
+          "petDps": 553863.3388888888
+        },
+        {
+          "id": "assassin/attack-defense",
+          "killsPerMinute": 35,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.5,
+          "ownerDps": 1077129.1722222222,
+          "petDps": 424937.26944444445
+        },
+        {
+          "id": "priest/attack-magic",
+          "killsPerMinute": 35.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.5,
+          "ownerDps": 1028924.1777777778,
+          "petDps": 498435.1222222222
+        },
+        {
+          "id": "priest/magic-defense",
+          "killsPerMinute": 35.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.8333333333333333,
+          "ownerDps": 1053781.2527777778,
+          "petDps": 489711.89444444445
+        },
+        {
+          "id": "sage/defense-support",
+          "killsPerMinute": 36,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1437571.5083333335,
+          "petDps": 96721.34166666667
+        },
+        {
+          "id": "priest/attack-defense",
+          "killsPerMinute": 36,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1362127.6055555556,
+          "petDps": 162982.5777777778
+        },
+        {
+          "id": "sage/magic-support",
+          "killsPerMinute": 36.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 59.666666666666664,
+          "ownerDps": 1460875.2249999999,
+          "petDps": 96291.64444444445
+        },
+        {
+          "id": "sage/magic-defense",
+          "killsPerMinute": 37.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 44.5,
+          "ownerDps": 1465745.2249999999,
+          "petDps": 122359.86111111111
+        },
+        {
+          "id": "sage/attack-magic",
+          "killsPerMinute": 37.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 60.166666666666664,
+          "ownerDps": 1447121.2555555555,
+          "petDps": 140949.48055555555
+        },
+        {
+          "id": "knight/defense-support",
+          "killsPerMinute": 37.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 1502118.7166666668,
+          "petDps": 116019.12777777779
+        },
+        {
+          "id": "sage/attack-defense",
+          "killsPerMinute": 37.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 24.166666666666668,
+          "ownerDps": 1430756.25,
+          "petDps": 180939.2194444445
+        },
+        {
+          "id": "priest/attack-support",
+          "killsPerMinute": 38,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.6666666666666667,
+          "ownerDps": 1325126.8333333333,
+          "petDps": 307519.56388888886
+        },
+        {
+          "id": "performer/magic-support",
+          "killsPerMinute": 38.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 54.166666666666664,
+          "ownerDps": 1041846.85,
+          "petDps": 609960.8972222223
+        },
+        {
+          "id": "sage/attack-support",
+          "killsPerMinute": 39.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14.166666666666666,
+          "ownerDps": 1439629.4249999998,
+          "petDps": 251529.64444444445
+        },
+        {
+          "id": "performer/magic-defense",
+          "killsPerMinute": 39.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 31.666666666666668,
+          "ownerDps": 1026762.3833333333,
+          "petDps": 679647.7000000001
+        },
+        {
+          "id": "monk/defense-support",
+          "killsPerMinute": 40.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1475360.3499999999,
+          "petDps": 245547.31666666665
+        },
+        {
+          "id": "priest/defense-support",
+          "killsPerMinute": 40.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1462397.55,
+          "petDps": 272455.3388888889
+        },
+        {
+          "id": "monk/attack-support",
+          "killsPerMinute": 40.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14.833333333333334,
+          "ownerDps": 1487740.3277777778,
+          "petDps": 265483.5888888889
+        },
+        {
+          "id": "performer/attack-magic",
+          "killsPerMinute": 41.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 57.833333333333336,
+          "ownerDps": 1028178.0583333335,
+          "petDps": 759258.4472222222
+        },
+        {
+          "id": "performer/attack-defense",
+          "killsPerMinute": 41.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 15.333333333333334,
+          "ownerDps": 1469337.9138888891,
+          "petDps": 323333.98055555555
+        },
+        {
+          "id": "performer/attack-support",
+          "killsPerMinute": 42.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 25.166666666666668,
+          "ownerDps": 1484650.9722222222,
+          "petDps": 341168.2555555556
+        },
+        {
+          "id": "performer/defense-support",
+          "killsPerMinute": 42.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1479174.8999999997,
+          "petDps": 348334.4861111112
+        },
+        {
+          "id": "hunter/attack-support",
+          "killsPerMinute": 44,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 27.166666666666668,
+          "ownerDps": 1618111.6416666666,
+          "petDps": 261596.9916666667
+        },
+        {
+          "id": "hunter/attack-defense",
+          "killsPerMinute": 44.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 12,
+          "ownerDps": 1682756.5666666667,
+          "petDps": 202970.26111111112
+        },
+        {
+          "id": "hunter/defense-support",
+          "killsPerMinute": 44.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 1637571.0555555557,
+          "petDps": 277025.44444444444
+        },
+        {
+          "id": "hunter/magic-support",
+          "killsPerMinute": 49.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 26,
+          "ownerDps": 1329579.5277777778,
+          "petDps": 781284.3222222222
+        },
+        {
+          "id": "hunter/magic-defense",
+          "killsPerMinute": 51.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 10.666666666666666,
+          "ownerDps": 1348629.3444444444,
+          "petDps": 827658.511111111
+        },
+        {
+          "id": "hunter/attack-magic",
+          "killsPerMinute": 51.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 30.833333333333332,
+          "ownerDps": 1333192.7527777778,
+          "petDps": 878648.1694444445
+        }
+      ],
+      "gap": 1,
+      "passed": false,
+      "alive": 180,
+      "total": 180,
+      "meanKillsPerMinute": 35.39722222222223,
+      "meanPotionsPerMinute": 15.849999999999996
+    },
+    {
+      "level": 171,
+      "gearLevel": 170,
+      "coverage": 0.9,
+      "rows": [
+        {
+          "id": "rogue/magic-support",
+          "killsPerMinute": 15,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.833333333333333,
+          "ownerDps": 1046279.0861111111,
+          "petDps": 498377.0805555556
+        },
+        {
+          "id": "rogue/attack-support",
+          "killsPerMinute": 16,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 7.5,
+          "ownerDps": 1302897.45,
+          "petDps": 328584.8638888889
+        },
+        {
+          "id": "rogue/attack-magic",
+          "killsPerMinute": 16.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 6.666666666666667,
+          "ownerDps": 1056546.2944444444,
+          "petDps": 592506.2333333333
+        },
+        {
+          "id": "rogue/magic-defense",
+          "killsPerMinute": 16.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.6666666666666665,
+          "ownerDps": 1087258.588888889,
+          "petDps": 568684.9055555555
+        },
+        {
+          "id": "crusader/magic-support",
+          "killsPerMinute": 16.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1273788.1305555555,
+          "petDps": 463261.10833333334
+        },
+        {
+          "id": "rogue/attack-defense",
+          "killsPerMinute": 16.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1387259.525,
+          "petDps": 310099.6972222222
+        },
+        {
+          "id": "rogue/defense-support",
+          "killsPerMinute": 18.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1555846.1527777778,
+          "petDps": 279347.9527777778
+        },
+        {
+          "id": "crusader/magic-defense",
+          "killsPerMinute": 19,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1336515.0833333333,
+          "petDps": 592718.1333333333
+        },
+        {
+          "id": "crusader/attack-magic",
+          "killsPerMinute": 19.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1306476.925,
+          "petDps": 634693.5972222224
+        },
+        {
+          "id": "crusader/defense-support",
+          "killsPerMinute": 19.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 1668203.8999999997,
+          "petDps": 333240.7833333334
+        },
+        {
+          "id": "assassin/magic-support",
+          "killsPerMinute": 20,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.6666666666666665,
+          "ownerDps": 1374967.227777778,
+          "petDps": 692552.6861111111
+        },
+        {
+          "id": "crusader/attack-support",
+          "killsPerMinute": 20.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1593143.7972222222,
+          "petDps": 474149.14444444445
+        },
+        {
+          "id": "crusader/attack-defense",
+          "killsPerMinute": 20.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1636994.6138888889,
+          "petDps": 480742.5027777778
+        },
+        {
+          "id": "assassin/magic-defense",
+          "killsPerMinute": 20.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1380526.8361111109,
+          "petDps": 773409.1777777778
+        },
+        {
+          "id": "assassin/attack-magic",
+          "killsPerMinute": 21.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.5,
+          "ownerDps": 1378316.0916666668,
+          "petDps": 808566.1527777779
+        },
+        {
+          "id": "assassin/attack-support",
+          "killsPerMinute": 21.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 7.333333333333333,
+          "ownerDps": 1480219.7194444444,
+          "petDps": 654597.6833333335
+        },
+        {
+          "id": "assassin/defense-support",
+          "killsPerMinute": 21.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1890065.2638888888,
+          "petDps": 289621.7611111111
+        },
+        {
+          "id": "assassin/attack-defense",
+          "killsPerMinute": 21.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1542353.925,
+          "petDps": 652994.3416666667
+        },
+        {
+          "id": "wizard/magic-defense",
+          "killsPerMinute": 23,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 26.5,
+          "ownerDps": 2254716.080555556,
+          "petDps": 63483.86388888889
+        },
+        {
+          "id": "wizard/magic-support",
+          "killsPerMinute": 23.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 44,
+          "ownerDps": 2322967.844444445,
+          "petDps": 39204.74722222222
+        },
+        {
+          "id": "performer/magic-support",
+          "killsPerMinute": 23.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 38.5,
+          "ownerDps": 1470339.6777777777,
+          "petDps": 879222.2555555556
+        },
+        {
+          "id": "wizard/defense-support",
+          "killsPerMinute": 23.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 2298535.244444445,
+          "petDps": 117932.40000000001
+        },
+        {
+          "id": "wizard/attack-defense",
+          "killsPerMinute": 23.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.666666666666667,
+          "ownerDps": 2322873.233333333,
+          "petDps": 125068.28611111111
+        },
+        {
+          "id": "wizard/attack-magic",
+          "killsPerMinute": 24,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 44.166666666666664,
+          "ownerDps": 2329419.836111111,
+          "petDps": 88664.575
+        },
+        {
+          "id": "performer/magic-defense",
+          "killsPerMinute": 24.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 20.5,
+          "ownerDps": 1474404.1527777778,
+          "petDps": 1011778.1388888889
+        },
+        {
+          "id": "wizard/attack-support",
+          "killsPerMinute": 25,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 11.833333333333334,
+          "ownerDps": 2377076.6,
+          "petDps": 202946.0555555556
+        },
+        {
+          "id": "performer/attack-magic",
+          "killsPerMinute": 25.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 39.833333333333336,
+          "ownerDps": 1482038.2472222224,
+          "petDps": 1117477.0666666667
+        },
+        {
+          "id": "performer/attack-support",
+          "killsPerMinute": 26.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 10.833333333333334,
+          "ownerDps": 2133680.6027777777,
+          "petDps": 514097.64166666666
+        },
+        {
+          "id": "performer/attack-defense",
+          "killsPerMinute": 26.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.6666666666666665,
+          "ownerDps": 2106420.9222222227,
+          "petDps": 512687.94444444444
+        },
+        {
+          "id": "performer/defense-support",
+          "killsPerMinute": 27,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 2096112.125,
+          "petDps": 576623.8361111111
+        },
+        {
+          "id": "hunter/attack-support",
+          "killsPerMinute": 27.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 13.5,
+          "ownerDps": 2353613.966666667,
+          "petDps": 399716.175
+        },
+        {
+          "id": "hunter/attack-defense",
+          "killsPerMinute": 27.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 2408107.3333333335,
+          "petDps": 329015.56944444444
+        },
+        {
+          "id": "hunter/defense-support",
+          "killsPerMinute": 30,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 2553210.3833333333,
+          "petDps": 444919.9083333334
+        },
+        {
+          "id": "monk/magic-support",
+          "killsPerMinute": 30.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 11.5,
+          "ownerDps": 2040179.0138888888,
+          "petDps": 979520.8583333334
+        },
+        {
+          "id": "hunter/magic-support",
+          "killsPerMinute": 30.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 12.166666666666666,
+          "ownerDps": 1883808.0750000002,
+          "petDps": 1125678.022222222
+        },
+        {
+          "id": "monk/magic-defense",
+          "killsPerMinute": 30.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.6666666666666665,
+          "ownerDps": 2057676.9944444445,
+          "petDps": 1045938.3472222224
+        },
+        {
+          "id": "monk/attack-magic",
+          "killsPerMinute": 31.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 13,
+          "ownerDps": 2082940.5194444444,
+          "petDps": 1127499.1805555557
+        },
+        {
+          "id": "hunter/attack-magic",
+          "killsPerMinute": 31.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14,
+          "ownerDps": 1889877.8916666668,
+          "petDps": 1271126.9749999999
+        },
+        {
+          "id": "hunter/magic-defense",
+          "killsPerMinute": 31.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.1666666666666665,
+          "ownerDps": 1925833.102777778,
+          "petDps": 1215029.2388888889
+        },
+        {
+          "id": "priest/magic-support",
+          "killsPerMinute": 33.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 2378643.0222222223,
+          "petDps": 1022559.4277777778
+        },
+        {
+          "id": "knight/attack-support",
+          "killsPerMinute": 33.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 7.333333333333333,
+          "ownerDps": 2267009.8000000003,
+          "petDps": 1193286.3555555556
+        },
+        {
+          "id": "knight/magic-support",
+          "killsPerMinute": 34,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.6666666666666665,
+          "ownerDps": 3060382.261111111,
+          "petDps": 336536.2611111111
+        },
+        {
+          "id": "monk/attack-defense",
+          "killsPerMinute": 34.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 3028621.216666667,
+          "petDps": 404083.3944444444
+        },
+        {
+          "id": "knight/attack-magic",
+          "killsPerMinute": 35.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.333333333333333,
+          "ownerDps": 3138333.988888889,
+          "petDps": 372079.06666666665
+        },
+        {
+          "id": "priest/attack-magic",
+          "killsPerMinute": 35.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 2391697.4694444444,
+          "petDps": 1140363.486111111
+        },
+        {
+          "id": "knight/attack-defense",
+          "killsPerMinute": 35.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 2436058.527777778,
+          "petDps": 1145612.638888889
+        },
+        {
+          "id": "knight/magic-defense",
+          "killsPerMinute": 35.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 3151649.847222222,
+          "petDps": 383897.0888888889
+        },
+        {
+          "id": "priest/attack-defense",
+          "killsPerMinute": 35.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3406960.169444444,
+          "petDps": 154048.75
+        },
+        {
+          "id": "priest/magic-defense",
+          "killsPerMinute": 36.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.16666666666666666,
+          "ownerDps": 2484929.475,
+          "petDps": 1145010.6583333334
+        },
+        {
+          "id": "priest/attack-support",
+          "killsPerMinute": 37.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3179633.608333333,
+          "petDps": 580504.6527777779
+        },
+        {
+          "id": "sage/magic-support",
+          "killsPerMinute": 38.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 43.666666666666664,
+          "ownerDps": 3632702.2361111115,
+          "petDps": 252127.7888888889
+        },
+        {
+          "id": "sage/defense-support",
+          "killsPerMinute": 38.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3594585.4805555553,
+          "petDps": 244731.07499999998
+        },
+        {
+          "id": "monk/attack-support",
+          "killsPerMinute": 38.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 6.833333333333333,
+          "ownerDps": 3273603.5083333333,
+          "petDps": 597374.2277777778
+        },
+        {
+          "id": "sage/magic-defense",
+          "killsPerMinute": 39.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 32.833333333333336,
+          "ownerDps": 3620357.436111111,
+          "petDps": 312243.2388888889
+        },
+        {
+          "id": "monk/defense-support",
+          "killsPerMinute": 39.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3266672.9055555556,
+          "petDps": 643843.9472222222
+        },
+        {
+          "id": "sage/attack-magic",
+          "killsPerMinute": 39.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 43.666666666666664,
+          "ownerDps": 3593913.6722222217,
+          "petDps": 354370.9194444444
+        },
+        {
+          "id": "knight/defense-support",
+          "killsPerMinute": 39.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 3678366.913888889,
+          "petDps": 313384.02222222224
+        },
+        {
+          "id": "sage/attack-defense",
+          "killsPerMinute": 39.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14.333333333333334,
+          "ownerDps": 3519674.0833333335,
+          "petDps": 427351.7972222222
+        },
+        {
+          "id": "priest/defense-support",
+          "killsPerMinute": 40.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3383716.613888889,
+          "petDps": 689977.8722222223
+        },
+        {
+          "id": "sage/attack-support",
+          "killsPerMinute": 41.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.5,
+          "ownerDps": 3513343.775,
+          "petDps": 585980.5
+        }
+      ],
+      "gap": 1.7555555555555555,
+      "passed": false,
+      "alive": 180,
+      "total": 180,
+      "meanKillsPerMinute": 28.141666666666666,
+      "meanPotionsPerMinute": 8.897222222222224
+    },
+    {
+      "level": 181,
+      "gearLevel": 170,
+      "coverage": 0.9,
+      "rows": [
+        {
+          "id": "rogue/magic-support",
+          "killsPerMinute": 12.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 7.5,
+          "ownerDps": 1073614.3666666667,
+          "petDps": 510489.35833333334
+        },
+        {
+          "id": "rogue/attack-magic",
+          "killsPerMinute": 13.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 7.833333333333333,
+          "ownerDps": 1065057.1944444443,
+          "petDps": 602229.363888889
+        },
+        {
+          "id": "rogue/attack-support",
+          "killsPerMinute": 13.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 8,
+          "ownerDps": 1326495.7333333332,
+          "petDps": 330297.39722222224
+        },
+        {
+          "id": "rogue/magic-defense",
+          "killsPerMinute": 13.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.1666666666666665,
+          "ownerDps": 1103188.6916666667,
+          "petDps": 578769.5166666667
+        },
+        {
+          "id": "rogue/attack-defense",
+          "killsPerMinute": 13.833333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1396596.9222222222,
+          "petDps": 312401.69722222217
+        },
+        {
+          "id": "crusader/magic-support",
+          "killsPerMinute": 14.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 1282467.3,
+          "petDps": 467608.9111111111
+        },
+        {
+          "id": "rogue/defense-support",
+          "killsPerMinute": 15.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1552703.361111111,
+          "petDps": 293566.7583333333
+        },
+        {
+          "id": "crusader/attack-magic",
+          "killsPerMinute": 15.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1300495.7027777778,
+          "petDps": 637248.2694444444
+        },
+        {
+          "id": "crusader/magic-defense",
+          "killsPerMinute": 15.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1345068.802777778,
+          "petDps": 596275.2083333334
+        },
+        {
+          "id": "crusader/defense-support",
+          "killsPerMinute": 16.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 1693135.5611111112,
+          "petDps": 337879.35000000003
+        },
+        {
+          "id": "crusader/attack-support",
+          "killsPerMinute": 17.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1616128.675,
+          "petDps": 476726
+        },
+        {
+          "id": "crusader/attack-defense",
+          "killsPerMinute": 17.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1676219.5694444443,
+          "petDps": 498531.35555555555
+        },
+        {
+          "id": "assassin/magic-defense",
+          "killsPerMinute": 17.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1386566.4000000001,
+          "petDps": 779917.6749999999
+        },
+        {
+          "id": "assassin/magic-support",
+          "killsPerMinute": 17.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.3333333333333335,
+          "ownerDps": 1401110.3083333333,
+          "petDps": 706152.1888888888
+        },
+        {
+          "id": "assassin/attack-support",
+          "killsPerMinute": 17.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 8.166666666666666,
+          "ownerDps": 1500030.8666666665,
+          "petDps": 667987.2083333334
+        },
+        {
+          "id": "assassin/defense-support",
+          "killsPerMinute": 17.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1905164.2333333332,
+          "petDps": 285486.74166666664
+        },
+        {
+          "id": "assassin/attack-magic",
+          "killsPerMinute": 18,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.166666666666667,
+          "ownerDps": 1401364.3055555557,
+          "petDps": 824578.9166666666
+        },
+        {
+          "id": "assassin/attack-defense",
+          "killsPerMinute": 18.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 1547728.9555555556,
+          "petDps": 658683.3027777778
+        },
+        {
+          "id": "wizard/magic-support",
+          "killsPerMinute": 19.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 45.833333333333336,
+          "ownerDps": 2383173.2944444446,
+          "petDps": 41127.22777777778
+        },
+        {
+          "id": "performer/magic-support",
+          "killsPerMinute": 20,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 39.5,
+          "ownerDps": 1496762.8944444444,
+          "petDps": 898899.0083333334
+        },
+        {
+          "id": "wizard/attack-magic",
+          "killsPerMinute": 20.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 46,
+          "ownerDps": 2373725.4666666663,
+          "petDps": 91277.60277777778
+        },
+        {
+          "id": "wizard/defense-support",
+          "killsPerMinute": 20.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 2392755.4305555555,
+          "petDps": 122725.4027777778
+        },
+        {
+          "id": "wizard/magic-defense",
+          "killsPerMinute": 20.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 27.833333333333332,
+          "ownerDps": 2441771.6805555555,
+          "petDps": 68026.74722222223
+        },
+        {
+          "id": "performer/magic-defense",
+          "killsPerMinute": 20.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 22.333333333333332,
+          "ownerDps": 1497425.263888889,
+          "petDps": 1029097.5333333332
+        },
+        {
+          "id": "wizard/attack-defense",
+          "killsPerMinute": 21.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.666666666666667,
+          "ownerDps": 2459442.6666666665,
+          "petDps": 128988.34444444445
+        },
+        {
+          "id": "wizard/attack-support",
+          "killsPerMinute": 21.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 12.666666666666666,
+          "ownerDps": 2381820.0444444446,
+          "petDps": 215070.85555555555
+        },
+        {
+          "id": "performer/attack-magic",
+          "killsPerMinute": 21.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 42.666666666666664,
+          "ownerDps": 1480251.9916666665,
+          "petDps": 1117519.3416666668
+        },
+        {
+          "id": "performer/attack-defense",
+          "killsPerMinute": 21.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.8333333333333335,
+          "ownerDps": 2123427.0638888893,
+          "petDps": 517071.1722222222
+        },
+        {
+          "id": "performer/defense-support",
+          "killsPerMinute": 22.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 2115515.283333333,
+          "petDps": 582646.6083333334
+        },
+        {
+          "id": "performer/attack-support",
+          "killsPerMinute": 22.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 11.5,
+          "ownerDps": 2160577.452777778,
+          "petDps": 521837.6333333333
+        },
+        {
+          "id": "hunter/attack-support",
+          "killsPerMinute": 22.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 13.666666666666666,
+          "ownerDps": 2348066.1444444447,
+          "petDps": 408869.01388888893
+        },
+        {
+          "id": "hunter/attack-defense",
+          "killsPerMinute": 23.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.1666666666666667,
+          "ownerDps": 2416567.4583333335,
+          "petDps": 331368.47500000003
+        },
+        {
+          "id": "monk/magic-support",
+          "killsPerMinute": 25.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14.166666666666666,
+          "ownerDps": 2073024.7694444444,
+          "petDps": 1030914.0333333333
+        },
+        {
+          "id": "hunter/magic-support",
+          "killsPerMinute": 25.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 13.166666666666666,
+          "ownerDps": 1905142.022222222,
+          "petDps": 1144242.9583333333
+        },
+        {
+          "id": "hunter/defense-support",
+          "killsPerMinute": 25.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 2595313.4583333335,
+          "petDps": 454410.57222222217
+        },
+        {
+          "id": "hunter/attack-magic",
+          "killsPerMinute": 26,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 15.666666666666666,
+          "ownerDps": 1884399.2388888889,
+          "petDps": 1274519.9194444444
+        },
+        {
+          "id": "hunter/magic-defense",
+          "killsPerMinute": 26.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.3333333333333335,
+          "ownerDps": 1948524.9083333334,
+          "petDps": 1230755.522222222
+        },
+        {
+          "id": "monk/magic-defense",
+          "killsPerMinute": 26.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.333333333333333,
+          "ownerDps": 2141784.088888889,
+          "petDps": 1114040.8722222222
+        },
+        {
+          "id": "monk/attack-magic",
+          "killsPerMinute": 27.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 14.333333333333334,
+          "ownerDps": 2130931.1888888893,
+          "petDps": 1174961.6305555555
+        },
+        {
+          "id": "monk/attack-defense",
+          "killsPerMinute": 29.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 3087982.913888889,
+          "petDps": 410788.5
+        },
+        {
+          "id": "knight/magic-defense",
+          "killsPerMinute": 29.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.6666666666666667,
+          "ownerDps": 3237069.5472222217,
+          "petDps": 397406.0083333333
+        },
+        {
+          "id": "knight/attack-magic",
+          "killsPerMinute": 30,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.333333333333333,
+          "ownerDps": 3249118.9444444445,
+          "petDps": 388672.9083333334
+        },
+        {
+          "id": "priest/magic-support",
+          "killsPerMinute": 30.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 2533364.2194444444,
+          "petDps": 1086410.8194444443
+        },
+        {
+          "id": "knight/attack-support",
+          "killsPerMinute": 30.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 7.666666666666667,
+          "ownerDps": 2372375.438888889,
+          "petDps": 1237381.2611111111
+        },
+        {
+          "id": "knight/attack-defense",
+          "killsPerMinute": 30.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 2498153.5083333333,
+          "petDps": 1170044.7333333334
+        },
+        {
+          "id": "knight/magic-support",
+          "killsPerMinute": 30.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.3333333333333335,
+          "ownerDps": 3219448.8944444447,
+          "petDps": 356580.89166666666
+        },
+        {
+          "id": "priest/attack-defense",
+          "killsPerMinute": 30.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3472548.475,
+          "petDps": 164400.33055555556
+        },
+        {
+          "id": "priest/attack-magic",
+          "killsPerMinute": 30.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.1666666666666667,
+          "ownerDps": 2520194.544444444,
+          "petDps": 1196953.7944444446
+        },
+        {
+          "id": "priest/magic-defense",
+          "killsPerMinute": 31.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 2587254.725,
+          "petDps": 1186467.55
+        },
+        {
+          "id": "priest/attack-support",
+          "killsPerMinute": 32.833333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3308580.891666666,
+          "petDps": 627445.6416666667
+        },
+        {
+          "id": "monk/attack-support",
+          "killsPerMinute": 33.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 6.833333333333333,
+          "ownerDps": 3387674.7472222224,
+          "petDps": 623129.6111111111
+        },
+        {
+          "id": "monk/defense-support",
+          "killsPerMinute": 33.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3354360.430555556,
+          "petDps": 660169.4250000002
+        },
+        {
+          "id": "sage/defense-support",
+          "killsPerMinute": 34,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3817627.6472222223,
+          "petDps": 259643.23888888888
+        },
+        {
+          "id": "sage/magic-support",
+          "killsPerMinute": 34.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 47,
+          "ownerDps": 3856038.572222222,
+          "petDps": 265329.4138888889
+        },
+        {
+          "id": "sage/magic-defense",
+          "killsPerMinute": 34.666666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 35.5,
+          "ownerDps": 3820233.766666667,
+          "petDps": 331930.7777777778
+        },
+        {
+          "id": "sage/attack-defense",
+          "killsPerMinute": 35.166666666666664,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 18,
+          "ownerDps": 3691198.1666666665,
+          "petDps": 464693.9166666667
+        },
+        {
+          "id": "knight/defense-support",
+          "killsPerMinute": 35.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 3854930.5833333335,
+          "petDps": 326099.81111111114
+        },
+        {
+          "id": "sage/attack-magic",
+          "killsPerMinute": 35.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 47.333333333333336,
+          "ownerDps": 3835548.544444444,
+          "petDps": 376083.47500000003
+        },
+        {
+          "id": "priest/defense-support",
+          "killsPerMinute": 36.333333333333336,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3602645.322222222,
+          "petDps": 735988.3138888888
+        },
+        {
+          "id": "sage/attack-support",
+          "killsPerMinute": 37,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.666666666666667,
+          "ownerDps": 3769436.816666667,
+          "petDps": 653360.0833333334
+        }
+      ],
+      "gap": 1.96,
+      "passed": false,
+      "alive": 180,
+      "total": 180,
+      "meanKillsPerMinute": 24.20277777777778,
+      "meanPotionsPerMinute": 9.63888888888889
+    },
+    {
+      "level": 191,
+      "gearLevel": 190,
+      "coverage": 0.9,
+      "rows": [
+        {
+          "id": "rogue/magic-support",
+          "killsPerMinute": 9.333333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1927945.0805555556,
+          "petDps": 926232.5444444445
+        },
+        {
+          "id": "rogue/magic-defense",
+          "killsPerMinute": 10.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1964546.1638888891,
+          "petDps": 1044525.7777777779
+        },
+        {
+          "id": "rogue/attack-magic",
+          "killsPerMinute": 10.333333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.1666666666666665,
+          "ownerDps": 1937555.0583333333,
+          "petDps": 1097716.2944444446
+        },
+        {
+          "id": "rogue/attack-defense",
+          "killsPerMinute": 10.333333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2516585.544444444,
+          "petDps": 581308.25
+        },
+        {
+          "id": "rogue/attack-support",
+          "killsPerMinute": 10.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.5,
+          "ownerDps": 2410956.1277777776,
+          "petDps": 609111.9055555556
+        },
+        {
+          "id": "rogue/defense-support",
+          "killsPerMinute": 11.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2752835.9972222224,
+          "petDps": 556593.6805555555
+        },
+        {
+          "id": "crusader/magic-support",
+          "killsPerMinute": 11.833333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 2461090.5027777776,
+          "petDps": 900892.6527777779
+        },
+        {
+          "id": "crusader/magic-defense",
+          "killsPerMinute": 12.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 2548770.0888888887,
+          "petDps": 1136356.1722222222
+        },
+        {
+          "id": "crusader/attack-magic",
+          "killsPerMinute": 12.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 2484653.0055555557,
+          "petDps": 1212905.7750000001
+        },
+        {
+          "id": "assassin/magic-support",
+          "killsPerMinute": 12.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 2471921.9694444444,
+          "petDps": 1253767.2
+        },
+        {
+          "id": "crusader/defense-support",
+          "killsPerMinute": 13,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 3157080.0749999997,
+          "petDps": 643358.6361111111
+        },
+        {
+          "id": "wizard/magic-support",
+          "killsPerMinute": 13.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 32.666666666666664,
+          "ownerDps": 3761763.036111111,
+          "petDps": 82839.16111111111
+        },
+        {
+          "id": "wizard/magic-defense",
+          "killsPerMinute": 13.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 19.166666666666668,
+          "ownerDps": 3802865.7833333337,
+          "petDps": 126799.78333333333
+        },
+        {
+          "id": "assassin/attack-magic",
+          "killsPerMinute": 13.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.1666666666666665,
+          "ownerDps": 2469356.0027777776,
+          "petDps": 1458790.0027777778
+        },
+        {
+          "id": "assassin/magic-defense",
+          "killsPerMinute": 13.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2520489.802777778,
+          "petDps": 1433579.6888888888
+        },
+        {
+          "id": "assassin/attack-support",
+          "killsPerMinute": 13.833333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.5,
+          "ownerDps": 2705853.0138888885,
+          "petDps": 1187868.3944444444
+        },
+        {
+          "id": "wizard/attack-magic",
+          "killsPerMinute": 14,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 32.333333333333336,
+          "ownerDps": 3832058.1527777775,
+          "petDps": 169956.0361111111
+        },
+        {
+          "id": "crusader/attack-defense",
+          "killsPerMinute": 14.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 3078738.463888889,
+          "petDps": 932321.3666666667
+        },
+        {
+          "id": "crusader/attack-support",
+          "killsPerMinute": 14.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.5,
+          "ownerDps": 3104700.2305555553,
+          "petDps": 913317.136111111
+        },
+        {
+          "id": "assassin/attack-defense",
+          "killsPerMinute": 14.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2834805.9055555556,
+          "petDps": 1202266.611111111
+        },
+        {
+          "id": "wizard/attack-defense",
+          "killsPerMinute": 14.333333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.3333333333333335,
+          "ownerDps": 3865172,
+          "petDps": 230621.9138888889
+        },
+        {
+          "id": "wizard/defense-support",
+          "killsPerMinute": 14.333333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3939829.913888889,
+          "petDps": 222559.69722222222
+        },
+        {
+          "id": "assassin/defense-support",
+          "killsPerMinute": 14.333333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 3521246.1222222224,
+          "petDps": 520604.76388888893
+        },
+        {
+          "id": "performer/magic-support",
+          "killsPerMinute": 14.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 29.333333333333332,
+          "ownerDps": 2688592.286111111,
+          "petDps": 1617324.95
+        },
+        {
+          "id": "wizard/attack-support",
+          "killsPerMinute": 15.333333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5,
+          "ownerDps": 3933865.375,
+          "petDps": 400618.7888888889
+        },
+        {
+          "id": "performer/magic-defense",
+          "killsPerMinute": 15.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 17,
+          "ownerDps": 2629823.669444444,
+          "petDps": 1824012.3555555558
+        },
+        {
+          "id": "performer/attack-magic",
+          "killsPerMinute": 16.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 30.5,
+          "ownerDps": 2658108.316666667,
+          "petDps": 2008613.8555555556
+        },
+        {
+          "id": "performer/attack-support",
+          "killsPerMinute": 17,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.5,
+          "ownerDps": 3836092.4,
+          "petDps": 936350.5777777778
+        },
+        {
+          "id": "performer/attack-defense",
+          "killsPerMinute": 17.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.3333333333333335,
+          "ownerDps": 3847442.1055555553,
+          "petDps": 966704.6333333333
+        },
+        {
+          "id": "hunter/attack-defense",
+          "killsPerMinute": 17.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 4448206.216666666,
+          "petDps": 630625.4777777777
+        },
+        {
+          "id": "performer/defense-support",
+          "killsPerMinute": 17.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3831779.161111111,
+          "petDps": 1130664.75
+        },
+        {
+          "id": "hunter/attack-support",
+          "killsPerMinute": 18,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.333333333333333,
+          "ownerDps": 4319169.391666667,
+          "petDps": 753306.8083333332
+        },
+        {
+          "id": "hunter/defense-support",
+          "killsPerMinute": 18.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 4427121.963888888,
+          "petDps": 793185.1277777777
+        },
+        {
+          "id": "hunter/magic-support",
+          "killsPerMinute": 19,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.5,
+          "ownerDps": 3364223.863888889,
+          "petDps": 2025177.2805555556
+        },
+        {
+          "id": "hunter/attack-magic",
+          "killsPerMinute": 20.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 6.166666666666667,
+          "ownerDps": 3422187.2277777777,
+          "petDps": 2309800.441666667
+        },
+        {
+          "id": "hunter/magic-defense",
+          "killsPerMinute": 20.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.3333333333333333,
+          "ownerDps": 3501988.722222222,
+          "petDps": 2224977.0944444444
+        },
+        {
+          "id": "monk/magic-support",
+          "killsPerMinute": 20.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.833333333333333,
+          "ownerDps": 3909602.758333333,
+          "petDps": 1919573.8777777776
+        },
+        {
+          "id": "monk/magic-defense",
+          "killsPerMinute": 21.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.8333333333333334,
+          "ownerDps": 3997549.3972222223,
+          "petDps": 2012181.9222222222
+        },
+        {
+          "id": "monk/attack-magic",
+          "killsPerMinute": 21.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 6.5,
+          "ownerDps": 3914481.552777778,
+          "petDps": 2167410.738888889
+        },
+        {
+          "id": "priest/magic-support",
+          "killsPerMinute": 22.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.3333333333333333,
+          "ownerDps": 4565209.397222222,
+          "petDps": 1947908.6138888889
+        },
+        {
+          "id": "monk/attack-defense",
+          "killsPerMinute": 23.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 5818044.311111111,
+          "petDps": 784712.8250000001
+        },
+        {
+          "id": "knight/attack-support",
+          "killsPerMinute": 23.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.5,
+          "ownerDps": 4420444.027777778,
+          "petDps": 2321958.9222222227
+        },
+        {
+          "id": "knight/magic-support",
+          "killsPerMinute": 23.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 6048455.774999999,
+          "petDps": 676719.0527777778
+        },
+        {
+          "id": "knight/attack-defense",
+          "killsPerMinute": 24,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 4636550.705555555,
+          "petDps": 2182294.191666667
+        },
+        {
+          "id": "priest/attack-defense",
+          "killsPerMinute": 24,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 6490559.26111111,
+          "petDps": 281364.18333333335
+        },
+        {
+          "id": "priest/attack-magic",
+          "killsPerMinute": 24.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.16666666666666666,
+          "ownerDps": 4675056.972222221,
+          "petDps": 2218512.6472222223
+        },
+        {
+          "id": "knight/attack-magic",
+          "killsPerMinute": 24.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 6035981.088888888,
+          "petDps": 730969.7000000001
+        },
+        {
+          "id": "knight/magic-defense",
+          "killsPerMinute": 24.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 6180770.763888889,
+          "petDps": 770843.6583333333
+        },
+        {
+          "id": "priest/magic-defense",
+          "killsPerMinute": 25.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 4920227.911111112,
+          "petDps": 2255874.833333333
+        },
+        {
+          "id": "priest/attack-support",
+          "killsPerMinute": 25.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 6289512.538888889,
+          "petDps": 921153.7277777777
+        },
+        {
+          "id": "monk/attack-support",
+          "killsPerMinute": 26.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.6666666666666667,
+          "ownerDps": 6250491.911111112,
+          "petDps": 1163458.2416666667
+        },
+        {
+          "id": "monk/defense-support",
+          "killsPerMinute": 27.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 6197460.938888889,
+          "petDps": 1313769.0250000001
+        },
+        {
+          "id": "sage/magic-support",
+          "killsPerMinute": 27.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 35.166666666666664,
+          "ownerDps": 7239419.36388889,
+          "petDps": 579156.1833333333
+        },
+        {
+          "id": "knight/defense-support",
+          "killsPerMinute": 28,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 7105725.997222222,
+          "petDps": 649584.5972222221
+        },
+        {
+          "id": "sage/defense-support",
+          "killsPerMinute": 28,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 7260286.786111112,
+          "petDps": 517921.4111111111
+        },
+        {
+          "id": "sage/magic-defense",
+          "killsPerMinute": 28.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 26.333333333333332,
+          "ownerDps": 7220246,
+          "petDps": 709301.4194444445
+        },
+        {
+          "id": "priest/defense-support",
+          "killsPerMinute": 28.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 6495730.138888889,
+          "petDps": 1392348.936111111
+        },
+        {
+          "id": "sage/attack-defense",
+          "killsPerMinute": 28.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 12.333333333333334,
+          "ownerDps": 7027214.966666666,
+          "petDps": 904649.3555555554
+        },
+        {
+          "id": "sage/attack-magic",
+          "killsPerMinute": 29.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 35.833333333333336,
+          "ownerDps": 7270318.699999999,
+          "petDps": 778118.3972222223
+        },
+        {
+          "id": "sage/attack-support",
+          "killsPerMinute": 30,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.3333333333333333,
+          "ownerDps": 7073482.736111111,
+          "petDps": 1227269.5444444446
+        }
+      ],
+      "gap": 2.214285714285714,
+      "passed": false,
+      "alive": 180,
+      "total": 180,
+      "meanKillsPerMinute": 18.875,
+      "meanPotionsPerMinute": 5.844444444444444
+    },
+    {
+      "level": 200,
+      "gearLevel": 190,
+      "coverage": 0.9,
+      "rows": [
+        {
+          "id": "rogue/magic-support",
+          "killsPerMinute": 9.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 1914987.013888889,
+          "petDps": 922772.2972222222
+        },
+        {
+          "id": "rogue/attack-magic",
+          "killsPerMinute": 10.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 1926180.9083333332,
+          "petDps": 1100717.8333333333
+        },
+        {
+          "id": "rogue/magic-defense",
+          "killsPerMinute": 10.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2056202.536111111,
+          "petDps": 1089986.2555555555
+        },
+        {
+          "id": "rogue/attack-defense",
+          "killsPerMinute": 10.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2506602.363888889,
+          "petDps": 579017.4638888888
+        },
+        {
+          "id": "rogue/attack-support",
+          "killsPerMinute": 10.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.5,
+          "ownerDps": 2434424.794444444,
+          "petDps": 607374.675
+        },
+        {
+          "id": "crusader/magic-support",
+          "killsPerMinute": 11.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 2458266.8638888886,
+          "petDps": 906508.4111111112
+        },
+        {
+          "id": "crusader/magic-defense",
+          "killsPerMinute": 12.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2536762.527777778,
+          "petDps": 1136881.025
+        },
+        {
+          "id": "rogue/defense-support",
+          "killsPerMinute": 12.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 2830356.586111111,
+          "petDps": 614930.3444444445
+        },
+        {
+          "id": "crusader/attack-magic",
+          "killsPerMinute": 12.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2449311.5555555555,
+          "petDps": 1200556.9527777778
+        },
+        {
+          "id": "assassin/magic-support",
+          "killsPerMinute": 12.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.8333333333333334,
+          "ownerDps": 2455027.1555555556,
+          "petDps": 1253316.2000000002
+        },
+        {
+          "id": "crusader/defense-support",
+          "killsPerMinute": 13.333333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 3108269.65,
+          "petDps": 638021.8083333332
+        },
+        {
+          "id": "assassin/magic-defense",
+          "killsPerMinute": 13.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2479717.169444444,
+          "petDps": 1411513.9194444444
+        },
+        {
+          "id": "assassin/attack-magic",
+          "killsPerMinute": 13.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 2459103.136111111,
+          "petDps": 1460484.1833333333
+        },
+        {
+          "id": "wizard/magic-defense",
+          "killsPerMinute": 13.833333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 16.333333333333332,
+          "ownerDps": 3845047.080555556,
+          "petDps": 131294.44722222222
+        },
+        {
+          "id": "wizard/magic-support",
+          "killsPerMinute": 13.833333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 30.333333333333332,
+          "ownerDps": 3844361.261111111,
+          "petDps": 87950.62777777777
+        },
+        {
+          "id": "crusader/attack-support",
+          "killsPerMinute": 14,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 3122038.8777777776,
+          "petDps": 914020.2916666666
+        },
+        {
+          "id": "wizard/attack-magic",
+          "killsPerMinute": 14,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 30.833333333333332,
+          "ownerDps": 3846467.3944444447,
+          "petDps": 175117.88055555554
+        },
+        {
+          "id": "assassin/attack-support",
+          "killsPerMinute": 14,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.3333333333333335,
+          "ownerDps": 2694495.8249999997,
+          "petDps": 1177787.811111111
+        },
+        {
+          "id": "assassin/defense-support",
+          "killsPerMinute": 14.166666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 3523007.1166666667,
+          "petDps": 557445.35
+        },
+        {
+          "id": "crusader/attack-defense",
+          "killsPerMinute": 14.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 3116943.2361111115,
+          "petDps": 931618.4527777778
+        },
+        {
+          "id": "assassin/attack-defense",
+          "killsPerMinute": 14.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 2836290.1166666667,
+          "petDps": 1242762.1944444445
+        },
+        {
+          "id": "wizard/attack-defense",
+          "killsPerMinute": 14.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3,
+          "ownerDps": 3971971.658333333,
+          "petDps": 234253.1861111111
+        },
+        {
+          "id": "wizard/defense-support",
+          "killsPerMinute": 14.666666666666666,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3968454.830555556,
+          "petDps": 225991.83888888886
+        },
+        {
+          "id": "wizard/attack-support",
+          "killsPerMinute": 14.833333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5,
+          "ownerDps": 3853081.1222222224,
+          "petDps": 393322.1222222222
+        },
+        {
+          "id": "performer/magic-support",
+          "killsPerMinute": 15,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 27.833333333333332,
+          "ownerDps": 2679672.091666667,
+          "petDps": 1617516.9472222223
+        },
+        {
+          "id": "performer/magic-defense",
+          "killsPerMinute": 15.833333333333334,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 15.666666666666666,
+          "ownerDps": 2637194.788888889,
+          "petDps": 1831108.1777777777
+        },
+        {
+          "id": "performer/attack-magic",
+          "killsPerMinute": 16.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 29.166666666666668,
+          "ownerDps": 2653365.516666667,
+          "petDps": 2010463.0527777777
+        },
+        {
+          "id": "performer/attack-defense",
+          "killsPerMinute": 16.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2.1666666666666665,
+          "ownerDps": 3837256.988888889,
+          "petDps": 964867.1166666667
+        },
+        {
+          "id": "performer/attack-support",
+          "killsPerMinute": 17,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 3.5,
+          "ownerDps": 3872110.7722222223,
+          "petDps": 944476.5972222224
+        },
+        {
+          "id": "performer/defense-support",
+          "killsPerMinute": 17.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 3820421.0416666665,
+          "petDps": 1128770.5416666667
+        },
+        {
+          "id": "hunter/defense-support",
+          "killsPerMinute": 18,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 4360445.452777778,
+          "petDps": 783721.5083333333
+        },
+        {
+          "id": "hunter/attack-support",
+          "killsPerMinute": 18.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 5.166666666666667,
+          "ownerDps": 4419539.058333334,
+          "petDps": 765541.3527777777
+        },
+        {
+          "id": "hunter/attack-defense",
+          "killsPerMinute": 18.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 4498140.769444444,
+          "petDps": 636781.7583333334
+        },
+        {
+          "id": "hunter/magic-support",
+          "killsPerMinute": 18.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.5,
+          "ownerDps": 3369628.9222222217,
+          "petDps": 2025732.861111111
+        },
+        {
+          "id": "hunter/attack-magic",
+          "killsPerMinute": 19.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 6.5,
+          "ownerDps": 3402361.294444444,
+          "petDps": 2298654.688888889
+        },
+        {
+          "id": "hunter/magic-defense",
+          "killsPerMinute": 20.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 3545069.211111111,
+          "petDps": 2251892.072222222
+        },
+        {
+          "id": "monk/magic-support",
+          "killsPerMinute": 21.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.333333333333333,
+          "ownerDps": 4059433.9722222225,
+          "petDps": 1984351.963888889
+        },
+        {
+          "id": "monk/magic-defense",
+          "killsPerMinute": 21.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 4029073.686111111,
+          "petDps": 2109624.7277777777
+        },
+        {
+          "id": "monk/attack-magic",
+          "killsPerMinute": 22.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 4.833333333333333,
+          "ownerDps": 4071780.4,
+          "petDps": 2251999.2472222224
+        },
+        {
+          "id": "priest/magic-support",
+          "killsPerMinute": 23.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 4744325.497222222,
+          "petDps": 2042599.986111111
+        },
+        {
+          "id": "knight/attack-support",
+          "killsPerMinute": 24.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 4512006.155555555,
+          "petDps": 2350119.2305555553
+        },
+        {
+          "id": "knight/magic-support",
+          "killsPerMinute": 24.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.6666666666666666,
+          "ownerDps": 6083001.5305555565,
+          "petDps": 684392.238888889
+        },
+        {
+          "id": "knight/magic-defense",
+          "killsPerMinute": 24.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 6221754.977777778,
+          "petDps": 779945.9305555555
+        },
+        {
+          "id": "monk/attack-defense",
+          "killsPerMinute": 25,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 6106437.436111111,
+          "petDps": 824254.5916666667
+        },
+        {
+          "id": "knight/attack-magic",
+          "killsPerMinute": 25.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 2,
+          "ownerDps": 6167606.713888888,
+          "petDps": 748863.0416666666
+        },
+        {
+          "id": "priest/attack-defense",
+          "killsPerMinute": 25.166666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 6720119.675,
+          "petDps": 234296.53333333333
+        },
+        {
+          "id": "knight/attack-defense",
+          "killsPerMinute": 26,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1,
+          "ownerDps": 4936783.783333333,
+          "petDps": 2311893.208333333
+        },
+        {
+          "id": "priest/attack-magic",
+          "killsPerMinute": 26,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 4915569.680555556,
+          "petDps": 2330894.733333333
+        },
+        {
+          "id": "priest/magic-defense",
+          "killsPerMinute": 27,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 5121955.902777777,
+          "petDps": 2356924.738888889
+        },
+        {
+          "id": "priest/attack-support",
+          "killsPerMinute": 27.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 6578158.461111111,
+          "petDps": 948443.9583333334
+        },
+        {
+          "id": "monk/attack-support",
+          "killsPerMinute": 27.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.8333333333333333,
+          "ownerDps": 6441057.741666667,
+          "petDps": 1200523.477777778
+        },
+        {
+          "id": "monk/defense-support",
+          "killsPerMinute": 28.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 6484739.213888888,
+          "petDps": 1384648.9472222223
+        },
+        {
+          "id": "sage/attack-defense",
+          "killsPerMinute": 28.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 12.333333333333334,
+          "ownerDps": 7338011.294444445,
+          "petDps": 626540.5305555556
+        },
+        {
+          "id": "sage/defense-support",
+          "killsPerMinute": 28.833333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 7492365.338888888,
+          "petDps": 534728.9416666668
+        },
+        {
+          "id": "sage/magic-support",
+          "killsPerMinute": 29,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 34.666666666666664,
+          "ownerDps": 7522128.675,
+          "petDps": 606572.7444444444
+        },
+        {
+          "id": "knight/defense-support",
+          "killsPerMinute": 29.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0.5,
+          "ownerDps": 7475091.561111111,
+          "petDps": 679732.4777777778
+        },
+        {
+          "id": "sage/magic-defense",
+          "killsPerMinute": 29.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 24.5,
+          "ownerDps": 7600495.566666666,
+          "petDps": 731517.3333333334
+        },
+        {
+          "id": "priest/defense-support",
+          "killsPerMinute": 29.5,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 0,
+          "ownerDps": 6803397.758333333,
+          "petDps": 1454342.3611111112
+        },
+        {
+          "id": "sage/attack-support",
+          "killsPerMinute": 29.666666666666668,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 1.3333333333333333,
+          "ownerDps": 7246347.991666667,
+          "petDps": 980495.2694444446
+        },
+        {
+          "id": "sage/attack-magic",
+          "killsPerMinute": 30.333333333333332,
+          "alive": 3,
+          "total": 3,
+          "petDeaths": 0,
+          "potionsPerMinute": 34.333333333333336,
+          "ownerDps": 7580528.858333334,
+          "petDps": 805494.0222222222
+        }
+      ],
+      "gap": 2.1929824561403506,
+      "passed": false,
+      "alive": 180,
+      "total": 180,
+      "meanKillsPerMinute": 19.30277777777778,
+      "meanPotionsPerMinute": 5.486111111111111
+    }
+  ],
+  "phase": "initial tuning snapshot"
+}

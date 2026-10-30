@@ -37,12 +37,12 @@ test('pet gear affects own-stat blessing, healing, shields, mana, DoTs and core 
 });
 test('all twenty resonance routes have reachable triggers; archer tank triggers while attacking and tank guarding, never depends on dodge',async()=>{
  let count=0;for(const roles of Object.values(RESONANCE_RULES))for(const rule of Object.values(roles)){count++;assert.ok(rule.events.some(e=>['attack','skill','heal','pet_guard','charge','fist','autospell','steal','crit','dodge','block','shield','buff','combo','falcon','song','castStart','castComplete','snatch'].includes(e)));assert.ok(rule.cooldown>=4000);}assert.equal(count,60);const rule=RESONANCE_RULES.archer.defense;assert.ok(resonanceTriggered(rule,'attack'));assert.ok(resonanceTriggered(rule,'pet_guard'));assert.equal(resonanceTriggered(rule,'dodge'),false);
- const c=await app(),a=c.api,p=a.normalize(a.fresh('弓坦','archer')),pet=makePet('shell');p.pets=[pet];p.activePetId=pet.id;a.setup(p,foe());a.playerAttack();assert.ok(p.shield>0);const shield=p.shield;a.emitEvent('pet_guard');assert.equal(p.shield,shield);assert.ok(a.state().timers.resonance>0);
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('弓坦','archer')),pet=makePet('shell');p.jobLevel=2;p.pets=[pet];p.activePetId=pet.id;a.setup(p,foe());a.playerAttack();assert.ok(p.shield>0);const shield=p.shield;a.emitEvent('pet_guard');assert.equal(p.shield,shield);assert.ok(a.state().timers.resonance>0);
  // A real tank hit is enough even when owner has not attacked.
  p.shield=0;a.state().timers.resonance=0;c.chooseMonsterTarget=()=> 'pet';a.enemyAttack();assert.ok(p.shield>0);assert.ok(pet.hp<petStats(pet).hp);
 });
 test('actual healing does not miss, emits heal event, and full-resource resonance does not spend CD',async()=>{
- const c=await app(),a=c.api,p=a.normalize(a.fresh('服事','acolyte')),pet=makePet('shell');p.pets=[pet];p.activePetId=pet.id;p.jobSkills.heal=1;p.hp=1;p.attributes.INT=50;p.mp=10000;const e=foe();e.flee=99999;c.Math.random=()=>.99;a.setup(p,e);const expected=Math.min(a.stat('hp')-1,Math.round(a.stat('matk')*1.85));a.playerAttack(true,'heal');assert.equal(p.hp,1+expected);assert.ok(p.shield>0);assert.equal(e.hp,100000);
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('服事','acolyte')),pet=makePet('shell');p.jobLevel=2;p.pets=[pet];p.activePetId=pet.id;p.jobSkills.heal=1;p.hp=1;p.attributes.INT=50;p.mp=10000;const e=foe();e.flee=99999;c.Math.random=()=>.99;a.setup(p,e);const expected=Math.min(a.stat('hp')-1,Math.round(a.stat('matk')*1.85));a.playerAttack(true,'heal');assert.equal(p.hp,1+expected);assert.ok(p.shield>0);assert.equal(e.hp,100000);
  const support=makePet('sprout');p.pets=[support];p.activePetId=support.id;p.mp=a.stat('mp');a.state().timers.resonance=0;a.emitEvent('heal');assert.equal(a.state().timers.resonance,0);p.mp-=10;a.emitEvent('heal');assert.ok(a.state().timers.resonance>0);
 });
 test('physical skill damage has no hidden INT multiplier and class tactics do not invent dodges',async()=>{

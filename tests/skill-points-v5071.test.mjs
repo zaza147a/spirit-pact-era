@@ -84,7 +84,7 @@ test('Job70 can max every first, second and rebirth skill for all ten jobs, incl
   const c=await runtime(),a=c.api,p=a.normalize(a.fresh('全技能滿級',job));
   Object.assign(p,{reborn:true,level:99,jobLevel:70,firstJobLevel:40,growthVersion:50,location:'town',gold:1e7});
   a.normalize(p);a.setup(p,null);
-  for(const skill of JOB_SKILLS[job])while((p.jobSkills[skill.id]||0)<skill.maxRank){
+  for(const skill of JOB_SKILLS[job].filter(s=>!s.thirdOnly))while((p.jobSkills[skill.id]||0)<skill.maxRank){
    const old=p.jobSkills[skill.id]||0;a.upgradeJobSkill(skill.id);
    assert.equal(p.jobSkills[skill.id],old+1,`${job} ${skill.id}`);
   }
