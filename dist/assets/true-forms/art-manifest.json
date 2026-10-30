@@ -1,0 +1,62 @@
+{
+  "version": "6.2.0",
+  "kind": "appearance-only secret true forms",
+  "layout": {
+    "columns": 4,
+    "rows": 3,
+    "cell": 362
+  },
+  "generator": "built-in image_gen",
+  "prompt": "12 fully clothed adult humanoid fantasy guardians retaining dragon, phoenix, titan and qilin fusion motifs; transparent 4 by 3 atlas; polished painted RPG companion sprites; no labels. Main/sub role order preserves12 distinct visual identities.",
+  "sourceSha256": "269d8321cec153b5b4a686789adf9cdc1977a18e7929d0180da374cbda4e4d70",
+  "assets": [
+    {
+      "id": "attack-magic",
+      "path": "assets/true-forms/companions.svg#attack-magic"
+    },
+    {
+      "id": "attack-defense",
+      "path": "assets/true-forms/companions.svg#attack-defense"
+    },
+    {
+      "id": "attack-support",
+      "path": "assets/true-forms/companions.svg#attack-support"
+    },
+    {
+      "id": "magic-attack",
+      "path": "assets/true-forms/companions.svg#magic-attack"
+    },
+    {
+      "id": "magic-defense",
+      "path": "assets/true-forms/companions.svg#magic-defense"
+    },
+    {
+      "id": "magic-support",
+      "path": "assets/true-forms/companions.svg#magic-support"
+    },
+    {
+      "id": "defense-attack",
+      "path": "assets/true-forms/companions.svg#defense-attack"
+    },
+    {
+      "id": "defense-magic",
+      "path": "assets/true-forms/companions.svg#defense-magic"
+    },
+    {
+      "id": "defense-support",
+      "path": "assets/true-forms/companions.svg#defense-support"
+    },
+    {
+      "id": "support-attack",
+      "path": "assets/true-forms/companions.svg#support-attack"
+    },
+    {
+      "id": "support-magic",
+      "path": "assets/true-forms/companions.svg#support-magic"
+    },
+    {
+      "id": "support-defense",
+      "path": "assets/true-forms/companions.svg#support-defense"
+    }
+  ]
+}

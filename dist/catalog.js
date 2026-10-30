@@ -1,14 +1,14 @@
 import {fusedPair,companionRole} from './pet-fusion.js';
-import {captureQuality,MYTHIC_MUTATION} from './pet-acquisition.js?v=6.1.2';
-import {SECOND_JOBS,parentJob} from './jobs.js?v=6.1.2';
-import {MAP_BOSSES} from './map-bosses.js?v=6.1.2';
-import {createWorldCards,LEGACY_CARD_SLOTS,LEGACY_CARD_EFFECTS,cardDescription} from './card-effects.js?v=6.1.2';
-import {PETLAND_MONSTERS} from './catalog-petland.js?v=6.1.2';
+import {captureQuality,MYTHIC_MUTATION} from './pet-acquisition.js?v=6.2.0';
+import {SECOND_JOBS,parentJob} from './jobs.js?v=6.2.0';
+import {MAP_BOSSES} from './map-bosses.js?v=6.2.0';
+import {createWorldCards,LEGACY_CARD_SLOTS,LEGACY_CARD_EFFECTS,cardDescription} from './card-effects.js?v=6.2.0';
+import {PETLAND_MONSTERS} from './catalog-petland.js?v=6.2.0';
 export {PETLAND_MONSTERS};
-import {petForm} from './pet-evolution.js?v=6.1.2';
+import {petForm} from './pet-evolution.js?v=6.2.0';
 // Shared definitions: UI, future server combat engine and 2D renderer can consume the same IDs.
-import {WORLD_MONSTERS,WORLD_MAPS} from './world-data.js?v=6.1.2';
-import {LOOT_ITEMS,GEAR_BASE,PET_GEAR_BASE,PET_SLOTS} from './loot.js?v=6.1.2';
+import {WORLD_MONSTERS,WORLD_MAPS} from './world-data.js?v=6.2.0';
+import {LOOT_ITEMS,GEAR_BASE,PET_GEAR_BASE,PET_SLOTS} from './loot.js?v=6.2.0';
 export const CLASSES={swordsman:{name:'劍士',symbol:'⚔',hp:145,mp:55,atk:13,def:7,skill:'重擊',skill2:'狂擊'},acolyte:{name:'服事',symbol:'✚',hp:115,mp:105,atk:9,def:5,skill:'聖光攻擊',skill2:'治癒術'},mage:{name:'法師',symbol:'✧',hp:95,mp:125,atk:14,def:3,skill:'火箭術',skill2:'冰箭術'},thief:{name:'盜賊',symbol:'◆',hp:115,mp:70,atk:16,def:4,skill:'二連擊',skill2:'殘影'},archer:{name:'弓箭手',symbol:'🏹',hp:108,mp:83,atk:15,def:4,skill:'精準射擊',skill2:'二連矢'}};
 for(const [id,job] of Object.entries(SECOND_JOBS))CLASSES[id]={...CLASSES[job.parent],name:job.name,symbol:CLASSES[job.parent].symbol};
 export const ATTRS={STR:'力量',AGI:'敏捷',VIT:'體質',INT:'智力',DEX:'靈巧',LUK:'幸運'};
@@ -19,7 +19,7 @@ export const MONSTERS=[{id:'sandbug',hp:55,atk:7,def:1,xp:22},{id:'dog',hp:85,at
 Object.assign(SPECIES.fang,{speed:880});Object.assign(SPECIES.wisp,{speed:1020});Object.assign(SPECIES.shell,{speed:1150});Object.assign(SPECIES.sprout,{speed:1090});
 SPECIES.fang.growth.atk=3;SPECIES.wisp.growth.atk=3;
 
-export const MAPS={skycity:{name:'蒼穹樞城',eyebrow:'NEW CONTINENT / SKY HAVEN',description:'新大陸主城，提供寵物進化與補給商店。',capture:false},town:{name:'靈契主城',eyebrow:'SAFE ZONE / CITY',description:'安全的補給與整備據點，沒有敵人。可查看背包、調整技能與購買藥水，再從地圖選單出發。',capture:false},petland:{name:'寵物之地',eyebrow:'SECTOR 00 / SANCTUARY',description:'四條寵物成長路線的起點，可直接丟球捕捉。此區不會出現地圖首領，也不掉落卡片；捕捉球可在補給商店補充。',capture:true},wasteland:{name:'赤砂邊境',eyebrow:'SECTOR 01 / ICARUS',description:'危險的荒野戰鬥區。可以練功、挑戰怪物與蒐集卡片，但此地禁止捕捉寵物。',capture:false}};
+export const MAPS={skycity:{name:'蒼穹樞城',eyebrow:'NEW CONTINENT / SKY HAVEN',description:'新大陸主城，提供夥伴進化與補給商店。',capture:false},town:{name:'靈契主城',eyebrow:'SAFE ZONE / CITY',description:'安全的補給與整備據點，沒有敵人。可查看背包、調整技能與購買藥水，再從地圖選單出發。',capture:false},petland:{name:'夥伴之地',eyebrow:'SECTOR 00 / SANCTUARY',description:'四條夥伴成長路線的起點，可直接丟球捕捉。此區不會出現地圖首領，也不掉落卡片；捕捉球可在補給商店補充。',capture:true},wasteland:{name:'赤砂邊境',eyebrow:'SECTOR 01 / ICARUS',description:'危險的荒野戰鬥區。可以練功、挑戰怪物與蒐集卡片，但此地禁止捕捉夥伴。',capture:false}};
 export const CARDS={sandbug:{name:'變異蟲卡片',stat:'VIT',bonus:2,description:'VIT +2，增加生命力'},dog:{name:'機械犬卡片',stat:'AGI',bonus:2,description:'AGI +2，加快攻擊節奏'},guardian:{name:'守衛機卡片',stat:'STR',bonus:2,description:'STR +2，提高物理傷害'},fang:{name:'赤牙卡片',stat:'STR',bonus:1,description:'STR +1'},wisp:{name:'星光卡片',stat:'INT',bonus:1,description:'INT +1'},shell:{name:'岩甲卡片',stat:'VIT',bonus:1,description:'VIT +1'},sprout:{name:'芽靈卡片',stat:'LUK',bonus:1,description:'LUK +1'}};
 export const SLOTS={headUpper:'頭上',headMiddle:'頭中',headLower:'頭下',armor:'盔甲',rightHand:'右手（武器）',leftHand:'左手（盾牌／副手）',garment:'披風',shoes:'鞋子',accessory1:'飾品1',accessory2:'飾品2'};
 Object.assign(ITEMS,LOOT_ITEMS);

@@ -1,4 +1,4 @@
-import {noviceMonsterStats,normalMonsterStats} from './progression.js?v=6.1.2';
+import {noviceMonsterStats,normalMonsterStats} from './progression.js?v=6.2.0';
 // Fifteen progression zones cover every Base level once; the final zone ends at the level cap.
 export const ZONES=[
  {id:'starter',name:'初始謎域',min:1,max:10,icon:'🌫️',names:['霧芽史萊姆','迷途野兔','青苔幼蟲','小石靈','尖耳魔鼠','幽光飛蛾','泥沼獵犬','藤蔓守衛','迷霧行者','謎域巨角獸']},
@@ -24,4 +24,4 @@ export const ZONES=[
 ];
 export const worldMonsterArt=level=>{const zone=ZONES.find(z=>level>=z.min&&level<=z.max);return zone?{file:`monsters-${zone.id}`,format:level>=101?'webp':'png',cols:5,rows:2,index:level-zone.min}:null;};
 export const WORLD_MONSTERS=ZONES.flatMap(zone=>zone.names.map((name,i)=>{const level=zone.min+i,id=`world_${level}`,elite=level===zone.max,novice=level<=50;return {id,level,map:zone.id,name,icon:zone.icon,role:'attack',roleName:elite?'區域精英':'敵對生物',boss:false,elite,novice,...(novice?noviceMonsterStats(level,elite):normalMonsterStats(level,elite)),gold:Math.round(2+level*.35),drops:level<=10?['red_small','blue_small','scrap']:level<=20?['red_small','blue_small','red_mid','herb']:level<=30?['red_mid','blue_mid','ore']:level<=40?['red_mid','blue_mid','red_large','crystal']:['red_large','blue_large','crystal','relic']};}));
-export const WORLD_MAPS=Object.fromEntries(ZONES.map((z,index)=>[z.id,{name:z.name,eyebrow:`SECTOR ${String(index+1).padStart(2,'0')} / ${z.min}-${z.max} / ${z.max<=50?'NOVICE':'ADVENTURE'}`,description:z.max<=50?`新手準備區 · Base Lv.${z.min}–${z.max}，${z.names.length}種敵人。Lv.1–50供熟悉戰鬥、培養寵物及準備二轉。掉落對應等級裝備、藥水與靈核；隨機地圖首領可避戰，首領裝備保底罕見。`:`正式冒險區 · Base Lv.${z.min}–${z.max}，${z.names.length}種敵人。正常難度，為二轉後成長設計；請備妥裝備、寵物及補給。隨機地圖首領Lv.${z.max}可避戰，首領裝備保底罕見；掉落對應等級裝備、特色卡片與進化靈核。`,capture:false,min:z.min,max:z.max,novice:z.max<=50}]));
+export const WORLD_MAPS=Object.fromEntries(ZONES.map((z,index)=>[z.id,{name:z.name,eyebrow:`SECTOR ${String(index+1).padStart(2,'0')} / ${z.min}-${z.max} / ${z.max<=50?'NOVICE':'ADVENTURE'}`,description:z.max<=50?`新手準備區 · Base Lv.${z.min}–${z.max}，${z.names.length}種敵人。Lv.1–50供熟悉戰鬥、培養夥伴及準備二轉。掉落對應等級裝備、藥水與靈核；隨機地圖首領可避戰，首領裝備保底罕見。`:`正式冒險區 · Base Lv.${z.min}–${z.max}，${z.names.length}種敵人。正常難度，為二轉後成長設計；請備妥裝備、夥伴及補給。隨機地圖首領Lv.${z.max}可避戰，首領裝備保底罕見；掉落對應等級裝備、特色卡片與進化靈核。`,capture:false,min:z.min,max:z.max,novice:z.max<=50}]));

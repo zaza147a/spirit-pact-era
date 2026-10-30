@@ -8,7 +8,7 @@ test('owner rebirth never unlocks pet levels; every rarity needs its own special
  }
 });
 test('legacy excess pet levels and XP are sealed without item loss, then restored by paid special evolution',async()=>{
- const c=await runtime(),a=c.api,p=a.normalize(a.fresh('舊寵等級','hunter'));
+ const c=await runtime(),a=c.api,p=a.normalize(a.fresh('舊夥伴等級','hunter'));
  const pet=c.makePet('fang');Object.assign(pet,{level:120,xp:321,rarity:'legendary',evolution:4,ascended:false,loyalty:100,loyaltyVersion:2});
  const gear=c.rollPetGear('petArmor',120,'legendary');pet.gear.body=gear;p.pets=[pet];p.reborn=true;
  a.normalize(p);assert.equal(pet.level,99);assert.equal(pet.xp,0);assert.equal(pet.sealedProgress.level,120);assert.equal(pet.sealedProgress.xp,321);assert.equal(pet.gear.body.uid,gear.uid);
@@ -18,7 +18,7 @@ test('legacy excess pet levels and XP are sealed without item loss, then restore
  normalizePetLevel(pet);assert.equal(pet.level,120);assert.equal(pet.xp,321);
 });
 test('unascended level99 pet receives no battle XP even when owner is reborn',async()=>{
- const c=await runtime(),a=c.api,p=a.normalize(a.fresh('寵物封頂','hunter'));
+ const c=await runtime(),a=c.api,p=a.normalize(a.fresh('夥伴封頂','hunter'));
  Object.assign(p,{reborn:true,level:99,location:'celestial'});const pet=c.makePet('fang');Object.assign(pet,{level:99,evolution:4,xp:0,rarity:'legendary',ascended:false,hp:100});p.pets=[pet];p.activePetId=pet.id;
  a.setup(p,{id:'world_99',level:99,hp:0,xp:999999,gold:0});a.award();assert.equal(pet.level,99);assert.equal(pet.xp,0);
 });

@@ -1,4 +1,4 @@
-import {RARITIES,gearTier,GEAR_BASE} from './loot.js?v=6.1.2';
+import {RARITIES,gearTier,GEAR_BASE} from './loot.js?v=6.2.0';
 export const SALVAGE_STATS=['STR','AGI','VIT','INT','DEX','LUK','atk','matk','def','hit','flee','crit'];
 export function shouldAutoSalvage(gear,settings){
  if(!gear||gear.swapProtected||gear.fusionMatch||!settings?.autoSalvage)return false;
