@@ -1,6 +1,6 @@
 {
   "version": 50,
-  "sourceDigest": "cb0fa42614590b7a5d48850807948ad4403dfc1554193c36c61d8dd31def7186",
+  "sourceDigest": "c66bd38a184a80159755fa00634012eb4ec9fb3c1e68f3c7a67cb1ca090eaa2b",
   "recipeDigest": "5b1812dfa64b78b83e0a0db1b4a6d7e6f97f4cb8d32acd1fce554ddf4c6663b9",
   "selectorDigest": "26da52472a6451c61039340dd8781d64483d2afec5d2f2dc89588ac948a9f266",
   "verifiedCachedBaseline": false,
@@ -13604,6 +13604,12 @@
           "potions": 32
         }
       ]
+    }
+  ],
+  "nonCombatChanges": [
+    {
+      "previousSourceDigest": "cb0fa42614590b7a5d48850807948ad4403dfc1554193c36c61d8dd31def7186",
+      "reason": "Acquisition-only changes: guaranteed legendary ascension for lower qualities,scaled fees and loyalty100; loyalty1/100kills capped500. No pet stat formula or battle skill changes. Audit directly supplies rarity/ascended flags and freezes awards, so all840 samples remain unchanged. Previously earned loyalty is retained up to500; new kills use a separate remainder counter."
     }
   ]
 }

@@ -1,8 +1,10 @@
-# 靈契紀元 V5.0.6
+# 靈契紀元 V5.0.7
 
 正式公開網址：https://zaza147a.github.io/spirit-pact-era/
 
 正式更新來源：https://github.com/zaza147a/spirit-pact-era 。推送 main 後由 GitHub Actions 自動發布 dist；不再以 Sites 私密站作為正式更新入口。
+
+V5.0.7：所有品質99級可界限進化，普通／稀有／罕見以100／50／10倍材料保證傳說，消耗忠誠度100，不抽神話。忠誠度上限500，每100隻±40等怪物增加1。詳見 [界限進化與忠誠度](docs/ascension-v507.md)。
 
 V5.0.6：自訂自動技能清單（新增／移除／排序）、同類護盾互斥與二轉短CD、51–99征途任務改為雜物40＋首領證5。詳見 [技能與任務更新](docs/skill-queue-v506.md)。
 
