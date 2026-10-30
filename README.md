@@ -1,8 +1,10 @@
-# 靈契紀元 V5.0.0
+# 靈契紀元 V5.0.6
 
 正式公開網址：https://zaza147a.github.io/spirit-pact-era/
 
 正式更新來源：https://github.com/zaza147a/spirit-pact-era 。推送 main 後由 GitHub Actions 自動發布 dist；不再以 Sites 私密站作為正式更新入口。
+
+V5.0.6：自訂自動技能清單（新增／移除／排序）、同類護盾互斥與二轉短CD、51–99征途任務改為雜物40＋首領證5。詳見 [技能與任務更新](docs/skill-queue-v506.md)。
 
 V5.0.0：蒼穹機界新大陸與101–150五區、蒼穹樞城、150級與八階裝備；轉生二轉Job70與專用20點、主攻替代技能及永久強化；八款界限進化立繪與材料異化、忠誠度；部位卡片重製與全身能力值24上限、裝備能力值30%上限與屬性額外乘區；精簡桌面UI、數量配點、全面手動販賣、融合機率與範圍、分開人物寵物DPS。詳見 [V5規則與驗證](docs/v50-release.md)、[卡片完整表](docs/cards-v50.md)、[可重跑平衡報告](docs/balance-v50.json)。
 

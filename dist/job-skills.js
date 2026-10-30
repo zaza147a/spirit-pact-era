@@ -55,7 +55,7 @@ for(const [job,[buffName,modifiers,mainName,kind,,event]] of Object.entries(REBO
 }
 export const supersededSkill=(player,skill)=>!!player.reborn&&skill?.id===REBIRTH_MAIN_REPLACES[player.job]&&(player.jobSkills?.['rebirthMain_'+player.job]||0)>0;
 // Explicit skill ratios keep AOE per-target damage below focused attacks.
-const updatedPowers={pierce:.93,shieldBash:.75,holyCross:2.8,thunder:1.05,meteor:1.32,arcaneStorm:1.58,spellFist:.40,elementStrike:1.45,dualStrike:.46,katarSlash:1.9,sonicBlow:4.0,daggerDance:.48,gangAmbush:3.1,holyJudgment:1.20,exorcism:3.4,chainCombo:1.40,spiritPalm:2.30,asura:4.3,falconStrike:.68,arrowRain:1.8,beastMark:2.8,sonicNote:.64,dissonance:1.9,encore:3.2};
+const updatedPowers={pierce:.93,shieldBash:.75,holyCross:2.8,thunder:1.04,meteor:1.32,arcaneStorm:1.58,spellFist:.40,elementStrike:1.45,dualStrike:.46,katarSlash:1.9,sonicBlow:4.0,daggerDance:.48,gangAmbush:3.1,holyJudgment:1.20,exorcism:3.4,chainCombo:1.40,spiritPalm:2.30,asura:4.3,falconStrike:.68,arrowRain:1.8,beastMark:2.8,sonicNote:.64,dissonance:1.9,encore:3.2};
 for(const skills of Object.values(SECOND_SKILLS))for(const skill of skills)if(updatedPowers[skill.id]!==undefined)skill.power=updatedPowers[skill.id];
 for(const [job,id] of [['crusader','shieldBash'],['priest','holyJudgment']]){const skill=SECOND_SKILLS[job].find(s=>s.id===id);Object.assign(skill,{attackCycle:true,cooldown:0,mp:3,aoe:true,targets:2});skill.desc+=' · 兩體低倍率主攻，無獨立CD、依ASPD動作間隔';}
 SECOND_SKILLS.crusader.find(s=>s.id==='fortress').bonuses.aspd=2;
@@ -66,3 +66,6 @@ export const initialJobSkills=job=>({[activeJobSkills(job).find(s=>!SECOND_JOBS[
 export const weaponSkillAllowed=(skill,right,left)=>skill.kind==='passive'||!skill.weapons?.length||skill.weapons.some(type=>type==='dual'?right==='dagger'&&left==='dagger':right===type);
 export function jobPassives(player){const bonuses={};for(const skill of JOB_SKILLS[player.job]||[])if(skill.kind==='passive'){const rank=player.jobSkills?.[skill.id]||0;for(const [key,value] of Object.entries(skill.bonuses))bonuses[key]=(bonuses[key]||0)+value*rank;}return bonuses;}
 export const skillUnlocked=(player,skill)=>(skill.branch==='first'&&SECOND_JOBS[player.job]?player.firstJobLevel||50:player.jobLevel)>=skill.unlock;
+
+// One shield family: the advanced equivalent recovers sooner.
+for(const skills of Object.values(JOB_SKILLS))for(const skill of skills)if(skill.kind==='shield'){skill.cooldown=skill.branch==='second'?3600:4800;skill.exclusiveGroup='personalShield';}
