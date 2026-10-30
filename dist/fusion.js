@@ -1,5 +1,5 @@
-import {GEAR_BASE,PET_GEAR_BASE,RARITIES,affixRange,SPECIAL_AFFIXES,primaryAffix,shardId,rollGear,rollPetGear} from './loot.js?v=5.0.0';
-import {gearTierRange} from './progression.js?v=5.0.0';
+import {GEAR_BASE,PET_GEAR_BASE,RARITIES,affixRange,SPECIAL_AFFIXES,primaryAffix,shardId,rollGear,rollPetGear} from './loot.js?v=5.0.8';
+import {gearTierRange} from './progression.js?v=5.0.8';
 export const FUSION_STATS=['any','atk','matk','STR','AGI','VIT','INT','DEX','LUK','hp','def','mdef','hit','flee','crit','aspdPct','critDmg','ignoreDef','hpPct','damageReduction','fleePct'];
 export function fusionStatsFor(baseId){const base=GEAR_BASE[baseId]||PET_GEAR_BASE[baseId];if(!base)return ['any','atk'];const attrs=['STR','AGI','VIT','INT','DEX','LUK'],weapon=!!base.weaponType||base.petSlot==='head';const primary=base.petSlot?(base.petSlot==='head'?(baseId==='petCirclet'?'matk':'atk'):base.petSlot==='body'?'hp':'flee'):base.weaponType?(base.weaponType==='mace'||!!base.matk&&(!base.atk||base.matk>base.atk)?'matk':'atk'):'def';return [...new Set(['any',primary,...(weapon?['hit']:base.petSlot==='body'?['def','mdef']:['def','mdef','hit','flee']),...attrs,...(weapon?['aspdPct','crit','critDmg','ignoreDef']:['fleePct','damageReduction','hpPct'])])];}
 

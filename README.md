@@ -1,4 +1,6 @@
-# 靈契紀元 V5.0.7
+# 靈契紀元 V5.0.8
+
+本次更新：[V5.0.8 技能點與新區門檻](docs/v508-release.md)，[2120場平衡報告](docs/balance-v50.md)。
 
 正式公開網址：https://zaza147a.github.io/spirit-pact-era/
 

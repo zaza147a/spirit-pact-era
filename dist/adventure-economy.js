@@ -1,5 +1,5 @@
-import {WORLD_MONSTERS,ZONES} from './world-data.js?v=5.0.0';
-import {MAP_BOSSES} from './map-bosses.js?v=5.0.0';
+import {WORLD_MONSTERS,ZONES} from './world-data.js?v=5.0.8';
+import {MAP_BOSSES} from './map-bosses.js?v=5.0.8';
 export const QUEST_REQUIREMENTS={junk:40,proof:5};
 const bands=[[1,3],[4,6],[7,10],[11,16],[17,23],[33,47],[49,68],[74,100],[109,144],[158,203],[240,310],[335,430],[460,590],[630,800],[850,1080]],parts=['霧晶殘屑','苔紋碎片','赤砂硬殼','霜骨結晶','星蝕粉晶','熾焰殘晶','潮汐遺珠','符紋零件','月影殘片','星宮碎核','浮空帆晶','精鍛齒核','以太稜晶','轟雷熔渣','天極星砂'];
 export const JUNK_ITEMS=Object.fromEntries([...WORLD_MONSTERS,...Object.values(MAP_BOSSES)].map(m=>{const z=ZONES.findIndex(z=>z.id===m.map),zone=ZONES[z],t=(m.level-zone.min)/Math.max(1,zone.max-zone.min),cost=Math.round(bands[z][0]+t*(bands[z][1]-bands[z][0]));return ['junk_'+m.id,{name:m.name+'的'+parts[z],junk:true,cost:m.boss?cost*2:cost,map:m.map,monster:m.id,level:m.level}];}));
