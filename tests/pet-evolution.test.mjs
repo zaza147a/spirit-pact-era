@@ -56,7 +56,7 @@ test('continuous encounters spawn while another enemy remains, obey capacity, do
  const dead=a.enemies()[0];dead.hp=0;a.setEnemy(dead);a.award();assert.equal(a.enemies().length,1);const kills=p.kills;a.setEnemy(dead);a.award();assert.equal(p.kills,kills);
  a.setNext(0);a.tickEncounters(5000);assert.equal(a.enemies().length,2);assert.ok(a.enemies().includes(first)||first===dead);
  p.location='town';a.setNext(0);a.tickEncounters(6000);assert.equal(a.enemies().length,2);
- p.sockets.rightHand='fang';assert.equal(a.stat('atk'),Math.round(a.rawStat('atk')*1.04));
+ p.sockets.rightHand='fang';assert.equal(a.stat('atk'),Math.round(a.rawStat('atk')*1.21));
 });
 test('priority chooses absolute lowest HP or longest present, excludes dead, breaks HP ties by age',async()=>{
  const {selectEncounterTarget}=await import('../dist/encounter-rules.js');

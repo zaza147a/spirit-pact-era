@@ -37,9 +37,9 @@ export const SECOND_RESONANCE_PLAYS={
    "重甲穿刺",
    "pierce",
    {
-    "armor": 1.3
+    "armor": 0.8
    },
-   "衝鋒後6秒：零CD穿刺追加DEF130%傷害"
+   "衝鋒後6秒：零CD穿刺追加DEF80%傷害"
   ],
   [
    "skill",
@@ -58,9 +58,9 @@ export const SECOND_RESONANCE_PLAYS={
    "復仇盾鋒",
    "shieldBash",
    {
-    "bonus": 0.6
+    "bonus": 0.25
    },
-   "格擋後6秒：盾擊倍率+60%"
+   "格擋後6秒：盾擊倍率+25%"
   ],
   [
    "skill",
@@ -76,9 +76,9 @@ export const SECOND_RESONANCE_PLAYS={
    "堡壘反震",
    "shieldBash",
    {
-    "counter": 0.45
+    "counter": 0.2
    },
-   "坦寵受擊後6秒：寵物以自身DEF45%反擊受擊敵人"
+   "坦寵受擊後6秒：寵物以自身DEF20%反擊受擊敵人"
   ],
   [
    "buff",
@@ -115,9 +115,9 @@ export const SECOND_RESONANCE_PLAYS={
    "蓄魔堡壘",
    "*",
    {
-    "castPower": 3
+    "castPower": 0.8
    },
-   "開始詠唱後6秒：依實際原始詠唱時間每秒增加300%技能倍率；無詠唱失去此收益"
+   "開始詠唱後6秒：依實際原始詠唱時間每秒增加80%技能倍率；無詠唱失去此收益"
   ],
   [
    "castStart",
@@ -155,10 +155,10 @@ export const SECOND_RESONANCE_PLAYS={
    "震甲拳意",
    "spellFist",
    {
-    "armor": 0.45,
-    "counter": 0.12
+    "armor": 0.20,
+    "counter": 0.08
    },
-   "魔拳命中後6秒：魔拳追加DEF45%，寵物受擊反擊自身DEF12%"
+   "魔拳命中後6秒：魔拳追加DEF20%，寵物受擊反擊自身DEF8%"
   ],
   [
    "autospell",
@@ -200,9 +200,9 @@ export const SECOND_RESONANCE_PLAYS={
    {
     "haste": 0.2,
     "leech": 0.06,
-    "bonus": 0.5
+    "bonus": 0.3
    },
-   "閃避後6秒：雙刃倍率+50%、攻擊週期縮短20%、主目標有效傷害6%吸血"
+   "閃避後6秒：雙刃倍率+30%、攻擊週期縮短20%、主目標有效傷害6%吸血"
   ],
   [
    "crit",
@@ -241,10 +241,10 @@ export const SECOND_RESONANCE_PLAYS={
    "煙幕誘敵",
    "daggerDance",
    {
-    "armor": 0.5,
+    "armor": 0.6,
     "haste": 0.1
    },
-   "煙幕後6秒：遊擊追加DEF50%、攻擊週期縮短10%"
+   "煙幕後6秒：遊擊追加DEF60%、攻擊週期縮短10%"
   ],
   [
    "snatch",
@@ -284,9 +284,9 @@ export const SECOND_RESONANCE_PLAYS={
    "苦修審判",
    "holyJudgment",
    {
-    "petArmor": 12
+    "petArmor": 3
    },
-   "坦寵受擊後6秒：審判追加寵物DEF1200%傷害，防禦裝備與寵物品質會提升威力"
+   "坦寵受擊後6秒：審判追加寵物DEF300%傷害，防禦裝備與寵物品質會提升威力"
   ],
   [
    "heal",
@@ -324,10 +324,10 @@ export const SECOND_RESONANCE_PLAYS={
    "金剛拳勢",
    "chainCombo",
    {
-    "armor": 0.85,
+    "armor": 0.55,
     "leech": 0.04
    },
-   "連段後6秒：連環拳追加DEF85%、有效傷害4%吸血"
+   "連段後6秒：連環拳追加DEF55%、有效傷害4%吸血"
   ],
   [
    "combo",
@@ -388,10 +388,10 @@ export const SECOND_RESONANCE_PLAYS={
    "狂想終曲",
    "encore",
    {
-    "bonus": 0.8,
+    "bonus": 0.35,
     "cooldown": 0.15
    },
-   "樂曲後6秒：終曲倍率+80%、冷卻縮短15%"
+   "樂曲後6秒：終曲倍率+35%、冷卻縮短15%"
   ],
   [
    "song",
@@ -409,10 +409,10 @@ export const SECOND_RESONANCE_PLAYS={
    "重拍舞台",
    "sonicNote",
    {
-    "armor": 1.1,
+    "armor": 0.65,
     "leech": 0.05
    },
-   "樂曲後6秒：音刃追加DEF110%、有效傷害5%吸血"
+   "樂曲後6秒：音刃追加DEF65%、有效傷害5%吸血"
   ],
   [
    "song",
@@ -427,5 +427,23 @@ export const SECOND_RESONANCE_PLAYS={
   ]
  ]
 };
-for(const [job,plays] of Object.entries(SECOND_RESONANCE_PLAYS))RESONANCE_RULES[job]=Object.fromEntries(['attack','magic','defense','support'].map((role,i)=>{const [event,name,skillId,transform,description]=plays[i];return [role,{...rule([event],name,'stance',0,5000,description),mode:'pact',skillId,transform,playId:job+'_'+role}];}));
+for(const [job,plays] of Object.entries(SECOND_RESONANCE_PLAYS))RESONANCE_RULES[job]=Object.fromEntries(['attack','magic','defense','support'].map((role,i)=>{const [event,name,skillId,transform,baseDescription]=plays[i];if(transform.targets)transform.spread=transform.targets===1?.82:.7;const description=baseDescription+(transform.targets?`；實際擴散額外目標時每體倍率為${Math.round(transform.spread*100)}%`:'');return [role,{...rule([event],name,'stance',0,5000,description),mode:'pact',skillId,transform,playId:job+'_'+role}];}));
 Object.assign(RESONANCE_EVENTS,{snatch:'掠奪突襲命中',castStart:'開始詠唱／無詠唱施法',castComplete:'法術完成',charge:'衝鋒命中',fist:'魔力拳命中',autospell:'自動念咒命中',steal:'成功偷取物品',buff:'施放增益',combo:'拳套連段命中',falcon:'獵鷹協攻',song:'樂曲協奏'});
+
+
+// Explicit ability values are shared by gameplay, descriptions and the audit.
+const baseTuning={sage:{attack:{haste:.04}},monk:{defense:{armor:1.1},magic:{magic:1.5},support:{haste:.08}},performer:{support:{haste:.1}},knight:{attack:{bonus:.35}},crusader:{defense:{counter:.3,bonus:.25},magic:{spread:.62}},rogue:{magic:{magic:1.2}},wizard:{magic:{spread:.55}}};
+for(const [job,roles]of Object.entries(baseTuning))for(const [role,values]of Object.entries(roles))Object.assign(RESONANCE_RULES[job][role].transform,values);
+RESONANCE_RULES.wizard.magic.description+='；轉生主攻命中返還4SP，即使已涵蓋全場仍有魔能回收收益';
+RESONANCE_RULES.sage.attack.description='魔拳命中後6秒：魔拳攻擊週期縮短4%';
+RESONANCE_RULES.monk.defense.description='連段後6秒：連環拳追加DEF110%、有效傷害4%吸血';
+RESONANCE_RULES.monk.magic.description='連段後6秒：氣功多打2體、追加寵物MATK150%';
+RESONANCE_RULES.monk.support.description='連段後6秒：連環拳退2SP、攻擊週期縮短8%';
+RESONANCE_RULES.performer.support.description='樂曲後6秒：音刃倍率+20%、退2SP、攻擊週期縮短10%';
+RESONANCE_RULES.knight.attack.description='衝鋒後6秒：衝鋒倍率+35%、多打1體';
+RESONANCE_RULES.crusader.defense.description='坦寵實際受擊後6秒：寵物以自身DEF30%反擊受擊敵人，盾擊倍率+25%';
+RESONANCE_RULES.rogue.magic.description='短劍技能後6秒：伏擊追加寵物MATK120%、多打1體';
+const rebirthTuning={wizard:{magic:{rebirthRefund:4}},knight:{attack:{rebirthBonus:.2,rebirthSpread:.72},magic:{rebirthBonus:.1,rebirthMagic:1.1},defense:{rebirthArmor:.35},support:{rebirthBonus:.1}},crusader:{magic:{rebirthSpread:.82}},assassin:{magic:{rebirthMagic:.45}},rogue:{magic:{rebirthMagic:.4},defense:{rebirthArmor:.4}},priest:{defense:{rebirthPetArmor:1.2}},monk:{attack:{rebirthBonus:.3},defense:{rebirthArmor:.7}},hunter:{attack:{rebirthBonus:.1},magic:{rebirthMagic:1.2,rebirthSpread:.45},defense:{rebirthBonus:.4}},performer:{attack:{rebirthBonus:.5},magic:{rebirthSpread:.55},defense:{rebirthArmor:.7},support:{rebirthBonus:.35}}};
+for(const [job,roles]of Object.entries(rebirthTuning))for(const [role,values]of Object.entries(roles))Object.assign(RESONANCE_RULES[job][role].transform,values);
+for(const roles of Object.values(RESONANCE_RULES))for(const r of Object.values(roles)){r.description=r.description.replace(/；實際擴散額外目標時每體倍率為\d+%/g,'');if(r.transform?.spread)r.description+=`；實際擴散額外目標時每體倍率為${Math.round(r.transform.spread*100)}%`;for(const [key,label]of [['rebirthSpread','擴散每體倍率'],['rebirthMagic','追加寵物MATK'],['rebirthArmor','追加DEF'],['rebirthPetArmor','追加寵物DEF'],['rebirthBonus','額外倍率+']])if(r.transform?.[key]!==undefined)r.description+=`；轉生主攻${label}${Math.round(r.transform[key]*100)}%`;}
+export const resonanceOpener=(job,role)=>job==='crusader'&&role==='attack'?'crusaderWall':job==='rogue'&&role==='defense'?'smokeVeil':job==='priest'&&['attack','support'].includes(role)?'sanctuary':null;

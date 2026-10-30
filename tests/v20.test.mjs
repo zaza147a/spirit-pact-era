@@ -28,7 +28,7 @@ test('fusion consumes exactly eight shards of selected tier, respects rolled aff
  const result=fuseOne(p,config,{rng:()=>.99999,roller:(id,level)=>(observed={id,level},{id,level,uid:'matched',rarity:'rare',affixes:{matk:9}})});assert.equal(observed.id,'oneStaff');assert.equal(observed.level,50);assert.equal(result.matched,true);assert.equal(p.bag.find(e=>e.id==='shard_weapon_3').qty,8);assert.equal(p.bag.find(e=>e.id==='shard_weapon_2').qty,999);
  assert.equal(fusionTargetMatches({rarity:'rare',affixes:{matk:8}},config),false);assert.equal(fusionTargetMatches({rarity:'common',affixes:{matk:90}},config),false);assert.equal(fusionTargetMatches({rarity:'mythic',affixes:{atk:90}},config),false);
  const snapshot=JSON.stringify(p.bag);assert.ok(fuseOne(p,config,{roller:()=>null}).error);assert.equal(JSON.stringify(p.bag),snapshot);assert.ok(fuseOne({bag:[]},config).error);
- const last=fuseOne({bag:[{id:'shard_armor_6',qty:8}]},{tier:6,base:'petCirclet',stat:'any'},{rng:()=>1,roller:(id,level)=>({id,level,uid:'pet',rarity:'common',affixes:{}})});assert.equal(last.gear.level,99);assert.equal(normalizeFusionSettings(null).tier,1);
+ const last=fuseOne({bag:[{id:'shard_armor_6',qty:8}]},{tier:6,base:'petCirclet',stat:'any'},{rng:()=>1,roller:(id,level)=>({id,level,uid:'pet',rarity:'common',affixes:{}})});assert.equal(last.gear.level,110);assert.equal(normalizeFusionSettings(null).tier,1);
 });
 const dist=new URL('../dist/',import.meta.url);
 async function app(){const nodes=new Map(),context={console,localStorage:new MemoryStorage(),window:{scrollTo:()=>{}},document:{getElementById:id=>{if(!nodes.has(id))nodes.set(id,{style:{},hidden:false,textContent:'',innerHTML:'',inert:false});return nodes.get(id)}},confirm:()=>true};context.Math=Object.create(Math);

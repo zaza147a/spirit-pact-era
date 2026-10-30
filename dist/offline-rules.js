@@ -4,7 +4,7 @@ export function offlineWindow(state,now=Date.now()){
  const at=state?.offline?.at;
  if(!Number.isFinite(at)||at<=0||at>now)return {elapsed:0,duration:0,capped:false,eligible:false};
  const elapsed=Math.max(0,now-at),duration=Math.min(OFFLINE_CAP_MS,elapsed);
- return {elapsed,duration,capped:elapsed>OFFLINE_CAP_MS,eligible:duration>=10000&&state.offline.enabled===true&&(state.hp>0||state.autoRevive===true)&&state.location!=='town'};
+ return {elapsed,duration,capped:elapsed>OFFLINE_CAP_MS,eligible:duration>=10000&&state.offline.enabled===true&&(state.hp>0||state.autoRevive===true)&&!['town','skycity'].includes(state.location)};
 }
 export function inventoryDelta(before,after){
  const stacks=bag=>Object.fromEntries(bag.filter(e=>!e.uid).map(e=>[e.id,e.qty]));

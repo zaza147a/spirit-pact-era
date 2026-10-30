@@ -6,4 +6,4 @@ export function selectEncounterTarget(enemies,priority='lowestHp',current=null){
 }
 export const encounterDelay=(rng=Math.random)=>100+Math.floor(rng()*801);
 export const replacementDelay=(rng=Math.random)=>250+Math.floor(rng()*1151);
-export const encounterLimit=location=>location==='town'?0:location==='petland'?1:['starter','forest'].includes(location)?2:['desert','frost','astral'].includes(location)?3:4;
+export const encounterLimit=location=>['town','skycity'].includes(location)?0:location==='petland'?1:['starter','forest'].includes(location)?2:['desert','frost','astral'].includes(location)?3:4;
