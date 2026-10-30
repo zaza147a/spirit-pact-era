@@ -1,4 +1,4 @@
-import {FUSION_SKILLS,fusionSkills} from './pet-fusion.js';
+import {FUSION_SKILLS,fusionSkills,petSkillLimit} from './pet-fusion.js';
 // Each role offers six independent skills; each pet equips two auto-cast skills.
 const make=(id,name,kind,cooldown,unlock,power,description)=>({id,name,kind,cooldown,unlock,power,description});
 export const PET_SKILLS={
@@ -15,4 +15,4 @@ export const LEGENDARY_PET_SKILLS=Object.fromEntries(Object.entries(PET_SKILLS).
 export const MYTHIC_PET_SKILLS=Object.fromEntries(Object.entries(LEGENDARY_PET_SKILLS).map(([role,skills])=>[role,skills.map((s,i)=>({...s,id:`mythic_${role}_${i}`,name:MYTHIC_NAMES[role][i],family:'mythic',description:s.description+'；傳說技能的神話進化，強度隨神話面板提升'}))]));
 export const petSkillsFor=(role,rarity='common')=>(rarity==='mythic'?MYTHIC_PET_SKILLS:rarity==='legendary'?LEGENDARY_PET_SKILLS:PET_SKILLS)[role]||[];
 export const petAbilitySetName=rarity=>rarity==='mythic'?'神話進化技能':rarity==='legendary'?'傳說變異技能':'基礎成長技能';
-export function migratePetSkills(pet,role){if(fusionSkills(pet)){const skills=fusionSkills(pet);pet.equippedSkills=(pet.equippedSkills||[]).filter(id=>skills.some(s=>s.id===id)).slice(0,2);return pet;}const all=[PET_SKILLS[role],LEGENDARY_PET_SKILLS[role],MYTHIC_PET_SKILLS[role]],target=petSkillsFor(role,pet.rarity),indices=(pet.equippedSkills||[]).map(id=>all.map(set=>set.findIndex(s=>s.id===id)).find(i=>i>=0)).filter(i=>Number.isInteger(i));pet.equippedSkills=[...new Set((indices.length?indices:Array.isArray(pet.equippedSkills)&&pet.equippedSkills.length===0?[]:[0,1]).slice(0,2).map(i=>target[i].id))];return pet;}
+export function migratePetSkills(pet,role){if(fusionSkills(pet)){const skills=fusionSkills(pet);pet.equippedSkills=[...new Set(pet.equippedSkills||[])].filter(id=>skills.some(s=>s.id===id)).slice(0,petSkillLimit(pet));return pet;}const all=[PET_SKILLS[role],LEGENDARY_PET_SKILLS[role],MYTHIC_PET_SKILLS[role]],target=petSkillsFor(role,pet.rarity),indices=(pet.equippedSkills||[]).map(id=>all.map(set=>set.findIndex(s=>s.id===id)).find(i=>i>=0)).filter(i=>Number.isInteger(i));pet.equippedSkills=[...new Set((indices.length?indices:Array.isArray(pet.equippedSkills)&&pet.equippedSkills.length===0?[]:[0,1]).slice(0,2).map(i=>target[i].id))];return pet;}

@@ -1,5 +1,5 @@
 import {scaledSkillBuff,skillPowerAtLevel} from './third-jobs.js';
-import {parentJob} from './jobs.js?v=6.0.0';
+import {parentJob} from './jobs.js?v=6.1.0';
 export const playerAttackValue=(job,base,level,attributes,gear=0)=>base+(level-1)*5+(parentJob(job)==='archer'?attributes.DEX*4+Math.floor(attributes.STR/5):attributes.STR*4+Math.floor(attributes.DEX/3))+gear;
 export const playerMagicAttackValue=(level,attributes,gear=0)=>6+level*4+attributes.INT*4+gear;
 export const GLOBAL_SKILL_COOLDOWN=850;

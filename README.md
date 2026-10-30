@@ -1,4 +1,4 @@
-# 靈契紀元 V6.0.0
+# 靈契紀元 V6.1.0
 
 單人放置RPG：十種進階職業、四角色獨立存檔、寵物進化／變異與雙靈融合。
 
@@ -12,9 +12,13 @@
 - 人物死亡等待15秒、寵物10秒；離線掛機最多24小時，支援金幣自動復活。
 - 三轉職業五個主動各10級、四個被動各5級；獨立技能點數池，裝備／卡片／舊技能保留。
 
-詳細規則、職業表、六種融合特色與新區表：[V6更新說明](docs/v6-release.md)。
+- 六種融合寵各六招選三招，可設定施放順序；共36招，保留舊配置並開放第三個技能位置。
+- 進階二轉60種融合戰契；三轉60種獨立共鳴，分別改變主攻、範圍及終結技。
+- 新貢獻評分記錄有效增傷、治療、吸收、承傷與有上限的減傷；融合BUFF可作用於最後一擊及AOE。
 
-驗證：[2,460場實際戰鬥模擬報告](docs/balance-v6.md)、[完整樣本](docs/balance-v6.json)、[初輪未達標結果](docs/balance-v6-initial.json)。
+本次規則：[V6.1更新說明](docs/v61-release.md)、[完整平衡報告](docs/fusion-balance-v61.md)、[原始模擬樣本](docs/fusion-balance-v61.json)、[六選三篩選](docs/fusion-screen-v61.json)。
+
+歷史：[V6.0三轉與新大陸](docs/v6-release.md)、[V6.0歷史平衡報告](docs/balance-v6.md)。舊版測試報告為歷史紀錄，當前來源驗證以V6.1為準。
 
 ## 本機驗證
 
@@ -22,7 +26,9 @@
 
 `node --test --test-concurrency=4 tests/*.test.mjs`
 
-`node scripts/audit-balance-v6.mjs`
+`node scripts/screen-fusion-v61.mjs`
+
+`node scripts/audit-fusion-v61.mjs`
 
 靜態網站入口為dist/index.html；GitHub Actions驗證後發布dist至GitHub Pages。
 
