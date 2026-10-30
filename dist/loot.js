@@ -1,7 +1,7 @@
 import {FRONTIER_ITEMS} from './frontier.js';
-import {JUNK_ITEMS,PROOF_ITEMS} from './adventure-economy.js?v=6.1.0';
-import {SECOND_JOBS} from './jobs.js?v=6.1.0';
-import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=6.1.0';
+import {JUNK_ITEMS,PROOF_ITEMS} from './adventure-economy.js?v=6.1.2';
+import {SECOND_JOBS} from './jobs.js?v=6.1.2';
+import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=6.1.2';
 const rand=(a,b,rng=Math.random)=>Math.floor(Math.min(.999999,Math.max(0,rng()))*(b-a+1))+a;
 export const STACK_IDS=['med','cell','orb','red_small','red_mid','red_large','blue_small','blue_mid','blue_large','scrap','herb','ore','crystal','relic'];
 export const STACK_SET=new Set(STACK_IDS);

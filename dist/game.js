@@ -2,45 +2,45 @@ import {companionResonance} from './fusion-resonance.js';
 import {CONTINENTS,continentFor,PLAYER_REVIVE_MS,PET_REVIVE_MS,deathRemaining,baseExperienceNeed,petExperienceNeed,THIRD_SEAL,THIRD_SEAL_NAME,THIRD_SEAL_COST,thirdJobError,thirdJobRewards} from './frontier.js';
 import {THIRD_JOBS,scaledSkillBuff} from './third-jobs.js';
 import {FUSION_PAIRS,FUSION_NAMES,fusedPair,companionRole,fusionSkills,defaultFusionSkills,petSkillLimit,fusionPetError,fusePets} from './pet-fusion.js';
-import {reconcileSkillPoints,updateSkillPointControls} from './skill-points.js?v=6.1.0';
+import {reconcileSkillPoints,updateSkillPointControls} from './skill-points.js?v=6.1.2';
 import {manualSalePrice,sellBagEntry} from './inventory-sale.js';
 import {ATTRIBUTE_KEYS,gearAttributes,cardAttributes,gearAttributeLimit,allocationDamageMultiplier,attributeDescriptions} from './growth-v5.js';
-import {ASCENDED_FORMS,ASCENSION_COST,ascensionCost,LOYALTY_MAX,LOYALTY_PER_POINT,ASCENSION_LOYALTY,normalizePetLevel,petLevelCap,ascensionError,ascendPet,awardLoyalty,normalizeLoyalty} from './pet-ascension.js?v=6.1.0';
-import {equipmentReadiness} from './gear-readiness.js?v=6.1.0';
-import {capturedQuality,evolutionChances,MYTHIC_MUTATION,QUALITY_ORDER} from './pet-acquisition.js?v=6.1.0';
-import {characterLevelCap,jobLevelCap,isTown,homeTown,attributeCap,ignoresGearLevel,experienceFactor,REBIRTH_ZONES,rebirthEligibility,normalizeProgression} from './adventure-progression.js?v=6.1.0';
-import {QUEST_REQUIREMENTS,JUNK_ITEMS,PROOF_ITEMS,BREAKTHROUGH_ITEM,acceptZoneQuest,questAcceptError,turnInZoneQuest,sellSelectedJunk} from './adventure-economy.js?v=6.1.1';
-import {normalizeAutoSkills,orderedAutoSkills,moveAutoSkill,autoSkillGroup,normalizeCaptureRoles} from './auto-skill-rules.js?v=6.1.0';
-import {BASE_ATTRIBUTE_CAP,jobAttributeBonus,capBaseAttributes,JOB_ATTRIBUTE_MAX} from './job-attributes.js?v=6.1.0';
-import {normalizePotionThresholds,purchaseQuote,preferredPotion,retrainCost} from './supply-rules.js?v=6.1.0';
-import {offlineWindow,inventoryDelta,offlineDuration,OFFLINE_STEP_MS} from './offline-rules.js?v=6.1.0';
-import {mapRules,cardDropChance} from './map-rules.js?v=6.1.0';
-import {SHOP_GROUPS,isShopItem} from './shop-catalog.js?v=6.1.0';
-import {potionRestore} from './restoration.js?v=6.1.0';
-import {combatContribution} from './combat-contribution.js?v=6.1.0';
-import {SECOND_JOBS,parentJob,secondJobChoices,transferEligibility} from './jobs.js?v=6.1.0';
-import {MAP_BOSSES,canEncounterBoss,BOSS_RESPITE_MS,bossRarity,BOSS_CARD_CHANCE} from './map-bosses.js?v=6.1.0';
-import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migrateCardBindings,cardEffectsFor,cardDescription} from './card-effects.js?v=6.1.0';
-import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.1.0';
-import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=6.1.0';
-import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.1.0';
-import {matchesGearFilters} from './inventory-rules.js?v=6.1.0';
-import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=6.1.0';
-import {patchHtml,panelIsEditing} from './ui-patch.js?v=6.1.0';
-import {PET_ROUTES,PET_FAMILIES,PET_PALETTES,petRoute,petIcon,petForm,petArt,evolutionStage,evolveCompanion,synthesizeEssence} from './pet-evolution.js?v=6.1.0';
-import {CLASSES,ATTRS,ITEMS,SPECIES,MONSTERS,PETLAND_MONSTERS,MAPS,CARDS,SLOTS,PET_SLOTS,PET_RARITIES,PET_EVOLUTIONS,petRarity,nextPetEvolution,clamp,rand,makePet,petStats} from './catalog.js?v=6.1.0';
-import {FIELDS,NAMES,newReport,record,finish,normalizeHistory} from './contribution.js?v=6.1.0';
-import {resonanceRule,resonanceOpener,resonanceTriggered,RESONANCE_RULES,RESONANCE_EVENTS,RESONANCE_MAX,ULTIMATE_COST,ULTIMATE_COOLDOWN} from './resonance.js?v=6.1.0';
-import {PET_SKILLS,petSkillById,defaultPetSkills,petSkillsFor,petAbilitySetName,migratePetSkills} from './pet-abilities.js?v=6.1.0';
-import {JOB_SKILLS,jobSkillById,initialJobSkills,weaponSkillAllowed,activeJobSkills,jobPassives,skillUnlocked,supersededSkill,REBIRTH_MAIN_REPLACES} from './job-skills.js?v=6.1.0';
-import {WORLD_MONSTERS,ZONES,worldMonsterArt} from './world-data.js?v=6.1.0';
-import {rollGear,rollPetGear,rebalanceGear,gearStatValue,affixRange,normalizeBag,addStack,consumeStack,STACK_SET,RARITIES,AFFIX_NAMES,TIER_NAMES,gearTier,gearGroup,shardId,gearLabel,affixLabel,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,equipmentDrop} from './loot.js?v=6.1.0';
-import {outgoingHitDamage,incomingMonsterDamage,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterCombatStats,LEVEL_CAPS} from './combat-balance.js?v=6.1.0';
-import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.1.0';
+import {ASCENDED_FORMS,ASCENSION_COST,ascensionCost,LOYALTY_MAX,LOYALTY_PER_POINT,ASCENSION_LOYALTY,normalizePetLevel,petLevelCap,ascensionError,ascendPet,awardLoyalty,normalizeLoyalty} from './pet-ascension.js?v=6.1.2';
+import {equipmentReadiness} from './gear-readiness.js?v=6.1.2';
+import {capturedQuality,evolutionChances,MYTHIC_MUTATION,QUALITY_ORDER} from './pet-acquisition.js?v=6.1.2';
+import {characterLevelCap,jobLevelCap,isTown,homeTown,attributeCap,ignoresGearLevel,experienceFactor,REBIRTH_ZONES,rebirthEligibility,normalizeProgression} from './adventure-progression.js?v=6.1.2';
+import {QUEST_REQUIREMENTS,JUNK_ITEMS,PROOF_ITEMS,BREAKTHROUGH_ITEM,acceptZoneQuest,questAcceptError,turnInZoneQuest,sellSelectedJunk} from './adventure-economy.js?v=6.1.2';
+import {normalizeAutoSkills,orderedAutoSkills,moveAutoSkill,autoSkillGroup,normalizeCaptureRoles} from './auto-skill-rules.js?v=6.1.2';
+import {BASE_ATTRIBUTE_CAP,jobAttributeBonus,capBaseAttributes,JOB_ATTRIBUTE_MAX} from './job-attributes.js?v=6.1.2';
+import {normalizePotionThresholds,purchaseQuote,preferredPotion,retrainCost} from './supply-rules.js?v=6.1.2';
+import {offlineWindow,inventoryDelta,offlineDuration,OFFLINE_STEP_MS} from './offline-rules.js?v=6.1.2';
+import {mapRules,cardDropChance} from './map-rules.js?v=6.1.2';
+import {SHOP_GROUPS,isShopItem} from './shop-catalog.js?v=6.1.2';
+import {potionRestore} from './restoration.js?v=6.1.2';
+import {combatContribution} from './combat-contribution.js?v=6.1.2';
+import {SECOND_JOBS,parentJob,secondJobChoices,transferEligibility} from './jobs.js?v=6.1.2';
+import {MAP_BOSSES,canEncounterBoss,BOSS_RESPITE_MS,bossRarity,BOSS_CARD_CHANCE} from './map-bosses.js?v=6.1.2';
+import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migrateCardBindings,cardEffectsFor,cardDescription} from './card-effects.js?v=6.1.2';
+import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.1.2';
+import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=6.1.2';
+import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.1.2';
+import {matchesGearFilters} from './inventory-rules.js?v=6.1.2';
+import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=6.1.2';
+import {patchHtml,panelIsEditing} from './ui-patch.js?v=6.1.2';
+import {PET_ROUTES,PET_FAMILIES,PET_PALETTES,petRoute,petIcon,petForm,petArt,evolutionStage,evolveCompanion,synthesizeEssence} from './pet-evolution.js?v=6.1.2';
+import {CLASSES,ATTRS,ITEMS,SPECIES,MONSTERS,PETLAND_MONSTERS,MAPS,CARDS,SLOTS,PET_SLOTS,PET_RARITIES,PET_EVOLUTIONS,petRarity,nextPetEvolution,clamp,rand,makePet,petStats} from './catalog.js?v=6.1.2';
+import {FIELDS,NAMES,newReport,record,finish,normalizeHistory} from './contribution.js?v=6.1.2';
+import {resonanceRule,resonanceOpener,resonanceTriggered,RESONANCE_RULES,RESONANCE_EVENTS,RESONANCE_MAX,ULTIMATE_COST,ULTIMATE_COOLDOWN} from './resonance.js?v=6.1.2';
+import {PET_SKILLS,petSkillById,defaultPetSkills,petSkillsFor,petAbilitySetName,migratePetSkills} from './pet-abilities.js?v=6.1.2';
+import {JOB_SKILLS,jobSkillById,initialJobSkills,weaponSkillAllowed,activeJobSkills,jobPassives,skillUnlocked,supersededSkill,REBIRTH_MAIN_REPLACES} from './job-skills.js?v=6.1.2';
+import {WORLD_MONSTERS,ZONES,worldMonsterArt} from './world-data.js?v=6.1.2';
+import {rollGear,rollPetGear,rebalanceGear,gearStatValue,affixRange,normalizeBag,addStack,consumeStack,STACK_SET,RARITIES,AFFIX_NAMES,TIER_NAMES,gearTier,gearGroup,shardId,gearLabel,affixLabel,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,equipmentDrop} from './loot.js?v=6.1.2';
+import {outgoingHitDamage,incomingMonsterDamage,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterCombatStats,LEVEL_CAPS} from './combat-balance.js?v=6.1.2';
+import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.1.2';
 
-import {GEAR_TIERS,legacyFiveTierToNew,migrateFiveTierShards} from './progression.js?v=6.1.0';
-import {playerAttackValue,playerMagicAttackValue,GLOBAL_SKILL_COOLDOWN,jobSkillCooldownMs,jobSkillMultiplier,freecastThreshold,jobSkillSpec,skillCastMs,skillActionDelay} from './player-scaling.js?v=6.1.0';
-import {petSkillEffect,petSkillPreview,petOffensivePower,supportPulse,resonanceMagnitude,petUltimateSupport} from './pet-effects.js?v=6.1.0';
+import {GEAR_TIERS,legacyFiveTierToNew,migrateFiveTierShards} from './progression.js?v=6.1.2';
+import {playerAttackValue,playerMagicAttackValue,GLOBAL_SKILL_COOLDOWN,jobSkillCooldownMs,jobSkillMultiplier,freecastThreshold,jobSkillSpec,skillCastMs,skillActionDelay} from './player-scaling.js?v=6.1.2';
+import {petSkillEffect,petSkillPreview,petOffensivePower,supportPulse,resonanceMagnitude,petUltimateSupport} from './pet-effects.js?v=6.1.2';
 
 let inCombatTick=false,attributeSnapshot=null,cardSnapshot={},passiveSnapshot=null;
 let combatSamples=[],combatStarted=0,allocationAmounts={},sellAmounts={};
@@ -347,8 +347,11 @@ function setJunkSelection(enabled,map=null){const ids=Object.entries(ITEMS).filt
 function renderJunkSettings(){return `<div class="item"><h3>自動出售雜物</h3><p>只出售勾選的雜物。已接取任務所需的指定雜物會保留${QUEST_REQUIREMENTS.junk}個；征途誓印不會出售。線上與離線皆適用。</p><div class="panel-shortcuts"><button data-junk-bulk="all:on">全部勾選</button><button data-junk-bulk="all:off">全部取消</button></div>${[{id:'petland',name:'寵物之地'},...ZONES].map(z=>`<details><summary>${z.name}</summary><button data-junk-bulk="${z.id}:on">本區全選</button><button data-junk-bulk="${z.id}:off">本區取消</button>${Object.entries(ITEMS).filter(([,it])=>it.junk&&it.map===z.id).map(([id,it])=>`<label class="setting-toggle"><input type="checkbox" data-junk-sell="${id}" ${player.autoSellJunk.includes(id)?'checked':''}>${it.name} · ${it.cost}金</label>`).join('')}</details>`).join('')}<details><summary>舊版雜物</summary><button data-junk-bulk="legacy:on">本區全選</button><button data-junk-bulk="legacy:off">本區取消</button>${Object.entries(ITEMS).filter(([,it])=>it.junk&&!it.map).map(([id,it])=>`<label><input type="checkbox" data-junk-sell="${id}" ${player.autoSellJunk.includes(id)?'checked':''}>${it.name}</label>`).join('')}</details></div>`;}
 function renderVillageQuests(){if(player.location!=='town')return '<div class="item">請回靈契主城找征途引導官・艾琳接取或回報任務。</div>';return `<div class="item npc-dialog"><h3>🧭 征途引導官・艾琳</h3><p>「旅人，請先從燼火熔獄的Lv.51–60征途開始，完成後再挑戰下一區域。」</p><p>任務依51–60 → 61–70 → 71–80 → 81–90 → 91–99順序接取。接取與回報都必須回村莊找我；各區全部小怪均可遭遇，指定小怪每隻必掉1個專屬雜物，任務材料保留${QUEST_REQUIREMENTS.junk}個不自售。另需當區首領征途誓印${QUEST_REQUIREMENTS.proof}枚；避開首領不會取得。</p>${ZONES.filter(z=>z.min>=51&&z.max<=99).map(z=>{const q=player.quests[z.id],reason=q?null:questAcceptError(player,z.id),junk=q?(player.bag.find(e=>e.id===q.junk)?.qty||0):0,proof=q?(player.bag.find(e=>e.id===q.proof)?.qty||0):0;return `<div class="quest-row"><b>${z.name} Lv.${z.min}–${z.max}</b>${q?`<p>${q.done?'✓ 已完成':`${ITEMS[q.junk]?.name} ${junk}/${QUEST_REQUIREMENTS.junk}<br>${ITEMS[q.proof]?.name} ${proof}/${QUEST_REQUIREMENTS.proof}`}</p>${q.done?'':`<button data-quest-turnin="${z.id}" ${junk>=QUEST_REQUIREMENTS.junk&&proof>=QUEST_REQUIREMENTS.proof?'':'disabled'}>向艾琳回報任務</button>`}`:`<p>${reason||'可以接取此階段征途'}</p><button data-quest-accept="${z.id}" ${reason?'disabled':''}>向艾琳接取任務</button>`}</div>`;}).join('')}<h3>靈契轉生</h3><p>二轉Base99／Job50並完成五區任務。轉生回到一轉Base1／Job1，基本能力重置並獲得20點自由能力。裝備、卡片、寵物、金幣保留；忽略1–99裝備等級需求，職業限制仍有效。角色上限150，Base100起基本能力上限120；101級起可前往蒼穹機界新大陸。</p><button data-rebirth ${rebirthEligibility(player,SECOND_JOBS)?'disabled':''}>${rebirthEligibility(player,SECOND_JOBS)||'進行靈契轉生'}</button></div>`;}
 function renderJobCodex(){return Object.entries(SECOND_JOBS).map(([id,job])=>`<details class="item" ${id===player.job?'open':''}><summary>${job.name} · ${rangeLabel(job.range)}</summary><div class="job-art-pair">${spriteHtml(id,'choice',false)}${spriteHtml(id,'choice',true)}</div><p>二轉外觀／轉生二轉外觀</p><p>${job.style}</p><p>一轉 ${CLASSES[job.parent].name} → ${job.name}；Base50／Job40可回村莊辦理。主要能力：${job.attribute}。</p>${JOB_SKILLS[id].filter(s=>s.branch==='second').map(skill=>`<p><b>${skill.name}</b>${skill.rebornOnly?' · 轉生二轉限定':''}<br>${skill.desc} · ${jobSkillSpec(skill,1,id).text}</p>`).join('')}<h3>三轉：${THIRD_JOBS[id].name}</h3>${spriteHtml(id,'choice',true,true)}<p>${THIRD_JOBS[id].style}</p>${JOB_SKILLS[id].filter(s=>s.thirdOnly).map(skill=>`<p><b>${skill.name}</b> · Lv.${skill.maxRank}<br>${skill.desc} · ${jobSkillSpec(skill,1,id).text}</p>`).join('')}<p>四種配寵的具體觸發、技能名稱及作用請見「共鳴玩法」。</p></details>`).join('');}
+let autoSkillSelection={};
+function selectAutoSkill(id){autoSkillSelection[player.job]=id;}
+const skillStageLabel=skill=>skill.thirdOnly||skill.branch==='third'?'三轉':skill.rebornOnly?'轉生二轉':skill.branch==='second'?'二轉':'一轉';
 function autoQueueSkills(){return JOB_SKILLS[player.job].map(s=>({...s,learned:!!player.jobSkills[s.id]&&!supersededSkill(player,s)}));}
-function renderAutoSkillSettings(){const settings=normalizeAutoSkills(player.autoSkills,autoQueueSkills()),skills=settings.order.map(id=>jobSkillById(player.job,id)),groups=new Set(skills.map(autoSkillGroup).filter(Boolean)),available=autoQueueSkills().filter(s=>s.learned&&s.kind!=='passive'&&!settings.order.includes(s.id)),defaultAdd=available.find(s=>!autoSkillGroup(s)||!groups.has(autoSkillGroup(s))),canAdd=!!defaultAdd;return `<div class="item auto-skill-settings"><h3>自動技能優先順序</h3><p>由上往下嘗試。只施放清單內的技能；學習新技能不會自動加入。移除只取消自動施放，不會遺忘技能。</p><div class="auto-skill-add"><label for="autoSkillAddSelect">選擇技能</label><select id="autoSkillAddSelect" aria-label="選擇要新增的自動技能" ${canAdd?'':'disabled'}>${available.length?available.map(skill=>{const conflict=autoSkillGroup(skill)&&groups.has(autoSkillGroup(skill));return `<option value="${skill.id}" ${defaultAdd?.id===skill.id?'selected':''} ${conflict?'disabled':''}>${skill.name} · ${skill.rebornOnly?'轉生二轉':skill.branch==='second'?'二轉':'一轉'}${conflict?'（同類護盾已配置）':''}</option>`;}).join(''):'<option value="">沒有可新增的已學技能</option>'}</select><button data-auto-skill-add ${canAdd?'':'disabled'}>新增技能</button></div><p class="tiny">同類護盾限配置一個；若要更換，先移除目前的護盾。二轉護盾CD3.6秒，一轉4.8秒，共用冷卻，無法交替連放。</p>${skills.length?skills.map((skill,index)=>`<div class="auto-skill-row"><div class="auto-skill-name"><b>${index+1}. ${skill.name}</b><small>${skill.rebornOnly?'轉生二轉':skill.branch==='second'?'二轉':'一轉'} · Lv.${player.jobSkills[skill.id]} · CD ${(skillCooldown(skill)/1000).toFixed(2)}秒</small></div><div class="auto-skill-actions"><button data-skill-move="${skill.id}" data-direction="-1" aria-label="將${skill.name}上移" ${index===0?'disabled':''}>↑</button><button data-skill-move="${skill.id}" data-direction="1" aria-label="將${skill.name}下移" ${index===skills.length-1?'disabled':''}>↓</button><button data-auto-skill-remove="${skill.id}" aria-label="移除${skill.name}" class="danger">移除</button></div></div>`).join(''):'<p class="empty">尚未配置自動技能；可從上方選擇並新增。普通攻擊仍會正常進行。</p>'}<p class="tiny">護盾低於HP15%才補盾；治療低於65%、回魔低於55%才施放。零CD攻擊排在最前可能占用其他招式的施放機會。</p></div>`;}
+function renderAutoSkillSettings(){const settings=normalizeAutoSkills(player.autoSkills,autoQueueSkills()),skills=settings.order.map(id=>jobSkillById(player.job,id)),groups=new Set(skills.map(autoSkillGroup).filter(Boolean)),available=autoQueueSkills().filter(s=>s.learned&&s.kind!=='passive'&&!settings.order.includes(s.id)),defaultAdd=available.find(s=>s.id===autoSkillSelection?.[player.job]&&(!autoSkillGroup(s)||!groups.has(autoSkillGroup(s))))||available.find(s=>!autoSkillGroup(s)||!groups.has(autoSkillGroup(s))),canAdd=!!defaultAdd;return `<div class="item auto-skill-settings"><h3>自動技能優先順序</h3><p>由上往下嘗試。只施放清單內的技能；學習新技能不會自動加入。移除只取消自動施放，不會遺忘技能。</p><div class="auto-skill-add"><label for="autoSkillAddSelect">選擇技能</label><select id="autoSkillAddSelect" aria-label="選擇要新增的自動技能" ${canAdd?'':'disabled'}>${available.length?available.map(skill=>{const conflict=autoSkillGroup(skill)&&groups.has(autoSkillGroup(skill));return `<option value="${skill.id}" ${defaultAdd?.id===skill.id?'selected':''} ${conflict?'disabled':''}>${skill.name} · ${skillStageLabel(skill)}${conflict?'（同類護盾已配置）':''}</option>`;}).join(''):'<option value="">沒有可新增的已學技能</option>'}</select><button data-auto-skill-add ${canAdd?'':'disabled'}>新增技能</button></div><p class="tiny">同類護盾限配置一個；若要更換，先移除目前的護盾。二轉護盾CD3.6秒，一轉4.8秒，共用冷卻，無法交替連放。</p>${skills.length?skills.map((skill,index)=>`<div class="auto-skill-row"><div class="auto-skill-name"><b>${index+1}. ${skill.name}</b><small>${skillStageLabel(skill)} · Lv.${player.jobSkills[skill.id]} · CD ${(skillCooldown(skill)/1000).toFixed(2)}秒</small></div><div class="auto-skill-actions"><button data-skill-move="${skill.id}" data-direction="-1" aria-label="將${skill.name}上移" ${index===0?'disabled':''}>↑</button><button data-skill-move="${skill.id}" data-direction="1" aria-label="將${skill.name}下移" ${index===skills.length-1?'disabled':''}>↓</button><button data-auto-skill-remove="${skill.id}" aria-label="移除${skill.name}" class="danger">移除</button></div></div>`).join(''):'<p class="empty">尚未配置自動技能；可從上方選擇並新增。普通攻擊仍會正常進行。</p>'}<p class="tiny">護盾低於HP15%才補盾；治療低於65%、回魔低於55%才施放。零CD攻擊排在最前可能占用其他招式的施放機會。</p></div>`;}
 function changeAutoSkill(id,enabled){const previous=structuredClone(player.autoSkills),skills=autoQueueSkills(),skill=skills.find(s=>s.id===id),settings=normalizeAutoSkills(player.autoSkills,skills);if(enabled){if(!skill?.learned||skill.kind==='passive')return;const group=autoSkillGroup(skill);if(group&&settings.order.some(other=>other!==id&&autoSkillGroup(skills.find(s=>s.id===other))===group))return toast('同類護盾只能配置一個，請先移除目前的護盾');if(!settings.order.includes(id))settings.order.push(id);}else settings.order=settings.order.filter(other=>other!==id);player.autoSkills=settings;dirty=true;if(save()===false)player.autoSkills=previous;renderSide(true);}
 function reorderAutoSkill(id,direction){const previous=structuredClone(player.autoSkills);player.autoSkills=moveAutoSkill(player.autoSkills,JOB_SKILLS[player.job].map(s=>({...s,learned:player.jobSkills[s.id]>0})),id,direction);dirty=true;if(save()===false)player.autoSkills=previous;renderSide(true);}
 function renderCaptureSettings(){const selected=normalizeCaptureRoles(player.autoCaptureRoles);return `<div class="item"><h3>寵物之地自動捕捉</h3><p>勾選要捕捉的類型；全部關閉即停用。僅寵物之地線上自動戰鬥時丟球，不需壓低血量，其餘類型照常戰鬥。離線不捕捉。</p>${[['attack','攻擊型'],['magic','魔法型'],['defense','防禦型'],['support','輔助型']].map(([role,label])=>`<label class="setting-toggle"><input type="checkbox" data-capture-role="${role}" ${selected.includes(role)?'checked':''}> 自動捕捉${label}</label>`).join('')}<p>缺球時逐顆以金幣補球；金幣不足或寵物滿30隻時停止丟球，不會自動放生。</p></div>`;}
@@ -464,6 +467,7 @@ for(const b of document.querySelectorAll('[data-evolve]'))b.onclick=()=>evolvePe
 for(const b of document.querySelectorAll('[data-petskillmove]'))b.onclick=()=>{const [id,skill,d]=b.dataset.petskillmove.split(':');movePetSkill(id,skill,Number(d));};
 for(const b of document.querySelectorAll('[data-petskill]'))b.onclick=()=>{const [id,skill]=b.dataset.petskill.split(':');togglePetSkill(id,skill)};
 for(const b of $('side').querySelectorAll('[data-transfer]'))b.onclick=()=>transferJob(b.dataset.transfer);
+if($('autoSkillAddSelect'))$('autoSkillAddSelect').onchange=()=>{selectAutoSkill($('autoSkillAddSelect').value);};
 for(const b of $('side').querySelectorAll('[data-auto-skill-add]'))b.onclick=()=>changeAutoSkill($('autoSkillAddSelect').value,true);
 for(const b of $('side').querySelectorAll('[data-auto-skill-remove]'))b.onclick=()=>changeAutoSkill(b.dataset.autoSkillRemove,false);
 for(const b of document.querySelectorAll('[data-skill-move]'))b.onclick=()=>reorderAutoSkill(b.dataset.skillMove,Number(b.dataset.direction));
@@ -561,7 +565,7 @@ async function settleOffline(){
  let worker;
  try{
   const result=await new Promise((resolve,reject)=>{
-   worker=new Worker(new URL('offline-worker.js?v=6.1.0',document.baseURI),{type:'module'});
+   worker=new Worker(new URL('offline-worker.js?v=6.1.2',document.baseURI),{type:'module'});
    worker.onmessage=event=>{if(event.data.type==='progress')$('offlineProgressText').textContent=`正在補算離線掛機… ${Math.floor(event.data.value*100)}%`;else if(event.data.type==='result')resolve(event.data.result);else reject(Error(event.data.message||'離線結算失敗'));};
    worker.onerror=()=>reject(Error('離線結算載入失敗，請重新整理再試'));
    worker.postMessage({player:structuredClone(player),now});

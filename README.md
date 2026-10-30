@@ -1,4 +1,4 @@
-# 靈契紀元 V6.1.1
+# 靈契紀元 V6.1.2
 
 單人放置RPG：十種進階職業、四角色獨立存檔、寵物進化／變異與雙靈融合。
 
@@ -33,3 +33,7 @@
 靜態網站入口為dist/index.html；GitHub Actions驗證後發布dist至GitHub Pages。
 
 歷史版本：[V5.0.8](docs/v508-release.md)、[V5.0.7界限進化](docs/ascension-v507.md)。
+
+## V6.1.2 更新
+
+修正十職業三轉技能排序分類及新增選取值；151–200級怪物／首領配合融合寵加強。完成5,100組實測，詳見[難度與測試報告](docs/frontier-balance-v612.md)。
