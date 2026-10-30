@@ -1,6 +1,6 @@
 {
   "version": 50,
-  "sourceDigest": "c2ecb40dc835364403463b7af33b8cb35e053f27996ac4d2ff66dd599721105f",
+  "sourceDigest": "c15e70c06556127bdf3f2fb504beec8fe67bdbfc75ba0026ee10f670764de5d3",
   "recipeDigest": "5b1812dfa64b78b83e0a0db1b4a6d7e6f97f4cb8d32acd1fce554ddf4c6663b9",
   "selectorDigest": "26da52472a6451c61039340dd8781d64483d2afec5d2f2dc89588ac948a9f266",
   "verifiedCachedBaseline": false,
@@ -13614,6 +13614,12 @@
     {
       "previousSourceDigest": "50cf85eb1ad21d2065260ae7e7a526f0d24cde2f5c6de40a18d93044755f6e0d",
       "reason": "renderBag now hides manual sale controls on character and pet equipment; dismantle retained. Combat and audit inputs unchanged."
+    }
+  ],
+  "nonCombatChanges": [
+    {
+      "previousSourceDigest": "c2ecb40dc835364403463b7af33b8cb35e053f27996ac4d2ff66dd599721105f",
+      "reason": "Job transfer and rebirth preserve worn gear and sockets; transfer starter enters bag. Audit fixtures construct gear directly and do not execute transfer/rebirth, so all840 combat samples and inputs remain unchanged."
     }
   ]
 }
