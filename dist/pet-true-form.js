@@ -7,5 +7,5 @@ export const TRUE_FORMS={
 export const trueFormKey=pet=>pet?.fusion?pet.fusion.main+'-'+pet.fusion.sub:null;
 export const trueFormReady=pet=>!!TRUE_FORMS[trueFormKey(pet)]&&pet.level>=200&&pet.loyalty>=500&&pet.trueForm!==true;
 export const trueFormName=pet=>pet?.trueForm===true?TRUE_FORMS[trueFormKey(pet)]||null:null;
-export const trueFormArt=pet=>trueFormName(pet)?`assets/true-forms/companions.svg#${trueFormKey(pet)}`:null;
+export const trueFormArt=pet=>trueFormName(pet)?`assets/true-forms/juvenile/${trueFormKey(pet)}.webp`:null;
 export const TRUE_FORM_MESSAGE='恭喜！一路同行至今，你們早已親密無間。如今，牠終於願意卸下守護的外形，以原本的模樣與你相見。';

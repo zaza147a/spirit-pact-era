@@ -1,62 +1,153 @@
 {
-  "version": "6.2.0",
-  "kind": "appearance-only secret true forms",
-  "layout": {
-    "columns": 4,
-    "rows": 3,
-    "cell": 362
-  },
+  "version": "6.2.1",
+  "kind": "appearance-only first humanoid transformation",
+  "stage": "juvenile",
   "generator": "built-in image_gen",
-  "prompt": "12 fully clothed adult humanoid fantasy guardians retaining dragon, phoenix, titan and qilin fusion motifs; transparent 4 by 3 atlas; polished painted RPG companion sprites; no labels. Main/sub role order preserves12 distinct visual identities.",
-  "sourceSha256": "269d8321cec153b5b4a686789adf9cdc1977a18e7929d0180da374cbda4e4d70",
+  "styleReference": "attack-magic juvenile illustration; other11forms independently generated to match its painting style",
   "assets": [
     {
       "id": "attack-magic",
-      "path": "assets/true-forms/companions.svg#attack-magic"
+      "name": "星焰真契者",
+      "path": "assets/true-forms/juvenile/attack-magic.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "5843d0c1d1a2b4d0bcd851d59c10a0f83050a58249e6a6eb25cd1ce4f934be3e",
+      "sha256": "edb3d09f2f68980da15e5e59943d7a688a7871ef6bdbfea3aecceacfc1922d48",
+      "prompt": "Generate a single transparent-background fantasy RPG sprite: a cute young child dragon apprentice boy with round cheeks, large kind eyes, short crimson hair, tiny gold horns and little purple-blue feather wings. He wears a long-sleeved red-and-gold tunic, full trousers, gloves and boots, with a small glowing flame-crystal wand. Gentle happy expression. Wholesome children's storybook character design with 3.5-head-tall chibi proportions, short little limbs and small hands. Detailed painted 2D JRPG game art, soft shading, clean silhouette. Full body centered, all wings and feet entirely visible, 15 percent clear padding on all sides. Exactly one character. No text, no scenery, no ground shadow. Transparent background."
     },
     {
       "id": "attack-defense",
-      "path": "assets/true-forms/companions.svg#attack-defense"
+      "name": "鎮界龍衛",
+      "path": "assets/true-forms/juvenile/attack-defense.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "3ca2c5007139efbd6bbfcbe4e78dbf5d1790fd2e09a3f57ac550db8a528f489d",
+      "sha256": "7f9e6bee941c5ddb3635dee6d2a9aaa737bce5fee58bfeab674d5c09a15300ae",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little boy dragon shield guardian child with tousled dark hair, tiny dragon horns and tail, rounded black and gold training armor, a small red-gold shield."
     },
     {
       "id": "attack-support",
-      "path": "assets/true-forms/companions.svg#attack-support"
+      "name": "聖瑞麟劍士",
+      "path": "assets/true-forms/juvenile/attack-support.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "db4dfa60188bd6a9cdcd21294b27ce631b9274b2032fbc5be05237711300f47d",
+      "sha256": "6644258ef13ac1dd693ad40fd28b9bb8fbeda6c2263082d046fce2cc83c1ea39",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little boy qilin sword apprentice child with fluffy white hair, small jade antlers, white and emerald fully covering travel robes, a tiny red ribbon and wooden practice sword."
     },
     {
       "id": "magic-attack",
-      "path": "assets/true-forms/companions.svg#magic-attack"
+      "name": "赤曜星羽姬",
+      "path": "assets/true-forms/juvenile/magic-attack.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "6eaac2fe60d2a59a843080d075d7e72cd536d3cacf42707fc40d9972d70b0a2c",
+      "sha256": "f1f2df12beb4cfc66fc6330c79931c673f4e1ae40b4dbfaaa5b69d5981f8af72",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little girl phoenix magic apprentice child with short dark red hair, a small feather crown, little violet-blue phoenix wings, fully covering red and gold mage tunic with leggings, a small glowing fire-star orb."
     },
     {
       "id": "magic-defense",
-      "path": "assets/true-forms/companions.svg#magic-defense"
+      "name": "星岩晶詠者",
+      "path": "assets/true-forms/juvenile/magic-defense.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "f9aa2bd8f87abb51aed16c31ea978b4b6f776634a9377f77f9635aa68d33e1f5",
+      "sha256": "8357bf42132ca2c7c3ddb26eb5d49c68eac8d605b5488ecf0435508785ae6fd1",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little girl crystal phoenix apprentice child with lavender bob haircut, tiny blue crystal feather wings, fully covering blue and gold padded winter mage coat, a short crystal staff."
     },
     {
       "id": "magic-support",
-      "path": "assets/true-forms/companions.svg#magic-support"
+      "name": "聖光羽靈姬",
+      "path": "assets/true-forms/juvenile/magic-support.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "6679ef84aa96aab09c40d606551efdcf23dc113946f3f3e204301e98f0b3abd2",
+      "sha256": "246212025c5fe5e77799a7fbd9b6dd70654d6e2d44b789b38a6ce5882667a1b3",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little girl holy phoenix healer child with fluffy pale blonde hair, tiny white feather wings, a modest long white and gold layered robe, a small violet star lantern."
     },
     {
       "id": "defense-attack",
-      "path": "assets/true-forms/companions.svg#defense-attack"
+      "name": "赤曜鎧聖",
+      "path": "assets/true-forms/juvenile/defense-attack.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "22c2e98d9c304ee51efc080efeea1e7dbfc14ec642db8fd890a40a0b84657fb4",
+      "sha256": "7074f0d7f12ca62a6e3e4651a008662448c7b7cc9a1c45230fcc7a020ea6abe0",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little boy stone titan warrior child with tousled auburn hair, round cheeks, small red stone shoulder plates, fully covering dark red training armor, an oversized round toy-like rock hammer."
     },
     {
       "id": "defense-magic",
-      "path": "assets/true-forms/companions.svg#defense-magic"
+      "name": "星曜符衛",
+      "path": "assets/true-forms/juvenile/defense-magic.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "33f9991aff48778886fdd8f5d28a48f9a12c0529eb1bdb59fdf366e4cb93b30c",
+      "sha256": "637f73fd12ae8a732017d0e398a554907d568be0aba23d783440f38e2f84b6c6",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little boy rune titan mage child with fluffy grey-blue hair, small blue crystal shoulder plates, fully covering navy and gold apprentice robes with leggings, a floating little blue rune cube."
     },
     {
       "id": "defense-support",
-      "path": "assets/true-forms/companions.svg#defense-support"
+      "name": "碧玉聖庭守望者",
+      "path": "assets/true-forms/juvenile/defense-support.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "855f3ccbcdd9f5bd85130a7a1f2b47ab68ce141c3eb00abb4db57d4e0b8d071c",
+      "sha256": "85f1f8b004683dbfada36736db51b0966a7c1c48dc8403bf17e6284dda3891e4",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little boy jade titan keeper child with fluffy light brown hair, emerald crystal shoulder accents, fully covering green and gold padded coat and boots, a small luminous green round shield."
     },
     {
       "id": "support-attack",
-      "path": "assets/true-forms/companions.svg#support-attack"
+      "name": "赤曜麟武姬",
+      "path": "assets/true-forms/juvenile/support-attack.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "979ce803f29f0a830af0e5e75d4d298576ef47ca9119f2bf8cb04238a27845f0",
+      "sha256": "5f50ec4482256a1405a73621434d289bb180014de40800fa5f8e5803bd314480",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little girl qilin martial apprentice child with long dark brown hair tied in two short ponytails, tiny jade antlers, fully covering emerald and white martial tunic and trousers, a red tassel on a wooden practice spear."
     },
     {
       "id": "support-magic",
-      "path": "assets/true-forms/companions.svg#support-magic"
+      "name": "星羽瑞雲仙",
+      "path": "assets/true-forms/juvenile/support-magic.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "9beb0e9fd1e88cf04feebdd8d9cc70e7e157f01494df600768a9b1f5dfbd2896",
+      "sha256": "08cb389a2437b936f077fe830ff0a8addd58ef7ba586c9eb06ecf6779dc54719",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little boy qilin star mage child with soft white hair, tiny jade antlers, fully covering white teal and lavender layered robes, little star ornaments and a floating purple star lantern."
     },
     {
       "id": "support-defense",
-      "path": "assets/true-forms/companions.svg#support-defense"
+      "name": "聖岩麟角賢者",
+      "path": "assets/true-forms/juvenile/support-defense.webp",
+      "stage": "juvenile",
+      "width": 1145,
+      "height": 1374,
+      "alpha": true,
+      "sourceSha256": "d007b46d1ab42f4737efbd2c25da0c6a9cb9db09700a24fb537669d7a0059b13",
+      "sha256": "e095f31e970261e6761cfbf45652ba009e56dd9e11e7b258f66224857076c45e",
+      "prompt": "Use the reference image only for its cute storybook JRPG rendering style. Create a NEW distinct fantasy companion sprite for the FIRST humanoid transformation, in the childhood stage: round cheeks, large kind eyes, short little limbs, small hands, friendly youthful face, approximately 3.5-head-tall chibi proportions. Child-friendly storybook adventure character, wearing long sleeves, fully covering tunic or robe, trousers and boots. Detailed painted 2D game art with clean silhouette and soft shading. Full body centered with all feet, wings, antlers and props inside the frame and15 percent clear transparent padding on all edges. Exactly ONE character, transparent background, no scenery, no ground shadow, no text. Subject: a little girl qilin earth apprentice child with honey blonde bob hair, tiny jade antlers, fully covering white emerald gold padded ceremonial robe, small stone bracers and a short jade staff."
     }
   ]
 }

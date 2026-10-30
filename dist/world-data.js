@@ -1,4 +1,4 @@
-import {noviceMonsterStats,normalMonsterStats} from './progression.js?v=6.2.0';
+import {noviceMonsterStats,normalMonsterStats} from './progression.js?v=6.2.1';
 // Fifteen progression zones cover every Base level once; the final zone ends at the level cap.
 export const ZONES=[
  {id:'starter',name:'初始謎域',min:1,max:10,icon:'🌫️',names:['霧芽史萊姆','迷途野兔','青苔幼蟲','小石靈','尖耳魔鼠','幽光飛蛾','泥沼獵犬','藤蔓守衛','迷霧行者','謎域巨角獸']},
