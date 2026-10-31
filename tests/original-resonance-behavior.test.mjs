@@ -60,3 +60,17 @@ test('performer song shield charges only after two buffs, then absorbs and retal
  const shield=p.shield;
  a.emitEvent('buff');assert.equal(p.shield,shield,'cooldown prevents immediate shield spam');
 });
+
+test('charged sound shield retaliates once after a real incoming owner hit',async()=>{
+ const {a,c,p,foe}=await scenario('performer','attack-defense');
+ a.beginReport();
+ a.emitEvent('buff');a.emitEvent('buff');
+ assert.ok(p.shield>0);
+ foe.atk=1000;foe.hit=1e7;
+ c.chooseMonsterTarget=()=> 'player';c.Math.random=()=>0;
+ const before=foe.hp;
+ a.enemyAttack();
+ assert.ok(foe.hp<before,'shield should deal real retaliatory damage');
+ assert.ok(a.state().report.metrics.resonanceDamage>0,'retaliation credited to resonance');
+ const after=foe.hp;a.enemyAttack();assert.equal(foe.hp,after,'one charge must not retaliate twice');
+});
