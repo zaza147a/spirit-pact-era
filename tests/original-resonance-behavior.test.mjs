@@ -53,6 +53,18 @@ test('two-hit accumulation never leaks between active pets after swapping',async
  a.emitEvent('damageTaken');assert.ok(foe.hp<1e9);
 });
 
+test('swapping fused companions cannot bypass the shared combat resonance cooldown',async()=>{
+ const {a,c,p,foe}=await scenario('knight','defense-support');
+ a.beginReport();a.emitEvent('damageTaken');
+ const first=foe.hp;assert.ok(first<1e9);
+ const other=c.makePet('fang');Object.assign(other,{id:'second',level:150,rarity:'mythic',ascended:true,evolution:4,fusion:{main:'defense',sub:'support'}});
+ other.hp=c.petStats(other).hp;p.pets.push(other);
+ a.setPet('second');a.emitEvent('damageTaken');
+ assert.equal(foe.hp,first,'changing companion must not grant a second immediate hit');
+ c.setTime(1004001);a.emitEvent('damageTaken');
+ assert.ok(foe.hp<first,'next hit is allowed after the original cooldown');
+});
+
 test('performer song shield charges only after two buffs, then absorbs and retaliates once',async()=>{
  const {a,p,foe}=await scenario('performer','attack-defense');
  a.emitEvent('buff');assert.equal(p.shield,0,'one performance is not enough');
