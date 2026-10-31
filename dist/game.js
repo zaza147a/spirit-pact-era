@@ -81,7 +81,7 @@ let timers={attack:0,skill:0,enemy:0,pet:0,petAbility:0,regen:0,tactic:0,resonan
 let petSkillTimers={},jobSkillTimers={};
 let originalPactHitCount=0;
 let petEffects={bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0};
-function clearPetEffects(){originalPactHitCount=0;delete classBuffs.pact;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};petSkillTimers={};timers.petAbility=gameNow()-12000;}
+function clearPetEffects(){originalPactHitCount=0;timers.originalStackCount=0;delete classBuffs.pact;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};petSkillTimers={};timers.petAbility=gameNow()-12000;}
 
 function fresh(name,job){const c=CLASSES[job];const p={version:51,name,job,location:'petland',level:1,xp:0,jobLevel:1,jobXp:0,jobPoints:0,jobSkills:initialJobSkills(job),equippedJobSkill:Object.keys(initialJobSkills(job))[0],gold:90,hp:c.hp,mp:c.mp,kills:0,bag:[{id:'med',qty:2},{id:'cell',qty:1},{id:'orb',qty:3}],gear:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),attributes:{STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1},statPoints:0,cards:[],sockets:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),pets:[],activePetId:null,petBook:{},resonance:0,shield:0,battleHistory:[],autoUltimate:true,autoEscapeBoss:false,autoPotions:{playerHp:true,playerSp:true,petHp:true,petSp:true},autoSalvage:false,salvageMaxRarity:'rare',salvageMaxTier:3,salvageStat:'STR',salvageStatBelow:3,keepRarity:true,keepTier:true,keepStat:false,salvageMatchMode:'any'};const id=SECOND_JOBS[job]?.weapon||({swordsman:'blade',mage:'oneStaff',acolyte:'mace',thief:'rifle',archer:'shortBow'})[job];p.gear.rightHand=rollGear(id,1,'common');return p;}
 function normalizeCards(cards){const result=[];for(const entry of cards||[]){const id=typeof entry==='string'?entry:entry?.id;if(!CARDS[id])continue;const qty=typeof entry==='string'?1:Math.max(1,Math.floor(entry.qty||1));const found=result.find(x=>x.id===id);if(found)found.qty+=qty;else result.push({id,qty});}return result;}
@@ -230,7 +230,41 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   const amount=hitDamage(Math.min(overflow*.45,st.matk*3),primary.def*.2);
   return dealPetDamage(amount,'resonanceDamage')>0;
  }
- const strength=kind==='siegeCounter' ? 0.90 : kind==='dragonCounter' ? 0.66 : kind==='sanctuaryChase' ? 0.54 : 0;
+ // Mechanics shared by original sixty contracts; each contract has its own event,
+ // timing and source text while drawing from the same verified combat primitives.
+ if(kind==='ward'){
+  const gained=grantPetShield(Math.max(1,Math.round(st.def*.42)),true);
+  return gained>0;
+ }
+ if(kind==='manaRefund'){
+  const gained=Math.min(Math.max(0,stat('mp')-player.mp),Math.max(1,Math.round(st.sp*.08)));
+  player.mp+=gained;record(report,'effectiveMana',gained);return gained>0;
+ }
+ if(kind==='haste'){
+  classBuffs.resonanceHaste={until:now+3500,power:.07};return true;
+ }
+ if(kind==='mark'){
+  petEffects.markPower=Math.max(petEffects.markPower||0,Math.round(st.atk*.2+st.matk*.16));
+  petEffects.markHits=Math.max(petEffects.markHits||0,2);return true;
+ }
+ if(kind==='stackStrike'){
+  const power=1+Math.min(3,Number(timers.originalStackCount||0))*.18;
+  timers.originalStackCount=Math.min(3,(timers.originalStackCount||0)+1);
+  return dealPetDamage(hitDamage((st.atk*.65+st.matk*.4)*power,primary.def*.7),'resonanceDamage')>0;
+ }
+ if(kind==='splash'){
+  let hits=0;const selected=enemy;
+  for(const foe of enemies.filter(e=>e!==primary&&e.hp>0).slice(0,2)){
+   enemy=foe;const amount=hitDamage(st.matk*.36+st.atk*.21,foe.def*.3);
+   hits+=dealPetDamage(amount,'resonanceDamage');
+  }
+  enemy=selected;return hits>0;
+ }
+ if(kind==='counterStrike'||kind==='arcaneStrike'){
+  const base=kind==='counterStrike'?st.def*.65+st.atk*.48:st.matk*.7+st.atk*.2;
+  return dealPetDamage(hitDamage(base,kind==='arcaneStrike'?primary.def*.25:primary.def*.6),'resonanceDamage')>0;
+ }
+  const strength=kind==='siegeCounter' ? 0.90 : kind==='dragonCounter' ? 0.66 : kind==='sanctuaryChase' ? 0.54 : 0;
  if(strength<=0)return false;
  const damage=hitDamage(Math.max(1,(st.atk+st.matk*.35)*strength),primary.def);
  return dealPetDamage(damage,'resonanceDamage')>0;
