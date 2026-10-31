@@ -1,6 +1,6 @@
 {
   "version": "6.1.2",
-  "sourceDigest": "d1f886ebc6491203d8cfb5486126bef28ce3b4a33feedc2c651de1e0e23e1bdf",
+  "sourceDigest": "b978b5a3adb5781b360c5c1df61f454dc15b29d31f885e51dd3de2b9d0a51e00",
   "recipeDigest": "0986764af7706d36996ec6be071b3ac20d551f237b28fa734d7b96b00c17e2d2",
   "count": 5100,
   "method": "10 jobs × 6 fusion pairs; archived V6.1 selected three skills, main-first priority; prior-tier top mythic reference gear plus legal allocation and cards scaled together. Normal 90% uses three seeds at ten entry/end levels; 70/100% use one seed at five entries. Real boss plus four random normals uses three seeds at five entries with 90/100% prior gear and separate prepared current-tier70% gear plus90% allocation/cards, live slot replacements, no XP/loot/level growth or auto-revive; stocked 9999 HP and SP potions. This is a defined reference, not exhaustive skill-order optimization, economy sustainability or a guarantee for every build.",
@@ -605,12 +605,12 @@
   "scopedCombatChanges": [
     {
       "release": "6.3.0",
-      "previousSourceDigest": "90b363a0e9a8551a8df9331360412a7401387b0cd5f0f21083d6ecc77bdbbd53",
-      "sourceDigest": "d1f886ebc6491203d8cfb5486126bef28ce3b4a33feedc2c651de1e0e23e1bdf",
+      "previousSourceDigest": "ff1b37a350f8a87d62939309c5ccf7eabb38b894778728b5a2a2769711a0e5bb",
+      "sourceDigest": "b978b5a3adb5781b360c5c1df61f454dc15b29d31f885e51dd3de2b9d0a51e00",
       "scope": "Adds opt-in equipment enhancement, control and five-boss trials, cosmetics and dawn region only. Existing unenhanced V612 fixtures have no rank bonuses/control effects and existing monster data is unchanged. Original5100 outcomes remain historical;900 same-seed current legacy runs were compared exactly with zero differences.",
       "regression": {
         "path": "docs/legacy-regression-v630.json",
-        "sha256": "6af73f74e5ffd01f3f418ad5ba351bda33f93e81317115b199797e3103f75034",
+        "sha256": "8d11f92372c90c5f67ed4628a1c08f14e1047c7f9a93a53c3ac069674171e43d",
         "count": 900
       }
     }

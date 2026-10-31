@@ -3,6 +3,6 @@
   "count": 900,
   "method": "Seed731 of all60 builds at10regional levels plus5boss crowd entry levels, same legal unenhanced fixtures and120/240second runs as V612. Exact comparisons of kills/alive/bossVictory/timeToKill/DPS/deaths/potions/remainingHP.",
   "differences": [],
-  "releaseSourceDigest": "d1f886ebc6491203d8cfb5486126bef28ce3b4a33feedc2c651de1e0e23e1bdf",
-  "postAuditChanges": "After recorded combat samples, only separate dawn junk names, village evolution/offline safety, gear swap and salvage protection, trial inventory capacity checks, UI descriptions/layout, and optional chain simulation harness were added; published trial/monster stats and combat formulas match the recorded samples. Individual historical sample source digests are preserved."
+  "releaseSourceDigest": "b978b5a3adb5781b360c5c1df61f454dc15b29d31f885e51dd3de2b9d0a51e00",
+  "postAuditChanges": "After recorded combat samples, only dawn subcap companion EXP settlement (sample companions are already capped200), separate dawn junk names, village evolution/offline safety, gear swap and salvage protection, trial inventory capacity checks, UI descriptions/layout, and optional chain simulation harness were added; published trial/monster stats and combat formulas match the recorded samples. Individual historical sample source digests are preserved."
 }
