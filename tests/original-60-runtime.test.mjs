@@ -13,6 +13,9 @@ test('each of 60 original contracts ignores wrong event and activates on its int
    const q=c.makePet('fang');Object.assign(q,{id:job+pair,rarity:'mythic',ascended:true,level:150,evolution:4,fusion:{main:pair.split('-')[0],sub:pair.split('-')[1]}});
    p.pets=[q];p.activePetId=q.id;a.setup(p,foe());p.hp=a.stat('hp');p.mp=a.stat('mp');q.hp=c.petStats(q).hp;q.sp=c.petStats(q).sp;
    const spec=ORIGINAL_60_MECHANICS[job+'/'+pair],actual=a.state().classBuffs;
+   if(job==='assassin'&&pair==='defense-support')p.hp=Math.max(1,Math.floor(a.stat('hp')*.30));
+   if(job==='sage'&&pair==='defense-support')p.shield=100;
+   if(job==='hunter'&&pair==='attack-support')a.state().petEffects.blessingUntil=2e6;
    a.emitEvent('unrelated-never-trigger');assert.equal(actual.pact,undefined,job+'/'+pair);
    for(let i=0;i<spec.threshold;i++)a.emitEvent(spec.event);
    assert.ok(a.pactFor({id:'thirdMain_'+job})&&Object.keys(a.pactFor({id:'thirdMain_'+job})).length,job+'/'+pair+' did not activate');
