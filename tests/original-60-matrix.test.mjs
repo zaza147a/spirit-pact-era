@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {ORIGINAL_60_MECHANICS, ORIGINAL_SIX_KEYS} from '../dist/original-60-mechanics.js';
 import {SECOND_JOBS} from '../dist/jobs.js';
 import {THIRD_FUSION_RULES} from '../dist/fusion-resonance.js';
-const supported = new Set(['armorBreak','elementBurn','comboLeech','overhealRain','dragonCounter','siegeCounter','sanctuaryChase','ward','manaRefund','haste','mark','stackStrike','splash','counterStrike','arcaneStrike']);
+const supported = new Set(['armorBreak','elementBurn','comboLeech','overhealRain','dragonCounter','siegeCounter','sanctuaryChase','ward','manaRefund','haste','mark','stackStrike','splash','counterStrike','arcaneStrike','hunterSummon','lowHpRiposte','guardianAutoChase']);
 test('every original VNext entry is present with source text and a supported effect',()=>{
  const jobs=Object.keys(SECOND_JOBS); assert.equal(jobs.length,10);
  assert.equal(Object.keys(ORIGINAL_60_MECHANICS).length,60);
