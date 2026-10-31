@@ -74,3 +74,21 @@ test('charged sound shield retaliates once after a real incoming owner hit',asyn
  assert.ok(a.state().report.metrics.resonanceDamage>0,'retaliation credited to resonance');
  const after=foe.hp;a.enemyAttack();assert.equal(foe.hp,after,'one charge must not retaliate twice');
 });
+
+test('falcon-song volley requires a song buff and adds real resonance damage',async()=>{
+ const {a,c,foe}=await scenario('hunter','attack-support');
+ a.beginReport();a.emitEvent('falcon');
+ assert.equal(foe.hp,1e9,'falcon alone cannot trigger the song collaboration');
+ a.state().petEffects.blessingUntil=2e6;
+ a.emitEvent('falcon');assert.ok(foe.hp<1e9);
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+ const hp=foe.hp;a.emitEvent('falcon');assert.equal(foe.hp,hp,'cannot volley again during cooldown');
+});
+test('sage auto-spell chain includes the primary target and restores missing mana',async()=>{
+ const {a,p,foe}=await scenario('sage','magic-support');
+ a.beginReport();p.mp=Math.floor(a.stat('mp')*.5);
+ const before=p.mp;a.emitEvent('autospell');
+ assert.ok(foe.hp<1e9);
+ assert.ok(p.mp>before,'auto-star-rain replenishes mana when damage lands');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+});
