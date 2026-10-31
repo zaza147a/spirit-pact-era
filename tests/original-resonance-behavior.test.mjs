@@ -52,3 +52,11 @@ test('two-hit accumulation never leaks between active pets after swapping',async
  assert.equal(foe.hp,1e9,'other pet must begin its own two-hit counter');
  a.emitEvent('damageTaken');assert.ok(foe.hp<1e9);
 });
+
+test('performer song shield charges only after two buffs, then absorbs and retaliates once',async()=>{
+ const {a,p,foe}=await scenario('performer','attack-defense');
+ a.emitEvent('buff');assert.equal(p.shield,0,'one performance is not enough');
+ a.emitEvent('buff');assert.ok(p.shield>0,'two performances accumulate a shield');
+ const shield=p.shield;
+ a.emitEvent('buff');assert.equal(p.shield,shield,'cooldown prevents immediate shield spam');
+});
