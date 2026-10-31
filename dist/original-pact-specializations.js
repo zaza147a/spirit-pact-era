@@ -274,11 +274,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
       "haste"
     ]
   },
-  "performer/attack-defense": {
-    "payload": [
-      "ward",
-      "counterStrike"
-    ]
+  "performer/attack-defense": {"payload": ["soundShield"]}
   },
   "performer/attack-support": {
     "payload": [
