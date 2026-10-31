@@ -1,4 +1,4 @@
-import {attributeCap} from './adventure-progression.js?v=6.3.0';
+import {attributeCap} from './adventure-progression.js?v=6.3.1';
 export const BASE_ATTRIBUTE_CAP=99;
 export const JOB_ATTRIBUTE_MAX={
  swordsman:[6,2,8,0,3,1],acolyte:[1,1,3,9,4,2],mage:[0,1,2,10,6,1],thief:[4,8,2,0,4,2],archer:[2,3,2,1,10,2],

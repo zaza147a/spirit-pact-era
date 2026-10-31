@@ -614,5 +614,7 @@
         "count": 900
       }
     }
-  ]
+  ],
+  "historical": true,
+  "historicalReason": "V6.3.1 changes per-attribute caps and adds overflow potentials. These5100 archived outcomes and the V630900-run regression describe previous rules, not a rerun of the current rules. V631 verifies the new mechanics with targeted tests; equipment affixes, enhancement multipliers and monsters are unchanged."
 }

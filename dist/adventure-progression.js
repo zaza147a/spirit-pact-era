@@ -1,5 +1,5 @@
 export const characterLevelCap=p=>p.thirdJob?(p.dawnUnlocked?210:200):p.reborn?150:99;
-export const attributeCap=p=>p.reborn&&p.level>=100?120:99;
+export const attributeCap=p=>p.level>=201?150:p.reborn&&p.level>=100?120:99;
 export const ignoresGearLevel=(p,g)=>!!p.reborn&&(g.level||1)<=99;
 export const isTown=location=>['town','skycity','dawncity'].includes(location);
 export const homeTown=location=>['dawncity','dawnrift'].includes(location)?'dawncity':['skyport','gearfell','aether','stormforge','zenith','skycity','starshore','oathwood','nightclock','sungrave','worldroot'].includes(location)?'skycity':'town';
