@@ -236,6 +236,23 @@ function applyOriginalPactPayload(rule,pet,primary,now){
  }
  // Mechanics shared by original sixty contracts; each contract has its own event,
  // timing and source text while drawing from the same verified combat primitives.
+ if(kind==='falconVolley'){
+  let total=0;
+  for(let shot=0;shot<2&&primary.hp>0;shot++)total+=dealPetDamage(hitDamage(st.atk*.4+st.matk*.17,primary.def*.4),'resonanceDamage');
+  return total>0;
+ }
+ if(kind==='starRainChain'){
+  const targets=[primary,...enemies.filter(foe=>foe!==primary&&foe.hp>0).slice(0,2)];
+  let damage=0;
+  const selected=enemy;
+  for(const foe of targets){
+   if(foe.hp<=0)continue;
+   enemy=foe;damage+=dealPetDamage(hitDamage(st.matk*.36+st.atk*.1,foe.def*.28),'resonanceDamage');
+  }
+  enemy=selected;
+  if(damage>0){const gain=Math.min(stat('mp')-player.mp,Math.max(1,Math.floor(damage*.025)));player.mp+=gain;record(report,'effectiveMana',gain);}
+  return damage>0;
+ }
  if(kind==='hunterSummon')return dealPetDamage(hitDamage(st.atk*.9+st.matk*.15,primary.def*.55),'resonanceDamage')>0;
  if(kind==='lowHpRiposte'){
   if(player.hp>stat('hp')*.4)return false;
