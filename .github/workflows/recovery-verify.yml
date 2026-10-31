@@ -20,6 +20,10 @@ jobs:
           node --check dist/pet-humanoid-evolution.js
           node --check dist/pet-legacy-reselect.js
           node --check dist/dawn-sigil.js
+          node --check dist/original-60-mechanics.js
+          node --check dist/original-pact-specializations.js
+          node --check dist/fusion-resonance.js
+          node --check dist/contribution.js
       - name: Test recovery features
         run: node --test tests/pet-humanoid-evolution.test.mjs tests/pet-legacy-reselect.test.mjs tests/dawn-sigil.test.mjs
       - name: Test existing game regressions
