@@ -17,6 +17,23 @@ export function unlockRankOutfits(p,base={}){p.outfitUnlocks ||= [];const rank=f
 export function controlResistance(p,type,base={}){const slot=Object.keys(CONTROL_SLOTS).find(s=>CONTROL_SLOTS[s]===type),g=slot==='leftHand'&&base[p.gear?.rightHand?.id]?.hands===2?p.gear.rightHand:p.gear?.[slot];return CONTROL_RESISTANCE[rankOf(g)]||0;}
 export function enhancementError(p,g,rank){if(!['town','skycity','dawncity'].includes(p.location))return '請回村莊找星鑄師';if(p.hp<=0)return '角色倒下時無法強化';if(!g?.uid||g.petSlot||!Object.values(p.gear||{}).includes(g))return '請選擇穿戴中的角色裝備';const next=ENHANCEMENT_RANKS[ENHANCEMENT_RANKS.indexOf(rankOf(g))+1];if(!next)return '已達SSS階';if(rank!==next)return `必須逐階強化，下一階是${next}`;if(!(p.bag||[]).some(x=>x.id==='rank_core_'+rank&&x.qty>0))return `缺少${rank}階星鑄結晶`;return null;}
 export function enhanceEquipped(p,g,rank){const error=enhancementError(p,g,rank);if(error)return {error};const e=p.bag.find(x=>x.id==='rank_core_'+rank);if(!--e.qty)p.bag.splice(p.bag.indexOf(e),1);g.enhancement=rank;return {rank,uid:g.uid};}
+// Pet equipment uses the same rank materials and enhancement multiplier as player equipment.
+export function petEnhancementError(p,pet,g,rank){
+ if(!pet||!p.pets?.includes(pet))return '請選擇自己的夥伴';
+ if(!g?.uid||!Object.values(pet.gear||{}).includes(g))return '請選擇夥伴穿戴中的裝備';
+ if(!['town','skycity','dawncity'].includes(p.location))return '請回村莊找星鑄師';
+ if(p.hp<=0)return '角色倒下時無法強化';
+ const next=ENHANCEMENT_RANKS[ENHANCEMENT_RANKS.indexOf(rankOf(g))+1];
+ if(!next)return '已達SSS階';
+ if(rank!==next)return `必須逐階強化，下一階是${next}`;
+ if(!(p.bag||[]).some(item=>item.id==='rank_core_'+rank&&item.qty>0))return `缺少${rank}階星鑄結晶`;
+ return null;
+}
+export function enhancePetEquipped(p,pet,g,rank){
+ const error=petEnhancementError(p,pet,g,rank);if(error)return {error};
+ const material=p.bag.find(item=>item.id==='rank_core_'+rank);if(!--material.qty)p.bag.splice(p.bag.indexOf(material),1);
+ g.enhancement=rank;return {rank,uid:g.uid,petId:pet.id};
+}
 const names=[['星潮巡獵者','銀礁重衛','潮鏡幻鯨','星瀾龍侯','萬潮星冠'],['古誓石獅','斷碑審判者','金枝誓獸','聖鎖巨像','太古誓皇'],['夜幕蛛后','逆刻鐮衛','月蝕幽鹿','永夜鐘龍','終時冥王'],['曜鱗先鋒','熔冠獅王','赤曜翼皇','聖墓龍衛','焚日龍帝'],['界源哨兵','虛空星蠍','天軸巨神','創界六翼龍','天穹終焉者']];
 export const TRIAL_ROUTES=[['starshore',151,'星瀾裂隙','D'],['oathwood',161,'古誓秘境','C'],['nightclock',171,'永夜時庭','B'],['sungrave',181,'曜龍聖墓','A'],['worldroot',191,'界源天穹','S']].map(([map,level,name,rank],i)=>({map,level,name,rank,ticket:'ticket_'+map,names:names[i]}));
 // Drop rolls are independent: a boss can yield S, SS and SSS together.
