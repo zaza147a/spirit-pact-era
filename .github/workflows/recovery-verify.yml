@@ -1,0 +1,23 @@
+name: Recovery branch verification
+on:
+  push:
+    branches: [feature/humanoid-pet-evolution]
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check game and modules
+        run: |
+          node --check dist/game.js
+          node --check dist/pet-humanoid-evolution.js
+          node --check dist/pet-legacy-reselect.js
+          node --check dist/dawn-sigil.js
+      - name: Test recovery features
+        run: node --test tests/pet-humanoid-evolution.test.mjs tests/pet-legacy-reselect.test.mjs tests/dawn-sigil.test.mjs
+      - name: Test existing game regressions
+        run: node --test tests/v20.test.mjs tests/v21.test.mjs tests/v30.test.mjs tests/v31.test.mjs tests/v32.test.mjs tests/v40.test.mjs tests/true-form-v620.test.mjs tests/continuous-trials-v632.test.mjs
