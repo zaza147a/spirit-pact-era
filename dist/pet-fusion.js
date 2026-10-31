@@ -1,7 +1,7 @@
 import {trueFormName,trueFormArt} from './pet-true-form.js';
 const roles=['attack','magic','defense','support'];
 export const BASE_PET_ROLES={fang:'attack',wisp:'magic',shell:'defense',sprout:'support'};
-export const fusionKey=(a,b)=>a!==b&&roles.includes(a)&&roles.includes(b)?[a,b].sort((x,y)=>roles.indexOf(x)-roles.indexOf(y)).join('-'):null;
+export const fusionKey=(a,b)=>a!==b&&roles.includes(a)&&roles.includes(b)?[a,b].join('-'):null;
 // Fusion skills retain their original three IDs; new alternatives occupy 3–5.
 // Each coefficient is a visible skill ratio, never a global combat multiplier.
 export const FUSION_PAIRS={
@@ -396,7 +396,39 @@ export const FUSION_PAIRS={
   ]
  }
 };
+// The six reverse ordered routes are intentionally separate gameplay contracts.
+// Existing six route skills retain their IDs and coefficients for old-save stability.
+const REVERSE_ROUTE_NAMES={
+ 'magic-attack':'赤曜星羽', 'defense-attack':'赤岩戰誓',
+ 'support-attack':'聖瑞戰歌', 'defense-magic':'晶盾祕術',
+ 'support-magic':'星羽治癒', 'support-defense':'聖岩守護'
+};
+const REVERSE_ROUTE_SKILLS={
+ 'magic-attack':['凰焰術式','星羽烙印','魔凰汲魂','赤曜星暴','星灼連燒','魔羽同調'],
+ 'defense-attack':['赤岩固守','玄甲裂斬','焰鎧破甲','磐石爆擊','守護戰吼','不屈壁壘'],
+ 'support-attack':['聖瑞增幅','麟角衝鋒','生命汲取','祝福連擊','聖光戰幕','自然甦生'],
+ 'defense-magic':['晶盾展開','星岩法咒','護盾反擊','靈晶蝕印','魔紋禁錮','岩靈共鳴'],
+ 'support-magic':['星羽補給','聖羽星擊','靈能汲取','聖光擴散','祈禱庇護','生命織歌'],
+ 'support-defense':['聖岩祝禱','麟角護陣','聖盾恢復','岩甲回春','防禦誓約','永恆聖域']
+};
+for(const [key,title] of Object.entries(REVERSE_ROUTE_NAMES)){
+ const [main,sub]=key.split('-'),forward=FUSION_PAIRS[[main,sub].sort((a,b)=>roles.indexOf(a)-roles.indexOf(b)).join('-')];
+ const skillNames=REVERSE_ROUTE_SKILLS[key];
+ FUSION_PAIRS[key]={
+   ...forward,name:title,role:main,
+   style:`${title}・以主系${main}為核心的獨立技能組`,
+   hp:+(forward.hp*(main==='defense'?1.14:main==='support'?1.08:0.96)).toFixed(3),
+   def:+(forward.def*(main==='defense'?1.16:main==='support'?1.06:0.96)).toFixed(3),
+   attack:+(forward.attack*(main==='magic'?1.03:main==='support'?.93:.96)).toFixed(3),
+   skills:forward.skills.map((skill,i)=>[skillNames[i]||`${title}技${i+1}`,skill[1],+(skill[2]*(main==='magic'?1.03:main==='support'?.95:.98)).toFixed(3),skill[3],skill[4],skill[5]])
+ };
+}
 export const FUSION_DEFAULTS={'attack-magic':[0,1,5],'attack-defense':[0,1,4],'attack-support':[0,1,2],'magic-defense':[0,1,4],'magic-support':[0,2,3],'defense-support':[0,1,3]};
+for(const key of Object.keys(REVERSE_ROUTE_NAMES)){
+ const [main,sub]=key.split('-');
+ const base=[main,sub].sort((a,b)=>roles.indexOf(a)-roles.indexOf(b)).join('-');
+ FUSION_DEFAULTS[key]=[...FUSION_DEFAULTS[base]];
+}
 export const defaultFusionSkills=pet=>{const key=pet?.fusion&&fusionKey(pet.fusion.main,pet.fusion.sub);return (FUSION_DEFAULTS[key]||[]).map(i=>FUSION_SKILLS[key][i].id);};
 export const petSkillLimit=pet=>fusedPair(pet)?3:2;
 export const FUSION_NAMES={'attack-magic':'星焰裂界龍皇','magic-attack':'赤曜星翼神凰','attack-defense':'鎮界玄鎧龍皇','defense-attack':'赤曜龍鎧泰坦','attack-support':'聖瑞玉麟龍皇','support-attack':'赤曜麟角聖君','magic-defense':'星岩晶翼神凰','defense-magic':'星曜符晶泰坦','magic-support':'聖光星羽神凰','support-magic':'星羽瑞雲玉麟','defense-support':'碧玉聖域泰坦','support-defense':'聖岩鎧麟聖君'};
