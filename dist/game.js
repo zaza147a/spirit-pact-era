@@ -202,12 +202,26 @@ function resonanceModifier(rule,magnitude,primary){
  return useful;
 }
 
+function applyOriginalPactPayload(rule,pet,primary,now){
+ const kind=rule.originalEvent?.payload;
+ if(!kind||!primary?.hp)return false;
+ const st=petStats(pet);
+ if(kind==='armorBreak'){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+4500);
+  primary.exposedPower=Math.max(primary.exposedPower||0,.18);
+  return true;
+ }
+ const strength=kind==='siegeCounter'?.90:kind==='dragonCounter'?.66:kind==='sanctuaryChase'?.54:0;
+ if(strength<=0)return false;
+ const damage=hitDamage(Math.max(1,(st.atk+st.matk*.35)*strength),primary.def);
+ return dealPetDamage(damage,'resonanceDamage')>0;
+}
 function emitEvent(event){const pet=activePet();if(!pet||pet.hp<=0||!player.hp)return;addEnergy(event==='pet'?7:10);const role=companionRole(pet),rule=companionResonance(player,pet),now=gameNow();if(!rule||!resonanceTriggered(rule,event)||now-timers.resonance<rule.cooldown)return;if(rule.originalEvent?.threshold){originalPactHitCount++;if(originalPactHitCount<rule.originalEvent.threshold)return;originalPactHitCount=0;}const magnitude=Math.max(1,resonanceMagnitude(rule,petStats(pet))),primary=enemy;let amount=0,dead=false,description=rule.mode==='pact'?rule.description:'';
  if(rule.effect==='strike'||rule.effect==='magic'){if(!enemy?.hp)return;amount=dealPetDamage(hitDamage(magnitude,rule.effect==='magic'?Math.floor(enemy.def*.25):enemy.def),'resonanceDamage');description=`追加 ${amount} 傷害`;dead=!enemy.hp;}
  else if(rule.effect==='shield'){amount=grantPetShield(magnitude,role==='defense');description=`獲得 ${amount} 護盾`;}
  else if(rule.effect==='heal'){amount=healPetParty(magnitude);description=`恢復 ${amount} HP`;}
  else if(rule.effect==='mana'){amount=Math.min(stat('mp')-player.mp,magnitude);player.mp+=amount;record(report,'effectiveMana',amount);description=`恢復 ${amount} SP`;}
- const modified=resonanceModifier(rule,magnitude,primary);if(amount<=0&&!modified)return;dead=primary?.hp<=0;timers.resonance=now;message(`✦ 共鳴【${rule.name}】${description}。`,'rare');for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}enemy=selectEncounterTarget(enemies,player.targetPriority,primary)||primary;dirty=true;
+ const payloadApplied=applyOriginalPactPayload(rule,pet,primary,now);const modified=resonanceModifier(rule,magnitude,primary);if(amount<=0&&!modified&&!payloadApplied)return;dead=primary?.hp<=0;timers.resonance=now;message(`✦ 共鳴【${rule.name}】${description}。`,'rare');for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}enemy=selectEncounterTarget(enemies,player.targetPriority,primary)||primary;dirty=true;
 }
 function ultimate(){if(isControlled())return;chooseAttackTarget();const pet=activePet();if(!pet||!enemy?.hp||!player.hp)return toast('必須有可戰鬥的出戰夥伴');if(player.resonance<ULTIMATE_COST)return toast('共鳴能量不足');const now=gameNow();if(now-timers.ultimate<ULTIMATE_COOLDOWN)return toast('終極共鳴尚未冷卻');timers.ultimate=now;player.resonance-=ULTIMATE_COST;const role=companionRole(pet),st=petStats(pet);if(role==='attack'||role==='magic'){const petPower=(role==='magic'?st.matk:st.atk)*(role==='attack'?3:2.7),ownerPower=stat('atk')*.8*(1+potentialBonus(role==='magic'?'INT':playerRange(player.job)==='ranged'?'DEX':'STR')),damage=dealDamage(hitDamage(petPower+ownerPower,role==='magic'?0:enemy.def),'resonanceDamage'),ownerPart=Math.round(damage*ownerPower/(petPower+ownerPower));if(report&&ownerPart){report.metrics.resonanceDamage-=ownerPart;record(report,'playerDamage',ownerPart);}creditOwnerTelemetry(ownerPart);message(`★ 終極共鳴【${role==='attack'?'雙星斬擊':'元素爆發'}】造成 ${damage} 傷害！`,'rare');if(!enemy.hp)award();}else if(role==='defense'){const amount=grantPetShield(petUltimateSupport(st).shield,true);message(`★ 終極共鳴【不滅守護】獲得 ${amount} 護盾。`,'rare');}else{const hpBefore=player.hp,mpBefore=player.mp,amount=petUltimateSupport(st).hp;player.hp=Math.min(stat('hp'),player.hp+amount);player.mp=Math.min(stat('mp'),player.mp+petUltimateSupport(st).sp);record(report,'effectiveHeal',player.hp-hpBefore);record(report,'effectiveMana',player.mp-mpBefore);message(`★ 終極共鳴【生命共振】恢復生命與魔力。`,'rare');}dirty=true;save();render();}
 function grantPlayerShield(amount){const before=player.shield;if(before>=Math.round(stat('hp')*.25))return 0;timers.playerShieldExpires=gameNow()+6500;player.shield=Math.min(Math.round(stat('hp')*.25),before+amount);return Math.max(0,player.shield-before);}
