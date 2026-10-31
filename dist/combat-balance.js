@@ -18,6 +18,29 @@ export const monsterRuntimeStats=monster=>{const level=monster.level||1;return {
 export const monsterAttackPower=monster=>monster?.attackType==='magic'?(monster.matk??monster.atk??0):(monster?.atk??0);
 export const monsterDefenseAgainst= (monster,magical=false)=>magical?(monster?.mdef??Math.round((monster?.def||0)*.9)):(monster?.def??0);
 export const LEVEL_CAPS=Object.freeze({base:200,job:70,secondJobUnlock:40,rebirthUnlock:99,skill:10});
+// Stage-specific team output coefficients fitted from actual 10-job × companion
+// clear tests. These scale the whole job+pet team uniformly, preserving the
+// measured 50/40/10 damage-source distribution and each fusion's role budget.
+const BALANCE_JOB_ORDER=['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer'];
+const BALANCE_ANCHORS=[
+ [50,[1,1,1,1,1,1,1,1,1,1]],
+ [99,[.94,.87,.95,1,1.21,1,.95,1.11,1.26,1.02]],
+ [110,[1.04,.92,.74,1.01,.95,.91,1.49,.90,1.32,.99]],
+ [130,[1.03,.76,.76,1.06,.95,1.02,1.26,.94,1.39,1.33]],
+ [150,[1.12,.87,.78,1.03,1.02,1.03,1.05,1.03,1.85,1.60]],
+ [160,[1,1,1,1,1,1,1,1,1,1]],
+ [200,[1,1,1,1,1,1,1,1,1,1]],
+ [201,[1.06,1.10,1.05,1.05,1.25,1.14,.78,1.12,1,.96]]
+];
+export function jobZoneOutputFactor(job,level=1){
+ const index=BALANCE_JOB_ORDER.indexOf(job);
+ if(index<0||level<=50)return 1;
+ const upper=BALANCE_ANCHORS.findIndex(([lv])=>lv>=level);
+ if(upper<0)return BALANCE_ANCHORS.at(-1)[1][index];
+ if(upper===0)return 1;
+ const [to,tValues]=BALANCE_ANCHORS[upper],[from,fValues]=BALANCE_ANCHORS[upper-1];
+ return fValues[index]+(tValues[index]-fValues[index])*Math.max(0,Math.min(1,(level-from)/(to-from)));
+}
 // Roll after mitigation: defense must not amplify a small random range into tenfold hits.
 // Critical damage multiplies the mitigated hit, matching the displayed critical multiplier.
 export function outgoingHitDamage(power,defense,roll=1,criticalMultiplier=1){const base=Math.max(1,Math.max(0,Number(power)||0)-Math.max(0,Number(defense)||0));return Math.max(1,Math.round(base*Math.max(.9,Math.min(1.1,Number(roll)||1))*Math.max(1,Number(criticalMultiplier)||1)));}

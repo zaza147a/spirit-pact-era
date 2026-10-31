@@ -9,9 +9,9 @@
       "windowSeconds": 240,
       "total": 360,
       "wins": 360,
-      "medianWinSeconds": 86.96,
-      "minWinSeconds": 44.94,
-      "maxWinSeconds": 133.24,
+      "medianWinSeconds": 79.52,
+      "minWinSeconds": 56.08,
+      "maxWinSeconds": 130.34,
       "byPair": [
         {
           "pair": "attack-magic",
@@ -85,7 +85,7 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 89.02,
+      "timeToKill": 84.86,
       "petDeaths": 0,
       "potions": 1
     },
@@ -96,7 +96,7 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 73.28,
+      "timeToKill": 70.4,
       "petDeaths": 0,
       "potions": 0
     },
@@ -107,7 +107,7 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 94.74,
+      "timeToKill": 88.5,
       "petDeaths": 0,
       "potions": 1
     },
@@ -118,7 +118,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 62.28,
+      "timeToKill": 57.4,
       "petDeaths": 0,
       "potions": 0
     },
@@ -129,7 +129,7 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 84.56,
+      "timeToKill": 79.56,
       "petDeaths": 0,
       "potions": 0
     },
@@ -140,9 +140,9 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 84.6,
+      "timeToKill": 78.38,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -151,7 +151,7 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 79.28,
+      "timeToKill": 74.9,
       "petDeaths": 0,
       "potions": 0
     },
@@ -162,9 +162,9 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 81.06,
+      "timeToKill": 74.34,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -173,7 +173,7 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 109.48,
+      "timeToKill": 104.62,
       "petDeaths": 0,
       "potions": 0
     },
@@ -184,9 +184,9 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 79.24,
+      "timeToKill": 77.94,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -195,7 +195,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 102.6,
+      "timeToKill": 96.36,
       "petDeaths": 0,
       "potions": 0
     },
@@ -206,7 +206,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 85.6,
+      "timeToKill": 79.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -217,9 +217,9 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 85.88,
+      "timeToKill": 77.56,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -228,7 +228,7 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 73.24,
+      "timeToKill": 68.66,
       "petDeaths": 0,
       "potions": 0
     },
@@ -239,7 +239,7 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 90.68,
+      "timeToKill": 83.26,
       "petDeaths": 0,
       "potions": 1
     },
@@ -250,7 +250,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 64.26,
+      "timeToKill": 57.68,
       "petDeaths": 0,
       "potions": 0
     },
@@ -261,9 +261,9 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 83.44,
+      "timeToKill": 75.98,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -272,9 +272,9 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 85.6,
+      "timeToKill": 77.42,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -283,7 +283,7 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 75.84,
+      "timeToKill": 69.44,
       "petDeaths": 0,
       "potions": 0
     },
@@ -294,246 +294,15 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 82.82,
+      "timeToKill": 73.8,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
       "job": "crusader",
       "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 95.26,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "crusader",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.54,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "crusader",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 91.56,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "crusader",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 88.26,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 96.08,
-      "petDeaths": 0,
-      "potions": 48
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.98,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 110.44,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 74.4,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 91.7,
-      "petDeaths": 0,
-      "potions": 52
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 103.18,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.7,
-      "petDeaths": 0,
-      "potions": 43
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 95.2,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 117.6,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 102.34,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 109.9,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "wizard",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 105.6,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "sage",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 78.12,
-      "petDeaths": 0,
-      "potions": 35
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "sage",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 74.2,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "sage",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 90.4,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "sage",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 64,
-      "petDeaths": 0,
-      "potions": 2
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "sage",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 73.86,
-      "petDeaths": 0,
-      "potions": 31
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "sage",
-      "pair": "defense-support",
       "won": true,
       "alive": true,
       "timeToKill": 86.68,
@@ -543,13 +312,244 @@
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
+      "job": "crusader",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 76.8,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "crusader",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 84.12,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "crusader",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 79.94,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 91.98,
+      "petDeaths": 0,
+      "potions": 46
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 83.48,
+      "petDeaths": 0,
+      "potions": 2
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 105.04,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 72,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 87.98,
+      "petDeaths": 0,
+      "potions": 41
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 100,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 79.02,
+      "petDeaths": 0,
+      "potions": 38
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 92.4,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 112.98,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 94.36,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 105.04,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "wizard",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 99.64,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 74.34,
+      "petDeaths": 0,
+      "potions": 29
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 71.2,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 85.54,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 61.58,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 70.8,
+      "petDeaths": 0,
+      "potions": 34
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 81.54,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
       "job": "sage",
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 70.1,
+      "timeToKill": 66.1,
       "petDeaths": 0,
-      "potions": 26
+      "potions": 28
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -558,7 +558,7 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 81.54,
+      "timeToKill": 77.42,
       "petDeaths": 0,
       "potions": 2
     },
@@ -567,6 +567,292 @@
       "seed": 42,
       "job": "sage",
       "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 90.02,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 79.66,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 82.96,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "sage",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 82.82,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 84.42,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 72.04,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 93.1,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 60.9,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 80.38,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.4,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 72.72,
+      "petDeaths": 0,
+      "potions": 7
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77.18,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 105.2,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 80,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 100.1,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "assassin",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 84.86,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 81.9,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 67.44,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 90.8,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 58.94,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.84,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77.6,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 73.08,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 70.34,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 99.9,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "rogue",
+      "pair": "support-magic",
       "won": true,
       "alive": true,
       "timeToKill": 93.72,
@@ -576,184 +862,118 @@
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "sage",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.98,
-      "petDeaths": 0,
-      "potions": 2
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "sage",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 86.66,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "sage",
+      "job": "rogue",
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 86.96,
+      "timeToKill": 81.3,
       "petDeaths": 0,
       "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "assassin",
+      "job": "priest",
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 106.96,
-      "petDeaths": 0,
-      "potions": 16
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "assassin",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 88.76,
+      "timeToKill": 77.72,
       "petDeaths": 0,
       "potions": 1
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "assassin",
+      "job": "priest",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 66.52,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "priest",
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 118.44,
+      "timeToKill": 77.24,
       "petDeaths": 0,
-      "potions": 2
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "assassin",
+      "job": "priest",
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 74.4,
+      "timeToKill": 58.38,
       "petDeaths": 0,
       "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "assassin",
+      "job": "priest",
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 100.94,
+      "timeToKill": 74.9,
       "petDeaths": 0,
-      "potions": 12
+      "potions": 1
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "assassin",
+      "job": "priest",
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 100.94,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "assassin",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 93.18,
-      "petDeaths": 0,
-      "potions": 12
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "assassin",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 94.8,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "assassin",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 133.24,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "assassin",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 100.52,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "assassin",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 122.82,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "assassin",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 105.88,
+      "timeToKill": 74.24,
       "petDeaths": 0,
       "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "rogue",
-      "pair": "attack-magic",
+      "job": "priest",
+      "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 93.6,
+      "timeToKill": 66.8,
       "petDeaths": 0,
-      "potions": 6
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "rogue",
-      "pair": "attack-defense",
+      "job": "priest",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 71.54,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "priest",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 80.96,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "priest",
+      "pair": "defense-magic",
       "won": true,
       "alive": true,
       "timeToKill": 74.06,
@@ -763,231 +983,11 @@
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
-      "job": "rogue",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 103.74,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 67.08,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 89.46,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.54,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 83.62,
-      "petDeaths": 0,
-      "potions": 2
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 83.02,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 115.08,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 89.94,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 107.8,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "rogue",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 92,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 61.54,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 50.12,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 61.24,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 45.08,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 56.86,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 58.78,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 50.72,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 55.5,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 63.08,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "priest",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 57.5,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
       "job": "priest",
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 60.36,
+      "timeToKill": 77.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -998,7 +998,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 59.22,
+      "timeToKill": 75.24,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1009,9 +1009,9 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 87.5,
+      "timeToKill": 78.22,
       "petDeaths": 0,
-      "potions": 5
+      "potions": 4
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1020,7 +1020,7 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 72.96,
+      "timeToKill": 64.54,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1031,9 +1031,9 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 89.12,
+      "timeToKill": 77.94,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1042,7 +1042,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 65.38,
+      "timeToKill": 57.54,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1053,9 +1053,9 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 84.86,
+      "timeToKill": 74.58,
       "petDeaths": 0,
-      "potions": 6
+      "potions": 4
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1064,7 +1064,7 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 85.26,
+      "timeToKill": 75.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1075,9 +1075,9 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 78.16,
+      "timeToKill": 69.6,
       "petDeaths": 0,
-      "potions": 3
+      "potions": 8
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1086,9 +1086,9 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 82.32,
+      "timeToKill": 71.94,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1097,7 +1097,7 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 93.4,
+      "timeToKill": 83.4,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1108,9 +1108,9 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 83.2,
+      "timeToKill": 75.1,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1119,7 +1119,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 89.74,
+      "timeToKill": 79.24,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1130,7 +1130,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 87.2,
+      "timeToKill": 76.66,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1273,9 +1273,9 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 83.72,
+      "timeToKill": 88.42,
       "petDeaths": 0,
-      "potions": 33
+      "potions": 32
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1295,9 +1295,9 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 102.98,
+      "timeToKill": 105.42,
       "petDeaths": 0,
-      "potions": 0
+      "potions": 1
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1306,7 +1306,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 61.6,
+      "timeToKill": 64,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1317,427 +1317,427 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 79.8,
+      "timeToKill": 83.54,
       "petDeaths": 0,
-      "potions": 28
+      "potions": 26
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 42,
       "job": "performer",
       "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 92,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "performer",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 72.72,
-      "petDeaths": 0,
-      "potions": 30
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "performer",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.54,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "performer",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 110.04,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "performer",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 88.42,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "performer",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 102.14,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 42,
-      "job": "performer",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 94.4,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 90.44,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 72.58,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
-      "pair": "attack-support",
       "won": true,
       "alive": true,
       "timeToKill": 95.56,
       "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 62.86,
-      "petDeaths": 0,
       "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.92,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 83.54,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
+      "seed": 42,
+      "job": "performer",
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 79.52,
+      "timeToKill": 75.32,
       "petDeaths": 0,
-      "potions": 0
+      "potions": 29
     },
     {
       "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
+      "seed": 42,
+      "job": "performer",
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 80,
+      "timeToKill": 89.56,
       "petDeaths": 0,
       "potions": 1
     },
     {
       "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
+      "seed": 42,
+      "job": "performer",
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 109.46,
+      "timeToKill": 114.16,
       "petDeaths": 0,
-      "potions": 0
+      "potions": 1
     },
     {
       "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
+      "seed": 42,
+      "job": "performer",
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 81.9,
+      "timeToKill": 92.96,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "performer",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 105.98,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 42,
+      "job": "performer",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 100.52,
+      "petDeaths": 0,
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 137,
       "job": "knight",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 101.5,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "knight",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.94,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
       "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.64,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 72.94,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 90.58,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 64.54,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 83.3,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.26,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 75.88,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 83.54,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 94.96,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.56,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 90.86,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "crusader",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 86.4,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 95.18,
-      "petDeaths": 0,
-      "potions": 43
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 85.82,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 110.18,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 72.8,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 90.86,
-      "petDeaths": 0,
-      "potions": 39
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 105.6,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "magic-attack",
       "won": true,
       "alive": true,
       "timeToKill": 83.72,
       "petDeaths": 0,
-      "potions": 42
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 69.1,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 90.72,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 57.72,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 82.04,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 79.66,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 75.08,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 74.2,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 104.72,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.82,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 96.36,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "knight",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 81.5,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.98,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 68.8,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 82.32,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 57.4,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 75.74,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 76.8,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 70.84,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 73.8,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 87.82,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77.14,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 83.54,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "crusader",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 81.2,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 90.68,
+      "petDeaths": 0,
+      "potions": 40
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 82.58,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 105.94,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 72.72,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 87.08,
+      "petDeaths": 0,
+      "potions": 40
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 100.54,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 79.92,
+      "petDeaths": 0,
+      "potions": 40
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1746,7 +1746,7 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 98.74,
+      "timeToKill": 93.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1755,28 +1755,6 @@
       "seed": 137,
       "job": "wizard",
       "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 117.6,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 101.92,
-      "petDeaths": 0,
-      "potions": 3
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "wizard",
-      "pair": "support-magic",
       "won": true,
       "alive": true,
       "timeToKill": 110.46,
@@ -1787,10 +1765,32 @@
       "stage": "farmed-preboss-sss-only",
       "seed": 137,
       "job": "wizard",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 98.74,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 105.94,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "wizard",
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 106.82,
+      "timeToKill": 102.34,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1801,9 +1801,9 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 78.22,
+      "timeToKill": 73.94,
       "petDeaths": 0,
-      "potions": 38
+      "potions": 35
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -1812,7 +1812,7 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 73.52,
+      "timeToKill": 70.4,
       "petDeaths": 0,
       "potions": 3
     },
@@ -1823,7 +1823,7 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 90.54,
+      "timeToKill": 86.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1834,139 +1834,139 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 63.7,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "sage",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 74.34,
-      "petDeaths": 0,
-      "potions": 35
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "sage",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.96,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "sage",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 70.56,
-      "petDeaths": 0,
-      "potions": 29
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "sage",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 80.96,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "sage",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 93.38,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "sage",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84,
-      "petDeaths": 0,
-      "potions": 4
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "sage",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 86.82,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "sage",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.64,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 105.42,
-      "petDeaths": 0,
-      "potions": 12
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.66,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 118.02,
+      "timeToKill": 61.58,
       "petDeaths": 0,
       "potions": 2
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 137,
+      "job": "sage",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 71.38,
+      "petDeaths": 0,
+      "potions": 30
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "sage",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 80.78,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "sage",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 67.22,
+      "petDeaths": 0,
+      "potions": 25
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "sage",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 76.86,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "sage",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 89.26,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "sage",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.94,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "sage",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 83.54,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "sage",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 83.82,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 85.16,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 69.74,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 92.4,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
       "job": "assassin",
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 73.94,
+      "timeToKill": 58.04,
       "petDeaths": 0,
       "potions": 0
     },
@@ -1977,106 +1977,106 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 101.86,
-      "petDeaths": 0,
-      "potions": 9
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 101.74,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 92.88,
-      "petDeaths": 0,
-      "potions": 8
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 94.64,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 132.54,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 100,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 124.12,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "assassin",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 103.62,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "rogue",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 94.72,
+      "timeToKill": 80.22,
       "petDeaths": 0,
       "potions": 4
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 137,
+      "job": "assassin",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 83.02,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 74,
+      "petDeaths": 0,
+      "potions": 14
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.3,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 105.7,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.7,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 99.88,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "assassin",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 83.28,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "rogue",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 82.18,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
       "job": "rogue",
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 77.56,
+      "timeToKill": 70.14,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2087,7 +2087,7 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 106.06,
+      "timeToKill": 87.54,
       "petDeaths": 0,
       "potions": 1
     },
@@ -2098,7 +2098,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 66.36,
+      "timeToKill": 58.08,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2109,9 +2109,9 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 89.18,
+      "timeToKill": 77.98,
       "petDeaths": 0,
-      "potions": 2
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2120,9 +2120,9 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 88.98,
+      "timeToKill": 76.64,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2131,9 +2131,9 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 82.4,
+      "timeToKill": 72.66,
       "petDeaths": 0,
-      "potions": 8
+      "potions": 3
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2142,9 +2142,9 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 84.68,
+      "timeToKill": 73.64,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2153,7 +2153,7 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 113.16,
+      "timeToKill": 98.88,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2164,9 +2164,9 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 87.74,
+      "timeToKill": 77.6,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2175,7 +2175,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 109.22,
+      "timeToKill": 94.58,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2186,7 +2186,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 90.82,
+      "timeToKill": 78.28,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2197,51 +2197,7 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 60.2,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "priest",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 51.36,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "priest",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 61.46,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "priest",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 44.94,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "priest",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 58.1,
+      "timeToKill": 77.14,
       "petDeaths": 0,
       "potions": 2
     },
@@ -2249,10 +2205,54 @@
       "stage": "farmed-preboss-sss-only",
       "seed": 137,
       "job": "priest",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 65.94,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "priest",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.96,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "priest",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 57.12,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "priest",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 74.04,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "priest",
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 57.5,
+      "timeToKill": 74.24,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2263,7 +2263,7 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 50.94,
+      "timeToKill": 65.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2274,7 +2274,7 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 54.4,
+      "timeToKill": 71.24,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2285,7 +2285,7 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 62.92,
+      "timeToKill": 81.34,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2296,7 +2296,7 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 57.5,
+      "timeToKill": 72.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2307,7 +2307,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 60.48,
+      "timeToKill": 78.1,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2318,7 +2318,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 59.36,
+      "timeToKill": 74.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2329,9 +2329,9 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 88.06,
+      "timeToKill": 77.76,
       "petDeaths": 0,
-      "potions": 7
+      "potions": 6
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2340,7 +2340,7 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 74.4,
+      "timeToKill": 65.66,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2351,9 +2351,9 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 89.04,
+      "timeToKill": 79.8,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2362,7 +2362,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 66.12,
+      "timeToKill": 56.08,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2373,9 +2373,9 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 84.28,
+      "timeToKill": 75.46,
       "petDeaths": 0,
-      "potions": 7
+      "potions": 3
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2384,7 +2384,7 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 84.12,
+      "timeToKill": 74.76,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2395,9 +2395,9 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 78.22,
+      "timeToKill": 69.9,
       "petDeaths": 0,
-      "potions": 4
+      "potions": 2
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2406,9 +2406,9 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 82.56,
+      "timeToKill": 72.58,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2417,7 +2417,7 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 92.82,
+      "timeToKill": 83.82,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2428,9 +2428,9 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 84,
+      "timeToKill": 76.24,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2439,7 +2439,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 89.82,
+      "timeToKill": 80.36,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2450,7 +2450,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 85.4,
+      "timeToKill": 76.3,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2593,75 +2593,75 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 83.72,
+      "timeToKill": 88.06,
       "petDeaths": 0,
-      "potions": 35
+      "potions": 39
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 137,
       "job": "performer",
       "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.3,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "performer",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 105.56,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "performer",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 63.56,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "performer",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 82.68,
+      "petDeaths": 0,
+      "potions": 31
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "performer",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 99.98,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 137,
+      "job": "performer",
+      "pair": "magic-attack",
       "won": true,
       "alive": true,
       "timeToKill": 73.92,
       "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "performer",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 102.9,
-      "petDeaths": 0,
-      "potions": 4
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "performer",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 59.64,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "performer",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 79.36,
-      "petDeaths": 0,
-      "potions": 34
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "performer",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 89.84,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 137,
-      "job": "performer",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 72.72,
-      "petDeaths": 0,
-      "potions": 32
+      "potions": 33
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2670,7 +2670,7 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 83.58,
+      "timeToKill": 90.26,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2681,7 +2681,7 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 110.44,
+      "timeToKill": 112.84,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2692,7 +2692,7 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 91.98,
+      "timeToKill": 94.22,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2703,7 +2703,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 102.56,
+      "timeToKill": 105.42,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2714,7 +2714,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 94.4,
+      "timeToKill": 99.14,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2725,7 +2725,7 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 89.46,
+      "timeToKill": 85.82,
       "petDeaths": 0,
       "potions": 1
     },
@@ -2736,7 +2736,7 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 73.74,
+      "timeToKill": 70.56,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2747,7 +2747,7 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 93.72,
+      "timeToKill": 88.22,
       "petDeaths": 0,
       "potions": 1
     },
@@ -2758,7 +2758,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 61.86,
+      "timeToKill": 59.78,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2769,7 +2769,7 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 84.86,
+      "timeToKill": 82.88,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2780,7 +2780,7 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 86.24,
+      "timeToKill": 79.52,
       "petDeaths": 0,
       "potions": 1
     },
@@ -2789,76 +2789,76 @@
       "seed": 731,
       "job": "knight",
       "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 75.98,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "knight",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 72.58,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "knight",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 102.34,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "knight",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 76.44,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "knight",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 96.76,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "knight",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 81.34,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "crusader",
+      "pair": "attack-magic",
       "won": true,
       "alive": true,
       "timeToKill": 78.68,
       "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "knight",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 79.24,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "knight",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 109.46,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "knight",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 79.38,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "knight",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 103.88,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "knight",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.9,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "crusader",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.74,
-      "petDeaths": 0,
       "potions": 1
     },
     {
@@ -2868,7 +2868,7 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 74.24,
+      "timeToKill": 68.94,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2879,7 +2879,7 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 90.82,
+      "timeToKill": 82.82,
       "petDeaths": 0,
       "potions": 1
     },
@@ -2890,7 +2890,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 65.24,
+      "timeToKill": 57.36,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2901,9 +2901,9 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 83.44,
+      "timeToKill": 75.02,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2912,9 +2912,9 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 86.1,
+      "timeToKill": 76.8,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -2923,7 +2923,7 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 76.32,
+      "timeToKill": 69.72,
       "petDeaths": 0,
       "potions": 0
     },
@@ -2932,94 +2932,6 @@
       "seed": 731,
       "job": "crusader",
       "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 81.96,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "crusader",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 95.26,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "crusader",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 85.12,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "crusader",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 90.96,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "crusader",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.64,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "wizard",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 94.72,
-      "petDeaths": 0,
-      "potions": 46
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "wizard",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87.98,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "wizard",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 111.36,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "wizard",
-      "pair": "magic-defense",
       "won": true,
       "alive": true,
       "timeToKill": 74.52,
@@ -3029,13 +2941,101 @@
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 731,
+      "job": "crusader",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 87.22,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "crusader",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77.96,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "crusader",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 83.54,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "crusader",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 80.96,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "wizard",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 90.68,
+      "petDeaths": 0,
+      "potions": 43
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "wizard",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 83.02,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "wizard",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 104.58,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "wizard",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 72.1,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
       "job": "wizard",
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 90.86,
+      "timeToKill": 86.18,
       "petDeaths": 0,
-      "potions": 41
+      "potions": 40
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3044,7 +3044,7 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 105.04,
+      "timeToKill": 98.74,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3055,9 +3055,9 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 84.38,
+      "timeToKill": 79.66,
       "petDeaths": 0,
-      "potions": 34
+      "potions": 36
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3066,7 +3066,7 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 95.62,
+      "timeToKill": 92.12,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3077,9 +3077,9 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 118.5,
+      "timeToKill": 112.56,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3088,7 +3088,7 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 101.44,
+      "timeToKill": 95.9,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3099,7 +3099,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 110.46,
+      "timeToKill": 105.94,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3110,7 +3110,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 108.64,
+      "timeToKill": 103.24,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3121,9 +3121,9 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 78.22,
+      "timeToKill": 72.72,
       "petDeaths": 0,
-      "potions": 32
+      "potions": 28
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3132,7 +3132,7 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 72.58,
+      "timeToKill": 70.8,
       "petDeaths": 0,
       "potions": 2
     },
@@ -3143,7 +3143,7 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 88.96,
+      "timeToKill": 86.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3154,9 +3154,9 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 65.24,
+      "timeToKill": 62.08,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3165,7 +3165,7 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 74.66,
+      "timeToKill": 70.94,
       "petDeaths": 0,
       "potions": 33
     },
@@ -3176,7 +3176,7 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 86.4,
+      "timeToKill": 81.06,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3187,9 +3187,9 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 70.38,
+      "timeToKill": 65.66,
       "petDeaths": 0,
-      "potions": 30
+      "potions": 28
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3198,9 +3198,9 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 81.54,
+      "timeToKill": 78.4,
       "petDeaths": 0,
-      "potions": 3
+      "potions": 2
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3209,7 +3209,7 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 93.4,
+      "timeToKill": 89.4,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3220,9 +3220,9 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 84,
+      "timeToKill": 79.38,
       "petDeaths": 0,
-      "potions": 3
+      "potions": 2
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3231,7 +3231,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 86.94,
+      "timeToKill": 82.74,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3242,7 +3242,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 87.4,
+      "timeToKill": 82.82,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3253,7 +3253,7 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 105.94,
+      "timeToKill": 86.02,
       "petDeaths": 0,
       "potions": 10
     },
@@ -3264,9 +3264,9 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 89.3,
+      "timeToKill": 69.72,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3275,9 +3275,9 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 119.7,
+      "timeToKill": 96.12,
       "petDeaths": 0,
-      "potions": 2
+      "potions": 1
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3286,7 +3286,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 73.5,
+      "timeToKill": 61.02,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3297,9 +3297,9 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 101.92,
+      "timeToKill": 80.86,
       "petDeaths": 0,
-      "potions": 7
+      "potions": 10
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3308,7 +3308,7 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 101.6,
+      "timeToKill": 83.16,
       "petDeaths": 0,
       "potions": 1
     },
@@ -3319,9 +3319,9 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 91.84,
+      "timeToKill": 74,
       "petDeaths": 0,
-      "potions": 10
+      "potions": 8
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3330,9 +3330,9 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 94.8,
+      "timeToKill": 75.46,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3341,9 +3341,9 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 132.84,
+      "timeToKill": 104.72,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3352,7 +3352,7 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 100.96,
+      "timeToKill": 80,
       "petDeaths": 0,
       "potions": 1
     },
@@ -3363,9 +3363,9 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 123.64,
+      "timeToKill": 101.2,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3374,7 +3374,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 104.68,
+      "timeToKill": 85.48,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3385,348 +3385,348 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 94.72,
+      "timeToKill": 83.02,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 68.04,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 85.82,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 58.1,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 76.86,
+      "petDeaths": 0,
+      "potions": 2
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 74.16,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 73.08,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 75.48,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 100.08,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 75.6,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 95,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "rogue",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77.12,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77.56,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 67.08,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 76.94,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 57.26,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 74.2,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 72.66,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 66.08,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "defense-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 71.38,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "support-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 81.4,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "defense-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 72.94,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "support-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77.8,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "priest",
+      "pair": "support-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 74.8,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "monk",
+      "pair": "attack-magic",
+      "won": true,
+      "alive": true,
+      "timeToKill": 77.88,
+      "petDeaths": 0,
+      "potions": 7
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "monk",
+      "pair": "attack-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 67.08,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "monk",
+      "pair": "attack-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 78.94,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "monk",
+      "pair": "magic-defense",
+      "won": true,
+      "alive": true,
+      "timeToKill": 56.66,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "monk",
+      "pair": "magic-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 74.48,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "monk",
+      "pair": "defense-support",
+      "won": true,
+      "alive": true,
+      "timeToKill": 76.3,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "stage": "farmed-preboss-sss-only",
+      "seed": 731,
+      "job": "monk",
+      "pair": "magic-attack",
+      "won": true,
+      "alive": true,
+      "timeToKill": 69.72,
       "petDeaths": 0,
       "potions": 6
     },
     {
       "stage": "farmed-preboss-sss-only",
       "seed": 731,
-      "job": "rogue",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 78.3,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 103.68,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 66.5,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 90.3,
-      "petDeaths": 0,
-      "potions": 5
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 91.98,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 82.18,
-      "petDeaths": 0,
-      "potions": 2
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 85,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 113.62,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 87,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 108.62,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "rogue",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 89.76,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 60.34,
-      "petDeaths": 0,
-      "potions": 3
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 50.58,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 60.72,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 44.94,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 57.42,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 57.6,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 50.92,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "defense-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 53.92,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "support-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 62.78,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "defense-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 56.08,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "support-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 60.36,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "priest",
-      "pair": "support-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 58.5,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "monk",
-      "pair": "attack-magic",
-      "won": true,
-      "alive": true,
-      "timeToKill": 88.06,
-      "petDeaths": 0,
-      "potions": 7
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "monk",
-      "pair": "attack-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 74.38,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "monk",
-      "pair": "attack-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 89.04,
-      "petDeaths": 0,
-      "potions": 1
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "monk",
-      "pair": "magic-defense",
-      "won": true,
-      "alive": true,
-      "timeToKill": 65.26,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "monk",
-      "pair": "magic-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84.04,
-      "petDeaths": 0,
-      "potions": 9
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "monk",
-      "pair": "defense-support",
-      "won": true,
-      "alive": true,
-      "timeToKill": 84,
-      "petDeaths": 0,
-      "potions": 0
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
-      "job": "monk",
-      "pair": "magic-attack",
-      "won": true,
-      "alive": true,
-      "timeToKill": 77.04,
-      "petDeaths": 0,
-      "potions": 5
-    },
-    {
-      "stage": "farmed-preboss-sss-only",
-      "seed": 731,
       "job": "monk",
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 80.1,
+      "timeToKill": 72.94,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3737,7 +3737,7 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 92.96,
+      "timeToKill": 83.12,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3748,9 +3748,9 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 83.8,
+      "timeToKill": 73.92,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3759,7 +3759,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 89.46,
+      "timeToKill": 79.8,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3770,7 +3770,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 85.54,
+      "timeToKill": 75.38,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3913,9 +3913,9 @@
       "pair": "attack-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 85.26,
+      "timeToKill": 87.22,
       "petDeaths": 0,
-      "potions": 33
+      "potions": 36
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3924,9 +3924,9 @@
       "pair": "attack-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 73.38,
+      "timeToKill": 78.3,
       "petDeaths": 0,
-      "potions": 0
+      "potions": 1
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3935,7 +3935,7 @@
       "pair": "attack-support",
       "won": true,
       "alive": true,
-      "timeToKill": 103.46,
+      "timeToKill": 107.24,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3946,7 +3946,7 @@
       "pair": "magic-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 61.58,
+      "timeToKill": 63.2,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3957,9 +3957,9 @@
       "pair": "magic-support",
       "won": true,
       "alive": true,
-      "timeToKill": 78.24,
+      "timeToKill": 82.6,
       "petDeaths": 0,
-      "potions": 35
+      "potions": 29
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3968,7 +3968,7 @@
       "pair": "defense-support",
       "won": true,
       "alive": true,
-      "timeToKill": 95.2,
+      "timeToKill": 97.3,
       "petDeaths": 0,
       "potions": 0
     },
@@ -3979,9 +3979,9 @@
       "pair": "magic-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 72.72,
+      "timeToKill": 75.32,
       "petDeaths": 0,
-      "potions": 24
+      "potions": 30
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -3990,7 +3990,7 @@
       "pair": "defense-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 83.8,
+      "timeToKill": 88.76,
       "petDeaths": 0,
       "potions": 1
     },
@@ -4001,9 +4001,9 @@
       "pair": "support-attack",
       "won": true,
       "alive": true,
-      "timeToKill": 109.62,
+      "timeToKill": 114.72,
       "petDeaths": 0,
-      "potions": 0
+      "potions": 1
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -4012,9 +4012,9 @@
       "pair": "defense-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 89.26,
+      "timeToKill": 93.26,
       "petDeaths": 0,
-      "potions": 1
+      "potions": 0
     },
     {
       "stage": "farmed-preboss-sss-only",
@@ -4023,7 +4023,7 @@
       "pair": "support-magic",
       "won": true,
       "alive": true,
-      "timeToKill": 101.86,
+      "timeToKill": 106.26,
       "petDeaths": 0,
       "potions": 0
     },
@@ -4034,7 +4034,7 @@
       "pair": "support-defense",
       "won": true,
       "alive": true,
-      "timeToKill": 94.4,
+      "timeToKill": 99.42,
       "petDeaths": 0,
       "potions": 0
     }
