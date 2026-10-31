@@ -28,4 +28,4 @@ export function upgradeDawnSigil(player){
  for(const [id,qty] of Object.entries(cost)){const entry=player.bag.find(x=>x.id===id);entry.qty-=qty;if(!entry.qty)player.bag.splice(player.bag.indexOf(entry),1);}
  player.dawnSigil=next;return {level:next,bonus:sigilBonus(player)};
 }
-export function dawnBossRewards(enemy){return enemy?.id==='dawn-archon'?[{id:'dawn_archon_crystal',qty:5},{id:DAWN_SIGIL_CORE,qty:1}]:[];}
+export function dawnBossRewards(enemy){return enemy?.id==='dawn-archon'?[{id:DAWN_SIGIL_CORE,qty:1}]:[];}
