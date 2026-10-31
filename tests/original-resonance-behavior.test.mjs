@@ -34,3 +34,21 @@ test('sage auto-guard chase requires an existing shield',async()=>{
  a.emitEvent('autospell');assert.equal(foe.hp,1e9);
  p.shield=100;a.emitEvent('autospell');assert.ok(foe.hp<1e9);
 });
+
+test('burn ticks are classified as resonance damage rather than direct pet damage',async()=>{
+ const {a,c,foe}=await scenario('assassin','attack-magic');
+ a.beginReport();a.emitEvent('crit');
+ c.setTime(1001300);a.tickPetEffects(1001300);
+ const metrics=a.state().report.metrics;
+ assert.ok(metrics.resonanceDamage>0,'burn should credit resonanceDamage');
+ assert.equal(metrics.petDamage,0,'burn should not inflate direct petDamage');
+ assert.ok(foe.hp<1e9);
+});
+test('two-hit accumulation never leaks between active pets after swapping',async()=>{
+ const {a,c,p,pet,foe}=await scenario('crusader','attack-defense');
+ a.emitEvent('damageTaken');assert.equal(foe.hp,1e9);
+ const other=c.makePet('fang');Object.assign(other,{id:'other',level:150,rarity:'mythic',ascended:true,evolution:4,fusion:{main:'attack',sub:'defense'}});other.hp=c.petStats(other).hp;p.pets.push(other);
+ a.setPet('other');a.emitEvent('damageTaken');
+ assert.equal(foe.hp,1e9,'other pet must begin its own two-hit counter');
+ a.emitEvent('damageTaken');assert.ok(foe.hp<1e9);
+});
