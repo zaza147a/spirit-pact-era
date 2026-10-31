@@ -395,7 +395,7 @@ function enemyAttack(){
  if(player.job==='performer'&&timers.soundShieldCharge>0&&gameNow()<timers.soundShieldUntil&&attacker.hp>0){
    const selected=enemy;enemy=attacker;
    const st=activePet()?.hp>0?petStats(activePet()):null;
-   if(st)dealPetDamage(hitDamage((st.def*.55+st.matk*.35)*timers.soundShieldCharge,attacker.def*.5),'resonanceDamage');
+   if(st){dealPetDamage(hitDamage((st.def*.55+st.matk*.35)*timers.soundShieldCharge,attacker.def*.5),'resonanceDamage');if(!attacker.hp)award();}
    timers.soundShieldCharge=0;timers.soundShieldUntil=0;enemy=selected;
  }
  if(effective>0&&player.hp>0)emitEvent('damageTaken');message(`⚔ ${SPECIES[attacker.id].name} 命中玩家，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad');if(!player.hp){if(player.trialRun){exitTrial('戰敗，試煉已結束');return;}player.reviveAt=gameNow()+PLAYER_REVIVE_MS;stopAutoFusion('角色倒下');endReport('戰敗');message('角色倒下，請決定是否原地復活或回城。','bad');if(!player.autoRevive)showReviveDialog();save();}
