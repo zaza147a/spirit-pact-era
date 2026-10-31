@@ -38,3 +38,10 @@ export function humanoidFormName(pet,juvenileName){
   const stage=humanoidStage(pet);
   return stage&&humanoidEligible(pet)?`${juvenileName}・${HUMANOID_STAGES[stage].label}`:juvenileName;
 }
+
+/** Advance each intermediate stage in order to reconcile pre-upgraded equipment. */
+export function reconcileHumanoidStages(pet){
+ const previous=humanoidStage(pet),unlocked=[];
+ for(let i=0;i<3;i++){const result=advanceHumanoidEvolution(pet);if(!result.changed)break;unlocked.push(result);}
+ return {changed:unlocked.length>0,from:previous,stage:humanoidStage(pet),unlocked};
+}
