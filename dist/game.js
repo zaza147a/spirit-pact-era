@@ -41,7 +41,7 @@ import {PET_SKILLS,petSkillById,defaultPetSkills,petSkillsFor,petAbilitySetName,
 import {JOB_SKILLS,jobSkillById,initialJobSkills,weaponSkillAllowed,activeJobSkills,jobPassives,skillUnlocked,supersededSkill,REBIRTH_MAIN_REPLACES} from './job-skills.js?v=6.3.2';
 import {WORLD_MONSTERS,ZONES,worldMonsterArt} from './world-data.js?v=6.3.2';
 import {rollGear,rollPetGear,rebalanceGear,gearStatValue,affixRange,normalizeBag,addStack,consumeStack,STACK_SET,RARITIES,AFFIX_NAMES,TIER_NAMES,gearTier,gearGroup,shardId,gearLabel,affixLabel,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,equipmentDrop} from './loot.js?v=6.3.2';
-import {outgoingHitDamage,incomingMonsterDamage,monsterAttackPower,monsterDefenseAgainst,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterCombatStats,monsterRuntimeStats,LEVEL_CAPS} from './combat-balance.js?v=6.3.2';
+import {outgoingHitDamage,incomingMonsterDamage,monsterAttackPower,monsterDefenseAgainst,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterHitChance,monsterCombatStats,monsterRuntimeStats,LEVEL_CAPS} from './combat-balance.js?v=6.3.2';
 import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.3.2';
 
 import {GEAR_TIERS,legacyFiveTierToNew,migrateFiveTierShards} from './progression.js?v=6.3.2';
@@ -122,7 +122,7 @@ function clearStatSnapshots(){attributeSnapshot=null;attributeBreakdownSnapshot=
 function cachedPassives(){if(inCombatTick||offlineSimulation)return passiveSnapshot??=jobPassives(player);return jobPassives(player);}
 function attributeDetails(){if(inCombatTick||offlineSimulation)return attributeBreakdownSnapshot??=attributeBreakdown(player,CARDS);return attributeBreakdown(player,CARDS);}
 function potentialBonus(key){return attributeDetails().potential[key]||0;}
-function ownerHitChance(hit,flee){return Math.max(.05,hitChance(hit,flee)-potentialBonus('AGI'));}
+function ownerHitChance(hit,flee,magical=false){return Math.max(.05,monsterHitChance(hit,flee,magical)-potentialBonus('AGI')*(magical?.25:1));}
 function effectiveAttributes(){if((inCombatTick||offlineSimulation)&&attributeSnapshot)return attributeSnapshot;const attrs={...player.attributes},jobBonus=jobAttributeBonus(player,SECOND_JOBS),details=attributeDetails();for(const key of Object.keys(attrs))attrs[key]+=(jobBonus[key]||0)+details.gear[key]+details.card[key];if(inCombatTick||offlineSimulation)attributeSnapshot=attrs;return attrs;}
 
 function cardBonus(key){if((inCombatTick||offlineSimulation)&&Object.hasOwn(cardSnapshot,key))return cardSnapshot[key];const n=socketCardBonus(player.sockets,CARDS,key,player.level);if(inCombatTick||offlineSimulation)cardSnapshot[key]=n;return n;}
@@ -400,10 +400,10 @@ function enemyAttack(){
  const roll=rand(85,115)/100;
  if(targetPet){
   const s=petStats(pet);
-  if(Math.random()>hitChance(attacker.hit,s.flee))message(`${pet.nickname} 閃避了 ${SPECIES[attacker.id].name} 的攻擊。`,'good');
+  if(Math.random()>monsterHitChance(attacker.hit,s.flee,attacker.attackType==='magic'))message(`${pet.nickname} 閃避了 ${SPECIES[attacker.id].name} 的攻擊。`,'good');
   else{petWasHit=true;const d=Math.max(1,Math.round(incomingMonsterDamage(monsterAttackPower(attacker),attacker.attackType==='magic'?s.mdef:s.def,roll)*(1-(s.damageReduction||0)/100)*(1-(classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0)))),capacity=pet.hp+(petEffects.shield||0),absorbed=Math.min(petEffects.shield||0,d),effective=Math.min(pet.hp,d-absorbed);petEffects.shield=Math.max(0,(petEffects.shield||0)-absorbed);pet.hp=Math.max(0,pet.hp-(d-absorbed));record(report,'shieldPrevented',absorbed);record(report,'petTaken',effective);record(report,'petTanked',effective);record(report,'petProtection',Math.max(0,Math.min(capacity,Math.round(attacker.atk*roll))-Math.min(capacity,d)));if(role==='defense')record(report,'interceptPrevented',Math.min(player.hp,incomingMonsterDamage(attacker.atk,stat('def'),roll)));message(`⚔ ${SPECIES[attacker.id].name} 命中 ${pet.nickname}，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad','damage');if(role==='defense')emitEvent('pet_guard');if(!pet.hp){pet.reviveAt=gameNow()+PET_REVIVE_MS;petDeathSequence++;petEffects.shield=0;message(`${pet.nickname} 暫時失去戰鬥能力，請使用藥水；人物戰敗復活時也會恢復夥伴。`,'bad','damage');}}
 
- }else if(Math.random()>ownerHitChance(attacker.hit,stat('flee'))){message('角色閃避了敵人的攻擊。','good');emitEvent('dodge');}
+ }else if(Math.random()>ownerHitChance(attacker.hit,stat('flee'),attacker.attackType==='magic')){message('角色閃避了敵人的攻擊。','good');emitEvent('dodge');}
  else{
   const blocked=parentJob(player.job)==='swordsman'&&Math.random()<(player.job==='crusader'?.35:.25);if(blocked){message('劍士成功格擋，本次傷害降低50%。','good');emitEvent('block');}
   let d=Math.max(1,Math.round(incomingMonsterDamage(monsterAttackPower(attacker),stat(attacker.attackType==='magic'?'mdef':'def'),roll)*(blocked?.5:1)*(1-passiveBonus('reflect'))*(1-stat('damageReduction')/100)*(1-(classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0))*(classBuffs.devotion?.until>gameNow()?.88:1)));if(blocked&&passiveBonus('reflect')&&attacker.hp>0){const selected=enemy;enemy=attacker;dealDamage(hitDamage(stat('atk')*passiveBonus('reflect')*10*(1+potentialBonus('STR')),attacker.def),'playerDamage');if(!attacker.hp)award();enemy=selected;}const baseIncoming=Math.round(attacker.atk*roll),capacity=player.hp+(player.shield||0);const ward=classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0,petWard=ward?Math.max(0,Math.min(capacity,Math.round(d/(1-ward)))-Math.min(capacity,d)):0;record(report,'petProtection',petWard);record(report,'playerProtection',Math.max(0,Math.min(capacity,baseIncoming)-Math.min(capacity,d)-petWard));const absorbed=Math.min(player.shield||0,d),petAbsorbed=Math.min(petShield,absorbed);record(report,'shieldPrevented',petAbsorbed);record(report,'playerShieldPrevented',absorbed-petAbsorbed);petShield=Math.max(0,petShield-petAbsorbed);player.shield=Math.max(0,(player.shield||0)-absorbed);if(absorbed>0&&player.shield===0)emitEvent('shieldBreak');d-=absorbed;const effective=Math.min(player.hp,d);player.hp=Math.max(0,player.hp-d);record(report,'playerTaken',effective);record(report,'playerTanked',effective);

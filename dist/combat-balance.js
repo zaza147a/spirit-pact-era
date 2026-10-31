@@ -9,6 +9,9 @@ export const aspdAttackIntervalMs=aspd=>Math.max(140,Math.round((200-Math.min(19
 export const roStyleCritRate=(luk,gearCrit=0)=>Math.min(100,Math.round((1+Math.max(0,luk)*.3+gearCrit)*10)/10);
 // Scale rating differences with their magnitude so late-game FLEE cannot trivialize combat.
 export const hitChance=(hit,flee)=>{const h=Math.max(0,Number(hit)||0),f=Math.max(0,Number(flee)||0);return Math.max(.05,Math.min(.95,.8+(h-f)/(100+Math.max(h,f)*2)));};
+// Conventional FLEE primarily evades physical swings. Magic retains a small
+// evasion contribution, so magical monsters cannot be nullified by AGI alone.
+export const monsterHitChance=(hit,flee,magical=false)=>hitChance(hit,magical?flee*.25:flee);
 export const monsterCombatStats=monster=>{const level=monster.level||1,boss=!!monster.boss;const values=level<=50?{hit:65+level*1.8,flee:45+level*1.6,aspd:132+level*.35}:{hit:level>=151?16000*2**Math.floor((level-151)/20)+(level-151)%20*150:level>=131?2000+(level-131)*20:level>=111?1000+(level-111)*20:75+level*2,flee:60+level*2,aspd:Math.min(165,150+Math.max(0,level-51)*.2)};return boss?{hit:values.hit+20,flee:values.flee+35,aspd:values.aspd-5}:values;};
 // Keep archived hit/flee/ASPD baselines stable; the active encounter adds magic stats.
 export const monsterRuntimeStats=monster=>{const level=monster.level||1;return {...monsterCombatStats(monster),matk:monster.matk??Math.round((monster.atk||0)*(level>=151?1.12:1.06)),mdef:monster.mdef??Math.round((monster.def||0)*(level>=151?1.15:.9)),attackType:monster.attackType||((level%3===0)?'magic':'physical')};};
