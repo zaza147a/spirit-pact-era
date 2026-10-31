@@ -1,0 +1,33 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {ORIGINAL_60_MECHANICS, ORIGINAL_SIX_KEYS} from '../dist/original-60-mechanics.js';
+import {SECOND_JOBS} from '../dist/jobs.js';
+import {THIRD_FUSION_RULES} from '../dist/fusion-resonance.js';
+const supported = new Set(['armorBreak','elementBurn','comboLeech','overhealRain','dragonCounter','siegeCounter','sanctuaryChase','ward','manaRefund','haste','mark','stackStrike','splash','counterStrike','arcaneStrike']);
+test('every original VNext entry is present with source text and a supported effect',()=>{
+ const jobs=Object.keys(SECOND_JOBS); assert.equal(jobs.length,10);
+ assert.equal(Object.keys(ORIGINAL_60_MECHANICS).length,60);
+ for(const job of jobs)for(const pair of ORIGINAL_SIX_KEYS){
+  const key=job+'/'+pair,spec=ORIGINAL_60_MECHANICS[key],actual=THIRD_FUSION_RULES[job][pair];
+  assert.ok(spec,key);assert.ok(spec.description.length>=4,key);
+  assert.ok(supported.has(actual.originalEvent.payload),key+'/'+actual.originalEvent.payload);
+  assert.equal(actual.originalEvent.event,spec.event,key);
+  assert.deepEqual(actual.events,[spec.event],key);
+  assert.ok(spec.threshold>=1&&spec.threshold<=3,key);
+ }
+});
+test('the seven previously implemented mechanics keep their dedicated payloads',()=>{
+ const expected={
+  'knight/attack-defense':'armorBreak',
+  'knight/defense-support':'dragonCounter',
+  'crusader/attack-defense':'siegeCounter',
+  'rogue/defense-support':'sanctuaryChase',
+  'assassin/attack-magic':'elementBurn',
+  'monk/attack-support':'comboLeech',
+  'priest/magic-support':'overhealRain'
+ };
+ for(const [key,payload] of Object.entries(expected)){
+  const [job,pair]=key.split('/');
+  assert.equal(THIRD_FUSION_RULES[job][pair].originalEvent.payload,payload);
+ }
+});
