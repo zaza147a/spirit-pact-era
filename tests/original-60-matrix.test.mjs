@@ -10,7 +10,7 @@ test('every original VNext entry is present with source text and a supported eff
  for(const job of jobs)for(const pair of ORIGINAL_SIX_KEYS){
   const key=job+'/'+pair,spec=ORIGINAL_60_MECHANICS[key],actual=THIRD_FUSION_RULES[job][pair];
   assert.ok(spec,key);assert.ok(spec.description.length>=4,key);
-  assert.ok(supported.has(actual.originalEvent.payload),key+'/'+actual.originalEvent.payload);
+  const payloads=Array.isArray(actual.originalEvent.payload)?actual.originalEvent.payload:[actual.originalEvent.payload];assert.ok(payloads.length>0&&payloads.every(action=>supported.has(action)),key+'/'+payloads.join(','));
   assert.equal(actual.originalEvent.event,spec.event,key);
   assert.deepEqual(actual.events,[spec.event],key);
   assert.ok(spec.threshold>=1&&spec.threshold<=3,key);
