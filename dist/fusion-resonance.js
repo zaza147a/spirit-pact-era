@@ -39,10 +39,10 @@ function reversePactTransforms(job,key,M,W,F){
 // Original VNext behavior: a subset now uses real monster combat events rather than
 // activating exclusively from a main attack. All other 56 designs remain pending.
 export const ORIGINAL_EVENT_PACTS={
- 'knight/attack-defense':{event:'shieldBreak',label:'盾碎後龍槍破甲'},
- 'knight/defense-support':{event:'damageTaken',label:'承傷觸發龍魂反擊'},
- 'crusader/attack-defense':{event:'damageTaken',label:'承傷積累破城反擊',threshold:2},
- 'rogue/defense-support':{event:'dodge',label:'閃避後聖域追擊'}
+ 'knight/attack-defense':{event:'shieldBreak',label:'盾碎後龍槍破甲',payload:'armorBreak'},
+ 'knight/defense-support':{event:'damageTaken',label:'承傷觸發龍魂反擊',payload:'dragonCounter'},
+ 'crusader/attack-defense':{event:'damageTaken',label:'承傷積累破城反擊',threshold:2,payload:'siegeCounter'},
+ 'rogue/defense-support':{event:'dodge',label:'閃避後聖域追擊',payload:'sanctuaryChase'}
 };
 const levels=[151,161,171,181,191,200];
 export const fusionTransformAtLevel=(t,level=151)=>Object.fromEntries(Object.entries(t).map(([k,v])=>{if(!Array.isArray(v))return[k,v];const l=Math.max(151,Math.min(200,level||151)),i=levels.findLastIndex(x=>x<=l);return[k,i===5?v[5]:v[i]+(v[i+1]-v[i])*(l-levels[i])/(levels[i+1]-levels[i])];}));
