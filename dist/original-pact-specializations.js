@@ -116,10 +116,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
     ]
   },
   "sage/magic-support": {
-    "payload": [
-      "splash",
-      "manaRefund"
-    ]
+    "payload": ["starRainChain"]
   },
   "sage/defense-support": {"payload": ["guardianAutoChase", "ward"]},
   "assassin/attack-defense": {
@@ -245,10 +242,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
     ]
   },
   "hunter/attack-support": {
-    "payload": [
-      "haste",
-      "counterStrike"
-    ]
+    "payload": ["falconVolley"]
   },
   "hunter/magic-defense": {
     "payload": [
