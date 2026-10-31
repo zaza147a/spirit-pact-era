@@ -3,7 +3,7 @@
 // Trigger mapping and payload selection are implementation defaults subject to behavior tests.
 export const ORIGINAL_60_MECHANICS = Object.freeze({
   "knight/attack-magic": {
-    "event": "thirdMain_knight",
+    "event": "thirdHit_knight",
     "payload": "stackStrike",
     "threshold": 2,
     "description": "龍槍命中疊元素爆"
@@ -21,7 +21,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "血線穩定時連續追擊"
   },
   "knight/magic-defense": {
-    "event": "thirdMain_knight",
+    "event": "thirdHit_knight",
     "payload": "ward",
     "threshold": 1,
     "description": "龍槍生成星壁穿刺"
@@ -39,7 +39,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "承傷觸發龍魂反擊"
   },
   "crusader/attack-magic": {
-    "event": "thirdMain_crusader",
+    "event": "thirdHit_crusader",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "聖盾附龍焰裁決"
@@ -69,13 +69,13 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "防禦技能回流魔力"
   },
   "crusader/defense-support": {
-    "event": "thirdMain_crusader",
+    "event": "shield",
     "payload": "ward",
     "threshold": 1,
     "description": "聖盾守護後裁界追擊"
   },
   "wizard/attack-magic": {
-    "event": "thirdMain_wizard",
+    "event": "thirdHit_wizard",
     "payload": "elementBurn",
     "threshold": 1,
     "description": "星隕引燃元素鏈爆"
@@ -129,7 +129,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "自詠追獵擊回復資源"
   },
   "sage/magic-defense": {
-    "event": "thirdMain_sage",
+    "event": "thirdHit_sage",
     "payload": "stackStrike",
     "threshold": 2,
     "description": "魔力拳堆疊星陣砲擊"
@@ -165,7 +165,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "汲血連斬疊斬殺印"
   },
   "assassin/magic-defense": {
-    "event": "thirdMain_assassin",
+    "event": "thirdHit_assassin",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "影殺後星砲追擊"
@@ -225,7 +225,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "聖光觸發龍焰但限頻"
   },
   "priest/attack-defense": {
-    "event": "thirdMain_priest",
+    "event": "thirdHit_priest",
     "payload": "armorBreak",
     "threshold": 1,
     "description": "聖裁觸發破甲聖盾"
@@ -255,7 +255,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "聖域裁決與守護反擊分流"
   },
   "monk/attack-magic": {
-    "event": "thirdMain_monk",
+    "event": "thirdHit_monk",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "極意拳附元素爆發"
@@ -309,13 +309,13 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "獵鷹與戰歌連射協同"
   },
   "hunter/magic-defense": {
-    "event": "thirdMain_hunter",
+    "event": "thirdHit_hunter",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "狙擊引爆遠距星砲"
   },
   "hunter/magic-support": {
-    "event": "thirdMain_hunter",
+    "event": "thirdWideHit_hunter",
     "payload": "splash",
     "threshold": 1,
     "description": "箭雨附星雨擴散"
