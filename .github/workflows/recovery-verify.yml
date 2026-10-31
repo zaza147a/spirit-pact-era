@@ -21,3 +21,5 @@ jobs:
         run: node --test tests/pet-humanoid-evolution.test.mjs tests/pet-legacy-reselect.test.mjs tests/dawn-sigil.test.mjs
       - name: Test existing game regressions
         run: node --test tests/v20.test.mjs tests/v21.test.mjs tests/v30.test.mjs tests/v31.test.mjs tests/v32.test.mjs tests/v40.test.mjs tests/true-form-v620.test.mjs tests/continuous-trials-v632.test.mjs
+      - name: Full existing regression suite
+        run: node --test tests/*.test.mjs
