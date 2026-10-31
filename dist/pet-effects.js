@@ -5,7 +5,9 @@ export const petOffense=(s,role)=>['magic','support'].includes(role)?num(s,'matk
 // direct hits; guardian/healer builds trade that damage for protection.
 export function petDirectRoleMultiplier(role,level=1){
  if(level<=50)return 1;
- const phase=level>=201?30:level>=151?7.5:level>=101?24:level>=51?3:1;
+ // At 201 all combat-ready companions wear SSS pet gear; multiplying their
+ // attacks by the old naked-pet coefficient would double-count the promotion.
+ const phase=level>=201?8.5:level>=151?7.5:level>=101?24:level>=51?3:1;
  return role==='attack'?phase*.8:role==='magic'?phase:role==='defense'?phase*.48:phase*.42;
 }
 export const petOffensivePower=(s,role)=>petOffense(s,role);

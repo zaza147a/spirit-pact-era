@@ -21,17 +21,15 @@ for(const [map,level] of mapTiers){
   rarity:late?'mythic':level<=99?'uncommon':'legendary',
   gearStrength:level<=50?.7:level<=99?.8:level<=150?.8:.9,
   allocationStrength:level<=50?.7:level<=99?.8:level<=150?.8:.9,
-  cardStrength:level<=150?.8:.9,enhancement:level>=201?'SSS':null};
+  cardStrength:level<=150?.8:.9,enhancement:level>=201?'SSS':null,
+  petEnhancement:level>=201?'SSS':null,dawnSigil:0};
  for(const job of jobs)for(const pair of late?pairs:roles)
   cases.push({map,level,job,pair,options:{...options,fusionPair:late?pair:undefined}});
 }
-// Verify the low-tier gear penalty, long boss pressure, and enhancement separation.
+// Verify the low-tier gear penalty. Real bosses use the separate named-boss audit.
 for(const gearLevel of [151,171,191])for(const job of jobs)for(const pair of pairs)
  cases.push({map:'worldroot',level:200,job,pair,diagnostic:'gear-cross',gearLevel,
   options:{level:200,encounterLevel:200,gearLevel,seconds:45,seed:731,scenario:'regional',reborn:true,thirdJob:true,referenceBuild:true,referenceQuality:'mythic',rarity:'mythic',fusionPair:pair,enhancement:null}});
-for(const enhancement of ['S','SSS'])for(const seed of [42,137,731])for(const job of jobs)for(const pair of pairs)
- cases.push({map:'dawnrift',level:210,job,pair,diagnostic:'boss',enhancement,seed,
-  options:{level:210,encounterLevel:210,gearLevel:200,seconds:120,seed,scenario:'boss',reborn:true,thirdJob:true,referenceBuild:true,referenceQuality:'mythic',rarity:'mythic',fusionPair:pair,enhancement}});
 
 const rows=Array(cases.length),workerCount=6,workers=Array.from({length:workerCount},()=>new Worker(new URL('./balance-worker-v508.mjs',import.meta.url)));
 await new Promise((resolve,reject)=>{
@@ -51,7 +49,7 @@ const aggregate=values=>({n:values.length,alive:values.filter(x=>x.alive).length
  minKills:Math.min(...values.map(x=>x.kills)),maxKills:Math.max(...values.map(x=>x.kills))});
 const zones=mapTiers.map(([map,level])=>({map,level,...aggregate(rows.filter(r=>r.map===map&&!r.diagnostic))}));
 const crossing=[151,171,191].map(gearLevel=>({gearLevel,...aggregate(rows.filter(r=>r.diagnostic==='gear-cross'&&r.gearLevel===gearLevel))}));
-const bosses=['S','SSS'].flatMap(enhancement=>[42,137,731].map(seed=>({enhancement,seed,...aggregate(rows.filter(r=>r.diagnostic==='boss'&&r.enhancement===enhancement&&r.seed===seed))})));
-const result={conditions:'Live combatTick fixture, 45s region stress with immediate respawn and abundant supplies. Not encounter-wait, progression or economic balance. All pre-201 gear unenhanced; 201 SSS.',count:rows.length,zones,crossing,bosses,rows};
+const bosses=[];
+const result={conditions:'Live combatTick fixture, 45s region stress with immediate respawn and abundant supplies. Not encounter-wait, progression or economic balance. Earlier regions use unenhanced reference builds; 201 SSS-only both player/pet equipment. Named real bosses checked separately.',count:rows.length,zones,crossing,bosses,rows};
 writeFileSync('docs/all-map-difficulty-audit.json',JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify({count:rows.length,zones,crossing,bosses},null,2));

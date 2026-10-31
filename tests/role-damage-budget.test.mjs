@@ -9,6 +9,8 @@ test('novice pet direct damage stays unchanged and advanced offense trades durab
   const a=petDirectRoleMultiplier('attack',level),m=petDirectRoleMultiplier('magic',level),d=petDirectRoleMultiplier('defense',level),s=petDirectRoleMultiplier('support',level);
   assert.ok(m>a&&a>d&&d>s,`level ${level} role budget`);
  }
+ assert.ok(petDirectRoleMultiplier('magic',201)<=petDirectRoleMultiplier('magic',200)*1.2,
+  'SSS pet gear must not also receive an unchecked 201 direct-damage multiplier');
 });
 
 test('owner amplification reduction preserves fusion utility, cooldown and trigger identity',()=>{

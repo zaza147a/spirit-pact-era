@@ -22,10 +22,11 @@ for(const [map,level] of dawnOnly?[]:zones)for(const seed of [42,137,731])for(co
   allocationStrength:level<=50?.7:level<=99?.8:level<=150?.8:.9,
   cardStrength:level<=150?.8:.9}});
 }
-for(const enhancement of ['S','SSS'])for(const seed of [42,137,731])for(const job of jobs)for(const pair of pairs)
+for(const enhancement of ['SSS'])for(const seed of [42,137,731])for(const job of jobs)for(const pair of pairs)
  cases.push({map:'dawnrift',level:210,seed,job,pair,enhancement,options:{level:210,encounterLevel:210,
   gearLevel:200,seconds:120,seed,scenario:'dawnBoss',reborn:true,thirdJob:true,
-  referenceBuild:true,referenceQuality:'mythic',rarity:'mythic',fusionPair:pair,enhancement}});
+  referenceBuild:true,referenceQuality:'mythic',rarity:'mythic',fusionPair:pair,enhancement,
+  petEnhancement:'SSS',dawnSigil:4}});
 
 const workers=Array.from({length:6},()=>new Worker(new URL('./balance-worker-v508.mjs',import.meta.url)));
 const rows=Array(cases.length);
@@ -45,7 +46,7 @@ const summarize=items=>({total:items.length,wins:items.filter(x=>x.won).length,
  avgWinSeconds:avg(items.filter(x=>x.won).map(x=>x.timeToKill)),
  avgPotions:avg(items.map(x=>x.potions)),petDeaths:items.reduce((n,x)=>n+x.petDeaths,0)});
 const summary=zones.map(([map,level])=>({map,level,...summarize(rows.filter(x=>x.map===map))}));
-const dawn=['S','SSS'].map(enhancement=>({enhancement,...summarize(rows.filter(x=>x.map==='dawnrift'&&x.enhancement===enhancement))}));
+const dawn=['SSS'].map(enhancement=>({enhancement,...summarize(rows.filter(x=>x.map==='dawnrift'&&x.enhancement===enhancement))}));
 const output={notes:'Real named boss HP/ATK, actual victory clock, 120s fixed window. Earlier boss=1e9 sustained-damage fixtures are NOT real boss clears. Supplies are abundant and revenue is not tested.',total:rows.length,summary,dawn,rows};
 writeFileSync(dawnOnly?'docs/dawn-boss-rebalance-audit.json':'docs/real-boss-difficulty-audit.json',JSON.stringify(output,null,2)+'\n');
 console.log(JSON.stringify({total:rows.length,summary,dawn},null,2));
