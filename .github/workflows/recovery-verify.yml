@@ -37,3 +37,10 @@ jobs:
         with:
           name: recovery-balance-deep
           path: docs/recovery-balance-deep.json
+      - name: Audit original 60 event-specific resonance requirements
+        run: node scripts/audit-original-60-events.mjs
+      - name: Upload original 60 event gap audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-60-resonance-event-audit
+          path: docs/original-60-trigger-audit.json
