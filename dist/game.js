@@ -83,7 +83,7 @@ let originalPactHitCount=0;
 let resonanceUsedAt=new Map();
 let originalPactCounters=new Map();
 let petEffects={bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0};
-function clearPetEffects(){timers.soundShieldCharge=0;timers.soundShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();timers.originalStackCount=0;delete classBuffs.pact;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};petSkillTimers={};timers.petAbility=gameNow()-12000;}
+function clearPetEffects(){timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.soundShieldCharge=0;timers.soundShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();timers.originalStackCount=0;delete classBuffs.pact;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};petSkillTimers={};timers.petAbility=gameNow()-12000;}
 
 function fresh(name,job){const c=CLASSES[job];const p={version:51,name,job,location:'petland',level:1,xp:0,jobLevel:1,jobXp:0,jobPoints:0,jobSkills:initialJobSkills(job),equippedJobSkill:Object.keys(initialJobSkills(job))[0],gold:90,hp:c.hp,mp:c.mp,kills:0,bag:[{id:'med',qty:2},{id:'cell',qty:1},{id:'orb',qty:3}],gear:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),attributes:{STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1},statPoints:0,cards:[],sockets:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),pets:[],activePetId:null,petBook:{},resonance:0,shield:0,battleHistory:[],autoUltimate:true,autoEscapeBoss:false,autoPotions:{playerHp:true,playerSp:true,petHp:true,petSp:true},autoSalvage:false,salvageMaxRarity:'rare',salvageMaxTier:3,salvageStat:'STR',salvageStatBelow:3,keepRarity:true,keepTier:true,keepStat:false,salvageMatchMode:'any'};const id=SECOND_JOBS[job]?.weapon||({swordsman:'blade',mage:'oneStaff',acolyte:'mace',thief:'rifle',archer:'shortBow'})[job];p.gear.rightHand=rollGear(id,1,'common');return p;}
 function normalizeCards(cards){const result=[];for(const entry of cards||[]){const id=typeof entry==='string'?entry:entry?.id;if(!CARDS[id])continue;const qty=typeof entry==='string'?1:Math.max(1,Math.floor(entry.qty||1));const found=result.find(x=>x.id===id);if(found)found.qty+=qty;else result.push({id,qty});}return result;}
@@ -264,7 +264,12 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   if(!(player.shield>0||petEffects.shield>0||petEffects.guardUntil>now))return false;
   return dealPetDamage(hitDamage(st.matk*.52+st.atk*.25,primary.def*.5),'resonanceDamage')>0;
  }
-  if(kind==='soundShield'){
+  if(kind==='storedSpellCharge'){
+  timers.wizardStoredCharges=Math.min(3,(timers.wizardStoredCharges||0)+1);
+  timers.wizardStoredUntil=now+12000;
+  return true;
+ }
+ if(kind==='soundShield'){
   const gained=grantPlayerShield(Math.max(1,Math.round(st.def*.38)));
   if(gained>0){timers.soundShieldCharge=Math.min(3,(timers.soundShieldCharge||0)+1);timers.soundShieldUntil=now+6500;}
   return gained>0;
@@ -315,7 +320,17 @@ function originalPactPrerequisite(rule,now){
  if(key==='hunter/attack-support')return (petEffects.blessingUntil||0)>now||Object.entries(classBuffs).some(([id,b])=>/song|chant|chorus|hymn/i.test(id)&&b.until>now);
  return true;
 }
-function emitEvent(event){const pet=activePet();if(!pet||pet.hp<=0||!player.hp)return;addEnergy(event==='pet'?7:10);const role=companionRole(pet),rule=companionResonance(player,pet),now=gameNow(),pactKey=player.job+'|'+pet.id+'|'+(pet.fusion?.main||'')+'-'+(pet.fusion?.sub||'');if(!rule||!resonanceTriggered(rule,event)||now-((rule.thirdFusion||rule.fusionContract)?(resonanceUsedAt.get(pactKey)||0):timers.resonance)<rule.cooldown||!originalPactPrerequisite(rule,now))return;if(rule.originalEvent?.threshold>1){const count=(originalPactCounters.get(pactKey)||0)+1;if(count<rule.originalEvent.threshold){originalPactCounters.set(pactKey,count);return;}originalPactCounters.delete(pactKey);}const magnitude=Math.max(1,resonanceMagnitude(rule,petStats(pet))),primary=enemy;let amount=0,dead=false,description=rule.mode==='pact'?rule.description:'';
+function emitEvent(event){const pet=activePet();if(!pet||pet.hp<=0||!player.hp)return;
+ if(event==='thirdHit_wizard'&&player.job==='wizard'&&pet.fusion?.main==='attack'&&pet.fusion?.sub==='defense'&&(timers.wizardStoredCharges||0)>0){
+   const now=gameNow(),charges=timers.wizardStoredCharges;timers.wizardStoredCharges=0;
+   if(now<(timers.wizardStoredUntil||0)&&enemy?.hp){
+     const st=petStats(pet);
+     const dmg=hitDamage((st.matk*.52+st.atk*.15)*charges,enemy.def*.28);
+     dealPetDamage(dmg,'resonanceDamage');
+     if(!enemy.hp)award();
+   }
+ }
+addEnergy(event==='pet'?7:10);const role=companionRole(pet),rule=companionResonance(player,pet),now=gameNow(),pactKey=player.job+'|'+pet.id+'|'+(pet.fusion?.main||'')+'-'+(pet.fusion?.sub||'');if(!rule||!resonanceTriggered(rule,event)||now-((rule.thirdFusion||rule.fusionContract)?(resonanceUsedAt.get(pactKey)||0):timers.resonance)<rule.cooldown||!originalPactPrerequisite(rule,now))return;if(rule.originalEvent?.threshold>1){const count=(originalPactCounters.get(pactKey)||0)+1;if(count<rule.originalEvent.threshold){originalPactCounters.set(pactKey,count);return;}originalPactCounters.delete(pactKey);}const magnitude=Math.max(1,resonanceMagnitude(rule,petStats(pet))),primary=enemy;let amount=0,dead=false,description=rule.mode==='pact'?rule.description:'';
  if(rule.effect==='strike'||rule.effect==='magic'){if(!enemy?.hp)return;amount=dealPetDamage(hitDamage(magnitude,rule.effect==='magic'?Math.floor(enemy.def*.25):enemy.def),'resonanceDamage');description=`追加 ${amount} 傷害`;dead=!enemy.hp;}
  else if(rule.effect==='shield'){amount=grantPetShield(magnitude,role==='defense');description=`獲得 ${amount} 護盾`;}
  else if(rule.effect==='heal'){amount=healPetParty(magnitude);description=`恢復 ${amount} HP`;}
