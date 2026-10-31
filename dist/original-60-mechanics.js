@@ -63,8 +63,8 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "盾反充能結界魔砲"
   },
   "crusader/magic-support": {
-    "event": "skill",
-    "payload": "arcaneStrike",
+    "event": "shield",
+    "payload": "manaRefund",
     "threshold": 1,
     "description": "防禦技能回流魔力"
   },
@@ -117,7 +117,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "自詠附雙極元素烙印"
   },
   "sage/attack-defense": {
-    "event": "combo",
+    "event": "thirdMain_sage",
     "payload": "armorBreak",
     "threshold": 1,
     "description": "魔力拳破甲連擊"
@@ -142,7 +142,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
   },
   "sage/defense-support": {
     "event": "autospell",
-    "payload": "ward",
+    "payload": "guardianAutoChase",
     "threshold": 1,
     "description": "守護有效時自詠追擊"
   },
@@ -177,8 +177,8 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "閃襲後追加魔力飛刃"
   },
   "assassin/defense-support": {
-    "event": "shield",
-    "payload": "ward",
+    "event": "damageTaken",
+    "payload": "lowHpRiposte",
     "threshold": 1,
     "description": "殘血時護壁並反襲"
   },
@@ -195,8 +195,8 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "偷襲破甲與反擊"
   },
   "rogue/attack-support": {
-    "event": "skill",
-    "payload": "arcaneStrike",
+    "event": "skillRefresh",
+    "payload": "hunterSummon",
     "threshold": 1,
     "description": "技能刷新時召喚獵擊"
   },
@@ -333,7 +333,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "音波引燃元素節奏"
   },
   "performer/attack-defense": {
-    "event": "block",
+    "event": "buff",
     "payload": "ward",
     "threshold": 2,
     "description": "演奏時疊加反擊音盾"
