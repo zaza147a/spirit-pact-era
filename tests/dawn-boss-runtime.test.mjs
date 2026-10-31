@@ -11,6 +11,8 @@ test('dawnBoss audit uses actual level-210 HP, ATK and a real victory clock',()=
  assert.equal(result.initialTargets[0].id,DAWN_BOSS.id);
  assert.equal(result.initialTargets[0].hp,DAWN_BOSS.hp);
  assert.equal(result.initialTargets[0].atk,DAWN_BOSS.atk);
- assert.equal(result.bossVictory,result.kills>0&&result.alive);
+ // Kill counters also include summoned adds; only the actual boss-clear flag
+ // and its clock can establish a victory.
+ assert.equal(result.bossVictory,result.timeToKill!==null);
  assert.ok(result.timeToKill===null||result.timeToKill>=0&&result.timeToKill<=120);
 });

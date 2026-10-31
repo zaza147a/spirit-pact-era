@@ -9,8 +9,8 @@ test('all101–110 monster HP/ATK/DEF/EXP and combat ratings remain exactly unch
 test('111+ gains HP, damage and tiered accuracy pressure without reducing player stats or changing XP/defense',()=>{
  for(const level of [111,120,121,130,131,140,141,150]){
   const s=normalMonsterStats(level),r=monsterCombatStats({level}),n=level-51,power=level<=130?64:128;
-  assert.equal(s.hp,Math.round((2400+n*82+n*n*1.05)*(1+power*.045)*2.5*1.8));
-  assert.equal(s.atk,Math.round((125+n*5.2+power*12)*2.5*(level<=130?1.6:1.3)));
+  assert.equal(s.hp,Math.round((2400+n*82+n*n*1.05)*(1+power*.045)*2.5*1.25));
+  assert.equal(s.atk,Math.round((125+n*5.2+power*12)*2.5*(level<=130?1.18:1.15)));
   assert.equal(s.xp,Math.round(1150+n*62+n*n*.75));assert.ok(hitChance(r.hit,1500)>hitChance(75+level*2,1500));
   const boss=monsterCombatStats({level,boss:true});assert.equal(boss.hit,r.hit+20);
  }
