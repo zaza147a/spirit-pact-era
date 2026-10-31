@@ -42,7 +42,10 @@ export const ORIGINAL_EVENT_PACTS={
  'knight/attack-defense':{event:'shieldBreak',label:'盾碎後龍槍破甲',payload:'armorBreak'},
  'knight/defense-support':{event:'damageTaken',label:'承傷觸發龍魂反擊',payload:'dragonCounter'},
  'crusader/attack-defense':{event:'damageTaken',label:'承傷積累破城反擊',threshold:2,payload:'siegeCounter'},
- 'rogue/defense-support':{event:'dodge',label:'閃避後聖域追擊',payload:'sanctuaryChase'}
+ 'rogue/defense-support':{event:'dodge',label:'閃避後聖域追擊',payload:'sanctuaryChase'},
+ 'assassin/attack-magic':{event:'crit',label:'暴擊附元素灼燒',payload:'elementBurn'},
+ 'monk/attack-support':{event:'combo',label:'連段汲血追擊',payload:'comboLeech'},
+ 'priest/magic-support':{event:'overheal',label:'治療溢量轉化星雨',payload:'overhealRain'}
 };
 const levels=[151,161,171,181,191,200];
 export const fusionTransformAtLevel=(t,level=151)=>Object.fromEntries(Object.entries(t).map(([k,v])=>{if(!Array.isArray(v))return[k,v];const l=Math.max(151,Math.min(200,level||151)),i=levels.findLastIndex(x=>x<=l);return[k,i===5?v[5]:v[i]+(v[i+1]-v[i])*(l-levels[i])/(levels[i+1]-levels[i])];}));
