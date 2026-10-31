@@ -1,0 +1,468 @@
+{
+  "version": "6.3.0",
+  "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9",
+  "method": "10 jobs × six fusion pairs, seed731, top current-tier mythic gear/cards/legal allocation; stocked9999 potions, archived main-first skill order, no XP/loot growth. Single-boss independent stage tests 420s, dawn tests240s. Live control/resistance and enhancement stats. Not all skill orders or economic sustainability. Stage transitions tested separately in runtime tests.",
+  "count": 2940,
+  "groups": [
+    {
+      "key": "starshore/4/none/bossTrial",
+      "total": 60,
+      "wins": 41,
+      "alive": 41,
+      "meanTtk": 51.83073170731707,
+      "meanKpm": 0.17083333333333334,
+      "sourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195"
+    },
+    {
+      "key": "starshore/4/D/bossTrial",
+      "total": 60,
+      "wins": 50,
+      "alive": 50,
+      "meanTtk": 43.406000000000006,
+      "meanKpm": 0.20833333333333334,
+      "sourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195"
+    },
+    {
+      "key": "oathwood/4/D/bossTrial",
+      "total": 60,
+      "wins": 42,
+      "alive": 42,
+      "meanTtk": 59.53952380952383,
+      "meanKpm": 0.175,
+      "sourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195"
+    },
+    {
+      "key": "oathwood/4/C/bossTrial",
+      "total": 60,
+      "wins": 54,
+      "alive": 54,
+      "meanTtk": 50.925555555555555,
+      "meanKpm": 0.225,
+      "sourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195"
+    },
+    {
+      "key": "nightclock/4/C/bossTrial",
+      "total": 60,
+      "wins": 51,
+      "alive": 51,
+      "meanTtk": 87.77803921568626,
+      "meanKpm": 0.2125,
+      "sourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195"
+    },
+    {
+      "key": "nightclock/4/B/bossTrial",
+      "total": 60,
+      "wins": 59,
+      "alive": 59,
+      "meanTtk": 73.77525423728814,
+      "meanKpm": 0.24583333333333332,
+      "sourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195"
+    },
+    {
+      "key": "sungrave/4/B/bossTrial",
+      "total": 60,
+      "wins": 52,
+      "alive": 52,
+      "meanTtk": 119.5723076923077,
+      "meanKpm": 0.21666666666666667,
+      "sourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195"
+    },
+    {
+      "key": "sungrave/4/A/bossTrial",
+      "total": 60,
+      "wins": 58,
+      "alive": 58,
+      "meanTtk": 98.03586206896551,
+      "meanKpm": 0.24166666666666667,
+      "sourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195"
+    },
+    {
+      "key": "worldroot/4/A/bossTrial",
+      "total": 60,
+      "wins": 3,
+      "alive": 3,
+      "meanTtk": 257.31333333333333,
+      "meanKpm": 0.007142857142857143,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "worldroot/4/SS/bossTrial",
+      "total": 60,
+      "wins": 44,
+      "alive": 44,
+      "meanTtk": 240.66909090909087,
+      "meanKpm": 0.10476190476190483,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "worldroot/4/none/bossTrial",
+      "total": 60,
+      "wins": 0,
+      "alive": 0,
+      "meanTtk": 0,
+      "meanKpm": 0,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "worldroot/4/S/bossTrial",
+      "total": 60,
+      "wins": 14,
+      "alive": 14,
+      "meanTtk": 252.09428571428572,
+      "meanKpm": 0.03333333333333332,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "worldroot/4/SSS/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 207.99533333333326,
+      "meanKpm": 0.14285714285714296,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "dawnrift/0/none/regional",
+      "total": 60,
+      "wins": 0,
+      "alive": 26,
+      "meanTtk": 0,
+      "meanKpm": 3.075,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "dawnrift/0/SS/regional",
+      "total": 60,
+      "wins": 0,
+      "alive": 60,
+      "meanTtk": 0,
+      "meanKpm": 18.333333333333332,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "dawnrift/0/SSS/regional",
+      "total": 60,
+      "wins": 0,
+      "alive": 60,
+      "meanTtk": 0,
+      "meanKpm": 21.995833333333334,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "dawnrift/0/none/bossTrial",
+      "total": 60,
+      "wins": 11,
+      "alive": 11,
+      "meanTtk": 169.63090909090909,
+      "meanKpm": 0.7791666666666667,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "dawnrift/0/SS/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 70.41999999999999,
+      "meanKpm": 3.595833333333333,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "dawnrift/0/SSS/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 58.76933333333331,
+      "meanKpm": 3.6,
+      "sourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35"
+    },
+    {
+      "key": "starshore/0/none/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 24.384666666666668,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "starshore/0/D/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 20.626666666666665,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "starshore/0/none/bossTrial/coverage-0.7",
+      "total": 60,
+      "wins": 28,
+      "alive": 28,
+      "meanTtk": 55.55357142857143,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "starshore/1/D/bossTrial",
+      "total": 60,
+      "wins": 59,
+      "alive": 59,
+      "meanTtk": 24.362033898305086,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "starshore/2/D/bossTrial",
+      "total": 60,
+      "wins": 59,
+      "alive": 59,
+      "meanTtk": 29.819661016949155,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "starshore/3/D/bossTrial",
+      "total": 60,
+      "wins": 57,
+      "alive": 57,
+      "meanTtk": 36.29684210526316,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "oathwood/0/D/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 22.361333333333334,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "oathwood/0/C/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 19.185999999999996,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "oathwood/0/D/bossTrial/coverage-0.7",
+      "total": 60,
+      "wins": 33,
+      "alive": 33,
+      "meanTtk": 56.5721212121212,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "oathwood/1/C/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 24.015666666666664,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "oathwood/2/C/bossTrial",
+      "total": 60,
+      "wins": 59,
+      "alive": 59,
+      "meanTtk": 30.50203389830508,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "oathwood/3/C/bossTrial",
+      "total": 60,
+      "wins": 58,
+      "alive": 58,
+      "meanTtk": 39.58689655172414,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "nightclock/0/C/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 26.05566666666666,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "nightclock/0/B/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 22.088999999999988,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "nightclock/0/C/bossTrial/coverage-0.7",
+      "total": 60,
+      "wins": 40,
+      "alive": 40,
+      "meanTtk": 65.28350000000002,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "nightclock/1/B/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 29.26300000000001,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "nightclock/2/B/bossTrial",
+      "total": 60,
+      "wins": 59,
+      "alive": 59,
+      "meanTtk": 39.678983050847464,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "nightclock/3/B/bossTrial",
+      "total": 60,
+      "wins": 59,
+      "alive": 59,
+      "meanTtk": 54.26,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "sungrave/0/B/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 31.831999999999994,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "sungrave/0/A/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 26.678333333333335,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "sungrave/0/B/bossTrial/coverage-0.7",
+      "total": 60,
+      "wins": 45,
+      "alive": 45,
+      "meanTtk": 80.41688888888888,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "sungrave/1/A/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 35.78000000000001,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "sungrave/2/A/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 50.68300000000001,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "sungrave/3/A/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 71.49,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "worldroot/0/A/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 39.42999999999999,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "worldroot/0/SS/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 26.466666666666658,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "worldroot/0/A/bossTrial/coverage-0.7",
+      "total": 60,
+      "wins": 47,
+      "alive": 47,
+      "meanTtk": 102.04297872340425,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "worldroot/1/SS/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 42.43800000000002,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "worldroot/2/SS/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 72.49533333333332,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    },
+    {
+      "key": "worldroot/3/SS/bossTrial",
+      "total": 60,
+      "wins": 60,
+      "alive": 60,
+      "meanTtk": 114.18333333333335,
+      "meanKpm": 0,
+      "sourceDigest": "d89590b4ab057fe09523368e27b0449c585c42d76253e0343de37edfd5faccb9"
+    }
+  ],
+  "recheck": {
+    "previousSourceDigest": "96871872d7c3e38138422b284bfd7129e0ffc59f52fdc134a32535870ff71195",
+    "count": 660,
+    "scope": "191 fifth boss HP17→22 relative to fieldboss; dawn normal HP8–9.6 / ATK14–15.6 and boss HP60 / ATK55 relative to level200 normal. Resample all affected660 trials; other1080 stage trials retained with own sourceDigest. Remaining source changes UI only."
+  },
+  "guardianRecheck": {
+    "count": 1800,
+    "retained": 1140,
+    "previousSourceDigest": "41bbd7f77046bc29b9b4b1057f89de576224a44364c771884e03a5f2f46e1b35",
+    "scope": "All five entrance ATK increased to test top map readiness; all fifteen intermediate bosses now tested live. All sixty profession/fusion profiles per affected boss; entrance70% vs100% paired equipment/allocation/cards tests. Tail and dawn samples retained with individual source digests; no stats changed there."
+  },
+  "samplesFile": {
+    "path": "docs/sky-trials-v630.samples.json.gz",
+    "encoding": "gzip+json",
+    "sha256": "36a184b7910c797a2422da06e88b938d956e106f76f3b8fb1069a7b235be02da",
+    "count": 2940
+  },
+  "releaseSourceDigest": "d1f886ebc6491203d8cfb5486126bef28ce3b4a33feedc2c651de1e0e23e1bdf",
+  "postAuditChanges": "After recorded combat samples, only separate dawn junk names, village evolution/offline safety, gear swap and salvage protection, trial inventory capacity checks, UI descriptions/layout, and optional chain simulation harness were added; published trial/monster stats and combat formulas match the recorded samples. Individual historical sample source digests are preserved."
+}

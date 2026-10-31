@@ -1,5 +1,5 @@
 import {thirdSkills} from './third-jobs.js';
-import {SECOND_JOBS,parentJob} from './jobs.js?v=6.2.1';
+import {SECOND_JOBS,parentJob} from './jobs.js?v=6.3.0';
 const make=(id,name,kind,unlock,mp,power,desc,weapons=[],extra={})=>({id,name,kind,unlock,mp,power,desc,weapons,maxRank:10,branch:'first',...extra});
 const passive=(id,name,unlock,bonuses,desc,branch='first')=>make(id,name,'passive',unlock,0,0,desc,[],{bonuses,branch,maxRank:5});
 export const JOB_SKILLS={

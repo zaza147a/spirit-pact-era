@@ -1,0 +1,541 @@
+{
+  "version": "6.3.0",
+  "generator": "built-in image_gen",
+  "promptManifests": [
+    "dist/assets/sky-trials/boss-art-manifest.json",
+    "dist/assets/rank-outfits/art-manifest.json"
+  ],
+  "assets": [
+    {
+      "path": "dist/assets/rank-outfits/assassin-S.webp",
+      "sha256": "007c3f5811d251c528439fa72c9d29c555a668731ca47b09801bad7566184357",
+      "width": 739,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 214442
+    },
+    {
+      "path": "dist/assets/rank-outfits/assassin-SS.webp",
+      "sha256": "cb54f89b78671259b8097772c8bb6dd15acdcd1f1d1b3f5c78071c1ec657da04",
+      "width": 720,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 232494
+    },
+    {
+      "path": "dist/assets/rank-outfits/assassin-SSS.webp",
+      "sha256": "fd8300e477b5d2bc1ae22a2ac09cf320ecc85fe9b4cecd53a444499a964292f4",
+      "width": 717,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 296788
+    },
+    {
+      "path": "dist/assets/rank-outfits/crusader-S.webp",
+      "sha256": "a4a3e1fd22e15d8ef042d37087dab78cfbc74fffa3e42ba916ed345d38c63629",
+      "width": 732,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 192282
+    },
+    {
+      "path": "dist/assets/rank-outfits/crusader-SS.webp",
+      "sha256": "8f91ae79b2fa14b92ee8d56b014d52f008cda6030f5b2ef6bd7f6a474c8bbd4c",
+      "width": 669,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 252622
+    },
+    {
+      "path": "dist/assets/rank-outfits/crusader-SSS.webp",
+      "sha256": "5243c98b93809d5237453d51f1e476ecc7d445b20962eb1b051fcf2197d34863",
+      "width": 692,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 276610
+    },
+    {
+      "path": "dist/assets/rank-outfits/hunter-S.webp",
+      "sha256": "92264735e035c310012eff0b7187bbde2979b00c814e4013af86b70b3454942f",
+      "width": 733,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 242544
+    },
+    {
+      "path": "dist/assets/rank-outfits/hunter-SS.webp",
+      "sha256": "b1e2f00222cfe8305b56721784dcb1d0d5a32dc1c7bc14d7f5688e69d2a31c4f",
+      "width": 719,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 260314
+    },
+    {
+      "path": "dist/assets/rank-outfits/hunter-SSS.webp",
+      "sha256": "4e7945c70744f57708197b179177bef24e24aafc4b66b9e5123f7ae188a670f4",
+      "width": 694,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 287308
+    },
+    {
+      "path": "dist/assets/rank-outfits/knight-S.webp",
+      "sha256": "1266232683ee4d877ec85d422f44752bfe3a48ee5bd19a96dd333ae94ea67bba",
+      "width": 512,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 169780
+    },
+    {
+      "path": "dist/assets/rank-outfits/knight-SS.webp",
+      "sha256": "28a0219cdc0260bfbfcbcf5bc2d5dc8dec65e1d4901d34842c7550e62b10c6b1",
+      "width": 739,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 254972
+    },
+    {
+      "path": "dist/assets/rank-outfits/knight-SSS.webp",
+      "sha256": "42a6a4a57765d27786305fd4d0316ab331ffa0b68ef1b81cab1360d930f3571a",
+      "width": 733,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 296926
+    },
+    {
+      "path": "dist/assets/rank-outfits/monk-S.webp",
+      "sha256": "97a8dae19080346e67e1e1f8a095eb052b4b7527ecae1d23ba60772483a6ddac",
+      "width": 702,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 224952
+    },
+    {
+      "path": "dist/assets/rank-outfits/monk-SS.webp",
+      "sha256": "279d67216e4b1a822d29b0edb58fb5e8829c319e8ef679dc2b82f00de25e1a44",
+      "width": 730,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 282046
+    },
+    {
+      "path": "dist/assets/rank-outfits/monk-SSS.webp",
+      "sha256": "50c3873cc81d2f4fe1d60c103d9bc61ef8028db2a466c86cf7aa851cc0c0691c",
+      "width": 702,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 297884
+    },
+    {
+      "path": "dist/assets/rank-outfits/performer-S.webp",
+      "sha256": "1eb655d3bf907afdd649e57af2c2ea458a2dff76ef1e58b24fed1f9f2f60116e",
+      "width": 730,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 274270
+    },
+    {
+      "path": "dist/assets/rank-outfits/performer-SS.webp",
+      "sha256": "0d81b37e3a0619db84155cf3104ba765aa9aac4e7e6e2ed286cceeedcb7a379a",
+      "width": 729,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 285774
+    },
+    {
+      "path": "dist/assets/rank-outfits/performer-SSS.webp",
+      "sha256": "a177764b9ba6b8160e32a2fe80a694084ac658700a00041666bcc176544417af",
+      "width": 730,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 315320
+    },
+    {
+      "path": "dist/assets/rank-outfits/priest-S.webp",
+      "sha256": "5cba9260cd783d9b36a8590a87d2f03601a31a85767902bc7e7be054c6a9a217",
+      "width": 640,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 243528
+    },
+    {
+      "path": "dist/assets/rank-outfits/priest-SS.webp",
+      "sha256": "e220c6e1b0ed40843454525a28863ceb11e97a3d6fa4dbd2ab29a0874cc70062",
+      "width": 702,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 300492
+    },
+    {
+      "path": "dist/assets/rank-outfits/priest-SSS.webp",
+      "sha256": "dd68fd6c3e534193b3aa551a6461d8420fd5f1f4f686947c6998b61c7115fc59",
+      "width": 729,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 290774
+    },
+    {
+      "path": "dist/assets/rank-outfits/rogue-S.webp",
+      "sha256": "c85cfc31ce7c30e00e809f63e915c0d1d81172b67e6e31402b1131dbd498fe11",
+      "width": 729,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 218730
+    },
+    {
+      "path": "dist/assets/rank-outfits/rogue-SS.webp",
+      "sha256": "60d89ce363442c2e1cb60ce04decdecbb116c097220327a603894d7277055695",
+      "width": 720,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 304344
+    },
+    {
+      "path": "dist/assets/rank-outfits/rogue-SSS.webp",
+      "sha256": "d2280a3512813ecad4e7e524e0bf8c54255c03c1ea7ef6dad3b7d5b278be84cc",
+      "width": 706,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 288628
+    },
+    {
+      "path": "dist/assets/rank-outfits/sage-S.webp",
+      "sha256": "06600fc36330e147be4b00b2f2f8a3c1c07f68f4ef3cddd0bd52ac2b99571520",
+      "width": 722,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 264178
+    },
+    {
+      "path": "dist/assets/rank-outfits/sage-SS.webp",
+      "sha256": "35c903bc7ccf36eb8fee22d02699e2e5776006ed2a2da444186345bcae50f94f",
+      "width": 721,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 299212
+    },
+    {
+      "path": "dist/assets/rank-outfits/sage-SSS.webp",
+      "sha256": "abb3052b502b749c4f9f960eed7f982abd2cc10922ce4a331fec623f12d21c58",
+      "width": 750,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 335358
+    },
+    {
+      "path": "dist/assets/rank-outfits/wizard-S.webp",
+      "sha256": "10d08752f62bff518d02bd31b5439961289026203aa6de5b8bef38f6564a4160",
+      "width": 640,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 234546
+    },
+    {
+      "path": "dist/assets/rank-outfits/wizard-SS.webp",
+      "sha256": "45c1efacecaa4a93bc3654a2ff68ee9680ce69751b0dc1173770c963c1a99941",
+      "width": 759,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 286550
+    },
+    {
+      "path": "dist/assets/rank-outfits/wizard-SSS.webp",
+      "sha256": "fc523d1533380aaa84489318c62ea98165b208ee0e3559ac0fd426c1d4b4df99",
+      "width": 719,
+      "height": 768,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 325458
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-151-1.webp",
+      "sha256": "af66f3a275b651db06b8d8dfa0a2027cc446d149ae7f96f5ffc06a5413cc6798",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 138758
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-151-2.webp",
+      "sha256": "2781f51e7d069d0d934676536262643539ceaadb5f9371edc6dd9be610bd1a96",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 147818
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-151-3.webp",
+      "sha256": "150801f045b4198619dee9d4de2ecf944752258a65c25a13e62416258000bae6",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 165228
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-151-4.webp",
+      "sha256": "8de4b97fe7c67b332d4f57123c9200bdb2f3c7f2cde6a3feb653989f0006c329",
+      "width": 768,
+      "height": 702,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 214876
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-151-5.webp",
+      "sha256": "4e1c8a440d39519cf6381773f08eb07e5cc53362a0c57e308d57b2e249259c89",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 186972
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-161-1.webp",
+      "sha256": "bac9e383f2a893c73aba51cacc99a228f70a37f39e9412120268bf32e5e75c9d",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 134490
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-161-2.webp",
+      "sha256": "637ea1b67a434340569d30e87565eddcd53ced7d99b313fb58c719f7ce4c8ed5",
+      "width": 768,
+      "height": 702,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 205236
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-161-3.webp",
+      "sha256": "2396c8069bae58d2f7a9ae21b1157370c17f02a4e2ab8a0a23a31b3bdb2eac5e",
+      "width": 768,
+      "height": 615,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 188470
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-161-4.webp",
+      "sha256": "f82df99c793e144058a4e9afb9faedb7a4e0c337119c41a06c3d9d4ebb89366e",
+      "width": 768,
+      "height": 702,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 219134
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-161-5.webp",
+      "sha256": "f2c87992727316591f79643be6a26af92fc5a61a039b566a29f22c51989b21b9",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 160764
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-171-1.webp",
+      "sha256": "c7fb160fe7d096755bce543bf045da118101cad9a006a21627af195b7a540ce3",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 123868
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-171-2.webp",
+      "sha256": "047f89b31dc0de01c13f7a53a7723cb4cea6795a5cd8337521ddf144cfe5b186",
+      "width": 768,
+      "height": 693,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 176858
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-171-3.webp",
+      "sha256": "283d00c45f53c87cf200b458b80dce371b475ffed8de14dfcc8bcfe86ec489f0",
+      "width": 768,
+      "height": 640,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 208050
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-171-4.webp",
+      "sha256": "24ac65327ab465958e93de4071b0c2a3b2617b3da59c3f3d2c38b416a48ae82d",
+      "width": 768,
+      "height": 640,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 223922
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-171-5.webp",
+      "sha256": "ae53cfaa512c55a85143c60868cb98770852e97c6261d303778d7e2ba6a28d3c",
+      "width": 768,
+      "height": 702,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 213244
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-181-1.webp",
+      "sha256": "3adadf9eaab39f0a7d28972cb383cb704c5373026e5258127290ae8463434ad3",
+      "width": 768,
+      "height": 702,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 188184
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-181-2.webp",
+      "sha256": "e08d79478bae7dda518e05768f2cc35e0b94ec31ee46411585c80a38ed661801",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 140974
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-181-3.webp",
+      "sha256": "18323feab7a00591702c97c948fcef76185935d01c4252be5152facc87e92d91",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 167264
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-181-4.webp",
+      "sha256": "071c460dde0692171dcefa05273fd0fa52e588e0e76768482ea525c93975f3dd",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 181396
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-181-5.webp",
+      "sha256": "0aa84a17dd2bd7477b2b37e2d38c4a723ab470cd779337e612d17e6b87c744ae",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 193022
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-191-1.webp",
+      "sha256": "1fdf26845d214bbf05b7a00e6e608226fd6b4ab8a8b0514d2992a4b256660b85",
+      "width": 768,
+      "height": 702,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 178506
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-191-2.webp",
+      "sha256": "27b37490d7f0d5972dbd307afd087699bee56163d35a1e4c19f99677455a2f81",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 132162
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-191-3.webp",
+      "sha256": "33794df65e01f13a2797fefff893b0e3561e59db11171ca25a4ef5876d7e0293",
+      "width": 768,
+      "height": 702,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 242276
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-191-4.webp",
+      "sha256": "1c5f4c79e03978bbbeb6579df66c83f3303650a6f238d3d897da4ecba2e36beb",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 192610
+    },
+    {
+      "path": "dist/assets/sky-trials/boss-191-5.webp",
+      "sha256": "8931f455d4a694b5d4ba20d2a06c9da5616e113ef53c2ac85289f597d4e77d3c",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 166902
+    },
+    {
+      "path": "dist/assets/sky-trials/dawn-archon.webp",
+      "sha256": "b5adbad2be7cbbc78dc0d0f8262548ede6e8d431a6ada25459da80afba7f4e31",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 172218
+    },
+    {
+      "path": "dist/assets/sky-trials/dawn-ram.webp",
+      "sha256": "1c3ed92e77066e87d446d0a00606674dd1b1e5776b05e4c96129f4f0e7e44789",
+      "width": 768,
+      "height": 675,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 196484
+    },
+    {
+      "path": "dist/assets/sky-trials/dawn-ray.webp",
+      "sha256": "acffa0c26df052f473a2ef53a68e532e81eeff5d387fb8b37df12d6b58aecf75",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 118958
+    },
+    {
+      "path": "dist/assets/sky-trials/dawn-scout.webp",
+      "sha256": "a382931f2dbe862fd73ed36831fe0fc8e7931a893d13c3e2ed758b4f270357e3",
+      "width": 768,
+      "height": 512,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "bytes": 125986
+    }
+  ]
+}

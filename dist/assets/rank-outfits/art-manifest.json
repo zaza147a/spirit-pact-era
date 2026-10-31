@@ -1,0 +1,517 @@
+{
+  "version": "6.3.0",
+  "generator": "built-in image_gen",
+  "kind": "cosmetic only; ten third professions × S/SS/SSS",
+  "assets": [
+    {
+      "job": "knight",
+      "name": "盧恩騎士",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original armored rune lancer with dragon-shaped spear and crimson cape. Profession 盧恩騎士, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/knight-S.webp",
+      "width": 512,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "5661a4feea282d73fea565be63768b73005e65c4737dee9b710a9c9ad0a8de03",
+      "sha256": "1266232683ee4d877ec85d422f44752bfe3a48ee5bd19a96dd333ae94ea67bba",
+      "bytes": 169780
+    },
+    {
+      "job": "knight",
+      "name": "盧恩騎士",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original armored rune lancer with dragon-shaped spear and crimson cape. Profession 盧恩騎士, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/knight-SS.webp",
+      "width": 739,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "55f606fa1d3c17b7e0c9b634cde9c80309ee6067a0f8ff9adbed811193ac4601",
+      "sha256": "28a0219cdc0260bfbfcbcf5bc2d5dc8dec65e1d4901d34842c7550e62b10c6b1",
+      "bytes": 254972
+    },
+    {
+      "job": "knight",
+      "name": "盧恩騎士",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original armored rune lancer with dragon-shaped spear and crimson cape. Profession 盧恩騎士, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/knight-SSS.webp",
+      "width": 733,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "3d68eb94d1a98a24c12b86acd90a3ad13f47acfb84d05c73f53cca9cc9833220",
+      "sha256": "42a6a4a57765d27786305fd4d0316ab331ffa0b68ef1b81cab1360d930f3571a",
+      "bytes": 296926
+    },
+    {
+      "job": "crusader",
+      "name": "皇家禁衛",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original royal paladin with huge heraldic shield, ceremonial sword and navy cape. Profession 皇家禁衛, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/crusader-S.webp",
+      "width": 732,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "eea399f95e7735ff250818b6e6ff229ed54a4eb544f4948fc8bf6639296911d6",
+      "sha256": "a4a3e1fd22e15d8ef042d37087dab78cfbc74fffa3e42ba916ed345d38c63629",
+      "bytes": 192282
+    },
+    {
+      "job": "crusader",
+      "name": "皇家禁衛",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original royal paladin with huge heraldic shield, ceremonial sword and navy cape. Profession 皇家禁衛, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/crusader-SS.webp",
+      "width": 669,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "830a1e840d5e925a6ae6c30919d208d9132e7c0fedf3c61e2fc49e52c676af4d",
+      "sha256": "8f91ae79b2fa14b92ee8d56b014d52f008cda6030f5b2ef6bd7f6a474c8bbd4c",
+      "bytes": 252622
+    },
+    {
+      "job": "crusader",
+      "name": "皇家禁衛",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original royal paladin with huge heraldic shield, ceremonial sword and navy cape. Profession 皇家禁衛, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/crusader-SSS.webp",
+      "width": 692,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "8c5177192d20f4af7bb7e852d5c8f5450db1bd3ba472af1330fdb70186037f27",
+      "sha256": "5243c98b93809d5237453d51f1e476ecc7d445b20962eb1b051fcf2197d34863",
+      "bytes": 276610
+    },
+    {
+      "job": "wizard",
+      "name": "星界咒術師",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original star sorceress with tall pointed hat, long magical staff, layered blue robes and orbiting stars. Profession 星界咒術師, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/wizard-S.webp",
+      "width": 640,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "dc29600babd690d129de76bd0761e560ec8792dcf8cb055414a7b71cce0c6ba6",
+      "sha256": "10d08752f62bff518d02bd31b5439961289026203aa6de5b8bef38f6564a4160",
+      "bytes": 234546
+    },
+    {
+      "job": "wizard",
+      "name": "星界咒術師",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original star sorceress with tall pointed hat, long magical staff, layered blue robes and orbiting stars. Profession 星界咒術師, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/wizard-SS.webp",
+      "width": 759,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "a0589c4933694e04bb4d5e8522722ede545b17367312e018c197e27fc056fa00",
+      "sha256": "45c1efacecaa4a93bc3654a2ff68ee9680ce69751b0dc1173770c963c1a99941",
+      "bytes": 286550
+    },
+    {
+      "job": "wizard",
+      "name": "星界咒術師",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original star sorceress with tall pointed hat, long magical staff, layered blue robes and orbiting stars. Profession 星界咒術師, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/wizard-SSS.webp",
+      "width": 719,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "a534d3d65cd1d66d97f90999e4d99eab30c4b635e309a764b36e2a7653327f40",
+      "sha256": "fc523d1533380aaa84489318c62ea98165b208ee0e3559ac0fd426c1d4b4df99",
+      "bytes": 325458
+    },
+    {
+      "job": "sage",
+      "name": "元素使",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original elemental battle scholar with short robe, magical gauntlets and four floating elemental orbs. Profession 元素使, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/sage-S.webp",
+      "width": 722,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "4b4cd7d491a66cfaeeefe29878c18e57465dbfaef474d46b1b3440bb070ce9fd",
+      "sha256": "06600fc36330e147be4b00b2f2f8a3c1c07f68f4ef3cddd0bd52ac2b99571520",
+      "bytes": 264178
+    },
+    {
+      "job": "sage",
+      "name": "元素使",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original elemental battle scholar with short robe, magical gauntlets and four floating elemental orbs. Profession 元素使, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/sage-SS.webp",
+      "width": 721,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "04afabcc746f4859f0368466c168f1b54366847892f9c171fc2542042e0c3d33",
+      "sha256": "35c903bc7ccf36eb8fee22d02699e2e5776006ed2a2da444186345bcae50f94f",
+      "bytes": 299212
+    },
+    {
+      "job": "sage",
+      "name": "元素使",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original elemental battle scholar with short robe, magical gauntlets and four floating elemental orbs. Profession 元素使, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/sage-SSS.webp",
+      "width": 750,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "f863177dda2c02b4a809380f0ec3b5f6cfa9ee5bdc85f11875fa3572d80e57d9",
+      "sha256": "abb3052b502b749c4f9f960eed7f982abd2cc10922ce4a331fec623f12d21c58",
+      "bytes": 335358
+    },
+    {
+      "job": "assassin",
+      "name": "十字斬首者",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original masked assassin in fitted fully covered armor, twin curved blades and flowing scarf. Profession 十字斬首者, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/assassin-S.webp",
+      "width": 739,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "a6f7362f75b0127d33da19a6d48cb8580dac304a147f052d53b3325844e71934",
+      "sha256": "007c3f5811d251c528439fa72c9d29c555a668731ca47b09801bad7566184357",
+      "bytes": 214442
+    },
+    {
+      "job": "assassin",
+      "name": "十字斬首者",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original masked assassin in fitted fully covered armor, twin curved blades and flowing scarf. Profession 十字斬首者, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/assassin-SS.webp",
+      "width": 720,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "0e941cc7679e1b81a8edbe956359c1cff76d933d590076fc52e4d0d2ff9c918d",
+      "sha256": "cb54f89b78671259b8097772c8bb6dd15acdcd1f1d1b3f5c78071c1ec657da04",
+      "bytes": 232494
+    },
+    {
+      "job": "assassin",
+      "name": "十字斬首者",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original masked assassin in fitted fully covered armor, twin curved blades and flowing scarf. Profession 十字斬首者, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/assassin-SSS.webp",
+      "width": 717,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "fab3dffbd631c0e876c7a58adbccf7fbbc4e652a28bd3da70ba91c0861e2980e",
+      "sha256": "fd8300e477b5d2bc1ae22a2ac09cf320ecc85fe9b4cecd53a444499a964292f4",
+      "bytes": 296788
+    },
+    {
+      "job": "rogue",
+      "name": "逐影者",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original shadow rogue with hooded longcoat, dagger, utility pouches and violet scarf. Profession 逐影者, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/rogue-S.webp",
+      "width": 729,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "ec2ebace4bac7c9e631453c5bd6a783562e66ebbde16f5dec94b9feb38fa5078",
+      "sha256": "c85cfc31ce7c30e00e809f63e915c0d1d81172b67e6e31402b1131dbd498fe11",
+      "bytes": 218730
+    },
+    {
+      "job": "rogue",
+      "name": "逐影者",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original shadow rogue with hooded longcoat, dagger, utility pouches and violet scarf. Profession 逐影者, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/rogue-SS.webp",
+      "width": 720,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "61fe0a63dc7fa190548f9055eb0596f12290594634ae37617a51cf9928bbbea1",
+      "sha256": "60d89ce363442c2e1cb60ce04decdecbb116c097220327a603894d7277055695",
+      "bytes": 304344
+    },
+    {
+      "job": "rogue",
+      "name": "逐影者",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original shadow rogue with hooded longcoat, dagger, utility pouches and violet scarf. Profession 逐影者, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/rogue-SSS.webp",
+      "width": 706,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "ae114a54287ec2bad2fabefbec290ddfa0f67b5aba6799ede21578fb12d1ef8b",
+      "sha256": "d2280a3512813ecad4e7e524e0bf8c54255c03c1ea7ef6dad3b7d5b278be84cc",
+      "bytes": 288628
+    },
+    {
+      "job": "priest",
+      "name": "聖域大主教",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original kind archbishop with ornate mitre, holy staff and flowing white clerical robes. Profession 聖域大主教, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/priest-S.webp",
+      "width": 640,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "6fd1375b8ab36290f61f18e46a8b57056658449921e8a98a038ae6c89c54ae42",
+      "sha256": "5cba9260cd783d9b36a8590a87d2f03601a31a85767902bc7e7be054c6a9a217",
+      "bytes": 243528
+    },
+    {
+      "job": "priest",
+      "name": "聖域大主教",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original kind archbishop with ornate mitre, holy staff and flowing white clerical robes. Profession 聖域大主教, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/priest-SS.webp",
+      "width": 702,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "70680bd5a064dc92260b02a995857cc3daa0c703930833f56a2c614c0ca0800b",
+      "sha256": "e220c6e1b0ed40843454525a28863ceb11e97a3d6fa4dbd2ab29a0874cc70062",
+      "bytes": 300492
+    },
+    {
+      "job": "priest",
+      "name": "聖域大主教",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original kind archbishop with ornate mitre, holy staff and flowing white clerical robes. Profession 聖域大主教, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/priest-SSS.webp",
+      "width": 729,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "d53ce9abb9c534764fd7591d55dd0147e20373facf20efa9b85a175a58ca1c4f",
+      "sha256": "dd68fd6c3e534193b3aa551a6461d8420fd5f1f4f686947c6998b61c7115fc59",
+      "bytes": 290774
+    },
+    {
+      "job": "monk",
+      "name": "修羅",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original martial monk with prayer beads, ceremonial gauntlets and wrapped red martial robes. Profession 修羅, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/monk-S.webp",
+      "width": 702,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "bf8d324cdc75128849ac2e2733154f61dada63d88bbe8a04e82aac43c7e4966e",
+      "sha256": "97a8dae19080346e67e1e1f8a095eb052b4b7527ecae1d23ba60772483a6ddac",
+      "bytes": 224952
+    },
+    {
+      "job": "monk",
+      "name": "修羅",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original martial monk with prayer beads, ceremonial gauntlets and wrapped red martial robes. Profession 修羅, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/monk-SS.webp",
+      "width": 730,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "9963c0f4470ef178b20a22072530294d7ffa9cafa44120acb1a2ee493f04bc8e",
+      "sha256": "279d67216e4b1a822d29b0edb58fb5e8829c319e8ef679dc2b82f00de25e1a44",
+      "bytes": 282046
+    },
+    {
+      "job": "monk",
+      "name": "修羅",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original martial monk with prayer beads, ceremonial gauntlets and wrapped red martial robes. Profession 修羅, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/monk-SSS.webp",
+      "width": 702,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "866199757a416c823eb881d8753de71cace8e23a0d72c95f14978f52757539dd",
+      "sha256": "50c3873cc81d2f4fe1d60c103d9bc61ef8028db2a466c86cf7aa851cc0c0691c",
+      "bytes": 297884
+    },
+    {
+      "job": "hunter",
+      "name": "遊俠",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original forest ranger with feathered hat, longbow, green cloak and a small perched falcon. Profession 遊俠, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/hunter-S.webp",
+      "width": 733,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "70902fd828d8e0ae1198ca954933418f7cd3cdea791278738e2d436d618b1da8",
+      "sha256": "92264735e035c310012eff0b7187bbde2979b00c814e4013af86b70b3454942f",
+      "bytes": 242544
+    },
+    {
+      "job": "hunter",
+      "name": "遊俠",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original forest ranger with feathered hat, longbow, green cloak and a small perched falcon. Profession 遊俠, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/hunter-SS.webp",
+      "width": 719,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "88164c9543f9945222d292fc1c389b8ebc7321d18defaf5f947784a0fdee37ee",
+      "sha256": "b1e2f00222cfe8305b56721784dcb1d0d5a32dc1c7bc14d7f5688e69d2a31c4f",
+      "bytes": 260314
+    },
+    {
+      "job": "hunter",
+      "name": "遊俠",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original forest ranger with feathered hat, longbow, green cloak and a small perched falcon. Profession 遊俠, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/hunter-SSS.webp",
+      "width": 694,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "c693569c3fd0b8a4aa77cb4816b67b98aebf2f85ba58441d4bf59f78f8797e56",
+      "sha256": "4e7945c70744f57708197b179177bef24e24aafc4b66b9e5123f7ae188a670f4",
+      "bytes": 287308
+    },
+    {
+      "job": "performer",
+      "name": "天籟詠者",
+      "rank": "S",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original celestial female minstrel with elegant fully covered layered performance dress, a star harp and floating music motes. Profession 天籟詠者, cosmetic equipment mastery rank S: elegant astral gold filigree accents, dark teal and warm gold, small star halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/performer-S.webp",
+      "width": 730,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "91e8990038d6f5d4e16b51095828ca9e58ce7928e037a89a0fd550ad66793b5f",
+      "sha256": "1eb655d3bf907afdd649e57af2c2ea458a2dff76ef1e58b24fed1f9f2f60116e",
+      "bytes": 274270
+    },
+    {
+      "job": "performer",
+      "name": "天籟詠者",
+      "rank": "SS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original celestial female minstrel with elegant fully covered layered performance dress, a star harp and floating music motes. Profession 天籟詠者, cosmetic equipment mastery rank SS: elaborate celestial platinum and violet armor or robes, crystalline ornamental wing shapes and bright lunar halo. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/performer-SS.webp",
+      "width": 729,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "7aa6b11131ea56fb66ee35706b3181755152f9d3a9d5c74836b37c63a4243798",
+      "sha256": "0d81b37e3a0619db84155cf3104ba765aa9aac4e7e6e2ed286cceeedcb7a379a",
+      "bytes": 285774
+    },
+    {
+      "job": "performer",
+      "name": "天籟詠者",
+      "rank": "SSS",
+      "prompt": "Use case: stylized-concept. Asset type: transparent RPG character costume sprite. One original celestial female minstrel with elegant fully covered layered performance dress, a star harp and floating music motes. Profession 天籟詠者, cosmetic equipment mastery rank SSS: supreme mythic prismatic ceremonial outfit, luminous white gold and iridescent jewels, large elegant radiant crown halo and majestic spectral ornamental wings. Polished hand-painted chibi JRPG mobile game artwork, expressive adult adventurer with compact 3-head-tall proportions, bold readable silhouette, crisp fine outlines, rich painted shading. Full body centered, feet and complete weapon visible, 3/4 front idle heroic pose, generous clear margin. Transparent background with only a few small contained magical sparkles. No text, letters, numbers, panels, borders, other people, ground scenery or watermark. Outfit is distinct and suitable for a non-stat cosmetic unlock.",
+      "path": "assets/rank-outfits/performer-SSS.webp",
+      "width": 730,
+      "height": 768,
+      "alpha": true,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sourceSha256": "27501fe906e3cf9bc9ed6d37f1a6e1418a441e7d7979c5084ab3bd65efed1b33",
+      "sha256": "a177764b9ba6b8160e32a2fe80a694084ac658700a00041666bcc176544417af",
+      "bytes": 315320
+    }
+  ]
+}
