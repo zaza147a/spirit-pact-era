@@ -1,5 +1,5 @@
 import {enhancedAffixes} from './sky-trials.js';
-import {attributeCap} from './adventure-progression.js?v=6.3.1';
+import {attributeCap} from './adventure-progression.js?v=6.3.2';
 export const ATTRIBUTE_KEYS=['STR','AGI','VIT','INT','DEX','LUK'];
 export const allocationBudget=(level,reborn=false)=>Math.max(0,(level-1)*2+(reborn?20:0));
 export const gearAttributeLimit=p=>Math.floor(attributeCap(p)*.3);
