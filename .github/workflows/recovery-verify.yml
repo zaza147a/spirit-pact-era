@@ -3,6 +3,9 @@ on:
   push:
     branches: [feature/humanoid-pet-evolution]
   workflow_dispatch:
+concurrency:
+  group: recovery-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-latest
