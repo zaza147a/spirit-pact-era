@@ -205,6 +205,7 @@ function resonanceModifier(rule,magnitude,primary){
 function applyOriginalPactPayload(rule,pet,primary,now){
  const kind=rule.originalEvent?.payload;
  if(!kind||!primary?.hp)return false;
+ if(Array.isArray(kind)){let changed=false;for(const part of kind){const sub={...rule,originalEvent:{...rule.originalEvent,payload:part}};changed=applyOriginalPactPayload(sub,pet,primary,now)||changed;if(primary.hp<=0)break;}return changed;}
  const st=petStats(pet);
  if(kind==='armorBreak'){
   primary.exposedUntil=Math.max(primary.exposedUntil||0,now+4500);
