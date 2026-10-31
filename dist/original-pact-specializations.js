@@ -121,12 +121,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
       "manaRefund"
     ]
   },
-  "sage/defense-support": {
-    "payload": [
-      "ward",
-      "counterStrike"
-    ]
-  },
+  "sage/defense-support": {"payload": ["guardianAutoChase", "ward"]},
   "assassin/attack-defense": {
     "payload": [
       "armorBreak",
@@ -151,12 +146,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
       "manaRefund"
     ]
   },
-  "assassin/defense-support": {
-    "payload": [
-      "ward",
-      "counterStrike"
-    ]
-  },
+  "assassin/defense-support": {"payload": ["lowHpRiposte", "ward"]},
   "rogue/attack-magic": {
     "payload": [
       "arcaneStrike",
@@ -169,12 +159,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
       "counterStrike"
     ]
   },
-  "rogue/attack-support": {
-    "payload": [
-      "arcaneStrike",
-      "mark"
-    ]
-  },
+  "rogue/attack-support": {"payload": ["hunterSummon", "mark"]},
   "rogue/magic-defense": {
     "payload": [
       "splash",
