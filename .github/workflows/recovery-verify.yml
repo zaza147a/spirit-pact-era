@@ -30,3 +30,10 @@ jobs:
         with:
           name: recovery-combat-audit
           path: docs/recovery-combat-audit.json
+      - name: Deep balance simulation
+        run: node scripts/audit-recovery-deep.mjs
+      - name: Upload deep balance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: recovery-balance-deep
+          path: docs/recovery-balance-deep.json
