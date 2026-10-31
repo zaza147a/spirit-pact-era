@@ -281,7 +281,16 @@ function applyOriginalPactPayload(rule,pet,primary,now){
  const damage=hitDamage(Math.max(1,(st.atk+st.matk*.35)*strength),primary.def);
  return dealPetDamage(damage,'resonanceDamage')>0;
 }
-function emitEvent(event){const pet=activePet();if(!pet||pet.hp<=0||!player.hp)return;addEnergy(event==='pet'?7:10);const role=companionRole(pet),rule=companionResonance(player,pet),now=gameNow();if(!rule||!resonanceTriggered(rule,event)||now-timers.resonance<rule.cooldown)return;if(rule.originalEvent?.threshold){originalPactHitCount++;if(originalPactHitCount<rule.originalEvent.threshold)return;originalPactHitCount=0;}const magnitude=Math.max(1,resonanceMagnitude(rule,petStats(pet))),primary=enemy;let amount=0,dead=false,description=rule.mode==='pact'?rule.description:'';
+function originalPactPrerequisite(rule,now){
+ if(!rule?.originalEvent)return true;
+ const key=player.job+'/'+(activePet()?.fusion?.main||'')+'-'+(activePet()?.fusion?.sub||'');
+ if(key==='assassin/defense-support')return player.hp>0&&player.hp<=stat('hp')*.4;
+ if(key==='sage/defense-support')return player.shield>0||(petEffects.shield||0)>0||(petEffects.guardUntil||0)>now;
+ if(key==='knight/attack-support')return player.hp>=stat('hp')*.65;
+ if(key==='hunter/attack-support')return (petEffects.blessingUntil||0)>now||Object.entries(classBuffs).some(([id,b])=>/song|chant|chorus|hymn/i.test(id)&&b.until>now);
+ return true;
+}
+function emitEvent(event){const pet=activePet();if(!pet||pet.hp<=0||!player.hp)return;addEnergy(event==='pet'?7:10);const role=companionRole(pet),rule=companionResonance(player,pet),now=gameNow();if(!rule||!resonanceTriggered(rule,event)||now-timers.resonance<rule.cooldown||!originalPactPrerequisite(rule,now))return;if(rule.originalEvent?.threshold){originalPactHitCount++;if(originalPactHitCount<rule.originalEvent.threshold)return;originalPactHitCount=0;}const magnitude=Math.max(1,resonanceMagnitude(rule,petStats(pet))),primary=enemy;let amount=0,dead=false,description=rule.mode==='pact'?rule.description:'';
  if(rule.effect==='strike'||rule.effect==='magic'){if(!enemy?.hp)return;amount=dealPetDamage(hitDamage(magnitude,rule.effect==='magic'?Math.floor(enemy.def*.25):enemy.def),'resonanceDamage');description=`追加 ${amount} 傷害`;dead=!enemy.hp;}
  else if(rule.effect==='shield'){amount=grantPetShield(magnitude,role==='defense');description=`獲得 ${amount} 護盾`;}
  else if(rule.effect==='heal'){amount=healPetParty(magnitude);description=`恢復 ${amount} HP`;}
