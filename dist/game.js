@@ -211,7 +211,7 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   primary.exposedPower=Math.max(primary.exposedPower||0,.18);
   return true;
  }
- const strength=kind==='siegeCounter'?.90:kind==='dragonCounter'?.66:kind==='sanctuaryChase'?.54:0;
+ const strength=kind==='siegeCounter' ? 0.90 : kind==='dragonCounter' ? 0.66 : kind==='sanctuaryChase' ? 0.54 : 0;
  if(strength<=0)return false;
  const damage=hitDamage(Math.max(1,(st.atk+st.matk*.35)*strength),primary.def);
  return dealPetDamage(damage,'resonanceDamage')>0;
