@@ -19,6 +19,14 @@ test('crusader siege counter requires two real hit events',async()=>{
  a.emitEvent('damageTaken');assert.equal(foe.hp,1e9);
  a.emitEvent('damageTaken');assert.ok(foe.hp<1e9);
 });
+test('two-stage resonance accumulation expires after eight seconds without leaking delayed damage',async()=>{
+ const {a,c,foe}=await scenario('crusader','attack-defense');
+ a.emitEvent('damageTaken');assert.equal(foe.hp,1e9);
+ c.setTime(1008001);a.emitEvent('damageTaken');
+ assert.equal(foe.hp,1e9,'stale first stage must not combine with an eight-second-late hit');
+ c.setTime(1008200);a.emitEvent('damageTaken');
+ assert.ok(foe.hp<1e9,'two fresh hits within the window must activate exactly once');
+});
 test('assassin fire adds three bounded damage ticks on crit event',async()=>{
  const {a}=await scenario('assassin','attack-magic');
  a.emitEvent('crit');assert.equal(a.state().petEffects.bleedTicks,3);assert.ok(a.state().petEffects.bleedPower>0);
@@ -43,6 +51,15 @@ test('burn ticks are classified as resonance damage rather than direct pet damag
  assert.ok(metrics.resonanceDamage>0,'burn should credit resonanceDamage');
  assert.equal(metrics.petDamage,0,'burn should not inflate direct petDamage');
  assert.ok(foe.hp<1e9);
+});
+test('resonance burn remains on the originally struck enemy after target switching',async()=>{
+ const {a,c,foe}=await scenario('assassin','attack-magic');
+ const other={...foe,instanceId:'other',hp:1e9,maxHp:1e9};
+ a.setEnemies([foe,other]);a.beginReport();a.emitEvent('crit');
+ a.setEnemies([other,foe]);
+ c.setTime(1001300);a.tickPetEffects(1001300);
+ assert.ok(foe.hp<1e9,'burn must damage its original target');
+ assert.equal(other.hp,1e9,'switching target must not redirect an existing burn');
 });
 test('two-hit accumulation never leaks between active pets after swapping',async()=>{
  const {a,c,p,pet,foe}=await scenario('crusader','attack-defense');
