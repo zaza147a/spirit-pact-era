@@ -5,3 +5,12 @@ export function newReport(map,monster,pet){return {scoringVersion:61,id:`${Date.
 export function record(report,key,amount){if(!report||!FIELDS.includes(key)||!Number.isFinite(amount)||amount<=0)return;report.metrics[key]+=Math.round(amount);}
 export function finish(report,outcome){if(!report||report.endedAt)return null;report.endedAt=Date.now();report.outcome=outcome;return report;}
 export function normalizeHistory(value){if(!Array.isArray(value))return [];return value.slice(-12).filter(r=>r&&typeof r==='object'&&r.metrics&&typeof r.outcome==='string'&&Number.isFinite(r.startedAt)).map(r=>({...r,metrics:Object.fromEntries(FIELDS.map(k=>[k,Math.max(0,Number(r.metrics[k])||0)]))}));}
+
+// Mutually exclusive P/C/B sources required by the original VNext balance plan.
+// P: owner damage including owner-given pet buffs; C: actual pet and pet-sourced
+// direct resonance; B: pet-given owner amplification (not direct pet attacks).
+export function damageSplitPcb(report){
+ const m=report?.metrics||{},num=k=>Math.max(0,Number(m[k])||0);
+ const P=num('playerDamage')+num('playerBuffDamage'),C=num('petDamage')+num('resonanceDamage'),B=num('buffDamage'),total=P+C+B;
+ return {P,C,B,total,ratios:total>0?{P:P/total,C:C/total,B:B/total}:{P:0,C:0,B:0}};
+}
