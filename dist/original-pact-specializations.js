@@ -61,8 +61,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
       "splash"
     ]
   },
-  "wizard/attack-defense": {"payload": ["storedSpellCharge"]}
-  },
+  "wizard/attack-defense": {"payload": ["storedSpellCharge"]},
   "wizard/attack-support": {
     "payload": [
       "haste",
