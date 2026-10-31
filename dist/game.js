@@ -233,7 +233,18 @@ function applyOriginalPactPayload(rule,pet,primary,now){
  }
  // Mechanics shared by original sixty contracts; each contract has its own event,
  // timing and source text while drawing from the same verified combat primitives.
- if(kind==='ward'){
+ if(kind==='hunterSummon')return dealPetDamage(hitDamage(st.atk*.9+st.matk*.15,primary.def*.55),'resonanceDamage')>0;
+ if(kind==='lowHpRiposte'){
+  if(player.hp>stat('hp')*.4)return false;
+  const shield=grantPlayerShield(Math.max(1,Math.round(st.def*.26)));
+  const retaliation=dealPetDamage(hitDamage(st.atk*.65,primary.def*.7),'resonanceDamage');
+  return shield>0||retaliation>0;
+ }
+ if(kind==='guardianAutoChase'){
+  if(!(player.shield>0||petEffects.shield>0||petEffects.guardUntil>now))return false;
+  return dealPetDamage(hitDamage(st.matk*.52+st.atk*.25,primary.def*.5),'resonanceDamage')>0;
+ }
+  if(kind==='ward'){
   const gained=grantPetShield(Math.max(1,Math.round(st.def*.42)),true);
   return gained>0;
  }
@@ -319,7 +330,12 @@ function playerAttack(skill=false,skillId=null,completed=false){if(isControlled(
   if(primary.hp>0&&skill&&chosen.steal)stealFromEnemy();
  }
  enemy=primary;if(damage&&primary.hp>0&&activePet()?.hp>0&&!fusedPair(activePet())){let extra=0;if(now<petEffects.blessingUntil)extra+=Math.max(1,Math.round(damage*petEffects.blessingPower));if(petEffects.markHits>0){extra+=petEffects.markPower;petEffects.markHits--;}if(extra){const applied=dealDamage(extra,'buffDamage');message(`✧ 夥伴增益額外造成 ${applied} 傷害！`,'rare','pet');}}
- if(skill&&damage&&pact.leech){const gain=Math.min(stat('hp')-player.hp,Math.round(damage*pact.leech));player.hp+=gain;record(report,'effectiveHeal',gain);}if(skill&&damage&&pact.bounty){const gain=Math.max(1,Math.floor(player.level*pact.bounty));player.gold+=gain;if(offlineMetrics)offlineMetrics.goldEarned+=gain;}if(skill&&chosen.castMs)emitEvent('castComplete');dirty=true;if(skill&&utility&&chosen.thirdOnly)emitEvent(chosen.id);if(effectEvent)emitEvent(effectEvent);else if(!utility){emitEvent(skill?(chosen.event||'skill'):'attack');if(critical&&damage)emitEvent('crit');}finishVictims(victims);render();}
+ if(skill&&damage&&pact.leech){const gain=Math.min(stat('hp')-player.hp,Math.round(damage*pact.leech));player.hp+=gain;record(report,'effectiveHeal',gain);}if(skill&&damage&&pact.bounty){const gain=Math.max(1,Math.floor(player.level*pact.bounty));player.gold+=gain;if(offlineMetrics)offlineMetrics.goldEarned+=gain;}if(player.job==='rogue'&&skill&&damage>0&&activePet()?.fusion?.main==='attack'&&activePet()?.fusion?.sub==='support'&&now-(timers.lastSkillRefresh||0)>=1000&&Math.random()<.12){
+  const cooldown=skillCooldown(chosen);
+  jobSkillTimers[chosen.id]=Math.max(0,(jobSkillTimers[chosen.id]||now)-Math.min(2500,cooldown*.35));
+  timers.lastSkillRefresh=now;emitEvent('skillRefresh');
+ }
+ if(skill&&chosen.castMs)emitEvent('castComplete');dirty=true;if(skill&&utility&&chosen.thirdOnly)emitEvent(chosen.id);if(effectEvent)emitEvent(effectEvent);else if(!utility){emitEvent(skill?(chosen.event||'skill'):'attack');if(critical&&damage)emitEvent('crit');}finishVictims(victims);render();}
 function autoCastJobs(){if(casting||!auto||!player.hp||!enemy?.hp||gameNow()-timers.skill<(timers.actionDelay||GLOBAL_SKILL_COOLDOWN))return;const skills=orderedAutoSkills(player.autoSkills,JOB_SKILLS[player.job]);for(const skill of skills){if(!player.jobSkills[skill.id]||!canCastJobSkill(skill)||player.mp<skill.mp)continue;if(skill.kind==='heal'&&player.hp>stat('hp')*.65&&!((skill.id==='sanctuary'||skill.partyHeal)&&activePet()?.hp>0&&activePet().hp<petStats(activePet()).hp*.65))continue;if(skill.kind==='shield'&&player.shield>=stat('hp')*.15)continue;if(skill.kind==='mana'&&player.mp>stat('mp')*.55)continue;if(skill.kind==='buff'&&classBuffs[skill.buff]?.until>gameNow())continue;const before=timers.skill;playerAttack(true,skill.id);if(timers.skill!==before){timers.autoJob=gameNow();break;}}}
 function petAttack(){chooseAttackTarget();const pet=activePet();if(!pet||!enemy?.hp||!player.hp||pet.hp<=0)return;const now=gameNow(),s=petStats(pet),species=SPECIES[pet.species];if(now-timers.pet<Math.max(80,aspdAttackIntervalMs(s.aspd)/(1+(s.aspdPct||0)/100+(classBuffs.resonanceHaste?.until>now?classBuffs.resonanceHaste.power:0))))return;timers.pet=now;if(companionRole(pet)==='support'&&pet.sp>=3){pet.sp-=3;const pulse=supportPulse(s),healed=healPetParty(pulse.hp),mp=Math.min(stat('mp')-player.mp,pulse.sp);player.mp+=mp;record(report,'effectiveMana',mp);if(healed||mp)message(`${pet.nickname} 施放 ${species.skill}（SP -3），恢復 HP ${healed}、SP ${mp}。`,'good','pet');}const critical=Math.random()<(s.crit+(classBuffs.resonanceCrit?.until>now?classBuffs.resonanceCrit.power:0))/100;if(!critical&&Math.random()>hitChance(s.hit,enemy.flee)){message(`${pet.nickname} 的攻擊被閃避。`,'','pet');}else{const magic=['magic','support'].includes(companionRole(pet)),rolled=hitDamage(petOffensivePower(s,companionRole(pet)),(magic?Math.floor(enemy.def*.25):enemy.def)*(1-(s.ignoreDef||0)/100),critical?(s.critDmg||140)/100:1),damage=dealPetDamage(rolled,'petDamage');message(`${pet.nickname} ${critical?'暴擊':'普通攻擊'}${damageText(rolled*(1+classBuffPower('pet')),damage)}（${magic?'魔法':'物理'}）。`,'good','pet');}if(enemy.hp)emitEvent('pet');if(!enemy.hp)award();dirty=true;render();}
 function enemyAttack(){
