@@ -211,6 +211,25 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   primary.exposedPower=Math.max(primary.exposedPower||0,.18);
   return true;
  }
+ if(kind==='elementBurn'){
+  petEffects.bleedPower=Math.max(petEffects.bleedPower||0,Math.round(st.matk*.22));
+  petEffects.bleedTicks=Math.max(petEffects.bleedTicks||0,3);
+  petEffects.bleedNext=now+1200;
+  return true;
+ }
+ if(kind==='comboLeech'){
+  const dealt=dealPetDamage(hitDamage(st.atk*.70,primary.def),'resonanceDamage');
+  const recovered=Math.min(stat('hp')-player.hp,Math.round(dealt*.22));
+  player.hp+=recovered;record(report,'effectiveHeal',recovered);
+  return dealt>0;
+ }
+ if(kind==='overhealRain'){
+  const overflow=Math.max(0,Number(timers.pendingOriginalOverheal)||0);
+  timers.pendingOriginalOverheal=0;
+  if(!overflow)return false;
+  const amount=hitDamage(Math.min(overflow*.45,st.matk*3),primary.def*.2);
+  return dealPetDamage(amount,'resonanceDamage')>0;
+ }
  const strength=kind==='siegeCounter' ? 0.90 : kind==='dragonCounter' ? 0.66 : kind==='sanctuaryChase' ? 0.54 : 0;
  if(strength<=0)return false;
  const damage=hitDamage(Math.max(1,(st.atk+st.matk*.35)*strength),primary.def);
@@ -254,7 +273,7 @@ function playerAttack(skill=false,skillId=null,completed=false){if(isControlled(
  let pact=skill?pactFor(chosen):{};const accelerated=skill?unassistedAction(chosen.id,(chosen.attackCycle?skillActionDelay(chosen,{speed:stat('speed')}):jobSkillCooldownMs(chosen,{speed:stat('speed')})),now):false;
  const utility=skill&&['heal','shield','mana','buff'].includes(chosen.kind),criticalRoll=Math.random()*100,critical=!utility&&criticalRoll<stat('crit'),petCrit=critical&&classBuffs.resonanceCrit?.until>now&&criticalRoll>=stat('crit')-classBuffs.resonanceCrit.power,petHaste=skill&&accelerated&&((pact.haste||0)>0||(pact.cooldown||0)>0)||!skill&&classBuffs.resonanceHaste?.until>now&&now<(timers.unhastedAttackNext||0),primary=enemy;let damage=0,effectEvent=null,action=skill?chosen.name:'普通攻擊';const victims=[primary];if(!skill&&!petHaste)timers.unhastedAttackNext=now+aspdAttackIntervalMs(stat('aspd'))/(1+(Object.values(player.gear).reduce((n,g)=>n+(enhancedAffixes(g).aspdPct||0),0)+cardBonus('aspdPct'))/100);if(!utility&&Math.random()>hitChance(stat('hit'),primary.flee)&&!critical){message(`${action} 未命中 ${SPECIES[primary.id].name}。`,'','player');dirty=true;render();return;}
  if(skill&&!utility&&player.reborn&&player.jobSkills['rebirthBuff_'+player.job]&&['hunter','crusader'].includes(player.job))emitEvent('buff');if(skill&&!utility){const companion=activePet(),rule=companion&&companionResonance(player,companion);if(rule?.mode==='pact'){if(rule.perSkill)emitEvent(chosen.id);else emitEvent(chosen.event||'skill');if(chosen.event&&chosen.event!=='skill')emitEvent('skill');if(critical)emitEvent('crit');pact=pactFor(chosen);}}if(skill&&pact.refund){const gain=Math.min(stat('mp')-player.mp,pact.refund);player.mp+=gain;record(report,'effectiveMana',gain);}
- if(skill&&chosen.kind==='heal'){const budget=Math.round(stat(chosen.healSource||(['recover','breathing'].includes(chosen.id)?'atk':'matk'))*jobSkillMultiplier(chosen,rank,skillContext(chosen))*(1+passiveBonus('healingPct')/100)),pet=activePet(),targets=[{unit:player,max:stat('hp')}];if((chosen.id==='sanctuary'||chosen.partyHeal)&&pet?.hp>0)targets.push({unit:pet,max:petStats(pet).hp});targets.sort((a,b)=>a.unit.hp/a.max-b.unit.hp/b.max);let remaining=budget,healed=0;for(const {unit,max} of targets){const gain=Math.min(Math.max(0,max-unit.hp),remaining);unit.hp+=gain;remaining-=gain;healed+=gain;}record(report,'playerHeal',healed);if(healed)effectEvent='heal';message(`${action} 恢復 ${healed} HP。`,'good','player');}
+ if(skill&&chosen.kind==='heal'){const budget=Math.round(stat(chosen.healSource||(['recover','breathing'].includes(chosen.id)?'atk':'matk'))*jobSkillMultiplier(chosen,rank,skillContext(chosen))*(1+passiveBonus('healingPct')/100)),pet=activePet(),targets=[{unit:player,max:stat('hp')}];if((chosen.id==='sanctuary'||chosen.partyHeal)&&pet?.hp>0)targets.push({unit:pet,max:petStats(pet).hp});targets.sort((a,b)=>a.unit.hp/a.max-b.unit.hp/b.max);let remaining=budget,healed=0;for(const {unit,max} of targets){const gain=Math.min(Math.max(0,max-unit.hp),remaining);unit.hp+=gain;remaining-=gain;healed+=gain;}record(report,'playerHeal',healed);if(healed)effectEvent='heal';if(player.job==='priest'&&budget>healed){timers.pendingOriginalOverheal=Math.max(0,budget-healed);emitEvent('overheal');timers.pendingOriginalOverheal=0;}message(`${action} 恢復 ${healed} HP。`,'good','player');}
  else if(skill&&chosen.kind==='shield'){const shield=grantPlayerShield(Math.round(stat('hp')*.1*jobSkillMultiplier(chosen,rank,skillContext(chosen))));if(shield)effectEvent='shield';message(`${action} 獲得 ${shield} 護盾。`,'good','player');}
  else if(skill&&chosen.kind==='mana'){const gain=Math.min(stat('mp')-player.mp,Math.round(stat('matk')*jobSkillMultiplier(chosen,rank,skillContext(chosen))));player.mp+=gain;if(gain)effectEvent='mana';message(`${action} 恢復 ${gain} SP。`,'good','player');}
  else if(skill&&chosen.kind==='buff'){classBuffs[chosen.buff]={until:now+chosen.duration,...scaledSkillBuff(chosen,rank),teamDamage:chosen.teamDamage};effectEvent=chosen.event||'buff';message(`${action} 生效，持續 ${chosen.duration/1000} 秒。`,'good','player');}
