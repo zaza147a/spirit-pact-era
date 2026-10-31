@@ -48,6 +48,17 @@ import {GEAR_TIERS,legacyFiveTierToNew,migrateFiveTierShards} from './progressio
 import {playerAttackValue,playerMagicAttackValue,GLOBAL_SKILL_COOLDOWN,jobSkillCooldownMs,jobSkillMultiplier,freecastThreshold,jobSkillSpec,skillCastMs,skillActionDelay} from './player-scaling.js?v=6.3.2';
 import {petSkillEffect,petSkillPreview,petOffensivePower,supportPulse,resonanceMagnitude,petUltimateSupport} from './pet-effects.js?v=6.3.2';
 
+Object.assign(ITEMS,{
+ dawn_archon_core:{name:'裁界者核心',quest:true,cost:0,description:'210等首領黎明裁界者保證取得，可強化高階曙界契印。'},
+ rank_core_D:{name:'D階星鑄結晶',enhancement:true,quest:true,cost:0},rank_core_C:{name:'C階星鑄結晶',enhancement:true,quest:true,cost:0},
+ rank_core_B:{name:'B階星鑄結晶',enhancement:true,quest:true,cost:0},rank_core_A:{name:'A階星鑄結晶',enhancement:true,quest:true,cost:0},
+ rank_core_S:{name:'S階星鑄結晶',enhancement:true,quest:true,cost:0},rank_core_SS:{name:'SS階星鑄結晶',enhancement:true,quest:true,cost:0},
+ rank_core_SSS:{name:'SSS階星鑄結晶',enhancement:true,quest:true,cost:0},
+ dawn_scout_fang:{name:'晨晶獵牙',dawnJunk:true,junk:true,cost:650},
+ dawn_ram_horn:{name:'曙岩角片',dawnJunk:true,junk:true,cost:680},
+ dawn_ray_membrane:{name:'流光翼膜',dawnJunk:true,junk:true,cost:710},
+ dawn_archon_crystal:{name:'黎明裁界晶',dawnJunk:true,junk:true,cost:900}
+});
 Object.assign(MAPS,DAWN_MAPS);for(const m of DAWN_MONSTERS)if(!WORLD_MONSTERS.some(x=>x.id===m.id))WORLD_MONSTERS.push(m);MAP_BOSSES.dawnrift=DAWN_BOSS;for(const m of [...DAWN_MONSTERS,DAWN_BOSS])SPECIES[m.id]={name:m.name,role:m.role,roleName:m.roleName,level:m.level};
 for(const route of TRIAL_ROUTES)for(let i=0;i<5;i++){const m=createTrialBoss(route,i,MAP_BOSSES[route.map]);SPECIES[m.id]={name:m.name,role:'attack',roleName:'天穹試煉首領',level:m.level};}
 let controlEffect=null;
