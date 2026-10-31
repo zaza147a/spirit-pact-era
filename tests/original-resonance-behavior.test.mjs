@@ -92,3 +92,13 @@ test('sage auto-spell chain includes the primary target and restores missing man
  assert.ok(p.mp>before,'auto-star-rain replenishes mana when damage lands');
  assert.ok(a.state().report.metrics.resonanceDamage>0);
 });
+
+test('wizard stores incoming hits as delayed magic and releases once on successful third hit',async()=>{
+ const {a,foe}=await scenario('wizard','attack-defense');
+ a.beginReport();a.emitEvent('damageTaken');a.emitEvent('damageTaken');
+ assert.equal(foe.hp,1e9,'incoming hits must store rather than directly discharge');
+ a.emitEvent('thirdHit_wizard');assert.ok(foe.hp<1e9);
+ const after=foe.hp;a.emitEvent('thirdHit_wizard');
+ assert.equal(foe.hp,after,'a stored spell cannot discharge twice');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+});
