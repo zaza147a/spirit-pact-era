@@ -10,13 +10,13 @@ const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
 const validUid=uid=>typeof uid==='string'&&uid.length>0&&uid.length<=128&&!/[\u0000-\u001f]/.test(uid)&&!['__proto__','constructor','prototype'].includes(uid);
 export function warehouseEquipment(item){return !!item&&validUid(item.uid)&&typeof item.id==='string'&&(own(GEAR_BASE,item.id)||own(PET_GEAR_BASE,item.id))&&Number.isInteger(item.level)&&item.level>=1&&item.level<=210&&['common','uncommon','rare','legendary','mythic'].includes(item.rarity)&&item.affixes&&typeof item.affixes==='object'&&!Array.isArray(item.affixes)&&Object.values(item.affixes).every(v=>Number.isFinite(v)&&Math.abs(v)<1e9)&&(!item.enhancement||['D','C','B','A','S','SS','SSS'].includes(item.enhancement));}
 const ackKey=(uid,revision)=>WAREHOUSE_ACK_PREFIX+encodeURIComponent(uid)+':'+revision;
-function slotIndex(index){if(!Number.isInteger(index)||index<0||index>3)throw Error('無效的存檔格');}
+function slotIndex(index){if(!Number.isInteger(index)||index<0||index>=8)throw Error('無效的存檔格');}
 export function readWarehouse(storage){
  const raw=typeof storage?.getItem==='function'?storage.getItem(WAREHOUSE_KEY):null;
  if(!raw)return {version:1,records:{}};
  let state;try{state=JSON.parse(raw);}catch{throw Error('共用倉庫資料無法讀取，原資料已保留');}
  if(state?.version!==1||!state.records||typeof state.records!=='object'||Array.isArray(state.records)||Object.keys(state.records).length>10000)throw Error('共用倉庫格式不符，原資料已保留');
- for(const [uid,r] of Object.entries(state.records))if(!validUid(uid)||!r||!(r.owner===null||Number.isInteger(r.owner)&&r.owner>=0&&r.owner<4)||!Number.isSafeInteger(r.revision)||r.revision<1||(r.gear&&(!warehouseEquipment(r.gear)||r.gear.uid!==uid))||(r.owner===null&&!r.gear))throw Error('共用倉庫裝備紀錄不完整，原資料已保留');
+ for(const [uid,r] of Object.entries(state.records))if(!validUid(uid)||!r||!(r.owner===null||Number.isInteger(r.owner)&&r.owner>=0&&r.owner<8)||!Number.isSafeInteger(r.revision)||r.revision<1||(r.gear&&(!warehouseEquipment(r.gear)||r.gear.uid!==uid))||(r.owner===null&&!r.gear))throw Error('共用倉庫裝備紀錄不完整，原資料已保留');
  return state;
 }
 export function warehouseItems(storage){return Object.values(readWarehouse(storage).records).filter(r=>r.owner===null).map(r=>clone(r.gear));}

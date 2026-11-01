@@ -7,14 +7,14 @@ import {FUSION_PAIRS} from '../dist/pet-fusion.js';
 import {reconcileHumanoidStages,humanoidStage} from '../dist/pet-humanoid-evolution.js';
 import {petArt} from '../dist/pet-evolution.js';
 
-test('four slots retain real normalized SSS equipment, ordered skills, humanoid progress and dawn materials across fresh runtimes',async()=>{
+test('eight slots retain real normalized SSS equipment, ordered skills, humanoid progress and dawn materials across fresh runtimes',async()=>{
  const data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,String(v))};
  const jobs=['knight','wizard','rogue','priest'],pairs=Object.keys(FUSION_PAIRS);
  let checks=0;
  for(let batch=0;batch<3;batch++){
   const expected=[];
-  for(let slot=0;slot<4;slot++){
-   const job=jobs[slot],pair=pairs[batch*4+slot];
+  for(let slot=0;slot<8;slot++){
+   const job=jobs[slot%jobs.length],pair=pairs[(batch*8+slot)%pairs.length];
    const p=runBuild(job,pair.split('-')[0],{level:201,encounterLevel:201,gearLevel:200,seconds:0,
     scenario:'regional',reborn:true,thirdJob:true,rarity:'mythic',referenceBuild:true,
     referenceQuality:'mythic',fusionPair:pair,enhancement:'SSS',petEnhancement:'SSS',fixture:true}).fixture;
@@ -26,7 +26,7 @@ test('four slots retain real normalized SSS equipment, ordered skills, humanoid 
    writeCharacterSlot(storage,slot,p);
    expected.push({name:p.name,pair,skills:[...pet.equippedSkills],bag:structuredClone(p.bag),gold:p.gold});
   }
-  for(let slot=0;slot<4;slot++){
+  for(let slot=0;slot<8;slot++){
    const c=await runtime(),a=c.api;
    const load=()=>{const result=readCharacterSlot(storage,slot,a.normalize,a.valid);assert.equal(result.error,null);return result.player;};
    const p=load(),pet=p.pets[0],e=expected[slot];
@@ -34,13 +34,13 @@ test('four slots retain real normalized SSS equipment, ordered skills, humanoid 
    assert.deepEqual(p.bag,e.bag);assert.deepEqual(pet.equippedSkills,e.skills);
    assert.equal(humanoidStage(pet),3);assert.equal(petArt(pet),`assets/true-forms/SSS/${e.pair}.webp`);
    for(const g of [...Object.values(p.gear),...Object.values(pet.gear)].filter(Boolean))assert.equal(g.enhancement,'SSS');
-   const otherBefore=Array.from({length:4},(_,i)=>i===slot?null:storage.getItem(characterSlotKey(i)));
+   const otherBefore=Array.from({length:8},(_,i)=>i===slot?null:storage.getItem(characterSlotKey(i)));
    pet.gear={head:null,body:null,shoes:null};p.bag[0].qty--;writeCharacterSlot(storage,slot,p);
    const reloaded=load();assert.equal(humanoidStage(reloaded.pets[0]),3);assert.deepEqual(reloaded.pets[0].equippedSkills,e.skills);
    assert.equal(reloaded.bag[0].qty,e.bag[0].qty-1);
-   for(let i=0;i<4;i++)if(i!==slot)assert.equal(storage.getItem(characterSlotKey(i)),otherBefore[i],'writing one slot must not alter another');
+   for(let i=0;i<8;i++)if(i!==slot)assert.equal(storage.getItem(characterSlotKey(i)),otherBefore[i],'writing one slot must not alter another');
    checks++;
   }
  }
- assert.equal(checks,12);
+ assert.equal(checks,24);
 });
