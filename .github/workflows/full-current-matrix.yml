@@ -1,4 +1,4 @@
-# Re-run after final monk stored-qi source correction.
+# Final source verification including companion terminology.
 name: Current full five-boss matrix
 on:
   push:

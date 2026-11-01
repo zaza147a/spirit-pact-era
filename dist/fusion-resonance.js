@@ -67,7 +67,7 @@ function originalTriggerDescription(job,key,event){
  const trigger=labels[event.event]||(event.event.startsWith('thirdWideHit_')?'三轉範圍技命中':event.event.startsWith('thirdStance_')?'三轉姿態生效':'三轉主攻命中');
  const gates={'knight/attack-defense':'先在6秒內發生盾碎；','knight/attack-support':'人物HP至少65%；','assassin/defense-support':'人物HP不高於40%；','sage/defense-support':'守護或護盾有效期間；','hunter/attack-support':'祝福或戰歌有效期間；'};
  const lifecycleNotes={
-  'monk/defense-support':'承傷回SP並蓄氣（最多3層、12秒），之後極意拳命中才消耗氣勁追加傷害；換寵清除。',
+  'monk/defense-support':'承傷回SP並蓄氣（最多3層、12秒），之後極意拳命中才消耗氣勁追加傷害；切換夥伴清除。',
   'rogue/magic-defense':'影擊命中後，向同一存活目標發射兩道星砲；目標倒下不轉移剩餘砲擊；',
   'crusader/defense-support':'護盾先儲存一次追擊，6.5秒內且護盾仍有效時，後續主攻命中才釋放；',
   'hunter/defense-support':'護盾先儲存一次反狙，6.5秒內且護盾仍有效時，後續射擊命中才釋放；',
