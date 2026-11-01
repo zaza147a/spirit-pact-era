@@ -24,7 +24,15 @@ await new Promise((resolve,reject)=>{let next=0,done=0,failed=false;
  for(const w of workers){w.on('error',e=>{if(!failed){failed=true;reject(e)}});w.on('message',m=>{
   if(failed)return;if(m.error){failed=true;reject(Error(m.error));return;}
   const {options,...meta}=cases[m.index],r=m.result,pcb=damageSplitPcb({metrics:r.metrics});
-  rows[m.index]={...meta,kills:r.kills,alive:r.alive,potions:r.potions,P:pcb.ratios.P,C:pcb.ratios.C,B:pcb.ratios.B};
+  // Keep raw utility outcomes alongside mutually exclusive damage-source P/C/B.
+  // Defensive/support fusions must be judged on actual prevention and recovery,
+  // not forced to match an offense fusion's clear speed or damage percentages.
+  rows[m.index]={...meta,kills:r.kills,alive:r.alive,potions:r.potions,
+   P:pcb.ratios.P,C:pcb.ratios.C,B:pcb.ratios.B,
+   playerTaken:r.metrics.playerTaken||0,petTaken:r.metrics.petTaken||0,
+   petProtection:r.metrics.petProtection||0,shieldPrevented:r.metrics.shieldPrevented||0,
+   effectiveHeal:r.metrics.effectiveHeal||0,playerHeal:r.metrics.playerHeal||0,
+   buffDamage:r.metrics.buffDamage||0,playerBuffDamage:r.metrics.playerBuffDamage||0};
   if(++done===cases.length)resolve();else send(w);
  });send(w);}
 });
