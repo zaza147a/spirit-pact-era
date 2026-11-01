@@ -1,53 +1,54 @@
-import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,exportWarehouse,importWarehouse} from './shared-warehouse.js';
-import {migrateLegacyReselect,reselectionPet,RESELECT_ORDERED_TYPES} from './pet-legacy-reselect.js';
-import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArchonPreparationFactor} from './dawn-sigil.js';
-import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js';
-import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_RESISTANCE,CONTROL_SLOTS,CONTROL_NAMES,enhancedAffixes,rankOf,fullSetRank,normalizeEnhancements,unlockRankOutfits,controlResistance,enhanceEquipped,enhancePetEquipped,trialEntryError,TRIAL_ROUTES,createTrialBoss,trialDropTable,trialDrops,dawnEntryError} from './sky-trials.js';
-import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js';
-import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js';
-import {companionResonance} from './fusion-resonance.js';
-import {CONTINENTS,continentFor,PLAYER_REVIVE_MS,PET_REVIVE_MS,deathRemaining,baseExperienceNeed,petExperienceNeed,THIRD_SEAL,THIRD_SEAL_NAME,THIRD_SEAL_COST,thirdJobError,thirdJobRewards} from './frontier.js';
-import {THIRD_JOBS,scaledSkillBuff} from './third-jobs.js';
-import {FUSION_PAIRS,FUSION_NAMES,fusedPair,companionRole,fusionSkills,defaultFusionSkills,petSkillLimit,fusionPetError,fusePets} from './pet-fusion.js';
-import {reconcileSkillPoints,updateSkillPointControls} from './skill-points.js?v=6.3.2';
-import {manualSalePrice,sellBagEntry} from './inventory-sale.js';
-import {ATTRIBUTE_KEYS,gearAttributes,cardAttributes,gearAttributeLimit,cardAttributeLimit,attributeBreakdown,POTENTIAL_NAMES,free201AttributeReset,allocationDamageMultiplier,attributeDescriptions} from './growth-v5.js';
-import {ASCENDED_FORMS,ASCENSION_COST,ascensionCost,LOYALTY_MAX,LOYALTY_PER_POINT,ASCENSION_LOYALTY,normalizePetLevel,petLevelCap,ascensionError,ascendPet,awardLoyalty,normalizeLoyalty} from './pet-ascension.js?v=6.3.2';
-import {equipmentReadiness} from './gear-readiness.js?v=6.3.2';
-import {capturedQuality,evolutionChances,MYTHIC_MUTATION,QUALITY_ORDER} from './pet-acquisition.js?v=6.3.2';
-import {characterLevelCap,jobLevelCap,isTown,homeTown,attributeCap,ignoresGearLevel,experienceFactor,REBIRTH_ZONES,rebirthEligibility,normalizeProgression} from './adventure-progression.js?v=6.3.2';
-import {QUEST_REQUIREMENTS,JUNK_ITEMS,PROOF_ITEMS,BREAKTHROUGH_ITEM,acceptZoneQuest,questAcceptError,turnInZoneQuest,sellSelectedJunk} from './adventure-economy.js?v=6.3.2';
-import {normalizeAutoSkills,orderedAutoSkills,moveAutoSkill,autoSkillGroup,normalizeCaptureRoles} from './auto-skill-rules.js?v=6.3.2';
-import {BASE_ATTRIBUTE_CAP,jobAttributeBonus,capBaseAttributes,JOB_ATTRIBUTE_MAX} from './job-attributes.js?v=6.3.2';
-import {normalizePotionThresholds,purchaseQuote,preferredPotion,retrainCost} from './supply-rules.js?v=6.3.2';
-import {offlineWindow,inventoryDelta,offlineDuration,OFFLINE_STEP_MS} from './offline-rules.js?v=6.3.2';
-import {mapRules,cardDropChance} from './map-rules.js?v=6.3.2';
-import {SHOP_GROUPS,isShopItem} from './shop-catalog.js?v=6.3.2';
-import {potionRestore} from './restoration.js?v=6.3.2';
-import {combatContribution} from './combat-contribution.js?v=6.3.2';
-import {SECOND_JOBS,parentJob,secondJobChoices,transferEligibility} from './jobs.js?v=6.3.2';
-import {MAP_BOSSES,canEncounterBoss,BOSS_RESPITE_MS,bossRarity,BOSS_CARD_CHANCE} from './map-bosses.js?v=6.3.2';
-import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migrateCardBindings,cardEffectsFor,cardDescription} from './card-effects.js?v=6.3.2';
-import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.3.2';
-import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=6.3.2';
-import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.3.2';
-import {matchesGearFilters} from './inventory-rules.js?v=6.3.2';
-import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=6.3.2';
-import {patchHtml,panelIsEditing} from './ui-patch.js?v=6.3.2';
-import {PET_ROUTES,PET_FAMILIES,PET_PALETTES,petRoute,petIcon,petForm,petArt,evolutionStage,evolveCompanion,synthesizeEssence} from './pet-evolution.js?v=6.3.2';
-import {CLASSES,ATTRS,ITEMS,SPECIES,MONSTERS,PETLAND_MONSTERS,MAPS,CARDS,SLOTS,PET_SLOTS,PET_RARITIES,PET_EVOLUTIONS,petRarity,nextPetEvolution,clamp,rand,makePet,petStats} from './catalog.js?v=6.3.2';
-import {FIELDS,NAMES,newReport,record,finish,normalizeHistory,damageSplitPcb} from './contribution.js?v=6.3.2';
-import {resonanceRule,resonanceOpener,resonanceTriggered,RESONANCE_RULES,RESONANCE_EVENTS,RESONANCE_MAX,ULTIMATE_COST,ULTIMATE_COOLDOWN} from './resonance.js?v=6.3.2';
-import {PET_SKILLS,petSkillById,defaultPetSkills,petSkillsFor,petAbilitySetName,migratePetSkills,fusionSkillLoadoutNotice} from './pet-abilities.js?v=6.3.2';
-import {JOB_SKILLS,jobSkillById,initialJobSkills,weaponSkillAllowed,activeJobSkills,jobPassives,skillUnlocked,supersededSkill,REBIRTH_MAIN_REPLACES} from './job-skills.js?v=6.3.2';
-import {WORLD_MONSTERS,ZONES,worldMonsterArt} from './world-data.js?v=6.3.2';
-import {rollGear,rollPetGear,rebalanceGear,gearStatValue,affixRange,normalizeBag,addStack,consumeStack,STACK_SET,RARITIES,AFFIX_NAMES,TIER_NAMES,gearTier,gearGroup,shardId,gearLabel,affixLabel,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,equipmentDrop} from './loot.js?v=6.3.2';
-import {outgoingHitDamage,incomingMonsterDamage,monsterAttackPower,monsterDefenseAgainst,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterHitChance,monsterCombatStats,monsterRuntimeStats,jobZoneOutputFactor,LEVEL_CAPS} from './combat-balance.js?v=6.3.2';
-import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.3.2';
+import {rankOutfitArt,rankOutfitName,RANK_OUTFITS} from './rank-outfits.js?v=6.5.0';
+import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,exportWarehouse,importWarehouse} from './shared-warehouse.js?v=6.5.0';
+import {migrateLegacyReselect,reselectionPet,RESELECT_ORDERED_TYPES} from './pet-legacy-reselect.js?v=6.5.0';
+import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArchonPreparationFactor} from './dawn-sigil.js?v=6.5.0';
+import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
+import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_RESISTANCE,CONTROL_SLOTS,CONTROL_NAMES,enhancedAffixes,rankOf,fullSetRank,normalizeEnhancements,unlockRankOutfits,controlResistance,enhanceEquipped,enhancePetEquipped,trialEntryError,TRIAL_ROUTES,createTrialBoss,trialDropTable,trialDrops,dawnEntryError} from './sky-trials.js?v=6.5.0';
+import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
+import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';
+import {companionResonance} from './fusion-resonance.js?v=6.5.0';
+import {CONTINENTS,continentFor,PLAYER_REVIVE_MS,PET_REVIVE_MS,deathRemaining,baseExperienceNeed,petExperienceNeed,THIRD_SEAL,THIRD_SEAL_NAME,THIRD_SEAL_COST,thirdJobError,thirdJobRewards} from './frontier.js?v=6.5.0';
+import {THIRD_JOBS,scaledSkillBuff} from './third-jobs.js?v=6.5.0';
+import {FUSION_PAIRS,FUSION_NAMES,fusedPair,companionRole,fusionSkills,defaultFusionSkills,petSkillLimit,fusionPetError,fusePets} from './pet-fusion.js?v=6.5.0';
+import {reconcileSkillPoints,updateSkillPointControls} from './skill-points.js?v=6.5.0';
+import {manualSalePrice,sellBagEntry} from './inventory-sale.js?v=6.5.0';
+import {ATTRIBUTE_KEYS,gearAttributes,cardAttributes,gearAttributeLimit,cardAttributeLimit,attributeBreakdown,POTENTIAL_NAMES,free201AttributeReset,allocationDamageMultiplier,attributeDescriptions} from './growth-v5.js?v=6.5.0';
+import {ASCENDED_FORMS,ASCENSION_COST,ascensionCost,LOYALTY_MAX,LOYALTY_PER_POINT,ASCENSION_LOYALTY,normalizePetLevel,petLevelCap,ascensionError,ascendPet,awardLoyalty,normalizeLoyalty} from './pet-ascension.js?v=6.5.0';
+import {equipmentReadiness} from './gear-readiness.js?v=6.5.0';
+import {capturedQuality,evolutionChances,MYTHIC_MUTATION,QUALITY_ORDER} from './pet-acquisition.js?v=6.5.0';
+import {characterLevelCap,jobLevelCap,isTown,homeTown,attributeCap,ignoresGearLevel,experienceFactor,REBIRTH_ZONES,rebirthEligibility,normalizeProgression} from './adventure-progression.js?v=6.5.0';
+import {QUEST_REQUIREMENTS,JUNK_ITEMS,PROOF_ITEMS,BREAKTHROUGH_ITEM,acceptZoneQuest,questAcceptError,turnInZoneQuest,sellSelectedJunk} from './adventure-economy.js?v=6.5.0';
+import {normalizeAutoSkills,orderedAutoSkills,moveAutoSkill,autoSkillGroup,normalizeCaptureRoles} from './auto-skill-rules.js?v=6.5.0';
+import {BASE_ATTRIBUTE_CAP,jobAttributeBonus,capBaseAttributes,JOB_ATTRIBUTE_MAX} from './job-attributes.js?v=6.5.0';
+import {normalizePotionThresholds,purchaseQuote,preferredPotion,retrainCost} from './supply-rules.js?v=6.5.0';
+import {offlineWindow,inventoryDelta,offlineDuration,OFFLINE_STEP_MS} from './offline-rules.js?v=6.5.0';
+import {mapRules,cardDropChance} from './map-rules.js?v=6.5.0';
+import {SHOP_GROUPS,isShopItem} from './shop-catalog.js?v=6.5.0';
+import {potionRestore} from './restoration.js?v=6.5.0';
+import {combatContribution} from './combat-contribution.js?v=6.5.0';
+import {SECOND_JOBS,parentJob,secondJobChoices,transferEligibility} from './jobs.js?v=6.5.0';
+import {MAP_BOSSES,canEncounterBoss,BOSS_RESPITE_MS,bossRarity,BOSS_CARD_CHANCE} from './map-bosses.js?v=6.5.0';
+import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migrateCardBindings,cardEffectsFor,cardDescription} from './card-effects.js?v=6.5.0';
+import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.5.0';
+import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=6.5.0';
+import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.5.0';
+import {matchesGearFilters} from './inventory-rules.js?v=6.5.0';
+import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=6.5.0';
+import {patchHtml,panelIsEditing} from './ui-patch.js?v=6.5.0';
+import {PET_ROUTES,PET_FAMILIES,PET_PALETTES,petRoute,petIcon,petForm,petArt,evolutionStage,evolveCompanion,synthesizeEssence} from './pet-evolution.js?v=6.5.0';
+import {CLASSES,ATTRS,ITEMS,SPECIES,MONSTERS,PETLAND_MONSTERS,MAPS,CARDS,SLOTS,PET_SLOTS,PET_RARITIES,PET_EVOLUTIONS,petRarity,nextPetEvolution,clamp,rand,makePet,petStats} from './catalog.js?v=6.5.0';
+import {FIELDS,NAMES,newReport,record,finish,normalizeHistory,damageSplitPcb} from './contribution.js?v=6.5.0';
+import {resonanceRule,resonanceOpener,resonanceTriggered,RESONANCE_RULES,RESONANCE_EVENTS,RESONANCE_MAX,ULTIMATE_COST,ULTIMATE_COOLDOWN} from './resonance.js?v=6.5.0';
+import {PET_SKILLS,petSkillById,defaultPetSkills,petSkillsFor,petAbilitySetName,migratePetSkills,fusionSkillLoadoutNotice} from './pet-abilities.js?v=6.5.0';
+import {JOB_SKILLS,jobSkillById,initialJobSkills,weaponSkillAllowed,activeJobSkills,jobPassives,skillUnlocked,supersededSkill,REBIRTH_MAIN_REPLACES} from './job-skills.js?v=6.5.0';
+import {WORLD_MONSTERS,ZONES,worldMonsterArt} from './world-data.js?v=6.5.0';
+import {rollGear,rollPetGear,rebalanceGear,gearStatValue,affixRange,normalizeBag,addStack,consumeStack,STACK_SET,RARITIES,AFFIX_NAMES,TIER_NAMES,gearTier,gearGroup,shardId,gearLabel,affixLabel,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,equipmentDrop} from './loot.js?v=6.5.0';
+import {outgoingHitDamage,incomingMonsterDamage,monsterAttackPower,monsterDefenseAgainst,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterHitChance,monsterCombatStats,monsterRuntimeStats,jobZoneOutputFactor,LEVEL_CAPS} from './combat-balance.js?v=6.5.0';
+import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.5.0';
 
-import {GEAR_TIERS,legacyFiveTierToNew,migrateFiveTierShards} from './progression.js?v=6.3.2';
-import {playerAttackValue,playerMagicAttackValue,GLOBAL_SKILL_COOLDOWN,jobSkillCooldownMs,jobSkillMultiplier,freecastThreshold,jobSkillSpec,skillCastMs,skillActionDelay} from './player-scaling.js?v=6.3.2';
-import {petSkillEffect,petSkillPreview,petOffensivePower,petDirectRoleMultiplier,fusionDirectOutputFactor,supportPulse,resonanceMagnitude,petUltimateSupport} from './pet-effects.js?v=6.3.2';
+import {GEAR_TIERS,legacyFiveTierToNew,migrateFiveTierShards} from './progression.js?v=6.5.0';
+import {playerAttackValue,playerMagicAttackValue,GLOBAL_SKILL_COOLDOWN,jobSkillCooldownMs,jobSkillMultiplier,freecastThreshold,jobSkillSpec,skillCastMs,skillActionDelay} from './player-scaling.js?v=6.5.0';
+import {petSkillEffect,petSkillPreview,petOffensivePower,petDirectRoleMultiplier,fusionDirectOutputFactor,supportPulse,resonanceMagnitude,petUltimateSupport} from './pet-effects.js?v=6.5.0';
 
 Object.assign(ITEMS,{
  dawn_archon_core:{name:'裁界者核心',quest:true,cost:0,description:'210等首領黎明裁界者保證取得，可強化高階曙界契印。'},
@@ -642,7 +643,7 @@ function equipJobSkill(id){const skill=jobSkillById(player.job,id);if(!skill||sk
 
 function meter(value,maxValue,color=''){return `<div class="bar ${color}"><i style="width:${clamp(value/Math.max(1,maxValue)*100,0,100)}%"></i></div>`;}
 function petSprite(pet,size='pet',stage=evolutionStage(pet),rarity=pet.rarity){const src=petArt(pet,stage,rarity);return src?`<img class="art-sprite art-${size} companion-art grade-${rarity}" src="${src}" alt="${escapeHtml(petForm(pet,stage,rarity))} · ${PET_RARITIES.find(r=>r.id===rarity)?.name||'普通'}" loading="lazy">`:spriteHtml(pet.species,size);}
-function spriteHtml(id,size='medium',reborn=player?.reborn,third=false,outfit=null){if(outfit&&['S','SS','SSS'].includes(outfit)&&SECOND_JOBS[id])return `<img class="art-sprite art-${size} rank-outfit" src="assets/rank-outfits/${id}-${outfit}.webp" alt="${THIRD_JOBS[id].name} ${outfit}階外觀">`;const trialArt=/^boss-(151|161|171|181|191)-[1-5]$/.test(id)?`assets/sky-trials/${id}.webp`:[...DAWN_MONSTERS,DAWN_BOSS].find(m=>m.id===id)?.artPath;if(trialArt)return `<img class="art-sprite art-${size} trial-art" src="${trialArt}" alt="${SPECIES[id]?.name||id}">`;if(third&&THIRD_JOBS[id]){const index=Object.keys(SECOND_JOBS).indexOf(id);return `<span class="art-sprite art-${size}" role="img" aria-label="${THIRD_JOBS[id].name} 三轉美術" style="background-image:url('assets/third-jobs-v6.webp');background-size:500% 200%;background-position:${index%5/4*100}% ${Math.floor(index/5)*100}%"></span>`;}if(reborn&&(CLASSES[id]||SECOND_JOBS[id])){const first=['swordsman','acolyte','mage','thief','archer'],index=SECOND_JOBS[id]?5+Object.keys(SECOND_JOBS).indexOf(id):first.indexOf(id);if(index>=0)return `<span class="art-sprite art-${size} reborn-art" role="img" aria-label="轉生${CLASSES[id]?.name||SECOND_JOBS[id].name} 美術" style="background-image:url('assets/reborn-classes-v40.webp');background-size:500% 300%;background-position:${index%5/4*100}% ${Math.floor(index/5)/2*100}%"></span>`;}if(SECOND_JOBS[id]){const i=Object.keys(SECOND_JOBS).indexOf(id);return `<span class="art-sprite art-${size}" role="img" aria-label="${SECOND_JOBS[id].name} 美術" style="background-image:url('assets/second-jobs-v24.png');background-size:500% 200%;background-position:${i%5/4*100}% ${Math.floor(i/5)*100}%"></span>`;}if(id.startsWith('boss_')){const boss=Object.values(MAP_BOSSES).find(b=>b.id===id);if(boss?.artFile)return `<span class="art-sprite art-${size}" role="img" aria-label="${boss.name} 獨立首領美術" style="background-image:url('assets/${boss.artFile}.webp');background-size:500% 100%;background-position:${(boss.artIndex-(boss.artFile==='bosses-frontier'?15:10))/4*100}% 0"></span>`;return boss?`<span class="art-sprite art-${size}" role="img" aria-label="${boss.name} 獨立首領美術" style="background-image:url('assets/independent-bosses-v24.png');background-size:300% 400%;background-position:${boss.artIndex%3/2*100}% ${Math.floor(boss.artIndex/3)/3*100}%"></span>`:'';}if(PET_FAMILIES[id])return petSprite({species:id,evolution:0,rarity:'common'},size);if(id==='archer')return `<span class="art-sprite art-${size}" role="img" aria-label="弓箭手美術" style="background-image:url('assets/archer.png');background-size:contain;background-repeat:no-repeat;background-position:center"></span>`;let file=null,col=0,row=0,cols=4,format='png';
+function spriteHtml(id,size='medium',reborn=player?.reborn,third=false,outfit=null){if(outfit&&['S','SS','SSS'].includes(outfit)&&SECOND_JOBS[id])return `<img class="art-sprite art-${size} rank-outfit" src="${rankOutfitArt(id,outfit)}" alt="${THIRD_JOBS[id].name} ${outfit}階外觀">`;const trialArt=/^boss-(151|161|171|181|191)-[1-5]$/.test(id)?`assets/sky-trials/${id}.webp`:[...DAWN_MONSTERS,DAWN_BOSS].find(m=>m.id===id)?.artPath;if(trialArt)return `<img class="art-sprite art-${size} trial-art" src="${trialArt}" alt="${SPECIES[id]?.name||id}">`;if(third&&THIRD_JOBS[id]){const index=Object.keys(SECOND_JOBS).indexOf(id);return `<span class="art-sprite art-${size}" role="img" aria-label="${THIRD_JOBS[id].name} 三轉美術" style="background-image:url('assets/third-jobs-v6.webp');background-size:500% 200%;background-position:${index%5/4*100}% ${Math.floor(index/5)*100}%"></span>`;}if(reborn&&(CLASSES[id]||SECOND_JOBS[id])){const first=['swordsman','acolyte','mage','thief','archer'],index=SECOND_JOBS[id]?5+Object.keys(SECOND_JOBS).indexOf(id):first.indexOf(id);if(index>=0)return `<span class="art-sprite art-${size} reborn-art" role="img" aria-label="轉生${CLASSES[id]?.name||SECOND_JOBS[id].name} 美術" style="background-image:url('assets/reborn-classes-v40.webp');background-size:500% 300%;background-position:${index%5/4*100}% ${Math.floor(index/5)/2*100}%"></span>`;}if(SECOND_JOBS[id]){const i=Object.keys(SECOND_JOBS).indexOf(id);return `<span class="art-sprite art-${size}" role="img" aria-label="${SECOND_JOBS[id].name} 美術" style="background-image:url('assets/second-jobs-v24.png');background-size:500% 200%;background-position:${i%5/4*100}% ${Math.floor(i/5)*100}%"></span>`;}if(id.startsWith('boss_')){const boss=Object.values(MAP_BOSSES).find(b=>b.id===id);if(boss?.artFile)return `<span class="art-sprite art-${size}" role="img" aria-label="${boss.name} 獨立首領美術" style="background-image:url('assets/${boss.artFile}.webp');background-size:500% 100%;background-position:${(boss.artIndex-(boss.artFile==='bosses-frontier'?15:10))/4*100}% 0"></span>`;return boss?`<span class="art-sprite art-${size}" role="img" aria-label="${boss.name} 獨立首領美術" style="background-image:url('assets/independent-bosses-v24.png');background-size:300% 400%;background-position:${boss.artIndex%3/2*100}% ${Math.floor(boss.artIndex/3)/3*100}%"></span>`:'';}if(PET_FAMILIES[id])return petSprite({species:id,evolution:0,rarity:'common'},size);if(id==='archer')return `<span class="art-sprite art-${size}" role="img" aria-label="弓箭手美術" style="background-image:url('assets/archer.png');background-size:contain;background-repeat:no-repeat;background-position:center"></span>`;let file=null,col=0,row=0,cols=4,format='png';
  const classes=['swordsman','acolyte','mage','thief'],pets=['fang','wisp','shell','sprout'];
  if(classes.includes(id)){file='characters-pets';col=classes.indexOf(id);}
  else if(pets.includes(id)){file='characters-pets';col=pets.indexOf(id);row=1;}
@@ -933,7 +934,7 @@ async function settleOffline(){
  let worker;
  try{
   const result=await new Promise((resolve,reject)=>{
-   worker=new Worker(new URL('offline-worker.js?v=6.3.2',document.baseURI),{type:'module'});
+   worker=new Worker(new URL('offline-worker.js?v=6.5.0',document.baseURI),{type:'module'});
    worker.onmessage=event=>{if(event.data.type==='progress')$('offlineProgressText').textContent=`正在補算離線掛機… ${Math.floor(event.data.value*100)}%`;else if(event.data.type==='result')resolve(event.data.result);else reject(Error(event.data.message||'離線結算失敗'));};
    worker.onerror=()=>reject(Error('離線結算載入失敗，請重新整理再試'));
    worker.postMessage({player:structuredClone(player),now});
@@ -1057,7 +1058,7 @@ function bindWarehouseControls(){
  for(const b of $('side').querySelectorAll('[data-warehouse-export]'))b.onclick=()=>{try{const blob=new Blob([JSON.stringify(exportWarehouse(localStorage),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='spirit-pact-warehouse.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}catch(error){toast(error.message);}};
  for(const input of $('side').querySelectorAll('[data-warehouse-import]'))input.onchange=async()=>{const file=input.files[0];if(!file||warehouseBusy)return;warehouseBusy=true;try{if(file.size>4*1024*1024)throw Error('倉庫備份超過4MB');const data=JSON.parse(await file.text()),session=player,index=activeSlot;const result=await withWarehouseLock(navigator.locks,()=>{if(player!==session||activeSlot!==index||!isTown(player.location)||!player.hp||player.trialRun)throw Error('請在村莊重新操作倉庫');return importWarehouse(localStorage,data);});applyWarehouseCustody(localStorage,index,player);save();toast(`已匯入${result.imported}件，略過${result.skipped}件已存在或已轉交裝備`);}catch(error){toast(error.message);}finally{warehouseBusy=false;if(player)renderSide(true);}};
 }
-function renderOutfits(){return `<section class="item"><h3>角色外觀 · 全身星鑄解鎖</h3><p>全身至少S／SS／SSS階各解鎖一套。較高階可滿足較低階條件，解鎖永久保留；換裝不會失去已解鎖外觀。外觀不影響能力。</p><p>目前全身最低階：${fullSetRank(player,GEAR_BASE)||'未集齊'}${player.dawnUnlocked?' · 已開放曙界新陸':''}</p><button data-outfit="default">使用原職業外觀</button></section>${SECOND_JOBS[player.job]?['S','SS','SSS'].map(rank=>{const unlocked=player.outfitUnlocks?.includes(rank);return `<div class="item outfit-card">${unlocked?`<img src="assets/rank-outfits/${player.job}-${rank}.webp" alt="${THIRD_JOBS[player.job].name} ${rank}階外觀">`:'<div class="unknown-form">?</div>'}<b>${THIRD_JOBS[player.job].name} · ${rank}階外觀</b><button data-outfit="${rank}" ${unlocked?'':'disabled'}>${unlocked?(player.selectedOutfit===rank?'使用中':'選用外觀'):`全身至少${rank}階解鎖`}</button></div>`;}).join(''):'<div class="item">完成二轉後可使用對應職業外觀。</div>'}`;}
+function renderOutfits(){return `<section class="item"><h3>角色外觀 · 全身星鑄解鎖</h3><p>全身至少S／SS／SSS階各解鎖一套。較高階可滿足較低階條件，解鎖永久保留；換裝不會失去已解鎖外觀。外觀不影響能力。</p><p>目前全身最低階：${fullSetRank(player,GEAR_BASE)||'未集齊'}${player.dawnUnlocked?' · 已開放曙界新陸':''}</p><button data-outfit="default">使用原職業外觀</button></section>${SECOND_JOBS[player.job]?['S','SS','SSS'].map(rank=>{const unlocked=player.outfitUnlocks?.includes(rank);return `<div class="item outfit-card">${unlocked?`<img src="${rankOutfitArt(player.job,rank)}" alt="${THIRD_JOBS[player.job].name} ${rank}階外觀">`:'<div class="unknown-form">?</div>'}<b>${rankOutfitName(player.job,rank)} · ${rank}階</b><small>${THIRD_JOBS[player.job].name} · ${RANK_OUTFITS[player.job].motif}</small><button data-outfit="${rank}" ${unlocked?'':'disabled'}>${unlocked?(player.selectedOutfit===rank?'使用中':'選用外觀'):`全身至少${rank}階解鎖`}</button></div>`;}).join(''):'<div class="item">完成二轉後可使用對應職業外觀。</div>'}`;}
 function bindTrialControls(){bindWarehouseControls();for(const b of $('side').querySelectorAll('[data-continuous-trial]'))b.onclick=()=>startTrial(b.dataset.continuousTrial,true);for(const b of $('side').querySelectorAll('[data-enter-trial]'))b.onclick=()=>startTrial(b.dataset.enterTrial);for(const b of document.querySelectorAll('[data-trial-exit]'))b.onclick=()=>{if(confirm('確定離開試煉？不退還入場券，已取得的結晶保留。'))exitTrial('主動離場');};for(const b of $('side').querySelectorAll('[data-enhance-slot]'))b.onclick=()=>doEnhance(b.dataset.enhanceSlot);for(const b of $('side').querySelectorAll('[data-enhance-pet]'))b.onclick=()=>doPetEnhance(b.dataset.enhancePet);for(const b of $('side').querySelectorAll('[data-reselect-fusion]'))b.onclick=()=>doLegacyFusionReselect(b.dataset.reselectFusion);for(const b of $('side').querySelectorAll('[data-upgrade-sigil]'))b.onclick=()=>doUpgradeSigil();for(const b of $('side').querySelectorAll('[data-outfit]'))b.onclick=()=>{const r=b.dataset.outfit;if(r!=='default'&&!player.outfitUnlocks?.includes(r))return;player.selectedOutfit=r==='default'?null:r;save();render();renderSide(true);};}
 
 init();

@@ -1,4 +1,4 @@
-import {frontierDifficulty} from './frontier-difficulty.js';
+import {frontierDifficulty} from './frontier-difficulty.js?v=6.5.0';
 export const GEAR_TIERS=Object.freeze([{min:1,max:20},{min:21,max:35},{min:36,max:50},{min:51,max:70},{min:71,max:90},{min:91,max:110},{min:111,max:130},{min:131,max:150},{min:151,max:170},{min:171,max:190},{min:191,max:200}].map((range,i)=>Object.freeze({...range,tier:i+1,code:['I','II','III','IV','V','VI','VII','VIII','IX','X','XI'][i],name:['晨曦','征途','星輝','天啟','聖域','創世','蒼穹','永恆','星瀾','聖誓','界源'][i],power:2**i})));
 export const gearTierForLevel=level=>{const value=Math.min(200,Math.max(1,Math.floor(Number(level)||1)));return GEAR_TIERS.find(t=>value<=t.max).tier;};
 export const gearTierRange=tier=>GEAR_TIERS[Math.min(11,Math.max(1,Math.floor(Number(tier)||1)))-1];

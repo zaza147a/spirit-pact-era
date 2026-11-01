@@ -1,4 +1,4 @@
-import {FUSION_SKILLS,fusionSkills,petSkillLimit} from './pet-fusion.js';
+import {FUSION_SKILLS,fusionSkills,petSkillLimit} from './pet-fusion.js?v=6.5.0';
 // Each role offers six independent skills; each pet equips two auto-cast skills.
 const make=(id,name,kind,cooldown,unlock,power,description)=>({id,name,kind,cooldown,unlock,power,description});
 export const PET_SKILLS={

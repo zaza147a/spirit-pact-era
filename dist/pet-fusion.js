@@ -1,4 +1,4 @@
-import {trueFormName,trueFormArt} from './pet-true-form.js';
+import {trueFormName,trueFormArt} from './pet-true-form.js?v=6.5.0';
 const roles=['attack','magic','defense','support'];
 export const BASE_PET_ROLES={fang:'attack',wisp:'magic',shell:'defense',sprout:'support'};
 export const fusionKey=(a,b)=>a!==b&&roles.includes(a)&&roles.includes(b)?[a,b].join('-'):null;

@@ -1,5 +1,5 @@
-import {GEAR_BASE,PET_GEAR_BASE} from './loot.js';
-import {isTown} from './adventure-progression.js';
+import {GEAR_BASE,PET_GEAR_BASE} from './loot.js?v=6.5.0';
+import {isTown} from './adventure-progression.js?v=6.5.0';
 export const WAREHOUSE_KEY='icarus-shared-equipment-warehouse-v1';
 export const WAREHOUSE_ACK_PREFIX='icarus-warehouse-delivered-v1:';
 export const WAREHOUSE_LOCK='icarus-shared-equipment-warehouse';

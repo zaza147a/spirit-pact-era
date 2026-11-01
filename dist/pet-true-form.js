@@ -1,5 +1,5 @@
 // Appearance-only secret. Never unlock during normalization or offline simulation.
-import {humanoidStage,humanoidFormName} from './pet-humanoid-evolution.js';
+import {humanoidStage,humanoidFormName} from './pet-humanoid-evolution.js?v=6.5.0';
 export const TRUE_FORMS={
  'attack-magic':'星焰真契者','attack-defense':'鎮界龍衛','attack-support':'聖瑞麟劍士','magic-attack':'赤曜星羽姬',
  'magic-defense':'星岩晶詠者','magic-support':'聖光羽靈姬','defense-attack':'赤曜鎧聖','defense-magic':'星曜符衛',

@@ -27,7 +27,7 @@
     "seed": 42,
     "report": "docs/dawn-progression-audit.json"
   },
-  "releaseStatus": "blocked-physical-mobile-Safari-acceptance-and-no-release-authorized",
+  "releaseStatus": "candidate-pending-shared-warehouse-and-30-outfit-refresh",
   "browserE2E": "passed-Chromium-and-WebKit-desktop1440-mobile390-emulation",
   "mainModified": false,
   "published": false,
@@ -141,5 +141,14 @@
     ],
     "packagedQASavesPerEngine": 5,
     "physicalDevicePassed": false
+  },
+  "physicalDeviceAcceptance": {
+    "status": "waived-by-user-for-this-release",
+    "includes": [
+      "physical mobile",
+      "Safari",
+      "native keyboard"
+    ],
+    "notClaimedPassed": true
   }
 }

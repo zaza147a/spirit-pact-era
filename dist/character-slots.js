@@ -1,5 +1,5 @@
-import {applyWarehouseCustody,acknowledgeWarehouseDeliveries} from './shared-warehouse.js';
-import {applyReselectLedger,recordReselectLedger} from './reselect-ledger.js';
+import {applyWarehouseCustody,acknowledgeWarehouseDeliveries} from './shared-warehouse.js?v=6.5.0';
+import {applyReselectLedger,recordReselectLedger} from './reselect-ledger.js?v=6.5.0';
 export const CHARACTER_SLOT_COUNT=4;
 export const SLOT_MIGRATION_KEY='icarus-character-slots-migrated-v1';
 export function characterSlotKey(index){if(!Number.isInteger(index)||index<0||index>=CHARACTER_SLOT_COUNT)throw Error('無效的存檔格');return `icarus-character-slot-${index+1}`;}

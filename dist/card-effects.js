@@ -1,4 +1,4 @@
-import {GEAR_TIERS,gearTierForLevel} from './progression.js';
+import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=6.5.0';
 export const CARD_THEMES={starter:'精準啟程',forest:'疾風連擊',desert:'破甲獵殺',frost:'寒霜堅守',astral:'秘法儲能',volcano:'燼火爆發',abyss:'潮汐續航',ruins:'機巧貫穿',eclipse:'月影奇襲',celestial:'星宮協調',skyport:'蒼港風行',gearfell:'千輪重擊',aether:'以太共振',stormforge:'雷霆迅擊',zenith:'天極決斷',starshore:'星瀾追獵',oathwood:'古誓共生',nightclock:'永夜時序',sungrave:'曜龍決意',worldroot:'界源調律'};
 export const CARD_SLOT_ORDER=['headUpper','headMiddle','headLower','armor','rightHand','leftHand','garment','shoes','accessory1','accessory2'];
 const offensive=[

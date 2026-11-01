@@ -1,6 +1,6 @@
 # Work 最新驗收入口
 
-範圍：`feature/humanoid-pet-evolution`。main未修改、未合併、未正式發布。
+範圍：`feature/humanoid-pet-evolution`。main未修改、未合併、未正式發布。新增共用倉庫與職業時裝重製正在準備V6.5.0候選版本。
 
 | 項目 | 最新證據與判定 |
 |---|---|
@@ -12,9 +12,15 @@
 | 正常進度 | `dawn-progression-audit.json`全120舊基線，加上受影響路線的`dawn-original-lifecycle-progression.json`七條及`dawn-original-monk-qi-progression.json`修羅補驗。不是直接注入契印冒充刷素材。 |
 | 瀏覽器 | `browser-qa/*-lifecycle-acceptance.json`：Chromium／WebKit各72顯示檢查，實際存讀、升階、離線、連戰失敗停機。 |
 | 本次補手機觸控 | 兩引擎×四個窄幅／橫向視窗全部通過，各11次觸控手勢；見`mobile-touch-acceptance-2026-11-01.md`及`browser-qa/touch-*-acceptance.json`。 |
-| 實體手機／Safari | **待驗**。依`mobile-device-acceptance.md`操作；QA存檔可由腳本生成，成功CI artifact已附帶四個基本檔及一個連戰失敗檔。沒有實機證據不能代填。 |
-| 發布判定 | 候選分支；仍待上述實機驗收及使用者批准，禁止自行修改main或正式發布。 |
+| 實體手機／Safari | **依使用者最新指示跳過，不列本批發布阻擋**；不是已通過。操作包保留供未來需要時使用。 |
+| 發布判定 | 新增倉庫、30張職業時裝與最終回歸完成後準備發布候選；正式發布前仍依既有指示保留main合併／發布確認。 |
 
 完整本批報告：`original-lifecycle-acceptance-2026-11-01.md`。
 
 `unreleased-recovery-checklist.md`、`conversation-recovery-matrix.md`保留早期復原過程。其歷史未勾選或當時數字，不覆蓋本頁有明確證據的最新狀態。任意種子／配點／裝備並非窮舉保證；6／24小時高階壓力模擬不列阻斷。
+
+## V6.5.0新增批次
+
+- 星橋保管員・米菈：各村莊／主城四格共用裝備倉庫，Node專項與雙瀏覽器操作已通過，最終整包仍需重跑。
+- 10職業×S／SS／SSS共30張時裝重製：採S基礎、SS結構進階、SSS終階輪廓，生成與整包美術驗收中；未滿30張不標完成。
+- 實體手機、Safari、原生鍵盤：已由使用者明確豁免本批驗收。

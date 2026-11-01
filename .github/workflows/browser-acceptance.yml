@@ -32,6 +32,10 @@ jobs:
         env:
           BROWSER_ENGINE: ${{ matrix.engine }}
         run: node scripts/browser/warehouse-acceptance.mjs
+      - name: Test every refreshed class outfit and saved cosmetic selection
+        env:
+          BROWSER_ENGINE: ${{ matrix.engine }}
+        run: node scripts/browser/outfit-acceptance.mjs
       - name: Test actual feature app without deploying
         env:
           BROWSER_ENGINE: ${{ matrix.engine }}

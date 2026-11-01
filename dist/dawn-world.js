@@ -1,4 +1,4 @@
-import {normalMonsterStats} from './progression.js';
+import {normalMonsterStats} from './progression.js?v=6.5.0';
 const base=normalMonsterStats(200);
 export const DAWN_ZONE={id:'dawnrift',name:'黎明斷層',min:201,max:210,icon:'🌅',continent:'dawn',names:['晨晶巡狩獸','曙岩角羊','流光翼魟']};
 export const DAWN_MONSTERS=DAWN_ZONE.names.map((name,i)=>({id:['dawn-scout','dawn-ram','dawn-ray'][i],name,level:201+i*4,map:'dawnrift',icon:'🌅',role:'attack',roleName:'曙界生物',hp:Math.round(base.hp*(8+i*.8)),atk:Math.round(base.atk*(14+i*.8)),def:Math.round(base.def*(2+i*.2)),xp:Math.round(base.xp*(1.05+i*.05)),gold:150,drops:[],dawn:true,junkId:['dawn_scout_fang','dawn_ram_horn','dawn_ray_membrane'][i],artPath:`assets/sky-trials/${['dawn-scout','dawn-ram','dawn-ray'][i]}.webp`}));
