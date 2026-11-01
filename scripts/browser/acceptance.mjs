@@ -67,7 +67,9 @@ try{
     await page.locator('#saveBtn').tap();
     const state=await page.evaluate(()=>({touches:{...qaTouches},maxTouchPoints:navigator.maxTouchPoints,innerWidth,scrollWidth:document.documentElement.scrollWidth}));
     touchRows.push({...viewport,...state});console.log('Touch probe '+JSON.stringify({...viewport,...state}));
-    assert.ok(state.maxTouchPoints>0&&state.touches.start>=7&&state.touches.end>=7,'tap must generate actual touch events: '+JSON.stringify(state));
+    // Headless device metadata may report maxTouchPoints=0 despite real touch dispatch.
+    // Require the nine actual tap gestures in all three event streams instead.
+    assert.ok(state.touches.start>=9&&state.touches.end>=9&&state.touches.pointer>=9,'tap must generate actual touch events: '+JSON.stringify(state));
     assert.ok(state.scrollWidth<=state.innerWidth+1,'touch layout exceeds viewport');
     await page.screenshot({path:resolve(out,`touch-${viewport.width}x${viewport.height}.png`)});
     await page.locator('#returnEntryBtn').tap();
