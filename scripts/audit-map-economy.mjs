@@ -30,5 +30,5 @@ const summary=levels.map(level=>{const a=rows.filter(x=>x.level===level),avg=k=>
   coverage:avg('junkGold')/Math.max(1,avg('consumedPotionValue')),
   belowBreakEven:a.filter(r=>r.junkCoverage<1).length,revives:a.reduce((s,r)=>s+r.revives,0)};});
 const output={conditions:'60 seconds real offline runtime, two seeds, ten jobs, reference or previous-stage 80% gear; large potions auto-buy/sell selected junk. Report covers junk versus potion replacement only, not gear/cards or all income.',summary,rows};
-writeFileSync('docs/map-economy-audit.json',JSON.stringify(output,null,2)+'\n');
+writeFileSync(process.argv.includes('--batch-recheck')?'docs/map-economy-batch-recheck.json':'docs/map-economy-audit.json',JSON.stringify(output,null,2)+'\n');
 console.log(JSON.stringify(summary,null,2));
