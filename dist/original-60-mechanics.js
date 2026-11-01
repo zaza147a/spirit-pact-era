@@ -15,7 +15,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "盾碎後龍槍破甲"
   },
   "knight/attack-support": {
-    "event": "skill",
+    "event": "thirdHit_knight",
     "payload": "haste",
     "threshold": 1,
     "description": "血線穩定時連續追擊"
