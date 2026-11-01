@@ -16,7 +16,8 @@ for(const [level,gearLevel] of selectedTiers)for(const seed of [42,137,731])for(
    fusionPair:level>=151?pair:undefined,
    gearStrength:level>=151?.9:.8,allocationStrength:level>=151?.9:.8,
    cardStrength:level>=151?.9:.8,enhancement:level>=201?'SSS':null,
-   petEnhancement:level>=201?'SSS':null,dawnSigil:0}});
+   petEnhancement:level>=201?'SSS':null,dawnSigil:0,
+   trackBuffCoverage:process.argv.includes('--201-only')}});
 
 const rows=Array(cases.length),workers=Array.from({length:6},()=>new Worker(new URL('./balance-worker-v508.mjs',import.meta.url)));
 await new Promise((resolve,reject)=>{let next=0,done=0,failed=false;
@@ -32,7 +33,8 @@ await new Promise((resolve,reject)=>{let next=0,done=0,failed=false;
    playerTaken:r.metrics.playerTaken||0,petTaken:r.metrics.petTaken||0,
    petProtection:r.metrics.petProtection||0,shieldPrevented:r.metrics.shieldPrevented||0,
    effectiveHeal:r.metrics.effectiveHeal||0,playerHeal:r.metrics.playerHeal||0,
-   buffDamage:r.metrics.buffDamage||0,playerBuffDamage:r.metrics.playerBuffDamage||0};
+   buffDamage:r.metrics.buffDamage||0,playerBuffDamage:r.metrics.playerBuffDamage||0,
+   blessingUptime:r.buffCoverage?.blessing??null,teamWardUptime:r.buffCoverage?.teamWard??null};
   if(++done===cases.length)resolve();else send(w);
  });send(w);}
 });

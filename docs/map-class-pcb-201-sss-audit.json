@@ -167,7 +167,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1172340581,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -187,7 +189,9 @@
       "effectiveHeal": 602937,
       "playerHeal": 0,
       "buffDamage": 1279530721,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -207,7 +211,9 @@
       "effectiveHeal": 1763538,
       "playerHeal": 0,
       "buffDamage": 1417165232,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -227,7 +233,9 @@
       "effectiveHeal": 50205,
       "playerHeal": 0,
       "buffDamage": 1318622622,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -247,7 +255,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1387233723,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -267,7 +277,9 @@
       "effectiveHeal": 404804,
       "playerHeal": 0,
       "buffDamage": 1417994707,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9068333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -287,7 +299,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1198571692,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -307,7 +321,9 @@
       "effectiveHeal": 359756,
       "playerHeal": 0,
       "buffDamage": 1357884419,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -327,7 +343,9 @@
       "effectiveHeal": 638566,
       "playerHeal": 0,
       "buffDamage": 1269922826,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -347,7 +365,9 @@
       "effectiveHeal": 377910,
       "playerHeal": 0,
       "buffDamage": 1323624998,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -367,7 +387,9 @@
       "effectiveHeal": 675006,
       "playerHeal": 0,
       "buffDamage": 1319268607,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -387,7 +409,9 @@
       "effectiveHeal": 343550,
       "playerHeal": 0,
       "buffDamage": 1464524068,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9128333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -407,7 +431,9 @@
       "effectiveHeal": 0,
       "playerHeal": 704956,
       "buffDamage": 1266261478,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -427,7 +453,9 @@
       "effectiveHeal": 521932,
       "playerHeal": 0,
       "buffDamage": 1241533165,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -447,7 +475,9 @@
       "effectiveHeal": 1659191,
       "playerHeal": 0,
       "buffDamage": 1498240106,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -467,7 +497,9 @@
       "effectiveHeal": 619310,
       "playerHeal": 0,
       "buffDamage": 1249149819,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -487,7 +519,9 @@
       "effectiveHeal": 0,
       "playerHeal": 790787,
       "buffDamage": 1405480703,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -507,7 +541,9 @@
       "effectiveHeal": 408269,
       "playerHeal": 0,
       "buffDamage": 1343486963,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9078333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -527,7 +563,9 @@
       "effectiveHeal": 0,
       "playerHeal": 688658,
       "buffDamage": 1315082307,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -547,7 +585,9 @@
       "effectiveHeal": 360256,
       "playerHeal": 0,
       "buffDamage": 1268406748,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -567,7 +607,9 @@
       "effectiveHeal": 969589,
       "playerHeal": 0,
       "buffDamage": 1473959968,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -587,7 +629,9 @@
       "effectiveHeal": 394729,
       "playerHeal": 0,
       "buffDamage": 1246738267,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -607,7 +651,9 @@
       "effectiveHeal": 937553,
       "playerHeal": 0,
       "buffDamage": 1491344490,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -627,7 +673,9 @@
       "effectiveHeal": 393112,
       "playerHeal": 0,
       "buffDamage": 1401372391,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9128333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -647,7 +695,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1305308337,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -667,7 +717,9 @@
       "effectiveHeal": 569058,
       "playerHeal": 0,
       "buffDamage": 1263460223,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -687,7 +739,9 @@
       "effectiveHeal": 2388607,
       "playerHeal": 0,
       "buffDamage": 1552069322,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -707,7 +761,9 @@
       "effectiveHeal": 312835,
       "playerHeal": 0,
       "buffDamage": 1302072500,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -727,7 +783,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1531649514,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -747,7 +805,9 @@
       "effectiveHeal": 438298,
       "playerHeal": 0,
       "buffDamage": 1355765652,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9116666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -767,7 +827,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1330382509,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -787,7 +849,9 @@
       "effectiveHeal": 325771,
       "playerHeal": 0,
       "buffDamage": 1313312196,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -807,7 +871,9 @@
       "effectiveHeal": 1911070,
       "playerHeal": 0,
       "buffDamage": 1489660786,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -827,7 +893,9 @@
       "effectiveHeal": 383459,
       "playerHeal": 0,
       "buffDamage": 1269292081,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -847,7 +915,9 @@
       "effectiveHeal": 1807869,
       "playerHeal": 0,
       "buffDamage": 1504776486,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -867,7 +937,9 @@
       "effectiveHeal": 536491,
       "playerHeal": 0,
       "buffDamage": 1415347919,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9103333333333333,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -887,7 +959,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1676190374,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -907,7 +981,9 @@
       "effectiveHeal": 522897,
       "playerHeal": 0,
       "buffDamage": 1324343717,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -927,7 +1003,9 @@
       "effectiveHeal": 1963523,
       "playerHeal": 0,
       "buffDamage": 1457218752,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -947,7 +1025,9 @@
       "effectiveHeal": 455496,
       "playerHeal": 0,
       "buffDamage": 1223707681,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -967,7 +1047,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1948597545,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -987,7 +1069,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1349706534,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1007,7 +1091,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1744593707,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1027,7 +1113,9 @@
       "effectiveHeal": 304303,
       "playerHeal": 0,
       "buffDamage": 1415310934,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1047,7 +1135,9 @@
       "effectiveHeal": 1203151,
       "playerHeal": 0,
       "buffDamage": 1494360244,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1067,7 +1157,9 @@
       "effectiveHeal": 408750,
       "playerHeal": 0,
       "buffDamage": 1267625552,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1087,7 +1179,9 @@
       "effectiveHeal": 1239892,
       "playerHeal": 0,
       "buffDamage": 1978578788,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1107,7 +1201,9 @@
       "effectiveHeal": 472833,
       "playerHeal": 0,
       "buffDamage": 1404974156,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.912,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1127,7 +1223,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1093389925,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1147,7 +1245,9 @@
       "effectiveHeal": 472590,
       "playerHeal": 0,
       "buffDamage": 1182806310,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1167,7 +1267,9 @@
       "effectiveHeal": 1627630,
       "playerHeal": 0,
       "buffDamage": 1351034001,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1187,7 +1289,9 @@
       "effectiveHeal": 534647,
       "playerHeal": 0,
       "buffDamage": 1227783625,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1207,7 +1311,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1277785645,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1227,7 +1333,9 @@
       "effectiveHeal": 329792,
       "playerHeal": 0,
       "buffDamage": 1310331080,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9061666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1247,7 +1355,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1216365983,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1267,7 +1377,9 @@
       "effectiveHeal": 392927,
       "playerHeal": 0,
       "buffDamage": 1286982097,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1287,7 +1399,9 @@
       "effectiveHeal": 670548,
       "playerHeal": 0,
       "buffDamage": 1269947821,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1307,7 +1421,9 @@
       "effectiveHeal": 336519,
       "playerHeal": 0,
       "buffDamage": 1293543783,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1327,7 +1443,9 @@
       "effectiveHeal": 614363,
       "playerHeal": 0,
       "buffDamage": 1344145991,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1347,7 +1465,9 @@
       "effectiveHeal": 388928,
       "playerHeal": 0,
       "buffDamage": 1434620533,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9108333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1367,7 +1487,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1186251888,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1387,7 +1509,9 @@
       "effectiveHeal": 598809,
       "playerHeal": 0,
       "buffDamage": 1349888433,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1407,7 +1531,9 @@
       "effectiveHeal": 1562739,
       "playerHeal": 0,
       "buffDamage": 1431007099,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1427,7 +1553,9 @@
       "effectiveHeal": 614768,
       "playerHeal": 0,
       "buffDamage": 1322208337,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1447,7 +1575,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1367968939,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1467,7 +1597,9 @@
       "effectiveHeal": 400353,
       "playerHeal": 0,
       "buffDamage": 1447289578,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9156666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1487,7 +1619,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1252867662,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1507,7 +1641,9 @@
       "effectiveHeal": 378111,
       "playerHeal": 0,
       "buffDamage": 1350139882,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1527,7 +1663,9 @@
       "effectiveHeal": 780902,
       "playerHeal": 0,
       "buffDamage": 1256874945,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1547,7 +1685,9 @@
       "effectiveHeal": 423374,
       "playerHeal": 0,
       "buffDamage": 1342490224,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1567,7 +1707,9 @@
       "effectiveHeal": 622016,
       "playerHeal": 0,
       "buffDamage": 1350385054,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1587,7 +1729,9 @@
       "effectiveHeal": 385632,
       "playerHeal": 0,
       "buffDamage": 1446118098,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9113333333333333,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1607,7 +1751,9 @@
       "effectiveHeal": 0,
       "playerHeal": 1880217,
       "buffDamage": 1308691129,
-      "playerBuffDamage": 1582449900
+      "playerBuffDamage": 1582449900,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1627,7 +1773,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1404041583,
-      "playerBuffDamage": 970283920
+      "playerBuffDamage": 970283920,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1647,7 +1795,9 @@
       "effectiveHeal": 2832765,
       "playerHeal": 0,
       "buffDamage": 1597370641,
-      "playerBuffDamage": 663974432
+      "playerBuffDamage": 663974432,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1667,7 +1817,9 @@
       "effectiveHeal": 704510,
       "playerHeal": 0,
       "buffDamage": 1406791788,
-      "playerBuffDamage": 1312334284
+      "playerBuffDamage": 1312334284,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1687,7 +1839,9 @@
       "effectiveHeal": 0,
       "playerHeal": 1879549,
       "buffDamage": 1509122251,
-      "playerBuffDamage": 1287444322
+      "playerBuffDamage": 1287444322,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1707,7 +1861,9 @@
       "effectiveHeal": 4033,
       "playerHeal": 0,
       "buffDamage": 1543110415,
-      "playerBuffDamage": 467497122
+      "playerBuffDamage": 467497122,
+      "blessingUptime": 0.9131666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1727,7 +1883,9 @@
       "effectiveHeal": 374883,
       "playerHeal": 1669294,
       "buffDamage": 1485928843,
-      "playerBuffDamage": 1485418130
+      "playerBuffDamage": 1485418130,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1747,7 +1905,9 @@
       "effectiveHeal": 581825,
       "playerHeal": 0,
       "buffDamage": 1411602244,
-      "playerBuffDamage": 757831137
+      "playerBuffDamage": 757831137,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1767,7 +1927,9 @@
       "effectiveHeal": 1979739,
       "playerHeal": 0,
       "buffDamage": 1599017496,
-      "playerBuffDamage": 320875253
+      "playerBuffDamage": 320875253,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1787,7 +1949,9 @@
       "effectiveHeal": 545170,
       "playerHeal": 0,
       "buffDamage": 1373003777,
-      "playerBuffDamage": 582318423
+      "playerBuffDamage": 582318423,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1807,7 +1971,9 @@
       "effectiveHeal": 2076949,
       "playerHeal": 0,
       "buffDamage": 1647287715,
-      "playerBuffDamage": 428122596
+      "playerBuffDamage": 428122596,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1827,7 +1993,9 @@
       "effectiveHeal": 501593,
       "playerHeal": 0,
       "buffDamage": 1518961745,
-      "playerBuffDamage": 183626302
+      "playerBuffDamage": 183626302,
+      "blessingUptime": 0.9111666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1847,7 +2015,9 @@
       "effectiveHeal": 0,
       "playerHeal": 569095,
       "buffDamage": 1239315973,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1867,7 +2037,9 @@
       "effectiveHeal": 423547,
       "playerHeal": 102951,
       "buffDamage": 1316267916,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1887,7 +2059,9 @@
       "effectiveHeal": 1600580,
       "playerHeal": 0,
       "buffDamage": 1562221460,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1907,7 +2081,9 @@
       "effectiveHeal": 513824,
       "playerHeal": 101480,
       "buffDamage": 1300211031,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1927,7 +2103,9 @@
       "effectiveHeal": 0,
       "playerHeal": 586238,
       "buffDamage": 1454498343,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1947,7 +2125,9 @@
       "effectiveHeal": 461550,
       "playerHeal": 0,
       "buffDamage": 1445604440,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.907,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1967,7 +2147,9 @@
       "effectiveHeal": 0,
       "playerHeal": 594311,
       "buffDamage": 1293968302,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -1987,7 +2169,9 @@
       "effectiveHeal": 283655,
       "playerHeal": 68902,
       "buffDamage": 1331716261,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2007,7 +2191,9 @@
       "effectiveHeal": 1340907,
       "playerHeal": 0,
       "buffDamage": 1549345868,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2027,7 +2213,9 @@
       "effectiveHeal": 318125,
       "playerHeal": 34751,
       "buffDamage": 1329519473,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2047,7 +2235,9 @@
       "effectiveHeal": 1443884,
       "playerHeal": 0,
       "buffDamage": 1581154145,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2067,7 +2257,9 @@
       "effectiveHeal": 521416,
       "playerHeal": 0,
       "buffDamage": 1464636454,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9128333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2087,7 +2279,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 998044863,
-      "playerBuffDamage": 1365025333
+      "playerBuffDamage": 1365025333,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2107,7 +2301,9 @@
       "effectiveHeal": 761033,
       "playerHeal": 0,
       "buffDamage": 1041701498,
-      "playerBuffDamage": 901584606
+      "playerBuffDamage": 901584606,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2127,7 +2323,9 @@
       "effectiveHeal": 2352751,
       "playerHeal": 0,
       "buffDamage": 1156340793,
-      "playerBuffDamage": 614183051
+      "playerBuffDamage": 614183051,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2147,7 +2345,9 @@
       "effectiveHeal": 771690,
       "playerHeal": 0,
       "buffDamage": 1087016231,
-      "playerBuffDamage": 1173566156
+      "playerBuffDamage": 1173566156,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2167,7 +2367,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1108202802,
-      "playerBuffDamage": 1062499451
+      "playerBuffDamage": 1062499451,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2187,7 +2389,9 @@
       "effectiveHeal": 4677,
       "playerHeal": 0,
       "buffDamage": 1126312253,
-      "playerBuffDamage": 415770222
+      "playerBuffDamage": 415770222,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2207,7 +2411,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 3257755030,
-      "playerBuffDamage": 1329555433
+      "playerBuffDamage": 1329555433,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2227,7 +2433,9 @@
       "effectiveHeal": 401887,
       "playerHeal": 0,
       "buffDamage": 3759753411,
-      "playerBuffDamage": 705941152
+      "playerBuffDamage": 705941152,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2247,7 +2455,9 @@
       "effectiveHeal": 1415569,
       "playerHeal": 0,
       "buffDamage": 3256057740,
-      "playerBuffDamage": 280421956
+      "playerBuffDamage": 280421956,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2267,7 +2477,9 @@
       "effectiveHeal": 513217,
       "playerHeal": 0,
       "buffDamage": 3716937359,
-      "playerBuffDamage": 533654530
+      "playerBuffDamage": 533654530,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2287,7 +2499,9 @@
       "effectiveHeal": 1625545,
       "playerHeal": 0,
       "buffDamage": 3351321988,
-      "playerBuffDamage": 379903638
+      "playerBuffDamage": 379903638,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2307,7 +2521,9 @@
       "effectiveHeal": 626368,
       "playerHeal": 0,
       "buffDamage": 3812320070,
-      "playerBuffDamage": 178555727
+      "playerBuffDamage": 178555727,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2327,7 +2543,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 980667508,
-      "playerBuffDamage": 3446532066
+      "playerBuffDamage": 3446532066,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2347,7 +2565,9 @@
       "effectiveHeal": 642178,
       "playerHeal": 0,
       "buffDamage": 905096610,
-      "playerBuffDamage": 2141429378
+      "playerBuffDamage": 2141429378,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2367,7 +2587,9 @@
       "effectiveHeal": 2952743,
       "playerHeal": 0,
       "buffDamage": 1111488663,
-      "playerBuffDamage": 1454123287
+      "playerBuffDamage": 1454123287,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2387,7 +2609,9 @@
       "effectiveHeal": 11275,
       "playerHeal": 0,
       "buffDamage": 939681209,
-      "playerBuffDamage": 2775969376
+      "playerBuffDamage": 2775969376,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2407,7 +2631,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1134522376,
-      "playerBuffDamage": 2707605673
+      "playerBuffDamage": 2707605673,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2427,7 +2653,9 @@
       "effectiveHeal": 483970,
       "playerHeal": 0,
       "buffDamage": 998506192,
-      "playerBuffDamage": 997649301
+      "playerBuffDamage": 997649301,
+      "blessingUptime": 0.9106666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2447,7 +2675,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1029066452,
-      "playerBuffDamage": 3311910983
+      "playerBuffDamage": 3311910983,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2467,7 +2697,9 @@
       "effectiveHeal": 561649,
       "playerHeal": 0,
       "buffDamage": 941265048,
-      "playerBuffDamage": 1670382422
+      "playerBuffDamage": 1670382422,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2487,7 +2719,9 @@
       "effectiveHeal": 1936631,
       "playerHeal": 0,
       "buffDamage": 1120560970,
-      "playerBuffDamage": 707566669
+      "playerBuffDamage": 707566669,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2507,7 +2741,9 @@
       "effectiveHeal": 524848,
       "playerHeal": 0,
       "buffDamage": 923019544,
-      "playerBuffDamage": 1281189187
+      "playerBuffDamage": 1281189187,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2527,7 +2763,9 @@
       "effectiveHeal": 2087378,
       "playerHeal": 0,
       "buffDamage": 1148102056,
-      "playerBuffDamage": 944352580
+      "playerBuffDamage": 944352580,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2547,7 +2785,9 @@
       "effectiveHeal": 631550,
       "playerHeal": 0,
       "buffDamage": 1033859721,
-      "playerBuffDamage": 412719041
+      "playerBuffDamage": 412719041,
+      "blessingUptime": 0.9108333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2567,7 +2807,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1190193145,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2587,7 +2829,9 @@
       "effectiveHeal": 396373,
       "playerHeal": 0,
       "buffDamage": 1298501374,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2607,7 +2851,9 @@
       "effectiveHeal": 1150491,
       "playerHeal": 0,
       "buffDamage": 1396421570,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2627,7 +2873,9 @@
       "effectiveHeal": 11549,
       "playerHeal": 0,
       "buffDamage": 1353547034,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2647,7 +2895,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1344980362,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2667,7 +2917,9 @@
       "effectiveHeal": 262773,
       "playerHeal": 0,
       "buffDamage": 1438632574,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.907,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2687,7 +2939,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1262502200,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2707,7 +2961,9 @@
       "effectiveHeal": 316002,
       "playerHeal": 0,
       "buffDamage": 1327882475,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2727,7 +2983,9 @@
       "effectiveHeal": 462388,
       "playerHeal": 0,
       "buffDamage": 1303720223,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2747,7 +3005,9 @@
       "effectiveHeal": 364602,
       "playerHeal": 0,
       "buffDamage": 1303865891,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2767,7 +3027,9 @@
       "effectiveHeal": 598232,
       "playerHeal": 0,
       "buffDamage": 1313918985,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2787,7 +3049,9 @@
       "effectiveHeal": 276070,
       "playerHeal": 0,
       "buffDamage": 1448466924,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9128333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2807,7 +3071,9 @@
       "effectiveHeal": 0,
       "playerHeal": 666195,
       "buffDamage": 1253509190,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2827,7 +3093,9 @@
       "effectiveHeal": 320166,
       "playerHeal": 0,
       "buffDamage": 1249301500,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2847,7 +3115,9 @@
       "effectiveHeal": 1571162,
       "playerHeal": 0,
       "buffDamage": 1494859373,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2867,7 +3137,9 @@
       "effectiveHeal": 521685,
       "playerHeal": 72323,
       "buffDamage": 1241545758,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2887,7 +3159,9 @@
       "effectiveHeal": 0,
       "playerHeal": 850134,
       "buffDamage": 1406845829,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2907,7 +3181,9 @@
       "effectiveHeal": 302175,
       "playerHeal": 0,
       "buffDamage": 1363889342,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9106666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2927,7 +3203,9 @@
       "effectiveHeal": 0,
       "playerHeal": 772402,
       "buffDamage": 1316260989,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2947,7 +3225,9 @@
       "effectiveHeal": 272451,
       "playerHeal": 0,
       "buffDamage": 1265480239,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2967,7 +3247,9 @@
       "effectiveHeal": 556368,
       "playerHeal": 0,
       "buffDamage": 1473505664,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -2987,7 +3269,9 @@
       "effectiveHeal": 265845,
       "playerHeal": 0,
       "buffDamage": 1247929654,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3007,7 +3291,9 @@
       "effectiveHeal": 839607,
       "playerHeal": 0,
       "buffDamage": 1485868491,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3027,7 +3313,9 @@
       "effectiveHeal": 436291,
       "playerHeal": 0,
       "buffDamage": 1381320026,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9113333333333333,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3047,7 +3335,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1298462170,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3067,7 +3357,9 @@
       "effectiveHeal": 643924,
       "playerHeal": 0,
       "buffDamage": 1260530025,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3087,7 +3379,9 @@
       "effectiveHeal": 2231183,
       "playerHeal": 0,
       "buffDamage": 1546289663,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3107,7 +3401,9 @@
       "effectiveHeal": 171778,
       "playerHeal": 0,
       "buffDamage": 1295987199,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3127,7 +3423,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1530581009,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3147,7 +3445,9 @@
       "effectiveHeal": 363031,
       "playerHeal": 0,
       "buffDamage": 1373109686,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9058333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3167,7 +3467,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1350658890,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3187,7 +3489,9 @@
       "effectiveHeal": 428162,
       "playerHeal": 0,
       "buffDamage": 1307659737,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3207,7 +3511,9 @@
       "effectiveHeal": 1571667,
       "playerHeal": 0,
       "buffDamage": 1489710650,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3227,7 +3533,9 @@
       "effectiveHeal": 441429,
       "playerHeal": 0,
       "buffDamage": 1272208444,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3247,7 +3555,9 @@
       "effectiveHeal": 1786310,
       "playerHeal": 0,
       "buffDamage": 1493432066,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3267,7 +3577,9 @@
       "effectiveHeal": 515916,
       "playerHeal": 0,
       "buffDamage": 1397672250,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9113333333333333,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3287,7 +3599,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1692986254,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3307,7 +3621,9 @@
       "effectiveHeal": 388112,
       "playerHeal": 0,
       "buffDamage": 1325186028,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3327,7 +3643,9 @@
       "effectiveHeal": 1684886,
       "playerHeal": 0,
       "buffDamage": 1455748925,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3347,7 +3665,9 @@
       "effectiveHeal": 482552,
       "playerHeal": 0,
       "buffDamage": 1220972390,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3367,7 +3687,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1941032136,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3387,7 +3709,9 @@
       "effectiveHeal": 4933,
       "playerHeal": 0,
       "buffDamage": 1345961342,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3407,7 +3731,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1758987193,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3427,7 +3753,9 @@
       "effectiveHeal": 349604,
       "playerHeal": 0,
       "buffDamage": 1415482281,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3447,7 +3775,9 @@
       "effectiveHeal": 991301,
       "playerHeal": 0,
       "buffDamage": 1492076125,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3467,7 +3797,9 @@
       "effectiveHeal": 262636,
       "playerHeal": 0,
       "buffDamage": 1268727873,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3487,7 +3819,9 @@
       "effectiveHeal": 1124850,
       "playerHeal": 0,
       "buffDamage": 1958834569,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3507,7 +3841,9 @@
       "effectiveHeal": 385542,
       "playerHeal": 0,
       "buffDamage": 1404181541,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3527,7 +3863,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1064567333,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3547,7 +3885,9 @@
       "effectiveHeal": 472787,
       "playerHeal": 0,
       "buffDamage": 1249257046,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3567,7 +3907,9 @@
       "effectiveHeal": 1386541,
       "playerHeal": 0,
       "buffDamage": 1316690373,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3587,7 +3929,9 @@
       "effectiveHeal": 536326,
       "playerHeal": 0,
       "buffDamage": 1212607006,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3607,7 +3951,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1274728786,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3627,7 +3973,9 @@
       "effectiveHeal": 253623,
       "playerHeal": 0,
       "buffDamage": 1321078056,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.907,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3647,7 +3995,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1219865380,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3667,7 +4017,9 @@
       "effectiveHeal": 320377,
       "playerHeal": 0,
       "buffDamage": 1338553433,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3687,7 +4039,9 @@
       "effectiveHeal": 533898,
       "playerHeal": 0,
       "buffDamage": 1267910872,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3707,7 +4061,9 @@
       "effectiveHeal": 290803,
       "playerHeal": 0,
       "buffDamage": 1310960470,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3727,7 +4083,9 @@
       "effectiveHeal": 575060,
       "playerHeal": 0,
       "buffDamage": 1305086132,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3747,7 +4105,9 @@
       "effectiveHeal": 253164,
       "playerHeal": 0,
       "buffDamage": 1413991613,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9088333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3767,7 +4127,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1172538219,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3787,7 +4149,9 @@
       "effectiveHeal": 448506,
       "playerHeal": 0,
       "buffDamage": 1333082167,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3807,7 +4171,9 @@
       "effectiveHeal": 1290727,
       "playerHeal": 0,
       "buffDamage": 1513477595,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3827,7 +4193,9 @@
       "effectiveHeal": 468632,
       "playerHeal": 0,
       "buffDamage": 1329673964,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3847,7 +4215,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1395030742,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3867,7 +4237,9 @@
       "effectiveHeal": 259366,
       "playerHeal": 0,
       "buffDamage": 1422706540,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3887,7 +4259,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1233901606,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3907,7 +4281,9 @@
       "effectiveHeal": 313278,
       "playerHeal": 0,
       "buffDamage": 1309296426,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3927,7 +4303,9 @@
       "effectiveHeal": 492826,
       "playerHeal": 0,
       "buffDamage": 1287824701,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3947,7 +4325,9 @@
       "effectiveHeal": 281535,
       "playerHeal": 0,
       "buffDamage": 1293685920,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3967,7 +4347,9 @@
       "effectiveHeal": 516168,
       "playerHeal": 0,
       "buffDamage": 1344500577,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -3987,7 +4369,9 @@
       "effectiveHeal": 351229,
       "playerHeal": 0,
       "buffDamage": 1424931301,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9128333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4007,7 +4391,9 @@
       "effectiveHeal": 0,
       "playerHeal": 1738174,
       "buffDamage": 1308565237,
-      "playerBuffDamage": 1596939692
+      "playerBuffDamage": 1596939692,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4027,7 +4413,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1397068748,
-      "playerBuffDamage": 1013628244
+      "playerBuffDamage": 1013628244,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4047,7 +4435,9 @@
       "effectiveHeal": 2170217,
       "playerHeal": 0,
       "buffDamage": 1599792627,
-      "playerBuffDamage": 669827068
+      "playerBuffDamage": 669827068,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4067,7 +4457,9 @@
       "effectiveHeal": 503391,
       "playerHeal": 0,
       "buffDamage": 1410056761,
-      "playerBuffDamage": 1279394554
+      "playerBuffDamage": 1279394554,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4087,7 +4479,9 @@
       "effectiveHeal": 0,
       "playerHeal": 1895532,
       "buffDamage": 1544625245,
-      "playerBuffDamage": 1299823374
+      "playerBuffDamage": 1299823374,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4107,7 +4501,9 @@
       "effectiveHeal": 13450,
       "playerHeal": 0,
       "buffDamage": 1532775688,
-      "playerBuffDamage": 461315607
+      "playerBuffDamage": 461315607,
+      "blessingUptime": 0.9121666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4127,7 +4523,9 @@
       "effectiveHeal": 314283,
       "playerHeal": 831246,
       "buffDamage": 1483228328,
-      "playerBuffDamage": 1497869648
+      "playerBuffDamage": 1497869648,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4147,7 +4545,9 @@
       "effectiveHeal": 400007,
       "playerHeal": 0,
       "buffDamage": 1410646625,
-      "playerBuffDamage": 775618215
+      "playerBuffDamage": 775618215,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4167,7 +4567,9 @@
       "effectiveHeal": 1643747,
       "playerHeal": 0,
       "buffDamage": 1602378566,
-      "playerBuffDamage": 324421239
+      "playerBuffDamage": 324421239,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4187,7 +4589,9 @@
       "effectiveHeal": 422822,
       "playerHeal": 0,
       "buffDamage": 1373930336,
-      "playerBuffDamage": 588252153
+      "playerBuffDamage": 588252153,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4207,7 +4611,9 @@
       "effectiveHeal": 1752073,
       "playerHeal": 0,
       "buffDamage": 1645419764,
-      "playerBuffDamage": 437125344
+      "playerBuffDamage": 437125344,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4227,7 +4633,9 @@
       "effectiveHeal": 430808,
       "playerHeal": 0,
       "buffDamage": 1535306031,
-      "playerBuffDamage": 193535882
+      "playerBuffDamage": 193535882,
+      "blessingUptime": 0.913,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4247,7 +4655,9 @@
       "effectiveHeal": 0,
       "playerHeal": 569930,
       "buffDamage": 1244944208,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4267,7 +4677,9 @@
       "effectiveHeal": 399204,
       "playerHeal": 69410,
       "buffDamage": 1321266471,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4287,7 +4699,9 @@
       "effectiveHeal": 1605257,
       "playerHeal": 0,
       "buffDamage": 1559967087,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4307,7 +4721,9 @@
       "effectiveHeal": 457419,
       "playerHeal": 69846,
       "buffDamage": 1306517734,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4327,7 +4743,9 @@
       "effectiveHeal": 0,
       "playerHeal": 640512,
       "buffDamage": 1451926467,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4347,7 +4765,9 @@
       "effectiveHeal": 333253,
       "playerHeal": 0,
       "buffDamage": 1450275552,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9105,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4367,7 +4787,9 @@
       "effectiveHeal": 0,
       "playerHeal": 631628,
       "buffDamage": 1288267497,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4387,7 +4809,9 @@
       "effectiveHeal": 266008,
       "playerHeal": 101674,
       "buffDamage": 1316911570,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4407,7 +4831,9 @@
       "effectiveHeal": 1050483,
       "playerHeal": 0,
       "buffDamage": 1541971608,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4427,7 +4853,9 @@
       "effectiveHeal": 285140,
       "playerHeal": 69533,
       "buffDamage": 1316218070,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4447,7 +4875,9 @@
       "effectiveHeal": 1027028,
       "playerHeal": 0,
       "buffDamage": 1577405447,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4467,7 +4897,9 @@
       "effectiveHeal": 392385,
       "playerHeal": 0,
       "buffDamage": 1457703199,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9103333333333333,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4487,7 +4919,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 962313743,
-      "playerBuffDamage": 1365844101
+      "playerBuffDamage": 1365844101,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4507,7 +4941,9 @@
       "effectiveHeal": 593002,
       "playerHeal": 0,
       "buffDamage": 1039031531,
-      "playerBuffDamage": 916394072
+      "playerBuffDamage": 916394072,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4527,7 +4963,9 @@
       "effectiveHeal": 2025257,
       "playerHeal": 0,
       "buffDamage": 1231048579,
-      "playerBuffDamage": 626658243
+      "playerBuffDamage": 626658243,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4547,7 +4985,9 @@
       "effectiveHeal": 501341,
       "playerHeal": 0,
       "buffDamage": 1049395399,
-      "playerBuffDamage": 1170859254
+      "playerBuffDamage": 1170859254,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4567,7 +5007,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1067537650,
-      "playerBuffDamage": 1056224974
+      "playerBuffDamage": 1056224974,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4587,7 +5029,9 @@
       "effectiveHeal": 15222,
       "playerHeal": 0,
       "buffDamage": 1150040332,
-      "playerBuffDamage": 429172992
+      "playerBuffDamage": 429172992,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4607,7 +5051,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 3242784022,
-      "playerBuffDamage": 1286591468
+      "playerBuffDamage": 1286591468,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4627,7 +5073,9 @@
       "effectiveHeal": 460122,
       "playerHeal": 0,
       "buffDamage": 3770257708,
-      "playerBuffDamage": 704295206
+      "playerBuffDamage": 704295206,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4647,7 +5095,9 @@
       "effectiveHeal": 1183053,
       "playerHeal": 0,
       "buffDamage": 3281098282,
-      "playerBuffDamage": 273388952
+      "playerBuffDamage": 273388952,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4667,7 +5117,9 @@
       "effectiveHeal": 513383,
       "playerHeal": 0,
       "buffDamage": 3720313510,
-      "playerBuffDamage": 538190879
+      "playerBuffDamage": 538190879,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4687,7 +5139,9 @@
       "effectiveHeal": 1245884,
       "playerHeal": 0,
       "buffDamage": 3345273576,
-      "playerBuffDamage": 375312687
+      "playerBuffDamage": 375312687,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4707,7 +5161,9 @@
       "effectiveHeal": 462663,
       "playerHeal": 0,
       "buffDamage": 3833168188,
-      "playerBuffDamage": 172929000
+      "playerBuffDamage": 172929000,
+      "blessingUptime": 0.9121666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4727,7 +5183,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 976212499,
-      "playerBuffDamage": 3524864949
+      "playerBuffDamage": 3524864949,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4747,7 +5205,9 @@
       "effectiveHeal": 606736,
       "playerHeal": 0,
       "buffDamage": 901252419,
-      "playerBuffDamage": 2132866750
+      "playerBuffDamage": 2132866750,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4767,7 +5227,9 @@
       "effectiveHeal": 2716050,
       "playerHeal": 0,
       "buffDamage": 1111397088,
-      "playerBuffDamage": 1438458817
+      "playerBuffDamage": 1438458817,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4787,7 +5249,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 937252403,
-      "playerBuffDamage": 2815901860
+      "playerBuffDamage": 2815901860,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4807,7 +5271,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1134853209,
-      "playerBuffDamage": 2739190314
+      "playerBuffDamage": 2739190314,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4827,7 +5293,9 @@
       "effectiveHeal": 356032,
       "playerHeal": 0,
       "buffDamage": 1006967922,
-      "playerBuffDamage": 996070403
+      "playerBuffDamage": 996070403,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4847,7 +5315,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1026139491,
-      "playerBuffDamage": 3308447943
+      "playerBuffDamage": 3308447943,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4867,7 +5337,9 @@
       "effectiveHeal": 396069,
       "playerHeal": 0,
       "buffDamage": 942749712,
-      "playerBuffDamage": 1682684955
+      "playerBuffDamage": 1682684955,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4887,7 +5359,9 @@
       "effectiveHeal": 1668895,
       "playerHeal": 0,
       "buffDamage": 1120606345,
-      "playerBuffDamage": 711091525
+      "playerBuffDamage": 711091525,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4907,7 +5381,9 @@
       "effectiveHeal": 464535,
       "playerHeal": 0,
       "buffDamage": 920232714,
-      "playerBuffDamage": 1292521527
+      "playerBuffDamage": 1292521527,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4927,7 +5403,9 @@
       "effectiveHeal": 1571356,
       "playerHeal": 0,
       "buffDamage": 1150725216,
-      "playerBuffDamage": 951252210
+      "playerBuffDamage": 951252210,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4947,7 +5425,9 @@
       "effectiveHeal": 495626,
       "playerHeal": 0,
       "buffDamage": 1034800311,
-      "playerBuffDamage": 420447189
+      "playerBuffDamage": 420447189,
+      "blessingUptime": 0.9115,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4967,7 +5447,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1172848595,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -4987,7 +5469,9 @@
       "effectiveHeal": 436411,
       "playerHeal": 0,
       "buffDamage": 1276253713,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5007,7 +5491,9 @@
       "effectiveHeal": 1230907,
       "playerHeal": 0,
       "buffDamage": 1443688174,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5027,7 +5513,9 @@
       "effectiveHeal": 15388,
       "playerHeal": 0,
       "buffDamage": 1417115106,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5047,7 +5535,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1365937858,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5067,7 +5557,9 @@
       "effectiveHeal": 266950,
       "playerHeal": 0,
       "buffDamage": 1440536801,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9126666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5087,7 +5579,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1236551196,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5107,7 +5601,9 @@
       "effectiveHeal": 353934,
       "playerHeal": 0,
       "buffDamage": 1343305981,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5127,7 +5623,9 @@
       "effectiveHeal": 403572,
       "playerHeal": 0,
       "buffDamage": 1302048091,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5147,7 +5645,9 @@
       "effectiveHeal": 367693,
       "playerHeal": 0,
       "buffDamage": 1270374620,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5167,7 +5667,9 @@
       "effectiveHeal": 580934,
       "playerHeal": 0,
       "buffDamage": 1310361048,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5187,7 +5689,9 @@
       "effectiveHeal": 354578,
       "playerHeal": 0,
       "buffDamage": 1416497448,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9115,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5207,7 +5711,9 @@
       "effectiveHeal": 0,
       "playerHeal": 733307,
       "buffDamage": 1244304371,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5227,7 +5733,9 @@
       "effectiveHeal": 532836,
       "playerHeal": 67228,
       "buffDamage": 1242097488,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5247,7 +5755,9 @@
       "effectiveHeal": 1154786,
       "playerHeal": 0,
       "buffDamage": 1493976483,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5267,7 +5777,9 @@
       "effectiveHeal": 484276,
       "playerHeal": 0,
       "buffDamage": 1248227419,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5287,7 +5799,9 @@
       "effectiveHeal": 0,
       "playerHeal": 849197,
       "buffDamage": 1410638842,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5307,7 +5821,9 @@
       "effectiveHeal": 296524,
       "playerHeal": 0,
       "buffDamage": 1359848372,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9088333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5327,7 +5843,9 @@
       "effectiveHeal": 0,
       "playerHeal": 883228,
       "buffDamage": 1286243060,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5347,7 +5865,9 @@
       "effectiveHeal": 241867,
       "playerHeal": 0,
       "buffDamage": 1265731592,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5367,7 +5887,9 @@
       "effectiveHeal": 580033,
       "playerHeal": 0,
       "buffDamage": 1478739152,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5387,7 +5909,9 @@
       "effectiveHeal": 256271,
       "playerHeal": 0,
       "buffDamage": 1247730205,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5407,7 +5931,9 @@
       "effectiveHeal": 650966,
       "playerHeal": 0,
       "buffDamage": 1489347675,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5427,7 +5953,9 @@
       "effectiveHeal": 338999,
       "playerHeal": 0,
       "buffDamage": 1390971699,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.912,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5447,7 +5975,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1282956822,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5467,7 +5997,9 @@
       "effectiveHeal": 701321,
       "playerHeal": 0,
       "buffDamage": 1265023128,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5487,7 +6019,9 @@
       "effectiveHeal": 2854668,
       "playerHeal": 0,
       "buffDamage": 1567236387,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5507,7 +6041,9 @@
       "effectiveHeal": 75234,
       "playerHeal": 0,
       "buffDamage": 1300618670,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5527,7 +6063,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1511320873,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5547,7 +6085,9 @@
       "effectiveHeal": 413312,
       "playerHeal": 0,
       "buffDamage": 1368738117,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9055,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5567,7 +6107,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1355226758,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5587,7 +6129,9 @@
       "effectiveHeal": 431420,
       "playerHeal": 0,
       "buffDamage": 1300243265,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5607,7 +6151,9 @@
       "effectiveHeal": 1652416,
       "playerHeal": 0,
       "buffDamage": 1494788414,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5627,7 +6173,9 @@
       "effectiveHeal": 370224,
       "playerHeal": 0,
       "buffDamage": 1274269038,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5647,7 +6195,9 @@
       "effectiveHeal": 1711802,
       "playerHeal": 0,
       "buffDamage": 1502064101,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5667,7 +6217,9 @@
       "effectiveHeal": 554133,
       "playerHeal": 0,
       "buffDamage": 1404158618,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.91,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5687,7 +6239,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1679754685,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5707,7 +6261,9 @@
       "effectiveHeal": 449608,
       "playerHeal": 0,
       "buffDamage": 1321910906,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5727,7 +6283,9 @@
       "effectiveHeal": 1544357,
       "playerHeal": 0,
       "buffDamage": 1453397215,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5747,7 +6305,9 @@
       "effectiveHeal": 457276,
       "playerHeal": 0,
       "buffDamage": 1223364036,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5767,7 +6327,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1933469595,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5787,7 +6349,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1348169455,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5807,7 +6371,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1746162445,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5827,7 +6393,9 @@
       "effectiveHeal": 349335,
       "playerHeal": 0,
       "buffDamage": 1409875908,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5847,7 +6415,9 @@
       "effectiveHeal": 1005310,
       "playerHeal": 0,
       "buffDamage": 1493544531,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5867,7 +6437,9 @@
       "effectiveHeal": 239097,
       "playerHeal": 0,
       "buffDamage": 1272071722,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5887,7 +6459,9 @@
       "effectiveHeal": 1199900,
       "playerHeal": 0,
       "buffDamage": 1969976155,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5907,7 +6481,9 @@
       "effectiveHeal": 373838,
       "playerHeal": 0,
       "buffDamage": 1403015171,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9123333333333333,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5927,7 +6503,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1089927821,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5947,7 +6525,9 @@
       "effectiveHeal": 358787,
       "playerHeal": 0,
       "buffDamage": 1251033599,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5967,7 +6547,9 @@
       "effectiveHeal": 1694678,
       "playerHeal": 0,
       "buffDamage": 1338628340,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -5987,7 +6569,9 @@
       "effectiveHeal": 501456,
       "playerHeal": 0,
       "buffDamage": 1194652775,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6007,7 +6591,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1275062987,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6027,7 +6613,9 @@
       "effectiveHeal": 280603,
       "playerHeal": 0,
       "buffDamage": 1329258855,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9058333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6047,7 +6635,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1204691407,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6067,7 +6657,9 @@
       "effectiveHeal": 278957,
       "playerHeal": 0,
       "buffDamage": 1369565870,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6087,7 +6679,9 @@
       "effectiveHeal": 609646,
       "playerHeal": 0,
       "buffDamage": 1278388268,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6107,7 +6701,9 @@
       "effectiveHeal": 330784,
       "playerHeal": 0,
       "buffDamage": 1321309166,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6127,7 +6723,9 @@
       "effectiveHeal": 587930,
       "playerHeal": 0,
       "buffDamage": 1305768932,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6147,7 +6745,9 @@
       "effectiveHeal": 269925,
       "playerHeal": 0,
       "buffDamage": 1400191941,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9121666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6167,7 +6767,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1144619183,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6187,7 +6789,9 @@
       "effectiveHeal": 647437,
       "playerHeal": 0,
       "buffDamage": 1285155813,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6207,7 +6811,9 @@
       "effectiveHeal": 1119649,
       "playerHeal": 0,
       "buffDamage": 1450860388,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6227,7 +6833,9 @@
       "effectiveHeal": 459516,
       "playerHeal": 0,
       "buffDamage": 1348139582,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6247,7 +6855,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1376129375,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6267,7 +6877,9 @@
       "effectiveHeal": 266834,
       "playerHeal": 0,
       "buffDamage": 1457249482,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.907,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6287,7 +6899,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1213373984,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6307,7 +6921,9 @@
       "effectiveHeal": 262828,
       "playerHeal": 0,
       "buffDamage": 1321614529,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6327,7 +6943,9 @@
       "effectiveHeal": 441174,
       "playerHeal": 0,
       "buffDamage": 1296682249,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6347,7 +6965,9 @@
       "effectiveHeal": 296920,
       "playerHeal": 0,
       "buffDamage": 1288048179,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6367,7 +6987,9 @@
       "effectiveHeal": 727142,
       "playerHeal": 0,
       "buffDamage": 1337412307,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6387,7 +7009,9 @@
       "effectiveHeal": 303983,
       "playerHeal": 0,
       "buffDamage": 1437942357,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6407,7 +7031,9 @@
       "effectiveHeal": 0,
       "playerHeal": 1580128,
       "buffDamage": 1295185075,
-      "playerBuffDamage": 1604111926
+      "playerBuffDamage": 1604111926,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6427,7 +7053,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1400438498,
-      "playerBuffDamage": 985072299
+      "playerBuffDamage": 985072299,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6447,7 +7075,9 @@
       "effectiveHeal": 2474794,
       "playerHeal": 0,
       "buffDamage": 1596592650,
-      "playerBuffDamage": 678273556
+      "playerBuffDamage": 678273556,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6467,7 +7097,9 @@
       "effectiveHeal": 585291,
       "playerHeal": 77004,
       "buffDamage": 1395213390,
-      "playerBuffDamage": 1277328282
+      "playerBuffDamage": 1277328282,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6487,7 +7119,9 @@
       "effectiveHeal": 0,
       "playerHeal": 1865042,
       "buffDamage": 1530460773,
-      "playerBuffDamage": 1295797822
+      "playerBuffDamage": 1295797822,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6507,7 +7141,9 @@
       "effectiveHeal": 13629,
       "playerHeal": 0,
       "buffDamage": 1536728414,
-      "playerBuffDamage": 464611004
+      "playerBuffDamage": 464611004,
+      "blessingUptime": 0.9108333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6527,7 +7163,9 @@
       "effectiveHeal": 367847,
       "playerHeal": 836207,
       "buffDamage": 1482686358,
-      "playerBuffDamage": 1491871843
+      "playerBuffDamage": 1491871843,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6547,7 +7185,9 @@
       "effectiveHeal": 410485,
       "playerHeal": 0,
       "buffDamage": 1409539604,
-      "playerBuffDamage": 774249123
+      "playerBuffDamage": 774249123,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6567,7 +7207,9 @@
       "effectiveHeal": 1405014,
       "playerHeal": 0,
       "buffDamage": 1597648278,
-      "playerBuffDamage": 326756998
+      "playerBuffDamage": 326756998,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6587,7 +7229,9 @@
       "effectiveHeal": 478271,
       "playerHeal": 0,
       "buffDamage": 1372844738,
-      "playerBuffDamage": 588871709
+      "playerBuffDamage": 588871709,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6607,7 +7251,9 @@
       "effectiveHeal": 1408736,
       "playerHeal": 0,
       "buffDamage": 1646784210,
-      "playerBuffDamage": 425242478
+      "playerBuffDamage": 425242478,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6627,7 +7273,9 @@
       "effectiveHeal": 437158,
       "playerHeal": 0,
       "buffDamage": 1518095260,
-      "playerBuffDamage": 186490650
+      "playerBuffDamage": 186490650,
+      "blessingUptime": 0.9103333333333333,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6647,7 +7295,9 @@
       "effectiveHeal": 0,
       "playerHeal": 569711,
       "buffDamage": 1233190658,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6667,7 +7317,9 @@
       "effectiveHeal": 636617,
       "playerHeal": 72418,
       "buffDamage": 1327604042,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6687,7 +7339,9 @@
       "effectiveHeal": 1613532,
       "playerHeal": 0,
       "buffDamage": 1560615444,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6707,7 +7361,9 @@
       "effectiveHeal": 461182,
       "playerHeal": 72312,
       "buffDamage": 1320974820,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6727,7 +7383,9 @@
       "effectiveHeal": 0,
       "playerHeal": 520276,
       "buffDamage": 1458469672,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6747,7 +7405,9 @@
       "effectiveHeal": 306654,
       "playerHeal": 0,
       "buffDamage": 1445551613,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9121666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6767,7 +7427,9 @@
       "effectiveHeal": 0,
       "playerHeal": 633898,
       "buffDamage": 1281386791,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6787,7 +7449,9 @@
       "effectiveHeal": 303011,
       "playerHeal": 67668,
       "buffDamage": 1327153400,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6807,7 +7471,9 @@
       "effectiveHeal": 1055879,
       "playerHeal": 0,
       "buffDamage": 1546465766,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6827,7 +7493,9 @@
       "effectiveHeal": 286830,
       "playerHeal": 102650,
       "buffDamage": 1291549627,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6847,7 +7515,9 @@
       "effectiveHeal": 1078494,
       "playerHeal": 0,
       "buffDamage": 1578322869,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6867,7 +7537,9 @@
       "effectiveHeal": 393713,
       "playerHeal": 0,
       "buffDamage": 1464676182,
-      "playerBuffDamage": 0
+      "playerBuffDamage": 0,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6887,7 +7559,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1007282552,
-      "playerBuffDamage": 1339219326
+      "playerBuffDamage": 1339219326,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6907,7 +7581,9 @@
       "effectiveHeal": 489169,
       "playerHeal": 0,
       "buffDamage": 1063000998,
-      "playerBuffDamage": 929007741
+      "playerBuffDamage": 929007741,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6927,7 +7603,9 @@
       "effectiveHeal": 1643688,
       "playerHeal": 0,
       "buffDamage": 1210972442,
-      "playerBuffDamage": 606363992
+      "playerBuffDamage": 606363992,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6947,7 +7625,9 @@
       "effectiveHeal": 617861,
       "playerHeal": 0,
       "buffDamage": 1040060832,
-      "playerBuffDamage": 1166292095
+      "playerBuffDamage": 1166292095,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6967,7 +7647,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1075799311,
-      "playerBuffDamage": 1112574965
+      "playerBuffDamage": 1112574965,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -6987,7 +7669,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1143478495,
-      "playerBuffDamage": 415376183
+      "playerBuffDamage": 415376183,
+      "blessingUptime": 0.9166666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7007,7 +7691,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 3093611977,
-      "playerBuffDamage": 1304607520
+      "playerBuffDamage": 1304607520,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7027,7 +7713,9 @@
       "effectiveHeal": 437660,
       "playerHeal": 0,
       "buffDamage": 3750345393,
-      "playerBuffDamage": 694475782
+      "playerBuffDamage": 694475782,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7047,7 +7735,9 @@
       "effectiveHeal": 1490876,
       "playerHeal": 0,
       "buffDamage": 3177403725,
-      "playerBuffDamage": 275202197
+      "playerBuffDamage": 275202197,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7067,7 +7757,9 @@
       "effectiveHeal": 375834,
       "playerHeal": 0,
       "buffDamage": 3741940003,
-      "playerBuffDamage": 534480678
+      "playerBuffDamage": 534480678,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7087,7 +7779,9 @@
       "effectiveHeal": 955733,
       "playerHeal": 0,
       "buffDamage": 3452227427,
-      "playerBuffDamage": 384278527
+      "playerBuffDamage": 384278527,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7107,7 +7801,9 @@
       "effectiveHeal": 536826,
       "playerHeal": 0,
       "buffDamage": 3882449715,
-      "playerBuffDamage": 172319692
+      "playerBuffDamage": 172319692,
+      "blessingUptime": 0.9098333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7127,7 +7823,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 976654564,
-      "playerBuffDamage": 3516336360
+      "playerBuffDamage": 3516336360,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7147,7 +7845,9 @@
       "effectiveHeal": 463429,
       "playerHeal": 0,
       "buffDamage": 901682783,
-      "playerBuffDamage": 2160458903
+      "playerBuffDamage": 2160458903,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7167,7 +7867,9 @@
       "effectiveHeal": 2111584,
       "playerHeal": 0,
       "buffDamage": 1111112341,
-      "playerBuffDamage": 1488083402
+      "playerBuffDamage": 1488083402,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7187,7 +7889,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 939410651,
-      "playerBuffDamage": 2789911185
+      "playerBuffDamage": 2789911185,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7207,7 +7911,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1134386512,
-      "playerBuffDamage": 2752859352
+      "playerBuffDamage": 2752859352,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7227,7 +7933,9 @@
       "effectiveHeal": 443819,
       "playerHeal": 0,
       "buffDamage": 982795495,
-      "playerBuffDamage": 1022836655
+      "playerBuffDamage": 1022836655,
+      "blessingUptime": 0.9056666666666666,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7247,7 +7955,9 @@
       "effectiveHeal": 0,
       "playerHeal": 0,
       "buffDamage": 1027645433,
-      "playerBuffDamage": 3294607101
+      "playerBuffDamage": 3294607101,
+      "blessingUptime": 0.8141666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7267,7 +7977,9 @@
       "effectiveHeal": 483534,
       "playerHeal": 0,
       "buffDamage": 939421067,
-      "playerBuffDamage": 1676912084
+      "playerBuffDamage": 1676912084,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7287,7 +7999,9 @@
       "effectiveHeal": 1372396,
       "playerHeal": 0,
       "buffDamage": 1121400801,
-      "playerBuffDamage": 707140405
+      "playerBuffDamage": 707140405,
+      "blessingUptime": 0.9118333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7307,7 +8021,9 @@
       "effectiveHeal": 396433,
       "playerHeal": 0,
       "buffDamage": 920216509,
-      "playerBuffDamage": 1284516665
+      "playerBuffDamage": 1284516665,
+      "blessingUptime": 0.8296666666666667,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7327,7 +8043,9 @@
       "effectiveHeal": 1521197,
       "playerHeal": 0,
       "buffDamage": 1151715520,
-      "playerBuffDamage": 953302101
+      "playerBuffDamage": 953302101,
+      "blessingUptime": 0.8928333333333334,
+      "teamWardUptime": 0
     },
     {
       "level": 201,
@@ -7347,7 +8065,9 @@
       "effectiveHeal": 438129,
       "playerHeal": 0,
       "buffDamage": 1032231562,
-      "playerBuffDamage": 401973833
+      "playerBuffDamage": 401973833,
+      "blessingUptime": 0.9086666666666666,
+      "teamWardUptime": 0
     }
   ]
 }

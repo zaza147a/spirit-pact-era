@@ -12,7 +12,8 @@ const stages=[
  {stage:'partial-farm-sss-sigil-2',enhancement:'SSS',petEnhancement:'SSS',dawnSigil:2,seconds:240},
  {stage:'farmed-preboss-sss-only',enhancement:'SSS',petEnhancement:'SSS',dawnSigil:4,seconds:240}
 ];
-const cases=stages.flatMap(stage=>seeds.flatMap(seed=>jobs.flatMap(job=>pairs.map(pair=>({stage,seed,job,pair})))));
+const selectedStages=process.argv.includes('--boundary-only')?stages.filter(s=>[0,4].includes(s.dawnSigil)):stages;
+const cases=selectedStages.flatMap(stage=>seeds.flatMap(seed=>jobs.flatMap(job=>pairs.map(pair=>({stage,seed,job,pair})))));
 const workers=Array.from({length:6},()=>new Worker(new URL('./balance-worker-v508.mjs',import.meta.url)));
 const rows=Array(cases.length);
 await new Promise((resolve,reject)=>{
@@ -42,7 +43,7 @@ await new Promise((resolve,reject)=>{
  }
 });
 await Promise.all(workers.map(w=>w.terminate()));
-const summary=stages.map(stage=>{
+const summary=selectedStages.map(stage=>{
  const a=rows.filter(r=>r.stage===stage.stage),wins=a.filter(r=>r.won),times=wins.map(r=>r.timeToKill).sort((x,y)=>x-y);
  return {stage:stage.stage,enhancement:stage.enhancement,petEnhancement:stage.petEnhancement,
   dawnSigil:stage.dawnSigil,windowSeconds:stage.seconds,total:a.length,wins:wins.length,
@@ -51,5 +52,5 @@ const summary=stages.map(stage=>{
   byPair:pairs.map(pair=>({pair,wins:a.filter(r=>r.pair===pair&&r.won).length,total:a.filter(r=>r.pair===pair).length})),
   missed:a.filter(r=>!r.won).map(({job,pair,seed,alive,petDeaths})=>({job,pair,seed,alive,petDeaths}))};
 });
-writeFileSync('docs/prepared-dawn-boss-audit.json',JSON.stringify({conditions:'201–210 SSS-only equipment. 10 jobs × 12 ordered fusion roles × 3 seeds, farmed SSS player/pet gear and pre-boss accessible sigil IV, against the real Lv210 archon with full 240s victory clock.',summary,rows},null,2)+'\n');
+writeFileSync(process.argv.includes('--boundary-only')?'docs/prepared-dawn-boss-role-recheck.json':'docs/prepared-dawn-boss-audit.json',JSON.stringify({conditions:'201–210 SSS-only equipment. 10 jobs × 12 ordered fusion roles × 3 seeds, SSS player/pet gear and field-farmable sigil tiers against the real Lv210 archon with full 240s victory clock. Boundary-only compares no farming against fully farmed tier IV.',summary,rows},null,2)+'\n');
 console.log(JSON.stringify(summary,null,2));
