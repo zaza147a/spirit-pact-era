@@ -15,7 +15,7 @@ const server=createServer(async(req,res)=>{
 });
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
 const engine=process.env.BROWSER_ENGINE||'chromium';assert.ok(['chromium','webkit'].includes(engine));
-const browser=await ({chromium,webkit})[engine].launch({headless:true});const rows=[],errors=[],touchRows=[];
+const browser=await ({chromium,webkit})[engine].launch({headless:true});const rows=[],errors=[],touchRows=[];let passed=false;
 try{
  for(const [name,viewport] of [['desktop',{width:1440,height:1000}],['mobile',{width:390,height:844}]]){
   const context=await browser.newContext({viewport,acceptDownloads:true,...(name==='mobile'?{isMobile:true,hasTouch:true}:{})});
@@ -132,6 +132,6 @@ try{
   assert.equal(stopped.offline.enabled,false);
   await context.close();
  }
- assert.equal(touchRows.length,4);assert.equal(rows.length,72);assert.equal(errors.length,0,JSON.stringify(errors));
-}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({engine,rows,touchRows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Touch taps at320/360/430/844 widths verify actual touch events, tabs, input focus, save and no horizontal overflow. Mobile is browser viewport emulation, not a physical handset; WebKit is an engine check, not physical Safari.'},null,2));}
+ assert.equal(touchRows.length,4);assert.equal(rows.length,72);assert.equal(errors.length,0,JSON.stringify(errors));passed=true;
+}catch(error){errors.push({phase:'acceptance',error:error.message});throw error;}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({engine,passed,rows,touchRows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Touch taps at320/360/430/844 widths verify actual touch events, tabs, input focus, save and no horizontal overflow. Mobile is browser viewport emulation, not a physical handset; WebKit is an engine check, not physical Safari.'},null,2));}
 console.log('Browser acceptance passed: '+rows.length+' displayed stage sprites, four slots, paid evolution, backup, offline restore and live input.');
