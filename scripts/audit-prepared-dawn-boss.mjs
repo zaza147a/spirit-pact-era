@@ -8,6 +8,8 @@ import {FUSION_PAIRS} from '../dist/pet-fusion.js';
 // Sigil 1–4 require field drops; tiers 5–8 require the boss core itself.
 const jobs=Object.keys(SECOND_JOBS),pairs=Object.keys(FUSION_PAIRS),seeds=[42,137,731];
 const stages=[
+ {stage:'early-sss-sigil-0',enhancement:'SSS',petEnhancement:'SSS',dawnSigil:0,seconds:240},
+ {stage:'partial-farm-sss-sigil-2',enhancement:'SSS',petEnhancement:'SSS',dawnSigil:2,seconds:240},
  {stage:'farmed-preboss-sss-only',enhancement:'SSS',petEnhancement:'SSS',dawnSigil:4,seconds:240}
 ];
 const cases=stages.flatMap(stage=>seeds.flatMap(seed=>jobs.flatMap(job=>pairs.map(pair=>({stage,seed,job,pair})))));

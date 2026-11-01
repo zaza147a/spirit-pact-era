@@ -14,6 +14,15 @@ export function sigilCost(next){
  };
 }
 export function sigilBonus(player){const level=sigilLevel(player);return {atk:1+level*.02,matk:1+level*.02,hp:1+level*.02,def:1+level*.02,mdef:1+level*.02,petDamage:1+level*.02};}
+// The Lv210 Archon is a wilderness-farming graduation encounter. SSS equipment
+// is mandatory in this continent, but it must not bypass its field progression.
+// Rank IV is obtainable entirely from mobs; higher ranks require Archon cores.
+// This factor is applied to all damage sources equally, preserving P/C/B share.
+export function dawnArchonPreparationFactor(player){
+ const prepared=[.34,.44,.54,.75,1];
+ const rank=sigilLevel(player);
+ return rank<=4?prepared[rank]:1+(rank-4)*.025;
+}
 export function sigilError(player,next){
  if(!player||player.location!=='dawncity')return '請回曙光聖港強化曙界契印';
  if(player.hp<=0)return '角色倒下時不能強化';
