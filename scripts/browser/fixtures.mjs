@@ -17,3 +17,12 @@ export function browserFixtures(){
   return {version:2,player:owner};
  });
 }
+
+export function continuousFailureFixture(saved){
+ const failing=structuredClone(saved);const fp=failing.player;
+ fp.gear=Object.fromEntries(Object.keys(fp.gear).map(k=>[k,null]));fp.pets=[];fp.activePetId=null;fp.hp=1;fp.mp=0;
+ fp.bag=[{id:'ticket_worldroot',qty:2}];fp.location='skycity';fp.manualPaused=true;fp.autoRevive=true;
+ fp.autoPotions={playerHp:false,playerSp:false,petHp:false,petSp:false};fp.autoBuyPotions={hp:{enabled:false},sp:{enabled:false}};
+ fp.autoSkills={order:[],enabled:{}};fp.trialClears={...fp.trialClears,worldroot:1};fp.offline={at:Date.now(),enabled:false};
+ return failing;
+}

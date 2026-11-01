@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,extname} from 'node:path';
-import {browserFixtures} from './fixtures.mjs';
+import {browserFixtures,continuousFailureFixture} from './fixtures.mjs';
 import {trueFormName} from '../../dist/pet-true-form.js';
 const out=resolve(process.env.BROWSER_QA_OUTPUT||'browser-qa');await mkdir(out,{recursive:true});
 const root=resolve('dist'),types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.webp':'image/webp','.png':'image/png','.json':'application/json'};
@@ -55,7 +55,9 @@ try{
     await page.setViewportSize(viewport);
     await page.evaluate(()=>{globalThis.qaTouches={start:0,end:0,pointer:0};if(globalThis.qaTouchProbeInstalled)return;globalThis.qaTouchProbeInstalled=true;document.addEventListener('touchstart',()=>qaTouches.start++,{passive:true});document.addEventListener('touchend',()=>qaTouches.end++,{passive:true});document.addEventListener('pointerup',e=>{if(e.pointerType==='touch')qaTouches.pointer++;});});
     await page.locator('[data-slot-select="0"]').tap();await page.locator('#enterGameBtn').tap();
-    await page.locator('[data-tab="pets"]').tap();await page.locator('[data-pet-section="active"]').tap();
+    await page.locator('[data-tab="pets"]').tap();await page.locator('[data-pet-section="manage"]').tap();
+    await page.locator(`[data-pet="${fixtures[0].player.pets[0].id}"]`).tap();
+    await page.locator('[data-pet-section="active"]').tap();
     const art=page.locator('#side img.companion-art').first();await art.scrollIntoViewIfNeeded();await art.evaluate(img=>img.decode());
     assert.equal(await art.getAttribute('src'),'assets/true-forms/S/attack-magic.webp');
     await page.locator('[data-tab="settings"]').tap();
@@ -116,11 +118,7 @@ try{
   for(const name of ['QA-S','QA-SS','QA-SSS','QA-A'])await page.getByRole('heading',{name,exact:true}).waitFor();
   // A deliberately unprepared test save verifies continuous-trial failure
   // stopping through the actual UI, even with ordinary auto-revival enabled.
-  const failing=structuredClone(saved);const fp=failing.player;
-  fp.gear=Object.fromEntries(Object.keys(fp.gear).map(k=>[k,null]));fp.pets=[];fp.activePetId=null;fp.hp=1;fp.mp=0;
-  fp.bag=[{id:'ticket_worldroot',qty:2}];fp.location='skycity';fp.manualPaused=true;fp.autoRevive=true;
-  fp.autoPotions={playerHp:false,playerSp:false,petHp:false,petSp:false};fp.autoBuyPotions={hp:{enabled:false},sp:{enabled:false}};
-  fp.autoSkills={order:[],enabled:{}};fp.trialClears={...fp.trialClears,worldroot:1};fp.offline={at:Date.now(),enabled:false};
+  const failing=continuousFailureFixture(saved);
   await page.locator('[data-slot-select="3"]').click();await page.locator('#saveFile').setInputFiles({name:'failure-fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(failing))});
   await page.locator('#enterGameBtn').click();await page.locator('#area [data-open="trials"]').click();
   await page.locator('[data-continuous-trial="worldroot"]').click();
