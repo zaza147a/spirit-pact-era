@@ -5,7 +5,7 @@ import {SECOND_JOBS} from '../dist/jobs.js';
 import {ORIGINAL_60_MECHANICS,ORIGINAL_SIX_KEYS} from '../dist/original-60-mechanics.js';
 import {THIRD_FUSION_RULES} from '../dist/fusion-resonance.js';
 
-const damageEffects=new Set(['arcaneStrike','counterStrike','stackStrike','comboLeech','vowShieldFollowup','hunterSummon','falconVolley','starRainChain','guardianAutoChase','lowHpRiposte','siegeCounter','dragonCounter','sanctuaryChase']);
+const damageEffects=new Set(['starVolley','sanctuarySplit','arcaneStrike','counterStrike','stackStrike','comboLeech','vowShieldFollowup','hunterSummon','falconVolley','starRainChain','guardianAutoChase','lowHpRiposte','siegeCounter','dragonCounter','sanctuaryChase']);
 const foe=(id)=>({id:'world_151',map:'starshore',level:151,hp:1e9,maxHp:1e9,def:100,atk:0,hit:0,flee:0,instanceId:id});
 
 test('all 60 original pacts manifest their configured live combat payload, not only a generic buff',async()=>{

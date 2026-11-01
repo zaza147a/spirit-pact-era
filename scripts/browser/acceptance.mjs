@@ -1,4 +1,4 @@
-import {chromium} from 'playwright';
+import {chromium,webkit} from 'playwright';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
@@ -14,7 +14,8 @@ const server=createServer(async(req,res)=>{
  }catch{res.writeHead(404);res.end('Not found');}
 });
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
-const browser=await chromium.launch({headless:true});const rows=[],errors=[];
+const engine=process.env.BROWSER_ENGINE||'chromium';assert.ok(['chromium','webkit'].includes(engine));
+const browser=await ({chromium,webkit})[engine].launch({headless:true});const rows=[],errors=[];
 try{
  for(const [name,viewport] of [['desktop',{width:1440,height:1000}],['mobile',{width:390,height:844}]]){
   const context=await browser.newContext({viewport,acceptDownloads:true,...(name==='mobile'?{isMobile:true,hasTouch:true}:{})});
@@ -111,5 +112,5 @@ try{
   await context.close();
  }
  assert.equal(rows.length,72);assert.equal(errors.length,0,JSON.stringify(errors));
-}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({rows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Mobile is Chromium viewport emulation, not a physical handset.'},null,2));}
+}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({engine,rows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Mobile is browser viewport emulation, not a physical handset; WebKit is an engine check, not physical Safari.'},null,2));}
 console.log('Browser acceptance passed: '+rows.length+' displayed stage sprites, four slots, paid evolution, backup, offline restore and live input.');

@@ -47,10 +47,8 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
     ]
   },
   "crusader/defense-support": {
-    "payload": [
-      "ward",
-      "counterStrike"
-    ]
+    "payload": "guardedFollowup",
+    "additionalEvents": ["thirdHit_crusader"]
   },
   "wizard/attack-magic": {
     "payload": [
@@ -147,10 +145,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
   },
   "rogue/attack-support": {"payload": ["hunterSummon", "mark"]},
   "rogue/magic-defense": {
-    "payload": [
-      "splash",
-      "haste"
-    ]
+    "payload": ["starVolley", "haste"]
   },
   "rogue/magic-support": {
     "payload": [
@@ -183,10 +178,8 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
     ]
   },
   "priest/defense-support": {
-    "payload": [
-      "ward",
-      "counterStrike"
-    ]
+    "payload": "sanctuarySplit",
+    "additionalEvents": ["shield", "damageTaken"]
   },
   "monk/attack-magic": {
     "payload": [
@@ -246,10 +239,8 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
     ]
   },
   "hunter/defense-support": {
-    "payload": [
-      "ward",
-      "counterStrike"
-    ]
+    "payload": "guardedFollowup",
+    "additionalEvents": ["thirdHit_hunter"]
   },
   "performer/attack-magic": {
     "payload": [
@@ -271,10 +262,8 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
     ]
   },
   "performer/magic-support": {
-    "payload": [
-      "splash",
-      "haste"
-    ]
+    "payload": ["songRainChain", "haste"],
+    "additionalEvents": ["song"]
   },
   "performer/defense-support": {
     "payload": [

@@ -7,6 +7,11 @@ import {SECOND_JOBS} from '../dist/jobs.js';
 // Specialized contracts use individually authored multi-stage implementations in place
 // of the generic placeholder payload. Keep the substitutions explicit.
 const SPECIALIZED={
+ 'rogue/magic-defense':['starVolley','haste'],
+ 'crusader/defense-support':['guardedFollowup'],
+ 'hunter/defense-support':['guardedFollowup'],
+ 'priest/defense-support':['sanctuarySplit'],
+ 'performer/magic-support':['songRainChain','haste'],
  'knight/defense-support':['dragonCounter'],
  'crusader/attack-support':['vowShieldFollowup'],
  'crusader/attack-defense':['siegeCounter'],

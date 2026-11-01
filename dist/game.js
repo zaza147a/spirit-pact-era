@@ -159,7 +159,22 @@ function playerHitDamage(power,def,petCrit,petHaste,criticalMultiplier,pactRatio
 function hitDamage(atk,def,criticalMultiplier=1){if(enemy?.exposedUntil>gameNow())def*=1-(enemy.exposedPower||0);return outgoingHitDamage(atk,def,rand(90,110)/100,criticalMultiplier);}
 function damageText(rolled,effective){return `命中傷害 ${Math.round(rolled)}${Math.round(effective)<Math.round(rolled)?`（有效扣血 ${Math.round(effective)}）`:''}`;}
 
-function dealDamage(amount,key){if(!enemy?.hp)return 0;const fused=key==='playerDamage'&&fusedPair(activePet())&&activePet()?.hp>0,preparation=enemy.dawn&&enemy.boss&&enemy.id==='dawn-archon'?dawnArchonPreparationFactor(player):1,base=Math.max(0,Math.round(amount*jobZoneOutputFactor(player.job,player.level)*preparation)),blessing=fused&&petEffects.blessingUntil>gameNow()?base*petEffects.blessingPower:0,mark=fused&&petEffects.markHits>0?petEffects.markPower:0;if(mark)petEffects.markHits--;const rolled=base+blessing+mark,actual=Math.min(enemy.hp,Math.max(0,Math.round(rolled)));enemy.hp-=actual;const petCredit=key==='playerDamage'?(fused?Math.min(actual,Math.round(actual*(Math.min(base,pendingPetCredit)+blessing+mark)/Math.max(1,rolled))):Math.min(actual,pendingPetCredit)):0;pendingPetCredit=0;record(report,key,actual-petCredit);if(!offlineSimulation&&actual)combatSamples.push({at:gameNow(),owner:key==='playerDamage'?actual-petCredit:0,pet:key==='playerDamage'?petCredit:actual,kills:0});if(petCredit)record(report,'buffDamage',petCredit);return actual;}
+function originalGuardKey(pet){return 'guardFollow|'+player.job+'|'+pet.id+'|'+pet.fusion?.main+'-'+pet.fusion?.sub;}
+function anyProtectionActive(now=gameNow()){
+ const ownerSpell=Math.max(0,(player.shield||0)-petShield)>0&&(!(timers.playerShieldExpires||0)||timers.playerShieldExpires>now);
+ const ownerPet=petShield>0&&player.shield>0&&(timers.petShieldExpires||0)>now;
+ const petWard=petEffects.shield>0&&(!(petEffects.shieldExpires||0)||petEffects.shieldExpires>now);
+ return ownerSpell||ownerPet||petWard||(petEffects.guardUntil||0)>now;
+}
+function originalGuardActive(now=gameNow()){
+ return activePet()?.hp>0&&((petEffects.shield>0&&(petEffects.shieldExpires||0)>now)||(petShield>0&&player.shield>0&&(timers.petShieldExpires||0)>now));
+}
+function originalGuardReady(pet,now){const pending=originalPactCounters.get(originalGuardKey(pet));return pending?.until>now&&originalGuardActive(now);}
+function activePetMarkPower(now=gameNow()){
+ if(petEffects.markWardOnly&&((petEffects.markUntil||0)<=now||petEffects.markSourcePetId!==activePet()?.id||!originalGuardActive(now))){petEffects.markHits=0;return 0;}
+ return petEffects.markHits>0?petEffects.markPower:0;
+}
+function dealDamage(amount,key){if(!enemy?.hp)return 0;const fused=key==='playerDamage'&&fusedPair(activePet())&&activePet()?.hp>0,preparation=enemy.dawn&&enemy.boss&&enemy.id==='dawn-archon'?dawnArchonPreparationFactor(player):1,base=Math.max(0,Math.round(amount*jobZoneOutputFactor(player.job,player.level)*preparation)),blessing=fused&&petEffects.blessingUntil>gameNow()?base*petEffects.blessingPower:0,mark=fused?activePetMarkPower():0;if(mark)petEffects.markHits--;const rolled=base+blessing+mark,actual=Math.min(enemy.hp,Math.max(0,Math.round(rolled)));enemy.hp-=actual;const petCredit=key==='playerDamage'?(fused?Math.min(actual,Math.round(actual*(Math.min(base,pendingPetCredit)+blessing+mark)/Math.max(1,rolled))):Math.min(actual,pendingPetCredit)):0;pendingPetCredit=0;record(report,key,actual-petCredit);if(!offlineSimulation&&actual)combatSamples.push({at:gameNow(),owner:key==='playerDamage'?actual-petCredit:0,pet:key==='playerDamage'?petCredit:actual,kills:0});if(petCredit)record(report,'buffDamage',petCredit);return actual;}
 function targetEnemy(id){const target=enemies.find(e=>e.instanceId===id&&e.hp>0);if(target){enemy=target;player.targetPriority='manual';dirty=true;save();render();}}
 function aoeSkill(id){return !!jobSkillById(player.job,id)?.aoe;}
 function grantPetShield(amount,frontline=false){if(frontline&&activePet()?.hp>0){const s=petStats(activePet()),before=petEffects.shield||0,added=Math.max(0,Math.min(Math.round(amount*.7),Math.round(s.hp*.25)-before));petEffects.shield=before+added;petEffects.shieldExpires=gameNow()+6500;return added+grantPetShield(amount-added);}const ceiling=Math.round(stat('hp')*.25),before=player.shield;if(before>=ceiling)return 0;timers.petShieldExpires=gameNow()+6500;const after=clamp(before+amount,0,ceiling),added=after-before;player.shield=after;petShield+=Math.max(0,added);return Math.max(0,added);}
@@ -171,7 +186,7 @@ function petAutoAbility(pet,s,now){if(!auto||!player.hp||pet.hp<=0||!enemy?.hp||
 
   const effect=petSkillEffect(skill,s,role);pet.sp-=cost;petSkillTimers[id]=now;timers.petAbility=now;let outcome='';
   if(skill.kind==='bleed'){petEffects.bleedTicks=skill.ticks||3;petEffects.bleedTargetId=enemy?.instanceId;petEffects.bleedPower=effect.value;petEffects.bleedInterval=skill.interval||2000;petEffects.bleedLeech=skill.leech||0;delete petEffects.bleedSource;petEffects.bleedNext=now+petEffects.bleedInterval;outcome=`每${petEffects.bleedInterval/1000}秒造成 ${effect.value} 傷害，共${petEffects.bleedTicks}跳`;}
-  else if(skill.kind==='mark'){petEffects.markHits=skill.hits||2;petEffects.markPower=effect.value;outcome=`接下來${petEffects.markHits}次主人命中各附加 ${effect.value} 傷害`;}
+  else if(skill.kind==='mark'){petEffects.markWardOnly=false;petEffects.markHits=skill.hits||2;petEffects.markPower=effect.value;outcome=`接下來${petEffects.markHits}次主人命中各附加 ${effect.value} 傷害`;}
   else if(skill.kind==='guard'){const amount=grantPetShield(effect.value,true);petEffects.guardUntil=now+effect.duration;petEffects.guardRegen=Math.round(s.def*.08);petEffects.guardRegenNext=now+1000;petEffects.guardCounter=skill.counter||0;outcome=`護盾 +${amount}，${role==='defense'?'提高攔截優先級':'守護自療'} ${(effect.duration/1000).toFixed(1)}秒`;}
   else if(skill.kind==='shield'){const beforePet=petEffects.shield||0,beforeOwner=player.shield;grantPetShield(effect.value,true);outcome=`夥伴護盾 +${(petEffects.shield||0)-beforePet}、主人護盾 +${player.shield-beforeOwner}（持續6.5秒）`;}
   else if(skill.kind==='blessing'){petEffects.blessingUntil=now+effect.duration;petEffects.blessingPower=effect.value;outcome=`主人傷害 +${(effect.value*100).toFixed(1)}%，持續 ${effect.duration/1000}秒`;}
@@ -195,6 +210,20 @@ function tickDamageOverTime(now,lane){
  if(!target.hp){enemy=target;award();enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;}
  render();
 }
+function tickSongRain(now){
+ const wave=petEffects.songRain;if(!wave||wave.remaining<=0)return;
+ if(activePet()?.id!==wave.petId||activePet()?.hp<=0||now>=wave.until||now>=wave.hardUntil){wave.remaining=0;return;}
+ if(now<wave.next)return;
+ wave.remaining--;wave.next=now+2000;
+ const selected=enemy,seen=new Set(),targets=[selected,...enemies].filter(foe=>foe?.hp>0&&!seen.has(foe.instanceId)&&seen.add(foe.instanceId)).slice(0,3),dead=[];
+ for(const [index,foe] of targets.entries()){
+  enemy=foe;dealPetDamage(hitDamage(wave.power*[1,.65,.45][index],monsterDefenseAgainst(foe,true)),'resonanceDamage');
+  if(!foe.hp)dead.push(foe);
+ }
+ for(const foe of dead){enemy=foe;award();}
+ enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;
+ render();
+}
 function tickPetEffects(now){
  if(!player?.hp||!enemies.some(e=>e.hp>0))return;
  if(now<petEffects.guardUntil&&now>=(petEffects.guardRegenNext||0)){
@@ -202,7 +231,8 @@ function tickPetEffects(now){
   petEffects.guardRegenNext=now+1000;
  }
  if(petEffects.regenTicks&&now>=petEffects.regenNext){healPetParty(petEffects.regenPower);petEffects.regenTicks--;petEffects.regenNext=now+petEffects.regenInterval;}
- tickDamageOverTime(now,'bleed');tickDamageOverTime(now,'burn');
+ activePetMarkPower(now);
+ tickDamageOverTime(now,'bleed');tickDamageOverTime(now,'burn');tickSongRain(now);
 }
 function addEnergy(amount){if(!activePet()||!player.hp)return;player.resonance=clamp(player.resonance+amount,0,RESONANCE_MAX);dirty=true;}
 // All resonance effects are terminal outcomes: they cannot emit more resonance events.
@@ -226,11 +256,34 @@ function resonanceModifier(rule,magnitude,primary){
  return useful;
 }
 
-function applyOriginalPactPayload(rule,pet,primary,now){
+function applyOriginalPactPayload(rule,pet,primary,now,event){
  const kind=rule.originalEvent?.payload;
  if(!kind||!primary?.hp)return false;
- if(Array.isArray(kind)){let changed=false;for(const part of kind){const sub={...rule,originalEvent:{...rule.originalEvent,payload:part}};changed=applyOriginalPactPayload(sub,pet,primary,now)||changed;if(primary.hp<=0)break;}return changed;}
+ if(Array.isArray(kind)){let changed=false;for(const part of kind){const sub={...rule,originalEvent:{...rule.originalEvent,payload:part}};changed=applyOriginalPactPayload(sub,pet,primary,now,event)||changed;if(primary.hp<=0)break;}return changed;}
  const st=petStats(pet);
+ if(kind==='guardedFollowup'||kind==='sanctuarySplit'){
+  const key=originalGuardKey(pet);
+  if(event==='shield'){
+   const gained=grantPetShield(Math.max(1,Math.round(st.def*.42)),true);
+   if(gained>0)originalPactCounters.set(key,{until:now+6500});
+   return gained>0;
+  }
+  if(kind==='sanctuarySplit'&&event==='skill')return dealPetDamage(hitDamage(st.def*.65+st.atk*.48,monsterDefenseAgainst(primary,true)),'resonanceDamage')>0;
+  if(!originalGuardReady(pet,now))return false;
+  originalPactCounters.delete(key);
+  return dealPetDamage(hitDamage(st.def*.65+st.atk*.48,primary.def*.6),'resonanceDamage')>0;
+ }
+ if(kind==='songRainChain'){
+  const previous=petEffects.songRain;
+  if(previous?.petId===pet.id&&previous.remaining>0&&previous.until>now&&previous.hardUntil>now){
+   const added=Math.min(2,6-previous.issued);
+   previous.remaining+=added;previous.issued+=added;
+   previous.until=Math.min(previous.hardUntil,now+6500);
+   return added>0;
+  }
+  petEffects.songRain={petId:pet.id,started:now,until:now+6500,hardUntil:now+12000,next:now+2000,remaining:3,issued:3,power:st.matk*.12+st.atk*.07};
+  return true;
+ }
  if(kind==='vowShieldFollowup'){
   // First holy-shield contact drains health and stores a vow against this foe.
   // Only a later hit on the same living enemy can release the shield strike.
@@ -297,6 +350,11 @@ function applyOriginalPactPayload(rule,pet,primary,now){
  }
  // Mechanics shared by original sixty contracts; each contract has its own event,
  // timing and source text while drawing from the same verified combat primitives.
+ if(kind==='starVolley'){
+  let total=0;
+  for(let shot=0;shot<2&&primary.hp>0;shot++)total+=dealPetDamage(hitDamage(st.matk*.36+st.atk*.21,monsterDefenseAgainst(primary,true)*.3),'resonanceDamage');
+  return total>0;
+ }
  if(kind==='falconVolley'){
   let total=0;
   for(let shot=0;shot<2&&primary.hp>0;shot++)total+=dealPetDamage(hitDamage(st.atk*.4+st.matk*.17,primary.def*.4),'resonanceDamage');
@@ -322,7 +380,7 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   return shield>0||retaliation>0;
  }
  if(kind==='guardianAutoChase'){
-  if(!(player.shield>0||petEffects.shield>0||petEffects.guardUntil>now))return false;
+  if(!anyProtectionActive(now))return false;
   return dealPetDamage(hitDamage(st.matk*.52+st.atk*.25,primary.def*.5),'resonanceDamage')>0;
  }
   if(kind==='storedSpellCharge'){
@@ -359,7 +417,10 @@ function applyOriginalPactPayload(rule,pet,primary,now){
  }
  if(kind==='mark'){
   petEffects.markPower=Math.max(petEffects.markPower||0,Math.round(st.atk*.2+st.matk*.16));
-  petEffects.markHits=Math.max(petEffects.markHits||0,2);return true;
+  petEffects.markHits=Math.max(petEffects.markHits||0,2);
+  petEffects.markWardOnly=player.job==='wizard'&&pet.fusion?.main==='defense'&&pet.fusion?.sub==='support';
+  if(petEffects.markWardOnly){petEffects.markUntil=now+6500;petEffects.markSourcePetId=pet.id;}
+  return true;
  }
  if(kind==='stackStrike'){
   // Stack progress belongs to the specific original contract and companion.
@@ -389,11 +450,14 @@ function applyOriginalPactPayload(rule,pet,primary,now){
  const damage=hitDamage(Math.max(1,(st.atk+st.matk*.35)*strength),primary.def);
  return dealPetDamage(damage,'resonanceDamage')>0;
 }
-function originalPactPrerequisite(rule,now){
+function originalPactPrerequisite(rule,now,event){
  if(!rule?.originalEvent)return true;
  const key=player.job+'/'+(activePet()?.fusion?.main||'')+'-'+(activePet()?.fusion?.sub||'');
+ if(['crusader/defense-support','hunter/defense-support'].includes(key)&&event!=='shield')return originalGuardReady(activePet(),now);
+ if(key==='priest/defense-support'&&event==='damageTaken')return originalGuardReady(activePet(),now);
+ if(key==='performer/magic-support'&&event==='song')return (classBuffs.battleSong?.until||0)>now;
  if(key==='assassin/defense-support')return player.hp>0&&player.hp<=stat('hp')*.4;
- if(key==='sage/defense-support')return player.shield>0||(petEffects.shield||0)>0||(petEffects.guardUntil||0)>now;
+ if(key==='sage/defense-support')return anyProtectionActive(now);
  if(key==='knight/attack-support')return player.hp>=stat('hp')*.65;
  if(key==='knight/attack-defense')return (timers.knightBrokenShieldUntil||0)>now;
  if(key==='hunter/attack-support')return (petEffects.blessingUntil||0)>now||Object.entries(classBuffs).some(([id,b])=>/song|chant|chorus|hymn/i.test(id)&&b.until>now);
@@ -410,12 +474,12 @@ function emitEvent(event,creditEnergy=true){const pet=activePet();if(!pet||pet.h
      if(!enemy.hp)award();
    }
  }
-if(creditEnergy)addEnergy(event==='pet'?7:10);const role=companionRole(pet),rule=companionResonance(player,pet),now=gameNow(),pactKey=player.job+'|'+pet.id+'|'+(pet.fusion?.main||'')+'-'+(pet.fusion?.sub||'');if(!rule||!resonanceTriggered(rule,event)||now-((rule.thirdFusion||rule.fusionContract)?Math.max(resonanceUsedAt.get(pactKey)||0,resonanceUsedAt.get('active|'+player.job)||0):timers.resonance)<rule.cooldown||!originalPactPrerequisite(rule,now))return;if(rule.originalEvent?.threshold>1){const previous=originalPactCounters.get(pactKey),count=(previous&&previous.until>=now?previous.count:0)+1;if(count<rule.originalEvent.threshold){originalPactCounters.set(pactKey,{count,until:now+(rule.originalEvent.window||8000)});return;}originalPactCounters.delete(pactKey);}const magnitude=Math.max(1,resonanceMagnitude(rule,petStats(pet))),primary=enemy;let amount=0,dead=false,description=rule.mode==='pact'?rule.description:'';
+if(creditEnergy)addEnergy(event==='pet'?7:10);const role=companionRole(pet),rule=companionResonance(player,pet),now=gameNow(),pactKey=player.job+'|'+pet.id+'|'+(pet.fusion?.main||'')+'-'+(pet.fusion?.sub||'');if(!rule||!resonanceTriggered(rule,event)||now-((rule.thirdFusion||rule.fusionContract)?Math.max(resonanceUsedAt.get(pactKey)||0,resonanceUsedAt.get('active|'+player.job)||0):timers.resonance)<rule.cooldown||!originalPactPrerequisite(rule,now,event))return;if(rule.originalEvent?.threshold>1){const previous=originalPactCounters.get(pactKey),count=(previous&&previous.until>=now?previous.count:0)+1;if(count<rule.originalEvent.threshold){originalPactCounters.set(pactKey,{count,until:now+(rule.originalEvent.window||8000)});return;}originalPactCounters.delete(pactKey);}const magnitude=Math.max(1,resonanceMagnitude(rule,petStats(pet))),primary=enemy;let amount=0,dead=false,description=rule.mode==='pact'?rule.description:'';
  if(rule.effect==='strike'||rule.effect==='magic'){if(!enemy?.hp)return;amount=dealPetDamage(hitDamage(magnitude,monsterDefenseAgainst(enemy,rule.effect==='magic')),'resonanceDamage');description=`追加 ${amount} 傷害`;dead=!enemy.hp;}
  else if(rule.effect==='shield'){amount=grantPetShield(magnitude,role==='defense');description=`獲得 ${amount} 護盾`;}
  else if(rule.effect==='heal'){amount=healPetParty(magnitude);description=`恢復 ${amount} HP`;}
  else if(rule.effect==='mana'){amount=Math.min(stat('mp')-player.mp,magnitude);player.mp+=amount;record(report,'effectiveMana',amount);description=`恢復 ${amount} SP`;}
- const payloadApplied=applyOriginalPactPayload(rule,pet,primary,now);const modified=resonanceModifier(rule,magnitude,primary);if(amount<=0&&!modified&&!payloadApplied)return;if(player.job==='knight'&&pet.fusion?.main==='attack'&&pet.fusion?.sub==='defense')timers.knightBrokenShieldUntil=0;dead=primary?.hp<=0;timers.resonance=now;resonanceUsedAt.set(pactKey,now);if(rule.thirdFusion||rule.fusionContract)resonanceUsedAt.set('active|'+player.job,now);message(`✦ 共鳴【${rule.name}】${description}。`,'rare');for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}enemy=selectEncounterTarget(enemies,player.targetPriority,primary)||primary;dirty=true;
+ const payloadApplied=applyOriginalPactPayload(rule,pet,primary,now,event);const modified=resonanceModifier(rule,magnitude,primary);if(amount<=0&&!modified&&!payloadApplied)return;if(player.job==='knight'&&pet.fusion?.main==='attack'&&pet.fusion?.sub==='defense')timers.knightBrokenShieldUntil=0;dead=primary?.hp<=0;timers.resonance=now;resonanceUsedAt.set(pactKey,now);if(rule.thirdFusion||rule.fusionContract)resonanceUsedAt.set('active|'+player.job,now);message(`✦ 共鳴【${rule.name}】${description}。`,'rare');for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}enemy=selectEncounterTarget(enemies,player.targetPriority,primary)||primary;dirty=true;
 }
 function ultimate(){if(isControlled())return;chooseAttackTarget();const pet=activePet();if(!pet||!enemy?.hp||!player.hp)return toast('必須有可戰鬥的出戰夥伴');if(player.resonance<ULTIMATE_COST)return toast('共鳴能量不足');const now=gameNow();if(now-timers.ultimate<ULTIMATE_COOLDOWN)return toast('終極共鳴尚未冷卻');timers.ultimate=now;player.resonance-=ULTIMATE_COST;const role=companionRole(pet),st=petStats(pet);if(role==='attack'||role==='magic'){const petPower=(role==='magic'?st.matk:st.atk)*(role==='attack'?3:2.7),ownerPower=stat('atk')*.8*(1+potentialBonus(role==='magic'?'INT':playerRange(player.job)==='ranged'?'DEX':'STR')),damage=dealDamage(hitDamage(petPower+ownerPower,role==='magic'?0:enemy.def),'resonanceDamage'),ownerPart=Math.round(damage*ownerPower/(petPower+ownerPower));if(report&&ownerPart){report.metrics.resonanceDamage-=ownerPart;record(report,'playerDamage',ownerPart);}creditOwnerTelemetry(ownerPart);message(`★ 終極共鳴【${role==='attack'?'雙星斬擊':'元素爆發'}】造成 ${damage} 傷害！`,'rare');if(!enemy.hp)award();}else if(role==='defense'){const amount=grantPetShield(petUltimateSupport(st).shield,true);message(`★ 終極共鳴【不滅守護】獲得 ${amount} 護盾。`,'rare');}else{const hpBefore=player.hp,mpBefore=player.mp,amount=petUltimateSupport(st).hp;player.hp=Math.min(stat('hp'),player.hp+amount);player.mp=Math.min(stat('mp'),player.mp+petUltimateSupport(st).sp);record(report,'effectiveHeal',player.hp-hpBefore);record(report,'effectiveMana',player.mp-mpBefore);message(`★ 終極共鳴【生命共振】恢復生命與魔力。`,'rare');}dirty=true;save();render();}
 function grantPlayerShield(amount){const before=player.shield;if(before>=Math.round(stat('hp')*.25))return 0;timers.playerShieldExpires=gameNow()+6500;player.shield=Math.min(Math.round(stat('hp')*.25),before+amount);return Math.max(0,player.shield-before);}

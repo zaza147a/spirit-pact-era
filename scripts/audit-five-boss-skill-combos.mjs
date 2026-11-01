@@ -1,3 +1,8 @@
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync} from 'node:fs';
+const sourceCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const engineHash=createHash('sha256').update(readFileSync(new URL('../dist/game.js',import.meta.url))).digest('hex');
 // Trial-chain balance across all 20 legal fusion skill triplets. Uses a
 // representative subset of jobs; this is not the full 10-job × 12-pair matrix.
 import {Worker} from 'node:worker_threads';
@@ -41,6 +46,6 @@ const summary=jobs.map(job=>({job,byPair:pairs.map(pair=>{
   choicesWithFailures:rs.filter(r=>!r.won).map(r=>r.choice)};
 })}));
 const wins=rows.filter(r=>r.won);
-const report={conditions:(full?'Full 10-job × 12-ordered-fusion × 20-skill-triplet matrix. ':'Representative subset. ')+'Actual consecutive five Lv191 Worldroot bosses with legal unenhanced Lv200 prior-tier mythic owner+pet gear; all 20 of six-choose-three pet skill sets for each selected third job and ordered fusion, one seed 731, 600-second window; further seeds/allocations/gear remain pending.',count:rows.length,wins:wins.length,medianWinSeconds:median(wins.map(r=>r.seconds)),summary,rows};
-writeFileSync(full?'docs/five-boss-full-skill-matrix.json':process.argv.includes('--tuned')?'docs/five-boss-skill-combos-tuned.json':'docs/five-boss-skill-combos.json',JSON.stringify(report,null,2)+'\n');
+const report={sourceCommit,engineHash,engineUnchanged:engineHash===createHash('sha256').update(readFileSync(new URL('../dist/game.js',import.meta.url))).digest('hex'),conditions:(full?'Full 10-job × 12-ordered-fusion × 20-skill-triplet matrix. ':'Representative subset. ')+'Actual consecutive five Lv191 Worldroot bosses with legal unenhanced Lv200 prior-tier mythic owner+pet gear; all 20 of six-choose-three pet skill sets for each selected third job and ordered fusion, one seed 731, 600-second window; further seeds/allocations/gear remain pending.',count:rows.length,wins:wins.length,medianWinSeconds:median(wins.map(r=>r.seconds)),summary,rows};
+writeFileSync(process.argv.includes('--current')?'docs/five-boss-full-skill-current.json':full?'docs/five-boss-full-skill-matrix.json':process.argv.includes('--tuned')?'docs/five-boss-skill-combos-tuned.json':'docs/five-boss-skill-combos.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({count:report.count,wins:report.wins,medianWinSeconds:report.medianWinSeconds,summary},null,2));

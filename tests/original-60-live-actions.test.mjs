@@ -73,7 +73,7 @@ for(const key of Object.keys(ORIGINAL_60_MECHANICS))test(key+' activates through
  assert.ok(a.state().classBuffs.pact,key+' unreachable through its intended real action: '+event);
  assert.ok(a.state().classBuffs.pact.until>now,key+' expired during activation');
  const parts=[].concat(rule.originalEvent.payload),state=a.state();
- const immediate=new Set(['arcaneStrike','counterStrike','stackStrike','comboLeech','vowShieldFollowup','hunterSummon','falconVolley','starRainChain','guardianAutoChase','lowHpRiposte','siegeCounter','dragonCounter','sanctuaryChase','overhealRain']);
+ const immediate=new Set(['starVolley','sanctuarySplit','arcaneStrike','counterStrike','stackStrike','comboLeech','vowShieldFollowup','hunterSummon','falconVolley','starRainChain','guardianAutoChase','lowHpRiposte','siegeCounter','dragonCounter','sanctuaryChase','overhealRain']);
  if(parts.some(part=>immediate.has(part)))assert.ok(state.report.metrics.resonanceDamage>0,key+' activated without its direct combat payload');
  if(parts.includes('elementBurn'))assert.equal(state.petEffects.burnTicks,3,key+' missing fire');
  if(parts.includes('armorBreak')||parts.includes('armorExecution'))assert.ok(foe.exposedUntil>now,key+' missing armor exposure');
@@ -82,6 +82,16 @@ for(const key of Object.keys(ORIGINAL_60_MECHANICS))test(key+' activates through
  if(parts.includes('mark'))assert.ok(state.petEffects.markHits>0,key+' missing follow-up mark');
  if(parts.includes('ward')||parts.includes('wardCharge'))assert.ok(state.petEffects.shield>0,key+' missing real companion barrier');
  if(parts.includes('soundShield'))assert.ok(p.shield>0,key+' missing real owner shield');
+ if(parts.includes('guardedFollowup')){
+  assert.ok(state.petEffects.shield>0,key+' must first provide real guard');
+  assert.equal(state.report.metrics.resonanceDamage,0,key+' cannot fire during shield creation');
+  advance(4000);main();assert.ok(state.report.metrics.resonanceDamage>0,key+' later real main hit must release follow-up');
+ }
+ if(parts.includes('songRainChain')){
+  const wave=state.petEffects.songRain;assert.ok(wave&&wave.remaining===3,key+' missing scheduled rain');
+  advance(2000);a.tickPetEffects(now);assert.ok(state.report.metrics.resonanceDamage>0,key+' actual rain must hit');
+  advance(2000);main();assert.equal(state.petEffects.songRain,wave);assert.ok(wave.issued>3,'real song hit must extend rain');
+ }
  if(parts.includes('storedSpellCharge')){
   assert.equal(state.report.metrics.resonanceDamage,0,'taking hits must store rather than instantly fire');
   advance();main();assert.ok(state.report.metrics.resonanceDamage>0,'later real main cast must release stored magic');
