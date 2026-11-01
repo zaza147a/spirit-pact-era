@@ -5,10 +5,39 @@ export function battlefieldPositions(count){
 }
 
 const effectsEnabled=()=>typeof document!=='undefined'&&!document.hidden&&window.matchMedia?.('(prefers-reduced-motion: reduce)').matches!==true;
+const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+export function approachCoordinates(from,to,range=58){
+ const dx=to.x-from.x,dy=to.y-from.y,distance=Math.hypot(dx,dy)||1;
+ if(distance<=range)return {...from};
+ return {x:to.x-dx/distance*range,y:to.y-dy/distance*range};
+}
+const actorCenter=(stage,actor)=>({x:(parseFloat(actor.style.left)||0)*stage.clientWidth/100,y:(parseFloat(actor.style.top)||0)*stage.clientHeight/100});
+function moveToRange(stage,actor,target,range){
+ const from=actorCenter(stage,actor),to=actorCenter(stage,target),next=approachCoordinates(from,to,range);
+ const distance=Math.hypot(to.x-from.x,to.y-from.y),moving=distance>range+10;
+ const duration=moving?Math.round(clamp((distance-range)*3,280,750)):0;
+ if(moving){actor.style.transitionDuration=duration+'ms';actor.classList.add('battlefield-walking');setTimeout(()=>actor.classList.remove('battlefield-walking'),duration);}
+ actor.style.left=clamp(next.x/Math.max(1,stage.clientWidth)*100,8,92)+'%';
+ actor.style.top=clamp(next.y/Math.max(1,stage.clientHeight)*100,22,82)+'%';
+ actor.style.zIndex=String(Math.round(parseFloat(actor.style.top)));
+ actor.dataset.moved='1';
+ actor.querySelector('.battlefield-sprite')?.style.setProperty('scale',to.x>=from.x?'1 1':'-1 1');
+ return duration;
+}
+function castProjectile(stage,actor,target,kind='magic'){
+ if(!effectsEnabled())return;
+ const origin=actor.getBoundingClientRect(),destination=target.getBoundingClientRect(),bounds=stage.getBoundingClientRect();
+ const projectile=document.createElement('span');projectile.className=kind==='slash'?'battlefield-slash':'battlefield-missile';
+ const fromX=origin.left+origin.width/2-bounds.left,fromY=origin.top+origin.height/2-bounds.top;
+ const dx=destination.left+destination.width/2-bounds.left-fromX,dy=destination.top+destination.height/2-bounds.top-fromY;
+ projectile.style.left=fromX+'px';projectile.style.top=fromY+'px';stage.append(projectile);
+ const motion=projectile.animate([{transform:'translate(-50%,-50%) scale(.6)',opacity:0},{transform:`translate(calc(-50% + ${dx*.65}px),calc(-50% + ${dy*.65}px)) scale(1.15)`,opacity:1},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(.65)`,opacity:0}],{duration:kind==='slash'?170:440,easing:'ease-out'});
+ motion.onfinish=()=>projectile.remove();setTimeout(()=>projectile.remove(),650);
+}
 
 // Calls originate after the existing combat engine has calculated the hit.
 // Animation never writes player, pet, monster or storage state.
-export function battlefieldHit({source,targetId,amount,lethal=false}){
+export function battlefieldHit({source,targetId,amount,lethal=false,range='melee'}){
  if(typeof document==='undefined')return;
  const stage=document.getElementById('battlefield25d');
  if(!stage||!Number.isFinite(amount)||amount<=0)return;
@@ -16,32 +45,41 @@ export function battlefieldHit({source,targetId,amount,lethal=false}){
  const actor=[...stage.querySelectorAll('.battlefield-unit')].find(el=>el.dataset.entity===key);
  const target=[...stage.querySelectorAll('.battlefield-unit')].find(el=>el.dataset.battleTarget===targetId);
  if(!target)return;
- if(effectsEnabled()){
-  const from=key==='hero'?'translate(-50%,-78%)':'translate(-50%,-78%)';
-  const movement=key==='hero'?['0px','28px','-4px','0px']:['0px','-10px','-4px','0px'];
-  actor?.animate?.(movement.map((x,i)=>({transform:`${from} translateX(${x})`,offset:i/3})),{duration:390,easing:'ease-out'});
-  target.animate?.([{filter:'brightness(1)',transform:'translate(-50%,-78%)'},{filter:'brightness(2.8) sepia(.5)',transform:'translate(-47%,-78%)'},{filter:'brightness(1)',transform:'translate(-50%,-78%)'}],{duration:330});
-  if(actor){
-   const origin=actor.getBoundingClientRect(),destination=target.getBoundingClientRect(),bounds=stage.getBoundingClientRect();
-   const projectile=document.createElement('span');projectile.className=key==='hero'?'battlefield-slash':'battlefield-missile';
-   const fromX=origin.left+origin.width/2-bounds.left,fromY=origin.top+origin.height/2-bounds.top;
-   const dx=destination.left+destination.width/2-bounds.left-fromX,dy=destination.top+destination.height/2-bounds.top-fromY;
-   projectile.style.left=fromX+'px';projectile.style.top=fromY+'px';stage.append(projectile);
-   const motion=projectile.animate([{transform:'translate(-50%,-50%) scale(.6)',opacity:0},{transform:`translate(calc(-50% + ${dx*.65}px),calc(-50% + ${dy*.65}px)) scale(1.15)`,opacity:1},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(.65)`,opacity:0}],{duration:key==='hero'?310:430,easing:'ease-out'});
-   motion.onfinish=()=>projectile.remove();setTimeout(()=>projectile.remove(),600);
+ const approaching=actor&&range==='melee'?moveToRange(stage,actor,target,55):false;
+ if(actor&&range==='ranged'){
+  const a=actorCenter(stage,actor),t=actorCenter(stage,target);
+  if(Math.hypot(t.x-a.x,t.y-a.y)<115){
+   const retreat={x:a.x+(a.x-t.x)*.5,y:a.y+(a.y-t.y)*.5};
+   actor.style.left=clamp(retreat.x/Math.max(1,stage.clientWidth)*100,8,92)+'%';
+   actor.style.top=clamp(retreat.y/Math.max(1,stage.clientHeight)*100,22,82)+'%';actor.dataset.moved='1';
   }
  }
- const number=document.createElement('span');number.className='battlefield-damage';number.textContent='−'+Math.round(amount).toLocaleString('zh-TW');
- number.style.left=target.style.left;number.style.top=target.style.top;stage.append(number);
- setTimeout(()=>number.remove(),850);
- if(lethal){target.classList.add('battlefield-dying');setTimeout(()=>target.classList.remove('battlefield-dying'),600);}
+ if(effectsEnabled()&&actor){
+  if(range==='melee'){actor.animate?.([{scale:'1 1'},{scale:'1.13 .88'},{scale:'1 1'}],{duration:350});}
+  else{actor.animate?.([{filter:'brightness(1)'},{filter:'brightness(1.8)'},{filter:'brightness(1)'}],{duration:330});castProjectile(stage,actor,target);}
+ }
+ const impact=()=>{
+  if(!stage.isConnected)return;
+  if(effectsEnabled())target.animate?.([{filter:'brightness(1)'},{filter:'brightness(2.8) sepia(.5)'},{filter:'brightness(1)'}],{duration:300});
+  if(range==='melee'&&actor)castProjectile(stage,actor,target,'slash');
+  const number=document.createElement('span');number.className='battlefield-damage';number.textContent='−'+Math.round(amount).toLocaleString('zh-TW');
+  number.style.left=target.style.left;number.style.top=target.style.top;stage.append(number);
+  setTimeout(()=>number.remove(),850);
+  if(lethal){target.classList.add('battlefield-dying');setTimeout(()=>target.classList.remove('battlefield-dying'),600);}
+ };
+ if(approaching)setTimeout(impact,approaching+40);else impact();
 }
 
-export function battlefieldEnemySwing(targetId){
+export function battlefieldEnemySwing(targetId,defender='hero',range='melee'){
  if(typeof document==='undefined')return;
  const stage=document.getElementById('battlefield25d');if(!stage||!effectsEnabled())return;
  const actor=[...stage.querySelectorAll('.battlefield-unit')].find(el=>el.dataset.battleTarget===targetId);
- actor?.animate?.([{transform:'translate(-50%,-78%)'},{transform:'translate(-66%,-78%) scale(1.1)'},{transform:'translate(-50%,-78%)'}],{duration:410,easing:'ease-out'});
+ const target=[...stage.querySelectorAll('.battlefield-unit')].find(el=>el.dataset.entity===defender);
+ if(!actor||!target)return;
+ if(range==='melee'){
+  moveToRange(stage,actor,target,58);
+  actor.animate?.([{scale:'1 1'},{scale:'1.1 .86'},{scale:'1 1'}],{duration:370});
+ }else castProjectile(stage,actor,target);
 }
 
 export function syncBattlefield({location,player,pet,enemies,targetId,heroHtml,petHtml,monsterHtml,onTarget}){
@@ -68,7 +106,7 @@ export function syncBattlefield({location,player,pet,enemies,targetId,heroHtml,p
   let node=[...layer.children].find(el=>el.dataset.entity===actor.key);
   if(!node){node=document.createElement(actor.foe?'button':'div');node.dataset.entity=actor.key;node.className='battlefield-unit battlefield-enter';node.innerHTML='<span class="battlefield-shadow"></span><span class="battlefield-sprite"></span><span class="battlefield-name"></span><span class="battlefield-health"><i></i></span>';layer.append(node);setTimeout(()=>node.classList.remove('battlefield-enter'),550);}
   const art=node.querySelector('.battlefield-sprite');if(art.dataset.art!==actor.html){art.innerHTML=actor.html;art.dataset.art=actor.html;}
-  node.style.left=actor.x+'%';node.style.top=actor.y+'%';node.style.zIndex=String(Math.round(actor.y));
+  if(node.dataset.moved!=='1'){node.style.left=actor.x+'%';node.style.top=actor.y+'%';node.style.zIndex=String(Math.round(actor.y));}
   node.classList.toggle('battlefield-boss',!!actor.foe?.boss);node.classList.toggle('battlefield-selected',!!actor.foe&&actor.foe.instanceId===targetId);
   node.classList.toggle('battlefield-dead',actor.dead);
   node.querySelector('.battlefield-name').textContent=actor.label;
