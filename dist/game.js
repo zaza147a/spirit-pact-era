@@ -941,7 +941,7 @@ function doPetEnhance(slot){
  if(result.error)return toast(result.error);
  const evolution=reconcileHumanoidStages(pet);clearStatSnapshots();
  if(!save()){player=snapshot;clearStatSnapshots();return;}
- toast(evolution.changed?`${pet.nickname}進化成${evolution.label}！`:`${pet.nickname}的${g.name}強化至${next}階`);
+ toast(evolution.changed?`${pet.nickname}進化成${HUMANOID_STAGES[evolution.stage].label}！`:`${pet.nickname}的${g.name}強化至${next}階`);
  render();renderSide(true);
 }
 function renderPetEnhancement(){
