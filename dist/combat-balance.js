@@ -29,7 +29,9 @@ const BALANCE_ANCHORS=[
  [130,[1.03,.76,.76,1.06,.95,1.02,1.26,.94,1.39,1.33]],
  [150,[1.12,.87,.78,1.03,1.02,1.03,1.05,1.03,1.85,1.60]],
  [160,[1,1,1,1,1,1,1,1,1,1]],
- [200,[1,1,1,1,1,1,1,1,1,1]],
+ // Mild late-game smoothing of same-role clear-speed outliers; keep every
+ // 201+ SSS coefficient unchanged and retain role-specific utility tradeoffs.
+ [200,[1.025,1.02,1,1,1.01,1.03,1,1.01,1,.98]],
  [201,[1.06,1.10,1.05,1.05,1.25,1.14,.78,1.12,1,.96]]
 ];
 export function jobZoneOutputFactor(job,level=1){
