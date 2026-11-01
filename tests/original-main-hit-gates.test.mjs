@@ -4,6 +4,7 @@ import {runtime} from './runtime31-helper.mjs';
 import {THIRD_FUSION_RULES} from '../dist/fusion-resonance.js';
 
 const narrowed=[
+ ['knight','attack-support'],
  ['assassin','magic-support'],['rogue','attack-magic'],['rogue','magic-defense'],
  ['priest','attack-magic'],['priest','magic-defense'],
  ['performer','attack-magic'],['performer','magic-defense']
@@ -62,4 +63,23 @@ test('five more original pacts require their named lance, ambush or star-rain hi
   const after=foe.hp;a.emitEvent(event);
   assert.equal(foe.hp,after,job+'/'+pair+' bypassed its cooldown');
  }
+});
+
+test('knight hunting rhythm requires both healthy HP and a landed dragon lance',async()=>{
+ const c=await runtime(),a=c.api,p=a.normalize(a.fresh('healthy-lance','knight'));
+ Object.assign(p,{level:150,reborn:true,thirdJob:true,jobLevel:70,location:'starshore'});
+ const pet=c.makePet('fang');
+ Object.assign(pet,{id:'healthy-lance-pet',rarity:'mythic',ascended:true,level:150,evolution:4,fusion:{main:'attack',sub:'support'}});
+ p.pets=[pet];p.activePetId=pet.id;
+ a.setup(p,{id:'world_151',map:'starshore',level:151,hp:1e9,maxHp:1e9,def:100,atk:0,hit:0,flee:0,instanceId:'healthy-lance-foe'});
+ pet.hp=c.petStats(pet).hp;a.beginReport();
+ p.hp=Math.floor(a.stat('hp')*.5);
+ a.emitEvent('thirdHit_knight');
+ assert.equal(a.state().classBuffs.pact,undefined,'a landed lance at low HP must not trigger the chase');
+ p.hp=a.stat('hp');
+ a.emitEvent('skill');a.emitEvent('thirdWideHit_knight');
+ assert.equal(a.state().classBuffs.pact,undefined,'generic and wide skills must not trigger the chase');
+ a.emitEvent('thirdHit_knight');
+ assert.ok(a.state().classBuffs.pact,'a healthy landed lance should activate the resonance');
+ assert.ok(a.state().classBuffs.resonanceHaste?.until>1e6,'the chase grants real haste');
 });
