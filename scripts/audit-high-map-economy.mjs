@@ -26,15 +26,19 @@ for(const [level,gearLevel] of tiers)for(const job of jobs)for(const seedStart o
  const dawnMaterials=player.bag.filter(entry=>ITEMS[entry.id]?.dawnJunk).map(entry=>({id:entry.id,qty:entry.qty}));
  const reservedDawnValue=dawnMaterials.reduce((sum,entry)=>sum+entry.qty*(ITEMS[entry.id]?.cost||0),0);
  rows.push({level,job,seed:seedStart,kills:summary.kills||0,junkGold:summary.junkGold||0,
-  consumedPotionValue,junkCoverage:(summary.junkGold||0)/Math.max(1,consumedPotionValue),
+  cashGold:summary.goldEarned||0,netGold:summary.gold||0,consumedPotionValue,
+  junkCoverage:(summary.junkGold||0)/Math.max(1,consumedPotionValue),
+  cashCoverage:(summary.goldEarned||0)/Math.max(1,consumedPotionValue),
   reservedDawnValue,dawnMaterials,stoppedReason:summary.reason||null,revives:summary.revives||0});
 }
 const mean=(rows,key)=>rows.reduce((sum,row)=>sum+row[key],0)/Math.max(1,rows.length);
 const summary=tiers.map(([level,gearLevel])=>{const matches=rows.filter(row=>row.level===level);
  return {level,gearLevel,n:matches.length,avgKills:mean(matches,'kills'),avgJunkGold:mean(matches,'junkGold'),
-  avgPotionValue:mean(matches,'consumedPotionValue'),avgReservedDawnValue:mean(matches,'reservedDawnValue'),coverage:mean(matches,'junkGold')/Math.max(1,mean(matches,'consumedPotionValue')),
-  belowBreakEven:matches.filter(row=>row.junkCoverage<1).length,revives:matches.reduce((n,row)=>n+row.revives,0)};
+  avgCashGold:mean(matches,'cashGold'),avgNetGold:mean(matches,'netGold'),avgPotionValue:mean(matches,'consumedPotionValue'),
+  avgReservedDawnValue:mean(matches,'reservedDawnValue'),junkCoverage:mean(matches,'junkGold')/Math.max(1,mean(matches,'consumedPotionValue')),
+  cashCoverage:mean(matches,'cashGold')/Math.max(1,mean(matches,'consumedPotionValue')),
+  belowBreakEven:matches.filter(row=>row.cashCoverage<1).length,revives:matches.reduce((n,row)=>n+row.revives,0)};
 });
-const output={conditions:'60s real offline runtime per case; 10 jobs × 6 high tiers × 2 seeds; nearest prior-stage 90% mythic reference gear and attack-magic fused pet for 151–200; mandatory SSS owner/pet gear for 201/210; dawn sigil zero, auto-buy large potions, sell allowed junk. Dawn materials are intentionally protected from AUTO-sale and valued separately as reserved sigil resources, not cash income. Junk cash vs potion replacement only, not cards/gear income.',summary,rows};
+const output={conditions:'60s real offline runtime per case; 10 jobs × 6 high tiers × 2 seeds; nearest prior-stage 90% mythic reference gear and attack-magic fused pet for 151–200; mandatory SSS owner/pet gear for 201/210; dawn sigil zero, auto-buy large potions, sell allowed junk. Dawn materials are intentionally protected from AUTO-sale and valued separately as reserved sigil resources, not cash income. Coverage uses actual spendable cash earned (direct kill coins plus junk sales) vs potion replacement, excludes cards/gear sales.',summary,rows};
 writeFileSync('docs/high-map-economy-batch.json',JSON.stringify(output,null,2)+'\n');
 console.log(JSON.stringify(summary,null,2));
