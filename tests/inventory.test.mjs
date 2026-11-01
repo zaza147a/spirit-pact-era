@@ -29,3 +29,14 @@ test('manual dismantle finds exact UID after bag reorder; character and pet equi
  p.bag.reverse();a.dismantle('target');assert.ok(!p.bag.some(g=>g.uid==='target'));assert.ok(p.bag.some(g=>g.uid==='other'));assert.equal(p.gear.rightHand,kept);assert.ok(p.bag.some(g=>g.id==='shard_weapon_1'&&g.qty>0));
  const snapshot=JSON.stringify(p.bag);a.dismantle('missing');a.dismantle('worn');assert.equal(JSON.stringify(p.bag),snapshot);
 });
+
+test('live bag keeps canonical descriptions for all seven starforge ranks and four dawn materials',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('素材說明','mage'));a.setPlayer(p);
+ const {ENHANCEMENT_ITEMS,DAWN_ITEMS}=await import('../dist/sky-trials.js');
+ for(const [category,items] of [['enhancements',ENHANCEMENT_ITEMS],['dawnJunk',DAWN_ITEMS]]){
+  p.bag=Object.keys(items).map(id=>({id,qty:2}));const before=JSON.stringify(p.bag);a.setCategory(category);const html=a.renderBag();
+  assert.doesNotMatch(html,/undefined|null/);
+  for(const [id,item] of Object.entries(items)){assert.equal(c.ITEMS[id].description,item.description,id+' must retain catalog description');assert.ok(html.includes(item.description),id+' description must be visible');assert.equal(c.ITEMS[id].cost,item.cost);assert.equal(c.ITEMS[id].map,item.map);}
+  assert.equal(JSON.stringify(p.bag),before,'rendering must preserve quantities');
+ }
+});

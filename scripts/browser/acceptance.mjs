@@ -4,6 +4,7 @@ import {createServer} from 'node:http';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,extname} from 'node:path';
 import {browserFixtures,continuousFailureFixture} from './fixtures.mjs';
+import {ENHANCEMENT_ITEMS,DAWN_ITEMS} from '../../dist/sky-trials.js';
 import {trueFormName} from '../../dist/pet-true-form.js';
 const out=resolve(process.env.BROWSER_QA_OUTPUT||'browser-qa');await mkdir(out,{recursive:true});
 const root=resolve('dist'),types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.webp':'image/webp','.png':'image/png','.json':'application/json'};
@@ -15,12 +16,12 @@ const server=createServer(async(req,res)=>{
 });
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
 const engine=process.env.BROWSER_ENGINE||'chromium';assert.ok(['chromium','webkit'].includes(engine));
-const browser=await ({chromium,webkit})[engine].launch({headless:true});const rows=[],errors=[],touchRows=[];let passed=false;
+const browser=await ({chromium,webkit})[engine].launch({headless:true});const rows=[],errors=[],touchRows=[];let passed=false,materialDescriptionChecks=0;
 try{
  for(const [name,viewport] of [['desktop',{width:1440,height:1000}],['mobile',{width:390,height:844}]]){
   const context=await browser.newContext({viewport,acceptDownloads:true,...(name==='mobile'?{isMobile:true,hasTouch:true}:{})});
   let page=await context.newPage();const attach=p=>{p.on('pageerror',e=>errors.push({viewport:name,error:e.message}));p.on('dialog',d=>d.accept());};attach(page);
-  const fixtures=browserFixtures();await page.goto(base);await page.locator('#slotGrid .slot-card').first().waitFor();
+  const fixtures=browserFixtures();for(const id of [...Object.keys(ENHANCEMENT_ITEMS),...Object.keys(DAWN_ITEMS)])if(!fixtures[0].player.bag.some(item=>item.id===id))fixtures[0].player.bag.push({id,qty:2});await page.goto(base);await page.locator('#slotGrid .slot-card').first().waitFor();
   for(let slot=0;slot<4;slot++){
    await page.locator(`[data-slot-select="${slot}"]`).click();
    await page.locator('#saveFile').setInputFiles({name:`qa-${slot}.json`,mimeType:'application/json',buffer:Buffer.from(JSON.stringify(fixtures[slot]))});
@@ -31,7 +32,9 @@ try{
   await page.close();page=await context.newPage();attach(page);await page.goto(base);
   for(let slot=0;slot<3;slot++){
    const rank=['S','SS','SSS'][slot];await page.locator(`[data-slot-select="${slot}"]`).click();await page.locator('#enterGameBtn').click();
-   await page.locator('#gameShell').waitFor({state:'visible'});await page.locator('[data-tab="pets"]').click();
+   await page.locator('#gameShell').waitFor({state:'visible'});
+   if(slot===0){await page.locator('[data-tab="bag"]').click();for(const [category,items] of [['enhancements',ENHANCEMENT_ITEMS],['dawnJunk',DAWN_ITEMS]]){await page.locator(`[data-bagcategory="${category}"]`).click();for(const [id,item] of Object.entries(items)){const card=page.locator(`[data-ui-key="bag-${id}"]`);assert.ok((await card.innerText()).includes(item.description),id+' canonical description visible');assert.doesNotMatch(await card.innerText(),/undefined|null/);materialDescriptionChecks++;}await page.locator('#side').screenshot({path:resolve(out,`${name}-${category}-descriptions.png`)});}}
+   await page.locator('[data-tab="pets"]').click();
    for(const [index,pet] of fixtures[slot].player.pets.entries()){
     if(index){await page.locator('[data-pet-section="manage"]').click();await page.locator(`[data-pet="${pet.id}"]`).click();}
     else await page.locator('[data-pet-section="active"]').click();
@@ -139,5 +142,5 @@ try{
   await context.close();
  }
  assert.equal(touchRows.length,4);assert.equal(rows.length,72);assert.equal(errors.length,0,JSON.stringify(errors));passed=true;
-}catch(error){errors.push({phase:'acceptance',error:error.message});throw error;}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({engine,passed,rows,touchRows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Touch taps at320/360/430/844 widths verify actual touch events, tabs, input focus, save and no horizontal overflow. Mobile is browser viewport emulation, not a physical handset; WebKit is an engine check, not physical Safari.'},null,2));}
+}catch(error){errors.push({phase:'acceptance',error:error.message});throw error;}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({engine,passed,rows,touchRows,materialDescriptionChecks,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Touch taps at320/360/430/844 widths verify actual touch events, tabs, input focus, save and no horizontal overflow. Mobile is browser viewport emulation, not a physical handset; WebKit is an engine check, not physical Safari.'},null,2));}
 console.log('Browser acceptance passed: '+rows.length+' displayed stage sprites, four slots, paid evolution, backup, offline restore and live input.');

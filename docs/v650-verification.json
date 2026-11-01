@@ -43,9 +43,9 @@
     ],
     "passed": false
   },
-  "mainModified": false,
-  "published": false,
-  "status": "ready-for-release-approval",
+  "mainModified": true,
+  "published": true,
+  "status": "published-and-smoke-verified",
   "browser": {
     "workflowRun": 41298178024,
     "conclusion": "success",
@@ -128,5 +128,6 @@
       }
     }
   ],
-  "productionTreeScope": "All dist production files are identical to the verified sourceCommit. Subsequent candidate commit contains only evidence/docs."
+  "productionTreeScope": "All dist production files are identical to the verified sourceCommit. Subsequent candidate commit contains only evidence/docs.",
+  "productionRelease": "docs/v650-production-release.json"
 }
