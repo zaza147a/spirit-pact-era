@@ -28,7 +28,7 @@
     "report": "docs/dawn-progression-audit.json"
   },
   "releaseStatus": "blocked-pending-full-acceptance",
-  "browserE2E": "passed-Chromium-desktop-and390px-mobile-emulation-at-e79dbf",
+  "browserE2E": "passed-Chromium151-desktop1440-and-mobile390-emulation",
   "mainModified": false,
   "published": false,
   "history": [
@@ -60,8 +60,7 @@
     "durationMs": 38636.756309,
     "logSha256": "3bd675e5809a555ea60831e973dca1b395b95f09fc034798880f5f393633e111"
   },
-  "browserRunId": 41286433976,
-  "browserPending": "Final-color reveal capture and actual continuous-trial failure checks added; awaiting next CI run.",
+  "browserRunId": 41287478194,
   "fiveBoss": {
     "count": 2400,
     "wins": 2302,
@@ -84,5 +83,8 @@
     "count": 5,
     "wins": 5,
     "report": "docs/dawn-live-resonance-progression.json"
-  }
+  },
+  "browserSourceCommit": "b30d70468ad87814700391d6f553af89e7bee1d7",
+  "browserArtifactId": 13076036057,
+  "browserLimits": "Physical mobile device/Safari not tested; full unique original60 design lifecycle acceptance still incomplete."
 }
