@@ -15,6 +15,33 @@ test('knight original shield-break arms its follow-up lance before applying time
  a.emitEvent('shieldBreak');assert.equal(foe.exposedUntil,undefined);
  a.emitEvent('thirdHit_knight');assert.equal(foe.exposedPower,.18);assert.ok(foe.exposedUntil>1000000);
 });
+test('wizard magic-defense stores a spell in its ward before one delayed cannon',async()=>{
+ const {a,c,foe}=await scenario('wizard','magic-defense');
+ a.emitEvent('skill');
+ assert.ok(a.state().petEffects.shield>0,'first spell must build a ward');
+ assert.equal(foe.hp,1e9,'charging the ward is not an instant magic cannon');
+ a.emitEvent('skill');
+ assert.equal(foe.hp,1e9,'same tick cannot release a duplicate cannon');
+ c.setTime(1004001);
+ a.emitEvent('skill');
+ const charged=foe.hp;
+ assert.ok(charged<1e9,'the next spell releases the stored magic');
+ a.emitEvent('skill');
+ assert.equal(foe.hp,charged,'stored magic can discharge only once');
+});
+test('wizard ward charge expires and cannot be stolen by swapping fused companions',async()=>{
+ const {a,c,p,foe}=await scenario('wizard','magic-defense');
+ a.emitEvent('skill');
+ const another=c.makePet('fang');
+ Object.assign(another,{id:'new-wizard-ward',rarity:'mythic',ascended:true,
+  level:150,evolution:4,fusion:{main:'magic',sub:'defense'}});
+ another.hp=c.petStats(another).hp;p.pets.push(another);
+ a.setPet('new-wizard-ward');c.setTime(1004001);a.emitEvent('skill');
+ assert.equal(foe.hp,1e9,'a different pet cannot release the old ward spell');
+ const {a:b,c:d,foe:expired}=await scenario('wizard','magic-defense');
+ b.emitEvent('skill');d.setTime(1010001);b.emitEvent('skill');
+ assert.equal(expired.hp,1e9,'an expired ward must not release delayed damage');
+});
 test('crusader siege counter requires two real hit events',async()=>{
  const {a,foe}=await scenario('crusader','attack-defense');
  a.emitEvent('damageTaken');assert.equal(foe.hp,1e9);

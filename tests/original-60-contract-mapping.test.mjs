@@ -10,6 +10,7 @@ const SPECIALIZED={
  'knight/defense-support':['dragonCounter'],
  'crusader/attack-defense':['siegeCounter'],
  'wizard/attack-defense':['storedSpellCharge'],
+ 'wizard/magic-defense':['wardCharge'],
  'sage/magic-support':['starRainChain'],
  'rogue/defense-support':['sanctuaryChase'],
  'priest/attack-support':['haste','counterStrike'],

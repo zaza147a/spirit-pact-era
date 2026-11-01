@@ -69,10 +69,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
     ]
   },
   "wizard/magic-defense": {
-    "payload": [
-      "ward",
-      "arcaneStrike"
-    ]
+    "payload": ["wardCharge"]
   },
   "wizard/magic-support": {
     "payload": [
