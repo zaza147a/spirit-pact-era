@@ -56,6 +56,8 @@ try{
     await page.evaluate(()=>{globalThis.qaTouches={start:0,end:0,pointer:0};if(globalThis.qaTouchProbeInstalled)return;globalThis.qaTouchProbeInstalled=true;window.addEventListener('touchstart',()=>qaTouches.start++,{capture:true,passive:true});window.addEventListener('touchend',()=>qaTouches.end++,{capture:true,passive:true});window.addEventListener('pointerup',e=>{if(e.pointerType==='touch')qaTouches.pointer++;},{capture:true});});
     await page.locator('[data-slot-select="0"]').tap();await page.locator('#enterGameBtn').tap();
     await page.locator('[data-tab="pets"]').tap();await page.locator('[data-pet-section="manage"]').tap();
+    // Tapping an already active companion withdraws it; switch via another one first.
+    await page.locator(`[data-pet="${fixtures[0].player.pets[1].id}"]`).tap();
     await page.locator(`[data-pet="${fixtures[0].player.pets[0].id}"]`).tap();
     await page.locator('[data-pet-section="active"]').tap();
     const art=page.locator('#side img.companion-art').first();await art.scrollIntoViewIfNeeded();await art.evaluate(img=>img.decode());
@@ -68,8 +70,8 @@ try{
     const state=await page.evaluate(()=>({touches:{...qaTouches},maxTouchPoints:navigator.maxTouchPoints,innerWidth,scrollWidth:document.documentElement.scrollWidth}));
     touchRows.push({...viewport,...state});console.log('Touch probe '+JSON.stringify({...viewport,...state}));
     // Headless device metadata may report maxTouchPoints=0 despite real touch dispatch.
-    // Require the nine actual tap gestures in all three event streams instead.
-    assert.ok(state.touches.start>=9&&state.touches.end>=9&&state.touches.pointer>=9,'tap must generate actual touch events: '+JSON.stringify(state));
+    // Require the ten actual tap gestures in all three event streams instead.
+    assert.ok(state.touches.start>=10&&state.touches.end>=10&&state.touches.pointer>=10,'tap must generate actual touch events: '+JSON.stringify(state));
     assert.ok(state.scrollWidth<=state.innerWidth+1,'touch layout exceeds viewport');
     await page.screenshot({path:resolve(out,`touch-${viewport.width}x${viewport.height}.png`)});
     await page.locator('#returnEntryBtn').tap();
