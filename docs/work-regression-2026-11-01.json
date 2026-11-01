@@ -1,0 +1,34 @@
+{
+  "dateTaipei": "2026-11-01",
+  "command": "node --test tests/*.test.mjs",
+  "environment": {
+    "node": "v24.22.1",
+    "os": "Linux x86_64"
+  },
+  "tests": 413,
+  "pass": 413,
+  "fail": 0,
+  "cancelled": 0,
+  "skipped": 0,
+  "todo": 0,
+  "durationMs": 48524.340888,
+  "logSha256": "a4121c581057818c84240b97cde7ca90d4a5ae79cac9987d4a6a81ef3d79ef41",
+  "baseline": {
+    "head": "9476c49a0aa1c9228927a4467c3d43b4f5b809b9",
+    "tests": 398,
+    "pass": 397,
+    "fail": 1,
+    "failure": "job-zone-output.test.mjs stale level-200 expected factor=1, prior approved smoothing was already in runtime"
+  },
+  "dawnProgression": {
+    "command": "node scripts/audit-dawn-progression.mjs",
+    "total": 120,
+    "wins": 120,
+    "seed": 42,
+    "report": "docs/dawn-progression-audit.json"
+  },
+  "releaseStatus": "blocked-pending-full-acceptance",
+  "browserE2E": "not-passed",
+  "mainModified": false,
+  "published": false
+}
