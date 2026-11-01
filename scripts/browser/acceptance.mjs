@@ -56,7 +56,8 @@ try{
   await page.locator('#evolutionAfter').evaluate(img=>img.decode());
   const finalReveal=await page.locator('#evolutionAfter').evaluate(img=>({src:img.getAttribute('src'),filter:getComputedStyle(img).filter,opacity:getComputedStyle(img).opacity}));
   assert.ok(finalReveal.src.includes('/juvenile/'));assert.equal(finalReveal.opacity,'1');
-  assert.ok(!finalReveal.filter.includes('brightness(0)')&&!finalReveal.filter.includes('blur('),'completed reveal must show full-color art');
+  const blur=/blur\(([\d.]+)px\)/.exec(finalReveal.filter),invert=/invert\(([\d.]+)\)/.exec(finalReveal.filter);
+  assert.ok(!finalReveal.filter.includes('brightness(0)')&&(!blur||Number(blur[1])===0)&&(!invert||Number(invert[1])===0),'completed reveal must show full-color art');
 
   await page.screenshot({path:resolve(out,`${name}-loyalty-viewport.png`)});await page.screenshot({path:resolve(out,`${name}-loyalty-reveal.png`),fullPage:true});await page.locator('#evolutionClose').click();
   await page.locator('#area [data-open="enhancement"]').click();
