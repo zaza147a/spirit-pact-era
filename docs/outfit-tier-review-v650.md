@@ -22,6 +22,6 @@
 - 提示詞／PNG來源雜湊／WebP雜湊：`dist/assets/rank-outfits/art-manifest.json`。
 - 設計準則：`scripts/art/rank-outfit-directions-v650.json`。
 - 生成方式：內建image_gen，每件素材獨立生成；部分終階與修羅SS使用內建影像編輯完成定向修正，沒有以程式繪圖代替角色美術。
-- 檢視表：`art-qa/rank-outfits-v650-1.jpg`、`art-qa/rank-outfits-v650-2.jpg`，皇家單獨比較`art-qa/royal-guard-v650.jpg`。
+- Chromium實際載入素材的中文檢視表：`art-qa/rank-outfits-v650-1.jpg`、`art-qa/rank-outfits-v650-2.jpg`，皇家單獨比較`art-qa/royal-guard-v650.jpg`。
 
 美術檔案檢查、透明邊界及雜湊與程式回歸已通過；最終雙瀏覽器的30次選用／存讀與預覽結果另附於V6.5.0驗收紀錄。外觀不增加能力，S／SS／SSS永久解鎖規則沿用既有行為。

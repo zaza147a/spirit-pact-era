@@ -5,14 +5,14 @@
     "node": "v24.22.1 and npm node@22",
     "os": "Linux x86_64"
   },
-  "tests": 505,
-  "pass": 505,
+  "tests": 525,
+  "pass": 525,
   "fail": 0,
   "cancelled": 0,
   "skipped": 0,
   "todo": 0,
-  "durationMs": 112236.798399,
-  "logSha256": "963be3b3a8a4ca26e7930104ababddb186bc6d6cb8cfc83d1200d4241cef6282",
+  "durationMs": 41789.601894,
+  "logSha256": "171d210dfa6bdc4c3b2d0853ed1088834d7d009e7c91068998bcdcba01431cc3",
   "baseline": {
     "head": "9476c49a0aa1c9228927a4467c3d43b4f5b809b9",
     "tests": 398,
@@ -27,7 +27,7 @@
     "seed": 42,
     "report": "docs/dawn-progression-audit.json"
   },
-  "releaseStatus": "candidate-pending-shared-warehouse-and-30-outfit-refresh",
+  "releaseStatus": "v650-ready-for-release-approval",
   "browserE2E": "passed-Chromium-and-WebKit-desktop1440-mobile390-emulation",
   "mainModified": false,
   "published": false,
@@ -44,29 +44,57 @@
       "tests": 480,
       "pass": 480,
       "fail": 0
+    },
+    {
+      "tests": 505,
+      "pass": 505,
+      "durationMs": 112236.798399,
+      "logSha256": "963be3b3a8a4ca26e7930104ababddb186bc6d6cb8cfc83d1200d4241cef6282",
+      "node22": {
+        "tests": 505,
+        "pass": 505,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 108145.288418,
+        "logSha256": "dbec33e4b4ec9d69a6b16acce203fc8ebb694e2cbec7ffd4b9de7f4902790e54"
+      },
+      "node24": {
+        "tests": 505,
+        "pass": 505,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 112236.798399,
+        "logSha256": "963be3b3a8a4ca26e7930104ababddb186bc6d6cb8cfc83d1200d4241cef6282"
+      },
+      "sourceCommit": "116772e37c7373691531b529408f5f1e4e71a55e",
+      "browserRunId": 41287478194,
+      "browserSourceCommit": "b30d70468ad87814700391d6f553af89e7bee1d7",
+      "browserArtifactId": 13076036057,
+      "browserLimits": "Physical mobile device/Safari not tested; full unique original60 design lifecycle acceptance still incomplete.",
+      "phase": "before-v650-shared-warehouse-outfits"
     }
   ],
   "node24": {
-    "tests": 505,
-    "pass": 505,
+    "tests": 525,
+    "pass": 525,
     "fail": 0,
-    "cancelled": 0,
     "skipped": 0,
-    "todo": 0,
-    "durationMs": 112236.798399,
-    "logSha256": "963be3b3a8a4ca26e7930104ababddb186bc6d6cb8cfc83d1200d4241cef6282"
+    "durationMs": 41789.601894,
+    "logSha256": "171d210dfa6bdc4c3b2d0853ed1088834d7d009e7c91068998bcdcba01431cc3"
   },
   "node22": {
-    "tests": 505,
-    "pass": 505,
+    "tests": 525,
+    "pass": 525,
     "fail": 0,
-    "cancelled": 0,
     "skipped": 0,
-    "todo": 0,
-    "durationMs": 108145.288418,
-    "logSha256": "dbec33e4b4ec9d69a6b16acce203fc8ebb694e2cbec7ffd4b9de7f4902790e54"
+    "durationMs": 49349.793279,
+    "logSha256": "cee7c776937b1e4440c49ed027485fbdeaa4d89b099c76f44448113b35071d94"
   },
-  "browserRunId": 41287478194,
+  "browserRunId": 41298178024,
   "fiveBoss": {
     "count": 2400,
     "wins": 2302,
@@ -90,10 +118,10 @@
     "wins": 5,
     "report": "docs/dawn-live-resonance-progression.json"
   },
-  "browserSourceCommit": "b30d70468ad87814700391d6f553af89e7bee1d7",
-  "browserArtifactId": 13076036057,
-  "browserLimits": "Physical mobile device/Safari not tested; full unique original60 design lifecycle acceptance still incomplete.",
-  "sourceCommit": "116772e37c7373691531b529408f5f1e4e71a55e",
+  "browserSourceCommit": "d2e27e4980039f0ec7b9b1490ddb0c9f3cd05e42",
+  "browserArtifactId": 13079947727,
+  "browserLimits": "Physical mobile, real Safari, native keyboard waived by user, not passed. Automated Chromium/WebKit are separate evidence.",
+  "sourceCommit": "d2e27e4980039f0ec7b9b1490ddb0c9f3cd05e42",
   "sourceReview": "docs/original-60-source-behavior-review.md",
   "finalSourceRuns": {
     "fullMatrix": 41290003659,
@@ -150,5 +178,11 @@
       "native keyboard"
     ],
     "notClaimedPassed": true
+  },
+  "v650Verification": "docs/v650-verification.json",
+  "v650FinalRuns": {
+    "original60": 41298178128,
+    "recovery": 41298178048,
+    "browser": 41298178024
   }
 }
