@@ -4,9 +4,9 @@ import {JUNK_ITEMS,PROOF_ITEMS} from './adventure-economy.js?v=6.5.0';
 import {SECOND_JOBS} from './jobs.js?v=6.5.0';
 import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=6.5.0';
 const rand=(a,b,rng=Math.random)=>Math.floor(Math.min(.999999,Math.max(0,rng()))*(b-a+1))+a;
-export const STACK_IDS=['med','cell','orb','red_small','red_mid','red_large','blue_small','blue_mid','blue_large','scrap','herb','ore','crystal','relic'];
+export const STACK_IDS=['gold_bar','med','cell','orb','red_small','red_mid','red_large','blue_small','blue_mid','blue_large','scrap','herb','ore','crystal','relic'];
 export const STACK_SET=new Set(STACK_IDS);
-export const LOOT_ITEMS={...ENHANCEMENT_ITEMS,...DAWN_ITEMS,...JUNK_ITEMS,...PROOF_ITEMS,...FRONTIER_ITEMS,red_small:{name:'紅色藥水',heal:60,cost:24},red_mid:{name:'濃縮紅藥水',heal:180,cost:65},red_large:{name:'高級紅藥水',heal:420,healPct:.15,cost:140},blue_small:{name:'藍色藥水',energy:35,cost:30},blue_mid:{name:'濃縮藍藥水',energy:95,cost:85},blue_large:{name:'高級藍藥水',energy:220,energyPct:.1,cost:190},scrap:{name:'異獸碎片',junk:true,cost:5},herb:{name:'月光藥草',junk:true,cost:13},ore:{name:'赤晶礦塊',junk:true,cost:25},crystal:{name:'霜晶石',junk:true,cost:42},relic:{name:'墜星遺物',junk:true,cost:75}};
+export const LOOT_ITEMS={...ENHANCEMENT_ITEMS,...DAWN_ITEMS,...JUNK_ITEMS,...PROOF_ITEMS,...FRONTIER_ITEMS,gold_bar:{name:'金條',junk:true,goldBar:true,cost:100_000_000,description:'每當金幣超過5億，系統將1億金幣兌換成1根金條；不會自動販售，可在雜物欄手動兌換。'},red_small:{name:'紅色藥水',heal:60,cost:24},red_mid:{name:'濃縮紅藥水',heal:180,cost:65},red_large:{name:'高級紅藥水',heal:420,healPct:.15,cost:140},blue_small:{name:'藍色藥水',energy:35,cost:30},blue_mid:{name:'濃縮藍藥水',energy:95,cost:85},blue_large:{name:'高級藍藥水',energy:220,energyPct:.1,cost:190},scrap:{name:'異獸碎片',junk:true,cost:5},herb:{name:'月光藥草',junk:true,cost:13},ore:{name:'赤晶礦塊',junk:true,cost:25},crystal:{name:'霜晶石',junk:true,cost:42},relic:{name:'墜星遺物',junk:true,cost:75}};
 LOOT_ITEMS.ascension_core={name:'蒼穹界限靈髓',evolution:true,cost:1200,description:'101–150級小怪8%、首領必掉，用於99級傳說／神話夥伴界限進化與異化'};STACK_IDS.push('ascension_core');STACK_SET.add('ascension_core');
 for(let i=1;i<=4;i++){const id=`essence_${i}`;LOOT_ITEMS[id]={name:['','初生靈核','凝聚靈核','覺醒靈核','超越靈核'][i],evolution:true,cost:0,description:`Lv.${(i-1)*20+1}–${i*20} 野外怪物掉落，供夥伴第 ${i} 次進化`};STACK_IDS.push(id);STACK_SET.add(id);}
 export const GEAR_BASE={
