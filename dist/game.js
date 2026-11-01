@@ -170,7 +170,7 @@ function petAutoAbility(pet,s,now){if(!auto||!player.hp||pet.hp<=0||!enemy?.hp||
   const skill=petSkillById(role,id),cost=6+skill?.unlock*2;if(!skill||petSkillStatus(pet,skill,now)!=='可施放')continue;
 
   const effect=petSkillEffect(skill,s,role);pet.sp-=cost;petSkillTimers[id]=now;timers.petAbility=now;let outcome='';
-  if(skill.kind==='bleed'){petEffects.bleedTicks=skill.ticks||3;petEffects.bleedTargetId=enemy?.instanceId;petEffects.bleedPower=effect.value;petEffects.bleedInterval=skill.interval||2000;petEffects.bleedLeech=skill.leech||0;petEffects.bleedNext=now+petEffects.bleedInterval;outcome=`每${petEffects.bleedInterval/1000}秒造成 ${effect.value} 傷害，共${petEffects.bleedTicks}跳`;}
+  if(skill.kind==='bleed'){petEffects.bleedTicks=skill.ticks||3;petEffects.bleedTargetId=enemy?.instanceId;petEffects.bleedPower=effect.value;petEffects.bleedInterval=skill.interval||2000;petEffects.bleedLeech=skill.leech||0;delete petEffects.bleedSource;petEffects.bleedNext=now+petEffects.bleedInterval;outcome=`每${petEffects.bleedInterval/1000}秒造成 ${effect.value} 傷害，共${petEffects.bleedTicks}跳`;}
   else if(skill.kind==='mark'){petEffects.markHits=skill.hits||2;petEffects.markPower=effect.value;outcome=`接下來${petEffects.markHits}次主人命中各附加 ${effect.value} 傷害`;}
   else if(skill.kind==='guard'){const amount=grantPetShield(effect.value,true);petEffects.guardUntil=now+effect.duration;petEffects.guardRegen=Math.round(s.def*.08);petEffects.guardRegenNext=now+1000;petEffects.guardCounter=skill.counter||0;outcome=`護盾 +${amount}，${role==='defense'?'提高攔截優先級':'守護自療'} ${(effect.duration/1000).toFixed(1)}秒`;}
   else if(skill.kind==='shield'){const beforePet=petEffects.shield||0,beforeOwner=player.shield;grantPetShield(effect.value,true);outcome=`夥伴護盾 +${(petEffects.shield||0)-beforePet}、主人護盾 +${player.shield-beforeOwner}（持續6.5秒）`;}
@@ -187,7 +187,7 @@ function addEnergy(amount){if(!activePet()||!player.hp)return;player.resonance=c
 function resonanceModifier(rule,magnitude,primary){
  const now=gameNow(),v=rule.value||0;let useful=false;if(rule.mode==='pact'){classBuffs.pact={until:now+(rule.duration||6000),power:0,skillId:rule.skillId,perSkill:rule.perSkill,...rule.transform};return true;}
  if(rule.mode==='cleave'&&primary){for(const foe of enemies.filter(e=>e!==primary&&e.hp>0).slice(0,3)){enemy=foe;dealPetDamage(hitDamage(magnitude*v,monsterDefenseAgainst(foe,rule.effect==='magic')),'resonanceDamage');useful=true;}enemy=primary;}
- if(rule.mode==='bleed'){petEffects.bleedPower=Math.max(petEffects.bleedPower||0,Math.round(magnitude*v));petEffects.bleedTicks=3;petEffects.bleedTargetId=primary?.instanceId;petEffects.bleedNext=now+1200;useful=true;}
+ if(rule.mode==='bleed'){petEffects.bleedPower=Math.round(magnitude*v);petEffects.bleedTicks=3;petEffects.bleedTargetId=primary?.instanceId;petEffects.bleedInterval=1200;petEffects.bleedLeech=0;petEffects.bleedSource='resonanceDamage';petEffects.bleedNext=now+1200;useful=true;}
  if(rule.mode==='expose'&&primary){primary.exposedUntil=now+5500;primary.exposedPower=v;useful=true;}
  if(rule.mode==='tempo'){classBuffs.resonanceHaste={until:now+5500,power:v};useful=true;}
  if(rule.mode==='crit'){classBuffs.resonanceCrit={until:now+5500,power:v};useful=true;}
@@ -215,9 +215,11 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   return true;
  }
  if(kind==='elementBurn'){
-  petEffects.bleedPower=Math.max(petEffects.bleedPower||0,Math.round(st.matk*.22));
-  petEffects.bleedTicks=Math.max(petEffects.bleedTicks||0,3);petEffects.bleedTargetId=primary?.instanceId;
-  petEffects.bleedNext=now+1200;
+  petEffects.bleedPower=Math.round(st.matk*.22);
+  petEffects.bleedTicks=3;petEffects.bleedTargetId=primary?.instanceId;
+  // A new resonance burn replaces the previous bleed's source, tick cadence
+  // and lifesteal. Never carry a pet bleed's leech/interval into a pact burn.
+  petEffects.bleedInterval=1200;petEffects.bleedLeech=0;petEffects.bleedNext=now+1200;
   petEffects.bleedSource='resonanceDamage';
   return true;
  }
