@@ -102,6 +102,16 @@ test('resonance burn remains on the originally struck enemy after target switchi
  assert.ok(foe.hp<1e9,'burn must damage its original target');
  assert.equal(other.hp,1e9,'switching target must not redirect an existing burn');
 });
+test('resonance burn continues against its live target even if selected enemy has already died',async()=>{
+ const {a,c,foe}=await scenario('assassin','attack-magic');
+ a.beginReport();a.emitEvent('crit');
+ const dead={...foe,instanceId:'already-dead',hp:0,maxHp:1e9};
+ a.setEnemies([dead,foe]);
+ c.setTime(1001300);a.tickPetEffects(1001300);
+ assert.ok(foe.hp<1e9,'a dead selected enemy must not cancel a different target’s live burn');
+ assert.equal(dead.hp,0,'a dead enemy cannot be damaged a second time');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+});
 test('original fire burn replaces old pet bleed without inheriting its leech, power or slow tick',async()=>{
  const {a,c,p,foe}=await scenario('assassin','attack-magic');
  const effects=a.state().petEffects;
