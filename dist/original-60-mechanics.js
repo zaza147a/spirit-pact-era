@@ -154,7 +154,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
   },
   "assassin/attack-defense": {
     "event": "thirdHit_assassin",
-    "payload": "armorBreak",
+    "payload": "armorExecution",
     "threshold": 1,
     "description": "突刺破甲後處刑"
   },

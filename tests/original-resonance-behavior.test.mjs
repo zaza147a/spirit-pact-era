@@ -262,6 +262,33 @@ test('knight armor break needs a real monster-shattered shield before lance cont
  assert.ok(foe.exposedUntil>1e6,'the subsequent lance should shatter enemy armor');
 });
 
+test('assassin attack-defense stab must expose first, then execute on a later same-target hit',async()=>{
+ const {a,c,foe}=await scenario('assassin','attack-defense');
+ a.beginReport();a.emitEvent('thirdHit_assassin');
+ assert.equal(foe.hp,1e9,'the first stab must not instantly execute');
+ assert.ok(foe.exposedUntil>1e6,'the first stab must expose armor');
+ a.emitEvent('thirdHit_assassin');assert.equal(foe.hp,1e9,'same-tick duplicate must be blocked');
+ c.setTime(1004001);a.emitEvent('thirdHit_assassin');
+ assert.ok(foe.hp<1e9,'a later valid hit executes the stored weakness');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+ const after=foe.hp;a.emitEvent('thirdHit_assassin');
+ assert.equal(foe.hp,after,'stored execution cannot deal damage twice');
+});
+
+test('assassin stored execution cannot be redirected to another monster or used after expiry',async()=>{
+ const {a,c,foe}=await scenario('assassin','attack-defense');
+ const other={...foe,instanceId:'other-stab-target',hp:1e9,maxHp:1e9};
+ a.setEnemies([foe,other]);a.emitEvent('thirdHit_assassin');
+ c.setTime(1004001);a.setEnemies([other,foe]);a.emitEvent('thirdHit_assassin');
+ assert.equal(other.hp,1e9,'switching targets starts a fresh exposure, not an immediate execute');
+ c.setTime(1008002);a.setEnemies([foe,other]);a.emitEvent('thirdHit_assassin');
+ assert.ok(foe.hp<1e9,'the original target may be executed while its own weakness is still fresh');
+ const {a:b,c:d,foe:stale}=await scenario('assassin','attack-defense');
+ b.emitEvent('thirdHit_assassin');d.setTime(1009000);b.emitEvent('thirdHit_assassin');
+ assert.equal(stale.hp,1e9,'an expired exposure cannot be consumed for free execution');
+ assert.ok(stale.exposedUntil>1009000,'a fresh stab should instead rearm the exposure');
+});
+
 test('wizard stored retaliatory spell is charged by real owner damage and spent once on its hit',async()=>{
  const {a,c,foe}=await scenario('wizard','attack-defense');
  foe.atk=100;foe.hit=1e7;

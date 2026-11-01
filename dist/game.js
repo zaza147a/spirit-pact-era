@@ -209,6 +209,22 @@ function applyOriginalPactPayload(rule,pet,primary,now){
  if(!kind||!primary?.hp)return false;
  if(Array.isArray(kind)){let changed=false;for(const part of kind){const sub={...rule,originalEvent:{...rule.originalEvent,payload:part}};changed=applyOriginalPactPayload(sub,pet,primary,now)||changed;if(primary.hp<=0)break;}return changed;}
  const st=petStats(pet);
+ if(kind==='armorExecution'){
+  // The first successful stab exposes one enemy; only a later stab against
+  // that same live instance may execute. The 4s contract cooldown still
+  // applies to both steps, and the stored weakness expires after 8.5s.
+  const key='execute|'+player.job+'|'+pet.id+'|'+pet.fusion?.main+'-'+pet.fusion?.sub+'|'+primary.instanceId;
+  const pending=originalPactCounters.get(key);
+  if(!pending||pending.until<now){
+   primary.exposedUntil=Math.max(primary.exposedUntil||0,now+8500);
+   primary.exposedPower=Math.max(primary.exposedPower||0,.18);
+   originalPactCounters.set(key,{count:1,until:now+8500});
+   return true;
+  }
+  originalPactCounters.delete(key);
+  const power=(st.atk*.85+st.matk*.2)*(primary.hp<primary.maxHp*.3?1.45:1);
+  return dealPetDamage(hitDamage(power,primary.def*.5),'resonanceDamage')>0;
+ }
  if(kind==='armorBreak'){
   primary.exposedUntil=Math.max(primary.exposedUntil||0,now+4500);
   primary.exposedPower=Math.max(primary.exposedPower||0,.18);

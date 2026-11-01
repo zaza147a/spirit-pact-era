@@ -40,7 +40,8 @@ test('all 60 original pacts manifest their configured live combat payload, not o
     assert.equal(s.petEffects.bleedSource,'resonanceDamage',context);
     assert.ok(s.petEffects.bleedTicks>0,context);
    }
-   if(parts.includes('armorBreak'))assert.ok(main.exposedUntil>1e6,context+' failed to expose armor');
+   if(parts.includes('armorBreak')||parts.includes('armorExecution'))assert.ok(main.exposedUntil>1e6,context+' failed to expose armor');
+   if(parts.includes('armorExecution'))assert.equal(main.hp,before,context+' executed immediately without a second strike');
    if(parts.includes('mark'))assert.ok(s.petEffects.markHits>0,context+' did not apply a hit mark');
    if(parts.includes('haste'))assert.ok(s.classBuffs.resonanceHaste?.until>1e6,context+' missing haste');
    if(parts.includes('manaRefund'))assert.ok(p.mp>Math.floor(a.stat('mp')*.5),context+' did not refund mana');

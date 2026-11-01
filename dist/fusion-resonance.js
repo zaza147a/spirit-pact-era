@@ -47,6 +47,7 @@ export const ORIGINAL_EVENT_PACTS={
  'crusader/attack-defense':{event:'damageTaken',label:'承傷積累破城反擊',threshold:2,payload:'siegeCounter'},
  'rogue/defense-support':{event:'dodge',label:'閃避後聖域追擊',payload:'sanctuaryChase'},
  'assassin/attack-magic':{event:'crit',label:'暴擊附元素灼燒',payload:'elementBurn'},
+ 'assassin/attack-defense':{event:'thirdHit_assassin',label:'突刺破甲後處刑',payload:'armorExecution'},
  'monk/attack-support':{event:'combo',label:'連段汲血追擊',payload:'comboLeech'},
  'priest/magic-support':{event:'overheal',label:'治療溢量轉化星雨',payload:'overhealRain'}
 };
