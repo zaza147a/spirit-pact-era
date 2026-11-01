@@ -25,3 +25,30 @@ test('all 60 original resonances accept their authored live event without duplic
   assert.ok(p.hp>0&&Number.isFinite(p.hp),identity+': owner HP became invalid');
  }
 });
+
+test('knight shield-break contract requires a subsequent dragon-lance hit within six seconds',async()=>{
+ const c=await runtime(),a=c.api,p=a.normalize(a.fresh('盾碎後連技','knight'));
+ Object.assign(p,{level:200,reborn:true,thirdJob:true,jobLevel:70,location:'worldroot'});
+ const pet=c.makePet('fang');
+ Object.assign(pet,{id:'knight-shield-combo',level:200,rarity:'mythic',ascended:true,
+  evolution:4,fusion:{main:'attack',sub:'defense'}});
+ p.pets=[pet];p.activePetId=pet.id;
+ const foe={id:'world_200',level:200,hp:1e12,maxHp:1e12,def:400,mdef:400,
+  atk:0,matk:0,hit:0,flee:0,instanceId:'shield-combo-target'};
+ a.setup(p,foe);p.hp=a.stat('hp');p.mp=a.stat('mp');pet.hp=c.petStats(pet).hp;
+ a.emitEvent('thirdHit_knight');
+ assert.equal(foe.exposedUntil,undefined,'dragon lance without shield-break must not pierce armor');
+ a.emitEvent('shieldBreak');
+ assert.equal(foe.exposedUntil,undefined,'shield-break arms the combo but must not hit immediately');
+ a.emitEvent('thirdHit_knight');
+ assert.ok(foe.exposedUntil>1e6,'dragon lance after shield-break applies armor exposure');
+ const firstExposure=foe.exposedUntil;
+ a.emitEvent('thirdHit_knight');
+ assert.equal(foe.exposedUntil,firstExposure,'same-tick repeat must not reapply the pact');
+ c.setTime(1e6+7000);
+ a.emitEvent('thirdHit_knight');
+ assert.equal(foe.exposedUntil,firstExposure,'spent shield-break cannot trigger after expiration');
+ a.emitEvent('shieldBreak');
+ a.emitEvent('thirdHit_knight');
+ assert.ok(foe.exposedUntil>firstExposure,'a new shield-break can rearm after cooldown');
+});

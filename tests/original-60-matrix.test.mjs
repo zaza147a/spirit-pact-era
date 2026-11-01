@@ -11,8 +11,9 @@ test('every original VNext entry is present with source text and a supported eff
   const key=job+'/'+pair,spec=ORIGINAL_60_MECHANICS[key],actual=THIRD_FUSION_RULES[job][pair];
   assert.ok(spec,key);assert.ok(spec.description.length>=4,key);
   const payloads=Array.isArray(actual.originalEvent.payload)?actual.originalEvent.payload:[actual.originalEvent.payload];assert.ok(payloads.length>0&&payloads.every(action=>supported.has(action)),key+'/'+payloads.join(','));
-  assert.equal(actual.originalEvent.event,spec.event,key);
-  assert.deepEqual(actual.events,[spec.event],key);
+  const activeEvent=key==='knight/attack-defense'?'thirdHit_knight':spec.event;
+  assert.equal(actual.originalEvent.event,activeEvent,key);
+  assert.deepEqual(actual.events,[activeEvent],key);
   assert.ok(spec.threshold>=1&&spec.threshold<=3,key);
  }
 });

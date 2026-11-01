@@ -105,11 +105,11 @@
       "map": "celestial",
       "level": 99,
       "n": 40,
-      "alive": 38,
-      "avgKills": 40.475,
-      "avgPotions": 18.25,
-      "avgPetShare": 0.24003817726548943,
-      "minKills": 20,
+      "alive": 40,
+      "avgKills": 42.175,
+      "avgPotions": 17.675,
+      "avgPetShare": 0.2454564682489544,
+      "minKills": 32,
       "maxKills": 55
     },
     {
@@ -5315,12 +5315,12 @@
       "pair": "attack",
       "alive": true,
       "petAlive": true,
-      "kills": 48,
+      "kills": 47,
       "elapsed": 44.98,
-      "potions": 22,
-      "ownerDps": 12862.31111111111,
-      "petDps": 8239.68888888889,
-      "ownerShare": 0.6095304289219557
+      "potions": 24,
+      "ownerDps": 13072.68888888889,
+      "petDps": 8164.888888888889,
+      "ownerShare": 0.6155451919082633
     },
     {
       "map": "celestial",
@@ -5329,12 +5329,12 @@
       "pair": "magic",
       "alive": true,
       "petAlive": true,
-      "kills": 42,
+      "kills": 41,
       "elapsed": 44.98,
-      "potions": 11,
-      "ownerDps": 13410.066666666668,
-      "petDps": 5336.333333333333,
-      "ownerShare": 0.7153409010085492
+      "potions": 9,
+      "ownerDps": 13018.31111111111,
+      "petDps": 5407.8,
+      "ownerShare": 0.7065143063888805
     },
     {
       "map": "celestial",
@@ -5343,12 +5343,12 @@
       "pair": "defense",
       "alive": true,
       "petAlive": true,
-      "kills": 36,
+      "kills": 34,
       "elapsed": 44.98,
-      "potions": 16,
-      "ownerDps": 14524.68888888889,
-      "petDps": 1930.0222222222221,
-      "ownerShare": 0.8827070126488598
+      "potions": 12,
+      "ownerDps": 13839.155555555555,
+      "petDps": 1835.3111111111111,
+      "ownerShare": 0.8829107777546215
     },
     {
       "map": "celestial",
@@ -5371,12 +5371,12 @@
       "pair": "attack",
       "alive": true,
       "petAlive": true,
-      "kills": 35,
+      "kills": 39,
       "elapsed": 44.98,
-      "potions": 21,
-      "ownerDps": 11746.066666666668,
-      "petDps": 3986.288888888889,
-      "ownerShare": 0.7466184339139721
+      "potions": 25,
+      "ownerDps": 13018.066666666668,
+      "petDps": 5087.066666666667,
+      "ownerShare": 0.7190262798396035
     },
     {
       "map": "celestial",
@@ -5385,12 +5385,12 @@
       "pair": "magic",
       "alive": true,
       "petAlive": true,
-      "kills": 37,
+      "kills": 43,
       "elapsed": 44.98,
       "potions": 11,
-      "ownerDps": 11949.4,
-      "petDps": 5818.822222222222,
-      "ownerShare": 0.6725152269344773
+      "ownerDps": 13434.755555555555,
+      "petDps": 6141.444444444444,
+      "ownerShare": 0.6862800520813823
     },
     {
       "map": "celestial",
@@ -5399,12 +5399,12 @@
       "pair": "defense",
       "alive": true,
       "petAlive": true,
-      "kills": 37,
+      "kills": 36,
       "elapsed": 44.98,
-      "potions": 13,
-      "ownerDps": 14724.6,
-      "petDps": 2363.7555555555555,
-      "ownerShare": 0.8616744865899586
+      "potions": 11,
+      "ownerDps": 14509.711111111112,
+      "petDps": 2324.6666666666665,
+      "ownerShare": 0.861909558086825
     },
     {
       "map": "celestial",
@@ -5425,14 +5425,14 @@
       "level": 99,
       "job": "wizard",
       "pair": "attack",
-      "alive": false,
-      "petAlive": false,
-      "kills": 20,
-      "elapsed": 20.14,
-      "potions": 17,
-      "ownerDps": 8143.777777777777,
-      "petDps": 1497.0222222222221,
-      "ownerShare": 0.8447201246553997
+      "alive": true,
+      "petAlive": true,
+      "kills": 47,
+      "elapsed": 44.98,
+      "potions": 42,
+      "ownerDps": 16606.51111111111,
+      "petDps": 4917.488888888889,
+      "ownerShare": 0.7715346176877491
     },
     {
       "map": "celestial",
@@ -5443,7 +5443,7 @@
       "petAlive": true,
       "kills": 53,
       "elapsed": 44.98,
-      "potions": 31,
+      "potions": 26,
       "ownerDps": 15263.933333333332,
       "petDps": 8417.511111111111,
       "ownerShare": 0.6445524625468604
@@ -5457,7 +5457,7 @@
       "petAlive": true,
       "kills": 42,
       "elapsed": 44.98,
-      "potions": 19,
+      "potions": 16,
       "ownerDps": 16378.31111111111,
       "petDps": 3212.911111111111,
       "ownerShare": 0.8360025181345387
@@ -5485,7 +5485,7 @@
       "petAlive": false,
       "kills": 43,
       "elapsed": 44.98,
-      "potions": 49,
+      "potions": 44,
       "ownerDps": 12196.155555555555,
       "petDps": 7876.311111111111,
       "ownerShare": 0.6076062179148662
@@ -5499,7 +5499,7 @@
       "petAlive": true,
       "kills": 45,
       "elapsed": 44.98,
-      "potions": 25,
+      "potions": 22,
       "ownerDps": 14018.044444444444,
       "petDps": 6666.4,
       "ownerShare": 0.6777094972067039
@@ -5513,7 +5513,7 @@
       "petAlive": true,
       "kills": 34,
       "elapsed": 44.98,
-      "potions": 15,
+      "potions": 12,
       "ownerDps": 13212.622222222222,
       "petDps": 2294.6666666666665,
       "ownerShare": 0.8520265738835358
@@ -5537,14 +5537,14 @@
       "level": 99,
       "job": "assassin",
       "pair": "attack",
-      "alive": false,
-      "petAlive": false,
-      "kills": 21,
-      "elapsed": 22.82,
-      "potions": 23,
-      "ownerDps": 7286.7555555555555,
-      "petDps": 2724.0444444444443,
-      "ownerShare": 0.7278894349657925
+      "alive": true,
+      "petAlive": true,
+      "kills": 45,
+      "elapsed": 44.98,
+      "potions": 51,
+      "ownerDps": 13662.155555555555,
+      "petDps": 6524.022222222222,
+      "ownerShare": 0.6768074524041754
     },
     {
       "map": "celestial",
@@ -5555,7 +5555,7 @@
       "petAlive": true,
       "kills": 51,
       "elapsed": 44.98,
-      "potions": 27,
+      "potions": 22,
       "ownerDps": 14710.4,
       "petDps": 7999.266666666666,
       "ownerShare": 0.6477593976133511
@@ -5569,7 +5569,7 @@
       "petAlive": true,
       "kills": 41,
       "elapsed": 44.98,
-      "potions": 14,
+      "potions": 12,
       "ownerDps": 14470.644444444444,
       "petDps": 4095.733333333333,
       "ownerShare": 0.7794005173030819
@@ -5597,7 +5597,7 @@
       "petAlive": true,
       "kills": 45,
       "elapsed": 44.98,
-      "potions": 38,
+      "potions": 33,
       "ownerDps": 13208.266666666666,
       "petDps": 7399.977777777778,
       "ownerShare": 0.6409214866542086
@@ -5611,7 +5611,7 @@
       "petAlive": true,
       "kills": 44,
       "elapsed": 44.98,
-      "potions": 21,
+      "potions": 18,
       "ownerDps": 12546.666666666666,
       "petDps": 7948.155555555555,
       "ownerShare": 0.612187143202565
@@ -5625,7 +5625,7 @@
       "petAlive": true,
       "kills": 36,
       "elapsed": 44.98,
-      "potions": 27,
+      "potions": 23,
       "ownerDps": 14085.444444444445,
       "petDps": 2415.4,
       "ownerShare": 0.8536196127336244
@@ -5650,13 +5650,13 @@
       "job": "priest",
       "pair": "attack",
       "alive": true,
-      "petAlive": false,
-      "kills": 39,
+      "petAlive": true,
+      "kills": 47,
       "elapsed": 44.98,
-      "potions": 9,
-      "ownerDps": 13386.4,
-      "petDps": 3515.6666666666665,
-      "ownerShare": 0.7919978227514584
+      "potions": 15,
+      "ownerDps": 13281.91111111111,
+      "petDps": 7982.977777777778,
+      "ownerShare": 0.6245934874388663
     },
     {
       "map": "celestial",
@@ -5665,12 +5665,12 @@
       "pair": "magic",
       "alive": true,
       "petAlive": true,
-      "kills": 45,
+      "kills": 46,
       "elapsed": 44.98,
-      "potions": 5,
-      "ownerDps": 13748.022222222222,
-      "petDps": 6464.444444444444,
-      "ownerShare": 0.6801753813103244
+      "potions": 3,
+      "ownerDps": 14065.68888888889,
+      "petDps": 6506.066666666667,
+      "ownerShare": 0.683737897376014
     },
     {
       "map": "celestial",
@@ -5681,10 +5681,10 @@
       "petAlive": true,
       "kills": 44,
       "elapsed": 44.98,
-      "potions": 2,
-      "ownerDps": 15912.977777777778,
-      "petDps": 4224.822222222222,
-      "ownerShare": 0.7902043807058258
+      "potions": 1,
+      "ownerDps": 15334.266666666666,
+      "petDps": 4336.177777777778,
+      "ownerShare": 0.7795587288317498
     },
     {
       "map": "celestial",
@@ -5693,12 +5693,12 @@
       "pair": "support",
       "alive": true,
       "petAlive": true,
-      "kills": 41,
+      "kills": 42,
       "elapsed": 44.98,
       "potions": 0,
-      "ownerDps": 15673.422222222222,
-      "petDps": 2370.5333333333333,
-      "ownerShare": 0.8686245193835301
+      "ownerDps": 17381.51111111111,
+      "petDps": 1302.111111111111,
+      "ownerShare": 0.9303073517745191
     },
     {
       "map": "celestial",
@@ -5707,12 +5707,12 @@
       "pair": "attack",
       "alive": true,
       "petAlive": true,
-      "kills": 48,
+      "kills": 50,
       "elapsed": 44.98,
-      "potions": 40,
-      "ownerDps": 13447.888888888889,
-      "petDps": 7567.644444444444,
-      "ownerShare": 0.6399023367900357
+      "potions": 28,
+      "ownerDps": 14534.355555555556,
+      "petDps": 7383.355555555556,
+      "ownerShare": 0.6631329102694219
     },
     {
       "map": "celestial",
@@ -5721,12 +5721,12 @@
       "pair": "magic",
       "alive": true,
       "petAlive": true,
-      "kills": 42,
+      "kills": 43,
       "elapsed": 44.98,
-      "potions": 12,
-      "ownerDps": 11530.866666666667,
-      "petDps": 7649.4,
-      "ownerShare": 0.6011838556293969
+      "potions": 9,
+      "ownerDps": 12125.711111111112,
+      "petDps": 7118.777777777777,
+      "ownerShare": 0.6300874593823109
     },
     {
       "map": "celestial",
@@ -5737,7 +5737,7 @@
       "petAlive": true,
       "kills": 41,
       "elapsed": 44.98,
-      "potions": 24,
+      "potions": 21,
       "ownerDps": 15629.488888888889,
       "petDps": 2617.6222222222223,
       "ownerShare": 0.8565459372564302
@@ -5749,12 +5749,12 @@
       "pair": "support",
       "alive": true,
       "petAlive": true,
-      "kills": 43,
+      "kills": 41,
       "elapsed": 44.98,
       "potions": 0,
-      "ownerDps": 15915.888888888889,
-      "petDps": 3134.9777777777776,
-      "ownerShare": 0.8354417238527497
+      "ownerDps": 15291.466666666667,
+      "petDps": 3265.5777777777776,
+      "ownerShare": 0.8240248986009506
     },
     {
       "map": "celestial",
@@ -5762,13 +5762,13 @@
       "job": "hunter",
       "pair": "attack",
       "alive": true,
-      "petAlive": false,
-      "kills": 39,
+      "petAlive": true,
+      "kills": 49,
       "elapsed": 44.98,
-      "potions": 36,
-      "ownerDps": 15208.111111111111,
-      "petDps": 2300.9777777777776,
-      "ownerShare": 0.8685838085362649
+      "potions": 38,
+      "ownerDps": 15556.022222222222,
+      "petDps": 6374.866666666667,
+      "ownerShare": 0.7093201876602255
     },
     {
       "map": "celestial",
@@ -5779,7 +5779,7 @@
       "petAlive": true,
       "kills": 55,
       "elapsed": 44.98,
-      "potions": 41,
+      "potions": 37,
       "ownerDps": 15440.244444444445,
       "petDps": 9127.155555555555,
       "ownerShare": 0.628485083665526
@@ -5793,7 +5793,7 @@
       "petAlive": true,
       "kills": 43,
       "elapsed": 44.98,
-      "potions": 29,
+      "potions": 25,
       "ownerDps": 15402.68888888889,
       "petDps": 4436.4,
       "ownerShare": 0.7763808597841074
@@ -5807,7 +5807,7 @@
       "petAlive": true,
       "kills": 49,
       "elapsed": 44.98,
-      "potions": 17,
+      "potions": 11,
       "ownerDps": 17883.62222222222,
       "petDps": 4116.822222222222,
       "ownerShare": 0.8128754974646977
@@ -5818,13 +5818,13 @@
       "job": "performer",
       "pair": "attack",
       "alive": true,
-      "petAlive": true,
-      "kills": 44,
+      "petAlive": false,
+      "kills": 35,
       "elapsed": 44.98,
-      "potions": 40,
-      "ownerDps": 14230.755555555555,
-      "petDps": 5343.333333333333,
-      "ownerShare": 0.7270200741569921
+      "potions": 43,
+      "ownerDps": 13975.733333333334,
+      "petDps": 1867.8444444444444,
+      "ownerShare": 0.8821071559313903
     },
     {
       "map": "celestial",
@@ -5835,7 +5835,7 @@
       "petAlive": true,
       "kills": 44,
       "elapsed": 44.98,
-      "potions": 43,
+      "potions": 38,
       "ownerDps": 13027.822222222223,
       "petDps": 7182.622222222222,
       "ownerShare": 0.6446083982979097
@@ -5849,7 +5849,7 @@
       "petAlive": true,
       "kills": 37,
       "elapsed": 44.98,
-      "potions": 25,
+      "potions": 22,
       "ownerDps": 14840.466666666667,
       "petDps": 2303.4666666666667,
       "ownerShare": 0.8656395459618368
@@ -5863,7 +5863,7 @@
       "petAlive": true,
       "kills": 39,
       "elapsed": 44.98,
-      "potions": 7,
+      "potions": 3,
       "ownerDps": 14951.91111111111,
       "petDps": 3327.511111111111,
       "ownerShare": 0.8179640980629098

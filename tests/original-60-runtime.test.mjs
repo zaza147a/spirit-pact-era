@@ -17,7 +17,10 @@ test('each of 60 original contracts ignores wrong event and activates on its int
    if(job==='sage'&&pair==='defense-support')p.shield=100;
    if(job==='hunter'&&pair==='attack-support')a.state().petEffects.blessingUntil=2e6;
    a.emitEvent('unrelated-never-trigger');assert.equal(actual.pact,undefined,job+'/'+pair);
-   for(let i=0;i<spec.threshold;i++)a.emitEvent(spec.event);
+   if(job==='knight'&&pair==='attack-defense'){
+    a.emitEvent('shieldBreak');
+    a.emitEvent('thirdHit_knight');
+   }else for(let i=0;i<spec.threshold;i++)a.emitEvent(spec.event);
    assert.ok(a.pactFor({id:'thirdMain_'+job})&&Object.keys(a.pactFor({id:'thirdMain_'+job})).length,job+'/'+pair+' did not activate');
    const activated=a.state().classBuffs.pact;
    a.emitEvent(spec.event);

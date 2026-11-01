@@ -9,10 +9,11 @@ async function scenario(job,pair){
  a.setup(p,foe);p.hp=a.stat('hp');p.mp=a.stat('mp');pet.hp=c.petStats(pet).hp;pet.sp=c.petStats(pet).sp;
  return {c,a,p,pet,foe};
 }
-test('knight original shield-break actually applies and times armor break',async()=>{
+test('knight original shield-break arms its follow-up lance before applying timed armor break',async()=>{
  const {a,foe}=await scenario('knight','attack-defense');
  assert.equal(foe.exposedUntil,undefined);
- a.emitEvent('shieldBreak');assert.equal(foe.exposedPower,.18);assert.ok(foe.exposedUntil>1000000);
+ a.emitEvent('shieldBreak');assert.equal(foe.exposedUntil,undefined);
+ a.emitEvent('thirdHit_knight');assert.equal(foe.exposedPower,.18);assert.ok(foe.exposedUntil>1000000);
 });
 test('crusader siege counter requires two real hit events',async()=>{
  const {a,foe}=await scenario('crusader','attack-defense');

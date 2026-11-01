@@ -42,7 +42,7 @@ function reversePactTransforms(job,key,M,W,F){
 // event routes. Every route is wired, but each distinct gameplay contract still
 // requires event-window, cooldown, and duplicate-damage behavioral acceptance.
 export const ORIGINAL_EVENT_PACTS={
- 'knight/attack-defense':{event:'shieldBreak',label:'盾碎後龍槍破甲',payload:'armorBreak'},
+ 'knight/attack-defense':{event:'thirdHit_knight',label:'盾碎後龍槍破甲',payload:'armorBreak'},
  'knight/defense-support':{event:'damageTaken',label:'承傷觸發龍魂反擊',payload:'dragonCounter'},
  'crusader/attack-defense':{event:'damageTaken',label:'承傷積累破城反擊',threshold:2,payload:'siegeCounter'},
  'rogue/defense-support':{event:'dodge',label:'閃避後聖域追擊',payload:'sanctuaryChase'},
