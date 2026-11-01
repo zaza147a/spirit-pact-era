@@ -9,11 +9,11 @@ const initial=()=>({version:50,name:'既有角色',job:'knight',location:'town',
 const normalize=p=>migrateLegacyReselect(p);
 const valid=p=>!!p?.name&&Array.isArray(p.pets);
 
-test('four slots remain isolated and legacy character migration cannot overwrite occupied slots',()=>{
- const s=storage();assert.equal(CHARACTER_SLOT_COUNT,4);
- for(let i=0;i<4;i++)writeCharacterSlot(s,i,{version:51,name:'角色'+i,pets:[]});
+test('eight slots remain isolated and legacy character migration cannot overwrite occupied slots',()=>{
+ const s=storage();assert.equal(CHARACTER_SLOT_COUNT,8);
+ for(let i=0;i<8;i++)writeCharacterSlot(s,i,{version:51,name:'角色'+i,pets:[]});
  assert.equal(migrateLegacyCharacter(s,initial()),false);
- assert.deepEqual(readCharacterSlots(s,normalize,valid).map(r=>r.player.name),['角色0','角色1','角色2','角色3']);
+ assert.deepEqual(readCharacterSlots(s,normalize,valid).map(r=>r.player.name),['角色0','角色1','角色2','角色3','角色4','角色5','角色6','角色7']);
  assert.equal(migrateLegacyCharacter(s,initial()),false);
 });
 

@@ -1,6 +1,6 @@
 import {applyWarehouseCustody,acknowledgeWarehouseDeliveries} from './shared-warehouse.js?v=6.5.0';
 import {applyReselectLedger,recordReselectLedger} from './reselect-ledger.js?v=6.5.0';
-export const CHARACTER_SLOT_COUNT=4;
+export const CHARACTER_SLOT_COUNT=8;
 export const SLOT_MIGRATION_KEY='icarus-character-slots-migrated-v1';
 export function characterSlotKey(index){if(!Number.isInteger(index)||index<0||index>=CHARACTER_SLOT_COUNT)throw Error('無效的存檔格');return `icarus-character-slot-${index+1}`;}
 export function writeCharacterSlot(storage,index,player){applyWarehouseCustody(storage,index,player);const data={version:2,player};storage.setItem(characterSlotKey(index),JSON.stringify(data));recordReselectLedger(storage,player);acknowledgeWarehouseDeliveries(storage,index,player);return data;}
