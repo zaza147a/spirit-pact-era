@@ -82,6 +82,7 @@ for(const key of Object.keys(ORIGINAL_60_MECHANICS))test(key+' activates through
  if(parts.includes('mark'))assert.ok(state.petEffects.markHits>0,key+' missing follow-up mark');
  if(parts.includes('ward')||parts.includes('wardCharge'))assert.ok(state.petEffects.shield>0,key+' missing real companion barrier');
  if(parts.includes('soundShield'))assert.ok(p.shield>0,key+' missing real owner shield');
+ if(parts.includes('storedQi')){assert.ok(a.state().petEffects.monkQi?.charges>0);const before=foe.hp;advance(4000);main();assert.ok(foe.hp<before);assert.ok((a.state().report.metrics.resonanceDamage||0)>0);}
  if(parts.includes('guardedFollowup')){
   assert.ok(state.petEffects.shield>0,key+' must first provide real guard');
   assert.equal(state.report.metrics.resonanceDamage,0,key+' cannot fire during shield creation');

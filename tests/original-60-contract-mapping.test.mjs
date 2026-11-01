@@ -21,7 +21,7 @@ const SPECIALIZED={
  'rogue/defense-support':['sanctuaryChase'],
  'priest/attack-support':['haste','counterStrike'],
  'priest/magic-support':['overhealRain'],
- 'monk/defense-support':['manaRefund','stackStrike'],
+ 'monk/defense-support':['storedQi'],
  'hunter/attack-support':['falconVolley'],
  'performer/attack-support':['haste','counterStrike']
 };

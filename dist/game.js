@@ -273,6 +273,19 @@ function applyOriginalPactPayload(rule,pet,primary,now,event){
   originalPactCounters.delete(key);
   return dealPetDamage(hitDamage(st.def*.65+st.atk*.48,primary.def*.6),'resonanceDamage')>0;
  }
+ if(kind==='storedQi'){
+  if(event==='damageTaken'){
+   const previous=petEffects.monkQi;
+   const charges=previous?.petId===pet.id&&previous.until>now?previous.charges:0;
+   petEffects.monkQi={petId:pet.id,charges:Math.min(3,charges+1),until:now+12000};
+   const gained=Math.min(Math.max(0,stat('mp')-player.mp),Math.max(1,Math.round(st.sp*.08)));
+   player.mp+=gained;record(report,'effectiveMana',gained);return true;
+  }
+  const qi=petEffects.monkQi;
+  if(!qi||qi.petId!==pet.id||qi.until<=now||!qi.charges)return false;
+  delete petEffects.monkQi;
+  return dealPetDamage(hitDamage((st.atk*.65+st.matk*.4)*(1+(qi.charges-1)*.18),primary.def*.7),'resonanceDamage')>0;
+ }
  if(kind==='songRainChain'){
   const previous=petEffects.songRain;
   if(previous?.petId===pet.id&&previous.remaining>0&&previous.until>now&&previous.hardUntil>now){
@@ -454,6 +467,7 @@ function originalPactPrerequisite(rule,now,event){
  if(!rule?.originalEvent)return true;
  const key=player.job+'/'+(activePet()?.fusion?.main||'')+'-'+(activePet()?.fusion?.sub||'');
  if(['crusader/defense-support','hunter/defense-support'].includes(key)&&event!=='shield')return originalGuardReady(activePet(),now);
+ if(key==='monk/defense-support'&&event==='thirdHit_monk'){const qi=petEffects.monkQi;return qi?.petId===activePet()?.id&&qi.until>now&&qi.charges>0;}
  if(key==='priest/defense-support'&&event==='damageTaken')return originalGuardReady(activePet(),now);
  if(key==='performer/magic-support'&&event==='song')return (classBuffs.battleSong?.until||0)>now;
  if(key==='assassin/defense-support')return player.hp>0&&player.hp<=stat('hp')*.4;

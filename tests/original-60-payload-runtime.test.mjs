@@ -36,6 +36,7 @@ test('all 60 original pacts manifest their configured live combat payload, not o
     assert.ok(main.hp<before,context+' has a damage payload but dealt no direct resonance damage');
     assert.ok(s.report.metrics.resonanceDamage>0,context+' did not attribute its damage to resonance');
    }
+   if(parts.includes('storedQi'))assert.ok(s.petEffects.monkQi?.charges>0,context);
    if(parts.includes('elementBurn')){
     assert.ok(s.petEffects.burnPower>0,context);
     assert.ok(s.petEffects.burnTicks>0,context);

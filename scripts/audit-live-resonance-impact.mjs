@@ -9,7 +9,8 @@ const allRoutes=[['priest','attack-support'],['performer','attack-defense'],['pe
 const melodyOnly=process.argv.includes('--melody-only');
 const lifecycle=process.argv.includes('--lifecycle');
 const lifecycleRoutes=[['crusader','defense-support'],['hunter','defense-support'],['priest','defense-support'],['wizard','defense-support'],['performer','magic-support'],['rogue','magic-defense'],['sage','defense-support']];
-const routes=lifecycle?lifecycleRoutes:melodyOnly?allRoutes.filter(([job,pair])=>job==='performer'&&pair==='defense-support'):allRoutes;
+const qiOnly=process.argv.includes('--qi-only');
+const routes=qiOnly?[['monk','defense-support']]:lifecycle?lifecycleRoutes:melodyOnly?allRoutes.filter(([job,pair])=>job==='performer'&&pair==='defense-support'):allRoutes;
 const combos=[];for(let a=0;a<6;a++)for(let b=a+1;b<6;b++)for(let c=b+1;c<6;c++)combos.push([a,b,c]);
 const reference={reborn:true,thirdJob:true,referenceBuild:true,referenceQuality:'mythic',rarity:'mythic'};
 const cases=routes.flatMap(([job,pair])=>[
@@ -35,6 +36,6 @@ try{await new Promise((resolve,reject)=>{
  });send(w);}
 });}finally{await Promise.all(workers.map(w=>w.terminate()));}
 const summary=['fiveBoss','field201','boss210'].map(kind=>{const a=rows.filter(r=>r.kind===kind);return {kind,count:a.length,wins:a.filter(r=>r.won).length,alive:a.filter(r=>r.alive).length,failed:a.filter(r=>kind==='field201'?!r.alive:!r.won)};});
-writeFileSync(lifecycle?'docs/original-lifecycle-impact.json':melodyOnly?'docs/live-melody-auto-impact.json':'docs/live-resonance-impact.json',JSON.stringify({sourceCommit,engineHash,conditions:(lifecycle?'Seven source lifecycle routes; current engine. ':'')+'Post live-event fix: all five affected original pacts. Five-boss: all 20 triplets, seed731, unenhanced prior-tier Lv200 reference. Field201 and actual boss210: SSS owner/pet reference gear, three seeds42/137/731, sigil0/IV respectively. No fixed contribution ratios. Changes: generic buff alias without double energy, performer defense-support effective healing, performer attack-defense 20s accumulation window.',summary,rows},null,2)+'\n');
+writeFileSync(qiOnly?'docs/original-monk-qi-impact.json':lifecycle?'docs/original-lifecycle-impact.json':melodyOnly?'docs/live-melody-auto-impact.json':'docs/live-resonance-impact.json',JSON.stringify({sourceCommit,engineHash,conditions:(lifecycle?'Seven source lifecycle routes; current engine. ':'')+'Post live-event fix: all five affected original pacts. Five-boss: all 20 triplets, seed731, unenhanced prior-tier Lv200 reference. Field201 and actual boss210: SSS owner/pet reference gear, three seeds42/137/731, sigil0/IV respectively. No fixed contribution ratios. Changes: generic buff alias without double energy, performer defense-support effective healing, performer attack-defense 20s accumulation window.',summary,rows},null,2)+'\n');
 console.log(JSON.stringify(summary,null,2));
 if(rows.some(r=>r.kind==='field201'?!r.alive:r.kind==='boss210'&&!r.won))process.exitCode=1;

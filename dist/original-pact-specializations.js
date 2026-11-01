@@ -205,12 +205,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
       "splash"
     ]
   },
-  "monk/defense-support": {
-    "payload": [
-      "manaRefund",
-      "stackStrike"
-    ]
-  },
+  "monk/defense-support": {"payload":"storedQi", "additionalEvents":["thirdHit_monk"]},
   "hunter/attack-magic": {
     "payload": [
       "mark",

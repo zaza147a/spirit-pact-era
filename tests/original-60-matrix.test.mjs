@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {ORIGINAL_60_MECHANICS, ORIGINAL_SIX_KEYS} from '../dist/original-60-mechanics.js';
 import {SECOND_JOBS} from '../dist/jobs.js';
 import {THIRD_FUSION_RULES} from '../dist/fusion-resonance.js';
-const supported = new Set(['starVolley','guardedFollowup','sanctuarySplit','songRainChain','armorBreak','armorExecution','vowShieldFollowup','elementBurn','comboLeech','overhealRain','dragonCounter','siegeCounter','sanctuaryChase','ward','wardCharge','manaRefund','haste','mark','stackStrike','splash','counterStrike','arcaneStrike','hunterSummon','lowHpRiposte','guardianAutoChase','soundShield','falconVolley','starRainChain','storedSpellCharge']);
+const supported = new Set(['storedQi','starVolley','guardedFollowup','sanctuarySplit','songRainChain','armorBreak','armorExecution','vowShieldFollowup','elementBurn','comboLeech','overhealRain','dragonCounter','siegeCounter','sanctuaryChase','ward','wardCharge','manaRefund','haste','mark','stackStrike','splash','counterStrike','arcaneStrike','hunterSummon','lowHpRiposte','guardianAutoChase','soundShield','falconVolley','starRainChain','storedSpellCharge']);
 test('every original VNext entry is present with source text and a supported effect',()=>{
  const jobs=Object.keys(SECOND_JOBS); assert.equal(jobs.length,10);
  assert.equal(Object.keys(ORIGINAL_60_MECHANICS).length,60);
@@ -13,7 +13,8 @@ test('every original VNext entry is present with source text and a supported eff
   const payloads=Array.isArray(actual.originalEvent.payload)?actual.originalEvent.payload:[actual.originalEvent.payload];assert.ok(payloads.length>0&&payloads.every(action=>supported.has(action)),key+'/'+payloads.join(','));
   const activeEvent=key==='knight/attack-defense'?'thirdHit_knight':spec.event;
   assert.equal(actual.originalEvent.event,activeEvent,key);
-  const additional={'crusader/defense-support':['thirdHit_crusader'],'hunter/defense-support':['thirdHit_hunter'],'priest/defense-support':['shield','damageTaken'],'performer/magic-support':['song']};
+  const additional={'crusader/defense-support':['thirdHit_crusader'],'hunter/defense-support':['thirdHit_hunter'],'monk/defense-support':['thirdHit_monk'],
+ 'priest/defense-support':['shield','damageTaken'],'performer/magic-support':['song']};
   assert.deepEqual(actual.events,[activeEvent,...(additional[key]||[])],key);
   assert.ok(spec.threshold>=1&&spec.threshold<=3,key);
  }
