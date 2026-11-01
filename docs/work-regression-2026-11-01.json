@@ -123,5 +123,23 @@
       "count": 240,
       "wins": 240
     }
+  },
+  "mobileTouch": {
+    "sourceCommit": "f91a94767e148ec477eccddd08ffdbbd4587322e",
+    "workflowRun": 41292277243,
+    "engines": [
+      "chromium",
+      "webkit"
+    ],
+    "viewportCasesPerEngine": 4,
+    "tapGesturesPerCase": 11,
+    "passed": 8,
+    "failed": 0,
+    "reports": [
+      "docs/browser-qa/touch-chromium-acceptance.json",
+      "docs/browser-qa/touch-webkit-acceptance.json"
+    ],
+    "packagedQASavesPerEngine": 5,
+    "physicalDevicePassed": false
   }
 }

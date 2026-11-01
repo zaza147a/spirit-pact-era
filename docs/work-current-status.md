@@ -11,8 +11,8 @@
 | 替代配點 | `alternative-attribute-*-audit.json`：合法兩種替代配點，A階五王及SSS晨曦IV真210王各240/240。 |
 | 正常進度 | `dawn-progression-audit.json`全120舊基線，加上受影響路線的`dawn-original-lifecycle-progression.json`七條及`dawn-original-monk-qi-progression.json`修羅補驗。不是直接注入契印冒充刷素材。 |
 | 瀏覽器 | `browser-qa/*-lifecycle-acceptance.json`：Chromium／WebKit各72顯示檢查，實際存讀、升階、離線、連戰失敗停機。 |
-| 本次補手機觸控 | 四個窄幅／橫向視窗的真實touch事件、點按、焦點及溢出檢查：CI驗證中，未通過前不標完成。 |
-| 實體手機／Safari | **待驗**。依`mobile-device-acceptance.md`操作；QA存檔可由腳本生成，後續CI artifact亦附帶。沒有實機證據不能代填。 |
+| 本次補手機觸控 | 兩引擎×四個窄幅／橫向視窗全部通過，各11次觸控手勢；見`mobile-touch-acceptance-2026-11-01.md`及`browser-qa/touch-*-acceptance.json`。 |
+| 實體手機／Safari | **待驗**。依`mobile-device-acceptance.md`操作；QA存檔可由腳本生成，成功CI artifact已附帶四個基本檔及一個連戰失敗檔。沒有實機證據不能代填。 |
 | 發布判定 | 候選分支；仍待上述實機驗收及使用者批准，禁止自行修改main或正式發布。 |
 
 完整本批報告：`original-lifecycle-acceptance-2026-11-01.md`。
