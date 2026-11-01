@@ -51,15 +51,7 @@ import {playerAttackValue,playerMagicAttackValue,GLOBAL_SKILL_COOLDOWN,jobSkillC
 import {petSkillEffect,petSkillPreview,petOffensivePower,petDirectRoleMultiplier,fusionDirectOutputFactor,supportPulse,resonanceMagnitude,petUltimateSupport} from './pet-effects.js?v=6.5.0';
 
 Object.assign(ITEMS,{
- dawn_archon_core:{name:'裁界者核心',quest:true,cost:0,description:'210等首領黎明裁界者保證取得，可強化高階曙界契印。'},
- rank_core_D:{name:'D階星鑄結晶',enhancement:true,quest:true,cost:0},rank_core_C:{name:'C階星鑄結晶',enhancement:true,quest:true,cost:0},
- rank_core_B:{name:'B階星鑄結晶',enhancement:true,quest:true,cost:0},rank_core_A:{name:'A階星鑄結晶',enhancement:true,quest:true,cost:0},
- rank_core_S:{name:'S階星鑄結晶',enhancement:true,quest:true,cost:0},rank_core_SS:{name:'SS階星鑄結晶',enhancement:true,quest:true,cost:0},
- rank_core_SSS:{name:'SSS階星鑄結晶',enhancement:true,quest:true,cost:0},
- dawn_scout_fang:{name:'晨晶獵牙',dawnJunk:true,junk:true,cost:650},
- dawn_ram_horn:{name:'曙岩角片',dawnJunk:true,junk:true,cost:680},
- dawn_ray_membrane:{name:'流光翼膜',dawnJunk:true,junk:true,cost:710},
- dawn_archon_crystal:{name:'黎明裁界晶',dawnJunk:true,junk:true,cost:900}
+ dawn_archon_core:{name:'裁界者核心',quest:true,cost:0,description:'210等首領黎明裁界者保證取得，可強化高階曙界契印。'}
 });
 Object.assign(MAPS,DAWN_MAPS);for(const m of DAWN_MONSTERS)if(!WORLD_MONSTERS.some(x=>x.id===m.id))WORLD_MONSTERS.push(m);MAP_BOSSES.dawnrift=DAWN_BOSS;for(const m of [...DAWN_MONSTERS,DAWN_BOSS])SPECIES[m.id]={name:m.name,role:m.role,roleName:m.roleName,level:m.level};
 for(const route of TRIAL_ROUTES)for(let i=0;i<5;i++){const m=createTrialBoss(route,i,MAP_BOSSES[route.map]);SPECIES[m.id]={name:m.name,role:'attack',roleName:'天穹試煉首領',level:m.level};}
@@ -934,7 +926,7 @@ async function settleOffline(){
  let worker;
  try{
   const result=await new Promise((resolve,reject)=>{
-   worker=new Worker(new URL('offline-worker.js?v=6.5.0',document.baseURI),{type:'module'});
+   worker=new Worker(new URL('offline-worker.js?v=6.5.1',document.baseURI),{type:'module'});
    worker.onmessage=event=>{if(event.data.type==='progress')$('offlineProgressText').textContent=`正在補算離線掛機… ${Math.floor(event.data.value*100)}%`;else if(event.data.type==='result')resolve(event.data.result);else reject(Error(event.data.message||'離線結算失敗'));};
    worker.onerror=()=>reject(Error('離線結算載入失敗，請重新整理再試'));
    worker.postMessage({player:structuredClone(player),now});
