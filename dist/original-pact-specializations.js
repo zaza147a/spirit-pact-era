@@ -32,10 +32,7 @@ export const ORIGINAL_PACT_SPECIALIZATIONS=Object.freeze({
     ]
   },
   "crusader/attack-support": {
-    "payload": [
-      "comboLeech",
-      "counterStrike"
-    ]
+    "payload": "vowShieldFollowup"
   },
   "crusader/magic-defense": {
     "payload": [

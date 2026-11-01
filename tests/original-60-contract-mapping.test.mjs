@@ -4,10 +4,11 @@ import {ORIGINAL_60_MECHANICS} from '../dist/original-60-mechanics.js';
 import {THIRD_FUSION_RULES} from '../dist/fusion-resonance.js';
 import {SECOND_JOBS} from '../dist/jobs.js';
 
-// Ten contracts use individually authored multi-stage implementations in place
+// Specialized contracts use individually authored multi-stage implementations in place
 // of the generic placeholder payload. Keep the substitutions explicit.
 const SPECIALIZED={
  'knight/defense-support':['dragonCounter'],
+ 'crusader/attack-support':['vowShieldFollowup'],
  'crusader/attack-defense':['siegeCounter'],
  'wizard/attack-defense':['storedSpellCharge'],
  'wizard/magic-defense':['wardCharge'],

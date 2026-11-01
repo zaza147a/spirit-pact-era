@@ -51,7 +51,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "承傷積累破城反擊"
   },
   "crusader/attack-support": {
-    "event": "skill",
+    "event": "thirdHit_crusader",
     "payload": "comboLeech",
     "threshold": 1,
     "description": "聖誓吸血後盾擊"
