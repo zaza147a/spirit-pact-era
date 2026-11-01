@@ -230,6 +230,7 @@ function applyOriginalPactPayload(rule,pet,primary,now){
  const kind=rule.originalEvent?.payload;
  if(!kind||!primary?.hp)return false;
  if(Array.isArray(kind)){let changed=false;for(const part of kind){const sub={...rule,originalEvent:{...rule.originalEvent,payload:part}};changed=applyOriginalPactPayload(sub,pet,primary,now)||changed;if(primary.hp<=0)break;}return changed;}
+ const st=petStats(pet);
  if(kind==='vowShieldFollowup'){
   // First holy-shield contact drains health and stores a vow against this foe.
   // Only a later hit on the same living enemy can release the shield strike.
@@ -245,7 +246,6 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   originalPactCounters.delete(key);
   return dealPetDamage(hitDamage(st.def*.65+st.atk*.48,primary.def*.6),'resonanceDamage')>0;
  }
- const st=petStats(pet);
  if(kind==='armorExecution'){
   // The first successful stab exposes one enemy; only a later stab against
   // that same live instance may execute. The 4s contract cooldown still
