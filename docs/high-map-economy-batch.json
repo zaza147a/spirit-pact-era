@@ -1,0 +1,2159 @@
+{
+  "conditions": "60s real offline runtime per case; 10 jobs × 6 high tiers × 2 seeds; nearest prior-stage 90% mythic reference gear and attack-magic fused pet for 151–200; mandatory SSS owner/pet gear for 201/210; dawn sigil zero, auto-buy large potions, sell allowed junk. Dawn materials are intentionally protected from AUTO-sale and valued separately as reserved sigil resources, not cash income. Junk cash vs potion replacement only, not cards/gear income.",
+  "summary": [
+    {
+      "level": 151,
+      "gearLevel": 150,
+      "n": 20,
+      "avgKills": 42.9,
+      "avgJunkGold": 54724,
+      "avgPotionValue": 3468,
+      "avgReservedDawnValue": 0,
+      "coverage": 15.779700115340253,
+      "belowBreakEven": 0,
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "gearLevel": 151,
+      "n": 20,
+      "avgKills": 36.6,
+      "avgJunkGold": 77240,
+      "avgPotionValue": 2835,
+      "avgReservedDawnValue": 0,
+      "coverage": 27.24514991181658,
+      "belowBreakEven": 0,
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "gearLevel": 171,
+      "n": 20,
+      "avgKills": 22.65,
+      "avgJunkGold": 75099.8,
+      "avgPotionValue": 1897,
+      "avgReservedDawnValue": 0,
+      "coverage": 39.58871903004744,
+      "belowBreakEven": 0,
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "gearLevel": 190,
+      "n": 20,
+      "avgKills": 23.4,
+      "avgJunkGold": 78194.65,
+      "avgPotionValue": 1799,
+      "avgReservedDawnValue": 0,
+      "coverage": 43.465619788771534,
+      "belowBreakEven": 0,
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "gearLevel": 200,
+      "n": 20,
+      "avgKills": 21.6,
+      "avgJunkGold": 0,
+      "avgPotionValue": 546,
+      "avgReservedDawnValue": 14716.5,
+      "coverage": 0,
+      "belowBreakEven": 20,
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "gearLevel": 200,
+      "n": 20,
+      "avgKills": 21.35,
+      "avgJunkGold": 0,
+      "avgPotionValue": 630,
+      "avgReservedDawnValue": 14548,
+      "coverage": 0,
+      "belowBreakEven": 20,
+      "revives": 0
+    }
+  ],
+  "rows": [
+    {
+      "level": 151,
+      "job": "knight",
+      "seed": 42,
+      "kills": 42,
+      "junkGold": 52530,
+      "consumedPotionValue": 1540,
+      "junkCoverage": 34.11038961038961,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "knight",
+      "seed": 137,
+      "kills": 41,
+      "junkGold": 51380,
+      "consumedPotionValue": 1400,
+      "junkCoverage": 36.7,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "crusader",
+      "seed": 42,
+      "kills": 37,
+      "junkGold": 46570,
+      "consumedPotionValue": 190,
+      "junkCoverage": 245.10526315789474,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "crusader",
+      "seed": 137,
+      "kills": 39,
+      "junkGold": 48600,
+      "consumedPotionValue": 190,
+      "junkCoverage": 255.78947368421052,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "wizard",
+      "seed": 42,
+      "kills": 38,
+      "junkGold": 47870,
+      "consumedPotionValue": 7980,
+      "junkCoverage": 5.998746867167919,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "wizard",
+      "seed": 137,
+      "kills": 35,
+      "junkGold": 44750,
+      "consumedPotionValue": 8260,
+      "junkCoverage": 5.4176755447941884,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "sage",
+      "seed": 42,
+      "kills": 41,
+      "junkGold": 51350,
+      "consumedPotionValue": 6300,
+      "junkCoverage": 8.15079365079365,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "sage",
+      "seed": 137,
+      "kills": 41,
+      "junkGold": 50810,
+      "consumedPotionValue": 6860,
+      "junkCoverage": 7.406705539358601,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "assassin",
+      "seed": 42,
+      "kills": 41,
+      "junkGold": 50510,
+      "consumedPotionValue": 3080,
+      "junkCoverage": 16.399350649350648,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "assassin",
+      "seed": 137,
+      "kills": 41,
+      "junkGold": 51020,
+      "consumedPotionValue": 3220,
+      "junkCoverage": 15.84472049689441,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "rogue",
+      "seed": 42,
+      "kills": 41,
+      "junkGold": 63150,
+      "consumedPotionValue": 2290,
+      "junkCoverage": 27.5764192139738,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "rogue",
+      "seed": 137,
+      "kills": 40,
+      "junkGold": 57500,
+      "consumedPotionValue": 1450,
+      "junkCoverage": 39.6551724137931,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "priest",
+      "seed": 42,
+      "kills": 43,
+      "junkGold": 53530,
+      "consumedPotionValue": 700,
+      "junkCoverage": 76.47142857142858,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "priest",
+      "seed": 137,
+      "kills": 46,
+      "junkGold": 57040,
+      "consumedPotionValue": 140,
+      "junkCoverage": 407.42857142857144,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "monk",
+      "seed": 42,
+      "kills": 41,
+      "junkGold": 52520,
+      "consumedPotionValue": 3220,
+      "junkCoverage": 16.31055900621118,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "monk",
+      "seed": 137,
+      "kills": 40,
+      "junkGold": 50980,
+      "consumedPotionValue": 2800,
+      "junkCoverage": 18.207142857142856,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "hunter",
+      "seed": 42,
+      "kills": 50,
+      "junkGold": 63440,
+      "consumedPotionValue": 3500,
+      "junkCoverage": 18.125714285714285,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "hunter",
+      "seed": 137,
+      "kills": 52,
+      "junkGold": 64570,
+      "consumedPotionValue": 2940,
+      "junkCoverage": 21.962585034013607,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "performer",
+      "seed": 42,
+      "kills": 52,
+      "junkGold": 65080,
+      "consumedPotionValue": 6720,
+      "junkCoverage": 9.68452380952381,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 151,
+      "job": "performer",
+      "seed": 137,
+      "kills": 57,
+      "junkGold": 71280,
+      "consumedPotionValue": 6580,
+      "junkCoverage": 10.832826747720365,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "knight",
+      "seed": 42,
+      "kills": 34,
+      "junkGold": 69462,
+      "consumedPotionValue": 980,
+      "junkCoverage": 70.87959183673469,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "knight",
+      "seed": 137,
+      "kills": 34,
+      "junkGold": 68915,
+      "consumedPotionValue": 700,
+      "junkCoverage": 98.45,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "crusader",
+      "seed": 42,
+      "kills": 35,
+      "junkGold": 72583,
+      "consumedPotionValue": 0,
+      "junkCoverage": 72583,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "crusader",
+      "seed": 137,
+      "kills": 36,
+      "junkGold": 72386,
+      "consumedPotionValue": 0,
+      "junkCoverage": 72386,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "wizard",
+      "seed": 42,
+      "kills": 40,
+      "junkGold": 81608,
+      "consumedPotionValue": 6440,
+      "junkCoverage": 12.672049689440994,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "wizard",
+      "seed": 137,
+      "kills": 37,
+      "junkGold": 76786,
+      "consumedPotionValue": 6440,
+      "junkCoverage": 11.923291925465838,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "sage",
+      "seed": 42,
+      "kills": 39,
+      "junkGold": 78620,
+      "consumedPotionValue": 5880,
+      "junkCoverage": 13.370748299319727,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "sage",
+      "seed": 137,
+      "kills": 39,
+      "junkGold": 79260,
+      "consumedPotionValue": 6300,
+      "junkCoverage": 12.58095238095238,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "assassin",
+      "seed": 42,
+      "kills": 36,
+      "junkGold": 72658,
+      "consumedPotionValue": 3220,
+      "junkCoverage": 22.564596273291926,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "assassin",
+      "seed": 137,
+      "kills": 34,
+      "junkGold": 69961,
+      "consumedPotionValue": 2240,
+      "junkCoverage": 31.232589285714287,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "rogue",
+      "seed": 42,
+      "kills": 35,
+      "junkGold": 106328,
+      "consumedPotionValue": 980,
+      "junkCoverage": 108.49795918367347,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "rogue",
+      "seed": 137,
+      "kills": 34,
+      "junkGold": 85674,
+      "consumedPotionValue": 1400,
+      "junkCoverage": 61.19571428571429,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "priest",
+      "seed": 42,
+      "kills": 40,
+      "junkGold": 80973,
+      "consumedPotionValue": 140,
+      "junkCoverage": 578.3785714285714,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "priest",
+      "seed": 137,
+      "kills": 39,
+      "junkGold": 80396,
+      "consumedPotionValue": 280,
+      "junkCoverage": 287.12857142857143,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "monk",
+      "seed": 42,
+      "kills": 36,
+      "junkGold": 72932,
+      "consumedPotionValue": 2520,
+      "junkCoverage": 28.94126984126984,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "monk",
+      "seed": 137,
+      "kills": 32,
+      "junkGold": 65897,
+      "consumedPotionValue": 2660,
+      "junkCoverage": 24.77330827067669,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "hunter",
+      "seed": 42,
+      "kills": 35,
+      "junkGold": 72629,
+      "consumedPotionValue": 2940,
+      "junkCoverage": 24.70374149659864,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "hunter",
+      "seed": 137,
+      "kills": 35,
+      "junkGold": 70947,
+      "consumedPotionValue": 2380,
+      "junkCoverage": 29.80966386554622,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "performer",
+      "seed": 42,
+      "kills": 41,
+      "junkGold": 82823,
+      "consumedPotionValue": 5600,
+      "junkCoverage": 14.789821428571429,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 171,
+      "job": "performer",
+      "seed": 137,
+      "kills": 41,
+      "junkGold": 83962,
+      "consumedPotionValue": 5600,
+      "junkCoverage": 14.993214285714286,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "knight",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 71848,
+      "consumedPotionValue": 140,
+      "junkCoverage": 513.2,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "knight",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 71192,
+      "consumedPotionValue": 0,
+      "junkCoverage": 71192,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "crusader",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 71977,
+      "consumedPotionValue": 0,
+      "junkCoverage": 71977,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "crusader",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 70407,
+      "consumedPotionValue": 0,
+      "junkCoverage": 70407,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "wizard",
+      "seed": 42,
+      "kills": 25,
+      "junkGold": 78273,
+      "consumedPotionValue": 4760,
+      "junkCoverage": 16.44390756302521,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "wizard",
+      "seed": 137,
+      "kills": 24,
+      "junkGold": 78143,
+      "consumedPotionValue": 4620,
+      "junkCoverage": 16.914069264069266,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "sage",
+      "seed": 42,
+      "kills": 24,
+      "junkGold": 75979,
+      "consumedPotionValue": 5040,
+      "junkCoverage": 15.075198412698413,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "sage",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 71652,
+      "consumedPotionValue": 5460,
+      "junkCoverage": 13.123076923076923,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "assassin",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 68241,
+      "consumedPotionValue": 2100,
+      "junkCoverage": 32.495714285714286,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "assassin",
+      "seed": 137,
+      "kills": 21,
+      "junkGold": 68243,
+      "consumedPotionValue": 1680,
+      "junkCoverage": 40.62083333333333,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "rogue",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 94007,
+      "consumedPotionValue": 560,
+      "junkCoverage": 167.86964285714285,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "rogue",
+      "seed": 137,
+      "kills": 20,
+      "junkGold": 83583,
+      "consumedPotionValue": 0,
+      "junkCoverage": 83583,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "priest",
+      "seed": 42,
+      "kills": 24,
+      "junkGold": 76960,
+      "consumedPotionValue": 140,
+      "junkCoverage": 549.7142857142857,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "priest",
+      "seed": 137,
+      "kills": 24,
+      "junkGold": 77356,
+      "consumedPotionValue": 280,
+      "junkCoverage": 276.27142857142854,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "monk",
+      "seed": 42,
+      "kills": 23,
+      "junkGold": 73159,
+      "consumedPotionValue": 1260,
+      "junkCoverage": 58.06269841269841,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "monk",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 71782,
+      "consumedPotionValue": 1260,
+      "junkCoverage": 56.96984126984127,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "hunter",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 66799,
+      "consumedPotionValue": 560,
+      "junkCoverage": 119.28392857142858,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "hunter",
+      "seed": 137,
+      "kills": 21,
+      "junkGold": 67720,
+      "consumedPotionValue": 1120,
+      "junkCoverage": 60.464285714285715,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "performer",
+      "seed": 42,
+      "kills": 26,
+      "junkGold": 83977,
+      "consumedPotionValue": 4620,
+      "junkCoverage": 18.176839826839828,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 191,
+      "job": "performer",
+      "seed": 137,
+      "kills": 25,
+      "junkGold": 80698,
+      "consumedPotionValue": 4340,
+      "junkCoverage": 18.59400921658986,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "knight",
+      "seed": 42,
+      "kills": 24,
+      "junkGold": 74996,
+      "consumedPotionValue": 140,
+      "junkCoverage": 535.6857142857143,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "knight",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 72440,
+      "consumedPotionValue": 0,
+      "junkCoverage": 72440,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "crusader",
+      "seed": 42,
+      "kills": 23,
+      "junkGold": 74075,
+      "consumedPotionValue": 0,
+      "junkCoverage": 74075,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "crusader",
+      "seed": 137,
+      "kills": 23,
+      "junkGold": 73816,
+      "consumedPotionValue": 0,
+      "junkCoverage": 73816,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "wizard",
+      "seed": 42,
+      "kills": 25,
+      "junkGold": 80241,
+      "consumedPotionValue": 4620,
+      "junkCoverage": 17.368181818181817,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "wizard",
+      "seed": 137,
+      "kills": 23,
+      "junkGold": 75847,
+      "consumedPotionValue": 4200,
+      "junkCoverage": 18.058809523809522,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "sage",
+      "seed": 42,
+      "kills": 25,
+      "junkGold": 80763,
+      "consumedPotionValue": 5040,
+      "junkCoverage": 16.024404761904762,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "sage",
+      "seed": 137,
+      "kills": 25,
+      "junkGold": 81028,
+      "consumedPotionValue": 4760,
+      "junkCoverage": 17.022689075630254,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "assassin",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 70931,
+      "consumedPotionValue": 1680,
+      "junkCoverage": 42.22083333333333,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "assassin",
+      "seed": 137,
+      "kills": 21,
+      "junkGold": 66212,
+      "consumedPotionValue": 980,
+      "junkCoverage": 67.56326530612245,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "rogue",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 88890,
+      "consumedPotionValue": 280,
+      "junkCoverage": 317.4642857142857,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "rogue",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 106985,
+      "consumedPotionValue": 140,
+      "junkCoverage": 764.1785714285714,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "priest",
+      "seed": 42,
+      "kills": 25,
+      "junkGold": 80635,
+      "consumedPotionValue": 0,
+      "junkCoverage": 80635,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "priest",
+      "seed": 137,
+      "kills": 24,
+      "junkGold": 77159,
+      "consumedPotionValue": 280,
+      "junkCoverage": 275.5678571428571,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "monk",
+      "seed": 42,
+      "kills": 23,
+      "junkGold": 73490,
+      "consumedPotionValue": 1260,
+      "junkCoverage": 58.32539682539682,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "monk",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 71585,
+      "consumedPotionValue": 1400,
+      "junkCoverage": 51.13214285714286,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "hunter",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 70145,
+      "consumedPotionValue": 840,
+      "junkCoverage": 83.50595238095238,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "hunter",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 70539,
+      "consumedPotionValue": 1120,
+      "junkCoverage": 62.98125,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "performer",
+      "seed": 42,
+      "kills": 27,
+      "junkGold": 87452,
+      "consumedPotionValue": 4620,
+      "junkCoverage": 18.92900432900433,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 200,
+      "job": "performer",
+      "seed": 137,
+      "kills": 27,
+      "junkGold": 86664,
+      "consumedPotionValue": 4620,
+      "junkCoverage": 18.758441558441557,
+      "reservedDawnValue": 0,
+      "dawnMaterials": [],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "knight",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14430,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 4
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 9
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "knight",
+      "seed": 137,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14190,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 12
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 3
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "crusader",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15110,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 10
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "crusader",
+      "seed": 137,
+      "kills": 23,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15640,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 13
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 5
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "wizard",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 1820,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14550,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 3
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 12
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "wizard",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 1680,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15140,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 4
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 10
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "sage",
+      "seed": 42,
+      "kills": 23,
+      "junkGold": 0,
+      "consumedPotionValue": 1960,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15640,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 7
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "sage",
+      "seed": 137,
+      "kills": 23,
+      "junkGold": 0,
+      "consumedPotionValue": 2240,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15760,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 9
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "assassin",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14280,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 6
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "assassin",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14930,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 7
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "rogue",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14160,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 5
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "rogue",
+      "seed": 137,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14250,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 10
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 5
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "priest",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14960,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 8
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "priest",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14930,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 6
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "monk",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15080,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 9
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "monk",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14930,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 7
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "hunter",
+      "seed": 42,
+      "kills": 19,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 12950,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 7
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "hunter",
+      "seed": 137,
+      "kills": 20,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 13510,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 5
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "performer",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 1680,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14930,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 7
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 201,
+      "job": "performer",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 1540,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14960,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 4
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 14
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 4
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "knight",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14400,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 9
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "knight",
+      "seed": 137,
+      "kills": 20,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 13540,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 10
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 4
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "crusader",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14900,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 7
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "crusader",
+      "seed": 137,
+      "kills": 23,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15580,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 6
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "wizard",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 2240,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14460,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 11
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "wizard",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 2520,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14840,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 5
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "sage",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 2240,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15020,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 9
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "sage",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 1960,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15050,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 8
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "assassin",
+      "seed": 42,
+      "kills": 20,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 13750,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 10
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "assassin",
+      "seed": 137,
+      "kills": 20,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 13750,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 3
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 8
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "rogue",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14280,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 7
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "rogue",
+      "seed": 137,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14370,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 9
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "priest",
+      "seed": 42,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14840,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 10
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 6
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "priest",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14990,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 7
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "monk",
+      "seed": 42,
+      "kills": 23,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15640,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 11
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 6
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "monk",
+      "seed": 137,
+      "kills": 23,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 15610,
+      "dawnMaterials": [
+        {
+          "id": "dawn_ram_horn",
+          "qty": 10
+        },
+        {
+          "id": "dawn_scout_fang",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 6
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "hunter",
+      "seed": 42,
+      "kills": 20,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 13630,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 6
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "hunter",
+      "seed": 137,
+      "kills": 19,
+      "junkGold": 0,
+      "consumedPotionValue": 0,
+      "junkCoverage": 0,
+      "reservedDawnValue": 13070,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 4
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 6
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 9
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "performer",
+      "seed": 42,
+      "kills": 21,
+      "junkGold": 0,
+      "consumedPotionValue": 1540,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14400,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 5
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 7
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 9
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    },
+    {
+      "level": 210,
+      "job": "performer",
+      "seed": 137,
+      "kills": 22,
+      "junkGold": 0,
+      "consumedPotionValue": 2100,
+      "junkCoverage": 0,
+      "reservedDawnValue": 14840,
+      "dawnMaterials": [
+        {
+          "id": "dawn_scout_fang",
+          "qty": 9
+        },
+        {
+          "id": "dawn_ram_horn",
+          "qty": 8
+        },
+        {
+          "id": "dawn_ray_membrane",
+          "qty": 5
+        }
+      ],
+      "stoppedReason": "已完成離線時間",
+      "revives": 0
+    }
+  ]
+}
