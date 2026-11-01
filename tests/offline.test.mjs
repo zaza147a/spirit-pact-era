@@ -30,17 +30,17 @@ test('settlement writes only its slot, is committed once, and preserves original
  values.set('icarus-character-slot-1',original);a.setup(structuredClone(p));fail=true;await assert.rejects(()=>a.settleOffline(),/儲存空間不足/);assert.equal(values.get('icarus-character-slot-1'),original);assert.equal(a.current().gold,p.gold);fail=false;conflict=true;a.setup(structuredClone(p));await assert.rejects(()=>a.settleOffline(),/其他分頁/);assert.equal(values.get('icarus-character-slot-1'),'changed elsewhere');
 });
 
-test('four character-slot offline simulations neither overwrite other saves nor mutate input snapshots',async()=>{
+test('eight character-slot offline simulations neither overwrite other saves nor mutate input snapshots',async()=>{
  const data=new Map(),storage={getItem:key=>data.get(key)??null,setItem:(key,value)=>data.set(key,value)};
  const c=await runtime(),a=c.api,jobs=['swordsman','mage','archer','acolyte'];
  const originals=[];
- for(let index=0;index<4;index++){
-  const p=a.normalize(a.fresh('四角'+index,jobs[index]));
+ for(let index=0;index<8;index++){
+  const p=a.normalize(a.fresh('四角'+index,jobs[index%jobs.length]));
   p.location='starter';p.autoEscapeBoss=true;p.attributes.STR=99;p.attributes.VIT=99;
   p.offline={at:1000000+index*1000,enabled:true};
   writeCharacterSlot(storage,index,p);originals.push(JSON.stringify(p));
  }
- for(let index=0;index<4;index++){
+ for(let index=0;index<8;index++){
   const entries=readCharacterSlots(storage,a.normalize,a.valid);
   const before=data.get('icarus-character-slot-'+(index+1));
   const {player,summary}=await a.simulateOffline(entries[index].player,1120000+index*1000);
@@ -50,8 +50,8 @@ test('four character-slot offline simulations neither overwrite other saves nor 
   assert.equal(JSON.stringify(entries[index].player),originals[index],'simulation must preserve source slot');
   assert.ok(a.valid(player));
   writeCharacterSlot(storage,index,player);
-  for(let other=index+1;other<4;other++)assert.equal(JSON.stringify(readCharacterSlots(storage,a.normalize,a.valid)[other].player),originals[other],'slot '+other+' changed while settling '+index);
+  for(let other=index+1;other<8;other++)assert.equal(JSON.stringify(readCharacterSlots(storage,a.normalize,a.valid)[other].player),originals[other],'slot '+other+' changed while settling '+index);
  }
  const names=readCharacterSlots(storage,a.normalize,a.valid).map(slot=>slot.player.name);
- assert.deepEqual(names,['四角0','四角1','四角2','四角3']);
+ assert.deepEqual(names,Array.from({length:8},(_,i)=>'四角'+i));
 });
