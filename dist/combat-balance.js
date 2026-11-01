@@ -19,8 +19,8 @@ export const monsterAttackPower=monster=>monster?.attackType==='magic'?(monster.
 export const monsterDefenseAgainst= (monster,magical=false)=>magical?(monster?.mdef??Math.round((monster?.def||0)*.9)):(monster?.def??0);
 export const LEVEL_CAPS=Object.freeze({base:200,job:70,secondJobUnlock:40,rebirthUnlock:99,skill:10});
 // Stage-specific team output coefficients fitted from actual 10-job × companion
-// clear tests. These scale the whole job+pet team uniformly, preserving the
-// measured 50/40/10 damage-source distribution and each fusion's role budget.
+// clear tests. These scale the whole job+pet team uniformly for a fair
+// same-role job comparison; they do not impose a fixed P/C/B split on fusions.
 const BALANCE_JOB_ORDER=['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer'];
 const BALANCE_ANCHORS=[
  [50,[1,1,1,1,1,1,1,1,1,1]],

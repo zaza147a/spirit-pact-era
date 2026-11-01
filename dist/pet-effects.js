@@ -10,6 +10,18 @@ export function petDirectRoleMultiplier(role,level=1){
  const phase=level>=201?8.5:level>=151?7.5:level>=101?24:level>=51?3:1;
  return role==='attack'?phase*.8:role==='magic'?phase:role==='defense'?phase*.48:phase*.42;
 }
+// A fused companion's two ordered roles determine its combat budget. This is
+// deliberately NOT a universal 50/40/10 damage quota: attack+magic sacrifices
+// mitigation and team buffs for burst, while a magic-led defender spends more
+// of its budget on guarding. Only direct pet hits change; resonance/buffs keep
+// their own ledger entries and damage-source ownership.
+export function fusionDirectOutputFactor(pet){
+ if(!pet?.fusion)return 1;
+ const {main,sub}=pet.fusion;
+ if(main==='attack'&&sub==='magic')return 1.6;
+ if(main==='magic'&&sub==='defense')return .9;
+ return 1;
+}
 export const petOffensivePower=(s,role)=>petOffense(s,role);
 export function blessingStrength(skill,s,role){const potency=role==='attack'?num(s,'atk')*.8+num(s,'matk')*.2:role==='defense'?num(s,'def')*.8+num(s,'hp')*.025:role==='support'?num(s,'healPower')*.7+num(s,'matk')*.3:num(s,'matk');return Math.min((skill.family==='fusion'?.12:.18)*(num(s,'quality')||1),skill.power*potency/(25+num(s,'level')*8));}
 export function petSkillEffect(skill,s,role){let value=0,duration=0;const power=skill.power,offense=skill.basis==='siege'?num(s,'atk')*.8+num(s,'def')*.35:skill.basis==='bastion'?num(s,'matk')*.8+num(s,'mdef')*.45:skill.kind==='magic'?num(s,'matk'):petOffense(s,role);
@@ -26,4 +38,4 @@ export const supportPulse=s=>({hp:Math.max(1,Math.round(num(s,'healPower')*.85))
 export function resonanceMagnitude(rule,s){if(rule.effect==='shield')return Math.round((num(s,'def')+.25*num(s,'mdef')+.035*num(s,'hp'))*rule.power);if(rule.effect==='heal')return Math.round(num(s,'healPower')*rule.power);if(rule.effect==='mana')return Math.round((num(s,'healPower')*.75+num(s,'matk')*.25+num(s,'sp')*.025)*rule.power);return Math.round(num(s,rule.effect==='magic'?'matk':'atk')*rule.power);}
 export const petUltimateSupport=s=>({shield:Math.round(num(s,'def')*2.2+num(s,'mdef')*.5+num(s,'hp')*.08),hp:Math.round(num(s,'healPower')*2.8+num(s,'matk')*.4),sp:Math.round(num(s,'matk')*.7+num(s,'sp')*.08)});
 
-export function petSkillPreview(skill,s,role){const multiplier=petDirectRoleMultiplier(role,s.level),direct=!['blessing','guard','shield','heal','regen','mana','mark'].includes(skill.kind);return basePetSkillPreview(skill,s,role)+(direct&&multiplier!==1?` · 角色定位實際直傷係數×${Number(multiplier.toFixed(2))}`:'')+(skill.splash?` · 其他最多3體各受主傷害${Math.round(skill.splash*100)}%`:'')+(skill.ignoreDef?` · 技能無視防禦${skill.ignoreDef}%`:'')+(skill.petRestore?` · 自身回復最大SP${Math.round(skill.petRestore*100)}%`:'')+(skill.kind==='drain'&&skill.family==='fusion'?' · 主人與自身各回復有效主目標傷害45%，單次各最多自身最大HP12%':'')+(skill.leech?` · 持續傷害${Math.round(skill.leech*100)}%轉為治療`:'');}
+export function petSkillPreview(skill,s,role,fusionPet=null){const multiplier=petDirectRoleMultiplier(role,s.level)*fusionDirectOutputFactor(fusionPet),direct=!['blessing','guard','shield','heal','regen','mana','mark'].includes(skill.kind);return basePetSkillPreview(skill,s,role)+(direct&&multiplier!==1?` · 角色定位實際直傷係數×${Number(multiplier.toFixed(2))}`:'')+(skill.splash?` · 其他最多3體各受主傷害${Math.round(skill.splash*100)}%`:'')+(skill.ignoreDef?` · 技能無視防禦${skill.ignoreDef}%`:'')+(skill.petRestore?` · 自身回復最大SP${Math.round(skill.petRestore*100)}%`:'')+(skill.kind==='drain'&&skill.family==='fusion'?' · 主人與自身各回復有效主目標傷害45%，單次各最多自身最大HP12%':'')+(skill.leech?` · 持續傷害${Math.round(skill.leech*100)}%轉為治療`:'');}

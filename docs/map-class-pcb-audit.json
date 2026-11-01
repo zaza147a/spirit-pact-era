@@ -5,33 +5,33 @@
     {
       "level": 99,
       "n": 120,
-      "alive": 110,
-      "avgKills": 101.35833333333333,
-      "avgPotions": 56.93333333333333,
-      "P": 0.7702654810803828,
-      "C": 0.14817467962442105,
-      "B": 0.0815598392951963,
-      "bestBuildJobGap": 0.13005780346820828,
+      "alive": 117,
+      "avgKills": 107.56666666666666,
+      "avgPotions": 57.06666666666667,
+      "P": 0.760003360644694,
+      "C": 0.15748719425383959,
+      "B": 0.08250944510146628,
+      "bestBuildJobGap": 0.21965317919075145,
       "slowest": {
-        "job": "sage",
+        "job": "rogue",
         "best": {
           "pair": "magic",
           "kills": 115.33333333333333
         },
         "worst": {
           "pair": "support",
-          "kills": 91.66666666666667
+          "kills": 86
         }
       },
       "fastest": {
-        "job": "wizard",
+        "job": "hunter",
         "best": {
           "pair": "magic",
-          "kills": 130.33333333333334
+          "kills": 140.66666666666666
         },
         "worst": {
           "pair": "attack",
-          "kills": 32.333333333333336
+          "kills": 84.66666666666667
         }
       },
       "perJob": [
@@ -39,22 +39,22 @@
           "job": "knight",
           "best": {
             "pair": "attack",
-            "kills": 122.66666666666667
+            "kills": 120.33333333333333
           },
           "worst": {
             "pair": "support",
-            "kills": 90
+            "kills": 91.66666666666667
           }
         },
         {
           "job": "crusader",
           "best": {
             "pair": "attack",
-            "kills": 117
+            "kills": 121.33333333333333
           },
           "worst": {
             "pair": "support",
-            "kills": 94.66666666666667
+            "kills": 94.33333333333333
           }
         },
         {
@@ -64,15 +64,15 @@
             "kills": 130.33333333333334
           },
           "worst": {
-            "pair": "attack",
-            "kills": 32.333333333333336
+            "pair": "support",
+            "kills": 100.33333333333333
           }
         },
         {
           "job": "sage",
           "best": {
-            "pair": "magic",
-            "kills": 115.33333333333333
+            "pair": "attack",
+            "kills": 120
           },
           "worst": {
             "pair": "support",
@@ -86,8 +86,8 @@
             "kills": 128.66666666666666
           },
           "worst": {
-            "pair": "attack",
-            "kills": 50.333333333333336
+            "pair": "support",
+            "kills": 102.33333333333333
           }
         },
         {
@@ -104,45 +104,45 @@
         {
           "job": "priest",
           "best": {
-            "pair": "magic",
-            "kills": 115.33333333333333
+            "pair": "attack",
+            "kills": 128
           },
           "worst": {
-            "pair": "attack",
-            "kills": 103.33333333333333
+            "pair": "defense",
+            "kills": 103.66666666666667
           }
         },
         {
           "job": "monk",
           "best": {
             "pair": "attack",
-            "kills": 116
+            "kills": 116.66666666666667
           },
           "worst": {
             "pair": "defense",
-            "kills": 102.33333333333333
+            "kills": 103.33333333333333
           }
         },
         {
           "job": "hunter",
           "best": {
-            "pair": "support",
-            "kills": 122
+            "pair": "magic",
+            "kills": 140.66666666666666
           },
           "worst": {
             "pair": "attack",
-            "kills": 76
+            "kills": 84.66666666666667
           }
         },
         {
           "job": "performer",
           "best": {
             "pair": "magic",
-            "kills": 116.33333333333333
+            "kills": 117.33333333333333
           },
           "worst": {
             "pair": "attack",
-            "kills": 78.33333333333333
+            "kills": 73
           }
         }
       ]
@@ -586,28 +586,28 @@
       "level": 160,
       "n": 360,
       "alive": 360,
-      "avgKills": 77.30833333333334,
-      "avgPotions": 26.40277777777778,
-      "P": 0.5833827215508266,
-      "C": 0.30787309929709755,
-      "B": 0.10874417915207579,
-      "bestBuildJobGap": 0.18085106382978733,
+      "avgKills": 78.475,
+      "avgPotions": 26.355555555555554,
+      "P": 0.5788676454326591,
+      "C": 0.31328525794457035,
+      "B": 0.10784709662277041,
+      "bestBuildJobGap": 0.18543046357615878,
       "slowest": {
-        "job": "crusader",
+        "job": "knight",
         "best": {
-          "pair": "magic-attack",
-          "kills": 94
+          "pair": "attack-magic",
+          "kills": 100.66666666666667
         },
         "worst": {
           "pair": "support-defense",
-          "kills": 55.666666666666664
+          "kills": 51.666666666666664
         }
       },
       "fastest": {
         "job": "performer",
         "best": {
-          "pair": "magic-attack",
-          "kills": 111
+          "pair": "attack-magic",
+          "kills": 119.33333333333333
         },
         "worst": {
           "pair": "support-defense",
@@ -618,8 +618,8 @@
         {
           "job": "knight",
           "best": {
-            "pair": "magic-defense",
-            "kills": 94.33333333333333
+            "pair": "attack-magic",
+            "kills": 100.66666666666667
           },
           "worst": {
             "pair": "support-defense",
@@ -629,8 +629,8 @@
         {
           "job": "crusader",
           "best": {
-            "pair": "magic-attack",
-            "kills": 94
+            "pair": "attack-magic",
+            "kills": 102
           },
           "worst": {
             "pair": "support-defense",
@@ -640,8 +640,8 @@
         {
           "job": "wizard",
           "best": {
-            "pair": "magic-attack",
-            "kills": 97.66666666666667
+            "pair": "attack-magic",
+            "kills": 104
           },
           "worst": {
             "pair": "support-defense",
@@ -651,8 +651,8 @@
         {
           "job": "sage",
           "best": {
-            "pair": "magic-attack",
-            "kills": 95.66666666666667
+            "pair": "attack-magic",
+            "kills": 103.66666666666667
           },
           "worst": {
             "pair": "support-defense",
@@ -662,8 +662,8 @@
         {
           "job": "assassin",
           "best": {
-            "pair": "magic-attack",
-            "kills": 96
+            "pair": "attack-magic",
+            "kills": 101
           },
           "worst": {
             "pair": "support-defense",
@@ -673,8 +673,8 @@
         {
           "job": "rogue",
           "best": {
-            "pair": "magic-attack",
-            "kills": 97.33333333333333
+            "pair": "attack-magic",
+            "kills": 103.33333333333333
           },
           "worst": {
             "pair": "support-attack",
@@ -684,8 +684,8 @@
         {
           "job": "priest",
           "best": {
-            "pair": "magic-attack",
-            "kills": 101.33333333333333
+            "pair": "attack-magic",
+            "kills": 109.33333333333333
           },
           "worst": {
             "pair": "support-defense",
@@ -695,8 +695,8 @@
         {
           "job": "monk",
           "best": {
-            "pair": "magic-attack",
-            "kills": 96.66666666666667
+            "pair": "attack-magic",
+            "kills": 103.66666666666667
           },
           "worst": {
             "pair": "support-defense",
@@ -706,8 +706,8 @@
         {
           "job": "hunter",
           "best": {
-            "pair": "magic-attack",
-            "kills": 105.66666666666667
+            "pair": "attack-magic",
+            "kills": 107.66666666666667
           },
           "worst": {
             "pair": "defense-support",
@@ -717,8 +717,8 @@
         {
           "job": "performer",
           "best": {
-            "pair": "magic-attack",
-            "kills": 111
+            "pair": "attack-magic",
+            "kills": 119.33333333333333
           },
           "worst": {
             "pair": "support-defense",
@@ -731,17 +731,17 @@
       "level": 180,
       "n": 360,
       "alive": 360,
-      "avgKills": 59.84166666666667,
-      "avgPotions": 19.255555555555556,
-      "P": 0.6175641646266689,
-      "C": 0.26924041939207743,
-      "B": 0.11319541598125353,
-      "bestBuildJobGap": 0.19811320754716988,
+      "avgKills": 60.736111111111114,
+      "avgPotions": 19.197222222222223,
+      "P": 0.6125732269983123,
+      "C": 0.27515159931834793,
+      "B": 0.11227517368333982,
+      "bestBuildJobGap": 0.20627802690582975,
       "slowest": {
         "job": "crusader",
         "best": {
-          "pair": "magic-attack",
-          "kills": 70.66666666666667
+          "pair": "attack-magic",
+          "kills": 74.33333333333333
         },
         "worst": {
           "pair": "support-defense",
@@ -749,22 +749,22 @@
         }
       },
       "fastest": {
-        "job": "hunter",
+        "job": "performer",
         "best": {
-          "pair": "magic-attack",
-          "kills": 84.66666666666667
+          "pair": "attack-magic",
+          "kills": 89.66666666666667
         },
         "worst": {
-          "pair": "defense-support",
-          "kills": 46
+          "pair": "support-defense",
+          "kills": 43.333333333333336
         }
       },
       "perJob": [
         {
           "job": "knight",
           "best": {
-            "pair": "magic-defense",
-            "kills": 75.66666666666667
+            "pair": "attack-magic",
+            "kills": 77
           },
           "worst": {
             "pair": "support-attack",
@@ -774,8 +774,8 @@
         {
           "job": "crusader",
           "best": {
-            "pair": "magic-attack",
-            "kills": 70.66666666666667
+            "pair": "attack-magic",
+            "kills": 74.33333333333333
           },
           "worst": {
             "pair": "support-defense",
@@ -785,8 +785,8 @@
         {
           "job": "wizard",
           "best": {
-            "pair": "magic-attack",
-            "kills": 79.66666666666667
+            "pair": "attack-magic",
+            "kills": 84.66666666666667
           },
           "worst": {
             "pair": "support-defense",
@@ -796,8 +796,8 @@
         {
           "job": "sage",
           "best": {
-            "pair": "magic-attack",
-            "kills": 75.66666666666667
+            "pair": "attack-magic",
+            "kills": 79.33333333333333
           },
           "worst": {
             "pair": "support-defense",
@@ -807,8 +807,8 @@
         {
           "job": "assassin",
           "best": {
-            "pair": "magic-attack",
-            "kills": 72.66666666666667
+            "pair": "attack-magic",
+            "kills": 74.33333333333333
           },
           "worst": {
             "pair": "support-attack",
@@ -818,8 +818,8 @@
         {
           "job": "rogue",
           "best": {
-            "pair": "magic-attack",
-            "kills": 72
+            "pair": "attack-magic",
+            "kills": 75.33333333333333
           },
           "worst": {
             "pair": "support-defense",
@@ -829,8 +829,8 @@
         {
           "job": "priest",
           "best": {
-            "pair": "magic-attack",
-            "kills": 78
+            "pair": "attack-magic",
+            "kills": 81.66666666666667
           },
           "worst": {
             "pair": "support-defense",
@@ -840,8 +840,8 @@
         {
           "job": "monk",
           "best": {
-            "pair": "magic-attack",
-            "kills": 71.66666666666667
+            "pair": "attack-magic",
+            "kills": 77
           },
           "worst": {
             "pair": "support-defense",
@@ -862,8 +862,8 @@
         {
           "job": "performer",
           "best": {
-            "pair": "magic-attack",
-            "kills": 83.66666666666667
+            "pair": "attack-magic",
+            "kills": 89.66666666666667
           },
           "worst": {
             "pair": "support-defense",
@@ -876,28 +876,28 @@
       "level": 200,
       "n": 360,
       "alive": 360,
-      "avgKills": 39.46666666666667,
-      "avgPotions": 12.213888888888889,
-      "P": 0.618234819165107,
-      "C": 0.2702046756010529,
-      "B": 0.11156050523383997,
-      "bestBuildJobGap": 0.21985815602836878,
+      "avgKills": 40.05833333333333,
+      "avgPotions": 12.108333333333333,
+      "P": 0.6128918529090511,
+      "C": 0.2765489605021012,
+      "B": 0.11055918658884774,
+      "bestBuildJobGap": 0.24657534246575352,
       "slowest": {
-        "job": "crusader",
+        "job": "knight",
         "best": {
-          "pair": "magic-attack",
-          "kills": 47
+          "pair": "attack-magic",
+          "kills": 48.666666666666664
         },
         "worst": {
-          "pair": "support-defense",
-          "kills": 29
+          "pair": "support-attack",
+          "kills": 30.333333333333332
         }
       },
       "fastest": {
         "job": "performer",
         "best": {
-          "pair": "magic-attack",
-          "kills": 57.333333333333336
+          "pair": "attack-magic",
+          "kills": 60.666666666666664
         },
         "worst": {
           "pair": "support-defense",
@@ -908,8 +908,8 @@
         {
           "job": "knight",
           "best": {
-            "pair": "magic-defense",
-            "kills": 51
+            "pair": "attack-magic",
+            "kills": 48.666666666666664
           },
           "worst": {
             "pair": "support-attack",
@@ -919,8 +919,8 @@
         {
           "job": "crusader",
           "best": {
-            "pair": "magic-attack",
-            "kills": 47
+            "pair": "attack-magic",
+            "kills": 48.666666666666664
           },
           "worst": {
             "pair": "support-defense",
@@ -930,8 +930,8 @@
         {
           "job": "wizard",
           "best": {
-            "pair": "magic-attack",
-            "kills": 51
+            "pair": "attack-magic",
+            "kills": 54.333333333333336
           },
           "worst": {
             "pair": "support-defense",
@@ -941,8 +941,8 @@
         {
           "job": "sage",
           "best": {
-            "pair": "magic-attack",
-            "kills": 52.666666666666664
+            "pair": "attack-magic",
+            "kills": 54.333333333333336
           },
           "worst": {
             "pair": "support-defense",
@@ -952,8 +952,8 @@
         {
           "job": "assassin",
           "best": {
-            "pair": "magic-attack",
-            "kills": 47
+            "pair": "attack-magic",
+            "kills": 49.666666666666664
           },
           "worst": {
             "pair": "support-attack",
@@ -963,8 +963,8 @@
         {
           "job": "rogue",
           "best": {
-            "pair": "magic-attack",
-            "kills": 47.333333333333336
+            "pair": "attack-magic",
+            "kills": 49.333333333333336
           },
           "worst": {
             "pair": "support-attack",
@@ -974,8 +974,8 @@
         {
           "job": "priest",
           "best": {
-            "pair": "magic-defense",
-            "kills": 53.333333333333336
+            "pair": "attack-magic",
+            "kills": 54.666666666666664
           },
           "worst": {
             "pair": "support-defense",
@@ -985,8 +985,8 @@
         {
           "job": "monk",
           "best": {
-            "pair": "magic-defense",
-            "kills": 47
+            "pair": "attack-magic",
+            "kills": 49.333333333333336
           },
           "worst": {
             "pair": "support-defense",
@@ -1007,8 +1007,8 @@
         {
           "job": "performer",
           "best": {
-            "pair": "magic-attack",
-            "kills": 57.333333333333336
+            "pair": "attack-magic",
+            "kills": 60.666666666666664
           },
           "worst": {
             "pair": "support-defense",
@@ -1021,40 +1021,40 @@
       "level": 201,
       "n": 360,
       "alive": 360,
-      "avgKills": 37.43888888888889,
-      "avgPotions": 3.9583333333333335,
-      "P": 0.6053352075351985,
-      "C": 0.28989013103795774,
-      "B": 0.10477466142684336,
-      "bestBuildJobGap": 0.020547945205479534,
+      "avgKills": 38.03888888888889,
+      "avgPotions": 3.911111111111111,
+      "P": 0.599554423027175,
+      "C": 0.29666737693469564,
+      "B": 0.10377820003812924,
+      "bestBuildJobGap": 0.07092198581560294,
       "slowest": {
-        "job": "crusader",
+        "job": "knight",
         "best": {
-          "pair": "magic-attack",
-          "kills": 48.666666666666664
-        },
-        "worst": {
-          "pair": "support-defense",
-          "kills": 29
-        }
-      },
-      "fastest": {
-        "job": "assassin",
-        "best": {
-          "pair": "magic-defense",
-          "kills": 49.666666666666664
+          "pair": "attack-magic",
+          "kills": 47
         },
         "worst": {
           "pair": "support-attack",
-          "kills": 26.666666666666668
+          "kills": 27.333333333333332
+        }
+      },
+      "fastest": {
+        "job": "monk",
+        "best": {
+          "pair": "attack-magic",
+          "kills": 50.333333333333336
+        },
+        "worst": {
+          "pair": "support-defense",
+          "kills": 30.333333333333332
         }
       },
       "perJob": [
         {
           "job": "knight",
           "best": {
-            "pair": "magic-defense",
-            "kills": 49.333333333333336
+            "pair": "attack-magic",
+            "kills": 47
           },
           "worst": {
             "pair": "support-attack",
@@ -1064,8 +1064,8 @@
         {
           "job": "crusader",
           "best": {
-            "pair": "magic-attack",
-            "kills": 48.666666666666664
+            "pair": "attack-magic",
+            "kills": 49.666666666666664
           },
           "worst": {
             "pair": "support-defense",
@@ -1075,8 +1075,8 @@
         {
           "job": "wizard",
           "best": {
-            "pair": "magic-attack",
-            "kills": 49
+            "pair": "attack-magic",
+            "kills": 50
           },
           "worst": {
             "pair": "support-defense",
@@ -1086,8 +1086,8 @@
         {
           "job": "sage",
           "best": {
-            "pair": "magic-attack",
-            "kills": 49
+            "pair": "attack-magic",
+            "kills": 49.666666666666664
           },
           "worst": {
             "pair": "support-defense",
@@ -1097,7 +1097,7 @@
         {
           "job": "assassin",
           "best": {
-            "pair": "magic-defense",
+            "pair": "attack-magic",
             "kills": 49.666666666666664
           },
           "worst": {
@@ -1108,8 +1108,8 @@
         {
           "job": "rogue",
           "best": {
-            "pair": "magic-defense",
-            "kills": 48.666666666666664
+            "pair": "attack-magic",
+            "kills": 49
           },
           "worst": {
             "pair": "support-attack",
@@ -1130,8 +1130,8 @@
         {
           "job": "monk",
           "best": {
-            "pair": "magic-attack",
-            "kills": 49
+            "pair": "attack-magic",
+            "kills": 50.333333333333336
           },
           "worst": {
             "pair": "support-defense",
@@ -1152,8 +1152,8 @@
         {
           "job": "performer",
           "best": {
-            "pair": "magic-attack",
-            "kills": 48.666666666666664
+            "pair": "attack-magic",
+            "kills": 50
           },
           "worst": {
             "pair": "support-defense",
@@ -1169,36 +1169,36 @@
       "job": "knight",
       "pair": "attack",
       "seed": 42,
-      "kills": 120,
+      "kills": 122,
       "alive": true,
-      "potions": 82,
-      "P": 0.5903019932249255,
-      "C": 0.30508312979921837,
-      "B": 0.10461487697585613
+      "potions": 79,
+      "P": 0.6022069698669208,
+      "C": 0.29741957172753813,
+      "B": 0.10037345840554099
     },
     {
       "level": 99,
       "job": "knight",
       "pair": "magic",
       "seed": 42,
-      "kills": 108,
+      "kills": 112,
       "alive": true,
-      "potions": 27,
-      "P": 0.7127905559418196,
-      "C": 0.24541987921473601,
-      "B": 0.04178956484344435
+      "potions": 30,
+      "P": 0.7318638489104183,
+      "C": 0.22504105552768305,
+      "B": 0.04309509556189855
     },
     {
       "level": 99,
       "job": "knight",
       "pair": "defense",
       "seed": 42,
-      "kills": 99,
+      "kills": 95,
       "alive": true,
-      "potions": 53,
-      "P": 0.8798381724203943,
-      "C": 0.08235032863250591,
-      "B": 0.03781149894709974
+      "potions": 39,
+      "P": 0.8725045166045271,
+      "C": 0.08408170117869916,
+      "B": 0.043413782216773784
     },
     {
       "level": 99,
@@ -1208,68 +1208,68 @@
       "kills": 92,
       "alive": true,
       "potions": 0,
-      "P": 0.832966273047753,
+      "P": 0.8329791586355451,
       "C": 0.050958204522197036,
-      "B": 0.11607552243005005
+      "B": 0.11606263684225786
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "attack",
       "seed": 42,
-      "kills": 121,
+      "kills": 125,
       "alive": true,
-      "potions": 78,
-      "P": 0.6821318572637914,
-      "C": 0.28148778247350265,
-      "B": 0.036380360262705885
+      "potions": 79,
+      "P": 0.6896759862765806,
+      "C": 0.2682213847233167,
+      "B": 0.04210262900010271
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "magic",
       "seed": 42,
-      "kills": 108,
+      "kills": 104,
       "alive": true,
-      "potions": 34,
-      "P": 0.6926896313185787,
-      "C": 0.21539441766903777,
-      "B": 0.09191595101238344
+      "potions": 31,
+      "P": 0.6940506720740736,
+      "C": 0.21855453752506765,
+      "B": 0.08739479040085882
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "defense",
       "seed": 42,
-      "kills": 98,
+      "kills": 101,
       "alive": true,
-      "potions": 44,
-      "P": 0.8518512263117193,
-      "C": 0.08308651510056723,
-      "B": 0.06506225858771349
+      "potions": 47,
+      "P": 0.8580993377320822,
+      "C": 0.0791342633405118,
+      "B": 0.0627663989274059
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "support",
       "seed": 42,
-      "kills": 97,
+      "kills": 96,
       "alive": true,
       "potions": 0,
-      "P": 0.8161564133987778,
-      "C": 0.04603203006173392,
-      "B": 0.1378115565394883
+      "P": 0.8136948140702286,
+      "C": 0.04504922782092065,
+      "B": 0.1412559581088508
     },
     {
       "level": 99,
       "job": "wizard",
       "pair": "attack",
       "seed": 42,
-      "kills": 16,
-      "alive": false,
-      "potions": 16,
-      "P": 0.8905964190119252,
-      "C": 0.10940358098807478,
+      "kills": 107,
+      "alive": true,
+      "potions": 97,
+      "P": 0.7893608617527672,
+      "C": 0.21063913824723285,
       "B": 0
     },
     {
@@ -1279,7 +1279,7 @@
       "seed": 42,
       "kills": 131,
       "alive": true,
-      "potions": 99,
+      "potions": 87,
       "P": 0.6014852669007555,
       "C": 0.19829028630549328,
       "B": 0.20022444679375115
@@ -1291,34 +1291,34 @@
       "seed": 42,
       "kills": 103,
       "alive": true,
-      "potions": 72,
-      "P": 0.8208600331231265,
-      "C": 0.07655860513578032,
-      "B": 0.10258136174109321
+      "potions": 73,
+      "P": 0.8240535918431839,
+      "C": 0.07779879357938861,
+      "B": 0.09814761457742747
     },
     {
       "level": 99,
       "job": "wizard",
       "pair": "support",
       "seed": 42,
-      "kills": 96,
+      "kills": 102,
       "alive": true,
-      "potions": 13,
-      "P": 0.8193573935106587,
-      "C": 0.049380884338689764,
-      "B": 0.1312617221506515
+      "potions": 1,
+      "P": 0.8070223451559477,
+      "C": 0.04816562880356703,
+      "B": 0.1448120260404852
     },
     {
       "level": 99,
       "job": "sage",
       "pair": "attack",
       "seed": 42,
-      "kills": 122,
+      "kills": 124,
       "alive": true,
-      "potions": 100,
-      "P": 0.6473706629040257,
-      "C": 0.2822121497210398,
-      "B": 0.07041718737493449
+      "potions": 90,
+      "P": 0.6057914030088294,
+      "C": 0.31413535558911393,
+      "B": 0.08007324140205664
     },
     {
       "level": 99,
@@ -1327,7 +1327,7 @@
       "seed": 42,
       "kills": 112,
       "alive": true,
-      "potions": 79,
+      "potions": 70,
       "P": 0.6809586801909566,
       "C": 0.24061400565075722,
       "B": 0.07842731415828616
@@ -1339,7 +1339,7 @@
       "seed": 42,
       "kills": 95,
       "alive": true,
-      "potions": 42,
+      "potions": 35,
       "P": 0.8562968776662835,
       "C": 0.08602294745422277,
       "B": 0.05768017487949377
@@ -1361,11 +1361,11 @@
       "job": "assassin",
       "pair": "attack",
       "seed": 42,
-      "kills": 112,
+      "kills": 129,
       "alive": true,
-      "potions": 140,
-      "P": 0.7835794168626282,
-      "C": 0.2164205831373718,
+      "potions": 147,
+      "P": 0.6902272835050494,
+      "C": 0.3097727164949507,
       "B": 0
     },
     {
@@ -1375,7 +1375,7 @@
       "seed": 42,
       "kills": 127,
       "alive": true,
-      "potions": 92,
+      "potions": 81,
       "P": 0.6403802710697182,
       "C": 0.26237872880059454,
       "B": 0.09724100012968728
@@ -1387,7 +1387,7 @@
       "seed": 42,
       "kills": 108,
       "alive": true,
-      "potions": 73,
+      "potions": 64,
       "P": 0.7794897683712909,
       "C": 0.10048504147439133,
       "B": 0.12002519015431777
@@ -1409,12 +1409,12 @@
       "job": "rogue",
       "pair": "attack",
       "seed": 42,
-      "kills": 109,
+      "kills": 117,
       "alive": true,
-      "potions": 108,
-      "P": 0.723957142038618,
-      "C": 0.25769506675070186,
-      "B": 0.01834779121068011
+      "potions": 101,
+      "P": 0.663793867906948,
+      "C": 0.3140098418846862,
+      "B": 0.02219629020836573
     },
     {
       "level": 99,
@@ -1423,7 +1423,7 @@
       "seed": 42,
       "kills": 118,
       "alive": true,
-      "potions": 50,
+      "potions": 42,
       "P": 0.6040088534124286,
       "C": 0.2363651718095422,
       "B": 0.15962597477802917
@@ -1435,7 +1435,7 @@
       "seed": 42,
       "kills": 91,
       "alive": true,
-      "potions": 77,
+      "potions": 66,
       "P": 0.8206858492652627,
       "C": 0.09616522355909878,
       "B": 0.08314892717563856
@@ -1457,59 +1457,59 @@
       "job": "priest",
       "pair": "attack",
       "seed": 42,
-      "kills": 125,
+      "kills": 130,
       "alive": true,
-      "potions": 39,
-      "P": 0.7164892949231765,
-      "C": 0.233984232907448,
-      "B": 0.04952647216937553
+      "potions": 56,
+      "P": 0.6808805079853761,
+      "C": 0.26790379064845105,
+      "B": 0.05121570136617279
     },
     {
       "level": 99,
       "job": "priest",
       "pair": "magic",
       "seed": 42,
-      "kills": 115,
+      "kills": 114,
       "alive": true,
-      "potions": 45,
-      "P": 0.6839785946691616,
-      "C": 0.2163808733233761,
-      "B": 0.09964053200746233
+      "potions": 21,
+      "P": 0.6829467671800725,
+      "C": 0.22346856112874516,
+      "B": 0.09358467169118236
     },
     {
       "level": 99,
       "job": "priest",
       "pair": "defense",
       "seed": 42,
-      "kills": 108,
+      "kills": 107,
       "alive": true,
-      "potions": 32,
-      "P": 0.7798109513892839,
-      "C": 0.07331865452589625,
-      "B": 0.14687039408481983
+      "potions": 25,
+      "P": 0.7767125067465527,
+      "C": 0.07655515315547737,
+      "B": 0.14673234009796995
     },
     {
       "level": 99,
       "job": "priest",
       "pair": "support",
       "seed": 42,
-      "kills": 100,
+      "kills": 108,
       "alive": true,
       "potions": 0,
-      "P": 0.8802032457248695,
-      "C": 0.050026230816406454,
-      "B": 0.06977052345872402
+      "P": 0.935644262593647,
+      "C": 0.045690469311080346,
+      "B": 0.018665268095272657
     },
     {
       "level": 99,
       "job": "monk",
       "pair": "attack",
       "seed": 42,
-      "kills": 124,
+      "kills": 119,
       "alive": true,
-      "potions": 95,
-      "P": 0.7126922788552531,
-      "C": 0.2873077211447469,
+      "potions": 79,
+      "P": 0.7218698695811796,
+      "C": 0.27813013041882034,
       "B": 0
     },
     {
@@ -1517,47 +1517,47 @@
       "job": "monk",
       "pair": "magic",
       "seed": 42,
-      "kills": 115,
+      "kills": 112,
       "alive": true,
-      "potions": 29,
-      "P": 0.6110921381874359,
-      "C": 0.2760630180207882,
-      "B": 0.11284484379177587
+      "potions": 27,
+      "P": 0.6198158161981061,
+      "C": 0.2743210283740268,
+      "B": 0.10586315542786713
     },
     {
       "level": 99,
       "job": "monk",
       "pair": "defense",
       "seed": 42,
-      "kills": 98,
+      "kills": 100,
       "alive": true,
-      "potions": 80,
-      "P": 0.8577287056867092,
-      "C": 0.09497570455791017,
-      "B": 0.047295589755380625
+      "potions": 60,
+      "P": 0.8534395344322083,
+      "C": 0.09705604065853857,
+      "B": 0.04950442490925311
     },
     {
       "level": 99,
       "job": "monk",
       "pair": "support",
       "seed": 42,
-      "kills": 106,
+      "kills": 108,
       "alive": true,
       "potions": 0,
-      "P": 0.8352553588385648,
-      "C": 0.05428791535455975,
-      "B": 0.11045672580687538
+      "P": 0.8413498525973838,
+      "C": 0.05383893345439356,
+      "B": 0.10481121394822257
     },
     {
       "level": 99,
       "job": "hunter",
       "pair": "attack",
       "seed": 42,
-      "kills": 115,
+      "kills": 112,
       "alive": true,
-      "potions": 102,
-      "P": 0.8481013410085226,
-      "C": 0.15189865899147742,
+      "potions": 105,
+      "P": 0.8418114119460801,
+      "C": 0.15818858805391986,
       "B": 0
     },
     {
@@ -1567,7 +1567,7 @@
       "seed": 42,
       "kills": 141,
       "alive": true,
-      "potions": 134,
+      "potions": 120,
       "P": 0.6431957384924133,
       "C": 0.2467451972421502,
       "B": 0.11005906426543657
@@ -1579,7 +1579,7 @@
       "seed": 42,
       "kills": 120,
       "alive": true,
-      "potions": 98,
+      "potions": 85,
       "P": 0.7822306741070965,
       "C": 0.09098357078280388,
       "B": 0.12678575511009965
@@ -1591,7 +1591,7 @@
       "seed": 42,
       "kills": 121,
       "alive": true,
-      "potions": 32,
+      "potions": 19,
       "P": 0.8079896443998377,
       "C": 0.05375824681789451,
       "B": 0.13825210878226785
@@ -1601,11 +1601,11 @@
       "job": "performer",
       "pair": "attack",
       "seed": 42,
-      "kills": 101,
+      "kills": 103,
       "alive": true,
-      "potions": 118,
-      "P": 0.8661919465871423,
-      "C": 0.13380805341285776,
+      "potions": 116,
+      "P": 0.8312646980401012,
+      "C": 0.16873530195989883,
       "B": 0
     },
     {
@@ -1615,7 +1615,7 @@
       "seed": 42,
       "kills": 119,
       "alive": true,
-      "potions": 119,
+      "potions": 107,
       "P": 0.6555784514513998,
       "C": 0.24197828931992477,
       "B": 0.10244325922867545
@@ -1625,12 +1625,12 @@
       "job": "performer",
       "pair": "defense",
       "seed": 42,
-      "kills": 98,
+      "kills": 99,
       "alive": true,
-      "potions": 99,
-      "P": 0.8752245316585202,
-      "C": 0.08555752547987543,
-      "B": 0.039217942861604335
+      "potions": 88,
+      "P": 0.8662659404888416,
+      "C": 0.09114205954336135,
+      "B": 0.042591999967796994
     },
     {
       "level": 99,
@@ -1639,7 +1639,7 @@
       "seed": 42,
       "kills": 98,
       "alive": true,
-      "potions": 2,
+      "potions": 1,
       "P": 0.7914451811014067,
       "C": 0.05519991032598356,
       "B": 0.15335490857260972
@@ -1649,60 +1649,60 @@
       "job": "knight",
       "pair": "attack",
       "seed": 137,
-      "kills": 125,
+      "kills": 118,
       "alive": true,
-      "potions": 88,
-      "P": 0.6118672753626171,
-      "C": 0.2849795012376835,
-      "B": 0.10315322339969935
+      "potions": 76,
+      "P": 0.6414973790182307,
+      "C": 0.2657784969191373,
+      "B": 0.09272412406263204
     },
     {
       "level": 99,
       "job": "knight",
       "pair": "magic",
       "seed": 137,
-      "kills": 109,
+      "kills": 110,
       "alive": true,
-      "potions": 46,
-      "P": 0.713635325585253,
-      "C": 0.2433693075480602,
-      "B": 0.04299536686668679
+      "potions": 42,
+      "P": 0.7099987841472691,
+      "C": 0.2492696973792272,
+      "B": 0.040731518473503675
     },
     {
       "level": 99,
       "job": "knight",
       "pair": "defense",
       "seed": 137,
-      "kills": 90,
+      "kills": 89,
       "alive": true,
-      "potions": 93,
-      "P": 0.8919943566740473,
-      "C": 0.06689124051925642,
-      "B": 0.04111440280669628
+      "potions": 71,
+      "P": 0.8931411266271696,
+      "C": 0.06459183511092162,
+      "B": 0.0422670382619088
     },
     {
       "level": 99,
       "job": "knight",
       "pair": "support",
       "seed": 137,
-      "kills": 88,
+      "kills": 93,
       "alive": true,
       "potions": 0,
-      "P": 0.8280417518997581,
-      "C": 0.055571049675382754,
-      "B": 0.11638719842485913
+      "P": 0.8308516545994002,
+      "C": 0.05266052813903183,
+      "B": 0.11648781726156791
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "attack",
       "seed": 137,
-      "kills": 118,
+      "kills": 126,
       "alive": true,
-      "potions": 87,
-      "P": 0.6990772047078094,
-      "C": 0.2614719252753124,
-      "B": 0.039450870016878206
+      "potions": 74,
+      "P": 0.6835404424053407,
+      "C": 0.27438041902738386,
+      "B": 0.04207913856727536
     },
     {
       "level": 99,
@@ -1711,10 +1711,10 @@
       "seed": 137,
       "kills": 104,
       "alive": true,
-      "potions": 44,
-      "P": 0.6800805484471053,
-      "C": 0.22507625190039565,
-      "B": 0.09484319965249909
+      "potions": 37,
+      "P": 0.6875510649562745,
+      "C": 0.22175992999769456,
+      "B": 0.09068900504603095
     },
     {
       "level": 99,
@@ -1723,7 +1723,7 @@
       "seed": 137,
       "kills": 100,
       "alive": true,
-      "potions": 60,
+      "potions": 52,
       "P": 0.8136363319882273,
       "C": 0.11857290776657022,
       "B": 0.06779076024520253
@@ -1733,23 +1733,23 @@
       "job": "crusader",
       "pair": "support",
       "seed": 137,
-      "kills": 95,
+      "kills": 93,
       "alive": true,
       "potions": 0,
-      "P": 0.8133079522052236,
-      "C": 0.04865385664164046,
-      "B": 0.13803819115313598
+      "P": 0.8413253860352807,
+      "C": 0.04963431575074691,
+      "B": 0.10904029821397233
     },
     {
       "level": 99,
       "job": "wizard",
       "pair": "attack",
       "seed": 137,
-      "kills": 61,
-      "alive": false,
-      "potions": 63,
-      "P": 0.8650660209181981,
-      "C": 0.13493397908180188,
+      "kills": 98,
+      "alive": true,
+      "potions": 109,
+      "P": 0.8289114341481569,
+      "C": 0.17108856585184312,
       "B": 0
     },
     {
@@ -1759,7 +1759,7 @@
       "seed": 137,
       "kills": 128,
       "alive": true,
-      "potions": 117,
+      "potions": 102,
       "P": 0.6121754901320884,
       "C": 0.18538990619294923,
       "B": 0.20243460367496238
@@ -1769,12 +1769,12 @@
       "job": "wizard",
       "pair": "defense",
       "seed": 137,
-      "kills": 103,
+      "kills": 99,
       "alive": true,
-      "potions": 67,
-      "P": 0.8395878021914314,
-      "C": 0.05949716891800491,
-      "B": 0.10091502889056371
+      "potions": 78,
+      "P": 0.8416834887294209,
+      "C": 0.061638635306607965,
+      "B": 0.09667787596397116
     },
     {
       "level": 99,
@@ -1783,7 +1783,7 @@
       "seed": 137,
       "kills": 102,
       "alive": true,
-      "potions": 5,
+      "potions": 2,
       "P": 0.8193871261207629,
       "C": 0.04589891588082646,
       "B": 0.13471395799841057
@@ -1793,12 +1793,12 @@
       "job": "sage",
       "pair": "attack",
       "seed": 137,
-      "kills": 112,
+      "kills": 122,
       "alive": true,
-      "potions": 142,
-      "P": 0.6434507792322827,
-      "C": 0.28963782726905013,
-      "B": 0.0669113934986672
+      "potions": 143,
+      "P": 0.6364379639677074,
+      "C": 0.2976004085172264,
+      "B": 0.0659616275150663
     },
     {
       "level": 99,
@@ -1807,7 +1807,7 @@
       "seed": 137,
       "kills": 116,
       "alive": true,
-      "potions": 85,
+      "potions": 77,
       "P": 0.689890298220644,
       "C": 0.22840040439323583,
       "B": 0.08170929738612022
@@ -1819,7 +1819,7 @@
       "seed": 137,
       "kills": 93,
       "alive": true,
-      "potions": 89,
+      "potions": 77,
       "P": 0.8756458447494437,
       "C": 0.06651092688668916,
       "B": 0.057843228363867086
@@ -1831,7 +1831,7 @@
       "seed": 137,
       "kills": 89,
       "alive": true,
-      "potions": 4,
+      "potions": 1,
       "P": 0.8527672787682153,
       "C": 0.054746853084478936,
       "B": 0.09248586814730575
@@ -1841,11 +1841,11 @@
       "job": "assassin",
       "pair": "attack",
       "seed": 137,
-      "kills": 18,
-      "alive": false,
-      "potions": 17,
-      "P": 0.6820491631743033,
-      "C": 0.31795083682569664,
+      "kills": 108,
+      "alive": true,
+      "potions": 150,
+      "P": 0.7703830791609446,
+      "C": 0.22961692083905538,
       "B": 0
     },
     {
@@ -1855,7 +1855,7 @@
       "seed": 137,
       "kills": 127,
       "alive": true,
-      "potions": 118,
+      "potions": 105,
       "P": 0.6340020942145657,
       "C": 0.2739222459137922,
       "B": 0.09207565987164214
@@ -1867,7 +1867,7 @@
       "seed": 137,
       "kills": 112,
       "alive": true,
-      "potions": 85,
+      "potions": 75,
       "P": 0.7941329583330516,
       "C": 0.07153355734191508,
       "B": 0.1343334843250333
@@ -1879,7 +1879,7 @@
       "seed": 137,
       "kills": 102,
       "alive": true,
-      "potions": 22,
+      "potions": 12,
       "P": 0.859562086111173,
       "C": 0.06135806430660564,
       "B": 0.0790798495822213
@@ -1889,12 +1889,12 @@
       "job": "rogue",
       "pair": "attack",
       "seed": 137,
-      "kills": 99,
+      "kills": 108,
       "alive": true,
       "potions": 124,
-      "P": 0.7641932664572688,
-      "C": 0.21961817207412246,
-      "B": 0.01618856146860872
+      "P": 0.7081536340739942,
+      "C": 0.27363785601464574,
+      "B": 0.018208509911360037
     },
     {
       "level": 99,
@@ -1903,7 +1903,7 @@
       "seed": 137,
       "kills": 113,
       "alive": true,
-      "potions": 72,
+      "potions": 62,
       "P": 0.6150639426198776,
       "C": 0.23720819870847532,
       "B": 0.14772785867164703
@@ -1913,12 +1913,12 @@
       "job": "rogue",
       "pair": "defense",
       "seed": 137,
-      "kills": 94,
+      "kills": 85,
       "alive": true,
-      "potions": 86,
-      "P": 0.830303977503119,
-      "C": 0.06616890813755709,
-      "B": 0.10352711435932387
+      "potions": 66,
+      "P": 0.8239622985638388,
+      "C": 0.07404378497002359,
+      "B": 0.10199391646613755
     },
     {
       "level": 99,
@@ -1937,24 +1937,24 @@
       "job": "priest",
       "pair": "attack",
       "seed": 137,
-      "kills": 88,
+      "kills": 126,
       "alive": true,
-      "potions": 18,
-      "P": 0.8998895553271258,
-      "C": 0.0858125168411493,
-      "B": 0.0142979278317249
+      "potions": 62,
+      "P": 0.7003840900454952,
+      "C": 0.24858612678131436,
+      "B": 0.051029783173190485
     },
     {
       "level": 99,
       "job": "priest",
       "pair": "magic",
       "seed": 137,
-      "kills": 112,
+      "kills": 119,
       "alive": true,
-      "potions": 44,
-      "P": 0.680157649551247,
-      "C": 0.23020361145730198,
-      "B": 0.08963873899145104
+      "potions": 28,
+      "P": 0.6824609212180391,
+      "C": 0.22150815120370784,
+      "B": 0.09603092757825304
     },
     {
       "level": 99,
@@ -1963,7 +1963,7 @@
       "seed": 137,
       "kills": 95,
       "alive": true,
-      "potions": 32,
+      "potions": 23,
       "P": 0.8188918707019146,
       "C": 0.06740930492478742,
       "B": 0.11369882437329797
@@ -1973,23 +1973,23 @@
       "job": "priest",
       "pair": "support",
       "seed": 137,
-      "kills": 107,
+      "kills": 102,
       "alive": true,
       "potions": 0,
-      "P": 0.8905188874857375,
-      "C": 0.0459658354751568,
-      "B": 0.06351527703910576
+      "P": 0.8920849200782891,
+      "C": 0.04768881057404906,
+      "B": 0.06022626934766186
     },
     {
       "level": 99,
       "job": "monk",
       "pair": "attack",
       "seed": 137,
-      "kills": 97,
+      "kills": 108,
       "alive": true,
-      "potions": 70,
-      "P": 0.794596710802302,
-      "C": 0.20540328919769804,
+      "potions": 80,
+      "P": 0.7308895039818817,
+      "C": 0.26911049601811826,
       "B": 0
     },
     {
@@ -1999,10 +1999,10 @@
       "seed": 137,
       "kills": 108,
       "alive": true,
-      "potions": 48,
-      "P": 0.6046524097948627,
-      "C": 0.2811803748302185,
-      "B": 0.11416721537491883
+      "potions": 44,
+      "P": 0.6224055306852277,
+      "C": 0.26419623119194274,
+      "B": 0.11339823812282948
     },
     {
       "level": 99,
@@ -2011,33 +2011,33 @@
       "seed": 137,
       "kills": 104,
       "alive": true,
-      "potions": 65,
-      "P": 0.8811138897449591,
-      "C": 0.06979102216346052,
-      "B": 0.049095088091580426
+      "potions": 67,
+      "P": 0.8800625748179733,
+      "C": 0.06920854076486305,
+      "B": 0.05072888441716357
     },
     {
       "level": 99,
       "job": "monk",
       "pair": "support",
       "seed": 137,
-      "kills": 100,
+      "kills": 101,
       "alive": true,
       "potions": 0,
-      "P": 0.8005953019120172,
-      "C": 0.058471533169207265,
-      "B": 0.14093316491877556
+      "P": 0.8200799928440906,
+      "C": 0.057599172745421645,
+      "B": 0.12232083441048773
     },
     {
       "level": 99,
       "job": "hunter",
       "pair": "attack",
       "seed": 137,
-      "kills": 43,
+      "kills": 69,
       "alive": false,
-      "potions": 52,
-      "P": 0.8852871406006843,
-      "C": 0.11471285939931573,
+      "potions": 82,
+      "P": 0.8974809517654079,
+      "C": 0.10251904823459217,
       "B": 0
     },
     {
@@ -2045,24 +2045,24 @@
       "job": "hunter",
       "pair": "magic",
       "seed": 137,
-      "kills": 17,
-      "alive": false,
-      "potions": 17,
-      "P": 0.8699337802342444,
-      "C": 0.12543025375507422,
-      "B": 0.004635966010681359
+      "kills": 136,
+      "alive": true,
+      "potions": 144,
+      "P": 0.6391379480737858,
+      "C": 0.2501690101305818,
+      "B": 0.11069304179563237
     },
     {
       "level": 99,
       "job": "hunter",
       "pair": "defense",
       "seed": 137,
-      "kills": 115,
+      "kills": 116,
       "alive": true,
-      "potions": 116,
-      "P": 0.8216134261375676,
-      "C": 0.05761771940946279,
-      "B": 0.12076885445296966
+      "potions": 105,
+      "P": 0.7936814388457898,
+      "C": 0.07167985028343869,
+      "B": 0.13463871087077153
     },
     {
       "level": 99,
@@ -2071,7 +2071,7 @@
       "seed": 137,
       "kills": 123,
       "alive": true,
-      "potions": 38,
+      "potions": 22,
       "P": 0.8148814605740619,
       "C": 0.051032780845363834,
       "B": 0.1340857585805743
@@ -2081,11 +2081,11 @@
       "job": "performer",
       "pair": "attack",
       "seed": 137,
-      "kills": 23,
+      "kills": 17,
       "alive": false,
-      "potions": 23,
-      "P": 0.8664673355144515,
-      "C": 0.13353266448554849,
+      "potions": 16,
+      "P": 0.7667995955964951,
+      "C": 0.23320040440350484,
       "B": 0
     },
     {
@@ -2093,24 +2093,24 @@
       "job": "performer",
       "pair": "magic",
       "seed": 137,
-      "kills": 109,
+      "kills": 112,
       "alive": true,
-      "potions": 127,
-      "P": 0.7282144956023424,
-      "C": 0.219525454457925,
-      "B": 0.05226004993973261
+      "potions": 132,
+      "P": 0.6623106110978129,
+      "C": 0.24382297401526637,
+      "B": 0.09386641488692075
     },
     {
       "level": 99,
       "job": "performer",
       "pair": "defense",
       "seed": 137,
-      "kills": 42,
-      "alive": false,
-      "potions": 45,
-      "P": 0.8917263745196661,
-      "C": 0.0645515116578085,
-      "B": 0.04372211382252539
+      "kills": 94,
+      "alive": true,
+      "potions": 97,
+      "P": 0.8911694549075986,
+      "C": 0.06635879560842015,
+      "B": 0.04247174948398134
     },
     {
       "level": 99,
@@ -2119,7 +2119,7 @@
       "seed": 137,
       "kills": 98,
       "alive": true,
-      "potions": 46,
+      "potions": 31,
       "P": 0.7967372279978536,
       "C": 0.05493753792608864,
       "B": 0.1483252340760578
@@ -2129,36 +2129,36 @@
       "job": "knight",
       "pair": "attack",
       "seed": 731,
-      "kills": 123,
+      "kills": 121,
       "alive": true,
-      "potions": 79,
-      "P": 0.6273783165575324,
-      "C": 0.28322214558729797,
-      "B": 0.08939953785516966
+      "potions": 70,
+      "P": 0.6367488399734851,
+      "C": 0.2700910714693887,
+      "B": 0.09316008855712621
     },
     {
       "level": 99,
       "job": "knight",
       "pair": "magic",
       "seed": 731,
-      "kills": 106,
+      "kills": 102,
       "alive": true,
-      "potions": 44,
-      "P": 0.701677489001538,
-      "C": 0.2515717894965675,
-      "B": 0.04675072150189451
+      "potions": 50,
+      "P": 0.6925428171281914,
+      "C": 0.2620893590665287,
+      "B": 0.04536782380527983
     },
     {
       "level": 99,
       "job": "knight",
       "pair": "defense",
       "seed": 731,
-      "kills": 96,
+      "kills": 95,
       "alive": true,
-      "potions": 56,
-      "P": 0.8761320789781245,
-      "C": 0.08374648451534837,
-      "B": 0.040121436506527136
+      "potions": 34,
+      "P": 0.8796826534612109,
+      "C": 0.08377442767058636,
+      "B": 0.036542918868202746
     },
     {
       "level": 99,
@@ -2168,68 +2168,68 @@
       "kills": 90,
       "alive": true,
       "potions": 0,
-      "P": 0.8199815863411374,
+      "P": 0.8193441904574311,
       "C": 0.05410672176009791,
-      "B": 0.12591169189876472
+      "B": 0.12654908778247095
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "attack",
       "seed": 731,
-      "kills": 112,
+      "kills": 113,
       "alive": true,
-      "potions": 82,
-      "P": 0.7077087473138832,
-      "C": 0.2550598589236919,
-      "B": 0.037231393762424854
+      "potions": 98,
+      "P": 0.6899440304623353,
+      "C": 0.2701863005757409,
+      "B": 0.03986966896192381
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "magic",
       "seed": 731,
-      "kills": 104,
+      "kills": 113,
       "alive": true,
-      "potions": 41,
-      "P": 0.6822553937735699,
-      "C": 0.22479868434109124,
-      "B": 0.09294592188533884
+      "potions": 36,
+      "P": 0.6879467553135806,
+      "C": 0.21635380083508432,
+      "B": 0.09569944385133503
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "defense",
       "seed": 731,
-      "kills": 97,
+      "kills": 94,
       "alive": true,
-      "potions": 55,
-      "P": 0.8552216839579448,
-      "C": 0.0771917312130489,
-      "B": 0.06758658482900623
+      "potions": 44,
+      "P": 0.8538245354764791,
+      "C": 0.07907277950284775,
+      "B": 0.06710268502067317
     },
     {
       "level": 99,
       "job": "crusader",
       "pair": "support",
       "seed": 731,
-      "kills": 92,
+      "kills": 94,
       "alive": true,
       "potions": 0,
-      "P": 0.8167196277408165,
-      "C": 0.04768060697058341,
-      "B": 0.1355997652886001
+      "P": 0.8344402065229438,
+      "C": 0.047273456948034656,
+      "B": 0.11828633652902147
     },
     {
       "level": 99,
       "job": "wizard",
       "pair": "attack",
       "seed": 731,
-      "kills": 20,
-      "alive": false,
-      "potions": 17,
-      "P": 0.8447201246553997,
-      "C": 0.15527987534460028,
+      "kills": 112,
+      "alive": true,
+      "potions": 101,
+      "P": 0.7782536990867872,
+      "C": 0.22174630091321273,
       "B": 0
     },
     {
@@ -2239,7 +2239,7 @@
       "seed": 731,
       "kills": 132,
       "alive": true,
-      "potions": 102,
+      "potions": 89,
       "P": 0.6157219580404832,
       "C": 0.19140654274415345,
       "B": 0.19287149921536328
@@ -2251,7 +2251,7 @@
       "seed": 731,
       "kills": 108,
       "alive": true,
-      "potions": 66,
+      "potions": 57,
       "P": 0.8298542356108168,
       "C": 0.07124523916527076,
       "B": 0.09890052522391245
@@ -2263,7 +2263,7 @@
       "seed": 731,
       "kills": 97,
       "alive": true,
-      "potions": 3,
+      "potions": 0,
       "P": 0.8018789759862761,
       "C": 0.04895767371014198,
       "B": 0.14916335030358188
@@ -2273,12 +2273,12 @@
       "job": "sage",
       "pair": "attack",
       "seed": 731,
-      "kills": 111,
+      "kills": 114,
       "alive": true,
-      "potions": 127,
-      "P": 0.6678723296380146,
-      "C": 0.2614182705555323,
-      "B": 0.07070939980645317
+      "potions": 120,
+      "P": 0.6647870722368554,
+      "C": 0.2678262027384352,
+      "B": 0.06738672502470942
     },
     {
       "level": 99,
@@ -2287,7 +2287,7 @@
       "seed": 731,
       "kills": 118,
       "alive": true,
-      "potions": 74,
+      "potions": 66,
       "P": 0.6811471323571506,
       "C": 0.2242510957714026,
       "B": 0.09460177187144676
@@ -2299,7 +2299,7 @@
       "seed": 731,
       "kills": 93,
       "alive": true,
-      "potions": 43,
+      "potions": 36,
       "P": 0.8516272280912626,
       "C": 0.0908276678240159,
       "B": 0.05754510408472156
@@ -2311,7 +2311,7 @@
       "seed": 731,
       "kills": 96,
       "alive": true,
-      "potions": 1,
+      "potions": 0,
       "P": 0.8424262435681983,
       "C": 0.054798872997257254,
       "B": 0.1027748834345445
@@ -2321,11 +2321,11 @@
       "job": "assassin",
       "pair": "attack",
       "seed": 731,
-      "kills": 21,
-      "alive": false,
-      "potions": 23,
-      "P": 0.7278894349657925,
-      "C": 0.2721105650342075,
+      "kills": 129,
+      "alive": true,
+      "potions": 131,
+      "P": 0.6553571318184066,
+      "C": 0.3446428681815934,
       "B": 0
     },
     {
@@ -2335,7 +2335,7 @@
       "seed": 731,
       "kills": 132,
       "alive": true,
-      "potions": 85,
+      "potions": 75,
       "P": 0.6410615489566552,
       "C": 0.2604799256959742,
       "B": 0.09845852534737057
@@ -2347,7 +2347,7 @@
       "seed": 731,
       "kills": 111,
       "alive": true,
-      "potions": 72,
+      "potions": 63,
       "P": 0.7776755123770501,
       "C": 0.09122552497020509,
       "B": 0.13109896265274476
@@ -2359,7 +2359,7 @@
       "seed": 731,
       "kills": 102,
       "alive": true,
-      "potions": 2,
+      "potions": 0,
       "P": 0.8595275100115394,
       "C": 0.06318447981974348,
       "B": 0.07728801016871714
@@ -2371,7 +2371,7 @@
       "seed": 731,
       "kills": 115,
       "alive": true,
-      "potions": 118,
+      "potions": 104,
       "P": 0.6318152406166021,
       "C": 0.3447639458661422,
       "B": 0.023420813517255692
@@ -2383,7 +2383,7 @@
       "seed": 731,
       "kills": 115,
       "alive": true,
-      "potions": 68,
+      "potions": 58,
       "P": 0.6048812288103258,
       "C": 0.24409719723975537,
       "B": 0.15102157394991877
@@ -2393,12 +2393,12 @@
       "job": "rogue",
       "pair": "defense",
       "seed": 731,
-      "kills": 87,
+      "kills": 92,
       "alive": true,
-      "potions": 72,
-      "P": 0.820153042328796,
-      "C": 0.09786789130917856,
-      "B": 0.08197906636202544
+      "potions": 77,
+      "P": 0.8280268923897662,
+      "C": 0.0909780335287859,
+      "B": 0.08099507408144785
     },
     {
       "level": 99,
@@ -2417,59 +2417,59 @@
       "job": "priest",
       "pair": "attack",
       "seed": 731,
-      "kills": 97,
+      "kills": 128,
       "alive": true,
-      "potions": 26,
-      "P": 0.8402094752731225,
-      "C": 0.13178607435917444,
-      "B": 0.028004450367703104
+      "potions": 47,
+      "P": 0.6476206955285135,
+      "C": 0.30055860268606666,
+      "B": 0.05182070178541979
     },
     {
       "level": 99,
       "job": "priest",
       "pair": "magic",
       "seed": 731,
-      "kills": 119,
+      "kills": 120,
       "alive": true,
-      "potions": 20,
-      "P": 0.6904211011484273,
-      "C": 0.21848433365873082,
-      "B": 0.09109456519284193
+      "potions": 19,
+      "P": 0.6835174570067056,
+      "C": 0.2134271381367596,
+      "B": 0.10305540485653476
     },
     {
       "level": 99,
       "job": "priest",
       "pair": "defense",
       "seed": 731,
-      "kills": 111,
+      "kills": 109,
       "alive": true,
-      "potions": 15,
-      "P": 0.7827218756110134,
-      "C": 0.07376908583515526,
-      "B": 0.14350903855383138
+      "potions": 6,
+      "P": 0.7745344644198214,
+      "C": 0.0773223985018391,
+      "B": 0.14814313707833943
     },
     {
       "level": 99,
       "job": "priest",
       "pair": "support",
       "seed": 731,
-      "kills": 108,
+      "kills": 109,
       "alive": true,
       "potions": 0,
-      "P": 0.9095140964304612,
-      "C": 0.04499401682644016,
-      "B": 0.04549188674309866
+      "P": 0.9324812725541793,
+      "C": 0.04589513363716493,
+      "B": 0.021623593808655764
     },
     {
       "level": 99,
       "job": "monk",
       "pair": "attack",
       "seed": 731,
-      "kills": 127,
+      "kills": 123,
       "alive": true,
-      "potions": 111,
-      "P": 0.6529329095604213,
-      "C": 0.3470670904395788,
+      "potions": 78,
+      "P": 0.693457573163038,
+      "C": 0.306542426836962,
       "B": 0
     },
     {
@@ -2477,47 +2477,47 @@
       "job": "monk",
       "pair": "magic",
       "seed": 731,
-      "kills": 109,
+      "kills": 114,
       "alive": true,
-      "potions": 45,
-      "P": 0.5984722531438298,
-      "C": 0.2932936419589058,
-      "B": 0.10823410489726445
+      "potions": 35,
+      "P": 0.6145235823634015,
+      "C": 0.27806998352917517,
+      "B": 0.10740643410742326
     },
     {
       "level": 99,
       "job": "monk",
       "pair": "defense",
       "seed": 731,
-      "kills": 105,
+      "kills": 106,
       "alive": true,
-      "potions": 76,
-      "P": 0.8566904904642362,
-      "C": 0.09180420772602944,
-      "B": 0.051505301809734345
+      "potions": 58,
+      "P": 0.8577712150180072,
+      "C": 0.09144191684588149,
+      "B": 0.05078686813611122
     },
     {
       "level": 99,
       "job": "monk",
       "pair": "support",
       "seed": 731,
-      "kills": 114,
+      "kills": 105,
       "alive": true,
       "potions": 0,
-      "P": 0.8360653883335059,
-      "C": 0.05217544900748919,
-      "B": 0.1117591626590049
+      "P": 0.820814060179536,
+      "C": 0.05673732701457665,
+      "B": 0.12244861280588741
     },
     {
       "level": 99,
       "job": "hunter",
       "pair": "attack",
       "seed": 731,
-      "kills": 70,
+      "kills": 73,
       "alive": false,
-      "potions": 77,
-      "P": 0.9003711880408328,
-      "C": 0.09962881195916715,
+      "potions": 61,
+      "P": 0.735675656960842,
+      "C": 0.26432434303915797,
       "B": 0
     },
     {
@@ -2527,7 +2527,7 @@
       "seed": 731,
       "kills": 145,
       "alive": true,
-      "potions": 130,
+      "potions": 116,
       "P": 0.6375819055028792,
       "C": 0.24456966900986374,
       "B": 0.11784842548725709
@@ -2537,12 +2537,12 @@
       "job": "hunter",
       "pair": "defense",
       "seed": 731,
-      "kills": 113,
+      "kills": 114,
       "alive": true,
-      "potions": 106,
-      "P": 0.7777399458299296,
-      "C": 0.09159862414883616,
-      "B": 0.1306614300212343
+      "potions": 90,
+      "P": 0.7687607189046334,
+      "C": 0.09533982442082771,
+      "B": 0.1358994566745389
     },
     {
       "level": 99,
@@ -2551,7 +2551,7 @@
       "seed": 731,
       "kills": 122,
       "alive": true,
-      "potions": 51,
+      "potions": 33,
       "P": 0.8152395913876228,
       "C": 0.05467396508811793,
       "B": 0.13008644352425927
@@ -2561,12 +2561,12 @@
       "job": "performer",
       "pair": "attack",
       "seed": 731,
-      "kills": 111,
+      "kills": 99,
       "alive": true,
-      "potions": 117,
-      "P": 0.7513916496904982,
-      "C": 0.24802696319847012,
-      "B": 0.0005813871110316834
+      "potions": 131,
+      "P": 0.8476571200394895,
+      "C": 0.15213419589414098,
+      "B": 0.00020868406636955942
     },
     {
       "level": 99,
@@ -2575,7 +2575,7 @@
       "seed": 731,
       "kills": 121,
       "alive": true,
-      "potions": 140,
+      "potions": 126,
       "P": 0.6463643367604474,
       "C": 0.24142250778099986,
       "B": 0.11221315545855276
@@ -2587,7 +2587,7 @@
       "seed": 731,
       "kills": 98,
       "alive": true,
-      "potions": 96,
+      "potions": 85,
       "P": 0.862148152646135,
       "C": 0.09042682122046851,
       "B": 0.0474250261333965
@@ -2599,7 +2599,7 @@
       "seed": 731,
       "kills": 98,
       "alive": true,
-      "potions": 34,
+      "potions": 18,
       "P": 0.8115672301732563,
       "C": 0.05244835814318734,
       "B": 0.13598441168355638
@@ -6929,12 +6929,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 83,
+      "kills": 100,
       "alive": true,
-      "potions": 38,
-      "P": 0.4578547816447569,
-      "C": 0.46298654213926316,
-      "B": 0.07915867621597994
+      "potions": 35,
+      "P": 0.38318188531690045,
+      "C": 0.5498783694181454,
+      "B": 0.0669397452649542
     },
     {
       "level": 160,
@@ -6944,9 +6944,9 @@
       "kills": 92,
       "alive": true,
       "potions": 19,
-      "P": 0.46576831931016593,
-      "C": 0.4669304439073467,
-      "B": 0.06730123678248734
+      "P": 0.4657692625895066,
+      "C": 0.4669157785832573,
+      "B": 0.06731495882723611
     },
     {
       "level": 160,
@@ -6965,12 +6965,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 94,
+      "kills": 90,
       "alive": true,
-      "potions": 15,
-      "P": 0.4625573877328066,
-      "C": 0.4702356895541599,
-      "B": 0.06720692271303355
+      "potions": 12,
+      "P": 0.4837582300218797,
+      "C": 0.4437271282845545,
+      "B": 0.07251464169356583
     },
     {
       "level": 160,
@@ -7073,12 +7073,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 82,
+      "kills": 103,
       "alive": true,
       "potions": 3,
-      "P": 0.481160310704299,
-      "C": 0.4403943899979297,
-      "B": 0.07844529929777133
+      "P": 0.3878683091662783,
+      "C": 0.5489856016685176,
+      "B": 0.06314608916520406
     },
     {
       "level": 160,
@@ -7109,12 +7109,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 94,
+      "kills": 87,
       "alive": true,
       "potions": 3,
-      "P": 0.4396116290240216,
-      "C": 0.49665896310372726,
-      "B": 0.06372940787225108
+      "P": 0.46393251705475524,
+      "C": 0.46756228696747326,
+      "B": 0.06850519597777145
     },
     {
       "level": 160,
@@ -7217,12 +7217,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 90,
+      "kills": 104,
       "alive": true,
-      "potions": 138,
-      "P": 0.48992143529817295,
-      "C": 0.4293846665793004,
-      "B": 0.08069389812252663
+      "potions": 126,
+      "P": 0.45044020991891676,
+      "C": 0.4739551911763747,
+      "B": 0.07560459890470855
     },
     {
       "level": 160,
@@ -7253,12 +7253,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 95,
+      "kills": 89,
       "alive": true,
-      "potions": 29,
-      "P": 0.48022494252252546,
-      "C": 0.45155822292287706,
-      "B": 0.06821683455459752
+      "potions": 42,
+      "P": 0.4870858274242775,
+      "C": 0.4424490514333325,
+      "B": 0.07046512114239
     },
     {
       "level": 160,
@@ -7361,12 +7361,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 87,
+      "kills": 104,
       "alive": true,
-      "potions": 121,
-      "P": 0.4618581715419897,
-      "C": 0.4303222180781105,
-      "B": 0.10781961037989983
+      "potions": 115,
+      "P": 0.3776877288010434,
+      "C": 0.5337330359787678,
+      "B": 0.08857923522018883
     },
     {
       "level": 160,
@@ -7397,12 +7397,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 87,
+      "kills": 83,
       "alive": true,
-      "potions": 41,
-      "P": 0.43134852034585525,
-      "C": 0.5033346846477732,
-      "B": 0.06531679500637158
+      "potions": 45,
+      "P": 0.4568214428030077,
+      "C": 0.47463930867672655,
+      "B": 0.06853924852026579
     },
     {
       "level": 160,
@@ -7505,12 +7505,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 83,
+      "kills": 102,
       "alive": true,
-      "potions": 87,
-      "P": 0.4779173375248391,
-      "C": 0.44250746811634895,
-      "B": 0.07957519435881197
+      "potions": 81,
+      "P": 0.39031692641896293,
+      "C": 0.5449474242085882,
+      "B": 0.0647356493724488
     },
     {
       "level": 160,
@@ -7541,12 +7541,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 91,
+      "kills": 86,
       "alive": true,
-      "potions": 20,
-      "P": 0.4684248460413222,
-      "C": 0.4626920676226297,
-      "B": 0.06888308633604814
+      "potions": 23,
+      "P": 0.474716285404751,
+      "C": 0.4553620420548115,
+      "B": 0.06992167254043744
     },
     {
       "level": 160,
@@ -7649,12 +7649,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 84,
+      "kills": 104,
       "alive": true,
-      "potions": 50,
-      "P": 0.4806251523851133,
-      "C": 0.4397156594161402,
-      "B": 0.07965918819874651
+      "potions": 55,
+      "P": 0.400277911162606,
+      "C": 0.5335190548519977,
+      "B": 0.06620303398539634
     },
     {
       "level": 160,
@@ -7685,12 +7685,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 95,
+      "kills": 91,
       "alive": true,
-      "potions": 23,
-      "P": 0.4676696913513744,
-      "C": 0.46187297597991334,
-      "B": 0.07045733266871228
+      "potions": 22,
+      "P": 0.4727377830646309,
+      "C": 0.4557537187232798,
+      "B": 0.0715084982120893
     },
     {
       "level": 160,
@@ -7793,12 +7793,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 89,
+      "kills": 110,
       "alive": true,
-      "potions": 11,
-      "P": 0.5265278103668196,
-      "C": 0.40184939076966797,
-      "B": 0.07162279886351239
+      "potions": 17,
+      "P": 0.46295067363392545,
+      "C": 0.4786664578887807,
+      "B": 0.05838286847729387
     },
     {
       "level": 160,
@@ -7829,24 +7829,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 98,
+      "kills": 94,
       "alive": true,
-      "potions": 0,
-      "P": 0.5016389676272509,
-      "C": 0.4403931029930259,
-      "B": 0.05796792937972311
+      "potions": 3,
+      "P": 0.5159399477648265,
+      "C": 0.42280413245126136,
+      "B": 0.06125591978391216
     },
     {
       "level": 160,
       "job": "priest",
       "pair": "magic-support",
       "seed": 42,
-      "kills": 93,
+      "kills": 96,
       "alive": true,
-      "potions": 13,
-      "P": 0.4963296297193503,
-      "C": 0.4224707451360721,
-      "B": 0.0811996251445776
+      "potions": 14,
+      "P": 0.4907861323143565,
+      "C": 0.43096787868207914,
+      "B": 0.07824598900356433
     },
     {
       "level": 160,
@@ -7937,12 +7937,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 84,
+      "kills": 103,
       "alive": true,
-      "potions": 64,
-      "P": 0.47818821877641776,
-      "C": 0.442079159490387,
-      "B": 0.0797326217331952
+      "potions": 67,
+      "P": 0.3855625175056472,
+      "C": 0.5494157060383896,
+      "B": 0.06502177645596315
     },
     {
       "level": 160,
@@ -7973,12 +7973,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 91,
+      "kills": 90,
       "alive": true,
-      "potions": 16,
-      "P": 0.46519590105927144,
-      "C": 0.4674850903818088,
-      "B": 0.06731900855891973
+      "potions": 20,
+      "P": 0.46925611305166925,
+      "C": 0.4648742721572632,
+      "B": 0.06586961479106757
     },
     {
       "level": 160,
@@ -8081,12 +8081,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 89,
+      "kills": 108,
       "alive": true,
-      "potions": 82,
-      "P": 0.5032153491854214,
-      "C": 0.4195860421176536,
-      "B": 0.07719860869692495
+      "potions": 71,
+      "P": 0.43603604946716656,
+      "C": 0.5007087426369093,
+      "B": 0.06325520789592415
     },
     {
       "level": 160,
@@ -8117,12 +8117,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 105,
+      "kills": 99,
       "alive": true,
-      "potions": 34,
-      "P": 0.5114751437152995,
-      "C": 0.4241909886945119,
-      "B": 0.06433386759018873
+      "potions": 40,
+      "P": 0.5342962908760758,
+      "C": 0.39556619615276734,
+      "B": 0.07013751297115692
     },
     {
       "level": 160,
@@ -8225,12 +8225,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 99,
+      "kills": 118,
       "alive": true,
       "potions": 126,
-      "P": 0.5679799977842438,
-      "C": 0.3643944603799903,
-      "B": 0.06762554183576594
+      "P": 0.5287346511752651,
+      "C": 0.4135343765351406,
+      "B": 0.057730972289594326
     },
     {
       "level": 160,
@@ -8261,12 +8261,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 108,
+      "kills": 104,
       "alive": true,
-      "potions": 26,
-      "P": 0.5493673140212135,
-      "C": 0.3960828107211413,
-      "B": 0.05454987525764513
+      "potions": 24,
+      "P": 0.559011914016032,
+      "C": 0.3839981270462237,
+      "B": 0.056989958937744334
     },
     {
       "level": 160,
@@ -8369,12 +8369,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 83,
+      "kills": 100,
       "alive": true,
-      "potions": 40,
-      "P": 0.452462450345845,
-      "C": 0.46917238977164777,
-      "B": 0.0783651598825073
+      "potions": 34,
+      "P": 0.3768378588963143,
+      "C": 0.5574492976512949,
+      "B": 0.06571284345239074
     },
     {
       "level": 160,
@@ -8384,9 +8384,9 @@
       "kills": 92,
       "alive": true,
       "potions": 20,
-      "P": 0.46226285601691525,
-      "C": 0.47128064130252206,
-      "B": 0.0664565026805627
+      "P": 0.46224584358010723,
+      "C": 0.47125874946718255,
+      "B": 0.06649540695271022
     },
     {
       "level": 160,
@@ -8405,12 +8405,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 93,
+      "kills": 92,
       "alive": true,
-      "potions": 15,
-      "P": 0.45712061802116766,
-      "C": 0.4747266748933464,
-      "B": 0.06815270708548592
+      "potions": 11,
+      "P": 0.4740619375939967,
+      "C": 0.45703787382122363,
+      "B": 0.06890018858477966
     },
     {
       "level": 160,
@@ -8513,12 +8513,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 86,
+      "kills": 100,
       "alive": true,
-      "potions": 4,
-      "P": 0.4660604907310757,
-      "C": 0.4565468972338547,
-      "B": 0.0773926120350696
+      "potions": 3,
+      "P": 0.39686968575073833,
+      "C": 0.5376959114853681,
+      "B": 0.06543440276389355
     },
     {
       "level": 160,
@@ -8549,12 +8549,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 92,
+      "kills": 83,
       "alive": true,
       "potions": 3,
-      "P": 0.4498570945832802,
-      "C": 0.48394104922572434,
-      "B": 0.06620185619099543
+      "P": 0.4818928082544867,
+      "C": 0.44901653569203764,
+      "B": 0.06909065605347561
     },
     {
       "level": 160,
@@ -8657,12 +8657,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 92,
+      "kills": 106,
       "alive": true,
-      "potions": 134,
-      "P": 0.4778063500415514,
-      "C": 0.4434673885390056,
-      "B": 0.07872626141944301
+      "potions": 132,
+      "P": 0.45420960065074034,
+      "C": 0.47316116883326076,
+      "B": 0.07262923051599886
     },
     {
       "level": 160,
@@ -8693,12 +8693,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 97,
+      "kills": 92,
       "alive": true,
-      "potions": 29,
-      "P": 0.4790031949216012,
-      "C": 0.4505286918177009,
-      "B": 0.07046811326069792
+      "potions": 36,
+      "P": 0.4850022636698877,
+      "C": 0.44610428433253657,
+      "B": 0.06889345199757577
     },
     {
       "level": 160,
@@ -8801,12 +8801,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 84,
+      "kills": 103,
       "alive": true,
-      "potions": 116,
-      "P": 0.4527313199401286,
-      "C": 0.4417291896699464,
-      "B": 0.10553949038992501
+      "potions": 119,
+      "P": 0.3696337672737481,
+      "C": 0.5436533855685325,
+      "B": 0.08671284715771946
     },
     {
       "level": 160,
@@ -8837,12 +8837,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 87,
+      "kills": 85,
       "alive": true,
-      "potions": 43,
-      "P": 0.44452059642461617,
-      "C": 0.48864659689785134,
-      "B": 0.06683280667753251
+      "potions": 39,
+      "P": 0.4566858539553631,
+      "C": 0.4750646933421992,
+      "B": 0.06824945270243772
     },
     {
       "level": 160,
@@ -8945,12 +8945,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 81,
+      "kills": 101,
       "alive": true,
-      "potions": 82,
-      "P": 0.4850564377037626,
-      "C": 0.43425504199063913,
-      "B": 0.08068852030559821
+      "potions": 72,
+      "P": 0.39933695075132536,
+      "C": 0.5342370385664781,
+      "B": 0.06642601068219653
     },
     {
       "level": 160,
@@ -8981,12 +8981,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 92,
+      "kills": 88,
       "alive": true,
-      "potions": 23,
-      "P": 0.4575625957367256,
-      "C": 0.47361671104358444,
-      "B": 0.06882069321969
+      "potions": 21,
+      "P": 0.47803878708134256,
+      "C": 0.45008550774592904,
+      "B": 0.07187570517272839
     },
     {
       "level": 160,
@@ -9089,12 +9089,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 82,
+      "kills": 102,
       "alive": true,
-      "potions": 61,
-      "P": 0.47493282641199314,
-      "C": 0.44692307260546504,
-      "B": 0.07814410098254179
+      "potions": 62,
+      "P": 0.39995554571134107,
+      "C": 0.5339068386641269,
+      "B": 0.066137615624532
     },
     {
       "level": 160,
@@ -9125,12 +9125,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 96,
+      "kills": 89,
       "alive": true,
-      "potions": 22,
-      "P": 0.4587346163932425,
-      "C": 0.47369381860229726,
-      "B": 0.06757156500446028
+      "potions": 27,
+      "P": 0.4733746343786465,
+      "C": 0.45683971871907614,
+      "B": 0.06978564690227736
     },
     {
       "level": 160,
@@ -9233,12 +9233,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 90,
+      "kills": 108,
       "alive": true,
-      "potions": 22,
-      "P": 0.5178550822053566,
-      "C": 0.41185221706008585,
-      "B": 0.07029270073455762
+      "potions": 19,
+      "P": 0.4608930951560186,
+      "C": 0.4818987638467027,
+      "B": 0.0572081409972787
     },
     {
       "level": 160,
@@ -9269,24 +9269,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 100,
+      "kills": 95,
       "alive": true,
-      "potions": 2,
-      "P": 0.4879470701232399,
-      "C": 0.45583940375508886,
-      "B": 0.056213526121671256
+      "potions": 0,
+      "P": 0.5092468968339519,
+      "C": 0.4327179089972644,
+      "B": 0.05803519416878377
     },
     {
       "level": 160,
       "job": "priest",
       "pair": "magic-support",
       "seed": 137,
-      "kills": 93,
+      "kills": 95,
       "alive": true,
-      "potions": 21,
-      "P": 0.49296968165247407,
-      "C": 0.4268150187067838,
-      "B": 0.08021529964074216
+      "potions": 18,
+      "P": 0.49234600938018597,
+      "C": 0.42705047213505565,
+      "B": 0.08060351848475833
     },
     {
       "level": 160,
@@ -9377,12 +9377,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 85,
+      "kills": 102,
       "alive": true,
-      "potions": 69,
-      "P": 0.4601926954689702,
-      "C": 0.46108061560203556,
-      "B": 0.07872668892899425
+      "potions": 60,
+      "P": 0.3880835586315084,
+      "C": 0.5459589706194096,
+      "B": 0.06595747074908204
     },
     {
       "level": 160,
@@ -9413,12 +9413,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 94,
+      "kills": 89,
       "alive": true,
-      "potions": 19,
-      "P": 0.46682105326928175,
-      "C": 0.46653776668063957,
-      "B": 0.06664118005007873
+      "potions": 16,
+      "P": 0.4726101492228937,
+      "C": 0.4592939008862839,
+      "B": 0.06809594989082243
     },
     {
       "level": 160,
@@ -9521,12 +9521,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 87,
+      "kills": 108,
       "alive": true,
-      "potions": 78,
-      "P": 0.5080259590670234,
-      "C": 0.4132538435424704,
-      "B": 0.07872019739050615
+      "potions": 72,
+      "P": 0.43585695862407264,
+      "C": 0.5017597841005933,
+      "B": 0.062383257275334024
     },
     {
       "level": 160,
@@ -9557,12 +9557,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 104,
+      "kills": 98,
       "alive": true,
-      "potions": 40,
-      "P": 0.5133822541872798,
-      "C": 0.42087834059093604,
-      "B": 0.06573940522178416
+      "potions": 35,
+      "P": 0.5349149401491062,
+      "C": 0.39696367653222614,
+      "B": 0.06812138331866766
     },
     {
       "level": 160,
@@ -9665,12 +9665,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 98,
+      "kills": 121,
       "alive": true,
-      "potions": 132,
-      "P": 0.5772801140050426,
-      "C": 0.35274493259155654,
-      "B": 0.06997495340340089
+      "potions": 135,
+      "P": 0.5253456806072189,
+      "C": 0.4182283564361668,
+      "B": 0.05642596295661438
     },
     {
       "level": 160,
@@ -9701,12 +9701,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 107,
+      "kills": 104,
       "alive": true,
-      "potions": 21,
-      "P": 0.5517526219356792,
-      "C": 0.3932486964846082,
-      "B": 0.054998681579712654
+      "potions": 30,
+      "P": 0.5639963837488897,
+      "C": 0.3778805140280656,
+      "B": 0.05812310222304467
     },
     {
       "level": 160,
@@ -9809,12 +9809,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 84,
+      "kills": 102,
       "alive": true,
       "potions": 33,
-      "P": 0.4558675826708651,
-      "C": 0.4653838827157603,
-      "B": 0.07874853461337464
+      "P": 0.37850462096899745,
+      "C": 0.5563625132711685,
+      "B": 0.06513286575983412
     },
     {
       "level": 160,
@@ -9845,12 +9845,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 96,
+      "kills": 90,
       "alive": true,
-      "potions": 13,
-      "P": 0.4537087807920072,
-      "C": 0.4791025886731194,
-      "B": 0.06718863053487338
+      "potions": 14,
+      "P": 0.4826811537322361,
+      "C": 0.44522501575043566,
+      "B": 0.07209383051732825
     },
     {
       "level": 160,
@@ -9953,12 +9953,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 85,
+      "kills": 103,
       "alive": true,
       "potions": 3,
-      "P": 0.4660738121273024,
-      "C": 0.4559672333957995,
-      "B": 0.07795895447689813
+      "P": 0.39259882135096724,
+      "C": 0.5420779034177889,
+      "B": 0.06532327523124383
     },
     {
       "level": 160,
@@ -9989,12 +9989,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 91,
+      "kills": 89,
       "alive": true,
       "potions": 3,
-      "P": 0.4513460526164366,
-      "C": 0.48304432271980374,
-      "B": 0.06560962466375965
+      "P": 0.4643897256674876,
+      "C": 0.4685002759253404,
+      "B": 0.06710999840717202
     },
     {
       "level": 160,
@@ -10097,12 +10097,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 88,
+      "kills": 102,
       "alive": true,
-      "potions": 132,
-      "P": 0.4966066985676589,
-      "C": 0.4222267049305881,
-      "B": 0.08116659650175305
+      "potions": 133,
+      "P": 0.4467409106326237,
+      "C": 0.4799941893533895,
+      "B": 0.0732649000139868
     },
     {
       "level": 160,
@@ -10133,12 +10133,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 95,
+      "kills": 88,
       "alive": true,
-      "potions": 37,
-      "P": 0.4675524057106174,
-      "C": 0.46540501514727045,
-      "B": 0.06704257914211215
+      "potions": 38,
+      "P": 0.48543010173337375,
+      "C": 0.44575333438305437,
+      "B": 0.06881656388357191
     },
     {
       "level": 160,
@@ -10241,12 +10241,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 86,
+      "kills": 104,
       "alive": true,
-      "potions": 122,
-      "P": 0.4473737995596487,
-      "C": 0.4482179980018403,
-      "B": 0.104408202438511
+      "potions": 118,
+      "P": 0.37597333937114186,
+      "C": 0.5365007021678725,
+      "B": 0.08752595846098564
     },
     {
       "level": 160,
@@ -10277,12 +10277,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 89,
+      "kills": 84,
       "alive": true,
-      "potions": 43,
-      "P": 0.4389502767656361,
-      "C": 0.49601512492371974,
-      "B": 0.06503459831064416
+      "potions": 45,
+      "P": 0.4630194487094775,
+      "C": 0.46813097598558884,
+      "B": 0.06884957530493371
     },
     {
       "level": 160,
@@ -10385,12 +10385,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 84,
+      "kills": 100,
       "alive": true,
-      "potions": 76,
-      "P": 0.4793905976011575,
-      "C": 0.44097405297554626,
-      "B": 0.07963534942329628
+      "potions": 75,
+      "P": 0.3996556703359063,
+      "C": 0.533882830236289,
+      "B": 0.06646149942780463
     },
     {
       "level": 160,
@@ -10421,12 +10421,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 90,
+      "kills": 89,
       "alive": true,
-      "potions": 27,
-      "P": 0.4509252306821513,
-      "C": 0.4836808646380197,
-      "B": 0.06539390467982903
+      "potions": 32,
+      "P": 0.45833952478925205,
+      "C": 0.4716698792283584,
+      "B": 0.06999059598238956
     },
     {
       "level": 160,
@@ -10529,12 +10529,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 83,
+      "kills": 104,
       "alive": true,
-      "potions": 46,
-      "P": 0.4652115765656548,
-      "C": 0.4573583733331597,
-      "B": 0.07743005010118549
+      "potions": 53,
+      "P": 0.3982384125077519,
+      "C": 0.535880080224315,
+      "B": 0.06588150726793315
     },
     {
       "level": 160,
@@ -10565,12 +10565,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 95,
+      "kills": 88,
       "alive": true,
-      "potions": 21,
-      "P": 0.4589123436575448,
-      "C": 0.47285300745177294,
-      "B": 0.06823464889068226
+      "potions": 22,
+      "P": 0.47724690811557124,
+      "C": 0.45171112157872023,
+      "B": 0.07104197030570851
     },
     {
       "level": 160,
@@ -10673,12 +10673,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 91,
+      "kills": 110,
       "alive": true,
-      "potions": 23,
-      "P": 0.5267121845475322,
-      "C": 0.40085036108294847,
-      "B": 0.07243745436951929
+      "potions": 26,
+      "P": 0.4533066139336493,
+      "C": 0.4897937319286089,
+      "B": 0.0568996541377418
     },
     {
       "level": 160,
@@ -10709,24 +10709,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 98,
+      "kills": 95,
       "alive": true,
       "potions": 1,
-      "P": 0.49424270853487706,
-      "C": 0.44934600091944504,
-      "B": 0.05641129054567787
+      "P": 0.5147799277009109,
+      "C": 0.42443925891915946,
+      "B": 0.06078081337992972
     },
     {
       "level": 160,
       "job": "priest",
       "pair": "magic-support",
       "seed": 731,
-      "kills": 95,
+      "kills": 97,
       "alive": true,
-      "potions": 16,
-      "P": 0.49586429772987206,
-      "C": 0.42271634431849203,
-      "B": 0.08141935795163589
+      "potions": 17,
+      "P": 0.49018031475059676,
+      "C": 0.4302168755508002,
+      "B": 0.07960280969860307
     },
     {
       "level": 160,
@@ -10817,12 +10817,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 86,
+      "kills": 106,
       "alive": true,
-      "potions": 72,
-      "P": 0.4751216657014035,
-      "C": 0.44417067057568826,
-      "B": 0.08070766372290822
+      "potions": 60,
+      "P": 0.38066383627532946,
+      "C": 0.5543992401566493,
+      "B": 0.06493692356802117
     },
     {
       "level": 160,
@@ -10853,12 +10853,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 93,
+      "kills": 88,
       "alive": true,
-      "potions": 23,
-      "P": 0.4520176297246646,
-      "C": 0.4849139285045677,
-      "B": 0.06306844177076767
+      "potions": 22,
+      "P": 0.482172007279646,
+      "C": 0.44970572932918856,
+      "B": 0.06812226339116548
     },
     {
       "level": 160,
@@ -10961,12 +10961,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 88,
+      "kills": 107,
       "alive": true,
-      "potions": 68,
-      "P": 0.5135993621762939,
-      "C": 0.4073327975670906,
-      "B": 0.0790678402566155
+      "potions": 72,
+      "P": 0.44218494138352404,
+      "C": 0.4938704347079764,
+      "B": 0.06394462390849953
     },
     {
       "level": 160,
@@ -10997,12 +10997,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 102,
+      "kills": 98,
       "alive": true,
       "potions": 39,
-      "P": 0.5160968732558451,
-      "C": 0.41803028809896786,
-      "B": 0.06587283864518712
+      "P": 0.5226338372905606,
+      "C": 0.40884063039522645,
+      "B": 0.06852553231421293
     },
     {
       "level": 160,
@@ -11105,12 +11105,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 98,
+      "kills": 119,
       "alive": true,
-      "potions": 128,
-      "P": 0.5726774921672741,
-      "C": 0.35881622113375705,
-      "B": 0.0685062866989688
+      "potions": 130,
+      "P": 0.5249264452656099,
+      "C": 0.4185566357493424,
+      "B": 0.05651691898504765
     },
     {
       "level": 160,
@@ -11141,12 +11141,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 109,
+      "kills": 101,
       "alive": true,
-      "potions": 25,
-      "P": 0.5546445170452498,
-      "C": 0.389715554306675,
-      "B": 0.05563992864807524
+      "potions": 26,
+      "P": 0.5643929418792505,
+      "C": 0.37766463851687815,
+      "B": 0.05794241960387132
     },
     {
       "level": 160,
@@ -11249,12 +11249,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 65,
+      "kills": 77,
       "alive": true,
-      "potions": 26,
-      "P": 0.5282306686876022,
-      "C": 0.3866286399633072,
-      "B": 0.08514069134909061
+      "potions": 23,
+      "P": 0.456769262205512,
+      "C": 0.4691401305958328,
+      "B": 0.0740906071986552
     },
     {
       "level": 180,
@@ -11264,9 +11264,9 @@
       "kills": 70,
       "alive": true,
       "potions": 11,
-      "P": 0.5325240505117176,
-      "C": 0.3889280187597198,
-      "B": 0.07854793072856268
+      "P": 0.5325173362356156,
+      "C": 0.3889196420935709,
+      "B": 0.07856302167081351
     },
     {
       "level": 180,
@@ -11285,12 +11285,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 76,
+      "kills": 74,
       "alive": true,
-      "potions": 4,
-      "P": 0.5271391140346788,
-      "C": 0.394564364597068,
-      "B": 0.07829652136825314
+      "potions": 3,
+      "P": 0.5498919120824963,
+      "C": 0.3665328253774024,
+      "B": 0.08357526254010128
     },
     {
       "level": 180,
@@ -11393,12 +11393,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 61,
+      "kills": 74,
       "alive": true,
-      "potions": 3,
-      "P": 0.5081929239199263,
-      "C": 0.41105881613144574,
-      "B": 0.080748259948628
+      "potions": 4,
+      "P": 0.41093226420236195,
+      "C": 0.5237041943908739,
+      "B": 0.06536354140676418
     },
     {
       "level": 180,
@@ -11429,12 +11429,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 69,
+      "kills": 64,
       "alive": true,
       "potions": 3,
-      "P": 0.4861412489045164,
-      "C": 0.44262394776490205,
-      "B": 0.07123480333058153
+      "P": 0.4968283581616006,
+      "C": 0.4305961558355311,
+      "B": 0.0725754860028683
     },
     {
       "level": 180,
@@ -11537,12 +11537,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 66,
+      "kills": 83,
       "alive": true,
-      "potions": 121,
-      "P": 0.5417141384501988,
-      "C": 0.3723487298470176,
-      "B": 0.08593713170278365
+      "potions": 119,
+      "P": 0.47439193101757826,
+      "C": 0.4526719459981096,
+      "B": 0.07293612298431211
     },
     {
       "level": 180,
@@ -11573,12 +11573,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 77,
+      "kills": 73,
       "alive": true,
-      "potions": 12,
-      "P": 0.5284921745461522,
-      "C": 0.3945133005401335,
-      "B": 0.07699452491371438
+      "potions": 13,
+      "P": 0.546851294980024,
+      "C": 0.3732592161724949,
+      "B": 0.07988948884748107
     },
     {
       "level": 180,
@@ -11681,12 +11681,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 69,
+      "kills": 78,
       "alive": true,
-      "potions": 102,
-      "P": 0.5227233678097774,
-      "C": 0.3610460603891902,
-      "B": 0.11623057180103244
+      "potions": 110,
+      "P": 0.45408346357960494,
+      "C": 0.4446739861201737,
+      "B": 0.10124255030022133
     },
     {
       "level": 180,
@@ -11717,12 +11717,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 70,
+      "kills": 68,
       "alive": true,
-      "potions": 25,
-      "P": 0.5121217073056613,
-      "C": 0.4122115960770454,
-      "B": 0.07566669661729329
+      "potions": 29,
+      "P": 0.5255477349605048,
+      "C": 0.39781118649748476,
+      "B": 0.07664107854201045
     },
     {
       "level": 180,
@@ -11825,12 +11825,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 63,
+      "kills": 73,
       "alive": true,
-      "potions": 74,
-      "P": 0.5261058605833618,
-      "C": 0.39057959939203557,
-      "B": 0.08331454002460259
+      "potions": 70,
+      "P": 0.4423169302120392,
+      "C": 0.4869875884510329,
+      "B": 0.07069548133692787
     },
     {
       "level": 180,
@@ -11861,12 +11861,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 71,
+      "kills": 68,
       "alive": true,
-      "potions": 7,
-      "P": 0.4939846264649131,
-      "C": 0.4306854088762978,
-      "B": 0.07532996465878906
+      "potions": 6,
+      "P": 0.5098202860775837,
+      "C": 0.4129159964013718,
+      "B": 0.07726371752104458
     },
     {
       "level": 180,
@@ -11969,12 +11969,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 62,
+      "kills": 76,
       "alive": true,
-      "potions": 40,
-      "P": 0.5175107386365784,
-      "C": 0.3994080395972156,
-      "B": 0.08308122176620604
+      "potions": 34,
+      "P": 0.4294501507625176,
+      "C": 0.5025508302269277,
+      "B": 0.06799901901055477
     },
     {
       "level": 180,
@@ -12005,12 +12005,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 71,
+      "kills": 68,
       "alive": true,
-      "potions": 7,
-      "P": 0.4968701824351262,
-      "C": 0.4282558210164917,
-      "B": 0.07487399654838213
+      "potions": 8,
+      "P": 0.5158140752904985,
+      "C": 0.4074261430705913,
+      "B": 0.07675978163891017
     },
     {
       "level": 180,
@@ -12113,12 +12113,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 68,
+      "kills": 81,
       "alive": true,
-      "potions": 8,
-      "P": 0.5531049174562183,
-      "C": 0.3709509830169154,
-      "B": 0.07594409952686626
+      "potions": 9,
+      "P": 0.4995829598672556,
+      "C": 0.4373077240744749,
+      "B": 0.0631093160582695
     },
     {
       "level": 180,
@@ -12149,24 +12149,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 79,
+      "kills": 74,
       "alive": true,
       "potions": 0,
-      "P": 0.5438402851040082,
-      "C": 0.38958830028194913,
-      "B": 0.0665714146140427
+      "P": 0.5569204846994464,
+      "C": 0.3758907235182844,
+      "B": 0.06718879178226916
     },
     {
       "level": 180,
       "job": "priest",
       "pair": "magic-support",
       "seed": 42,
-      "kills": 72,
+      "kills": 74,
       "alive": true,
-      "potions": 12,
-      "P": 0.5325789512709141,
-      "C": 0.38195235157472346,
-      "B": 0.08546869715436238
+      "potions": 9,
+      "P": 0.5428585889162881,
+      "C": 0.3708928509179293,
+      "B": 0.08624856016578256
     },
     {
       "level": 180,
@@ -12257,12 +12257,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 64,
+      "kills": 77,
       "alive": true,
-      "potions": 55,
-      "P": 0.5203298271504497,
-      "C": 0.39575400945478284,
-      "B": 0.08391616339476739
+      "potions": 57,
+      "P": 0.43278123365561216,
+      "C": 0.49667754855735474,
+      "B": 0.07054121778703312
     },
     {
       "level": 180,
@@ -12293,12 +12293,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 69,
+      "kills": 66,
       "alive": true,
-      "potions": 6,
-      "P": 0.4980045217087853,
-      "C": 0.4292130974503426,
-      "B": 0.07278238084087216
+      "potions": 8,
+      "P": 0.5141479445626305,
+      "C": 0.41313585578189504,
+      "B": 0.07271619965547443
     },
     {
       "level": 180,
@@ -12401,12 +12401,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 60,
+      "kills": 77,
       "alive": true,
-      "potions": 60,
-      "P": 0.522443446779588,
-      "C": 0.3989482726457803,
-      "B": 0.07860828057463166
+      "potions": 54,
+      "P": 0.4557768235089915,
+      "C": 0.47899173038515525,
+      "B": 0.06523144610585327
     },
     {
       "level": 180,
@@ -12437,12 +12437,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 76,
+      "kills": 70,
       "alive": true,
-      "potions": 13,
-      "P": 0.53419711434584,
-      "C": 0.3973768479682173,
-      "B": 0.06842603768594262
+      "potions": 16,
+      "P": 0.5393170398217474,
+      "C": 0.3895518946821995,
+      "B": 0.0711310654960531
     },
     {
       "level": 180,
@@ -12545,12 +12545,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 74,
+      "kills": 89,
       "alive": true,
-      "potions": 111,
-      "P": 0.5958096813238801,
-      "C": 0.3324195445928914,
-      "B": 0.07177077408322848
+      "potions": 112,
+      "P": 0.5520667127930445,
+      "C": 0.3864951203153094,
+      "B": 0.06143816689164609
     },
     {
       "level": 180,
@@ -12581,12 +12581,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 82,
+      "kills": 76,
       "alive": true,
-      "potions": 6,
-      "P": 0.5782786488565392,
-      "C": 0.36004067421769315,
-      "B": 0.0616806769257676
+      "potions": 3,
+      "P": 0.5942362423978266,
+      "C": 0.3407484352496157,
+      "B": 0.06501532235255782
     },
     {
       "level": 180,
@@ -12689,12 +12689,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 62,
+      "kills": 77,
       "alive": true,
-      "potions": 32,
-      "P": 0.5246804905107963,
-      "C": 0.3896528696991824,
-      "B": 0.08566663979002122
+      "potions": 26,
+      "P": 0.4403593668565901,
+      "C": 0.4879834556741185,
+      "B": 0.0716571774692914
     },
     {
       "level": 180,
@@ -12725,12 +12725,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 76,
+      "kills": 72,
       "alive": true,
       "potions": 3,
-      "P": 0.5302534545103732,
-      "C": 0.3928888198996405,
-      "B": 0.0768577255899864
+      "P": 0.5471997609448239,
+      "C": 0.3706172100858544,
+      "B": 0.08218302896932173
     },
     {
       "level": 180,
@@ -12833,12 +12833,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 61,
+      "kills": 75,
       "alive": true,
-      "potions": 3,
-      "P": 0.5054344577334873,
-      "C": 0.4110514771619577,
-      "B": 0.08351406510455497
+      "potions": 4,
+      "P": 0.41014354019770854,
+      "C": 0.5228028425192569,
+      "B": 0.06705361728303451
     },
     {
       "level": 180,
@@ -12869,12 +12869,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 69,
+      "kills": 67,
       "alive": true,
       "potions": 3,
-      "P": 0.4884316149908649,
-      "C": 0.43992527895731903,
-      "B": 0.07164310605181608
+      "P": 0.5093216057264259,
+      "C": 0.4161225725374066,
+      "B": 0.07455582173616747
     },
     {
       "level": 180,
@@ -12977,12 +12977,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 70,
+      "kills": 87,
       "alive": true,
-      "potions": 112,
-      "P": 0.5678432356896884,
-      "C": 0.34674966774124255,
-      "B": 0.08540709656906899
+      "potions": 114,
+      "P": 0.47270527749484076,
+      "C": 0.4526455732341102,
+      "B": 0.07464914927104904
     },
     {
       "level": 180,
@@ -13013,12 +13013,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 78,
+      "kills": 74,
       "alive": true,
-      "potions": 6,
-      "P": 0.5290488882370933,
-      "C": 0.3950715846725243,
-      "B": 0.0758795270903825
+      "potions": 13,
+      "P": 0.546691476428744,
+      "C": 0.37374010823522735,
+      "B": 0.07956841533602861
     },
     {
       "level": 180,
@@ -13121,12 +13121,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 67,
+      "kills": 80,
       "alive": true,
-      "potions": 113,
-      "P": 0.5216406719904004,
-      "C": 0.3628773245249615,
-      "B": 0.11548200348463808
+      "potions": 112,
+      "P": 0.4497374438144395,
+      "C": 0.45033843167271664,
+      "B": 0.0999241245128439
     },
     {
       "level": 180,
@@ -13157,12 +13157,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 72,
+      "kills": 68,
       "alive": true,
-      "potions": 24,
-      "P": 0.49967510532506754,
-      "C": 0.4273985966864398,
-      "B": 0.07292629798849264
+      "potions": 27,
+      "P": 0.5212979262660569,
+      "C": 0.40286046892494903,
+      "B": 0.07584160480899409
     },
     {
       "level": 180,
@@ -13265,12 +13265,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 61,
+      "kills": 74,
       "alive": true,
-      "potions": 85,
-      "P": 0.5176572584644696,
-      "C": 0.4000456027147701,
-      "B": 0.0822971388207603
+      "potions": 78,
+      "P": 0.4465623122889774,
+      "C": 0.48282593015849773,
+      "B": 0.07061175755252483
     },
     {
       "level": 180,
@@ -13301,12 +13301,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 71,
+      "kills": 67,
       "alive": true,
-      "potions": 6,
-      "P": 0.49839691141038994,
-      "C": 0.426106268619874,
-      "B": 0.07549681996973605
+      "potions": 9,
+      "P": 0.5136734812553504,
+      "C": 0.4110085742468335,
+      "B": 0.07531794449781608
     },
     {
       "level": 180,
@@ -13409,12 +13409,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 62,
+      "kills": 75,
       "alive": true,
-      "potions": 49,
-      "P": 0.5222301659075397,
-      "C": 0.3955575443726582,
-      "B": 0.08221228971980207
+      "potions": 50,
+      "P": 0.4331431813400092,
+      "C": 0.49853101119692306,
+      "B": 0.06832580746306773
     },
     {
       "level": 180,
@@ -13445,12 +13445,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 71,
+      "kills": 72,
       "alive": true,
-      "potions": 7,
-      "P": 0.5066585193982379,
-      "C": 0.41763429449533873,
-      "B": 0.07570718610642335
+      "potions": 8,
+      "P": 0.5301647838193638,
+      "C": 0.3903488065885235,
+      "B": 0.0794864095921127
     },
     {
       "level": 180,
@@ -13553,12 +13553,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 69,
+      "kills": 83,
       "alive": true,
-      "potions": 10,
-      "P": 0.5548024340968702,
-      "C": 0.3724236348888154,
-      "B": 0.07277393101431434
+      "potions": 18,
+      "P": 0.4993149092343677,
+      "C": 0.43860910530671876,
+      "B": 0.06207598545891354
     },
     {
       "level": 180,
@@ -13589,24 +13589,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 77,
+      "kills": 75,
       "alive": true,
       "potions": 0,
-      "P": 0.5495259425894907,
-      "C": 0.3843647622127419,
-      "B": 0.06610929519776734
+      "P": 0.5575411526999555,
+      "C": 0.3748547799249745,
+      "B": 0.06760406737506998
     },
     {
       "level": 180,
       "job": "priest",
       "pair": "magic-support",
       "seed": 137,
-      "kills": 71,
+      "kills": 73,
       "alive": true,
-      "potions": 15,
-      "P": 0.5423677187206233,
-      "C": 0.37127562475983883,
-      "B": 0.08635665651953787
+      "potions": 7,
+      "P": 0.5400669373721524,
+      "C": 0.37534624236493414,
+      "B": 0.08458682026291342
     },
     {
       "level": 180,
@@ -13697,12 +13697,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 64,
+      "kills": 78,
       "alive": true,
-      "potions": 61,
-      "P": 0.5194822581861042,
-      "C": 0.39696285990350416,
-      "B": 0.08355488191039165
+      "potions": 40,
+      "P": 0.4400124067916677,
+      "C": 0.4883365094212506,
+      "B": 0.07165108378708167
     },
     {
       "level": 180,
@@ -13733,12 +13733,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 70,
+      "kills": 68,
       "alive": true,
       "potions": 5,
-      "P": 0.49174875128401563,
-      "C": 0.43620388598184895,
-      "B": 0.07204736273413545
+      "P": 0.5123352957165435,
+      "C": 0.41340957181375637,
+      "B": 0.07425513246970014
     },
     {
       "level": 180,
@@ -13841,12 +13841,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 61,
+      "kills": 78,
       "alive": true,
-      "potions": 50,
-      "P": 0.5234214829253164,
-      "C": 0.39686496125005605,
-      "B": 0.07971355582462755
+      "potions": 58,
+      "P": 0.45598009906020814,
+      "C": 0.4795220189768265,
+      "B": 0.06449788196296538
     },
     {
       "level": 180,
@@ -13877,12 +13877,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 78,
+      "kills": 72,
       "alive": true,
-      "potions": 14,
-      "P": 0.5280247586624274,
-      "C": 0.40339546304668994,
-      "B": 0.06857977829088269
+      "potions": 19,
+      "P": 0.5343789736498192,
+      "C": 0.39619517557431055,
+      "B": 0.06942585077587025
     },
     {
       "level": 180,
@@ -13985,12 +13985,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 74,
+      "kills": 92,
       "alive": true,
-      "potions": 117,
-      "P": 0.5960752148594756,
-      "C": 0.3320355067973532,
-      "B": 0.07188927834317117
+      "potions": 108,
+      "P": 0.5451933315348371,
+      "C": 0.39537511774683487,
+      "B": 0.05943155071832802
     },
     {
       "level": 180,
@@ -14021,12 +14021,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 80,
+      "kills": 76,
       "alive": true,
-      "potions": 9,
-      "P": 0.5751821692513185,
-      "C": 0.36457690743388604,
-      "B": 0.0602409233147955
+      "potions": 4,
+      "P": 0.591012790605757,
+      "C": 0.344463247974168,
+      "B": 0.06452396142007509
     },
     {
       "level": 180,
@@ -14129,12 +14129,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 65,
+      "kills": 77,
       "alive": true,
-      "potions": 33,
-      "P": 0.5134483486548153,
-      "C": 0.4026068012106178,
-      "B": 0.08394485013456691
+      "potions": 23,
+      "P": 0.44430420517999775,
+      "C": 0.48421921304577287,
+      "B": 0.07147658177422941
     },
     {
       "level": 180,
@@ -14144,9 +14144,9 @@
       "kills": 73,
       "alive": true,
       "potions": 7,
-      "P": 0.5273739388623394,
-      "C": 0.3980978605851632,
-      "B": 0.07452820055249733
+      "P": 0.527368864557498,
+      "C": 0.3980972112999819,
+      "B": 0.07453392414252011
     },
     {
       "level": 180,
@@ -14165,12 +14165,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 75,
+      "kills": 72,
       "alive": true,
       "potions": 3,
-      "P": 0.5266188425636924,
-      "C": 0.3961802796661095,
-      "B": 0.07720087777019809
+      "P": 0.5406558242949173,
+      "C": 0.3768772777503319,
+      "B": 0.08246689795475079
     },
     {
       "level": 180,
@@ -14273,12 +14273,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 60,
+      "kills": 74,
       "alive": true,
       "potions": 3,
-      "P": 0.5108309711584408,
-      "C": 0.40723919957067495,
-      "B": 0.08192982927088424
+      "P": 0.4050371695750131,
+      "C": 0.5292709245649936,
+      "B": 0.06569190585999334
     },
     {
       "level": 180,
@@ -14309,12 +14309,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 70,
+      "kills": 66,
       "alive": true,
       "potions": 3,
-      "P": 0.49358543983183556,
-      "C": 0.4335169091366069,
-      "B": 0.07289765103155754
+      "P": 0.503877793961494,
+      "C": 0.4214559180325915,
+      "B": 0.0746662880059145
     },
     {
       "level": 180,
@@ -14417,12 +14417,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 70,
+      "kills": 84,
       "alive": true,
-      "potions": 112,
-      "P": 0.5668130656267935,
-      "C": 0.3444530903215954,
-      "B": 0.08873384405161124
+      "potions": 117,
+      "P": 0.4784792628936193,
+      "C": 0.44790617862383997,
+      "B": 0.0736145584825407
     },
     {
       "level": 180,
@@ -14453,12 +14453,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 74,
+      "kills": 70,
       "alive": true,
-      "potions": 11,
-      "P": 0.5232171855671232,
-      "C": 0.3998172445505914,
-      "B": 0.0769655698822854
+      "potions": 10,
+      "P": 0.543827531020125,
+      "C": 0.3765488984521419,
+      "B": 0.07962357052773308
     },
     {
       "level": 180,
@@ -14561,12 +14561,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 69,
+      "kills": 80,
       "alive": true,
-      "potions": 112,
-      "P": 0.525704320737448,
-      "C": 0.35755306376638624,
-      "B": 0.1167426154961658
+      "potions": 105,
+      "P": 0.4510822573580878,
+      "C": 0.448833604696299,
+      "B": 0.10008413794561315
     },
     {
       "level": 180,
@@ -14599,10 +14599,10 @@
       "seed": 731,
       "kills": 71,
       "alive": true,
-      "potions": 33,
-      "P": 0.5062878830237368,
-      "C": 0.41875903799354924,
-      "B": 0.07495307898271392
+      "potions": 21,
+      "P": 0.5260336734418591,
+      "C": 0.39672883085022437,
+      "B": 0.07723749570791646
     },
     {
       "level": 180,
@@ -14705,12 +14705,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 64,
+      "kills": 76,
       "alive": true,
-      "potions": 74,
-      "P": 0.522081286756447,
-      "C": 0.3950120885224047,
-      "B": 0.08290662472114825
+      "potions": 89,
+      "P": 0.43442206899780916,
+      "C": 0.4968757619457212,
+      "B": 0.06870216905646967
     },
     {
       "level": 180,
@@ -14741,12 +14741,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 71,
+      "kills": 67,
       "alive": true,
-      "potions": 5,
-      "P": 0.4907268737950577,
-      "C": 0.43428038960217025,
-      "B": 0.07499273660277209
+      "potions": 11,
+      "P": 0.5123007355563105,
+      "C": 0.4118578728879915,
+      "B": 0.07584139155569795
     },
     {
       "level": 180,
@@ -14849,12 +14849,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 63,
+      "kills": 75,
       "alive": true,
-      "potions": 46,
-      "P": 0.523887022294958,
-      "C": 0.39243500702672734,
-      "B": 0.08367797067831464
+      "potions": 59,
+      "P": 0.4318170205844559,
+      "C": 0.4997960168170778,
+      "B": 0.06838696259846629
     },
     {
       "level": 180,
@@ -14885,12 +14885,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 69,
+      "kills": 68,
       "alive": true,
-      "potions": 7,
-      "P": 0.4871502575787822,
-      "C": 0.4422501823244533,
-      "B": 0.07059956009676445
+      "potions": 6,
+      "P": 0.5116817591792747,
+      "C": 0.4128552314111897,
+      "B": 0.07546300940953565
     },
     {
       "level": 180,
@@ -14993,12 +14993,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 68,
+      "kills": 81,
       "alive": true,
-      "potions": 11,
-      "P": 0.5534558578689897,
-      "C": 0.3737771430339312,
-      "B": 0.07276699909707916
+      "potions": 12,
+      "P": 0.5026330716086336,
+      "C": 0.4345389121102573,
+      "B": 0.06282801628110914
     },
     {
       "level": 180,
@@ -15029,24 +15029,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 74,
+      "kills": 73,
       "alive": true,
       "potions": 0,
-      "P": 0.5368360576257569,
-      "C": 0.3994373224273938,
-      "B": 0.06372661994684922
+      "P": 0.5521196267740914,
+      "C": 0.38129988324623515,
+      "B": 0.06658048997967343
     },
     {
       "level": 180,
       "job": "priest",
       "pair": "magic-support",
       "seed": 731,
-      "kills": 72,
+      "kills": 74,
       "alive": true,
-      "potions": 19,
-      "P": 0.5373409415105969,
-      "C": 0.37749993709371393,
-      "B": 0.08515912139568922
+      "potions": 16,
+      "P": 0.5287189412700396,
+      "C": 0.38809683646615695,
+      "B": 0.0831842222638035
     },
     {
       "level": 180,
@@ -15137,12 +15137,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 62,
+      "kills": 76,
       "alive": true,
-      "potions": 54,
-      "P": 0.5141303176352735,
-      "C": 0.40155075327739437,
-      "B": 0.0843189290873321
+      "potions": 56,
+      "P": 0.42416996401848384,
+      "C": 0.5056070765236025,
+      "B": 0.07022295945791368
     },
     {
       "level": 180,
@@ -15173,12 +15173,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 71,
+      "kills": 69,
       "alive": true,
-      "potions": 6,
-      "P": 0.5062398307298587,
-      "C": 0.42126430756109434,
-      "B": 0.07249586170904694
+      "potions": 9,
+      "P": 0.5107389188736506,
+      "C": 0.4152559647691514,
+      "B": 0.07400511635719796
     },
     {
       "level": 180,
@@ -15281,12 +15281,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 62,
+      "kills": 77,
       "alive": true,
-      "potions": 59,
-      "P": 0.5247502687018666,
-      "C": 0.39714575683475434,
-      "B": 0.07810397446337908
+      "potions": 56,
+      "P": 0.4491604833489518,
+      "C": 0.4868809722136099,
+      "B": 0.06395854443743827
     },
     {
       "level": 180,
@@ -15317,12 +15317,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 74,
+      "kills": 71,
       "alive": true,
-      "potions": 21,
-      "P": 0.5263184784831711,
-      "C": 0.4065097011407952,
-      "B": 0.06717182037603364
+      "potions": 16,
+      "P": 0.5405476581508044,
+      "C": 0.38868034386508143,
+      "B": 0.07077199798411409
     },
     {
       "level": 180,
@@ -15425,12 +15425,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 73,
+      "kills": 88,
       "alive": true,
-      "potions": 114,
-      "P": 0.5955315126459757,
-      "C": 0.3318577016283955,
-      "B": 0.07261078572562886
+      "potions": 109,
+      "P": 0.5498927162284223,
+      "C": 0.38915751575528834,
+      "B": 0.060949768016289416
     },
     {
       "level": 180,
@@ -15461,12 +15461,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 80,
+      "kills": 75,
       "alive": true,
-      "potions": 3,
-      "P": 0.581603470051456,
-      "C": 0.35603064951698027,
-      "B": 0.06236588043156378
+      "potions": 7,
+      "P": 0.5915056965635251,
+      "C": 0.34379963600533703,
+      "B": 0.06469466743113783
     },
     {
       "level": 180,
@@ -15569,12 +15569,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 42,
+      "kills": 48,
       "alive": true,
-      "potions": 19,
-      "P": 0.5302226199568583,
-      "C": 0.3859112002881915,
-      "B": 0.08386617975495032
+      "potions": 12,
+      "P": 0.4354977488038511,
+      "C": 0.49524550898370157,
+      "B": 0.06925674221244733
     },
     {
       "level": 200,
@@ -15605,12 +15605,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 51,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.5087947594549065,
-      "C": 0.41500368392939047,
-      "B": 0.07620155661570306
+      "P": 0.5445986454020908,
+      "C": 0.37547685496501754,
+      "B": 0.07992449963289164
     },
     {
       "level": 200,
@@ -15713,12 +15713,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 40,
+      "kills": 48,
       "alive": true,
       "potions": 2,
-      "P": 0.522720185856771,
-      "C": 0.3960548551034566,
-      "B": 0.08122495903977231
+      "P": 0.43771880613748615,
+      "C": 0.49432071762604873,
+      "B": 0.06796047623646509
     },
     {
       "level": 200,
@@ -15752,9 +15752,9 @@
       "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.48892563575834774,
-      "C": 0.4401769055838598,
-      "B": 0.07089745865779251
+      "P": 0.5166337387315989,
+      "C": 0.40777655506658533,
+      "B": 0.07558970620181579
     },
     {
       "level": 200,
@@ -15857,12 +15857,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 43,
+      "kills": 54,
       "alive": true,
-      "potions": 84,
-      "P": 0.5545461714289485,
-      "C": 0.3596991602833111,
-      "B": 0.08575466828774037
+      "potions": 86,
+      "P": 0.4797633412293624,
+      "C": 0.44655149137449407,
+      "B": 0.07368516739614356
     },
     {
       "level": 200,
@@ -15893,12 +15893,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 50,
+      "kills": 48,
       "alive": true,
-      "potions": 0,
-      "P": 0.5117709882346096,
-      "C": 0.41453220510146316,
-      "B": 0.0736968066639272
+      "potions": 1,
+      "P": 0.5467752061445721,
+      "C": 0.3739469437410427,
+      "B": 0.07927785011438522
     },
     {
       "level": 200,
@@ -16001,12 +16001,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 46,
+      "kills": 55,
       "alive": true,
-      "potions": 93,
-      "P": 0.5303240977579924,
-      "C": 0.34854422870216467,
-      "B": 0.12113167353984296
+      "potions": 97,
+      "P": 0.45027680704690926,
+      "C": 0.4465059705298202,
+      "B": 0.10321722242327057
     },
     {
       "level": 200,
@@ -16037,12 +16037,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 48,
+      "kills": 46,
       "alive": true,
-      "potions": 16,
-      "P": 0.5023209092320499,
-      "C": 0.4239559440126352,
-      "B": 0.073723146755315
+      "potions": 19,
+      "P": 0.5248938652769635,
+      "C": 0.3980608377640938,
+      "B": 0.07704529695894269
     },
     {
       "level": 200,
@@ -16145,12 +16145,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 40,
+      "kills": 49,
       "alive": true,
-      "potions": 43,
-      "P": 0.529855278428718,
-      "C": 0.38657207130793375,
-      "B": 0.08357265026334824
+      "potions": 56,
+      "P": 0.4281128284859479,
+      "C": 0.5047077270115461,
+      "B": 0.06717944450250603
     },
     {
       "level": 200,
@@ -16181,12 +16181,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 48,
+      "kills": 45,
       "alive": true,
       "potions": 2,
-      "P": 0.48750383085694915,
-      "C": 0.4392742636194783,
-      "B": 0.07322190552357252
+      "P": 0.5079320896270109,
+      "C": 0.41738075305121913,
+      "B": 0.07468715732177003
     },
     {
       "level": 200,
@@ -16289,12 +16289,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 39,
+      "kills": 49,
       "alive": true,
-      "potions": 23,
-      "P": 0.5236344290617537,
-      "C": 0.3937095486534596,
-      "B": 0.08265602228478669
+      "potions": 18,
+      "P": 0.43688526663012284,
+      "C": 0.4938649251646702,
+      "B": 0.06924980820520697
     },
     {
       "level": 200,
@@ -16325,12 +16325,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 45,
+      "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.4866516994247476,
-      "C": 0.43943019824045104,
-      "B": 0.07391810233480135
+      "P": 0.5177132974330533,
+      "C": 0.4069234018420297,
+      "B": 0.07536330072491698
     },
     {
       "level": 200,
@@ -16433,12 +16433,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 43,
+      "kills": 54,
       "alive": true,
-      "potions": 5,
-      "P": 0.5589187789479457,
-      "C": 0.36558960998997775,
-      "B": 0.07549161106207646
+      "potions": 4,
+      "P": 0.49604733769733567,
+      "C": 0.4411269657121115,
+      "B": 0.0628256965905528
     },
     {
       "level": 200,
@@ -16469,24 +16469,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 55,
+      "kills": 50,
       "alive": true,
       "potions": 0,
-      "P": 0.5456549065189393,
-      "C": 0.38670596803157775,
-      "B": 0.06763912544948286
+      "P": 0.5568353845102436,
+      "C": 0.37426382123058594,
+      "B": 0.06890079425917045
     },
     {
       "level": 200,
       "job": "priest",
       "pair": "magic-support",
       "seed": 42,
-      "kills": 47,
+      "kills": 48,
       "alive": true,
-      "potions": 9,
-      "P": 0.5409582926289185,
-      "C": 0.372382748344694,
-      "B": 0.08665895902638761
+      "potions": 4,
+      "P": 0.527017870810339,
+      "C": 0.3898387071395249,
+      "B": 0.08314342205013604
     },
     {
       "level": 200,
@@ -16577,12 +16577,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 41,
+      "kills": 49,
       "alive": true,
-      "potions": 35,
-      "P": 0.5223458521115844,
-      "C": 0.39345618643270147,
-      "B": 0.08419796145571413
+      "potions": 45,
+      "P": 0.4391446178633416,
+      "C": 0.49006808093611626,
+      "B": 0.07078730120054219
     },
     {
       "level": 200,
@@ -16613,12 +16613,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 47,
+      "kills": 44,
       "alive": true,
       "potions": 1,
-      "P": 0.48865586007324646,
-      "C": 0.4396442994635331,
-      "B": 0.07169984046322042
+      "P": 0.513093951736467,
+      "C": 0.4118283931634275,
+      "B": 0.07507765510010544
     },
     {
       "level": 200,
@@ -16721,12 +16721,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
-      "potions": 38,
-      "P": 0.5340960938924229,
-      "C": 0.38666547816354285,
-      "B": 0.0792384279440343
+      "potions": 32,
+      "P": 0.45720154971277815,
+      "C": 0.4779894047895457,
+      "B": 0.0648090454976761
     },
     {
       "level": 200,
@@ -16757,12 +16757,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 50,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.5293065263797468,
-      "C": 0.4013404086787975,
-      "B": 0.06935306494145568
+      "P": 0.5346219722798274,
+      "C": 0.3971823350290258,
+      "B": 0.06819569269114682
     },
     {
       "level": 200,
@@ -16865,12 +16865,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 47,
+      "kills": 61,
       "alive": true,
-      "potions": 86,
-      "P": 0.6008574297387725,
-      "C": 0.3268191458151117,
-      "B": 0.0723234244461158
+      "potions": 83,
+      "P": 0.543587813294261,
+      "C": 0.3980599394031621,
+      "B": 0.05835224730257695
     },
     {
       "level": 200,
@@ -16901,12 +16901,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 55,
+      "kills": 52,
       "alive": true,
       "potions": 0,
-      "P": 0.5694932462034931,
-      "C": 0.370728802313803,
-      "B": 0.05977795148270387
+      "P": 0.5857067590245298,
+      "C": 0.35111707607720033,
+      "B": 0.0631761648982699
     },
     {
       "level": 200,
@@ -17009,12 +17009,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 41,
+      "kills": 49,
       "alive": true,
       "potions": 15,
-      "P": 0.537602934311446,
-      "C": 0.37731673169582497,
-      "B": 0.08508033399272899
+      "P": 0.4476119839866505,
+      "C": 0.4827436215200654,
+      "B": 0.0696443944932841
     },
     {
       "level": 200,
@@ -17045,12 +17045,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 51,
+      "kills": 49,
       "alive": true,
       "potions": 2,
-      "P": 0.5153988593646285,
-      "C": 0.40780954330211766,
-      "B": 0.07679159733325389
+      "P": 0.5314949251494943,
+      "C": 0.38792749975723223,
+      "B": 0.0805775750932735
     },
     {
       "level": 200,
@@ -17153,12 +17153,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 41,
+      "kills": 48,
       "alive": true,
       "potions": 2,
-      "P": 0.5193584303326095,
-      "C": 0.39912304980482466,
-      "B": 0.08151851986256574
+      "P": 0.42562947385632566,
+      "C": 0.507622425321983,
+      "B": 0.06674810082169136
     },
     {
       "level": 200,
@@ -17189,12 +17189,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 47,
+      "kills": 45,
       "alive": true,
       "potions": 2,
-      "P": 0.48584422107191416,
-      "C": 0.44162070798908826,
-      "B": 0.07253507093899754
+      "P": 0.5058506112684643,
+      "C": 0.41905763957435216,
+      "B": 0.07509174915718358
     },
     {
       "level": 200,
@@ -17297,12 +17297,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 47,
+      "kills": 54,
       "alive": true,
-      "potions": 84,
-      "P": 0.5728296862738008,
-      "C": 0.33851161020168463,
-      "B": 0.08865870352451453
+      "potions": 90,
+      "P": 0.4875222945755569,
+      "C": 0.4376935470787837,
+      "B": 0.07478415834565938
     },
     {
       "level": 200,
@@ -17333,12 +17333,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 50,
+      "kills": 48,
       "alive": true,
       "potions": 0,
-      "P": 0.5175337856534161,
-      "C": 0.40916179379680423,
-      "B": 0.0733044205497796
+      "P": 0.5366907448830707,
+      "C": 0.38456943339474414,
+      "B": 0.07873982172218517
     },
     {
       "level": 200,
@@ -17441,12 +17441,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 46,
+      "kills": 53,
       "alive": true,
-      "potions": 95,
-      "P": 0.5393934667845973,
-      "C": 0.3380188257462049,
-      "B": 0.12258770746919784
+      "potions": 96,
+      "P": 0.4524216529112125,
+      "C": 0.44391123348201833,
+      "B": 0.10366711360676915
     },
     {
       "level": 200,
@@ -17477,12 +17477,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 50,
+      "kills": 46,
       "alive": true,
-      "potions": 19,
-      "P": 0.5039928411217521,
-      "C": 0.4218548313536172,
-      "B": 0.07415232752463073
+      "potions": 16,
+      "P": 0.5256199416298106,
+      "C": 0.39772703366837087,
+      "B": 0.07665302470181846
     },
     {
       "level": 200,
@@ -17585,12 +17585,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
-      "potions": 48,
-      "P": 0.5162498717740233,
-      "C": 0.4019433466425464,
-      "B": 0.08180678158343037
+      "potions": 47,
+      "P": 0.4316645736609051,
+      "C": 0.4994665591304286,
+      "B": 0.0688688672086663
     },
     {
       "level": 200,
@@ -17621,12 +17621,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 46,
+      "kills": 44,
       "alive": true,
-      "potions": 2,
-      "P": 0.4812250200365738,
-      "C": 0.44762827824271656,
-      "B": 0.07114670172070964
+      "potions": 3,
+      "P": 0.5074944900103396,
+      "C": 0.41733745422593277,
+      "B": 0.07516805576372763
     },
     {
       "level": 200,
@@ -17729,12 +17729,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 40,
+      "kills": 49,
       "alive": true,
-      "potions": 28,
-      "P": 0.519704469618563,
-      "C": 0.39856789285003125,
-      "B": 0.08172763753140572
+      "potions": 25,
+      "P": 0.4300908624742195,
+      "C": 0.5024735718469447,
+      "B": 0.06743556567883568
     },
     {
       "level": 200,
@@ -17765,12 +17765,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 48,
+      "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.48954547171406565,
-      "C": 0.4382280120097428,
-      "B": 0.07222651627619155
+      "P": 0.506072401294733,
+      "C": 0.4192025486063248,
+      "B": 0.07472505009894224
     },
     {
       "level": 200,
@@ -17873,12 +17873,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 43,
+      "kills": 54,
       "alive": true,
-      "potions": 6,
-      "P": 0.5543618478195481,
-      "C": 0.3717135988279978,
-      "B": 0.073924553352454
+      "potions": 5,
+      "P": 0.4949778355180496,
+      "C": 0.4427366102882019,
+      "B": 0.062285554193748545
     },
     {
       "level": 200,
@@ -17909,24 +17909,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 54,
+      "kills": 51,
       "alive": true,
       "potions": 0,
-      "P": 0.543570058019561,
-      "C": 0.3904345272711798,
-      "B": 0.06599541470925915
+      "P": 0.5575911743104544,
+      "C": 0.37363704538319975,
+      "B": 0.06877178030634594
     },
     {
       "level": 200,
       "job": "priest",
       "pair": "magic-support",
       "seed": 137,
-      "kills": 47,
+      "kills": 48,
       "alive": true,
-      "potions": 10,
-      "P": 0.5335002798224335,
-      "C": 0.38171343522806617,
-      "B": 0.08478628494950034
+      "potions": 4,
+      "P": 0.5339077377594481,
+      "C": 0.38094119368797424,
+      "B": 0.08515106855257767
     },
     {
       "level": 200,
@@ -18017,12 +18017,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 42,
+      "kills": 49,
       "alive": true,
       "potions": 41,
-      "P": 0.52240134079968,
-      "C": 0.39345578139191373,
-      "B": 0.08414287780840624
+      "P": 0.43514068921765625,
+      "C": 0.493729174284286,
+      "B": 0.07113013649805779
     },
     {
       "level": 200,
@@ -18053,12 +18053,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 47,
+      "kills": 44,
       "alive": true,
       "potions": 1,
-      "P": 0.4903198191654448,
-      "C": 0.43897652598827186,
-      "B": 0.07070365484628334
+      "P": 0.5115297130254784,
+      "C": 0.4154999662486219,
+      "B": 0.07297032072589958
     },
     {
       "level": 200,
@@ -18161,12 +18161,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 39,
+      "kills": 49,
       "alive": true,
-      "potions": 31,
-      "P": 0.5305855340685857,
-      "C": 0.3896563589815093,
-      "B": 0.07975810694990501
+      "potions": 28,
+      "P": 0.4561104124661349,
+      "C": 0.4796858157445598,
+      "B": 0.06420377178930531
     },
     {
       "level": 200,
@@ -18197,12 +18197,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 51,
+      "kills": 48,
       "alive": true,
       "potions": 2,
-      "P": 0.5182871482311069,
-      "C": 0.4141476090257101,
-      "B": 0.06756524274318307
+      "P": 0.5351099570180016,
+      "C": 0.39609801519933685,
+      "B": 0.06879202778266164
     },
     {
       "level": 200,
@@ -18305,12 +18305,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 48,
+      "kills": 60,
       "alive": true,
-      "potions": 93,
-      "P": 0.6045512996308919,
-      "C": 0.32196438771749347,
-      "B": 0.07348431265161462
+      "potions": 83,
+      "P": 0.5438865324326506,
+      "C": 0.39720864473322265,
+      "B": 0.058904822834126756
     },
     {
       "level": 200,
@@ -18341,12 +18341,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 55,
+      "kills": 52,
       "alive": true,
       "potions": 0,
-      "P": 0.5714318296587627,
-      "C": 0.3682295914617066,
-      "B": 0.06033857887953071
+      "P": 0.5850331961856308,
+      "C": 0.35151601387828385,
+      "B": 0.06345078993608537
     },
     {
       "level": 200,
@@ -18449,12 +18449,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 42,
+      "kills": 49,
       "alive": true,
-      "potions": 13,
-      "P": 0.5333119015897527,
-      "C": 0.3820346999483838,
-      "B": 0.08465339846186345
+      "potions": 10,
+      "P": 0.439348191949719,
+      "C": 0.49103850762444773,
+      "B": 0.06961330042583322
     },
     {
       "level": 200,
@@ -18485,12 +18485,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 51,
+      "kills": 49,
       "alive": true,
       "potions": 2,
-      "P": 0.5257839205158221,
-      "C": 0.3977898989756083,
-      "B": 0.07642618050856961
+      "P": 0.5406365658106966,
+      "C": 0.3789690294964494,
+      "B": 0.080394404692854
     },
     {
       "level": 200,
@@ -18593,12 +18593,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
       "potions": 2,
-      "P": 0.5255833573342789,
-      "C": 0.39222902487447775,
-      "B": 0.08218761779124333
+      "P": 0.43558663474650844,
+      "C": 0.49623305934045964,
+      "B": 0.06818030591303192
     },
     {
       "level": 200,
@@ -18632,9 +18632,9 @@
       "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.4895878040092724,
-      "C": 0.43917166450215545,
-      "B": 0.07124053148857216
+      "P": 0.5072476340909239,
+      "C": 0.41823315696430213,
+      "B": 0.07451920894477392
     },
     {
       "level": 200,
@@ -18737,12 +18737,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 45,
+      "kills": 55,
       "alive": true,
-      "potions": 101,
-      "P": 0.5713199744042311,
-      "C": 0.3425006449326157,
-      "B": 0.08617938066315319
+      "potions": 82,
+      "P": 0.47011052246403906,
+      "C": 0.45928398348913285,
+      "B": 0.07060549404682805
     },
     {
       "level": 200,
@@ -18773,12 +18773,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 51,
+      "kills": 45,
       "alive": true,
-      "potions": 0,
-      "P": 0.5142754113957873,
-      "C": 0.40832814385727334,
-      "B": 0.07739644474693941
+      "potions": 3,
+      "P": 0.5152163949198515,
+      "C": 0.40896171234673273,
+      "B": 0.07582189273341576
     },
     {
       "level": 200,
@@ -18881,12 +18881,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 46,
+      "kills": 55,
       "alive": true,
-      "potions": 93,
-      "P": 0.5395492060050983,
-      "C": 0.33710739098671955,
-      "B": 0.12334340300818217
+      "potions": 95,
+      "P": 0.4441839388904079,
+      "C": 0.4543652124290663,
+      "B": 0.10145084868052578
     },
     {
       "level": 200,
@@ -18917,12 +18917,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 50,
+      "kills": 46,
       "alive": true,
-      "potions": 16,
-      "P": 0.5027855755003292,
-      "C": 0.4237889577572105,
-      "B": 0.07342546674246034
+      "potions": 17,
+      "P": 0.5186442602866399,
+      "C": 0.4054137897233133,
+      "B": 0.07594194999004678
     },
     {
       "level": 200,
@@ -19025,12 +19025,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
-      "potions": 61,
-      "P": 0.5176103622127406,
-      "C": 0.4000955351052484,
-      "B": 0.08229410268201097
+      "potions": 54,
+      "P": 0.427257729444247,
+      "C": 0.504202337415898,
+      "B": 0.06853993313985501
     },
     {
       "level": 200,
@@ -19064,9 +19064,9 @@
       "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.4790050118910515,
-      "C": 0.44766311418263505,
-      "B": 0.07333187392631349
+      "P": 0.5120874294280605,
+      "C": 0.4107914148916604,
+      "B": 0.0771211556802791
     },
     {
       "level": 200,
@@ -19169,12 +19169,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 41,
+      "kills": 50,
       "alive": true,
-      "potions": 26,
-      "P": 0.5272102863150929,
-      "C": 0.3891606823524046,
-      "B": 0.08362903133250252
+      "potions": 21,
+      "P": 0.43384509213270583,
+      "C": 0.496337417998845,
+      "B": 0.06981748986844913
     },
     {
       "level": 200,
@@ -19205,12 +19205,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 48,
+      "kills": 45,
       "alive": true,
       "potions": 2,
-      "P": 0.4899775167633166,
-      "C": 0.43711364593570157,
-      "B": 0.07290883730098184
+      "P": 0.504254191995117,
+      "C": 0.41983102734307803,
+      "B": 0.07591478066180492
     },
     {
       "level": 200,
@@ -19313,12 +19313,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 45,
+      "kills": 56,
       "alive": true,
-      "potions": 5,
-      "P": 0.5646228153988515,
-      "C": 0.3588118952265923,
-      "B": 0.0765652893745562
+      "potions": 4,
+      "P": 0.4920056846498268,
+      "C": 0.4465031394341281,
+      "B": 0.0614911759160451
     },
     {
       "level": 200,
@@ -19352,21 +19352,21 @@
       "kills": 51,
       "alive": true,
       "potions": 0,
-      "P": 0.5494764434645228,
-      "C": 0.3827639378332049,
-      "B": 0.06775961870227226
+      "P": 0.5654443159851507,
+      "C": 0.3637399963127083,
+      "B": 0.07081568770214107
     },
     {
       "level": 200,
       "job": "priest",
       "pair": "magic-support",
       "seed": 731,
-      "kills": 47,
+      "kills": 48,
       "alive": true,
       "potions": 6,
-      "P": 0.5335538624589548,
-      "C": 0.38130952834629933,
-      "B": 0.0851366091947459
+      "P": 0.5295939204453721,
+      "C": 0.38664448377125904,
+      "B": 0.08376159578336888
     },
     {
       "level": 200,
@@ -19457,12 +19457,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
-      "potions": 25,
-      "P": 0.5136140169499113,
-      "C": 0.4036322438245702,
-      "B": 0.0827537392255185
+      "potions": 35,
+      "P": 0.4277189008026068,
+      "C": 0.5032714637479374,
+      "B": 0.0690096354494557
     },
     {
       "level": 200,
@@ -19493,12 +19493,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 47,
+      "kills": 45,
       "alive": true,
       "potions": 1,
-      "P": 0.4896573097836921,
-      "C": 0.44021353778849337,
-      "B": 0.07012915242781453
+      "P": 0.5104336892219091,
+      "C": 0.4151807235244149,
+      "B": 0.07438558725367597
     },
     {
       "level": 200,
@@ -19601,12 +19601,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
-      "potions": 30,
-      "P": 0.5350522924873384,
-      "C": 0.3823293179100123,
-      "B": 0.08261838960264926
+      "potions": 32,
+      "P": 0.4546373208222313,
+      "C": 0.47911428566912584,
+      "B": 0.06624839350864284
     },
     {
       "level": 200,
@@ -19637,12 +19637,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 50,
+      "kills": 48,
       "alive": true,
       "potions": 2,
-      "P": 0.5267068136354015,
-      "C": 0.4067117612249638,
-      "B": 0.06658142513963473
+      "P": 0.5410560668751284,
+      "C": 0.3887189692538458,
+      "B": 0.07022496387102574
     },
     {
       "level": 200,
@@ -19745,12 +19745,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 49,
+      "kills": 61,
       "alive": true,
-      "potions": 85,
-      "P": 0.5968339488756529,
-      "C": 0.3314595052444564,
-      "B": 0.07170654587989071
+      "potions": 77,
+      "P": 0.5418411122289112,
+      "C": 0.4002239977390898,
+      "B": 0.05793489003199909
     },
     {
       "level": 200,
@@ -19781,12 +19781,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 54,
+      "kills": 51,
       "alive": true,
       "potions": 0,
-      "P": 0.5773635771665494,
-      "C": 0.361369896831244,
-      "B": 0.061266526002206625
+      "P": 0.581999664496165,
+      "C": 0.3557217774345051,
+      "B": 0.06227855806932986
     },
     {
       "level": 200,
@@ -19889,12 +19889,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 38,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.5236191167921163,
-      "C": 0.39324366760326435,
-      "B": 0.08313721560461937
+      "P": 0.4343221415618923,
+      "C": 0.49852777812037885,
+      "B": 0.06715008031772884
     },
     {
       "level": 201,
@@ -19925,12 +19925,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 49,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.49917105201073686,
-      "C": 0.42639662439222437,
-      "B": 0.07443232359703876
+      "P": 0.5195608741332592,
+      "C": 0.40391787403589047,
+      "B": 0.07652125183085023
     },
     {
       "level": 201,
@@ -20033,12 +20033,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 41,
+      "kills": 49,
       "alive": true,
       "potions": 2,
-      "P": 0.5373682544077611,
-      "C": 0.38146847233448417,
-      "B": 0.08116327325775473
+      "P": 0.44525457062205276,
+      "C": 0.4869673535017353,
+      "B": 0.06777807587621197
     },
     {
       "level": 201,
@@ -20069,12 +20069,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 48,
+      "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.48003286478969415,
-      "C": 0.4499702849988432,
-      "B": 0.06999685021146271
+      "P": 0.5057126209291422,
+      "C": 0.4208611225085269,
+      "B": 0.07342625656233097
     },
     {
       "level": 201,
@@ -20177,12 +20177,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 41,
+      "kills": 50,
       "alive": true,
-      "potions": 43,
-      "P": 0.5633267315736397,
-      "C": 0.353623479315401,
-      "B": 0.08304978911095935
+      "potions": 38,
+      "P": 0.47116123816089056,
+      "C": 0.45912037506692904,
+      "B": 0.06971838677218044
     },
     {
       "level": 201,
@@ -20213,12 +20213,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 46,
+      "kills": 45,
       "alive": true,
-      "potions": 0,
-      "P": 0.49870306569127293,
-      "C": 0.4274128711145104,
-      "B": 0.07388406319421667
+      "potions": 1,
+      "P": 0.5224412030218388,
+      "C": 0.4003810915242404,
+      "B": 0.07717770545392076
     },
     {
       "level": 201,
@@ -20321,12 +20321,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 41,
+      "kills": 51,
       "alive": true,
-      "potions": 37,
-      "P": 0.5335483779222138,
-      "C": 0.3579880438372478,
-      "B": 0.10846357824053844
+      "potions": 39,
+      "P": 0.43861984067452936,
+      "C": 0.4728874822284149,
+      "B": 0.0884926770970557
     },
     {
       "level": 201,
@@ -20357,12 +20357,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 46,
+      "kills": 44,
       "alive": true,
-      "potions": 5,
-      "P": 0.47822219820896844,
-      "C": 0.45117266142119067,
-      "B": 0.07060514036984088
+      "potions": 4,
+      "P": 0.5036494018765642,
+      "C": 0.4219874129596193,
+      "B": 0.07436318516381654
     },
     {
       "level": 201,
@@ -20465,12 +20465,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 39,
+      "kills": 50,
       "alive": true,
-      "potions": 3,
-      "P": 0.474087967425816,
-      "C": 0.4528567424944292,
-      "B": 0.07305529007975484
+      "potions": 2,
+      "P": 0.37762170610489726,
+      "C": 0.5636686627636559,
+      "B": 0.05870963113144688
     },
     {
       "level": 201,
@@ -20501,12 +20501,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 50,
+      "kills": 48,
       "alive": true,
       "potions": 2,
-      "P": 0.44910046160735084,
-      "C": 0.4848723557148802,
-      "B": 0.06602718267776897
+      "P": 0.46777181982410915,
+      "C": 0.4630714521895314,
+      "B": 0.06915672798635947
     },
     {
       "level": 201,
@@ -20609,12 +20609,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 38,
+      "kills": 49,
       "alive": true,
       "potions": 2,
-      "P": 0.5037889502400665,
-      "C": 0.4175126606247794,
-      "B": 0.07869838913515413
+      "P": 0.4099155924945153,
+      "C": 0.5250904115410113,
+      "B": 0.06499399596447336
     },
     {
       "level": 201,
@@ -20645,12 +20645,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 48,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.48470606458016824,
-      "C": 0.44432476454430725,
-      "B": 0.07096917087552454
+      "P": 0.5053267293524665,
+      "C": 0.4188283690586789,
+      "B": 0.07584490158885462
     },
     {
       "level": 201,
@@ -20753,12 +20753,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 40,
+      "kills": 48,
       "alive": true,
       "potions": 0,
-      "P": 0.635890640533036,
-      "C": 0.2766698550700299,
-      "B": 0.08743950439693407
+      "P": 0.5642670048264766,
+      "C": 0.36268776888775356,
+      "B": 0.07304522628576982
     },
     {
       "level": 201,
@@ -20792,21 +20792,21 @@
       "kills": 47,
       "alive": true,
       "potions": 0,
-      "P": 0.6046557137022901,
-      "C": 0.3164867951676263,
-      "B": 0.07885749113008358
+      "P": 0.6161828172742516,
+      "C": 0.3027842471055444,
+      "B": 0.08103293562020401
     },
     {
       "level": 201,
       "job": "priest",
       "pair": "magic-support",
       "seed": 42,
-      "kills": 44,
+      "kills": 43,
       "alive": true,
       "potions": 0,
-      "P": 0.6017141879447016,
-      "C": 0.30569949991212675,
-      "B": 0.09258631214317176
+      "P": 0.5942314159804265,
+      "C": 0.3139640019272699,
+      "B": 0.0918045820923036
     },
     {
       "level": 201,
@@ -20897,12 +20897,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 41,
+      "kills": 51,
       "alive": true,
       "potions": 4,
-      "P": 0.5267374414915356,
-      "C": 0.39400641139538695,
-      "B": 0.07925614711307753
+      "P": 0.43184062553498265,
+      "C": 0.5020339906182542,
+      "B": 0.06612538384676321
     },
     {
       "level": 201,
@@ -20933,12 +20933,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 49,
+      "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.48693143429416086,
-      "C": 0.44120045187481727,
-      "B": 0.07186811383102186
+      "P": 0.5067225692501371,
+      "C": 0.41896637897171585,
+      "B": 0.07431105177814705
     },
     {
       "level": 201,
@@ -21041,12 +21041,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 34,
+      "kills": 43,
       "alive": true,
       "potions": 3,
-      "P": 0.5128097382007439,
-      "C": 0.4112120655229045,
-      "B": 0.07597819627635155
+      "P": 0.4403852831986601,
+      "C": 0.4987030576456187,
+      "B": 0.0609116591557212
     },
     {
       "level": 201,
@@ -21077,12 +21077,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 45,
+      "kills": 42,
       "alive": true,
       "potions": 2,
-      "P": 0.5018009536184364,
-      "C": 0.4344378564686842,
-      "B": 0.06376118991287938
+      "P": 0.5166797663777094,
+      "C": 0.41486116839462767,
+      "B": 0.06845906522766296
     },
     {
       "level": 201,
@@ -21185,12 +21185,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 42,
-      "kills": 37,
+      "kills": 49,
       "alive": true,
-      "potions": 34,
-      "P": 0.5890478645886075,
-      "C": 0.34297945352629255,
-      "B": 0.06797268188509993
+      "potions": 33,
+      "P": 0.5248033698498458,
+      "C": 0.42256607418444797,
+      "B": 0.05263055596570621
     },
     {
       "level": 201,
@@ -21221,12 +21221,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 42,
-      "kills": 46,
+      "kills": 42,
       "alive": true,
       "potions": 0,
-      "P": 0.5473466633510173,
-      "C": 0.39755125183723256,
-      "B": 0.05510208481175013
+      "P": 0.5588370884946069,
+      "C": 0.38346487984190986,
+      "B": 0.05769803166348321
     },
     {
       "level": 201,
@@ -21329,12 +21329,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 38,
+      "kills": 48,
       "alive": true,
       "potions": 2,
-      "P": 0.5286256014836404,
-      "C": 0.3892920734087919,
-      "B": 0.0820823251075678
+      "P": 0.4194868760262068,
+      "C": 0.5142047601080721,
+      "B": 0.06630836386572098
     },
     {
       "level": 201,
@@ -21365,12 +21365,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 48,
+      "kills": 45,
       "alive": true,
       "potions": 2,
-      "P": 0.5001000379396684,
-      "C": 0.42601800864653333,
-      "B": 0.07388195341379827
+      "P": 0.5243153674540855,
+      "C": 0.39764552906904926,
+      "B": 0.07803910347686524
     },
     {
       "level": 201,
@@ -21473,12 +21473,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 41,
+      "kills": 50,
       "alive": true,
       "potions": 2,
-      "P": 0.5320834241477022,
-      "C": 0.38769722672256135,
-      "B": 0.08021934912973651
+      "P": 0.44267323429073924,
+      "C": 0.4902812181906059,
+      "B": 0.06704554751865488
     },
     {
       "level": 201,
@@ -21509,12 +21509,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 47,
+      "kills": 45,
       "alive": true,
       "potions": 2,
-      "P": 0.4829040590823362,
-      "C": 0.44651251975451506,
-      "B": 0.07058342116314875
+      "P": 0.5039374463348807,
+      "C": 0.42273345754050284,
+      "B": 0.07332909612461652
     },
     {
       "level": 201,
@@ -21617,12 +21617,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 41,
+      "kills": 51,
       "alive": true,
-      "potions": 37,
-      "P": 0.5604273571078506,
-      "C": 0.35662886328258875,
-      "B": 0.08294377960956059
+      "potions": 40,
+      "P": 0.46510906849706374,
+      "C": 0.46610952748257367,
+      "B": 0.06878140402036258
     },
     {
       "level": 201,
@@ -21653,12 +21653,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 47,
+      "kills": 45,
       "alive": true,
       "potions": 0,
-      "P": 0.4995737960334052,
-      "C": 0.426552161482221,
-      "B": 0.07387404248437379
+      "P": 0.517364980830772,
+      "C": 0.40598012776541775,
+      "B": 0.07665489140381028
     },
     {
       "level": 201,
@@ -21761,12 +21761,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 41,
+      "kills": 50,
       "alive": true,
-      "potions": 44,
-      "P": 0.528218550432387,
-      "C": 0.36493094396355097,
-      "B": 0.10685050560406205
+      "potions": 40,
+      "P": 0.4445796209586013,
+      "C": 0.4649858503916618,
+      "B": 0.09043452864973689
     },
     {
       "level": 201,
@@ -21797,12 +21797,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 45,
+      "kills": 43,
       "alive": true,
-      "potions": 6,
-      "P": 0.4817507109916254,
-      "C": 0.44706501865659326,
-      "B": 0.07118427035178129
+      "potions": 4,
+      "P": 0.5013180289807441,
+      "C": 0.4246594857776397,
+      "B": 0.07402248524161621
     },
     {
       "level": 201,
@@ -21905,12 +21905,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 39,
+      "kills": 50,
       "alive": true,
-      "potions": 2,
-      "P": 0.4840940679123625,
-      "C": 0.4401495625949679,
-      "B": 0.07575636949266962
+      "potions": 4,
+      "P": 0.37767311920910285,
+      "C": 0.5644986227275548,
+      "B": 0.057828258063342325
     },
     {
       "level": 201,
@@ -21941,12 +21941,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 50,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.4465656011295124,
-      "C": 0.48764150532886763,
-      "B": 0.06579289354161999
+      "P": 0.46802568769105685,
+      "C": 0.4634690815305782,
+      "B": 0.06850523077836496
     },
     {
       "level": 201,
@@ -22049,12 +22049,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 39,
+      "kills": 49,
       "alive": true,
       "potions": 2,
-      "P": 0.5089601795423738,
-      "C": 0.41190653155761286,
-      "B": 0.07913328890001334
+      "P": 0.4151769582933536,
+      "C": 0.5199621073674661,
+      "B": 0.06486093433918033
     },
     {
       "level": 201,
@@ -22085,12 +22085,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 49,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.47882561106669147,
-      "C": 0.45036762419403054,
-      "B": 0.07080676473927797
+      "P": 0.5012151631343595,
+      "C": 0.42312757207550017,
+      "B": 0.07565726479014026
     },
     {
       "level": 201,
@@ -22193,12 +22193,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 40,
+      "kills": 48,
       "alive": true,
       "potions": 0,
-      "P": 0.6354339827578933,
-      "C": 0.2770032537840311,
-      "B": 0.0875627634580756
+      "P": 0.5634222225655946,
+      "C": 0.3639424756285445,
+      "B": 0.0726353018058609
     },
     {
       "level": 201,
@@ -22229,24 +22229,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 48,
+      "kills": 45,
       "alive": true,
       "potions": 0,
-      "P": 0.6009338054306023,
-      "C": 0.3211238517319267,
-      "B": 0.07794234283747098
+      "P": 0.6204417532160742,
+      "C": 0.2976641913027563,
+      "B": 0.08189405548116954
     },
     {
       "level": 201,
       "job": "priest",
       "pair": "magic-support",
       "seed": 137,
-      "kills": 43,
+      "kills": 44,
       "alive": true,
-      "potions": 0,
-      "P": 0.6016531699933402,
-      "C": 0.3059391247128957,
-      "B": 0.09240770529376413
+      "potions": 1,
+      "P": 0.5947490174240477,
+      "C": 0.3125558253401566,
+      "B": 0.09269515723579566
     },
     {
       "level": 201,
@@ -22337,12 +22337,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
-      "potions": 2,
-      "P": 0.5295556099394663,
-      "C": 0.38922895985502853,
-      "B": 0.08121543020550516
+      "potions": 5,
+      "P": 0.4346428680792744,
+      "C": 0.4985534757732434,
+      "B": 0.06680365614748225
     },
     {
       "level": 201,
@@ -22373,12 +22373,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 49,
+      "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.4879170143719802,
-      "C": 0.44006044488516877,
-      "B": 0.07202254074285103
+      "P": 0.5091097493097106,
+      "C": 0.41635517508389625,
+      "B": 0.07453507560639315
     },
     {
       "level": 201,
@@ -22481,12 +22481,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 34,
+      "kills": 43,
       "alive": true,
-      "potions": 3,
-      "P": 0.5191824860367437,
-      "C": 0.40477329593497496,
-      "B": 0.07604421802828135
+      "potions": 2,
+      "P": 0.4401965887299911,
+      "C": 0.5006057052550382,
+      "B": 0.059197706014970666
     },
     {
       "level": 201,
@@ -22517,12 +22517,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 44,
+      "kills": 41,
       "alive": true,
       "potions": 2,
-      "P": 0.4979519868401626,
-      "C": 0.43969307247488704,
-      "B": 0.06235494068495034
+      "P": 0.5177182005387182,
+      "C": 0.41551991489018697,
+      "B": 0.06676188457109486
     },
     {
       "level": 201,
@@ -22625,12 +22625,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 137,
-      "kills": 39,
+      "kills": 50,
       "alive": true,
-      "potions": 38,
-      "P": 0.5860422882548179,
-      "C": 0.34680977020800324,
-      "B": 0.06714794153717893
+      "potions": 33,
+      "P": 0.5215685320138994,
+      "C": 0.4266803256111837,
+      "B": 0.05175114237491692
     },
     {
       "level": 201,
@@ -22661,12 +22661,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 137,
-      "kills": 46,
+      "kills": 44,
       "alive": true,
       "potions": 0,
-      "P": 0.5450040314969704,
-      "C": 0.4005697556081337,
-      "B": 0.05442621289489596
+      "P": 0.5568380195131418,
+      "C": 0.38604336271248674,
+      "B": 0.05711861777437143
     },
     {
       "level": 201,
@@ -22769,12 +22769,12 @@
       "job": "knight",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 38,
+      "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.5321756143344408,
-      "C": 0.38696941843217,
-      "B": 0.08085496723338922
+      "P": 0.4336402579267378,
+      "C": 0.49982910995161706,
+      "B": 0.0665306321216451
     },
     {
       "level": 201,
@@ -22805,12 +22805,12 @@
       "job": "knight",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 51,
+      "kills": 48,
       "alive": true,
       "potions": 2,
-      "P": 0.5114816449961687,
-      "C": 0.413354909208853,
-      "B": 0.0751634457949784
+      "P": 0.5387649272161936,
+      "C": 0.38260774159421157,
+      "B": 0.0786273311895948
     },
     {
       "level": 201,
@@ -22913,12 +22913,12 @@
       "job": "crusader",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
       "potions": 2,
-      "P": 0.5381073841694632,
-      "C": 0.3787408039615958,
-      "B": 0.08315181186894093
+      "P": 0.4457082465754149,
+      "C": 0.48730391168656395,
+      "B": 0.06698784173802114
     },
     {
       "level": 201,
@@ -22949,12 +22949,12 @@
       "job": "crusader",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 48,
+      "kills": 45,
       "alive": true,
       "potions": 2,
-      "P": 0.48305668758291126,
-      "C": 0.44655271296310023,
-      "B": 0.07039059945398853
+      "P": 0.5027376976694652,
+      "C": 0.42406982590363373,
+      "B": 0.07319247642690101
     },
     {
       "level": 201,
@@ -23057,12 +23057,12 @@
       "job": "wizard",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 41,
+      "kills": 49,
       "alive": true,
       "potions": 35,
-      "P": 0.5587349811475937,
-      "C": 0.35861588336419825,
-      "B": 0.0826491354882081
+      "P": 0.466847474879748,
+      "C": 0.46398862958439324,
+      "B": 0.06916389553585878
     },
     {
       "level": 201,
@@ -23093,12 +23093,12 @@
       "job": "wizard",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 46,
+      "kills": 45,
       "alive": true,
       "potions": 0,
-      "P": 0.5007241103398631,
-      "C": 0.4250508592093565,
-      "B": 0.07422503045078047
+      "P": 0.5156312292455224,
+      "C": 0.40782596478767896,
+      "B": 0.07654280596679863
     },
     {
       "level": 201,
@@ -23201,12 +23201,12 @@
       "job": "sage",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 41,
+      "kills": 48,
       "alive": true,
-      "potions": 44,
-      "P": 0.5315529506748319,
-      "C": 0.3612908691271586,
-      "B": 0.1071561801980095
+      "potions": 38,
+      "P": 0.44357835474247986,
+      "C": 0.4665994262859896,
+      "B": 0.08982221897153056
     },
     {
       "level": 201,
@@ -23237,12 +23237,12 @@
       "job": "sage",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 46,
+      "kills": 44,
       "alive": true,
-      "potions": 5,
-      "P": 0.48466578878490274,
-      "C": 0.44375086272392744,
-      "B": 0.07158334849116983
+      "potions": 4,
+      "P": 0.5021751649296109,
+      "C": 0.4237078647322488,
+      "B": 0.07411697033814027
     },
     {
       "level": 201,
@@ -23345,12 +23345,12 @@
       "job": "assassin",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 39,
+      "kills": 49,
       "alive": true,
-      "potions": 3,
-      "P": 0.4767548459498636,
-      "C": 0.45026723298779026,
-      "B": 0.07297792106234613
+      "potions": 4,
+      "P": 0.3732446441191697,
+      "C": 0.5683850892747304,
+      "B": 0.058370266606099945
     },
     {
       "level": 201,
@@ -23381,12 +23381,12 @@
       "job": "assassin",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 49,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.4562956012877323,
-      "C": 0.47596288169713696,
-      "B": 0.06774151701513077
+      "P": 0.4655280426346429,
+      "C": 0.465519723077601,
+      "B": 0.06895223428775607
     },
     {
       "level": 201,
@@ -23489,12 +23489,12 @@
       "job": "rogue",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 40,
+      "kills": 49,
       "alive": true,
       "potions": 2,
-      "P": 0.5085355655335192,
-      "C": 0.4116909144632902,
-      "B": 0.07977352000319059
+      "P": 0.4109633570565909,
+      "C": 0.5259611159205468,
+      "B": 0.06307552702286226
     },
     {
       "level": 201,
@@ -23525,12 +23525,12 @@
       "job": "rogue",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 49,
+      "kills": 46,
       "alive": true,
       "potions": 2,
-      "P": 0.48605439839822207,
-      "C": 0.44329935142218696,
-      "B": 0.07064625017959097
+      "P": 0.5076905123092093,
+      "C": 0.41582789701183526,
+      "B": 0.07648159067895552
     },
     {
       "level": 201,
@@ -23633,12 +23633,12 @@
       "job": "priest",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 40,
+      "kills": 48,
       "alive": true,
-      "potions": 1,
-      "P": 0.6381417106112628,
-      "C": 0.27523598424264156,
-      "B": 0.08662230514609558
+      "potions": 0,
+      "P": 0.5641680463170934,
+      "C": 0.3642240847754373,
+      "B": 0.07160786890746935
     },
     {
       "level": 201,
@@ -23669,24 +23669,24 @@
       "job": "priest",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 47,
+      "kills": 45,
       "alive": true,
       "potions": 0,
-      "P": 0.6060421237328874,
-      "C": 0.3149685202123888,
-      "B": 0.0789893560547239
+      "P": 0.6193390785889833,
+      "C": 0.29918156105936955,
+      "B": 0.08147936035164717
     },
     {
       "level": 201,
       "job": "priest",
       "pair": "magic-support",
       "seed": 731,
-      "kills": 44,
+      "kills": 45,
       "alive": true,
-      "potions": 1,
-      "P": 0.602851758159003,
-      "C": 0.30436043530133244,
-      "B": 0.09278780653966445
+      "potions": 0,
+      "P": 0.5958460935019674,
+      "C": 0.31214794407438545,
+      "B": 0.09200596242364713
     },
     {
       "level": 201,
@@ -23777,12 +23777,12 @@
       "job": "monk",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 40,
+      "kills": 50,
       "alive": true,
-      "potions": 3,
-      "P": 0.5324663119520661,
-      "C": 0.3865604393657497,
-      "B": 0.0809732486821843
+      "potions": 2,
+      "P": 0.43331705948773863,
+      "C": 0.5009695037292298,
+      "B": 0.06571343678303163
     },
     {
       "level": 201,
@@ -23813,12 +23813,12 @@
       "job": "monk",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 48,
+      "kills": 47,
       "alive": true,
       "potions": 2,
-      "P": 0.4922352548695863,
-      "C": 0.43564780803895753,
-      "B": 0.07211693709145617
+      "P": 0.511011745921414,
+      "C": 0.4136197783206409,
+      "B": 0.07536847575794517
     },
     {
       "level": 201,
@@ -23921,12 +23921,12 @@
       "job": "hunter",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 35,
+      "kills": 43,
       "alive": true,
       "potions": 2,
-      "P": 0.5165361572775236,
-      "C": 0.40788403388175076,
-      "B": 0.07557980884072563
+      "P": 0.4450455837161503,
+      "C": 0.49288620897579505,
+      "B": 0.062068207308054714
     },
     {
       "level": 201,
@@ -23957,12 +23957,12 @@
       "job": "hunter",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 45,
+      "kills": 41,
       "alive": true,
       "potions": 2,
-      "P": 0.4987037572066624,
-      "C": 0.43774983354080765,
-      "B": 0.06354640925252998
+      "P": 0.5208616706105711,
+      "C": 0.4130737436256424,
+      "B": 0.06606458576378656
     },
     {
       "level": 201,
@@ -24065,12 +24065,12 @@
       "job": "performer",
       "pair": "attack-magic",
       "seed": 731,
-      "kills": 39,
+      "kills": 51,
       "alive": true,
       "potions": 35,
-      "P": 0.5841092833264099,
-      "C": 0.3492165142885809,
-      "B": 0.06667420238500926
+      "P": 0.5217147466938263,
+      "C": 0.42643711117567945,
+      "B": 0.05184814213049425
     },
     {
       "level": 201,
@@ -24101,12 +24101,12 @@
       "job": "performer",
       "pair": "magic-defense",
       "seed": 731,
-      "kills": 47,
+      "kills": 44,
       "alive": true,
       "potions": 0,
-      "P": 0.5444783955250717,
-      "C": 0.40120421150530183,
-      "B": 0.05431739296962644
+      "P": 0.5583509011601102,
+      "C": 0.3841478604753336,
+      "B": 0.05750123836455618
     },
     {
       "level": 201,
