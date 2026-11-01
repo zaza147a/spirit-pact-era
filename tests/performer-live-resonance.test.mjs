@@ -46,3 +46,10 @@ test('sound shield accumulation expires after twenty seconds instead of persisti
  c.setTime(1036002);a.playerAttack(true,'thirdStance_performer');
  assert.ok(p.shield>0,'two new performances within the window must still work');
 });
+
+test('automatic rotation uses healing melody for a wounded party even when SP is full',async()=>{
+ const {a,p}=await setup('defense-support');p.hp=Math.floor(a.stat('hp')*.5);p.mp=a.stat('mp');
+ p.autoSkills.order=['thirdUtility_performer','thirdStance_performer','thirdMain_performer'];
+ const before=p.hp;a.autoCastJobs();assert.ok(p.hp>before,'mana-kind utility must not be skipped when its melody can heal');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+});

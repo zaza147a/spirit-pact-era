@@ -2,6 +2,7 @@ name: Feature browser acceptance
 on:
   push:
     branches: [feature/humanoid-pet-evolution]
+    paths: ["dist/**", "scripts/browser/**", "scripts/balance-v24.mjs", "scripts/reference-builds-v508.mjs", ".github/workflows/browser-acceptance.yml"]
   workflow_dispatch:
 permissions:
   contents: read

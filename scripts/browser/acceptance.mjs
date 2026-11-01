@@ -42,7 +42,7 @@ try{
     assert.ok(geometry.width>0&&geometry.height>0&&geometry.naturalWidth>0);assert.equal(geometry.fit,'contain');
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'page exceeds viewport');
     await image.screenshot({path:resolve(out,`${name}-${rank}-${pair}.png`)});
-    if(index===0)await page.screenshot({path:resolve(out,`${name}-${rank}-screen.png`),fullPage:true});
+    if(index===0){await page.screenshot({path:resolve(out,`${name}-${rank}-viewport.png`)});await page.screenshot({path:resolve(out,`${name}-${rank}-screen.png`),fullPage:true});}
     rows.push({viewport:name,rank,pair,src,name:trueFormName(pet),geometry});
    }
    await page.locator('#saveBtn').click();await page.locator('#returnEntryBtn').click();
@@ -52,7 +52,7 @@ try{
   await page.locator('#evolutionModal').waitFor({state:'visible',timeout:15000});
   await page.locator('#evolutionClose').waitFor({state:'visible'});
   await page.waitForFunction(()=>!document.querySelector('#evolutionClose').disabled);
-  await page.screenshot({path:resolve(out,`${name}-loyalty-reveal.png`),fullPage:true});await page.locator('#evolutionClose').click();
+  await page.screenshot({path:resolve(out,`${name}-loyalty-viewport.png`)});await page.screenshot({path:resolve(out,`${name}-loyalty-reveal.png`),fullPage:true});await page.locator('#evolutionClose').click();
   await page.locator('#area [data-open="enhancement"]').click();
   for(const rank of ['S','SS','SSS']){
    for(const slot of ['head','body','shoes'])await page.locator(`[data-enhance-pet="${slot}"]`).click();
@@ -74,10 +74,17 @@ try{
   const input=page.locator('[data-autobuy-target="hp"]');await input.fill('37');await input.focus();
   await page.waitForTimeout(1500);assert.equal(await input.inputValue(),'37');assert.equal(await input.evaluate(el=>document.activeElement===el),true);
   await page.screenshot({path:resolve(out,`${name}-battle-input.png`),fullPage:true});
-  await page.locator('#returnEntryBtn').click();await page.reload();
+  await page.locator('#saveBtn').click();await page.close();
+  await new Promise(resolve=>setTimeout(resolve,11000));
+  page=await context.newPage();attach(page);await page.goto(base);
+  await page.locator('[data-slot-select="3"]').click();await page.locator('#enterGameBtn').click();
+  await page.locator('#offlineModal').waitFor({state:'visible',timeout:30000});
+  assert.ok((await page.locator('#offlineContent').innerText()).includes('實際掛機'));
+  await page.screenshot({path:resolve(out,`${name}-offline-restore.png`)});
+  await page.locator('#offlineClose').click();await page.locator('#returnEntryBtn').click();await page.reload();
   for(const name of ['QA-S','QA-SS','QA-SSS','QA-A'])await page.getByRole('heading',{name,exact:true}).waitFor();
   await context.close();
  }
  assert.equal(rows.length,72);assert.equal(errors.length,0,JSON.stringify(errors));
 }finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({rows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus. Mobile is Chromium viewport emulation, not a physical handset.'},null,2));}
-console.log('Browser acceptance passed: '+rows.length+' displayed stage sprites, four slots, paid evolution, backup and live input.');
+console.log('Browser acceptance passed: '+rows.length+' displayed stage sprites, four slots, paid evolution, backup, offline restore and live input.');
