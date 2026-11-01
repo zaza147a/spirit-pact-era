@@ -171,7 +171,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "影殺後星砲追擊"
   },
   "assassin/magic-support": {
-    "event": "skill",
+    "event": "thirdHit_assassin",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "閃襲後追加魔力飛刃"
@@ -183,7 +183,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "殘血時護壁並反襲"
   },
   "rogue/attack-magic": {
-    "event": "skill",
+    "event": "thirdHit_rogue",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "掠刃追加元素炸裂"
@@ -201,7 +201,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "技能刷新時召喚獵擊"
   },
   "rogue/magic-defense": {
-    "event": "skill",
+    "event": "thirdHit_rogue",
     "payload": "haste",
     "threshold": 1,
     "description": "影擊觸發星陣連射"
@@ -219,7 +219,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "閃避後聖域追擊"
   },
   "priest/attack-magic": {
-    "event": "skill",
+    "event": "thirdHit_priest",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "聖光觸發龍焰但限頻"
@@ -237,7 +237,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "祈禱增益改為獵歌協攻"
   },
   "priest/magic-defense": {
-    "event": "skill",
+    "event": "thirdHit_priest",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "聖光凝聚玄星炮"
@@ -327,7 +327,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "護壁維持射擊後反狙"
   },
   "performer/attack-magic": {
-    "event": "skill",
+    "event": "thirdHit_performer",
     "payload": "elementBurn",
     "threshold": 1,
     "description": "音波引燃元素節奏"
@@ -345,7 +345,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "戰歌追加獵魂追擊"
   },
   "performer/magic-defense": {
-    "event": "skill",
+    "event": "thirdHit_performer",
     "payload": "arcaneStrike",
     "threshold": 1,
     "description": "音波轉化結界砲擊"
