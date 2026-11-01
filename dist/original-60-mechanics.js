@@ -99,7 +99,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "結界存法術後砲擊"
   },
   "wizard/magic-support": {
-    "event": "skill",
+    "event": "thirdWideHit_wizard",
     "payload": "manaRefund",
     "threshold": 1,
     "description": "星雨擴散並回流 SP"
@@ -153,13 +153,13 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "暴擊附元素灼燒"
   },
   "assassin/attack-defense": {
-    "event": "skill",
+    "event": "thirdHit_assassin",
     "payload": "armorBreak",
     "threshold": 1,
     "description": "突刺破甲後處刑"
   },
   "assassin/attack-support": {
-    "event": "skill",
+    "event": "thirdHit_assassin",
     "payload": "comboLeech",
     "threshold": 2,
     "description": "汲血連斬疊斬殺印"
@@ -189,7 +189,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "掠刃追加元素炸裂"
   },
   "rogue/attack-defense": {
-    "event": "skill",
+    "event": "thirdHit_rogue",
     "payload": "armorBreak",
     "threshold": 1,
     "description": "偷襲破甲與反擊"
@@ -297,7 +297,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "description": "鷹擊點燃龍焰標記"
   },
   "hunter/attack-defense": {
-    "event": "skill",
+    "event": "thirdHit_hunter",
     "payload": "armorBreak",
     "threshold": 1,
     "description": "貫穿箭附破甲反擊"

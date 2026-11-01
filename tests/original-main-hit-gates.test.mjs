@@ -32,3 +32,34 @@ test('seven signature strikes require a successful third-job main hit, not an ar
   assert.equal(foe.hp,after,key+' should respect the shared resonance cooldown');
  }
 });
+
+test('five more original pacts require their named lance, ambush or star-rain hit',async()=>{
+ const gated=[
+  ['wizard','magic-support','thirdWideHit_wizard',1],
+  ['assassin','attack-defense','thirdHit_assassin',1],
+  ['assassin','attack-support','thirdHit_assassin',2],
+  ['rogue','attack-defense','thirdHit_rogue',1],
+  ['hunter','attack-defense','thirdHit_hunter',1]
+ ];
+ for(const [job,pair,event,needed] of gated){
+  const c=await runtime(),a=c.api,p=a.normalize(a.fresh('staged-attack',job));
+  Object.assign(p,{level:150,reborn:true,thirdJob:true,jobLevel:70,location:'starshore'});
+  const pet=c.makePet('fang');
+  Object.assign(pet,{id:'staged-'+job+pair,rarity:'mythic',ascended:true,level:150,evolution:4,fusion:{main:pair.split('-')[0],sub:pair.split('-')[1]}});
+  p.pets=[pet];p.activePetId=pet.id;
+  const foe={id:'world_151',map:'starshore',level:151,hp:1e9,maxHp:1e9,def:100,atk:0,hit:0,flee:0,instanceId:'staged-foe'};
+  a.setup(p,foe);p.hp=a.stat('hp');p.mp=Math.floor(a.stat('mp')*.5);pet.hp=c.petStats(pet).hp;
+  assert.equal(THIRD_FUSION_RULES[job][pair].events[0],event,job+'/'+pair);
+  a.beginReport();a.emitEvent('skill');a.emitEvent('thirdFinish_'+job);
+  assert.equal(a.state().classBuffs.pact,undefined,job+'/'+pair+' wrongly triggered from unrelated skills');
+  for(let n=1;n<=needed;n++){
+   a.emitEvent(event);
+   assert.equal(!!a.state().classBuffs.pact,n===needed,job+'/'+pair+' violated its staged hit threshold');
+  }
+  if(job==='wizard')assert.ok(p.mp>Math.floor(a.stat('mp')*.5),'star rain must restore SP after its wide hit');
+  else if(pair==='attack-defense')assert.ok(foe.exposedUntil>1e6,job+'/'+pair+' should cause armor exposure');
+  else assert.ok(a.state().petEffects.markHits>0,'two-hit blood chain must mark its execution target');
+  const after=foe.hp;a.emitEvent(event);
+  assert.equal(foe.hp,after,job+'/'+pair+' bypassed its cooldown');
+ }
+});
