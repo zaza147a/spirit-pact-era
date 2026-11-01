@@ -84,3 +84,7 @@
 ### 曙界12有序融合×十職業的全面現金回歸
 
 `scripts/audit-dawn-fusion-economy.mjs` 與 `docs/dawn-fusion-economy-matrix.json` 完成201／210級×12有序融合×十職業×雙seed、**480組實際60秒離線農怪**，一律人寵SSS、契印0。201及210各240/240現金收入大於等於藥水替換價、淨金幣非負、存活、保留契印素材，無提前停止。最低餘裕是賢者魔法／輔助：201級1.25倍、210級1.31倍（皆seed42），建議長時/更多seed加測；`tests/dawn-fusion-economy-acceptance.test.mjs`鎖定矩陣的480組完整性及逐配置通過條件。這仍不是六選三全組合、不同星鑄階或24小時經濟的最終保證。
+
+### 最薄弱配置的30分鐘長時補給與背包回歸
+
+`scripts/audit-dawn-longhaul-economy.mjs`／`docs/dawn-longhaul-economy.json` 針對前述最吃緊的賢者魔法／輔助，201／210級×seed42／137共四組，使用SSS人寵裝、契印0，實際完整運行30分鐘離線模擬。每組約680隻怪、保留約680份曙界素材、沒有復活、沒有背包停止，最小金幣收入／藥水替換成本為201級seed137的1.177倍；四組淨金幣收益均正。`tests/dawn-longhaul-economy-acceptance.test.mjs`鎖定此結果。**高階6小時及24小時實戰模擬因計算成本高尚未完成**，只有原有一般角色24小時上限單元測試；不得以本30分鐘驗收冒充高階24小時全流程。
