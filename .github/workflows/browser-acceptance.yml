@@ -28,6 +28,10 @@ jobs:
         run: npx playwright install --with-deps ${{ matrix.engine }}
       - name: Export disposable saves for physical device acceptance
         run: node scripts/browser/export-device-fixtures.mjs
+      - name: Test shared warehouse and concurrent character transfers
+        env:
+          BROWSER_ENGINE: ${{ matrix.engine }}
+        run: node scripts/browser/warehouse-acceptance.mjs
       - name: Test actual feature app without deploying
         env:
           BROWSER_ENGINE: ${{ matrix.engine }}
