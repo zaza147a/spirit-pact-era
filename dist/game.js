@@ -83,7 +83,7 @@ let originalPactHitCount=0;
 let resonanceUsedAt=new Map();
 let originalPactCounters=new Map();
 let petEffects={bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0};
-function clearPetEffects(){timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.wizardWardChargeUntil=0;timers.wizardWardChargedAt=0;timers.wizardWardChargedPetId=null;timers.soundShieldCharge=0;timers.soundShieldUntil=0;timers.knightBrokenShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();timers.originalStackCount=0;delete classBuffs.pact;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};petSkillTimers={};timers.petAbility=gameNow()-12000;}
+function clearPetEffects(){timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.wizardWardChargeUntil=0;timers.wizardWardChargedAt=0;timers.wizardWardChargedPetId=null;timers.soundShieldCharge=0;timers.soundShieldUntil=0;timers.knightBrokenShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();delete classBuffs.pact;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};petSkillTimers={};timers.petAbility=gameNow()-12000;}
 
 function fresh(name,job){const c=CLASSES[job];const p={version:51,name,job,location:'petland',level:1,xp:0,jobLevel:1,jobXp:0,jobPoints:0,jobSkills:initialJobSkills(job),equippedJobSkill:Object.keys(initialJobSkills(job))[0],gold:90,hp:c.hp,mp:c.mp,kills:0,bag:[{id:'med',qty:2},{id:'cell',qty:1},{id:'orb',qty:3}],gear:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),attributes:{STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1},statPoints:0,cards:[],sockets:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),pets:[],activePetId:null,petBook:{},resonance:0,shield:0,battleHistory:[],autoUltimate:true,autoEscapeBoss:false,autoPotions:{playerHp:true,playerSp:true,petHp:true,petSp:true},autoSalvage:false,salvageMaxRarity:'rare',salvageMaxTier:3,salvageStat:'STR',salvageStatBelow:3,keepRarity:true,keepTier:true,keepStat:false,salvageMatchMode:'any'};const id=SECOND_JOBS[job]?.weapon||({swordsman:'blade',mage:'oneStaff',acolyte:'mace',thief:'rifle',archer:'shortBow'})[job];p.gear.rightHand=rollGear(id,1,'common');return p;}
 function normalizeCards(cards){const result=[];for(const entry of cards||[]){const id=typeof entry==='string'?entry:entry?.id;if(!CARDS[id])continue;const qty=typeof entry==='string'?1:Math.max(1,Math.floor(entry.qty||1));const found=result.find(x=>x.id===id);if(found)found.qty+=qty;else result.push({id,qty});}return result;}
@@ -309,8 +309,14 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   petEffects.markHits=Math.max(petEffects.markHits||0,2);return true;
  }
  if(kind==='stackStrike'){
-  const power=1+Math.min(3,Number(timers.originalStackCount||0))*.18;
-  timers.originalStackCount=Math.min(3,(timers.originalStackCount||0)+1);
+  // Stack progress belongs to the specific original contract and companion.
+  // A different fusion/pet must not inherit another build's charged strike,
+  // and an idle stack expires rather than staying fully charged forever.
+  const stackKey='stack|'+player.job+'|'+pet.id+'|'+pet.fusion?.main+'-'+pet.fusion?.sub;
+  const previous=originalPactCounters.get(stackKey);
+  const count=previous&&previous.until>=now?previous.count:0;
+  const power=1+Math.min(3,count)*.18;
+  originalPactCounters.set(stackKey,{count:Math.min(3,count+1),until:now+8000});
   return dealPetDamage(hitDamage((st.atk*.65+st.matk*.4)*power,primary.def*.7),'resonanceDamage')>0;
  }
  if(kind==='splash'){

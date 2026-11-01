@@ -111,6 +111,20 @@ test('two-hit accumulation never leaks between active pets after swapping',async
  a.emitEvent('damageTaken');assert.ok(foe.hp<1e9);
 });
 
+test('original stacked resonance strike belongs to its own pet and expires after inactivity',async()=>{
+ const {a,c,p,foe}=await scenario('knight','attack-magic');
+ const hit=()=>{const before=foe.hp;a.emitEvent('thirdHit_knight');a.emitEvent('thirdHit_knight');return before-foe.hp;};
+ const first=hit();assert.ok(first>0);
+ c.setTime(1004001);const stacked=hit();
+ assert.ok(stacked>first,'a continuing eight-second combo increases its own strike');
+ const other=c.makePet('fang');Object.assign(other,{id:'fresh-stack',level:150,rarity:'mythic',ascended:true,evolution:4,fusion:{main:'attack',sub:'magic'}});
+ other.hp=c.petStats(other).hp;p.pets.push(other);a.setPet('fresh-stack');
+ c.setTime(1008002);const separate=hit();
+ assert.ok(Math.abs(separate-first)<first*.01,'new companion must not inherit another pet’s stack');
+ c.setTime(1020000);const expired=hit();
+ assert.equal(expired,separate,'an inactive combo must restart from its own base damage');
+});
+
 test('swapping fused companions cannot bypass the shared combat resonance cooldown',async()=>{
  const {a,c,p,foe}=await scenario('knight','defense-support');
  a.beginReport();a.emitEvent('damageTaken');
