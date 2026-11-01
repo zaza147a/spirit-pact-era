@@ -225,3 +225,55 @@ test('wizard stores incoming hits as delayed magic and releases once on successf
  assert.equal(foe.hp,after,'a stored spell cannot discharge twice');
  assert.ok(a.state().report.metrics.resonanceDamage>0);
 });
+
+test('royal guard block triggers its stored magic cannon from a real incoming monster hit',async()=>{
+ const {a,c,foe}=await scenario('crusader','magic-defense');
+ a.beginReport();foe.atk=500;foe.hit=1e7;
+ c.chooseMonsterTarget=()=> 'player';c.Math.random=()=>0;
+ const hp=foe.hp;
+ a.enemyAttack();
+ assert.ok(foe.hp<hp,'a real shield block must trigger the configured magic cannon');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+ const after=foe.hp;
+ a.enemyAttack();
+ assert.equal(foe.hp,after,'immediate second block must not bypass the resonance cooldown');
+});
+
+test('rogue sanctuary chase triggers from a real dodge, never from a hit',async()=>{
+ const {a,c,foe}=await scenario('rogue','defense-support');
+ a.beginReport();foe.atk=500;foe.hit=1;
+ c.chooseMonsterTarget=()=> 'player';c.Math.random=()=>1;
+ const health=a.state().player.hp,initial=foe.hp;
+ a.enemyAttack();
+ assert.equal(a.state().player.hp,health,'the triggering attack must actually miss the owner');
+ assert.ok(foe.hp<initial,'a successful dodge must create a sanctuary counterattack');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+});
+
+test('knight armor break needs a real monster-shattered shield before lance contact',async()=>{
+ const {a,c,p,foe}=await scenario('knight','attack-defense');
+ foe.atk=100;foe.hit=1e7;
+ c.chooseMonsterTarget=()=> 'player';c.Math.random=()=>0;
+ p.shield=1;
+ a.enemyAttack();
+ assert.equal(p.shield,0,'incoming damage must actually consume the shield');
+ assert.equal(foe.exposedUntil,undefined,'shield break arms the lance but is not the armor break itself');
+ a.emitEvent('thirdHit_knight');
+ assert.ok(foe.exposedUntil>1e6,'the subsequent lance should shatter enemy armor');
+});
+
+test('wizard stored retaliatory spell is charged by real owner damage and spent once on its hit',async()=>{
+ const {a,c,foe}=await scenario('wizard','attack-defense');
+ foe.atk=100;foe.hit=1e7;
+ c.chooseMonsterTarget=()=> 'player';c.Math.random=()=>0;
+ a.beginReport();
+ const hp=foe.hp;
+ a.enemyAttack();
+ assert.equal(foe.hp,hp,'being hit stores magic instead of dealing premature magic damage');
+ c.setTime(1001000);a.enemyAttack();
+ assert.equal(foe.hp,hp,'two incoming hits charge magic without premature damage');
+ a.emitEvent('thirdHit_wizard');
+ assert.ok(foe.hp<hp,'a later offensive hit releases stored damage');
+ const after=foe.hp;a.emitEvent('thirdHit_wizard');
+ assert.equal(foe.hp,after,'the stored damage is consumed after one hit');
+});
