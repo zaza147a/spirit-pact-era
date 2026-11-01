@@ -42,6 +42,19 @@ test('wizard ward charge expires and cannot be stolen by swapping fused companio
  b.emitEvent('skill');d.setTime(1010001);b.emitEvent('skill');
  assert.equal(expired.hp,1e9,'an expired ward must not release delayed damage');
 });
+test('priest surplus healing becomes a bounded three-target star rain, never duplicate damage',async()=>{
+ const {a,p,foe}=await scenario('priest','magic-support');
+ p.firstJobLevel=50;p.jobSkills.heal=10;p.hp=a.stat('hp');
+ const other={...foe,instanceId:'priest-other',hp:1e9,maxHp:1e9};
+ const third={...foe,instanceId:'priest-third',hp:1e9,maxHp:1e9};
+ const fourth={...foe,instanceId:'priest-fourth',hp:1e9,maxHp:1e9};
+ a.setEnemies([foe,other,third,fourth]);a.beginReport();
+ a.playerAttack(true,'heal');
+ for(const target of [foe,other,third])assert.ok(target.hp<1e9,`${target.instanceId} missed the rain`);
+ assert.equal(fourth.hp,1e9,'rain is limited to three distinct enemies');
+ assert.ok(a.state().report.metrics.resonanceDamage>0,'star rain must be recorded as resonance damage');
+ assert.equal(a.state().report.metrics.playerHeal,0,'surplus is not free effective healing');
+});
 test('crusader siege counter requires two real hit events',async()=>{
  const {a,foe}=await scenario('crusader','attack-defense');
  a.emitEvent('damageTaken');assert.equal(foe.hp,1e9);

@@ -231,8 +231,16 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   const overflow=Math.max(0,Number(timers.pendingOriginalOverheal)||0);
   timers.pendingOriginalOverheal=0;
   if(!overflow)return false;
-  const amount=hitDamage(Math.min(overflow*.45,st.matk*3),primary.def*.2);
-  return dealPetDamage(amount,'resonanceDamage')>0;
+  const power=Math.min(overflow*.45,st.matk*3),selected=enemy;
+  const targets=[primary,...enemies.filter(foe=>foe!==primary&&foe.hp>0)].slice(0,3);
+  let dealt=0;
+  for(const [index,foe] of targets.entries()){
+   if(!foe.hp)continue;
+   enemy=foe;
+   dealt+=dealPetDamage(hitDamage(power*[1,.65,.45][index],monsterDefenseAgainst(foe,true)),'resonanceDamage');
+  }
+  enemy=selected;
+  return dealt>0;
  }
  // Mechanics shared by original sixty contracts; each contract has its own event,
  // timing and source text while drawing from the same verified combat primitives.
