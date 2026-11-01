@@ -15,7 +15,7 @@ const server=createServer(async(req,res)=>{
 });
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
 const engine=process.env.BROWSER_ENGINE||'chromium';assert.ok(['chromium','webkit'].includes(engine));
-const browser=await ({chromium,webkit})[engine].launch({headless:true});const rows=[],errors=[];
+const browser=await ({chromium,webkit})[engine].launch({headless:true});const rows=[],errors=[],touchRows=[];
 try{
  for(const [name,viewport] of [['desktop',{width:1440,height:1000}],['mobile',{width:390,height:844}]]){
   const context=await browser.newContext({viewport,acceptDownloads:true,...(name==='mobile'?{isMobile:true,hasTouch:true}:{})});
@@ -47,6 +47,29 @@ try{
     rows.push({viewport:name,rank,pair,src,name:trueFormName(pet),geometry});
    }
    await page.locator('#saveBtn').click();await page.locator('#returnEntryBtn').click();
+  }
+  // Exercise the actual touch-event path in the mobile browser context.
+  // Resizing a viewport does not prove physical device or OS keyboard behavior.
+  if(name==='mobile'){
+   for(const viewport of [{width:320,height:568},{width:360,height:800},{width:430,height:932},{width:844,height:390}]){
+    await page.setViewportSize(viewport);
+    await page.evaluate(()=>{globalThis.qaTouches={start:0,end:0,pointer:0};if(globalThis.qaTouchProbeInstalled)return;globalThis.qaTouchProbeInstalled=true;document.addEventListener('touchstart',()=>qaTouches.start++,{passive:true});document.addEventListener('touchend',()=>qaTouches.end++,{passive:true});document.addEventListener('pointerup',e=>{if(e.pointerType==='touch')qaTouches.pointer++;});});
+    await page.locator('[data-slot-select="0"]').tap();await page.locator('#enterGameBtn').tap();
+    await page.locator('[data-tab="pets"]').tap();await page.locator('[data-pet-section="active"]').tap();
+    const art=page.locator('#side img.companion-art').first();await art.scrollIntoViewIfNeeded();await art.evaluate(img=>img.decode());
+    assert.equal(await art.getAttribute('src'),'assets/true-forms/S/attack-magic.webp');
+    await page.locator('[data-tab="settings"]').tap();
+    const target=page.locator('[data-autobuy-target="hp"]');await target.tap();await target.fill('37');
+    await page.waitForTimeout(500);assert.equal(await target.inputValue(),'37');
+    assert.ok(await target.evaluate(el=>document.activeElement===el));
+    await page.locator('#saveBtn').tap();
+    const state=await page.evaluate(()=>({touches:{...qaTouches},maxTouchPoints:navigator.maxTouchPoints,innerWidth,scrollWidth:document.documentElement.scrollWidth}));
+    assert.ok(state.maxTouchPoints>0&&state.touches.start>=7&&state.touches.end>=7,'tap must generate actual touch events');
+    assert.ok(state.scrollWidth<=state.innerWidth+1,'touch layout exceeds viewport');
+    await page.screenshot({path:resolve(out,`touch-${viewport.width}x${viewport.height}.png`)});
+    await page.locator('#returnEntryBtn').tap();touchRows.push({...viewport,...state});
+   }
+   await page.setViewportSize({width:390,height:844});
   }
   // Actual loyalty reveal, followed by paid A→S→SS→SSS pet enhancement clicks.
   await page.locator('[data-slot-select="3"]').click();await page.locator('#enterGameBtn').click();
@@ -111,6 +134,6 @@ try{
   assert.equal(stopped.offline.enabled,false);
   await context.close();
  }
- assert.equal(rows.length,72);assert.equal(errors.length,0,JSON.stringify(errors));
-}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({engine,rows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Mobile is browser viewport emulation, not a physical handset; WebKit is an engine check, not physical Safari.'},null,2));}
+ assert.equal(touchRows.length,4);assert.equal(rows.length,72);assert.equal(errors.length,0,JSON.stringify(errors));
+}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({engine,rows,touchRows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Touch taps at320/360/430/844 widths verify actual touch events, tabs, input focus, save and no horizontal overflow. Mobile is browser viewport emulation, not a physical handset; WebKit is an engine check, not physical Safari.'},null,2));}
 console.log('Browser acceptance passed: '+rows.length+' displayed stage sprites, four slots, paid evolution, backup, offline restore and live input.');
