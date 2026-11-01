@@ -40,5 +40,5 @@ const summary=jobs.map(job=>({job,byPair:pairs.map(pair=>{
 })}));
 const wins=rows.filter(r=>r.won);
 const report={conditions:'Actual consecutive five Lv191 Worldroot bosses with legal unenhanced Lv200 prior-tier mythic owner+pet gear; all 20 of six-choose-three pet skill sets for each of six canonical fusion roles and representative crusader/wizard/sage third jobs, one seed 731, 600-second window; further jobs/seeds/gear remain pending.',count:rows.length,wins:wins.length,medianWinSeconds:median(wins.map(r=>r.seconds)),summary,rows};
-writeFileSync('docs/five-boss-skill-combos.json',JSON.stringify(report,null,2)+'\n');
+writeFileSync(process.argv.includes('--tuned')?'docs/five-boss-skill-combos-tuned.json':'docs/five-boss-skill-combos.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({count:report.count,wins:report.wins,medianWinSeconds:report.medianWinSeconds,summary},null,2));

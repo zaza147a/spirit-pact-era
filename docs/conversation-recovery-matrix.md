@@ -98,3 +98,7 @@
 ### 五王連戰的六選三技能組合實測（部分未達標）
 
 `scripts/audit-five-boss-skill-combos.mjs`／`docs/five-boss-skill-combos.json` 以合法未強化Lv200前一階神話裝、600秒完整五王連戰，測試聖殿／法師／賢者三代表職業×六代表融合×全部20種三選配法，seed731共360組：**348勝、12敗，勝場中位277.34秒**。11組防禦＋輔助配法皆存活但600秒內只打完四王，1組法師攻魔配法在打到第三王時死亡。`scripts/audit-five-boss-failure-seeds.mjs`另對12敗例用seed42及137重跑24場，只有5勝；多數防輔弱輸出是可重現的配置問題，不應列為完成。`tests/five-boss-skill-combos-audit.test.mjs`保證所有選法、敗例及額外雙seed稽核沒有漏項。**待修**：防輔偏保護的極端技能組合五王時間太慢，需在保持防禦／輸出定位及已通過的地圖、210首領平衡下，評估技能選擇指引或有限度的補足；法師攻魔另須多seed生存確認。不以此代表十職業×十二融合所有強化與配點已驗收。
+
+### 防輔弱輸出修正與跨系統無退步回歸
+
+`dist/pet-effects.js` 對「防禦主＋輔助副」融合的**夥伴直接傷害**設有限度係數1.35，不調整治療、盾量、其他12有序角色定位或契印增益。`docs/five-boss-skill-combos-tuned.json` 完整360場五王組合從348勝升至**355勝**，此前能勝的組合沒有變敗；12個原始敗例的額外24場雙seed由5勝升至18勝（`docs/five-boss-skill-failure-tuned.json`），**仍有法師防輔等5個主矩陣配置未通關**，不能標示全部20技能平衡完成。`docs/prepared-dawn-boss-tuned-boundary.json` 以人寵SSS、契印0／IV的720場真首領複核，0階從128/360升至139/360、IV維持360/360、**0例原有勝場轉敗**；`docs/map-class-pcb-201-defense-support-tuned.json` 在201 SSS裝的360場全數生存，十職業最佳已測融合清怪差7.09%（仍低於25%）。`tests/defense-support-tuning-acceptance.test.mjs`固定這些跨系統不退步門檻。未驗項目仍包含多配點、其他十職業／有序融合的六選三五王矩陣。

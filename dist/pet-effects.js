@@ -20,6 +20,9 @@ export function fusionDirectOutputFactor(pet){
  const {main,sub}=pet.fusion;
  if(main==='attack'&&sub==='magic')return 1.6;
  if(main==='magic'&&sub==='defense')return .9;
+ // Guardian-healer builds retain lower direct output, but cannot stall the
+ // last trial boss indefinitely when all three equipped skills are defensive.
+ if(main==='defense'&&sub==='support')return 1.35;
  return 1;
 }
 export const petOffensivePower=(s,role)=>petOffense(s,role);

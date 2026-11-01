@@ -6,7 +6,7 @@ import {damageSplitPcb} from '../dist/contribution.js';
 
 const jobs=Object.keys(SECOND_JOBS),roles=['attack','magic','defense','support'],pairs=Object.keys(FUSION_PAIRS);
 const tiers=[[99,90],[110,90],[130,110],[150,130],[160,150],[180,170],[200,190],[201,200]];
-const selectedTiers=process.argv.includes('--201-only')?tiers.filter(([level])=>level===201):process.argv.includes('--200-only')?tiers.filter(([level])=>level===200):process.argv.includes('--focus')?tiers.filter(([level])=>[99,130,150].includes(level)):tiers;
+const selectedTiers=process.argv.includes('--201-only')?tiers.filter(([level])=>level===201):process.argv.includes('--focus')?tiers.filter(([level])=>[99,130,150].includes(level)):tiers;
 const cases=[];
 for(const [level,gearLevel] of selectedTiers)for(const seed of [42,137,731])for(const job of jobs)
  for(const pair of level>=151?pairs:roles)cases.push({level,job,pair,seed,
@@ -50,5 +50,5 @@ const summary=selectedTiers.map(([level])=>{const a=rows.filter(r=>r.level===lev
   bestBuildJobGap:bestValues.at(-1)/Math.max(.01,bestValues[0])-1,slowest:perJob.find(r=>r.best.kills===bestValues[0]),fastest:perJob.find(r=>r.best.kills===bestValues.at(-1)),perJob};
 });
 const output={conditions:'120s real combatTick, 3 seeds, previous-tier gear, 10 jobs and 4/12 companion choices. 201 uses mandatory SSS player+pet equipment with sigil 0 at the start of farming; best available pet choice per job, not exhaustive skill-order/attribute optimization.',count:rows.length,summary,rows};
-writeFileSync(process.argv.includes('--post-smoothing')?'docs/map-class-pcb-post-smoothing.json':process.argv.includes('--200-only')?'docs/map-class-pcb-200-smoothing-recheck.json':process.argv.includes('--batch-recheck')?'docs/map-class-pcb-batch-recheck.json':process.argv.includes('--execution-recheck')?'docs/map-class-pcb-201-execution-recheck.json':process.argv.includes('--signature-recheck')?'docs/map-class-pcb-201-signature-recheck.json':process.argv.includes('--201-only')?'docs/map-class-pcb-201-sss-audit.json':process.argv.includes('--focus')?'docs/map-class-pcb-focus-audit.json':'docs/map-class-pcb-audit.json',JSON.stringify(output,null,2)+'\n');
+writeFileSync(process.argv.includes('--tuned-201')?'docs/map-class-pcb-201-defense-support-tuned.json':process.argv.includes('--batch-recheck')?'docs/map-class-pcb-batch-recheck.json':process.argv.includes('--execution-recheck')?'docs/map-class-pcb-201-execution-recheck.json':process.argv.includes('--signature-recheck')?'docs/map-class-pcb-201-signature-recheck.json':process.argv.includes('--201-only')?'docs/map-class-pcb-201-sss-audit.json':process.argv.includes('--focus')?'docs/map-class-pcb-focus-audit.json':'docs/map-class-pcb-audit.json',JSON.stringify(output,null,2)+'\n');
 console.log(JSON.stringify({count:rows.length,summary:summary.map(({perJob,...r})=>r)},null,2));

@@ -17,7 +17,8 @@ test('ordered fusion roles have distinct direct-offense budgets without fixed 50
  const f=(main,sub)=>fusionDirectOutputFactor({fusion:{main,sub}});
  assert.ok(f('attack','magic')>f('attack','defense'));
  assert.ok(f('magic','attack')>f('magic','defense'));
- assert.equal(f('defense','support'),1);
+ assert.equal(f('defense','support'),1.35,'limited guardian-healer direct offense prevents no-damage trial stalls');
+ assert.ok(f('defense','support')<f('attack','magic'),'guardian-healer remains below pure offense');
  assert.equal(f('support','defense'),1);
  assert.equal(fusionDirectOutputFactor({}),1);
 });

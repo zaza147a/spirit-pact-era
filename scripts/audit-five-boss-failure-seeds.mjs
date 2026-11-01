@@ -25,5 +25,5 @@ const groups=failed.map(f=>{const extra=rows.filter(r=>r.job===f.job&&r.pair===f
  return {job:f.job,pair:f.pair,choice:f.choice,winsIncludingBaseline:extra.filter(r=>r.won).length,additionalRuns:extra};
 });
 const report={conditions:'12 six-choose-three configurations that failed the 600s Worldroot five-boss chain at seed 731, repeated under seeds 42 and 137 with identical legal level-200 unenhanced gear and skills.',cases:rows.length,wins:rows.filter(r=>r.won).length,groups,rows};
-writeFileSync('docs/five-boss-skill-failure-recheck.json',JSON.stringify(report,null,2)+'\n');
+writeFileSync(process.argv.includes('--tuned')?'docs/five-boss-skill-failure-tuned.json':'docs/five-boss-skill-failure-recheck.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({cases:report.cases,wins:report.wins,groups:groups.map(({additionalRuns,...group})=>group)},null,2));
