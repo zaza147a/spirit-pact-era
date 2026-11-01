@@ -1,0 +1,236 @@
+{
+  "sourceCommit": "18d4709d726d8dbef9d93b1e6d47b3d2e6c34676",
+  "engineHash": "071ace717616a2dfba573032b1ce7fff8c29e1518ebb93eded1675b103843d02",
+  "handoffHead": "9476c49a0aa1c9228927a4467c3d43b4f5b809b9",
+  "gameplayBaseHead": "18d4709d726d8dbef9d93b1e6d47b3d2e6c34676",
+  "conditions": "Seven source-lifecycle-affected routes. seed42. Start Lv201 with reference mythic SSS owner/pet gear, zero sigil and materials, 10k gold and 25 HP/SP potions. Real 60s offline farm chunks (30min limit), natural monster selection/respawn, auto-purchase, retain materials, travel to town, pay ranks I-IV, serialize/normalize each rank, reject V before core. Travel back and force actual Archon encounter selection only; real stats and combat plus adds, 240s cap. No material/sigil/damage injection. Same farmed player continues to boss after ordinary consumed HP/SP potions in town; 4s online supply timer is driven alongside combat. No direct health/MP assignment. Not browser E2E or all skill selections.",
+  "total": 7,
+  "completed": 7,
+  "wins": 7,
+  "rows": [
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "seed": 42,
+      "startLevel": 201,
+      "endLevel": 201,
+      "farmSeconds": 720,
+      "kills": 239,
+      "earned": 35850,
+      "spent": 3040,
+      "purchased": 16,
+      "farmMaterials": {
+        "dawn_scout_fang": 73,
+        "dawn_ram_horn": 84,
+        "dawn_ray_membrane": 82
+      },
+      "required": {
+        "dawn_scout_fang": 72,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 72
+      },
+      "sigil": 4,
+      "won": true,
+      "bossSeconds": 71.12,
+      "bossRemainingHp": 0,
+      "remainingHp": 124972,
+      "core": 1,
+      "preparedHp": 132079,
+      "preparedPetHp": 3717873,
+      "remainingGold": 45660,
+      "valid": true
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "seed": 42,
+      "startLevel": 201,
+      "endLevel": 201,
+      "farmSeconds": 780,
+      "kills": 245,
+      "earned": 36750,
+      "spent": 0,
+      "purchased": 0,
+      "farmMaterials": {
+        "dawn_scout_fang": 86,
+        "dawn_ram_horn": 73,
+        "dawn_ray_membrane": 86
+      },
+      "required": {
+        "dawn_scout_fang": 72,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 72
+      },
+      "sigil": 4,
+      "won": true,
+      "bossSeconds": 94.38,
+      "bossRemainingHp": 0,
+      "remainingHp": 88976,
+      "core": 1,
+      "preparedHp": 88976,
+      "preparedPetHp": 3717873,
+      "remainingGold": 51700,
+      "valid": true
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "seed": 42,
+      "startLevel": 201,
+      "endLevel": 201,
+      "farmSeconds": 720,
+      "kills": 227,
+      "earned": 34050,
+      "spent": 0,
+      "purchased": 0,
+      "farmMaterials": {
+        "dawn_scout_fang": 80,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 75
+      },
+      "required": {
+        "dawn_scout_fang": 72,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 72
+      },
+      "sigil": 4,
+      "won": true,
+      "bossSeconds": 77.12,
+      "bossRemainingHp": 0,
+      "remainingHp": 99085,
+      "core": 1,
+      "preparedHp": 99085,
+      "preparedPetHp": 3717873,
+      "remainingGold": 47050,
+      "valid": true
+    },
+    {
+      "job": "rogue",
+      "pair": "magic-defense",
+      "seed": 42,
+      "startLevel": 201,
+      "endLevel": 201,
+      "farmSeconds": 600,
+      "kills": 257,
+      "earned": 53970,
+      "spent": 3040,
+      "purchased": 16,
+      "farmMaterials": {
+        "dawn_scout_fang": 86,
+        "dawn_ram_horn": 80,
+        "dawn_ray_membrane": 91
+      },
+      "required": {
+        "dawn_scout_fang": 72,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 72
+      },
+      "sigil": 4,
+      "won": true,
+      "bossSeconds": 59.66,
+      "bossRemainingHp": 0,
+      "remainingHp": 89534,
+      "core": 1,
+      "preparedHp": 89534,
+      "preparedPetHp": 3305405,
+      "remainingGold": 65130,
+      "valid": true
+    },
+    {
+      "job": "priest",
+      "pair": "defense-support",
+      "seed": 42,
+      "startLevel": 201,
+      "endLevel": 201,
+      "farmSeconds": 660,
+      "kills": 228,
+      "earned": 34200,
+      "spent": 0,
+      "purchased": 0,
+      "farmMaterials": {
+        "dawn_scout_fang": 77,
+        "dawn_ram_horn": 78,
+        "dawn_ray_membrane": 73
+      },
+      "required": {
+        "dawn_scout_fang": 72,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 72
+      },
+      "sigil": 4,
+      "won": true,
+      "bossSeconds": 71.4,
+      "bossRemainingHp": 0,
+      "remainingHp": 90638,
+      "core": 1,
+      "preparedHp": 90638,
+      "preparedPetHp": 3717873,
+      "remainingGold": 44160,
+      "valid": true
+    },
+    {
+      "job": "hunter",
+      "pair": "defense-support",
+      "seed": 42,
+      "startLevel": 201,
+      "endLevel": 201,
+      "farmSeconds": 780,
+      "kills": 228,
+      "earned": 34200,
+      "spent": 3040,
+      "purchased": 16,
+      "farmMaterials": {
+        "dawn_scout_fang": 77,
+        "dawn_ram_horn": 75,
+        "dawn_ray_membrane": 76
+      },
+      "required": {
+        "dawn_scout_fang": 72,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 72
+      },
+      "sigil": 4,
+      "won": true,
+      "bossSeconds": 87.84,
+      "bossRemainingHp": 0,
+      "remainingHp": 89040,
+      "core": 1,
+      "preparedHp": 89040,
+      "preparedPetHp": 3717873,
+      "remainingGold": 41270,
+      "valid": true
+    },
+    {
+      "job": "performer",
+      "pair": "magic-support",
+      "seed": 42,
+      "startLevel": 201,
+      "endLevel": 201,
+      "farmSeconds": 600,
+      "kills": 224,
+      "earned": 33600,
+      "spent": 15960,
+      "purchased": 114,
+      "farmMaterials": {
+        "dawn_scout_fang": 74,
+        "dawn_ram_horn": 77,
+        "dawn_ray_membrane": 73
+      },
+      "required": {
+        "dawn_scout_fang": 72,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 72
+      },
+      "sigil": 4,
+      "won": true,
+      "bossSeconds": 82.2,
+      "bossRemainingHp": 0,
+      "remainingHp": 52344,
+      "core": 1,
+      "preparedHp": 89162,
+      "preparedPetHp": 3004914,
+      "remainingGold": 27080,
+      "valid": true
+    }
+  ]
+}
