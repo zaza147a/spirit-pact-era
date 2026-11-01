@@ -27,7 +27,7 @@ test('eight signature strikes require a successful third-job main hit, not an ar
   assert.equal(foe.hp,1e9,key+' incorrectly did damage before the main hit');
   a.emitEvent('thirdHit_'+job);
   assert.ok(a.state().classBuffs.pact,key+' should trigger after signature contact');
-  assert.ok(foe.hp<1e9||a.state().petEffects.bleedTicks>0||a.state().classBuffs.resonanceHaste?.until>1e6,key+' should apply its signature payload');
+  assert.ok(foe.hp<1e9||a.state().petEffects.burnTicks>0||a.state().classBuffs.resonanceHaste?.until>1e6,key+' should apply its signature payload');
   const after=foe.hp;
   a.emitEvent('thirdHit_'+job);
   assert.equal(foe.hp,after,key+' should respect the shared resonance cooldown');

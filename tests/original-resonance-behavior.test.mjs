@@ -70,7 +70,7 @@ test('two-stage resonance accumulation expires after eight seconds without leaki
 });
 test('assassin fire adds three bounded damage ticks on crit event',async()=>{
  const {a}=await scenario('assassin','attack-magic');
- a.emitEvent('crit');assert.equal(a.state().petEffects.bleedTicks,3);assert.ok(a.state().petEffects.bleedPower>0);
+ a.emitEvent('crit');assert.equal(a.state().petEffects.burnTicks,3);assert.ok(a.state().petEffects.burnPower>0);
 });
 test('low-health assassin riposte will not activate until critically injured',async()=>{
  const {a,p,foe}=await scenario('assassin','defense-support');
@@ -112,34 +112,43 @@ test('resonance burn continues against its live target even if selected enemy ha
  assert.equal(dead.hp,0,'a dead enemy cannot be damaged a second time');
  assert.ok(a.state().report.metrics.resonanceDamage>0);
 });
-test('original fire burn replaces old pet bleed without inheriting its leech, power or slow tick',async()=>{
- const {a,c,p,foe}=await scenario('assassin','attack-magic');
- const effects=a.state().petEffects;
- Object.assign(effects,{bleedTicks:7,bleedPower:900000,bleedInterval:9000,bleedLeech:1,bleedSource:'petDamage',bleedTargetId:'stale'});
+test('resonance fire and companion bleed retain independent targets, rates and attribution',async()=>{
+ const {a,c,p,pet,foe}=await scenario('assassin','attack-magic');
  a.beginReport();p.hp=Math.floor(a.stat('hp')*.5);
  a.emitEvent('crit');
- assert.equal(effects.bleedTicks,3);
- assert.equal(effects.bleedInterval,1200);
- assert.equal(effects.bleedLeech,0);
- assert.equal(effects.bleedSource,'resonanceDamage');
- assert.ok(effects.bleedPower<900000,'old pet skill damage cannot become resonance damage');
- const hp=p.hp;c.setTime(1001300);a.tickPetEffects(1001300);
- assert.equal(p.hp,hp,'resonance fire is not an inherited lifesteal skill');
- assert.ok(a.state().report.metrics.resonanceDamage>0);
- assert.equal(a.state().report.metrics.petDamage,0);
- assert.ok(foe.hp<1e9);
-});
-test('pet bleed taking over fire burn credits its own damage to the pet, not resonance',async()=>{
- const {a,c,pet,foe}=await scenario('assassin','attack-magic');
- a.beginReport();a.emitEvent('crit');
- assert.equal(a.state().petEffects.bleedSource,'resonanceDamage');
+ const effects=a.state().petEffects;
+ assert.equal(effects.burnTicks,3);
+ assert.equal(effects.burnTargetId,foe.instanceId);
+ const second={...foe,instanceId:'bleed-second',hp:1e9,maxHp:1e9};
+ a.setEnemies([second,foe]);
  pet.equippedSkills=['fusion_attack-magic_4'];c.setTime(1001000);
  a.petAutoAbility(pet,c.petStats(pet),1001000);
- assert.equal(a.state().petEffects.bleedSource,undefined,'new pet bleed must discard old resonance attribution');
+ assert.equal(effects.bleedTargetId,second.instanceId);
+ assert.equal(effects.burnTargetId,foe.instanceId);
+ assert.equal(effects.burnTicks,3,'pet bleed cannot replace active fire');
+ const hp=p.hp;c.setTime(1001300);a.tickPetEffects(1001300);
+ assert.ok(foe.hp<1e9,'fire must hit its original enemy');
+ assert.equal(second.hp,1e9,'companion bleed must wait for its own interval');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+ assert.equal(a.state().report.metrics.petDamage,0);
+ assert.equal(p.hp,hp,'resonance fire cannot inherit companion lifesteal');
  c.setTime(1003200);a.tickPetEffects(1003200);
+ assert.ok(second.hp<1e9,'physical bleed must independently hit its own enemy');
  assert.ok(a.state().report.metrics.petDamage>0);
- assert.equal(a.state().report.metrics.resonanceDamage,0);
- assert.ok(foe.hp<1e9);
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
+});
+test('a dead bleed target does not cancel fire on another live enemy',async()=>{
+ const {a,c,pet,foe}=await scenario('assassin','attack-magic');
+ a.beginReport();a.emitEvent('crit');
+ const doomed={...foe,instanceId:'bleed-doomed',hp:1e9,maxHp:1e9};
+ a.setEnemies([doomed,foe]);
+ pet.equippedSkills=['fusion_attack-magic_4'];c.setTime(1001000);
+ a.petAutoAbility(pet,c.petStats(pet),1001000);
+ doomed.hp=0;
+ c.setTime(1003200);a.tickPetEffects(1003200);
+ assert.equal(a.state().petEffects.bleedTicks,0);
+ assert.ok(a.state().petEffects.burnTicks<3,'the unrelated fire still advances');
+ assert.ok(a.state().report.metrics.resonanceDamage>0);
 });
 test('two-hit accumulation never leaks between active pets after swapping',async()=>{
  const {a,c,p,pet,foe}=await scenario('crusader','attack-defense');

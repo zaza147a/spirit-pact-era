@@ -82,8 +82,8 @@ let petSkillTimers={},jobSkillTimers={};
 let originalPactHitCount=0;
 let resonanceUsedAt=new Map();
 let originalPactCounters=new Map();
-let petEffects={bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0};
-function clearPetEffects(){timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.wizardWardChargeUntil=0;timers.wizardWardChargedAt=0;timers.wizardWardChargedPetId=null;timers.soundShieldCharge=0;timers.soundShieldUntil=0;timers.knightBrokenShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();delete classBuffs.pact;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};petSkillTimers={};timers.petAbility=gameNow()-12000;}
+let petEffects={bleedTicks:0,bleedNext:0,bleedPower:0,burnTicks:0,burnNext:0,burnPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0};
+function clearPetEffects(){timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.wizardWardChargedAt=0;timers.wizardWardChargeUntil=0;timers.wizardWardChargedPetId=null;timers.soundShieldCharge=0;timers.soundShieldUntil=0;timers.knightBrokenShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();delete classBuffs.pact;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,burnTicks:0,burnNext:0,burnPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};petSkillTimers={};timers.petAbility=gameNow()-12000;}
 
 function fresh(name,job){const c=CLASSES[job];const p={version:51,name,job,location:'petland',level:1,xp:0,jobLevel:1,jobXp:0,jobPoints:0,jobSkills:initialJobSkills(job),equippedJobSkill:Object.keys(initialJobSkills(job))[0],gold:90,hp:c.hp,mp:c.mp,kills:0,bag:[{id:'med',qty:2},{id:'cell',qty:1},{id:'orb',qty:3}],gear:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),attributes:{STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1},statPoints:0,cards:[],sockets:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),pets:[],activePetId:null,petBook:{},resonance:0,shield:0,battleHistory:[],autoUltimate:true,autoEscapeBoss:false,autoPotions:{playerHp:true,playerSp:true,petHp:true,petSp:true},autoSalvage:false,salvageMaxRarity:'rare',salvageMaxTier:3,salvageStat:'STR',salvageStatBelow:3,keepRarity:true,keepTier:true,keepStat:false,salvageMatchMode:'any'};const id=SECOND_JOBS[job]?.weapon||({swordsman:'blade',mage:'oneStaff',acolyte:'mace',thief:'rifle',archer:'shortBow'})[job];p.gear.rightHand=rollGear(id,1,'common');return p;}
 function normalizeCards(cards){const result=[];for(const entry of cards||[]){const id=typeof entry==='string'?entry:entry?.id;if(!CARDS[id])continue;const qty=typeof entry==='string'?1:Math.max(1,Math.floor(entry.qty||1));const found=result.find(x=>x.id===id);if(found)found.qty+=qty;else result.push({id,qty});}return result;}
@@ -181,13 +181,35 @@ function petAutoAbility(pet,s,now){if(!auto||!player.hp||pet.hp<=0||!enemy?.hp||
   if(enemy.hp<=0)award();message(`${pet.nickname} 自動施放【${skill.name}】！${outcome}。`,'rare','pet');dirty=true;render();break;
  }
 }
-function tickPetEffects(now){if(!player?.hp||!enemies.some(e=>e.hp>0))return;if(now<petEffects.guardUntil&&now>=(petEffects.guardRegenNext||0)){const pet=activePet();if(pet?.hp>0){const restored=Math.min(Math.max(0,petStats(pet).hp-pet.hp),petEffects.guardRegen||0);pet.hp+=restored;record(report,'effectiveHeal',restored);}petEffects.guardRegenNext=now+1000;}if(petEffects.regenTicks&&now>=petEffects.regenNext){healPetParty(petEffects.regenPower);petEffects.regenTicks--;petEffects.regenNext=now+petEffects.regenInterval;}if(petEffects.bleedTicks&&now>=petEffects.bleedNext){const selected=enemy,bleedTarget=enemies.find(e=>e.instanceId===petEffects.bleedTargetId&&e.hp>0);if(!bleedTarget){petEffects.bleedTicks=0;delete petEffects.bleedSource;delete petEffects.bleedTargetId;return;}enemy=bleedTarget;const damage=dealPetDamage(petEffects.bleedPower,petEffects.bleedSource||'petDamage');enemy=selected;petEffects.bleedTicks--;if(!petEffects.bleedTicks)delete petEffects.bleedSource;petEffects.bleedNext=now+(petEffects.bleedInterval||2000);if(petEffects.bleedLeech)healPetParty(Math.round(damage*petEffects.bleedLeech));message(`🩸 裂傷持續造成 ${damage} 傷害。`,'good','pet');if(!bleedTarget.hp){enemy=bleedTarget;award();enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;}render();}}
+function tickDamageOverTime(now,lane){
+ const burning=lane==='burn',prefix=burning?'burn':'bleed',ticks=prefix+'Ticks',next=prefix+'Next',targetId=prefix+'TargetId';
+ if(!petEffects[ticks]||now<petEffects[next])return;
+ const selected=enemy,target=enemies.find(e=>e.instanceId===petEffects[targetId]&&e.hp>0);
+ if(!target){petEffects[ticks]=0;delete petEffects[targetId];return;}
+ enemy=target;
+ const damage=dealPetDamage(petEffects[prefix+'Power'],burning?'resonanceDamage':'petDamage');
+ enemy=selected;petEffects[ticks]--;
+ petEffects[next]=now+(burning?1200:(petEffects.bleedInterval||2000));
+ if(!burning&&petEffects.bleedLeech)healPetParty(Math.round(damage*petEffects.bleedLeech));
+ message((burning?'🔥 灼燒':'🩸 裂傷')+'持續造成 '+damage+' 傷害。','good','pet');
+ if(!target.hp){enemy=target;award();enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;}
+ render();
+}
+function tickPetEffects(now){
+ if(!player?.hp||!enemies.some(e=>e.hp>0))return;
+ if(now<petEffects.guardUntil&&now>=(petEffects.guardRegenNext||0)){
+  const pet=activePet();if(pet?.hp>0){const restored=Math.min(Math.max(0,petStats(pet).hp-pet.hp),petEffects.guardRegen||0);pet.hp+=restored;record(report,'effectiveHeal',restored);}
+  petEffects.guardRegenNext=now+1000;
+ }
+ if(petEffects.regenTicks&&now>=petEffects.regenNext){healPetParty(petEffects.regenPower);petEffects.regenTicks--;petEffects.regenNext=now+petEffects.regenInterval;}
+ tickDamageOverTime(now,'bleed');tickDamageOverTime(now,'burn');
+}
 function addEnergy(amount){if(!activePet()||!player.hp)return;player.resonance=clamp(player.resonance+amount,0,RESONANCE_MAX);dirty=true;}
 // All resonance effects are terminal outcomes: they cannot emit more resonance events.
 function resonanceModifier(rule,magnitude,primary){
  const now=gameNow(),v=rule.value||0;let useful=false;if(rule.mode==='pact'){classBuffs.pact={until:now+(rule.duration||6000),power:0,skillId:rule.skillId,perSkill:rule.perSkill,...rule.transform};return true;}
  if(rule.mode==='cleave'&&primary){for(const foe of enemies.filter(e=>e!==primary&&e.hp>0).slice(0,3)){enemy=foe;dealPetDamage(hitDamage(magnitude*v,monsterDefenseAgainst(foe,rule.effect==='magic')),'resonanceDamage');useful=true;}enemy=primary;}
- if(rule.mode==='bleed'){petEffects.bleedPower=Math.round(magnitude*v);petEffects.bleedTicks=3;petEffects.bleedTargetId=primary?.instanceId;petEffects.bleedInterval=1200;petEffects.bleedLeech=0;petEffects.bleedSource='resonanceDamage';petEffects.bleedNext=now+1200;useful=true;}
+ if(rule.mode==='bleed'){petEffects.burnPower=Math.round(magnitude*v);petEffects.burnTicks=3;petEffects.burnTargetId=primary?.instanceId;petEffects.burnNext=now+1200;useful=true;}
  if(rule.mode==='expose'&&primary){primary.exposedUntil=now+5500;primary.exposedPower=v;useful=true;}
  if(rule.mode==='tempo'){classBuffs.resonanceHaste={until:now+5500,power:v};useful=true;}
  if(rule.mode==='crit'){classBuffs.resonanceCrit={until:now+5500,power:v};useful=true;}
@@ -231,12 +253,10 @@ function applyOriginalPactPayload(rule,pet,primary,now){
   return true;
  }
  if(kind==='elementBurn'){
-  petEffects.bleedPower=Math.round(st.matk*.22);
-  petEffects.bleedTicks=3;petEffects.bleedTargetId=primary?.instanceId;
-  // A new resonance burn replaces the previous bleed's source, tick cadence
-  // and lifesteal. Never carry a pet bleed's leech/interval into a pact burn.
-  petEffects.bleedInterval=1200;petEffects.bleedLeech=0;petEffects.bleedNext=now+1200;
-  petEffects.bleedSource='resonanceDamage';
+  // Fire has its own timer and target, and never overwrites companion bleed.
+  petEffects.burnPower=Math.round(st.matk*.22);
+  petEffects.burnTicks=3;petEffects.burnTargetId=primary?.instanceId;
+  petEffects.burnNext=now+1200;
   return true;
  }
  if(kind==='comboLeech'){
@@ -464,7 +484,7 @@ function enemyAttack(){
  if(petWasHit&&classBuffs.pact?.until>gameNow()&&classBuffs.pact.counter&&activePet()?.hp>0&&attacker.hp>0){const selected=enemy;enemy=attacker;dealPetDamage(hitDamage(petStats(activePet()).def*classBuffs.pact.counter,attacker.def),'resonanceDamage');if(!attacker.hp)award();enemy=selected;}
  if(petEffects.counterUntil>gameNow()&&activePet()?.hp>0&&attacker.hp>0){const chosen=enemy;enemy=attacker;dealPetDamage(Math.min(petEffects.counterPower,Math.round(attacker.atk*.3)),'resonanceDamage');if(!attacker.hp)award();enemy=selectEncounterTarget(enemies,player.targetPriority,chosen)||chosen;}dirty=true;render();
 }
-function fleeMapBosses(){if(player.trialRun)return exitTrial('主動離場');const fleeing=enemies.filter(e=>e.boss&&e.hp>0);if(!fleeing.length)return;const current=enemy;if(fleeing.includes(current)){endReport('逃離首領');petEffects.bleedTicks=0;petEffects.markHits=0;}enemies=enemies.filter(e=>!fleeing.includes(e));enemy=selectEncounterTarget(enemies,player.targetPriority)||{...current,hp:0};if(enemies.length&&!report)startReport();nextEncounterAt=gameNow()+replacementDelay();message(`已逃離 ${fleeing.map(e=>SPECIES[e.id].name).join('、')}，不扣除金幣、不發放獎勵。`,'','system');dirty=true;save();render();}
+function fleeMapBosses(){if(player.trialRun)return exitTrial('主動離場');const fleeing=enemies.filter(e=>e.boss&&e.hp>0);if(!fleeing.length)return;const current=enemy;if(fleeing.includes(current)){endReport('逃離首領');petEffects.bleedTicks=0;petEffects.burnTicks=0;petEffects.markHits=0;}enemies=enemies.filter(e=>!fleeing.includes(e));enemy=selectEncounterTarget(enemies,player.targetPriority)||{...current,hp:0};if(enemies.length&&!report)startReport();nextEncounterAt=gameNow()+replacementDelay();message(`已逃離 ${fleeing.map(e=>SPECIES[e.id].name).join('、')}，不扣除金幣、不發放獎勵。`,'','system');dirty=true;save();render();}
 function capture(){if(!player||!enemy?.hp||!player.hp)return;if(enemy.boss)return toast('地圖首領無法捕捉，可選擇逃走');if(player.location!=='petland')return toast('只有「夥伴之地」可以捕捉夥伴');const ratio=enemy.hp/enemy.maxHp;if(player.pets.length>=30)return toast('夥伴欄已滿（最多 30 隻）');if(!(player.bag.find(e=>e.id==='orb')?.qty>0)){const cost=ITEMS.orb.cost;if(player.gold<cost)return toast(`捕捉球已用完，金幣不足（需要 ${cost} 金）`);player.gold-=cost;addStack(player.bag,'orb',1);message(`捕捉球已用完，自動購買 1 顆，花費 ${cost} 金。`,'good','system');}if(!consumeStack(player.bag,'orb'))return;const chance=clamp(.55+Math.max(0,.5-ratio)*.7,.55,.85);if(Math.random()<chance){endReport('捕捉');const pet=makePet(enemy.id);pet.rarity=capturedQuality(player,companionRole(pet),pet.rarity);pet.nickname=petForm(pet)||SPECIES[pet.species].name;pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;pet.equippedSkills=defaultPetSkills(companionRole(pet),pet.rarity);player.pets.push(pet);player.petBook[enemy.id]=(player.petBook[enemy.id]||0)+1;if(['uncommon','legendary','mythic'].includes(pet.rarity))showCaptureReward(pet);message(`捕捉成功！獲得 ${petForm(pet)||pet.nickname}（${petRarity(pet).name} · ${(fusedPair(pet)?.name||SPECIES[pet.species].roleName)}）。`,'rare');if(!player.activePetId){player.activePetId=pet.id;timers.pet=gameNow();message(`${pet.nickname} 自動設定為出戰夥伴。`,'good');}const caught=enemy;if(Number.isInteger(caught.slotIndex))encounterSlots[caught.slotIndex]=gameNow()+rand(250,1400);enemies=enemies.filter(e=>e!==caught);enemy=selectEncounterTarget(enemies,player.targetPriority)||{...caught,hp:0};if(enemies.length)startReport();nextEncounterAt=gameNow()+replacementDelay();}else message(`捕捉失敗，${SPECIES[enemy.id].name} 掙脫了捕捉球。`,'bad');dirty=true;save();render();}
 
 function combineEssence(tier){const result=synthesizeEssence(player.bag,tier,player.location);if(result.error)return toast(result.error);message(`合成 ${ITEMS[result.id].name} ×1。`,'rare','system');dirty=true;save();renderSide();}
