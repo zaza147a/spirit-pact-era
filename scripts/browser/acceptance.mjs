@@ -53,7 +53,7 @@ try{
   if(name==='mobile'){
    for(const viewport of [{width:320,height:568},{width:360,height:800},{width:430,height:932},{width:844,height:390}]){
     await page.setViewportSize(viewport);
-    await page.evaluate(()=>{globalThis.qaTouches={start:0,end:0,pointer:0};if(globalThis.qaTouchProbeInstalled)return;globalThis.qaTouchProbeInstalled=true;document.addEventListener('touchstart',()=>qaTouches.start++,{passive:true});document.addEventListener('touchend',()=>qaTouches.end++,{passive:true});document.addEventListener('pointerup',e=>{if(e.pointerType==='touch')qaTouches.pointer++;});});
+    await page.evaluate(()=>{globalThis.qaTouches={start:0,end:0,pointer:0};if(globalThis.qaTouchProbeInstalled)return;globalThis.qaTouchProbeInstalled=true;window.addEventListener('touchstart',()=>qaTouches.start++,{capture:true,passive:true});window.addEventListener('touchend',()=>qaTouches.end++,{capture:true,passive:true});window.addEventListener('pointerup',e=>{if(e.pointerType==='touch')qaTouches.pointer++;},{capture:true});});
     await page.locator('[data-slot-select="0"]').tap();await page.locator('#enterGameBtn').tap();
     await page.locator('[data-tab="pets"]').tap();await page.locator('[data-pet-section="manage"]').tap();
     await page.locator(`[data-pet="${fixtures[0].player.pets[0].id}"]`).tap();
@@ -66,10 +66,11 @@ try{
     assert.ok(await target.evaluate(el=>document.activeElement===el));
     await page.locator('#saveBtn').tap();
     const state=await page.evaluate(()=>({touches:{...qaTouches},maxTouchPoints:navigator.maxTouchPoints,innerWidth,scrollWidth:document.documentElement.scrollWidth}));
-    assert.ok(state.maxTouchPoints>0&&state.touches.start>=7&&state.touches.end>=7,'tap must generate actual touch events');
+    touchRows.push({...viewport,...state});console.log('Touch probe '+JSON.stringify({...viewport,...state}));
+    assert.ok(state.maxTouchPoints>0&&state.touches.start>=7&&state.touches.end>=7,'tap must generate actual touch events: '+JSON.stringify(state));
     assert.ok(state.scrollWidth<=state.innerWidth+1,'touch layout exceeds viewport');
     await page.screenshot({path:resolve(out,`touch-${viewport.width}x${viewport.height}.png`)});
-    await page.locator('#returnEntryBtn').tap();touchRows.push({...viewport,...state});
+    await page.locator('#returnEntryBtn').tap();
    }
    await page.setViewportSize({width:390,height:844});
   }
