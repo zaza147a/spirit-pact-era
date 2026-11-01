@@ -2,17 +2,17 @@
   "dateTaipei": "2026-11-01",
   "command": "node --test tests/*.test.mjs",
   "environment": {
-    "node": "v24.22.1",
+    "node": "v24.22.1 and npm node@22",
     "os": "Linux x86_64"
   },
-  "tests": 413,
-  "pass": 413,
+  "tests": 480,
+  "pass": 480,
   "fail": 0,
   "cancelled": 0,
   "skipped": 0,
   "todo": 0,
-  "durationMs": 48524.340888,
-  "logSha256": "a4121c581057818c84240b97cde7ca90d4a5ae79cac9987d4a6a81ef3d79ef41",
+  "durationMs": 44128.133091,
+  "logSha256": "e285975fa921f73d9887069d814973e402cd8f967f187c08732c5359c167e794",
   "baseline": {
     "head": "9476c49a0aa1c9228927a4467c3d43b4f5b809b9",
     "tests": 398,
@@ -28,7 +28,61 @@
     "report": "docs/dawn-progression-audit.json"
   },
   "releaseStatus": "blocked-pending-full-acceptance",
-  "browserE2E": "not-passed",
+  "browserE2E": "passed-Chromium-desktop-and390px-mobile-emulation-at-e79dbf",
   "mainModified": false,
-  "published": false
+  "published": false,
+  "history": [
+    {
+      "phase": "initialWork",
+      "tests": 413,
+      "pass": 413,
+      "fail": 0,
+      "durationMs": 48524.340888
+    }
+  ],
+  "node24": {
+    "tests": 480,
+    "pass": 480,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "durationMs": 44128.133091,
+    "logSha256": "e285975fa921f73d9887069d814973e402cd8f967f187c08732c5359c167e794"
+  },
+  "node22": {
+    "tests": 480,
+    "pass": 480,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "durationMs": 38636.756309,
+    "logSha256": "3bd675e5809a555ea60831e973dca1b395b95f09fc034798880f5f393633e111"
+  },
+  "browserRunId": 41286433976,
+  "browserPending": "Final-color reveal capture and actual continuous-trial failure checks added; awaiting next CI run.",
+  "fiveBoss": {
+    "count": 2400,
+    "wins": 2302,
+    "timeouts": 97,
+    "defeated": 1,
+    "regressions": 0,
+    "sourceVersions": "baseline b91a8d7 plus100 affected replay rows, performer defense-support20 replaced after AI fix; per-row sourceCommit retained",
+    "failureReplay": {
+      "unenhanced": {
+        "count": 196,
+        "wins": 8
+      },
+      "A": {
+        "count": 98,
+        "wins": 98
+      }
+    }
+  },
+  "dawnCurrentAffected": {
+    "count": 5,
+    "wins": 5,
+    "report": "docs/dawn-live-resonance-progression.json"
+  }
 }

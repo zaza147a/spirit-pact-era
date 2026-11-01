@@ -1,0 +1,6490 @@
+{
+  "conditions": "Each failed full-matrix triplet replayed with seeds42/137 unenhanced, plus seed731 with both player and pet A-rank reference gear. Prior-tier Lv200 mythic90% fixture,600s. A gear is a valid prepared fixture, not an audit of material acquisition; no balance requirement that every unenhanced all-protection selection win.",
+  "failedTriplets": 98,
+  "summary": [
+    {
+      "enhancement": null,
+      "count": 196,
+      "wins": 8,
+      "defeated": 0,
+      "timeout": 188
+    },
+    {
+      "enhancement": "A",
+      "count": 98,
+      "wins": 98,
+      "defeated": 0,
+      "timeout": 0
+    }
+  ],
+  "rows": [
+    {
+      "job": "knight",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 231.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 262.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 268.02,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 281.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 275.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 253.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 295.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 289.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 256.08,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 251.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 291.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 261.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 257.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 303.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 258.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "drain",
+        "bleed"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": true,
+      "kills": 5,
+      "seconds": 231.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 43
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "drain",
+        "bleed"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": true,
+      "kills": 5,
+      "seconds": 224.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 34
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "drain",
+        "bleed"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 116.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": true,
+      "kills": 5,
+      "seconds": 598.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 273.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 273.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 283.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": true,
+      "kills": 5,
+      "seconds": 598.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 277.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-attack",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "blessing",
+        "mark",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-attack",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "blessing",
+        "mark",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-attack",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "blessing",
+        "mark",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 284.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-magic",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "mark",
+        "magic",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 13
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-magic",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "mark",
+        "magic",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-magic",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "mark",
+        "magic",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 287.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "blessing"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "blessing"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "blessing"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 291.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 306.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "magic",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": true,
+      "kills": 5,
+      "seconds": 598.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "magic",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "magic",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 288.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 302.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 297.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 323.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 367.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 373.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 317.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 331.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 374.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 309.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 332.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 357.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 332.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 294.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 295.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 299.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 302.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 264.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 253.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 243.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 250.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 295.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 295.02,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 253.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 287.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": true,
+      "kills": 5,
+      "seconds": 599.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 255.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 280.48,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 246.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 234.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 266.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 268,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 296.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 281.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 248.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 246.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": true,
+      "kills": 5,
+      "seconds": 598.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 223.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 220.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 248.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 253.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 223.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 226.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 257.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 260.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 232.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 229.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 271.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 220.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": true,
+      "kills": 5,
+      "seconds": 599.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 217.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 263.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 224.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 277.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "mana",
+        "blessing",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 267.06,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "mana",
+        "heal",
+        "magic"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 264.68,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 283.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 302.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 317.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 282.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 292.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 320.18,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 273.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 293.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 320.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 275.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "skillKinds": [
+        "mark",
+        "mana",
+        "heal"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 271.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "blessing"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 287.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 329.76,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "strike",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 332.68,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 289.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 289.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "heal",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 340.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "shield"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 285.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "blessing",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 286.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "strike",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 322.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 42,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 137,
+      "enhancement": null,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "skillKinds": [
+        "blessing",
+        "shield",
+        "regen"
+      ],
+      "seed": 731,
+      "enhancement": "A",
+      "won": true,
+      "kills": 5,
+      "seconds": 289.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    }
+  ]
+}

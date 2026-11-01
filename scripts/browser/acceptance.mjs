@@ -52,6 +52,12 @@ try{
   await page.locator('#evolutionModal').waitFor({state:'visible',timeout:15000});
   await page.locator('#evolutionClose').waitFor({state:'visible'});
   await page.waitForFunction(()=>!document.querySelector('#evolutionClose').disabled);
+  await page.locator('#evolutionAfter').evaluate(img=>Promise.all(img.getAnimations().map(animation=>animation.finished)));
+  await page.locator('#evolutionAfter').evaluate(img=>img.decode());
+  const finalReveal=await page.locator('#evolutionAfter').evaluate(img=>({src:img.getAttribute('src'),filter:getComputedStyle(img).filter,opacity:getComputedStyle(img).opacity}));
+  assert.ok(finalReveal.src.includes('/juvenile/'));assert.equal(finalReveal.opacity,'1');
+  assert.ok(!finalReveal.filter.includes('brightness(0)')&&!finalReveal.filter.includes('blur('),'completed reveal must show full-color art');
+
   await page.screenshot({path:resolve(out,`${name}-loyalty-viewport.png`)});await page.screenshot({path:resolve(out,`${name}-loyalty-reveal.png`),fullPage:true});await page.locator('#evolutionClose').click();
   await page.locator('#area [data-open="enhancement"]').click();
   for(const rank of ['S','SS','SSS']){
@@ -83,8 +89,26 @@ try{
   await page.screenshot({path:resolve(out,`${name}-offline-restore.png`)});
   await page.locator('#offlineClose').click();await page.locator('#returnEntryBtn').click();await page.reload();
   for(const name of ['QA-S','QA-SS','QA-SSS','QA-A'])await page.getByRole('heading',{name,exact:true}).waitFor();
+  // A deliberately unprepared test save verifies continuous-trial failure
+  // stopping through the actual UI, even with ordinary auto-revival enabled.
+  const failing=structuredClone(saved);const fp=failing.player;
+  fp.gear=Object.fromEntries(Object.keys(fp.gear).map(k=>[k,null]));fp.pets=[];fp.activePetId=null;fp.hp=1;fp.mp=0;
+  fp.bag=[{id:'ticket_worldroot',qty:2}];fp.location='skycity';fp.manualPaused=true;fp.autoRevive=true;
+  fp.autoPotions={playerHp:false,playerSp:false,petHp:false,petSp:false};fp.autoBuyPotions={hp:{enabled:false},sp:{enabled:false}};
+  fp.autoSkills={order:[],enabled:{}};fp.trialClears={...fp.trialClears,worldroot:1};fp.offline={at:Date.now(),enabled:false};
+  await page.locator('[data-slot-select="3"]').click();await page.locator('#saveFile').setInputFiles({name:'failure-fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(failing))});
+  await page.locator('#enterGameBtn').click();await page.locator('#area [data-open="trials"]').click();
+  await page.locator('[data-continuous-trial="worldroot"]').click();
+  await page.locator('#reviveModal').waitFor({state:'visible',timeout:30000});
+  await page.screenshot({path:resolve(out,`${name}-continuous-failure.png`)});await page.locator('#reviveLater').click();
+  await page.waitForTimeout(16000);await page.locator('#returnEntryBtn').click();
+  const stoppedDownload=page.waitForEvent('download');await page.locator('[data-slot-export="3"]').click();
+  const stopped=JSON.parse(await readFile(await (await stoppedDownload).path(),'utf8')).player;
+  assert.equal(stopped.hp,0,'continuous trial must not auto-revive and restart');assert.equal(stopped.trialRun,undefined);
+  assert.ok(stopped.autoStoppedReason.includes('戰敗'));assert.equal(stopped.bag.find(e=>e.id==='ticket_worldroot').qty,1,'failure consumes only the entered round');
+  assert.equal(stopped.offline.enabled,false);
   await context.close();
  }
  assert.equal(rows.length,72);assert.equal(errors.length,0,JSON.stringify(errors));
-}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({rows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus. Mobile is Chromium viewport emulation, not a physical handset.'},null,2));}
+}finally{await browser.close();await new Promise(r=>server.close(r));await writeFile(resolve(out,'browser-acceptance.json'),JSON.stringify({rows,errors,checks:'72 displayed stage sprites at1440/390 widths; actual four-slot import/reload/tab reopen/export/roundtrip; loyalty reveal and paid S/SS/SSS clicks; live battle input focus; actual continuous-trial failure, ticket use and no auto-revive restart. Mobile is Chromium viewport emulation, not a physical handset.'},null,2));}
 console.log('Browser acceptance passed: '+rows.length+' displayed stage sprites, four slots, paid evolution, backup, offline restore and live input.');
