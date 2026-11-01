@@ -41,8 +41,13 @@ export const ordinaryDropChances=[.10,.15,.20,.25,.50];
 export const finalDropChances=[[.10,.01,.001],[.20,.02,.002],[.30,.03,.003],[.50,.10,.05],[1,.30,.10]];
 export function trialDropTable(route,index){return route.level===191?['S','SS','SSS'].map((rank,i)=>({id:'rank_core_'+rank,rank,chance:finalDropChances[index][i]})):[{id:'rank_core_'+route.rank,rank:route.rank,chance:ordinaryDropChances[index]}];}
 export const trialDrops=(route,index,rng=Math.random)=>trialDropTable(route,index).filter(e=>rng()<e.chance).map(e=>({id:e.id,qty:1}));
-// Multipliers relative to each existing frontier map boss. Audited in docs/sky-trials-v630.json.
-export const TRIAL_TUNING={151:{hp:[1.2,1.4,1.65,1.95,2.3],atk:[3.2,3.7,4.3,4.95,5.68]},161:{hp:[1.3,1.6,2,2.5,3.1],atk:[3.6,4.2,4.9,5.7,6.5]},171:{hp:[1.5,1.95,2.6,3.4,4.5],atk:[4.2,5,5.9,6.9,8]},181:{hp:[1.9,2.5,3.5,4.8,6.6],atk:[5,6,7.2,8.5,10]},191:{hp:[.46,.56,.70,.84,1.05],atk:[.48,.54,.6,.66,.72]}};
+// Multipliers relative to each existing frontier map boss.
+// 151-190 graduation trials use SAME-BAND UNENHANCED owner and pet gear;
+// crystals are rewards/preparation, not a mandatory D/C/B/A difficulty gate.
+// Restore the archived worldroot progression: farm earlier stages before the
+// SS/SSS end boss, instead of treating unenhanced five-boss clears as a target.
+// Final attack is refitted for today's enhanced pet gear as well as owner gear.
+export const TRIAL_TUNING={151:{hp:[1.2,1.4,1.65,1.95,2.3],atk:[1.12,1.295,1.505,1.7325,1.75]},161:{hp:[1.3,1.6,2,2.5,3.1],atk:[1.26,1.47,1.715,1.995,2.275]},171:{hp:[1.5,1.95,2.6,3.4,4.5],atk:[1.05,1.25,1.475,1.725,2]},181:{hp:[1.14,1.5,2.1,2.88,3.96],atk:[.875,1.05,1.26,1.4875,1.55]},191:{hp:[2.4,3.8,6.4,10,22],atk:[7,9,11.5,14,24]}};
 export function createTrialBoss(route,index,base){const tuning=TRIAL_TUNING[route.level],control=Object.keys(CONTROL_NAMES)[(TRIAL_ROUTES.indexOf(route)*2+index*2)%10];return {...base,id:`boss-${route.level}-${index+1}`,name:route.names[index],trial:true,trialIndex:index,level:route.level+index*2,boss:true,hp:Math.round(base.hp*tuning.hp[index]),atk:Math.round(base.atk*tuning.atk[index]),def:Math.round(base.def*(1+index*.12)),xp:0,gold:0,drops:[],enrageAfter:route.level===191&&index===4?240000:null,control,controlDuration:1600+index*200,controlCooldown:8500-index*400,controlWindup:1400,artPath:`assets/sky-trials/boss-${route.level}-${index+1}.webp`};}
 export function trialEntryError(p,route){if(p.location!=='skycity')return `請回蒼穹樞城使用${TRIAL_PORTAL}`;if(p.trialRun)return '目前已在挑戰中';if(!p.thirdJob||p.level<route.level)return `需要三轉 Base${route.level}`;if(p.hp<=0)return '請先復活';const ticket=p.bag.find(e=>e.id===route.ticket&&e.qty>0);if(!ticket)return '缺少對應入場券';const needed=(route.level===191?['S','SS','SSS']:[route.rank]).filter(r=>!p.bag.some(e=>e.id==='rank_core_'+r)).length;if(p.bag.length-(ticket.qty===1?1:0)+needed>2000)return '背包空間不足，請預留結晶欄位';return null;}
 export const DAWN_MAP='dawnrift';

@@ -1,0 +1,643 @@
+{
+  "sourceHashes": {
+    "dist/sky-trials.js": "a18a360e56b1f0eeaeee9ff229c3e8c9542a7fc06dbe96e8c2f695319158e29a",
+    "dist/game.js": "afabe3c8b1fbff5182ce57c3f2f9c6fdb79bce51d7bd27024cd0ca25abb360bb",
+    "scripts/balance-v24.mjs": "c232d706f4f89528d77e5c9ccf4c3ab77def5a576736db937a66264288ffc9c0"
+  },
+  "seed": 731,
+  "characters": "10jobs x12ordered fusion defaults; current-band mythic equipment/cards; stocked potions; legal caps and allocations, full thirdJob70",
+  "normalBefore": [
+    {
+      "map": "starshore",
+      "level": 160,
+      "total": 120,
+      "wins": 63
+    },
+    {
+      "map": "oathwood",
+      "level": 170,
+      "total": 120,
+      "wins": 69
+    },
+    {
+      "map": "nightclock",
+      "level": 180,
+      "total": 120,
+      "wins": 57
+    },
+    {
+      "map": "sungrave",
+      "level": 190,
+      "total": 120,
+      "wins": 17
+    }
+  ],
+  "normalAfter": [
+    {
+      "map": "starshore",
+      "level": 160,
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 185.26,
+      "max": 333.22,
+      "failed": []
+    },
+    {
+      "map": "oathwood",
+      "level": 170,
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 258.8,
+      "max": 440.52,
+      "failed": []
+    },
+    {
+      "map": "nightclock",
+      "level": 180,
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 380.28,
+      "max": 660.64,
+      "failed": []
+    },
+    {
+      "map": "sungrave",
+      "level": 190,
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 383.54,
+      "max": 654.5,
+      "failed": []
+    }
+  ],
+  "tail": [
+    {
+      "index": 4,
+      "rank": null,
+      "total": 120,
+      "wins": 0,
+      "alive": 0,
+      "median": null,
+      "min": null,
+      "max": null,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 0
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 0
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "rank": "S",
+      "total": 120,
+      "wins": 53,
+      "alive": 53,
+      "median": 228.8,
+      "min": 159.04,
+      "max": 300.16,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 6
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 1
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 1
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 4
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 5
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 8
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 6
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 7
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 3
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "rank": "SS",
+      "total": 120,
+      "wins": 102,
+      "alive": 102,
+      "median": 196.64,
+      "min": 128.8,
+      "max": 314.24,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 9
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 8
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 10
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 9
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 11
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 10
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 9
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "rank": "SSS",
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 157.54,
+      "min": 100.94,
+      "max": 280.14,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 12
+        }
+      ]
+    }
+  ],
+  "farm": [
+    {
+      "index": 0,
+      "rank": "A",
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 34.96,
+      "min": 22,
+      "max": 62.04,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 12
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "rank": "S",
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 45.66,
+      "min": 26.5,
+      "max": 78.32,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 12
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "rank": "S",
+      "total": 120,
+      "wins": 118,
+      "alive": 118,
+      "median": 77.22,
+      "min": 45.06,
+      "max": 132,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 10
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "rank": "SS",
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 90.86,
+      "min": 56.48,
+      "max": 165.6,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 12
+        }
+      ]
+    }
+  ],
+  "chain": [
+    {
+      "index": 0,
+      "rank": "SSS",
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 329.24,
+      "min": 215.18,
+      "max": 575.92,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 12
+        }
+      ]
+    }
+  ],
+  "authoritativeCases": 1560,
+  "limits": "Fixed seed731/reference builds, not all skill triplets/rolls/seeds. 151-190 tested at graduation160/170/180/190, not guaranteed entry-level clears. Windows900s chains/420s independent tail are audit windows, not new live time limits. Four-minute tail enrage retained. Restored progression does not alter ordinary map enemies or drop odds."
+}

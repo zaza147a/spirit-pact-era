@@ -1,0 +1,2949 @@
+{
+  "conditions": "Legal Lv200 cap120, both200 mythic SSS gear, actual five-boss carryover, 900s audit window, enrage240s per tail; no immortality, no refills between stages.",
+  "summary": [
+    {
+      "index": 0,
+      "rank": "SSS",
+      "total": 120,
+      "wins": 120,
+      "alive": 120,
+      "median": 329.24,
+      "min": 215.18,
+      "max": 575.92,
+      "byJob": [
+        {
+          "job": "knight",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "crusader",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "wizard",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "sage",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "assassin",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "rogue",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "priest",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "monk",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "hunter",
+          "total": 12,
+          "wins": 12
+        },
+        {
+          "job": "performer",
+          "total": 12,
+          "wins": 12
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "job": "knight",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 272.38,
+      "elapsed": 272.38,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 402661.20222222223,
+      "petDps": 718863.3422222222
+    },
+    {
+      "job": "knight",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 303.72,
+      "elapsed": 303.72,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 459004.0888888889,
+      "petDps": 662520.4555555555
+    },
+    {
+      "job": "knight",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 276.74,
+      "elapsed": 276.74,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 434603.05333333334,
+      "petDps": 686921.4911111111
+    },
+    {
+      "job": "knight",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 347.5,
+      "elapsed": 347.5,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 519364.4455555556,
+      "petDps": 602160.0988888888
+    },
+    {
+      "job": "knight",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 308.8,
+      "elapsed": 308.8,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 485326.1388888889,
+      "petDps": 636198.4055555556
+    },
+    {
+      "job": "knight",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 332.54,
+      "elapsed": 332.54,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 529312.0655555555,
+      "petDps": 592212.4788888888
+    },
+    {
+      "job": "knight",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 285.7,
+      "elapsed": 285.7,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 418793.56666666665,
+      "petDps": 702730.9777777778
+    },
+    {
+      "job": "knight",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 319.94,
+      "elapsed": 319.94,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 510696.4166666667,
+      "petDps": 610828.1277777777
+    },
+    {
+      "job": "knight",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 351.62,
+      "elapsed": 351.62,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 554799.5511111111,
+      "petDps": 566724.9933333333
+    },
+    {
+      "job": "knight",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 442.58,
+      "elapsed": 442.58,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 656139.6422222222,
+      "petDps": 465384.90222222224
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 274.54,
+      "elapsed": 274.54,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 535545.39,
+      "petDps": 585979.1544444445
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 221.7,
+      "elapsed": 221.7,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 6,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 431159.0311111111,
+      "petDps": 690365.5133333333
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 215.18,
+      "elapsed": 215.18,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 6,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 421611.6777777778,
+      "petDps": 699912.8666666667
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 244.8,
+      "elapsed": 244.8,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 7,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 454808.5411111111,
+      "petDps": 666716.0033333333
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 239.14,
+      "elapsed": 239.14,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 7,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 453752.3022222222,
+      "petDps": 667772.2422222223
+    },
+    {
+      "job": "knight",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 462.28,
+      "elapsed": 462.28,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 732473.7711111112,
+      "petDps": 389050.7733333333
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 256.04,
+      "elapsed": 256.04,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 510757.18888888886,
+      "petDps": 610767.3555555556
+    },
+    {
+      "job": "knight",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 441.02,
+      "elapsed": 441.02,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 664088.6722222222,
+      "petDps": 457435.8722222222
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 223.06,
+      "elapsed": 223.06,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 6,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 418473.78222222225,
+      "petDps": 703050.7622222222
+    },
+    {
+      "job": "crusader",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 339.02,
+      "elapsed": 339.02,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 655186.0933333334,
+      "petDps": 466338.4511111111
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 265.74,
+      "elapsed": 265.74,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 514692.6477777778,
+      "petDps": 606831.8966666666
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 280.12,
+      "elapsed": 280.12,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 549605.1766666666,
+      "petDps": 571919.3677777778
+    },
+    {
+      "job": "crusader",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 339.12,
+      "elapsed": 339.12,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 656803.2911111111,
+      "petDps": 464721.25333333336
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 356.98,
+      "elapsed": 356.98,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 2,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 399542.88666666666,
+      "petDps": 721981.6577777778
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 315.4,
+      "elapsed": 315.4,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 3,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 359040.25111111114,
+      "petDps": 762484.2933333333
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 305.32,
+      "elapsed": 305.32,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 65,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 371169.9477777778,
+      "petDps": 750354.5966666667
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 340.62,
+      "elapsed": 340.62,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 56,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 386341.3888888889,
+      "petDps": 735183.1555555556
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 377.5,
+      "elapsed": 377.5,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 446395.0511111111,
+      "petDps": 675129.4933333333
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 318.56,
+      "elapsed": 318.56,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 65,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 371186.34555555554,
+      "petDps": 750338.1988888889
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 409.82,
+      "elapsed": 409.82,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 479481.4088888889,
+      "petDps": 642043.1355555556
+    },
+    {
+      "job": "crusader",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 367.38,
+      "elapsed": 367.38,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 734234.0666666667,
+      "petDps": 387290.47777777776
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 418.3,
+      "elapsed": 418.3,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 489712.2077777778,
+      "petDps": 631812.3366666667
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 393.36,
+      "elapsed": 393.36,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 455232.4244444444,
+      "petDps": 666292.12
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 325.24,
+      "elapsed": 325.24,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 458130.7311111111,
+      "petDps": 663393.8133333334
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 279.66,
+      "elapsed": 279.66,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 60,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 400700.19333333336,
+      "petDps": 720824.3511111111
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 293.4,
+      "elapsed": 293.4,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 7,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 406878.15555555554,
+      "petDps": 714646.3888888889
+    },
+    {
+      "job": "wizard",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 519.82,
+      "elapsed": 519.82,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 14,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 616148.53,
+      "petDps": 505376.01444444444
+    },
+    {
+      "job": "wizard",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 521.9,
+      "elapsed": 521.9,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 14,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 619412.4,
+      "petDps": 502112.14444444445
+    },
+    {
+      "job": "sage",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 290.32,
+      "elapsed": 290.32,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 70,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 416899.1877777778,
+      "petDps": 704625.3566666667
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 305.8,
+      "elapsed": 305.8,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 80,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 438366.3488888889,
+      "petDps": 683158.1955555555
+    },
+    {
+      "job": "sage",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 356.04,
+      "elapsed": 356.04,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 499639.45666666667,
+      "petDps": 621885.0877777778
+    },
+    {
+      "job": "wizard",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 575.92,
+      "elapsed": 575.92,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 15,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 685226.0333333333,
+      "petDps": 436298.5111111111
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 343.2,
+      "elapsed": 343.2,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 486756.68111111113,
+      "petDps": 634767.8633333333
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 365.78,
+      "elapsed": 365.78,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 511408.3977777778,
+      "petDps": 610116.1466666666
+    },
+    {
+      "job": "sage",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 377.02,
+      "elapsed": 377.02,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 531959.1011111111,
+      "petDps": 589565.4433333334
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 251.64,
+      "elapsed": 251.64,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 346072.18555555557,
+      "petDps": 775452.3588888888
+    },
+    {
+      "job": "sage",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 438.96,
+      "elapsed": 438.96,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 627905.4344444445,
+      "petDps": 493619.11
+    },
+    {
+      "job": "sage",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 453.6,
+      "elapsed": 453.6,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 647405.31,
+      "petDps": 474119.2344444444
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 327.28,
+      "elapsed": 327.28,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 487203.81444444443,
+      "petDps": 634320.73
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 279.02,
+      "elapsed": 279.02,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 4,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 399149.0366666667,
+      "petDps": 722375.5077777777
+    },
+    {
+      "job": "sage",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 495.12,
+      "elapsed": 495.12,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 716404.7955555556,
+      "petDps": 405119.74888888886
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 253.86,
+      "elapsed": 253.86,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 7,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 386054.75333333336,
+      "petDps": 735469.7911111111
+    },
+    {
+      "job": "assassin",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 299.94,
+      "elapsed": 299.94,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 449851.20666666667,
+      "petDps": 671673.3377777778
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 283.52,
+      "elapsed": 283.52,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 431488.5522222222,
+      "petDps": 690035.9922222223
+    },
+    {
+      "job": "assassin",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 309.02,
+      "elapsed": 309.02,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 463640.31,
+      "petDps": 657884.2344444444
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 259.06,
+      "elapsed": 259.06,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 364133.9611111111,
+      "petDps": 757390.5833333334
+    },
+    {
+      "job": "assassin",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 329.24,
+      "elapsed": 329.24,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 482191.5755555556,
+      "petDps": 639332.9688888888
+    },
+    {
+      "job": "assassin",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 432.32,
+      "elapsed": 432.32,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 619794.1955555555,
+      "petDps": 501730.3488888889
+    },
+    {
+      "job": "rogue",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 279.48,
+      "elapsed": 279.48,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 385215.0077777778,
+      "petDps": 736309.5366666666
+    },
+    {
+      "job": "assassin",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 431.84,
+      "elapsed": 431.84,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 614224.8222222222,
+      "petDps": 507299.72222222225
+    },
+    {
+      "job": "rogue",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 310.36,
+      "elapsed": 310.36,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 466818.69444444444,
+      "petDps": 654705.85
+    },
+    {
+      "job": "rogue",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 282.84,
+      "elapsed": 282.84,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 421618.33444444445,
+      "petDps": 699906.21
+    },
+    {
+      "job": "rogue",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 359.18,
+      "elapsed": 359.18,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 518102.4822222222,
+      "petDps": 603422.0622222222
+    },
+    {
+      "job": "rogue",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 311.42,
+      "elapsed": 311.42,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 438393.5333333333,
+      "petDps": 683131.0111111111
+    },
+    {
+      "job": "rogue",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 291.76,
+      "elapsed": 291.76,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 406293.4,
+      "petDps": 715231.1444444444
+    },
+    {
+      "job": "rogue",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 329.6,
+      "elapsed": 329.6,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 483537.79333333333,
+      "petDps": 637986.7511111111
+    },
+    {
+      "job": "rogue",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 335.14,
+      "elapsed": 335.14,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 512269.1911111111,
+      "petDps": 609255.3533333334
+    },
+    {
+      "job": "assassin",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 453.68,
+      "elapsed": 453.68,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 686233.5277777778,
+      "petDps": 435291.01666666666
+    },
+    {
+      "job": "priest",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 278.02,
+      "elapsed": 278.02,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 3,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 561266.93,
+      "petDps": 560257.6144444444
+    },
+    {
+      "job": "rogue",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 357.9,
+      "elapsed": 357.9,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 540983.58,
+      "petDps": 580540.9644444444
+    },
+    {
+      "job": "rogue",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 452.8,
+      "elapsed": 452.8,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 646284.6433333333,
+      "petDps": 475239.9011111111
+    },
+    {
+      "job": "rogue",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 476.86,
+      "elapsed": 476.86,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 721479.0588888889,
+      "petDps": 400045.48555555556
+    },
+    {
+      "job": "rogue",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 462.48,
+      "elapsed": 462.48,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 637850.9166666666,
+      "petDps": 483673.6277777778
+    },
+    {
+      "job": "priest",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 345.42,
+      "elapsed": 345.42,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 5,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 650179.6666666666,
+      "petDps": 471344.8777777778
+    },
+    {
+      "job": "priest",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 278.66,
+      "elapsed": 278.66,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 3,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 570196.2244444444,
+      "petDps": 551328.32
+    },
+    {
+      "job": "priest",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 302.86,
+      "elapsed": 302.86,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 595177.5266666666,
+      "petDps": 526347.0177777777
+    },
+    {
+      "job": "priest",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 309.98,
+      "elapsed": 309.98,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 4,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 621000.5166666667,
+      "petDps": 500524.02777777775
+    },
+    {
+      "job": "priest",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 320.98,
+      "elapsed": 320.98,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 5,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 625541.2766666666,
+      "petDps": 495983.2677777778
+    },
+    {
+      "job": "priest",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 334.12,
+      "elapsed": 334.12,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 5,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 641166.1655555556,
+      "petDps": 480358.37888888887
+    },
+    {
+      "job": "priest",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 280.7,
+      "elapsed": 280.7,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 4,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 574549.4711111111,
+      "petDps": 546975.0733333334
+    },
+    {
+      "job": "priest",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 352.02,
+      "elapsed": 352.02,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 5,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 671864.8544444444,
+      "petDps": 449659.69
+    },
+    {
+      "job": "monk",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 293.12,
+      "elapsed": 293.12,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 393678.4244444444,
+      "petDps": 727846.12
+    },
+    {
+      "job": "priest",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 447.94,
+      "elapsed": 447.94,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 11,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 798489.6088888888,
+      "petDps": 323034.93555555557
+    },
+    {
+      "job": "priest",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 415.48,
+      "elapsed": 415.48,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 750265.1388888889,
+      "petDps": 371259.40555555554
+    },
+    {
+      "job": "monk",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 369.98,
+      "elapsed": 369.98,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 522571.7077777778,
+      "petDps": 598952.8366666667
+    },
+    {
+      "job": "monk",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 325.96,
+      "elapsed": 325.96,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 462563.87444444443,
+      "petDps": 658960.67
+    },
+    {
+      "job": "monk",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 295,
+      "elapsed": 295,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 410616.2966666667,
+      "petDps": 710908.2477777777
+    },
+    {
+      "job": "priest",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 414.52,
+      "elapsed": 414.52,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 744683.7233333334,
+      "petDps": 376840.8211111111
+    },
+    {
+      "job": "monk",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 302.76,
+      "elapsed": 302.76,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 414475.09,
+      "petDps": 707049.4544444444
+    },
+    {
+      "job": "monk",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 324.86,
+      "elapsed": 324.86,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 1,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 441464.24333333335,
+      "petDps": 680060.3011111111
+    },
+    {
+      "job": "monk",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 343.42,
+      "elapsed": 343.42,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 497396.88,
+      "petDps": 624127.6644444445
+    },
+    {
+      "job": "monk",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 360.64,
+      "elapsed": 360.64,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 505986.5133333333,
+      "petDps": 615538.0311111112
+    },
+    {
+      "job": "monk",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 378.76,
+      "elapsed": 378.76,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 536621.9233333333,
+      "petDps": 584902.6211111111
+    },
+    {
+      "job": "monk",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 457.14,
+      "elapsed": 457.14,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 659316.6333333333,
+      "petDps": 462207.9111111111
+    },
+    {
+      "job": "hunter",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 257.8,
+      "elapsed": 257.8,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 418603.7322222222,
+      "petDps": 702920.8122222222
+    },
+    {
+      "job": "monk",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 455.92,
+      "elapsed": 455.92,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 641339.29,
+      "petDps": 480185.25444444444
+    },
+    {
+      "job": "hunter",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 257.76,
+      "elapsed": 257.76,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 7,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 454405.35333333333,
+      "petDps": 667119.1911111111
+    },
+    {
+      "job": "hunter",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 341.86,
+      "elapsed": 341.86,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 519402.4688888889,
+      "petDps": 602122.0755555555
+    },
+    {
+      "job": "hunter",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 290.16,
+      "elapsed": 290.16,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 483827.44333333336,
+      "petDps": 637697.1011111111
+    },
+    {
+      "job": "hunter",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 269.58,
+      "elapsed": 269.58,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 8,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 433516.83444444445,
+      "petDps": 688007.71
+    },
+    {
+      "job": "hunter",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 295.2,
+      "elapsed": 295.2,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 460087.31888888887,
+      "petDps": 661437.2255555555
+    },
+    {
+      "job": "hunter",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 326.12,
+      "elapsed": 326.12,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 533417.911111111,
+      "petDps": 588106.6333333333
+    },
+    {
+      "job": "hunter",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 309.48,
+      "elapsed": 309.48,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 9,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 521421.48333333334,
+      "petDps": 600103.0611111111
+    },
+    {
+      "job": "hunter",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 348,
+      "elapsed": 348,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 10,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 553345.8044444445,
+      "petDps": 568178.74
+    },
+    {
+      "job": "monk",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 498.64,
+      "elapsed": 498.64,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 725789.2811111112,
+      "petDps": 395735.2633333333
+    },
+    {
+      "job": "hunter",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 460.92,
+      "elapsed": 460.92,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 642910.1933333334,
+      "petDps": 478614.3511111111
+    },
+    {
+      "job": "performer",
+      "pair": "attack-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 251.12,
+      "elapsed": 251.12,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 40,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 509902.75333333336,
+      "petDps": 611621.7911111111
+    },
+    {
+      "job": "hunter",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 454.22,
+      "elapsed": 454.22,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 640813.6977777778,
+      "petDps": 480710.8466666667
+    },
+    {
+      "job": "performer",
+      "pair": "magic-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 283.22,
+      "elapsed": 283.22,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 41,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 537215.7422222223,
+      "petDps": 584308.8022222222
+    },
+    {
+      "job": "performer",
+      "pair": "attack-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 296.4,
+      "elapsed": 296.4,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 561568.8544444444,
+      "petDps": 559955.69
+    },
+    {
+      "job": "performer",
+      "pair": "defense-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 316.84,
+      "elapsed": 316.84,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 571883.6688888889,
+      "petDps": 549640.8755555556
+    },
+    {
+      "job": "performer",
+      "pair": "magic-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 256.28,
+      "elapsed": 256.28,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 527121.5933333334,
+      "petDps": 594402.9511111111
+    },
+    {
+      "job": "performer",
+      "pair": "attack-support",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 351.76,
+      "elapsed": 351.76,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 582586.1433333333,
+      "petDps": 538938.4011111112
+    },
+    {
+      "job": "performer",
+      "pair": "magic-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 263.92,
+      "elapsed": 263.92,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 41,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 517851.9288888889,
+      "petDps": 603672.6155555556
+    },
+    {
+      "job": "hunter",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 487.94,
+      "elapsed": 487.94,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 720162.5866666667,
+      "petDps": 401361.9577777778
+    },
+    {
+      "job": "performer",
+      "pair": "support-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 467.4,
+      "elapsed": 467.4,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 683340.9533333334,
+      "petDps": 438183.5911111111
+    },
+    {
+      "job": "performer",
+      "pair": "defense-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 356.42,
+      "elapsed": 356.42,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 4,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 603305.7322222223,
+      "petDps": 518218.8122222222
+    },
+    {
+      "job": "performer",
+      "pair": "defense-attack",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 331.9,
+      "elapsed": 331.9,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 0,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 580295.7122222222,
+      "petDps": 541228.8322222222
+    },
+    {
+      "job": "performer",
+      "pair": "support-defense",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 525.14,
+      "elapsed": 525.14,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 13,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 736391.9533333334,
+      "petDps": 385132.5911111111
+    },
+    {
+      "job": "performer",
+      "pair": "support-magic",
+      "rank": "SSS",
+      "seed": 731,
+      "index": 0,
+      "won": true,
+      "alive": true,
+      "seconds": 469.04,
+      "elapsed": 469.04,
+      "petDeaths": 0,
+      "kills": 5,
+      "potions": 12,
+      "initialTargets": [
+        {
+          "id": "boss-191-1",
+          "hp": 1009372090,
+          "atk": 6028750,
+          "boss": true
+        }
+      ],
+      "ownerDps": 665707.1144444444,
+      "petDps": 455817.43
+    }
+  ]
+}
