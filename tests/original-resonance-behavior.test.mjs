@@ -322,6 +322,44 @@ test('assassin stored execution cannot be redirected to another monster or used 
  assert.ok(stale.exposedUntil>1009000,'a fresh stab should instead rearm the exposure');
 });
 
+test('assassin exposed target cannot be executed by swapping to an identical fused pet',async()=>{
+ const {a,c,p,foe}=await scenario('assassin','attack-defense');
+ a.beginReport();a.emitEvent('thirdHit_assassin');
+ assert.equal(foe.hp,1e9);
+ const another=c.makePet('fang');
+ Object.assign(another,{id:'second-assassin-executor',rarity:'mythic',ascended:true,
+  level:150,evolution:4,fusion:{main:'attack',sub:'defense'}});
+ another.hp=c.petStats(another).hp;p.pets.push(another);
+ a.setPet(another.id);
+ c.setTime(1004001);a.emitEvent('thirdHit_assassin');
+ assert.equal(foe.hp,1e9,'a new pet must first expose the target for itself');
+ assert.ok(foe.exposedUntil>1004001,'the new pet has started a fresh exposure');
+ c.setTime(1008002);a.emitEvent('thirdHit_assassin');
+ assert.ok(foe.hp<1e9,'the same pet may execute on its later legal strike');
+});
+
+test('crusader stored vow cannot be cashed by a new pet even against the same target',async()=>{
+ const {a,c,p,foe}=await scenario('crusader','attack-support');
+ p.hp=Math.floor(a.stat('hp')*.4);
+ a.emitEvent('thirdHit_crusader');const first=foe.hp;
+ assert.ok(first<1e9,'old pet has an unspent vow');
+ const another=c.makePet('fang');
+ Object.assign(another,{id:'second-crusader-vow',rarity:'mythic',ascended:true,
+  level:150,evolution:4,fusion:{main:'attack',sub:'support'}});
+ another.hp=c.petStats(another).hp;p.pets.push(another);
+ a.setPet(another.id);
+ p.hp=Math.floor(a.stat('hp')*.4);
+ const hpBefore=p.hp;
+ c.setTime(1004001);a.emitEvent('thirdHit_crusader');
+ const second=foe.hp;
+ assert.ok(second<first,'new pet must start a new lifesteal first stage');
+ assert.ok(p.hp>hpBefore,`new pet first stage must heal rather than using old shield-strike (${p.hp} vs ${hpBefore}, full ${a.stat('hp')})`);
+ const afterLifesteal=p.hp;
+ c.setTime(1008002);a.emitEvent('thirdHit_crusader');
+ assert.ok(foe.hp<second,'only the new pet’s later hit can discharge its vow');
+ assert.equal(p.hp,afterLifesteal,'new pet shield-strike must not grant a second lifesteal');
+});
+
 test('wizard stored retaliatory spell is charged by real owner damage and spent once on its hit',async()=>{
  const {a,c,foe}=await scenario('wizard','attack-defense');
  foe.atk=100;foe.hit=1e7;
