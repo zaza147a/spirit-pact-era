@@ -1,19 +1,87 @@
-import {REBIRTH_FUSION_DATA} from './rebirth-fusion-data.js';
-import {REBIRTH_MAIN_REPLACES,jobSkillById} from './job-skills.js';
-import {resonanceRule} from './resonance.js';
-import {fusedPair,companionRole,fusionKey,FUSION_PAIRS} from './pet-fusion.js';
-import {THIRD_JOBS} from './third-jobs.js';
-import {THIRD_CONTRACT_DATA} from './fusion-contract-data.js';
+import {ORIGINAL_PACT_SPECIALIZATIONS} from './original-pact-specializations.js?v=6.5.0';
+import {ORIGINAL_60_MECHANICS} from './original-60-mechanics.js?v=6.5.0';
+import {REBIRTH_FUSION_DATA} from './rebirth-fusion-data.js?v=6.5.0';
+import {REBIRTH_MAIN_REPLACES,jobSkillById} from './job-skills.js?v=6.5.0';
+import {resonanceRule} from './resonance.js?v=6.5.0';
+import {fusedPair,companionRole,fusionKey,FUSION_PAIRS} from './pet-fusion.js?v=6.5.0';
+import {THIRD_JOBS} from './third-jobs.js?v=6.5.0';
+import {THIRD_CONTRACT_DATA} from './fusion-contract-data.js?v=6.5.0';
 const rows=THIRD_CONTRACT_DATA;
+const FUSION_BASE_ORDER=['attack-magic','attack-defense','attack-support','magic-defense','magic-support','defense-support'];
+const contractIndex=key=>FUSION_BASE_ORDER.indexOf(key.split('-').sort((a,b)=>['attack','magic','defense','support'].indexOf(a)-['attack','magic','defense','support'].indexOf(b)).join('-'));
+
+
+// Six legacy families retain their validated contracts. Reverse main/sub paths
+// receive their own *mechanical* specialization, not just a different name.
+// The modifiers use existing pact keys already handled by combat runtime.
+const REVERSE_KEYS=new Set(['magic-attack','defense-attack','support-attack','defense-magic','support-magic','support-defense']);
+const FUSION_JOB_SPECIALTY={
+ knight:'petAttack',crusader:'petArmor',wizard:'magic',sage:'autoPower',
+ assassin:'execute',rogue:'single',priest:'leech',monk:'petAttack',
+ hunter:'targets',performer:'haste'
+};
+const REVERSE_ROUTE_SPECIALTY={
+ 'magic-attack':'magic','defense-attack':'petArmor','support-attack':'leech',
+ 'defense-magic':'petArmor','support-magic':'refund','support-defense':'haste'
+};
+function reversePactTransforms(job,key,M,W,F){
+ if(!REVERSE_KEYS.has(key))return [M,W,F];
+ const jobType=FUSION_JOB_SPECIALTY[job],routeType=REVERSE_ROUTE_SPECIALTY[key];
+ const transform=(source,index)=>{
+   const copy={...source};
+   // Small differentiators, still bounded by downstream skill rules.
+   const value=(type)=>type==='targets'?1:type==='refund'?0.06:type==='leech'?0.035:type==='haste'?0.035:type==='execute'?0.08:type==='single'?0.08:type==='autoPower'?0.08:type==='petArmor'?0.06:type==='magic'?0.07:0.07;
+   const type=index===1?routeType:jobType;
+   if(type==='targets')copy.targets=Math.max(1,Number(copy.targets)||0);
+   else copy[type]=Array.isArray(copy[type])?copy[type].map(n=>n+value(type)):Number(copy[type]||0)+value(type);
+   return copy;
+ };
+ return [transform(M,0),transform(W,1),transform(F,2)];
+}
+// Original VNext behavior: dedicated state machines supplement the 60 composed
+// event routes. Every route is wired, but each distinct gameplay contract still
+// requires event-window, cooldown, and duplicate-damage behavioral acceptance.
+export const ORIGINAL_EVENT_PACTS={
+ 'knight/attack-defense':{event:'thirdHit_knight',label:'盾碎後龍槍破甲',payload:'armorBreak'},
+ 'knight/defense-support':{event:'damageTaken',label:'承傷觸發龍魂反擊',payload:'dragonCounter'},
+ 'crusader/attack-defense':{event:'damageTaken',label:'承傷積累破城反擊',threshold:2,payload:'siegeCounter'},
+ 'rogue/defense-support':{event:'dodge',label:'閃避後聖域追擊',payload:'sanctuaryChase'},
+ 'assassin/attack-magic':{event:'crit',label:'暴擊附元素灼燒',payload:'elementBurn'},
+ 'assassin/attack-defense':{event:'thirdHit_assassin',label:'突刺破甲後處刑',payload:'armorExecution'},
+ 'monk/attack-support':{event:'combo',label:'連段汲血追擊',payload:'comboLeech'},
+ 'priest/magic-support':{event:'overheal',label:'治療溢量轉化星雨',payload:'overhealRain'}
+};
 const levels=[151,161,171,181,191,200];
 export const fusionTransformAtLevel=(t,level=151)=>Object.fromEntries(Object.entries(t).map(([k,v])=>{if(!Array.isArray(v))return[k,v];const l=Math.max(151,Math.min(200,level||151)),i=levels.findLastIndex(x=>x<=l);return[k,i===5?v[5]:v[i]+(v[i+1]-v[i])*(l-levels[i])/(levels[i+1]-levels[i])];}));
+// Companions now contribute primarily through their own attacks. These five
+// visible owner-skill additions were originally tuned as the bulk of pet DPS.
+// Preserve trigger, cooldown, healing and utility identities of all 60 plays.
+export const OWNER_FUSION_DAMAGE_SHARE_SCALE=.01;
+const ownerDamageKeys=new Set(['bonus','petAttack','magic','petArmor','armor','haste','cooldown']);
+export function rebalanceOwnerFusionDamage(transform,fused=true){return Object.fromEntries(Object.entries(transform).map(([key,value])=>[key,fused&&ownerDamageKeys.has(key)?value*OWNER_FUSION_DAMAGE_SHARE_SCALE:value]));}
 const labels={petAttack:'追加夥伴ATK',magic:'追加夥伴MATK',petArmor:'追加夥伴DEF',bonus:'人物技能倍率+',targets:'額外目標',haste:'動作間隔縮短',leech:'傷害轉治療',refund:'退還SP',single:'單一敵人時倍率+',execute:'目標HP低於30%倍率+',manaBurst:'SP達80%時倍率+',bounty:'掠獵金幣係數',autoPower:'自詠倍率+',autoTargets:'自詠額外目標',autoMana:'自詠回SP',castFactor:'詠唱時間倍率'};
 const describe=t=>Object.entries(t).map(([k,v])=>`${labels[k]||k}${['targets','refund','autoTargets','autoMana','bounty'].includes(k)?v:Array.isArray(v)?v.map(n=>Math.round(n*100)+'%').join('→')+'（Base151→200逐級成長）':Math.round(v*100)+'%'}`).join('、');
-export const THIRD_FUSION_RULES=Object.fromEntries(Object.entries(rows).map(([job,list])=>[job,Object.fromEntries(Object.keys(FUSION_PAIRS).map((key,i)=>{const [name,M,W,F,trigger]=list[i],main='thirdMain_'+job,wide='thirdWide_'+job,finish='thirdFinish_'+job,events=[main,...(trigger==='utility'?['thirdUtility_'+job]:trigger==='stance'?['thirdStance_'+job]:[])];return[key,{name,mode:'pact',effect:'stance',power:0,cooldown:4000,duration:8000,thirdFusion:true,skillId:main,events,transform:{},perSkill:{[main]:M,[wide]:W,[finish]:F},description:`${THIRD_JOBS[job].name}專屬；${trigger==='utility'?'生存技能或':trigger==='stance'?'姿態技能或':''}【${THIRD_JOBS[job].main}】命中／生效後開啟8秒共鳴。主攻：${describe(M)}；範圍技：${describe(W)}；終結技：${describe(F)}。` }];}))]));
+function originalTriggerDescription(job,key,event){
+ const source=ORIGINAL_60_MECHANICS[job+'/'+key];
+ const labels={damageTaken:'人物實際承傷',block:'實際格擋',dodge:'實際閃避',shield:'施放護盾',crit:'暴擊命中',combo:'連段命中',castComplete:'施法完成',skill:'攻擊技能命中',autospell:'自動念咒命中',skillRefresh:'技能刷新',buff:'施放增益',heal:'有效治療',overheal:'治療產生溢量',falcon:'獵鷹協攻'};
+ const trigger=labels[event.event]||(event.event.startsWith('thirdWideHit_')?'三轉範圍技命中':event.event.startsWith('thirdStance_')?'三轉姿態生效':'三轉主攻命中');
+ const gates={'knight/attack-defense':'先在6秒內發生盾碎；','knight/attack-support':'人物HP至少65%；','assassin/defense-support':'人物HP不高於40%；','sage/defense-support':'守護或護盾有效期間；','hunter/attack-support':'祝福或戰歌有效期間；'};
+ const lifecycleNotes={
+  'monk/defense-support':'承傷回SP並蓄氣（最多3層、12秒），之後極意拳命中才消耗氣勁追加傷害；切換夥伴清除。',
+  'rogue/magic-defense':'影擊命中後，向同一存活目標發射兩道星砲；目標倒下不轉移剩餘砲擊；',
+  'crusader/defense-support':'護盾先儲存一次追擊，6.5秒內且護盾仍有效時，後續主攻命中才釋放；',
+  'hunter/defense-support':'護盾先儲存一次反狙，6.5秒內且護盾仍有效時，後續射擊命中才釋放；',
+  'priest/defense-support':'攻擊技能走裁決；護盾儲存守護，6.5秒內有效守護期間承傷才反擊，三者共用冷卻；',
+  'wizard/defense-support':'護壁只提供兩次追加命中，消耗或6.5秒到期即失效；',
+  'performer/magic-support':'樂曲啟動每2秒星雨；樂曲有效時命中可延長同一連鎖，最多6次、每條連鎖最長12秒；'
+ };
+ return `【${source.description}】；${lifecycleNotes[job+'/'+key]||''}觸發：${gates[job+'/'+key]||''}${trigger}${event.threshold>1?`，${(event.window||8000)/1000}秒內累積${event.threshold}次`:''}。共用冷卻4秒；技能強化持續8秒。`;
+}
+export const THIRD_FUSION_RULES=Object.fromEntries(Object.entries(rows).map(([job,list])=>[job,Object.fromEntries(Object.keys(FUSION_PAIRS).map((key,i)=>{const originalEvent=ORIGINAL_EVENT_PACTS[job+'/'+key]||(ORIGINAL_60_MECHANICS[job+'/'+key]?{...ORIGINAL_60_MECHANICS[job+'/'+key],...ORIGINAL_PACT_SPECIALIZATIONS[job+'/'+key]}:null), [name,baseM,baseW,baseF,trigger]=list[contractIndex(key)],[M,W,F]=reversePactTransforms(job,key,baseM,baseW,baseF),main='thirdMain_'+job,wide='thirdWide_'+job,finish='thirdFinish_'+job,events=[main,...(trigger==='utility'?['thirdUtility_'+job]:trigger==='stance'?['thirdStance_'+job]:[])];return[key,{originalEvent, name:key===FUSION_BASE_ORDER[contractIndex(key)]?name:`${name}・${key.split('-')[0]}主契`,mode:'pact',effect:'stance',power:0,cooldown:4000,duration:8000,thirdFusion:true,skillId:main,events:originalEvent?[originalEvent.event,...(originalEvent.additionalEvents||[])]:events,transform:{},perSkill:{[main]:M,[wide]:W,[finish]:F},description:`${THIRD_JOBS[job].name}專屬；${originalEvent?originalTriggerDescription(job,key,originalEvent):`${trigger==='utility'?'生存技能或':trigger==='stance'?'姿態技能或':''}【${THIRD_JOBS[job].main}】命中／生效後開啟8秒共鳴。`}主攻：${describe(M)}；範圍技：${describe(W)}；終結技：${describe(F)}。` }];}))]));
 // Reborn second jobs can fuse at 150 before transferring. Their contracts have
 // independent triggers and a main-only payload; no third skill is required.
 const rebirthNames={knight:'龍騎',crusader:'聖殿',wizard:'咒術',sage:'智者',assassin:'刺魂',rogue:'魅影',priest:'聖者',monk:'宗師',hunter:'神射',performer:'樂聖'};
 const pairNames=['雙極','鐵誓','獵歌','玄星','靈泉','聖域'];
 const rebirthPayloads=REBIRTH_FUSION_DATA;
-export const REBIRTH_FUSION_RULES=Object.fromEntries(Object.entries(rebirthPayloads).map(([job,list])=>[job,Object.fromEntries(Object.keys(FUSION_PAIRS).map((key,i)=>{const id='rebirthMain_'+job;return[key,{name:rebirthNames[job]+'・'+pairNames[i],mode:'pact',effect:'stance',power:0,cooldown:4000,duration:8000,fusionContract:true,skillId:id,events:[id],transform:{},perSkill:{[id]:list[i]},description:`進階二轉【${rebirthNames[job]}】轉生主攻命中後開啟8秒融合共鳴：${describe(list[i])}。不需要三轉。`}];}))]));
-export function companionResonance(player,pet){const fused=!!fusedPair(pet),key=fused?fusionKey(pet.fusion.main,pet.fusion.sub):({attack:'attack-support',magic:'attack-magic',defense:'defense-support',support:'magic-support'})[companionRole(pet)];if(player.thirdJob||fused){if(player.thirdJob){const r=THIRD_FUSION_RULES[player.job]?.[key];if(!r)return null;const perSkill=Object.fromEntries(Object.entries(r.perSkill).map(([id,t])=>[id,fusionTransformAtLevel(t,player.level)]));return {...r,name:fused?r.name:THIRD_JOBS[player.job].name+'・'+({attack:'追獵戰契',magic:'元素戰契',defense:'守城戰契',support:'靈泉戰契'})[companionRole(pet)],thirdFusion:fused,thirdContract:true,perSkill,description:`${THIRD_JOBS[player.job].name}專屬；【${r.events.map(id=>jobSkillById(player.job,id)?.name||id).join('／')}】命中或生效後開啟8秒共鳴。主攻：${describe(perSkill['thirdMain_'+player.job])}；範圍技：${describe(perSkill['thirdWide_'+player.job])}；終結技：${describe(perSkill['thirdFinish_'+player.job])}。倍率隨Base逐級成長。`};}if(player.reborn){const r=REBIRTH_FUSION_RULES[player.job]?.[key];if(!r)return null;const old=REBIRTH_MAIN_REPLACES[player.job],main='rebirthMain_'+player.job;return {...r,events:[main,old],perSkill:{...r.perSkill,[old]:r.perSkill[main]},description:r.description+` 尚未習得轉生主攻時，也可由【${jobSkillById(player.job,old)?.name||old}】觸發。`};}}return resonanceRule(player.job,companionRole(pet));}
+export const REBIRTH_FUSION_RULES=Object.fromEntries(Object.entries(rebirthPayloads).map(([job,list])=>[job,Object.fromEntries(Object.keys(FUSION_PAIRS).map((key,i)=>{const id='rebirthMain_'+job;return[key,{name:rebirthNames[job]+'・'+pairNames[contractIndex(key)],mode:'pact',effect:'stance',power:0,cooldown:4000,duration:8000,fusionContract:true,skillId:id,events:[id],transform:{},perSkill:{[id]:list[contractIndex(key)]},description:`進階二轉【${rebirthNames[job]}】轉生主攻命中後開啟8秒融合共鳴：${describe(list[contractIndex(key)])}。不需要三轉。`}];}))]));
+export function companionResonance(player,pet){const fused=!!fusedPair(pet),key=fused?fusionKey(pet.fusion.main,pet.fusion.sub):({attack:'attack-support',magic:'attack-magic',defense:'defense-support',support:'magic-support'})[companionRole(pet)];if(player.thirdJob||fused){if(player.thirdJob){const r=THIRD_FUSION_RULES[player.job]?.[key];if(!r)return null;const perSkill=Object.fromEntries(Object.entries(r.perSkill).map(([id,t])=>[id,rebalanceOwnerFusionDamage(fusionTransformAtLevel(t,player.level),fused)]));return {...r,name:fused?r.name:THIRD_JOBS[player.job].name+'・'+({attack:'追獵戰契',magic:'元素戰契',defense:'守城戰契',support:'靈泉戰契'})[companionRole(pet)],thirdFusion:fused,thirdContract:true,events:fused?r.events:['thirdMain_'+player.job],perSkill,description:`${THIRD_JOBS[player.job].name}專屬；${fused&&r.originalEvent?originalTriggerDescription(player.job,key,r.originalEvent):`【${(fused?r.events:['thirdMain_'+player.job]).map(id=>jobSkillById(player.job,id)?.name||id).join('／')}】命中或生效後開啟8秒共鳴。`}主攻：${describe(perSkill['thirdMain_'+player.job])}；範圍技：${describe(perSkill['thirdWide_'+player.job])}；終結技：${describe(perSkill['thirdFinish_'+player.job])}。倍率隨Base逐級成長。`};}if(player.reborn){const r=REBIRTH_FUSION_RULES[player.job]?.[key];if(!r)return null;const old=REBIRTH_MAIN_REPLACES[player.job],main='rebirthMain_'+player.job;return {...r,events:[main,old],perSkill:{...r.perSkill,[old]:r.perSkill[main]},description:r.description+` 尚未習得轉生主攻時，也可由【${jobSkillById(player.job,old)?.name||old}】觸發。`};}}return resonanceRule(player.job,companionRole(pet));}

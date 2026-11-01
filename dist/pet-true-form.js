@@ -1,4 +1,5 @@
 // Appearance-only secret. Never unlock during normalization or offline simulation.
+import {humanoidStage,humanoidFormName} from './pet-humanoid-evolution.js?v=6.5.0';
 export const TRUE_FORMS={
  'attack-magic':'星焰真契者','attack-defense':'鎮界龍衛','attack-support':'聖瑞麟劍士','magic-attack':'赤曜星羽姬',
  'magic-defense':'星岩晶詠者','magic-support':'聖光羽靈姬','defense-attack':'赤曜鎧聖','defense-magic':'星曜符衛',
@@ -6,6 +7,10 @@ export const TRUE_FORMS={
 };
 export const trueFormKey=pet=>pet?.fusion?pet.fusion.main+'-'+pet.fusion.sub:null;
 export const trueFormReady=pet=>!!TRUE_FORMS[trueFormKey(pet)]&&pet.level>=200&&pet.loyalty>=500&&pet.trueForm!==true;
-export const trueFormName=pet=>pet?.trueForm===true?TRUE_FORMS[trueFormKey(pet)]||null:null;
-export const trueFormArt=pet=>trueFormName(pet)?`assets/true-forms/juvenile/${trueFormKey(pet)}.webp`:null;
+export const trueFormName=pet=>pet?.trueForm===true&&TRUE_FORMS[trueFormKey(pet)]?humanoidFormName(pet,TRUE_FORMS[trueFormKey(pet)]):null;
+export const trueFormArt=pet=>{
+ if(!trueFormName(pet))return null;
+ const stage=humanoidStage(pet),key=trueFormKey(pet);
+ return stage===0?`assets/true-forms/juvenile/${key}.webp`:`assets/true-forms/${['','S','SS','SSS'][stage]}/${key}.webp`;
+};
 export const TRUE_FORM_MESSAGE='恭喜！一路同行至今，你們早已親密無間。如今，牠終於願意卸下守護的外形，以原本的模樣與你相見。';

@@ -1,5 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import vm from 'node:vm';import {readFileSync} from 'node:fs';
 import {offlineWindow,OFFLINE_CAP_MS,inventoryDelta} from '../dist/offline-rules.js';
+import {readCharacterSlots,writeCharacterSlot} from '../dist/character-slots.js';
 test('offline time caps at 24 hours, rejects future/missing stamps, town, death and paused combat',()=>{
  const now=200000000,p={hp:100,location:'starter',offline:{at:now-48*3600000,enabled:true}};assert.equal(offlineWindow(p,now).duration,OFFLINE_CAP_MS);assert.equal(offlineWindow(p,now).capped,true);assert.equal(offlineWindow(p,now).eligible,true);
  for(const q of [{...p,offline:null},{...p,offline:{at:now+1,enabled:true}},{...p,location:'town'},{...p,hp:0},{...p,offline:{at:now-60000,enabled:false}}])assert.equal(offlineWindow(q,now).eligible,false);
@@ -27,4 +28,30 @@ test('settlement writes only its slot, is committed once, and preserves original
  const c=await runtime({localStorage:storage,Worker:FakeWorker,document:{baseURI:'https://example.test/game/',getElementById:id=>{if(!nodes.has(id))nodes.set(id,{});return nodes.get(id);}}}),a=c.api,p=a.normalize(a.fresh('結算測試','mage'));p.location='starter';p.offline={at:Date.now()-60000,enabled:true};const original=JSON.stringify({version:2,player:p});values.set('icarus-character-slot-1',original);values.set('icarus-character-slot-2','other role');a.setup(p);
  const summary=await a.settleOffline();assert.equal(summary.kills,1);assert.equal(JSON.parse(values.get('icarus-character-slot-1')).player.gold,p.gold+100);assert.equal(values.get('icarus-character-slot-2'),'other role');assert.equal(await a.settleOffline(),null);assert.equal(posts,1);
  values.set('icarus-character-slot-1',original);a.setup(structuredClone(p));fail=true;await assert.rejects(()=>a.settleOffline(),/儲存空間不足/);assert.equal(values.get('icarus-character-slot-1'),original);assert.equal(a.current().gold,p.gold);fail=false;conflict=true;a.setup(structuredClone(p));await assert.rejects(()=>a.settleOffline(),/其他分頁/);assert.equal(values.get('icarus-character-slot-1'),'changed elsewhere');
+});
+
+test('four character-slot offline simulations neither overwrite other saves nor mutate input snapshots',async()=>{
+ const data=new Map(),storage={getItem:key=>data.get(key)??null,setItem:(key,value)=>data.set(key,value)};
+ const c=await runtime(),a=c.api,jobs=['swordsman','mage','archer','acolyte'];
+ const originals=[];
+ for(let index=0;index<4;index++){
+  const p=a.normalize(a.fresh('四角'+index,jobs[index]));
+  p.location='starter';p.autoEscapeBoss=true;p.attributes.STR=99;p.attributes.VIT=99;
+  p.offline={at:1000000+index*1000,enabled:true};
+  writeCharacterSlot(storage,index,p);originals.push(JSON.stringify(p));
+ }
+ for(let index=0;index<4;index++){
+  const entries=readCharacterSlots(storage,a.normalize,a.valid);
+  const before=data.get('icarus-character-slot-'+(index+1));
+  const {player,summary}=await a.simulateOffline(entries[index].player,1120000+index*1000);
+  assert.ok(summary?.kills>0,'slot '+index+' must independently produce offline progress');
+  assert.equal(summary.duration,120000);
+  assert.equal(data.get('icarus-character-slot-'+(index+1)),before,'simulation must not commit until settlement');
+  assert.equal(JSON.stringify(entries[index].player),originals[index],'simulation must preserve source slot');
+  assert.ok(a.valid(player));
+  writeCharacterSlot(storage,index,player);
+  for(let other=index+1;other<4;other++)assert.equal(JSON.stringify(readCharacterSlots(storage,a.normalize,a.valid)[other].player),originals[other],'slot '+other+' changed while settling '+index);
+ }
+ const names=readCharacterSlots(storage,a.normalize,a.valid).map(slot=>slot.player.name);
+ assert.deepEqual(names,['四角0','四角1','四角2','四角3']);
 });

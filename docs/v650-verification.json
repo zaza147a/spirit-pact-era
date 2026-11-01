@@ -1,0 +1,132 @@
+{
+  "version": "6.5.0",
+  "sourceCommit": "d2e27e4980039f0ec7b9b1490ddb0c9f3cd05e42",
+  "sourceTree": "61fe4dd594560de324a0e18810f40bba3e81d5f4",
+  "branch": "feature/humanoid-pet-evolution",
+  "command": "node --test tests/*.test.mjs",
+  "node": {
+    "22": {
+      "tests": 525,
+      "pass": 525,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 49349.793279,
+      "logSha256": "cee7c776937b1e4440c49ed027485fbdeaa4d89b099c76f44448113b35071d94"
+    },
+    "24": {
+      "tests": 525,
+      "pass": 525,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 41789.601894,
+      "logSha256": "171d210dfa6bdc4c3b2d0853ed1088834d7d009e7c91068998bcdcba01431cc3"
+    }
+  },
+  "art": {
+    "assets": 30,
+    "jobs": 10,
+    "tiers": [
+      "S",
+      "SS",
+      "SSS"
+    ],
+    "alpha": "all have transparent alpha 0..255 and at least15px outer margin",
+    "hashManifest": "dist/assets/rank-outfits/art-manifest.json",
+    "royal": "All3 regenerated with natural portable shields, no architectural shield objects; tiers visually reviewed"
+  },
+  "physicalDevices": {
+    "status": "waived-by-user",
+    "scope": [
+      "physical phone",
+      "real Safari",
+      "native keyboard"
+    ],
+    "passed": false
+  },
+  "mainModified": false,
+  "published": false,
+  "status": "ready-for-release-approval",
+  "browser": {
+    "workflowRun": 41298178024,
+    "conclusion": "success",
+    "engines": {
+      "chromium": {
+        "artifactId": 13079947727,
+        "warehouseChecks": 8,
+        "outfitSelections": 30,
+        "legacyDisplayedRows": 72,
+        "touchViewportCases": 4,
+        "errors": 0,
+        "reports": [
+          "docs/browser-qa/v650-chromium-warehouse.json",
+          "docs/browser-qa/v650-chromium-outfits.json",
+          "docs/browser-qa/v650-chromium-legacy.json"
+        ],
+        "archiveSha256": "d76be09dd61fc2d919487c7b99c916f552c4f28c32dd2b3d7740e5ed73c53b97"
+      },
+      "webkit": {
+        "artifactId": 13080137669,
+        "warehouseChecks": 8,
+        "outfitSelections": 30,
+        "legacyDisplayedRows": 72,
+        "touchViewportCases": 4,
+        "errors": 0,
+        "reports": [
+          "docs/browser-qa/v650-webkit-warehouse.json",
+          "docs/browser-qa/v650-webkit-outfits.json",
+          "docs/browser-qa/v650-webkit-legacy.json"
+        ],
+        "archiveSha256": "dd7fc783358e58c56325ae2e84785faf4705150ccc966b9ad29e56a4edfee52c"
+      }
+    }
+  },
+  "workflows": {
+    "original60": {
+      "runId": 41298178128,
+      "conclusion": "success",
+      "scope": "Static configuration/code-presence audit only, not behavior proof. Actual lifecycle regressions are in the525-test suite and original-60-source-behavior-review.md."
+    },
+    "recovery": {
+      "runId": 41298178048,
+      "conclusion": "success"
+    },
+    "browser": {
+      "runId": 41298178024,
+      "conclusion": "success"
+    }
+  },
+  "recoveryArtifacts": [
+    {
+      "id": 13080381176,
+      "name": "recovery-combat-audit",
+      "archiveSha256": "16d259f2da578c9e55f67158a77112062152db56bc10a943f59ec9617e108548",
+      "report": "docs/v650-recovery-combat-audit.json",
+      "samples": 240,
+      "summary": null
+    },
+    {
+      "id": 13079733562,
+      "name": "recovery-balance-deep",
+      "archiveSha256": "c00fa6a456e11fb03147fcef73e21b97364686f06876290dcc16c6a31edb2665",
+      "report": "docs/v650-recovery-balance-deep.json",
+      "samples": 1512,
+      "summary": null
+    },
+    {
+      "id": 13080282248,
+      "name": "original-60-resonance-event-audit",
+      "archiveSha256": "b6afc8559f63a1e29b18a147541f2bdbce6055cf142c1ef6ce063af311e3c5fa",
+      "report": "docs/v650-original-60-resonance-event-audit.json",
+      "samples": null,
+      "summary": {
+        "total": 60,
+        "dedicated": 8,
+        "composed": 52,
+        "configured": 60,
+        "behaviorallyVerified": 0,
+        "warning": "Configuration and code-presence audit only; does not prove original 60 playstyle semantics"
+      }
+    }
+  ],
+  "productionTreeScope": "All dist production files are identical to the verified sourceCommit. Subsequent candidate commit contains only evidence/docs."
+}

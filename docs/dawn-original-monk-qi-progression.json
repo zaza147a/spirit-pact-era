@@ -1,0 +1,44 @@
+{
+  "sourceCommit": "6429d6f2fb69ac51babb490fccca040aa859137c",
+  "engineHash": "d8a9bba07c4d0688980cef64686ec41bfa4fd671c7df34ba184db0d84f23d3c4",
+  "handoffHead": "9476c49a0aa1c9228927a4467c3d43b4f5b809b9",
+  "gameplayBaseHead": "6429d6f2fb69ac51babb490fccca040aa859137c",
+  "conditions": "Monk defense-support stored-qi route. seed42. Start Lv201 with reference mythic SSS owner/pet gear, zero sigil and materials, 10k gold and 25 HP/SP potions. Real 60s offline farm chunks (30min limit), natural monster selection/respawn, auto-purchase, retain materials, travel to town, pay ranks I-IV, serialize/normalize each rank, reject V before core. Travel back and force actual Archon encounter selection only; real stats and combat plus adds, 240s cap. No material/sigil/damage injection. Same farmed player continues to boss after ordinary consumed HP/SP potions in town; 4s online supply timer is driven alongside combat. No direct health/MP assignment. Not browser E2E or all skill selections.",
+  "total": 1,
+  "completed": 1,
+  "wins": 1,
+  "rows": [
+    {
+      "job": "monk",
+      "pair": "defense-support",
+      "seed": 42,
+      "startLevel": 201,
+      "endLevel": 201,
+      "farmSeconds": 720,
+      "kills": 245,
+      "earned": 36750,
+      "spent": 3040,
+      "purchased": 16,
+      "farmMaterials": {
+        "dawn_scout_fang": 89,
+        "dawn_ram_horn": 80,
+        "dawn_ray_membrane": 76
+      },
+      "required": {
+        "dawn_scout_fang": 72,
+        "dawn_ram_horn": 72,
+        "dawn_ray_membrane": 72
+      },
+      "sigil": 4,
+      "won": true,
+      "bossSeconds": 70.4,
+      "bossRemainingHp": 0,
+      "remainingHp": 116911,
+      "core": 1,
+      "preparedHp": 116911,
+      "preparedPetHp": 3717873,
+      "remainingGold": 46560,
+      "valid": true
+    }
+  ]
+}
