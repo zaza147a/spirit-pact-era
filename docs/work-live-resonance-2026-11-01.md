@@ -1,3 +1,5 @@
+> 最新補驗：`docs/original-lifecycle-acceptance-2026-11-01.md`。本頁保留前批過程與各階段證據，不以早期待驗狀態覆蓋最新結果。
+
 # Work 第二批：實際事件、五王擴展與瀏覽器驗收（進行中）
 
 分支：feature/humanoid-pet-evolution；接續 b91a8d7e9bd74de31ec7b2a489e23324589687a5。沒有修改 main 或部署。

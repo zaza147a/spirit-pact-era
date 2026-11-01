@@ -5,14 +5,14 @@
     "node": "v24.22.1 and npm node@22",
     "os": "Linux x86_64"
   },
-  "tests": 480,
-  "pass": 480,
+  "tests": 505,
+  "pass": 505,
   "fail": 0,
   "cancelled": 0,
   "skipped": 0,
   "todo": 0,
-  "durationMs": 44128.133091,
-  "logSha256": "e285975fa921f73d9887069d814973e402cd8f967f187c08732c5359c167e794",
+  "durationMs": 112236.798399,
+  "logSha256": "963be3b3a8a4ca26e7930104ababddb186bc6d6cb8cfc83d1200d4241cef6282",
   "baseline": {
     "head": "9476c49a0aa1c9228927a4467c3d43b4f5b809b9",
     "tests": 398,
@@ -27,8 +27,8 @@
     "seed": 42,
     "report": "docs/dawn-progression-audit.json"
   },
-  "releaseStatus": "blocked-pending-full-acceptance",
-  "browserE2E": "passed-Chromium151-desktop1440-and-mobile390-emulation",
+  "releaseStatus": "blocked-physical-mobile-Safari-acceptance-and-no-release-authorized",
+  "browserE2E": "passed-Chromium-and-WebKit-desktop1440-mobile390-emulation",
   "mainModified": false,
   "published": false,
   "history": [
@@ -38,27 +38,33 @@
       "pass": 413,
       "fail": 0,
       "durationMs": 48524.340888
+    },
+    {
+      "phase": "before-source-lifecycle-fixes",
+      "tests": 480,
+      "pass": 480,
+      "fail": 0
     }
   ],
   "node24": {
-    "tests": 480,
-    "pass": 480,
+    "tests": 505,
+    "pass": 505,
     "fail": 0,
     "cancelled": 0,
     "skipped": 0,
     "todo": 0,
-    "durationMs": 44128.133091,
-    "logSha256": "e285975fa921f73d9887069d814973e402cd8f967f187c08732c5359c167e794"
+    "durationMs": 112236.798399,
+    "logSha256": "963be3b3a8a4ca26e7930104ababddb186bc6d6cb8cfc83d1200d4241cef6282"
   },
   "node22": {
-    "tests": 480,
-    "pass": 480,
+    "tests": 505,
+    "pass": 505,
     "fail": 0,
     "cancelled": 0,
     "skipped": 0,
     "todo": 0,
-    "durationMs": 38636.756309,
-    "logSha256": "3bd675e5809a555ea60831e973dca1b395b95f09fc034798880f5f393633e111"
+    "durationMs": 108145.288418,
+    "logSha256": "dbec33e4b4ec9d69a6b16acce203fc8ebb694e2cbec7ffd4b9de7f4902790e54"
   },
   "browserRunId": 41287478194,
   "fiveBoss": {
@@ -86,5 +92,36 @@
   },
   "browserSourceCommit": "b30d70468ad87814700391d6f553af89e7bee1d7",
   "browserArtifactId": 13076036057,
-  "browserLimits": "Physical mobile device/Safari not tested; full unique original60 design lifecycle acceptance still incomplete."
+  "browserLimits": "Physical mobile device/Safari not tested; full unique original60 design lifecycle acceptance still incomplete.",
+  "sourceCommit": "116772e37c7373691531b529408f5f1e4e71a55e",
+  "sourceReview": "docs/original-60-source-behavior-review.md",
+  "finalSourceRuns": {
+    "fullMatrix": 41290003659,
+    "browser": 41290003658,
+    "recoveryAndDeep": 41290003681,
+    "original60": 41290003656
+  },
+  "fullMatrixCurrent": {
+    "report": "docs/five-boss-full-skill-current.json",
+    "count": 2400,
+    "wins": 2302,
+    "timeouts": 97,
+    "defeats": 1,
+    "profilesWithoutWin": 0
+  },
+  "preparedFailureReplay": {
+    "report": "docs/five-boss-current-failure-replays.json",
+    "count": 98,
+    "wins": 98
+  },
+  "alternativeAllocations": {
+    "fiveBossA": {
+      "count": 240,
+      "wins": 240
+    },
+    "actualBoss210SSS": {
+      "count": 240,
+      "wins": 240
+    }
+  }
 }

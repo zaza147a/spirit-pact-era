@@ -1,7 +1,7 @@
 {
   "version": "v6.4.1",
   "scope": "original six ordered fusions × ten third jobs",
-  "note": "Connectivity is not proof of distinct multi-stage behavior. Pending does not imply absent implementation.",
+  "note": "Connectivity alone is not behavioral proof. All sixty source descriptions have now been reviewed against real actions, configured effects and common cooldown/switch tests; specialized stateful mechanics have additional lifecycle tests. This is bounded acceptance, not exhaustive all-state verification.",
   "total": 60,
   "connected": 60,
   "genericEventRoutes": 33,
@@ -53,19 +53,29 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_knight"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "knight/attack-defense",
       "description": "盾碎後龍槍破甲",
       "declaredEvent": "shieldBreak",
       "runtimeEvent": "thirdHit_knight",
-      "payload": "armorBreak",
+      "payload": [
+        "armorBreak"
+      ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_knight"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "knight/attack-support",
@@ -78,8 +88,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_knight"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "knight/magic-defense",
@@ -92,8 +106,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_knight"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "knight/magic-support",
@@ -106,19 +124,29 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "combo"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "knight/defense-support",
       "description": "承傷觸發龍魂反擊",
       "declaredEvent": "damageTaken",
       "runtimeEvent": "damageTaken",
-      "payload": "dragonCounter",
+      "payload": [
+        "dragonCounter"
+      ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "damageTaken"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "crusader/attack-magic",
@@ -131,30 +159,46 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_crusader"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "crusader/attack-defense",
       "description": "承傷積累破城反擊",
       "declaredEvent": "damageTaken",
       "runtimeEvent": "damageTaken",
-      "payload": "siegeCounter",
+      "payload": [
+        "siegeCounter"
+      ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "damageTaken"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "crusader/attack-support",
       "description": "聖誓吸血後盾擊",
       "declaredEvent": "thirdHit_crusader",
       "runtimeEvent": "thirdHit_crusader",
-      "payload": "vowShieldFollowup",
+      "payload": [
+        "vowShieldFollowup"
+      ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_crusader"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "crusader/magic-defense",
@@ -167,8 +211,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "block"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "crusader/magic-support",
@@ -181,8 +229,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "shield"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "crusader/defense-support",
@@ -190,13 +242,17 @@
       "declaredEvent": "shield",
       "runtimeEvent": "shield",
       "payload": [
-        "ward",
-        "counterStrike"
+        "guardedFollowup"
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "shield",
+        "thirdHit_crusader"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "wizard/attack-magic",
@@ -209,8 +265,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_wizard"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "wizard/attack-defense",
@@ -222,8 +282,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "damageTaken"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "wizard/attack-support",
@@ -236,8 +300,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "castComplete"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "wizard/magic-defense",
@@ -249,8 +317,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "skill"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "wizard/magic-support",
@@ -263,8 +335,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdWideHit_wizard"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "wizard/defense-support",
@@ -277,8 +353,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "shield"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "sage/attack-magic",
@@ -291,8 +371,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "autospell"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "sage/attack-defense",
@@ -305,8 +389,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdMain_sage"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "sage/attack-support",
@@ -319,8 +407,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "autospell"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "sage/magic-defense",
@@ -333,8 +425,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_sage"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "sage/magic-support",
@@ -346,8 +442,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "autospell"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "sage/defense-support",
@@ -360,30 +460,46 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "autospell"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "assassin/attack-magic",
       "description": "暴擊附元素灼燒",
       "declaredEvent": "crit",
       "runtimeEvent": "crit",
-      "payload": "elementBurn",
+      "payload": [
+        "elementBurn"
+      ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "crit"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "assassin/attack-defense",
       "description": "突刺破甲後處刑",
       "declaredEvent": "thirdHit_assassin",
       "runtimeEvent": "thirdHit_assassin",
-      "payload": "armorExecution",
+      "payload": [
+        "armorExecution"
+      ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_assassin"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "assassin/attack-support",
@@ -396,8 +512,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_assassin"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "assassin/magic-defense",
@@ -410,8 +530,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_assassin"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "assassin/magic-support",
@@ -424,8 +548,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_assassin"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "assassin/defense-support",
@@ -438,8 +566,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "damageTaken"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "rogue/attack-magic",
@@ -452,8 +584,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_rogue"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "rogue/attack-defense",
@@ -466,8 +602,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_rogue"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "rogue/attack-support",
@@ -480,8 +620,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "skillRefresh"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "rogue/magic-defense",
@@ -489,13 +633,17 @@
       "declaredEvent": "thirdHit_rogue",
       "runtimeEvent": "thirdHit_rogue",
       "payload": [
-        "splash",
+        "starVolley",
         "haste"
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_rogue"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "rogue/magic-support",
@@ -508,19 +656,29 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "combo"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "rogue/defense-support",
       "description": "閃避後聖域追擊",
       "declaredEvent": "dodge",
       "runtimeEvent": "dodge",
-      "payload": "sanctuaryChase",
+      "payload": [
+        "sanctuaryChase"
+      ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "dodge"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "priest/attack-magic",
@@ -533,8 +691,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_priest"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "priest/attack-defense",
@@ -547,8 +709,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_priest"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "priest/attack-support",
@@ -561,8 +727,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "buff"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "priest/magic-defense",
@@ -575,19 +745,29 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_priest"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "priest/magic-support",
       "description": "治療溢量轉化星雨",
       "declaredEvent": "overheal",
       "runtimeEvent": "overheal",
-      "payload": "overhealRain",
+      "payload": [
+        "overhealRain"
+      ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "overheal"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "priest/defense-support",
@@ -595,13 +775,18 @@
       "declaredEvent": "skill",
       "runtimeEvent": "skill",
       "payload": [
-        "ward",
-        "counterStrike"
+        "sanctuarySplit"
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "skill",
+        "shield",
+        "damageTaken"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "monk/attack-magic",
@@ -614,8 +799,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_monk"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "monk/attack-defense",
@@ -628,19 +817,29 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "combo"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "monk/attack-support",
       "description": "連段汲血追擊",
       "declaredEvent": "combo",
       "runtimeEvent": "combo",
-      "payload": "comboLeech",
+      "payload": [
+        "comboLeech"
+      ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "combo"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "monk/magic-defense",
@@ -653,8 +852,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdStance_monk"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "monk/magic-support",
@@ -667,8 +870,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "combo"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "monk/defense-support",
@@ -676,13 +883,17 @@
       "declaredEvent": "damageTaken",
       "runtimeEvent": "damageTaken",
       "payload": [
-        "manaRefund",
-        "stackStrike"
+        "storedQi"
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "damageTaken",
+        "thirdHit_monk"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "hunter/attack-magic",
@@ -695,8 +906,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "falcon"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "hunter/attack-defense",
@@ -709,8 +924,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_hunter"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "hunter/attack-support",
@@ -722,8 +941,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "falcon"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "hunter/magic-defense",
@@ -736,8 +959,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_hunter"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "hunter/magic-support",
@@ -750,8 +977,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdWideHit_hunter"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "hunter/defense-support",
@@ -759,13 +990,17 @@
       "declaredEvent": "shield",
       "runtimeEvent": "shield",
       "payload": [
-        "ward",
-        "counterStrike"
+        "guardedFollowup"
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "shield",
+        "thirdHit_hunter"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "performer/attack-magic",
@@ -778,8 +1013,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_performer"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "performer/attack-defense",
@@ -791,8 +1030,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "buff"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "performer/attack-support",
@@ -805,8 +1048,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "buff"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "performer/magic-defense",
@@ -819,8 +1066,12 @@
       ],
       "connected": true,
       "genericEvent": false,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "thirdHit_performer"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "performer/magic-support",
@@ -828,13 +1079,18 @@
       "declaredEvent": "buff",
       "runtimeEvent": "buff",
       "payload": [
-        "splash",
+        "songRainChain",
         "haste"
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "buff",
+        "song"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     },
     {
       "key": "performer/defense-support",
@@ -847,8 +1103,12 @@
       ],
       "connected": true,
       "genericEvent": true,
-      "behavioralAcceptance": "full-source-design-lifecycle-still-pending",
-      "liveActionAndPayload": "passed"
+      "behavioralAcceptance": "source-reviewed-nominal-and-shared-lifecycle-passed",
+      "liveActionAndPayload": "passed",
+      "events": [
+        "heal"
+      ],
+      "sourceReview": "docs/original-60-source-behavior-review.md"
     }
   ],
   "liveActionEvidence": {
@@ -856,6 +1116,7 @@
     "cases": 60,
     "passed": 60,
     "directEmitEventUsed": false,
-    "coverage": "real actions plus configured payload; not all unique source-design lifecycle interactions"
-  }
+    "coverage": "All sixty real action sources and configured payloads; source-by-source semantic review and dedicated complex-lifecycle cases are listed separately in original-60-source-behavior-review.md."
+  },
+  "sourceCommit": "116772e37c7373691531b529408f5f1e4e71a55e"
 }
