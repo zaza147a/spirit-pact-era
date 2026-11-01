@@ -27,10 +27,10 @@
     "seed": 42,
     "report": "docs/dawn-progression-audit.json"
   },
-  "releaseStatus": "v650-ready-for-release-approval",
+  "releaseStatus": "v650-published-and-smoke-verified",
   "browserE2E": "passed-Chromium-and-WebKit-desktop1440-mobile390-emulation",
-  "mainModified": false,
-  "published": false,
+  "mainModified": true,
+  "published": true,
   "history": [
     {
       "phase": "initialWork",
@@ -184,5 +184,6 @@
     "original60": 41298178128,
     "recovery": 41298178048,
     "browser": 41298178024
-  }
+  },
+  "productionRelease": "docs/v650-production-release.json"
 }

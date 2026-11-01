@@ -1,6 +1,6 @@
 # Work 最新驗收入口
 
-範圍：`feature/humanoid-pet-evolution`。main未修改、未合併、未正式發布。V6.5.0共用倉庫與職業時裝重製已完成，發布候選證據見`v650-verification.json`。
+V6.5.0已依使用者最終指示合併並正式發布。main提交`fbeee073d8fdc90a98b4bb78561a2e3c58eaa4b3`；部署`41299088478`成功並再次525/525通過。正式網站版本、倉庫入口、存檔重開及37個部署檔案逐位元核對均通過。發布證據見`v650-production-release.json`；修改與測試仍完整保留於`feature/humanoid-pet-evolution`。
 
 | 項目 | 最新證據與判定 |
 |---|---|
@@ -13,7 +13,7 @@
 | 瀏覽器 | `browser-qa/v650-*-legacy.json`：最新版Chromium／WebKit各72顯示檢查，實際存讀、升階、離線、連戰失敗停機。 |
 | 本次補手機觸控 | 兩引擎×四個窄幅／橫向視窗全部通過，各11次觸控手勢；見`mobile-touch-acceptance-2026-11-01.md`及`browser-qa/touch-*-acceptance.json`。 |
 | 實體手機／Safari | **依使用者最新指示跳過，不列本批發布阻擋**；不是已通過。操作包保留供未來需要時使用。 |
-| 發布判定 | 新增倉庫、30張職業時裝與最終雙瀏覽器回歸完成；正式發布前仍依既有指示保留main合併／發布確認。 |
+| 發布判定 | 全部門檻完成，使用者已授權正式發布；PR #1已合併，GitHub Pages部署及正式站檢查成功。 |
 
 完整本批報告：`original-lifecycle-acceptance-2026-11-01.md`。
 
