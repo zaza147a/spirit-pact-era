@@ -10,7 +10,7 @@ const narrowed=[
  ['performer','attack-magic'],['performer','magic-defense']
 ];
 
-test('seven signature strikes require a successful third-job main hit, not an arbitrary skill',async()=>{
+test('eight signature strikes require a successful third-job main hit, not an arbitrary skill',async()=>{
  for(const [job,pair] of narrowed){
   const c=await runtime(),a=c.api,p=a.normalize(a.fresh('signature',job));
   Object.assign(p,{level:150,reborn:true,thirdJob:true,jobLevel:70,location:'starshore'});
