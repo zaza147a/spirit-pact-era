@@ -59,6 +59,7 @@ test('crusader siege counter requires two real hit events',async()=>{
  const {a,foe}=await scenario('crusader','attack-defense');
  a.emitEvent('damageTaken');assert.equal(foe.hp,1e9);
  a.emitEvent('damageTaken');assert.ok(foe.hp<1e9);
+});
 test('crusader holy vow drains first and shield-strikes only on a later same-target hit',async()=>{
  const {a,c,p,foe}=await scenario('crusader','attack-support');
  const other={...foe,instanceId:'vow-other',hp:1e9,maxHp:1e9};
@@ -82,7 +83,6 @@ test('crusader holy vow expires and cannot become a delayed shield strike',async
  assert.ok(foe.hp<first,'an expired vow begins a fresh lifesteal strike');
  const second=foe.hp;c.setTime(1012502);a.emitEvent('thirdHit_crusader');
  assert.ok(foe.hp<second,'only this later strike can discharge the new vow');
-});
 });
 test('two-stage resonance accumulation expires after eight seconds without leaking delayed damage',async()=>{
  const {a,c,foe}=await scenario('crusader','attack-defense');

@@ -336,6 +336,7 @@ export const ORIGINAL_60_MECHANICS = Object.freeze({
     "event": "buff",
     "payload": "soundShield",
     "threshold": 2,
+    "window": 20000,
     "description": "演奏時疊加反擊音盾"
   },
   "performer/attack-support": {
