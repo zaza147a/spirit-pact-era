@@ -1117,7 +1117,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
   },
   fight({boss=false,monsterId=null,durationMs=60000,stepMs=20,enemyAttackEnabled=true}={}){
    const pool=player.location==='dawnrift'?DAWN_MONSTERS:WORLD_MONSTERS.filter(m=>m.map==='worldroot');
-   const source=boss?MAP_BOSSES[player.location]:pool.find(m=>m.id===monsterId)||pool[0];
+   const source=boss?(player.location==='dawnrift'?DAWN_BOSS:MAP_BOSSES[player.location]):pool.find(m=>m.id===monsterId)||pool[0];
    if(!source)throw Error('No selected enemy');
    enemies=[];enemy=null;encounterSlots=Array.from({length:encounterLimit(player.location)},()=>Infinity);
    const created={...source,...monsterRuntimeStats(source),instanceId:'bench-monster',slotIndex:0,maxHp:source.hp,hp:source.hp,
