@@ -4,6 +4,12 @@ on:
     branches: [experiment-weapon-balance-20261102]
     paths:
       - '.github/workflows/actual-combat-120.yml'
+      - 'tests/real-combat-browser-benchmark.mjs'
+      - 'tests/rank-actual-combat-120.mjs'
+      - 'dist/game.js'
+      - 'dist/pet-fusion.js'
+      - 'dist/pet-abilities.js'
+      - 'dist/pet-effects.js'
   workflow_dispatch:
 permissions:
   contents: read
