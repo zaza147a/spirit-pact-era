@@ -45,7 +45,7 @@ export function applyWarehouseCustody(storage,index,player){
  for(const [key,record] of Object.entries(state.stacks||{})){
   const flow=record.flows?.[index];if(!flow)continue;
   const receipt=stackReceipts[key]||{deposit:0,withdraw:0};const debit=Math.max(0,flow.deposit-(receipt.deposit||0)),credit=Math.max(0,flow.withdraw-(receipt.withdraw||0));
-  const [kind,id]=key.split(':');const inventory=kind==='card'?player.cards:player.bag;
+  const [kind,id]=key.split(':');if(kind==='card'&&!Array.isArray(player.cards))player.cards=[];const inventory=kind==='card'?player.cards:player.bag;
   if(!Array.isArray(inventory))continue;
   let entry=inventory.find(e=>e.id===id&&!e.uid);
   if(debit&&entry){entry.qty=Math.max(0,entry.qty-debit);if(entry.qty===0)inventory.splice(inventory.indexOf(entry),1);}
@@ -96,7 +96,9 @@ export function transferWarehouseStack(storage,index,player,direction,kind,id,am
  if(!player||!isTown(player.location)||!player.hp||player.trialRun)throw Error('請在村莊或主城與米菈辦理存取');
  if(!warehouseStackAllowed(kind,id)||!['deposit','withdraw'].includes(direction)||!Number.isInteger(amount)||amount<1||amount>WAREHOUSE_BATCH_LIMIT)throw Error('存取數量須為 1～50 件，且不可存放任務道具及入場券');
  const next=applyWarehouseCustody(storage,index,clone(player)),state=prepareState(storage);state.stacks??={};
- const key=kind+':'+id,record=state.stacks[key]||{qty:0,flows:{}},inventory=kind==='card'?next.cards:next.bag;
+ const key=kind+':'+id,record=state.stacks[key]||{qty:0,flows:{}};
+ if(kind==='card'&&!Array.isArray(next.cards))next.cards=[];
+ const inventory=kind==='card'?next.cards:next.bag;
  if(direction==='deposit'){
   const item=inventory?.find(e=>e.id===id&&!e.uid);
   if(!item||!Number.isInteger(item.qty)||item.qty<amount)throw Error('背包數量不足，請重新整理');
