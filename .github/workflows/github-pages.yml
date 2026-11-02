@@ -25,6 +25,14 @@ jobs:
           node-version: 24
       - name: Verify game and saved balance report
         run: node --test --test-concurrency=2 tests/*.test.mjs
+      - name: Stage automatically synced WIKI
+        run: |
+          mkdir -p dist/wiki
+          cp wiki/index.html dist/wiki/index.html
+          test -s dist/wiki/index.html
+          test -s dist/catalog.js
+          test -s dist/loot.js
+          node --input-type=module -e "import fs from 'node:fs'; const s=fs.readFileSync('dist/wiki/index.html','utf8'); const paths=[...s.matchAll(/from '\\.\\.\\/([^']+)'/g)].map(x=>x[1]); for(const p of paths){ if(!fs.existsSync('dist/'+p)) throw Error('Missing WIKI dependency '+p); } console.log('WIKI dependency check:',paths.length,'modules')"
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload game
