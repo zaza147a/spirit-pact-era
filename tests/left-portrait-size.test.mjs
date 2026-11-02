@@ -26,3 +26,13 @@ test('tall desktop uses actual larger portrait columns and bounded card heights'
  assert.match(css,/\.character #companion \.hero \.art-hero\{width:100px;max-width:100px;height:108px\}/);
  assert.match(css,/\.character \.hero img\.art-hero\.rank-outfit\{transform:scale\(1\.18\)/);
 });
+
+test('roomy desktop stacks portrait above centered player and companion details',()=>{
+ const css=readFileSync(new URL('../dist/compact-v5.css',import.meta.url),'utf8');
+ assert.match(css,/@media\(min-width:1200px\) and\(min-height:1000px\)\{/);
+ assert.match(css,/\.character #companion \.hero:has\(\.art-hero\)\{display:flex;flex-direction:column;align-items:center/);
+ assert.match(css,/\.character \.hero \.art-hero\{position:static;display:block;flex:0 0 auto;width:150px/);
+ assert.match(css,/height:clamp\(125px,13\.5vh,155px\)/);
+ assert.match(css,/\.character #companion \.hero \.art-hero\{width:155px/);
+ assert.match(css,/\.character \.hero img\.art-hero\.rank-outfit\{transform:scale\(1\.13\);transform-origin:center center\}/);
+});

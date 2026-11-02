@@ -148,3 +148,12 @@
  .character #companion .hero .art-hero{width:100px;max-width:100px;height:108px}
  .character .hero img.art-hero.rank-outfit{transform:scale(1.18);transform-origin:left center}
 }
+/* Roomy desktop left rail: portrait above details, not beside them. Keep
+   the meter/level sections in their original order below both portrait cards. */
+@media(min-width:1200px) and(min-height:1000px){
+ .character .hero:has(.art-hero),.character #companion .hero:has(.art-hero){display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;min-height:0;padding:9px 7px 10px;text-align:center;overflow:hidden}
+ .character .hero .art-hero{position:static;display:block;flex:0 0 auto;width:150px;max-width:100%;height:clamp(125px,13.5vh,155px);margin:0 auto 2px;transform:none;object-fit:contain;object-position:center}
+ .character #companion .hero .art-hero{width:155px;max-width:100%;height:clamp(125px,13.5vh,155px)}
+ .character .hero img.art-hero.rank-outfit{transform:scale(1.13);transform-origin:center center}
+ .character .hero .character-name,.character .hero strong,.character .hero .pill,.character .hero .pet-nickname{max-width:100%;text-align:center;overflow-wrap:anywhere}
+}
