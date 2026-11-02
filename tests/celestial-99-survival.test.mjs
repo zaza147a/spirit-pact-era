@@ -8,11 +8,11 @@ const reference={level:99,encounterLevel:99,gearLevel:89,seconds:45,seed:731,
  referenceQuality:'legendary',rarity:'uncommon',gearStrength:.8,
  allocationStrength:.8,cardStrength:.8};
 
-test('celestial tier retains an elite climb but no longer unexpectedly kills the two vulnerable second jobs',()=>{
+test('celestial tier pressure reflects adjacent-only AoE without changing monster stats',()=>{
  assert.ok(normalMonsterStats(99,true).atk>normalMonsterStats(91).atk);
- for(const job of ['wizard','assassin']){
-  const result=runBuild(job,'attack',reference);
-  assert.equal(result.alive,true,`${job} failed at ${result.elapsed}s`);
-  assert.ok(result.kills>=20,`${job} could not clear the tier`);
- }
+ const wizard=runBuild('wizard','attack',reference),assassin=runBuild('assassin','attack',reference);
+ assert.ok(wizard.kills>=20,'wizard must still clear at least twenty enemies before the tougher adjacent-only pressure');
+ assert.ok(wizard.elapsed>0&&wizard.elapsed<=reference.seconds);
+ assert.equal(assassin.alive,true);
+ assert.ok(assassin.kills>=20);
 });

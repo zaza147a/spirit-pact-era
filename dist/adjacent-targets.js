@@ -11,7 +11,9 @@ export function adjacentTargets(foes, primary, limit=3, bossSlot){
  const rightmost=Number.isInteger(bossSlot)?bossSlot:Math.max(-1,...regular.map(f=>f.slotIndex))+1;
  const slotOf=f=>f?.boss?rightmost:f?.slotIndex;
  const primarySlot=slotOf(primary);
- if(!Number.isInteger(primarySlot))return [primary];
+ // Legacy simulations and imported fixtures may not carry encounter-slot
+ // metadata. Only the live slot-based encounter can enforce spatial adjacency.
+ if(!Number.isInteger(primarySlot))return [primary,...foes.filter(f=>f!==primary&&f?.hp>0)].slice(0,count);
  const slots=new Map(regular.map(f=>[f.slotIndex,f]));
  const boss=foes.find(f=>f?.boss&&f.hp>0);
  if(boss)slots.set(rightmost,boss);
