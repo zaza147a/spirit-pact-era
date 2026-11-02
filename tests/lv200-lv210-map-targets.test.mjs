@@ -6,6 +6,7 @@ import {MAP_BOSSES} from '../dist/map-bosses.js';
 import {monsterRuntimeStats} from '../dist/combat-balance.js';
 import {SECOND_JOBS} from '../dist/jobs.js';
 import {fusionKey} from '../dist/pet-fusion.js';
+import {dawnArchonPreparationFactor,sigilBonus} from '../dist/dawn-sigil.js';
 
 export const FUSION_KEYS=['attack-magic','attack-defense','attack-support','magic-defense','magic-support','defense-support'];
 const mob191=WORLD_MONSTERS.filter(m=>m.map==='worldroot').sort((a,b)=>a.level-b.level);
@@ -48,4 +49,12 @@ test('defense and health from source remain distinct between upper and lower map
  assert.ok(DAWN_BOSS.hp>MAP_BOSSES.worldroot.hp);
  assert.ok(DAWN_BOSS.atk>MAP_BOSSES.worldroot.atk);
  assert.ok(mob201[0].hp>mob191.at(-1).hp);
+});
+
+test('Archon damage gate must be checked at Sigil 0, IV and VIII',()=>{
+ const prepared=[.34,.44,.54,.75,1];
+ for(let rank=0;rank<=4;rank++)assert.equal(dawnArchonPreparationFactor({dawnSigil:rank}),prepared[rank]);
+ assert.equal(dawnArchonPreparationFactor({dawnSigil:8}),1.1);
+ assert.equal(sigilBonus({dawnSigil:4}).atk,1.08);
+ assert.equal(sigilBonus({dawnSigil:8}).petDamage,1.16);
 });
