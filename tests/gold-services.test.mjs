@@ -4,7 +4,7 @@ import {GOLD_COLLECTIBLES,REFORGE_PRICES,reforgePrice,reforgeGear,buyGoldCollect
 import {rollGear,rollPetGear,RARITIES,SPECIAL_AFFIXES} from '../dist/loot.js';
 
 test('reforge price table and S/SS/SSS doubling',()=>{
- assert.deepEqual(REFORGE_PRICES,[1e6,1.5e6,2.5e6,5e6]);
+ assert.deepEqual(REFORGE_PRICES,[2e6,3e6,5e6,10e6]);
  for(let n=0;n<4;n++){
   assert.equal(reforgePrice(n,'A'),REFORGE_PRICES[n]);
   for(const rank of ['S','SS','SSS'])assert.equal(reforgePrice(n,rank),REFORGE_PRICES[n]*2);
