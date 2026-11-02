@@ -1075,6 +1075,9 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    const p=normalize(fresh('戰鬥驗證',spec.job));
    p.level=spec.level;p.reborn=true;p.thirdJob=true;p.firstJobLevel=50;p.secondJobLevel=70;p.jobLevel=70;
    p.location=spec.level===200?'worldroot':'dawnrift';p.dawnUnlocked=true;p.dawnSigil=spec.level===210?(spec.sigil??8):0;p.autoEscapeBoss=false;
+   p.gold=200_000_000;
+   p.bag=[{id:'red_large',qty:500},{id:'blue_large',qty:500}];
+   p.autoPotions={playerHp:true,playerSp:true,petHp:true,petSp:true};
    p.attributes={STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1,...spec.attributes};
    capBaseAttributes(p);
    p.statPoints=Math.max(0,allocationBudget(p.level,true)-Object.values(p.attributes).reduce((n,v)=>n+v-1,0));
@@ -1105,7 +1108,8 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
     gear:Object.fromEntries([['head',spec.petGear?.[0]||'petHelm'],['body',spec.petGear?.[1]||'petArmor'],['shoes',spec.petGear?.[2]||'petBoots']].map(([slot,id])=>{
       const g=rollPetGear(id,200,'mythic',()=>.5);if(stageRank)g.enhancement=stageRank;return [slot,g];
     }))};
-   const skills=fusionSkills(pet);pet.equippedSkills=(spec.petSkills?.length?spec.petSkills:skills.filter(x=>!['shield','heal','mana','guard','blessing','mark'].includes(x.kind)).slice(0,3).map(x=>x.id));
+   const skills=fusionSkills(pet);pet.equippedSkills=(spec.petSkills?.length?spec.petSkills:defaultFusionSkills(pet));
+   if(pet.equippedSkills.length!==3||pet.equippedSkills.some(id=>!skills.some(x=>x.id===id)))throw Error('Invalid three pet skills: '+spec.fusion);
    pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;
    p.pets=[pet];p.activePetId=pet.id;
    player=p;auto=true;gameRunning=true;offlineSimulation=true;
