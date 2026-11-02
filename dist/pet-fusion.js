@@ -1,7 +1,7 @@
 import {trueFormName,trueFormArt} from './pet-true-form.js?v=6.5.0';
 const roles=['attack','magic','defense','support'];
 export const BASE_PET_ROLES={fang:'attack',wisp:'magic',shell:'defense',sprout:'support'};
-export const fusionKey=(a,b)=>a!==b&&roles.includes(a)&&roles.includes(b)?[a,b].join('-'):null;
+export const fusionKey=(a,b)=>a!==b&&roles.includes(a)&&roles.includes(b)?[a,b].sort((x,y)=>roles.indexOf(x)-roles.indexOf(y)).join('-'):null;
 // Fusion skills retain their original three IDs; new alternatives occupy 3–5.
 // Each coefficient is a visible skill ratio, never a global combat multiplier.
 export const FUSION_PAIRS={
@@ -415,12 +415,12 @@ for(const [key,title] of Object.entries(REVERSE_ROUTE_NAMES)){
  const [main,sub]=key.split('-'),forward=FUSION_PAIRS[[main,sub].sort((a,b)=>roles.indexOf(a)-roles.indexOf(b)).join('-')];
  const skillNames=REVERSE_ROUTE_SKILLS[key];
  FUSION_PAIRS[key]={
-   ...forward,name:title,role:main,
-   style:`${title}・以主系${main}為核心的獨立技能組`,
-   hp:+(forward.hp*(main==='defense'?1.14:main==='support'?1.08:0.96)).toFixed(3),
-   def:+(forward.def*(main==='defense'?1.16:main==='support'?1.06:0.96)).toFixed(3),
-   attack:+(forward.attack*(main==='magic'?1.03:main==='support'?.93:.96)).toFixed(3),
-   skills:forward.skills.map((skill,i)=>[skillNames[i]||`${title}技${i+1}`,skill[1],+(skill[2]*(main==='magic'?1.03:main==='support'?.95:.98)).toFixed(3),skill[3],skill[4],skill[5]])
+   ...forward,name:title,role:forward.role,
+   style:`${title}・與${forward.name}能力及技能相同，僅外觀不同`,
+   hp:forward.hp,
+   def:forward.def,
+   attack:forward.attack,
+   skills:forward.skills.map(skill=>[...skill])
  };
 }
 export const FUSION_DEFAULTS={'attack-magic':[0,1,5],'attack-defense':[0,1,4],'attack-support':[0,1,2],'magic-defense':[0,1,4],'magic-support':[0,2,3],'defense-support':[0,1,3]};
