@@ -28,16 +28,17 @@ for(const level of stages)for(const job of jobs)for(const fusion of fusions){
   const completed=mobs.filter(r=>r.kill).length,success=boss.kill;
   const normalizedMob=mobs.reduce((n,r)=>n+r.totalDamage/Math.max(1,r.enemyHp),0)/mobCount;
   const normalizedBoss=boss.totalDamage/Math.max(1,boss.enemyHp);
-  // Different boss HP across levels is separated by per-level ranking.
-  // 60% mob / 40% boss fraction of target health; death is a tie-breaker.
+  // Rank using measured effective DPS. Progress/survival are separately reported,
+  // not silently substituted for the requested DPS metric.
   const weightedHealthProgress=.6*normalizedMob+.4*normalizedBoss;
-  const candidate={key,records,meanMobDps,bossDps,completed,success,weightedHealthProgress};
-  if(!best||candidate.weightedHealthProgress>best.weightedHealthProgress||candidate.weightedHealthProgress===best.weightedHealthProgress&&Number(candidate.success)>Number(best.success))best=candidate;
+  const weightedEffectiveDps=.6*meanMobDps+.4*bossDps;
+  const candidate={key,records,meanMobDps,bossDps,completed,success,weightedHealthProgress,weightedEffectiveDps};
+  if(!best||candidate.weightedEffectiveDps>best.weightedEffectiveDps||candidate.weightedEffectiveDps===best.weightedEffectiveDps&&Number(candidate.success)>Number(best.success))best=candidate;
  }
  if(!best)throw Error('No loadout '+[level,job,fusion].join('/'));
  const selected=best.records,boss=selected.find(r=>r.target==='boss'),mobs=selected.filter(r=>r.target!=='boss');
  ranks.push({level,job,fusion,weaponBuild:boss.weaponBuild,attributes:boss.attributes,sigil:boss.sigil,
-  combatBuildsTested:options.size,meanMobEffectiveDps:Math.round(best.meanMobDps),bossEffectiveDps:Math.round(best.bossDps),
+  combatBuildsTested:options.size,weightedEffectiveDps:Math.round(best.weightedEffectiveDps),meanMobEffectiveDps:Math.round(best.meanMobDps),bossEffectiveDps:Math.round(best.bossDps),
   bossOwnerDps:Math.round(boss.ownerDamage/Math.max(.02,boss.elapsedMs/1000)),
   bossPetAttributedDps:Math.round(boss.petAttributedDamage/Math.max(.02,boss.elapsedMs/1000)),
   bossKill:boss.kill,bossDeath:boss.dead,bossElapsedMs:boss.elapsedMs,
@@ -45,8 +46,10 @@ for(const level of stages)for(const job of jobs)for(const fusion of fusions){
   definition:'REAL_COMBAT_TICK_BENCHMARK; tested equipment seeds and candidate stat builds only; not globally optimized'});
 }
 if(ranks.length!==120)throw Error('Expected 120 complete ranked rows');
-const ranked=ranks.sort((a,b)=>a.level-b.level||b.progressScore-a.progressScore||b.bossEffectiveDps-a.bossEffectiveDps);
-for(const level of stages){let i=0;for(const r of ranked.filter(r=>r.level===level))r.stageRank=++i;}
+const ranked=ranks.sort((a,b)=>a.level-b.level||b.weightedEffectiveDps-a.weightedEffectiveDps||b.bossEffectiveDps-a.bossEffectiveDps);
+for(const level of stages){let i=0;for(const r of ranked.filter(r=>r.level===level))r.stageDpsRank=++i;}
+for(const level of stages){const byBoss=[...ranked].filter(r=>r.level===level).sort((a,b)=>b.bossEffectiveDps-a.bossEffectiveDps);byBoss.forEach((r,i)=>r.bossDpsRank=i+1);}
+for(const level of stages){const viable=[...ranked].filter(r=>r.level===level).sort((a,b)=>Number(b.bossKill&&!b.bossDeath)-Number(a.bossKill&&!a.bossDeath)||b.progressScore-a.progressScore);viable.forEach((r,i)=>r.viabilityRank=i+1);}
 await mkdir('test-results',{recursive:true});
 const path='test-results/actual-combat-120-ranked.json';
 await writeFile(path,JSON.stringify({kind:'RANKED_FROM_ACTUAL_GAME_COMBATTICK',sourceFile:file,levels:[200,210],rows:ranked},null,2));
