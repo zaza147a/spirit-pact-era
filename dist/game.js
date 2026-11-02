@@ -5,6 +5,7 @@ import {CARD_DRAW_COST,CARD_BOSS_RATE,cardRecyclePoints,cardRecycleValue,recycle
 import {GOLD_COLLECTIBLES,goldCollectionTier,goldCollectionBonus,earnGold,buyGoldCollectible,goldWealth,reforgePrice,reforgeGear} from './gold-services.js?v=6.5.27';
 import {multiTargets} from './adjacent-targets.js?v=6.5.12';
 import {rankOutfitArt,rankOutfitName,RANK_OUTFITS} from './rank-outfits.js?v=6.5.0';
+import {COSMETIC_STORAGE_KEY,COSMETIC_JOBS,COSMETIC_OUTFIT_PRICES,COSMETIC_BACKGROUNDS,cosmeticOutfitId,cosmeticOutfitArt,cosmeticBackgroundArt,readCosmeticCollection,normalizeCosmeticSelection,buyCosmetic,cosmeticWealth} from './cosmetic-gallery.js?v=6.5.35';
 import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,warehouseStackAllowed,warehouseStackItems,WAREHOUSE_BATCH_LIMIT,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,transferWarehouseStack,exportWarehouse,importWarehouse} from './shared-warehouse.js?v=6.5.33';
 import {migrateLegacyReselect,reselectionPet,RESELECT_ORDERED_TYPES} from './pet-legacy-reselect.js?v=6.5.0';
 import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArchonPreparationFactor} from './dawn-sigil.js?v=6.5.0';
@@ -739,6 +740,7 @@ for(const b of $('skillBar').querySelectorAll('[data-cast]'))b.onclick=()=>playe
 const equippedSkill=jobSkillById(player.job,player.equippedJobSkill)||JOB_SKILLS[player.job][0];bindTrialControls();$('attackBtn').disabled=!player.hp||!enemy.hp||isControlled();$('skillBtn').disabled=mainSkillState(equippedSkill)!=='可施放';$('skillBtn').textContent=`✦ ${equippedSkill.name} (-${equippedSkill.mp} SP)`;$('skillBtn').title=jobSkillSpec(equippedSkill,player.jobSkills[equippedSkill.id],player.job,skillContext(equippedSkill)).text;if($('selectedSkillInfo'))$('selectedSkillInfo').innerHTML=`<b>目前人物技能：${equippedSkill.name} Lv.${player.jobSkills[equippedSkill.id]||0} · SP ${equippedSkill.mp}</b><span>${jobSkillSpec(equippedSkill,player.jobSkills[equippedSkill.id],player.job,skillContext(equippedSkill)).text}</span><span>${mainSkillState(equippedSkill)}</span>`;$('captureBtn').hidden=!map.capture;$('fleeBossBtn').hidden=!player.trialRun&&!mapRules(player.location).bosses;$('fleeBossBtn').textContent=player.trialRun?'離開試煉':'逃離首領';$('captureBtn').disabled=!player.hp||!enemy.hp||!map.capture||enemy.boss;$('captureBtn').textContent=enemy.boss?'♛ 首領不可捕捉':map.capture?'◈ 丟球捕捉':'◈ 此地禁止捕捉';$('fleeBossBtn').disabled=!enemies.some(e=>e.boss&&e.hp>0);$('autoBtn').textContent=auto?'⏸ 暫停自動戰鬥':'▶ 開始自動戰鬥';$('autoBtn').setAttribute('aria-pressed',String(auto));document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));renderSide();
 $('character').querySelector('.hero')?.insertAdjacentHTML('afterend',`<div class="wallet-line">🪙 持有金幣 <b>${Number(player.gold).toLocaleString('zh-TW')}</b></div>`);
 $('renameCharacterBtn').onclick=()=>{delete $('renameModal').dataset.petId;$('renameModal').querySelector('h2').textContent='更改角色名稱';$('renameModal').querySelector('label').textContent='角色名稱（最多 16 字）';$('renameInput').value=player.name;$('renameModal').style.display='flex';$('renameInput').focus();};if(pet)$('renamePetBtn').onclick=()=>openPetRename(pet.id);const heroes=document.querySelectorAll('#character .hero, #companion .hero');heroes[0]?.insertAdjacentHTML('afterbegin',spriteHtml(player.job,'hero',player.reborn,player.thirdJob,player.selectedOutfit));if(pet)heroes[1]?.insertAdjacentHTML('afterbegin',petSprite(pet,'hero'));
+applyCosmeticHero();
 if(!player.hp){$('character').insertAdjacentHTML('beforeend','<button class="wide primary" id="showRevive">✚ 選擇復活方式</button>');$('showRevive').onclick=showReviveDialog;}
 const tactic=manualTactic(player.job),remaining=tacticRemaining(player,gameNow()),cost=tactic?tacticSPCost(stat('mp'),tactic):0;
 $('tacticBtn').textContent=tactic?`◇ ${tactic.name}${remaining?`（${remaining}秒）`:''}`:'◇ 職業戰術';
@@ -1309,7 +1311,63 @@ function bindWarehouseControls(){
  for(const b of root.querySelectorAll('[data-warehouse-export]'))b.onclick=()=>{try{const blob=new Blob([JSON.stringify(exportWarehouse(localStorage),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='spirit-pact-warehouse.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}catch(error){toast(error.message);}};
  for(const input of root.querySelectorAll('[data-warehouse-import]'))input.onchange=async()=>{const file=input.files[0];if(!file||warehouseBusy)return;warehouseBusy=true;try{if(file.size>4*1024*1024)throw Error('倉庫備份超過4MB');const data=JSON.parse(await file.text()),session=player,index=activeSlot;const result=await withWarehouseLock(navigator.locks,()=>{if(player!==session||activeSlot!==index||!isTown(player.location)||!player.hp||player.trialRun)throw Error('請在村莊重新操作倉庫');return importWarehouse(localStorage,data);});applyWarehouseCustody(localStorage,index,player);save();toast(`已匯入${result.imported}件，略過${result.skipped}件已存在或已轉交裝備`);}catch(error){toast(error.message);}finally{warehouseBusy=false;if(player)refreshWarehouseModal();}};
 }
-function renderOutfits(){return `<section class="item"><h3>角色外觀 · 全身星鑄解鎖</h3><p>全身至少S／SS／SSS階各解鎖一套。較高階可滿足較低階條件，解鎖永久保留；換裝不會失去已解鎖外觀。外觀不影響能力。</p><p>目前全身最低階：${fullSetRank(player,GEAR_BASE)||'未集齊'}${player.dawnUnlocked?' · 已開放曙界新陸':''}</p><button data-outfit="default">使用原職業外觀</button></section>${SECOND_JOBS[player.job]?['S','SS','SSS'].map(rank=>{const unlocked=player.outfitUnlocks?.includes(rank);return `<div class="item outfit-card">${unlocked?`<img src="${rankOutfitArt(player.job,rank)}" alt="${THIRD_JOBS[player.job].name} ${rank}階外觀">`:'<div class="unknown-form">?</div>'}<b>${rankOutfitName(player.job,rank)} · ${rank}階</b><small>${THIRD_JOBS[player.job].name} · ${RANK_OUTFITS[player.job].motif}</small><button data-outfit="${rank}" ${unlocked?'':'disabled'}>${unlocked?(player.selectedOutfit===rank?'使用中':'選用外觀'):`全身至少${rank}階解鎖`}</button></div>`;}).join(''):'<div class="item">完成二轉後可使用對應職業外觀。</div>'}`;}
+function renderOutfits(){return `<section class="item"><h3>角色外觀 · 全身星鑄解鎖</h3><p>全身至少S／SS／SSS階各解鎖一套。較高階可滿足較低階條件，解鎖永久保留；換裝不會失去已解鎖外觀。外觀不影響能力。</p><p>目前全身最低階：${fullSetRank(player,GEAR_BASE)||'未集齊'}${player.dawnUnlocked?' · 已開放曙界新陸':''}</p><button data-outfit="default">使用原職業外觀</button></section>${SECOND_JOBS[player.job]?['S','SS','SSS'].map(rank=>{const unlocked=player.outfitUnlocks?.includes(rank);return `<div class="item outfit-card">${unlocked?`<img src="${rankOutfitArt(player.job,rank)}" alt="${THIRD_JOBS[player.job].name} ${rank}階外觀">`:'<div class="unknown-form">?</div>'}<b>${rankOutfitName(player.job,rank)} · ${rank}階</b><small>${THIRD_JOBS[player.job].name} · ${RANK_OUTFITS[player.job].motif}</small><button data-outfit="${rank}" ${unlocked?'':'disabled'}>${unlocked?(player.selectedOutfit===rank?'使用中':'選用外觀'):`全身至少${rank}階解鎖`}</button></div>`;}).join(''):'<div class="item">完成二轉後可使用對應職業外觀。</div>'}`+renderCosmeticGallery();}
+function renderCosmeticGallery(){
+ const collection=readCosmeticCollection(localStorage),eligible=!!player.thirdJob&&player.outfitUnlocks?.includes('SSS');
+ const jobs=COSMETIC_JOBS[player.job]||[];
+ const outfits=jobs.map((name,index)=>{const id=cosmeticOutfitId(player.job,index),owned=collection.outfits.includes(id),selected=player.cosmeticOutfit===id;
+  return `<article class="cosmetic-tile"><div class="cosmetic-portrait"><img loading="lazy" src="${cosmeticOutfitArt(player.job,index)}" alt="${escapeHtml(name)}完整立繪"></div><b>${name}</b><small>${(COSMETIC_OUTFIT_PRICES[index]/100_000_000).toLocaleString()} 億金</small><button data-cosmetic-outfit="${id}" ${!owned&&!eligible?'disabled':''}>${owned?(selected?'取消裝備':'裝備幻化'):eligible?'永久收藏':'三轉＋SSS全身裝備'}</button></article>`;}).join('');
+ const backgrounds=COSMETIC_BACKGROUNDS.map(bg=>{const owned=collection.backgrounds.includes(bg.id),selected=player.cosmeticBackground===bg.id;
+  return `<article class="cosmetic-bg"><img loading="lazy" src="${cosmeticBackgroundArt(bg.id)}" alt="${bg.name}"><div><b>${bg.name}</b><small>${bg.price/100_000_000} 億金</small><button data-cosmetic-background="${bg.id}">${owned?(selected?'取消背景':'使用背景'):'永久收藏'}</button></div></article>`;}).join('');
+ return `<section class="item cosmetic-gallery"><h3>✦ SSS 專屬幻化 · 收藏殿堂</h3><p>十職業各三套獨立繪製，購買後八角色共享收藏；每位角色獨立指定穿戴。純外觀，無能力加成。購買可使用金幣與 1 億金條。</p><p>總資產：${(cosmeticWealth(player)/100_000_000).toFixed(2)} 億金；已收藏 ${collection.outfits.length}/30 套幻化、${collection.backgrounds.length}/8 款背景。</p><div class="cosmetic-grid">${outfits}</div><h3>八款角色背景</h3><button data-cosmetic-background="default">回到預設背景</button><div class="cosmetic-background-grid">${backgrounds}</div><label class="cosmetic-control">背景亮度 ${player.cosmeticBrightness||75}%<input type="range" min="30" max="100" step="5" data-cosmetic-brightness value="${player.cosmeticBrightness||75}"></label><label class="cosmetic-control"><input type="checkbox" data-cosmetic-aura ${player.cosmeticAura!==false?'checked':''}> 顯示角色光環</label></section>`;
+}
+function applyCosmeticHero(){
+ const hero=$('character')?.querySelector('.hero');if(!hero)return;
+ const collection=readCosmeticCollection(localStorage);
+ normalizeCosmeticSelection(player,collection);
+ if(player.cosmeticOutfit){
+  const illustration=hero.querySelector('.art-hero');
+  const variant=Number(player.cosmeticOutfit.split('-')[1]);
+  if(illustration){const replacement=document.createElement('img');replacement.className='art-sprite art-hero cosmetic-equipped';replacement.src=cosmeticOutfitArt(player.job,variant);replacement.alt=COSMETIC_JOBS[player.job][variant]+' SSS 幻化';illustration.replaceWith(replacement);}
+ }
+ if(player.cosmeticBackground){
+  const darkness=1-player.cosmeticBrightness/100;
+  hero.style.backgroundImage=`linear-gradient(rgba(7,13,26,${darkness}),rgba(7,13,26,${darkness})),url("${cosmeticBackgroundArt(player.cosmeticBackground)}")`;
+  hero.style.backgroundSize='cover';hero.style.backgroundPosition='center';
+  hero.classList.add('cosmetic-scene-active');
+ }
+ $('character').dataset.cosmeticAura=player.cosmeticAura?'on':'off';
+}
+function bindCosmeticGalleryEvents(){
+ if(typeof document==='undefined'||typeof document.addEventListener!=='function')return;
+ document.addEventListener('click',event=>{
+  const button=event.target.closest('[data-cosmetic-outfit],[data-cosmetic-background]');
+  if(!button||!player||!$('side')?.contains(button))return;
+  const outfit=button.hasAttribute('data-cosmetic-outfit'),id=outfit?button.dataset.cosmeticOutfit:button.dataset.cosmeticBackground;
+  const key=outfit?'cosmeticOutfit':'cosmeticBackground',collection=readCosmeticCollection(localStorage);
+  if(id==='default'){player.cosmeticBackground=null;save();render();return;}
+  const owned=collection[outfit?'outfits':'backgrounds'].includes(id);
+  if(owned){player[key]=player[key]===id?null:id;save();render();return;}
+  const oldGold=player.gold,oldBag=structuredClone(player.bag);
+  const result=buyCosmetic(player,collection,outfit?'outfit':'background',id);
+  if(result.error)return toast(result.error);
+  if(!confirm(`確定花費 ${(result.price/100_000_000).toLocaleString()} 億金永久收藏這項外觀？`)){player.gold=oldGold;player.bag=oldBag;return;}
+  let previous=null;try{previous=localStorage.getItem(COSMETIC_STORAGE_KEY);localStorage.setItem(COSMETIC_STORAGE_KEY,JSON.stringify(result.collection));}
+  catch(error){player.gold=oldGold;player.bag=oldBag;return toast('收藏紀錄無法儲存，未扣款');}
+  player[key]=id;
+  if(!save()){
+   player.gold=oldGold;player.bag=oldBag;player[key]=null;
+   if(previous===null)localStorage.removeItem(COSMETIC_STORAGE_KEY);else localStorage.setItem(COSMETIC_STORAGE_KEY,previous);
+   return toast('存檔失敗，已退還金幣');
+  }
+  render();toast('永久收藏成功，八個角色均可使用');
+ });
+ document.addEventListener('input',event=>{
+  if(!player||!$('side')?.contains(event.target))return;
+  if(event.target.matches('[data-cosmetic-brightness]')){player.cosmeticBrightness=Number(event.target.value);save();render();}
+  if(event.target.matches('[data-cosmetic-aura]')){player.cosmeticAura=event.target.checked;save();render();}
+ });
+}
 function bindTrialControls(){bindWarehouseControls();for(const b of $('side').querySelectorAll('[data-continuous-trial]'))b.onclick=()=>startTrial(b.dataset.continuousTrial,true);for(const b of $('side').querySelectorAll('[data-enter-trial]'))b.onclick=()=>startTrial(b.dataset.enterTrial);for(const b of document.querySelectorAll('[data-trial-stop-after]'))b.onclick=toggleTrialStopAfterRound;for(const b of document.querySelectorAll('[data-trial-exit]'))b.onclick=()=>{if(confirm('確定離開試煉？不退還入場券，已取得的結晶保留。'))exitTrial('主動離場');};for(const b of $('side').querySelectorAll('[data-enhance-slot]'))b.onclick=()=>doEnhance(b.dataset.enhanceSlot);for(const b of $('side').querySelectorAll('[data-enhance-pet]'))b.onclick=()=>doPetEnhance(b.dataset.enhancePet);for(const b of $('side').querySelectorAll('[data-reselect-fusion]'))b.onclick=()=>doLegacyFusionReselect(b.dataset.reselectFusion);for(const b of $('side').querySelectorAll('[data-upgrade-sigil]'))b.onclick=()=>doUpgradeSigil();for(const b of $('side').querySelectorAll('[data-outfit]'))b.onclick=()=>{const r=b.dataset.outfit;if(r!=='default'&&!player.outfitUnlocks?.includes(r))return;player.selectedOutfit=r==='default'?null:r;save();render();renderSide(true);};}
 
 function openPetRename(id){
@@ -1323,5 +1381,6 @@ function openPetRename(id){
  modal.style.display='flex';
  $('renameInput').focus();
 }
+bindCosmeticGalleryEvents();
 init();
 import {exchangeOverflowGold,sellSurplusPotions} from './economy-limits.js?v=6.5.1';

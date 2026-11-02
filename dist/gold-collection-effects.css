@@ -1,4 +1,5 @@
-/* V6.5.34 — transparent RO-inspired contract sigils.
+@import url('./cosmetic-gallery.css?v=6.5.35');
+/* V6.5.35 — transparent RO-inspired contract sigils.
    Static, inexpensive layers anchored to the portrait's foot area. */
 #character[data-gold-tier="3"]>.hero,
 #character[data-gold-tier="4"]>.hero,
