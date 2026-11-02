@@ -24,6 +24,8 @@ jobs:
         run: node tests/real-combat-browser-benchmark.mjs smoke
       - name: Execute 120 actual in-game combat scenarios against both maps
         run: node tests/real-combat-browser-benchmark.mjs full
+      - name: Rank only fully reconciled combatTick evidence
+        run: node tests/rank-actual-combat-120.mjs test-results/lv200-lv210-full-actual-combat.json
       - name: Preserve raw combat outcomes
         if: always()
         uses: actions/upload-artifact@v4
