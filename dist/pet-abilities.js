@@ -24,4 +24,17 @@ export const LEGENDARY_PET_SKILLS=Object.fromEntries(Object.entries(PET_SKILLS).
 export const MYTHIC_PET_SKILLS=Object.fromEntries(Object.entries(LEGENDARY_PET_SKILLS).map(([role,skills])=>[role,skills.map((s,i)=>({...s,id:`mythic_${role}_${i}`,name:MYTHIC_NAMES[role][i],family:'mythic',description:s.description+'；傳說技能的神話進化，強度隨神話面板提升'}))]));
 export const petSkillsFor=(role,rarity='common')=>(rarity==='mythic'?MYTHIC_PET_SKILLS:rarity==='legendary'?LEGENDARY_PET_SKILLS:PET_SKILLS)[role]||[];
 export const petAbilitySetName=rarity=>rarity==='mythic'?'神話進化技能':rarity==='legendary'?'傳說變異技能':'基礎成長技能';
-export function migratePetSkills(pet,role){if(fusionSkills(pet)){const skills=fusionSkills(pet);pet.equippedSkills=[...new Set(pet.equippedSkills||[])].filter(id=>skills.some(s=>s.id===id)).slice(0,petSkillLimit(pet));return pet;}const all=[PET_SKILLS[role],LEGENDARY_PET_SKILLS[role],MYTHIC_PET_SKILLS[role]],target=petSkillsFor(role,pet.rarity),indices=(pet.equippedSkills||[]).map(id=>all.map(set=>set.findIndex(s=>s.id===id)).find(i=>i>=0)).filter(i=>Number.isInteger(i));pet.equippedSkills=[...new Set((indices.length?indices:Array.isArray(pet.equippedSkills)&&pet.equippedSkills.length===0?[]:[0,1]).slice(0,2).map(i=>target[i].id))];return pet;}
+export function migratePetSkills(pet,role){if(fusionSkills(pet)){const skills=fusionSkills(pet);
+ // Previous builds stored reverse-order skill IDs. Preserve the selected skill
+ // index while migrating to the shared, order-independent fusion skill pool.
+ const prefix=skills[0]?.id.replace(/_0$/,'_');
+ const selected=(pet.equippedSkills||[]).map(id=>{
+  if(skills.some(s=>s.id===id))return id;
+  const match=/^fusion_(attack|magic|defense|support)-(attack|magic|defense|support)_([0-5])$/.exec(id);
+  if(!match||!pet.fusion)return null;
+  const [a,b]=[match[1],match[2]];
+  if(!((a===pet.fusion.main&&b===pet.fusion.sub)||(a===pet.fusion.sub&&b===pet.fusion.main)))return null;
+  const migrated=prefix+match[3];return skills.some(s=>s.id===migrated)?migrated:null;
+ }).filter(Boolean);
+ pet.equippedSkills=[...new Set(selected)].slice(0,petSkillLimit(pet));
+ return pet;} const all=[PET_SKILLS[role],LEGENDARY_PET_SKILLS[role],MYTHIC_PET_SKILLS[role]],target=petSkillsFor(role,pet.rarity),indices=(pet.equippedSkills||[]).map(id=>all.map(set=>set.findIndex(s=>s.id===id)).find(i=>i>=0)).filter(i=>Number.isInteger(i));pet.equippedSkills=[...new Set((indices.length?indices:Array.isArray(pet.equippedSkills)&&pet.equippedSkills.length===0?[]:[0,1]).slice(0,2).map(i=>target[i].id))];return pet;}
