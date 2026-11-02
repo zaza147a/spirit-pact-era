@@ -20,9 +20,10 @@ jobs:
         run: |
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
+      - name: Smoke-test actual game combatTick before full 120 benchmark
+        run: node tests/real-combat-browser-benchmark.mjs smoke
       - name: Execute 120 actual in-game combat scenarios against both maps
-        run: |
-          node tests/real-combat-browser-benchmark.mjs full
+        run: node tests/real-combat-browser-benchmark.mjs full
       - name: Preserve raw combat outcomes
         if: always()
         uses: actions/upload-artifact@v4
