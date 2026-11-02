@@ -80,6 +80,8 @@
   }
   #character[data-gold-tier="3"]>.hero .art-hero,
   #character[data-gold-tier="4"]>.hero .art-hero,
+  #character[data-gold-tier="3"]>.hero .art-hero,
+  #character[data-gold-tier="4"]>.hero .art-hero,
   #companion[data-gold-tier="4"]>.hero .art-hero{position:absolute!important;margin-bottom:0!important}
 }
 @media(max-width:700px){
