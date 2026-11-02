@@ -22,8 +22,8 @@ const JOBS={
  wizard:['oneStaff+shield','twoStaff'],
  sage:['oneStaff+shield','twoStaff','spellFist'],
  assassin:['rifle+shield','rifle+offDagger','katar'],
- rogue:['rifle+shield','rifle'],
- priest:['mace+shield','mace'],
+ rogue:['rifle+shield'],
+ priest:['mace+shield'],
  monk:['knuckles'],
  hunter:['shortBow','longBow','crossbow'],
  performer:['instrument','shortBow','longBow']
@@ -53,7 +53,17 @@ test('ten class configuration matrix includes all jobs',()=>{
   const [main,off]=combo.split('+');assert.ok(gears[main],job+' '+combo);
   assert.ok(!off||['shield','offDagger'].includes(off),combo);
   assert.ok(!(off&&gears[main].hands===2),combo);
+  assert.ok(gears[main].hands===2||Boolean(off),job+' has empty offhand: '+combo);
+  if(off==='offDagger')assert.equal(main,'rifle',job+' offhand dagger must pair with dagger');
  }
+});
+test('single-hand setups must have an occupied offhand',()=>{
+ for(const [job,choices] of Object.entries(JOBS))for(const combo of choices){
+  const [main,off]=combo.split('+');
+  assert.ok(gears[main].hands===2||(off&&['shield','offDagger'].includes(off)),job+' '+combo);
+ }
+ assert.deepEqual(JOBS.rogue,['rifle+shield']);
+ assert.deepEqual(JOBS.priest,['mace+shield']);
 });
 test('mandatory two-handed jobs are covered without fictitious shield route',()=>{
  for(const job of ['monk','hunter','performer'])assert.ok(JOBS[job].every(c=>gears[c.split('+')[0]].hands===2));
