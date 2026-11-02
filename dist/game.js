@@ -1162,7 +1162,11 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    const bossOwnerDamage=sum(byBoss,'owner'),bossPetDamage=sum(byBoss,'pet'),bossTotalDamage=sum(byBoss,'amount');
    const mobOwnerDamage=sum(byMob,'owner'),mobPetDamage=sum(byMob,'pet'),mobTotalDamage=sum(byMob,'amount');
    if(bossTotalDamage+mobTotalDamage!==totalDamage||bossOwnerDamage+mobOwnerDamage!==ownerDamage||bossPetDamage+mobPetDamage!==petAttributedDamage)throw Error('Mixed boss/mob damage split mismatch');
-   const bossSeconds=firstBossAt===null?0:Math.max(0,(from+elapsedMs-firstBossAt)/1000);
+   const bossKillTimes=new Map(sink.kills.filter(x=>x.boss).map(x=>[x.instanceId,x.at]));
+   const bossSeconds=bossSpawns.reduce((time,spawnEvent)=>{
+    const end=Math.min(from+elapsedMs,bossKillTimes.get(spawnEvent.instanceId)??from+elapsedMs);
+    return time+Math.max(0,(end-spawnEvent.at)/1000);
+   },0);
    const survivingBosses=enemies.filter(x=>x.boss&&x.hp>0).map(x=>({id:x.id,hp:x.hp,maxHp:x.maxHp}));
    const liveSlots=enemies.filter(x=>!x.boss&&x.hp>0).length;
    const result={map:player.location,mode:'natural-spawn-map',elapsedMs,dead:death,playerHp:player.hp,
@@ -1170,7 +1174,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
     ownerDps:Math.round(ownerDamage/seconds),petDps:Math.round(petAttributedDamage/seconds),
     totalDps:Math.round(totalDamage/seconds),
     bossOwnerDamage,bossPetDamage,bossTotalDamage,mobOwnerDamage,mobPetDamage,mobTotalDamage,
-    bossSeconds,bossEffectiveDps:bossSeconds>0?Math.round(bossTotalDamage/bossSeconds):null,
+    bossSeconds,bossKillsByInstance:bossKillTimes.size,bossEffectiveDps:bossSeconds>0?Math.round(bossTotalDamage/bossSeconds):null,
     bossOwnerDps:bossSeconds>0?Math.round(bossOwnerDamage/bossSeconds):null,
     bossPetDps:bossSeconds>0?Math.round(bossPetDamage/bossSeconds):null,
     mobEffectiveDps:Math.round(mobTotalDamage/seconds),
