@@ -6,7 +6,7 @@ export const GOLD_COLLECTIBLES=[
  {cost:100_000_000,bonus:10,title:'王者光環',reward:'角色立繪光環'},
  {cost:500_000_000,bonus:20,title:'傳說收藏家',reward:'夥伴外觀特效'}
 ];
-export const REFORGE_PRICES=[1_000_000,1_500_000,2_500_000,5_000_000];
+export const REFORGE_PRICES=[2_000_000,3_000_000,5_000_000,10_000_000];
 export const goldCollectionTier=p=>Math.max(0,Math.min(4,Math.floor(Number(p?.goldCollectionTier)||0)));
 export const goldCollectionBonus=p=>GOLD_COLLECTIBLES[goldCollectionTier(p)-1]?.bonus||0;
 export function earnGold(base,p,extraPercentage=0){return Math.max(0,Math.round(Math.max(0,Number(base)||0)*(1+(Number(extraPercentage)||0)/100+goldCollectionBonus(p)/100)));}
