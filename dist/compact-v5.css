@@ -139,3 +139,12 @@
 @media(min-width:1001px) and(max-width:1190px), (min-width:1001px) and(max-height:850px){
  .character .hero img.art-hero.rank-outfit{transform:scale(1.22)}
 }
+/* Tall desktop: spend unused lower-sidebar room on actual portrait columns.
+   A bounded 20px/card height increase avoids turning the left rail scrollable. */
+@media(min-width:1200px) and(min-height:860px){
+ .character .hero:has(.art-hero){min-height:112px;padding:8px 8px 8px 105px}
+ .character .hero .art-hero{left:3px;top:3px;width:96px;max-width:96px;height:106px;transform:none;object-fit:contain}
+ .character #companion .hero{min-height:114px}
+ .character #companion .hero .art-hero{width:100px;max-width:100px;height:108px}
+ .character .hero img.art-hero.rank-outfit{transform:scale(1.18);transform-origin:left center}
+}

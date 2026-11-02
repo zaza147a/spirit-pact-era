@@ -17,3 +17,12 @@ test('all three costume ranks use larger but contained portrait geometry',()=>{
  assert.match(css,/img\.art-hero\.rank-outfit\{transform:scale\(1\.34\);transform-origin:left center;object-fit:contain\}/);
  assert.match(css,/img\.art-hero\.rank-outfit\{transform:scale\(1\.22\)\}/);
 });
+
+test('tall desktop uses actual larger portrait columns and bounded card heights',()=>{
+ const css=readFileSync(new URL('../dist/compact-v5.css',import.meta.url),'utf8');
+ assert.match(css,/@media\(min-width:1200px\) and\(min-height:860px\)\{/);
+ assert.match(css,/\.character \.hero:has\(\.art-hero\)\{min-height:112px;padding:8px 8px 8px 105px\}/);
+ assert.match(css,/\.character \.hero \.art-hero\{left:3px;top:3px;width:96px;max-width:96px;height:106px;transform:none;object-fit:contain\}/);
+ assert.match(css,/\.character #companion \.hero \.art-hero\{width:100px;max-width:100px;height:108px\}/);
+ assert.match(css,/\.character \.hero img\.art-hero\.rank-outfit\{transform:scale\(1\.18\)/);
+});
