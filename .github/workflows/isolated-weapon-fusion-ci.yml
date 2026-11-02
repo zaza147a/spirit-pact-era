@@ -39,13 +39,20 @@ jobs:
           name: lv200-lv210-120-weapon-proxy
           path: test-results/*.json
           if-no-files-found: ignore
-      - name: Install Chromium browser harness dependencies
+  real-combat-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Chromium browser harness
         run: |
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
-      - name: Verify actual game combatTick in Chromium (smoke)
-        run: |
-          node tests/real-combat-browser-benchmark.mjs smoke
+      - name: Execute actual combatTick and hit attribution
+        run: node tests/real-combat-browser-benchmark.mjs smoke
       - name: Upload actual combat results
         if: always()
         uses: actions/upload-artifact@v4
