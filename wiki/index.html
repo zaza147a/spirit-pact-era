@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-02-card-zh-v2"><style>
+<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-02-continent-v4"><style>
 :root{color-scheme:dark;--bg:#0c111e;--panel:#172033;--line:#2c3b52;--text:#e9eef9;--muted:#afbdd1;--gold:#eac481;--accent:#6fb6ef}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0c111e,#15233b);color:var(--text);font:15px/1.65 system-ui,"Noto Sans TC",sans-serif;min-height:100vh}
 header{padding:28px max(18px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#0c1426}header h1{font-size:28px;margin:0;color:var(--gold)}header p{margin:4px 0;color:var(--muted)}
@@ -16,9 +16,9 @@ article{background:var(--panel);border:1px solid var(--line);border-radius:14px;
 code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}.intro{color:var(--muted);margin-bottom:16px}
 @media(max-width:600px){header h1{font-size:23px}.toolbar button{flex:1}.item{padding:14px}}
 </style></head><body>
-<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p><p class="small">WIKI 中文顯示版 2026.11.02.2</p></header>
+<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p><p class="small">WIKI 中文顯示版 2026.11.02.4</p></header>
 <main><div class="toolbar" id="nav"><button data-tab="monsters" aria-selected="true">怪物</button><button data-tab="cards">卡片</button><button data-tab="gear">裝備詞條</button><button data-tab="pet">夥伴</button><button data-tab="rules">遊戲機制</button></div>
-<div class="toolbar" id="filters"><input id="search" type="search" placeholder="搜尋名稱、等級、屬性或地圖"><select id="zone"><option value="">所有地圖</option></select><select id="cardSlot" hidden aria-label="卡片裝備部位"><option value="">全部卡片部位</option></select><select id="rarity" hidden><option value="common">普通</option><option value="rare">稀有</option><option value="uncommon">罕見</option><option value="legendary">傳說</option><option value="mythic">神話</option></select><select id="tier" hidden></select></div>
+<div class="toolbar" id="filters"><input id="search" type="search" placeholder="搜尋名稱、等級、屬性或地圖"><select id="continent" aria-label="選擇大陸"><option value="">所有大陸</option><option value="icarus">伊卡洛斯大陸（Lv.1–99）</option><option value="sky">蒼穹彼岸（Lv.101–200）</option><option value="dawn">曙界新陸（Lv.201–210）</option></select><select id="zone" aria-label="選擇地圖"><option value="">所有地圖</option></select><select id="cardSlot" hidden aria-label="卡片裝備部位"><option value="">全部卡片部位</option></select><select id="rarity" hidden><option value="common">普通</option><option value="rare">稀有</option><option value="uncommon">罕見</option><option value="legendary">傳說</option><option value="mythic">神話</option></select><select id="tier" hidden></select></div>
 <div id="cardLevelPanel" hidden class="item" style="margin:0 0 16px">
 <p><b>卡片能力會隨人物等級變化</b></p>
 <p class="small">固定數值會依人物等級所屬的裝備階級成長；百分比效果不受等級影響。下方卡片顯示換算後的能力。</p>
@@ -29,6 +29,9 @@ code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}
 </main><script type="module">
 import {WORLD_MONSTERS,ZONES} from '../world-data.js';
 import {MAP_BOSSES} from '../map-bosses.js';
+import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS} from '../dawn-world.js';
+import {TRIAL_ROUTES,createTrialBoss} from '../sky-trials.js';
+import {monsterRuntimeStats} from '../combat-balance.js';
 import {CARDS,ITEMS,SLOTS,PET_RARITIES,PET_EVOLUTIONS,SPECIES} from '../catalog.js';
 import {GEAR_BASE,PET_GEAR_BASE,RARITIES,AFFIX_NAMES,affixRange,TIER_NAMES,QUALITY_POWER,PET_SLOTS} from '../loot.js';
 import {ENHANCEMENT_POWER} from '../sky-trials.js';
@@ -36,7 +39,11 @@ import {GEAR_TIERS} from '../progression.js';
 import {cardEffectsFor} from '../card-effects.js';
 import {FUSION_PAIRS} from '../pet-fusion.js';
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let tab='monsters';const allMonsters=[...WORLD_MONSTERS,...Object.values(MAP_BOSSES)].sort((a,b)=>a.level-b.level||(a.boss?1:-1));
+const trialMonsters=TRIAL_ROUTES.flatMap(route=>route.names.map((_,i)=>({...createTrialBoss(route,i,MAP_BOSSES[route.map]),map:'trial-'+route.level,trialName:route.name})));
+const monsterZones=[...ZONES,DAWN_ZONE,...TRIAL_ROUTES.map(r=>({id:'trial-'+r.level,name:'天穹試煉之門・'+r.name,min:r.level,max:r.level+8}))];
+const continentOf=map=>map==='dawnrift'?'dawn':map.startsWith('trial-')?'sky':(ZONES.find(z=>z.id===map)?.min||0)>=101?'sky':'icarus';
+const zoneName=map=>monsterZones.find(z=>z.id===map)?.name||map;
+let tab='monsters';const allMonsters=[...WORLD_MONSTERS,...Object.values(MAP_BOSSES),...DAWN_MONSTERS,DAWN_BOSS,...trialMonsters].sort((a,b)=>a.level-b.level||(a.boss?1:-1));
 const tiers=GEAR_TIERS;const pct=new Set(['ignoreDef','critDmg','magicDamage','fleePct','defPct','hpPct','aspdPct','damageReduction','crit']);
 const pill=(name,value)=>'<span class="pill">'+esc(name)+' '+esc(value)+'</span>';
 const card=(title,content)=>'<div class="item"><h3>'+esc(title)+'</h3>'+content+'</div>';
@@ -56,16 +63,17 @@ const cardEffectLabel=effects=>Object.entries(effects||{}).map(([key,value])=>'<
 const dropName=id=>ITEMS[id]?.name||'未收錄物品';
 const matches=(s)=>s.toLowerCase().includes($('search').value.trim().toLowerCase());
 const num=v=>fmt(Number(v||0));
-function setup(){for(const z of ZONES){const e=document.createElement('option');e.value=z.id;e.textContent=z.name+' Lv.'+z.min+'–'+z.max;$('zone').append(e)}
+function updateZones(){const continent=$('continent').value,previous=$('zone').value;const zones=monsterZones.filter(z=>!continent||continentOf(z.id)===continent);$('zone').replaceChildren(new Option('所有地圖',''));for(const z of zones){const e=new Option(z.name+' Lv.'+z.min+'–'+z.max,z.id);$('zone').append(e)}$('zone').value=zones.some(z=>z.id===previous)?previous:'';}
+function setup(){updateZones();
 Object.entries(SLOTS).forEach(([id,name])=>{const e=document.createElement('option');e.value=id;e.textContent=name;$('cardSlot').append(e)});
 tiers.forEach((t,i)=>{const e=document.createElement('option');e.value=i+1;e.textContent=(i+1)+'階 '+t.name+' Lv.'+t.min+'–'+t.max;$('tier').append(e);});
 $('tier').value='11';$('cardLevel').value='200';document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));$('search').value='';render()});
-['search','zone','cardSlot','tier','rarity'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render));$('cardLevel').addEventListener('input',()=>{if($('cardLevel').value!==''&&Number($('cardLevel').value)>=1&&Number($('cardLevel').value)<=210)render()});$('cardLevel').addEventListener('change',()=>{$('cardLevel').value=Math.min(210,Math.max(1,Math.floor(Number($('cardLevel').value)||200)));render()});render()}
-function render(){const gear=tab==='gear',map=['monsters','cards'].includes(tab);$('zone').hidden=!map;$('cardSlot').hidden=tab!=='cards';$('cardLevelPanel').hidden=tab!=='cards';$('rarity').hidden=!gear;$('tier').hidden=!gear;
+['search','zone','cardSlot','tier','rarity'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render));$('continent').addEventListener('change',()=>{updateZones();render()});$('cardLevel').addEventListener('input',()=>{if($('cardLevel').value!==''&&Number($('cardLevel').value)>=1&&Number($('cardLevel').value)<=210)render()});$('cardLevel').addEventListener('change',()=>{$('cardLevel').value=Math.min(210,Math.max(1,Math.floor(Number($('cardLevel').value)||200)));render()});render()}
+function render(){const gear=tab==='gear',map=['monsters','cards'].includes(tab);$('continent').hidden=!map;$('zone').hidden=!map;$('cardSlot').hidden=tab!=='cards';$('cardLevelPanel').hidden=tab!=='cards';$('rarity').hidden=!gear;$('tier').hidden=!gear;
 const level=Math.min(210,Math.max(1,Math.floor(Number($('cardLevel').value)||200)));const currentTier=tiers.find(t=>level<=t.max)||tiers[tiers.length-1];$('cardTierInfo').textContent='目前：'+currentTier.name+'階（固定能力倍率 ×'+fmt(currentTier.power)+'）';
-const zone=$('zone').value,q=$('search').value.trim().toLowerCase();let html='',count=0;
-if(tab==='monsters'){const rows=allMonsters.filter(m=>(!zone||m.map===zone)&&matches(m.name+' '+fmt(m.level)+' '+(ZONES.find(z=>z.id===m.map)?.name||'')));count=rows.length;html='<div class="grid">'+rows.map(m=>card((m.boss?'👑 ':'')+m.name,'<p class="small">'+esc(ZONES.find(z=>z.id===m.map)?.name||m.map)+' · Lv.'+m.level+' · '+(m.boss?'地圖首領':m.elite?'區域精英':'一般怪物')+'</p><div class="tags">'+label({HP:m.hp,ATK:m.atk,DEF:m.def,EXP:m.xp,金幣:m.gold})+'</div><p class="small">掉落：'+esc((m.drops||[]).map(dropName).join('、')||'參見遊戲掉落規則')+'</p>')).join('')+'</div>';}
-else if(tab==='cards'){const slot=$('cardSlot').value;const rows=Object.entries(CARDS).filter(([id,c])=>(!zone||c.map===zone)&&(!slot||(c.slots||[]).includes(slot))&&matches(c.name+' '+(c.theme||'')+' '+(c.description||'')+' '+Object.keys(c.effects||{}).map(statName).join(' ')));count=rows.length;html='<div class="grid">'+rows.map(([id,c])=>card(c.name,'<p class="small">'+esc(c.theme||'舊版靈契')+(c.boss?' · 首領卡':'')+'</p><p>部位：'+esc((c.slots||[]).map(s=>SLOTS[s]||s).join('／')||'未指定')+'</p><div class="tags">'+cardEffectLabel(cardEffectsFor(c,level))+'</div><p class="small">依 Lv.'+fmt(level)+' 的實際效果</p>')).join('')+'</div>';}
+const zone=$('zone').value,continent=$('continent').value,q=$('search').value.trim().toLowerCase();let html='',count=0;
+if(tab==='monsters'){const rows=allMonsters.filter(m=>(!continent||continentOf(m.map)===continent)&&(!zone||m.map===zone)&&matches(m.name+' '+fmt(m.level)+' '+zoneName(m.map)));count=rows.length;html='<div class="grid">'+rows.map(m=>{const stats=monsterRuntimeStats(m);return card((m.boss?'👑 ':'')+m.name,'<p class="small">'+esc(zoneName(m.map))+' · Lv.'+m.level+' · '+(m.trial?'試煉首領':m.boss?'地圖首領':m.elite?'區域精英':'一般怪物')+'</p><div class="tags">'+label({HP:m.hp,ATK:m.atk,MATK:stats.matk,DEF:m.def,MDEF:stats.mdef,hit:stats.hit,flee:stats.flee,EXP:m.xp,金幣:m.gold})+'</div><p class="small">掉落：'+esc(m.trial?'試煉結晶依關卡機率獲得':m.dawn?'曙界專屬雜物':(m.drops||[]).map(dropName).join('、')||'參見遊戲掉落規則')+'</p>');}).join('')+'</div>';}
+else if(tab==='cards'){const slot=$('cardSlot').value;const rows=Object.entries(CARDS).filter(([id,c])=>(!continent||continentOf(c.map)===continent)&&(!zone||c.map===zone)&&(!slot||(c.slots||[]).includes(slot))&&matches(c.name+' '+(c.theme||'')+' '+(c.description||'')+' '+Object.keys(c.effects||{}).map(statName).join(' ')));count=rows.length;html='<div class="grid">'+rows.map(([id,c])=>card(c.name,'<p class="small">'+esc(c.theme||'舊版靈契')+(c.boss?' · 首領卡':'')+'</p><p>部位：'+esc((c.slots||[]).map(s=>SLOTS[s]||s).join('／')||'未指定')+'</p><div class="tags">'+cardEffectLabel(cardEffectsFor(c,level))+'</div><p class="small">依 Lv.'+fmt(level)+' 的實際效果</p>')).join('')+'</div>';}
 else if(gear){const rarity=$('rarity').value,tier=Number($('tier').value),keys=Object.keys(AFFIX_NAMES).filter(k=>!q||matches(k+' '+statName(k)));count=keys.length;
 html='<article><h3>詞條理論範圍</h3><p>階級：'+esc(tiers[tier-1].name)+' · '+esc(RARITIES.find(r=>r.id===rarity).name)+' · 品質係數 ×'+fmt(QUALITY_POWER[rarity])+'</p><p class="small">裝備依其類型抽取可用詞條，並非所有詞條都能出現在每種部位。夥伴裝備非特殊詞條（物理攻擊／魔法攻擊除外）另有 10/3 倍生成係數；以下為一般裝備範圍。</p><div class="scroll"><table><thead><tr><th>屬性</th><th>最小</th><th>最大</th></tr></thead><tbody>'+keys.map(k=>{const [a,b]=affixRange(k,tier,rarity);return '<tr><td>'+esc(statName(k))+'</td><td>'+fmt(a)+(pct.has(k)?'%':'')+'</td><td>'+fmt(b)+(pct.has(k)?'%':'')+'</td></tr>'}).join('')+'</tbody></table></div></article><div class="grid">'+[...Object.entries(GEAR_BASE).map(([id,g])=>[id,g,false]),...Object.entries(PET_GEAR_BASE).map(([id,g])=>[id,g,true])].filter(([id,g])=>!q||matches(g.name+' '+id)).map(([id,g,p])=>card(g.name,'<p>'+(p?'夥伴裝備':'人物裝備')+' · '+esc(p?PET_SLOTS[g.petSlot]:SLOTS[g.slot]||'通用')+'</p><p class="small">裝備階級由等級決定；詞條由裝備種類、品質與抽選規則決定。</p>')).join('')+'</div>';}
 else if(tab==='pet'){const roles={'attack':'攻擊','magic':'魔法','defense':'防禦','support':'輔助'};const pairs=Object.entries(FUSION_PAIRS).filter(([id,p])=>matches(id+' '+p.name));count=pairs.length;html='<article><h3>夥伴稀有度</h3><div class="tags">'+PET_RARITIES.map(r=>'<span class="tag">'+r.name+' · 基礎倍率 ×'+fmt(r.factor)+'</span>').join('')+'</div></article><article><h3>一般進化</h3>'+PET_EVOLUTIONS.map(x=>'<p>Lv.'+fmt(x.level)+'：'+esc(dropName(x.id))+' ×'+fmt(x.count)+' · 素材區域 '+esc(x.range)+'</p>').join('')+'</article><article><h3>攻擊能力轉換</h3><p>融合攻擊型可將裝備提供的魔法攻擊／智力部分轉入物理攻擊；融合魔法型、輔助型可將裝備物理攻擊／力量部分轉入魔法攻擊。物理防禦與魔法防禦沒有此互轉規則；體質增加物理防禦，智力增加魔法防禦。</p></article><h2>融合夥伴</h2><div class="grid">'+pairs.map(([id,p])=>card(p.name,'<p>'+esc(id.split('-').map(x=>roles[x]||x).join(' × '))+'</p><p class="small">主要定位：'+esc(roles[p.role]||p.role)+'</p>')).join('')+'</div>';}
