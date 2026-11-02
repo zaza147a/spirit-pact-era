@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {CARD_COLLECTION_KEY,collectMissingCards,collectableFromPlayer,collectionProgress,readCardCollection} from '../dist/card-collection.js';
+import {CARD_COLLECTION_KEY,collectMissingCards,collectableFromPlayer,collectionProgress,readCardCollection,organizeCards,collectionGoldBonus,collectionMilestones,normalizedCollection} from '../dist/card-collection.js';
 const cards={a:{name:'一般',map:'forest',boss:false},b:{name:'首領',map:'forest',boss:true},legacy:{name:'紀念',map:'legacy',boss:true}};
 const storage=()=>{const data=new Map();return {getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)};};
 test('one of each missing card is collected without touching equipped cards',()=>{
@@ -20,4 +20,31 @@ test('eight character slots read same independent collection record',()=>{
 test('invalid storage fails closed without deleting original',()=>{
  const s=storage();s.setItem(CARD_COLLECTION_KEY,'{invalid');
  assert.throws(()=>readCardCollection(s,cards));assert.equal(s.getItem(CARD_COLLECTION_KEY),'{invalid');
+});
+
+test('legacy v1 album upgrades without erasing collected cards',()=>{
+ const s=storage();s.setItem(CARD_COLLECTION_KEY,JSON.stringify({version:1,ids:['a']}));
+ const album=readCardCollection(s,cards);
+ assert.deepEqual(album.ids,['a']);
+ assert.equal(album.options.autoCollect,false);
+ assert.equal(album.options.autoRecycle,false);
+});
+test('automatic intake consumes one new card and converts only surplus duplicates',()=>{
+ const album=normalizedCollection({version:1,ids:[],options:{autoCollect:true,autoRecycle:true,keepCopies:1}},cards);
+ const p={cards:[{id:'a',qty:4},{id:'b',qty:2}],cardRecyclePoints:0};
+ const result=organizeCards(p,cards,album);
+ assert.deepEqual(result.added,['a','b']);
+ assert.equal(result.recycled,3);
+ assert.equal(result.points,120);
+ assert.deepEqual(p.cards,[{id:'a',qty:1}]);
+ assert.equal(p.cardRecyclePoints,120);
+ assert.equal(collectionProgress(cards,result.collection).owned,2);
+});
+test('milestone rewards are non-stacking and retained when catalog expands',()=>{
+ const tiny={a:{name:'a',map:'forest'},b:{name:'b',map:'forest'}};
+ const full=normalizedCollection({version:1,ids:['a','b']},tiny);
+ assert.equal(collectionGoldBonus(tiny,full),5);
+ assert.deepEqual(collectionMilestones(tiny,full),[10,25,50,75,90,100]);
+ const expanded={...tiny,c:{name:'c',map:'forest'}};
+ assert.equal(collectionGoldBonus(expanded,full),5);
 });
