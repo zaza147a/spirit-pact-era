@@ -623,7 +623,34 @@ function craftGear(){if(autoFusionRunning)return toast('請先暫停自動融合
 function startAutoFusion(){if(!gameRunning||!player?.hp)return toast('請先進入遊戲並讓角色保持存活');if(player.fusionNotice)return showFusionResult();if(!save())return;autoFusionPlan=normalizeFusionSettings(player.fusionSettings);autoFusionRunning=true;autoFusionAttempts=0;autoFusionNext=0;autoFusionStatus='正在融合';save();updateFusionStop();renderSide();}
 function stopAutoFusion(reason='已手動暫停'){autoFusionRunning=false;autoFusionStatus=reason;updateFusionStop();}
 function updateFusionStop(){if(offlineSimulation)return;const button=$('fusionQuickStop');if(!button)return;button.hidden=!autoFusionRunning;button.textContent=`停止融合 · ${autoFusionAttempts} 次`;}
-function autoFusionTick(now=gameNow()){if(!gameRunning||!player||!autoFusionRunning)return;if(!player.hp){stopAutoFusion('角色倒下，已停止融合');return;}if(now<autoFusionNext)return;autoFusionNext=now+120;if(autoFusionAttempts>=autoFusionPlan.limit){stopAutoFusion('已達本次融合次數上限');toast(autoFusionStatus);renderSide();return;}const result=fuseOne(player,autoFusionPlan);if(result.error){stopAutoFusion(result.error+'，已停止融合');toast(autoFusionStatus);renderSide();return;}autoFusionAttempts++;if(result.matched){message(`⚒ 自動融合 #${autoFusionAttempts} 達成：${gearLabel(result.gear)} ${result.gear.name}`,'rare','system');}else{const shards=salvageGear(result.gear);const index=player.bag.findIndex(g=>g.uid===result.gear.uid);if(index>=0)player.bag.splice(index,1);if(autoFusionAttempts===1||autoFusionAttempts%25===0)message(`♻ 已融合 ${autoFusionAttempts} 次，未達標裝備已自動分解（本次返還 ${shards} 碎晶）。`,'good','system');}if(result.matched){result.gear.fusionMatch=true;player.fusionNotice={uid:result.gear.uid,attempts:autoFusionAttempts};stopAutoFusion('已融合到目標裝備');}else if(autoFusionAttempts>=autoFusionPlan.limit)stopAutoFusion('已達本次融合次數上限');dirty=true;save();updateFusionStop();renderSide();if(result.matched)showFusionResult();}
+function autoFusionTick(now=gameNow()){
+ if(!gameRunning||!player||!autoFusionRunning)return;
+ if(!player.hp){stopAutoFusion('角色倒下，已停止融合');return;}
+ if(now<autoFusionNext)return;
+ autoFusionNext=now+100;
+ const batchSize=200;
+ let processed=0,returned=0,matched=false;
+ while(autoFusionRunning&&processed<batchSize&&autoFusionAttempts<autoFusionPlan.limit){
+  const result=fuseOne(player,autoFusionPlan);
+  if(result.error){stopAutoFusion(result.error+'，已停止融合');break;}
+  autoFusionAttempts++;processed++;
+  if(result.matched){
+   result.gear.fusionMatch=true;
+   player.fusionNotice={uid:result.gear.uid,attempts:autoFusionAttempts};
+   message(`⚒ 批次融合第 ${autoFusionAttempts} 次達成：${gearLabel(result.gear)} ${result.gear.name}`,'rare','system');
+   stopAutoFusion('已融合到目標裝備');matched=true;break;
+  }
+  returned+=salvageGear(result.gear);
+  const index=player.bag.findIndex(g=>g.uid===result.gear.uid);
+  if(index>=0)player.bag.splice(index,1);
+ }
+ if(!processed&&!matched&&!autoFusionRunning){toast(autoFusionStatus);renderSide();return;}
+ if(!matched&&autoFusionRunning&&autoFusionAttempts>=autoFusionPlan.limit)stopAutoFusion('已達本次融合次數上限');
+ if(processed){if(!matched)message(`♻ 批次融合 ${processed} 次，未達標全部分解，返還碎晶 ${returned} 個（累計 ${autoFusionAttempts} 次）。`,'good','system');dirty=true;save();}
+ updateFusionStop();renderSide();
+ if(matched)showFusionResult();
+ else if(!autoFusionRunning)toast(autoFusionStatus);
+}
 function showFusionResult(){const notice=player?.fusionNotice,gear=notice&&player.bag.find(g=>g.uid===notice.uid);if(!gear)return;const c=player.fusionSettings;$('fusionResultContent').innerHTML=`<p>第 ${notice.attempts} 次融合達成條件，自動融合已暫停。</p>${equipmentLine(gear)}<p>${TIER_NAMES[gearTier(gear.level)-1]} · 詞條 ${c.stat==='any'?'任意':`${AFFIX_NAMES[c.stat]||c.stat} ≥ ${c.minimum}`} · 已放入本角色背包</p><p class="tiny">此裝備不會被自動分解，仍可由你手動分解。</p>`;$('fusionResultModal').style.display='grid';$('gameShell').inert=true;$('fusionResultBag').focus();}
 function closeFusionResult(goBag=false){if(!player)return;const gear=player.bag.find(g=>g.uid===player.fusionNotice?.uid);player.fusionNotice=null;$('fusionResultModal').style.display='none';$('gameShell').inert=false;save();if(goBag){tab='bag';bagCategory=ITEMS[gear?.id]?.petSlot?'petEquipment':'equipment';gearFilterRarity=gearFilterTier=gearFilterSlot=gearFilterStat=gearFilterJob='all';}render();}
 function renderFormation(){const pet=activePet(),role=pet?companionRole(pet):null,weights=monsterTargetWeights(player,pet,role,gameNow()<petEffects.guardUntil),total=weights.reduce((n,x)=>n+x.weight,0);return `<div class="item formation-panel"><b>戰鬥站位 · 近戰優先承受攻擊</b><p>防禦近戰夥伴較容易被鎖定，其次為其他近戰；遠程優先級較低，但仍會受到攻擊。若只有遠程單位，也會正常承受攻擊。</p><div class="formation-units">${weights.map(t=>`<div class="formation-unit ${t.range}"><span>${rangeLabel(t.range)}</span><b>${escapeHtml(t.kind==='player'?player.name:petForm(pet)||pet.nickname)}</b><small>目前被選為目標機率 ${Math.round(t.weight/total*100)}%</small></div>`).join('')}</div></div>`;}
