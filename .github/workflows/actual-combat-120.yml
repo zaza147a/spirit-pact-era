@@ -1,0 +1,32 @@
+name: Full Real Combat 200 and 210 - TEST BRANCH ONLY
+on:
+  push:
+    branches: [experiment-weapon-balance-20261102]
+    paths:
+      - '.github/workflows/actual-combat-120.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-combat-120:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install real browser runtime
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Execute 120 actual in-game combat scenarios against both maps
+        run: |
+          node tests/real-combat-browser-benchmark.mjs full
+      - name: Preserve raw combat outcomes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spirit-pact-actual-combat-120-raw
+          path: test-results/*actual-combat.json
+          if-no-files-found: warn
