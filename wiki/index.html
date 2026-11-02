@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-02-fusion-correct-v8"><style>
+<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-02-card-codex-v9"><style>
 :root{color-scheme:dark;--bg:#0c111e;--panel:#172033;--line:#2c3b52;--text:#e9eef9;--muted:#afbdd1;--gold:#eac481;--accent:#6fb6ef}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0c111e,#15233b);color:var(--text);font:15px/1.65 system-ui,"Noto Sans TC",sans-serif;min-height:100vh}
 header{padding:28px max(18px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#0c1426}header h1{font-size:28px;margin:0;color:var(--gold)}header p{margin:4px 0;color:var(--muted)}
@@ -17,7 +17,7 @@ article{background:var(--panel);border:1px solid var(--line);border-radius:14px;
 code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}.intro{color:var(--muted);margin-bottom:16px}
 @media(max-width:600px){header h1{font-size:23px}.toolbar button{flex:1}.item{padding:14px}}
 </style></head><body>
-<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p><p class="small">WIKI 中文顯示版 2026.11.02.8</p></header>
+<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p><p class="small">WIKI 中文顯示版 2026.11.02.9</p></header>
 <main><div class="toolbar" id="nav"><button data-tab="monsters" aria-selected="true">怪物</button><button data-tab="cards">卡片</button><button data-tab="gear">裝備詞條</button><button data-tab="pet">夥伴</button><button data-tab="codex">遊戲圖鑑</button><button data-tab="rules">遊戲機制</button></div>
 <div class="toolbar" id="filters"><input id="search" type="search" placeholder="搜尋名稱、等級、屬性或地圖"><select id="continent" aria-label="選擇大陸"><option value="">所有大陸</option><option value="icarus">伊卡洛斯大陸（Lv.1–99）</option><option value="sky">蒼穹彼岸（Lv.101–200）</option><option value="dawn">曙界新陸（Lv.201–210）</option></select><select id="zone" aria-label="選擇地圖"><option value="">所有地圖</option></select><select id="cardSlot" hidden aria-label="卡片裝備部位"><option value="">全部卡片部位</option></select><select id="rarity" hidden><option value="common">普通</option><option value="rare">稀有</option><option value="uncommon">罕見</option><option value="legendary">傳說</option><option value="mythic">神話</option></select><select id="tier" hidden></select></div>
 <div id="cardLevelPanel" hidden class="item" style="margin:0 0 16px">
@@ -99,7 +99,7 @@ function renderCodex(){let body='',count=0;
  }else if(codexSection==='skills'){
   for(const [job,meta] of Object.entries(SECOND_JOBS)){const skills=JOB_SKILLS[job].filter(s=>s.branch==='second'||s.thirdOnly);count+=skills.length;body+=details(meta.name+'／'+THIRD_JOBS[job].name,skills.map(s=>'<p><b>'+esc(s.name)+'</b> · '+(s.thirdOnly?'三轉':s.rebornOnly?'轉生限定':'二轉')+' · '+(s.kind==='passive'?'被動':'主動')+'</p><p>'+esc(s.desc||'')+' · '+esc(jobSkillSpec(s,1,job).text)+'</p>').join(''));}
  }else{
-  for(const [map,profile] of Object.entries(CARD_PROFILES)){count++;body+=details((MAPS[map]?.name||zoneName(map))+' · '+profile.theme,profile.profiles.map((effects,i)=>'<p>第 '+(i+1)+' 種：'+esc(describeCardEffects(effects))+'</p>').join('')+'<p><b>首領：</b>'+esc(describeCardEffects(profile.boss))+'</p>'+Object.values(CARDS).filter(c=>c.map===map).map(c=>'<p>'+esc(c.name)+' → '+esc((c.slots||[]).map(s=>SLOTS[s]).join('／'))+'：'+esc(describeCardEffects(c.effects||{}))+'</p>').join(''));}
+  for(const [map,profile] of Object.entries(CARD_PROFILES)){const cards=Object.values(CARDS).filter(c=>c.map===map);count+=cards.length;body+=details((MAPS[map]?.name||zoneName(map))+' · '+profile.theme,cards.map(c=>'<p><b>'+esc(c.name)+'</b>'+(c.boss?' · 首領卡片':'')+'</p><p>部位：'+esc((c.slots||[]).map(s=>SLOTS[s]).join('／'))+' · 效果：'+esc(describeCardEffects(c.effects||{}))+'</p>').join(''));}
  }
  return {html:codexNav()+'<p class="small">資料直接取自與正式遊戲相同的職業、技能、共鳴、夥伴與卡片模組；展開各項可查看完整內容。</p>'+body,count};
 }
