@@ -1098,9 +1098,10 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    if(left)p.gear.leftHand=rollGear(left,200,'mythic',()=>.5);
    if(stageRank)for(const g of Object.values(p.gear))if(g)g.enhancement=stageRank;
    const [main,sub]=spec.fusion.split('-');
-   const species={attack:'fang',magic:'wisp',defense:'shell',support:'sprout'}[main];
+   const actualMain=spec.reverseFusion?sub:main,actualSub=spec.reverseFusion?main:sub;
+   const species={attack:'fang',magic:'wisp',defense:'shell',support:'sprout'}[actualMain];
    const pet={id:'combat-test-pet',species,nickname:'對照融合夥伴',level:200,rarity:'mythic',ascended:true,evolution:4,
-    iv:{hp:0,atk:0,def:0,matk:0,sp:0,aspd:0},fusion:{main,sub},loyalty:100,
+    iv:{hp:0,atk:0,def:0,matk:0,sp:0,aspd:0},fusion:{main:actualMain,sub:actualSub},loyalty:100,
     gear:Object.fromEntries([['head',spec.petGear?.[0]||'petHelm'],['body',spec.petGear?.[1]||'petArmor'],['shoes',spec.petGear?.[2]||'petBoots']].map(([slot,id])=>{
       const g=rollPetGear(id,200,'mythic',()=>.5);if(stageRank)g.enhancement=stageRank;return [slot,g];
     }))};
