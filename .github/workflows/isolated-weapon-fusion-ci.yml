@@ -27,6 +27,11 @@ jobs:
           mkdir -p test-results
           node tests/lv200-lv210-optimization-diagnostic.mjs > test-results/lv200-lv210-120-weapon-stat-diagnostic.json
           node -e "const d=require('./test-results/lv200-lv210-120-weapon-stat-diagnostic.json');if(d.rows.length!==120)throw Error('Expected 120 diagnostic rows');console.log('Diagnostic scenarios:',d.rows.length)"
+      - name: Generate real-map six-fusion pet direct-hit diagnostics
+        run: |
+          mkdir -p test-results
+          node tests/lv200-lv210-pet-output-diagnostic.mjs > test-results/lv200-lv210-120-pet-throughput-proxy.json
+          node -e "const d=require('./test-results/lv200-lv210-120-pet-throughput-proxy.json');if(d.rows.length!==120)throw Error('Expected 120 pet rows');if(new Set(d.rows.filter(x=>x.level===200 && x.job==='assassin').map(x=>x.bossDpsProxy)).size<2)throw Error('Fusion outputs unexpectedly identical');console.log('Pet benchmark scenarios:',d.rows.length)"
       - name: Upload diagnostic results (not certified actual DPS)
         if: always()
         uses: actions/upload-artifact@v4
