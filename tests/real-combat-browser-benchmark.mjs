@@ -2,6 +2,8 @@
 // Requires Chromium and the test-only ?lingqi_combat_test hook on the isolated branch.
 // Usage: node tests/real-combat-browser-benchmark.mjs smoke|full
 import {chromium} from 'playwright';
+import {WORLD_MONSTERS} from '../dist/world-data.js';
+import {DAWN_MONSTERS} from '../dist/dawn-world.js';
 import {createServer} from 'node:http';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,extname,join} from 'node:path';
@@ -60,13 +62,14 @@ try{
    });
    for(const [allocationIndex,attributes] of unique.entries()){
     const variants=plan.level===210?[4,8]:[0];
-    for(const sigil of variants)for(const target of ['mob','boss']){
+    const monsters=mode==='full'?(plan.level===200?WORLD_MONSTERS.filter(m=>m.map==='worldroot').map(m=>m.id):DAWN_MONSTERS.map(m=>m.id)):[plan.level===200?'world_200':'dawn-ray'];
+    for(const sigil of variants)for(const target of [...monsters,'boss']){
      const outcome=await page.evaluate(({plan,weaponBuild,attributes,sigil,target})=>{
       let seed=0x51A8D00D;
       Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
       const h=globalThis.__lingqiCombatHarness;
       const panel=h.configure({...plan,weaponBuild,attributes,sigil});
-      return {panel,...h.fight({boss:target==='boss',durationMs:target==='boss'?60000:20000,enemyAttackEnabled:true})};
+      return {panel,...h.fight({boss:target==='boss',monsterId:target==='boss'?null:target,durationMs:target==='boss'?60000:20000,enemyAttackEnabled:true})};
      },{plan,weaponBuild,attributes,sigil,target});
      rows.push({...plan,weaponBuild,attributes,allocationIndex,sigil,target,...outcome});
      if(rows.length%20===0)console.log('real combat result',rows.length,'last',plan.job,weaponBuild,target);
@@ -81,4 +84,6 @@ try{
  if(errors.length)throw Error('Browser JS errors: '+JSON.stringify(errors.slice(0,5)));
  if(!rows.length||rows.some(x=>!Number.isFinite(x.totalDamage)||x.ticks===0))throw Error('Invalid actual combat records');
  if(!rows.some(x=>x.hits>0))throw Error('No combat damage was observed: runtime harness invalid');
+ if(rows.some(x=>!x.damageReconciled))throw Error('Some combat runs failed owner/pet damage reconciliation');
+ if(mode==='full')for(const plan of plans){const subset=rows.filter(x=>x.level===plan.level&&x.job===plan.job&&x.fusion===plan.fusion);const expected=plan.level===200?11:4;if(new Set(subset.map(x=>x.target)).size!==expected)throw Error('Incomplete source map encounter coverage '+JSON.stringify(plan));}
 }finally{await browser.close();server.close();}
