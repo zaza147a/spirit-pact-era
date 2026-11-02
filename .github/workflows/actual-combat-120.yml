@@ -23,6 +23,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Validate mixed-spawn combat and 180-row ranking contracts first
+        run: |
+          node --test tests/real-map-boss-summon-source.test.mjs tests/actual-mixed-boss-dps-timing.test.mjs tests/natural-map-ranking-contract.test.mjs
       - name: Install real browser runtime
         run: |
           npm install --no-save playwright@1.56.1
