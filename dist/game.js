@@ -116,7 +116,7 @@ function load(){try{const v2=JSON.parse(localStorage.getItem(KEY)||'null');if(v2
 function albumEarnGold(base,p,extra=0){let bonus=Number.isFinite(p?.cardAlbumGoldBonus)?p.cardAlbumGoldBonus:0;try{bonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));}catch{}return Math.round(earnGold(base,p,extra)*(1+bonus/100));}
 function save(notifyUser=false){
  if(offlineSimulation)return true;if(!player||activeSlot===null)return false;
- const beforeCards=structuredClone(player.cards),beforePoints=player.cardRecyclePoints;
+ const beforeCards=player.cards.map(card=>({...card})),beforePoints=player.cardRecyclePoints;
  let originalAlbum=null,albumChanged=false;
  try{
   // Keep all eight character slots independent of the shared album record.
@@ -1141,7 +1141,7 @@ async function settleOffline(){
    writeCharacterSlot(localStorage,slotIndex,player);
   }catch(error){
    if(albumChanged){try{if(albumRaw===null)localStorage.removeItem(CARD_COLLECTION_KEY);else localStorage.setItem(CARD_COLLECTION_KEY,albumRaw);}catch{}}
-   player=previous;throw Error('離線結算無法安全儲存，原存檔與離線時間已保留：'+error.message);
+   player=previous;throw Error('離線結算儲存空間不足或寫入失敗，原存檔與離線時間已保留：'+error.message);
   }
   return result.summary;
  }finally{worker?.terminate();settlingOffline=false;$('offlineProgress').hidden=true;$('entryScreen').inert=false;$('gameShell').inert=false;}
