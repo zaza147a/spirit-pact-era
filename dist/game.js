@@ -1082,7 +1082,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    const budgets={first:49,second:69,rebirth:20,third:69};
    for(const branch of Object.keys(budgets)){
     let remaining=budgets[branch];
-    const skills=JOB_SKILLS[p.job].filter(x=>x.branch===branch).sort((a,b)=>
+    const skills=JOB_SKILLS[p.job].filter(x=>branch==='rebirth'?x.rebornOnly===true:x.branch===branch&&x.rebornOnly!==true).sort((a,b)=>
       Number(b.id==='thirdMain_'+p.job)-Number(a.id==='thirdMain_'+p.job)||
       Number(['physical','magic'].includes(b.kind))-Number(['physical','magic'].includes(a.kind))||
       Number(b.kind==='buff')-Number(a.kind==='buff')||
