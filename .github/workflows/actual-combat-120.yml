@@ -27,20 +27,20 @@ jobs:
         run: |
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
-      - name: Smoke-test actual game combatTick before full 120 benchmark
+      - name: Smoke-test natural map spawning and boss encounters
         run: node tests/real-combat-browser-benchmark.mjs farm-smoke
-      - name: Execute 120 actual in-game combat scenarios against both maps
+      - name: Execute 120 fusion scenarios in natural spawning maps (180 including IV/VIII)
         run: node tests/real-combat-browser-benchmark.mjs farm
       - name: Rank only fully reconciled combatTick evidence
         run: node tests/rank-natural-map-combat.mjs test-results/lv200-lv210-farm-actual-combat.json
-      - name: Publish validated 120-row actual battle summary to isolated branch
+      - name: Publish validated natural-map battle summary to isolated branch
         run: |
           node --input-type=module -e "import fs from 'node:fs';const x=JSON.parse(fs.readFileSync('test-results/actual-natural-map-120-ranked.json','utf8'));if(x.kind!=='ACTUAL_NATURAL_MAP_DPS'||x.rows.length!==180)throw Error('Missing 180 natural map records');fs.mkdirSync('docs/test-results',{recursive:true});fs.writeFileSync('docs/test-results/actual-natural-map-120-ranked.json',JSON.stringify({kind:x.kind,commit:process.env.GITHUB_SHA,rows:x.rows},null,2)+'\\n')"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git fetch origin experiment-weapon-balance-20261102
           git switch -C experiment-weapon-balance-20261102 origin/experiment-weapon-balance-20261102
-          git add docs/test-results/actual-combat-120-ranked.json
+          git add docs/test-results/actual-natural-map-120-ranked.json
           if ! git diff --cached --quiet; then
             git commit -m "test: verified natural map combat results [skip ci]"
             git push origin HEAD:experiment-weapon-balance-20261102
