@@ -1100,7 +1100,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    const [main,sub]=spec.fusion.split('-');
    const actualMain=spec.reverseFusion?sub:main,actualSub=spec.reverseFusion?main:sub;
    const species={attack:'fang',magic:'wisp',defense:'shell',support:'sprout'}[actualMain];
-   const pet={id:'combat-test-pet',species,nickname:'對照融合夥伴',level:200,rarity:'mythic',ascended:true,evolution:4,
+   const pet={id:'combat-test-pet',species,nickname:'對照融合夥伴',level:200,xp:0,kills:0,rarity:'mythic',ascended:true,evolution:4,
     iv:{hp:0,atk:0,def:0,matk:0,sp:0,aspd:0},fusion:{main:actualMain,sub:actualSub},loyalty:100,
     gear:Object.fromEntries([['head',spec.petGear?.[0]||'petHelm'],['body',spec.petGear?.[1]||'petArmor'],['shoes',spec.petGear?.[2]||'petBoots']].map(([slot,id])=>{
       const g=rollPetGear(id,200,'mythic',()=>.5);if(stageRank)g.enhancement=stageRank;return [slot,g];
@@ -1118,6 +1118,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
   fight({boss=false,monsterId=null,durationMs=60000,stepMs=20,enemyAttackEnabled=true}={}){
    const pool=player.location==='dawnrift'?DAWN_MONSTERS:WORLD_MONSTERS.filter(m=>m.map==='worldroot');
    const source=boss?(player.location==='dawnrift'?DAWN_BOSS:MAP_BOSSES[player.location]):pool.find(m=>m.id===monsterId)||pool[0];
+   if(monsterId&&!boss&&source.id!==monsterId)throw Error('Requested monster not found: '+monsterId);
    if(!source)throw Error('No selected enemy');
    enemies=[];enemy=null;encounterSlots=Array.from({length:encounterLimit(player.location)},()=>Infinity);
    const created={...source,...monsterRuntimeStats(source),instanceId:'bench-monster',slotIndex:0,maxHp:source.hp,hp:source.hp,
