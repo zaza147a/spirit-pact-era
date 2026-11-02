@@ -143,7 +143,7 @@ function addEncounter(now=gameNow(),slotIndex=null){
  if(!isBoss&&slotIndex===null)slotIndex=Array.from({length:encounterLimit(player.location)},(_,i)=>i).find(i=>!enemies.some(e=>!e.boss&&e.hp>0&&e.slotIndex===i));const foe={slotIndex:isBoss?null:slotIndex,...m,...monsterRuntimeStats(m),hp,maxHp:hp,atk:m.atk+(isPetland&&!isBoss?(player.level-1):0),lastAttack:now,appearedAt:now,instanceId:`${now}-${++encounterSerial}`};
  enemies.push(foe);chooseAttackTarget();if(!report)startReport();message(`${foe.boss?'⚠ 地圖首領現身！':'遭遇 '}Lv.${foe.level||1} ${SPECIES[foe.id].name}！場上 ${enemies.length} 隻敵人。`,'','system');
 }
-function tickEncounters(now){if(player.trialRun){if(!enemies.some(e=>e.hp>0)&&now>=player.trialRun.nextAt)spawnTrialBoss();return;}if(isTown(player.location)||!player.hp)return;const capacity=encounterLimit(player.location);let changed=false;enemies=enemies.filter(e=>e.hp>0);for(let slot=0;slot<capacity;slot++){if(encounterSlots[slot]===undefined)encounterSlots[slot]=now+rand(100,900);if(!enemies.some(e=>!e.boss&&e.slotIndex===slot)&&now>=encounterSlots[slot]){encounterSlots[slot]=now+rand(250,1400);addEncounter(now,slot);changed=true;}}if(changed)render();}
+function tickEncounters(now){if(globalThis.__lingqiCombatTestSink?.singleTarget===true)return;if(player.trialRun){if(!enemies.some(e=>e.hp>0)&&now>=player.trialRun.nextAt)spawnTrialBoss();return;}if(isTown(player.location)||!player.hp)return;const capacity=encounterLimit(player.location);let changed=false;enemies=enemies.filter(e=>e.hp>0);for(let slot=0;slot<capacity;slot++){if(encounterSlots[slot]===undefined)encounterSlots[slot]=now+rand(100,900);if(!enemies.some(e=>!e.boss&&e.slotIndex===slot)&&now>=encounterSlots[slot]){encounterSlots[slot]=now+rand(250,1400);addEncounter(now,slot);changed=true;}}if(changed)render();}
 
 function spawn(){if(restoreTrialCheckpoint())return;casting=null;if(report)endReport('未完成');player.shield=Math.max(0,(player.shield||0)-petShield);petShield=0;clearPetEffects();enemies=[];encounterSlots=Array.from({length:encounterLimit(player.location)},()=>gameNow()+rand(100,900));deadUntil=0;
  if(isTown(player.location)){enemy={id:'town',level:1,hp:0,maxHp:1,atk:0,def:0,hit:0,flee:0,aspd:150};report=null;deadUntil=Infinity;nextEncounterAt=Infinity;message('已進入靈契主城，這裡是安全區域。','good','system');render();return;}
@@ -1116,7 +1116,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    player.hp=stat('hp');player.mp=stat('mp');player.resonance=0;player.manualPaused=false;
    bossCooldowns={worldroot:Infinity,dawnrift:Infinity};
    spawn();encounterSlots=Array.from({length:encounterLimit(player.location)},()=>Infinity);
-   globalThis.__lingqiCombatTestSink={hits:[],ticks:0,enemyActions:0,playerActions:0,petCasts:[]};
+   globalThis.__lingqiCombatTestSink={singleTarget:true,hits:[],ticks:0,enemyActions:0,playerActions:0,petCasts:[]};
    return {job:p.job,level:p.level,location:p.location,playerHp:p.hp,petHp:pet.hp,aspd:stat('aspd'),atk:stat('atk'),matk:stat('matk')};
   },
   fight({boss=false,monsterId=null,durationMs=60000,stepMs=20,enemyAttackEnabled=true}={}){
