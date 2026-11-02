@@ -1,5 +1,5 @@
 // Presentation-only layered canvas effects. Never touches game state.
-import {royalJudgmentRaster} from './royal-judgment-raster-v20.js';
+const royalJudgmentRaster=new URL('./royal-judgment-v20.webp',import.meta.url).href;
 const royalTypes=new Set(['holyShield','shieldStrike','shieldArray','royalShield','sanctuary','royalSanctuary','judgment','royalJudgment']);
 const bladeTypes=new Set(['slash','bash','dualBlade','bladeStorm','execute','shadowBlade','ambush','poisonBlade','holyCross']);
 const projectileTypes=new Set(['pierce','lance','snipe','falconArrow','arrowRain']);
@@ -14,8 +14,8 @@ const active=[];
 const VFX_SCALE=.60;
 const royalShieldPaint=typeof Image!=='undefined'?new Image():null;
 const royalSanctuaryPaint=typeof Image!=='undefined'?new Image():null;
-if(royalShieldPaint)royalShieldPaint.src=new URL('./royal-shield-v22.png',import.meta.url).href;
-if(royalSanctuaryPaint)royalSanctuaryPaint.src=new URL('./royal-sanctuary-v22.png',import.meta.url).href;
+if(royalShieldPaint)royalShieldPaint.src=new URL('./royal-shield-v22.webp',import.meta.url).href;
+if(royalSanctuaryPaint)royalSanctuaryPaint.src=new URL('./royal-sanctuary-v22.webp',import.meta.url).href;
 const royalArt=typeof Image!=='undefined'?new Image():null;
 if(royalArt)royalArt.src=new URL('./royal-judgment-vfx.svg',import.meta.url).href;
 let royalPaintedSprite=null;
