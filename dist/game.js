@@ -1076,7 +1076,17 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    p.attributes={STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1,...spec.attributes};
    capBaseAttributes(p);
    p.statPoints=Math.max(0,allocationBudget(p.level,true)-Object.values(p.attributes).reduce((n,v)=>n+v-1,0));
-   p.jobSkills=Object.fromEntries(JOB_SKILLS[p.job].map(x=>[x.id,x.maxRank]));
+   p.jobSkills=Object.fromEntries(JOB_SKILLS[p.job].map(x=>[x.id,0]));
+   const budgets={first:49,second:69,rebirth:20,third:69};
+   for(const branch of Object.keys(budgets)){
+    let remaining=budgets[branch];
+    const skills=JOB_SKILLS[p.job].filter(x=>x.branch===branch).sort((a,b)=>
+      Number(b.id==='thirdMain_'+p.job)-Number(a.id==='thirdMain_'+p.job)||
+      Number(['physical','magic'].includes(b.kind))-Number(['physical','magic'].includes(a.kind))||
+      Number(b.kind==='buff')-Number(a.kind==='buff')||
+      Number(b.kind==='passive')-Number(a.kind==='passive'));
+    for(const skill of skills){const rank=Math.min(remaining,skill.maxRank);p.jobSkills[skill.id]=rank;remaining-=rank;}
+   }
    p.equippedJobSkill='thirdMain_'+p.job;
    p.autoSkills=normalizeAutoSkills({order:(spec.skillOrder||JOB_SKILLS[p.job].filter(x=>x.kind!=='passive').map(x=>x.id))},JOB_SKILLS[p.job]);
    p.gear=Object.fromEntries(Object.keys(SLOTS).map(slot=>[slot,null]));
