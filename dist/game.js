@@ -1,5 +1,5 @@
 import {queueCombatVfx} from './skill-effects.js?v=6.5.12';
-import {GOLD_COLLECTIBLES,goldCollectionTier,goldCollectionBonus,earnGold,buyGoldCollectible,goldWealth,reforgePrice,reforgeGear} from './gold-services.js?v=6.5.21';
+import {GOLD_COLLECTIBLES,goldCollectionTier,goldCollectionBonus,earnGold,buyGoldCollectible,goldWealth,reforgePrice,reforgeGear} from './gold-services.js?v=6.5.27';
 import {multiTargets} from './adjacent-targets.js?v=6.5.12';
 import {rankOutfitArt,rankOutfitName,RANK_OUTFITS} from './rank-outfits.js?v=6.5.0';
 import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,exportWarehouse,importWarehouse} from './shared-warehouse.js?v=6.5.0';
