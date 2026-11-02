@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>靈契紀元 WIKI｜冒險資料庫</title><style>
+:root{color-scheme:dark;--bg:#0c111e;--panel:#172033;--line:#2c3b52;--text:#e9eef9;--muted:#afbdd1;--gold:#eac481;--accent:#6fb6ef}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0c111e,#15233b);color:var(--text);font:15px/1.65 system-ui,"Noto Sans TC",sans-serif;min-height:100vh}
+header{padding:28px max(18px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#0c1426}header h1{font-size:28px;margin:0;color:var(--gold)}header p{margin:4px 0;color:var(--muted)}
+main{max-width:1200px;margin:auto;padding:22px 18px 80px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+button,input,select{font:inherit;border:1px solid var(--line);border-radius:10px;color:var(--text);background:#17243a;padding:10px 13px}
+button{cursor:pointer}button[aria-selected=true]{background:#355677;border-color:#76b8f3}input{flex:1;min-width:220px}
+section[hidden]{display:none}.stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 22px}.pill{background:#20324b;border:1px solid var(--line);border-radius:999px;padding:5px 13px;color:#cdddff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}.item{padding:18px;border:1px solid var(--line);background:var(--panel);border-radius:14px}
+.item h3{margin:0 0 7px;color:#f1d5a5;font-size:17px}.item p{margin:4px 0}.small{font-size:13px;color:var(--muted)}
+.tags{display:flex;gap:5px;flex-wrap:wrap}.tag{padding:2px 7px;border-radius:6px;background:#253953;color:#c6ddf7;font-size:12px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:12px;overflow:hidden}td,th{text-align:left;padding:11px;border-bottom:1px solid var(--line)}th{color:var(--gold)}.scroll{overflow:auto}
+article{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:21px;margin:0 0 15px}article h3{color:var(--gold);margin-top:0}
+code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}.intro{color:var(--muted);margin-bottom:16px}
+@media(max-width:600px){header h1{font-size:23px}.toolbar button{flex:1}.item{padding:14px}}
+</style></head><body>
+<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p></header>
+<main><div class="toolbar" id="nav"><button data-tab="monsters" aria-selected="true">怪物</button><button data-tab="cards">卡片</button><button data-tab="gear">裝備詞條</button><button data-tab="pet">夥伴</button><button data-tab="rules">遊戲機制</button></div>
+<div class="toolbar" id="filters"><input id="search" type="search" placeholder="搜尋名稱、等級、屬性或地圖"><select id="zone"><option value="">所有地圖</option></select><select id="rarity" hidden><option value="common">普通</option><option value="rare">稀有</option><option value="uncommon">罕見</option><option value="legendary">傳說</option><option value="mythic">神話</option></select><select id="tier" hidden></select></div>
+<div id="summary" class="stats"></div><div id="result"></div>
+<p class="small">資料來源：本儲存庫 dist/ 正式版模組；本 WIKI 僅讀取遊戲資料，不存取玩家存檔、不修改遊戲。裝備範圍為單一詞條理論範圍，不等於整件裝備最終面板；實際數字可能受強化、稀有度、夥伴倍率及四捨五入影響。</p>
+</main><script type="module">
+import {WORLD_MONSTERS,ZONES} from '../dist/world-data.js';
+import {MAP_BOSSES} from '../dist/map-bosses.js';
+import {CARDS,SLOTS,PET_RARITIES,PET_EVOLUTIONS,SPECIES} from '../dist/catalog.js';
+import {GEAR_BASE,PET_GEAR_BASE,RARITIES,AFFIX_NAMES,affixRange,TIER_NAMES,GEAR_TIERS,QUALITY_POWER,PET_SLOTS} from '../dist/loot.js';
+import {ENHANCEMENT_POWER} from '../dist/sky-trials.js';
+import {FUSION_PAIRS} from '../dist/pet-fusion.js';
+const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let tab='monsters';const allMonsters=[...WORLD_MONSTERS,...Object.values(MAP_BOSSES)].sort((a,b)=>a.level-b.level||(a.boss?1:-1));
+const tiers=GEAR_TIERS;const pct=new Set(['ignoreDef','critDmg','magicDamage','fleePct','defPct','hpPct','aspdPct','damageReduction','crit']);
+const pill=(name,value)=>'<span class="pill">'+esc(name)+' '+esc(value)+'</span>';
+const card=(title,content)=>'<div class="item"><h3>'+esc(title)+'</h3>'+content+'</div>';
+const label=(obj)=>Object.entries(obj||{}).map(([k,v])=>'<span class="tag">'+esc(k)+' '+esc(v)+'</span>').join(' ');
+const matches=(s)=>s.toLowerCase().includes($('search').value.trim().toLowerCase());
+const num=v=>Number(v||0).toLocaleString('zh-TW');
+function setup(){for(const z of ZONES){const e=document.createElement('option');e.value=z.id;e.textContent=z.name+' Lv.'+z.min+'–'+z.max;$('zone').append(e)}
+tiers.forEach((t,i)=>{const e=document.createElement('option');e.value=i+1;e.textContent=(i+1)+'階 '+t.name+' Lv.'+t.min+'–'+t.max;$('tier').append(e)});
+$('tier').value='11';document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));$('search').value='';render()});
+['search','zone','tier','rarity'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render));render()}
+function render(){const gear=tab==='gear',map=['monsters','cards'].includes(tab);$('zone').hidden=!map;$('rarity').hidden=!gear;$('tier').hidden=!gear;
+const zone=$('zone').value,q=$('search').value.trim().toLowerCase();let html='',count=0;
+if(tab==='monsters'){const rows=allMonsters.filter(m=>(!zone||m.map===zone)&&matches(m.name+' '+m.level+' '+(ZONES.find(z=>z.id===m.map)?.name||'')));count=rows.length;html='<div class="grid">'+rows.map(m=>card((m.boss?'👑 ':'')+m.name,'<p class="small">'+esc(ZONES.find(z=>z.id===m.map)?.name||m.map)+' · Lv.'+m.level+' · '+(m.boss?'地圖首領':m.elite?'區域精英':'一般怪物')+'</p><div class="tags">'+label({HP:num(m.hp),ATK:num(m.atk),DEF:num(m.def),EXP:num(m.xp),金幣:num(m.gold)})+'</div><p class="small">掉落：'+esc((m.drops||[]).join('、')||'參見遊戲掉落規則')+'</p>')).join('')+'</div>';}
+else if(tab==='cards'){const rows=Object.entries(CARDS).filter(([id,c])=>(!zone||c.map===zone)&&matches(c.name+' '+(c.theme||'')+' '+(c.description||'')));count=rows.length;html='<div class="grid">'+rows.map(([id,c])=>card(c.name,'<p class="small">'+esc(c.theme||'舊版靈契')+(c.boss?' · 首領卡':'')+'</p><p>部位：'+esc((c.slots||[]).map(s=>SLOTS[s]||s).join('／')||'未指定')+'</p><div class="tags">'+label(c.effects||{})+'</div><p class="small">固定能力值可能依裝備階段縮放；實際描述以遊戲卡片規則為準。</p>')).join('')+'</div>';}
+else if(gear){const rarity=$('rarity').value,tier=Number($('tier').value),keys=Object.keys(AFFIX_NAMES).filter(k=>!q||matches(k+' '+AFFIX_NAMES[k]));count=keys.length;
+html='<article><h3>詞條理論範圍</h3><p>階級：'+esc(tiers[tier-1].name)+' · '+esc(RARITIES.find(r=>r.id===rarity).name)+' · 品質係數 ×'+QUALITY_POWER[rarity]+'</p><p class="small">裝備依其類型抽取可用詞條，並非所有詞條都能出現在每種部位。夥伴裝備非特殊詞條（ATK/MATK 除外）另有 10/3 倍生成係數；以下為一般裝備範圍。</p><div class="scroll"><table><thead><tr><th>屬性</th><th>最小</th><th>最大</th></tr></thead><tbody>'+keys.map(k=>{const [a,b]=affixRange(k,tier,rarity);return '<tr><td>'+esc(AFFIX_NAMES[k])+'</td><td>'+a+(pct.has(k)?'%':'')+'</td><td>'+b+(pct.has(k)?'%':'')+'</td></tr>'}).join('')+'</tbody></table></div></article><div class="grid">'+[...Object.entries(GEAR_BASE).map(([id,g])=>[id,g,false]),...Object.entries(PET_GEAR_BASE).map(([id,g])=>[id,g,true])].filter(([id,g])=>!q||matches(g.name+' '+id)).map(([id,g,p])=>card(g.name,'<p>'+(p?'夥伴裝備':'人物裝備')+' · '+esc(p?PET_SLOTS[g.petSlot]:SLOTS[g.slot]||'通用')+'</p><p class="small">裝備階級由等級決定；詞條由裝備種類、品質與抽選規則決定。</p>')).join('')+'</div>';}
+else if(tab==='pet'){const roles={'attack':'攻擊','magic':'魔法','defense':'防禦','support':'輔助'};const pairs=Object.entries(FUSION_PAIRS).filter(([id,p])=>matches(id+' '+p.name));count=pairs.length;html='<article><h3>夥伴稀有度</h3><div class="tags">'+PET_RARITIES.map(r=>'<span class="tag">'+r.name+' · 基礎倍率 ×'+r.factor.toFixed(3)+'</span>').join('')+'</div></article><article><h3>一般進化</h3>'+PET_EVOLUTIONS.map(x=>'<p>Lv.'+x.level+'：'+esc(x.id)+' ×'+x.count+' · 素材區域 '+esc(x.range)+'</p>').join('')+'</article><article><h3>攻擊能力轉換</h3><p>融合攻擊型可將裝備提供的 MATK／INT 部分轉入 ATK；融合魔法型、輔助型可將裝備 ATK／STR 部分轉入 MATK。DEF 與 MDEF 沒有此互轉規則；VIT 增 DEF，INT 增 MDEF。</p></article><h2>融合夥伴</h2><div class="grid">'+pairs.map(([id,p])=>card(p.name,'<p>'+esc(id.split('-').map(x=>roles[x]||x).join(' × '))+'</p><p class="small">主要定位：'+esc(roles[p.role]||p.role)+'</p>')).join('')+'</div>';}
+else {count=7;html='<article><h3>裝備階級與品質</h3><p>11 個裝備階級對應 Lv.1–200；品質為普通／稀有／罕見／傳說／神話，分別有 2／3／4／5／6 條詞綴。裝備實際效果依階級、品質、詞條及強化而定。</p><p>強化順序：D → C → B → A → S → SS → SSS。強化階乘：'+Object.entries(ENHANCEMENT_POWER).map(([k,v])=>k+' ×'+v).join('、')+'</p></article>'+
+'<article><h3>怪物與首領</h3><p>各區間一般怪物、區域精英與地圖首領分開列出。怪物數值直接採遊戲模組生成結果。實際戰鬥可能另有難度、技能與特殊機制修正。</p></article>'+
+'<article><h3>卡片與插槽</h3><p>卡片依指定部位鑲嵌，怪物名稱與卡片效果來自遊戲資料庫。部分卡片的固定數值隨裝備階級成長；主角能力值有正常收益上限，超額走溢出潛能規則。</p></article>'+
+'<article><h3>夥伴裝備數值</h3><p>夥伴裝備：頭部、身體、鞋三部位。ATK 可受 STR 詞條影響，MATK 可受 INT 影響，DEF 受 VIT 影響，MDEF 受 INT 影響。融合攻擊／魔法／輔助型存在不同攻擊能力轉換；裝備比較顯示的是最終面板差異，並非只列出裝備的直接詞條。</p></article>'+
+'<article><h3>離線戰鬥與存檔</h3><p>離線掛機最多補算 24 小時；具體收益、停止條件、自動復活及首領避戰依正式遊戲運作。WIKI 本身不會讀取或修改玩家存檔。</p></article>'+
+'<article><h3>進化、共鳴與試煉</h3><p>夥伴進化、融合及人物共鳴是獨立系統；試煉與強化材料依遊戲不同階段解鎖。以正式版程式為唯一規則來源，避免將測試數據寫成固定保證。</p></article>'+
+'<article><h3>更新方式</h3><p>本站引用同一版本遊戲程式模組，重新部署時跟隨該版本資料；WIKI 與遊戲 UI、角色存檔互不影響。</p></article>';}
+$('summary').innerHTML=pill('目前分類',({'monsters':'怪物圖鑑','cards':'卡片資料','gear':'裝備詞條','pet':'夥伴資料','rules':'機制說明'})[tab])+pill('顯示筆數',count)+pill('資料', 'GitHub 正式版');
+$('result').innerHTML=html||'<p class="empty">沒有符合條件的資料。</p>';}
+setup();
+</script></body></html>
