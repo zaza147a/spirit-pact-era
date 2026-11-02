@@ -60,11 +60,30 @@ try{
   },item.src);
   results.push({...item,...check});if(!check.ok)errors.push(item.id+' could not decode '+item.src+' '+check.error);
  }
- // Exercise the actual evolution modal DOM/CSS with real pet images; sample all roles and fusion orientations.
- const samples=[
- ...Object.keys(roles).map(role=>({name:'basic-'+role,before:petArt({species:roles[role],rarity:'mythic',evolution:2}),after:petArt({species:roles[role],rarity:'mythic',evolution:3})})),
- ...pairs.map(pair=>{const [main,sub]=pair.split('-');const pet={species:roles[main],rarity:'mythic',evolution:4,fusion:{main,sub}};return {name:'fusion-'+pair,before:petArt({...pet,fusion:null}),after:fusionArt(pet)};})
- ];
+ // Exercise every legal stage transition with actual art and the real evolution modal CSS.
+ // Base: 4 families x 5 rarities x 4 transitions = 80; fusion: 12;
+ // true form: 12 ordered pairs x (juvenile, S, SS, SSS) = 48.
+ const samples=[];
+ for(const [role,species] of Object.entries(roles))
+  for(const rarity of rarities)
+   for(let stage=1;stage<5;stage++)
+    samples.push({name:'basic-'+role+'-'+rarity+'-'+stage,
+      before:petArt({species,rarity,evolution:stage-1}),
+      after:petArt({species,rarity,evolution:stage})});
+ for(const pair of pairs){
+  const [main,sub]=pair.split('-');
+  const pet={species:roles[main],rarity:'mythic',evolution:4,fusion:{main,sub},ascended:true,level:200};
+  const baseArt=petArt({...pet,fusion:null});
+  const fusedArt=fusionArt(pet);
+  samples.push({name:'fusion-'+pair,before:baseArt,after:fusedArt});
+  let prev=fusedArt;
+  for(let stage=0;stage<4;stage++){
+   const next=trueFormArt({...pet,trueForm:true,humanoidStage:stage});
+   samples.push({name:'trueform-'+pair+'-'+(['juvenile','S','SS','SSS'][stage]),before:prev,after:next});
+   prev=next;
+  }
+ }
+ assert.equal(samples.length,140,'full evolution transition matrix must be exhaustive');
  for(const item of samples){
   await page.evaluate(({before,after})=>{
    const scene=document.querySelector('#evolutionScene');scene.className='evolution-scene preview';
@@ -94,7 +113,7 @@ try{
   assert.ok(frames.at(-1).before.opacity<.05&&frames.at(-1).after.opacity>.95,item.name+' end');
   assert.ok(frames[2].before.filter.includes('evolutionWarpOld'),item.name+' old distortion');
   assert.ok(frames[2].after.filter.includes('evolutionWarpNew'),item.name+' new distortion');
-  await page.locator('#evolutionScene').screenshot({path:resolve(out,item.name+'-mid.png')});
+  if(item.name.startsWith('fusion-') || item.name.startsWith('trueform-')&&item.name.endsWith('-SSS') || item.name.startsWith('basic-')&&item.name.includes('-mythic-3')) await page.locator('#evolutionScene').screenshot({path:resolve(out,item.name+'-mid.png')});
   await page.evaluate(()=>document.querySelector('#evolutionScene').className='evolution-scene complete');
   const finish=await page.evaluate(()=>{
    const x=document.getElementById('evolutionAfter');for(const a of x.getAnimations()){a.finish();}
