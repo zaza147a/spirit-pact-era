@@ -39,7 +39,7 @@ const page=await browser.newPage({viewport:{width:1280,height:900}});
 const errors=[];
 page.on('pageerror',err=>errors.push(err.message));
 await page.goto('http://127.0.0.1:'+port+'/index.html?lingqi_combat_test',{waitUntil:'domcontentloaded'});
-await page.waitForFunction(()=>Boolean(globalThis.__lingqiCombatHarness),{timeout:30000});
+await page.waitForFunction(()=>Boolean(globalThis.__lingqiCombatHarness),null,{timeout:30000});
 const rows=[];
 try{
  for(const plan of plans){
@@ -62,6 +62,8 @@ try{
     const variants=plan.level===210?[4,8]:[0];
     for(const sigil of variants)for(const target of ['mob','boss']){
      const outcome=await page.evaluate(({plan,weaponBuild,attributes,sigil,target})=>{
+      let seed=0x51A8D00D;
+      Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
       const h=globalThis.__lingqiCombatHarness;
       const panel=h.configure({...plan,weaponBuild,attributes,sigil});
       return {panel,...h.fight({boss:target==='boss',durationMs:target==='boss'?60000:20000,enemyAttackEnabled:true})};
