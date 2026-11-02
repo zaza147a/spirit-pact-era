@@ -28,14 +28,18 @@ jobs:
       - name: Install engine
         run: npx playwright install --with-deps ${{ matrix.engine }}
       - name: Run regression tests
-        run: node --test tests/evolution-motion-regression.test.mjs tests/pet-evolution.test.mjs
-      - name: Exercise 160 real artwork states and 16 visual animations
+        run: node --test tests/evolution-motion-regression.test.mjs tests/pet-evolution.test.mjs tests/fusion-v61.test.mjs tests/pet-humanoid-evolution.test.mjs
+      - name: Exercise 160 real artwork states and 140 evolution transitions
         env:
           BROWSER_ENGINE: ${{ matrix.engine }}
         run: node scripts/browser/evolution-matrix-acceptance.mjs
+      - name: Actual game browser flow, saved fusion pets and humanoid progression
+        env:
+          BROWSER_ENGINE: ${{ matrix.engine }}
+        run: node scripts/browser/acceptance.mjs
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: evolution-matrix-${{ matrix.engine }}
-          path: browser-qa/evolution-matrix/
+          path: browser-qa/
