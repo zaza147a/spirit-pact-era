@@ -47,7 +47,7 @@ test('actual healing does not miss, emits heal event, and full-resource resonanc
 });
 test('physical skill damage has no hidden INT multiplier and class tactics do not invent dodges',async()=>{
  async function damage(INT){const c=await app(),a=c.api,p=a.normalize(a.fresh('弓手','archer'));p.attributes.INT=INT;p.gear.rightHand=c.rollGear('shortBow',1,'common',()=>.5);p.mp=9999;const e=foe();a.setup(p,e);a.playerAttack(true);return 100000-e.hp;}
- assert.equal(await damage(1),await damage(100));const c=await app(),a=c.api,p=a.normalize(a.fresh('影步','thief'));a.setup(p,foe());const events=[];c.emitEvent=e=>events.push(e);a.classTactic();assert.deepEqual(events,['tactic']);assert.ok(a.state().timers.shadowUntil>Date.now());
+ assert.equal(await damage(1),await damage(100));const c=await app(),a=c.api,p=a.normalize(a.fresh('影步','thief'));a.setup(p,foe());const events=[];c.emitEvent=e=>events.push(e);const mp=p.mp;a.classTactic();assert.deepEqual(events,[],'manual convenience tactics must not trigger combat resonance events');assert.equal(p.tacticEffect?.kind,'firstDodge');assert.ok(p.tacticEffect.until>Date.now());assert.ok(p.tacticReadyAt>Date.now());assert.ok(p.mp<mp);
 });
 test('all 50 novice monsters have lower HP, ATK, DEF and slower attacks; encounter caps ease early zones',()=>{
  for(const m of WORLD_MONSTERS.filter(m=>m.level<=50)){const L=m.level,z=Math.floor((L-1)/10),oldHP=Math.round((32+L*13+L*L*.43)*(1.35+L*.014)*[1,1.4,2.2,1.75,1.65][z]);assert.ok(m.hp<oldHP);assert.ok(m.atk<Math.round((5+L*2.8)*(1.12+L*.004)));assert.ok(m.def<=Math.round(1+L*.85));assert.ok(m.xp>=12);}
