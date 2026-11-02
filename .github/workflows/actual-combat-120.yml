@@ -12,7 +12,7 @@ on:
       - 'dist/pet-effects.js'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   real-combat-120:
     runs-on: ubuntu-latest
@@ -32,6 +32,18 @@ jobs:
         run: node tests/real-combat-browser-benchmark.mjs full
       - name: Rank only fully reconciled combatTick evidence
         run: node tests/rank-actual-combat-120.mjs test-results/lv200-lv210-full-actual-combat.json
+      - name: Publish validated 120-row actual battle summary to isolated branch
+        run: |
+          node --input-type=module -e "import fs from 'node:fs';const x=JSON.parse(fs.readFileSync('test-results/actual-combat-120-ranked.json','utf8'));if(x.kind!=='RANKED_FROM_ACTUAL_GAME_COMBATTICK'||x.rows.length!==120)throw Error('Missing 120 validated rows');fs.mkdirSync('docs/test-results',{recursive:true});fs.writeFileSync('docs/test-results/actual-combat-120-ranked.json',JSON.stringify({kind:x.kind,commit:process.env.GITHUB_SHA,rows:x.rows},null,2)+'\\n')"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git fetch origin experiment-weapon-balance-20261102
+          git switch -C experiment-weapon-balance-20261102 origin/experiment-weapon-balance-20261102
+          git add docs/test-results/actual-combat-120-ranked.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test: verified 120 actual combat results [skip ci]"
+            git push origin HEAD:experiment-weapon-balance-20261102
+          fi
       - name: Preserve raw combat outcomes
         if: always()
         uses: actions/upload-artifact@v4
