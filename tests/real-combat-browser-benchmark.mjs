@@ -88,6 +88,9 @@ try{
  if(errors.length)throw Error('Browser JS errors: '+JSON.stringify(errors.slice(0,5)));
  if(!rows.length||rows.some(x=>!Number.isFinite(x.totalDamage)||x.ticks===0))throw Error('Invalid actual combat records');
  if(!rows.some(x=>x.hits>0))throw Error('No combat damage was observed: runtime harness invalid');
+ if(!rows.some(x=>x.enemyActions>0))throw Error('No real enemy turns observed: defense/survival test invalid');
+ if(!rows.some(x=>x.playerActions>0))throw Error('No player attack actions observed: full combat test invalid');
+ if(!rows.some(x=>x.petCasts?.length>0))throw Error('No pet skills were actually cast: six-fusion test invalid');
  if(rows.some(x=>!x.damageReconciled))throw Error('Some combat runs failed owner/pet damage reconciliation');
  if(mode==='full')for(const plan of plans){const subset=rows.filter(x=>x.level===plan.level&&x.job===plan.job&&x.fusion===plan.fusion);const expected=plan.level===200?11:4;if(new Set(subset.map(x=>x.target)).size!==expected)throw Error('Incomplete source map encounter coverage '+JSON.stringify(plan));}
 }finally{await browser.close();server.close();}
