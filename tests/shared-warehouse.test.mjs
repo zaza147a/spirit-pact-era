@@ -40,7 +40,7 @@ test('stacked inventory and card transfers are shared between eight slots, prese
  assert.equal(load(s,0).cards[0].qty,40);
 });
 test('stack ledger replays exactly once if character write fails after shared commit',()=>{
- const {s,players}=fixture();players[0].bag.find(x=>x.id==='med').qty=70;s.fail(k=>k==='icarus-character-slot-1');
+ const {s,players}=fixture();players[0].bag.find(x=>x.id==='med').qty=70;writeCharacterSlot(s,0,players[0]);s.fail(k=>k==='icarus-character-slot-1');
  const result=transferWarehouseStack(s,0,players[0],'deposit','item','med',30,next=>writeCharacterSlot(s,0,next));
  assert.equal(result.pendingSync,true);assert.equal(load(s,0).bag.find(x=>x.id==='med').qty,40);
  assert.equal(load(s,0).bag.find(x=>x.id==='med').qty,40);
