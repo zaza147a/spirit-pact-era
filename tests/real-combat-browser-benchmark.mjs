@@ -43,7 +43,7 @@ const errors=[];
 page.on('pageerror',err=>errors.push(err.message));
 await page.goto('http://127.0.0.1:'+port+'/index.html?lingqi_combat_test',{waitUntil:'domcontentloaded'});
 await page.waitForFunction(()=>Boolean(globalThis.__lingqiCombatHarness),null,{timeout:30000});
-const rows=[];
+const rows=[],fusionChecks=[];
 try{
  for(const plan of plans){
   const specs=jobs[plan.job];
@@ -100,15 +100,11 @@ try{
    checks.push({fusion,equal,forward:select(forward),reverse:select(reverse)});
    if(!equal)throw Error('Real combat fusion order is NOT mechanically identical: '+fusion);
   }
-  rows.push(...checks.map((c,i)=>({level:200,job:'assassin',fusion:c.fusion,target:'reverse-order-validation',
-    totalDamage:c.forward.totalDamage,ownerDamage:c.forward.ownerDamage,
-    petAttributedDamage:c.forward.petAttributedDamage,damageReconciled:c.equal,
-    ticks:1,hits:1,enemyActions:1,playerActions:1,petCasts:[],
-    fusionReversePass:true,checkIndex:i})));
+  fusionChecks.push(...checks);
  }
  await mkdir('test-results',{recursive:true});
  const file='test-results/lv200-lv210-'+mode+'-actual-combat.json';
- await writeFile(file,JSON.stringify({kind:'ACTUAL_GAME_COMBATTICK_RUNTIME',mode,rows,errors},null,2));
+ await writeFile(file,JSON.stringify({kind:'ACTUAL_GAME_COMBATTICK_RUNTIME',mode,rows,fusionChecks,errors},null,2));
  console.log('Actual combat results',rows.length,'errors',errors.length,'file',file);
  if(errors.length)throw Error('Browser JS errors: '+JSON.stringify(errors.slice(0,5)));
  if(!rows.length||rows.some(x=>!Number.isFinite(x.totalDamage)||x.ticks===0))throw Error('Invalid actual combat records');
