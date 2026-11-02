@@ -179,6 +179,7 @@ function petAutoAbility(pet,s,now){if(!auto||!player.hp||pet.hp<=0||!enemy?.hp||
  for(const id of pet.equippedSkills||defaultPetSkills(role,pet.rarity)){
   const skill=petSkillById(role,id),cost=6+skill?.unlock*2;if(!skill||petSkillStatus(pet,skill,now)!=='可施放')continue;
 
+  if(globalThis.__lingqiCombatTestSink)globalThis.__lingqiCombatTestSink.petCasts.push({at:now,id:skill.id,kind:skill.kind});
   const effect=petSkillEffect(skill,s,role);pet.sp-=cost;petSkillTimers[id]=now;timers.petAbility=now;let outcome='';
   if(skill.kind==='bleed'){petEffects.bleedTicks=skill.ticks||3;petEffects.bleedTargetId=enemy?.instanceId;petEffects.bleedPower=effect.value;petEffects.bleedInterval=skill.interval||2000;petEffects.bleedLeech=skill.leech||0;delete petEffects.bleedSource;petEffects.bleedNext=now+petEffects.bleedInterval;outcome=`每${petEffects.bleedInterval/1000}秒造成 ${effect.value} 傷害，共${petEffects.bleedTicks}跳`;}
   else if(skill.kind==='mark'){petEffects.markWardOnly=false;petEffects.markHits=skill.hits||2;petEffects.markPower=effect.value;outcome=`接下來${petEffects.markHits}次主人命中各附加 ${effect.value} 傷害`;}
@@ -517,7 +518,7 @@ function skillContext(skill){const pact=pactFor(skill);return {reborn:player.reb
 function skillCooldown(skill){return jobSkillCooldownMs(skill,skillContext(skill))*(1-(pactFor(skill).cooldown||0));}
 function unassistedAction(key,interval,now){timers.unassisted=timers.unassisted||{};const next=timers.unassisted[key]??now,extra=now+0.001<next;if(!extra)timers.unassisted[key]=now-next<interval?next+interval:now+interval;return extra;}
 function isHealingMelody(skill){const pet=activePet();return skill?.id==='thirdUtility_performer'&&pet?.hp>0&&pet.fusion?.main==='defense'&&pet.fusion?.sub==='support';}
-function playerAttack(skill=false,skillId=null,completed=false){if(isControlled())return;chooseAttackTarget();if(!player||!enemy?.hp||!player.hp)return;const now=gameNow(),chosen=jobSkillById(player.job,skillId||player.equippedJobSkill)||activeJobSkills(player.job)[0],rank=player.jobSkills[chosen.id]||0;if(casting&&!completed)return;if(skill&&!completed){const context=skillContext(chosen),delay=skillActionDelay(chosen,context);if(chosen.kind==='passive'||!rank||!skillUnlocked(player,chosen)||!canCastJobSkill(chosen)||player.mp<chosen.mp||now-timers.skill<(timers.actionDelay||GLOBAL_SKILL_COOLDOWN)||now-Math.max(jobSkillTimers[chosen.id]||0,chosen.kind==='shield'?jobSkillTimers.personalShield||0:0)<skillCooldown(chosen)||chosen.attackCycle&&now-timers.attack<delay)return;player.mp-=chosen.mp;const actionAt=chosen.attackCycle&&timers.actionDelay===delay&&now-timers.skill<delay*2?timers.skill+delay:now;timers.skill=actionAt;timers.actionDelay=delay;jobSkillTimers[chosen.id]=actionAt;if(chosen.kind==='shield')jobSkillTimers.personalShield=actionAt;if(chosen.attackCycle)timers.attack=actionAt;if(chosen.castMs)emitEvent('castStart');const cast=skillCastMs(chosen,effectiveAttributes(),player)*skillContext(chosen).castFactor;if(cast>0){casting={id:chosen.id,until:now+cast,started:now};message(`開始詠唱【${chosen.name}】（${(cast/1000).toFixed(2)}秒）。`,'good','player');dirty=true;render();return;}}else if(!skill){if(now-timers.attack<stat('speed')||now-timers.skill<(timers.actionDelay||0))return;timers.attack=now;}
+function playerAttack(skill=false,skillId=null,completed=false){if(isControlled())return;chooseAttackTarget();if(!player||!enemy?.hp||!player.hp)return;if(globalThis.__lingqiCombatTestSink)globalThis.__lingqiCombatTestSink.playerActions++;const now=gameNow(),chosen=jobSkillById(player.job,skillId||player.equippedJobSkill)||activeJobSkills(player.job)[0],rank=player.jobSkills[chosen.id]||0;if(casting&&!completed)return;if(skill&&!completed){const context=skillContext(chosen),delay=skillActionDelay(chosen,context);if(chosen.kind==='passive'||!rank||!skillUnlocked(player,chosen)||!canCastJobSkill(chosen)||player.mp<chosen.mp||now-timers.skill<(timers.actionDelay||GLOBAL_SKILL_COOLDOWN)||now-Math.max(jobSkillTimers[chosen.id]||0,chosen.kind==='shield'?jobSkillTimers.personalShield||0:0)<skillCooldown(chosen)||chosen.attackCycle&&now-timers.attack<delay)return;player.mp-=chosen.mp;const actionAt=chosen.attackCycle&&timers.actionDelay===delay&&now-timers.skill<delay*2?timers.skill+delay:now;timers.skill=actionAt;timers.actionDelay=delay;jobSkillTimers[chosen.id]=actionAt;if(chosen.kind==='shield')jobSkillTimers.personalShield=actionAt;if(chosen.attackCycle)timers.attack=actionAt;if(chosen.castMs)emitEvent('castStart');const cast=skillCastMs(chosen,effectiveAttributes(),player)*skillContext(chosen).castFactor;if(cast>0){casting={id:chosen.id,until:now+cast,started:now};message(`開始詠唱【${chosen.name}】（${(cast/1000).toFixed(2)}秒）。`,'good','player');dirty=true;render();return;}}else if(!skill){if(now-timers.attack<stat('speed')||now-timers.skill<(timers.actionDelay||0))return;timers.attack=now;}
 
  let pact=skill?pactFor(chosen):{};const accelerated=skill?unassistedAction(chosen.id,(chosen.attackCycle?skillActionDelay(chosen,{speed:stat('speed')}):jobSkillCooldownMs(chosen,{speed:stat('speed')})),now):false;
  const utility=skill&&['heal','shield','mana','buff'].includes(chosen.kind),criticalRoll=Math.random()*100,critical=!utility&&criticalRoll<stat('crit'),petCrit=critical&&classBuffs.resonanceCrit?.until>now&&criticalRoll>=stat('crit')-classBuffs.resonanceCrit.power,petHaste=skill&&accelerated&&((pact.haste||0)>0||(pact.cooldown||0)>0)||!skill&&classBuffs.resonanceHaste?.until>now&&now<(timers.unhastedAttackNext||0),primary=enemy;let damage=0,effectEvent=null,action=skill?chosen.name:'普通攻擊';const victims=[primary];if(!skill&&!petHaste)timers.unhastedAttackNext=now+aspdAttackIntervalMs(stat('aspd'))/(1+(Object.values(player.gear).reduce((n,g)=>n+(enhancedAffixes(g).aspdPct||0),0)+cardBonus('aspdPct'))/100);if(!utility&&Math.random()>hitChance(stat('hit'),primary.flee)&&!critical){message(`${action} 未命中 ${SPECIES[primary.id].name}。`,'','player');dirty=true;render();return;}
@@ -552,6 +553,7 @@ function autoCastJobs(){if(casting||!auto||!player.hp||!enemy?.hp||gameNow()-tim
 function petAttack(){chooseAttackTarget();const pet=activePet();if(!pet||!enemy?.hp||!player.hp||pet.hp<=0)return;const now=gameNow(),s=petStats(pet),species=SPECIES[pet.species];if(now-timers.pet<Math.max(80,aspdAttackIntervalMs(s.aspd)/(1+(s.aspdPct||0)/100+(classBuffs.resonanceHaste?.until>now?classBuffs.resonanceHaste.power:0))))return;timers.pet=now;if(companionRole(pet)==='support'&&pet.sp>=3){pet.sp-=3;const pulse=supportPulse(s),healed=healPetParty(pulse.hp),mp=Math.min(stat('mp')-player.mp,pulse.sp);player.mp+=mp;record(report,'effectiveMana',mp);if(healed||mp)message(`${pet.nickname} 施放 ${species.skill}（SP -3），恢復 HP ${healed}、SP ${mp}。`,'good','pet');}const critical=Math.random()<(s.crit+(classBuffs.resonanceCrit?.until>now?classBuffs.resonanceCrit.power:0))/100;if(!critical&&Math.random()>hitChance(s.hit,enemy.flee)){message(`${pet.nickname} 的攻擊被閃避。`,'','pet');}else{const magic=['magic','support'].includes(companionRole(pet)),rolled=hitDamage(petOffensivePower(s,companionRole(pet)),monsterDefenseAgainst(enemy,magic)*(1-(s.ignoreDef||0)/100),critical?(s.critDmg||140)/100:1),damage=dealPetDamage(rolled,'petDamage');message(`${pet.nickname} ${critical?'暴擊':'普通攻擊'}${damageText(rolled*(1+classBuffPower('pet')),damage)}（${magic?'魔法':'物理'}）。`,'good','pet');}if(enemy.hp)emitEvent('pet');if(!enemy.hp)award();dirty=true;render();}
 function enemyAttack(){
  if(!player.hp||!enemy?.hp||gameNow()<(timers.respawnGrace||0))return;
+ if(globalThis.__lingqiCombatTestSink)globalThis.__lingqiCombatTestSink.enemyActions++;
  let petWasHit=false;const attacker=enemy;const pet=activePet(),role=pet?companionRole(pet):null;
  const targetPet=chooseMonsterTarget(player,pet,role,gameNow()<petEffects.guardUntil)==='pet';
  const roll=rand(85,115)/100;
@@ -1109,7 +1111,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    player.hp=stat('hp');player.mp=stat('mp');player.resonance=0;player.manualPaused=false;
    bossCooldowns={worldroot:Infinity,dawnrift:Infinity};
    spawn();encounterSlots=Array.from({length:encounterLimit(player.location)},()=>Infinity);
-   globalThis.__lingqiCombatTestSink={hits:[],ticks:0};
+   globalThis.__lingqiCombatTestSink={hits:[],ticks:0,enemyActions:0,playerActions:0,petCasts:[]};
    return {job:p.job,level:p.level,location:p.location,playerHp:p.hp,petHp:pet.hp,aspd:stat('aspd'),atk:stat('atk'),matk:stat('matk')};
   },
   fight({boss=false,monsterId=null,durationMs=60000,stepMs=20,enemyAttackEnabled=true}={}){
@@ -1121,7 +1123,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
     appearedAt:gameNow(),lastAttack:enemyAttackEnabled?gameNow():Infinity};
    enemies=[created];enemy=created;auto=true;bossCooldowns[player.location]=Infinity;
    const initialHp=player.hp, initialPetHp=activePet().hp,started=gameNow(),sink=globalThis.__lingqiCombatTestSink;
-   sink.hits=[];sink.ticks=0;let endedAt=null;
+   sink.hits=[];sink.ticks=0;sink.enemyActions=0;sink.playerActions=0;sink.petCasts=[];let endedAt=null;
    for(let elapsed=0;elapsed<=durationMs;elapsed+=stepMs){
     offlineClock=started+elapsed;
     combatTick(offlineClock);sink.ticks++;
@@ -1134,7 +1136,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
     elapsedMs,kill:created.hp<=0,dead:player.hp<=0,playerHp:player.hp,petHp:activePet().hp,
     ownerDamage:owner,petAttributedDamage:petDirect,totalDamage:source.hp-created.hp,
     ownerDps:Math.round(owner/Math.max(.02,elapsedMs/1000)),petDps:Math.round(petDirect/Math.max(.02,elapsedMs/1000)),
-    hits:sink.hits.length,ticks:sink.ticks,damageReconciled:true,damageByType:Object.fromEntries([...new Set(sink.hits.map(x=>x.kind))].map(kind=>[kind,sink.hits.filter(x=>x.kind===kind).reduce((n,x)=>n+x.amount,0)])),firstHits:sink.hits.slice(0,12)};
+    hits:sink.hits.length,ticks:sink.ticks,enemyActions:sink.enemyActions,playerActions:sink.playerActions,petCasts:sink.petCasts,damageReconciled:true,damageByType:Object.fromEntries([...new Set(sink.hits.map(x=>x.kind))].map(kind=>[kind,sink.hits.filter(x=>x.kind===kind).reduce((n,x)=>n+x.amount,0)])),firstHits:sink.hits.slice(0,12)};
   }
  };
 }
