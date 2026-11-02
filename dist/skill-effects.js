@@ -29,7 +29,6 @@ function installToggle(){
  const refresh=()=>{button.textContent=effectsEnabled?'✨ 技能特效：開':'○ 技能特效：關';button.setAttribute('aria-pressed',String(effectsEnabled));};
  button.addEventListener('click',()=>{effectsEnabled=!effectsEnabled;try{localStorage.setItem(EFFECTS_STORAGE_KEY,effectsEnabled?'on':'off');}catch{}refresh();if(!effectsEnabled)document.querySelectorAll('.skill-vfx').forEach(el=>el.remove());});
  refresh();grid.append(button);
- const preview=document.createElement('a');preview.href='./effects-lab.html';preview.target='_blank';preview.rel='noopener';preview.className='effects-lab-link';preview.textContent='◈ 技能演出展示';preview.title='在獨立試驗場觀看各職業技能；不影響角色與存檔';grid.append(preview);
 }
 if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',installToggle,{once:true});else installToggle();}
 export function queueCombatVfx(effect={}){

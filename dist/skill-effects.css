@@ -62,7 +62,6 @@
 .skill-vfx--finisher .skill-vfx__impact{width:110px;height:110px;left:-55px;top:-55px;animation:fx-finisher .65s .19s both}
 .skill-vfx--finisher .skill-vfx__sparks{width:100px;height:100px;left:-50px;top:-50px;animation-delay:.26s}
 .actiongrid .effects-toggle{background:#26374c;color:#a9dbfa;border:1px solid #6a98b8;font-weight:700;min-height:40px}.actiongrid .effects-toggle[aria-pressed=true]{background:#214d49;color:#a7ffcf;border-color:#49c5a5}.actiongrid .effects-toggle:focus-visible{outline:3px solid #ffe18b;outline-offset:2px}
-.actiongrid .effects-lab-link{display:flex;justify-content:center;align-items:center;min-height:40px;padding:8px 12px;border-radius:7px;background:#2d3040;color:#e8d3a3;border:1px solid #a18753;text-decoration:none;font-size:13px;font-weight:700}.actiongrid .effects-lab-link:hover{background:#41404c;color:#fff2ce}.actiongrid .effects-lab-link:focus-visible{outline:3px solid #ffe18b;outline-offset:2px}
 @keyframes fx-life{0%{opacity:0}8%{opacity:1}82%{opacity:1}100%{opacity:0}}
 @keyframes fx-projectile{0%{opacity:0;transform:translate(var(--vfx-from-x),var(--vfx-from-y)) scale(.65)}14%{opacity:1}100%{opacity:1;transform:translate(0,0) scale(1)}}
 @keyframes fx-hit{0%{opacity:0;transform:scale(.25)}22%{opacity:.88;transform:scale(1)}100%{opacity:0;transform:scale(1.6)}}
