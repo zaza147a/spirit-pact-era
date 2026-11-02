@@ -39,3 +39,17 @@ jobs:
           name: lv200-lv210-120-weapon-proxy
           path: test-results/*.json
           if-no-files-found: ignore
+      - name: Install Chromium browser harness dependencies
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Verify actual game combatTick in Chromium (smoke)
+        run: |
+          node tests/real-combat-browser-benchmark.mjs smoke
+      - name: Upload actual combat results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-game-combattick-smoke
+          path: test-results/*actual-combat.json
+          if-no-files-found: ignore
