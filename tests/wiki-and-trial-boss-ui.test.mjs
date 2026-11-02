@@ -25,4 +25,5 @@ test('trial boss portrait is anchored inside its card rather than spanning dynam
  assert.match(css,/top:10px!important;grid-column:auto!important;grid-row:auto!important/);
  assert.match(css,/max-height:calc\(100% - 20px\)!important/);
  assert.match(css,/object-fit:contain!important;object-position:center center!important/);
+ assert.match(css,/top:5px!important;left:16px!important;width:104px!important;height:96px!important;max-height:96px!important/);
 });

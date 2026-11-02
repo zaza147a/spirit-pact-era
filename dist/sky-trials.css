@@ -10,6 +10,9 @@
 #encounter .enemy-target.trial-boss>.art-monster{position:absolute!important;left:12px!important;top:10px!important;grid-column:auto!important;grid-row:auto!important;align-self:auto!important;width:130px!important;height:130px!important;max-height:calc(100% - 20px)!important;min-height:0!important;object-fit:contain!important;object-position:center center!important}
 @media(max-width:700px){#encounter .enemy-target.trial-boss>.art-monster{width:100px!important;height:116px!important}}
 @media(min-width:1001px)and(max-height:850px){#encounter .enemy-target.trial-boss>.art-monster{width:100px!important;height:110px!important}}
+/* The compact battle viewport can crop the card itself at short screen heights.
+   Keep the entire 1:1 boss art inside its reliably visible upper 104px. */
+#encounter .enemy-target.trial-boss>.art-monster{top:5px!important;left:16px!important;width:104px!important;height:96px!important;max-height:96px!important;object-fit:contain!important}
 .rank-resistance{display:block;color:#a4d7cd;font-size:10px;margin:3px 0}
 @media(min-width:1001px){.battle:has(.area.dawncity) .encounter{height:64px!important;min-height:64px!important}.battle:has(.area.dawncity) .enemy-lineup{display:none!important}}
 .area:is(.town,.skycity,.dawncity)>.town-evolution{display:inline-flex;align-items:center;justify-content:center;width:auto;max-width:100%;margin-right:5px;position:relative;z-index:1;padding:5px 8px;font-size:11px}.area:is(.skycity,.dawncity) .town-evolution{white-space:normal}
