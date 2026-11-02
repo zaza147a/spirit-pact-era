@@ -44,3 +44,11 @@ test('ordinary desktop screens force the vertical layout over legacy first-child
  assert.match(css,/#gameShell \.character \.hero \.art-hero,#gameShell \.character \.hero:first-child \.art-hero\{position:static!important/);
  assert.match(css,/height:clamp\(108px,13vh,150px\)!important/);
 });
+
+test('portrait-first layout is not limited to desktop media queries',()=>{
+ const css=readFileSync(new URL('../dist/compact-v5.css',import.meta.url),'utf8');
+ assert.match(css,/#gameShell \.character \.hero:has\(\.art-hero\),#gameShell \.character #companion \.hero:has\(\.art-hero\)\{display:flex!important;flex-direction:column!important/);
+ assert.match(css,/width:min\(66%,170px\)!important/);
+ assert.match(css,/position:static!important;display:block!important;left:auto!important;top:auto!important/);
+ assert.match(css,/@media\(min-width:1001px\) and\(max-height:700px\)\{/);
+});

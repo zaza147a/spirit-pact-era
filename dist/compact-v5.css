@@ -166,3 +166,17 @@
  #gameShell .character .hero img.art-hero.rank-outfit{transform:scale(1.12)!important;transform-origin:center center!important}
  #gameShell .character .hero .character-name,#gameShell .character .hero strong,#gameShell .character .hero .pill,#gameShell .character .hero .pet-nickname{max-width:100%!important;text-align:center!important;overflow-wrap:anywhere}
 }
+/* The screenshot can come from a narrow CSS viewport even when the captured
+   image is very tall. Make portrait-first the actual default for every rail. */
+#gameShell .character .hero:has(.art-hero),#gameShell .character #companion .hero:has(.art-hero){display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:4px!important;min-height:0!important;padding:9px 8px 11px!important;text-align:center!important;overflow:hidden!important}
+#gameShell .character .hero .art-hero,#gameShell .character .hero:first-child .art-hero{position:static!important;display:block!important;left:auto!important;top:auto!important;flex:0 0 auto!important;width:min(66%,170px)!important;max-width:100%!important;height:clamp(118px,14vh,170px)!important;margin:0 auto 5px!important;transform:none!important;object-fit:contain!important;object-position:center!important}
+#gameShell .character #companion .hero .art-hero{width:min(70%,175px)!important;max-width:100%!important;height:clamp(118px,14vh,170px)!important}
+#gameShell .character .hero img.art-hero.rank-outfit{transform:scale(1.08)!important;transform-origin:center center!important}
+#gameShell .character .hero .character-name,#gameShell .character .hero strong,#gameShell .character .hero .pill,#gameShell .character .hero .pet-nickname{max-width:100%!important;text-align:center!important;overflow-wrap:anywhere}
+/* Extremely short desktop viewports keep the original compact cards. */
+@media(min-width:1001px) and(max-height:700px){
+ #gameShell .character .hero:has(.art-hero){display:block!important;text-align:left!important;padding:7px 6px 7px 82px!important;min-height:78px!important}
+ #gameShell .character .hero .art-hero,#gameShell .character .hero:first-child .art-hero{position:absolute!important;left:3px!important;top:4px!important;width:70px!important;height:70px!important;margin:0!important;transform:none!important}
+ #gameShell .character #companion .hero .art-hero{width:70px!important;height:70px!important}
+ #gameShell .character .hero img.art-hero.rank-outfit{transform:scale(1.12)!important}
+}
