@@ -180,3 +180,5 @@
  #gameShell .character #companion .hero .art-hero{width:70px!important;height:70px!important}
  #gameShell .character .hero img.art-hero.rank-outfit{transform:scale(1.12)!important}
 }
+.character .hero button.rename-pet{display:inline-flex;align-items:center;justify-content:center;align-self:center;min-height:26px;width:auto;max-width:100%;padding:3px 10px;border:1px solid #527d85;border-radius:999px;background:#16333c;color:#bde4ed;font-size:12px;line-height:1.4;cursor:pointer}
+.character .hero button.rename-pet:hover,.character .hero button.rename-pet:focus-visible{border-color:#e5ca82;color:#ffedb4}
