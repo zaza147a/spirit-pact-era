@@ -81,7 +81,7 @@ test('replay controlled weapon-only sensitivity across levels bosses and ranks',
  for(const {level,tier} of TIERS)for(const defense of [250,6500,30000])for(const enhancement of [null,'SSS'])for(const [job,combos] of Object.entries(LOADOUTS)){
   const values=combos.map(combo=>evaluate(job,combo,level,tier,defense,candidates[0],enhancement));
   const best=Math.max(...values.map(v=>v.attackCycleProxy));
-  for(const x of values){assert.ok(x.attackCycleProxy>0);cases++;if(level===200&&defense===6500&&enhancement==='SSS')table.push({...x,relativePercent:+(100*x.attackCycleProxy/best).toFixed(1)});}
+  for(const x of values){assert.ok(x.attackCycleProxy>0);cases++;for(const scenario of candidates){const variant=evaluate(job,x.combo,level,tier,defense,scenario,enhancement);assert.ok(variant.attackCycleProxy>0&&Number.isFinite(variant.attackCycleProxy));}if(level===200&&defense===6500&&enhancement==='SSS')table.push({...x,relativePercent:+(100*x.attackCycleProxy/best).toFixed(1)});}
   comparisons++;
  }
  console.log('CONTROLLED_WEAPON_PROXY_SUMMARY',JSON.stringify({loadouts:23,jobs:10,cases,comparisons,exampleLv200SSS:table}));
