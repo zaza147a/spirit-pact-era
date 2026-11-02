@@ -43,7 +43,7 @@ const STAT_NAMES={STR:'力量',AGI:'敏捷',VIT:'體質',INT:'智力',DEX:'靈�
  ignoreDef:'無視防禦',magicDamage:'魔法傷害加成',damageReduction:'最終減傷',
  castReduction:'詠唱時間減少',spRegen:'魔力恢復',hpRegen:'生命恢復',
  HP:'生命值',SP:'魔力值',ATK:'物理攻擊',MATK:'魔法攻擊',DEF:'物理防禦',MDEF:'魔法防禦',EXP:'經驗值'};
-const statName=key=>STAT_NAMES[key]||AFFIX_NAMES[key]?.replace(/^(ATK|MATK|DEF|MDEF|HIT|FLEE|CRIT|ASPD|STR|AGI|VIT|INT|DEX|LUK)\\s*/, '').trim()||key;
+const statName=key=>STAT_NAMES[key]||AFFIX_NAMES[key]?.replace(/^[A-Z]+ /,'').trim()||key;
 const percentStat=key=>key.endsWith('Pct')||['crit','critDmg','ignoreDef','magicDamage','damageReduction'].includes(key);
 const label=(obj)=>Object.entries(obj||{}).map(([k,v])=>'<span class="tag">'+esc(statName(k))+' '+esc((typeof v==='number'&&v>=0?'+':'')+fmt(v))+(percentStat(k)?'%':'')+'</span>').join(' ');
 const dropName=id=>ITEMS[id]?.name||'未收錄物品';
