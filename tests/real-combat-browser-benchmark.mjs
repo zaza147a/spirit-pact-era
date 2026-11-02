@@ -38,6 +38,8 @@ const plans=mode==='full'?[200,210].flatMap(level=>Object.keys(jobs).flatMap(job
 ];
 let browser=null,page=null;
 const errors=[],httpFailures=[],rows=[],fusionChecks=[];let currentCase=null;
+const partialFile='test-results/lv200-lv210-'+mode+'-partial-actual-combat.json';
+const saveCheckpoint=async()=>{await mkdir('test-results',{recursive:true});await writeFile(partialFile,JSON.stringify({kind:'PARTIAL_ACTUAL_COMBATTICK_NOT_VALIDATED',mode,completedRows:rows.length,currentCase,rows,fusionChecks,errors,httpFailures},null,2));};
 try{
  await new Promise(ok=>server.listen(port,'127.0.0.1',ok));
  browser=await chromium.launch({headless:true,args:['--no-sandbox']});
@@ -78,7 +80,7 @@ try{
       return {panel,...h.fight({boss:target==='boss',monsterId:target==='boss'?null:target,durationMs:target==='boss'?60000:20000,enemyAttackEnabled:true})};
      },{plan,weaponBuild,attributes,sigil,target});
      rows.push({...plan,weaponBuild,attributes,allocationIndex,sigil,target,...outcome});
-     if(rows.length%20===0)console.log('real combat result',rows.length,'last',plan.job,weaponBuild,target);
+     if(rows.length%20===0){await saveCheckpoint();console.log('real combat result',rows.length,'last',plan.job,weaponBuild,target);}
     }
    }
   }
@@ -117,6 +119,7 @@ try{
  if(rows.some(x=>!x.damageReconciled))throw Error('Some combat runs failed owner/pet damage reconciliation');
  if(mode==='full')for(const plan of plans){const subset=rows.filter(x=>x.level===plan.level&&x.job===plan.job&&x.fusion===plan.fusion);const expected=plan.level===200?11:4;if(new Set(subset.map(x=>x.target)).size!==expected)throw Error('Incomplete source map encounter coverage '+JSON.stringify(plan));}
 }catch(error){
+ await saveCheckpoint();
  await mkdir('test-results',{recursive:true});
  const failure={kind:'ACTUAL_GAME_COMBATTICK_FAILURE',mode,error:String(error),stack:error?.stack,
   errors,httpFailures,currentCase,completedRows:rows.length,lastComplete:rows.at(-1)||null,
