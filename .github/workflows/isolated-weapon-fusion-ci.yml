@@ -22,3 +22,15 @@ jobs:
       - name: Validate weapon, six unordered fusion routes, sixty resonances and revival
         run: |
           node --test --test-concurrency=2 tests/*.test.mjs
+      - name: Generate 120-scenario diagnostic allocation output
+        run: |
+          mkdir -p test-results
+          node tests/lv200-lv210-optimization-diagnostic.mjs > test-results/lv200-lv210-120-weapon-stat-diagnostic.json
+          node -e "const d=require('./test-results/lv200-lv210-120-weapon-stat-diagnostic.json');if(d.rows.length!==120)throw Error('Expected 120 diagnostic rows');console.log('Diagnostic scenarios:',d.rows.length)"
+      - name: Upload diagnostic results (not certified actual DPS)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lv200-lv210-120-weapon-proxy
+          path: test-results/*.json
+          if-no-files-found: ignore
