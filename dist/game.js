@@ -113,7 +113,7 @@ function normalize(p){p.tacticReadyAt=Number.isFinite(p.tacticReadyAt)&&p.tactic
 function migrate(old){const job=LEGACY_JOBS[old.job]||old.job;const p=fresh(old.name,job);for(const k of ['level','xp','gold','hp','mp','kills'])if(Number.isFinite(old[k]))p[k]=old[k];p.bag=normalizeBag(old.bag,ITEMS);for(const [from,to] of [['weapon','rightHand'],['armor','armor'],['accessory','accessory1']])if(old.gear?.[from]&&ITEMS[old.gear[from]])p.gear[to]=rollGear(old.gear[from],1);p.statPoints=Math.max(0,(p.level-1)*2);return p;}
 function valid(p){return !!p&&typeof p.name==='string'&&p.name.length<=16&&CLASSES[p.job]&&Number.isInteger(p.level)&&p.level>=1&&p.level<=characterLevelCap(p)&&['hp','mp','xp','gold','kills','statPoints','jobLevel','jobXp','jobPoints'].every(k=>Number.isFinite(p[k])&&p[k]>=0&&p[k]<1e9)&&p.jobLevel<=jobLevelCap(p)&&Array.isArray(p.bag)&&p.bag.length<=2000&&p.bag.every(e=>e&&ITEMS[e.id]&&(ITEMS[e.id].slot||ITEMS[e.id].petSlot?!!e.uid:Number.isInteger(e.qty)&&e.qty>0))&&p.gear&&Object.keys(SLOTS).every(s=>p.gear[s]===null||ITEMS[p.gear[s]?.id]?.slot===s)&&p.attributes&&Object.keys(ATTRS).every(k=>Number.isInteger(p.attributes[k])&&p.attributes[k]>=1&&p.attributes[k]<=attributeCap(p))&&Array.isArray(p.cards)&&p.cards.length<=1000&&p.cards.every(c=>CARDS[c.id]&&Number.isInteger(c.qty)&&c.qty>0)&&Number.isSafeInteger(p.cardRecyclePoints)&&p.cardRecyclePoints>=0&&p.cardRecyclePoints<1e9&&p.sockets&&Object.keys(SLOTS).every(s=>p.sockets[s]===null||cardAllowedInSlot(CARDS[p.sockets[s]],s))&&Array.isArray(p.pets)&&p.pets.length<=100&&p.pets.every(q=>q&&SPECIES[q.species]&&typeof q.id==='string'&&Number.isInteger(q.level)&&q.level>=1&&q.level<=9999&&Number.isFinite(q.xp)&&q.xp>=0&&q.iv&&['hp','atk','def'].every(k=>Number.isInteger(q.iv[k])&&q.iv[k]>=0&&q.iv[k]<=5)&&q.gear&&Object.keys(PET_SLOTS).every(s=>q.gear[s]===null||ITEMS[q.gear[s]?.id]?.petSlot===s))&&(p.activePetId===null||p.pets.some(q=>q.id===p.activePetId));}
 function load(){try{const v2=JSON.parse(localStorage.getItem(KEY)||'null');if(v2?.version===2&&v2.player){const p=normalize(v2.player);if(valid(p))return p;}const v1=JSON.parse(localStorage.getItem(OLD)||'null');if(v1?.v===1&&v1.p&&(CLASSES[v1.p.job]||LEGACY_JOBS[v1.p.job]))return migrate(v1.p);}catch(err){console.warn('Save read failed',err)}return null;}
-function albumEarnGold(base,p,extra=0){let bonus=0;try{bonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));}catch{}return Math.round(earnGold(base,p,extra)*(1+bonus/100));}
+function albumEarnGold(base,p,extra=0){let bonus=Number.isFinite(p?.cardAlbumGoldBonus)?p.cardAlbumGoldBonus:0;try{bonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));}catch{}return Math.round(earnGold(base,p,extra)*(1+bonus/100));}
 function save(notifyUser=false){
  if(offlineSimulation)return true;if(!player||activeSlot===null)return false;
  const beforeCards=structuredClone(player.cards),beforePoints=player.cardRecyclePoints;
@@ -1118,21 +1118,31 @@ function showOfflineReport(summary){
 }
 async function settleOffline(){
  const now=Date.now(),window=offlineWindow(player,now);if(!window.eligible)return null;
- const slotIndex=activeSlot,raw=localStorage.getItem(characterSlotKey(slotIndex)),warehouseRaw=localStorage.getItem(WAREHOUSE_KEY);settlingOffline=true;$('entryScreen').inert=true;$('gameShell').inert=true;
+ const slotIndex=activeSlot,raw=localStorage.getItem(characterSlotKey(slotIndex)),warehouseRaw=localStorage.getItem(WAREHOUSE_KEY),albumRaw=localStorage.getItem(CARD_COLLECTION_KEY);settlingOffline=true;$('entryScreen').inert=true;$('gameShell').inert=true;
  $('offlineProgress').hidden=false;$('offlineProgressText').textContent='正在補算離線掛機… 0%';
  let worker;
  try{
   const result=await new Promise((resolve,reject)=>{
-   worker=new Worker(new URL('offline-worker.js?v=6.5.1',document.baseURI),{type:'module'});
+   worker=new Worker(new URL('offline-worker.js?v=6.5.32',document.baseURI),{type:'module'});
    worker.onmessage=event=>{if(event.data.type==='progress')$('offlineProgressText').textContent=`正在補算離線掛機… ${Math.floor(event.data.value*100)}%`;else if(event.data.type==='result')resolve(event.data.result);else reject(Error(event.data.message||'離線結算失敗'));};
    worker.onerror=()=>reject(Error('離線結算載入失敗，請重新整理再試'));
-   worker.postMessage({player:structuredClone(player),now});
+   const simulatedPlayer=structuredClone(player);simulatedPlayer.cardAlbumGoldBonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));worker.postMessage({player:simulatedPlayer,now});
   });
   if(warehouseRaw!==localStorage.getItem(WAREHOUSE_KEY))throw Error('共用倉庫已在其他分頁變更，請重新進入角色結算');
+  if(albumRaw!==localStorage.getItem(CARD_COLLECTION_KEY))throw Error('共用卡片收藏已在其他分頁變更，請重新進入角色結算');
   if(raw!==localStorage.getItem(characterSlotKey(slotIndex)))throw Error('此角色存檔已在其他分頁變更，請重新選擇角色');
-  const previous=player;player=result.player;delete player.autoStoppedReason;auto=!player.manualPaused;player.offline={at:Date.now(),enabled:auto&&(!player.trialRun||player.trialRun.continuous===true)};
-  sellSurplusPotions(player,ITEMS);exchangeOverflowGold(player);if(!valid(player)){player=previous;throw Error('離線結算資料驗證失敗，原存檔已保留');}
-  try{writeCharacterSlot(localStorage,slotIndex,player);}catch(error){player=previous;throw Error('儲存空間不足，原存檔與離線時間已保留');}
+  const previous=player;player=result.player;delete player.cardAlbumGoldBonus;delete player.autoStoppedReason;auto=!player.manualPaused;player.offline={at:Date.now(),enabled:auto&&(!player.trialRun||player.trialRun.continuous===true)};
+  let albumChanged=false;
+  try{
+   const album=readCardCollection(localStorage,CARDS),organized=organizeCards(player,CARDS,album);
+   sellSurplusPotions(player,ITEMS);exchangeOverflowGold(player);
+   if(!valid(player))throw Error('離線結算資料驗證失敗，原存檔已保留');
+   if(organized.changed){localStorage.setItem(CARD_COLLECTION_KEY,JSON.stringify(organized.collection));albumChanged=true;}
+   writeCharacterSlot(localStorage,slotIndex,player);
+  }catch(error){
+   if(albumChanged){try{if(albumRaw===null)localStorage.removeItem(CARD_COLLECTION_KEY);else localStorage.setItem(CARD_COLLECTION_KEY,albumRaw);}catch{}}
+   player=previous;throw Error('離線結算無法安全儲存，原存檔與離線時間已保留：'+error.message);
+  }
   return result.summary;
  }finally{worker?.terminate();settlingOffline=false;$('offlineProgress').hidden=true;$('entryScreen').inert=false;$('gameShell').inert=false;}
 }
