@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-02-card-codex-v9"><style>
+<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-02-pet-forms-v10"><style>
 :root{color-scheme:dark;--bg:#0c111e;--panel:#172033;--line:#2c3b52;--text:#e9eef9;--muted:#afbdd1;--gold:#eac481;--accent:#6fb6ef}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0c111e,#15233b);color:var(--text);font:15px/1.65 system-ui,"Noto Sans TC",sans-serif;min-height:100vh}
 header{padding:28px max(18px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#0c1426}header h1{font-size:28px;margin:0;color:var(--gold)}header p{margin:4px 0;color:var(--muted)}
@@ -17,7 +17,7 @@ article{background:var(--panel);border:1px solid var(--line);border-radius:14px;
 code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}.intro{color:var(--muted);margin-bottom:16px}
 @media(max-width:600px){header h1{font-size:23px}.toolbar button{flex:1}.item{padding:14px}}
 </style></head><body>
-<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p><p class="small">WIKI 中文顯示版 2026.11.02.9</p></header>
+<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p><p class="small">WIKI 中文顯示版 2026.11.02.10</p></header>
 <main><div class="toolbar" id="nav"><button data-tab="monsters" aria-selected="true">怪物</button><button data-tab="cards">卡片</button><button data-tab="gear">裝備詞條</button><button data-tab="pet">夥伴</button><button data-tab="codex">遊戲圖鑑</button><button data-tab="rules">遊戲機制</button></div>
 <div class="toolbar" id="filters"><input id="search" type="search" placeholder="搜尋名稱、等級、屬性或地圖"><select id="continent" aria-label="選擇大陸"><option value="">所有大陸</option><option value="icarus">伊卡洛斯大陸（Lv.1–99）</option><option value="sky">蒼穹彼岸（Lv.101–200）</option><option value="dawn">曙界新陸（Lv.201–210）</option></select><select id="zone" aria-label="選擇地圖"><option value="">所有地圖</option></select><select id="cardSlot" hidden aria-label="卡片裝備部位"><option value="">全部卡片部位</option></select><select id="rarity" hidden><option value="common">普通</option><option value="rare">稀有</option><option value="uncommon">罕見</option><option value="legendary">傳說</option><option value="mythic">神話</option></select><select id="tier" hidden></select></div>
 <div id="cardLevelPanel" hidden class="item" style="margin:0 0 16px">
@@ -44,7 +44,7 @@ import {SECOND_JOBS} from '../jobs.js';
 import {THIRD_JOBS} from '../third-jobs.js';
 import {JOB_SKILLS} from '../job-skills.js';
 import {jobSkillSpec} from '../player-scaling.js';
-import {PET_ROUTES,PET_MUTATIONS,petArt} from '../pet-evolution.js';
+import {PET_ROUTES,petArt} from '../pet-evolution.js';
 import {petSkillsFor} from '../pet-abilities.js';
 import {FUSION_SKILLS,FUSION_NAMES} from '../pet-fusion.js';
 import {RESONANCE_RULES,RESONANCE_EVENTS} from '../resonance.js';
@@ -91,7 +91,7 @@ function renderCodex(){let body='',count=0;
   for(const [rules,title] of [[REBIRTH_FUSION_RULES,'進階二轉'],[THIRD_FUSION_RULES,'三轉']]){body+='<h2>'+title+' × 融合夥伴</h2>';for(const [job,pairs] of Object.entries(rules)){count+=Object.keys(pairs).length;body+=details((title==='三轉'?THIRD_JOBS[job]?.name:SECOND_JOBS[job]?.name)||job,Object.entries(pairs).map(([pair,r])=>'<p><b>'+esc((FUSION_NAMES[pair]||pair)+' · '+r.name)+'</b></p><p>'+esc(r.description)+'</p>').join(''));}}
  }else if(codexSection==='pets'){
   body='<article><h3>一般進化與變異外觀</h3><p>每20級進化一次；傳說與神話擁有獨立的進化型態。六種融合配對採無序能力：正反融合的基礎數值、技能倍率、冷卻與附加效果完全相同，僅名稱與外觀不同；人物共鳴另外按正式規則列出。</p></article>';
-  for(const [rarity,routes] of [['common',PET_ROUTES],...Object.entries(PET_MUTATIONS)]){body+='<h2>'+esc(rarity==='common'?'普通／稀有／罕見共用形態':(PET_RARITIES.find(x=>x.id===rarity)?.name||rarity)+'外觀')+'</h2>';for(const [role,forms] of Object.entries(routes)){const species={attack:'fang',magic:'wisp',defense:'shell',support:'sprout'}[role];count++;body+=details(roleNames[role]+'系列','<div class="form-list">'+forms.map((name,i)=>'<div class="form-entry"><img loading="lazy" alt="'+esc(name)+'" src="../'+esc(petArt({species,rarity},i,rarity))+'"><small>第'+(i+1)+'階 · Lv.'+(i?i*20:1)+'</small><b>'+esc(name)+'</b></div>').join('')+'</div>');}}
+  body+='<h2>普通／稀有／罕見共用形態</h2>';for(const [role,forms] of Object.entries(PET_ROUTES)){const species={attack:'fang',magic:'wisp',defense:'shell',support:'sprout'}[role];count++;body+=details(roleNames[role]+'系列','<div class="form-list">'+forms.map((name,i)=>'<div class="form-entry"><img loading="lazy" alt="'+esc(name)+'" src="../'+esc(petArt({species,rarity:'common'},i,'common'))+'"><small>第'+(i+1)+'階 · Lv.'+(i?i*20:1)+'</small><b>'+esc(name)+'</b></div>').join('')+'</div>');}
   for(const role of Object.keys(roleNames)){body+='<h2>'+roleNames[role]+'型技能</h2>';for(const rarity of ['uncommon','legendary','mythic']){const skills=petSkillsFor(role,rarity);count+=skills.length;body+=details((PET_RARITIES.find(x=>x.id===rarity)?.name||rarity)+'技能組',skills.map(s=>'<p><b>'+esc(s.name)+'</b> · Lv.'+fmt(s.unlock)+' · CD '+fmt(s.cooldown/1000)+' 秒</p><p>'+esc(s.description)+'</p>').join(''));}}
   body+='<h2>融合夥伴技能（六組無序能力）</h2>';for(const [pair] of fusionGroups){const skills=FUSION_SKILLS[pair],reverse=reverseFusionKey(pair);count+=skills.length;body+=details((FUSION_NAMES[pair]||pair)+'／'+(FUSION_NAMES[reverse]||reverse),'<p class="small">正反順序共用同一組技能能力；僅外觀名稱不同。</p>'+skills.map(s=>'<p><b>'+esc(s.name)+'</b> · CD '+fmt(s.cooldown/1000)+' 秒 · 倍率 '+fmt(s.power)+'</p><p>'+esc(s.description)+'</p>').join(''));}
  }else if(codexSection==='jobs'){
