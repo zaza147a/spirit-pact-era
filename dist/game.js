@@ -1074,7 +1074,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    const stageRank=spec.level===210?'SSS':null;
    const p=normalize(fresh('戰鬥驗證',spec.job));
    p.level=spec.level;p.reborn=true;p.thirdJob=true;p.firstJobLevel=50;p.secondJobLevel=70;p.jobLevel=70;
-   p.location=spec.level===200?'worldroot':'dawnrift';p.dawnUnlocked=true;p.dawnSigil=spec.level===210?(spec.sigil??8):0;p.autoEscapeBoss=false;
+   p.location=spec.level===200?'worldroot':'dawnrift';p.dawnUnlocked=spec.level===210;p.dawnSigil=spec.level===210?(spec.sigil??8):0;p.autoEscapeBoss=false;
    p.gold=200_000_000;
    p.bag=[{id:'red_large',qty:500},{id:'blue_large',qty:500}];
    p.autoPotions={playerHp:true,playerSp:true,petHp:true,petSp:true};
@@ -1118,6 +1118,47 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    spawn();encounterSlots=Array.from({length:encounterLimit(player.location)},()=>Infinity);
    globalThis.__lingqiCombatTestSink={singleTarget:true,hits:[],spawns:[],kills:[],ticks:0,enemyActions:0,playerActions:0,petCasts:[]};
    return {job:p.job,level:p.level,location:p.location,playerHp:p.hp,petHp:pet.hp,aspd:stat('aspd'),atk:stat('atk'),matk:stat('matk')};
+  },
+  farm({durationMs=90000,stepMs=20}={}){
+   // True in-game map combat: tickEncounters populates up to four slots,
+   // replaces killed mobs, and probabilistically adds a map boss.
+   const sink=globalThis.__lingqiCombatTestSink;
+   if(!sink)throw Error('No combat telemetry sink');
+   sink.singleTarget=false;sink.hits=[];sink.kills=[];sink.spawns=[];
+   sink.ticks=0;sink.enemyActions=0;sink.playerActions=0;sink.petCasts=[];
+   bossCooldowns[player.location]=0;
+   player.autoEscapeBoss=false;auto=true;
+   spawn();
+   const from=gameNow(),initialHp=player.hp,initialPetHp=activePet()?.hp||0;
+   const initialGold=player.gold,initialRed=player.bag.find(x=>x.id==='red_large')?.qty||0,
+    initialBlue=player.bag.find(x=>x.id==='blue_large')?.qty||0;
+   let elapsedMs=0,death=false;
+   for(let elapsed=0;elapsed<=durationMs;elapsed+=stepMs){
+    offlineClock=from+elapsed;
+    combatTick(offlineClock);sink.ticks++;elapsedMs=elapsed;
+    if(!player.hp||!auto){death=!player.hp;break;}
+   }
+   const ownerDamage=sink.hits.reduce((n,x)=>n+x.owner,0);
+   const petAttributedDamage=sink.hits.reduce((n,x)=>n+x.pet,0);
+   const totalDamage=sink.hits.reduce((n,x)=>n+x.amount,0);
+   if(ownerDamage+petAttributedDamage!==totalDamage)throw Error('Map farm damage attribution mismatch');
+   const seconds=Math.max(stepMs/1000,elapsedMs/1000);
+   const bossSpawns=sink.spawns.filter(x=>x.boss),bossKills=sink.kills.filter(x=>x.boss);
+   const survivingBosses=enemies.filter(x=>x.boss&&x.hp>0).map(x=>({id:x.id,hp:x.hp,maxHp:x.maxHp}));
+   const liveSlots=enemies.filter(x=>!x.boss&&x.hp>0).length;
+   const result={map:player.location,mode:'natural-spawn-map',elapsedMs,dead:death,playerHp:player.hp,
+    petHp:activePet()?.hp||0,initialHp,initialPetHp,ownerDamage,petAttributedDamage,totalDamage,
+    ownerDps:Math.round(ownerDamage/seconds),petDps:Math.round(petAttributedDamage/seconds),
+    totalDps:Math.round(totalDamage/seconds),killsPerMinute:+(sink.kills.length*60/seconds).toFixed(3),
+    mobKills:sink.kills.filter(x=>!x.boss).length,bossEncounters:bossSpawns.length,
+    bossKills:bossKills.length,bossEscaped:0,survivingBosses,liveSlots,
+    enemyActions:sink.enemyActions,playerActions:sink.playerActions,petCasts:sink.petCasts,
+    spawns:sink.spawns,kills:sink.kills,hits:sink.hits.length,
+    redUsed:Math.max(0,initialRed-(player.bag.find(x=>x.id==='red_large')?.qty||0)),
+    blueUsed:Math.max(0,initialBlue-(player.bag.find(x=>x.id==='blue_large')?.qty||0)),
+    goldSpent:Math.max(0,initialGold-player.gold),damageReconciled:true,ticks:sink.ticks};
+   // Never treat a natural fight without boss encounter as a successful boss test.
+   return result;
   },
   fight({boss=false,monsterId=null,durationMs=60000,stepMs=20,enemyAttackEnabled=true}={}){
    const pool=player.location==='dawnrift'?DAWN_MONSTERS:WORLD_MONSTERS.filter(m=>m.map==='worldroot');
