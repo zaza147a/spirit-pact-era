@@ -1119,7 +1119,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    globalThis.__lingqiCombatTestSink={singleTarget:true,hits:[],spawns:[],kills:[],ticks:0,enemyActions:0,playerActions:0,petCasts:[]};
    return {job:p.job,level:p.level,location:p.location,playerHp:p.hp,petHp:pet.hp,aspd:stat('aspd'),atk:stat('atk'),matk:stat('matk')};
   },
-  farm({durationMs=90000,stepMs=20}={}){
+  farm({durationMs=90000,stepMs=20,guaranteeBoss=true,bossCallAtMs=15000}={}){
    // True in-game map combat: tickEncounters populates up to four slots,
    // replaces killed mobs, and probabilistically adds a map boss.
    const sink=globalThis.__lingqiCombatTestSink;
@@ -1132,9 +1132,21 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    const from=gameNow(),initialHp=player.hp,initialPetHp=activePet()?.hp||0;
    const initialGold=player.gold,initialRed=player.bag.find(x=>x.id==='red_large')?.qty||0,
     initialBlue=player.bag.find(x=>x.id==='blue_large')?.qty||0;
-   let elapsedMs=0,death=false;
+   let elapsedMs=0,death=false,bossCallAttempted=false,bossCallSucceeded=false;
    for(let elapsed=0;elapsed<=durationMs;elapsed+=stepMs){
     offlineClock=from+elapsed;
+    if(guaranteeBoss&&!bossCallAttempted&&elapsed>=bossCallAtMs){
+     bossCallAttempted=true;
+     // Invoke ORIGINAL addEncounter boss routing while four normal mobs keep spawning.
+     // The 3.5% encounter roll is forced to success for reproducible mixed boss combat;
+     // this does not replace the real boss or its combat/summon/target logic.
+     if(!enemies.some(e=>e.boss&&e.hp>0)){
+      bossCooldowns[player.location]=0;
+      const previousRandom=Math.random;
+      try{Math.random=()=>0;addEncounter(offlineClock,null);}finally{Math.random=previousRandom;}
+      bossCallSucceeded=enemies.some(e=>e.boss&&e.hp>0);
+     }else bossCallSucceeded=true;
+    }
     combatTick(offlineClock);sink.ticks++;elapsedMs=elapsed;
     if(!player.hp||!auto){death=!player.hp;break;}
    }
@@ -1150,7 +1162,7 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
     petHp:activePet()?.hp||0,initialHp,initialPetHp,ownerDamage,petAttributedDamage,totalDamage,
     ownerDps:Math.round(ownerDamage/seconds),petDps:Math.round(petAttributedDamage/seconds),
     totalDps:Math.round(totalDamage/seconds),killsPerMinute:+(sink.kills.length*60/seconds).toFixed(3),
-    mobKills:sink.kills.filter(x=>!x.boss).length,bossEncounters:bossSpawns.length,
+    mobKills:sink.kills.filter(x=>!x.boss).length,guaranteeBoss,bossCallAttempted,bossCallSucceeded,bossCallAtMs,bossEncounters:bossSpawns.length,
     bossKills:bossKills.length,bossEscaped:0,survivingBosses,liveSlots,
     enemyActions:sink.enemyActions,playerActions:sink.playerActions,petCasts:sink.petCasts,
     spawns:sink.spawns,kills:sink.kills,hits:sink.hits.length,
