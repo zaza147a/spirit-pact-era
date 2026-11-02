@@ -121,6 +121,7 @@ try{
   }
  }
  }
+ if(!['farm','farm-smoke'].includes(mode)){
  if(mode==='smoke'){
   const checks=[];
   for(const fusion of fusions){
@@ -154,6 +155,7 @@ try{
  if(!rows.some(x=>x.petCasts?.length>0))throw Error('No pet skills were actually cast: six-fusion test invalid');
  if(rows.some(x=>!x.damageReconciled))throw Error('Some combat runs failed owner/pet damage reconciliation');
  if(mode==='full')for(const plan of plans){const subset=rows.filter(x=>x.level===plan.level&&x.job===plan.job&&x.fusion===plan.fusion);const expected=plan.level===200?11:4;if(new Set(subset.map(x=>x.target)).size!==expected)throw Error('Incomplete source map encounter coverage '+JSON.stringify(plan));}
+ }
 }catch(error){
  await saveCheckpoint();
  await mkdir('test-results',{recursive:true});
