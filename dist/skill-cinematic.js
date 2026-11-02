@@ -39,8 +39,8 @@ if(typeof Image!=='undefined'){
  };
  source.src=royalJudgmentRaster;
 }
-let canvas,ctx,frame=0;
-let viewportWidth=0,viewportHeight=0;
+let canvas,ctx,frame=0,lastPaint=0;
+let viewportWidth=0,viewportHeight=0,viewportLeft=0,viewportTop=0,viewportDpr=0;
 const reducedMotion=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 let lastCinematicStatus='尚未播放';
 function clamp(value,min=0,max=1){return Math.min(max,Math.max(min,value));}
@@ -48,8 +48,23 @@ function easeOut(t){return 1-(1-clamp(t))**3;}
 function bell(t,start,end){return clamp((t-start)*8)*clamp((end-t)*7);}
 function skillSignature(value){let hash=2166136261;for(const c of String(value)){hash^=c.charCodeAt(0);hash=Math.imul(hash,16777619);}return hash>>>0;}
 function rgba(rgb,alpha){const n=parseInt(rgb.replace('#',''),16);return `rgba(${n>>16&255},${n>>8&255},${n&255},${clamp(alpha)})`;}
-function size(){const dpr=Math.min(devicePixelRatio||1,2);const w=innerWidth,h=innerHeight;if(w===viewportWidth&&h===viewportHeight)return;viewportWidth=w;viewportHeight=h;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);canvas.style.width=`${w}px`;canvas.style.height=`${h}px`;ctx.setTransform(dpr,0,0,dpr,0,0);}
-function init(){if(canvas)return;canvas=document.createElement('canvas');canvas.className='skill-cinematic-layer';canvas.setAttribute('aria-hidden','true');Object.assign(canvas.style,{position:'fixed',inset:'0',zIndex:'1002',pointerEvents:'none',width:'100%',height:'100%'});document.body.append(canvas);ctx=canvas.getContext('2d',{alpha:true,desynchronized:true});size();addEventListener('resize',size,{passive:true});}
+function size(){
+ const dpr=Math.min(devicePixelRatio||1,innerWidth<700?1:1.25);
+ const battle=document.querySelector('#battlePanel')||document.querySelector('#encounter');
+ const rect=battle?.getBoundingClientRect();
+ const left=rect?Math.max(0,Math.floor(rect.left)):0;
+ const top=rect?Math.max(0,Math.floor(rect.top)):0;
+ const right=rect?Math.min(innerWidth,Math.ceil(rect.right)):innerWidth;
+ const bottom=rect?Math.min(innerHeight,Math.ceil(rect.bottom)):innerHeight;
+ const w=Math.max(1,right-left),h=Math.max(1,bottom-top);
+ if(w===viewportWidth&&h===viewportHeight&&left===viewportLeft&&top===viewportTop&&dpr===viewportDpr)return;
+ viewportLeft=left;viewportTop=top;viewportWidth=w;viewportHeight=h;viewportDpr=dpr;
+ canvas.style.left=`${left}px`;canvas.style.top=`${top}px`;
+ canvas.style.width=`${w}px`;canvas.style.height=`${h}px`;
+ canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+ ctx.setTransform(dpr,0,0,dpr,-left*dpr,-top*dpr);
+}
+function init(){if(canvas)return;canvas=document.createElement('canvas');canvas.className='skill-cinematic-layer';canvas.setAttribute('aria-hidden','true');Object.assign(canvas.style,{position:'fixed',left:'0',top:'0',zIndex:'1002',pointerEvents:'none'});document.body.append(canvas);ctx=canvas.getContext('2d',{alpha:true,desynchronized:true});size();addEventListener('resize',size,{passive:true});addEventListener('scroll',size,{passive:true});}
 function line(points,color,width=1,alpha=1,blur=0){ctx.save();ctx.globalAlpha=alpha;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=color;ctx.shadowBlur=blur;ctx.shadowColor=color;ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();ctx.restore();}
 function ellipse(rx,ry,color,width,alpha=1,rotation=0,blur=0){ctx.save();ctx.rotate(rotation);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.globalAlpha=alpha;ctx.shadowColor=color;ctx.shadowBlur=blur;ctx.beginPath();ctx.ellipse(0,0,Math.max(1,rx),Math.max(1,ry),0,0,Math.PI*2);ctx.stroke();ctx.restore();}
 function polygon(sides,rx,ry,color,width,alpha=1,rotation=0){const points=[];for(let i=0;i<=sides;i++){const a=i*Math.PI*2/sides+rotation;points.push([Math.cos(a)*rx,Math.sin(a)*ry]);}line(points,color,width,alpha,9);}
@@ -382,7 +397,7 @@ function groupStage(event,t){
 }
 // Screen-sized readable silhouettes: each third-job has an unmistakable object
 // and attack direction. The old rings remain only as secondary impact detail.
-function royalSanctuaryField(event,t,scale){
+function paintRoyalSanctuaryField(event,t,scale){
  // A separate richly worked floor seal connects every hit target. The painted
  // cathedral stays at its original aspect ratio and floats over this floor.
  const span=Math.max(0,event.multi?event.groupSpan||0:0);
@@ -422,6 +437,35 @@ function royalSanctuaryField(event,t,scale){
   ctx.fillStyle=i%3?'#d2efff':'#fff0b0';ctx.fill();ctx.strokeStyle='#eac07d';ctx.lineWidth=1;ctx.stroke();
   ctx.restore();
  }
+ ctx.restore();
+}
+const sanctuaryLayerCache=new Map();
+function royalSanctuaryField(event,t,scale){
+ const span=Math.max(0,event.multi?event.groupSpan||0:0);
+ const rx=Math.min(340,Math.max(170,span/(2*scale)+60));
+ const key=Math.round(rx/8);
+ let layer=sanctuaryLayerCache.get(key);
+ if(!layer){
+  const radius=key*8,pad=42,dpr=1.5;
+  const width=2*(radius+pad),height=260;
+  const offscreen=document.createElement('canvas');
+  offscreen.width=Math.ceil(width*dpr);offscreen.height=Math.ceil(height*dpr);
+  const brush=offscreen.getContext('2d');
+  if(!brush){paintRoyalSanctuaryField(event,t,scale);return;}
+  const previous=ctx;
+  try{
+   ctx=brush;ctx.setTransform(dpr,0,0,dpr,width/2*dpr,100*dpr);
+   paintRoyalSanctuaryField({...event,groupSpan:2*(radius-60)*scale,multi:true},.64,scale);
+  }finally{ctx=previous;}
+  layer={canvas:offscreen,width,height};
+  if(sanctuaryLayerCache.size>=8)sanctuaryLayerCache.delete(sanctuaryLayerCache.keys().next().value);
+  sanctuaryLayerCache.set(key,layer);
+ }
+ const build=easeOut(clamp((t-.19)/.33)),fade=clamp((1-t)/.22);
+ ctx.save();ctx.globalCompositeOperation='screen';
+ ctx.globalAlpha=Math.min(1,build*1.25)*Math.min(1,fade*3)*.9;
+ ctx.translate(0,49);ctx.scale(.68+.32*build,.68+.32*build);
+ ctx.drawImage(layer.canvas,-layer.width/2,-149,layer.width,layer.height);
  ctx.restore();
 }
 function royalSanctuaryDescent(event,t,scale){
@@ -651,7 +695,10 @@ function spectacle(event,t){
  }
  ctx.restore();
 }
-function render(now){frame=0;if(!ctx)return;size();ctx.clearRect(0,0,viewportWidth,viewportHeight);
+function render(now){frame=0;if(!ctx)return;
+ const preview=active.some(e=>e.preview),frameBudget=preview?16:33;
+ if(now-lastPaint<frameBudget){frame=requestAnimationFrame(render);return;}
+ lastPaint=now;size();ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.restore();
  for(let i=active.length-1;i>=0;i--){const e=active[i],t=(now-e.start)/e.duration;if(t>=1){active.splice(i,1);continue;}
   ctx.save();if(e.clipRect){ctx.beginPath();ctx.rect(e.clipRect.x,e.clipRect.y,e.clipRect.width,e.clipRect.height);ctx.clip();}
   castOrigin(e,t);
@@ -682,9 +729,10 @@ export function playCinematic({type,x,y,groupX=x,groupY=y,groupSpan=0,clipRect=n
  lastCinematicStatus='Canvas 已觸發：'+(skillId||type);
  const third=/^third(Main|Wide|Finish)_(\w+)$/.exec(skillId);const hero=royalTypes.has(type)||!!third,duration=preview?(hero?2750:1750):hero?(finisher?1900:1550):(finisher?1150:820);
  const signature=skillSignature(skillId||name||type);
- active.push({type,x,y,groupX,groupY,groupSpan,clipRect,sourceX,sourceY,primary,skillId,name,signature,variant:signature%3,thirdJob:third?.[2]||'',thirdStage:third?.[1]||'',dx:Math.max(-220,Math.min(220,(sourceX??x-90)-x)),dy:Math.max(-180,Math.min(180,(sourceY??y)-y)),color:jobColors[third?.[2]]||accents[type]||'#a4d9f5',start:performance.now(),duration,finisher,multi,hero,seed:Math.random()*6});
- if(active.length>18)active.splice(0,active.length-18);
+ active.push({type,x,y,groupX,groupY,groupSpan,clipRect,sourceX,sourceY,primary,skillId,name,signature,variant:signature%3,thirdJob:third?.[2]||'',thirdStage:third?.[1]||'',dx:Math.max(-220,Math.min(220,(sourceX??x-90)-x)),dy:Math.max(-180,Math.min(180,(sourceY??y)-y)),color:jobColors[third?.[2]]||accents[type]||'#a4d9f5',start:performance.now(),duration,finisher,multi,hero,preview,seed:Math.random()*6});
+ const limit=preview?12:innerWidth<700?3:5;
+ if(active.length>limit)active.splice(0,active.length-limit);
  if(!frame)frame=requestAnimationFrame(render);
  return hero||bladeTypes.has(type)||projectileTypes.has(type)||elementalTypes.has(type)||fistTypes.has(type)||soundTypes.has(type)||auraTypes.has(type);
 }
-export function getCinematicDiagnostics(){return {status:lastCinematicStatus,canvas:!!ctx,reducedMotion,royalArt:!!royalPaintedSprite,royalShieldArt:!!royalShieldPaint?.naturalWidth,royalSanctuaryArt:!!royalSanctuaryPaint?.naturalWidth,version:'royal-painted-v26'};}
+export function getCinematicDiagnostics(){return {status:lastCinematicStatus,canvas:!!ctx,reducedMotion,royalArt:!!royalPaintedSprite,royalShieldArt:!!royalShieldPaint?.naturalWidth,royalSanctuaryArt:!!royalSanctuaryPaint?.naturalWidth,version:'royal-painted-v29-cached'};}

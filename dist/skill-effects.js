@@ -1,6 +1,6 @@
 // Presentation-only VFX: no combat timers, damage, inventory or save writes.
 import {visualForSkill} from './skill-effects-presets.js?v=2';
-import {playCinematic,getCinematicDiagnostics} from './skill-cinematic.js?v=26';
+import {playCinematic,getCinematicDiagnostics} from './skill-cinematic.js?v=6.5.6';
 const MAX_ACTIVE=24;
 const EFFECTS_STORAGE_KEY='spirit-pact-vfx-enabled';
 let effectsEnabled=true;
@@ -36,7 +36,7 @@ export function queueCombatVfx(effect={}){
  // A deliberate preview action always plays; the in-game preference only governs combat.
  if(typeof document==='undefined'||typeof requestAnimationFrame!=='function'||document.hidden||(!effectsEnabled&&!effect.preview))return;
  const now=performance.now(),ids=[...new Set((effect.targetIds?.length?effect.targetIds:[effect.targetId]).filter(Boolean))],targetKey=`${effect.source}:${effect.skillId||''}:${ids.join(',')||'self'}`;
- const interval=effect.finisher?180:effect.source==='resonance'||effect.source==='boss'?450:effect.source==='skill'?220:effect.source==='pet'?480:540;
+ const interval=effect.finisher?650:effect.source==='resonance'||effect.source==='boss'?550:effect.source==='skill'?(effect.skillId?.startsWith('third')?620:380):effect.source==='pet'?550:540;
  // Never drop named job skills just because a pet or normal hit happened in the same frame.
  if((effect.source!=='skill'&&now-lastFrame<70)||now-(targetCooldowns.get(targetKey)||0)<interval)return;
  lastFrame=now;targetCooldowns.set(targetKey,now);
