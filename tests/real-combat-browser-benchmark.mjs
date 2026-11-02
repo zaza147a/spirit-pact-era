@@ -81,6 +81,31 @@ try{
    }
   }
  }
+ if(mode==='smoke'){
+  const checks=[];
+  for(const fusion of fusions){
+   const run=async reverseFusion=>page.evaluate(({fusion,reverseFusion})=>{
+    let seed=0x51A8D00D;
+    Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+    const h=globalThis.__lingqiCombatHarness;
+    h.configure({level:200,job:'assassin',fusion,reverseFusion,weaponBuild:'rifle+offDagger',
+      attributes:{STR:120,AGI:100,VIT:1,INT:1,DEX:80,LUK:120}});
+    return h.fight({monsterId:'world_200',durationMs:12000,enemyAttackEnabled:true});
+   },{fusion,reverseFusion});
+   const forward=await run(false),reverse=await run(true);
+   const select=r=>({totalDamage:r.totalDamage,ownerDamage:r.ownerDamage,
+      petAttributedDamage:r.petAttributedDamage,kill:r.kill,dead:r.dead,
+      elapsedMs:r.elapsedMs,petCasts:r.petCasts.map(x=>[x.at,x.id,x.kind])});
+   const equal=JSON.stringify(select(forward))===JSON.stringify(select(reverse));
+   checks.push({fusion,equal,forward:select(forward),reverse:select(reverse)});
+   if(!equal)throw Error('Real combat fusion order is NOT mechanically identical: '+fusion);
+  }
+  rows.push(...checks.map((c,i)=>({level:200,job:'assassin',fusion:c.fusion,target:'reverse-order-validation',
+    totalDamage:c.forward.totalDamage,ownerDamage:c.forward.ownerDamage,
+    petAttributedDamage:c.forward.petAttributedDamage,damageReconciled:c.equal,
+    ticks:1,hits:1,enemyActions:1,playerActions:1,petCasts:[],
+    fusionReversePass:true,checkIndex:i})));
+ }
  await mkdir('test-results',{recursive:true});
  const file='test-results/lv200-lv210-'+mode+'-actual-combat.json';
  await writeFile(file,JSON.stringify({kind:'ACTUAL_GAME_COMBATTICK_RUNTIME',mode,rows,errors},null,2));
