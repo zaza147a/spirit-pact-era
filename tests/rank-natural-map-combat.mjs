@@ -41,10 +41,10 @@ const rankings=rows.sort((a,b)=>a.level-b.level||a.sigil-b.sigil||b.measuredTota
 for(const level of [200,210])for(const sigil of level===200?[0]:[4,8]){
  let pos=0;for(const r of rankings.filter(x=>x.level===level&&x.sigil===sigil))r.mapDpsRank=++pos;
 }
-await mkdir('test-results',{recursive:true});
-await writeFile('test-results/actual-natural-map-120-ranked.json',JSON.stringify({kind:'ACTUAL_NATURAL_MAP_DPS',source:file,rows:rankings},null,2));
 for(const level of [200,210])for(const sigil of level===200?[0]:[4,8]){
  const bossRank=[...rankings].filter(r=>r.level===level&&r.sigil===sigil&&r.bossEffectiveDps!==null).sort((a,b)=>b.bossEffectiveDps-a.bossEffectiveDps);
  bossRank.forEach((r,i)=>r.bossDpsRank=i+1);
 }
+await mkdir('test-results',{recursive:true});
+await writeFile('test-results/actual-natural-map-120-ranked.json',JSON.stringify({kind:'ACTUAL_NATURAL_MAP_DPS',source:file,rows:rankings},null,2));
 console.log('Natural map real-combat ranks:',rankings.length);
