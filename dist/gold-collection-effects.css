@@ -1,19 +1,79 @@
-/* Gold Collection: animated portrait overlays (V6.5.22). Purely visual; no gameplay hooks. */
-#character[data-gold-tier="3"]>.hero,#character[data-gold-tier="4"]>.hero,
-#companion[data-gold-tier="4"]>.hero{isolation:isolate;overflow:visible;position:relative}
-#character[data-gold-tier="3"]>.hero::before,#character[data-gold-tier="4"]>.hero::before,
-#companion[data-gold-tier="4"]>.hero::before{content:"";position:absolute;pointer-events:none;z-index:0;width:118px;height:118px;left:-20px;top:-13px;background:url("./assets/gold-royal-halo-v2.png") center/contain no-repeat;filter:drop-shadow(0 0 7px #edb33b);opacity:.97;animation:royalHaloBreathe 3.8s ease-in-out infinite,royalHaloFloat 7s ease-in-out infinite;transform-origin:center}
-#character[data-gold-tier="3"]>.hero::after,#character[data-gold-tier="4"]>.hero::after{content:"✦";pointer-events:none;position:absolute;z-index:3;top:3px;left:64px;color:#fff4bd;font-size:16px;text-shadow:0 0 7px #ffe080,0 0 16px #e9a634;animation:royalStar 2.8s ease-in-out infinite}
-#character[data-gold-tier="3"]>.hero .art-hero,#character[data-gold-tier="4"]>.hero .art-hero{position:relative;z-index:2;filter:drop-shadow(0 0 5px #f1c66c)}
-#companion[data-gold-tier="4"]>.hero::before{background-image:url("./assets/pact-legend-aura-v2.png");filter:drop-shadow(0 0 8px #8a6cf5);animation:pactCircleBreathe 4.2s ease-in-out infinite,pactCircleFloat 9s ease-in-out infinite}
-#companion[data-gold-tier="4"]>.hero::after{content:"✧";pointer-events:none;position:absolute;z-index:3;top:8px;left:60px;font-size:20px;color:#bafcff;text-shadow:0 0 9px #61ddeb,0 0 17px #9976ff;animation:pactStar 3.1s ease-in-out infinite}
-#companion[data-gold-tier="4"]>.hero .art-hero{position:relative;z-index:2;filter:drop-shadow(0 0 6px #8d83ef)}
-@keyframes royalHaloBreathe{0%,100%{opacity:.77;filter:drop-shadow(0 0 4px #e2a734)}50%{opacity:1;filter:drop-shadow(0 0 11px #ffdf77)}}
-@keyframes royalHaloFloat{0%,100%{transform:translateY(0) rotate(-3deg) scale(.98)}50%{transform:translateY(-3px) rotate(3deg) scale(1.055)}}
-@keyframes royalStar{0%,100%{opacity:.45;transform:translateY(3px) scale(.75)}50%{opacity:1;transform:translateY(-5px) scale(1.3)}}
-@keyframes pactCircleBreathe{0%,100%{opacity:.7;filter:drop-shadow(0 0 5px #7958e8)}50%{opacity:1;filter:drop-shadow(0 0 13px #6adcf5)}}
-@keyframes pactCircleFloat{0%,100%{transform:translateY(2px) rotate(-5deg) scale(.98)}50%{transform:translateY(-4px) rotate(5deg) scale(1.06)}}
-@keyframes pactStar{0%,100%{opacity:.4;transform:translate(-3px,3px) scale(.8)}50%{opacity:1;transform:translate(5px,-5px) scale(1.3)}}
-@media(min-width:1500px){#character[data-gold-tier="3"]>.hero::before,#character[data-gold-tier="4"]>.hero::before,#companion[data-gold-tier="4"]>.hero::before{width:132px;height:132px;left:-24px;top:-17px}}
-@media(max-width:1000px){#character[data-gold-tier="3"]>.hero::before,#character[data-gold-tier="4"]>.hero::before,#companion[data-gold-tier="4"]>.hero::before{width:140px;height:140px;left:0;top:0}#character[data-gold-tier="3"]>.hero::after,#character[data-gold-tier="4"]>.hero::after,#companion[data-gold-tier="4"]>.hero::after{left:105px;top:8px}}
-@media(prefers-reduced-motion:reduce){#character[data-gold-tier="3"]>.hero::before,#character[data-gold-tier="4"]>.hero::before,#companion[data-gold-tier="4"]>.hero::before,#character[data-gold-tier="3"]>.hero::after,#character[data-gold-tier="4"]>.hero::after,#companion[data-gold-tier="4"]>.hero::after{animation:none!important}}
+/* V6.5.24 — static, portrait-integrated collection auras.
+   The sigil is on the floor at the portrait's feet; the upper radiance remains
+   behind the original sprite. No rotation, floating objects or animation. */
+#character[data-gold-tier="3"]>.hero,
+#character[data-gold-tier="4"]>.hero,
+#companion[data-gold-tier="4"]>.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+#character[data-gold-tier="3"]>.hero::before,
+#character[data-gold-tier="4"]>.hero::before,
+#companion[data-gold-tier="4"]>.hero::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  width:min(100%,218px);
+  height:180px;
+  left:50%;
+  top:3px;
+  transform:translateX(-50%);
+  opacity:1;
+  background:
+    radial-gradient(ellipse 34% 65% at 50% 60%,rgba(255,250,215,.38),transparent 96%),
+    radial-gradient(ellipse 68% 85% at 50% 70%,rgba(239,174,47,.24),transparent 79%),
+    linear-gradient(90deg,transparent 5%,rgba(255,213,107,.14) 35%,rgba(255,243,175,.19) 50%,rgba(255,213,107,.14) 65%,transparent 95%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,black 25%,black 80%,transparent);
+  mask-image:linear-gradient(to bottom,transparent,black 25%,black 80%,transparent);
+}
+#character[data-gold-tier="3"]>.hero::after,
+#character[data-gold-tier="4"]>.hero::after,
+#companion[data-gold-tier="4"]>.hero::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  pointer-events:none;
+  width:min(90%,205px);
+  height:205px;
+  left:50%;
+  top:52px;
+  transform:translateX(-50%) perspective(350px) rotateX(69deg);
+  transform-origin:center center;
+  background:url("./assets/gold-ground-sigil.svg") center/contain no-repeat;
+  filter:drop-shadow(0 0 8px #ffda65) drop-shadow(0 0 13px #af6b18);
+  opacity:.96;
+}
+#character[data-gold-tier="3"]>.hero .art-hero,
+#character[data-gold-tier="4"]>.hero .art-hero,
+#companion[data-gold-tier="4"]>.hero .art-hero{
+  position:relative;
+  z-index:2;
+  filter:drop-shadow(0 0 2px #fff4ba) drop-shadow(0 0 8px #d9a33d);
+}
+#companion[data-gold-tier="4"]>.hero::before{
+  background:
+    radial-gradient(ellipse 38% 62% at 50% 60%,rgba(199,243,255,.35),transparent 96%),
+    radial-gradient(ellipse 68% 85% at 50% 70%,rgba(110,93,246,.26),transparent 79%),
+    linear-gradient(90deg,transparent 5%,rgba(109,158,255,.14) 35%,rgba(214,174,255,.2) 50%,rgba(109,158,255,.14) 65%,transparent 95%);
+}
+#companion[data-gold-tier="4"]>.hero::after{
+  background-image:url("./assets/pact-ground-sigil.svg");
+  filter:drop-shadow(0 0 7px #7cd7ff) drop-shadow(0 0 13px #7d60d7);
+}
+#companion[data-gold-tier="4"]>.hero .art-hero{
+  filter:drop-shadow(0 0 2px #c0f5ff) drop-shadow(0 0 9px #8d70ec);
+}
+/* Keep text and controls clearly above the radiance. */
+#character[data-gold-tier="3"]>.hero>:not(.art-hero),
+#character[data-gold-tier="4"]>.hero>:not(.art-hero),
+#companion[data-gold-tier="4"]>.hero>:not(.art-hero){
+  position:relative;
+  z-index:4;
+}
+@media(max-width:700px){
+  #character[data-gold-tier="3"]>.hero::after,
+  #character[data-gold-tier="4"]>.hero::after,
+  #companion[data-gold-tier="4"]>.hero::after{width:min(90%,198px)}
+}
