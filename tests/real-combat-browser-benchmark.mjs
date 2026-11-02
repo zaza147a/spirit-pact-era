@@ -39,9 +39,10 @@ const plans=mode==='full'?[200,210].flatMap(level=>Object.keys(jobs).flatMap(job
 await new Promise(ok=>server.listen(port,'127.0.0.1',ok));
 const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
 const page=await browser.newPage({viewport:{width:1280,height:900}});
-const errors=[];
-page.on('pageerror',err=>errors.push(err.message));
-const rows=[],fusionChecks=[];
+const errors=[],httpFailures=[];
+page.on('pageerror',err=>errors.push(err.stack||err.message));
+page.on('response',resp=>{if(resp.status()>=400)httpFailures.push({status:resp.status(),url:resp.url()});});
+const rows=[],fusionChecks=[];let currentCase=null;
 try{
  await page.goto('http://127.0.0.1:'+port+'/index.html?lingqi_combat_test',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>Boolean(globalThis.__lingqiCombatHarness),null,{timeout:30000});
@@ -68,6 +69,7 @@ try{
     const variants=plan.level===210?[4,8]:[0];
     const monsters=mode==='full'?(plan.level===200?WORLD_MONSTERS.filter(m=>m.map==='worldroot').map(m=>m.id):DAWN_MONSTERS.map(m=>m.id)):[plan.level===200?'world_200':'dawn-ray'];
     for(const sigil of variants)for(const target of [...monsters,'boss']){
+     currentCase={...plan,weaponBuild,attributes,allocationIndex,sigil,target};
      const outcome=await page.evaluate(({plan,weaponBuild,attributes,sigil,target})=>{
       let seed=0x51A8D00D;
       Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
@@ -104,9 +106,9 @@ try{
  }
  await mkdir('test-results',{recursive:true});
  const file='test-results/lv200-lv210-'+mode+'-actual-combat.json';
- await writeFile(file,JSON.stringify({kind:'ACTUAL_GAME_COMBATTICK_RUNTIME',mode,rows,fusionChecks,errors},null,2));
+ await writeFile(file,JSON.stringify({kind:'ACTUAL_GAME_COMBATTICK_RUNTIME',mode,rows,fusionChecks,errors,httpFailures},null,2));
  console.log('Actual combat results',rows.length,'errors',errors.length,'file',file);
- if(errors.length)throw Error('Browser JS errors: '+JSON.stringify(errors.slice(0,5)));
+ if(errors.length||httpFailures.length)throw Error('Browser JS or missing module errors: '+JSON.stringify({errors:errors.slice(0,5),httpFailures:httpFailures.slice(0,8)}));
  if(!rows.length||rows.some(x=>!Number.isFinite(x.totalDamage)||x.ticks===0))throw Error('Invalid actual combat records');
  if(!rows.some(x=>x.hits>0))throw Error('No combat damage was observed: runtime harness invalid');
  if(!rows.some(x=>x.enemyActions>0))throw Error('No real enemy turns observed: defense/survival test invalid');
@@ -117,7 +119,7 @@ try{
 }catch(error){
  await mkdir('test-results',{recursive:true});
  const failure={kind:'ACTUAL_GAME_COMBATTICK_FAILURE',mode,error:String(error),stack:error?.stack,
-  errors,completedRows:rows.length,lastComplete:rows.at(-1)||null,
+  errors,httpFailures,currentCase,completedRows:rows.length,lastComplete:rows.at(-1)||null,
   fusionChecks,runAt:new Date().toISOString()};
  const file='test-results/lv200-lv210-'+mode+'-failure.json';
  await writeFile(file,JSON.stringify(failure,null,2));
