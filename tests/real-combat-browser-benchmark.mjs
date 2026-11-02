@@ -74,6 +74,12 @@ try{
   if(!rows.some(x=>x.spawns?.length>=4))throw Error('Natural farm failed to spawn four map slots');
   if(!rows.every(x=>x.damageReconciled))throw Error('Natural farm attribution failed');
   if(!rows.some(x=>x.enemyActions>0&&x.petCasts.length>0))throw Error('Natural farm never executed monster attacks and pet abilities');
+  if(!rows.some(x=>x.bossEncounters>0&&x.bossCallSucceeded))throw Error('No actual boss joined any four-slot farm encounter');
+  if(mode==='farm')for(const level of [200,210]){
+   const subset=rows.filter(x=>x.level===level);
+   if(!subset.some(x=>x.bossEncounters>0))throw Error('No boss joined a '+level+' map fight; cannot validate mixed boss performance');
+  }
+  if(rows.some(x=>x.bossTotalDamage+x.mobTotalDamage!==x.totalDamage))throw Error('Broken per-target boss/mob ledger');
   await mkdir('test-results',{recursive:true});
   const file='test-results/lv200-lv210-'+mode+'-actual-combat.json';
   await writeFile(file,JSON.stringify({kind:'ACTUAL_NATURAL_RESPAWN_COMBATTICK',mode,rows,errors,httpFailures},null,2));
