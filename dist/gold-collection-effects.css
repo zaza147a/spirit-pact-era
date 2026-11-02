@@ -37,7 +37,7 @@
   position:absolute;
   z-index:1;
   left:50%;
-  top:calc(9px + var(--sigil-art-height) - 48px);
+  top:calc(9px + var(--sigil-art-height) - 62px);
   width:min(94%,188px);
   height:94px;
   transform:translateX(-50%);
@@ -50,7 +50,7 @@
   position:relative!important;
   z-index:2;
   /* The extra gap keeps names beneath the projected ground circle. */
-  margin-bottom:31px!important;
+  margin-bottom:39px!important;
 }
 #character[data-gold-tier="3"]>.hero>:not(.art-hero),
 #character[data-gold-tier="4"]>.hero>:not(.art-hero),
