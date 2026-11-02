@@ -30,7 +30,7 @@ const jobs={
 };
 const fusions=['attack-magic','attack-defense','attack-support','magic-defense','magic-support','defense-support'];
 const mode=process.argv[2]||'smoke';
-const plans=mode==='full'?[200,210].flatMap(level=>Object.keys(jobs).flatMap(job=>fusions.map(fusion=>({level,job,fusion})))):[
+const plans=['full','farm'].includes(mode)?[200,210].flatMap(level=>Object.keys(jobs).flatMap(job=>fusions.map(fusion=>({level,job,fusion})))):[
  {level:200,job:'assassin',fusion:'attack-magic'},
  {level:200,job:'wizard',fusion:'magic-support'},
  {level:210,job:'knight',fusion:'attack-defense'},
@@ -48,6 +48,41 @@ try{
  page.on('response',resp=>{if(resp.status()>=400)httpFailures.push({status:resp.status(),url:resp.url()});});
  await page.goto('http://127.0.0.1:'+port+'/index.html?lingqi_combat_test',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>Boolean(globalThis.__lingqiCombatHarness),null,{timeout:30000});
+ if(['farm','farm-smoke'].includes(mode)){
+  for(const plan of plans){
+   const weaponBuild=jobs[plan.job][0];
+   const cap=plan.level===210?150:120;
+   const focus=['wizard','sage','priest'].includes(plan.job)?'INT':['hunter','performer'].includes(plan.job)?'DEX':'STR';
+   const attributes={STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1};
+   let budget=allocationBudget(plan.level,true);
+   for(const key of [...new Set([focus,'LUK','AGI','DEX','VIT','STR','INT'])]){
+    const take=Math.min(cap-attributes[key],budget);attributes[key]+=take;budget-=take;
+   }
+   for(const sigil of plan.level===210?[4,8]:[0]){
+    currentCase={...plan,weaponBuild,attributes,sigil,mode:'natural-spawn-map'};
+    const outcome=await page.evaluate(({plan,weaponBuild,attributes,sigil})=>{
+     let seed=0x51A8D00D;
+     Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+     const h=globalThis.__lingqiCombatHarness;
+     const panel=h.configure({...plan,weaponBuild,attributes,sigil});
+     return {panel,...h.farm({durationMs:90000,stepMs:20})};
+    },{plan,weaponBuild,attributes,sigil});
+    rows.push({...plan,weaponBuild,attributes,sigil,...outcome});
+    if(rows.length%10===0){await saveCheckpoint();console.log('Natural farm cases',rows.length);}
+   }
+  }
+  if(!rows.some(x=>x.spawns?.length>=4))throw Error('Natural farm failed to spawn four map slots');
+  if(!rows.every(x=>x.damageReconciled))throw Error('Natural farm attribution failed');
+  if(!rows.some(x=>x.enemyActions>0&&x.petCasts.length>0))throw Error('Natural farm never executed monster attacks and pet abilities');
+  await mkdir('test-results',{recursive:true});
+  const file='test-results/lv200-lv210-'+mode+'-actual-combat.json';
+  await writeFile(file,JSON.stringify({kind:'ACTUAL_NATURAL_RESPAWN_COMBATTICK',mode,rows,errors,httpFailures},null,2));
+  console.log('Natural map combat completed',rows.length,file);
+  if(mode==='farm'&&rows.length!==180)throw Error('Expected 60 Lv200 and 120 Lv210 map runs');
+  if(errors.length||httpFailures.length)throw Error('Browser errors '+JSON.stringify({errors,httpFailures}));
+
+ }
+ else {
  for(const plan of plans){
   const specs=jobs[plan.job];
   // Every legal weapon is tested, not merely a guessed best choice.
@@ -84,6 +119,7 @@ try{
     }
    }
   }
+ }
  }
  if(mode==='smoke'){
   const checks=[];
