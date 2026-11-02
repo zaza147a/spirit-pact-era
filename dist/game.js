@@ -536,7 +536,7 @@ function playerAttack(skill=false,skillId=null,completed=false){if(isControlled(
   if(primary.hp>0&&skill&&chosen.steal)stealFromEnemy();
  }
  enemy=primary;if(damage&&primary.hp>0&&activePet()?.hp>0&&!fusedPair(activePet())){let extra=0;if(now<petEffects.blessingUntil)extra+=Math.max(1,Math.round(damage*petEffects.blessingPower));if(petEffects.markHits>0){extra+=petEffects.markPower;petEffects.markHits--;}if(extra){const applied=dealDamage(extra,'buffDamage');message(`✧ 夥伴增益額外造成 ${applied} 傷害！`,'rare','pet');}}
- if(skill&&damage&&pact.leech){const gain=Math.min(stat('hp')-player.hp,Math.round(damage*pact.leech));player.hp+=gain;record(report,'effectiveHeal',gain);}if(skill&&damage&&pact.bounty){const gain=Math.max(1,Math.floor(player.level*pact.bounty));player.gold+=gain;if(offlineMetrics)offlineMetrics.goldEarned+=gain;}if(player.job==='rogue'&&skill&&damage>0&&activePet()?.fusion?.main==='attack'&&activePet()?.fusion?.sub==='support'&&now-(timers.lastSkillRefresh||0)>=1000&&Math.random()<.12){
+ if(skill&&damage&&pact.leech){const gain=Math.min(stat('hp')-player.hp,Math.round(damage*pact.leech));player.hp+=gain;record(report,'effectiveHeal',gain);}if(skill&&damage&&pact.bounty){const gain=Math.max(1,Math.floor(player.level*pact.bounty));player.gold+=gain;if(offlineMetrics)offlineMetrics.goldEarned+=gain;}if(player.job==='rogue'&&skill&&damage>0&&fusedPair(activePet())&&['attack','support'].every(role=>Object.values(activePet().fusion).includes(role))&&now-(timers.lastSkillRefresh||0)>=1000&&Math.random()<.12){
   const cooldown=skillCooldown(chosen);
   jobSkillTimers[chosen.id]=Math.max(0,(jobSkillTimers[chosen.id]||now)-Math.min(2500,cooldown*.35));
   timers.lastSkillRefresh=now;emitEvent('skillRefresh');
