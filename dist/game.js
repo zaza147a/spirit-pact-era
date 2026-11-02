@@ -169,7 +169,7 @@ function activePetMarkPower(now=gameNow()){
  if(petEffects.markWardOnly&&((petEffects.markUntil||0)<=now||petEffects.markSourcePetId!==activePet()?.id||!originalGuardActive(now))){petEffects.markHits=0;return 0;}
  return petEffects.markHits>0?petEffects.markPower:0;
 }
-function dealDamage(amount,key){if(!enemy?.hp)return 0;const fused=key==='playerDamage'&&fusedPair(activePet())&&activePet()?.hp>0,preparation=enemy.dawn&&enemy.boss&&enemy.id==='dawn-archon'?dawnArchonPreparationFactor(player):1,base=Math.max(0,Math.round(amount*jobZoneOutputFactor(player.job,player.level)*preparation)),blessing=fused&&petEffects.blessingUntil>gameNow()?base*petEffects.blessingPower:0,mark=fused?activePetMarkPower():0;if(mark)petEffects.markHits--;const rolled=base+blessing+mark,actual=Math.min(enemy.hp,Math.max(0,Math.round(rolled)));enemy.hp-=actual;const petCredit=key==='playerDamage'?(fused?Math.min(actual,Math.round(actual*(Math.min(base,pendingPetCredit)+blessing+mark)/Math.max(1,rolled))):Math.min(actual,pendingPetCredit)):0;pendingPetCredit=0;record(report,key,actual-petCredit);if(globalThis.__lingqiCombatTestSink&&actual)globalThis.__lingqiCombatTestSink.hits.push({at:gameNow(),kind:key,owner:key==='playerDamage'?actual-petCredit:0,pet:key==='playerDamage'?petCredit:actual,target:enemy.id,amount:actual});if(!offlineSimulation&&actual)combatSamples.push({at:gameNow(),owner:key==='playerDamage'?actual-petCredit:0,pet:key==='playerDamage'?petCredit:actual,kills:0});if(petCredit)record(report,'buffDamage',petCredit);return actual;}
+function dealDamage(amount,key){if(!enemy?.hp)return 0;const fused=key==='playerDamage'&&fusedPair(activePet())&&activePet()?.hp>0,preparation=enemy.dawn&&enemy.boss&&enemy.id==='dawn-archon'?dawnArchonPreparationFactor(player):1,base=Math.max(0,Math.round(amount*jobZoneOutputFactor(player.job,player.level)*preparation)),blessing=fused&&petEffects.blessingUntil>gameNow()?base*petEffects.blessingPower:0,mark=fused?activePetMarkPower():0;if(mark)petEffects.markHits--;const rolled=base+blessing+mark,actual=Math.min(enemy.hp,Math.max(0,Math.round(rolled)));enemy.hp-=actual;const petCredit=key==='playerDamage'?(fused?Math.min(actual,Math.round(actual*(Math.min(base,pendingPetCredit)+blessing+mark)/Math.max(1,rolled))):Math.min(actual,pendingPetCredit)):0;pendingPetCredit=0;record(report,key,actual-petCredit);if(globalThis.__lingqiCombatTestSink&&actual)globalThis.__lingqiCombatTestSink.hits.push({at:gameNow(),kind:key,owner:key==='playerDamage'?actual-petCredit:0,pet:key==='playerDamage'?petCredit:actual,target:enemy.id,targetInstance:enemy.instanceId||null,targetBoss:!!enemy.boss,amount:actual});if(!offlineSimulation&&actual)combatSamples.push({at:gameNow(),owner:key==='playerDamage'?actual-petCredit:0,pet:key==='playerDamage'?petCredit:actual,kills:0});if(petCredit)record(report,'buffDamage',petCredit);return actual;}
 function targetEnemy(id){const target=enemies.find(e=>e.instanceId===id&&e.hp>0);if(target){enemy=target;player.targetPriority='manual';dirty=true;save();render();}}
 function aoeSkill(id){return !!jobSkillById(player.job,id)?.aoe;}
 function grantPetShield(amount,frontline=false){if(frontline&&activePet()?.hp>0){const s=petStats(activePet()),before=petEffects.shield||0,added=Math.max(0,Math.min(Math.round(amount*.7),Math.round(s.hp*.25)-before));petEffects.shield=before+added;petEffects.shieldExpires=gameNow()+6500;return added+grantPetShield(amount-added);}const ceiling=Math.round(stat('hp')*.25),before=player.shield;if(before>=ceiling)return 0;timers.petShieldExpires=gameNow()+6500;const after=clamp(before+amount,0,ceiling),added=after-before;player.shield=after;petShield+=Math.max(0,added);return Math.max(0,added);}
@@ -1156,12 +1156,26 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
    if(ownerDamage+petAttributedDamage!==totalDamage)throw Error('Map farm damage attribution mismatch');
    const seconds=Math.max(stepMs/1000,elapsedMs/1000);
    const bossSpawns=sink.spawns.filter(x=>x.boss),bossKills=sink.kills.filter(x=>x.boss);
+   const firstBossAt=bossSpawns.length?bossSpawns[0].at:null;
+   const byBoss=sink.hits.filter(x=>x.targetBoss),byMob=sink.hits.filter(x=>!x.targetBoss);
+   const sum=(list,key)=>list.reduce((n,x)=>n+(x[key]||0),0);
+   const bossOwnerDamage=sum(byBoss,'owner'),bossPetDamage=sum(byBoss,'pet'),bossTotalDamage=sum(byBoss,'amount');
+   const mobOwnerDamage=sum(byMob,'owner'),mobPetDamage=sum(byMob,'pet'),mobTotalDamage=sum(byMob,'amount');
+   if(bossTotalDamage+mobTotalDamage!==totalDamage||bossOwnerDamage+mobOwnerDamage!==ownerDamage||bossPetDamage+mobPetDamage!==petAttributedDamage)throw Error('Mixed boss/mob damage split mismatch');
+   const bossSeconds=firstBossAt===null?0:Math.max(0,(from+elapsedMs-firstBossAt)/1000);
    const survivingBosses=enemies.filter(x=>x.boss&&x.hp>0).map(x=>({id:x.id,hp:x.hp,maxHp:x.maxHp}));
    const liveSlots=enemies.filter(x=>!x.boss&&x.hp>0).length;
    const result={map:player.location,mode:'natural-spawn-map',elapsedMs,dead:death,playerHp:player.hp,
     petHp:activePet()?.hp||0,initialHp,initialPetHp,ownerDamage,petAttributedDamage,totalDamage,
     ownerDps:Math.round(ownerDamage/seconds),petDps:Math.round(petAttributedDamage/seconds),
-    totalDps:Math.round(totalDamage/seconds),killsPerMinute:+(sink.kills.length*60/seconds).toFixed(3),
+    totalDps:Math.round(totalDamage/seconds),
+    bossOwnerDamage,bossPetDamage,bossTotalDamage,mobOwnerDamage,mobPetDamage,mobTotalDamage,
+    bossSeconds,bossEffectiveDps:bossSeconds>0?Math.round(bossTotalDamage/bossSeconds):null,
+    bossOwnerDps:bossSeconds>0?Math.round(bossOwnerDamage/bossSeconds):null,
+    bossPetDps:bossSeconds>0?Math.round(bossPetDamage/bossSeconds):null,
+    mobEffectiveDps:Math.round(mobTotalDamage/seconds),
+    bossFirstSpawnAt:firstBossAt,
+    killsPerMinute:+(sink.kills.length*60/seconds).toFixed(3),
     mobKills:sink.kills.filter(x=>!x.boss).length,guaranteeBoss,bossCallAttempted,bossCallSucceeded,bossCallAtMs,bossEncounters:bossSpawns.length,
     bossKills:bossKills.length,bossEscaped:0,survivingBosses,liveSlots,
     enemyActions:sink.enemyActions,playerActions:sink.playerActions,petCasts:sink.petCasts,
