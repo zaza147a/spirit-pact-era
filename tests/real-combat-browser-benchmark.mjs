@@ -114,4 +114,13 @@ try{
  if(!rows.some(x=>x.petCasts?.length>0))throw Error('No pet skills were actually cast: six-fusion test invalid');
  if(rows.some(x=>!x.damageReconciled))throw Error('Some combat runs failed owner/pet damage reconciliation');
  if(mode==='full')for(const plan of plans){const subset=rows.filter(x=>x.level===plan.level&&x.job===plan.job&&x.fusion===plan.fusion);const expected=plan.level===200?11:4;if(new Set(subset.map(x=>x.target)).size!==expected)throw Error('Incomplete source map encounter coverage '+JSON.stringify(plan));}
+}catch(error){
+ await mkdir('test-results',{recursive:true});
+ const failure={kind:'ACTUAL_GAME_COMBATTICK_FAILURE',mode,error:String(error),stack:error?.stack,
+  errors,completedRows:rows.length,lastComplete:rows.at(-1)||null,
+  fusionChecks,runAt:new Date().toISOString()};
+ const file='test-results/lv200-lv210-'+mode+'-failure.json';
+ await writeFile(file,JSON.stringify(failure,null,2));
+ console.error('Actual combat failed; diagnostic artifact:',file,error);
+ process.exitCode=1;
 }finally{await browser.close();server.close();}
