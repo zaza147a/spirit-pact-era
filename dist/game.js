@@ -9,7 +9,7 @@ import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';
 import {companionResonance} from './fusion-resonance.js?v=6.5.0';
 import {CONTINENTS,continentFor,PLAYER_REVIVE_MS,PET_REVIVE_MS,deathRemaining,baseExperienceNeed,petExperienceNeed,THIRD_SEAL,THIRD_SEAL_NAME,THIRD_SEAL_COST,thirdJobError,thirdJobRewards} from './frontier.js?v=6.5.0';
 import {THIRD_JOBS,scaledSkillBuff} from './third-jobs.js?v=6.5.0';
-import {FUSION_PAIRS,FUSION_NAMES,fusedPair,companionRole,fusionSkills,defaultFusionSkills,petSkillLimit,fusionPetError,fusePets} from './pet-fusion.js?v=6.5.0';
+import {FUSION_PAIRS,FUSION_NAMES,fusedPair,companionRole,fusionSkills,defaultFusionSkills,petSkillLimit,fusionPetError,fusePets} from './pet-fusion.js?v=6.5.3';
 import {reconcileSkillPoints,updateSkillPointControls} from './skill-points.js?v=6.5.0';
 import {manualSalePrice,sellBagEntry} from './inventory-sale.js?v=6.5.0';
 import {ATTRIBUTE_KEYS,gearAttributes,cardAttributes,gearAttributeLimit,cardAttributeLimit,attributeBreakdown,POTENTIAL_NAMES,free201AttributeReset,allocationDamageMultiplier,attributeDescriptions} from './growth-v5.js?v=6.5.0';
@@ -39,7 +39,7 @@ import {PET_ROUTES,PET_FAMILIES,PET_PALETTES,petRoute,petIcon,petForm,petArt,evo
 import {CLASSES,ATTRS,ITEMS,SPECIES,MONSTERS,PETLAND_MONSTERS,MAPS,CARDS,SLOTS,PET_SLOTS,PET_RARITIES,PET_EVOLUTIONS,petRarity,nextPetEvolution,clamp,rand,makePet,petStats} from './catalog.js?v=6.5.0';
 import {FIELDS,NAMES,newReport,record,finish,normalizeHistory,damageSplitPcb} from './contribution.js?v=6.5.0';
 import {resonanceRule,resonanceOpener,resonanceTriggered,RESONANCE_RULES,RESONANCE_EVENTS,RESONANCE_MAX,ULTIMATE_COST,ULTIMATE_COOLDOWN} from './resonance.js?v=6.5.0';
-import {PET_SKILLS,petSkillById,defaultPetSkills,petSkillsFor,petAbilitySetName,migratePetSkills,fusionSkillLoadoutNotice} from './pet-abilities.js?v=6.5.0';
+import {PET_SKILLS,petSkillById,defaultPetSkills,petSkillsFor,petAbilitySetName,migratePetSkills,fusionSkillLoadoutNotice} from './pet-abilities.js?v=6.5.3';
 import {JOB_SKILLS,jobSkillById,initialJobSkills,weaponSkillAllowed,activeJobSkills,jobPassives,skillUnlocked,supersededSkill,REBIRTH_MAIN_REPLACES} from './job-skills.js?v=6.5.0';
 import {WORLD_MONSTERS,ZONES,worldMonsterArt} from './world-data.js?v=6.5.0';
 import {rollGear,rollPetGear,rebalanceGear,gearStatValue,affixRange,normalizeBag,addStack,consumeStack,STACK_SET,RARITIES,AFFIX_NAMES,TIER_NAMES,gearTier,gearGroup,shardId,gearLabel,affixLabel,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,equipmentDrop} from './loot.js?v=6.5.0';
