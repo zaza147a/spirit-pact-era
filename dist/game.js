@@ -169,7 +169,7 @@ function activePetMarkPower(now=gameNow()){
  if(petEffects.markWardOnly&&((petEffects.markUntil||0)<=now||petEffects.markSourcePetId!==activePet()?.id||!originalGuardActive(now))){petEffects.markHits=0;return 0;}
  return petEffects.markHits>0?petEffects.markPower:0;
 }
-function dealDamage(amount,key){if(!enemy?.hp)return 0;const fused=key==='playerDamage'&&fusedPair(activePet())&&activePet()?.hp>0,preparation=enemy.dawn&&enemy.boss&&enemy.id==='dawn-archon'?dawnArchonPreparationFactor(player):1,base=Math.max(0,Math.round(amount*jobZoneOutputFactor(player.job,player.level)*preparation)),blessing=fused&&petEffects.blessingUntil>gameNow()?base*petEffects.blessingPower:0,mark=fused?activePetMarkPower():0;if(mark)petEffects.markHits--;const rolled=base+blessing+mark,actual=Math.min(enemy.hp,Math.max(0,Math.round(rolled)));enemy.hp-=actual;const petCredit=key==='playerDamage'?(fused?Math.min(actual,Math.round(actual*(Math.min(base,pendingPetCredit)+blessing+mark)/Math.max(1,rolled))):Math.min(actual,pendingPetCredit)):0;pendingPetCredit=0;record(report,key,actual-petCredit);if(!offlineSimulation&&actual)combatSamples.push({at:gameNow(),owner:key==='playerDamage'?actual-petCredit:0,pet:key==='playerDamage'?petCredit:actual,kills:0});if(petCredit)record(report,'buffDamage',petCredit);return actual;}
+function dealDamage(amount,key){if(!enemy?.hp)return 0;const fused=key==='playerDamage'&&fusedPair(activePet())&&activePet()?.hp>0,preparation=enemy.dawn&&enemy.boss&&enemy.id==='dawn-archon'?dawnArchonPreparationFactor(player):1,base=Math.max(0,Math.round(amount*jobZoneOutputFactor(player.job,player.level)*preparation)),blessing=fused&&petEffects.blessingUntil>gameNow()?base*petEffects.blessingPower:0,mark=fused?activePetMarkPower():0;if(mark)petEffects.markHits--;const rolled=base+blessing+mark,actual=Math.min(enemy.hp,Math.max(0,Math.round(rolled)));enemy.hp-=actual;const petCredit=key==='playerDamage'?(fused?Math.min(actual,Math.round(actual*(Math.min(base,pendingPetCredit)+blessing+mark)/Math.max(1,rolled))):Math.min(actual,pendingPetCredit)):0;pendingPetCredit=0;record(report,key,actual-petCredit);if(globalThis.__lingqiCombatTestSink&&actual)globalThis.__lingqiCombatTestSink.hits.push({at:gameNow(),kind:key,owner:actual-petCredit,pet:petCredit,target:enemy.id,amount:actual});if(!offlineSimulation&&actual)combatSamples.push({at:gameNow(),owner:key==='playerDamage'?actual-petCredit:0,pet:key==='playerDamage'?petCredit:actual,kills:0});if(petCredit)record(report,'buffDamage',petCredit);return actual;}
 function targetEnemy(id){const target=enemies.find(e=>e.instanceId===id&&e.hp>0);if(target){enemy=target;player.targetPriority='manual';dirty=true;save();render();}}
 function aoeSkill(id){return !!jobSkillById(player.job,id)?.aoe;}
 function grantPetShield(amount,frontline=false){if(frontline&&activePet()?.hp>0){const s=petStats(activePet()),before=petEffects.shield||0,added=Math.max(0,Math.min(Math.round(amount*.7),Math.round(s.hp*.25)-before));petEffects.shield=before+added;petEffects.shieldExpires=gameNow()+6500;return added+grantPetShield(amount-added);}const ceiling=Math.round(stat('hp')*.25),before=player.shield;if(before>=ceiling)return 0;timers.petShieldExpires=gameNow()+6500;const after=clamp(before+amount,0,ceiling),added=after-before;player.shield=after;petShield+=Math.max(0,added);return Math.max(0,added);}
@@ -1058,3 +1058,73 @@ function bindTrialControls(){bindWarehouseControls();for(const b of $('side').qu
 
 init();
 import {exchangeOverflowGold,sellSurplusPotions} from './economy-limits.js?v=6.5.1';
+
+
+// ISOLATED BRANCH ONLY: actual battle runtime instrumentation. Not a DPS formula.
+// Never deploy this test hook to the public main branch.
+if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('lingqi_combat_test')){
+ const namedGear={headUpper:'helm',headMiddle:'visor',headLower:'mask',armor:'plate',garment:'cloak',shoes:'boots',accessory1:'chip',accessory2:'ring'};
+ globalThis.__lingqiCombatHarness={
+  configure(spec){
+   if(!SECOND_JOBS[spec.job]||![200,210].includes(spec.level))throw Error('invalid scenario');
+   offlineSimulation=true;offlineClock=1_900_000_000_000;
+   resetSession();offlineSimulation=true;offlineClock=1_900_000_000_000;
+   const stageRank=spec.level===210?'SSS':null;
+   const p=normalize(fresh('戰鬥驗證',spec.job));
+   p.level=spec.level;p.reborn=true;p.thirdJob=true;p.firstJobLevel=50;p.secondJobLevel=70;p.jobLevel=70;
+   p.location=spec.level===200?'worldroot':'dawnrift';p.dawnUnlocked=true;p.dawnSigil=spec.level===210?(spec.sigil??8):0;p.autoEscapeBoss=false;
+   p.attributes={STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1,...spec.attributes};
+   capBaseAttributes(p);
+   p.statPoints=Math.max(0,allocationBudget(p.level,true)-Object.values(p.attributes).reduce((n,v)=>n+v-1,0));
+   p.jobSkills=Object.fromEntries(JOB_SKILLS[p.job].map(x=>[x.id,x.maxRank]));
+   p.equippedJobSkill='thirdMain_'+p.job;
+   p.autoSkills=normalizeAutoSkills({order:(spec.skillOrder||JOB_SKILLS[p.job].filter(x=>x.kind!=='passive').map(x=>x.id))},JOB_SKILLS[p.job]);
+   p.gear=Object.fromEntries(Object.keys(SLOTS).map(slot=>[slot,null]));
+   for(const [slot,id] of Object.entries(namedGear))p.gear[slot]=rollGear(id,200,'mythic',()=>.5);
+   const [right,left]=spec.weaponBuild.split('+');
+   p.gear.rightHand=rollGear(right,200,'mythic',()=>.5);
+   if(left)p.gear.leftHand=rollGear(left,200,'mythic',()=>.5);
+   if(stageRank)for(const g of Object.values(p.gear))if(g)g.enhancement=stageRank;
+   const [main,sub]=spec.fusion.split('-');
+   const species={attack:'fang',magic:'wisp',defense:'shell',support:'sprout'}[main];
+   const pet={id:'combat-test-pet',species,nickname:'對照融合夥伴',level:200,rarity:'mythic',ascended:true,evolution:4,
+    iv:{hp:0,atk:0,def:0,matk:0,sp:0,aspd:0},fusion:{main,sub},loyalty:100,
+    gear:Object.fromEntries([['head',spec.petGear?.[0]||'petHelm'],['body',spec.petGear?.[1]||'petArmor'],['shoes',spec.petGear?.[2]||'petBoots']].map(([slot,id])=>{
+      const g=rollPetGear(id,200,'mythic',()=>.5);if(stageRank)g.enhancement=stageRank;return [slot,g];
+    }))};
+   const skills=fusionSkills(pet);pet.equippedSkills=(spec.petSkills?.length?spec.petSkills:skills.filter(x=>!['shield','heal','mana','guard','blessing','mark'].includes(x.kind)).slice(0,3).map(x=>x.id));
+   pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;
+   p.pets=[pet];p.activePetId=pet.id;
+   player=p;auto=true;gameRunning=true;offlineSimulation=true;
+   player.hp=stat('hp');player.mp=stat('mp');player.resonance=0;player.manualPaused=false;
+   bossCooldowns={worldroot:Infinity,dawnrift:Infinity};
+   spawn();encounterSlots=Array.from({length:encounterLimit(player.location)},()=>Infinity);
+   globalThis.__lingqiCombatTestSink={hits:[],ticks:0};
+   return {job:p.job,level:p.level,location:p.location,playerHp:p.hp,petHp:pet.hp,aspd:stat('aspd'),atk:stat('atk'),matk:stat('matk')};
+  },
+  fight({boss=false,monsterId=null,durationMs=60000,stepMs=20,enemyAttackEnabled=true}={}){
+   const pool=player.location==='dawnrift'?DAWN_MONSTERS:WORLD_MONSTERS.filter(m=>m.map==='worldroot');
+   const source=boss?MAP_BOSSES[player.location]:pool.find(m=>m.id===monsterId)||pool[0];
+   if(!source)throw Error('No selected enemy');
+   enemies=[];enemy=null;encounterSlots=Array.from({length:encounterLimit(player.location)},()=>Infinity);
+   const created={...source,...monsterRuntimeStats(source),instanceId:'bench-monster',slotIndex:0,maxHp:source.hp,hp:source.hp,
+    appearedAt:gameNow(),lastAttack:enemyAttackEnabled?gameNow():Infinity};
+   enemies=[created];enemy=created;auto=true;bossCooldowns[player.location]=Infinity;
+   const initialHp=player.hp, initialPetHp=activePet().hp,started=gameNow(),sink=globalThis.__lingqiCombatTestSink;
+   sink.hits=[];sink.ticks=0;let endedAt=null;
+   for(let elapsed=0;elapsed<=durationMs;elapsed+=stepMs){
+    offlineClock=started+elapsed;
+    combatTick(offlineClock);sink.ticks++;
+    if(created.hp<=0){endedAt=elapsed;break;}
+    if(player.hp<=0||!auto){endedAt=elapsed;break;}
+   }
+   const owner=sink.hits.reduce((n,x)=>n+x.owner,0),petDirect=sink.hits.reduce((n,x)=>n+((x.kind==='playerDamage')?x.pet:x.amount),0);
+   const elapsedMs=endedAt??durationMs;
+   return {map:player.location,enemy:source.id,boss:!!source.boss,enemyHp:source.hp,enemyRemain:created.hp,
+    elapsedMs,kill:created.hp<=0,dead:player.hp<=0,playerHp:player.hp,petHp:activePet().hp,
+    ownerDamage:owner,petAttributedDamage:petDirect,totalDamage:source.hp-created.hp,
+    ownerDps:Math.round(owner/Math.max(.02,elapsedMs/1000)),petDps:Math.round(petDirect/Math.max(.02,elapsedMs/1000)),
+    hits:sink.hits.length,ticks:sink.ticks,firstHits:sink.hits.slice(0,12)};
+  }
+ };
+}
