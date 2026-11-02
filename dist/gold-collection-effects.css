@@ -47,7 +47,7 @@
 #character[data-gold-tier="3"]>.hero .art-hero,
 #character[data-gold-tier="4"]>.hero .art-hero,
 #companion[data-gold-tier="4"]>.hero .art-hero{
-  position:relative;
+  position:relative!important;
   z-index:2;
   /* The extra gap keeps names beneath the projected ground circle. */
   margin-bottom:31px!important;
@@ -80,7 +80,7 @@
   }
   #character[data-gold-tier="3"]>.hero .art-hero,
   #character[data-gold-tier="4"]>.hero .art-hero,
-  #companion[data-gold-tier="4"]>.hero .art-hero{margin-bottom:0!important}
+  #companion[data-gold-tier="4"]>.hero .art-hero{position:absolute!important;margin-bottom:0!important}
 }
 @media(max-width:700px){
   #character[data-gold-tier="3"]>.hero::after,
