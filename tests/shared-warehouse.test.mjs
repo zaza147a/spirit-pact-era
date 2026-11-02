@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,warehouseEquipment,readWarehouse,warehouseItems,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,exportWarehouse,importWarehouse} from '../dist/shared-warehouse.js';
+import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,warehouseEquipment,readWarehouse,warehouseItems,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,transferWarehouseStack,warehouseStackItems,exportWarehouse,importWarehouse} from '../dist/shared-warehouse.js';
 import {writeCharacterSlot,readCharacterSlot,readCharacterSlots} from '../dist/character-slots.js';
 import {rollGear,rollPetGear} from '../dist/loot.js';
 import {runtime} from './runtime31-helper.mjs';
@@ -25,3 +25,31 @@ test('warehouse backup merge preserves ledger ownership and cannot replay alread
 test('corrupt and over-capacity backup imports preserve all previous bytes',()=>{for(const data of [{version:1,items:[]},{type:'spirit-pact-shared-warehouse',version:1,items:[{id:'blade',uid:'x'}]}]){const {s}=fixture(),before=new Map(s.values);assert.throws(()=>importWarehouse(s,data));assert.deepEqual(s.values,before);}const {s,gear}=fixture();const all=Array.from({length:201},(_,i)=>({...gear,uid:'many'+i}));assert.throws(()=>importWarehouse(s,{type:'spirit-pact-shared-warehouse',version:1,items:all}));assert.equal(s.getItem(WAREHOUSE_KEY),null);importWarehouse(s,{type:'spirit-pact-shared-warehouse',version:1,items:all.slice(0,199)});const filled=s.getItem(WAREHOUSE_KEY);assert.throws(()=>importWarehouse(s,{type:'spirit-pact-shared-warehouse',version:1,items:[{...gear,uid:'new-a'},{...gear,uid:'new-b'}]}),/空間不足/);assert.equal(s.getItem(WAREHOUSE_KEY),filled);s.setItem(WAREHOUSE_KEY,'corrupt');assert.throws(()=>warehouseItems(s));assert.equal(s.getItem(WAREHOUSE_KEY),'corrupt');});
 test('missing Web Locks rejects safely, while queued tabs cannot both claim the same item',async()=>{await assert.rejects(()=>withWarehouseLock(null,()=>assert.fail('unsafe fallback')),/HTTPS/);const {s,gear,players}=fixture();move(s,0,players[0],'deposit',gear.uid);let queue=Promise.resolve();const locks={request(_name,_options,fn){const next=queue.then(fn);queue=next.catch(()=>{});return next;}};const r=await Promise.allSettled([1,2].map(i=>withWarehouseLock(locks,()=>move(s,i,load(s,i),'withdraw',gear.uid))));assert.equal(r.filter(x=>x.status==='fulfilled').length,1);assert.equal(readCharacterSlots(s,p=>p,()=>true).flatMap(r=>r.player.bag).filter(g=>g.uid===gear.uid).length,1);});
 test('real game normalization keeps warehouse receipts and transferred affixes across all eight slots',async()=>{const c=await runtime(),s=storage(),p=c.api.normalize(c.api.fresh('米菈驗收','knight'));p.location='town';const gear=rollGear('blade',190,'mythic',()=>.5);gear.uid='real-runtime';gear.enhancement='SSS';p.bag.push(gear);for(let i=0;i<8;i++){const q=copy(p);q.name='真實角色'+i;q.bag=i===0?[gear]:[];writeCharacterSlot(s,i,q);}move(s,0,readCharacterSlot(s,0,c.api.normalize,c.api.valid).player,'deposit',gear.uid);for(let i=1;i<8;i++){move(s,i,readCharacterSlot(s,i,c.api.normalize,c.api.valid).player,'withdraw',gear.uid);const q=readCharacterSlot(s,i,c.api.normalize,c.api.valid);assert.equal(q.error,null);assert.deepEqual(q.player.bag[0],gear);if(i<7)move(s,i,q.player,'deposit',gear.uid);}assert.ok(warehouseEquipment(gear));});
+
+test('stacked inventory and card transfers are shared between eight slots, preserving 50-per-action cap and category rules',()=>{
+ const {s,players}=fixture();const p=players[0];p.cards=[{id:'sandbug',qty:80}];p.bag.push({id:'med',qty:120});
+ const first=transferWarehouseStack(s,0,p,'deposit','item','med',50,next=>writeCharacterSlot(s,0,next));
+ assert.equal(first.player.bag.find(x=>x.id==='med').qty,72);
+ assert.equal(warehouseStackItems(s).find(x=>x.id==='med').qty,50);
+ assert.throws(()=>transferWarehouseStack(s,0,first.player,'deposit','item','med',51),/1～50/);
+ const card=transferWarehouseStack(s,0,first.player,'deposit','card','sandbug',40,next=>writeCharacterSlot(s,0,next));
+ assert.equal(card.player.cards[0].qty,40);
+ const other=transferWarehouseStack(s,3,load(s,3),'withdraw','card','sandbug',25,next=>writeCharacterSlot(s,3,next));
+ assert.equal(other.player.cards[0].qty,25);
+ assert.equal(warehouseStackItems(s).find(x=>x.id==='sandbug').qty,15);
+ assert.equal(load(s,0).cards[0].qty,40);
+});
+test('stack ledger replays exactly once if character write fails after shared commit',()=>{
+ const {s,players}=fixture();players[0].bag.push({id:'med',qty:70});s.fail(k=>k==='icarus-character-slot-1');
+ const result=transferWarehouseStack(s,0,players[0],'deposit','item','med',30,next=>writeCharacterSlot(s,0,next));
+ assert.equal(result.pendingSync,true);assert.equal(load(s,0).bag.find(x=>x.id==='med').qty,42);
+ assert.equal(load(s,0).bag.find(x=>x.id==='med').qty,42);
+ s.fail(null);writeCharacterSlot(s,0,load(s,0));assert.equal(load(s,0).bag.find(x=>x.id==='med').qty,42);
+});
+test('mission items, tickets and malformed warehouse stacks are rejected without changing saves',()=>{
+ const {s,players}=fixture(),original=new Map(s.values);
+ assert.throws(()=>transferWarehouseStack(s,0,players[0],'deposit','item','unknown_item',1));
+ assert.deepEqual(s.values,original);
+ s.setItem(WAREHOUSE_KEY,JSON.stringify({version:1,records:{},stacks:{'item:med':{qty:-1,flows:{}}}}));
+ assert.throws(()=>readWarehouse(s),/堆疊/);
+});
