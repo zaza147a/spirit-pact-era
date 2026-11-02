@@ -25,8 +25,9 @@ code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}
 import {WORLD_MONSTERS,ZONES} from '../dist/world-data.js';
 import {MAP_BOSSES} from '../dist/map-bosses.js';
 import {CARDS,SLOTS,PET_RARITIES,PET_EVOLUTIONS,SPECIES} from '../dist/catalog.js';
-import {GEAR_BASE,PET_GEAR_BASE,RARITIES,AFFIX_NAMES,affixRange,TIER_NAMES,GEAR_TIERS,QUALITY_POWER,PET_SLOTS} from '../dist/loot.js';
+import {GEAR_BASE,PET_GEAR_BASE,RARITIES,AFFIX_NAMES,affixRange,TIER_NAMES,QUALITY_POWER,PET_SLOTS} from '../dist/loot.js';
 import {ENHANCEMENT_POWER} from '../dist/sky-trials.js';
+import {GEAR_TIERS} from '../dist/progression.js';
 import {FUSION_PAIRS} from '../dist/pet-fusion.js';
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let tab='monsters';const allMonsters=[...WORLD_MONSTERS,...Object.values(MAP_BOSSES)].sort((a,b)=>a.level-b.level||(a.boss?1:-1));
