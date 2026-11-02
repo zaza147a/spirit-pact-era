@@ -38,13 +38,13 @@ export function tacticDamageFactor(effect,job,target,magical){
 export function tacticIncomingFactor(effect,toPet=false){
  if(!effect)return 1;
  switch(effect.kind){
- case 'guard':return toPet?.75:.6;
+ case 'guard':return toPet ? .75 : .6;
  case 'rescue':return .85;
  case 'duet':return .9;
- case 'frenzy':return toPet?1:1.25;
- case 'burst':return toPet?1:1.1;
- case 'firstDodge':return toPet?1:.75;
- case 'decoyGuard':return toPet?1:.7;
+ case 'frenzy':return toPet ? 1 : 1.25;
+ case 'burst':return toPet ? 1 : 1.1;
+ case 'firstDodge':return toPet ? 1 : .75;
+ case 'decoyGuard':return toPet ? 1 : .7;
  default:return 1;
  }
 }
