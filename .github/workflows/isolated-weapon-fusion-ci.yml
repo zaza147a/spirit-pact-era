@@ -21,4 +21,4 @@ jobs:
           node --check dist/pet-abilities.js
       - name: Validate weapon, six unordered fusion routes, sixty resonances and revival
         run: |
-          node --test --test-concurrency=2 tests/all-jobs-source-contract.test.mjs tests/all-jobs-weapon-matrix-isolated.test.mjs tests/assassin-three-weapons-isolated.test.mjs tests/weapon-balance-isolated.test.mjs tests/unordered-fusion-revival-isolated.test.mjs
+          node --test --test-concurrency=2 tests/*.test.mjs
