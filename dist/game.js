@@ -11,7 +11,7 @@ import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';
 import {companionResonance} from './fusion-resonance.js?v=6.5.0';
 import {CONTINENTS,continentFor,PLAYER_REVIVE_MS,PET_REVIVE_MS,deathRemaining,baseExperienceNeed,petExperienceNeed,THIRD_SEAL,THIRD_SEAL_NAME,THIRD_SEAL_COST,thirdJobError,thirdJobRewards} from './frontier.js?v=6.5.0';
 import {THIRD_JOBS,scaledSkillBuff} from './third-jobs.js?v=6.5.0';
-import {FUSION_PAIRS,FUSION_NAMES,fusedPair,companionRole,fusionSkills,defaultFusionSkills,petSkillLimit,fusionPetError,fusePets} from './pet-fusion.js?v=6.5.3';
+import {FUSION_PAIRS,FUSION_NAMES,fusedPair,companionRole,fusionSkills,defaultFusionSkills,petSkillLimit,fusionPetError,fusePets} from './pet-fusion.js?v=6.5.5';
 import {reconcileSkillPoints,updateSkillPointControls} from './skill-points.js?v=6.5.0';
 import {manualSalePrice,sellBagEntry} from './inventory-sale.js?v=6.5.0';
 import {ATTRIBUTE_KEYS,gearAttributes,cardAttributes,gearAttributeLimit,cardAttributeLimit,attributeBreakdown,POTENTIAL_NAMES,free201AttributeReset,allocationDamageMultiplier,attributeDescriptions} from './growth-v5.js?v=6.5.0';
@@ -33,7 +33,7 @@ import {MAP_BOSSES,canEncounterBoss,BOSS_RESPITE_MS,bossRarity,BOSS_CARD_CHANCE}
 import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migrateCardBindings,cardEffectsFor,cardDescription} from './card-effects.js?v=6.5.0';
 import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.5.0';
 import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=6.5.0';
-import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.5.0';
+import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.5.5';
 import {matchesGearFilters} from './inventory-rules.js?v=6.5.0';
 import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=6.5.0';
 import {patchHtml,panelIsEditing} from './ui-patch.js?v=6.5.0';
