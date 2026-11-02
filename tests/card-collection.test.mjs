@@ -36,7 +36,7 @@ test('automatic intake consumes one new card and converts only surplus duplicate
  assert.deepEqual(result.added,['a','b']);
  assert.equal(result.recycled,2);
  assert.equal(result.points,20);
- assert.deepEqual(p.cards,[{id:'a',qty:1}]);
+ assert.deepEqual(p.cards,[{id:'a',qty:1},{id:'b',qty:1}]);
  assert.equal(p.cardRecyclePoints,20);
  assert.equal(collectionProgress(cards,result.collection).owned,2);
 });
