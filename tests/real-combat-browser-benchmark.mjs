@@ -4,6 +4,7 @@
 import {chromium} from 'playwright';
 import {WORLD_MONSTERS} from '../dist/world-data.js';
 import {DAWN_MONSTERS} from '../dist/dawn-world.js';
+import {allocationBudget} from '../dist/growth-v5.js';
 import {createServer} from 'node:http';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,extname,join} from 'node:path';
@@ -53,12 +54,15 @@ try{
    const allocations=[{STR:1,AGI:cap,VIT:20,INT:1,DEX:cap,LUK:cap},{STR:cap,AGI:cap,VIT:20,INT:cap,DEX:cap,LUK:cap}];
    // Legalize to point budget; retain strict max stat, give remaining to main stat.
    const unique=allocations.map(a=>{
-    const out={STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1},budget=(plan.level-1)*2+20;
-    for(const k of [attr,'LUK','AGI','DEX','VIT','STR','INT']){
-     const can=Math.min(cap-1,budget);
-     const take=Math.min(Math.max(0,(a[k]||1)-1),can);
+    const out={STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1};
+    let budget=allocationBudget(plan.level,true);
+    for(const k of [...new Set([attr,'LUK','AGI','DEX','VIT','STR','INT'])]){
+     const take=Math.min(cap-out[k],budget,Math.max(0,(a[k]||1)-out[k]));
      out[k]+=take;budget-=take;
-    }return out;
+    }
+    const total=Object.values(out).reduce((n,v)=>n+v-1,0);
+    if(total>allocationBudget(plan.level,true)||Object.values(out).some(x=>x>cap))throw Error('Illegal point allocation');
+    return out;
    });
    for(const [allocationIndex,attributes] of unique.entries()){
     const variants=plan.level===210?[4,8]:[0];
