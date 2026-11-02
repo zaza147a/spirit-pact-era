@@ -36,14 +36,14 @@ const plans=mode==='full'?[200,210].flatMap(level=>Object.keys(jobs).flatMap(job
  {level:210,job:'knight',fusion:'attack-defense'},
  {level:210,job:'hunter',fusion:'attack-magic'}
 ];
-await new Promise(ok=>server.listen(port,'127.0.0.1',ok));
-const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
-const page=await browser.newPage({viewport:{width:1280,height:900}});
-const errors=[],httpFailures=[];
-page.on('pageerror',err=>errors.push(err.stack||err.message));
-page.on('response',resp=>{if(resp.status()>=400)httpFailures.push({status:resp.status(),url:resp.url()});});
-const rows=[],fusionChecks=[];let currentCase=null;
+let browser=null,page=null;
+const errors=[],httpFailures=[],rows=[],fusionChecks=[];let currentCase=null;
 try{
+ await new Promise(ok=>server.listen(port,'127.0.0.1',ok));
+ browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ page=await browser.newPage({viewport:{width:1280,height:900}});
+ page.on('pageerror',err=>errors.push(err.stack||err.message));
+ page.on('response',resp=>{if(resp.status()>=400)httpFailures.push({status:resp.status(),url:resp.url()});});
  await page.goto('http://127.0.0.1:'+port+'/index.html?lingqi_combat_test',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>Boolean(globalThis.__lingqiCombatHarness),null,{timeout:30000});
  for(const plan of plans){
@@ -125,4 +125,4 @@ try{
  await writeFile(file,JSON.stringify(failure,null,2));
  console.error('Actual combat failed; diagnostic artifact:',file,error);
  process.exitCode=1;
-}finally{await browser.close();server.close();}
+}finally{if(browser)await browser.close();server.close();}
