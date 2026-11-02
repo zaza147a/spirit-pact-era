@@ -17,7 +17,7 @@ export function petDirectRoleMultiplier(role,level=1){
 // their own ledger entries and damage-source ownership.
 export function fusionDirectOutputFactor(pet){
  if(!pet?.fusion)return 1;
- const {main,sub}=pet.fusion;
+ const [main,sub]=[pet.fusion.main,pet.fusion.sub].sort((a,b)=>['attack','magic','defense','support'].indexOf(a)-['attack','magic','defense','support'].indexOf(b));
  if(main==='attack'&&sub==='magic')return 1.6;
  if(main==='magic'&&sub==='defense')return .9;
  // Guardian-healer builds retain lower direct output, but cannot stall the
