@@ -53,22 +53,27 @@ try{
    const weaponBuild=jobs[plan.job][0];
    const cap=plan.level===210?150:120;
    const focus=['wizard','sage','priest'].includes(plan.job)?'INT':['hunter','performer'].includes(plan.job)?'DEX':'STR';
-   const attributes={STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1};
-   let budget=allocationBudget(plan.level,true);
-   for(const key of [...new Set([focus,'LUK','AGI','DEX','VIT','STR','INT'])]){
-    const take=Math.min(cap-attributes[key],budget);attributes[key]+=take;budget-=take;
-   }
-   for(const sigil of plan.level===210?[4,8]:[0]){
-    currentCase={...plan,weaponBuild,attributes,sigil,mode:'natural-spawn-map'};
-    const outcome=await page.evaluate(({plan,weaponBuild,attributes,sigil})=>{
-     let seed=0x51A8D00D;
-     Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
-     const h=globalThis.__lingqiCombatHarness;
-     const panel=h.configure({...plan,weaponBuild,attributes,sigil});
-     return {panel,...h.farm({durationMs:90000,stepMs:20})};
-    },{plan,weaponBuild,attributes,sigil});
-    rows.push({...plan,weaponBuild,attributes,sigil,...outcome});
-    if(rows.length%10===0){await saveCheckpoint();console.log('Natural farm cases',rows.length);}
+   for(const profile of ['damage','survival']){
+    const attributes={STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1};
+    let budget=allocationBudget(plan.level,true);
+    const priority=profile==='damage'?[focus,'LUK','AGI','DEX','VIT','STR','INT']:['VIT',focus,'AGI','LUK','DEX','STR','INT'];
+    for(const key of [...new Set(priority)]){
+     const take=Math.min(cap-attributes[key],budget);
+     attributes[key]+=take;budget-=take;
+    }
+    if(Object.values(attributes).reduce((n,v)=>n+v-1,0)>allocationBudget(plan.level,true))throw Error('Invalid profile attributes');
+    for(const sigil of plan.level===210?[4,8]:[0]){
+     currentCase={...plan,weaponBuild,attributes,profile,sigil,mode:'natural-spawn-map'};
+     const outcome=await page.evaluate(({plan,weaponBuild,attributes,sigil})=>{
+      let seed=0x51A8D00D;
+      Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+      const h=globalThis.__lingqiCombatHarness;
+      const panel=h.configure({...plan,weaponBuild,attributes,sigil});
+      return {panel,...h.farm({durationMs:90000,stepMs:20})};
+     },{plan,weaponBuild,attributes,sigil});
+     rows.push({...plan,weaponBuild,attributes,profile,sigil,...outcome});
+     if(rows.length%10===0){await saveCheckpoint();console.log('Natural farm candidates',rows.length,plan.level,plan.job,profile);}
+    }
    }
   }
   if(!rows.some(x=>x.spawns?.length>=4))throw Error('Natural farm failed to spawn four map slots');
@@ -84,7 +89,7 @@ try{
   const file='test-results/lv200-lv210-'+mode+'-actual-combat.json';
   await writeFile(file,JSON.stringify({kind:'ACTUAL_NATURAL_RESPAWN_COMBATTICK',mode,rows,errors,httpFailures},null,2));
   console.log('Natural map combat completed',rows.length,file);
-  if(mode==='farm'&&rows.length!==180)throw Error('Expected 60 Lv200 and 120 Lv210 map runs');
+  if(mode==='farm'&&rows.length!==360)throw Error('Expected 360 actual map encounters: 120 Lv200 plus 240 Lv210 IV/VIII including damage and VIT survival profiles');
   if(errors.length||httpFailures.length)throw Error('Browser errors '+JSON.stringify({errors,httpFailures}));
 
  }
