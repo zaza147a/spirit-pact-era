@@ -36,3 +36,11 @@ test('roomy desktop stacks portrait above centered player and companion details'
  assert.match(css,/\.character #companion \.hero \.art-hero\{width:155px/);
  assert.match(css,/\.character \.hero img\.art-hero\.rank-outfit\{transform:scale\(1\.13\);transform-origin:center center\}/);
 });
+
+test('ordinary desktop screens force the vertical layout over legacy first-child rules',()=>{
+ const css=readFileSync(new URL('../dist/compact-v5.css',import.meta.url),'utf8');
+ assert.match(css,/@media\(min-width:1001px\) and\(min-height:820px\)\{/);
+ assert.match(css,/#gameShell \.character \.hero:has\(\.art-hero\)[^{]*\{display:flex!important;flex-direction:column!important/);
+ assert.match(css,/#gameShell \.character \.hero \.art-hero,#gameShell \.character \.hero:first-child \.art-hero\{position:static!important/);
+ assert.match(css,/height:clamp\(108px,13vh,150px\)!important/);
+});

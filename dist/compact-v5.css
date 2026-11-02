@@ -157,3 +157,12 @@
  .character .hero img.art-hero.rank-outfit{transform:scale(1.13);transform-origin:center center}
  .character .hero .character-name,.character .hero strong,.character .hero .pill,.character .hero .pet-nickname{max-width:100%;text-align:center;overflow-wrap:anywhere}
 }
+/* All ordinary desktop heights: override the first-child/legacy portrait
+   positioning explicitly. Previous tall-only rules missed zoomed viewports. */
+@media(min-width:1001px) and(min-height:820px){
+ #gameShell .character .hero:has(.art-hero),#gameShell .character #companion .hero:has(.art-hero){display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:4px!important;min-height:0!important;padding:9px 7px 10px!important;text-align:center!important;overflow:hidden!important}
+ #gameShell .character .hero .art-hero,#gameShell .character .hero:first-child .art-hero{position:static!important;display:block!important;left:auto!important;top:auto!important;flex:0 0 auto!important;width:150px!important;max-width:100%!important;height:clamp(108px,13vh,150px)!important;margin:0 auto 3px!important;transform:none!important;object-fit:contain!important;object-position:center!important}
+ #gameShell .character #companion .hero .art-hero{width:155px!important;max-width:100%!important;height:clamp(108px,13vh,150px)!important}
+ #gameShell .character .hero img.art-hero.rank-outfit{transform:scale(1.12)!important;transform-origin:center center!important}
+ #gameShell .character .hero .character-name,#gameShell .character .hero strong,#gameShell .character .hero .pill,#gameShell .character .hero .pet-nickname{max-width:100%!important;text-align:center!important;overflow-wrap:anywhere}
+}
