@@ -33,12 +33,12 @@
 #companion[data-gold-tier="4"]>.hero::after{
   content:"";
   position:absolute;
-  z-index:3;
+  z-index:1;
   pointer-events:none;
   width:min(90%,205px);
   height:205px;
   left:50%;
-  top:52px;
+  top:86px;
   transform:translateX(-50%) perspective(350px) rotateX(69deg);
   transform-origin:center center;
   background:url("./assets/gold-ground-sigil.svg") center/contain no-repeat;
