@@ -14,12 +14,12 @@ test('actual map ranking CLI writes all 60+60+60 only from complete reconciled i
  try{
   mkdirSync(join(dir,'test-results'));
   const rows=[];
-  for(const level of [200,210])for(const job of jobs)for(const fusion of fusions)for(const sigil of level===200?[0]:[4,8]){
+  for(const level of [200,210])for(const job of jobs)for(const fusion of fusions)for(const sigil of level===200?[0]:[4,8])for(const profile of ['damage','survival']){
    // Deliberately MOCK data: ensures rankings are not mistaken for measured DPS.
    const totalDamage=10000+(level-200)*100+jobs.indexOf(job)*500;
-   rows.push({level,job,fusion,sigil,mode:'natural-spawn-map',weaponBuild:'mock',
+   rows.push({level,job,fusion,sigil,profile,mode:'natural-spawn-map',weaponBuild:'mock',
     attributes:{STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1},
-    ticks:4501,elapsedMs:90000,damageReconciled:true,
+    ticks:4501,elapsedMs:profile==='survival'?90000:10000,damageReconciled:true,
     ownerDamage:totalDamage*.6,petAttributedDamage:totalDamage*.4,totalDamage,
     bossTotalDamage:totalDamage*.2,mobTotalDamage:totalDamage*.8,
     bossOwnerDamage:totalDamage*.12,mobOwnerDamage:totalDamage*.48,
@@ -40,7 +40,10 @@ test('actual map ranking CLI writes all 60+60+60 only from complete reconciled i
   const proc=spawnSync(process.execPath,[cli,input],{cwd:dir,encoding:'utf8'});
   assert.equal(proc.status,0,proc.stderr||proc.stdout);
   const ranked=JSON.parse(readFileSync(join(dir,'test-results','actual-natural-map-120-ranked.json'),'utf8'));
+  assert.equal(rows.length,360);
   assert.equal(ranked.rows.length,180);
+  assert.ok(ranked.rows.every(r=>r.survivalBuildProfile==='survival'));
+  assert.ok(ranked.rows.every(r=>r.candidates.length===2));
   for(const [level,sigil] of [[200,0],[210,4],[210,8]]){
    const subset=ranked.rows.filter(x=>x.level===level&&x.sigil===sigil);
    assert.equal(subset.length,60);
