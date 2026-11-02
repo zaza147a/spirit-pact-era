@@ -9,7 +9,20 @@ import {companionResonance} from '../dist/fusion-resonance.js';
 import {fusionSkills,companionRole} from '../dist/pet-fusion.js';
 import {ENHANCEMENT_POWER} from '../dist/sky-trials.js';
 import {aspdAttackIntervalMs,outgoingHitDamage,jobZoneOutputFactor} from '../dist/combat-balance.js';
-import {LOADOUTS,FUSIONS,STAGES} from './lv200-lv210-120-scenario-matrix.test.mjs';
+const LOADOUTS={
+ knight:['blade+shield','oneSpear+shield','twoSword','twoSpear'],
+ crusader:['blade+shield','oneSpear+shield'],
+ wizard:['oneStaff+shield','twoStaff'],
+ sage:['oneStaff+shield','twoStaff','spellFist'],
+ assassin:['rifle+shield','rifle+offDagger','katar'],
+ rogue:['rifle+shield'],
+ priest:['mace+shield'],
+ monk:['knuckles'],
+ hunter:['shortBow','longBow','crossbow'],
+ performer:['instrument','shortBow','longBow']
+};
+const FUSIONS=['attack-magic','attack-defense','attack-support','magic-defense','magic-support','defense-support'];
+const STAGES=[{level:200,rank:null,scenario:'Lv200_unenhanced'},{level:210,rank:'SSS',scenario:'Lv210_max_SSS'}];
 
 // This model is deliberately separated from full game.js: it measures ONLY
 // main-skill weapon sensitivity under deliberately simplified character stats.
@@ -47,7 +60,7 @@ function buildScore(stage,job,weaponBuild,allocation){
  const primary=key==='matk'?'INT':ranged.has(job)?'DEX':'STR';
  const statValue=allocation.stats[primary];
  const damageMul=allocationDamageMultiplier(job,key==='matk',allocation.stats,ranged.has(job));
- const basePower=(SHARED_ASSUMPTIONS.otherBaseAttack+mainAttack+offAttack)*damageMul*(1+statValue*.002);
+ const basePower=(SHARED_ASSUMPTIONS.otherBaseAttack+mainAttack+offAttack)*damageMul;
  const aspd=Math.min(193,SHARED_ASSUMPTIONS.baseAspd-(base.hands===2?3:0)+Math.floor((allocation.stats.AGI-1)/40));
  const speed=1000/aspdAttackIntervalMs(aspd);
  const skill=THIRD_MAIN_CURVES[job][5]*1.4*(1+.08*(SHARED_ASSUMPTIONS.skillRank-1));
