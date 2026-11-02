@@ -29,7 +29,7 @@ export function drawRecycledCards(player,catalog,count=1,rng=Math.random){
  if(!player||!Array.isArray(player.cards)||!CARD_DRAW_BATCHES.includes(count))return {error:'抽卡次數不正確'};
  const cost=count*CARD_DRAW_COST,balance=cardRecyclePoints(player);
  if(balance<cost)return {error:'回收點數不足'};
- const entries=Object.entries(catalog||{}).filter(([id,c])=>id&&c&&typeof c.name==='string');
+ const entries=Object.entries(catalog||{}).filter(([id,c])=>id&&c&&c.map&&c.map!=='legacy'&&typeof c.name==='string');
  const regular=entries.filter(([,c])=>!c.boss),boss=entries.filter(([,c])=>!!c.boss);
  if(!regular.length||!boss.length)return {error:'卡片池尚未準備完成'};
  const drawn=[];
