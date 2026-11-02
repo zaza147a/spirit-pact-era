@@ -31,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: spirit-pact-actual-combat-120-raw
-          path: test-results/*actual-combat.json
+          path: test-results/*.json
           if-no-files-found: warn
