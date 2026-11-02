@@ -1128,13 +1128,13 @@ if(typeof location!=='undefined'&&new URLSearchParams(location.search).has('ling
     if(created.hp<=0){endedAt=elapsed;break;}
     if(player.hp<=0||!auto){endedAt=elapsed;break;}
    }
-   const owner=sink.hits.reduce((n,x)=>n+x.owner,0),petDirect=sink.hits.reduce((n,x)=>n+((x.kind==='playerDamage')?x.pet:x.amount),0);
+   const owner=sink.hits.reduce((n,x)=>n+x.owner,0),petDirect=sink.hits.reduce((n,x)=>n+x.pet,0);const totalFromHits=sink.hits.reduce((n,x)=>n+x.amount,0);if(owner+petDirect!==totalFromHits||totalFromHits!==source.hp-created.hp)throw Error('Damage ledger mismatch '+JSON.stringify({owner,petDirect,totalFromHits,actual:source.hp-created.hp}));
    const elapsedMs=endedAt??durationMs;
    return {map:player.location,enemy:source.id,boss:!!source.boss,enemyHp:source.hp,enemyRemain:created.hp,
     elapsedMs,kill:created.hp<=0,dead:player.hp<=0,playerHp:player.hp,petHp:activePet().hp,
     ownerDamage:owner,petAttributedDamage:petDirect,totalDamage:source.hp-created.hp,
     ownerDps:Math.round(owner/Math.max(.02,elapsedMs/1000)),petDps:Math.round(petDirect/Math.max(.02,elapsedMs/1000)),
-    hits:sink.hits.length,ticks:sink.ticks,firstHits:sink.hits.slice(0,12)};
+    hits:sink.hits.length,ticks:sink.ticks,damageReconciled:true,damageByType:Object.fromEntries([...new Set(sink.hits.map(x=>x.kind))].map(kind=>[kind,sink.hits.filter(x=>x.kind===kind).reduce((n,x)=>n+x.amount,0)])),firstHits:sink.hits.slice(0,12)};
   }
  };
 }
