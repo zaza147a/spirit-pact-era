@@ -42,6 +42,8 @@ jobs:
   real-combat-smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -53,6 +55,15 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Execute actual combatTick and hit attribution
         run: node tests/real-combat-browser-benchmark.mjs smoke
+      - name: Persist verified smoke results to isolated branch only
+        run: |
+          test -s test-results/lv200-lv210-smoke-actual-combat.json
+          mkdir -p docs/test-results
+          node --input-type=module -e "import fs from 'node:fs'; const d=JSON.parse(fs.readFileSync('test-results/lv200-lv210-smoke-actual-combat.json')); if(d.errors.length||!d.rows.length||d.rows.some(r=>!r.damageReconciled)) process.exit(1); const summary={kind:'VERIFIED_COMBATTICK_SMOKE',commit:process.env.GITHUB_SHA,rows:d.rows.map(({level,job,fusion,weaponBuild,target,totalDamage,ownerDamage,petAttributedDamage,elapsedMs,kill,dead,hits,damageReconciled})=>({level,job,fusion,weaponBuild,target,totalDamage,ownerDamage,petAttributedDamage,elapsedMs,kill,dead,hits,damageReconciled}))}; fs.writeFileSync('docs/test-results/actual-combattick-smoke.json',JSON.stringify(summary,null,2)+'\\n');"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add docs/test-results/actual-combattick-smoke.json
+          git diff --cached --quiet || (git commit -m "test: save real combat smoke evidence [skip ci]" && git push origin HEAD:experiment-weapon-balance-20261102)
       - name: Upload actual combat results
         if: always()
         uses: actions/upload-artifact@v4
