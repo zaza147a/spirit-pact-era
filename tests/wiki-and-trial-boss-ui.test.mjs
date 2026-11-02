@@ -18,3 +18,11 @@ test('trial boss names retain a visible row above HP and attack warnings',()=>{
  assert.match(game,/class="enemy-target trial-boss"/);
  assert.match(game,/foe\.name/);
 });
+
+test('trial boss portrait is anchored inside its card rather than spanning dynamic grid rows',()=>{
+ const css=readFileSync(new URL('../dist/sky-trials.css',import.meta.url),'utf8');
+ assert.match(css,/#encounter \.enemy-target\.trial-boss>\.art-monster\{[^}]*position:absolute!important/);
+ assert.match(css,/top:10px!important;grid-column:auto!important;grid-row:auto!important/);
+ assert.match(css,/max-height:calc\(100% - 20px\)!important/);
+ assert.match(css,/object-fit:contain!important;object-position:center center!important/);
+});
