@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-02-continent-v4"><style>
+<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-02-card-search-v5"><style>
 :root{color-scheme:dark;--bg:#0c111e;--panel:#172033;--line:#2c3b52;--text:#e9eef9;--muted:#afbdd1;--gold:#eac481;--accent:#6fb6ef}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0c111e,#15233b);color:var(--text);font:15px/1.65 system-ui,"Noto Sans TC",sans-serif;min-height:100vh}
 header{padding:28px max(18px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#0c1426}header h1{font-size:28px;margin:0;color:var(--gold)}header p{margin:4px 0;color:var(--muted)}
@@ -16,7 +16,7 @@ article{background:var(--panel);border:1px solid var(--line);border-radius:14px;
 code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}.intro{color:var(--muted);margin-bottom:16px}
 @media(max-width:600px){header h1{font-size:23px}.toolbar button{flex:1}.item{padding:14px}}
 </style></head><body>
-<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p><p class="small">WIKI 中文顯示版 2026.11.02.4</p></header>
+<header><h1>✦ 靈契紀元 WIKI</h1><p>怪物圖鑑 · 卡片資料 · 裝備能力範圍 · 夥伴與戰鬥機制</p><p class="small">WIKI 中文顯示版 2026.11.02.5</p></header>
 <main><div class="toolbar" id="nav"><button data-tab="monsters" aria-selected="true">怪物</button><button data-tab="cards">卡片</button><button data-tab="gear">裝備詞條</button><button data-tab="pet">夥伴</button><button data-tab="rules">遊戲機制</button></div>
 <div class="toolbar" id="filters"><input id="search" type="search" placeholder="搜尋名稱、等級、屬性或地圖"><select id="continent" aria-label="選擇大陸"><option value="">所有大陸</option><option value="icarus">伊卡洛斯大陸（Lv.1–99）</option><option value="sky">蒼穹彼岸（Lv.101–200）</option><option value="dawn">曙界新陸（Lv.201–210）</option></select><select id="zone" aria-label="選擇地圖"><option value="">所有地圖</option></select><select id="cardSlot" hidden aria-label="卡片裝備部位"><option value="">全部卡片部位</option></select><select id="rarity" hidden><option value="common">普通</option><option value="rare">稀有</option><option value="uncommon">罕見</option><option value="legendary">傳說</option><option value="mythic">神話</option></select><select id="tier" hidden></select></div>
 <div id="cardLevelPanel" hidden class="item" style="margin:0 0 16px">
@@ -41,7 +41,7 @@ import {FUSION_PAIRS} from '../pet-fusion.js';
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const trialMonsters=TRIAL_ROUTES.flatMap(route=>route.names.map((_,i)=>({...createTrialBoss(route,i,MAP_BOSSES[route.map]),map:'trial-'+route.level,trialName:route.name})));
 const monsterZones=[...ZONES,DAWN_ZONE,...TRIAL_ROUTES.map(r=>({id:'trial-'+r.level,name:'天穹試煉之門・'+r.name,min:r.level,max:r.level+8}))];
-const continentOf=map=>map==='dawnrift'?'dawn':map.startsWith('trial-')?'sky':(ZONES.find(z=>z.id===map)?.min||0)>=101?'sky':'icarus';
+const continentOf=map=>!map||map==='legacy'?null:map==='dawnrift'?'dawn':map.startsWith('trial-')?'sky':(ZONES.find(z=>z.id===map)?.min||0)>=101?'sky':ZONES.some(z=>z.id===map)?'icarus':null;
 const zoneName=map=>monsterZones.find(z=>z.id===map)?.name||map;
 let tab='monsters';const allMonsters=[...WORLD_MONSTERS,...Object.values(MAP_BOSSES),...DAWN_MONSTERS,DAWN_BOSS,...trialMonsters].sort((a,b)=>a.level-b.level||(a.boss?1:-1));
 const tiers=GEAR_TIERS;const pct=new Set(['ignoreDef','critDmg','magicDamage','fleePct','defPct','hpPct','aspdPct','damageReduction','crit']);
