@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {CARD_DRAW_COST,CARD_BOSS_RATE,cardRecyclePoints,recycleCards,drawRecycledCards} from '../dist/card-recycling.js';
-const pool={a:{name:'一般A',boss:false},b:{name:'一般B',boss:false},king:{name:'首領',boss:true}};
+const pool={a:{name:'一般A',boss:false,map:'forest'},b:{name:'一般B',boss:false,map:'forest'},king:{name:'首領',boss:true,map:'forest'}};
 test('recycle values and equipped-card isolation',()=>{
  const p={cardRecyclePoints:0,cards:[{id:'a',qty:10},{id:'king',qty:1}],sockets:{headUpper:'king'}};
  const r=recycleCards(p,pool,[{id:'a',qty:10},{id:'king',qty:1}]);
