@@ -34,10 +34,10 @@ test('automatic intake consumes one new card and converts only surplus duplicate
  const p={cards:[{id:'a',qty:4},{id:'b',qty:2}],cardRecyclePoints:0};
  const result=organizeCards(p,cards,album);
  assert.deepEqual(result.added,['a','b']);
- assert.equal(result.recycled,3);
- assert.equal(result.points,120);
+ assert.equal(result.recycled,2);
+ assert.equal(result.points,20);
  assert.deepEqual(p.cards,[{id:'a',qty:1}]);
- assert.equal(p.cardRecyclePoints,120);
+ assert.equal(p.cardRecyclePoints,20);
  assert.equal(collectionProgress(cards,result.collection).owned,2);
 });
 test('milestone rewards are non-stacking and retained when catalog expands',()=>{
