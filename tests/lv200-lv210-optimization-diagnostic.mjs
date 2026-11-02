@@ -12,6 +12,7 @@ import {aspdAttackIntervalMs,outgoingHitDamage,jobZoneOutputFactor,monsterDefens
 import {WORLD_MONSTERS} from '../dist/world-data.js';
 import {MAP_BOSSES} from '../dist/map-bosses.js';
 import {DAWN_MONSTERS,DAWN_BOSS} from '../dist/dawn-world.js';
+import {sigilBonus,dawnArchonPreparationFactor} from '../dist/dawn-sigil.js';
 const LOADOUTS={
  knight:['blade+shield','oneSpear+shield','twoSword','twoSpear'],
  crusader:['blade+shield','oneSpear+shield'],
@@ -74,17 +75,22 @@ function buildScore(stage,job,weaponBuild,allocation){
  const skill=THIRD_MAIN_CURVES[job][5]*1.4*(1+.08*(SHARED_ASSUMPTIONS.skillRank-1));
  const zone=MAP_TARGETS[stage.level];
  const magical=key==='matk';
- const perTarget=target=>{
-  const perHit=outgoingHitDamage(basePower*skill,monsterDefenseAgainst(target,magical));
-  const damageRate=perHit*speed*jobZoneOutputFactor(job,stage.level);
+ const perTarget=(target,sigilRank=stage.level===210?8:0)=>{
+  const sigilOwner={dawnSigil:sigilRank};
+  const sigilStat=stage.level===210?sigilBonus(sigilOwner)[magical?'matk':'atk']:1;
+  const preparation=stage.level===210&&target.id==='dawn-archon'?dawnArchonPreparationFactor(sigilOwner):1;
+  const perHit=outgoingHitDamage(basePower*sigilStat*skill,monsterDefenseAgainst(target,magical));
+  const damageRate=perHit*speed*jobZoneOutputFactor(job,stage.level)*preparation;
   return {id:target.id,name:target.name,level:target.level,hp:target.hp,def:target.def,mdef:target.mdef,attackType:target.attackType,
-   hit:perHit,damageRate:Math.round(damageRate),killSecondsProxy:+(target.hp/Math.max(1,damageRate)).toFixed(3)};
+   sigilRank,preparationFactor:preparation,hit:perHit,damageRate:Math.round(damageRate),killSecondsProxy:+(target.hp/Math.max(1,damageRate)).toFixed(3)};
  };
- const mobs=zone.mobs.map(perTarget),boss=perTarget(zone.boss);
+ const mobs=zone.mobs.map(target=>perTarget(target)),boss=perTarget(zone.boss);
+ const firstBoss=stage.level===210?perTarget(zone.boss,4):null;
+ const rawBoss=stage.level===210?perTarget(zone.boss,0):null;
  const mobScore=mobs.reduce((sum,x)=>sum+1/x.killSecondsProxy,0)/mobs.length;
  const bossScore=1/boss.killSecondsProxy;
  const score=Math.round((mobScore*SHARED_ASSUMPTIONS.mapMobWeight+bossScore*SHARED_ASSUMPTIONS.mapBossWeight)*1e9);
- return {score,attack:Math.round(basePower),speed:+speed.toFixed(3),hit:boss.hit,mobs,boss,map:zone.map};
+ return {score,attack:Math.round(basePower),speed:+speed.toFixed(3),hit:boss.hit,mobs,boss,firstBoss,rawBoss,map:zone.map};
 }
 function bestFor(stage,job){
  const cap=attributeCap({level:stage.level,reborn:true}),budget=allocationBudget(stage.level,true);
@@ -94,7 +100,7 @@ function bestFor(stage,job){
   for(const allocation of allocations(cap,budget,main)){
    combinations++;
    const metric=buildScore(stage,job,build,allocation);
-   if(!best||metric.score>best.proxyScore)best={weaponBuild:build,allocation:allocation.stats,spentPoints:allocation.spent,proxyScore:metric.score,attackProxy:metric.attack,attacksPerSecondProxy:metric.speed,map:metric.map,mobOutcomesProxy:metric.mobs,bossOutcomeProxy:metric.boss};
+   if(!best||metric.score>best.proxyScore)best={weaponBuild:build,allocation:allocation.stats,spentPoints:allocation.spent,proxyScore:metric.score,attackProxy:metric.attack,attacksPerSecondProxy:metric.speed,map:metric.map,mobOutcomesProxy:metric.mobs,bossOutcomeProxy:metric.boss,firstBossOutcomeProxy:metric.firstBoss,unpreparedBossOutcomeProxy:metric.rawBoss};
   }
  }
  return {...best,searchCombinations:combinations,cap,budget};
