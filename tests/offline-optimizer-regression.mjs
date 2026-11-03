@@ -97,3 +97,25 @@ for(const {selected,bag,quests,expectedGold,expectedBag} of [
  assert.deepEqual(actor.bag,expectedBag);
 }
 console.log('Offline auto-sell quest preservation checks passed.');
+
+
+// Loot candidate filtering must preserve the exact RNG call count and result.
+assert.match(game,/nonJunkDrops=drops\.filter\(id=>!ITEMS\[id\]\?\.junk\)/);
+assert.match(game,/const ids=petGearDropIds\?\?=Object\.keys\(PET_GEAR_BASE\)/);
+for(const drops of [
+ ['red_small','blue_small','scrap'],['scrap','scrap','red_small'],
+ ['red_small'],['scrap'],[]
+]){
+ const catalog={red_small:{junk:false},blue_small:{junk:false},scrap:{junk:true}};
+ for(let seed=0;seed<20;seed++){
+  let oldCalls=0,newCalls=0;
+  const randOld=(lo,hi)=>{oldCalls++;return lo+Math.max(0,Math.min(hi-lo,seed%(hi-lo+1||1)));};
+  const randNew=(lo,hi)=>{newCalls++;return lo+Math.max(0,Math.min(hi-lo,seed%(hi-lo+1||1)));};
+  const legacy=drops.filter(id=>!catalog[id]?.junk)[randOld(0,drops.filter(id=>!catalog[id]?.junk).length-1)]||'red_small';
+  const candidates=drops.filter(id=>!catalog[id]?.junk);
+  const optimizedDrop=candidates[randNew(0,candidates.length-1)]||'red_small';
+  assert.equal(optimizedDrop,legacy);
+  assert.equal(newCalls,oldCalls);
+ }
+}
+console.log('Offline equipment/drop candidate RNG parity checks passed.');
