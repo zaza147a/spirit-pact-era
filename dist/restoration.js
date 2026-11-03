@@ -7,5 +7,5 @@ export function potionRestore(item,resource,level,max,pet=false){
  const restored=Math.round(flat*(pet?.75:1)+Math.max(0,max)*fraction);
  // High-level companions cannot restore an unlimited fraction of inflated HP.
  // Early companion and all player potion behavior stays unchanged.
- return pet&&resource==='hp'&&level>=151?Math.min(restored,Math.max(1,Math.round(max*.08))):restored;
+ return pet&&resource==='hp'&&level>=151?Math.min(restored,Math.max(1,Math.round(max*.08)),Math.round(level*35)):restored;
 }
