@@ -13,13 +13,15 @@ import {SPIRIT_TRIAL_ID,DUAL_FUSION_TYPES} from '../../dist/spirit-job-rules.js'
 function seeded(seed=0x1a2b3c4d){
  return ()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
 }
-export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='attack-magic+defense-support'}={}){
+export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='attack-magic+defense-support',allowBoss=false,dawnSigil=0}={}){
  if(![200,210].includes(level)||!['pactWarrior','spiritCommander'].includes(job))
   throw Error('unsupported high-level spirit fixture');
  if(!DUAL_FUSION_TYPES.includes(pairKey))throw Error('invalid unordered dual fusion pairing');
+ if(![0,4].includes(dawnSigil)||(dawnSigil!==0&&level!==210))throw Error('unsupported dawn farming stage');
  const rng=seeded(level+(job==='pactWarrior'?101:202)),p=starterPlayer();
  p.name='SpiritIntegrationFixture';p.job=job;p.level=level;p.reborn=true;p.thirdJob=true;
- p.dawnUnlocked=level>=210;p.dawnSigil=0;p.location=level>=210?'dawnrift':'worldroot';
+ p.dawnUnlocked=level>=210;p.dawnSigil=dawnSigil;p.autoEscapeBoss=level===210&&!allowBoss;
+ p.location=level>=210?'dawnrift':'worldroot';
  p.jobLevel=70;p.secondJobLevel=70;p.jobXp=0;p.jobPoints=39;p.xp=0;
  p.firstJobLevel=50;
  p.jobSkills={['thirdMain_'+job]:10,['thirdWide_'+job]:10,['thirdFinish_'+job]:10};
