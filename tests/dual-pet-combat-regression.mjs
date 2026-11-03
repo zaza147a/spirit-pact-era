@@ -18,7 +18,15 @@ const formationContext = {isSpiritJob};
 vm.runInNewContext(rosterCode + '\nthis.api={activePetRoster,secondPetDamageFactor}', formationContext);
 const {activePetRoster, secondPetDamageFactor} = formationContext.api;
 const pets = [{id:'one',hp:100,sp:100,level:100,nickname:'A'},{id:'two',hp:100,sp:100,level:100,nickname:'B'}];
-const player = job => ({job,level:210,hp:100,pets:structuredClone(pets),activePetId:'one',secondaryPetId:'two',petStances:{}});
+const player = job => ({job,level:210,hp:100,pets:structuredClone(pets),activePetId:'one',secondaryPetId:'two',petStances:{},tacticEffect:null,tacticReadyAt:0});
+const tacticCode=loadFunction(game,'currentTactic','classTactic');
+const tacticContext={player:player('spiritCommander'),offlineSimulation:false,gameNow:()=>1000,tacticActive:(p,now)=>p.tacticEffect?.until>now?p.tacticEffect:null};
+vm.runInNewContext(tacticCode+'\nthis.active=currentTactic',tacticContext);
+assert.equal(tacticContext.active(),null,'balance baseline must disable manual tactics');
+tacticContext.player.tacticEffect={kind:'duet',until:2000};
+assert.notEqual(tacticContext.active(),null,'active manual tactic would skew live DPS');
+tacticContext.offlineSimulation=true;
+assert.equal(tacticContext.active(),null,'offline combat must ignore manual tactics');
 const combatCode = loadFunction(game,'combatPetFactor','pactAssimilationBonus');
 for (const [job,petId,expected,overload] of [
   ['wizard','one',1,false],['spiritist','one',1,false],['spiritist','two',.5,false],
