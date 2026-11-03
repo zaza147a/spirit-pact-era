@@ -11,8 +11,8 @@ const end=game.indexOf('\nfunction emitEvent(',begin);
 assert.ok(begin>=0&&end>begin,'resonance combat trigger present');
 const trigger=game.slice(begin,end);
 
-function run(sourceIndex,job,{positive=true,withoutSignature=false,withoutRoute=false}={}){
- const key=DUAL_FUSION_TYPES[sourceIndex];
+function run(index,job,{positive=true,withoutSignature=false,withoutRoute=false}={}){
+ const key=DUAL_FUSION_TYPES[index];
  const sourceIndex=ORIGINAL_FUSION_KEYS.indexOf(key);
  assert.ok(sourceIndex>=0,'canonical fusion must exist in original signatures');
  const pets=key.split('+').map((fusion,i)=>{
