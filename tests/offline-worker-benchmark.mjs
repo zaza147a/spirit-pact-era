@@ -29,7 +29,7 @@ async function measure(hours){
  const duration=hours*3600000;
  const player=structuredClone(original);
  player.offline={...player.offline,enabled:true,at:epoch};
- const worker=new Worker(new URL('./offline-worker-node-entry.mjs?seed='+seed,import.meta.url),{type:'module'});
+ const worker=new Worker(new URL('./offline-worker-node-entry.mjs?seed='+seed+'&clock='+epoch,import.meta.url),{type:'module'});
  const started=performance.now();
  let firstProgressMs=null,progressEvents=0,mostRecentProgress=-1;
  const result=await new Promise((resolve,reject)=>{
