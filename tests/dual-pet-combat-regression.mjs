@@ -85,4 +85,38 @@ for(const job of ['pactWarrior','spiritCommander']){
 }
 assert.equal(validated,42);
 
-console.log('Dual-pet factor, revive and 42 resonance regression checks passed.');
+
+const triggerSource=loadFunction(game,'triggerDualSpiritResonance','emitEvent');
+let liveTriggers=0;
+for(const job of ['pactWarrior','spiritCommander']){
+  for(const key of DUAL_FUSION_TYPES){
+    const [a,b]=key.split('+');
+    const companions=[fused(a,'first'),fused(b,'second')];
+    companions[0].nickname='First';companions[1].nickname='Second';
+    const target={instanceId:'boss',hp:1e9,def:10};
+    const clock={now:100000}, messages=[];
+    const runContext={
+      player:{job,thirdJob:true,pets:companions,activePetId:'first',secondaryPetId:'second'},
+      enemy:target,enemies:[target],report:{dualPetDamage:{first:0,second:0,dualResonance:0}},
+      timers:{dualSpiritAt:0},dualSpiritResonance,canTriggerDualSpirit,
+      activePetRoster:()=>companions,gameNow:()=>clock.now,
+      petStats:()=>({atk:100,matk:100,hp:1000}),stat:()=>100,
+      companionRole:pet=>pet.fusion.main,grantPetShield:value=>value,effectsForPet:()=>({}),
+      healPetParty:value=>value,monsterDefenseAgainst:()=>10,hitDamage:value=>value,
+      dealDamage:value=>{target.hp-=value;return value},
+      multiTargets:()=>[target],encounterLimit:()=>3,
+      message:()=>messages.push(1),award:()=>{},selectEncounterTarget:()=>target
+    };
+    vm.runInNewContext(triggerSource+'\nthis.fire=triggerDualSpiritResonance',runContext);
+    runContext.fire('thirdHit_'+job);
+    runContext.fire('thirdHit_'+job);
+    assert.equal(messages.length,1,job+' '+key+' duplicate during cooldown');
+    clock.now+=12000;
+    runContext.fire('thirdHit_'+job);
+    assert.equal(messages.length,2,job+' '+key+' ready after cooldown');
+    liveTriggers++;
+  }
+}
+assert.equal(liveTriggers,42);
+
+console.log('Dual-pet factor, revive, 42 resonance and live trigger regression checks passed.');
