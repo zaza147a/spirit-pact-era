@@ -151,3 +151,15 @@ jobs:
           node-version: '22'
       - name: Compare twelve 200/210 professions through real offline combat
         run: node tests/spirit-vs-ten-jobs-combat-observation.mjs
+
+
+  spirit-skill-priority-observation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare three auto skill priorities in 36 real worker fights
+        run: node tests/spirit-skill-priority-observation.mjs
