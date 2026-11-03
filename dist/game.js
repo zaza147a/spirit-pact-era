@@ -179,12 +179,14 @@ function jobThreshold(){return Math.round(80+15*player.jobLevel**2.1);}
 function endReport(outcome){const completed=finish(report,outcome);if(completed){player.battleHistory.push(completed);player.battleHistory=player.battleHistory.slice(-12);dirty=true;}report=null;}
 function startReport(){if(offlineSimulation){report=null;return;}report=newReport(player.location,enemy.id,activePet());if(isSpiritJob(player.job)){const roster=activePetRoster(player);report.dualPetDamage={first:0,second:0,dualResonance:0,firstName:roster[0]?.nickname||'第一夥伴',secondName:roster[1]?.nickname||'第二夥伴'};}}
 function chooseAttackTarget(){const target=selectEncounterTarget(enemies,player?.targetPriority,enemy);if(target)enemy=target;return target;}
+const encounterMonsterPools=new Map();
+function encounterMonsterPool(map){let pool=encounterMonsterPools.get(map);if(!pool){pool=WORLD_MONSTERS.filter(m=>m.map===map);encounterMonsterPools.set(map,pool);}return pool;}
 function addEncounter(now=gameNow(),slotIndex=null){
  if(player.trialRun)return;
  if(isTown(player.location))return;
  const isPetland=player.location==='petland',zone=ZONES.find(z=>z.id===player.location);
- const pool=isPetland?PETLAND_MONSTERS:WORLD_MONSTERS.filter(m=>m.map===player.location);
- const candidates=pool.length?pool:WORLD_MONSTERS.filter(m=>m.map==='starter'),isBoss=!isPetland&&canEncounterBoss(player.location,enemies,now,bossCooldowns[player.location]||0),m=isBoss?MAP_BOSSES[player.location]:candidates[rand(0,candidates.length-1)];if(!isBoss&&enemies.filter(e=>!e.boss&&e.hp>0).length>=encounterLimit(player.location))return;if(isBoss){bossCooldowns[player.location]=now+BOSS_RESPITE_MS;if(player.autoEscapeBoss){if(offlineMetrics)offlineMetrics.bossesEscaped++;message(`⚠ 遭遇地圖首領【${m.name}】，依設定自動逃走，未消耗補給。`,'rare','system');nextEncounterAt=now+replacementDelay();return;}}const hp=m.hp+(isPetland&&!isBoss?(player.level-1)*3:0);
+ const pool=isPetland?PETLAND_MONSTERS:encounterMonsterPool(player.location);
+ const candidates=pool.length?pool:encounterMonsterPool('starter'),isBoss=!isPetland&&canEncounterBoss(player.location,enemies,now,bossCooldowns[player.location]||0),m=isBoss?MAP_BOSSES[player.location]:candidates[rand(0,candidates.length-1)];if(!isBoss&&enemies.filter(e=>!e.boss&&e.hp>0).length>=encounterLimit(player.location))return;if(isBoss){bossCooldowns[player.location]=now+BOSS_RESPITE_MS;if(player.autoEscapeBoss){if(offlineMetrics)offlineMetrics.bossesEscaped++;message(`⚠ 遭遇地圖首領【${m.name}】，依設定自動逃走，未消耗補給。`,'rare','system');nextEncounterAt=now+replacementDelay();return;}}const hp=m.hp+(isPetland&&!isBoss?(player.level-1)*3:0);
  if(!isBoss&&slotIndex===null)slotIndex=Array.from({length:encounterLimit(player.location)},(_,i)=>i).find(i=>!enemies.some(e=>!e.boss&&e.hp>0&&e.slotIndex===i));const foe={slotIndex:isBoss?null:slotIndex,...m,...monsterRuntimeStats(m),hp,maxHp:hp,atk:m.atk+(isPetland&&!isBoss?(player.level-1):0),lastAttack:now,appearedAt:now,instanceId:`${now}-${++encounterSerial}`};
  enemies.push(foe);chooseAttackTarget();if(!report)startReport();message(`${foe.boss?'⚠ 地圖首領現身！':'遭遇 '}Lv.${foe.level||1} ${SPECIES[foe.id].name}！場上 ${enemies.length} 隻敵人。`,'','system');
 }
