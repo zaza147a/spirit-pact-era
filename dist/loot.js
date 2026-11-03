@@ -28,7 +28,7 @@ export const PET_GEAR_BASE={petHelm:{name:'靈獸角冠',petSlot:'head',cost:65}
 export const PET_SLOTS={head:'頭部',body:'身體',shoes:'鞋'};
 export const RARITIES=[{id:'common',name:'普通',count:2,weight:700,color:'common'},{id:'rare',name:'稀有',count:3,weight:250,color:'rare'},{id:'uncommon',name:'罕見',count:4,weight:40,color:'uncommon'},{id:'legendary',name:'傳說',count:5,weight:9,color:'legendary'},{id:'mythic',name:'神話',count:6,weight:1,color:'mythic'}];
 export const TIER_NAMES=GEAR_TIERS.map(t=>t.name);
-export const AFFIX_NAMES={atk:'ATK 物攻',matk:'MATK 魔攻',def:'DEF 防禦',mdef:'MDEF 魔防',hit:'HIT 命中',flee:'FLEE 迴避',crit:'CRIT 暴擊率',STR:'STR 力量',AGI:'AGI 敏捷',VIT:'VIT 體質',INT:'INT 智力',DEX:'DEX 靈巧',LUK:'LUK 幸運',ignoreDef:'無視防禦',critDmg:'暴擊傷害',aspd:'ASPD 攻速',magicDamage:'魔法傷害加成',fleePct:'FLEE 加成',defPct:'防禦加成',hpPct:'HP 加成',aspdPct:'攻速加成',damageReduction:'最終減傷'};
+export const AFFIX_NAMES={hp:'HP 生命',atk:'ATK 物攻',matk:'MATK 魔攻',def:'DEF 防禦',mdef:'MDEF 魔防',hit:'HIT 命中',flee:'FLEE 迴避',crit:'CRIT 暴擊率',STR:'STR 力量',AGI:'AGI 敏捷',VIT:'VIT 體質',INT:'INT 智力',DEX:'DEX 靈巧',LUK:'LUK 幸運',ignoreDef:'無視防禦',critDmg:'暴擊傷害',aspd:'ASPD 攻速',magicDamage:'魔法傷害加成',fleePct:'FLEE 加成',defPct:'防禦加成',hpPct:'HP 加成',aspdPct:'攻速加成',damageReduction:'最終減傷'};
 export const PERCENT_AFFIXES=new Set(['ignoreDef','critDmg','magicDamage','fleePct','defPct','hpPct','aspdPct','damageReduction','crit']);
 export const SPECIAL_AFFIXES=new Set(['ignoreDef','critDmg','aspdPct','crit','fleePct','damageReduction','hpPct','magicDamage','defPct','aspd']);
 export const gearTier=gearTierForLevel;
