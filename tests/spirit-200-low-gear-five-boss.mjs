@@ -36,7 +36,7 @@ function equipAtLevel(p,level,rank){
 for(const job of ['pactWarrior','spiritCommander'])
  for(const gearLevel of [170,180])
  for(const enhancement of [null,'S','SS'])
- for(const pairKey of ['attack-magic+attack-defense','attack-magic+defense-support'])
+ for(const pairKey of ['attack-defense+attack-magic','attack-magic+defense-support'])
  for(const seed of seeds){
  const p=highLevelSpiritPlayer({level:200,job,pairKey,gearRarity:'mythic'});
  if(job==='pactWarrior')p.petStances={[p.pets[0].id]:'assimilate',[p.pets[1].id]:'assist'};
