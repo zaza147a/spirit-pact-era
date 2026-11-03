@@ -8,7 +8,8 @@ const formation = readFileSync(new URL('../dist/dual-pet-formation.js', import.m
 const loadFunction = (source, name, nextName) => {
   const start = source.indexOf('function ' + name + '(');
   assert.ok(start >= 0, name + ' missing');
-  const end = source.indexOf('\nfunction ' + nextName + '(', start);
+  let end = source.indexOf('\nfunction ' + nextName + '(', start);
+  if(end < 0)end = source.indexOf('\nasync function ' + nextName + '(', start);
   assert.ok(end > start, nextName + ' boundary missing');
   return source.slice(start, end);
 };
@@ -127,4 +128,36 @@ for(const job of ['pactWarrior','spiritCommander']){
 }
 assert.equal(liveTriggers,42);
 
-console.log('Dual-pet factor, revive, 42 resonance and live trigger regression checks passed.');
+
+const tickSource=loadFunction(game,'combatTick','simulateOffline');
+function runDualTick(firstHp,secondHp,offline=false){
+  const state=player('spiritCommander');
+  state.pets[0].hp=firstHp;state.pets[1].hp=secondHp;
+  state.autoUltimate=false;state.resonance=0;
+  const foe={hp:9999,aspd:100,lastAttack:0},actions=[];
+  const tickContext={
+    player:state,enemy:foe,enemies:[foe],auto:true,offlineSimulation:offline,
+    inCombatTick:false,petShield:0,petEffects:{shield:0},
+    timers:{regen:100000,potions:100000,ultimate:100000},casting:null,
+    activePetRoster,secondPetDamageFactor,
+    combatPetFactor:id=>secondPetDamageFactor(state,id),
+    petStats:()=>({sp:100}),clearStatSnapshots:()=>{},
+    tickTrialControl:()=>{},tickEncounters:()=>{},chooseAttackTarget:()=>{},
+    autoCapturePet:()=>{},tickPetEffects:()=>{},autoUsePotions:()=>{},
+    enemyAttack:()=>{},aspdAttackIntervalMs:()=>100,
+    selectEncounterTarget:()=>foe,
+    petAutoAbility:pet=>actions.push('ability:'+pet.id),
+    petAttack:pet=>actions.push('attack:'+pet.id),
+    autoCastJobs:()=>{},playerAttack:()=>{},ultimate:()=>{},
+    isTown:()=>false,$:()=>({style:{display:'none'}}),render:()=>{}
+  };
+  vm.runInNewContext(tickSource+'\nthis.tick=combatTick',tickContext);
+  tickContext.tick(100000);
+  return actions.join(',');
+}
+assert.equal(runDualTick(100,100),'ability:one,attack:one,ability:two,attack:two');
+assert.equal(runDualTick(0,100),'ability:two,attack:two');
+assert.equal(runDualTick(100,0),'ability:one,attack:one');
+assert.equal(runDualTick(100,100,true),'ability:one,attack:one,ability:two,attack:two');
+
+console.log('Dual-pet factors, potions, tactics, combat ticks and 42 resonances passed.');
