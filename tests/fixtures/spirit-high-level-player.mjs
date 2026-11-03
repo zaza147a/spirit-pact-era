@@ -1,5 +1,7 @@
 // Synthetic, deterministic progression-state fixture for integration testing.
 // Not a player export or a DPS-optimal equipment prescription.
+// Lv200 191-200 wilderness: no enhancement. Lv210 dawn: SSS equipment, sigil 0.
+// The special Lv200 five-boss trial has its OWN enhancement benchmark.
 import {starterPlayer} from './starter-player.mjs';
 import {makePet,petStats} from '../../dist/catalog.js';
 import {fusePets} from '../../dist/pet-fusion.js';
@@ -17,7 +19,7 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
  if(!DUAL_FUSION_TYPES.includes(pairKey))throw Error('invalid unordered dual fusion pairing');
  const rng=seeded(level+(job==='pactWarrior'?101:202)),p=starterPlayer();
  p.name='SpiritIntegrationFixture';p.job=job;p.level=level;p.reborn=true;p.thirdJob=true;
- p.dawnUnlocked=level>=210;p.location=level>=210?'dawnrift':'worldroot';
+ p.dawnUnlocked=level>=210;p.dawnSigil=0;p.location=level>=210?'dawnrift':'worldroot';
  p.jobLevel=70;p.secondJobLevel=70;p.jobXp=0;p.jobPoints=39;p.xp=0;
  p.firstJobLevel=50;
  p.jobSkills={['thirdMain_'+job]:10,['thirdWide_'+job]:10,['thirdFinish_'+job]:10};
@@ -48,7 +50,9 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
   pet.level=200;pet.xp=0;pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;
   pet.gear=Object.fromEntries([['head','petHelm'],['body','petArmor'],['shoes','petBoots']].map(([slot,id],index)=>{
    const gear=rollPetGear(id,200,'mythic',rng);
-   gear.uid='fixture-'+pet.id+'-'+slot;gear.enhancement='SSS';
+   gear.uid='fixture-'+pet.id+'-'+slot;
+   // Lv200 wilderness baseline is unenhanced; Lv201+ expects SSS gear.
+   if(level>=210)gear.enhancement='SSS';
    return [slot,gear];
   }));
  }
@@ -57,7 +61,9 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
  for(const [slot,id] of [['headUpper','helm'],['headMiddle','visor'],['headLower','mask'],['armor','plate'],['rightHand','mace'],['leftHand','shield'],['garment','cloak'],['shoes','boots'],['accessory1','chip'],['accessory2','ring']]){
   if(GEAR_BASE[id].jobs&&!GEAR_BASE[id].jobs.includes(job))throw Error('illegal weapon '+id);
   const gear=rollGear(id,200,'mythic',rng);
-  gear.uid='fixture-player-'+slot;gear.enhancement='SSS';p.gear[slot]=gear;
+  gear.uid='fixture-player-'+slot;
+  if(level>=210)gear.enhancement='SSS';
+  p.gear[slot]=gear;
  }
  p.location=level>=210?'dawnrift':'worldroot';
  p.hp=999999;p.mp=999999;p.gold=50000000;
