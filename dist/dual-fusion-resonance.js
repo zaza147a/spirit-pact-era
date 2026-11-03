@@ -13,7 +13,7 @@ const SIGNATURES=Object.freeze([
  'fortressCounter','sacredRelay','wardPierce','shieldCascade','lastStand','mutualRenewal',
  'crossRelay','echoBalance','rescueBurst','arcaneBulwark','frostWard','guardianPrayer','twinFocus','sanctuaryPulse','lastBastion'
 ]);
-if(TRAITS.length!==DUAL_FUSION_TYPES.length)throw Error('雙靈組合表不完整');
+if(TRAITS.length!==DUAL_FUSION_TYPES.length||SIGNATURES.length!==DUAL_FUSION_TYPES.length||new Set(SIGNATURES).size!==SIGNATURES.length)throw Error('雙靈組合／特色表不完整或重複');
 export const DUAL_SPIRIT_RULES=Object.fromEntries(DUAL_FUSION_TYPES.map((key,index)=>{
  const [name,trait]=TRAITS[index],cooldownMs=9000+(index%4)*1000;
  return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,signature:SIGNATURES[index]||null,cooldownMs,warriorCoefficient:.10+(index%3)*.015,commanderCoefficient:.08+(index%3)*.012})];
