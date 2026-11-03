@@ -83,7 +83,8 @@ test('real runtime: SSS-equipped companions remain killable under repeated level
   a.setup(p,{...foe,hp:foe.hp,maxHp:foe.hp,instanceId:'boss-survival'});
   // Isolate companion survivability: prevent the owner from ending the experiment first.
   p.hp=1e12;
-  c.Math.random=()=>.6;
+  // Force a successful hit when the companion is targeted; formation RNG remains independent.
+  c.Math.random=()=>0;
   let hits=0;
   for(;hits<20&&pet.hp>0;hits++){
    c.setTime(1000000+hits*1000);
