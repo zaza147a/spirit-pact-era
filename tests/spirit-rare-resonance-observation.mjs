@@ -7,9 +7,9 @@ import {DUAL_FUSION_TYPES} from '../dist/spirit-job-rules.js';
 
 const targets=[
  ['pactWarrior','attack-defense+attack-support'],
- ['spiritCommander','attack-support+attack-support'],
+ ['spiritCommander','attack-support+magic-support'],
  ['spiritCommander','attack-support+magic-defense'],
- ['spiritCommander','magic-defense+magic-defense'],
+ ['spiritCommander','magic-defense+magic-support'],
  ['spiritCommander','defense-support+magic-defense']
 ];
 const epoch=2000000000000,duration=300000,rows=[];
