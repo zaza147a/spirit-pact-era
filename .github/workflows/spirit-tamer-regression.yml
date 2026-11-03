@@ -279,3 +279,14 @@ jobs:
           node-version: '22'
       - name: 'Actual five-boss Worker fight at 200: mythic unenhanced versus SS'
         run: node tests/spirit-200-five-boss-live-observation.mjs
+
+  spirit-specialization-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare both spirit roles across all 15 legal pairs in boss-chain and field combat
+        run: node tests/spirit-specialization-matrix.mjs
