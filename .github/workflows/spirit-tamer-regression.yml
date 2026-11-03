@@ -114,5 +114,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Actual level-200 and 210 dual-fusion 1/6/12/24-hour workers
+      - name: Bounded level-200 and 210 dual-fusion five-minute smoke workers
+        env:
+          SPIRIT_HIGH_LEVEL_BENCH_MINUTES: '5'
         run: node tests/spirit-high-level-offline-benchmark.mjs
