@@ -1,4 +1,4 @@
-import {enhancedAffixes} from './sky-trials.js?v=6.5.43';
+import {enhancedAffixes} from './sky-trials.js?v=6.5.44';
 import {fusedPair,companionRole} from './pet-fusion.js?v=6.5.0';
 import {captureQuality,MYTHIC_MUTATION} from './pet-acquisition.js?v=6.5.0';
 import {SECOND_JOBS,parentJob} from './jobs.js?v=6.5.0';
