@@ -160,4 +160,33 @@ assert.equal(runDualTick(0,100),'ability:two,attack:two');
 assert.equal(runDualTick(100,0),'ability:one,attack:one');
 assert.equal(runDualTick(100,100,true),'ability:one,attack:one,ability:two,attack:two');
 
-console.log('Dual-pet factors, potions, tactics, combat ticks and 42 resonances passed.');
+
+const attackSource=loadFunction(game,'petAttack','enemyAttack');
+function countPetAttacks(step){
+  const party=player('spiritCommander'),foe={hp:1e12,flee:0};
+  const clock={now:0},counter={one:0,two:0},timers={pet:0,petById:{}};
+  const attackContext={
+    player:party,enemy:foe,timers,classBuffs:{},report:null,
+    SPECIES:{fang:{skill:'attack'}},gameNow:()=>clock.now,
+    activePet:()=>party.pets[0],combatPetFactor:id=>secondPetDamageFactor(party,id),
+    chooseAttackTarget:()=>{},petStats:()=>({aspd:193,aspdPct:0,crit:0,hit:999,ignoreDef:0}),
+    aspdAttackIntervalMs:aspd=>Math.max(140,Math.round((200-Math.min(193,Math.max(100,aspd)))*20)),
+    companionRole:()=> 'attack',hitChance:()=>1,petOffensivePower:()=>100,
+    monsterDefenseAgainst:()=>0,hitDamage:damage=>damage,
+    dealPetDamage:(damage,key,pet)=>{counter[pet.id]++;return damage},
+    message:()=>{},damageText:()=>'',classBuffPower:()=>0,
+    emitEvent:()=>{},award:()=>{},render:()=>{}
+  };
+  party.pets[0].species='fang';party.pets[1].species='fang';
+  vm.runInNewContext(attackSource+'\nthis.attack=petAttack',attackContext);
+  for(clock.now=step;clock.now<=60000;clock.now+=step)
+    for(const pet of party.pets)attackContext.attack(pet,secondPetDamageFactor(party,pet.id));
+  return counter;
+}
+for(const step of [20,100]){
+  const count=countPetAttacks(step);
+  assert.equal(count.one,428,'first pet ASPD 193, '+step+'ms ticks');
+  assert.equal(count.two,428,'second pet ASPD 193, '+step+'ms ticks');
+}
+
+console.log('Dual-pet factors, potions, tactics, combat ticks, ASPD cadence and 42 resonances passed.');
