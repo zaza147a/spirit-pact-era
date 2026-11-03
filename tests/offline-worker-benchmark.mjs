@@ -8,8 +8,18 @@ import {performance} from 'node:perf_hooks';
 import {starterPlayer} from './fixtures/starter-player.mjs';
 
 const file=process.argv[2];
-if(!file)throw Error('Usage: node tests/offline-worker-benchmark.mjs path/to/legal-save.json | --starter');
-const loaded=file==='--starter'?starterPlayer():JSON.parse(readFileSync(file,'utf8'));
+if(!file)throw Error('Usage: node tests/offline-worker-benchmark.mjs path/to/legal-save.json | --starter | --starter-salvage');
+const loaded=file==='--starter'||file==='--starter-salvage'?starterPlayer():JSON.parse(readFileSync(file,'utf8'));
+if(file==='--starter-salvage'){
+ // Keep mythical items; dismantle ordinary drops through the real game rules.
+ loaded.autoSalvage=true;
+ loaded.salvageInventory=true;
+ loaded.keepRarity=true;
+ loaded.salvageMaxRarity='mythic';
+ loaded.keepTier=false;
+ loaded.keepStat=false;
+ loaded.salvageMatchMode='any';
+}
 const original=loaded.player||loaded;
 assert.ok(original&&typeof original==='object'&&Array.isArray(original.pets),'expected a real player save');
 assert.equal(original.offline?.enabled,true,'save must have offline combat enabled');
@@ -105,6 +115,12 @@ for(const hours of times){
   rows.push(row);
   const {_state,...publicRow}=row;
   console.log(JSON.stringify({repetition:repetition+1,...publicRow}));
+ }
+ if(file==='--starter-salvage'){
+  for(const row of rows){
+   assert.equal(row.simulatedMs,hours*3600000,'salvage benchmark must complete the FULL requested duration');
+   assert.equal(row.reason,'已完成離線時間','salvage benchmark must not stop early');
+  }
  }
  const identical=rows.every(x=>x.stateSha256===rows[0].stateSha256);
  const semanticHashes=rows.map(x=>semanticHash(x._state));
