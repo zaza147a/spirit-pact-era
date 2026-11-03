@@ -113,3 +113,17 @@ CI 固定 seed 12648430；起始測試 fixture 在 `tests/fixtures/starter-playe
 發現 `dist/frontier.js` 的 `PET_REVIVE_MS` 仍是 10,000ms，與既定的**夥伴 3 秒復活**要求不一致；已更正為 3,000ms，且修正手動補給提示。**不更動怪物難度／強化階級／共鳴倍率。**
 
 [#41611906748](https://github.com/zaza147a/spirit-pact-era/actions/runs/41611906748) 修正後 regression PASS：42 配對每組 60 秒，主攻事件 **541**、共鳴成功 **109**（靈契君王 74／萬靈宗師 35）、夥伴倒下阻擋 **193**、配對缺失 **0**、冷卻阻擋 **236**、死亡目標阻擋 **3**、零觸發降至 **5 組**、直接共鳴傷害 **451,246**。數據跨不同戰鬥時序，成功事件增加 159.5%；阻擋比例從 114/258=44.2% 降至 193/541=35.7%，不是說夥伴實際死亡事件的絕對次數下降。仍零觸發的五組：靈契君王 attack-defense+attack-support；萬靈宗師 attack-support+attack-support、attack-support+magic-defense、magic-defense+magic-defense、defense-support+magic-defense。後續須做更長時間／不同種子及非神話品質耐久驗證。
+
+### 五組低頻共鳴延長觀察（2026-11-03）
+
+新增 `tests/spirit-rare-resonance-observation.mjs` 和獨立 CI job；[#41612162073](https://github.com/zaza147a/spirit-pact-era/actions/runs/41612162073) **五項 CI job 全部 PASS**。原本 60 秒內零觸發的 5 組，在 200／210 等、各兩個指定測試種子、每場**完整 300 秒**（20 場）全部至少觸發一次；20 場合計共鳴觸發 128 次，**零觸發場次 0**。
+
+| 路線與雙融合配對 | 4 場 × 300 秒共鳴觸發 |
+| --- | ---: |
+| 靈契君王 attack-defense+attack-support | 46 |
+| 萬靈宗師 attack-support+attack-support | 26 |
+| 萬靈宗師 attack-support+magic-defense | 20 |
+| 萬靈宗師 magic-defense+magic-defense | 16 |
+| 萬靈宗師 defense-support+magic-defense | 20 |
+
+限制：兩個宣告的 RNG seed（717171／93217）在此 20 場產出**逐項完全相同**的摘要；因此目前只能確定不同執行的相同結果，**不可宣稱已充分證明不同隨機戰鬥序列的穩健性**。需要繼續查驗 Worker seed 是否真正作用於戰鬥抽樣，並額外驗證夥伴 HP／SP 生存與自動用藥；目前不改五組的共鳴係數。
