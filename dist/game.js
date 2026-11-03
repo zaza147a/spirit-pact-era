@@ -120,12 +120,7 @@ function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
  // Transfer the COMMANDER's current attack/magic/guard to each deployed pet.
  // Never mutate cached petStats or duplicate source affixes; bonuses disappear when owner changes.
- // Pure attack/magic pairings otherwise lose both frontliners during long 210 SSS farming.
- // Inherit more owner guard ONLY when both deployed fusions lack defense/support;
- // mixed and defensive setups keep the existing 35%, preventing a global tank buff.
- const offensiveFusion=p=>p?.fusion&&['attack','magic'].includes(p.fusion.main)&&['attack','magic'].includes(p.fusion.sub);
- const frontline=activePetRoster(player);
- const defenseRatio=frontline.length===2&&frontline.every(offensiveFusion)?.55:.35;
+ const defenseRatio=.35;
  return {...base,atk:base.atk+stat('atk')*.30,matk:base.matk+stat('matk')*.30,
   def:base.def+stat('def')*defenseRatio,mdef:base.mdef+stat('mdef')*defenseRatio};
 }
