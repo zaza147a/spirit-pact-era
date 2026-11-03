@@ -6,10 +6,15 @@ const TRAITS=[
  ['靈鋼重轟','pierce'],['霜盾迴旋','guard'],['靈壁永續','heal'],
  ['雙生祝禱','focus'],['交響之心','heal'],['雙界庇護','guard']
 ];
+// Stage-one conditional signatures: situational utility within the existing
+// resonance activation. They never create a separate event or free attack.
+const SIGNATURES=Object.freeze([
+ 'armorEcho','rescueGuard','recoveryChain','bossTrace','finisherFocus','crowdWard'
+]);
 if(TRAITS.length!==DUAL_FUSION_TYPES.length)throw Error('雙靈組合表不完整');
 export const DUAL_SPIRIT_RULES=Object.fromEntries(DUAL_FUSION_TYPES.map((key,index)=>{
  const [name,trait]=TRAITS[index],cooldownMs=9000+(index%4)*1000;
- return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,cooldownMs,warriorCoefficient:.10+(index%3)*.015,commanderCoefficient:.08+(index%3)*.012})];
+ return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,signature:SIGNATURES[index]||null,cooldownMs,warriorCoefficient:.10+(index%3)*.015,commanderCoefficient:.08+(index%3)*.012})];
 }));
 export function dualSpiritResonance(player,roster){
  if(!player?.thirdJob||!['pactWarrior','spiritCommander'].includes(player.job)||roster?.length!==2||roster.some(p=>p.hp<=0))return null;
