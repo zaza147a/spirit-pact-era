@@ -6,14 +6,15 @@ import {fusePets} from '../../dist/pet-fusion.js';
 import {rollGear,rollPetGear,GEAR_BASE} from '../../dist/loot.js';
 import {allocationBudget} from '../../dist/growth-v5.js';
 import {attributeCap} from '../../dist/adventure-progression.js';
-import {SPIRIT_TRIAL_ID} from '../../dist/spirit-job-rules.js';
+import {SPIRIT_TRIAL_ID,DUAL_FUSION_TYPES} from '../../dist/spirit-job-rules.js';
 
 function seeded(seed=0x1a2b3c4d){
  return ()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
 }
-export function highLevelSpiritPlayer({level=200,job='pactWarrior'}={}){
+export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='attack-magic+defense-support'}={}){
  if(![200,210].includes(level)||!['pactWarrior','spiritCommander'].includes(job))
   throw Error('unsupported high-level spirit fixture');
+ if(!DUAL_FUSION_TYPES.includes(pairKey))throw Error('invalid unordered dual fusion pairing');
  const rng=seeded(level+(job==='pactWarrior'?101:202)),p=starterPlayer();
  p.name='SpiritIntegrationFixture';p.job=job;p.level=level;p.reborn=true;p.thirdJob=true;
  p.dawnUnlocked=level>=210;p.location=level>=210?'dawnrift':'worldroot';
@@ -30,7 +31,9 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior'}={}){
  if(allocatedPoints!==allocationBudget(level,true)||Math.max(...Object.values(allocated))>attributeCap(p))
   throw Error('illegal attribute allocation');
  p.location='skycity';
- p.pets=['fang','wisp','shell','sprout'].map((species,index)=>{
+ const speciesByRole={attack:'fang',magic:'wisp',defense:'shell',support:'sprout'};
+ const sourceSpecies=pairKey.split('+').flatMap(fusion=>fusion.split('-').map(role=>speciesByRole[role]));
+ p.pets=sourceSpecies.map((species,index)=>{
   const pet=makePet(species);
   pet.id='fusion-source-'+index;pet.rarity='mythic';pet.ascended=true;pet.level=150;
   pet.iv={hp:2,atk:2,def:2,matk:2,sp:2,aspd:2};
