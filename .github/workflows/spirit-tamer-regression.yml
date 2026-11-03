@@ -38,6 +38,8 @@ jobs:
         run: node tests/spirit-high-level-fixture.test.mjs
       - name: Real Worker combat for all 42 fused third-job resonances
         run: node tests/spirit-42-live-resonance.test.mjs
+      - name: Verify both spirit damage-taking roles in twelve real Worker battles
+        run: node tests/spirit-role-aggro-live-observation.mjs
       - name: Run dual-pet module regression suite
         shell: bash
         run: |
