@@ -6,9 +6,9 @@ import {ALL_COMPARISON_JOBS,comparisonPlayer} from './fixtures/spirit-vs-class-p
 import {JOB_SKILLS} from '../dist/job-skills.js';
 import {GEAR_BASE} from '../dist/loot.js';
 import {parentJob} from '../dist/jobs.js';
-const epoch=2000000000000,duration=60000,seed=471122;
+const epoch=2000000000000,duration=60000,seeds=[471122,81733,93217];
 const rows=[];
-for(const level of [200,210])for(const job of ALL_COMPARISON_JOBS){
+for(const level of [200,210])for(const job of ALL_COMPARISON_JOBS)for(const seed of seeds){
  const player=comparisonPlayer({job,level});
  const stages={first:0,second:0,third:0};
  for(const [id,rank] of Object.entries(player.jobSkills)){
@@ -33,7 +33,7 @@ for(const level of [200,210])for(const job of ALL_COMPARISON_JOBS){
   });
   const s=result.summary,d=s?.damage;
   assert.ok(s&&d&&Number.isFinite(d.total)&&s.simulated>0);
-  const row={job,level,petCount:result.player.pets.length,gearCount:used.length,
+  const row={job,level,seed,petCount:result.player.pets.length,gearCount:used.length,
    simulatedMs:s.simulated,kills:s.kills,revives:s.revives||0,
    alive:result.player.hp>0,completed:s.simulated===duration&&s.reason==='已完成離線時間'&&result.player.hp>0,
    ownerDamage:d.player,petDamage:d.pet1+d.pet2,petSupport:d.petSupport,resonanceDamage:d.resonance,
@@ -41,12 +41,17 @@ for(const level of [200,210])for(const job of ALL_COMPARISON_JOBS){
   rows.push(row);console.log(JSON.stringify(row));
  }finally{await worker.terminate();}
 }
-assert.equal(rows.length,24);
+assert.equal(rows.length,ALL_COMPARISON_JOBS.length*2*seeds.length);
 for(const level of [200,210]){
- const rank=rows.filter(r=>r.level===level).sort((a,b)=>b.actualHpDps-a.actualHpDps);
- console.log(JSON.stringify({summary:true,level,scenarios:rank.length,
-  ranking:rank.map((r,i)=>({rank:i+1,job:r.job,petCount:r.petCount,kills:r.kills,
-   revives:r.revives,actualHpDps:r.actualHpDps,completed:r.completed}))}));
+ const rank=ALL_COMPARISON_JOBS.map(job=>{
+  const group=rows.filter(r=>r.level===level&&r.job===job);
+  const mean=key=>group.reduce((n,r)=>n+r[key],0)/group.length;
+  return {job,petCount:group[0].petCount,meanKills:Number(mean('kills').toFixed(2)),
+   meanRevives:Number(mean('revives').toFixed(2)),meanActualHpDps:Math.round(mean('actualHpDps')),
+   cleanRuns:group.filter(r=>r.completed).length,seedCount:group.length};
+ }).sort((a,b)=>b.meanActualHpDps-a.meanActualHpDps);
+ console.log(JSON.stringify({summary:true,level,scenarios:rows.filter(r=>r.level===level).length,
+  ranking:rank.map((r,i)=>({rank:i+1,...r}))}));
 }
-console.log(JSON.stringify({complete:true,scenarios:rows.length,
- limitation:'Synthetic fixed mythic equipment, same map and seed, one fused pet for legacy ten classes vs two for spirit jobs; no optimization or fair farming-cost adjustment.'}));
+console.log(JSON.stringify({complete:true,scenarios:rows.length,seeds,
+ limitation:'Synthetic fixed mythic equipment, equal map and seed per run, one fused pet for legacy ten classes vs two for spirit jobs; not optimized DPS or equal farming investment.'}));
