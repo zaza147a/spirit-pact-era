@@ -2,11 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {DUAL_SPIRIT_RULES,dualSpiritResonance,canTriggerDualSpirit} from '../dist/dual-fusion-resonance.js';
 const fused=(a,b)=>({hp:100,fusion:{main:a,sub:b}});
-test('six unordered fusion forms yield 21 unique names per branch',()=>{
+test('six unordered fusion forms yield 15 unique names per branch',()=>{
  const rules=Object.values(DUAL_SPIRIT_RULES);
- assert.equal(rules.length,21);
- assert.equal(new Set(rules.map(x=>x.warriorName)).size,21);
- assert.equal(new Set(rules.map(x=>x.commanderName)).size,21);
+ assert.equal(rules.length,15);
+ assert.equal(new Set(rules.map(x=>x.warriorName)).size,15);
+ assert.equal(new Set(rules.map(x=>x.commanderName)).size,15);
 });
 test('both fusion pets must be living and owner must be third job',()=>{
  const pets=[fused('attack','magic'),fused('defense','support')];
