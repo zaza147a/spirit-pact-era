@@ -68,4 +68,12 @@ export function addStack(bag,id,qty=1){const existing=bag.find(x=>x.id===id&&!x.
 export function consumeStack(bag,id){const i=bag.findIndex(x=>x.id===id&&!x.uid&&x.qty>0);if(i<0)return false;bag[i].qty--;if(bag[i].qty<=0)bag.splice(i,1);return true;}
 
 export function gearStatValue(item,type){if(!item)return 0;const base=GEAR_BASE[item.id]||PET_GEAR_BASE[item.id];return enhancedStat(item,type,(item.powerVersion>=23&&type===primaryAffix(item.id)?0:base?.[type]||0)+(item.affixes?.[type]||0));}
-export function equipmentDrop(boss=false,lootBonus=0,rng=Math.random){const roll=rng();if(boss)return roll<.9?'character':'pet';const boost=Math.max(0,Math.min(4,1+lootBonus/100));return roll<.18*boost?'character':roll<.2*boost?'pet':null;}
+// characterShare changes only the conditional equipment-kind split; the total
+// equipment probability and existing loot bonus remain unchanged.
+export function equipmentDrop(boss=false,lootBonus=0,rng=Math.random,characterShare=.9){
+ const share=Math.max(0,Math.min(1,Number(characterShare)||0));
+ const roll=rng();
+ if(boss)return roll<share?'character':'pet';
+ const boost=Math.max(0,Math.min(4,1+lootBonus/100)),total=.2*boost;
+ return roll<total*share?'character':roll<total?'pet':null;
+}
