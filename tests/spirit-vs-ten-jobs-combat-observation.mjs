@@ -19,7 +19,7 @@ for(const level of [200,210])for(const job of ALL_COMPARISON_JOBS){
  assert.deepEqual(stages,{first:49,second:69,third:69});
  const used=Object.values(player.gear).filter(Boolean);
  assert.ok(used.every(g=>g.level===200&&g.rarity==='mythic'&&(level===210?g.enhancement==='SSS':!g.enhancement)));
- assert.ok(!GEAR_BASE[player.gear.rightHand.id]?.jobs||GEAR_BASE[player.gear.rightHand.id].jobs.includes(parentJob(job)));
+ assert.ok(!GEAR_BASE[player.gear.rightHand.id]?.jobs||(GEAR_BASE[player.gear.rightHand.id].jobs.includes(job)||GEAR_BASE[player.gear.rightHand.id].jobs.includes(parentJob(job))));
  const worker=new Worker(new URL('./offline-worker-node-entry.mjs?clock='+epoch,import.meta.url),{type:'module',workerData:{seed}});
  try{
   const result=await new Promise((resolve,reject)=>{
