@@ -26,7 +26,7 @@ for (const [job,petId,expected,overload] of [
   ['spiritCommander','two',1,true],['pactWarrior','one',.5,false],
   ['pactWarrior','two',.35,false],['spiritist','unknown',0,false]
 ]) {
-  const p=player(job);
+  const p=player(job);p.thirdJob=overload;
   const context={player:p,secondPetDamageFactor,classBuffs:{dualOverload:overload?{until:2000}:null},gameNow:()=>1000};
   vm.runInNewContext(combatCode+'\nthis.factor=combatPetFactor',context);
   assert.equal(context.factor(petId),expected,job+' '+petId+' id');
