@@ -1,6 +1,6 @@
 import {queueCombatVfx} from './skill-effects.js?v=6.5.12';
 import {TACTIC_COOLDOWN_MS,manualTactic,tacticSPCost,tacticRemaining,tacticActive,tacticDamageFactor,tacticIncomingFactor} from './manual-tactics.js?v=6.5.30';
-import {CARD_COLLECTION_KEY,CARD_COLLECTION_NPC,CARD_COLLECTION_LOCK,readCardCollection,collectMissingCards,collectableFromPlayer,collectionProgress,collectibleCardIds,CARD_COLLECTION_MILESTONES,collectionMilestones,collectionGoldBonus,collectionTitle,normalizedCollection,organizeCards} from './card-collection.js?v=6.5.29';
+import {CARD_COLLECTION_KEY,CARD_COLLECTION_NPC,CARD_COLLECTION_LOCK,readCardCollection,collectMissingCards,collectableFromPlayer,collectionProgress,collectibleCardIds,CARD_COLLECTION_MILESTONES,collectionMilestones,collectionGoldBonus,collectionTitle,normalizedCollection,organizeCards,withdrawCollectedCard} from './card-collection.js?v=6.5.36';
 import {CARD_DRAW_COST,CARD_BOSS_RATE,cardRecyclePoints,cardRecycleValue,recycleCards,drawRecycledCards} from './card-recycling.js?v=6.5.28';
 import {GOLD_COLLECTIBLES,goldCollectionTier,goldCollectionBonus,earnGold,buyGoldCollectible,goldWealth,reforgePrice,reforgeGear} from './gold-services.js?v=6.5.27';
 import {multiTargets} from './adjacent-targets.js?v=6.5.12';
@@ -854,9 +854,10 @@ function renderCardCollection(){
  const grouped={icarus:new Map(),sky:new Map(),dawn:new Map()};
  for(const id of collectibleCardIds(CARDS)){const card=CARDS[id],continent=continentFor(card.map);if(!grouped[continent])grouped[continent]=new Map();if(!grouped[continent].has(card.map))grouped[continent].set(card.map,[]);grouped[continent].get(card.map).push(id);}
  const bossAll=collectibleCardIds(CARDS).filter(id=>CARDS[id].boss),bossOwned=bossAll.filter(id=>saved.has(id));
- let html=`<section class="item"><h3>📖 ${CARD_COLLECTION_NPC}</h3><p>八角色共用收藏冊。新卡首次收錄消耗未鑲嵌的1張；已收藏卡片不需重複收錄。</p><h3>總進度 ${progress.owned}/${progress.total}（${progress.total?Math.floor(progress.owned/progress.total*100):0}%）</h3><p>首領 ${bossOwned.length}/${bossAll.length} · 本角色待收錄 ${toCollect.length} 種</p><button data-card-collect-all ${toCollect.length?'':'disabled'}>一鍵收錄未收藏卡片（${toCollect.length} 張）</button></section>`;
- html+=`<section class="item"><h3>自動收藏與重複卡管理</h3><p class="muted">以下設定八角色共用；預設關閉。自動整理會在存檔時處理，包括掛機與抽卡所得；已鑲嵌卡片不會被處理。</p><label class="setting-toggle"><input type="checkbox" data-album-setting="autoCollect" ${opt.autoCollect?'checked':''}>自動收入尚未收藏的卡片（每種1張）</label><label class="setting-toggle"><input type="checkbox" data-album-setting="autoRecycle" ${opt.autoRecycle?'checked':''}>多餘的重複卡片自動轉為回收點數</label><label>每種卡片保留張數<select data-album-keep>${[1,3,5].map(n=>`<option value="${n}" ${opt.keepCopies===n?'selected':''}>${n} 張（不含已鑲嵌）</option>`).join('')}</select></label><button data-album-organize>立即整理本角色重複卡片</button></section>`;
+ let html=`<section class="item"><h3>📖 ${CARD_COLLECTION_NPC}</h3><p>八角色共用收藏冊。首次收錄消耗未鑲嵌的1張；可取回背包。自動收藏及重複回收均不處理首領卡片。</p><h3>總進度 ${progress.owned}/${progress.total}（${progress.total?Math.floor(progress.owned/progress.total*100):0}%）</h3><p>首領 ${bossOwned.length}/${bossAll.length} · 本角色待收錄 ${toCollect.length} 種</p><button data-card-collect-all ${toCollect.length?'':'disabled'}>一鍵收錄未收藏卡片（${toCollect.length} 張）</button></section>`;
+ html+=`<section class="item"><h3>自動收藏與重複卡管理</h3><p class="muted">以下設定八角色共用；預設關閉。自動整理只處理一般怪物卡片，不處理首領卡片；取回的卡片不會立即自動收回。已鑲嵌卡片不會被處理。</p><label class="setting-toggle"><input type="checkbox" data-album-setting="autoCollect" ${opt.autoCollect?'checked':''}>自動收入尚未收藏的卡片（每種1張）</label><label class="setting-toggle"><input type="checkbox" data-album-setting="autoRecycle" ${opt.autoRecycle?'checked':''}>多餘的重複卡片自動轉為回收點數</label><label>每種卡片保留張數<select data-album-keep>${[1,3,5].map(n=>`<option value="${n}" ${opt.keepCopies===n?'selected':''}>${n} 張（不含已鑲嵌）</option>`).join('')}</select></label><button data-album-organize>立即整理本角色重複卡片</button></section>`;
  html+=`<section class="item"><h3>八角色共用收藏里程碑</h3><p>目前金幣收入額外 ×${(1+collectionGoldBonus(CARDS,album)/100).toFixed(2)}，與黃金收藏分開計算；獎勵只採最高階，不疊加。已解鎖不會因新增卡片而取消。</p>${CARD_COLLECTION_MILESTONES.map(m=>`<p>${unlocks.has(m.pct)?'✓':'○'} ${m.pct}% · ${m.title}${m.bonus?' · 金幣收入 +'+m.bonus+'%':''} ${unlocks.has(m.pct)?'（已解鎖）':''}</p>`).join('')}</section>`;
+ html+=`<details class="item" data-ui-key="album-withdraw"><summary>從收藏冊取回卡片（已收藏 ${album.ids.length} 張）</summary><p>取回一張到目前角色背包，該卡片暫停自動收入；可再手動收錄。</p><div class="card-collection-grid">${album.ids.filter(id=>CARDS[id]).map(id=>`<div><span>${escapeHtml(CARDS[id].name)}${CARDS[id].boss?' ♛ 首領':''}</span> <button data-album-withdraw="${escapeHtml(id)}">取回一張</button></div>`).join('')||'目前沒有已收藏卡片'}</div></details>`;
  html+=`<details class="item" data-ui-key="album-boss"><summary>♛ 全部首領卡片 · ${bossOwned.length}/${bossAll.length}</summary><div class="card-collection-grid">${bossAll.map(id=>`<span class="${saved.has(id)?'collected':'missing'}">${saved.has(id)?'✓':'○'} ${escapeHtml(CARDS[id].name)} · ${escapeHtml(MAPS[CARDS[id].map]?.name||CARDS[id].map)}</span>`).join('')}</div></details>`;
  for(const continent of ['icarus','sky','dawn']){
   const groups=grouped[continent],all=[...groups.values()].flat(),count=all.filter(id=>saved.has(id)).length;
@@ -894,7 +895,7 @@ async function collectCardAlbum(){
   const collection=readCardCollection(localStorage,CARDS);
   const ids=collectableFromPlayer(player,CARDS,collection);
   if(!ids.length)return toast('目前沒有可新增的卡片收藏');
-  if(!confirm(`確定將 ${ids.length} 張未收藏卡片放入八角色共用收藏冊？每種消耗 1 張，無法取回。`))return;
+  if(!confirm(`確定將 ${ids.length} 張未收藏卡片放入八角色共用收藏冊？每種消耗 1 張，可隨時從收藏冊取回。`))return;
   const beforePlayer=structuredClone(player),raw=localStorage.getItem(CARD_COLLECTION_KEY),result=collectMissingCards(player,CARDS,collection);
   if(result.error)return toast(result.error);
   try{
@@ -911,6 +912,28 @@ async function collectCardAlbum(){
   if(navigator.locks?.request)await navigator.locks.request(CARD_COLLECTION_LOCK,{mode:'exclusive'},action);
   else action();
  }catch(error){toast(`收藏操作失敗：${error.message}`);}
+}
+
+async function withdrawAlbumCard(id){
+ if(!isTown(player.location))return toast('請回村莊找星頁典藏師・露娜');
+ const action=()=>{
+  const album=readCardCollection(localStorage,CARDS);
+  if(!album.ids.includes(id))return toast('收藏冊內已沒有這張卡片');
+  if(!confirm('確定從共用收藏取回 '+CARDS[id].name+'？將放入目前角色背包。'))return;
+  const previous=structuredClone(player),raw=localStorage.getItem(CARD_COLLECTION_KEY);
+  const result=withdrawCollectedCard(player,CARDS,album,id);
+  if(result.error)return toast(result.error);
+  try{
+   localStorage.setItem(CARD_COLLECTION_KEY,JSON.stringify(result.collection));
+   if(!save())throw Error('角色儲存失敗');
+  }catch(error){
+   player=previous;
+   try{if(raw===null)localStorage.removeItem(CARD_COLLECTION_KEY);else localStorage.setItem(CARD_COLLECTION_KEY,raw);}catch{}
+   return toast('取回失敗：'+error.message);
+  }
+  render();renderSide(true);toast('已取回 '+CARDS[id].name+' 至背包');
+ };
+ try{if(navigator.locks?.request)await navigator.locks.request(CARD_COLLECTION_LOCK,{mode:'exclusive'},action);else action();}catch(error){toast('取回失敗：'+error.message);}
 }
 
 function renderCardRecycler(){
@@ -1043,6 +1066,7 @@ for(const b of $('side').querySelectorAll('[data-card-sale]'))b.onclick=()=>sell
  for(const b of $('side').querySelectorAll('[data-card-recycle-duplicates]'))b.onclick=()=>recycleOwnedCards(player.cards.filter(x=>x.qty>1&&CARDS[x.id]).map(x=>({id:x.id,qty:x.qty-1})));
  for(const b of $('side').querySelectorAll('[data-card-draw]'))b.onclick=()=>drawCardRecycling(Number(b.dataset.cardDraw));
  for(const b of $('side').querySelectorAll('[data-card-collect-all]'))b.onclick=collectCardAlbum;
+ for(const b of $('side').querySelectorAll('[data-album-withdraw]'))b.onclick=()=>withdrawAlbumCard(b.dataset.albumWithdraw);
  for(const input of $('side').querySelectorAll('[data-album-setting]'))input.onchange=()=>updateAlbumSettings(input.dataset.albumSetting,input.checked);
  for(const input of $('side').querySelectorAll('[data-album-keep]'))input.onchange=()=>updateAlbumSettings('keepCopies',Number(input.value));
  for(const b of $('side').querySelectorAll('[data-album-organize]'))b.onclick=manuallyRecycleDuplicates;
