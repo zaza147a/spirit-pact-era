@@ -3,13 +3,15 @@ import assert from 'node:assert/strict';
 import {runBuild} from '../scripts/balance-v24.mjs';
 const jobs=['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer'];
 const roles=['attack','magic','defense','support'];
+const fusionByRole={attack:'attack-defense',magic:'attack-magic',defense:'defense-support',support:null};
 test('Lv200 five-boss trial chain with SSS owner and pet gear, all jobs and pet roles',()=>{
  const rows=[];
  for(const job of jobs)for(const role of roles){
   const r=runBuild(job,role,{level:200,encounterLevel:200,gearLevel:200,
    scenario:'trialChain',trialMap:'worldroot',seconds:300,seed:731,reborn:true,thirdJob:true,
    rarity:'mythic',referenceBuild:true,referenceQuality:'mythic',
-   enhancement:'SSS',petEnhancement:'SSS'});
+   enhancement:'SSS',petEnhancement:'SSS',
+   ...(fusionByRole[role]?{fusionPair:fusionByRole[role],petLevelOverride:200}:{petLevelOverride:150})});
   rows.push({job,role,won:!!r.chainComplete,kills:r.chainKills||0,
    seconds:r.elapsed,alive:r.alive,petDeaths:r.petDeaths,potions:r.potions,petAlive:r.petAlive});
  }
