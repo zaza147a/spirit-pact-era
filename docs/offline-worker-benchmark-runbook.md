@@ -101,3 +101,5 @@ CI 固定 seed 12648430；起始測試 fixture 在 `tests/fixtures/starter-playe
 [#41611052013](https://github.com/zaza147a/spirit-pact-era/actions/runs/41611052013) 的 regression job PASS：42 組雙融合路線在正式 Worker 各模擬 60 秒，合計 **42 次共鳴觸發**（靈契君王 32、萬靈宗師 10），直接共鳴扣血 **171,321**，其中 21 條路線在這個 60 秒視窗**零觸發**。另有全部 42 組正／反條件觸發測試 PASS；這證明機制在控制條件下可作用，**並非**每條路線在自然戰鬥都有足夠實際觸發頻率。下一步要調查零觸發路線的目標、技能 CD、生存與共鳴觸發條件，再定是否精緻化數值。
 
 以上為合成合法形狀的測試 fixture，非玩家實際養成匯出；尚需 200 五王、210 農裝後首領、對照原十職、真實瀏覽器雙夥伴 UI 驗收。沒有改動怪物難度、main 或正式網站。
+
+[#41611052013](https://github.com/zaza147a/spirit-pact-era/actions/runs/41611052013) **四項 CI job 全部 PASS**（regression、gear-quality-observation、balance-observation、benchmark-starter）。完整 24h 自動分解測試兩次牆鐘 **3,695／3,697ms**、模擬 86,400,000ms、95,876 擊殺；起始雙寵含自動分解兩次 **7,348／7,415ms**、模擬 86,400,000ms、98,614 擊殺、雙寵 XP +405,720；兩組均 UID 正規化後語義狀態相同。未啟用自動分解的起始測試約在模擬 9,345,200ms 因背包滿提前停止，僅用於截止原因驗證，不宣稱完整 24h。以上仍非 200/210 高負載雙融合 24h 性能結論。
