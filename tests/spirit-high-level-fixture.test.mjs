@@ -4,6 +4,8 @@ import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {allocationBudget} from '../dist/growth-v5.js';
 import {attributeCap} from '../dist/adventure-progression.js';
 import {canonicalDualFusionKey} from '../dist/spirit-job-rules.js';
+import {gearTier,GEAR_BASE,PET_GEAR_BASE} from '../dist/loot.js';
+import {rankOf} from '../dist/sky-trials.js';
 
 for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210]){
  const player=highLevelSpiritPlayer({level,job});
@@ -13,8 +15,17 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
  assert.equal(player.pets.length,2);
  assert.ok(canonicalDualFusionKey(...player.pets),'two genuinely fused pets required');
  assert.equal(player.pets[0].level,200);assert.equal(player.pets[1].level,200);
- assert.ok(Object.values(player.gear).filter(Boolean).every(g=>g.enhancement==='SSS'&&g.level===200));
- assert.ok(player.pets.every(pet=>Object.values(pet.gear).every(g=>g.enhancement==='SSS')));
+ const expectedEnhancement=level===210?'SSS':null;
+ const allGear=[...Object.values(player.gear).filter(Boolean),...player.pets.flatMap(pet=>Object.values(pet.gear).filter(Boolean))];
+ assert.equal(allGear.length,16,'10 owner slots and 3 per fused pet');
+ assert.ok(allGear.every(g=>g.level===200&&g.tier===gearTier(200)&&g.rarity==='mythic'));
+ assert.ok(allGear.every(g=>rankOf(g)===expectedEnhancement),'wilderness 200 must not use enhancements; dawn 210 uses SSS');
+ assert.ok(allGear.every(g=>Object.keys(g.affixes||{}).length===6),'mythic equipment has five regular and one special affix');
+ assert.equal(player.dawnSigil,0,'no farmed dawn sigil at the initial balance baseline');
+ assert.deepEqual(player.cards,[]); // uncarded legal initial state, not a DPS-maximized build
+ assert.ok(Object.values(player.sockets).every(card=>card===null));
+ assert.ok(Object.values(player.gear).filter(Boolean).every(g=>!GEAR_BASE[g.id]?.jobs||GEAR_BASE[g.id].jobs.includes(job)));
+ assert.ok(player.pets.every(pet=>Object.values(pet.gear).every(g=>!!PET_GEAR_BASE[g.id])));
  assert.equal(player.tacticEffect,undefined,'manual tactics excluded from balance');
  const worker=new Worker(new URL('./offline-worker-node-entry.mjs?seed=20261103&clock=2000000000000',import.meta.url),{type:'module'});
  try{
