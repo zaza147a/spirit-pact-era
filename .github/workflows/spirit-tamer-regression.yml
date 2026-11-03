@@ -1,0 +1,35 @@
+name: Spirit Tamer regression (test branch only)
+
+on:
+  push:
+    branches:
+      - feature/spirit-tamer-dual-pets
+    paths:
+      - 'dist/**'
+      - 'tests/**'
+      - '.github/workflows/spirit-tamer-regression.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run offline optimizer regression
+        run: node tests/offline-optimizer-regression.mjs
+      - name: Run dual-pet combat regression
+        run: node tests/dual-pet-combat-regression.mjs
+      - name: Run dual-pet module regression suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          for testfile in tests/{dual-fusion-resonance,dual-pet-effects,dual-pet-formation,dual-pet-scheduler,dual-pet-targeting,spirit-equipment-drop,spirit-job-rules}.test.mjs; do
+            node "$testfile"
+          done
