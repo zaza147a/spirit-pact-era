@@ -44,9 +44,9 @@ export function readCardCollection(storage,catalog){
  if(parsed.options!==undefined&&(typeof parsed.options!=='object'||parsed.options===null||Array.isArray(parsed.options)))throw Error('卡片收藏設定不正確，原資料已保留');
  return normalizedCollection(parsed,catalog);
 }
-export function collectableFromPlayer(player,catalog,collection){
+export function collectableFromPlayer(player,catalog,collection,includeBoss=true){
  const saved=new Set(collection?.ids||[]);
- return (player?.cards||[]).filter(row=>Number.isInteger(row.qty)&&row.qty>0&&own(catalog,row.id)&&catalog[row.id]?.map&&catalog[row.id].map!=='legacy'&&!saved.has(row.id)&&!catalog[row.id].boss).map(row=>row.id);
+ return (player?.cards||[]).filter(row=>Number.isInteger(row.qty)&&row.qty>0&&own(catalog,row.id)&&catalog[row.id]?.map&&catalog[row.id].map!=='legacy'&&!saved.has(row.id)&&(includeBoss||!catalog[row.id].boss)).map(row=>row.id);
 }
 export function collectMissingCards(player,catalog,collection){
  if(!player||!Array.isArray(player.cards)||!collection||!Array.isArray(collection.ids))return {error:'收藏資料無效'};
@@ -63,7 +63,7 @@ export function organizeCards(player,catalog,collection){
  if(!player||!Array.isArray(player.cards))return {error:'卡片背包資料無效'};
  let next=before,added=[],recycled=0,points=0;
  if(options.autoCollect){
-  const ids=collectableFromPlayer(player,catalog,next).filter(id=>!next.withdrawn.includes(id));
+  const ids=collectableFromPlayer(player,catalog,next,false).filter(id=>!next.withdrawn.includes(id));
   if(ids.length){for(const id of ids){player.cards.find(c=>c.id===id).qty--;added.push(id);}
    next=normalizedCollection({...next,ids:[...next.ids,...ids]},catalog);
   }
