@@ -26,3 +26,11 @@ export function chooseDefendingPet(roster,roleOf,{mode='focus',guardingIds=[],rn
 export function pactOwnerOnlyAggro(player,roster=[]) {
  return player?.job==='pactWarrior'&&roster.some(p=>player.petStances?.[p.id]==='assimilate');
 }
+
+/** Commander battles are a genuine three-unit frontline: one owner slot and
+ * one slot for each living deployed pet. Defense/guard weighting applies when
+ * choosing which pet receives the shared pet-side target. */
+export function commanderPetTargetChance(roster=[]) {
+ const living=(roster||[]).filter(p=>p?.hp>0).length;
+ return living/(living+1);
+}
