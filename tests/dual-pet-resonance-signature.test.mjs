@@ -16,11 +16,11 @@ function run(index,job,{positive=true,withoutSignature=false,withoutRoute=false}
   const [main,sub]=fusion.split('-');
   return {id:String(i),nickname:String(i),hp:positive?(index===13?1000:100):(index===13?100:1000),fusion:{main,sub}};
  });
- const target={instanceId:'target',hp:(index===3||index===4||index===18)&&positive?1e8:1e9,maxHp:1e9,def:!positive&&index===0?0:10,boss:positive};
+ const target={instanceId:'target',hp:[3,4,7,18,20].includes(index)&&positive?1e8:1e9,maxHp:1e9,def:!positive&&index===0?0:10,boss:positive};
  const events={heals:0,shields:0,messages:0};
- const enemies=[5,14,19].includes(index)&&positive?[target,{instanceId:'other',hp:100}]:[target];
+ const enemies=[5,11,14,19].includes(index)&&positive?[target,{instanceId:'other',hp:100}]:[target];
  const ctx={
-  player:{job,thirdJob:true},enemy:target,enemies,
+  player:{job,thirdJob:true,shield:positive&&index===9?100:0},enemy:target,enemies,
   timers:{dualSpiritAt:0},report:{dualPetDamage:{dualResonance:0}},
   activePetRoster:()=>pets,gameNow:()=>100000,
   dualSpiritResonance:(p,r)=>{
@@ -58,9 +58,11 @@ for(const job of ['pactWarrior','spiritCommander']){
 }
 // Each first-stage pairing has distinct per-route behavior, and it must
 // remain conditional rather than grant a free benefit on every activation.
+assert.equal(new Set(Object.values(DUAL_SPIRIT_RULES).map(x=>x.warriorRoute)).size,21);
+assert.equal(new Set(Object.values(DUAL_SPIRIT_RULES).map(x=>x.commanderRoute)).size,21);
 let routeChecks=0;
 for(const job of ['pactWarrior','spiritCommander']){
- for(let i=0;i<6;i++){
+ for(let i=0;i<21;i++){
   const active=run(i,job);
   const noRoute=run(i,job,{withoutRoute:true});
   assert.notDeepEqual(active,noRoute,'route effect must change its positive scenario: '+job+' '+i);
