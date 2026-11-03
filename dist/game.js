@@ -1175,21 +1175,32 @@ function combatTick(now=gameNow()){if(player?.trialRun&&player.hp<=0){exitTrial(
  if(now-timers.regen>=4000){timers.regen=now;for(const pet of activePetRoster(player))if(pet.hp>0)pet.sp=Math.min(petStats(pet).sp,pet.sp+Math.max(1,Math.ceil(pet.level/8)));player.mp=Math.min(stat('mp'),player.mp+2+passiveBonus('spRegen')+cardBonus('spRegen'));dirty=true;}
  if(enemy.hp&&player.hp){const trialAtTick=player.trialRun;if(auto&&now-(timers.potions||0)>800){timers.potions=now;autoUsePotions();}tickPetEffects(now);const selected=enemy;for(const foe of [...enemies]){if(!player.hp)break;if(foe.hp&&now-foe.lastAttack>=aspdAttackIntervalMs(foe.aspd)){foe.lastAttack=now;enemy=foe;enemyAttack();if(trialAtTick&&!player.trialRun)return;}}enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;if(enemy.hp&&auto){for(const companion of activePetRoster(player)){if(!enemy.hp)break;if(companion?.hp>0&&combatPetFactor(companion.id)>0){petAutoAbility(companion,petStats(companion),now);if(enemy.hp)petAttack(companion,combatPetFactor(companion.id));}}if(enemy.hp)autoCastJobs();if(enemy.hp)playerAttack();if(enemy.hp&&player.autoUltimate&&player.resonance>=ULTIMATE_COST&&now-timers.ultimate>=ULTIMATE_COOLDOWN)ultimate();}}
 }finally{inCombatTick=false;if(!offlineSimulation)clearStatSnapshots();}}
+// Skip only completely idle 100ms slices; retain the original time grid and
+// never jump over encounter, regeneration or supply deadlines.
+function offlineIdleSkipSteps(now,remaining){
+ if(player?.trialRun||casting||controlEffect||enemies.some(foe=>foe.hp>0)||!encounterSlots.length||encounterSlots.some(at=>!Number.isFinite(at)))return 0;
+ const regenAt=Number.isFinite(timers.regen)?timers.regen+4000:now;
+ const suppliesAt=Number.isFinite(timers.offlineSupplies)?timers.offlineSupplies+4000:now;
+ const deadline=Math.min(...encounterSlots,regenAt,suppliesAt,now+remaining);
+ return Math.max(0,Math.min(Math.floor((remaining-OFFLINE_STEP_MS)/OFFLINE_STEP_MS),Math.floor((deadline-now-1)/OFFLINE_STEP_MS)));
+}
 async function simulateOffline(state,now=Date.now(),progress=()=>{}){
  const window=offlineWindow(state,now),before=structuredClone(state);
  if(!window.eligible)return {player:state,summary:null};
  clearStatSnapshots();offlineSimulation=true;offlineClock=state.offline.at;offlineMetrics={baseXp:0,jobXp:0,petXp:0,goldEarned:0,potions:{},purchased:{},spent:0,bossesEscaped:0};
  try{
-  player=normalize(structuredClone(state));player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));resetSession();auto=true;spawn();const trialMode=!!player.trialRun?.continuous;let simulated=0,reason='已完成離線時間';
+  player=normalize(structuredClone(state));player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));resetSession();auto=true;spawn();const trialMode=!!player.trialRun?.continuous;let simulated=0,reason='已完成離線時間',yieldSteps=0,lastYieldAt=performance.now();
   for(;simulated<window.duration;){
    if(!player.hp){if(player.autoRevive&&auto)autoRevivePlayer();if(!player.hp&&auto&&player.autoRevive&&gameNow()<player.reviveAt){const wait=Math.min(window.duration-simulated,player.reviveAt-gameNow());offlineClock+=wait;simulated+=wait;continue;}if(!player.hp||!auto||isTown(player.location)){reason=isTown(player.location)?'金幣不足，已回城停止掛機':'角色倒下，掛機停止';break;}}
    if(player.bag.length>=1900){reason='背包接近容量上限，掛機停止';if(trialMode)exitTrial(reason);break;}
+   const skipSteps=offlineIdleSkipSteps(offlineClock,window.duration-simulated);if(skipSteps){const skipMs=skipSteps*OFFLINE_STEP_MS;offlineClock+=skipMs;simulated+=skipMs;}
    const delta=Math.min(OFFLINE_STEP_MS,window.duration-simulated);offlineClock+=delta;simulated+=delta;combatTick(offlineClock);
    if(trialMode&&!player.trialRun){reason=player.trialStopReason||'連續試煉已停止';break;}
    if(offlineClock-(timers.offlineSupplies||0)>=4000){timers.offlineSupplies=offlineClock;if(player.hp>0)autoBuyPotions();if(player.autoSalvage&&player.salvageInventory)salvageBagEquipment();}
-   if(Math.floor(simulated/OFFLINE_STEP_MS)%1000===0){progress(simulated/window.duration);await new Promise(resolve=>setTimeout(resolve,0));}
+   if(++yieldSteps>=256){yieldSteps=0;const wallNow=performance.now();if(wallNow-lastYieldAt>=24){progress(simulated/window.duration);await new Promise(resolve=>setTimeout(resolve,0));lastYieldAt=performance.now();}}
   }
   if(!player.hp)reason=player.trialStopReason||'角色倒下，掛機停止';
+  progress(simulated/window.duration);
   if(trialMode)checkpointTrial();
   const summary={...window,simulated,reason,map:state.location,trialRounds:trialMode?Math.max(0,(player.trialClears?.[state.trialRun.map]||0)-(before.trialClears?.[state.trialRun.map]||0)):0,kills:player.kills-before.kills,gold:player.gold-before.gold,baseBefore:before.level,baseAfter:player.level,jobBefore:before.jobLevel,jobAfter:player.jobLevel,...offlineMetrics,...inventoryDelta(before,player)};
   return {player,summary};
