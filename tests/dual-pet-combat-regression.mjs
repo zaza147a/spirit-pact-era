@@ -46,4 +46,43 @@ vm.runInNewContext(selectCode+'\nthis.use=autoUsePotions',context);
 context.use();assert.equal(p.pets[1].hp,0,'cannot revive before cooldown');
 context.gameNow=()=>501;context.use();assert.equal(p.pets[1].hp,50,'second pet revives after cooldown');
 assert.equal(p.bag[0].qty,2,'exactly one potion consumed');
-console.log('Dual-pet factor and revive/potion regression checks passed.');
+
+const spiritSource=readFileSync(new URL('../dist/spirit-job-rules.js',import.meta.url),'utf8')
+  .replace(/^import .*;\s*$/gm,'').replace(/\bexport /g,'');
+const spiritContext={};
+vm.runInNewContext(spiritSource+
+  '\nthis.api={canonicalDualFusionKey,DUAL_FUSION_TYPES}',spiritContext);
+const {canonicalDualFusionKey,DUAL_FUSION_TYPES}=spiritContext.api;
+const resonanceSource=readFileSync(new URL('../dist/dual-fusion-resonance.js',import.meta.url),'utf8')
+  .replace(/^import .*;\s*$/gm,'').replace(/\bexport /g,'');
+const resonanceContext={canonicalDualFusionKey,DUAL_FUSION_TYPES};
+vm.runInNewContext(resonanceSource+
+  '\nthis.api={dualSpiritResonance,canTriggerDualSpirit}',resonanceContext);
+const {dualSpiritResonance,canTriggerDualSpirit}=resonanceContext.api;
+assert.equal(DUAL_FUSION_TYPES.length,21);
+const fused=(key,id)=>{
+  const [main,sub]=key.split('-');
+  return {id,hp:100,fusion:{main,sub}};
+};
+let validated=0;
+for(const job of ['pactWarrior','spiritCommander']){
+  for(const key of DUAL_FUSION_TYPES){
+    const [first,second]=key.split('+');
+    const roster=[fused(first,'first'),fused(second,'second')];
+    const state={job,thirdJob:true};
+    const rule=dualSpiritResonance(state,roster);
+    assert.equal(rule?.key,key);
+    assert.equal(dualSpiritResonance(state,[...roster].reverse())?.key,key);
+    assert.ok(canTriggerDualSpirit(rule,'thirdHit_'+job,100000,0,'target'));
+    assert.ok(!canTriggerDualSpirit(rule,'pet',100000,0,'target'));
+    assert.ok(!canTriggerDualSpirit(rule,'thirdHit_'+job,100001,100000,'target'));
+    assert.ok(canTriggerDualSpirit(rule,'thirdHit_'+job,100000+rule.cooldownMs,100000,'target'));
+    assert.equal(dualSpiritResonance(state,[roster[0],{...roster[1],hp:0}]),null);
+    assert.equal(dualSpiritResonance(state,[roster[0]]),null);
+    assert.equal(dualSpiritResonance({...state,thirdJob:false},roster),null);
+    validated++;
+  }
+}
+assert.equal(validated,42);
+
+console.log('Dual-pet factor, revive and 42 resonance regression checks passed.');
