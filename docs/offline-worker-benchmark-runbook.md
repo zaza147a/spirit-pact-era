@@ -43,3 +43,9 @@ node tests/offline-worker-benchmark.mjs path/to/legal-save.json
 CI 固定 seed 12648430；起始測試 fixture 在 `tests/fixtures/starter-player.mjs`。執行 `node tests/offline-worker-benchmark.mjs --starter-salvage` 或 `--starter-dual-salvage`；兩個模式均要求模擬完整時長，提前終止直接失敗。首次原始存檔 UID 差異來自隨機生成身份，並未修改正式遊戲 UID 邏輯。
 
 尚未完成：合法 200/210 雙融合寵、完整裝備卡片、補給／自售、死亡復活、試煉五連戰之實戰端到端一致性與效能驗收；目前數據不得外推。
+
+### 離線傷害歸屬（2026-11-03 新增）
+
+`summary.damage` 以怪物實際扣除 HP 為基準：`player`（人物及歸屬人物的職業 Buff）、`pet1`、`pet2`、`resonance`（雙靈共鳴直接扣血）、`petSupport`（寵物對人物攻擊的支援份額）、`other`（待分類來源）與 `total`。各項分量必須非負，且總和等於 `total`；Buff 不可重複視作額外 DPS。此統計是離線戰鬥總傷害，非單一首領的 DPS。
+
+[#41607358365](https://github.com/zaza147a/spirit-pact-era/actions/runs/41607358365)：Node 回歸與三種離線 benchmark 均 PASS。固定測試雙寵 IV 後，24h ×2 實際運算 5,877/5,875ms，模擬 86,400,000ms，98,618 擊殺，Base XP +458,215、Job XP +387,637、夥伴 XP +405,720、金幣 +197,441；傷害 player 627,747、pet1 12,962,260、pet2 2,120,903、petSupport 286,546、resonance 0、other 0，總計 15,997,456。此為一轉非融合雙寵，三轉共鳴尚未觸發；不是 200/210 配裝平衡結論。
