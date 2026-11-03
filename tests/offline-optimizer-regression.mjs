@@ -33,3 +33,34 @@ context.player={};context.casting={id:'skill'};assert.equal(context.skip(0,10000
 context.casting=null;context.controlEffect={kind:'stun'};assert.equal(context.skip(0,10000),0,'control effect cannot be skipped');
 context.controlEffect=null;context.encounterSlots=[NaN];assert.equal(context.skip(0,10000),0,'unknown encounter timer cannot be skipped');
 console.log('Offline optimizer deadline/guard checks passed.');
+
+
+// Compare the optimized encounter hot path with the original logic across
+// occupied, expired, vacant, and defeated slots without a browser DOM.
+const encounterStart=game.indexOf('function tickEncounters(');
+const encounterEnd=game.indexOf('\nfunction restoreTownPartyFully(',encounterStart);
+assert.ok(encounterStart>=0&&encounterEnd>encounterStart,'encounter tick missing');
+const optimized=game.slice(encounterStart,encounterEnd);
+const original=`function tickEncounters(now){if(player.trialRun){if(!enemies.some(e=>e.hp>0)&&now>=player.trialRun.nextAt)spawnTrialBoss();return;}if(isTown(player.location)||!player.hp)return;const capacity=encounterLimit(player.location);let changed=false;enemies=enemies.filter(e=>e.hp>0);for(let slot=0;slot<capacity;slot++){if(encounterSlots[slot]===undefined)encounterSlots[slot]=now+rand(100,900);if(!enemies.some(e=>!e.boss&&e.slotIndex===slot)&&now>=encounterSlots[slot]){encounterSlots[slot]=now+rand(250,1400);addEncounter(now,slot);changed=true;}}if(changed)render();}`;
+function encounterState(fn,initial){
+ const state={player:{location:'field',hp:100},enemies:structuredClone(initial.enemies),encounterSlots:initial.slots.slice(),rng:0,renders:0};
+ const env={...state,isTown:()=>false,encounterLimit:()=>3,
+   rand:(a,b)=>a+(env.rng++%Math.max(1,b-a+1)),
+   addEncounter:(now,slot)=>env.enemies.push({slotIndex:slot,hp:100,boss:false,id:'spawn'+slot}),
+   render:()=>{env.renders++},spawnTrialBoss:()=>{}};
+ vm.runInNewContext(fn+'\\nthis.runEncounter=tickEncounters',env);
+ env.runEncounter(5000);
+ return JSON.stringify({enemies:env.enemies,slots:env.encounterSlots,rng:env.rng,renders:env.renders});
+}
+for(const trial of [
+ {enemies:[0,1,2].map(i=>({slotIndex:i,hp:100,boss:false})),slots:[6000,6000,6000]},
+ {enemies:[0,1,2].map(i=>({slotIndex:i,hp:100,boss:false})),slots:[1000,1000,1000]},
+ {enemies:[0,1,2].map(i=>({slotIndex:i,hp:i===1?0:100,boss:false})),slots:[1000,1000,1000]},
+ {enemies:[{slotIndex:0,hp:100,boss:false}],slots:[1000,1000,1000]},
+ {enemies:[],slots:[1000,1000,1000]},
+ {enemies:[{slotIndex:0,hp:100,boss:true}],slots:[1000,1000,1000]},
+ {enemies:[],slots:[]}
+]){
+ assert.equal(encounterState(optimized,trial),encounterState(original,trial),'optimized encounter behavior must match baseline');
+}
+console.log('Offline encounter hot-path equivalence checks passed.');
