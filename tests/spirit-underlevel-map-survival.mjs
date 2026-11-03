@@ -25,7 +25,7 @@ function equipLevel(p,level){
 for(const level of [200,210])
  for(const gearLevel of (level===200?[170,180]:[200]))
  for(const job of ['pactWarrior','spiritCommander'])
- for(const pairKey of ['attack-magic+attack-defense','attack-magic+defense-support'])
+ for(const pairKey of ['attack-defense+attack-magic','attack-magic+defense-support'])
  for(const seed of seeds){
  const p=highLevelSpiritPlayer({level,job,pairKey,gearRarity:'mythic'});
  if(level===200)equipLevel(p,gearLevel);
