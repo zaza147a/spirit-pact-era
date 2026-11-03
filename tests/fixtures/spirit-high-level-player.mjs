@@ -1,9 +1,9 @@
 // Synthetic, deterministic progression-state fixture for integration testing.
 // Not a player export or a DPS-optimal equipment prescription.
 import {starterPlayer} from './starter-player.mjs';
-import {makePet,petStats,GEAR_BASE} from '../../dist/catalog.js';
+import {makePet,petStats} from '../../dist/catalog.js';
 import {fusePets} from '../../dist/pet-fusion.js';
-import {rollGear,rollPetGear} from '../../dist/loot.js';
+import {rollGear,rollPetGear,GEAR_BASE} from '../../dist/loot.js';
 import {allocationBudget} from '../../dist/growth-v5.js';
 import {attributeCap} from '../../dist/adventure-progression.js';
 import {SPIRIT_TRIAL_ID} from '../../dist/spirit-job-rules.js';
