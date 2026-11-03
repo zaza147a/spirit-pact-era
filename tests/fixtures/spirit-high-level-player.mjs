@@ -5,7 +5,7 @@
 import {starterPlayer} from './starter-player.mjs';
 import {makePet,petStats,CARDS,SLOTS} from '../../dist/catalog.js';
 import {fusePets} from '../../dist/pet-fusion.js';
-import {rollGear,rollPetGear,GEAR_BASE} from '../../dist/loot.js';
+import {rollGear,rollPetGear,GEAR_BASE,RARITIES} from '../../dist/loot.js';
 import {allocationBudget} from '../../dist/growth-v5.js';
 import {attributeCap} from '../../dist/adventure-progression.js';
 import {SPIRIT_TRIAL_ID,DUAL_FUSION_TYPES} from '../../dist/spirit-job-rules.js';
@@ -14,10 +14,11 @@ import {cardAllowedInSlot} from '../../dist/card-effects.js';
 function seeded(seed=0x1a2b3c4d){
  return ()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
 }
-export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='attack-magic+defense-support',allowBoss=false,dawnSigil=0}={}){
+export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='attack-magic+defense-support',allowBoss=false,dawnSigil=0,gearRarity='mythic'}={}){
  if(![200,210].includes(level)||!['pactWarrior','spiritCommander'].includes(job))
   throw Error('unsupported high-level spirit fixture');
  if(!DUAL_FUSION_TYPES.includes(pairKey))throw Error('invalid unordered dual fusion pairing');
+ if(!RARITIES.some(r=>r.id===gearRarity))throw Error('invalid gear rarity');
  if(![0,4].includes(dawnSigil)||(dawnSigil!==0&&level!==210))throw Error('unsupported dawn farming stage');
  const rng=seeded(level+(job==='pactWarrior'?101:202)),p=starterPlayer();
  p.name='SpiritIntegrationFixture';p.job=job;p.level=level;p.reborn=true;p.thirdJob=true;
@@ -52,7 +53,7 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
  for(const pet of p.pets){
   pet.level=200;pet.xp=0;pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;
   pet.gear=Object.fromEntries([['head','petHelm'],['body','petArmor'],['shoes','petBoots']].map(([slot,id],index)=>{
-   const gear=rollPetGear(id,200,'mythic',rng);
+   const gear=rollPetGear(id,200,gearRarity,rng);
    gear.uid='fixture-'+pet.id+'-'+slot;
    // Lv200 wilderness baseline is unenhanced; Lv201+ expects SSS gear.
    if(level>=210)gear.enhancement='SSS';
@@ -63,7 +64,7 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
  p.petStances=Object.fromEntries(p.pets.map(pet=>[pet.id,'assist']));
  for(const [slot,id] of [['headUpper','helm'],['headMiddle','visor'],['headLower','mask'],['armor','plate'],['rightHand','mace'],['leftHand','shield'],['garment','cloak'],['shoes','boots'],['accessory1','chip'],['accessory2','ring']]){
   if(GEAR_BASE[id].jobs&&!GEAR_BASE[id].jobs.includes(job))throw Error('illegal weapon '+id);
-  const gear=rollGear(id,200,'mythic',rng);
+  const gear=rollGear(id,200,gearRarity,rng);
   gear.uid='fixture-player-'+slot;
   if(level>=210)gear.enhancement='SSS';
   p.gear[slot]=gear;
