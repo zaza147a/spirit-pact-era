@@ -32,6 +32,8 @@ jobs:
         run: node tests/dual-pet-combat-regression.mjs
       - name: Verify commander-only multiple targets for attacks and skills
         run: node tests/spirit-commander-cleave-regression.mjs
+      - name: Verify contract sigil scales assimilated stats and leaves legacy jobs unchanged
+        run: node tests/spirit-sigil-assimilation-regression.mjs
       - name: Run resonance condition positive and negative cases
         run: node tests/dual-pet-resonance-signature.test.mjs
       - name: Run dual-pet UI regression
