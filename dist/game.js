@@ -241,16 +241,16 @@ function petAutoAbility(pet,s,now){const dual=player.job==='spiritist'||player.j
   if(enemy.hp<=0)award();message(`${pet.nickname} 自動施放【${skill.name}】！${outcome}。`,'rare','pet');dirty=true;render();break;
  }
 }
-function tickDamageOverTime(now,lane){
+function tickDamageOverTime(now,lane,sourcePet=activePet(),fx=effectsForPet(sourcePet)){
  const burning=lane==='burn',prefix=burning?'burn':'bleed',ticks=prefix+'Ticks',next=prefix+'Next',targetId=prefix+'TargetId';
- if(!petEffects[ticks]||now<petEffects[next])return;
- const selected=enemy,target=enemies.find(e=>e.instanceId===petEffects[targetId]&&e.hp>0);
- if(!target){petEffects[ticks]=0;delete petEffects[targetId];return;}
+ if(!fx[ticks]||now<fx[next])return;
+ const selected=enemy,target=enemies.find(e=>e.instanceId===fx[targetId]&&e.hp>0);
+ if(!target){fx[ticks]=0;delete fx[targetId];return;}
  enemy=target;
- const damage=dealPetDamage(petEffects[prefix+'Power'],burning?'resonanceDamage':'petDamage');
- enemy=selected;petEffects[ticks]--;
- petEffects[next]=now+(burning?1200:(petEffects.bleedInterval||2000));
- if(!burning&&petEffects.bleedLeech)healPetParty(Math.round(damage*petEffects.bleedLeech));
+ const damage=dealPetDamage(fx[prefix+'Power'],burning?'resonanceDamage':'petDamage',sourcePet,secondPetDamageFactor(player,sourcePet?.id));
+ enemy=selected;fx[ticks]--;
+ fx[next]=now+(burning?1200:(fx.bleedInterval||2000));
+ if(!burning&&fx.bleedLeech)healPetParty(Math.round(damage*fx.bleedLeech));
  message((burning?'🔥 灼燒':'🩸 裂傷')+'持續造成 '+damage+' 傷害。','good','pet');
  if(!target.hp){enemy=target;award();enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;}
  render();
@@ -278,6 +278,16 @@ function tickPetEffects(now){
  if(petEffects.regenTicks&&now>=petEffects.regenNext){healPetParty(petEffects.regenPower);petEffects.regenTicks--;petEffects.regenNext=now+petEffects.regenInterval;}
  activePetMarkPower(now);
  tickDamageOverTime(now,'bleed');tickDamageOverTime(now,'burn');tickSongRain(now);
+ for(const pet of activePetRoster(player).slice(1)){
+  const fx=effectsForPet(pet);
+  if(now<fx.guardUntil&&now>=(fx.guardRegenNext||0)){
+   if(pet.hp>0){const restored=Math.min(Math.max(0,petStats(pet).hp-pet.hp),fx.guardRegen||0);pet.hp+=restored;record(report,'effectiveHeal',restored);}
+   fx.guardRegenNext=now+1000;
+  }
+  if(fx.regenTicks&&now>=fx.regenNext){healPetParty(fx.regenPower);fx.regenTicks--;fx.regenNext=now+fx.regenInterval;}
+  if(now>(fx.shieldExpires||Infinity))fx.shield=0;
+  tickDamageOverTime(now,'bleed',pet,fx);tickDamageOverTime(now,'burn',pet,fx);
+ }
 }
 function addEnergy(amount){if(!activePet()||!player.hp)return;player.resonance=clamp(player.resonance+amount,0,RESONANCE_MAX);dirty=true;}
 // All resonance effects are terminal outcomes: they cannot emit more resonance events.
