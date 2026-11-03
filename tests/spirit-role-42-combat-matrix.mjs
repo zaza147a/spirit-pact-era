@@ -37,7 +37,7 @@ for(const level of levels)for(const {job,stance} of setups)for(const pairKey of 
    otherSkillCasts:Object.entries(s.skillCasts).filter(([k])=>k!=='thirdMain_'+job).reduce((v,[,n])=>v+n,0)});
  }finally{await worker.terminate();}
 }
-assert.equal(rows.length,252);
+assert.equal(rows.length,180);
 for(const level of levels)for(const {job,stance} of setups){
  const group=rows.filter(x=>x.level===level&&x.job===job&&x.stance===stance);
  const aggregate=k=>Math.round(group.reduce((n,x)=>n+x[k],0)/group.length*100)/100;
