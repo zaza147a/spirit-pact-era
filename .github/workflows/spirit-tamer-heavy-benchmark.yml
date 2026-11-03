@@ -21,3 +21,6 @@ jobs:
           node-version: '22'
       - name: Full 16-scenario level-200 and 210 dual-fusion 1/6/12/24h observation
         run: node tests/spirit-high-level-offline-benchmark.mjs
+
+      - name: Four role-correct 24h owner-led and pet-led benchmark cases
+        run: node tests/spirit-role-24h-worker.mjs
