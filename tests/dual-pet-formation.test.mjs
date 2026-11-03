@@ -70,3 +70,22 @@ test('benched companion keeps its own stance when switched back',()=>{
   assert.equal(secondPetDamageFactor(p,'b'),.10);
   assert.equal(p.petStances.removed,undefined,'stale released pet state is discarded');
 });
+
+test('two different pet IDs with the same unordered fusion cannot both deploy',()=>{
+ const p=sample('pactWarrior');
+ p.pets[0].fusion={main:'attack',sub:'magic'};
+ p.pets[1].fusion={main:'magic',sub:'attack'};
+ p.pets[2].fusion={main:'defense',sub:'support'};
+ assert.match(canSetSecondaryPet(p,'b'),/相同融合類型/);
+ assert.deepEqual(activePetRoster(p).map(x=>x.id),['a'],'old unnormalized save cannot gain double damage');
+ normalizeDualPetState(p);
+ assert.equal(p.secondaryPetId,null,'migration unequips duplicate second slot');
+ assert.equal(p.pets.length,3,'does not delete owned pets');
+ assert.equal(canSetSecondaryPet(p,'c'),null);
+ p.secondaryPetId='c';
+ assert.deepEqual(activePetRoster(p).map(x=>x.id),['a','c']);
+ const ordinary=sample('wizard');
+ ordinary.pets[0].fusion=p.pets[0].fusion;
+ ordinary.pets[1].fusion=p.pets[1].fusion;
+ assert.deepEqual(activePetRoster(ordinary).map(x=>x.id),['a']);
+});
