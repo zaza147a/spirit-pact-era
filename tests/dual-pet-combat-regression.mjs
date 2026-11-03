@@ -195,7 +195,7 @@ assert.equal(runDualTick(100,100,true),'ability:one,attack:one,ability:two,attac
 const commanderTransferCode=loadFunction(game,'commanderTransferredPetStats','setPetStance');
 for(const job of ['pactWarrior','spiritCommander']){
  const commander=player(job),input={atk:1000,matk:1000,def:500,mdef:500};
- const ctx={player:commander,stat:key=>({atk:200,matk:400,def:100,mdef:80})[key]||0};
+ const ctx={player:commander,activePetRoster:()=>commander.pets,stat:key=>({atk:200,matk:400,def:100,mdef:80})[key]||0};
  vm.runInNewContext(commanderTransferCode+'\nthis.transfer=commanderTransferredPetStats',ctx);
  const result=ctx.transfer(commander.pets[0],input);
  if(job==='spiritCommander'){
@@ -203,6 +203,14 @@ for(const job of ['pactWarrior','spiritCommander']){
   assert.equal(result.matk,1120);
   assert.equal(result.def,535);
   assert.equal(result.mdef,528);
+  // Only two attack/magic fusions receive the targeted sustained-survival buff.
+  commander.pets[0].fusion={main:'attack',sub:'magic'};
+  commander.pets[1].fusion={main:'attack',sub:'magic'};
+  const offensive=ctx.transfer(commander.pets[0],input);
+  assert.equal(offensive.def,555);
+  assert.equal(offensive.mdef,544);
+  commander.pets[1].fusion={main:'defense',sub:'support'};
+  assert.equal(ctx.transfer(commander.pets[0],input).def,535,'mixed pairs preserve the existing defensive transfer');
   assert.equal(input.atk,1000,'cached petStats must not be mutated');
   commander.pets[0].hp=0;
   assert.equal(ctx.transfer(commander.pets[0],input),input,'dead pet receives no transfer');
