@@ -107,9 +107,14 @@ for(const job of Object.keys(SECOND_JOBS)){
  for(const cfg of geared)for(const stat of stats)for(const weapon of weapons(job)){
   const next={...cfg,stat,weapon};const r=await run(next,45,seed);if(r.totalDps>top.totalDps)top=r;
  }
- winner=top;
- const validations=[];
- for(const testSeed of [471122,93217,81733])validations.push(await run(winner.cfg,300,testSeed));
+ const trialCandidates=[winner,top];
+ let validations=[];let highestMean=-Infinity,selected=winner;
+ for(const candidate of trialCandidates){const current=[];
+  for(const testSeed of [471122,93217,81733])current.push(await run(candidate.cfg,300,testSeed));
+  const average=current.reduce((sum,r)=>sum+r.totalDps,0)/current.length;
+  if(average>highestMean){highestMean=average;selected=candidate;validations=current;}
+ }
+ winner=selected;
  const mean=k=>validations.reduce((sum,r)=>sum+r[k],0)/validations.length;
  const row={job,pair:winner.cfg.pair,stance:winner.cfg.stance,stat:winner.cfg.stat,order:winner.cfg.order,
   candidates:candidates.length,refinements:count+advanced.length+geared.length*stats.length*weapons(job).length,
