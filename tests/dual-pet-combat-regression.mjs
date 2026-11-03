@@ -102,11 +102,12 @@ for(const job of ['pactWarrior','spiritCommander']){
     const [a,b]=key.split('+');
     const companions=[fused(a,'first'),fused(b,'second')];
     companions[0].nickname='First';companions[1].nickname='Second';
-    const target={instanceId:'boss',hp:1e9,def:10};
+    const index=DUAL_FUSION_TYPES.indexOf(key);
+    const target={instanceId:'boss',hp:index===4?1e8:1e9,maxHp:1e9,def:10,boss:true};
     const clock={now:100000}, messages=[],effects={shields:0,heals:0};
     const runContext={
       player:{job,thirdJob:true,pets:companions,activePetId:'first',secondaryPetId:'second'},
-      enemy:target,enemies:[target],report:{dualPetDamage:{first:0,second:0,dualResonance:0}},
+      enemy:target,enemies:index===5?[target,{instanceId:'other',hp:100}]:[target],report:{dualPetDamage:{first:0,second:0,dualResonance:0}},
       timers:{dualSpiritAt:0},dualSpiritResonance,canTriggerDualSpirit,
       activePetRoster:()=>companions,gameNow:()=>clock.now,
       petStats:()=>({atk:100,matk:100,hp:1000}),stat:()=>100,
@@ -133,6 +134,13 @@ for(const job of ['pactWarrior','spiritCommander']){
     if(rule.trait==='guard')assert.equal(effects.shields,1,job+' '+key+' shield');
     if(rule.trait==='heal')assert.equal(effects.heals,1,job+' '+key+' heal');
     if(rule.trait==='focus')assert.ok(target.exposedUntil>clock.now&&target.exposedPower>0,job+' '+key+' expose');
+    if(index<6)assert.ok(rule.signature,job+' '+key+' requires a unique conditional signature');
+    if(index===0)assert.ok(target.exposedPower>=.025,'armor echo applies only after a defended target');
+    if(index===1)assert.ok(effects.heals>=1,'rescue guard heals an injured companion');
+    if(index===2)assert.ok(effects.shields>=1,'recovery chain wards an injured companion');
+    if(index===3)assert.ok(target.exposedPower>=.03,'boss trace weakens a boss');
+    if(index===4)assert.ok(target.exposedPower>=.08,'finisher focus strengthens exposed vulnerability');
+    if(index===5)assert.ok(effects.shields>=1,'crowd ward shields during multiple enemies');
     runContext.fire('thirdHit_'+job);
     assert.equal(messages.length,1,job+' '+key+' duplicate during cooldown');
     clock.now+=12000;
