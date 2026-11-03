@@ -28,7 +28,9 @@ export function normalizeDualPetState(player) {
     player.secondaryPetId=null;
   if (!DUAL_PET_MODES.includes(player.dualPetMode)) player.dualPetMode='focus';
   const stance=player.petStances&&typeof player.petStances==='object'?player.petStances:{};
-  player.petStances=Object.fromEntries(activePetRoster(player).map(p=>[
+  // Keep valid per-pet stances even while a companion is benched.
+  // This preserves the player's choice when they switch the second slot back.
+  player.petStances=Object.fromEntries(player.pets.map(p=>[
     p.id, PACT_STANCES.includes(stance[p.id])?stance[p.id]:'assist'
   ]));
   return player;
