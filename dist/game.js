@@ -53,7 +53,7 @@ import {JOB_SKILLS,jobSkillById,initialJobSkills,weaponSkillAllowed,activeJobSki
 import {WORLD_MONSTERS,ZONES,worldMonsterArt} from './world-data.js?v=6.5.0';
 import {rollGear,rollPetGear,rebalanceGear,gearStatValue,affixRange,normalizeBag,addStack,consumeStack,STACK_SET,RARITIES,AFFIX_NAMES,TIER_NAMES,gearTier,gearGroup,shardId,gearLabel,affixLabel,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,equipmentDrop} from './loot.js?v=6.5.45';
 import {spiritEquipmentSplit,isSpiritJob} from './spirit-job-rules.js';
-import {activePetRoster,normalizeDualPetState,canSetSecondaryPet,secondPetDamageFactor} from './dual-pet-formation.js';
+import {activePetRoster,normalizeDualPetState,canSetSecondaryPet,secondPetDamageFactor,equipmentTargetPet} from './dual-pet-formation.js';
 import {outgoingHitDamage,incomingMonsterDamage,monsterAttackPower,monsterDefenseAgainst,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterHitChance,monsterCombatStats,monsterRuntimeStats,jobZoneOutputFactor,LEVEL_CAPS} from './combat-balance.js?v=6.5.0';
 import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.5.45';
 
@@ -75,7 +75,7 @@ const gameNow=()=>offlineClock??Date.now();
 const KEY='icarus-prototype-v02',OLD='icarus-prototype-v01',$=id=>document.getElementById(id);
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let characterSection='attributes',petSection='manage',releaseRarity='rare',petGearTargetId=null;
-function selectedGearPet(){return isSpiritJob(player?.job)?activePetRoster(player).find(p=>p.id===petGearTargetId)||activePet():activePet();}
+function selectedGearPet(){return equipmentTargetPet(player,petGearTargetId);}
 function dualPetSelector(){if(!isSpiritJob(player.job))return '';return `<div class="item"><b>雙靈裝備與技能配置</b><div class="panel-shortcuts">${activePetRoster(player).map((pet,i)=>`<button data-dual-config="${pet.id}" class="${selectedGearPet()?.id===pet.id?'active':''}">${i===0?'第一':'第二'}夥伴 · ${escapeHtml(pet.nickname)}</button>`).join('')}</div><p>背包夥伴裝備將穿戴至選取的夥伴，裝備比較也依此欄位計算。</p></div>`;}
 function setSecondaryPet(id){if(!isSpiritJob(player.job)||player.trialRun)return;const next=player.secondaryPetId===id?null:id,error=canSetSecondaryPet(player,next);if(error)return toast(error);if(enemy?.hp)endReport('調整第二夥伴');player.secondaryPetId=next;petGearTargetId=next||player.activePetId;clearPetEffects();normalizeDualPetState(player);if(enemy?.hp)startReport();dirty=true;save();render();}
 
