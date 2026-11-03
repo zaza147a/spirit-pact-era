@@ -329,3 +329,14 @@ jobs:
           node-version: '22'
       - name: Compare all twelve jobs at level 210 and sigil 0 versus 8
         run: node tests/spirit-210-max-sigil-ranking.mjs
+
+  spirit-201-mixed-build-search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Search twelve jobs across legal fused pets and legal stat and priority choices in mixed boss field
+        run: node tests/spirit-201-mixed-build-search.mjs
