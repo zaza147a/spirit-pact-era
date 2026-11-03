@@ -3,7 +3,7 @@ import {jobLevelCap} from '../dist/adventure-progression.js';
 import {GEAR_BASE} from '../dist/loot.js';
 import {JOB_ATTRIBUTE_MAX,jobAttributeBonus} from '../dist/job-attributes.js';
 import {SECOND_JOBS} from '../dist/jobs.js';
-import {thirdJobError,THIRD_SEAL,THIRD_SEAL_COST} from '../dist/frontier.js';
+import {thirdJobError,THIRD_SEAL,THIRD_SEAL_COST,PET_REVIVE_MS} from '../dist/frontier.js';
 import assert from 'node:assert/strict';
 import {
   canonicalFusionKey, canonicalDualFusionKey, DUAL_FUSION_TYPES,
@@ -110,3 +110,7 @@ test('all spirit stages have finite JOB attribute bonuses, no undefined parent t
  }
 });
 
+
+test('pet revival duration stays at the original global ten seconds',()=>{
+ assert.equal(PET_REVIVE_MS,10000);
+});
