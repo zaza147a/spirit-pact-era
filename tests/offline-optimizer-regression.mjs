@@ -69,7 +69,7 @@ console.log('Offline encounter hot-path equivalence checks passed.');
 
 // Ability stat snapshots should only be calculated once the existing 850ms
 // ability guard permits a cast; timestamps/cast counts must remain identical.
-assert.match(game,/if\(now-lastPetAbility>=850\)petAutoAbility\(companion,petStats\(companion\),now\)/);
+assert.match(game,/if\(now-lastPetAbility>=850\)petAutoAbility\(companion,commanderTransferredPetStats\(companion,petStats\(companion\)\),now\)/);
 for(const dual of [false,true]){
  const previous={last:0,stats:0,casts:[]},optimizedAbility={last:0,stats:0,casts:[]};
  for(let now=100;now<=60000;now+=100){
