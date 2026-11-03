@@ -18,6 +18,8 @@ node tests/offline-worker-benchmark.mjs path/to/legal-save.json
 - 存檔必須位於可戰鬥地圖、`offline.enabled=true` 且角色存活或可自動復活。
 - 不要將真實玩家存檔直接提交到公開 GitHub。先在受控環境執行，或使用去識別化、合法的測試檔。
 - 可設定 `SPIRIT_BENCH_SEED`（預設 12648430）與 `SPIRIT_BENCH_TIMEOUT_MS`（單段預設 600000）。
+- `SPIRIT_BENCH_HOURS=1,6` 可只跑指定時長；預設為 `1,6,12,24`。
+- `SPIRIT_BENCH_REPEAT=2` 對每個時長重新建立相同存檔與亂數種子，並強制比對完整玩家狀態 SHA-256；不同就讓測試失敗。預設執行一次，可設為 1–3 次。
 - 每段輸出 JSON：實際牆鐘時間、Worker heap、進程 RSS、第一次進度回報時間、回報次數、模擬時數、停止原因、擊殺、經驗、金幣、消耗品、裝備與卡片數量、完整玩家狀態 SHA-256。
 
 ## 判斷方法
