@@ -36,5 +36,5 @@ assert.ok(!css.includes('body:not(.spirit-dual-ui) .dual-growth-next'));
 assert.ok(game.includes('同化時此寵保留10%協戰攻擊'),'Pact stance text must match active combat factor');
 assert.ok(game.includes('ATK 320%、MATK 165%、DEF/MDEF 28%、HP 16%'),'Pact transfer percentages visible in UI');
 assert.ok(game.includes('萬靈統率 · 人物能力轉移'),'Commander pet-transfer description visible');
-assert.ok(game.includes('ATK 30%、MATK 30%、DEF/MDEF 15%'),'Commander transfer percentages visible in UI');
+assert.ok(game.includes('ATK 30%、MATK 30%、DEF/MDEF 35%'),'Commander transfer percentages visible in UI');
 console.log('Spirit dual-pet compact guidance UI regression passed.');
