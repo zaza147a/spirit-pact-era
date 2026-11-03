@@ -141,6 +141,13 @@ for(const job of ['pactWarrior','spiritCommander']){
     if(index===3)assert.ok(target.exposedPower>=.03,'boss trace weakens a boss');
     if(index===4)assert.ok(target.exposedPower>=.08,'finisher focus strengthens exposed vulnerability');
     if(index===5)assert.ok(effects.shields>=1,'crowd ward shields during multiple enemies');
+    if(index>=6&&index<12)assert.ok(rule.signature,job+' '+key+' defensive signature exists');
+    if(index===6)assert.ok(effects.heals>=1,'fortress counter heals when both companions are injured');
+    if(index===7)assert.ok(effects.shields>=1,'sacred relay wards a critical companion');
+    if(index===8)assert.ok(target.exposedPower>=.02,'ward pierce exposes while a defensive fusion is present');
+    if(index===9)assert.ok(effects.shields>=3,'shield cascade shields both companions in addition to base guard');
+    if(index===10)assert.ok(effects.heals>=1,'last stand heals in critical danger');
+    if(index===11)assert.ok(effects.shields>=1,'mutual renewal grants recovery ward');
     runContext.fire('thirdHit_'+job);
     assert.equal(messages.length,1,job+' '+key+' duplicate during cooldown');
     clock.now+=12000;
