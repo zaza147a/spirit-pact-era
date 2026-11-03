@@ -1,5 +1,5 @@
 // Longer observational combat for the five low-frequency routes identified by the
-// 42-route, 60-second regression. No guaranteed proc assumption or balance edit.
+// 30-route, 60-second regression. No guaranteed proc assumption or balance edit.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
