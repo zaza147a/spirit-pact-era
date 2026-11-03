@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Smoke test real offline Node Worker
+        run: node tests/offline-worker-smoke.mjs
       - name: Run offline optimizer regression
         run: node tests/offline-optimizer-regression.mjs
       - name: Run dual-pet combat regression
