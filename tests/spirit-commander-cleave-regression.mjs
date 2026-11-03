@@ -42,14 +42,15 @@ function scenario({job,count,kind='attack',splash=0}){
 for(const count of [1,2,3,5]){
  for(const job of ['spiritCommander','pactWarrior','wizard']){
   const a=scenario({job,count,kind:'attack'});
-  assert.equal(a.hits.length,job==='spiritCommander'?Math.min(count,2):1,job+' '+count+' attack target count');
+  assert.equal(a.hits.length,job==='spiritCommander'?Math.min(count,3):1,job+' '+count+' attack target count');
   assert.equal(a.hits[0].amount,100);
-  if(a.hits[1])assert.equal(a.hits[1].amount,50);
+  if(a.hits[1])assert.equal(a.hits[1].amount,75);
+  if(a.hits[2])assert.equal(a.hits[2].amount,50);
   assert.ok(a.events.length<=1,'secondary target cannot multiply event');
   const skill=scenario({job,count,kind:'skill'});
   assert.equal(skill.hits.length,job==='spiritCommander'?count:1,job+' '+count+' skill target count');
   assert.equal(skill.hits[0].amount,100);
-  for(const secondary of skill.hits.slice(1))assert.equal(secondary.amount,60);
+  for(const secondary of skill.hits.slice(1))assert.equal(secondary.amount,100);
   cases+=2;
  }
 }
