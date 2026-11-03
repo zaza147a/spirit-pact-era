@@ -118,3 +118,14 @@ jobs:
         env:
           SPIRIT_HIGH_LEVEL_BENCH_MINUTES: '5'
         run: node tests/spirit-high-level-offline-benchmark.mjs
+
+  petstat-cache-equivalence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Cached versus uncached 200/210 dual-pet ten-minute full state parity
+        run: node tests/spirit-offline-petstat-cache-equivalence.mjs
