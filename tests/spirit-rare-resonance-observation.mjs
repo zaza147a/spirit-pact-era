@@ -17,7 +17,7 @@ for(const [job,pairKey] of targets){
  assert.ok(DUAL_FUSION_TYPES.includes(pairKey));
  for(const level of [200,210])for(const seed of [717171,93217]){
   const player=highLevelSpiritPlayer({job,pairKey,level});
-  const worker=new Worker(new URL('./offline-worker-node-entry.mjs?seed='+seed+'&clock='+epoch+'&seedProof=1',import.meta.url),{type:'module'});
+  const worker=new Worker(new URL('./offline-worker-node-entry.mjs?clock='+epoch,import.meta.url),{type:'module',workerData:{seed,seedProof:true}});
   try{
    let seedProof=null;
    const result=await new Promise((resolve,reject)=>{
