@@ -64,3 +64,19 @@ for(const trial of [
  assert.equal(encounterState(optimized,trial),encounterState(original,trial),'optimized encounter behavior must match baseline');
 }
 console.log('Offline encounter hot-path equivalence checks passed.');
+
+
+// Ability stat snapshots should only be calculated once the existing 850ms
+// ability guard permits a cast; timestamps/cast counts must remain identical.
+assert.match(game,/if\(now-lastPetAbility>=850\)petAutoAbility\(companion,petStats\(companion\),now\)/);
+for(const dual of [false,true]){
+ const previous={last:0,stats:0,casts:[]},optimizedAbility={last:0,stats:0,casts:[]};
+ for(let now=100;now<=60000;now+=100){
+  previous.stats++;
+  if(now-previous.last>=850){previous.last=now;previous.casts.push(now);}
+  if(now-optimizedAbility.last>=850){optimizedAbility.stats++;optimizedAbility.last=now;optimizedAbility.casts.push(now);}
+ }
+ assert.deepEqual(optimizedAbility.casts,previous.casts,'pet ability schedule must remain identical');
+ assert.ok(optimizedAbility.stats<previous.stats/5,'ability stat calculations should drop sharply');
+}
+console.log('Offline pet ability cooldown/stat-guard checks passed.');
