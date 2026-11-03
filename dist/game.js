@@ -895,6 +895,11 @@ function enemyAttack(){
  const targetPet=!pactOwnerOnlyAggro(player,roster)&&chooseMonsterTarget(player,aggroPet,aggroPet?companionRole(aggroPet):null,aggroPet?now<effectsForPet(aggroPet).guardUntil:false)==='pet';
  const pet=targetPet?chooseDefendingPet(roster,companionRole,{mode:player.dualPetMode||'focus',guardingIds:roster.filter(unit=>gameNow()<effectsForPet(unit).guardUntil).map(unit=>unit.id)}):firstAlive;
  const role=pet?companionRole(pet):null,fx=effectsForPet(pet);
+ if(offlineMetrics&&isSpiritJob(player.job)){
+  const lane=targetPet?(pet?.id===roster[0]?.id?'pet1':'pet2'):'owner';
+  const counts=offlineMetrics.spiritEnemyTargets??={owner:0,pet1:0,pet2:0};
+  counts[lane]++;
+ }
  const roll=rand(85,115)/100;
  if(targetPet){
   const s=petStats(pet);
