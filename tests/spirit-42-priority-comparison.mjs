@@ -1,4 +1,4 @@
-// Full 42-route dual-spirit priority A/B, 210 mythic SSS, 2 independent seeds.
+// Full 30-route dual-spirit priority A/B, 210 mythic SSS, 2 independent seeds.
 // This is an observational production Worker study; no tactical or balance writes.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
@@ -18,7 +18,7 @@ for(const job of jobs)for(const pairKey of DUAL_FUSION_TYPES)for(const seed of s
    {type:'module',workerData:{seed}});
   try{
    const result=await new Promise((resolve,reject)=>{
-    const timer=setTimeout(()=>reject(Error('42-route priority Worker timeout: '+job+' '+pairKey)),45000);
+    const timer=setTimeout(()=>reject(Error('30-route priority Worker timeout: '+job+' '+pairKey)),45000);
     worker.on('message',msg=>{
      if(msg.type==='result'){clearTimeout(timer);resolve(msg.result);}
      if(msg.type==='error'){clearTimeout(timer);reject(Error(msg.stack||msg.message));}
@@ -59,7 +59,7 @@ for(const job of jobs){
  }
  const winners={mainFirst:pairs.filter(x=>x.deltaPct>0).length,
   baseline:pairs.filter(x=>x.deltaPct<0).length,tied:pairs.filter(x=>x.deltaPct===0).length};
- console.log(JSON.stringify({summary:true,job,level,pairs:21,seeds,winners,
+ console.log(JSON.stringify({summary:true,job,level,pairs:15,seeds,winners,
   rows:pairs.sort((a,b)=>b.deltaPct-a.deltaPct)}));
 }
 console.log(JSON.stringify({complete:true,scenarios:rows.length,
