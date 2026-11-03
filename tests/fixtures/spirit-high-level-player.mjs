@@ -22,7 +22,7 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
  if(![0,4].includes(dawnSigil)||(dawnSigil!==0&&level!==210))throw Error('unsupported dawn farming stage');
  const rng=seeded(level+(job==='pactWarrior'?101:202)),p=starterPlayer();
  p.name='SpiritIntegrationFixture';p.job=job;p.level=level;p.reborn=true;p.thirdJob=true;
- p.dawnUnlocked=level>=210;p.dawnSigil=dawnSigil;p.autoEscapeBoss=level===210&&!allowBoss;
+ p.dawnUnlocked=level>=210;p.dawnSigil=dawnSigil;p.autoEscapeBoss=!allowBoss;
  p.location=level>=210?'dawnrift':'worldroot';
  p.jobLevel=70;p.secondJobLevel=70;p.jobXp=0;p.jobPoints=39;p.xp=0;
  p.firstJobLevel=50;
