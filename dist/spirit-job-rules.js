@@ -42,14 +42,14 @@ export function canonicalFusionKey(pet) {
 }
 export function canonicalDualFusionKey(first,second) {
   const a = canonicalFusionKey(first), b = canonicalFusionKey(second);
-  if (!a || !b) return null;
+  if (!a || !b || a === b) return null;
   return [a,b].sort().join('+');
 }
 export const FUSION_TYPES = Object.freeze(
   PET_ROLES.flatMap((a,i) => PET_ROLES.slice(i+1).map(b => `${a}-${b}`))
 );
 export const DUAL_FUSION_TYPES = Object.freeze(
-  FUSION_TYPES.flatMap((a,i) => FUSION_TYPES.slice(i).map(b => [a,b].sort().join('+')))
+  FUSION_TYPES.flatMap((a,i) => FUSION_TYPES.slice(i+1).map(b => [a,b].sort().join('+')))
 );
 
 // This predicate is an *additional* class condition only. Always run the
