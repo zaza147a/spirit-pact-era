@@ -103,3 +103,13 @@ CI 固定 seed 12648430；起始測試 fixture 在 `tests/fixtures/starter-playe
 以上為合成合法形狀的測試 fixture，非玩家實際養成匯出；尚需 200 五王、210 農裝後首領、對照原十職、真實瀏覽器雙夥伴 UI 驗收。沒有改動怪物難度、main 或正式網站。
 
 [#41611052013](https://github.com/zaza147a/spirit-pact-era/actions/runs/41611052013) **四項 CI job 全部 PASS**（regression、gear-quality-observation、balance-observation、benchmark-starter）。完整 24h 自動分解測試兩次牆鐘 **3,695／3,697ms**、模擬 86,400,000ms、95,876 擊殺；起始雙寵含自動分解兩次 **7,348／7,415ms**、模擬 86,400,000ms、98,614 擊殺、雙寵 XP +405,720；兩組均 UID 正規化後語義狀態相同。未啟用自動分解的起始測試約在模擬 9,345,200ms 因背包滿提前停止，僅用於截止原因驗證，不宣稱完整 24h。以上仍非 200/210 高負載雙融合 24h 性能結論。
+
+## 2026-11-03 共鳴零觸發根因／夥伴復活修正
+
+舊版正式 Worker 共鳴僅在 `thirdHit_<job>` 主攻事件後，兩隻融合夥伴都存活且技能冷卻結束時觸發。新增僅離線統計的 `dualSpiritMainEvents`、`dualSpiritBlockedDeadTarget`、`dualSpiritBlockedFormation`、`dualSpiritBlockedPetDown`、`dualSpiritBlockedMissingPair`、`dualSpiritBlockedCooldown`，並驗證每一個事件都有成功觸發或確切阻擋原因；不改人物／怪物傷害倍率。
+
+[#41611750202](https://github.com/zaza147a/spirit-pact-era/actions/runs/41611750202) （10 秒夥伴倒下等待）：42 配對每組 60 秒，主攻事件 258、成功共鳴 42、夥伴倒下阻擋 114、配對缺失 0、冷卻阻擋 102、零觸發 21 組、直接共鳴傷害 171,321。
+
+發現 `dist/frontier.js` 的 `PET_REVIVE_MS` 仍是 10,000ms，與既定的**夥伴 3 秒復活**要求不一致；已更正為 3,000ms，且修正手動補給提示。**不更動怪物難度／強化階級／共鳴倍率。**
+
+[#41611906748](https://github.com/zaza147a/spirit-pact-era/actions/runs/41611906748) 修正後 regression PASS：42 配對每組 60 秒，主攻事件 **541**、共鳴成功 **109**（靈契君王 74／萬靈宗師 35）、夥伴倒下阻擋 **193**、配對缺失 **0**、冷卻阻擋 **236**、死亡目標阻擋 **3**、零觸發降至 **5 組**、直接共鳴傷害 **451,246**。數據跨不同戰鬥時序，成功事件增加 159.5%；阻擋比例從 114/258=44.2% 降至 193/541=35.7%，不是說夥伴實際死亡事件的絕對次數下降。仍零觸發的五組：靈契君王 attack-defense+attack-support；萬靈宗師 attack-support+attack-support、attack-support+magic-defense、magic-defense+magic-defense、defense-support+magic-defense。後續須做更長時間／不同種子及非神話品質耐久驗證。
