@@ -47,7 +47,7 @@ export function comparisonPlayer({level=210,job='knight'}={}){
   delete p.quests.dual_spirit_pact;
   const weapon=SECOND_JOBS[job].weapon,meta=GEAR_BASE[weapon];
   if(!meta)throw Error('missing weapon '+weapon);
-  if(meta.jobs&&!meta.jobs.includes(parentJob(job)))throw Error('wrong profession weapon '+weapon);
+  if(meta.jobs&&!meta.jobs.includes(job)&&!meta.jobs.includes(parentJob(job)))throw Error('wrong profession weapon '+weapon);
   const rng=seeded(32021),gear=rollGear(weapon,200,'mythic',rng);
   gear.uid='compare-'+job+'-weapon';
   if(level===210)gear.enhancement='SSS';
