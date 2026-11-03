@@ -340,3 +340,14 @@ jobs:
           node-version: '22'
       - name: Search twelve jobs across legal fused pets and legal stat and priority choices in mixed boss field
         run: node tests/spirit-201-mixed-build-search.mjs
+
+  spirit-201-optimized-archetype-search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Search legal max-sigil gear card stats weapons fusion and compare 12 jobs
+        run: node tests/spirit-201-optimized-archetype-search.mjs
