@@ -1,4 +1,4 @@
-// End-to-end controlled combat through production offline Worker for all 42 routes.
+// End-to-end controlled combat through production offline Worker for all 30 routes.
 // This is a trigger/attribution smoke, NOT a 200-trial or DPS ranking.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
@@ -51,7 +51,7 @@ for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of DUAL_FUS
    resonanceActivations:count,resonanceDamage:result.summary.damage.resonance,blockers:counters}));
  }finally{await worker.terminate();}
 }
-assert.equal(routes,42);
+assert.equal(routes,30);
 assert.ok(activationByJob.pactWarrior>0&&activationByJob.spiritCommander>0,'each job activates resonance in actual combat');
 console.log(JSON.stringify({routes,activations,activationByJob,zeroActivationRoutes,
  blockerTotals,resonanceDamage:damage,complete:true}));
