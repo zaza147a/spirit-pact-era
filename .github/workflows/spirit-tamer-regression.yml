@@ -94,3 +94,14 @@ jobs:
           node-version: '22'
       - name: Compare actual 200/210 combat across normal legendary mythic gear
         run: node tests/spirit-gear-quality-observation.mjs
+
+  rare-resonance-observation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Five low-frequency dual resonances at 200/210 for 5m and two seeds
+        run: node tests/spirit-rare-resonance-observation.mjs
