@@ -1,6 +1,6 @@
-import {GEAR_BASE,PET_GEAR_BASE} from './loot.js?v=6.5.0';
+import {GEAR_BASE,PET_GEAR_BASE,migrateWeaponDefenseAffix} from './loot.js?v=6.5.45';
 import {isTown} from './adventure-progression.js?v=6.5.0';
-import {ITEMS,CARDS} from './catalog.js?v=6.5.0';
+import {ITEMS,CARDS} from './catalog.js?v=6.5.45';
 export const WAREHOUSE_KEY='icarus-shared-equipment-warehouse-v1';
 export const WAREHOUSE_ACK_PREFIX='icarus-warehouse-delivered-v1:';
 export const WAREHOUSE_LOCK='icarus-shared-equipment-warehouse';
@@ -20,6 +20,7 @@ export function readWarehouse(storage){
  if(state?.version!==1||!state.records||typeof state.records!=='object'||Array.isArray(state.records)||Object.keys(state.records).length>10000)throw Error('共用倉庫格式不符，原資料已保留');
  for(const [uid,r] of Object.entries(state.records))if(!validUid(uid)||!r||!(r.owner===null||Number.isInteger(r.owner)&&r.owner>=0&&r.owner<8)||!Number.isSafeInteger(r.revision)||r.revision<1||(r.gear&&(!warehouseEquipment(r.gear)||r.gear.uid!==uid))||(r.owner===null&&!r.gear))throw Error('共用倉庫裝備紀錄不完整，原資料已保留');
  if(state.stacks!==undefined){if(!state.stacks||typeof state.stacks!=='object'||Array.isArray(state.stacks)||Object.keys(state.stacks).length>1000)throw Error('倉庫堆疊資料異常');for(const [key,r] of Object.entries(state.stacks)){const [kind,id]=key.split(':');if(!['item','card'].includes(kind)||!id||!warehouseStackAllowed(kind,id)||!r||!Number.isSafeInteger(r.qty)||r.qty<0||!r.flows||typeof r.flows!=='object'||Array.isArray(r.flows))throw Error('倉庫堆疊資料不完整');for(const [slot,flow] of Object.entries(r.flows)){if(!/^[0-7]$/.test(slot)||!flow||!Number.isSafeInteger(flow.deposit)||flow.deposit<0||!Number.isSafeInteger(flow.withdraw)||flow.withdraw<0)throw Error('倉庫存取流水帳不完整');}}}
+ for(const r of Object.values(state.records))if(r.gear)r.gear=migrateWeaponDefenseAffix(r.gear);
  return state;
 }
 export function warehouseItems(storage){return Object.values(readWarehouse(storage).records).filter(r=>r.owner===null).map(r=>clone(r.gear));}
