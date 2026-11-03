@@ -33,6 +33,8 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
   assert.equal(result.player.level,level);
   assert.equal(result.player.pets.length,2);
   assert.ok(result.summary.damage&&Number.isFinite(result.summary.damage.total));
+  assert.ok(result.summary.damage.resonance>0,'third-job fused pets must trigger real dual resonance HP damage');
+  assert.ok(result.summary.damage.pet1>0&&result.summary.damage.pet2>0,'both fused pets must deal damage');
   console.log(JSON.stringify({job,level,simulatedMs:result.summary.simulated,reason:result.summary.reason,
    kills:result.summary.kills,damage:result.summary.damage}));
  }finally{await worker.terminate();}
