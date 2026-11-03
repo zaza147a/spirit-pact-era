@@ -22,7 +22,7 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
    const timeout=setTimeout(()=>reject(Error('high-level worker timeout '+job+' '+level)),30000);
    worker.on('message',message=>{
     if(message.type==='result'){clearTimeout(timeout);resolve(message.result);}
-    else if(message.type==='error'){clearTimeout(timeout);reject(Error(message.message));}
+    else if(message.type==='error'){clearTimeout(timeout);reject(Error(message.stack||message.message));}
    });
    worker.on('error',error=>{clearTimeout(timeout);reject(error);});
    worker.postMessage({player,now:2000000000000+10000});
