@@ -123,3 +123,15 @@ export function completeSpiritQuest(player,roster) {
  q.done=true;q.completedAt=Date.now();
  return null;
 }
+
+export function spiritGrowthGuide(player,roster=[]) {
+ if(!isSpiritJob(player?.job))return null;
+ const fused=roster.filter(p=>canonicalFusionKey(p)).length;
+ const q=spiritQuestState(player);
+ if(player.thirdJob)return {stage:'完成三轉',message:'雙生靈契已覺醒；雙融合共鳴可以繼續培養。',fused};
+ if(q?.done)return {stage:'三轉準備完成',message:'已完成雙生靈契；保持兩隻融合夥伴出戰，準備 Base150／轉生二轉Job70 和天極覺醒聖印。',fused};
+ if(q?.started)return {stage:'雙靈試煉進行中',message:`兩隻融合夥伴共同擊敗101–150級敵人：${q.kills||0}／${SPIRIT_TRIAL_KILLS}。兩隻都要存活；完成後回蒼穹樞城立誓。`,fused};
+ if(player.level>=140&&player.reborn&&SPIRIT_SECOND.includes(player.job))return {stage:'雙生靈契即將開啟',message:`已可在蒼穹樞城接受專屬三轉支線。當前出戰融合夥伴 ${fused}／2；三轉必須同時攜帶兩隻融合夥伴。`,fused};
+ if(player.reborn||player.level>=99)return {stage:'長期養成：雙融合準備',message:`請提前準備兩隻不同個體的夥伴，分別培養至150級完成融合。當前出戰融合夥伴 ${fused}／2；Base140起可準備雙生靈契支線。`,fused};
+ return {stage:'御靈使職業預告',message:'你從一轉就能攜帶兩隻夥伴。請同步培養兩隻與各自裝備；將來三轉必須兩隻都完成融合，並通過雙生靈契專屬試煉。',fused};
+}
