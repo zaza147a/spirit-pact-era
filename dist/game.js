@@ -30,8 +30,8 @@ import {BASE_ATTRIBUTE_CAP,jobAttributeBonus,capBaseAttributes,JOB_ATTRIBUTE_MAX
 import {normalizePotionThresholds,purchaseQuote,preferredPotion,retrainCost} from './supply-rules.js?v=6.5.0';
 import {offlineWindow,inventoryDelta,offlineDuration,OFFLINE_STEP_MS} from './offline-rules.js?v=6.5.0';
 import {mapRules,cardDropChance} from './map-rules.js?v=6.5.0';
-import {SHOP_GROUPS,isShopItem} from './shop-catalog.js?v=6.5.0';
-import {potionRestore} from './restoration.js?v=6.5.0';
+import {SHOP_GROUPS,isShopItem} from './shop-catalog.js?v=6.5.39';
+import {potionRestore} from './restoration.js?v=6.5.39';
 import {combatContribution} from './combat-contribution.js?v=6.5.0';
 import {SECOND_JOBS,parentJob,secondJobChoices,transferEligibility} from './jobs.js?v=6.5.0';
 import {MAP_BOSSES,canEncounterBoss,BOSS_RESPITE_MS,bossRarity,BOSS_CARD_CHANCE} from './map-bosses.js?v=6.5.0';
