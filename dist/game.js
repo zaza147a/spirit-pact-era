@@ -561,9 +561,21 @@ function originalPactPrerequisite(rule,now,event){
  return true;
 }
 function triggerDualSpiritResonance(event){
- if(!enemy?.hp||!player?.thirdJob)return;
+ if(!['thirdHit_pactWarrior','thirdHit_spiritCommander'].includes(event))return;
+ if(offlineMetrics)offlineMetrics.dualSpiritMainEvents++;
+ if(!enemy?.hp||!player?.thirdJob){
+  if(offlineMetrics)offlineMetrics.dualSpiritBlockedDeadTarget++;
+  return;
+ }
  const roster=activePetRoster(player),rule=dualSpiritResonance(player,roster),now=gameNow(),last=timers.dualSpiritAt||0;
- if(!canTriggerDualSpirit(rule,event,now,last,enemy.instanceId))return;
+ if(!rule){
+  if(offlineMetrics)offlineMetrics.dualSpiritBlockedFormation++;
+  return;
+ }
+ if(!canTriggerDualSpirit(rule,event,now,last,enemy.instanceId)){
+  if(offlineMetrics)offlineMetrics.dualSpiritBlockedCooldown++;
+  return;
+ }
  timers.dualSpiritAt=now;
  if(typeof offlineMetrics!=='undefined'&&offlineMetrics)offlineMetrics.resonanceActivations=(offlineMetrics.resonanceActivations||0)+1;
  const a=petStats(roster[0]),b=petStats(roster[1]),primary=enemy;
@@ -1375,7 +1387,7 @@ function offlineIdleSkipSteps(now,remaining){
 async function simulateOffline(state,now=Date.now(),progress=()=>{}){
  const window=offlineWindow(state,now),before=structuredClone(state);
  if(!window.eligible)return {player:state,summary:null};
- clearStatSnapshots();offlineSimulation=true;offlineClock=state.offline.at;offlineMetrics={baseXp:0,jobXp:0,petXp:0,goldEarned:0,potions:{},purchased:{},spent:0,bossesEscaped:0,damage:{player:0,pet1:0,pet2:0,resonance:0,petSupport:0,other:0,total:0}};
+ clearStatSnapshots();offlineSimulation=true;offlineClock=state.offline.at;offlineMetrics={baseXp:0,jobXp:0,petXp:0,goldEarned:0,potions:{},purchased:{},spent:0,bossesEscaped:0,dualSpiritMainEvents:0,dualSpiritBlockedDeadTarget:0,dualSpiritBlockedFormation:0,dualSpiritBlockedCooldown:0,damage:{player:0,pet1:0,pet2:0,resonance:0,petSupport:0,other:0,total:0}};
  try{
   player=normalize(structuredClone(state));player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));resetSession();auto=true;spawn();const trialMode=!!player.trialRun?.continuous;let simulated=0,reason='已完成離線時間',yieldSteps=0,lastYieldAt=performance.now();
   for(;simulated<window.duration;){
