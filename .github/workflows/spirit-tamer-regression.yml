@@ -220,5 +220,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Actual five-boss Worker fight at 200: mythic unenhanced versus SS
+      - name: 'Actual five-boss Worker fight at 200: mythic unenhanced versus SS'
         run: node tests/spirit-200-five-boss-live-observation.mjs
