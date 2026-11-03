@@ -565,6 +565,7 @@ function triggerDualSpiritResonance(event){
  const roster=activePetRoster(player),rule=dualSpiritResonance(player,roster),now=gameNow(),last=timers.dualSpiritAt||0;
  if(!canTriggerDualSpirit(rule,event,now,last,enemy.instanceId))return;
  timers.dualSpiritAt=now;
+ if(offlineMetrics)offlineMetrics.resonanceActivations=(offlineMetrics.resonanceActivations||0)+1;
  const a=petStats(roster[0]),b=petStats(roster[1]),primary=enemy;
  const petPower=Math.max(a.atk,a.matk)+Math.max(b.atk,b.matk);
  const ownerPower=Math.max(stat('atk'),stat('matk'));
