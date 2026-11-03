@@ -34,6 +34,8 @@ jobs:
         run: node tests/spirit-commander-cleave-regression.mjs
       - name: Verify contract sigil scales assimilated stats and leaves legacy jobs unchanged
         run: node tests/spirit-sigil-assimilation-regression.mjs
+      - name: Verify boss and 201-plus field role multipliers exclude legacy jobs
+        run: node tests/spirit-role-specialization-regression.mjs
       - name: Run resonance condition positive and negative cases
         run: node tests/dual-pet-resonance-signature.test.mjs
       - name: Run dual-pet UI regression
