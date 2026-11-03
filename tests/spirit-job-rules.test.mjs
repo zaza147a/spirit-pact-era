@@ -1,6 +1,8 @@
 import test from 'node:test';
 import {jobLevelCap} from '../dist/adventure-progression.js';
 import {GEAR_BASE} from '../dist/loot.js';
+import {JOB_ATTRIBUTE_MAX,jobAttributeBonus} from '../dist/job-attributes.js';
+import {SECOND_JOBS} from '../dist/jobs.js';
 import {thirdJobError,THIRD_SEAL,THIRD_SEAL_COST} from '../dist/frontier.js';
 import assert from 'node:assert/strict';
 import {
@@ -94,4 +96,16 @@ test('spirit jobs can equip their starting and designated second-job mace',()=>{
  for(const job of ['spiritist','pactWarrior','spiritCommander'])
   assert.ok(GEAR_BASE.mace.jobs.includes(job),job+' must be allowed to wield mace');
  assert.ok(!GEAR_BASE.mace.jobs.includes('wizard'),'mage weapon restrictions remain intact');
+});
+
+test('all spirit stages have finite JOB attribute bonuses, no undefined parent table',()=>{
+ for(const job of ['spiritist','pactWarrior','spiritCommander']){
+  const table=JOB_ATTRIBUTE_MAX[job];
+  assert.equal(table.length,6);
+  assert.equal(table.reduce((a,b)=>a+b,0),job==='spiritist'?20:30);
+  const bonus=jobAttributeBonus({job,reborn:job!=='spiritist',thirdJob:false,
+   jobLevel:job==='spiritist'?50:70,firstJobLevel:50},SECOND_JOBS);
+  assert.ok(Object.values(bonus).every(Number.isFinite));
+  assert.ok(Object.values(bonus).some(x=>x>0));
+ }
 });
