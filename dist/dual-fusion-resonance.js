@@ -10,7 +10,8 @@ const TRAITS=[
 // resonance activation. They never create a separate event or free attack.
 const SIGNATURES=Object.freeze([
  'armorEcho','rescueGuard','recoveryChain','bossTrace','finisherFocus','crowdWard',
- 'fortressCounter','sacredRelay','wardPierce','shieldCascade','lastStand','mutualRenewal'
+ 'fortressCounter','sacredRelay','wardPierce','shieldCascade','lastStand','mutualRenewal',
+ 'crossRelay','echoBalance','rescueBurst','arcaneBulwark','frostWard','guardianPrayer','twinFocus','sanctuaryPulse','lastBastion'
 ]);
 if(TRAITS.length!==DUAL_FUSION_TYPES.length)throw Error('雙靈組合表不完整');
 export const DUAL_SPIRIT_RULES=Object.fromEntries(DUAL_FUSION_TYPES.map((key,index)=>{
