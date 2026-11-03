@@ -39,7 +39,7 @@ for(const job of jobs)for(const pairKey of DUAL_FUSION_TYPES)for(const seed of s
     petDps:Math.round((d.pet1+d.pet2)*1000/s.simulated)});
   }finally{await worker.terminate();}
  }
-assert.equal(rows.length,168);
+assert.equal(rows.length,120);
 for(const job of jobs){
  const pairs=[];
  for(const pairKey of DUAL_FUSION_TYPES){
