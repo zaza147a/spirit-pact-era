@@ -49,7 +49,7 @@ function encounterState(fn,initial){
    rand:(a,b)=>a+(env.rng++%Math.max(1,b-a+1)),
    addEncounter:(now,slot)=>env.enemies.push({slotIndex:slot,hp:100,boss:false,id:'spawn'+slot}),
    render:()=>{env.renders++},spawnTrialBoss:()=>{}};
- vm.runInNewContext(fn+'\\nthis.runEncounter=tickEncounters',env);
+ vm.runInNewContext(fn+'\nthis.runEncounter=tickEncounters',env);
  env.runEncounter(5000);
  return JSON.stringify({enemies:env.enemies,slots:env.encounterSlots,rng:env.rng,renders:env.renders});
 }
