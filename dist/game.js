@@ -96,7 +96,7 @@ let originalPactHitCount=0;
 let resonanceUsedAt=new Map();
 let originalPactCounters=new Map();
 let secondaryPetEffects={};
-function combatPetFactor(pet){return secondPetDamageFactor(player,pet?.id,{overload:player?.job==='spiritCommander'&&player.thirdJob&&classBuffs.dualOverload?.until>gameNow()});}
+function combatPetFactor(pet){const petId=typeof pet==='string'?pet:pet?.id;return secondPetDamageFactor(player,petId,{overload:player?.job==='spiritCommander'&&player.thirdJob&&classBuffs.dualOverload?.until>gameNow()});}
 function pactAssimilationBonus(type){if(player?.job!=='pactWarrior')return 0;const ratios={atk:.10,matk:.10,def:.08,mdef:.08,hp:.05};if(!ratios[type])return 0;return activePetRoster(player).filter(p=>p.hp>0&&player.petStances?.[p.id]==='assimilate').reduce((total,pet)=>total+petStats(pet)[type]*ratios[type],0);}
 function setPetStance(id,stance){if(player?.job!=='pactWarrior'||!['assist','assimilate'].includes(stance))return;const pet=activePetRoster(player).find(p=>p.id===id);if(!pet)return;player.petStances??={};player.petStances[id]=stance;clearStatSnapshots();player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));dirty=true;save();render();}
 function effectsForPet(pet){return pet?.id&&pet.id!==player?.activePetId?ensurePetEffects(secondaryPetEffects,pet.id):petEffects;}
