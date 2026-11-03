@@ -17,7 +17,9 @@ assert.ok(original.hp>0||original.autoRevive===true,'save must be alive or enabl
 
 const seed=Number(process.env.SPIRIT_BENCH_SEED||'12648430')>>>0;
 const epoch=2000000000000;
-const times=[1,6,12,24];
+const times=(process.env.SPIRIT_BENCH_HOURS||'1,6,12,24').split(',').map(Number);
+assert.ok(times.length>0&&times.every(h=>[1,6,12,24].includes(h)),'hours must be a subset of 1,6,12,24');
+const repeats=Math.max(1,Math.min(3,Number(process.env.SPIRIT_BENCH_REPEAT||1)));
 const maxWallMs=Number(process.env.SPIRIT_BENCH_TIMEOUT_MS||600000);
 const results=[];
 
@@ -56,8 +58,14 @@ async function measure(hours){
  };
 }
 for(const hours of times){
- const row=await measure(hours);
- results.push(row);
- console.log(JSON.stringify(row));
+ const rows=[];
+ for(let repetition=0;repetition<repeats;repetition++){
+  const row=await measure(hours);
+  rows.push(row);
+  console.log(JSON.stringify({repetition:repetition+1,...row}));
+ }
+ const identical=rows.every(x=>x.stateSha256===rows[0].stateSha256);
+ if(repeats>1)assert.ok(identical,'same seed and save produced different full player states at '+hours+'h');
+ results.push({hours,repeat:repeats,identicalState:identical,wallMs:rows.map(x=>x.wallMs),stateSha256:rows[0].stateSha256});
 }
 console.log(JSON.stringify({seed,complete:true,results}));
