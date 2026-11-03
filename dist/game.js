@@ -605,6 +605,29 @@ function triggerDualSpiritResonance(event){
  }else if(rule.signature==='mutualRenewal'&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.65)){
   const ally=roster.reduce((a,b)=>a.hp/Math.max(1,petStats(a).hp)<b.hp/Math.max(1,petStats(b).hp)?a:b);
   grantPetShield(power*.28,true,ally,effectsForPet(ally));
+ }else if(rule.signature==='crossRelay'&&primary.boss&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.5)){
+  healPetParty(power*.22);
+ }else if(rule.signature==='echoBalance'&&primary.hp>0&&roster.every(p=>p.hp>petStats(p).hp*.75)){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+1800);
+  primary.exposedPower=Math.max(primary.exposedPower||0,.018);
+ }else if(rule.signature==='rescueBurst'&&enemies.filter(e=>e.hp>0).length>=2){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.5);
+  if(ally)grantPetShield(power*.32,true,ally,effectsForPet(ally));
+ }else if(rule.signature==='arcaneBulwark'&&primary.boss&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.6)){
+  const ally=roster.reduce((a,b)=>a.hp/Math.max(1,petStats(a).hp)<b.hp/Math.max(1,petStats(b).hp)?a:b);
+  grantPetShield(power*.24,true,ally,effectsForPet(ally));
+ }else if(rule.signature==='frostWard'&&primary.boss&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.4)){
+  healPetParty(power*.24);
+ }else if(rule.signature==='guardianPrayer'&&primary.boss){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.45);
+  if(ally)grantPetShield(power*.27,true,ally,effectsForPet(ally));
+ }else if(rule.signature==='twinFocus'&&primary.hp>0&&primary.maxHp>0&&primary.hp/primary.maxHp<.5){
+  primary.exposedPower=Math.max(primary.exposedPower||0,.09);
+ }else if(rule.signature==='sanctuaryPulse'&&enemies.filter(e=>e.hp>0).length>=2){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.65);
+  if(ally)grantPetShield(power*.29,true,ally,effectsForPet(ally));
+ }else if(rule.signature==='lastBastion'&&roster[1]?.hp>0&&roster[1].hp<petStats(roster[1]).hp*.25){
+  healPetParty(power*.33);
  }
  message('✧ 雙靈共鳴【'+rule.name+'】'+outcome+'。','rare','pet');
  for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}
