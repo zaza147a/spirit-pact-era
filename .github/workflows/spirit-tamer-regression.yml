@@ -105,3 +105,14 @@ jobs:
           node-version: '22'
       - name: Five low-frequency dual resonances at 200/210 for 5m and two seeds
         run: node tests/spirit-rare-resonance-observation.mjs
+
+  high-level-offline-observation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Actual level-200 and 210 dual-fusion 1/6/12/24-hour workers
+        run: node tests/spirit-high-level-offline-benchmark.mjs
