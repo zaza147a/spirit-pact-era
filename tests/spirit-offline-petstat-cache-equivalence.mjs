@@ -20,7 +20,7 @@ async function run(level,job,disablePetStatsCache){
     if(msg.type==='error'){clearTimeout(timer);reject(Error(msg.stack||msg.message));}
    });
    worker.on('error',error=>{clearTimeout(timer);reject(error);});
-   worker.postMessage({player:highLevelSpiritPlayer({level,job,gearRarity:'legendary'}),now:epoch+duration});
+   worker.postMessage({player:highLevelSpiritPlayer({level,job,gearRarity:level===210?'mythic':'legendary'}),now:epoch+duration});
   });
   const p=result.player,s=result.summary;
   assert.ok(s&&s.simulated===duration,'full production 10-minute simulation');
