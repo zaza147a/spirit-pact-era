@@ -5,10 +5,11 @@ import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {Worker} from 'node:worker_threads';
 import {performance} from 'node:perf_hooks';
+import {starterPlayer} from './fixtures/starter-player.mjs';
 
 const file=process.argv[2];
-if(!file)throw Error('Usage: node tests/offline-worker-benchmark.mjs path/to/legal-save.json');
-const loaded=JSON.parse(readFileSync(file,'utf8'));
+if(!file)throw Error('Usage: node tests/offline-worker-benchmark.mjs path/to/legal-save.json | --starter');
+const loaded=file==='--starter'?starterPlayer():JSON.parse(readFileSync(file,'utf8'));
 const original=loaded.player||loaded;
 assert.ok(original&&typeof original==='object'&&Array.isArray(original.pets),'expected a real player save');
 assert.equal(original.offline?.enabled,true,'save must have offline combat enabled');
