@@ -551,7 +551,7 @@ function triggerDualSpiritResonance(event){
  const ownerPower=Math.max(stat('atk'),stat('matk'));
  const power=(player.job==='pactWarrior'?ownerPower+petPower*.3:petPower)*rule.coefficient;
  let outcome='';
- if(rule.trait==='guard'){const guardian=roster.find(p=>companionRole(p)==='defense')||roster.reduce((lowest,p)=>p.hp/Math.max(1,petStats(p).hp)<lowest.hp/Math.max(1,petStats(lowest).hp)?p:lowest);const restored=grantPetShield(power*2,true,guardian,effectsForPet(guardian));outcome=guardian.nickname+' 雙靈護盾 +'+restored;}
+ if(rule.trait==='guard'){const guardian=roster.find(p=>companionRole(p)==='defense'||p.fusion?.main==='defense'||p.fusion?.sub==='defense')||roster.reduce((lowest,p)=>p.hp/Math.max(1,petStats(p).hp)<lowest.hp/Math.max(1,petStats(lowest).hp)?p:lowest);const restored=grantPetShield(power*2,true,guardian,effectsForPet(guardian));outcome=guardian.nickname+' 雙靈護盾 +'+restored;}
  else if(rule.trait==='heal'){const healed=healPetParty(power*1.8);outcome='共同恢復 '+healed+' HP';}
  else if(rule.trait==='focus'){primary.exposedUntil=Math.max(primary.exposedUntil||0,now+4500);primary.exposedPower=Math.max(primary.exposedPower||0,.06);outcome='對目標施加4.5秒破綻（防禦降低6%）';}
  else {
