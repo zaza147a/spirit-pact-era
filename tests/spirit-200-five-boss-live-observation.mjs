@@ -12,7 +12,7 @@ assert.ok(route&&route.level===191);
 for(const job of ['pactWarrior','spiritCommander'])for(const {enhancement,pairKey} of [
  {enhancement:null,pairKey:'attack-magic+defense-support'},
  {enhancement:'SS',pairKey:'attack-magic+defense-support'},
- {enhancement:'SS',pairKey:'attack-magic+attack-magic'},
+ {enhancement:'SS',pairKey:'attack-magic+attack-defense'},
  {enhancement:'SS',pairKey:'attack-defense+magic-support'}]){
  const p=highLevelSpiritPlayer({level:200,job,pairKey,gearRarity:'mythic'});
  if(job==='pactWarrior')p.petStances={[p.pets[0].id]:'assimilate',[p.pets[1].id]:'assist'};
