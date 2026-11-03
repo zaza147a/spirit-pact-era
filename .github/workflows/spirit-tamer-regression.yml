@@ -50,9 +50,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: One-hour real offline simulation baseline
+      - name: Real offline 1/6/12/24-hour deterministic baseline
         env:
-          SPIRIT_BENCH_HOURS: '1'
-          SPIRIT_BENCH_REPEAT: '1'
+          SPIRIT_BENCH_HOURS: '1,6,12,24'
+          SPIRIT_BENCH_REPEAT: '2'
           SPIRIT_BENCH_TIMEOUT_MS: '120000'
         run: node tests/offline-worker-benchmark.mjs --starter
