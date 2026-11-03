@@ -119,3 +119,17 @@ for(const drops of [
  }
 }
 console.log('Offline equipment/drop candidate RNG parity checks passed.');
+
+
+// Immutable map spawn tables should be filtered once per location.
+const poolStart=game.indexOf('const encounterMonsterPools=new Map();');
+const poolEnd=game.indexOf('\nfunction addEncounter(',poolStart);
+assert.ok(poolStart>=0&&poolEnd>poolStart,'cached encounter pool helper missing');
+const poolEnv={WORLD_MONSTERS:[{id:'a',map:'starter'},{id:'b',map:'field'},{id:'c',map:'field'}]};
+vm.runInNewContext(game.slice(poolStart,poolEnd)+'\nthis.getPool=encounterMonsterPool',poolEnv);
+const fieldPool=poolEnv.getPool('field');
+assert.equal(fieldPool.length,2);
+assert.strictEqual(poolEnv.getPool('field'),fieldPool,'reusing a map must reuse its monster candidate array');
+assert.equal(poolEnv.getPool('unknown').length,0);
+assert.equal(poolEnv.getPool('starter')[0].id,'a');
+console.log('Offline map encounter pool cache checks passed.');
