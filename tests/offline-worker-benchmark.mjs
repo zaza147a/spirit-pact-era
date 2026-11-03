@@ -49,6 +49,7 @@ async function measure(hours){
  const summary=result.result?.summary;
  assert.ok(summary,'offline worker must return a summary');
  return {
+  _state:result.result.player,
   hours,stateSha256:createHash('sha256').update(JSON.stringify(result.result.player)).digest('hex'),wallMs:Math.round(performance.now()-started),workerHeapMb:Math.round((result.workerHeapUsed||0)/1048576),
   processRssMb:Math.round(process.memoryUsage().rss/1048576),
   firstProgressMs:firstProgressMs===null?null:Math.round(firstProgressMs),
@@ -59,15 +60,28 @@ async function measure(hours){
   equipmentDrops:summary.equipment?.length,cards:summary.cards?.length
  };
 }
+function differencePaths(a,b,prefix='',out=[]){
+ if(out.length>=30)return out;
+ if(Object.is(a,b))return out;
+ if(!a||!b||typeof a!=='object'||typeof b!=='object'){out.push(prefix||'<root>');return out;}
+ const keys=new Set([...Object.keys(a),...Object.keys(b)]);
+ for(const key of keys)differencePaths(a[key],b[key],prefix?prefix+'.'+key:key,out);
+ return out;
+}
 for(const hours of times){
  const rows=[];
  for(let repetition=0;repetition<repeats;repetition++){
   const row=await measure(hours);
   rows.push(row);
-  console.log(JSON.stringify({repetition:repetition+1,...row}));
+  const {_state,...publicRow}=row;
+  console.log(JSON.stringify({repetition:repetition+1,...publicRow}));
  }
  const identical=rows.every(x=>x.stateSha256===rows[0].stateSha256);
- if(repeats>1)assert.ok(identical,'same seed and save produced different full player states at '+hours+'h');
+ if(repeats>1&&!identical){
+  const paths=differencePaths(rows[0]._state,rows[1]._state);
+  console.error('State mismatch property paths (values withheld): '+JSON.stringify(paths));
+  assert.fail('same seed and save produced different full player states at '+hours+'h');
+ }
  results.push({hours,repeat:repeats,identicalState:identical,wallMs:rows.map(x=>x.wallMs),stateSha256:rows[0].stateSha256});
 }
 console.log(JSON.stringify({seed,complete:true,results}));
