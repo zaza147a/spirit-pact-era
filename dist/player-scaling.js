@@ -6,7 +6,7 @@ export const GLOBAL_SKILL_COOLDOWN=850;
 export const jobSkillCooldownMs=(skill,context={})=>skill.attackCycle?0:skill.cooldown??3600+skill.unlock*120;
 export const freecastThreshold=(context={})=>context.reborn&&context.level>=100?540:450;
 export function skillCastMs(skill,attributes={},context={}){return Math.round((skill.castMs||0)*Math.max(0,1-Math.sqrt(Math.max(0,(attributes.DEX||0)*2+(attributes.INT||0))/freecastThreshold(context))));}
-export const skillActionDelay=(skill,context={})=>skill.attackCycle?Math.max(1000/7,skill.recovery||0,context.speed||1000):GLOBAL_SKILL_COOLDOWN;
+export const skillActionDelay=(skill,context={})=>skill.attackCycle?Math.max(80,skill.recovery||0,context.speed||1000):GLOBAL_SKILL_COOLDOWN;
 
 export function jobSkillMultiplier(skill,rank=1,context={}){const growth=skill.kind==='heal'?.22:['shield','mana'].includes(skill.kind)?.2:.08;return skillPowerAtLevel(skill,context.level||151)*(['second','third'].includes(skill.branch)&&['physical','magic'].includes(skill.kind)?1.4:1)*(1+growth*(Math.max(1,rank)-1));}
 const displayedCooldown=(s,c)=>jobSkillCooldownMs(s,c)*(1-(c.cooldown||0));
