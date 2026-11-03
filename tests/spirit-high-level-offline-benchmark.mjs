@@ -6,9 +6,12 @@ import {performance} from 'node:perf_hooks';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 
 const epoch=2000000000000,seed=471122;
+const fastMinutes=Number(process.env.SPIRIT_HIGH_LEVEL_BENCH_MINUTES||0);
+if(fastMinutes&&(!Number.isInteger(fastMinutes)||fastMinutes<1||fastMinutes>30))throw Error('fast benchmark minutes must be 1..30');
+const durations=fastMinutes?[fastMinutes/60]:[1,6,12,24];
 const records=[];
 for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander']){
- for(const hours of [1,6,12,24]){
+ for(const hours of durations){
   const player=highLevelSpiritPlayer({level,job,pairKey:'attack-magic+defense-support',gearRarity:'legendary'});
   // Consistent with 200 unenhanced / 210 SSS normal-field difficulty baseline.
   const worker=new Worker(new URL('./offline-worker-node-entry.mjs?clock='+epoch,import.meta.url),{
@@ -42,7 +45,7 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
   }finally{await worker.terminate();}
  }
 }
-assert.equal(records.length,16);
-console.log(JSON.stringify({summary:true,scenarioCount:records.length,complete24h:records.filter(r=>r.hours===24&&r.completed).length,
+assert.equal(records.length,4*durations.length);
+console.log(JSON.stringify({summary:true,scenarioCount:records.length,fastMinutes,complete24h:records.filter(r=>r.hours===24&&r.completed).length,
  stopped24h:records.filter(r=>r.hours===24&&!r.completed).map(r=>({job:r.job,level:r.level,reason:r.reason,simulatedHours:r.simulatedHours})),
  benchmarkIsObservational:true}));
