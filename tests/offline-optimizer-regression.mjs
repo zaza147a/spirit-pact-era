@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
+import {sellSelectedJunk,QUEST_REQUIREMENTS} from '../dist/adventure-economy.js';
 
 const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
 const start=game.indexOf('function offlineIdleSkipSteps(');
@@ -80,3 +81,19 @@ for(const dual of [false,true]){
  assert.ok(optimizedAbility.stats<previous.stats/5,'ability stat calculations should drop sharply');
 }
 console.log('Offline pet ability cooldown/stat-guard checks passed.');
+
+
+// Repeated offline loot sales must preserve quest stock, unsold categories,
+// equipped inventory, and earned gold without repeatedly scanning quest entries.
+for(const {selected,bag,quests,expectedGold,expectedBag} of [
+ {selected:[],bag:[{id:'scrap',qty:60}],quests:{},expectedGold:0,expectedBag:[{id:'scrap',qty:60}]},
+ {selected:['scrap'],bag:[{id:'scrap',qty:60}],quests:{map:{done:false,junk:'scrap'}},expectedGold:100,expectedBag:[{id:'scrap',qty:QUEST_REQUIREMENTS.junk}]},
+ {selected:['scrap'],bag:[{id:'scrap',qty:30},{id:'scrap',uid:'equipped',qty:1}],quests:{map:{done:false,junk:'scrap'}},expectedGold:0,expectedBag:[{id:'scrap',qty:30},{id:'scrap',uid:'equipped',qty:1}]}
+]){
+ const actor={autoSellJunk:selected,bag:structuredClone(bag),quests,gold:300};
+ const result=sellSelectedJunk(actor,{scrap:{junk:true,cost:5}});
+ assert.equal(result.gold,expectedGold);
+ assert.equal(actor.gold,300+expectedGold);
+ assert.deepEqual(actor.bag,expectedBag);
+}
+console.log('Offline auto-sell quest preservation checks passed.');
