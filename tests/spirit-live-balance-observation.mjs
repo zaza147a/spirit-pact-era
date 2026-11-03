@@ -39,9 +39,14 @@ assert.equal(rows.length,84);
 for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander']){
  const group=rows.filter(r=>r.level===level&&r.job===job);
  const ranked=[...group].sort((a,b)=>b.actualHpDps-a.actualHpDps);
+ const noDeath=[...group].filter(r=>r.alive&&r.revives===0&&r.reason==='已完成離線時間').sort((a,b)=>b.actualHpDps-a.actualHpDps);
  console.log(JSON.stringify({summary:true,level,job,scenarios:group.length,
   fullDuration:group.filter(r=>r.simulatedMs===duration).length,
   alive:group.filter(r=>r.alive).length,
+  revivedBuilds:group.filter(r=>r.revives>0).length,
+  totalRevives:group.reduce((sum,r)=>sum+r.revives,0),
+  deathFreeBuilds:noDeath.length,
+  bestDeathFree:noDeath.slice(0,3).map(r=>({pairKey:r.pairKey,dps:r.actualHpDps})),
   zeroResonance:group.filter(r=>r.resonanceActivations===0).length,
   meanActualHpDps:Math.round(group.reduce((n,r)=>n+r.actualHpDps,0)/group.length),
   topThree:ranked.slice(0,3).map(r=>({pairKey:r.pairKey,dps:r.actualHpDps,reason:r.reason})),
