@@ -6,7 +6,7 @@ import {createHash} from 'node:crypto';
 import {Worker} from 'node:worker_threads';
 import {performance} from 'node:perf_hooks';
 import {starterPlayer} from './fixtures/starter-player.mjs';
-import {makePet,petStats} from '../dist/catalog.js';
+import {makePet,petStats,SPECIES} from '../dist/catalog.js';
 
 const file=process.argv[2];
 if(!file)throw Error('Usage: node tests/offline-worker-benchmark.mjs path/to/legal-save.json | --starter | --starter-salvage | --starter-dual-salvage');
@@ -17,7 +17,9 @@ if(file==='--starter-dual-salvage'){
  loaded.pets=['fang','wisp'].map((species,index)=>{
   const pet=makePet(species);
   pet.id='bench-pet-'+(index+1);
+  pet.nickname=SPECIES[species].name;
   pet.rarity='common';
+  pet.iv={hp:2,atk:2,def:1,matk:2,sp:2,aspd:1};
   pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;
   return pet;
  });
