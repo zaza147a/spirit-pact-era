@@ -34,9 +34,10 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
    const parts=['player','pet1','pet2','resonance','petSupport','other'];
    assert.equal(parts.reduce((n,key)=>n+d[key],0),d.total,'no double-counted HP damage');
    assert.equal(response.result.player.pets.length,2,'fusion pair persisted');
-   const full=s.simulated===hours*3600000;
+   const simulatedFull=s.simulated===hours*3600000;
+   const full=simulatedFull&&s.reason==='已完成離線時間'&&response.result.player.hp>0;
    const row={job,level,gearRarity:'legendary',hours,simulatedHours:Math.round(s.simulated/3600000*1000)/1000,
-    completed:full,reason:s.reason,wallMs:Math.round(performance.now()-started),
+    completed:full,simulatedFull,reason:s.reason,wallMs:Math.round(performance.now()-started),
     workerHeapMb:Math.round((response.workerHeapUsed||0)/1048576),progressEvents,
     kills:s.kills,revives:s.revives||0,pet1Damage:d.pet1,pet2Damage:d.pet2,
     resonanceActivations:s.resonanceActivations||0,damageTotal:d.total,
@@ -48,4 +49,4 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
 assert.equal(records.length,4*durations.length);
 console.log(JSON.stringify({summary:true,scenarioCount:records.length,fastMinutes,complete24h:records.filter(r=>r.hours===24&&r.completed).length,
  stopped24h:records.filter(r=>r.hours===24&&!r.completed).map(r=>({job:r.job,level:r.level,reason:r.reason,simulatedHours:r.simulatedHours})),
- benchmarkIsObservational:true}));
+ benchmarkIsObservational:true,completionRequiresAlive:true}));
