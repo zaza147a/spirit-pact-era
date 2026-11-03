@@ -201,8 +201,8 @@ for(const job of ['pactWarrior','spiritCommander']){
  if(job==='spiritCommander'){
   assert.equal(result.atk,1060);
   assert.equal(result.matk,1120);
-  assert.equal(result.def,515);
-  assert.equal(result.mdef,512);
+  assert.equal(result.def,535);
+  assert.equal(result.mdef,528);
   assert.equal(input.atk,1000,'cached petStats must not be mutated');
   commander.pets[0].hp=0;
   assert.equal(ctx.transfer(commander.pets[0],input),input,'dead pet receives no transfer');
