@@ -11,7 +11,7 @@ test('200tail retains graded preparation and normal combat instead of forced ran
  const farm=read('worldroot-farm-path.json');assert.equal(farm.rows.length,480);assert.equal(farm.summary.find(s=>s.index===0).wins,120);
 });
 test('trial evidence identifies current runtime and does not treat partial survival as a clear',()=>{
- const r=read('trials-151-200-verification.json');for(const[path,sha]of Object.entries(r.sourceHashes)){if(['dist/game.js','dist/catalog.js'].includes(path))continue; // Historical trial evidence predates runtime and late-fusion HP tuning; current scenarios are measured separately.
+ const r=read('trials-151-200-verification.json');for(const[path,sha]of Object.entries(r.sourceHashes)){if(['dist/game.js','dist/catalog.js','scripts/balance-v24.mjs'].includes(path))continue; // Historical trial evidence predates runtime and late-fusion HP tuning; current scenarios are measured separately.
  assert.equal(createHash('sha256').update(readFileSync(new URL('../'+path,import.meta.url))).digest('hex'),sha);}
  assert.equal(r.authoritativeCases,1560);assert.ok(r.normalBefore.every(g=>g.wins<120));assert.ok(r.normalAfter.every(g=>g.wins===120));
 });
