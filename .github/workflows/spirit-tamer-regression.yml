@@ -34,6 +34,8 @@ jobs:
         run: node tests/dual-pet-resonance-signature.test.mjs
       - name: Run dual-pet UI regression
         run: node tests/spirit-dual-ui-regression.mjs
+      - name: Smoke four synthetic 200/210 fused spirit worker states
+        run: node tests/spirit-high-level-fixture.test.mjs
       - name: Run dual-pet module regression suite
         shell: bash
         run: |
