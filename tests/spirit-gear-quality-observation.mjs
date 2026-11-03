@@ -8,7 +8,7 @@ import {rankOf} from '../dist/sky-trials.js';
 const epoch=2000000000000,duration=60000;
 const pairs=['attack-magic+attack-magic','attack-defense+magic-support','defense-support+defense-support'];
 const rows=[];
-for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
+for(const level of [200])for(const job of ['pactWarrior','spiritCommander'])
  for(const gearRarity of ['common','legendary','mythic'])for(const pairKey of pairs){
   const player=highLevelSpiritPlayer({level,job,pairKey,gearRarity});
   const gear=[...Object.values(player.gear).filter(Boolean),...player.pets.flatMap(pet=>Object.values(pet.gear))];
@@ -34,8 +34,8 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
    rows.push(row);console.log(JSON.stringify(row));
   }finally{await worker.terminate();}
  }
-assert.equal(rows.length,36);
-for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
+assert.equal(rows.length,18);
+for(const level of [200])for(const job of ['pactWarrior','spiritCommander'])
  for(const gearRarity of ['common','legendary','mythic']){
   const group=rows.filter(r=>r.level===level&&r.job===job&&r.gearRarity===gearRarity);
   console.log(JSON.stringify({summary:true,level,job,gearRarity,scenarios:group.length,
@@ -45,4 +45,4 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
    meanActualHpDps:Math.round(group.reduce((sum,r)=>sum+r.actualHpDps,0)/group.length)}));
  }
 console.log(JSON.stringify({complete:true,scenarios:rows.length,
- limitation:'Synthetic fixed-IV all-matched rarity gear, with no measured farming time; not a population-based gear availability study.'}));
+ limitation:'200-only rarity sensitivity; 201-210 is excluded here and is tested separately with mythic SSS only.'}));
