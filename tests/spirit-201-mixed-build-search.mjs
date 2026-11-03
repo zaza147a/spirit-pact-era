@@ -73,7 +73,7 @@ for(const job of Object.keys(SECOND_JOBS)){
  for(const v of candidates)results.push(await run({...v,stat:'baseline',order:'default'},90,seed));
  results.sort((a,b)=>b.totalDps-a.totalDps);
  const finalists=[];
- for(const result of results){if(!finalists.some(x=>x.cfg.pair===result.cfg.pair)){
+ for(const result of results){if(!finalists.some(x=>x.pair===result.cfg.pair)){
   finalists.push(result.cfg);if(finalists.length===3)break;
  }}
  assert.equal(finalists.length,3);
