@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {DUAL_FUSION_TYPES} from '../dist/spirit-job-rules.js';
-import {dualSpiritResonance,canTriggerDualSpirit} from '../dist/dual-fusion-resonance.js';
+import {DUAL_SPIRIT_RULES,dualSpiritResonance,canTriggerDualSpirit} from '../dist/dual-fusion-resonance.js';
 
 const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
 const begin=game.indexOf('function triggerDualSpiritResonance(');
@@ -14,11 +14,11 @@ function run(index,job,{positive=true,withoutSignature=false}={}){
  const key=DUAL_FUSION_TYPES[index];
  const pets=key.split('+').map((fusion,i)=>{
   const [main,sub]=fusion.split('-');
-  return {id:String(i),nickname:String(i),hp:positive?100:1000,fusion:{main,sub}};
+  return {id:String(i),nickname:String(i),hp:positive?(index===13?1000:100):(index===13?100:1000),fusion:{main,sub}};
  });
- const target={instanceId:'target',hp:index===4&&positive?1e8:1e9,maxHp:1e9,def:!positive&&index===0?0:10,boss:positive};
+ const target={instanceId:'target',hp:(index===4||index===18)&&positive?1e8:1e9,maxHp:1e9,def:!positive&&index===0?0:10,boss:positive};
  const events={heals:0,shields:0,messages:0};
- const enemies=index===5&&positive?[target,{instanceId:'other',hp:100}]:[target];
+ const enemies=[5,14,19].includes(index)&&positive?[target,{instanceId:'other',hp:100}]:[target];
  const ctx={
   player:{job,thirdJob:true},enemy:target,enemies,
   timers:{dualSpiritAt:0},report:{dualPetDamage:{dualResonance:0}},
@@ -43,9 +43,10 @@ function run(index,job,{positive=true,withoutSignature=false}={}){
  ctx.fire('thirdHit_'+job);
  return {heals:events.heals,shields:events.shields,expose:target.exposedPower||0,damage:ctx.report.dualPetDamage.dualResonance,messages:events.messages};
 }
+assert.equal(new Set(Object.values(DUAL_SPIRIT_RULES).map(x=>x.signature)).size,21,'each unordered pairing has a distinct signature');
 let verified=0;
 for(const job of ['pactWarrior','spiritCommander']){
- for(let i=0;i<12;i++){
+ for(let i=0;i<21;i++){
   const active=run(i,job);
   const baseline=run(i,job,{withoutSignature:true});
   assert.notDeepEqual(active,baseline,'signature should change a positive scenario: '+job+' '+i);
