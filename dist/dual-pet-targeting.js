@@ -8,9 +8,10 @@ export function chooseDefendingPet(roster,roleOf,{mode='focus',guardingIds=[],rn
  const guards=new Set(guardingIds);
  const weights=alive.map(p=>{
   const role=roleOf(p);
-  let weight=role==='defense'?1.6:role==='support'?.8:1;
+  const defensive=role==='defense'||p.fusion?.main==='defense'||p.fusion?.sub==='defense';
+  let weight=defensive?1.6:role==='support'?.8:1;
   if(guards.has(p.id))weight*=1.7;
-  if(mode==='guard'&&role==='defense')weight*=1.3;
+  if(mode==='guard'&&defensive)weight*=1.3;
   return weight;
  });
  const total=weights.reduce((a,b)=>a+b,0);
