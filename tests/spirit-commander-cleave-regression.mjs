@@ -31,8 +31,7 @@ function scenario({job,count,kind='attack',splash=0}){
   activePet:()=>pet,combatPetFactor:()=>1,
   effectsForPet:()=>({}),defaultPetSkills:()=>['magic1'],
   petSkillById:()=>({id:'magic1',kind:'magic',unlock:0,splash}),
-  petSkillStatus:()=> '可施放',petSkillEffect:()=>({value:100}),
-  Math:{...Math,random:()=>.8}
+  petSkillStatus:()=> '可施放',petSkillEffect:()=>({value:100})
  };
  if(kind==='attack')vm.runInNewContext(attack+'\nthis.fire=petAttack',ctx);
  else vm.runInNewContext(ability+'\nthis.fire=petAutoAbility',ctx);
