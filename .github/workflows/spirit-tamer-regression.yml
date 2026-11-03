@@ -24,6 +24,8 @@ jobs:
           node-version: '22'
       - name: Smoke test real offline Node Worker
         run: node tests/offline-worker-smoke.mjs
+      - name: Short real offline combat simulation
+        run: node tests/offline-worker-combat-smoke.mjs
       - name: Run offline optimizer regression
         run: node tests/offline-optimizer-regression.mjs
       - name: Run dual-pet combat regression
