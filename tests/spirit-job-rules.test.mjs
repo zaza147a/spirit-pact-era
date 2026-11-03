@@ -1,4 +1,6 @@
 import test from 'node:test';
+import {jobLevelCap} from '../dist/adventure-progression.js';
+import {thirdJobError,THIRD_SEAL,THIRD_SEAL_COST} from '../dist/frontier.js';
 import assert from 'node:assert/strict';
 import {
   canonicalFusionKey, canonicalDualFusionKey, DUAL_FUSION_TYPES,
@@ -72,4 +74,17 @@ test('spirit third-job requirement is disclosed from first job onward',()=>{
  assert.match(spiritGrowthGuide(p,[]).message,/4／24/);
  p.job='wizard';
  assert.equal(spiritGrowthGuide(p,[]),null);
+});
+
+test('both reborn spirit second jobs can earn Job 70 and satisfy ordinary third-job gate',()=>{
+ for(const job of ['pactWarrior','spiritCommander']){
+  const player={job,reborn:true,thirdJob:false,level:150,jobLevel:70,location:'skycity',
+   bag:[{id:THIRD_SEAL,qty:THIRD_SEAL_COST}]};
+  assert.equal(jobLevelCap(player),70,job+' needs reachable Job 70');
+  assert.equal(thirdJobError(player),null,job+' must pass original base/job/seal gate');
+  assert.match(thirdJobError({...player,jobLevel:69}),/Job70/);
+  assert.equal(jobLevelCap({...player,reborn:false}),50);
+ }
+ assert.equal(jobLevelCap({job:'wizard',reborn:true}),70,'existing jobs unchanged');
+ assert.equal(jobLevelCap({job:'spiritist',reborn:true}),50,'first job unchanged');
 });
