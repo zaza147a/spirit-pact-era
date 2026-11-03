@@ -17,7 +17,10 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior'}={}){
  const rng=seeded(level+(job==='pactWarrior'?101:202)),p=starterPlayer();
  p.name='SpiritIntegrationFixture';p.job=job;p.level=level;p.reborn=true;p.thirdJob=true;
  p.dawnUnlocked=level>=210;p.location=level>=210?'dawnrift':'worldroot';
- p.jobLevel=70;p.secondJobLevel=70;p.jobXp=0;p.jobPoints=0;p.xp=0;
+ p.jobLevel=70;p.secondJobLevel=70;p.jobXp=0;p.jobPoints=39;p.xp=0;
+ p.firstJobLevel=50;
+ p.jobSkills={['thirdMain_'+job]:10,['thirdWide_'+job]:10,['thirdFinish_'+job]:10};
+ p.autoSkills={version:2,order:['thirdMain_'+job,'thirdWide_'+job,'thirdFinish_'+job],disabled:[]};
  p.quests={[SPIRIT_TRIAL_ID]:{started:true,kills:24,done:true}};
  const allocated=job==='pactWarrior'
   ?level===210?{STR:150,VIT:120,AGI:100,DEX:70,LUK:3,INT:1}:{STR:120,VIT:120,AGI:100,DEX:78,LUK:5,INT:1}
