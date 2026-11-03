@@ -13,17 +13,21 @@ const SIGNATURES=Object.freeze([
  'fortressCounter','sacredRelay','wardPierce','shieldCascade','lastStand','mutualRenewal',
  'crossRelay','echoBalance','rescueBurst','arcaneBulwark','frostWard','guardianPrayer','twinFocus','sanctuaryPulse','lastBastion'
 ]);
+// Branch-specific stage-one follow-ups. The shared fusion signature remains
+// active, while each third-job route gains a different situational behavior.
+const WARRIOR_ROUTES=Object.freeze(['rendingEdge','guardBreak','duelRecovery','spellExecution','focusChase','sweepingExpose']);
+const COMMANDER_ROUTES=Object.freeze(['arcaneGuard','sharedBulwark','supportTempo','mageWard','dualReplenish','frontlineReinforce']);
 if(TRAITS.length!==DUAL_FUSION_TYPES.length||SIGNATURES.length!==DUAL_FUSION_TYPES.length||new Set(SIGNATURES).size!==SIGNATURES.length)throw Error('雙靈組合／特色表不完整或重複');
 export const DUAL_SPIRIT_RULES=Object.fromEntries(DUAL_FUSION_TYPES.map((key,index)=>{
  const [name,trait]=TRAITS[index],cooldownMs=9000+(index%4)*1000;
- return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,signature:SIGNATURES[index]||null,cooldownMs,warriorCoefficient:.10+(index%3)*.015,commanderCoefficient:.08+(index%3)*.012})];
+ return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,signature:SIGNATURES[index]||null,warriorRoute:WARRIOR_ROUTES[index]||null,commanderRoute:COMMANDER_ROUTES[index]||null,cooldownMs,warriorCoefficient:.10+(index%3)*.015,commanderCoefficient:.08+(index%3)*.012})];
 }));
 export function dualSpiritResonance(player,roster){
  if(!player?.thirdJob||!['pactWarrior','spiritCommander'].includes(player.job)||roster?.length!==2||roster.some(p=>p.hp<=0))return null;
  const key=canonicalDualFusionKey(roster[0],roster[1]);
  const rule=DUAL_SPIRIT_RULES[key];
  if(!rule)return null;
- return {...rule,name:player.job==='pactWarrior'?rule.warriorName:rule.commanderName,coefficient:player.job==='pactWarrior'?rule.warriorCoefficient:rule.commanderCoefficient,ownerJob:player.job};
+ return {...rule,name:player.job==='pactWarrior'?rule.warriorName:rule.commanderName,coefficient:player.job==='pactWarrior'?rule.warriorCoefficient:rule.commanderCoefficient,ownerJob:player.job,routeEffect:player.job==='pactWarrior'?rule.warriorRoute:rule.commanderRoute};
 }
 export function canTriggerDualSpirit(rule,event,now,lastAt=0,targetId=null,previousTargetId=null){
  if(!rule||!['thirdHit_pactWarrior','thirdHit_spiritCommander'].includes(event)||event!=='thirdHit_'+rule.ownerJob)return false;
