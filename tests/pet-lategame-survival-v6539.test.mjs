@@ -25,12 +25,11 @@ test('late-game HP reduction keeps defense role tankier, early progression untou
  assert.ok(petStats(maxPet('shell',200)).hp>petStats(maxPet('fang',200)).hp);
 });
 
-test('high-level companion potions have both percentage and absolute caps',()=>{
+test('original potion percentage works identically for advanced and early companions',()=>{
  for(const id of species) {
   const s=petStats(maxPet(id,200));
   const restored=potionRestore(healItem,'hp',200,s.hp,true);
-  assert.ok(restored<=Math.round(s.hp*.16),'max HP cap for '+id);
-  assert.ok(restored<=28000,'level-based limit for '+id);
+  assert.equal(restored,Math.round(5000*.75+s.hp*.3),'uncapped original healing for '+id);
   assert.ok(restored>=1);
  }
  assert.equal(potionRestore(healItem,'hp',200,500000,false),155000,'player potions stay unchanged');
