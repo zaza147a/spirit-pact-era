@@ -12,7 +12,7 @@ const durations=fastMinutes?[fastMinutes/60]:[1,6,12,24];
 const records=[];
 for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander']){
  for(const hours of durations){
-  const player=highLevelSpiritPlayer({level,job,pairKey:'attack-magic+defense-support',gearRarity:'legendary'});
+  const player=highLevelSpiritPlayer({level,job,pairKey:'attack-magic+defense-support',gearRarity:level===210?'mythic':'legendary'});
   // Consistent with 200 unenhanced / 210 SSS normal-field difficulty baseline.
   const worker=new Worker(new URL('./offline-worker-node-entry.mjs?clock='+epoch,import.meta.url),{
    type:'module',workerData:{seed}
@@ -36,7 +36,7 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
    assert.equal(response.result.player.pets.length,2,'fusion pair persisted');
    const simulatedFull=s.simulated===hours*3600000;
    const full=simulatedFull&&s.reason==='已完成離線時間'&&response.result.player.hp>0;
-   const row={job,level,gearRarity:'legendary',hours,simulatedHours:Math.round(s.simulated/3600000*1000)/1000,
+   const row={job,level,gearRarity:level===210?'mythic':'legendary',hours,simulatedHours:Math.round(s.simulated/3600000*1000)/1000,
     completed:full,simulatedFull,reason:s.reason,wallMs:Math.round(performance.now()-started),
     workerHeapMb:Math.round((response.workerHeapUsed||0)/1048576),progressEvents,
     kills:s.kills,revives:s.revives||0,pet1Damage:d.pet1,pet2Damage:d.pet2,
