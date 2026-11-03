@@ -203,6 +203,17 @@ jobs:
         run: node tests/spirit-role-42-combat-matrix.mjs
 
 
+  spirit-survival-sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare 1h and 6h sustained survival for both spirit roles
+        run: node tests/spirit-survival-sweep.mjs
+
   role-correct-24h-observation:
     runs-on: ubuntu-latest
     timeout-minutes: 15
