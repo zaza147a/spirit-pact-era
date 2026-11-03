@@ -2,6 +2,7 @@
 // Executes the production offline simulation via a Node Worker (no DOM).
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import {Worker} from 'node:worker_threads';
 import {performance} from 'node:perf_hooks';
 
@@ -44,7 +45,7 @@ async function measure(hours){
  const summary=result.result?.summary;
  assert.ok(summary,'offline worker must return a summary');
  return {
-  hours,wallMs:Math.round(performance.now()-started),workerHeapMb:Math.round((result.workerHeapUsed||0)/1048576),
+  hours,stateSha256:createHash('sha256').update(JSON.stringify(result.result.player)).digest('hex'),wallMs:Math.round(performance.now()-started),workerHeapMb:Math.round((result.workerHeapUsed||0)/1048576),
   processRssMb:Math.round(process.memoryUsage().rss/1048576),
   firstProgressMs:firstProgressMs===null?null:Math.round(firstProgressMs),
   progressEvents,mostRecentProgress,
