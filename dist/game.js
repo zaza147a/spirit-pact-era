@@ -595,7 +595,7 @@ function triggerDualSpiritResonance(event){
  }else if(rule.signature==='sacredRelay'){
   const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.4);
   if(ally)grantPetShield(power*.3,true,ally,effectsForPet(ally));
- }else if(rule.signature==='wardPierce'&&primary.hp>0&&roster.some(p=>p.hp>0&&(p.fusion?.main==='defense'||p.fusion?.sub==='defense'))){
+ }else if(rule.signature==='wardPierce'&&primary.hp>0&&primary.boss&&roster.some(p=>p.hp>0&&(p.fusion?.main==='defense'||p.fusion?.sub==='defense'))){
   primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2200);
   primary.exposedPower=Math.max(primary.exposedPower||0,.02);
  }else if(rule.signature==='shieldCascade'&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.75)){
