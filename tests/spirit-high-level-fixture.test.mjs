@@ -6,6 +6,8 @@ import {attributeCap} from '../dist/adventure-progression.js';
 import {canonicalDualFusionKey} from '../dist/spirit-job-rules.js';
 import {gearTier,GEAR_BASE,PET_GEAR_BASE} from '../dist/loot.js';
 import {rankOf} from '../dist/sky-trials.js';
+import {CARDS} from '../dist/catalog.js';
+import {cardAllowedInSlot} from '../dist/card-effects.js';
 
 for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210]){
  const player=highLevelSpiritPlayer({level,job});
@@ -23,8 +25,12 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
  assert.ok(allGear.every(g=>Object.keys(g.affixes||{}).length===6),'mythic equipment has five regular and one special affix');
  assert.equal(player.dawnSigil,0,'no farmed dawn sigil at the initial balance baseline');
  assert.equal(player.autoEscapeBoss,level===210,'dawn wilderness farm must be separate from unprepared archon attack');
- assert.deepEqual(player.cards,[]); // uncarded legal initial state, not a DPS-maximized build
- assert.ok(Object.values(player.sockets).every(card=>card===null));
+ assert.deepEqual(player.cards,[]); // all ten owned cards are slotted, not duplicated in bag
+ assert.equal(Object.values(player.sockets).filter(Boolean).length,10);
+ for(const [slot,id] of Object.entries(player.sockets)){
+  assert.ok(cardAllowedInSlot(CARDS[id],slot),'slot restriction '+slot);
+  assert.ok(/^world_19[1-9]$|^world_200$/.test(id),'only obtainable 191-200 normal cards');
+ }
  assert.ok(Object.values(player.gear).filter(Boolean).every(g=>!GEAR_BASE[g.id]?.jobs||GEAR_BASE[g.id].jobs.includes(job)));
  assert.ok(player.pets.every(pet=>Object.values(pet.gear).every(g=>!!PET_GEAR_BASE[g.id])));
  assert.equal(player.tacticEffect,undefined,'manual tactics excluded from balance');
