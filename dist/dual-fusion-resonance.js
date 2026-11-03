@@ -16,10 +16,10 @@ export function dualSpiritResonance(player,roster){
  const key=canonicalDualFusionKey(roster[0],roster[1]);
  const rule=DUAL_SPIRIT_RULES[key];
  if(!rule)return null;
- return {...rule,name:player.job==='pactWarrior'?rule.warriorName:rule.commanderName,coefficient:player.job==='pactWarrior'?rule.warriorCoefficient:rule.commanderCoefficient};
+ return {...rule,name:player.job==='pactWarrior'?rule.warriorName:rule.commanderName,coefficient:player.job==='pactWarrior'?rule.warriorCoefficient:rule.commanderCoefficient,ownerJob:player.job};
 }
 export function canTriggerDualSpirit(rule,event,now,lastAt=0,targetId=null,previousTargetId=null){
- if(!rule||!['thirdHit_pactWarrior','thirdHit_spiritCommander'].includes(event))return false;
+ if(!rule||!['thirdHit_pactWarrior','thirdHit_spiritCommander'].includes(event)||event!=='thirdHit_'+rule.ownerJob)return false;
  if(lastAt>0&&now-lastAt<rule.cooldownMs)return false;
  if(!targetId)return false;
  return true;
