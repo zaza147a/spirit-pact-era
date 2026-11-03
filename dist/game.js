@@ -562,18 +562,18 @@ function originalPactPrerequisite(rule,now,event){
 }
 function triggerDualSpiritResonance(event){
  if(!['thirdHit_pactWarrior','thirdHit_spiritCommander'].includes(event))return;
- if(offlineMetrics)offlineMetrics.dualSpiritMainEvents++;
+ if(typeof offlineMetrics!=='undefined'&&offlineMetrics)offlineMetrics.dualSpiritMainEvents++;
  if(!enemy?.hp||!player?.thirdJob){
-  if(offlineMetrics)offlineMetrics.dualSpiritBlockedDeadTarget++;
+  if(typeof offlineMetrics!=='undefined'&&offlineMetrics)offlineMetrics.dualSpiritBlockedDeadTarget++;
   return;
  }
  const roster=activePetRoster(player),rule=dualSpiritResonance(player,roster),now=gameNow(),last=timers.dualSpiritAt||0;
  if(!rule){
-  if(offlineMetrics)offlineMetrics.dualSpiritBlockedFormation++;
+  if(typeof offlineMetrics!=='undefined'&&offlineMetrics)offlineMetrics.dualSpiritBlockedFormation++;
   return;
  }
  if(!canTriggerDualSpirit(rule,event,now,last,enemy.instanceId)){
-  if(offlineMetrics)offlineMetrics.dualSpiritBlockedCooldown++;
+  if(typeof offlineMetrics!=='undefined'&&offlineMetrics)offlineMetrics.dualSpiritBlockedCooldown++;
   return;
  }
  timers.dualSpiritAt=now;
