@@ -32,8 +32,10 @@ export const PET_ROLES = Object.freeze(['attack','magic','defense','support']);
 const roleIndex = role => PET_ROLES.indexOf(role);
 export function canonicalFusionKey(pet) {
   // Accept current fusion key, role pair or explicit order array.
-  const raw = pet?.fusionKey ?? pet?.fusionPair ?? pet?.fusionType
-    ?? (Array.isArray(pet?.fusionRoles) ? pet.fusionRoles : null);
+  const raw = pet?.fusion?.main && pet?.fusion?.sub
+    ? [pet.fusion.main,pet.fusion.sub]
+    : pet?.fusionKey ?? pet?.fusionPair ?? pet?.fusionType
+      ?? (Array.isArray(pet?.fusionRoles) ? pet.fusionRoles : null);
   const parts = Array.isArray(raw) ? raw : typeof raw === 'string' ? raw.split('-') : [];
   if (parts.length !== 2 || parts[0] === parts[1] || parts.some(role => roleIndex(role) < 0)) return null;
   return [...parts].sort((a,b) => roleIndex(a) - roleIndex(b)).join('-');
