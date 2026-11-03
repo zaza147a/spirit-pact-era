@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {runBuild} from '../scripts/balance-v24.mjs';
 
 // An actual-runtime progression audit: entry with previous-band gear,
-// end of band with matching gear, and final Lv200 SSS graduation.
+// end of band with matching normal gear. The Lv200 S/SS/SSS trial is separate.
 const jobs=['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer'];
 const fused={attack:'attack-defense',magic:'attack-magic',defense:'defense-support'};
 const bands=[
@@ -23,10 +23,9 @@ test('Lv151-200 progression: prev-tier gear at entry versus matching gear, 10 jo
    for(const scenario of ['regional','bossTrial']){
     const level=phase==='entry'?band.entry:band.finish;
     const gearLevel=phase==='entry'?band.previous:band.finish;
-    const enhancement=level===200?'SSS':null;
     const r=runBuild(job,role,{...common,level,encounterLevel:level,
       gearLevel,petLevelOverride:level,fusionPair,scenario,
-      enhancement,petEnhancement:enhancement});
+      enhancement:null,petEnhancement:null});
     const row={band:band.finish,phase,level,gearLevel,job,role,scenario,
       playerHp:r.maxHp,petHp:r.stats.pet.hp,
       playerDef:r.stats.owner.def,playerFlee:r.stats.owner.flee,
