@@ -61,11 +61,11 @@ const spiritSource=readFileSync(new URL('../dist/spirit-job-rules.js',import.met
   .replace(/^import .*;\s*$/gm,'').replace(/\bexport /g,'');
 const spiritContext={};
 vm.runInNewContext(spiritSource+
-  '\nthis.api={canonicalDualFusionKey,DUAL_FUSION_TYPES}',spiritContext);
+  '\nthis.api={canonicalDualFusionKey,DUAL_FUSION_TYPES,FUSION_TYPES}',spiritContext);
 const {canonicalDualFusionKey,DUAL_FUSION_TYPES}=spiritContext.api;
 const resonanceSource=readFileSync(new URL('../dist/dual-fusion-resonance.js',import.meta.url),'utf8')
   .replace(/^import .*;\s*$/gm,'').replace(/\bexport /g,'');
-const resonanceContext={canonicalDualFusionKey,DUAL_FUSION_TYPES};
+const resonanceContext={canonicalDualFusionKey,DUAL_FUSION_TYPES,FUSION_TYPES:spiritContext.FUSION_TYPES};
 vm.runInNewContext(resonanceSource+
   '\nthis.api={dualSpiritResonance,canTriggerDualSpirit}',resonanceContext);
 const {dualSpiritResonance,canTriggerDualSpirit}=resonanceContext.api;
