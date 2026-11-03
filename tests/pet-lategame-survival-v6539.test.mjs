@@ -85,6 +85,8 @@ test('real runtime: SSS-equipped companions remain killable under repeated level
   p.hp=1e12;
   // Force a successful hit when the companion is targeted; formation RNG remains independent.
   c.Math.random=()=>0;
+  // This isolated tanking scenario focuses the boss on the pet for reproducibility.
+  c.chooseMonsterTarget=()=> 'pet';
   let hits=0;
   for(;hits<20&&pet.hp>0;hits++){
    c.setTime(1000000+hits*1000);
