@@ -8,6 +8,11 @@ function seededRandom(){
 }
 const args=new URL(import.meta.url).searchParams;
 rngSeed=(Number(args.get('seed'))>>>0)||0x9e3779b9;
+// Optional test-only proof: snapshot first PRNG value without consuming combat RNG.
+if(args.has('seedProof')){
+ const before=rngSeed,firstSample=seededRandom();rngSeed=before;
+ parentPort.postMessage({type:'seed-proof',seed:rngSeed,firstSample});
+}
 // Real loot IDs include Date.now(). Freeze it only for benchmark workers,
 // never in the browser production Worker or ordinary smoke tests.
 if(args.has('clock')){
