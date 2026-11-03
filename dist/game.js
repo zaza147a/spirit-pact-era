@@ -1,5 +1,5 @@
 import {ensurePetEffects} from './dual-pet-effects.js';
-import {chooseDefendingPet,pactOwnerOnlyAggro} from './dual-pet-targeting.js';
+import {chooseDefendingPet,pactOwnerOnlyAggro,commanderPetTargetChance} from './dual-pet-targeting.js';
 import {dualSpiritResonance,canTriggerDualSpirit} from './dual-fusion-resonance.js';
 import {queueCombatVfx} from './skill-effects.js?v=6.5.12';
 import {TACTIC_COOLDOWN_MS,manualTactic,tacticSPCost,tacticRemaining,tacticActive,tacticDamageFactor,tacticIncomingFactor} from './manual-tactics.js?v=6.5.30';
@@ -892,7 +892,7 @@ function enemyAttack(){
  // Use the strongest *single* pet weight: two companions do not double aggro.
  const petAggroWeight=unit=>monsterTargetWeights(player,unit,companionRole(unit),now<effectsForPet(unit).guardUntil).find(entry=>entry.kind==='pet')?.weight||0;
  const aggroPet=roster.filter(unit=>unit.hp>0).reduce((best,unit)=>!best||petAggroWeight(unit)>petAggroWeight(best)?unit:best,null);
- const targetPet=!pactOwnerOnlyAggro(player,roster)&&chooseMonsterTarget(player,aggroPet,aggroPet?companionRole(aggroPet):null,aggroPet?now<effectsForPet(aggroPet).guardUntil:false)==='pet';
+ const targetPet=player.job==='spiritCommander'?Math.random()<commanderPetTargetChance(roster):!pactOwnerOnlyAggro(player,roster)&&chooseMonsterTarget(player,aggroPet,aggroPet?companionRole(aggroPet):null,aggroPet?now<effectsForPet(aggroPet).guardUntil:false)==='pet';
  const pet=targetPet?chooseDefendingPet(roster,companionRole,{mode:player.dualPetMode||'focus',guardingIds:roster.filter(unit=>gameNow()<effectsForPet(unit).guardUntil).map(unit=>unit.id)}):firstAlive;
  const role=pet?companionRole(pet):null,fx=effectsForPet(pet);
  if(offlineMetrics&&isSpiritJob(player.job)){
