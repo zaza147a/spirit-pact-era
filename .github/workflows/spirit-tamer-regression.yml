@@ -236,6 +236,17 @@ jobs:
       - name: Observe full 24-hour real Worker survival, gold, pet states in four legal roles
         run: node tests/spirit-role-24h-worker.mjs
 
+  spirit-underlevel-map-survival:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare Lv170/180 gear in 191-200 and strictly SSS in 201-210
+        run: node tests/spirit-underlevel-map-survival.mjs
+
   spirit-low-gear-five-boss:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -244,7 +255,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test 48 Lv200 real five-boss attempts under legendary and mythic S-SS gear
+      - name: Test 48 Lv200 five-boss attempts with Lv170/180 mythic gear, none/S/SS
         run: node tests/spirit-200-low-gear-five-boss.mjs
 
   spirit-200-five-boss-observation:
