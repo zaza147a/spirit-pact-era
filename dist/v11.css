@@ -25,10 +25,43 @@
 .warehouse-import{display:block;margin:10px 0;overflow-wrap:anywhere}.warehouse-import input{display:block;width:100%;max-width:100%;min-width:0;margin-top:6px}
 
 /* 御靈使專用：左側雙夥伴獨立狀態卡；其他職業不套用。 */
-#companion .dual-pet-hud{display:grid;grid-template-columns:1fr;gap:10px}
+#companion .dual-pet-hud{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
 #companion .dual-pet-unit{padding:10px 12px;border:1px solid rgba(142,163,190,.28);border-radius:12px;background:rgba(21,31,48,.55);min-width:0}
 #companion .dual-pet-unit .hero{display:flex;flex-direction:column;align-items:flex-start;gap:3px;margin-bottom:8px}
 #companion .dual-pet-unit .hero .art-pet{max-width:100%;max-height:120px;object-fit:contain}
 #companion .dual-pet-unit .meterline{font-size:12px;margin-top:5px}
 #companion .dual-pet-unit .pill{font-size:11px;white-space:normal}
 #companion .dual-pet-unit .shield-status{font-size:11px}
+
+/* 御靈使：人物與培養進度同列、兩位夥伴同列，僅在此職系套用。 */
+body.spirit-dual-ui #characterPanel{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.85fr);column-gap:12px;align-content:start}
+body.spirit-dual-ui #characterPanel>h2,body.spirit-dual-ui #characterPanel>#companion,body.spirit-dual-ui #characterPanel>.character-tools,body.spirit-dual-ui #characterPanel>#saveFile{grid-column:1/-1}
+body.spirit-dual-ui #characterPanel>#character{grid-column:1;min-width:0}
+body.spirit-dual-ui #characterPanel>#spiritProgress{grid-column:2;min-width:0;align-self:start}
+#spiritProgress[hidden]{display:none!important}
+body.spirit-dual-ui .dual-growth-card{padding:11px;border:1px solid #5b725c;border-radius:11px;background:linear-gradient(140deg,#283c3a,#1a2d39);font-size:11px}
+body.spirit-dual-ui .dual-growth-heading{display:flex;flex-wrap:wrap;gap:3px 8px;justify-content:space-between;margin-bottom:10px;color:#e6d7a5}
+body.spirit-dual-ui .dual-growth-heading span{color:#a8c5bd;font-size:10px}
+body.spirit-dual-ui .dual-growth-progress{display:flex;justify-content:space-between;gap:5px;margin-top:6px}
+body.spirit-dual-ui .dual-growth-card p{font-size:11px;line-height:1.45;margin:9px 0 0;color:#bfced0}
+body.spirit-dual-ui #companion .dual-pet-unit{padding:8px}
+body.spirit-dual-ui #companion .dual-pet-unit .hero{padding:7px;margin:0 0 7px}
+body.spirit-dual-ui #companion .dual-pet-unit .hero strong{font-size:14px}
+body.spirit-dual-ui #companion .dual-pet-unit .hero .art-pet{max-height:85px}
+body.spirit-dual-ui #character .hero{padding:10px;margin-bottom:10px}
+body.spirit-dual-ui #character .hero strong{font-size:16px}
+@media(min-width:1450px){
+ body.spirit-dual-ui .layout{max-width:1700px;grid-template-columns:560px minmax(460px,1fr) 340px}
+ body.spirit-dual-ui .top{max-width:1700px}
+}
+@media(min-width:701px) and (max-width:1449px){
+ body.spirit-dual-ui .layout{grid-template-columns:minmax(460px,1fr) minmax(430px,1.2fr)}
+ body.spirit-dual-ui .collection{grid-column:1/-1}
+}
+@media(max-width:700px){
+ body.spirit-dual-ui #characterPanel{display:block}
+ body.spirit-dual-ui #characterPanel>#spiritProgress{margin:8px 0}
+}
+@media(max-width:480px){
+ body.spirit-dual-ui #companion .dual-pet-hud{grid-template-columns:1fr}
+}
