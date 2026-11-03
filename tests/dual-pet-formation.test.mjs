@@ -58,3 +58,15 @@ test('equipment targeting follows selected spirit slot but preserves old jobs',(
  wizard.activePetId=null;
  assert.equal(equipmentTargetPet(wizard,'b'),null);
 });
+
+test('benched companion keeps its own stance when switched back',()=>{
+  const p=sample('pactWarrior');
+  p.petStances={a:'assist',b:'assimilate',c:'assist',removed:'assimilate'};
+  normalizeDualPetState(p);
+  assert.equal(p.petStances.b,'assimilate');
+  p.secondaryPetId='c';normalizeDualPetState(p);
+  assert.equal(p.petStances.b,'assimilate');
+  p.secondaryPetId='b';normalizeDualPetState(p);
+  assert.equal(secondPetDamageFactor(p,'b'),0);
+  assert.equal(p.petStances.removed,undefined,'stale released pet state is discarded');
+});
