@@ -1,5 +1,6 @@
 import {ensurePetEffects} from './dual-pet-effects.js';
 import {chooseDefendingPet} from './dual-pet-targeting.js';
+import {dualSpiritResonance,canTriggerDualSpirit} from './dual-fusion-resonance.js';
 import {queueCombatVfx} from './skill-effects.js?v=6.5.12';
 import {TACTIC_COOLDOWN_MS,manualTactic,tacticSPCost,tacticRemaining,tacticActive,tacticDamageFactor,tacticIncomingFactor} from './manual-tactics.js?v=6.5.30';
 import {CARD_COLLECTION_KEY,CARD_COLLECTION_NPC,CARD_COLLECTION_LOCK,readCardCollection,collectMissingCards,collectableFromPlayer,collectionProgress,collectibleCardIds,CARD_COLLECTION_MILESTONES,collectionMilestones,collectionGoldBonus,collectionTitle,normalizedCollection,organizeCards,withdrawCollectedCard} from './card-collection.js?v=6.5.36';
@@ -97,7 +98,7 @@ let originalPactCounters=new Map();
 let secondaryPetEffects={};
 function effectsForPet(pet){return pet?.id&&pet.id!==player?.activePetId?ensurePetEffects(secondaryPetEffects,pet.id):petEffects;}
 let petEffects={bleedTicks:0,bleedNext:0,bleedPower:0,burnTicks:0,burnNext:0,burnPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0};
-function clearPetEffects(){timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.wizardWardChargedAt=0;timers.wizardWardChargeUntil=0;timers.wizardWardChargedPetId=null;timers.soundShieldCharge=0;timers.soundShieldUntil=0;timers.knightBrokenShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();delete classBuffs.pact;delete classBuffs.resonanceHaste;delete classBuffs.resonanceCrit;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,burnTicks:0,burnNext:0,burnPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};secondaryPetEffects={};petSkillTimers={};timers.petAbility=gameNow()-12000;timers.petAbilityById={};timers.petById={};}
+function clearPetEffects(){timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.wizardWardChargedAt=0;timers.wizardWardChargeUntil=0;timers.wizardWardChargedPetId=null;timers.soundShieldCharge=0;timers.soundShieldUntil=0;timers.knightBrokenShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();delete classBuffs.pact;delete classBuffs.resonanceHaste;delete classBuffs.resonanceCrit;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,burnTicks:0,burnNext:0,burnPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};secondaryPetEffects={};petSkillTimers={};timers.petAbility=gameNow()-12000;timers.petAbilityById={};timers.petById={};timers.dualSpiritAt=0;}
 
 function fresh(name,job){const c=CLASSES[job];const p={version:51,name,job,location:'petland',level:1,xp:0,jobLevel:1,jobXp:0,jobPoints:0,jobSkills:initialJobSkills(job),equippedJobSkill:Object.keys(initialJobSkills(job))[0],gold:90,cardRecyclePoints:0,tacticReadyAt:0,tacticEffect:null,hp:c.hp,mp:c.mp,kills:0,bag:[{id:'med',qty:2},{id:'cell',qty:1},{id:'orb',qty:3}],gear:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),attributes:{STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1},statPoints:0,cards:[],sockets:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),pets:[],activePetId:null,petBook:{},resonance:0,shield:0,battleHistory:[],autoUltimate:true,autoEscapeBoss:false,autoPotions:{playerHp:true,playerSp:true,petHp:true,petSp:true},autoSalvage:false,salvageMaxRarity:'rare',salvageMaxTier:3,salvageStat:'STR',salvageStatBelow:3,keepRarity:true,keepTier:true,keepStat:false,salvageMatchMode:'any'};const id=SECOND_JOBS[job]?.weapon||({swordsman:'blade',mage:'oneStaff',acolyte:'mace',thief:'rifle',archer:'shortBow',spiritist:'mace'})[job];p.gear.rightHand=rollGear(id,1,'common');return p;}
 function normalizeCards(cards){const result=[];for(const entry of cards||[]){const id=typeof entry==='string'?entry:entry?.id;if(!CARDS[id])continue;const qty=typeof entry==='string'?1:Math.max(1,Math.floor(entry.qty||1));const found=result.find(x=>x.id===id);if(found)found.qty+=qty;else result.push({id,qty});}return result;}
@@ -537,7 +538,31 @@ function originalPactPrerequisite(rule,now,event){
  if(key==='hunter/attack-support')return (petEffects.blessingUntil||0)>now||Object.entries(classBuffs).some(([id,b])=>/song|chant|chorus|hymn/i.test(id)&&b.until>now);
  return true;
 }
-function emitEvent(event,creditEnergy=true){const pet=activePet();if(!pet||pet.hp<=0||!player.hp)return;
+function triggerDualSpiritResonance(event){
+ if(!enemy?.hp||!player?.thirdJob)return;
+ const roster=activePetRoster(player),rule=dualSpiritResonance(player,roster),now=gameNow(),last=timers.dualSpiritAt||0;
+ if(!canTriggerDualSpirit(rule,event,now,last,enemy.instanceId))return;
+ timers.dualSpiritAt=now;
+ const a=petStats(roster[0]),b=petStats(roster[1]),primary=enemy;
+ const petPower=Math.max(a.atk,a.matk)+Math.max(b.atk,b.matk);
+ const ownerPower=Math.max(stat('atk'),stat('matk'));
+ const power=(player.job==='pactWarrior'?ownerPower+petPower*.3:petPower)*rule.coefficient;
+ let outcome='';
+ if(rule.trait==='guard'){const restored=grantPetShield(power*2,true,roster[0],effectsForPet(roster[0]));outcome='雙靈護盾 +'+restored;}
+ else if(rule.trait==='heal'){const healed=healPetParty(power*1.8);outcome='共同恢復 '+healed+' HP';}
+ else if(rule.trait==='focus'){primary.exposedUntil=Math.max(primary.exposedUntil||0,now+4500);primary.exposedPower=Math.max(primary.exposedPower||0,.06);outcome='對目標施加4.5秒破綻（防禦降低6%）';}
+ else {
+  const magical=rule.trait==='burst';
+  const defense=monsterDefenseAgainst(primary,magical)*(rule.trait==='pierce'?.75:1);
+  const dealt=dealDamage(hitDamage(power,defense),'resonanceDamage');
+  outcome='聯動追加 '+dealt+' 傷害';
+  if(rule.trait==='cleave'){const targets=multiTargets(enemies,primary,3,encounterLimit(player.location)).slice(1);for(const foe of targets){enemy=foe;dealDamage(hitDamage(power*.35,monsterDefenseAgainst(foe,false)),'resonanceDamage');}enemy=primary;}
+ }
+ message('✧ 雙靈共鳴【'+rule.name+'】'+outcome+'。','rare','pet');
+ for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}
+ enemy=selectEncounterTarget(enemies,player.targetPriority,primary)||primary;
+}
+function emitEvent(event,creditEnergy=true){const pet=activePet();if(!pet||pet.hp<=0||!player.hp)return;triggerDualSpiritResonance(event);
  if(event==='shieldBreak'&&player.job==='knight'&&pet.fusion?.main==='attack'&&pet.fusion?.sub==='defense')timers.knightBrokenShieldUntil=gameNow()+6000;
  if(event==='thirdHit_wizard'&&player.job==='wizard'&&pet.fusion?.main==='attack'&&pet.fusion?.sub==='defense'&&(timers.wizardStoredCharges||0)>0){
    const now=gameNow(),charges=timers.wizardStoredCharges;timers.wizardStoredCharges=0;
