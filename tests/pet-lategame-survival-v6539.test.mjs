@@ -67,3 +67,29 @@ test('real auto-potion path cannot revive before cooldown but revives after it',
   assert.ok(pet.hp<=petStats(pet).hp);
  }
 });
+
+test('real runtime: SSS-equipped companions remain killable under repeated level-200 and Dawn boss attacks with auto potions',async()=>{
+ const {runtime}=await import('./runtime31-helper.mjs');
+ const {rollPetGear}=await import('../dist/loot.js');
+ const stage=TRIAL_ROUTES.at(-1),trialBoss=createTrialBoss(stage,4,MAP_BOSSES[stage.map]);
+ for(const foe of [trialBoss,DAWN_BOSS])for(const id of species){
+  const c=await runtime(),a=c.api,p=a.normalize(a.fresh('承傷測試','knight'));
+  const pet=maxPet(id,200);
+  pet.gear={head:rollPetGear('petHelm',200,'mythic',()=>.5),body:rollPetGear('petArmor',200,'mythic',()=>.5),shoes:rollPetGear('petBoots',200,'mythic',()=>.5)};
+  for(const item of Object.values(pet.gear))item.enhancement='SSS';
+  pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;
+  Object.assign(p,{level:200,jobLevel:70,reborn:true,thirdJob:true,location:foe.dawn?'dawnrift':stage.map,pets:[pet],activePetId:pet.id,
+   bag:[{id:'med',qty:100}],autoPotions:{playerHp:false,playerSp:false,petHp:true,petSp:false},potionThresholds:{petHp:80}});
+  a.setup(p,{...foe,hp:foe.hp,maxHp:foe.hp,instanceId:'boss-survival'});
+  p.hp=a.stat('hp');
+  c.Math.random=()=>.6;
+  let hits=0;
+  for(;hits<20&&pet.hp>0;hits++){
+   c.setTime(1000000+hits*1000);
+   a.enemyAttack();
+   a.autoUsePotions();
+  }
+  assert.equal(pet.hp,0,id+' / '+foe.id+' should fall under repeated actual hits, despite automatic potions');
+  assert.ok(hits<=20);
+ }
+});
