@@ -228,6 +228,7 @@ function countPetAttacks(step){
     aspdAttackIntervalMs:aspd=>Math.max(140,Math.round((200-Math.min(193,Math.max(100,aspd)))*20)),
     companionRole:()=> 'attack',hitChance:()=>1,petOffensivePower:()=>100,
     monsterDefenseAgainst:()=>0,hitDamage:damage=>damage,
+    multiTargets:()=>[foe],encounterLimit:()=>3,finishVictims:()=>{},
     dealPetDamage:(damage,key,pet)=>{counter[pet.id]++;return damage},
     message:()=>{},damageText:()=>'',classBuffPower:()=>0,
     emitEvent:()=>{},award:()=>{},render:()=>{}
