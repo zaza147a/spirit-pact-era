@@ -16,6 +16,7 @@ if(args.has('clock')){
  Date.now=()=>fixed;
 }
 Math.random=seededRandom;
+globalThis.__spiritBenchmarkStack=true;
 globalThis.self={
  postMessage(message){
   parentPort.postMessage(message.type==='result'
