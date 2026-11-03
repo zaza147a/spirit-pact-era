@@ -3,12 +3,13 @@
 // Lv200 191-200 wilderness: no enhancement. Lv210 dawn: SSS equipment, sigil 0.
 // The special Lv200 five-boss trial has its OWN enhancement benchmark.
 import {starterPlayer} from './starter-player.mjs';
-import {makePet,petStats} from '../../dist/catalog.js';
+import {makePet,petStats,CARDS,SLOTS} from '../../dist/catalog.js';
 import {fusePets} from '../../dist/pet-fusion.js';
 import {rollGear,rollPetGear,GEAR_BASE} from '../../dist/loot.js';
 import {allocationBudget} from '../../dist/growth-v5.js';
 import {attributeCap} from '../../dist/adventure-progression.js';
 import {SPIRIT_TRIAL_ID,DUAL_FUSION_TYPES} from '../../dist/spirit-job-rules.js';
+import {cardAllowedInSlot} from '../../dist/card-effects.js';
 
 function seeded(seed=0x1a2b3c4d){
  return ()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
@@ -66,6 +67,14 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
   gear.uid='fixture-player-'+slot;
   if(level>=210)gear.enhancement='SSS';
   p.gear[slot]=gear;
+ }
+ // Use ten obtainable normal 191-200 cards, each in its legal gear slot.
+ // This is a complete, fixed card baseline, not an optimized card build.
+ const candidates=Array.from({length:10},(_,i)=>'world_'+(191+i));
+ for(const slot of Object.keys(SLOTS)){
+  const id=candidates.find(id=>cardAllowedInSlot(CARDS[id],slot));
+  if(!id)throw Error('no legal worldroot card for '+slot);
+  p.sockets[slot]=id;
  }
  p.location=level>=210?'dawnrift':'worldroot';
  p.hp=999999;p.mp=999999;p.gold=50000000;
