@@ -9,12 +9,16 @@ export function sigilCost(next){
  // Each rank is a separate farming step. At 20 kills/minute with three
  // equally frequent guaranteed drops, 400 of each material means ~1 hour.
  const perMaterial=[400,800,1600,3200][(next-1)%4];
- return {
+ if(next<=4)return {
   dawn_scout_fang:perMaterial,
   dawn_ram_horn:perMaterial,
-  dawn_ray_membrane:perMaterial,
-  ...(next>4?{dawn_archon_crystal:next*3,[DAWN_SIGIL_CORE]:next-3}:{})
+  dawn_ray_membrane:perMaterial
  };
+ // Archon farming occurs concurrently with field farming from rank 0.
+ // Planning baseline: ~30 Archon kills/hour (90-second minimum encounter
+ // respite, plus encounter randomness/combat), 1 core + 5 crystals per kill.
+ const archonKills=30*2**(next-5);
+ return {dawn_archon_crystal:archonKills*5,[DAWN_SIGIL_CORE]:archonKills};
 }
 export function sigilBonus(player){const level=sigilLevel(player);return {atk:1+level*.02,matk:1+level*.02,hp:1+level*.02,def:1+level*.02,mdef:1+level*.02,petDamage:1+level*.02};}
 // The Lv210 Archon is a wilderness-farming graduation encounter. SSS equipment
