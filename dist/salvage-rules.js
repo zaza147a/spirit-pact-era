@@ -1,5 +1,5 @@
 import {rankOf} from './sky-trials.js?v=6.5.0';
-import {RARITIES,gearTier,GEAR_BASE} from './loot.js?v=6.5.0';
+import {RARITIES,gearTier,GEAR_BASE} from './loot.js?v=6.5.45';
 export const SALVAGE_STATS=['STR','AGI','VIT','INT','DEX','LUK','atk','matk','def','hit','flee','crit'];
 export function shouldAutoSalvage(gear,settings){if(rankOf(gear))return false;
  if(!gear||gear.swapProtected||gear.fusionMatch||!settings?.autoSalvage)return false;
