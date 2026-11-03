@@ -62,7 +62,8 @@ const spiritSource=readFileSync(new URL('../dist/spirit-job-rules.js',import.met
 const spiritContext={};
 vm.runInNewContext(spiritSource+
   '\nthis.api={canonicalDualFusionKey,DUAL_FUSION_TYPES,FUSION_TYPES}',spiritContext);
-const {canonicalDualFusionKey,DUAL_FUSION_TYPES}=spiritContext.api;
+const {canonicalDualFusionKey,DUAL_FUSION_TYPES,FUSION_TYPES}=spiritContext.api;
+const originalDualKeys=FUSION_TYPES.flatMap((a,i)=>FUSION_TYPES.slice(i).map(b=>[a,b].sort().join('+')));
 const resonanceSource=readFileSync(new URL('../dist/dual-fusion-resonance.js',import.meta.url),'utf8')
   .replace(/^import .*;\s*$/gm,'').replace(/\bexport /g,'');
 const resonanceContext={canonicalDualFusionKey,DUAL_FUSION_TYPES,FUSION_TYPES:spiritContext.api.FUSION_TYPES};
@@ -103,12 +104,12 @@ for(const job of ['pactWarrior','spiritCommander']){
     const [a,b]=key.split('+');
     const companions=[fused(a,'first'),fused(b,'second')];
     companions[0].nickname='First';companions[1].nickname='Second';
-    const index=DUAL_FUSION_TYPES.indexOf(key);
-    const target={instanceId:'boss',hp:index===4?1e8:1e9,maxHp:1e9,def:10,boss:true};
+    const sourceIndex=originalDualKeys.indexOf(key);
+    const target={instanceId:'boss',hp:sourceIndex===4?1e8:1e9,maxHp:1e9,def:10,boss:true};
     const clock={now:100000}, messages=[],effects={shields:0,heals:0};
     const runContext={
       player:{job,thirdJob:true,pets:companions,activePetId:'first',secondaryPetId:'second'},
-      enemy:target,enemies:index===5?[target,{instanceId:'other',hp:100}]:[target],report:{dualPetDamage:{first:0,second:0,dualResonance:0}},
+      enemy:target,enemies:sourceIndex===5?[target,{instanceId:'other',hp:100}]:[target],report:{dualPetDamage:{first:0,second:0,dualResonance:0}},
       timers:{dualSpiritAt:0},dualSpiritResonance,canTriggerDualSpirit,
       activePetRoster:()=>companions,gameNow:()=>clock.now,
       petStats:()=>({atk:100,matk:100,hp:1000}),stat:()=>100,
