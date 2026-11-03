@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {chooseDefendingPet,pactOwnerOnlyAggro} from '../dist/dual-pet-targeting.js';
+import {chooseDefendingPet,pactOwnerOnlyAggro,commanderPetTargetChance} from '../dist/dual-pet-targeting.js';
 
 test('single pet and existing-job behavior remains unchanged',()=>{
  const pet={id:'first',hp:20};
@@ -26,4 +26,11 @@ test('Pact assimilation makes owner the sole direct enemy target',()=>{
  assert.equal(pactOwnerOnlyAggro({job:'spiritCommander',petStances:{one:'assimilate',two:'assist'}},pets),false);
  assert.equal(pactOwnerOnlyAggro({job:'knight',petStances:{one:'assimilate'}},pets.slice(0,1)),false);
  assert.equal(pactOwnerOnlyAggro({job:'pactWarrior',petStances:{bench:'assimilate'}},pets),false);
+});
+
+test('Commander shares enemy target slots equally among living frontliners',()=>{
+ assert.equal(commanderPetTargetChance([]),0);
+ assert.equal(commanderPetTargetChance([{id:'a',hp:10}]),.5);
+ assert.equal(commanderPetTargetChance([{id:'a',hp:10},{id:'b',hp:10}]),2/3);
+ assert.equal(commanderPetTargetChance([{id:'a',hp:10},{id:'b',hp:0}]),.5);
 });
