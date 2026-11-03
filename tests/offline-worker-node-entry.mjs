@@ -8,6 +8,13 @@ function seededRandom(){
 }
 const args=new URL(import.meta.url).searchParams;
 rngSeed=(Number(args.get('seed'))>>>0)||0x9e3779b9;
+// Real loot IDs include Date.now(). Freeze it only for benchmark workers,
+// never in the browser production Worker or ordinary smoke tests.
+if(args.has('clock')){
+ const fixed=Number(args.get('clock'));
+ if(!Number.isFinite(fixed)||fixed<=0)throw Error('Invalid benchmark clock');
+ Date.now=()=>fixed;
+}
 Math.random=seededRandom;
 globalThis.self={
  postMessage(message){
