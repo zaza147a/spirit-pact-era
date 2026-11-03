@@ -303,3 +303,14 @@ jobs:
           node-version: '22'
       - name: Rank actual five-minute kills across ten legacy jobs and two spirit roles
         run: node tests/spirit-twelve-job-five-minute-ranking.mjs
+
+  spirit-twelve-job-five-boss-ranking:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rank 200 five-boss clears against ten existing jobs with SS gear
+        run: node tests/spirit-twelve-job-five-boss-ranking.mjs
