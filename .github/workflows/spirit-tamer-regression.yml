@@ -314,3 +314,14 @@ jobs:
           node-version: '22'
       - name: Rank 200 five-boss clears against ten existing jobs with SS gear
         run: node tests/spirit-twelve-job-five-boss-ranking.mjs
+
+  spirit-210-max-sigil-ranking:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare all twelve jobs at level 210 and sigil 0 versus 8
+        run: node tests/spirit-210-max-sigil-ranking.mjs
