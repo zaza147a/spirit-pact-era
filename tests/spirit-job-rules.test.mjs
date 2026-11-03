@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {
   canonicalFusionKey, canonicalDualFusionKey, DUAL_FUSION_TYPES,
   spiritThirdJobExtraError, spiritEquipmentSplit, spiritNormalEquipmentDrop,
-  SPIRIT_TRIAL_ID
+  SPIRIT_TRIAL_ID, SPIRIT_TRIAL_KILLS, startSpiritQuest, recordSpiritQuestVictory, completeSpiritQuest
 } from '../dist/spirit-job-rules.js';
 
 test('six canonical pet fusions yield 21 unordered dual combinations', () => {
@@ -39,4 +39,24 @@ test('equipment type ratio changes but total equipment chance remains 20%', () =
   assert.equal(spiritNormalEquipmentDrop('pactWarrior',true,0,roll(.15)),'pet');
   for(const job of ['wizard','spiritist','pactWarrior'])
     assert.equal(spiritNormalEquipmentDrop(job,true,0,roll(.21)),null);
+});
+
+test('dual spirit oath persists victories and requires two living fused pets',()=>{
+ const player={job:'pactWarrior',reborn:true,level:150,location:'skycity',quests:{}};
+ const first={id:'first',hp:50,fusion:{main:'magic',sub:'attack'}};
+ const second={id:'second',hp:40,fusion:{main:'support',sub:'defense'}};
+ assert.equal(startSpiritQuest(player,[first,second]),null);
+ assert.equal(player.quests[SPIRIT_TRIAL_ID].kills,0);
+ second.hp=0;
+ assert.equal(recordSpiritQuestVictory(player,[first,second],{level:145}),false);
+ second.hp=40;
+ assert.equal(recordSpiritQuestVictory(player,[first,second],{level:151}),false);
+ for(let n=0;n<SPIRIT_TRIAL_KILLS;n++)assert.equal(recordSpiritQuestVictory(player,[first,second],{level:145}),true);
+ assert.equal(player.quests[SPIRIT_TRIAL_ID].kills,SPIRIT_TRIAL_KILLS);
+ player.location='zenith';
+ assert.match(completeSpiritQuest(player,[first,second]),/蒼穹樞城/);
+ player.location='skycity';
+ assert.equal(completeSpiritQuest(player,[first,second]),null);
+ assert.equal(player.quests[SPIRIT_TRIAL_ID].done,true);
+ assert.equal(spiritThirdJobExtraError(player,first,second),null);
 });
