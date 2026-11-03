@@ -72,3 +72,14 @@ jobs:
           SPIRIT_BENCH_REPEAT: '2'
           SPIRIT_BENCH_TIMEOUT_MS: '120000'
         run: node tests/offline-worker-benchmark.mjs --starter-dual-salvage
+
+  balance-observation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Observe 84 real 200/210 spirit combat scenarios
+        run: node tests/spirit-live-balance-observation.mjs
