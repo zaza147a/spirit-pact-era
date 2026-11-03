@@ -9,8 +9,12 @@ import {TRIAL_ROUTES,rankOf} from '../dist/sky-trials.js';
 const epoch=2000000000000,duration=20*60000,seed=471122,rows=[];
 const route=TRIAL_ROUTES.find(r=>r.map==='worldroot');
 assert.ok(route&&route.level===191);
-for(const job of ['pactWarrior','spiritCommander'])for(const enhancement of [null,'SS']){
- const p=highLevelSpiritPlayer({level:200,job,pairKey:'attack-magic+defense-support',gearRarity:'mythic'});
+for(const job of ['pactWarrior','spiritCommander'])for(const {enhancement,pairKey} of [
+ {enhancement:null,pairKey:'attack-magic+defense-support'},
+ {enhancement:'SS',pairKey:'attack-magic+defense-support'},
+ {enhancement:'SS',pairKey:'attack-magic+attack-magic'},
+ {enhancement:'SS',pairKey:'attack-defense+magic-support'}]){
+ const p=highLevelSpiritPlayer({level:200,job,pairKey,gearRarity:'mythic'});
  if(job==='pactWarrior')p.petStances={[p.pets[0].id]:'assimilate',[p.pets[1].id]:'assist'};
  const equipped=[...Object.values(p.gear).filter(Boolean),...p.pets.flatMap(pet=>Object.values(pet.gear).filter(Boolean))];
  assert.equal(equipped.length,16);
@@ -43,7 +47,7 @@ for(const job of ['pactWarrior','spiritCommander'])for(const enhancement of [nul
   });
   const s=result.summary;assert.ok(s&&s.simulated>0&&Number.isFinite(s.damage?.total));
   const rounds=Math.max(0,(result.player.trialClears?.worldroot||0)-1);
-  const row={level:200,job,enhancement:enhancement||'none',seed,gearCount:equipped.length,
+  const row={level:200,job,enhancement:enhancement||'none',pairKey,seed,gearCount:equipped.length,
    wallMs:Math.round(performance.now()-start),simulatedMs:s.simulated,reason:s.reason,
    trialRounds:s.trialRounds||0,clearedFullFive:rounds>0,clears:rounds,
    kills:s.kills,revives:s.revives||0,alive:result.player.hp>0,
@@ -53,6 +57,6 @@ for(const job of ['pactWarrior','spiritCommander'])for(const enhancement of [nul
   rows.push(row);console.log(JSON.stringify(row));
  }finally{await worker.terminate();}
 }
-assert.equal(rows.length,4);
-console.log(JSON.stringify({summary:true,scenarios:4,results:rows,
- limitation:'Synthetic already-unlocked continuous trial checkpoint; 200 mythic Lv200 gear and pets, none vs SS only; one fusion pairing and one seed, not optimized and not an assertion that all jobs must clear.'}));
+assert.equal(rows.length,8);
+console.log(JSON.stringify({summary:true,scenarios:8,results:rows,
+ limitation:'Synthetic already-unlocked continuous trial checkpoint; 200 mythic Lv200 gear and pets, none vs SS only; three SS fusion pairings and one unenhanced control per class, one seed, not optimized and not an assertion that all jobs must clear.'}));
