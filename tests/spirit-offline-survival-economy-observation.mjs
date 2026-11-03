@@ -1,4 +1,4 @@
-// Actual Worker survival/economy comparison with 200 legendary unenhanced and 210 mythic SSS gear.
+// Actual Worker survival/economy comparison with 200 mythic unenhanced and 210 mythic SSS gear.
 // This is a fixed synthetic configuration matrix, not optimal player gearing.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
@@ -7,7 +7,8 @@ const epoch=2000000000000,minutes=10,duration=minutes*60000,seed=471122;
 const pairs=['attack-magic+attack-magic','attack-magic+defense-support','defense-support+defense-support'];
 const rows=[];
 for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of pairs){
- const player=highLevelSpiritPlayer({level,job,pairKey,gearRarity:level===210?'mythic':'legendary'});
+ const player=highLevelSpiritPlayer({level,job,pairKey,gearRarity:'mythic'});
+ if(job==='pactWarrior')player.petStances={[player.pets[0].id]:'assimilate',[player.pets[1].id]:'assist'};
  const worker=new Worker(new URL('./offline-worker-node-entry.mjs?clock='+epoch,import.meta.url),{type:'module',workerData:{seed}});
  try{
   const result=await new Promise((resolve,reject)=>{
@@ -21,7 +22,7 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
   });
   const s=result.summary;
   assert.ok(s&&s.simulated>0,'actual combat summary');
-  const row={level,job,pairKey,gearRarity:level===210?'mythic':'legendary',simulatedMs:s.simulated,
+  const row={level,job,pairKey,gearRarity:'mythic',simulatedMs:s.simulated,
    cleanEnd:s.simulated===duration&&s.reason==='已完成離線時間'&&result.player.hp>0,
    reason:s.reason,kills:s.kills,revives:s.revives||0,
    goldEarned:s.goldEarned||0,spent:s.spent||0,netGold:result.player.gold-player.gold,
