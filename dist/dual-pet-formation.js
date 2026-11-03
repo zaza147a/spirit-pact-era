@@ -48,7 +48,7 @@ export function secondPetDamageFactor(player,petId,{overload=false}={}) {
   if(!isSpiritJob(player?.job)) return roster[0]?.id===petId?1:0;
   const isSecondary=roster[1]?.id===petId;
   if(player.job==='pactWarrior') {
-    if(player.petStances?.[petId]==='assimilate') return 0;
+    if(player.petStances?.[petId]==='assimilate') return .10;
     return isSecondary?.35:.50;
   }
   if(!isSecondary) return 1;
