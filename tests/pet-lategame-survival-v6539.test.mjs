@@ -81,7 +81,8 @@ test('real runtime: SSS-equipped companions remain killable under repeated level
   Object.assign(p,{level:200,jobLevel:70,reborn:true,thirdJob:true,location:foe.dawn?'dawnrift':stage.map,pets:[pet],activePetId:pet.id,
    bag:[{id:'med',qty:100}],autoPotions:{playerHp:false,playerSp:false,petHp:true,petSp:false},potionThresholds:{petHp:80}});
   a.setup(p,{...foe,hp:foe.hp,maxHp:foe.hp,instanceId:'boss-survival'});
-  p.hp=a.stat('hp');
+  // Isolate companion survivability: prevent the owner from ending the experiment first.
+  p.hp=1e12;
   c.Math.random=()=>.6;
   let hits=0;
   for(;hits<20&&pet.hp>0;hits++){
