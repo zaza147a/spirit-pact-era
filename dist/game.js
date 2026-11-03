@@ -46,7 +46,7 @@ import {matchesGearFilters} from './inventory-rules.js?v=6.5.0';
 import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=6.5.0';
 import {patchHtml,panelIsEditing} from './ui-patch.js?v=6.5.0';
 import {PET_ROUTES,PET_FAMILIES,PET_PALETTES,petRoute,petIcon,petForm,petArt,evolutionStage,evolveCompanion,synthesizeEssence} from './pet-evolution.js?v=6.5.0';
-import {CLASSES,ATTRS,ITEMS,SPECIES,MONSTERS,PETLAND_MONSTERS,MAPS,CARDS,SLOTS,PET_SLOTS,PET_RARITIES,PET_EVOLUTIONS,petRarity,nextPetEvolution,clamp,rand,makePet,petStats} from './catalog.js?v=6.5.45';
+import {CLASSES,ATTRS,ITEMS,SPECIES,MONSTERS,PETLAND_MONSTERS,MAPS,CARDS,SLOTS,PET_SLOTS,PET_RARITIES,PET_EVOLUTIONS,petRarity,nextPetEvolution,clamp,rand,makePet,petStats as rawPetStats} from './catalog.js?v=6.5.45';
 import {FIELDS,NAMES,newReport,record,finish,normalizeHistory,damageSplitPcb} from './contribution.js?v=6.5.0';
 import {resonanceRule,resonanceOpener,resonanceTriggered,RESONANCE_RULES,RESONANCE_EVENTS,RESONANCE_MAX,ULTIMATE_COST,ULTIMATE_COOLDOWN} from './resonance.js?v=6.5.0';
 import {PET_SKILLS,petSkillById,defaultPetSkills,petSkillsFor,petAbilitySetName,migratePetSkills,fusionSkillLoadoutNotice} from './pet-abilities.js?v=6.5.3';
@@ -72,6 +72,24 @@ let inCombatTick=false,attributeSnapshot=null,attributeBreakdownSnapshot=null,ca
 let combatSamples=[],combatStarted=0,allocationAmounts={},sellAmounts={};
 let offlineSimulation=false,offlineClock=null,offlineMetrics=null,settlingOffline=false,backgroundPaused=false;
 const gameNow=()=>offlineClock??Date.now();
+// Offline-only max-level pet-stat cache. Pet gear/IV/evolution are immutable
+// during an offline encounter, while HP/SP and skill cooldowns remain dynamic.
+// Live UI always uses the uncached production calculator.
+const offlinePetStatCache=new WeakMap();
+function petStats(pet){
+ if(!offlineSimulation||pet?.level!==200||globalThis.__spiritDisablePetStatsCache)return rawPetStats(pet);
+ const previous=offlinePetStatCache.get(pet);
+ if(previous&&previous.gear===pet.gear&&previous.iv===pet.iv&&
+    previous.fusion===pet.fusion&&previous.rarity===pet.rarity&&
+    previous.evolution===pet.evolution&&previous.ascended===pet.ascended&&
+    previous.trueForm===pet.trueForm)return previous.stats;
+ const stats=rawPetStats(pet);
+ offlinePetStatCache.set(pet,{gear:pet.gear,iv:pet.iv,fusion:pet.fusion,
+  rarity:pet.rarity,evolution:pet.evolution,ascended:pet.ascended,
+  trueForm:pet.trueForm,stats});
+ return stats;
+}
+
 // Data version 2. Rendering stays separate from the state and rules below.
 const KEY='icarus-prototype-v02',OLD='icarus-prototype-v01',$=id=>document.getElementById(id);
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
