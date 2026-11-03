@@ -629,6 +629,39 @@ function triggerDualSpiritResonance(event){
  }else if(rule.signature==='lastBastion'&&roster[1]?.hp>0&&roster[1].hp<petStats(roster[1]).hp*.25){
   healPetParty(power*.33);
  }
+ // Route follow-ups share the parent resonance cooldown and never emit events.
+ if(rule.routeEffect==='rendingEdge'&&primary.hp>0&&primary.boss){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+1800);
+  primary.exposedPower=Math.max(primary.exposedPower||0,.03);
+ }else if(rule.routeEffect==='guardBreak'&&primary.hp>0&&primary.boss){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2100);
+  primary.exposedPower=Math.max(primary.exposedPower||0,.022);
+ }else if(rule.routeEffect==='duelRecovery'&&primary.boss&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.5)){
+  healPetParty(power*.19);
+ }else if(rule.routeEffect==='spellExecution'&&primary.hp>0&&primary.boss&&primary.maxHp>0&&primary.hp/primary.maxHp<.4){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2300);
+  primary.exposedPower=Math.max(primary.exposedPower||0,.045);
+ }else if(rule.routeEffect==='focusChase'&&primary.hp>0&&primary.maxHp>0&&primary.hp/primary.maxHp<.35){
+  primary.exposedPower=Math.max(primary.exposedPower||0,.1);
+ }else if(rule.routeEffect==='sweepingExpose'&&enemies.filter(e=>e.hp>0).length>=2){
+  const other=enemies.find(e=>e!==primary&&e.hp>0);
+  if(other){other.exposedUntil=Math.max(other.exposedUntil||0,now+2000);other.exposedPower=Math.max(other.exposedPower||0,.02);}
+ }else if(rule.routeEffect==='arcaneGuard'){
+  const ally=roster[1];
+  if(ally?.hp>0&&ally.hp<petStats(ally).hp*.55)grantPetShield(power*.22,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='sharedBulwark'&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.55)){
+  for(const ally of roster)grantPetShield(power*.17,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='supportTempo'&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.55)){
+  healPetParty(power*.21);
+ }else if(rule.routeEffect==='mageWard'){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.5);
+  if(ally)grantPetShield(power*.23,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='dualReplenish'&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.5)){
+  healPetParty(power*.2);
+ }else if(rule.routeEffect==='frontlineReinforce'&&enemies.filter(e=>e.hp>0).length>=2){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.6);
+  if(ally)grantPetShield(power*.25,true,ally,effectsForPet(ally));
+ }
  message('✧ 雙靈共鳴【'+rule.name+'】'+outcome+'。','rare','pet');
  for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}
  enemy=selectEncounterTarget(enemies,player.targetPriority,primary)||primary;
