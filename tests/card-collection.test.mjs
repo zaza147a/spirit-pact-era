@@ -29,16 +29,19 @@ test('legacy v1 album upgrades without erasing collected cards',()=>{
  assert.equal(album.options.autoCollect,false);
  assert.equal(album.options.autoRecycle,false);
 });
-test('automatic intake consumes one new card and converts only surplus duplicates',()=>{
+test('automatic intake excludes boss cards and recycles only ordinary duplicates',()=>{
  const album=normalizedCollection({version:1,ids:[],options:{autoCollect:true,autoRecycle:true,keepCopies:1}},cards);
  const p={cards:[{id:'a',qty:4},{id:'b',qty:2}],cardRecyclePoints:0};
  const result=organizeCards(p,cards,album);
- assert.deepEqual(result.added,['a','b']);
+ assert.deepEqual(result.added,['a']);
  assert.equal(result.recycled,2);
  assert.equal(result.points,20);
- assert.deepEqual(p.cards,[{id:'a',qty:1},{id:'b',qty:1}]);
+ assert.deepEqual(p.cards,[{id:'a',qty:1},{id:'b',qty:2}]);
  assert.equal(p.cardRecyclePoints,20);
- assert.equal(collectionProgress(cards,result.collection).owned,2);
+ assert.equal(collectionProgress(cards,result.collection).owned,1);
+ const manual=collectMissingCards(p,cards,result.collection);
+ assert.deepEqual(manual.ids,['b']);
+ assert.deepEqual(p.cards,[{id:'a',qty:1},{id:'b',qty:1}]);
 });
 test('milestone rewards are non-stacking and retained when catalog expands',()=>{
  const tiny={a:{name:'a',map:'forest'},b:{name:'b',map:'forest'}};

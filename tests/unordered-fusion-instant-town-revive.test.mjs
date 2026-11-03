@@ -27,6 +27,8 @@ test('trial defeat immediately heals and returns home without revival modal, whi
  assert.match(game,/if\(trialAtTick&&!player\.trialRun\)return/);
  assert.match(game,/delete player\.reviveAt/);
  assert.match(game,/player\.location='skycity'/);
+ assert.match(game,/player\.hp=stat\('hp'\);player\.mp=stat\('mp'\)/);
+ assert.match(game,/pet\.hp=petStats\(pet\)\.hp;pet\.sp=petStats\(pet\)\.sp/);
 });
 test('town revival bypasses cooldown; only local revival checks remaining time',()=>{
  assert.match(game,/if\(mode==='place'&&deathRemaining\(player,gameNow\(\)\)\)/);

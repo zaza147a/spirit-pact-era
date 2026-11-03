@@ -131,13 +131,14 @@ try{
   await page.locator('[data-slot-select="3"]').click();await page.locator('#saveFile').setInputFiles({name:'failure-fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(failing))});
   await page.locator('#enterGameBtn').click();await page.locator('#area [data-open="trials"]').click();
   await page.locator('[data-continuous-trial="worldroot"]').click();
-  await page.locator('#reviveModal').waitFor({state:'visible',timeout:30000});
-  await page.screenshot({path:resolve(out,`${name}-continuous-failure.png`)});await page.locator('#reviveLater').click();
-  await page.waitForTimeout(16000);await page.locator('#returnEntryBtn').click();
+  await page.waitForFunction(()=>document.querySelector('#area')?.textContent?.includes('連續挑戰已停止'),null,{timeout:30000});
+  assert.equal(await page.locator('#reviveModal').isVisible(),false,'trial defeat must return home without revival modal');
+  await page.screenshot({path:resolve(out,`${name}-continuous-failure.png`)});
+  await page.locator('#returnEntryBtn').click();
   const stoppedDownload=page.waitForEvent('download');await page.locator('[data-slot-export="3"]').click();
   const stopped=JSON.parse(await readFile(await (await stoppedDownload).path(),'utf8')).player;
-  assert.equal(stopped.hp,0,'continuous trial must not auto-revive and restart');assert.equal(stopped.trialRun,undefined);
-  assert.ok(stopped.autoStoppedReason.includes('戰敗'));assert.equal(stopped.bag.find(e=>e.id==='ticket_worldroot').qty,1,'failure consumes only the entered round');
+  assert.equal(stopped.location,'skycity');assert.ok(stopped.hp>0,'trial defeat must immediately restore HP');assert.equal(stopped.trialRun,undefined);
+  assert.ok(stopped.trialStopReason.includes('戰敗'));assert.equal(stopped.bag.find(e=>e.id==='ticket_worldroot').qty,1,'failure consumes only the entered round');
   assert.equal(stopped.offline.enabled,false);
   await context.close();
  }

@@ -1248,9 +1248,9 @@ function exitTrial(reason='離開試煉'){if(!player?.trialRun)return;const defe
  if(defeated){
   // A failed sky trial ends instantly in town; only on-site revives need a timer.
   delete player.trialDefeated;delete player.reviveAt;
-  player.hp=Math.max(1,Math.ceil(stat('hp')*.5));player.mp=Math.ceil(stat('mp')*.5);
+  player.hp=stat('hp');player.mp=stat('mp');
   player.shield=0;timers.respawnGrace=gameNow()+3000;
-  for(const pet of player.pets){pet.hp=Math.max(1,Math.ceil(petStats(pet).hp*.5));pet.sp=Math.ceil(petStats(pet).sp*.5);delete pet.reviveAt;}
+  for(const pet of player.pets){pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;delete pet.reviveAt;}
  }
  spawn();message(`${reason} 已返回蒼穹樞城，已獲得的結晶保留。`,'rare','system');dirty=true;save();
  if(!offlineSimulation){$('reviveModal').style.display='none';renderMapChoices();render();
