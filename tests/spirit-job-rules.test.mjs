@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {
   canonicalFusionKey, canonicalDualFusionKey, DUAL_FUSION_TYPES,
   spiritThirdJobExtraError, spiritEquipmentSplit, spiritNormalEquipmentDrop,
-  SPIRIT_TRIAL_ID, SPIRIT_TRIAL_KILLS, startSpiritQuest, recordSpiritQuestVictory, completeSpiritQuest
+  SPIRIT_TRIAL_ID, SPIRIT_TRIAL_KILLS, spiritGrowthGuide, startSpiritQuest, recordSpiritQuestVictory, completeSpiritQuest
 } from '../dist/spirit-job-rules.js';
 
 test('six canonical pet fusions yield 21 unordered dual combinations', () => {
@@ -59,4 +59,17 @@ test('dual spirit oath persists victories and requires two living fused pets',()
  assert.equal(completeSpiritQuest(player,[first,second]),null);
  assert.equal(player.quests[SPIRIT_TRIAL_ID].done,true);
  assert.equal(spiritThirdJobExtraError(player,first,second),null);
+});
+
+test('spirit third-job requirement is disclosed from first job onward',()=>{
+ const p={job:'spiritist',level:1,reborn:false,quests:{}};
+ assert.match(spiritGrowthGuide(p,[]).message,/三轉必須兩隻都完成融合/);
+ p.job='pactWarrior';p.level=99;
+ assert.match(spiritGrowthGuide(p,[]).message,/提前準備兩隻/);
+ p.reborn=true;p.level=140;
+ assert.match(spiritGrowthGuide(p,[]).message,/蒼穹樞城/);
+ p.quests[SPIRIT_TRIAL_ID]={started:true,kills:4,done:false};
+ assert.match(spiritGrowthGuide(p,[]).message,/4／24/);
+ p.job='wizard';
+ assert.equal(spiritGrowthGuide(p,[]),null);
 });
