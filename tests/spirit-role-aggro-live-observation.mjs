@@ -25,7 +25,8 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
    assert.equal(t.pet2,0,'assimilating Pact assisting pet must take no direct enemy aggro');
   }else{
    assert.ok(t.owner>0,'Commander owner must be targeted');
-   assert.ok(t.pet1+t.pet2>0,'Commander pets must take some enemy targets');
+   assert.ok(t.pet1>0&&t.pet2>0,'Both commander pets must take enemy targets');
+   assert.ok((t.pet1+t.pet2)/(t.owner+t.pet1+t.pet2)>=.15,'Commander pets must share a material portion of enemy targets');
   }
   const row={level,job,seed,simulatedMs:s.simulated,targets:t,kills:s.kills,
    revives:s.revives||0,ownerAlive:result.player.hp>0,
