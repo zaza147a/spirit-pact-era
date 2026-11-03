@@ -23,8 +23,8 @@ export function thirdSkills(job){const [name,main,wide,finish,utility,stance,pow
  if(['wizard','performer'].includes(job))util={kind:'mana',power:.15,cooldown:8000,mp:8};
  if(job==='sage')util={kind:'buff',buff:'autoSpell',power:.55,duration:16000,cooldown:16000,rankScaled:true,mp:14};
  list.push(make('thirdUtility',utility,{unlock:10,...util,desc:'三轉生存與循環技能；效果隨技能等級與自身能力成長。'+(job==='performer'?' 防禦主契／輔助副契時，靈泉序曲另以相同MATK倍率優先治療生命比例較低的一方；有效治療才觸發裁界脈衝。':'')}));
- const stanceData=job==='sage'?{kind:'mana',power:.15,mp:8,cooldown:8000}:buffModifiers[job]?{kind:'buff',buff:'thirdStance',power:0,modifiers:buffModifiers[job],duration:12000,cooldown:16000,rankScaled:true,mp:16}:{kind:'buff',buff:job==='priest'?'angelus':job==='hunter'?'hunterFocus':'battleSong',power:job==='priest'?.20:job==='hunter'?.18:.22,duration:16000,cooldown:16000,rankScaled:true,mp:16};
- list.push(make('thirdStance',stance,{unlock:20,...stanceData,desc:'三轉戰鬥姿態；增益數值按技能等級／10成長，滿級達完整強度。'}));
+ const stanceData=job==='spiritCommander'?{kind:'buff',buff:'dualOverload',power:0,duration:10000,cooldown:60000,rankScaled:false,mp:24}:job==='sage'?{kind:'mana',power:.15,mp:8,cooldown:8000}:buffModifiers[job]?{kind:'buff',buff:'thirdStance',power:0,modifiers:buffModifiers[job],duration:12000,cooldown:16000,rankScaled:true,mp:16}:{kind:'buff',buff:job==='priest'?'angelus':job==='hunter'?'hunterFocus':'battleSong',power:job==='priest'?.20:job==='hunter'?.18:.22,duration:16000,cooldown:16000,rankScaled:true,mp:16};
+ list.push(make('thirdStance',stance,{unlock:20,...stanceData,desc:job==='spiritCommander'?'靈魂超載：10秒內第二夥伴輸出係數由70%提升至100%，冷卻60秒，無額外免費攻擊。':'三轉戰鬥姿態；增益數值按技能等級／10成長，滿級達完整強度。'}));
  passives.forEach(([title,bonuses],i)=>list.push(make('thirdPassive'+i,title,{unlock:[1,5,15,30][i],kind:'passive',power:0,mp:0,maxRank:5,bonuses,desc:'常駐；每級 '+Object.entries(bonuses).map(([k,v])=>`${labels[k]||k} +${k==='castReduction'||k==='autoSpellChance'?v*100+'%':v}`).join('、')})));
  return list;
 }
