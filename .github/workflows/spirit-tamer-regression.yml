@@ -199,3 +199,15 @@ jobs:
           node-version: '22'
       - name: Compare 252 owner-led and pet-led 200/210 real combat cases
         run: node tests/spirit-role-42-combat-matrix.mjs
+
+
+  role-correct-24h-one-shot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: One-shot 200 and 210 owner-led and pet-led 24-hour endurance
+        run: node tests/spirit-role-24h-worker.mjs
