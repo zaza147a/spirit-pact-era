@@ -236,6 +236,17 @@ jobs:
       - name: Observe full 24-hour real Worker survival, gold, pet states in four legal roles
         run: node tests/spirit-role-24h-worker.mjs
 
+  spirit-underlevel-legacy-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare all twelve classes with actual Lv170/180 unenhanced gear on 191-200 map
+        run: node tests/spirit-underlevel-legacy-control.mjs
+
   spirit-underlevel-map-survival:
     runs-on: ubuntu-latest
     timeout-minutes: 15
