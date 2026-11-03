@@ -9,7 +9,8 @@ const TRAITS=[
 // Stage-one conditional signatures: situational utility within the existing
 // resonance activation. They never create a separate event or free attack.
 const SIGNATURES=Object.freeze([
- 'armorEcho','rescueGuard','recoveryChain','bossTrace','finisherFocus','crowdWard'
+ 'armorEcho','rescueGuard','recoveryChain','bossTrace','finisherFocus','crowdWard',
+ 'fortressCounter','sacredRelay','wardPierce','shieldCascade','lastStand','mutualRenewal'
 ]);
 if(TRAITS.length!==DUAL_FUSION_TYPES.length)throw Error('雙靈組合表不完整');
 export const DUAL_SPIRIT_RULES=Object.fromEntries(DUAL_FUSION_TYPES.map((key,index)=>{
