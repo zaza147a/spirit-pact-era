@@ -36,6 +36,8 @@ export function comparisonPlayer({level=210,job='knight'}={}){
  const dual=spirit.has(job),p=highLevelSpiritPlayer({level,job:job==='spiritCommander'?job:'pactWarrior',
   pairKey:'attack-magic+attack-magic',gearRarity:'mythic'});
  p.job=job;p.jobSkills=allocateSkills(job);
+ // Role-correct Pact Warrior benchmark: absorb one pet to empower owner while the other assists.
+ if(job==='pactWarrior')p.petStances={[p.pets[0].id]:'assimilate',[p.pets[1].id]:'assist'};
  p.attributes=attributes(level,SECOND_JOBS[job].attribute);p.statPoints=0;
  const points=Object.values(p.attributes).reduce((sum,n)=>sum+n-1,0);
  if(points!==allocationBudget(level,true)||Math.max(...Object.values(p.attributes))>attributeCap(p))
