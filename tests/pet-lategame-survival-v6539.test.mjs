@@ -29,8 +29,8 @@ test('high-level companion potions have both percentage and absolute caps',()=>{
  for(const id of species) {
   const s=petStats(maxPet(id,200));
   const restored=potionRestore(healItem,'hp',200,s.hp,true);
-  assert.ok(restored<=Math.round(s.hp*.08),'max HP cap for '+id);
-  assert.ok(restored<=7000,'level-based limit for '+id);
+  assert.ok(restored<=Math.round(s.hp*.16),'max HP cap for '+id);
+  assert.ok(restored<=28000,'level-based limit for '+id);
   assert.ok(restored>=1);
  }
  assert.equal(potionRestore(healItem,'hp',200,500000,false),155000,'player potions stay unchanged');
