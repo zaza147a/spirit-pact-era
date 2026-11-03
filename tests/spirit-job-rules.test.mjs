@@ -9,6 +9,7 @@ import {
 test('six canonical pet fusions yield 21 unordered dual combinations', () => {
   assert.equal(DUAL_FUSION_TYPES.length,21);
   assert.equal(new Set(DUAL_FUSION_TYPES).size,21);
+  assert.equal(canonicalFusionKey({fusion:{main:'magic',sub:'attack'}}),'attack-magic');
   assert.equal(canonicalFusionKey({fusionKey:'magic-attack'}),'attack-magic');
   assert.equal(canonicalDualFusionKey({fusionKey:'attack-magic'},{fusionKey:'support-defense'}),
     canonicalDualFusionKey({fusionKey:'defense-support'},{fusionKey:'magic-attack'}));
@@ -18,7 +19,7 @@ test('six canonical pet fusions yield 21 unordered dual combinations', () => {
 });
 
 test('only spirit second jobs need two fused pets and a completed quest', () => {
-  const first={fusionKey:'attack-magic'}, second={fusionKey:'support-defense'};
+  const first={fusion:{main:'attack',sub:'magic'}}, second={fusion:{main:'support',sub:'defense'}};
   const player={job:'pactWarrior',quests:{}};
   assert.match(spiritThirdJobExtraError(player,first,null),/兩隻融合/);
   assert.match(spiritThirdJobExtraError(player,first,second),/雙生靈契/);
