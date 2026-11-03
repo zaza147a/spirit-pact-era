@@ -187,3 +187,15 @@ jobs:
           node-version: '22'
       - name: Audit Pact Warrior assist and assimilation owner damage
         run: node tests/spirit-warrior-assimilation-baseline.mjs
+
+
+  spirit-role-42-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare 252 owner-led and pet-led 200/210 real combat cases
+        run: node tests/spirit-role-42-combat-matrix.mjs
