@@ -27,10 +27,10 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
  p.jobLevel=70;p.secondJobLevel=70;p.jobXp=0;p.jobPoints=0;p.xp=0;
  p.firstJobLevel=50;
  // Persist each stage's *legal* skill budget: 49 first, 69 second, 69 third.
- const first={spiritOrder:9,spiritPulse:5,spiritWard:10,spiritRecover:5,spiritBond:10,spiritSense:10};
+ const first={spiritOrder:10,spiritPulse:10,spiritWard:10,spiritRecover:10,spiritBond:5,spiritSense:4};
  const second=job==='pactWarrior'
-  ?{pactSlash:10,pactWave:10,pactGuard:5,pactBurst:5,pactTraining:10,pactSurvival:10}
-  :{spiritCommand:10,spiritFocus:10,spiritShield:5,spiritSweep:5,commandFocus:10,commandSurvival:10};
+  ?{pactSlash:10,pactWave:10,pactGuard:10,pactBurst:10,pactTraining:5,pactSurvival:5}
+  :{spiritCommand:10,spiritFocus:10,spiritShield:10,spiritSweep:10,commandFocus:5,commandSurvival:5};
  second['rebirthBuff_'+job]=10;second['rebirthMain_'+job]=9;
  const third={['thirdMain_'+job]:10,['thirdWide_'+job]:10,['thirdFinish_'+job]:10,
   ['thirdUtility_'+job]:10,['thirdStance_'+job]:9};
