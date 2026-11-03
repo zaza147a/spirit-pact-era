@@ -6,7 +6,7 @@ import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {rankOf} from '../dist/sky-trials.js';
 
 const epoch=2000000000000,duration=60000;
-const pairs=['attack-magic+attack-magic','attack-defense+magic-support','defense-support+defense-support'];
+const pairs=['attack-defense+attack-magic','attack-defense+magic-support','defense-support+magic-support'];
 const rows=[];
 for(const level of [200])for(const job of ['pactWarrior','spiritCommander'])
  for(const gearRarity of ['common','legendary','mythic'])for(const pairKey of pairs){
