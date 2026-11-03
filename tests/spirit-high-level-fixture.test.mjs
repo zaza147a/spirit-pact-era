@@ -22,6 +22,7 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
  assert.ok(allGear.every(g=>rankOf(g)===expectedEnhancement),'wilderness 200 must not use enhancements; dawn 210 uses SSS');
  assert.ok(allGear.every(g=>Object.keys(g.affixes||{}).length===6),'mythic equipment has five regular and one special affix');
  assert.equal(player.dawnSigil,0,'no farmed dawn sigil at the initial balance baseline');
+ assert.equal(player.autoEscapeBoss,level===210,'dawn wilderness farm must be separate from unprepared archon attack');
  assert.deepEqual(player.cards,[]); // uncarded legal initial state, not a DPS-maximized build
  assert.ok(Object.values(player.sockets).every(card=>card===null));
  assert.ok(Object.values(player.gear).filter(Boolean).every(g=>!GEAR_BASE[g.id]?.jobs||GEAR_BASE[g.id].jobs.includes(job)));
