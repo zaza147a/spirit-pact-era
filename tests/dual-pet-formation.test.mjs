@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   activePetRoster, normalizeDualPetState, canSetSecondaryPet,
-  secondPetDamageFactor
+  secondPetDamageFactor, equipmentTargetPet
 } from '../dist/dual-pet-formation.js';
 
 const sample=(job='spiritist')=>({
@@ -46,4 +46,15 @@ test('old saves without second pet normalize safely',()=>{
   assert.equal(p.secondaryPetId,null);
   assert.deepEqual(activePetRoster(p).map(x=>x.id),['a']);
   assert.equal(p.dualPetMode,'focus');
+});
+
+test('equipment targeting follows selected spirit slot but preserves old jobs',()=>{
+ const p=sample('spiritCommander');
+ assert.equal(equipmentTargetPet(p,'b').id,'b');
+ assert.equal(equipmentTargetPet(p,'unknown').id,'a');
+ assert.equal(equipmentTargetPet(p,null).id,'a');
+ const wizard=sample('wizard');
+ assert.equal(equipmentTargetPet(wizard,'b').id,'a');
+ wizard.activePetId=null;
+ assert.equal(equipmentTargetPet(wizard,'b'),null);
 });
