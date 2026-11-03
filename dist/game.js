@@ -661,6 +661,75 @@ function triggerDualSpiritResonance(event){
  }else if(rule.routeEffect==='frontlineReinforce'&&enemies.filter(e=>e.hp>0).length>=2){
   const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.6);
   if(ally)grantPetShield(power*.25,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='fortressCrack'&&primary.hp>0&&primary.boss&&primary.def>0){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2200);primary.exposedPower=Math.max(primary.exposedPower||0,.026);
+ }else if(rule.routeEffect==='vowReprisal'&&primary.hp>0&&primary.maxHp>0&&primary.hp/primary.maxHp<.5){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2000);primary.exposedPower=Math.max(primary.exposedPower||0,.07);
+ }else if(rule.routeEffect==='piercingContract'&&primary.hp>0&&primary.boss&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.55)){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+1900);primary.exposedPower=Math.max(primary.exposedPower||0,.04);
+ }else if(rule.routeEffect==='guardedStrike'&&primary.hp>0&&(player.shield||0)>0){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2000);primary.exposedPower=Math.max(primary.exposedPower||0,.025);
+ }else if(rule.routeEffect==='unyieldingFocus'&&primary.hp>0&&primary.boss&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.4)){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+1900);primary.exposedPower=Math.max(primary.exposedPower||0,.075);
+ }else if(rule.routeEffect==='doubleTempo'&&enemies.filter(e=>e.hp>0).length>=2){
+  const other=enemies.find(e=>e!==primary&&e.hp>0);
+  if(other){other.exposedUntil=Math.max(other.exposedUntil||0,now+2100);other.exposedPower=Math.max(other.exposedPower||0,.025);}
+ }else if(rule.routeEffect==='relayCut'&&primary.hp>0&&primary.boss){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2100);primary.exposedPower=Math.max(primary.exposedPower||0,.035);
+ }else if(rule.routeEffect==='balancedEdge'&&primary.hp>0&&roster.every(p=>p.hp>petStats(p).hp*.75)){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+1900);primary.exposedPower=Math.max(primary.exposedPower||0,.04);
+ }else if(rule.routeEffect==='rescueGambit'&&enemies.filter(e=>e.hp>0).length>=2){
+  const other=enemies.find(e=>e!==primary&&e.hp>0);
+  if(other){other.exposedUntil=Math.max(other.exposedUntil||0,now+1700);other.exposedPower=Math.max(other.exposedPower||0,.029);}
+ }else if(rule.routeEffect==='arcaneSunder'&&primary.hp>0&&primary.boss){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2400);primary.exposedPower=Math.max(primary.exposedPower||0,.03);
+ }else if(rule.routeEffect==='frostRend'&&primary.hp>0&&primary.boss&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.4)){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+1800);primary.exposedPower=Math.max(primary.exposedPower||0,.035);
+ }else if(rule.routeEffect==='guardianEdge'&&primary.hp>0&&primary.boss&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.45)){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+1800);primary.exposedPower=Math.max(primary.exposedPower||0,.032);
+ }else if(rule.routeEffect==='doubleSentence'&&primary.hp>0&&primary.maxHp>0&&primary.hp/primary.maxHp<.5){
+  primary.exposedPower=Math.max(primary.exposedPower||0,.11);
+ }else if(rule.routeEffect==='sanctuaryRupture'&&enemies.filter(e=>e.hp>0).length>=2){
+  const other=enemies.find(e=>e!==primary&&e.hp>0);
+  if(other){other.exposedUntil=Math.max(other.exposedUntil||0,now+2200);other.exposedPower=Math.max(other.exposedPower||0,.027);}
+ }else if(rule.routeEffect==='bastionBreaker'&&primary.hp>0&&primary.boss&&primary.maxHp>0&&primary.hp/primary.maxHp<.5){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2000);primary.exposedPower=Math.max(primary.exposedPower||0,.04);
+ }else if(rule.routeEffect==='twinFortification'&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.6)){
+  for(const ally of roster)grantPetShield(power*.18,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='choralRecovery'&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.5)){
+  healPetParty(power*.24);
+ }else if(rule.routeEffect==='wardHandoff'){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.5);
+  if(ally)grantPetShield(power*.26,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='sentryPulse'&&primary.boss&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.5)){
+  healPetParty(power*.23);
+ }else if(rule.routeEffect==='spiritShelter'){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.3);
+  if(ally)grantPetShield(power*.3,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='mutualChorus'&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.7)){
+  healPetParty(power*.18);
+ }else if(rule.routeEffect==='relayShelter'){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.5);
+  if(ally)grantPetShield(power*.21,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='balanceChant'&&roster.every(p=>p.hp>petStats(p).hp*.75)){
+  const ally=roster[1];
+  if(ally?.hp>0)grantPetShield(power*.18,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='massRescue'&&enemies.filter(e=>e.hp>0).length>=2&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.5)){
+  healPetParty(power*.25);
+ }else if(rule.routeEffect==='arcaneReinforce'&&primary.boss&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.6)){
+  for(const ally of roster)grantPetShield(power*.16,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='frostRecovery'&&primary.boss&&roster.every(p=>p.hp>0&&p.hp<petStats(p).hp*.4)){
+  const ally=roster[1];
+  if(ally)grantPetShield(power*.23,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='prayerRelay'&&primary.boss&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.45)){
+  healPetParty(power*.22);
+ }else if(rule.routeEffect==='choralFocus'&&primary.hp>0&&primary.maxHp>0&&primary.hp/primary.maxHp<.5){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.65);
+  if(ally)grantPetShield(power*.23,true,ally,effectsForPet(ally));
+ }else if(rule.routeEffect==='sanctuaryRelay'&&enemies.filter(e=>e.hp>0).length>=2&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.65)){
+  healPetParty(power*.2);
+ }else if(rule.routeEffect==='fortressRevival'&&roster[1]?.hp>0&&roster[1].hp<petStats(roster[1]).hp*.25){
+  const ally=roster[1];grantPetShield(power*.28,true,ally,effectsForPet(ally));
  }
  message('✧ 雙靈共鳴【'+rule.name+'】'+outcome+'。','rare','pet');
  for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}
