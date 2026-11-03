@@ -6,11 +6,25 @@ import {createHash} from 'node:crypto';
 import {Worker} from 'node:worker_threads';
 import {performance} from 'node:perf_hooks';
 import {starterPlayer} from './fixtures/starter-player.mjs';
+import {makePet,petStats} from '../dist/catalog.js';
 
 const file=process.argv[2];
-if(!file)throw Error('Usage: node tests/offline-worker-benchmark.mjs path/to/legal-save.json | --starter | --starter-salvage');
-const loaded=file==='--starter'||file==='--starter-salvage'?starterPlayer():JSON.parse(readFileSync(file,'utf8'));
-if(file==='--starter-salvage'){
+if(!file)throw Error('Usage: node tests/offline-worker-benchmark.mjs path/to/legal-save.json | --starter | --starter-salvage | --starter-dual-salvage');
+const starterMode=['--starter','--starter-salvage','--starter-dual-salvage'].includes(file);
+const loaded=starterMode?starterPlayer():JSON.parse(readFileSync(file,'utf8'));
+if(file==='--starter-dual-salvage'){
+ // Use production capture construction/stat formulas, then stable benchmark IDs.
+ loaded.pets=['fang','wisp'].map((species,index)=>{
+  const pet=makePet(species);
+  pet.id='bench-pet-'+(index+1);
+  pet.rarity='common';
+  pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;
+  return pet;
+ });
+ loaded.activePetId=loaded.pets[0].id;
+ loaded.secondaryPetId=loaded.pets[1].id;
+}
+if(file==='--starter-salvage'||file==='--starter-dual-salvage'){
  // Keep mythical items; dismantle ordinary drops through the real game rules.
  loaded.autoSalvage=true;
  loaded.salvageInventory=true;
@@ -116,10 +130,17 @@ for(const hours of times){
   const {_state,...publicRow}=row;
   console.log(JSON.stringify({repetition:repetition+1,...publicRow}));
  }
- if(file==='--starter-salvage'){
+ if(file==='--starter-salvage'||file==='--starter-dual-salvage'){
   for(const row of rows){
    assert.equal(row.simulatedMs,hours*3600000,'salvage benchmark must complete the FULL requested duration');
    assert.equal(row.reason,'已完成離線時間','salvage benchmark must not stop early');
+  }
+ }
+ if(file==='--starter-dual-salvage'){
+  for(const row of rows){
+   assert.equal(row._state.activePetId,'bench-pet-1','first pet selection must persist');
+   assert.equal(row._state.secondaryPetId,'bench-pet-2','second pet selection must persist');
+   assert.equal(row._state.pets.length,2,'dual-pet roster must remain intact');
   }
  }
  const identical=rows.every(x=>x.stateSha256===rows[0].stateSha256);
