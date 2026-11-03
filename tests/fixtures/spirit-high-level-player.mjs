@@ -24,10 +24,22 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
  p.name='SpiritIntegrationFixture';p.job=job;p.level=level;p.reborn=true;p.thirdJob=true;
  p.dawnUnlocked=level>=210;p.dawnSigil=dawnSigil;p.autoEscapeBoss=!allowBoss;
  p.location=level>=210?'dawnrift':'worldroot';
- p.jobLevel=70;p.secondJobLevel=70;p.jobXp=0;p.jobPoints=39;p.xp=0;
+ p.jobLevel=70;p.secondJobLevel=70;p.jobXp=0;p.jobPoints=0;p.xp=0;
  p.firstJobLevel=50;
- p.jobSkills={['thirdMain_'+job]:10,['thirdWide_'+job]:10,['thirdFinish_'+job]:10};
- p.autoSkills={version:2,order:['thirdMain_'+job,'thirdWide_'+job,'thirdFinish_'+job],disabled:[]};
+ // Persist each stage's *legal* skill budget: 49 first, 69 second, 69 third.
+ const first={spiritOrder:9,spiritPulse:5,spiritWard:10,spiritRecover:5,spiritBond:10,spiritSense:10};
+ const second=job==='pactWarrior'
+  ?{pactSlash:10,pactWave:10,pactGuard:5,pactBurst:5,pactTraining:10,pactSurvival:10}
+  :{spiritCommand:10,spiritFocus:10,spiritShield:5,spiritSweep:5,commandFocus:10,commandSurvival:10};
+ second['rebirthBuff_'+job]=10;second['rebirthMain_'+job]=9;
+ const third={['thirdMain_'+job]:10,['thirdWide_'+job]:10,['thirdFinish_'+job]:10,
+  ['thirdUtility_'+job]:10,['thirdStance_'+job]:9};
+ for(let index=0;index<4;index++)third['thirdPassive'+index+'_'+job]=5;
+ const points=loadout=>Object.values(loadout).reduce((a,b)=>a+b,0);
+ if(points(first)!==49||points(second)!==69||points(third)!==69)throw Error('invalid job skill budget');
+ p.jobSkills={...first,...second,...third};
+ p.autoSkills={version:2,order:['thirdStance_'+job,'thirdUtility_'+job,
+  'thirdWide_'+job,'thirdFinish_'+job,'thirdMain_'+job],disabled:[]};
  p.quests={[SPIRIT_TRIAL_ID]:{started:true,kills:24,done:true}};
  const allocated=job==='pactWarrior'
   ?level===210?{STR:150,VIT:120,AGI:100,DEX:70,LUK:3,INT:1}:{STR:120,VIT:120,AGI:100,DEX:78,LUK:5,INT:1}
