@@ -30,3 +30,10 @@
 - 新職仍只在 `feature/spirit-tamer-dual-pets` 內修改；未授權前禁止合併或正式部署。
 
 本文件為核對與實作順序，非戰鬥整合已完成的證明。
+
+## 2026-11-03 後續實作紀錄
+- 在分支 `dist/game.js` 已將 `dealPetDamage(amount,key,sourcePet,sourceFactor)` 改為可明確提供傷害來源；舊呼叫不傳參數仍預設 `activePet()`，對既有職業維持相容。
+- 在分支 `petAttack(pet,sourceFactor)` 已可接收指定夥伴並使用非主寵專屬的攻擊計時 `timers.petById[pet.id]`；舊呼叫 `petAttack()` 仍使用 `timers.pet`。
+- 完整 `dist/game.js` 經移除靜態 import 後進行 JavaScript 語法解析，結果 PASS；**尚未執行瀏覽器戰鬥測試**。
+- 未將第二夥伴自動接入 `combatTick`，原因：`petAutoAbility` 的技能計時與 `petEffects` 仍共用、`enemyAttack` 仍只選主人或第一寵。先接入會造成第二寵只輸出不承傷的嚴重平衡錯誤。
+- 下一步：依夥伴 ID 隔離 `petSkillTimers`、`petEffects`、護盾／DoT／支援，再擴充怪物目標，最後接入第二寵行動。
