@@ -52,3 +52,18 @@ test('four companion roles can take fatal actual enemy damage in Lv200 trial and
  }
  assert.equal(PET_REVIVE_MS,10000);
 });
+
+test('real auto-potion path cannot revive before cooldown but revives after it',async()=>{
+ const {runtime}=await import('./runtime31-helper.mjs');
+ for(const id of species){
+  const c=await runtime(),a=c.api,p=a.normalize(a.fresh('復活測試','knight'));
+  const pet=maxPet(id,200);pet.hp=0;pet.reviveAt=1000000+PET_REVIVE_MS;
+  p.level=200;p.pets=[pet];p.activePetId=pet.id;p.bag=[{id:'med',qty:5}];
+  p.autoPotions={playerHp:false,playerSp:false,petHp:true,petSp:false};
+  p.potionThresholds={petHp:95};a.setup(p,{id:'world_191',level:200,hp:999999,atk:1});
+  a.autoUsePotions();assert.equal(pet.hp,0,id+' must stay down during cooldown');
+  c.setTime(1000000+PET_REVIVE_MS);
+  a.autoUsePotions();assert.ok(pet.hp>0,id+' revives through actual potion path');
+  assert.ok(pet.hp<=petStats(pet).hp);
+ }
+});
