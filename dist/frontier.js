@@ -2,8 +2,6 @@ export const CONTINENTS={dawn:{name:'曙界新陸',range:'201–210',town:'dawnc
 export const FRONTIER_MAPS=['starshore','oathwood','nightclock','sungrave','worldroot'];
 export const continentFor=location=>['dawncity','dawnrift'].includes(location)?'dawn':['skycity','skyport','gearfell','aether','stormforge','zenith',...FRONTIER_MAPS].includes(location)?'sky':'icarus';
 export const PLAYER_REVIVE_MS=15000,PET_REVIVE_MS=10000;
-// A spirit-only faster revival; legacy ten professions retain the original timing.
-export const petReviveDurationForJob=job=>job==='pactWarrior'||job==='spiritCommander'?3000:PET_REVIVE_MS;
 export const deathRemaining=(unit,now)=>Math.max(0,Math.ceil(((unit?.reviveAt||0)-now)/1000));
 export const baseExperienceNeed=p=>Math.round((250+17*p.level**2.05)*(p.level>=181?10:p.level>=151?5:p.reborn?2:1));
 export const petExperienceNeed=pet=>Math.round((90+9*pet.level**2)*(pet.level>=181?10:pet.level>=151?5:1));
