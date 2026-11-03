@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 const epoch=2000000000000,minutes=10,duration=minutes*60000,seed=471122;
-const pairs=['attack-magic+attack-magic','attack-magic+defense-support','defense-support+defense-support'];
+const pairs=['attack-magic+attack-defense','attack-magic+defense-support','magic-support+defense-support'];
 const rows=[];
 for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of pairs){
  const player=highLevelSpiritPlayer({level,job,pairKey,gearRarity:'mythic'});
