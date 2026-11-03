@@ -3,7 +3,7 @@ import {jobLevelCap} from '../dist/adventure-progression.js';
 import {GEAR_BASE} from '../dist/loot.js';
 import {JOB_ATTRIBUTE_MAX,jobAttributeBonus} from '../dist/job-attributes.js';
 import {SECOND_JOBS} from '../dist/jobs.js';
-import {thirdJobError,THIRD_SEAL,THIRD_SEAL_COST} from '../dist/frontier.js';
+import {thirdJobError,THIRD_SEAL,THIRD_SEAL_COST,PET_REVIVE_MS,petReviveDurationForJob} from '../dist/frontier.js';
 import assert from 'node:assert/strict';
 import {
   canonicalFusionKey, canonicalDualFusionKey, DUAL_FUSION_TYPES,
@@ -108,4 +108,13 @@ test('all spirit stages have finite JOB attribute bonuses, no undefined parent t
   assert.ok(Object.values(bonus).every(Number.isFinite));
   assert.ok(Object.values(bonus).some(x=>x>0));
  }
+});
+
+// Legacy jobs must not inherit spirit-only faster pet revival.
+test('legacy pet revive remains 10 seconds while spirit branches use 3 seconds',()=>{
+ assert.equal(PET_REVIVE_MS,10000);
+ for(const job of ['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer'])
+  assert.equal(petReviveDurationForJob(job),10000,job);
+ for(const job of ['pactWarrior','spiritCommander'])
+  assert.equal(petReviveDurationForJob(job),3000,job);
 });
