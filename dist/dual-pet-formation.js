@@ -1,6 +1,6 @@
 // Dual companion roster adapter. This module is isolated until game.js gains
 // a second independent combat lane. Existing jobs remain single-pet.
-import {isSpiritJob} from './spirit-job-rules.js';
+import {isSpiritJob,canonicalFusionKey} from './spirit-job-rules.js';
 
 export const DUAL_PET_MODES = Object.freeze(['focus','split','guard']);
 export const PACT_STANCES = Object.freeze(['assist','assimilate']);
@@ -12,7 +12,7 @@ export function activePetRoster(player) {
   const roster=[first];
   if (isSpiritJob(player.job)) {
     const second=player.pets.find(p=>p.id===player.secondaryPetId);
-    if(second && second.id!==first.id) roster.push(second);
+    if(second && second.id!==first.id && (!canonicalFusionKey(first) || !canonicalFusionKey(second) || canonicalFusionKey(first)!==canonicalFusionKey(second))) roster.push(second);
   }
   return roster;
 }
@@ -25,6 +25,10 @@ export function normalizeDualPetState(player) {
   }
   if (!validIds.has(player.activePetId)) player.activePetId=null;
   if (!validIds.has(player.secondaryPetId) || player.secondaryPetId===player.activePetId)
+    player.secondaryPetId=null;
+  const first=player.pets.find(p=>p.id===player.activePetId);
+  const second=player.pets.find(p=>p.id===player.secondaryPetId);
+  if(first&&second&&canonicalFusionKey(first)&&canonicalFusionKey(first)===canonicalFusionKey(second))
     player.secondaryPetId=null;
   if (!DUAL_PET_MODES.includes(player.dualPetMode)) player.dualPetMode='focus';
   const stance=player.petStances&&typeof player.petStances==='object'?player.petStances:{};
@@ -39,6 +43,12 @@ export function canSetSecondaryPet(player,petId) {
   if(!isSpiritJob(player?.job)) return '只有御靈使職系能同時攜帶兩隻夥伴';
   if(petId===player.activePetId) return '同一隻夥伴不能同時佔兩個欄位';
   if(petId!==null && !player.pets?.some(p=>p.id===petId)) return '夥伴不存在';
+  if(petId!==null) {
+    const first=player.pets?.find(p=>p.id===player.activePetId);
+    const second=player.pets?.find(p=>p.id===petId);
+    if(first&&second&&canonicalFusionKey(first)&&canonicalFusionKey(first)===canonicalFusionKey(second))
+      return '兩個欄位不可攜帶相同融合類型的夥伴';
+  }
   if(player.trialRun) return '試煉中無法更換夥伴';
   return null;
 }
