@@ -72,6 +72,11 @@ async function measure(hours){
  }).finally(()=>worker.terminate());
  const summary=result.result?.summary;
  assert.ok(summary,'offline worker must return a summary');
+ const damage=summary.damage;
+ assert.ok(damage&&Number.isFinite(damage.total),'offline combat must report real dealt HP damage');
+ const parts=['player','pet1','pet2','resonance','petSupport','other'];
+ for(const key of parts)assert.ok(Number.isFinite(damage[key])&&damage[key]>=0,'nonnegative damage component '+key);
+ assert.ok(Math.abs(parts.reduce((sum,key)=>sum+damage[key],0)-damage.total)<.001,'damage attribution must equal total actual HP damage');
  return {
   _state:result.result.player,
   hours,stateSha256:createHash('sha256').update(JSON.stringify(result.result.player)).digest('hex'),wallMs:Math.round(performance.now()-started),workerHeapMb:Math.round((result.workerHeapUsed||0)/1048576),
@@ -81,7 +86,7 @@ async function measure(hours){
   simulatedMs:summary.simulated,reason:summary.reason,kills:summary.kills,
   baseXp:summary.baseXp,jobXp:summary.jobXp,petXp:summary.petXp,
   gold:summary.gold,spent:summary.spent,consumables:summary.potions,
-  equipmentDrops:summary.equipment?.length,cards:summary.cards?.length
+  equipmentDrops:summary.equipment?.length,cards:summary.cards?.length,damage
  };
 }
 function differencePaths(a,b,prefix='',out=[]){
