@@ -6,10 +6,13 @@ export const DAWN_SIGIL_JUNK=['dawn_scout_fang','dawn_ram_horn','dawn_ray_membra
 export function sigilLevel(player){return Math.max(0,Math.min(DAWN_SIGIL_MAX,Math.floor(Number(player?.dawnSigil)||0)));}
 export function sigilCost(next){
  if(!Number.isInteger(next)||next<1||next>DAWN_SIGIL_MAX)return null;
+ // Each rank is a separate farming step. At 20 kills/minute with three
+ // equally frequent guaranteed drops, 400 of each material means ~1 hour.
+ const perMaterial=[400,800,1600,3200][(next-1)%4];
  return {
-  dawn_scout_fang:8+next*4,
-  dawn_ram_horn:8+next*4,
-  dawn_ray_membrane:8+next*4,
+  dawn_scout_fang:perMaterial,
+  dawn_ram_horn:perMaterial,
+  dawn_ray_membrane:perMaterial,
   ...(next>4?{dawn_archon_crystal:next*3,[DAWN_SIGIL_CORE]:next-3}:{})
  };
 }
