@@ -36,6 +36,8 @@ jobs:
         run: node tests/spirit-dual-ui-regression.mjs
       - name: Smoke four synthetic 200/210 fused spirit worker states
         run: node tests/spirit-high-level-fixture.test.mjs
+      - name: Real Worker combat for all 42 fused third-job resonances
+        run: node tests/spirit-42-live-resonance.test.mjs
       - name: Run dual-pet module regression suite
         shell: bash
         run: |
