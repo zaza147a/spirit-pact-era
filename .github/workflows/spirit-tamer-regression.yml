@@ -56,3 +56,9 @@ jobs:
           SPIRIT_BENCH_REPEAT: '2'
           SPIRIT_BENCH_TIMEOUT_MS: '120000'
         run: node tests/offline-worker-benchmark.mjs --starter
+      - name: Full 1/6/12/24-hour offline salvage loop (no early termination)
+        env:
+          SPIRIT_BENCH_HOURS: '1,6,12,24'
+          SPIRIT_BENCH_REPEAT: '2'
+          SPIRIT_BENCH_TIMEOUT_MS: '120000'
+        run: node tests/offline-worker-benchmark.mjs --starter-salvage
