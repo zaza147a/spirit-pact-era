@@ -36,7 +36,7 @@ test('second job roles use distinct damage caps',()=>{
   assert.equal(secondPetDamageFactor(sample('pactWarrior'),'a'),.5);
   const warrior=sample('pactWarrior');
   warrior.petStances={a:'assimilate',b:'assist'};
-  assert.equal(secondPetDamageFactor(warrior,'a'),0);
+  assert.equal(secondPetDamageFactor(warrior,'a'),.10);
   assert.equal(secondPetDamageFactor(warrior,'b'),.35);
 });
 
@@ -67,6 +67,6 @@ test('benched companion keeps its own stance when switched back',()=>{
   p.secondaryPetId='c';normalizeDualPetState(p);
   assert.equal(p.petStances.b,'assimilate');
   p.secondaryPetId='b';normalizeDualPetState(p);
-  assert.equal(secondPetDamageFactor(p,'b'),0);
+  assert.equal(secondPetDamageFactor(p,'b'),.10);
   assert.equal(p.petStances.removed,undefined,'stale released pet state is discarded');
 });
