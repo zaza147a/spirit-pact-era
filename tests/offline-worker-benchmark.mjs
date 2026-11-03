@@ -77,7 +77,7 @@ function semanticState(state){
  function collect(value){
   if(!value||typeof value!=='object')return;
   if(Array.isArray(value)){for(const entry of value)collect(entry);return;}
-  if(typeof value.uid==='string'&&/^(?:g|pg)-\\d+-[a-z0-9]+$/.test(value.uid)){
+  if(typeof value.uid==='string'&&/^(?:g|pg)-\d+-[a-z0-9]+$/.test(value.uid)){
    if(seenGear.has(value.uid))throw Error('Duplicate gear UID in benchmark result');
    seenGear.add(value.uid);
    ids.set(value.uid,'@gear-'+ids.size);
