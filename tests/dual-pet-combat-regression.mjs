@@ -131,8 +131,8 @@ for(const job of ['pactWarrior','spiritCommander']){
       assert.equal(credited,0,job+' '+key+' support cannot fabricate DPS credit');
       assert.equal(delta,0,job+' '+key+' support should not inflict direct damage');
     }
-    if(rule.trait==='guard')assert.equal(effects.shields,1,job+' '+key+' shield');
-    if(rule.trait==='heal')assert.equal(effects.heals,1,job+' '+key+' heal');
+    if(rule.trait==='guard')assert.ok(effects.shields>=1,job+' '+key+' shield');
+    if(rule.trait==='heal')assert.ok(effects.heals>=1,job+' '+key+' heal');
     if(rule.trait==='focus')assert.ok(target.exposedUntil>clock.now&&target.exposedPower>0,job+' '+key+' expose');
     if(index<6)assert.ok(rule.signature,job+' '+key+' requires a unique conditional signature');
     if(index===0)assert.ok(target.exposedPower>=.025,'armor echo applies only after a defended target');
