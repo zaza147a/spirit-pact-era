@@ -72,7 +72,7 @@ test('real runtime: SSS-equipped companions remain killable under repeated level
  const {runtime}=await import('./runtime31-helper.mjs');
  const {rollPetGear}=await import('../dist/loot.js');
  const stage=TRIAL_ROUTES.at(-1),trialBoss=createTrialBoss(stage,4,MAP_BOSSES[stage.map]);
- for(const foe of [trialBoss,DAWN_BOSS])for(const id of species){
+ for(const foe of [trialBoss,...DAWN_MONSTERS,DAWN_BOSS])for(const id of species){
   const c=await runtime(),a=c.api,p=a.normalize(a.fresh('承傷測試','knight'));
   const pet=maxPet(id,200);
   pet.gear={head:rollPetGear('petHelm',200,'mythic',()=>.5),body:rollPetGear('petArmor',200,'mythic',()=>.5),shoes:rollPetGear('petBoots',200,'mythic',()=>.5)};
