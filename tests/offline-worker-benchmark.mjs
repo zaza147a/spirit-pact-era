@@ -148,6 +148,7 @@ for(const hours of times){
    assert.equal(row._state.activePetId,'bench-pet-1','first pet selection must persist');
    assert.equal(row._state.secondaryPetId,'bench-pet-2','second pet selection must persist');
    assert.equal(row._state.pets.length,2,'dual-pet roster must remain intact');
+   assert.ok(row.damage.pet1>0&&row.damage.pet2>0,'both companions must actually deal HP damage');
   }
  }
  const identical=rows.every(x=>x.stateSha256===rows[0].stateSha256);
