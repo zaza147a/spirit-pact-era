@@ -258,7 +258,7 @@ jobs:
       - name: Compare Lv170/180 gear in 191-200 and strictly SSS in 201-210
         run: node tests/spirit-underlevel-map-survival.mjs
 
-  spirit-low-gear-five-boss:
+  spirit-200-legendary-five-boss:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -266,7 +266,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test 48 Lv200 five-boss attempts with Lv170/180 mythic gear, none/S/SS
+      - name: Test 24 Lv200 five-boss attempts with Lv200 legendary and mythic gear
         run: node tests/spirit-200-low-gear-five-boss.mjs
 
   spirit-200-five-boss-observation:
