@@ -30,10 +30,12 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
    const s=result.summary,d=s.damage;
    assert.equal(s.simulated,duration,'full actual worker interval');
    assert.ok(Number.isFinite(d.player)&&Number.isFinite(d.total)&&d.total>0);
+   assert.ok(s.skillCasts&&typeof s.skillCasts==='object','offline skill cast instrumentation');
    rows.push({level,job,priority,seed,kills:s.kills,revives:s.revives||0,
     ownerDps:Math.round(d.player*1000/duration),petDps:Math.round((d.pet1+d.pet2)*1000/duration),
     resonanceDps:Math.round(d.resonance*1000/duration),totalDps:Math.round(d.total*1000/duration),
-    ownerShare:Math.round(10000*d.player/d.total)/100});
+    ownerShare:Math.round(10000*d.player/d.total)/100,
+    skillCasts:s.skillCasts});
   }finally{await worker.terminate();}
  }
 assert.equal(rows.length,36);
@@ -45,7 +47,9 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
   const avg=k=>Math.round(v.reduce((sum,r)=>sum+r[k],0)/v.length*100)/100;
   return {priority,meanOwnerDps:avg('ownerDps'),meanPetDps:avg('petDps'),
    meanResonanceDps:avg('resonanceDps'),meanTotalDps:avg('totalDps'),
-   meanOwnerSharePct:avg('ownerShare'),meanKills:avg('kills'),meanRevives:avg('revives')};
+   meanOwnerSharePct:avg('ownerShare'),meanKills:avg('kills'),meanRevives:avg('revives'),
+   meanSkillCasts:Object.fromEntries([...new Set(v.flatMap(x=>Object.keys(x.skillCasts)))].sort().map(id=>
+    [id,Math.round(v.reduce((sum,x)=>sum+(x.skillCasts[id]||0),0)/v.length*100)/100]))};
  });
  console.log(JSON.stringify({summary:true,level,job,means}));
 }
