@@ -1,5 +1,5 @@
 // All 42 dual-resonance routes, role-correct owner-led pact and pet-led commander.
-// 21 pairs x (pact one/both assimilation + commander assist) x 200/210 x 2 seeds = 252 real Worker fights.
+// 15 pairs x (pact one/both assimilation + commander assist) x 200/210 x 2 seeds = 180 real Worker fights.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {DUAL_FUSION_TYPES,canonicalDualFusionKey} from '../dist/spirit-job-rules.js';
