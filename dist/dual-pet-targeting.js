@@ -19,3 +19,10 @@ export function chooseDefendingPet(roster,roleOf,{mode='focus',guardingIds=[],rn
  for(let i=0;i<alive.length;i++){choice-=weights[i];if(choice<0)return alive[i];}
  return alive.at(-1);
 }
+
+/** Spirit-only aggro rule: while a Pact Warrior channels at least one active
+ * companion, all direct enemy attacks target the owner. Commander and legacy
+ * jobs retain normal owner/pet target selection. */
+export function pactOwnerOnlyAggro(player,roster=[]) {
+ return player?.job==='pactWarrior'&&roster.some(p=>player.petStances?.[p.id]==='assimilate');
+}
