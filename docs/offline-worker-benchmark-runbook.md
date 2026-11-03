@@ -49,3 +49,15 @@ CI 固定 seed 12648430；起始測試 fixture 在 `tests/fixtures/starter-playe
 `summary.damage` 以怪物實際扣除 HP 為基準：`player`（人物及歸屬人物的職業 Buff）、`pet1`、`pet2`、`resonance`（雙靈共鳴直接扣血）、`petSupport`（寵物對人物攻擊的支援份額）、`other`（待分類來源）與 `total`。各項分量必須非負，且總和等於 `total`；Buff 不可重複視作額外 DPS。此統計是離線戰鬥總傷害，非單一首領的 DPS。
 
 [#41607358365](https://github.com/zaza147a/spirit-pact-era/actions/runs/41607358365)：Node 回歸與三種離線 benchmark 均 PASS。固定測試雙寵 IV 後，24h ×2 實際運算 5,877/5,875ms，模擬 86,400,000ms，98,618 擊殺，Base XP +458,215、Job XP +387,637、夥伴 XP +405,720、金幣 +197,441；傷害 player 627,747、pet1 12,962,260、pet2 2,120,903、petSupport 286,546、resonance 0、other 0，總計 15,997,456。此為一轉非融合雙寵，三轉共鳴尚未觸發；不是 200/210 配裝平衡結論。
+
+## 合成高階角色／雙融合共鳴測試（2026-11-03）
+
+`tests/fixtures/spirit-high-level-player.mjs` 使用遊戲既有 `makePet`、`fusePets`、`rollGear`、`rollPetGear` 和配點預算函式建立合成的 Lv200／210 測試角色（兩路線、兩隻融合寵、200 等 SSS 強化裝與寵裝、契印 0、無手動戰術）。它不是從玩家實際養成歷史匯出的存檔，也不是最優化配裝；高 HP/SP 起始值會由 Worker 正規化裁切。**不可把此 fixture 宣稱為已完整驗證的玩家合法通關存檔**。
+
+`tests/spirit-high-level-fixture.test.mjs`：四組（職業 A/B × Lv200/210）使用真正的離線 Worker 跑 10 秒，檢查角色、雙融合寵、兩寵傷害及雙靈共鳴直接傷害等。實測中 Lv210 有可能死亡，這屬待平衡資料，不表示已通關首領。
+
+`tests/spirit-42-live-resonance.test.mjs`：將全部 21 種無序配對分別在兩條三轉路線實際戰鬥，各跑 10 秒；檢查兩寵傷害非零及 `resonanceActivations>0`。[#41608582434](https://github.com/zaza147a/spirit-pact-era/actions/runs/41608582434) 的 regression job 成功：42／42 路線、總共 51 次共鳴實際觸發、直接共鳴傷害合計 713,407。輔助型共鳴不強迫有直接傷害。
+
+這一輪也修正了御靈使／兩條二轉的 JOB 加成表缺失（此前高階角色計算屬性時出現 undefined）、三轉 Job 70 上限與職業專用權杖不可裝備問題。JOB 加成目前屬保守測試數值，仍須與原十職做完整實戰平衡。
+
+尚待：從合法實際通關養成檔驗證數據、攻擊與清怪／首領 DPS 排名、死亡率、同資源投入、共鳴逐組平衡與實際瀏覽器 UI 驗收。
