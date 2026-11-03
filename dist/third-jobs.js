@@ -8,6 +8,8 @@ const defs={
  priest:['聖域大主教','天啟聖裁','聖光審判','神諭定罪','聖域復甦','神恩協奏',1.9,3,'skill',[['聖典真解',{matkPct:2}],['救贖恩典',{healingPct:5}],['聖靈容器',{mpPct:3}],['光輝同契',{teamDamagePct:1}]]],
  monk:['修羅','龍虎震天','修羅震地','極意破空拳','龍息調元','無我鬥魂',1.65,3,'combo',[['修羅真意',{atkPct:2.3}],['連環精髓',{aspd:.7}],['苦行金身',{hpPct:3}],['破空慧眼',{crit:1.2}]]],
  hunter:['遊俠','蒼鷹穿界','風暴獵場','星墜狙擊','荒野護幕','獵神專注',1.05,3,'falcon',[['荒野真傳',{atkPct:2}],['獵神鷹眼',{hitPct:2}],['疾風弦律',{aspd:.7}],['弱點洞悉',{critDmg:2}]]],
+ pactWarrior:['靈契君王','靈王擊','靈契破陣','雙靈斬界','靈魂護持','雙靈同化',.73,3,'skill',[['御靈真意',{atkPct:1.3}],['靈契體魄',{hpPct:2}],['靈紋節奏',{aspd:.5}],['雙契洞悉',{hitPct:1}]]],
+ spiritCommander:['萬靈宗師','萬靈號令','群靈震擊','宗師終令','靈魂庇護','靈魂超載',.46,3,'skill',[['靈師真意',{matkPct:1}],['雙靈韌性',{hpPct:2}],['令術節奏',{aspd:.4}],['靈力循環',{spRegen:1}]]],
  performer:['天籟詠者','天籟星弦','銀河交響','終幕絕奏','靈泉序曲','天籟合奏',.62,3,'song',[['天籟真音',{atkPct:2}],['靈魂共奏',{teamDamagePct:1.5}],['無盡樂泉',{spRegen:1}],['星弦節奏',{aspd:.7}]]]
 };
 export const THIRD_JOBS=Object.fromEntries(Object.entries(defs).map(([job,d])=>[job,{name:d[0],main:d[1],style:`${d[0]}以${d[1]}為主攻，${d[2]}應對多體、${d[3]}集中爆發，兼具四項常駐修練。`} ]));
@@ -30,5 +32,5 @@ export const scaledSkillBuff=(s,rank)=>{const factor=s.rankScaled?Math.max(1,ran
 
 // Explicit Base-level skill-ratio growth; displayed and executed by the same formula.
 export const THIRD_MAIN_LEVELS=[151,161,171,181,191,200];
-export const THIRD_MAIN_CURVES={knight:[2.15,2.37,2.37,2.37,2.37,2.37],crusader:[.67,1.20,1.58,1.63,1.73,1.73],wizard:[3.3,4.4,5.94,6.16,7.1,7.1],sage:[1.8,1.9,1.9,1.9,1.9,1.9],assassin:[.88,1.10,1.67,1.78,1.86,1.86],rogue:[.80,1.40,2.10,2.21,2.30,2.30],priest:[1.9,2.14,2.14,2.14,2.14,2.14],monk:[1.65,2.00,2.00,2.00,2.00,2.00],hunter:[1.05,1.05,1.51,1.57,1.67,1.67],performer:[.62,.68,1.04,1.10,1.18,1.18]};
+export const THIRD_MAIN_CURVES={knight:[2.15,2.37,2.37,2.37,2.37,2.37],crusader:[.67,1.20,1.58,1.63,1.73,1.73],wizard:[3.3,4.4,5.94,6.16,7.1,7.1],sage:[1.8,1.9,1.9,1.9,1.9,1.9],assassin:[.88,1.10,1.67,1.78,1.86,1.86],rogue:[.80,1.40,2.10,2.21,2.30,2.30],priest:[1.9,2.14,2.14,2.14,2.14,2.14],monk:[1.65,2.00,2.00,2.00,2.00,2.00],hunter:[1.05,1.05,1.51,1.57,1.67,1.67],performer:[.62,.68,1.04,1.10,1.18,1.18],pactWarrior:[.73,.8,.86,.92,.98,1.02],spiritCommander:[.46,.50,.55,.60,.64,.68]};
 export function skillPowerAtLevel(skill,level=151){if(!skill.thirdGrowth)return skill.power;const curve=THIRD_MAIN_CURVES[skill.thirdGrowth.job],value=Math.max(151,Math.min(200,level));let i=THIRD_MAIN_LEVELS.findLastIndex(x=>x<=value);const base=i===5?curve[5]:curve[i]+(curve[i+1]-curve[i])*(value-THIRD_MAIN_LEVELS[i])/(THIRD_MAIN_LEVELS[i+1]-THIRD_MAIN_LEVELS[i]);return base*skill.thirdGrowth.ratio;}
