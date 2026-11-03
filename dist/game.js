@@ -572,6 +572,25 @@ function triggerDualSpiritResonance(event){
   outcome='聯動追加 '+dealt+' 傷害';
   if(rule.trait==='cleave'){const targets=multiTargets(enemies,primary,3,encounterLimit(player.location)).slice(1);for(const foe of targets){enemy=foe;const splash=dealDamage(hitDamage(power*.35,monsterDefenseAgainst(foe,false)),'resonanceDamage');if(report?.dualPetDamage)report.dualPetDamage.dualResonance+=splash;}enemy=primary;}
  }
+ // Conditional signatures are resolved within this single activation.
+ // They cannot recurse through emitEvent or generate an extra action.
+ if(rule.signature==='armorEcho'&&primary.hp>0&&primary.def>0){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+2500);
+  primary.exposedPower=Math.max(primary.exposedPower||0,.025);
+ }else if(rule.signature==='rescueGuard'&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.5)){
+  healPetParty(power*.5);
+ }else if(rule.signature==='recoveryChain'&&roster.some(p=>p.hp>0&&p.hp<petStats(p).hp*.75)){
+  const ally=roster.find(p=>p.hp>0&&p.hp<petStats(p).hp*.75);
+  grantPetShield(power*.35,true,ally,effectsForPet(ally));
+ }else if(rule.signature==='bossTrace'&&primary.hp>0&&primary.boss){
+  primary.exposedUntil=Math.max(primary.exposedUntil||0,now+3000);
+  primary.exposedPower=Math.max(primary.exposedPower||0,.03);
+ }else if(rule.signature==='finisherFocus'&&primary.hp>0&&primary.maxHp>0&&primary.hp/primary.maxHp<.35){
+  primary.exposedPower=Math.max(primary.exposedPower||0,.08);
+ }else if(rule.signature==='crowdWard'&&enemies.filter(e=>e.hp>0).length>=2){
+  const ally=roster.find(p=>p.hp>0);
+  if(ally)grantPetShield(power*.4,true,ally,effectsForPet(ally));
+ }
  message('✧ 雙靈共鳴【'+rule.name+'】'+outcome+'。','rare','pet');
  for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}
  enemy=selectEncounterTarget(enemies,player.targetPriority,primary)||primary;
