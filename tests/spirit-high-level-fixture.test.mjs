@@ -35,7 +35,7 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
  assert.ok(Object.values(breakdown.gear).every(n=>n<=breakdown.gearLimit));
  assert.ok(Object.values(breakdown.card).every(n=>n<=breakdown.cardLimit));
  assert.equal(player.dawnSigil,0,'no farmed dawn sigil at the initial balance baseline');
- assert.equal(player.autoEscapeBoss,level===210,'dawn wilderness farm must be separate from unprepared archon attack');
+ assert.equal(player.autoEscapeBoss,true,'wilderness farming must be separate from boss challenge at both levels');
  assert.deepEqual(player.cards,[]); // all ten owned cards are slotted, not duplicated in bag
  assert.equal(Object.values(player.sockets).filter(Boolean).length,10);
  for(const [slot,id] of Object.entries(player.sockets)){
