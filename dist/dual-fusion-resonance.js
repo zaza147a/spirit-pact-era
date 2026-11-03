@@ -36,7 +36,7 @@ if(new Set(SIGNATURES).size!==SIGNATURES.length||new Set(WARRIOR_ROUTES).size!==
 export const DUAL_SPIRIT_RULES=Object.fromEntries(DUAL_FUSION_TYPES.map((key,index)=>{
  const sourceIndex=uniqueIndexes[index];
  const [name,trait]=TRAITS[sourceIndex],cooldownMs=9000+(sourceIndex%4)*1000;
- return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,signature:SIGNATURES[sourceIndex]||null,warriorRoute:WARRIOR_ROUTES[sourceIndex]||null,commanderRoute:COMMANDER_ROUTES[sourceIndex]||null,cooldownMs,warriorCoefficient:.10+(sourceIndex%3)*.015,commanderCoefficient:.08+(index%3)*.012})];
+ return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,signature:SIGNATURES[sourceIndex]||null,warriorRoute:WARRIOR_ROUTES[sourceIndex]||null,commanderRoute:COMMANDER_ROUTES[sourceIndex]||null,cooldownMs,warriorCoefficient:.10+(sourceIndex%3)*.015,commanderCoefficient:.08+(sourceIndex%3)*.012})];
 }));
 export function dualSpiritResonance(player,roster){
  if(!player?.thirdJob||!['pactWarrior','spiritCommander'].includes(player.job)||roster?.length!==2||roster.some(p=>p.hp<=0))return null;
