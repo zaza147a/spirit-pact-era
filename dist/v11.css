@@ -65,3 +65,10 @@ body.spirit-dual-ui #character .hero strong{font-size:16px}
 @media(max-width:480px){
  body.spirit-dual-ui #companion .dual-pet-hud{grid-template-columns:1fr}
 }
+
+/* Compact dual-spirit guidance: only the spirit class sees expandable steps. */
+body.spirit-dual-ui .dual-growth-next{margin-top:8px;border-top:1px solid #5b725c;padding-top:7px}
+body.spirit-dual-ui .dual-growth-next summary{cursor:pointer;color:#f1d99f;font-size:11px;font-weight:700;line-height:1.45}
+body.spirit-dual-ui .dual-growth-next summary:focus-visible{outline:2px solid #f1d99f;outline-offset:3px}
+body.spirit-dual-ui .dual-growth-next ul{margin:7px 0 0;padding-left:17px;color:#bfced0;font-size:11px;line-height:1.55}
+body.spirit-dual-ui .dual-growth-next li+li{margin-top:4px}
