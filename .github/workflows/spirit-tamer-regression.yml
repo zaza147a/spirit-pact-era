@@ -41,3 +41,18 @@ jobs:
           for testfile in tests/{dual-fusion-resonance,dual-pet-effects,dual-pet-formation,dual-pet-scheduler,dual-pet-targeting,spirit-equipment-drop,spirit-job-rules}.test.mjs; do
             node "$testfile"
           done
+
+  benchmark-starter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: One-hour real offline simulation baseline
+        env:
+          SPIRIT_BENCH_HOURS: '1'
+          SPIRIT_BENCH_REPEAT: '1'
+          SPIRIT_BENCH_TIMEOUT_MS: '120000'
+        run: node tests/offline-worker-benchmark.mjs --starter
