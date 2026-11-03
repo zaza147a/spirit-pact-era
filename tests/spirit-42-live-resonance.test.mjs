@@ -9,6 +9,7 @@ const epoch=2000000000000,duration=60000;
 let routes=0,activations=0,damage=0;
 const activationByJob={pactWarrior:0,spiritCommander:0};
 const zeroActivationRoutes=[];
+const blockerTotals={mainEvents:0,deadTarget:0,formation:0,cooldown:0};
 for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of DUAL_FUSION_TYPES){
  const player=highLevelSpiritPlayer({level:200,job,pairKey});
  assert.equal(canonicalDualFusionKey(...player.pets),pairKey);
@@ -30,16 +31,24 @@ for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of DUAL_FUS
   // the 42 positive/negative signature tests.
   assert.ok(Number.isInteger(count)&&count>=0,'legal nonnegative live resonance count');
   if(count===0)zeroActivationRoutes.push(job+':'+pairKey);
+  const counters={mainEvents:result.summary.dualSpiritMainEvents,
+   deadTarget:result.summary.dualSpiritBlockedDeadTarget,
+   formation:result.summary.dualSpiritBlockedFormation,
+   cooldown:result.summary.dualSpiritBlockedCooldown};
+  assert.ok(Object.values(counters).every(n=>Number.isInteger(n)&&n>=0),'offline diagnostic counters');
+  assert.equal(counters.mainEvents,count+counters.deadTarget+counters.formation+counters.cooldown,
+   'all main-skill events must have a trigger or recorded blocker');
+  for(const key of Object.keys(blockerTotals))blockerTotals[key]+=counters[key];
   assert.equal(result.player.pets.length,2);
   assert.ok(result.summary.damage.pet1>0&&result.summary.damage.pet2>0,'both fused pets contribute '+job+' '+pairKey);
   activations+=count;activationByJob[job]+=count;
   assert.ok(Number.isFinite(result.summary.damage.resonance)&&result.summary.damage.resonance>=0);
   damage+=result.summary.damage.resonance;routes++;
   console.log(JSON.stringify({job,pairKey,simulatedMs:result.summary.simulated,kills:result.summary.kills,
-   resonanceActivations:count,resonanceDamage:result.summary.damage.resonance}));
+   resonanceActivations:count,resonanceDamage:result.summary.damage.resonance,blockers:counters}));
  }finally{await worker.terminate();}
 }
 assert.equal(routes,42);
 assert.ok(activationByJob.pactWarrior>0&&activationByJob.spiritCommander>0,'each job activates resonance in actual combat');
 console.log(JSON.stringify({routes,activations,activationByJob,zeroActivationRoutes,
- resonanceDamage:damage,complete:true}));
+ blockerTotals,resonanceDamage:damage,complete:true}));
