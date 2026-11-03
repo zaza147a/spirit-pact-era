@@ -188,7 +188,16 @@ function addEncounter(now=gameNow(),slotIndex=null){
  if(!isBoss&&slotIndex===null)slotIndex=Array.from({length:encounterLimit(player.location)},(_,i)=>i).find(i=>!enemies.some(e=>!e.boss&&e.hp>0&&e.slotIndex===i));const foe={slotIndex:isBoss?null:slotIndex,...m,...monsterRuntimeStats(m),hp,maxHp:hp,atk:m.atk+(isPetland&&!isBoss?(player.level-1):0),lastAttack:now,appearedAt:now,instanceId:`${now}-${++encounterSerial}`};
  enemies.push(foe);chooseAttackTarget();if(!report)startReport();message(`${foe.boss?'⚠ 地圖首領現身！':'遭遇 '}Lv.${foe.level||1} ${SPECIES[foe.id].name}！場上 ${enemies.length} 隻敵人。`,'','system');
 }
-function tickEncounters(now){if(player.trialRun){if(!enemies.some(e=>e.hp>0)&&now>=player.trialRun.nextAt)spawnTrialBoss();return;}if(isTown(player.location)||!player.hp)return;const capacity=encounterLimit(player.location);let changed=false;enemies=enemies.filter(e=>e.hp>0);for(let slot=0;slot<capacity;slot++){if(encounterSlots[slot]===undefined)encounterSlots[slot]=now+rand(100,900);if(!enemies.some(e=>!e.boss&&e.slotIndex===slot)&&now>=encounterSlots[slot]){encounterSlots[slot]=now+rand(250,1400);addEncounter(now,slot);changed=true;}}if(changed)render();}
+function tickEncounters(now){if(player.trialRun){if(!enemies.some(e=>e.hp>0)&&now>=player.trialRun.nextAt)spawnTrialBoss();return;}if(isTown(player.location)||!player.hp)return;const capacity=encounterLimit(player.location);let changed=false;
+ // The hot 100ms path usually has every encounter slot occupied. Avoid
+ // allocating a fresh enemies array and scanning every slot each tick.
+ if(enemies.some(e=>e.hp<=0))enemies=enemies.filter(e=>e.hp>0);
+ if(capacity>0&&capacity<31&&encounterSlots.length>=capacity){
+  let slotsReady=true;for(let slot=0;slot<capacity;slot++)if(!Number.isFinite(encounterSlots[slot])){slotsReady=false;break;}
+  let occupied=0;for(const foe of enemies)if(!foe.boss&&foe.hp>0&&Number.isInteger(foe.slotIndex)&&foe.slotIndex>=0&&foe.slotIndex<capacity)occupied|=1<<foe.slotIndex;
+  if(slotsReady&&occupied===(1<<capacity)-1)return;
+ }
+ for(let slot=0;slot<capacity;slot++){if(encounterSlots[slot]===undefined)encounterSlots[slot]=now+rand(100,900);if(!enemies.some(e=>!e.boss&&e.slotIndex===slot)&&now>=encounterSlots[slot]){encounterSlots[slot]=now+rand(250,1400);addEncounter(now,slot);changed=true;}}if(changed)render();}
 
 function restoreTownPartyFully(){
  if(!player||!isTown(player.location))return false;
