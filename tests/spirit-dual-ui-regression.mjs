@@ -37,5 +37,5 @@ assert.ok(game.includes('同化時此寵保留10%協戰攻擊'),'Pact stance tex
 assert.ok(game.includes('ATK 320%、MATK 165%、DEF/MDEF 28%、HP 16%'),'Pact transfer percentages visible in UI');
 assert.ok(game.includes('萬靈統率 · 人物能力轉移'),'Commander pet-transfer description visible');
 assert.ok(game.includes('ATK 30%、MATK 30%、DEF/MDEF 35%'),'Commander transfer percentages visible in UI');
-assert.ok(game.includes('DEF/MDEF 轉移提高至 55%'),'Pure-offense Commander endurance supplement visible in UI');
+assert.ok(!game.includes('DEF/MDEF 轉移提高至 55%'),'Removed fusion-only Commander defense exception must not appear in UI');
 console.log('Spirit dual-pet compact guidance UI regression passed.');
