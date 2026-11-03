@@ -68,7 +68,7 @@ const resonanceContext={canonicalDualFusionKey,DUAL_FUSION_TYPES};
 vm.runInNewContext(resonanceSource+
   '\nthis.api={dualSpiritResonance,canTriggerDualSpirit}',resonanceContext);
 const {dualSpiritResonance,canTriggerDualSpirit}=resonanceContext.api;
-assert.equal(DUAL_FUSION_TYPES.length,21);
+assert.equal(DUAL_FUSION_TYPES.length,15);
 const fused=(key,id)=>{
   const [main,sub]=key.split('-');
   return {id,hp:100,fusion:{main,sub}};
@@ -92,7 +92,7 @@ for(const job of ['pactWarrior','spiritCommander']){
     validated++;
   }
 }
-assert.equal(validated,42);
+assert.equal(validated,30);
 
 
 const triggerSource=loadFunction(game,'triggerDualSpiritResonance','emitEvent');
@@ -156,7 +156,7 @@ for(const job of ['pactWarrior','spiritCommander']){
     liveTriggers++;
   }
 }
-assert.equal(liveTriggers,42);
+assert.equal(liveTriggers,30);
 
 
 const tickSource=loadFunction(game,'combatTick','simulateOffline');
@@ -246,4 +246,4 @@ for(const step of [20,100]){
   assert.equal(count.two,428,'second pet ASPD 193, '+step+'ms ticks');
 }
 
-console.log('Dual-pet factors, potions, tactics, combat ticks, ASPD cadence and 42 resonances passed.');
+console.log('Dual-pet factors, potions, tactics, combat ticks, ASPD cadence and 30 resonances passed.');
