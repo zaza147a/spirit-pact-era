@@ -129,3 +129,14 @@ jobs:
           node-version: '22'
       - name: Cached versus uncached 200/210 dual-pet ten-minute full state parity
         run: node tests/spirit-offline-petstat-cache-equivalence.mjs
+
+  survival-economy-observation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare twelve 200/210 defensive and offensive fusion farm scenarios
+        run: node tests/spirit-offline-survival-economy-observation.mjs
