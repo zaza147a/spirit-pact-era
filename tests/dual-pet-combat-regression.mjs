@@ -15,7 +15,8 @@ const loadFunction = (source, name, nextName) => {
 };
 const isSpiritJob = job => ['spiritist','pactWarrior','spiritCommander'].includes(job);
 const rosterCode = formation.replace(/^import .*;\s*$/gm, '').replace(/\bexport /g, '');
-const formationContext = {isSpiritJob};
+const canonicalFusionKey = pet => { const roles=pet?.fusion?[pet.fusion.main,pet.fusion.sub]:typeof pet?.fusionKey==='string'?pet.fusionKey.split('-'):[]; return roles.length===2?[...roles].sort().join('-'):null; };
+const formationContext = {isSpiritJob,canonicalFusionKey};
 vm.runInNewContext(rosterCode + '\nthis.api={activePetRoster,secondPetDamageFactor}', formationContext);
 const {activePetRoster, secondPetDamageFactor} = formationContext.api;
 const pets = [{id:'one',hp:100,sp:100,level:100,nickname:'A'},{id:'two',hp:100,sp:100,level:100,nickname:'B'}];
@@ -203,12 +204,8 @@ for(const job of ['pactWarrior','spiritCommander']){
   assert.equal(result.matk,1120);
   assert.equal(result.def,535);
   assert.equal(result.mdef,528);
-  // Only two attack/magic fusions receive the targeted sustained-survival buff.
+  // Only legal different fusion types can now form a dual roster.
   commander.pets[0].fusion={main:'attack',sub:'magic'};
-  commander.pets[1].fusion={main:'attack',sub:'magic'};
-  const offensive=ctx.transfer(commander.pets[0],input);
-  assert.equal(offensive.def,555);
-  assert.equal(offensive.mdef,544);
   commander.pets[1].fusion={main:'defense',sub:'support'};
   assert.equal(ctx.transfer(commander.pets[0],input).def,535,'mixed pairs preserve the existing defensive transfer');
   assert.equal(input.atk,1000,'cached petStats must not be mutated');
