@@ -9,7 +9,7 @@ const epoch=2000000000000,duration=60000;
 let routes=0,activations=0,damage=0;
 const activationByJob={pactWarrior:0,spiritCommander:0};
 const zeroActivationRoutes=[];
-const blockerTotals={mainEvents:0,deadTarget:0,formation:0,cooldown:0};
+const blockerTotals={mainEvents:0,deadTarget:0,formation:0,petDown:0,missingPair:0,cooldown:0};
 for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of DUAL_FUSION_TYPES){
  const player=highLevelSpiritPlayer({level:200,job,pairKey});
  assert.equal(canonicalDualFusionKey(...player.pets),pairKey);
@@ -34,8 +34,11 @@ for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of DUAL_FUS
   const counters={mainEvents:result.summary.dualSpiritMainEvents,
    deadTarget:result.summary.dualSpiritBlockedDeadTarget,
    formation:result.summary.dualSpiritBlockedFormation,
+   petDown:result.summary.dualSpiritBlockedPetDown,
+   missingPair:result.summary.dualSpiritBlockedMissingPair,
    cooldown:result.summary.dualSpiritBlockedCooldown};
   assert.ok(Object.values(counters).every(n=>Number.isInteger(n)&&n>=0),'offline diagnostic counters');
+  assert.equal(counters.formation,counters.petDown+counters.missingPair,'formation loss reasons must be exhaustive');
   assert.equal(counters.mainEvents,count+counters.deadTarget+counters.formation+counters.cooldown,
    'all main-skill events must have a trigger or recorded blocker');
   for(const key of Object.keys(blockerTotals))blockerTotals[key]+=counters[key];
