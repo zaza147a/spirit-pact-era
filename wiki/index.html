@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-03-navigation-v11"><style>
+<title>靈契紀元 WIKI｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-03-balance-v12"><style>
 :root{color-scheme:dark;--bg:#0c111e;--panel:#172033;--line:#2c3b52;--text:#e9eef9;--muted:#afbdd1;--gold:#eac481;--accent:#6fb6ef}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0c111e,#15233b);color:var(--text);font:15px/1.65 system-ui,"Noto Sans TC",sans-serif;min-height:100vh}
 header{padding:28px max(18px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#0c1426}header h1{font-size:28px;margin:0;color:var(--gold)}header p{margin:4px 0;color:var(--muted)}
@@ -33,14 +33,14 @@ import {MAP_BOSSES} from '../map-bosses.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS} from '../dawn-world.js';
 import {TRIAL_ROUTES,createTrialBoss} from '../sky-trials.js';
 import {monsterRuntimeStats} from '../combat-balance.js';
-import {CARDS,ITEMS,SLOTS,PET_RARITIES,PET_EVOLUTIONS,SPECIES} from '../catalog.js';
-import {GEAR_BASE,PET_GEAR_BASE,RARITIES,AFFIX_NAMES,affixRange,primaryAffix,SPECIAL_AFFIXES,TIER_NAMES,QUALITY_POWER,PET_SLOTS} from '../loot.js';
+import {CARDS,ITEMS,SLOTS,PET_RARITIES,PET_EVOLUTIONS,SPECIES} from '../catalog.js?v=6.5.45';
+import {GEAR_BASE,PET_GEAR_BASE,RARITIES,AFFIX_NAMES,affixRange,primaryAffix,SPECIAL_AFFIXES,TIER_NAMES,QUALITY_POWER,PET_SLOTS} from '../loot.js?v=6.5.45';
 import {ENHANCEMENT_POWER} from '../sky-trials.js';
 import {sigilCost} from '../dawn-sigil.js';
 import {GEAR_TIERS} from '../progression.js';
-import {cardEffectsFor} from '../card-effects.js';
+import {cardEffectsFor} from '../card-effects.js?v=6.5.45';
 import {FUSION_PAIRS,fusionKey} from '../pet-fusion.js';
-import {CLASSES,MAPS} from '../catalog.js';
+import {CLASSES,MAPS} from '../catalog.js?v=6.5.45';
 import {SECOND_JOBS} from '../jobs.js';
 import {THIRD_JOBS} from '../third-jobs.js';
 import {JOB_SKILLS} from '../job-skills.js';
