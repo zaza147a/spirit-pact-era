@@ -192,6 +192,23 @@ assert.equal(runDualTick(100,0),'ability:one,attack:one');
 assert.equal(runDualTick(100,100,true),'ability:one,attack:one,ability:two,attack:two');
 
 
+const commanderTransferCode=loadFunction(game,'commanderTransferredPetStats','setPetStance');
+for(const job of ['pactWarrior','spiritCommander']){
+ const commander=player(job),input={atk:1000,matk:1000,def:500,mdef:500};
+ const ctx={player:commander,stat:key=>({atk:200,matk:400,def:100,mdef:80})[key]||0};
+ vm.runInNewContext(commanderTransferCode+'\nthis.transfer=commanderTransferredPetStats',ctx);
+ const result=ctx.transfer(commander.pets[0],input);
+ if(job==='spiritCommander'){
+  assert.equal(result.atk,1060);
+  assert.equal(result.matk,1120);
+  assert.equal(result.def,515);
+  assert.equal(result.mdef,512);
+  assert.equal(input.atk,1000,'cached petStats must not be mutated');
+  commander.pets[0].hp=0;
+  assert.equal(ctx.transfer(commander.pets[0],input),input,'dead pet receives no transfer');
+ }else assert.equal(result,input,'other professions do not transfer commander bonuses');
+}
+
 const attackSource=loadFunction(game,'petAttack','enemyAttack');
 function countPetAttacks(step){
   const party=player('spiritCommander'),foe={hp:1e12,flee:0};
