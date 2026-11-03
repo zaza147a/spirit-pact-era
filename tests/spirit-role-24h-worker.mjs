@@ -24,7 +24,9 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
   assert.ok(s&&d&&Number.isFinite(d.total)&&s.simulated>0);
   const row={level,job,stance:job==='pactWarrior'?'oneAssimilate':'bothAssist',seed,
    wallMs:Math.round(performance.now()-start),simulatedHours:Math.round(s.simulated/36000)/100,
-   completed:s.simulated===duration&&s.reason==='已完成離線時間'&&result.player.hp>0,
+   simulationCompleted:s.simulated===duration&&s.reason==='已完成離線時間'&&result.player.hp>0,
+   sustainable:s.simulated===duration&&s.reason==='已完成離線時間'&&result.player.hp>0&&
+    result.player.pets.every(pet=>pet.hp>0)&&result.player.gold>=p.gold,
    reason:s.reason,alive:result.player.hp>0,kills:s.kills,revives:s.revives||0,
    netGold:result.player.gold-p.gold,pet1Alive:result.player.pets[0].hp>0,
    pet2Alive:result.player.pets[1].hp>0,resonanceActivations:s.resonanceActivations||0,
@@ -34,6 +36,7 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
  }finally{await worker.terminate();}
 }
 assert.equal(rows.length,4);
-console.log(JSON.stringify({summary:true,scenarios:4,completed:rows.filter(x=>x.completed).length,
- stopped:rows.filter(x=>!x.completed).map(x=>({job:x.job,level:x.level,reason:x.reason,simulatedHours:x.simulatedHours})),
+console.log(JSON.stringify({summary:true,scenarios:4,simulationCompleted:rows.filter(x=>x.simulationCompleted).length,
+ sustainable:rows.filter(x=>x.sustainable).length,
+ stopped:rows.filter(x=>!x.simulationCompleted).map(x=>({job:x.job,level:x.level,reason:x.reason,simulatedHours:x.simulatedHours})),
  limitation:'Synthetic mythic gear, 200 unenhanced / 210 SSS, no trials or bosses, fixed attack-magic + defense-support pair and one seed.'}));
