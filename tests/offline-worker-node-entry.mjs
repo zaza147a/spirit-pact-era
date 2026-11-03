@@ -1,5 +1,5 @@
 // Node-only adapter for the real browser offline Worker. No game logic is copied.
-import {parentPort} from 'node:worker_threads';
+import {parentPort,workerData} from 'node:worker_threads';
 
 let rngSeed=0x9e3779b9;
 function seededRandom(){
@@ -7,9 +7,9 @@ function seededRandom(){
  return (rngSeed>>>0)/4294967296;
 }
 const args=new URL(import.meta.url).searchParams;
-rngSeed=(Number(args.get('seed'))>>>0)||0x9e3779b9;
+rngSeed=(Number(workerData?.seed??args.get('seed'))>>>0)||0x9e3779b9;
 // Optional test-only proof: snapshot first PRNG value without consuming combat RNG.
-if(args.has('seedProof')){
+if(workerData?.seedProof===true||args.has('seedProof')){
  const before=rngSeed,firstSample=seededRandom();rngSeed=before;
  parentPort.postMessage({type:'seed-proof',seed:rngSeed,firstSample});
 }
