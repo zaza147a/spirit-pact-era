@@ -53,3 +53,10 @@ export function secondPetDamageFactor(player,petId,{overload=false}={}) {
   if(player.job==='spiritCommander') return overload?1:.7;
   return .5;
 }
+
+// The equipment UI may target the second active companion only for spirit jobs.
+// Other ten jobs must always compare and equip against their single active pet.
+export function equipmentTargetPet(player,targetId=null) {
+ const roster=activePetRoster(player);
+ return roster.find(p=>p.id===targetId)||roster[0]||null;
+}
