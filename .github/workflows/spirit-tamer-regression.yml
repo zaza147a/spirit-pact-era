@@ -203,6 +203,17 @@ jobs:
         run: node tests/spirit-role-42-combat-matrix.mjs
 
 
+  legacy-survival-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare all twelve jobs in 1h same-map survival controls
+        run: node tests/spirit-legacy-survival-control.mjs
+
   spirit-survival-sweep:
     runs-on: ubuntu-latest
     timeout-minutes: 15
