@@ -1,4 +1,4 @@
-import {canonicalDualFusionKey,DUAL_FUSION_TYPES} from './spirit-job-rules.js';
+import {canonicalDualFusionKey,DUAL_FUSION_TYPES,FUSION_TYPES} from './spirit-job-rules.js';
 const TRAITS=[
  ['破星雙牙','pierce'],['鐵誓破陣','guard'],['雙星援斬','heal'],['雷火追魂','burst'],['靈脈互鎖','focus'],['琉璃雙環','cleave'],
  ['鋼鐵雙契','guard'],['護誓協奏','heal'],['鎧靈穿界','pierce'],['星盾脈衝','guard'],['守護共振','focus'],
@@ -27,10 +27,16 @@ const COMMANDER_ROUTES=Object.freeze([
  'relayShelter','balanceChant','massRescue','arcaneReinforce','frostRecovery','prayerRelay',
  'choralFocus','sanctuaryRelay','fortressRevival'
 ]);
-if(TRAITS.length!==DUAL_FUSION_TYPES.length||SIGNATURES.length!==DUAL_FUSION_TYPES.length||WARRIOR_ROUTES.length!==DUAL_FUSION_TYPES.length||COMMANDER_ROUTES.length!==DUAL_FUSION_TYPES.length||new Set(SIGNATURES).size!==SIGNATURES.length||new Set(WARRIOR_ROUTES).size!==WARRIOR_ROUTES.length||new Set(COMMANDER_ROUTES).size!==COMMANDER_ROUTES.length)throw Error('雙靈組合／特色表不完整或重複');
+// Retain the original unique-pair signatures and coefficients; the six
+// mirrored same-type pairs are no longer legal dual-companion formations.
+const OLD_KEYS=FUSION_TYPES.flatMap((a,i)=>FUSION_TYPES.slice(i).map(b=>[a,b].sort().join('+')));
+const uniqueIndexes=DUAL_FUSION_TYPES.map(key=>OLD_KEYS.indexOf(key));
+if(uniqueIndexes.some(i=>i<0)||TRAITS.length!==OLD_KEYS.length||SIGNATURES.length!==OLD_KEYS.length||WARRIOR_ROUTES.length!==OLD_KEYS.length||COMMANDER_ROUTES.length!==OLD_KEYS.length)throw Error('雙靈組合／特色表不完整');
+if(new Set(SIGNATURES).size!==SIGNATURES.length||new Set(WARRIOR_ROUTES).size!==WARRIOR_ROUTES.length||new Set(COMMANDER_ROUTES).size!==COMMANDER_ROUTES.length)throw Error('雙靈組合／特色表不完整或重複');
 export const DUAL_SPIRIT_RULES=Object.fromEntries(DUAL_FUSION_TYPES.map((key,index)=>{
- const [name,trait]=TRAITS[index],cooldownMs=9000+(index%4)*1000;
- return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,signature:SIGNATURES[index]||null,warriorRoute:WARRIOR_ROUTES[index]||null,commanderRoute:COMMANDER_ROUTES[index]||null,cooldownMs,warriorCoefficient:.10+(index%3)*.015,commanderCoefficient:.08+(index%3)*.012})];
+ const sourceIndex=uniqueIndexes[index];
+ const [name,trait]=TRAITS[sourceIndex],cooldownMs=9000+(sourceIndex%4)*1000;
+ return [key,Object.freeze({key,warriorName:'靈契・'+name,commanderName:'萬靈・'+name,trait,signature:SIGNATURES[sourceIndex]||null,warriorRoute:WARRIOR_ROUTES[sourceIndex]||null,commanderRoute:COMMANDER_ROUTES[sourceIndex]||null,cooldownMs,warriorCoefficient:.10+(sourceIndex%3)*.015,commanderCoefficient:.08+(index%3)*.012})];
 }));
 export function dualSpiritResonance(player,roster){
  if(!player?.thirdJob||!['pactWarrior','spiritCommander'].includes(player.job)||roster?.length!==2||roster.some(p=>p.hp<=0))return null;
