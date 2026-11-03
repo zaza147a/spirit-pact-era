@@ -1,4 +1,4 @@
-// 191-200 trial under actual Lv170 and Lv180 gear, rather than Lv200 gear.
+// Lv200 trial uses Lv200 equipment: legendary (survival control) versus mythic (enhancement controls).
 // New classes only; the original trial enemies and revival timers are unchanged.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
@@ -11,18 +11,18 @@ const epoch=2000000000000,duration=20*60000,seeds=[471122,81733],rows=[];
 const route=TRIAL_ROUTES.find(r=>r.map==='worldroot');
 assert.ok(route&&route.level===191);
 function seeded(seed){return ()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);}
-function equipAtLevel(p,level,rank){
+function equipAtLevel(p,level,rarity,rank){
  const rng=seeded(811229+level);
  for(const [slot,old] of Object.entries(p.gear)){
   if(!old)continue;
-  const gear=rollGear(old.id,level,'mythic',rng);
+  const gear=rollGear(old.id,level,rarity,rng);
   gear.uid='lower-level-owner-'+slot;
   if(rank)gear.enhancement=rank;
   p.gear[slot]=gear;
  }
  for(const pet of p.pets)for(const [slot,old]of Object.entries(pet.gear)){
   if(!old)continue;
-  const gear=rollPetGear(old.id,level,'mythic',rng);
+  const gear=rollPetGear(old.id,level,rarity,rng);
   gear.uid='lower-level-'+pet.id+'-'+slot;
   if(rank)gear.enhancement=rank;
   pet.gear[slot]=gear;
@@ -30,17 +30,17 @@ function equipAtLevel(p,level,rank){
  for(const pet of p.pets){pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;}
  const gear=[...Object.values(p.gear).filter(Boolean),...p.pets.flatMap(pet=>Object.values(pet.gear).filter(Boolean))];
  assert.equal(gear.length,16);
- assert.ok(gear.every(item=>item.level===level&&item.rarity==='mythic'&&rankOf(item)===rank));
+ assert.ok(gear.every(item=>item.level===level&&item.rarity===rarity&&rankOf(item)===rank));
  return gear.length;
 }
 for(const job of ['pactWarrior','spiritCommander'])
- for(const gearLevel of [170,180])
- for(const enhancement of [null,'S','SS'])
+ for(const {rarity,enhancement} of [{rarity:'legendary',enhancement:null},{rarity:'mythic',enhancement:null},{rarity:'mythic',enhancement:'SS'}])
  for(const pairKey of ['attack-defense+attack-magic','attack-magic+defense-support'])
  for(const seed of seeds){
- const p=highLevelSpiritPlayer({level:200,job,pairKey,gearRarity:'mythic'});
+ const gearLevel=200;
+ const p=highLevelSpiritPlayer({level:200,job,pairKey,gearRarity:rarity});
  if(job==='pactWarrior')p.petStances={[p.pets[0].id]:'assimilate',[p.pets[1].id]:'assist'};
- const gearCount=equipAtLevel(p,gearLevel,enhancement);
+ const gearCount=equipAtLevel(p,gearLevel,rarity,enhancement);
  p.trialClears={...p.trialClears,worldroot:1};
  p.trialRun={map:'worldroot',index:0,nextAt:epoch+1000,continuous:true,round:2,stopAfterRound:true,
   checkpoint:{version:1,at:epoch,enemies:[],timers:{},jobSkillTimers:{},petSkillTimers:{},
@@ -60,19 +60,19 @@ for(const job of ['pactWarrior','spiritCommander'])
   const s=result.summary;
   assert.ok(s?.simulated>0&&Number.isFinite(s.damage?.total));
   const clears=Math.max(0,(result.player.trialClears?.worldroot||0)-1);
-  const row={job,level:200,map:'worldroot',gearLevel,enhancement:enhancement||'none',pairKey,seed,gearCount,
+  const row={job,level:200,map:'worldroot',gearLevel,rarity,enhancement:enhancement||'none',pairKey,seed,gearCount,
    wallMs:Math.round(performance.now()-start),passedFive:clears>0,
    bossesKilled:s.kills,revives:s.revives||0,reason:s.reason,
    actualHpDps:Math.round(s.damage.total/(s.simulated/1000))};
   rows.push(row);console.log(JSON.stringify(row));
  }finally{await worker.terminate();}
 }
-assert.equal(rows.length,48);
-for(const job of ['pactWarrior','spiritCommander'])for(const gearLevel of [170,180])
- for(const enhancement of ['none','S','SS']){
- const group=rows.filter(r=>r.job===job&&r.gearLevel===gearLevel&&r.enhancement===enhancement);
- console.log(JSON.stringify({summary:true,job,gearLevel,enhancement,scenarios:group.length,
+assert.equal(rows.length,24);
+for(const job of ['pactWarrior','spiritCommander'])
+ for(const {rarity,enhancement} of [{rarity:'legendary',enhancement:'none'},{rarity:'mythic',enhancement:'none'},{rarity:'mythic',enhancement:'SS'}]){
+ const group=rows.filter(r=>r.job===job&&r.rarity===rarity&&r.enhancement===enhancement);
+ console.log(JSON.stringify({summary:true,job,gearLevel:200,rarity,enhancement,scenarios:group.length,
   passedFive:group.filter(r=>r.passedFive).length,
   meanBossesKilled:Number((group.reduce((n,r)=>n+r.bossesKilled,0)/group.length).toFixed(2))}));
 }
-console.log(JSON.stringify({complete:true,scenarios:rows.length,limitations:'Level 200 jobs with actual Lv170/180 mythic player and pet equipment, unenhanced/S/SS; synthetic previously-cleared trial checkpoint, two seeds and two pet pairings; 210 zones always retain SSS and are tested separately.'}));
+console.log(JSON.stringify({complete:true,scenarios:rows.length,limitations:'Only Lv200 gear for Lv200 five-boss trial; legendary unenhanced checks for excessive survival; mythic none/SS controls; two seeds, two legal pet pairings; synthetic previously-cleared trial checkpoint. Lv170/180 unenhanced gear is tested only on 191-200 wild maps.'}));
