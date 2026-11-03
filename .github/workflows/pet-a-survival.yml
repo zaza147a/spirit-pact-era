@@ -1,0 +1,19 @@
+name: Audit 200 trial A-rank companion survival
+on:
+  push:
+    paths:
+      - '.github/workflows/pet-a-survival.yml'
+      - 'tests/worldroot-200-a-rank-pet-survival.test.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Simulate all 150 A-rank companion trials
+        run: node --test tests/worldroot-200-a-rank-pet-survival.test.mjs
