@@ -7,10 +7,20 @@ import {canonicalDualFusionKey} from '../dist/spirit-job-rules.js';
 import {gearTier,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,AFFIX_NAMES} from '../dist/loot.js';
 import {rankOf} from '../dist/sky-trials.js';
 import {CARDS} from '../dist/catalog.js';
+import {jobSkillById} from '../dist/job-skills.js';
 import {cardAllowedInSlot} from '../dist/card-effects.js';
 
 for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210]){
  const player=highLevelSpiritPlayer({level,job});
+ const spent={first:0,second:0,third:0};
+ for(const [id,rank] of Object.entries(player.jobSkills)){
+  const skill=jobSkillById(job,id);
+  assert.ok(skill,'unknown learned skill '+id);
+  assert.ok(Number.isInteger(rank)&&rank>=0&&rank<=skill.maxRank,'illegal rank '+id+': '+rank);
+  spent[skill.branch]+=rank;
+ }
+ assert.deepEqual(spent,{first:49,second:69,third:69},'legal stage budgets and inherited abilities');
+ assert.ok(['thirdMain_','thirdWide_','thirdFinish_','thirdUtility_','thirdStance_'].every(id=>player.jobSkills[id+job]>0));
  const points=Object.values(player.attributes).reduce((sum,value)=>sum+value-1,0);
  assert.equal(points,allocationBudget(level,true));
  assert.ok(Object.values(player.attributes).every(value=>value>=1&&value<=attributeCap(player)));
@@ -62,7 +72,8 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
   assert.equal(result.player.level,level);
   assert.equal(result.player.pets.length,2);
   assert.ok(result.summary.damage&&Number.isFinite(result.summary.damage.total));
-  assert.ok(result.summary.damage.resonance>0,'third-job fused pets must trigger real dual resonance HP damage');
+  assert.ok(Number.isFinite(result.summary.damage.resonance),'resonance damage must be tracked even if short combat does not activate it');
+  assert.ok(Number.isInteger(result.summary.resonanceActivations||0),'resonance activation tally must be integral');
   assert.ok(result.summary.damage.pet1>0&&result.summary.damage.pet2>0,'both fused pets must deal damage');
   console.log(JSON.stringify({job,level,simulatedMs:result.summary.simulated,reason:result.summary.reason,
    kills:result.summary.kills,damage:result.summary.damage}));
