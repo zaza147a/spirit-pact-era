@@ -23,11 +23,11 @@ export function clearInactivePetTimers(clock,player) {
   for(const key of Object.keys(clock))if(!active.has(key))delete clock[key];
   return clock;
 }
-export function dualPetRegen(player,regenByPet) {
+export function dualPetRegen(player,regenByPet,maxSpByPet) {
   for(const pet of activePetRoster(player)){
     if(pet.hp<=0)continue;
     const regen=Math.max(0,Math.floor(Number(regenByPet(pet))||0));
-    const cap=Math.max(0,Number(pet.maxSp)||Number(pet.sp)||0);
+    const cap=Math.max(0,Number(maxSpByPet(pet))||0);
     pet.sp=Math.min(cap,(Number(pet.sp)||0)+regen);
   }
   return player;
