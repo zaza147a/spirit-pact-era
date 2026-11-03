@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
-import {allocationBudget} from '../dist/growth-v5.js';
+import {allocationBudget,attributeBreakdown} from '../dist/growth-v5.js';
 import {attributeCap} from '../dist/adventure-progression.js';
 import {canonicalDualFusionKey} from '../dist/spirit-job-rules.js';
-import {gearTier,GEAR_BASE,PET_GEAR_BASE} from '../dist/loot.js';
+import {gearTier,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,AFFIX_NAMES} from '../dist/loot.js';
 import {rankOf} from '../dist/sky-trials.js';
 import {CARDS} from '../dist/catalog.js';
 import {cardAllowedInSlot} from '../dist/card-effects.js';
@@ -23,6 +23,17 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
  assert.ok(allGear.every(g=>g.level===200&&g.tier===gearTier(200)&&g.rarity==='mythic'));
  assert.ok(allGear.every(g=>rankOf(g)===expectedEnhancement),'wilderness 200 must not use enhancements; dawn 210 uses SSS');
  assert.ok(allGear.every(g=>Object.keys(g.affixes||{}).length===6),'mythic equipment has five regular and one special affix');
+ for(const gear of allGear){
+  const keys=Object.keys(gear.affixes);
+  assert.equal(keys.filter(key=>SPECIAL_AFFIXES.has(key)).length,1,'exactly one mythic special line');
+  assert.ok(keys.every(key=>Object.hasOwn(AFFIX_NAMES,key)),'all affixes recognized');
+  assert.ok(Object.values(gear.affixes).every(value=>Number.isFinite(value)&&value>0));
+ }
+ const breakdown=attributeBreakdown(player,CARDS);
+ assert.equal(breakdown.gearLimit,Math.floor(attributeCap(player)*.3),'30% per-stat gear cap');
+ assert.equal(breakdown.cardLimit,Math.floor(attributeCap(player)*.2),'20% per-stat card cap');
+ assert.ok(Object.values(breakdown.gear).every(n=>n<=breakdown.gearLimit));
+ assert.ok(Object.values(breakdown.card).every(n=>n<=breakdown.cardLimit));
  assert.equal(player.dawnSigil,0,'no farmed dawn sigil at the initial balance baseline');
  assert.equal(player.autoEscapeBoss,level===210,'dawn wilderness farm must be separate from unprepared archon attack');
  assert.deepEqual(player.cards,[]); // all ten owned cards are slotted, not duplicated in bag
