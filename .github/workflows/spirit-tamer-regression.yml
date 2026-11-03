@@ -163,3 +163,15 @@ jobs:
           node-version: '22'
       - name: Compare three auto skill priorities in 36 real worker fights
         run: node tests/spirit-skill-priority-observation.mjs
+
+
+  all-fusion-priority-observation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare all 42 resonance routes under two skill orders and RNG seeds
+        run: node tests/spirit-42-priority-comparison.mjs
