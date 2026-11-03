@@ -103,21 +103,36 @@ for(const job of ['pactWarrior','spiritCommander']){
     const companions=[fused(a,'first'),fused(b,'second')];
     companions[0].nickname='First';companions[1].nickname='Second';
     const target={instanceId:'boss',hp:1e9,def:10};
-    const clock={now:100000}, messages=[];
+    const clock={now:100000}, messages=[],effects={shields:0,heals:0};
     const runContext={
       player:{job,thirdJob:true,pets:companions,activePetId:'first',secondaryPetId:'second'},
       enemy:target,enemies:[target],report:{dualPetDamage:{first:0,second:0,dualResonance:0}},
       timers:{dualSpiritAt:0},dualSpiritResonance,canTriggerDualSpirit,
       activePetRoster:()=>companions,gameNow:()=>clock.now,
       petStats:()=>({atk:100,matk:100,hp:1000}),stat:()=>100,
-      companionRole:pet=>pet.fusion.main,grantPetShield:value=>value,effectsForPet:()=>({}),
-      healPetParty:value=>value,monsterDefenseAgainst:()=>10,hitDamage:value=>value,
+      companionRole:pet=>pet.fusion.main,grantPetShield:value=>{effects.shields++;return value},effectsForPet:()=>({}),
+      healPetParty:value=>{effects.heals++;return value},monsterDefenseAgainst:()=>10,hitDamage:value=>value,
       dealDamage:value=>{target.hp-=value;return value},
       multiTargets:()=>[target],encounterLimit:()=>3,
       message:()=>messages.push(1),award:()=>{},selectEncounterTarget:()=>target
     };
     vm.runInNewContext(triggerSource+'\nthis.fire=triggerDualSpiritResonance',runContext);
+    const rule=dualSpiritResonance(runContext.player,companions);
+    const hpBefore=target.hp;
+    runContext.fire('thirdHit_'+(job==='pactWarrior'?'spiritCommander':'pactWarrior'));
+    assert.equal(messages.length,0,job+' '+key+' rejects the other route');
     runContext.fire('thirdHit_'+job);
+    const delta=hpBefore-target.hp,credited=runContext.report.dualPetDamage.dualResonance;
+    if(['pierce','burst','cleave'].includes(rule.trait)){
+      assert.ok(delta>0&&credited>0,job+' '+key+' must deal and credit damage');
+      assert.ok(Math.abs(delta-credited)<.001,job+' '+key+' damage credit matches real HP loss');
+    }else{
+      assert.equal(credited,0,job+' '+key+' support cannot fabricate DPS credit');
+      assert.equal(delta,0,job+' '+key+' support should not inflict direct damage');
+    }
+    if(rule.trait==='guard')assert.equal(effects.shields,1,job+' '+key+' shield');
+    if(rule.trait==='heal')assert.equal(effects.heals,1,job+' '+key+' heal');
+    if(rule.trait==='focus')assert.ok(target.exposedUntil>clock.now&&target.exposedPower>0,job+' '+key+' expose');
     runContext.fire('thirdHit_'+job);
     assert.equal(messages.length,1,job+' '+key+' duplicate during cooldown');
     clock.now+=12000;
