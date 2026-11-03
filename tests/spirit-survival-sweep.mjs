@@ -5,7 +5,7 @@ import {Worker} from 'node:worker_threads';
 import {performance} from 'node:perf_hooks';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 const epoch=2000000000000,seed=471122,rows=[];
-for(const hours of [1,6])for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of ['attack-magic+attack-magic','attack-magic+defense-support']){
+for(const hours of [1,6])for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of ['attack-magic+attack-defense','attack-magic+defense-support']){
  const p=highLevelSpiritPlayer({level,job,pairKey,gearRarity:'mythic'});
  if(job==='pactWarrior')p.petStances={[p.pets[0].id]:'assimilate',[p.pets[1].id]:'assist'};
  const worker=new Worker(new URL('./offline-worker-node-entry.mjs?clock='+epoch,import.meta.url),{type:'module',workerData:{seed}});
