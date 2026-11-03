@@ -220,7 +220,7 @@ function countPetAttacks(step){
   const party=player('spiritCommander'),foe={hp:1e12,flee:0};
   const clock={now:0},counter={one:0,two:0},timers={pet:0,petById:{}};
   const attackContext={
-    player:party,enemy:foe,timers,classBuffs:{},report:null,
+    player:party,enemy:foe,enemies:[foe],timers,classBuffs:{},report:null,
     SPECIES:{fang:{skill:'attack'}},gameNow:()=>clock.now,
     activePet:()=>party.pets[0],combatPetFactor:id=>secondPetDamageFactor(party,id),
     chooseAttackTarget:()=>{},petStats:()=>({aspd:193,aspdPct:0,crit:0,hit:999,ignoreDef:0}),
