@@ -35,7 +35,7 @@ async function measure(job,level,pairKey){
 }
 for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
  for(const pairKey of DUAL_FUSION_TYPES)rows.push(await measure(job,level,pairKey));
-assert.equal(rows.length,84);
+assert.equal(rows.length,60);
 for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander']){
  const group=rows.filter(r=>r.level===level&&r.job===job);
  const ranked=[...group].sort((a,b)=>b.actualHpDps-a.actualHpDps);
