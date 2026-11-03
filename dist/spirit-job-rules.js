@@ -92,3 +92,34 @@ export const SPIRIT_DAMAGE_BASELINES = Object.freeze({
   warriorCooperativeSecondary:0.35
 });
 // The above numbers are initial simulation inputs, NOT verified final balance.
+
+export const SPIRIT_TRIAL_KILLS = 24;
+export function spiritQuestState(player) {
+ return player?.quests?.[SPIRIT_TRIAL_ID]||null;
+}
+export function startSpiritQuest(player,roster) {
+ if(!SPIRIT_SECOND.includes(player?.job))return '僅御靈使二轉職業可接受雙生靈契';
+ if(!player.reborn||player.level<140)return '需轉生後達到 Base Lv.140';
+ if(player.location!=='skycity')return '請前往蒼穹樞城';
+ if(!canonicalDualFusionKey(roster?.[0],roster?.[1]))return '需要兩隻出戰融合夥伴';
+ player.quests??={};
+ if(!player.quests[SPIRIT_TRIAL_ID])player.quests[SPIRIT_TRIAL_ID]={started:true,kills:0,done:false};
+ return null;
+}
+export function recordSpiritQuestVictory(player,roster,defeated) {
+ const q=spiritQuestState(player);
+ if(!SPIRIT_SECOND.includes(player?.job)||!q?.started||q.done)return false;
+ if(!defeated||!Number.isFinite(defeated.level)||defeated.level<101||defeated.level>150)return false;
+ if(!canonicalDualFusionKey(roster?.[0],roster?.[1])||roster.some(p=>p.hp<=0))return false;
+ q.kills=Math.min(SPIRIT_TRIAL_KILLS,Math.max(0,Math.floor(q.kills||0))+1);
+ return true;
+}
+export function completeSpiritQuest(player,roster) {
+ const q=spiritQuestState(player);
+ if(!q?.started||q.done)return q?.done?null:'尚未接受雙生靈契試煉';
+ if(player.location!=='skycity')return '必須回蒼穹樞城立下雙靈誓約';
+ if(!canonicalDualFusionKey(roster?.[0],roster?.[1]))return '完成誓約仍需同時攜帶兩隻融合夥伴';
+ if((q.kills||0)<SPIRIT_TRIAL_KILLS)return `雙靈共同戰勝101–150級敵人 ${q.kills||0}／${SPIRIT_TRIAL_KILLS}`;
+ q.done=true;q.completedAt=Date.now();
+ return null;
+}
