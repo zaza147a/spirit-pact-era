@@ -33,6 +33,11 @@ test('second job roles use distinct damage caps',()=>{
   assert.equal(secondPetDamageFactor(sample('spiritCommander'),'b'),.7);
   assert.equal(secondPetDamageFactor(sample('spiritCommander'),'b',{overload:true}),1);
   assert.equal(secondPetDamageFactor(sample('pactWarrior'),'b'),.35);
+  assert.equal(secondPetDamageFactor(sample('pactWarrior'),'a'),.5);
+  const warrior=sample('pactWarrior');
+  warrior.petStances={a:'assimilate',b:'assist'};
+  assert.equal(secondPetDamageFactor(warrior,'a'),0);
+  assert.equal(secondPetDamageFactor(warrior,'b'),.35);
 });
 
 test('old saves without second pet normalize safely',()=>{
