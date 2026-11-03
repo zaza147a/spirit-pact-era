@@ -21,6 +21,7 @@ test('third hit resonance uses cooldown and only owner third hit',()=>{
   const rule=dualSpiritResonance({job,thirdJob:true},pets);
   assert.ok(canTriggerDualSpirit(rule,'thirdHit_'+job,15000,0,'enemy'));
   assert.equal(canTriggerDualSpirit(rule,'pet',16000,15000,'enemy'),false);
+  assert.equal(canTriggerDualSpirit(rule,'thirdHit_'+(job==='pactWarrior'?'spiritCommander':'pactWarrior'),16000,0,'enemy'),false);
   assert.equal(canTriggerDualSpirit(rule,'thirdHit_'+job,16000,15000,'enemy'),false);
  }
 });
