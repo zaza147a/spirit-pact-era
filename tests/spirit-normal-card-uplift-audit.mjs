@@ -36,11 +36,14 @@ function makePlayer(job,mode='none'){
  p.offline={at:epoch,enabled:true};p.manualPaused=false;
  for(const slot of allSlots){
   p.sockets[slot]=null;
-  if(mode==='none'||!p.gear[slot])continue;
+  // Card sockets belong to the character, not the currently equipped item.
+  // A two-handed weapon must not disable the left-hand card socket.
+  if(mode==='none')continue;
   const options=legalCards(slot).sort((a,b)=>score(b[1],mode,job)-score(a[1],mode,job));
   assert.ok(options.length,'missing regular card '+slot);
   p.sockets[slot]=options[0][0];
  }
+ assert.equal(Object.values(p.sockets).filter(Boolean).length,mode==='none'?0:10);
  for(const [slot,id] of Object.entries(p.sockets)){
   if(!id)continue;assert.ok(!CARDS[id].boss&&cardAllowedInSlot(CARDS[id],slot));
  }
