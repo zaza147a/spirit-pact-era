@@ -96,3 +96,13 @@
 #gameShell #characterPanel #companion .dual-pet-unit .hero .art-hero{width:min(86%,170px)!important;max-width:100%!important;height:clamp(118px,14vh,170px)!important;object-fit:contain}
 #gameShell #characterPanel #companion .dual-pet-unit .hero strong{font-size:15px;line-height:1.5}
 @media(max-width:520px){#gameShell #characterPanel>.party-hud{grid-template-columns:minmax(0,1fr)}}
+
+/* Desktop browser zoom must never trap the document in a fixed-height viewport. */
+@media(min-width:1001px){
+ html{overflow-y:auto}
+ body:has(#gameShell:not([hidden])){overflow-x:auto;overflow-y:auto}
+ #gameShell:not([hidden]){height:auto;min-height:100dvh;overflow:visible}
+ #gameShell>.layout{height:auto;min-height:0;flex:none;align-items:start}
+ #gameShell>.layout>.panel{height:auto;max-height:none;overflow:visible}
+ #gameShell>.layout>.collection #side{max-height:none;overflow-y:visible}
+}
