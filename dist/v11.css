@@ -72,3 +72,4 @@ body.spirit-dual-ui .dual-growth-next summary{cursor:pointer;color:#f1d99f;font-
 body.spirit-dual-ui .dual-growth-next summary:focus-visible{outline:2px solid #f1d99f;outline-offset:3px}
 body.spirit-dual-ui .dual-growth-next ul{margin:7px 0 0;padding-left:17px;color:#bfced0;font-size:11px;line-height:1.55}
 body.spirit-dual-ui .dual-growth-next li+li{margin-top:4px}
+#bossCardNotice .art-large{display:block;width:190px;height:190px;max-width:100%;object-fit:contain}

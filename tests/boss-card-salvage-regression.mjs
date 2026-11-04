@@ -35,6 +35,9 @@ assert.equal(new Set(zones.map(z=>JSON.stringify(CARD_PROFILES[z].boss))).size,2
 for(const zone of zones){
  assert.ok(BOSS_IDENTITIES[zone].detail.length>=8,zone+' 缺少卡片介紹');
  assert.deepEqual(CARD_PROFILES[zone].boss,BOSS_IDENTITIES[zone].effects,zone+' 配置未套用');
+ const card=createWorldCards([],{[zone]:{id:`boss-${zone}`,name:'驗收首領',map:zone,level:210,boss:true}})[`boss-${zone}`];
+ assert.ok(card.description.includes('專屬效果：'),zone+' 缺少專屬功能');
+ assert.ok(!/畢業.*選擇|基本上限|固定數值隨|共用王卡增傷上限/.test(card.description),zone+' 王卡介紹包含不必要說明');
 }
 console.log('all twenty boss card identities passed');
 

@@ -72,15 +72,8 @@ export const BOSS_SLOT_EFFECTS=Object.freeze({
  celestial:{matkPct:21,crit:12,critDmg:29,magicDamage:6},worldroot:{atkPct:16,matkPct:16,crit:12,critDmg:30},
  dawnrift:{atkPct:28,matkPct:28,critDmg:30,hit:10}
 });
-const BOSS_ROLE_DESCRIPTIONS={
- headUpper:'上段頭飾的畢業能力值選擇',headMiddle:'中段頭飾的畢業能力值選擇',headLower:'下段頭飾的畢業能力值選擇',
- armor:'盔甲的生命與抗性畢業選擇',leftHand:'副手的生命與防護畢業選擇',
- garment:'披風的生存與抗性畢業選擇',shoes:'鞋子的生命與續戰畢業選擇',
- rightHand:'武器的物理／魔法輸出畢業選擇',accessory1:'第一飾品的輸出畢業選擇',accessory2:'第二飾品的輸出畢業選擇'
-};
 export const BOSS_IDENTITIES=Object.freeze(Object.fromEntries(Object.entries(BOSS_IDENTITIES_BASE).map(([id,identity])=>{
- const slot=id==='dawnrift'?'rightHand':CARD_SLOT_ORDER[Object.keys(CARD_THEMES).filter(zone=>zone!=='dawnrift').indexOf(id)%10];
- return [id,{...identity,effects:BOSS_SLOT_EFFECTS[id],detail:`${identity.title}：${BOSS_ROLE_DESCRIPTIONS[slot]}；王卡效果獨立累加，不受共用王卡增傷上限限制`}];
+ return [id,{...identity,effects:BOSS_SLOT_EFFECTS[id]}];
 })));
 export const CARD_PROFILES=Object.fromEntries(Object.entries(CARD_THEMES).map(([id,theme])=>[id,{theme,profiles:Array.from({length:10},(_,i)=>effectsFor(id,i)),boss:BOSS_IDENTITIES[id]?.effects||effectsFor(id,8,true)}]));
 // Twenty progression bosses form two distinct graduating options for each of ten slots.
@@ -100,5 +93,5 @@ export function cardEffectsFor(card,level=1){const power=GEAR_TIERS[gearTierForL
 export const cardDescription=(card,level=1)=>card?`${card.theme}：${describeCardEffects(cardEffectsFor(card,level))}。`:'空卡位';
 export function cardAllowedInSlot(card,slot,job=null){return !!card?.slots?.includes(slot)&&(card.map!=='dawnrift'||job===null||['pactWarrior','spiritCommander'].includes(job));}
 export function migrateCardBindings(player,cards,slots){const returned=[];for(const slot of Object.keys(slots)){const id=player.sockets[slot];if(!id||cardAllowedInSlot(cards[id],slot,player.job))continue;if(!cards[id])continue;const held=player.cards.find(c=>c.id===id);if(held)held.qty++;else player.cards.push({id,qty:1});player.sockets[slot]=null;returned.push({id,slot});}if(returned.length)player.cardBindingMigration={version:2,returned};return returned;}
-export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。專屬效果：'+(BOSS_MECHANIC_TEXT[m.map]||'')+'。'):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
+export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?'專屬效果：'+(BOSS_MECHANIC_TEXT[m.map]||'')+'。':''}`}];}));}
 export function socketCardBonus(sockets,cards,key,level=1){return Object.values(sockets||{}).reduce((sum,id)=>sum+(cardEffectsFor(cards[id],level)[key]||0),0);}
