@@ -115,3 +115,31 @@
 #gameShell #characterPanel #companion .dual-pet-unit .bar{margin:2px 0 5px}
 #gameShell #characterPanel #companion .dual-pet-unit .hero strong{font-size:14px;line-height:1.3}
 #gameShell #characterPanel #companion .dual-pet-unit .hero .pill{font-size:11px;line-height:1.35}
+
+/* Three independently scrolling desktop rails; fluid two/one-column fallback. */
+@media(min-width:1301px){
+ html{overflow:hidden}
+ body:has(#gameShell:not([hidden])){overflow:hidden}
+ #gameShell:not([hidden]){height:100dvh;min-height:0;overflow:hidden}
+ #gameShell>.layout{flex:1;min-height:0;height:auto;overflow:hidden;align-items:stretch}
+ #gameShell>.layout>.panel{height:100%;min-height:0;max-height:none;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable}
+ #gameShell>.layout>.collection #side{max-height:none;overflow:visible}
+}
+@media(min-width:701px) and (max-width:1300px){
+ html{overflow-y:auto}
+ body:has(#gameShell:not([hidden])){overflow-x:hidden;overflow-y:auto}
+ #gameShell:not([hidden]){height:auto;min-height:100dvh;overflow:visible}
+ #gameShell>.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,360px);gap:10px;height:auto;min-height:0;flex:none;align-items:start;padding:0 12px 12px}
+ #gameShell>.layout>.panel{position:static;height:auto;max-height:none;min-height:0;overflow:visible}
+ #gameShell>.layout>.character{grid-column:1/-1;grid-row:1}
+ #gameShell>.layout>.battle{grid-column:1;grid-row:2}
+ #gameShell>.layout>.collection{grid-column:2;grid-row:2}
+ #gameShell>.layout>.collection #side{max-height:none;overflow:visible}
+}
+@media(max-width:700px){
+ html{overflow-y:auto}
+ body:has(#gameShell:not([hidden])){overflow-x:hidden;overflow-y:auto}
+ #gameShell:not([hidden]){height:auto;min-height:100dvh;overflow:visible}
+ #gameShell>.layout{height:auto;min-height:0;flex:none;overflow:visible}
+ #gameShell>.layout>.panel{height:auto;max-height:none;overflow:visible}
+}
