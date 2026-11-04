@@ -8,6 +8,13 @@
 .gear-affixes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 11px;margin:7px 0;font-size:.77rem;color:#cdd9e5}
 .gear-affixes span{overflow-wrap:anywhere}
 .gear-actions{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.equipped-card{margin:12px 0 4px;padding:12px;border:1px solid #5b9fa7;border-left:4px solid #6de0cc;border-radius:10px;background:linear-gradient(125deg,#193d47,#112631);box-shadow:0 3px 12px #0003;max-width:100%;overflow-wrap:anywhere}
+.equipped-card-header{display:flex;align-items:center;gap:10px}.equipped-card-symbol{display:grid;place-items:center;flex-shrink:0;width:38px;height:38px;border-radius:9px;background:#2f7574;color:#e8fff6;font-size:1.4rem;box-shadow:inset 0 0 0 1px #70d8bd}
+.equipped-card-header small{display:block;color:#a9e5dc;font-size:.72rem;font-weight:700;letter-spacing:.04em}.equipped-card-header strong{display:block;color:#f0fffb;font-size:1rem;line-height:1.5}
+.equipped-card-effect{margin:10px 0;padding:9px 10px;background:#091d27a8;border:1px solid #34616c;border-radius:7px;color:#e4f4f0;font-size:.82rem;line-height:1.6}
+.equipped-card-footer{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;color:#b6d9d5;font-size:.72rem}.equipped-card-footer button{margin:0;padding:6px 11px;font-size:.75rem}
+.equipped-card-boss{border-color:#c99b53;border-left-color:#ffca68;background:linear-gradient(125deg,#473722,#241f2d);box-shadow:0 3px 15px #bb843023}.equipped-card-boss .equipped-card-symbol{background:#815b27;color:#fff1bd;box-shadow:inset 0 0 0 1px #e6bb67}.equipped-card-boss .equipped-card-header small{color:#ffcf79}.equipped-card-boss .equipped-card-effect{background:#261e1d;border-color:#8d7048}
+.equipped-card-empty{margin:10px 0 3px;padding:8px 10px;border:1px dashed #496474;border-radius:8px;color:#91a9b8;font-size:.78rem}
 @media(max-width:450px){.gear-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.gear-affixes{grid-template-columns:1fr}}
 .wallet-line{display:flex;justify-content:space-between;align-items:center;margin:10px 0;padding:10px 12px;background:#273b32;border:1px solid #7c9b59;border-radius:9px;color:#ffe5a1;font-size:.92rem}.wallet-line b{color:#fff2be;font-size:1.17rem}
 .log-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}.log-tabs button{flex:1 0 auto;font-size:.76rem;padding:7px 9px}.log-tabs button.active{background:#30605b;border-color:#62b9a1;color:#f1fffb}

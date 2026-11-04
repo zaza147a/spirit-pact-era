@@ -15,7 +15,7 @@ test('class eligibility includes universal gear, excludes other classes, and lea
 });
 async function app(){let source=readFileSync(new URL('game.js',root),'utf8'),context={console,document:{getElementById:()=>({})},localStorage:{setItem:()=>{}}};
  for(const match of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const module=await import(new URL(match[2],root));for(const name of match[1].split(',').map(n=>n.trim())){const[original,alias]=name.split(/\s+as\s+/);context[alias||original]=module[original];}}
- source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,gearComparison,dismantle,renderBag,setCategory:c=>bagCategory=c};render=()=>{};message=()=>{};toast=()=>{};save=()=>{};');vm.createContext(context);vm.runInContext(source,context);return context;
+ source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,gearComparison,equippedCardDisplay,dismantle,renderBag,setCategory:c=>bagCategory=c};render=()=>{};message=()=>{};toast=()=>{};save=()=>{};');vm.createContext(context);vm.runInContext(source,context);return context;
 }
 test('player and pet comparisons include MATK, always show ATK/MATK even when unchanged, and restore equipped gear',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('比較測試','mage'));a.setPlayer(p);
@@ -33,6 +33,17 @@ test('equipment comparison localizes labels and previews capped mitigation and p
  const petOriginal=JSON.stringify(pet.gear),petPreview=a.gearComparison({id:'petArmor',uid:'pet-preview',level:1,rarity:'mythic',affixes:{damageReduction:12,critDmg:8,ignoreDef:5}});
  assert.match(petPreview,/最終減傷/);assert.match(petPreview,/暴擊傷害/);assert.match(petPreview,/無視防禦/);
  assert.equal(JSON.stringify(pet.gear),petOriginal);
+});
+test('character equipment highlights installed cards separately with a boss distinction and retains removal action',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('卡片外觀','mage'));a.setPlayer(p);
+ assert.match(a.equippedCardDisplay('rightHand'),/卡片插槽 · 尚未鑲嵌/);
+ const cardId=Object.keys(c.CARDS).find(id=>c.CARDS[id].boss&&c.CARDS[id].slots.includes('rightHand'));
+ assert.ok(cardId);
+ p.sockets.rightHand=cardId;
+ const html=a.equippedCardDisplay('rightHand');
+ assert.match(html,/equipped-card-boss/);assert.match(html,/首領卡片/);
+ assert.match(html,/卸下卡片/);assert.match(html,/換裝保留/);
+ assert.match(html,new RegExp(c.CARDS[cardId].name));
 });
 test('manual dismantle finds exact UID after bag reorder; character and pet equipment buttons are present; worn gear stays untouched',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('分解測試','mage'));a.setPlayer(p);const kept={id:'oneStaff',uid:'worn',level:1,rarity:'common',affixes:{matk:1}},target={id:'blade',uid:'target',level:1,rarity:'rare',affixes:{atk:8}},other={id:'ring',uid:'other',level:1,rarity:'common',affixes:{matk:1}};p.gear.rightHand=kept;p.bag=[other,{id:'red_small',qty:2},target,{id:'petCirclet',uid:'petgear',level:1,rarity:'common',affixes:{matk:5}}];
