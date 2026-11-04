@@ -23,6 +23,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify bulk category sales and item protection
+        run: node tests/bulk-sale-regression.mjs
       - name: Verify boss card rarity and compound salvage conditions
         run: node tests/boss-card-salvage-regression.mjs
       - name: Smoke test real offline Node Worker
