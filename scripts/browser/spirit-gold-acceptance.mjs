@@ -36,7 +36,8 @@ try{
   fixture.dawnNotified=true;
   fixture.thirdJob=true;
   fixture.outfitUnlocks=['S','SS','SSS'];
-  fixture.gold=6_000_000_000;
+  fixture.gold=500_000_000;
+  fixture.bag.push({id:'gold_bar',qty:55});
   await page.locator('[data-slot-select="0"]').click();
   await page.locator('#saveFile').setInputFiles({name:job+'.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:2,player:fixture}))});
   await page.getByRole('heading',{name:fixture.name,exact:true}).waitFor();
