@@ -34,7 +34,9 @@ jobs:
         with:
           node-version: '22'
       - name: Validate boss-card data, sockets and salvage
-        run: node tests/boss-card-salvage-regression.mjs
+        run: |
+          node tests/boss-card-salvage-regression.mjs
+          node tests/boss-card-runtime.test.mjs
       - name: Validate card effects and card recycling
         run: |
           node tests/card-balance-v404.test.mjs

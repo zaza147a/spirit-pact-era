@@ -1,4 +1,5 @@
 import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=6.5.0';
+import {BOSS_MECHANIC_TEXT} from './boss-card-runtime.js?v=6.5.46';
 export const CARD_THEMES={starter:'精準啟程',forest:'疾風連擊',desert:'破甲獵殺',frost:'寒霜堅守',astral:'秘法儲能',volcano:'燼火爆發',abyss:'潮汐續航',ruins:'機巧貫穿',eclipse:'月影奇襲',celestial:'星宮協調',skyport:'蒼港風行',gearfell:'千輪重擊',aether:'以太共振',stormforge:'雷霆迅擊',zenith:'天極決斷',starshore:'星瀾追獵',oathwood:'古誓共生',nightclock:'永夜時序',sungrave:'曜龍決意',worldroot:'界源調律',dawnrift:'黎明裁界'};
 export const CARD_SLOT_ORDER=['headUpper','headMiddle','headLower','armor','rightHand','leftHand','garment','shoes','accessory1','accessory2'];
 const offensive=[
@@ -62,10 +63,10 @@ export const BOSS_SLOT_EFFECTS=Object.freeze({
  starter:{STR:9,VIT:7},skyport:{DEX:9,AGI:7},
  forest:{INT:9,DEX:7},gearfell:{VIT:10,STR:6},
  desert:{LUK:9,DEX:7},aether:{INT:10,LUK:6},
- frost:{hpPct:26,defPct:18,mdefPct:13},stormforge:{hpPct:24,defPct:15,damageReduction:3},
+ frost:{hpPct:26,defPct:18,mdefPct:13},stormforge:{hpPct:24,defPct:18,mdefPct:10},
  astral:{atkPct:25,matkPct:25,hit:8},zenith:{atkPct:28,critDmg:30,crit:6},
- volcano:{hpPct:23,defPct:15,damageReduction:3},starshore:{hpPct:21,mdefPct:18,fleePct:17},
- abyss:{hpPct:25,mdefPct:17,damageReduction:3},oathwood:{hpPct:27,defPct:16,mdefPct:16},
+ volcano:{hpPct:23,defPct:16,mdefPct:12},starshore:{hpPct:21,mdefPct:18,fleePct:17},
+ abyss:{hpPct:25,mdefPct:19,defPct:12},oathwood:{hpPct:27,defPct:16,mdefPct:16},
  ruins:{hpPct:22,fleePct:20,mdefPct:13},nightclock:{hpPct:24,defPct:14,mpPct:18},
  eclipse:{atkPct:20,crit:14,critDmg:29},sungrave:{atkPct:22,crit:11,critDmg:35},
  celestial:{matkPct:21,crit:12,critDmg:29,magicDamage:6},worldroot:{atkPct:16,matkPct:16,crit:12,critDmg:30},
@@ -97,7 +98,7 @@ const LABELS={atk:'ATK',matk:'MATK',hp:'HP',mp:'SP',def:'DEF',mdef:'MDEF',atkPct
 export const describeCardEffects=effects=>Object.entries(effects).map(([key,v])=>`${LABELS[key]||key} ${v>=0?'+':''}${Number(v.toFixed(2))}${key.endsWith('Pct')||['crit','critDmg','ignoreDef','magicDamage','damageReduction'].includes(key)?'%':''}`).join('、');
 export function cardEffectsFor(card,level=1){const power=GEAR_TIERS[gearTierForLevel(level)-1].power;return Object.fromEntries(Object.entries(card?.effects||{}).map(([k,v])=>[k,['atk','matk','def','mdef','hp','mp','hit','flee'].includes(k)?Math.round(v*power):v]));}
 export const cardDescription=(card,level=1)=>card?`${card.theme}：${describeCardEffects(cardEffectsFor(card,level))}。`:'空卡位';
-export function cardAllowedInSlot(card,slot){return !!card?.slots?.includes(slot);}
-export function migrateCardBindings(player,cards,slots){const returned=[];for(const slot of Object.keys(slots)){const id=player.sockets[slot];if(!id||cardAllowedInSlot(cards[id],slot))continue;if(!cards[id])continue;const held=player.cards.find(c=>c.id===id);if(held)held.qty++;else player.cards.push({id,qty:1});player.sockets[slot]=null;returned.push({id,slot});}if(returned.length)player.cardBindingMigration={version:2,returned};return returned;}
-export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。'):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
+export function cardAllowedInSlot(card,slot,job=null){return !!card?.slots?.includes(slot)&&(card.map!=='dawnrift'||job===null||['pactWarrior','spiritCommander'].includes(job));}
+export function migrateCardBindings(player,cards,slots){const returned=[];for(const slot of Object.keys(slots)){const id=player.sockets[slot];if(!id||cardAllowedInSlot(cards[id],slot,player.job))continue;if(!cards[id])continue;const held=player.cards.find(c=>c.id===id);if(held)held.qty++;else player.cards.push({id,qty:1});player.sockets[slot]=null;returned.push({id,slot});}if(returned.length)player.cardBindingMigration={version:2,returned};return returned;}
+export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。專屬效果：'+(BOSS_MECHANIC_TEXT[m.map]||'')+'。'):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
 export function socketCardBonus(sockets,cards,key,level=1){return Object.values(sockets||{}).reduce((sum,id)=>sum+(cardEffectsFor(cards[id],level)[key]||0),0);}
