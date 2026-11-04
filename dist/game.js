@@ -118,7 +118,25 @@ let resonanceUsedAt=new Map();
 let originalPactCounters=new Map();
 let secondaryPetEffects={};
 function combatPetFactor(pet){const petId=typeof pet==='string'?pet:pet?.id;return secondPetDamageFactor(player,petId,{overload:player?.job==='spiritCommander'&&player.thirdJob&&classBuffs.dualOverload?.until>gameNow()});}
-function pactAssimilationBonus(type){if(player?.job!=='pactWarrior')return 0;const ratios={atk:3.20,matk:1.65,def:.28,mdef:.28,hp:.16};if(!ratios[type])return 0;return activePetRoster(player).filter(p=>p.hp>0&&player.petStances?.[p.id]==='assimilate').reduce((total,pet)=>total+petStats(pet)[type]*ratios[type],0)*sigilBonus(player)[type];}
+function pactAssimilationBonus(type){
+ if(player?.job!=='pactWarrior')return 0;
+ const ratios={atk:3.20,matk:1.65,def:.28,mdef:.28,hp:.16};
+ if(!ratios[type])return 0;
+ return activePetRoster(player).filter(p=>p.hp>0&&player.petStances?.[p.id]==='assimilate').reduce((total,pet)=>{
+  const base=petStats(pet)[type]; // already includes pet level, rarity, evolution, IV and flat equipment
+  // Pet weapon/armor affix investment additionally trains assimilation. HP% is
+  // already included in petStats, so never double-count that multiplier.
+  const affixes=Object.values(pet.gear||{}).reduce((n,item)=>{
+   if(!item||(item.level||1)>pet.level)return n;
+   const e=enhancedAffixes(item);
+   if(type==='atk')return n+(e.atkPct||0)+((e.crit||0)*.20)+((e.critDmg||0)*.08)+((e.aspdPct||0)*.20);
+   if(type==='matk')return n+(e.matkPct||0)+((e.magicDamage||0)*.30)+((e.ignoreDef||0)*.10);
+   return n;
+  },0);
+  const gearTraining=['atk','matk'].includes(type)?1+Math.min(.20,Math.max(0,affixes)/200):1;
+  return total+base*ratios[type]*gearTraining;
+ },0)*sigilBonus(player)[type];
+}
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
  // Derive from current owner combat stats every time; never mutate pet's cached base.
