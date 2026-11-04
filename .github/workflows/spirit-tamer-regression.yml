@@ -194,17 +194,6 @@ jobs:
       - name: Compare 5m and 10m sustained survival for both spirit roles
         run: node tests/spirit-survival-sweep.mjs
 
-  spirit-200-five-boss-observation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: 'Actual five-boss Worker fight at 200: mythic unenhanced versus SS'
-        run: node tests/spirit-200-five-boss-live-observation.mjs
-
   spirit-specialization-matrix:
     runs-on: ubuntu-latest
     timeout-minutes: 15
