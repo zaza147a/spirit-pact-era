@@ -51,7 +51,7 @@ export function reforgeGear(item,lockedKeys=[],rng=Math.random){
   if(used.has(next))return {error:'無法產生不重複的合法詞條'};
   let value=generated.affixes[next];
   if(!Number.isFinite(value)){
-   const [min,max]=affixRange(next,item.tier,item.rarity);
+   const [min,max]=affixRange(next,item.tier,item.rarity,item.id);
    value=Math.floor(min+Math.max(0,Math.min(.999999,rng()))*(max-min+1));
    if(pet&&!SPECIAL_AFFIXES.has(next)&&!['atk','matk'].includes(next))value=Math.round(value*10/3);
   }
