@@ -68,7 +68,7 @@ export const BOSS_SLOT_EFFECTS=Object.freeze({
  volcano:{hpPct:23,defPct:16,mdefPct:12},starshore:{hpPct:21,mdefPct:18,fleePct:17},
  abyss:{hpPct:25,mdefPct:19,defPct:12},oathwood:{hpPct:27,defPct:16,mdefPct:16},
  ruins:{hpPct:22,fleePct:20,mdefPct:13},nightclock:{hpPct:24,defPct:14,mpPct:18},
- eclipse:{atkPct:20,crit:14,critDmg:29},sungrave:{atkPct:22,crit:11,critDmg:35},
+ eclipse:{atkPct:20,crit:14,critDmg:29},sungrave:{atkPct:14,matkPct:20,crit:11,critDmg:35},
  celestial:{matkPct:21,crit:12,critDmg:29,magicDamage:6},worldroot:{atkPct:16,matkPct:16,crit:12,critDmg:30},
  dawnrift:{atkPct:28,matkPct:28,critDmg:30,hit:10}
 });

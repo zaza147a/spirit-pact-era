@@ -63,6 +63,9 @@ const live=player('hunter','sungrave'),offline=structuredClone(live);
 const sequence=[1_000_000,1_000_100,1_000_200,1_000_300,1_000_400,1_000_500];
 assert.deepEqual(sequence.map(now=>hit(live,{now,range:'ranged'})),sequence.map(now=>hit(offline,{now,range:'ranged'})));
 assert.deepEqual(live.bossCardRuntime,offline.bossCardRuntime);
+const sungraveMage=player('wizard','sungrave');
+for(let i=0;i<4;i++)assert.equal(hit(sungraveMage,{now:1_000_000+i*100,magical:true}),0);
+assert.equal(hit(sungraveMage,{now:1_000_400,magical:true}),700,'飾品1曜骨的魔法追擊應與遠距物理等效');
 for(const zone of ['starter','forest','desert','astral','eclipse','celestial','skyport','gearfell','aether','zenith','sungrave','worldroot']){
  const p=player(zone==='worldroot'?'performer':zone==='eclipse'?'assassin':'hunter',zone);
  if(['starter','gearfell'].includes(zone))bossCardIncoming(p,cards,{now:1_000_000,boss:true,damage:1000,maxHp:10000});

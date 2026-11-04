@@ -57,6 +57,8 @@ for(const zone of ['eclipse','sungrave','celestial','worldroot']){
  assert.ok(card.crit>0&&card.critDmg>0,zone+' 飾品王卡必須常駐提供暴擊率和暴擊傷害');
  assert.ok(CARD_SLOT_PROFILES[zone].boss.some(slot=>slot.startsWith('accessory')),zone+' 必須是飾品王卡');
 }
+assert.ok(BOSS_SLOT_EFFECTS.eclipse.atkPct>0,'飾品1應保留物理專精王卡');
+assert.ok(BOSS_SLOT_EFFECTS.sungrave.matkPct>0,'飾品1應有提供MATK的王卡');
 const dawnCard=createWorldCards([],{dawnrift:{id:'dawn-archon',name:'黎明裁界者',map:'dawnrift',level:210,boss:true}})['dawn-archon'];
 assert.deepEqual(dawnCard.slots,['rightHand'],'210 首領王卡應維持武器輸出定位');
 assert.doesNotMatch(dawnCard.description,/合計上限|符合條件|生命低於 35%/,'不應保留舊的條件增傷文字');

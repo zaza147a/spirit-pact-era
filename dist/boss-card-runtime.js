@@ -21,7 +21,7 @@ export const BOSS_MECHANIC_TEXT=Object.freeze({
  starshore:'成功閃避時恢復最大生命3%（5秒冷卻）',
  oathwood:'受到首領攻擊後恢復最大生命12%（20秒冷卻）',
  nightclock:'生命低於50%且受到攻擊時恢復最大生命12%（24秒冷卻）',
- sungrave:'遠距物理每5次攻擊追加70%追獵箭擊；近戰每6次追加40%追擊',
+ sungrave:'遠距物理或魔法每5次攻擊追加70%曜龍追擊；近戰物理每6次追加40%追擊',
  worldroot:'舞孃每4次主攻追加90%協奏音刃（3.5秒冷卻）；其他職業每5次追加35%共鳴攻擊（5秒冷卻）',
  dawnrift:'只限靈契君王與萬靈宗師：靈契君王每6次主攻追加65%裁決；萬靈宗師兩夥伴在8秒內分別命中後，8秒內每次夥伴命中追加24%雙靈追擊'
 });
@@ -65,7 +65,7 @@ export function bossCardHitBonus(player,cards,event){
     const power=player.job==='crusader'?.50:player.job==='monk'?.80:.85;
     add(power,{every:rank});
    }break;
-   case 'sungrave':if(owner&&!magical)add(range==='ranged'?.70:.40,{every:range==='ranged'?5:6});break;
+   case 'sungrave':if(owner)add(magical||range==='ranged'?.70:.40,{every:magical||range==='ranged'?5:6});break;
    case 'worldroot':if(owner){
     const dance=player.job==='performer';
     const ready=dance&&s.songCharge>0;

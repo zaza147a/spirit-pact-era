@@ -12,16 +12,16 @@ import {cardAllowedInSlot,cardEffectsFor} from '../dist/card-effects.js';
 import {parentJob} from '../dist/jobs.js';
 import {comparisonPlayer} from './fixtures/spirit-vs-class-player.mjs';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
-const epoch=2000000000000,seed=471122,roles=new Set(['pactWarrior','spiritCommander']),quick=process.env.QUICK_NORMAL_CARD_AUDIT==='1';
+const epoch=2000000000000,seed=471122,roles=new Set(['pactWarrior','spiritCommander']),quick=process.env.QUICK_NORMAL_CARD_AUDIT==='1',bossMode=process.env.BOSS_CARD_AUDIT==='1';
 const stats=['baseline','agi-luk','vit-luk','agi-dex','vit-agi','luk-focus','agi-focus','dex-focus','int-focus'];
 const equipmentModes=['base','power','crit','speed','pierce'];
 const cardModes=['base','power','crit','speed','pierce'];
 function allocate(p,focus){const main=SECOND_JOBS[p.job].attribute;const order=[focus,main,'LUK','AGI','DEX','INT','VIT','STR'];let left=allocationBudget(210,true);for(const k of Object.keys(p.attributes))p.attributes[k]=1;for(const k of [...new Set(order)]){const n=Math.min(149,left);p.attributes[k]+=n;left-=n;}assert.equal(left,0);}
-function cardScore(card,mode,job){const effects=cardEffectsFor(card,200);const magic=['wizard','sage','priest'].includes(job)||job==='spiritCommander';const weights={atkPct:magic?0:3,matkPct:magic?3:0,magicDamage:magic?3:0,crit:mode==='crit'?9:1,critDmg:mode==='crit'?6:1,aspd:mode==='speed'?9:1,aspdPct:mode==='speed'?8:1,ignoreDef:mode==='pierce'?9:2,ignoreMdef:mode==='pierce'?9:2,STR:1,INT:1,DEX:1,LUK:2,AGI:1};return Object.entries(effects).reduce((n,[k,v])=>n+v*(weights[k]||0),0);}
+function cardScore(card,mode,job){const effects=cardEffectsFor(card,200);const magic=['wizard','sage','priest'].includes(job)||job==='spiritCommander';const weights={atkPct:magic?0:3,matkPct:magic?3:0,magicDamage:magic?3:0,crit:mode==='crit'?9:1,critDmg:mode==='crit'?6:1,aspd:mode==='speed'?9:1,aspdPct:mode==='speed'?8:1,ignoreDef:mode==='pierce'?9:2,ignoreMdef:mode==='pierce'?9:2,STR:1,INT:1,DEX:1,LUK:2,AGI:1};return Object.entries(effects).reduce((n,[k,v])=>n+v*(weights[k]||0),0)+(bossMode&&card.map==='dawnrift'&&roles.has(job)?300:0);}
 function tuneEquipment(p,mode,cardMode,weapon){const seedRand=()=>.75;
  if(weapon&&p.gear.rightHand?.id!==weapon){const g=rollGear(weapon,200,'mythic',seedRand);g.enhancement='SSS';p.gear.rightHand=g;const base=GEAR_BASE[weapon];if(base.hands===2){p.gear.leftHand=null;p.sockets.leftHand=null;}else if(!p.gear.leftHand){const sh=rollGear('shield',200,'mythic',seedRand);sh.enhancement='SSS';p.gear.leftHand=sh;}}
  if(mode!=='base'){const main=SECOND_JOBS[p.job].attribute;const spec={power:'atkPct',crit:'critDmg',speed:'aspdPct',pierce:'ignoreDef'}[mode];for(const gear of [...Object.values(p.gear),...p.pets.flatMap(pet=>Object.values(pet.gear))]){if(!gear)continue;const primary=primaryAffix(gear.id);const keys=[primary,main,'LUK','AGI','DEX','VIT'];const next={};for(const key of [...new Set(keys)].slice(0,5)){const range=affixRange(key,gear.tier,'mythic');if(range)next[key]=range[1];}if(spec&&affixRange(spec,gear.tier,'mythic'))next[spec]=affixRange(spec,gear.tier,'mythic')[1];gear.affixes=next;}}
- if(cardMode!=='base'){for(const slot of Object.keys(SLOTS)){if(!p.gear[slot]){p.sockets[slot]=null;continue;}let top=null,score=-Infinity;for(const [id,c] of Object.entries(CARDS)){if(c.boss||!cardAllowedInSlot(c,slot))continue;if(id.startsWith('world_')&&Number(id.slice(6))>210)continue;const n=cardScore(c,cardMode,p.job);if(n>score){score=n;top=id;}}p.sockets[slot]=top;}}
+ if(cardMode!=='base'||bossMode){for(const slot of Object.keys(SLOTS)){if(!p.gear[slot]){p.sockets[slot]=null;continue;}let top=null,score=-Infinity;for(const [id,c] of Object.entries(CARDS)){if(bossMode?!c.boss:c.boss)continue;if(!cardAllowedInSlot(c,slot,p.job))continue;if(id.startsWith('world_')&&Number(id.slice(6))>210)continue;const n=cardScore(c,cardMode,p.job);if(n>score){score=n;top=id;}}p.sockets[slot]=top;}}
 }
 function weapons(job){const parent=parentJob(job),list=Object.entries(GEAR_BASE).filter(([id,b])=>b.weaponType&&(!b.jobs||b.jobs.includes(job)||b.jobs.includes(parent))).map(([id])=>id);return [...new Set([SECOND_JOBS[job].weapon,...list])].filter(Boolean).slice(0,6);}
 const orders=['default','main-first'];
@@ -56,7 +56,7 @@ function createPlayer(cfg){
  assert.ok(Object.values(p.attributes).every(n=>n>=1&&n<=attributeCap(p)));
  assert.ok(p.gear.rightHand&&Object.values(p.gear).filter(Boolean).every(g=>g.level===200&&g.enhancement==='SSS'));
  assert.ok(p.pets.every(pet=>Object.values(pet.gear).filter(Boolean).every(g=>g.level===200&&g.enhancement==='SSS')));
- assert.ok(Object.values(p.sockets).every(id=>!id||CARDS[id]&&!CARDS[id].boss),'此基準測試必須排除所有王卡');
+ assert.ok(Object.values(p.sockets).every(id=>!id||CARDS[id]&&CARDS[id].boss===bossMode),'測試卡片類型不符');
  if(spirit)assert.equal(p.pets.length,2);
  return p;
 }
@@ -132,5 +132,5 @@ best.sort((a,b)=>b.totalDps-a.totalDps);
 console.log(JSON.stringify({summary:true,ranking:best.map((r,i)=>({rank:i+1,...r}))}));
 console.log(JSON.stringify({complete:true,jobs:12,legalFusionTypes:FUSION_TYPES.length,
  legalDualCombinations:DUAL_FUSION_TYPES.length,stage1:screen,
-  validationSeconds:quick?120:300,normalMonsterCardsOnly:true,
+  validationSeconds:quick?120:300,normalMonsterCardsOnly:!bossMode,bossCardsOnly:bossMode,
   limitations:'Bounded coordinate search of 6 single-fusion or 15 distinct dual-fusion combinations, legal stat permutations and skill priorities. Bounded mythic SSS affix/normal-card archetypes and allowed weapon families, no exhaustive arbitrary affix/card/pet-skill enumeration. Random 201 map includes boss chance; zero boss cores means boss not verified. DPS capped by enemy HP, not theoretical maximum.'}));
