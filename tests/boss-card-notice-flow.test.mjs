@@ -13,7 +13,7 @@ assert.match(source,/for\(const id of result\.drawn\)if\(CARDS\[id\]\?\.boss\)qu
 assert.match(source,/bossCardNotices\.push\(\.\.\.\(summary\.bossCards\|\|\[\]\)\)/);
 assert.match(source,/\$\('offlineClose'\)\.onclick=.*showNextBossCardNotice\(\)/);
 
-const clicked=[],button={onclick:null,textContent:'',focus(){clicked.push('focus')}},modal={hidden:true,style:{},setAttribute(){},innerHTML:'',querySelector(id){
+const clicked=[],button={onclick:null,textContent:'',focus(){clicked.push('focus')},click(){this.onclick?.()}},modal={hidden:true,style:{},setAttribute(){},innerHTML:'',querySelector(id){
  assert.equal(id,'#bossCardNoticeNext');return button;
 }};
 const offlineModal={hidden:true};
@@ -31,13 +31,18 @@ runInNewContext('let bossCardNotices=[],bossCardNoticeOpen=false;'+source.slice(
 runInNewContext('queueBossCardNotice("bossA");queueBossCardNotice("bossB");',ctx);
 assert.match(modal.innerHTML,/首領卡 A/);
 assert.match(modal.innerHTML,/物理追擊/);
+assert.match(modal.innerHTML,/box-sizing:border-box;width:min\(440px,100%\)/,'小螢幕卡片不得超出容器');
 assert.match(button.textContent,/下一張/);
 // DOM mock records the renderer's callback on this latest button.
 assert.equal(clicked.length,1);
 assert.equal(modal.hidden,false);
-button.onclick();
+let prevented=0;
+modal.onkeydown({key:'Tab',preventDefault(){prevented++}});
+assert.equal(prevented,1,'Tab 導覽不可離開只有單鍵的對話框');
+modal.onkeydown({key:'Escape',preventDefault(){prevented++}});
+assert.equal(prevented,2,'Escape 應可收下目前卡片並繼續顯示佇列');
 assert.match(modal.innerHTML,/首領卡 B/);
-assert.equal(clicked.length,2);
+assert.equal(clicked.length,3);
 
 // Verify deferred notices never hide the offline reward report.
 ctx.offlineSimulation=true;ctx.offlineMetrics={bossCards:[]};
