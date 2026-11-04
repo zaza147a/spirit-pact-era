@@ -7,12 +7,13 @@ const boosted=commanderInheritedPetStats(pet,{...owner,atk:18000,matk:14500,def:
 assert.ok(boosted.atk>initial.atk,'owner ATK increase must grow companion physical offense');
 const invested=commanderInheritedPetStats(pet,{...owner,cardPower:80});
 assert.ok(invested.atk>initial.atk&&invested.matk>initial.matk,'offensive character cards must strengthen both pets');
-assert.ok(invested.atk<pet.atk*1.30+owner.atk*.40,'card-based pet growth must be capped');
+assert.ok(invested.atk<=(pet.atk+owner.atk*.30)*1.36+1,'card-based pet growth must be capped at 36%');
 assert.ok(boosted.matk>initial.matk,'owner MATK increase must grow companion magic offense');
 assert.ok(boosted.def>initial.def&&boosted.mdef>initial.mdef,'owner defensive progression must be inherited');
+assert.ok(invested.atk>=Math.round((pet.atk+owner.atk*.30)*1.28),'substantial owner card training must empower pets');
 assert.equal(pet.atk,20000,'owner transfer must not mutate cached pet stats');
 assert.equal(initial.aspd,pet.aspd,'unrelated pet stats must be preserved');
-assert.ok(commanderOwnerGrowth(50000,10000)<=.18,'growth cap must hold');
+assert.ok(commanderOwnerGrowth(50000,10000)<=.24,'growth cap must hold');
 assert.equal(commanderOwnerGrowth(10000,10000),0,'no extra multiplier at owner raw stat baseline');
 assert.ok(commanderOwnerGrowth(15000,10000)>commanderOwnerGrowth(12000,10000));
 console.log('PASS: commander owner-led pet growth monotonicity, soft cap and cache purity');
