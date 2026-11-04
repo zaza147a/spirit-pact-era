@@ -12,7 +12,7 @@ import {cardAllowedInSlot,cardEffectsFor} from '../dist/card-effects.js';
 import {parentJob} from '../dist/jobs.js';
 import {comparisonPlayer} from './fixtures/spirit-vs-class-player.mjs';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
-const epoch=2000000000000,seed=471122,roles=new Set(['pactWarrior','spiritCommander']);
+const epoch=2000000000000,seed=471122,roles=new Set(['pactWarrior','spiritCommander']),quick=process.env.QUICK_NORMAL_CARD_AUDIT==='1';
 const stats=['baseline','agi-luk','vit-luk','agi-dex','vit-agi','luk-focus','agi-focus','dex-focus','int-focus'];
 const equipmentModes=['base','power','crit','speed','pierce'];
 const cardModes=['base','power','crit','speed','pierce'];
@@ -21,7 +21,7 @@ function cardScore(card,mode,job){const effects=cardEffectsFor(card,200);const m
 function tuneEquipment(p,mode,cardMode,weapon){const seedRand=()=>.75;
  if(weapon&&p.gear.rightHand?.id!==weapon){const g=rollGear(weapon,200,'mythic',seedRand);g.enhancement='SSS';p.gear.rightHand=g;const base=GEAR_BASE[weapon];if(base.hands===2){p.gear.leftHand=null;p.sockets.leftHand=null;}else if(!p.gear.leftHand){const sh=rollGear('shield',200,'mythic',seedRand);sh.enhancement='SSS';p.gear.leftHand=sh;}}
  if(mode!=='base'){const main=SECOND_JOBS[p.job].attribute;const spec={power:'atkPct',crit:'critDmg',speed:'aspdPct',pierce:'ignoreDef'}[mode];for(const gear of [...Object.values(p.gear),...p.pets.flatMap(pet=>Object.values(pet.gear))]){if(!gear)continue;const primary=primaryAffix(gear.id);const keys=[primary,main,'LUK','AGI','DEX','VIT'];const next={};for(const key of [...new Set(keys)].slice(0,5)){const range=affixRange(key,gear.tier,'mythic');if(range)next[key]=range[1];}if(spec&&affixRange(spec,gear.tier,'mythic'))next[spec]=affixRange(spec,gear.tier,'mythic')[1];gear.affixes=next;}}
- if(cardMode!=='base'){for(const slot of Object.keys(SLOTS)){if(!p.gear[slot]){p.sockets[slot]=null;continue;}let top=null,score=-Infinity;for(const [id,c] of Object.entries(CARDS)){if(!cardAllowedInSlot(c,slot))continue;if(id.startsWith('world_')&&Number(id.slice(6))>210)continue;const n=cardScore(c,cardMode,p.job);if(n>score){score=n;top=id;}}p.sockets[slot]=top;}}
+ if(cardMode!=='base'){for(const slot of Object.keys(SLOTS)){if(!p.gear[slot]){p.sockets[slot]=null;continue;}let top=null,score=-Infinity;for(const [id,c] of Object.entries(CARDS)){if(c.boss||!cardAllowedInSlot(c,slot))continue;if(id.startsWith('world_')&&Number(id.slice(6))>210)continue;const n=cardScore(c,cardMode,p.job);if(n>score){score=n;top=id;}}p.sockets[slot]=top;}}
 }
 function weapons(job){const parent=parentJob(job),list=Object.entries(GEAR_BASE).filter(([id,b])=>b.weaponType&&(!b.jobs||b.jobs.includes(job)||b.jobs.includes(parent))).map(([id])=>id);return [...new Set([SECOND_JOBS[job].weapon,...list])].filter(Boolean).slice(0,6);}
 const orders=['default','main-first'];
@@ -56,6 +56,7 @@ function createPlayer(cfg){
  assert.ok(Object.values(p.attributes).every(n=>n>=1&&n<=attributeCap(p)));
  assert.ok(p.gear.rightHand&&Object.values(p.gear).filter(Boolean).every(g=>g.level===200&&g.enhancement==='SSS'));
  assert.ok(p.pets.every(pet=>Object.values(pet.gear).filter(Boolean).every(g=>g.level===200&&g.enhancement==='SSS')));
+ assert.ok(Object.values(p.sockets).every(id=>!id||CARDS[id]&&!CARDS[id].boss),'此基準測試必須排除所有王卡');
  if(spirit)assert.equal(p.pets.length,2);
  return p;
 }
@@ -86,31 +87,31 @@ async function run(cfg,seconds,runSeed){
 const screen=[],best=[];
 for(const job of Object.keys(SECOND_JOBS)){
  const candidates=variants(job),results=[];
- for(const v of candidates)results.push(await run({...v,stat:'baseline',order:'default'},90,seed));
+ for(const v of candidates)results.push(await run({...v,stat:'baseline',order:'default'},quick?30:90,seed));
  results.sort((a,b)=>b.totalDps-a.totalDps);
  const finalists=[];
  for(const result of results){if(!finalists.some(x=>x.pair===result.cfg.pair)){
-  finalists.push(result.cfg);if(finalists.length===3)break;
+  finalists.push(result.cfg);if(finalists.length===(quick?2:3))break;
  }}
- assert.equal(finalists.length,3);
+ assert.equal(finalists.length,quick?2:3);
  screen.push({job,candidates:candidates.length,top:results.slice(0,4).map(r=>({pair:r.cfg.pair,stance:r.cfg.stance,dps:r.totalDps,kills:r.kills,bossCores:r.bossCores}))});
  let winner=null,count=0;
- for(const f of finalists)for(const stat of stats)for(const order of orders){
-  const r=await run({...f,stat,order},90,seed);count++;
+ for(const f of finalists)for(const stat of (quick?['baseline','luk-focus','agi-focus','int-focus','dex-focus']:stats))for(const order of orders){
+  const r=await run({...f,stat,order},quick?30:90,seed);count++;
   if(!winner||r.totalDps>winner.totalDps)winner=r;
  }
  // Second pass: optimize SSS gear affixes, legal card sockets, weapon family, and 150-cap allocations.
  const advanced=[];const shortlist=[winner.cfg];
- for(const mode of equipmentModes)for(const cardMode of cardModes){const cfg={...winner.cfg,equipment:mode,cards:cardMode};const r=await run(cfg,45,seed);advanced.push(r);}
+ for(const mode of equipmentModes)for(const cardMode of (quick?['base','power','crit','speed']:cardModes)){const cfg={...winner.cfg,equipment:mode,cards:cardMode};const r=await run(cfg,quick?25:45,seed);advanced.push(r);}
  advanced.sort((a,b)=>b.totalDps-a.totalDps);
- const geared=advanced.slice(0,2).map(x=>x.cfg);let top=advanced[0];
- for(const cfg of geared)for(const stat of stats)for(const weapon of weapons(job)){
-  const next={...cfg,stat,weapon};const r=await run(next,45,seed);if(r.totalDps>top.totalDps)top=r;
+ const geared=advanced.slice(0,quick?1:2).map(x=>x.cfg);let top=advanced[0];
+ for(const cfg of geared)for(const stat of (quick?['baseline','luk-focus','agi-focus','int-focus','dex-focus']:stats))for(const weapon of (quick?weapons(job).slice(0,3):weapons(job))){
+  const next={...cfg,stat,weapon};const r=await run(next,quick?25:45,seed);if(r.totalDps>top.totalDps)top=r;
  }
  const trialCandidates=[winner,top];
  let validations=[];let highestMean=-Infinity,selected=winner;
  for(const candidate of trialCandidates){const current=[];
-  for(const testSeed of [471122,93217,81733])current.push(await run(candidate.cfg,300,testSeed));
+  for(const testSeed of (quick?[471122,93217]:[471122,93217,81733]))current.push(await run(candidate.cfg,quick?120:300,testSeed));
   const average=current.reduce((sum,r)=>sum+r.totalDps,0)/current.length;
   if(average>highestMean){highestMean=average;selected=candidate;validations=current;}
  }
@@ -120,7 +121,7 @@ for(const job of Object.keys(SECOND_JOBS)){
   candidates:candidates.length,refinements:count+advanced.length+geared.length*stats.length*weapons(job).length,
   equipment:winner.cfg.equipment,cards:winner.cfg.cards,weapon:winner.cfg.weapon,
   ownerDps:Math.round(mean('ownerDps')),petDps:Math.round(mean('petDps')),
-  totalDps:Math.round(mean('totalDps')),kills5m:Number(mean('kills').toFixed(2)),
+  totalDps:Math.round(mean('totalDps')),[quick?'kills2m':'kills5m']:Number(mean('kills').toFixed(2)),
   bossCores:validations.reduce((n,r)=>n+r.bossCores,0),
   survival:validations.filter(r=>r.alive).length,revives:Number(mean('revives').toFixed(2)),
   seeds:validations.map(r=>({seed:r.seed,kills:r.kills,bossCores:r.bossCores,dps:r.totalDps,alive:r.alive}))};
@@ -131,4 +132,5 @@ best.sort((a,b)=>b.totalDps-a.totalDps);
 console.log(JSON.stringify({summary:true,ranking:best.map((r,i)=>({rank:i+1,...r}))}));
 console.log(JSON.stringify({complete:true,jobs:12,legalFusionTypes:FUSION_TYPES.length,
  legalDualCombinations:DUAL_FUSION_TYPES.length,stage1:screen,
- limitations:'Bounded coordinate search of 6 single-fusion or 15 distinct dual-fusion combinations, top 3 pair profiles, 5 legal stat permutations, 2 skill priorities. Bounded search of mythic SSS affix/card archetypes and allowed weapon families, no exhaustive arbitrary affix/card/pet-skill enumeration. Random 201 map includes boss chance; bossCore counts show actual boss kills. DPS capped by enemy HP, not theoretical maximum.'}));
+  validationSeconds:quick?120:300,normalMonsterCardsOnly:true,
+  limitations:'Bounded coordinate search of 6 single-fusion or 15 distinct dual-fusion combinations, legal stat permutations and skill priorities. Bounded mythic SSS affix/normal-card archetypes and allowed weapon families, no exhaustive arbitrary affix/card/pet-skill enumeration. Random 201 map includes boss chance; zero boss cores means boss not verified. DPS capped by enemy HP, not theoretical maximum.'}));
