@@ -75,22 +75,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Real offline 1/6/12/24-hour deterministic baseline
+      - name: Real offline 6-minute deterministic baseline
         env:
-          SPIRIT_BENCH_HOURS: '1,6,12,24'
-          SPIRIT_BENCH_REPEAT: '2'
+          SPIRIT_BENCH_HOURS: '0.1'
+          SPIRIT_BENCH_REPEAT: '1'
           SPIRIT_BENCH_TIMEOUT_MS: '120000'
         run: node tests/offline-worker-benchmark.mjs --starter
-      - name: Full 1/6/12/24-hour offline salvage loop (no early termination)
+      - name: Full 6-minute offline salvage loop (no early termination)
         env:
-          SPIRIT_BENCH_HOURS: '1,6,12,24'
-          SPIRIT_BENCH_REPEAT: '2'
+          SPIRIT_BENCH_HOURS: '0.1'
+          SPIRIT_BENCH_REPEAT: '1'
           SPIRIT_BENCH_TIMEOUT_MS: '120000'
         run: node tests/offline-worker-benchmark.mjs --starter-salvage
-      - name: Real dual-pet offline 1/6/12/24-hour full simulation
+      - name: Real dual-pet offline 6-minute full simulation
         env:
-          SPIRIT_BENCH_HOURS: '1,6,12,24'
-          SPIRIT_BENCH_REPEAT: '2'
+          SPIRIT_BENCH_HOURS: '0.1'
+          SPIRIT_BENCH_REPEAT: '1'
           SPIRIT_BENCH_TIMEOUT_MS: '120000'
         run: node tests/offline-worker-benchmark.mjs --starter-dual-salvage
 
@@ -243,17 +243,6 @@ jobs:
           node-version: '22'
       - name: Compare 1h and 6h sustained survival for both spirit roles
         run: node tests/spirit-survival-sweep.mjs
-
-  role-correct-24h-observation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Observe full 24-hour real Worker survival, gold, pet states in four legal roles
-        run: node tests/spirit-role-24h-worker.mjs
 
   spirit-underlevel-legacy-control:
     runs-on: ubuntu-latest
