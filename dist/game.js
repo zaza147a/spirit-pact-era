@@ -1,4 +1,5 @@
 import {ensurePetEffects} from './dual-pet-effects.js';
+import {commanderInheritedPetStats} from './commander-owner-growth.js';
 import {chooseDefendingPet,pactOwnerOnlyAggro,commanderPetTargetChance} from './dual-pet-targeting.js';
 import {dualSpiritResonance,canTriggerDualSpirit} from './dual-fusion-resonance.js';
 import {queueCombatVfx} from './skill-effects.js?v=6.5.12';
@@ -120,11 +121,11 @@ function combatPetFactor(pet){const petId=typeof pet==='string'?pet:pet?.id;retu
 function pactAssimilationBonus(type){if(player?.job!=='pactWarrior')return 0;const ratios={atk:3.20,matk:1.65,def:.28,mdef:.28,hp:.16};if(!ratios[type])return 0;return activePetRoster(player).filter(p=>p.hp>0&&player.petStances?.[p.id]==='assimilate').reduce((total,pet)=>total+petStats(pet)[type]*ratios[type],0)*sigilBonus(player)[type];}
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
- // Transfer the COMMANDER's current attack/magic/guard to each deployed pet.
- // Never mutate cached petStats or duplicate source affixes; bonuses disappear when owner changes.
- const defenseRatio=.35;
- return {...base,atk:base.atk+stat('atk')*.30,matk:base.matk+stat('matk')*.30,
-  def:base.def+stat('def')*defenseRatio,mdef:base.mdef+stat('mdef')*defenseRatio};
+ // Derive from current owner combat stats every time; never mutate pet's cached base.
+ return commanderInheritedPetStats(base,{
+  atk:stat('atk'),rawAtk:rawStat('atk'),matk:stat('matk'),rawMatk:rawStat('matk'),
+  def:stat('def'),mdef:stat('mdef')
+ });
 }
 function setPetStance(id,stance){if(player?.job!=='pactWarrior'||!['assist','assimilate'].includes(stance))return;const pet=activePetRoster(player).find(p=>p.id===id);if(!pet)return;player.petStances??={};player.petStances[id]=stance;clearStatSnapshots();player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));dirty=true;save();render();}
 function effectsForPet(pet){return pet?.id&&pet.id!==player?.activePetId?ensurePetEffects(secondaryPetEffects,pet.id):petEffects;}
