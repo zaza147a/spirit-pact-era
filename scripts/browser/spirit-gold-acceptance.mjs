@@ -4,6 +4,8 @@ import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {resolve,extname} from 'node:path';
 import {chromium} from 'playwright';
 import {highLevelSpiritPlayer} from '../../tests/fixtures/spirit-high-level-player.mjs';
+import {starterPlayer} from '../../tests/fixtures/starter-player.mjs';
+import {CLASSES,makePet} from '../../dist/catalog.js';
 import {COSMETIC_JOBS,cosmeticOutfitArt} from '../../dist/cosmetic-gallery.js';
 
 const root=resolve('dist'),out=resolve('browser-qa/spirit-gold');
@@ -46,6 +48,11 @@ try{
   await page.locator('[data-tab="character"]').click();
   await page.locator('[data-character-section="outfits"]').click();
   assert.equal(await page.locator('.cosmetic-tile').count(),3);
+  const layout=await page.evaluate(()=>{const a=document.querySelector('.party-character-column').getBoundingClientRect(),b=document.querySelector('.party-pets-column').getBoundingClientRect(),pets=[...document.querySelectorAll('#companion .dual-pet-unit')].map(el=>el.getBoundingClientRect());return {ownerRight:a.right,petLeft:b.left,pets:pets.map(r=>({top:r.top,bottom:r.bottom})),questParent:document.querySelector('#questTracker').parentElement.id}});
+  assert.ok(layout.ownerRight<=layout.petLeft+2,'owner and pet must be side by side');
+  assert.equal(layout.pets.length,2);
+  assert.ok(layout.pets[1].top>=layout.pets[0].bottom-1,'second pet must be below first');
+  assert.equal(layout.questParent,'partyQuestSlot');
   assert.ok((await page.locator('#side').innerText()).includes('36 套幻化'));
   for(let i=0;i<3;i++){
    const id=job+'-'+i,src=cosmeticOutfitArt(job,i);
@@ -71,6 +78,21 @@ try{
   const remembered=await page.evaluate(()=>JSON.parse(localStorage.getItem('spirit-pact-cosmetic-collection-v1')));
   assert.ok([0,1,2].every(i=>remembered.outfits.includes(job+'-'+i)));
  }
+ // Verify ordinary classes use the same two-column HUD, with one pet only.
+ await page.setViewportSize({width:1440,height:900});
+ await page.goto(base);
+ const ordinary=starterPlayer(),ordinaryPet=makePet('fang');
+ ordinary.job='swordsman';ordinary.name='一般職業版面QA';ordinary.hp=CLASSES.swordsman.hp;ordinary.mp=CLASSES.swordsman.mp;
+ ordinary.pets=[ordinaryPet];ordinary.activePetId=ordinaryPet.id;ordinary.offline={at:Date.now(),enabled:false};
+ await page.locator('[data-slot-select="0"]').click();
+ await page.locator('#saveFile').setInputFiles({name:'ordinary.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:2,player:ordinary}))});
+ await page.getByRole('heading',{name:ordinary.name,exact:true}).waitFor();
+ await page.locator('#enterGameBtn').click();
+ const ordinaryLayout=await page.evaluate(()=>{const a=document.querySelector('.party-character-column').getBoundingClientRect(),b=document.querySelector('.party-pets-column').getBoundingClientRect();return {ownerRight:a.right,petLeft:b.left,petCount:document.querySelectorAll('#companion .hero').length,questParent:document.querySelector('#questTracker').parentElement.id}});
+ assert.ok(ordinaryLayout.ownerRight<=ordinaryLayout.petLeft+2);
+ assert.equal(ordinaryLayout.petCount,1);
+ assert.equal(ordinaryLayout.questParent,'questTrackerTop');
+ await page.screenshot({path:resolve(out,'ordinary-desktop.png'),fullPage:true});
  assert.equal(results.length,6);
  assert.deepEqual(errors,[]);
  console.log('PASS six gold costumes: decoded, bought, equipped, persisted, mobile layout');
