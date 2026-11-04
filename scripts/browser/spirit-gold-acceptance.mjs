@@ -3,7 +3,7 @@ import {createServer} from 'node:http';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {resolve,extname} from 'node:path';
 import {chromium} from 'playwright';
-import {runBuild} from '../balance-v24.mjs';
+import {highLevelSpiritPlayer} from '../../tests/fixtures/spirit-high-level-player.mjs';
 import {COSMETIC_JOBS,cosmeticOutfitArt} from '../../dist/cosmetic-gallery.js';
 
 const root=resolve('dist'),out=resolve('browser-qa/spirit-gold');
@@ -28,7 +28,7 @@ page.on('dialog',dialog=>dialog.accept());
 try{
  for(const job of ['pactWarrior','spiritCommander']){
   await page.goto(base);
-  const fixture=runBuild(job,'attack',{level:200,gearLevel:190,seconds:0,scenario:'regional',reborn:true,thirdJob:true,referenceBuild:true,referenceQuality:'mythic',rarity:'mythic',fusionPair:'attack-magic',enhancement:'SSS',petEnhancement:'SSS',fixture:true}).fixture;
+  const fixture=highLevelSpiritPlayer({level:200,job});
   fixture.name='金幣時裝驗收-'+job;
   fixture.location='skycity';
   fixture.manualPaused=true;
