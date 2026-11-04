@@ -200,7 +200,7 @@ for(const job of ['pactWarrior','spiritCommander']){
  const commander=player(job),input={atk:1000,matk:1000,def:500,mdef:500};
  const ctx={player:commander,activePetRoster:()=>commander.pets,commanderInheritedPetStats,
   stat:key=>({atk:200,matk:400,def:100,mdef:80})[key]||0,
-  rawStat:key=>({atk:200,matk:400})[key]||1};
+  rawStat:key=>({atk:200,matk:400})[key]||1,cardBonus:()=>0};
  vm.runInNewContext(commanderTransferCode+'\nthis.transfer=commanderTransferredPetStats',ctx);
  const result=ctx.transfer(commander.pets[0],input);
  if(job==='spiritCommander'){
