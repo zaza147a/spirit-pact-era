@@ -43,6 +43,8 @@ jobs:
           node --test --test-name-pattern='real combat fixture uses|partial offline result stores|wizard casting decreases' tests/audit-attribute-variants.test.mjs tests/continuous-trials-v632.test.mjs tests/v31.test.mjs
           node tests/economy23.test.mjs
           node tests/pet-gate-v508.test.mjs
+          node tests/offline-optimizer-regression.mjs
+          node --test --test-name-pattern='all ten second transfers retain|all twelve second jobs have|only mythic gear rolls special' tests/balance-logic24.test.mjs tests/v30.test.mjs
 
   rebirth-focused:
     if: ${{ contains(github.event.head_commit.message, '[rebirth-only]') }}

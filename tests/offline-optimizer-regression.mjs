@@ -83,12 +83,12 @@ for(const dual of [false,true]){
 console.log('Offline pet ability cooldown/stat-guard checks passed.');
 
 
-// Repeated offline loot sales must preserve quest stock, unsold categories,
-// equipped inventory, and earned gold without repeatedly scanning quest entries.
+// Repeated offline loot sales must preserve unsold categories and equipped items.
+// The removed five-zone rebirth quests no longer reserve junk stock.
 for(const {selected,bag,quests,expectedGold,expectedBag} of [
  {selected:[],bag:[{id:'scrap',qty:60}],quests:{},expectedGold:0,expectedBag:[{id:'scrap',qty:60}]},
- {selected:['scrap'],bag:[{id:'scrap',qty:60}],quests:{map:{done:false,junk:'scrap'}},expectedGold:100,expectedBag:[{id:'scrap',qty:QUEST_REQUIREMENTS.junk}]},
- {selected:['scrap'],bag:[{id:'scrap',qty:30},{id:'scrap',uid:'equipped',qty:1}],quests:{map:{done:false,junk:'scrap'}},expectedGold:0,expectedBag:[{id:'scrap',qty:30},{id:'scrap',uid:'equipped',qty:1}]}
+ {selected:['scrap'],bag:[{id:'scrap',qty:60}],quests:{map:{done:false,junk:'scrap'}},expectedGold:300,expectedBag:[]},
+ {selected:['scrap'],bag:[{id:'scrap',qty:30},{id:'scrap',uid:'equipped',qty:1}],quests:{map:{done:false,junk:'scrap'}},expectedGold:150,expectedBag:[{id:'scrap',uid:'equipped',qty:1}]}
 ]){
  const actor={autoSellJunk:selected,bag:structuredClone(bag),quests,gold:300};
  const result=sellSelectedJunk(actor,{scrap:{junk:true,cost:5}});
@@ -96,7 +96,7 @@ for(const {selected,bag,quests,expectedGold,expectedBag} of [
  assert.equal(actor.gold,300+expectedGold);
  assert.deepEqual(actor.bag,expectedBag);
 }
-console.log('Offline auto-sell quest preservation checks passed.');
+console.log('Offline auto-sell legacy quest removal and equipped-item preservation checks passed.');
 
 
 // Loot candidate filtering must preserve the exact RNG call count and result.
