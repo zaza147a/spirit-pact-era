@@ -14,7 +14,7 @@ for(const level of [151,171,191,200]){
  assert.equal(spiritCultivationMultiplier(trialPlayer,pets(null)),1,
   '151–200 trial maps must retain previous damage inheritance at level '+level);
 }
-assert.equal(spiritCultivationMultiplier({...player(null),level:201},pets(null)),.1225,
+assert.ok(Math.abs(spiritCultivationMultiplier({...player(null),level:201},pets(null))-.1225)<1e-10,
  'endgame gate begins at 201');
 assert.ok(bare<early&&early<mythic&&mythic<full,'growth must increase from weak to 200 mythic to SSS sigil 8');
 assert.equal(full,1,'full level 200 mythic SSS and sigil 8 restores full strength');
