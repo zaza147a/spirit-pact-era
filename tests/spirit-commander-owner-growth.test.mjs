@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {commanderOwnerGrowth,commanderInheritedPetStats} from '../dist/commander-owner-growth.js';
+const pet={atk:20000,matk:24000,def:1000,mdef:1100,aspd:185};
+const owner={atk:12000,matk:9000,rawAtk:10000,rawMatk:8000,def:2000,mdef:1800};
+const initial=commanderInheritedPetStats(pet,owner);
+const boosted=commanderInheritedPetStats(pet,{...owner,atk:18000,matk:14500,def:2500,mdef:2200});
+assert.ok(boosted.atk>initial.atk,'owner ATK increase must grow companion physical offense');
+assert.ok(boosted.matk>initial.matk,'owner MATK increase must grow companion magic offense');
+assert.ok(boosted.def>initial.def&&boosted.mdef>initial.mdef,'owner defensive progression must be inherited');
+assert.equal(pet.atk,20000,'owner transfer must not mutate cached pet stats');
+assert.equal(initial.aspd,pet.aspd,'unrelated pet stats must be preserved');
+assert.ok(commanderOwnerGrowth(50000,10000)<=.18,'growth cap must hold');
+assert.equal(commanderOwnerGrowth(10000,10000),0,'no extra multiplier at owner raw stat baseline');
+assert.ok(commanderOwnerGrowth(15000,10000)>commanderOwnerGrowth(12000,10000));
+console.log('PASS: commander owner-led pet growth monotonicity, soft cap and cache purity');
