@@ -92,9 +92,15 @@ test('both reborn spirit second jobs can earn Job 70 and satisfy ordinary third-
  assert.equal(jobLevelCap({job:'spiritist',reborn:true}),50,'first job unchanged');
 });
 
-test('spirit jobs can equip their starting and designated second-job mace',()=>{
- for(const job of ['spiritist','pactWarrior','spiritCommander'])
-  assert.ok(GEAR_BASE.mace.jobs.includes(job),job+' must be allowed to wield mace');
+test('spirit jobs retain their designated one-hand weapon roles',()=>{
+ assert.ok(GEAR_BASE.mace.jobs.includes('spiritist'),'first-job spiritist retains its starting mace');
+ assert.ok(GEAR_BASE.blade.jobs.includes('pactWarrior'),'physical pact warrior must equip one-hand swords');
+ assert.ok(GEAR_BASE.oneStaff.jobs.includes('spiritCommander'),'magical spirit commander must equip one-hand staves');
+ assert.ok(!GEAR_BASE.mace.jobs.includes('pactWarrior'),'physical pact warrior no longer uses mace');
+ assert.ok(!GEAR_BASE.mace.jobs.includes('spiritCommander'),'magical spirit commander no longer uses mace');
+ assert.equal(GEAR_BASE.blade.hands??1,1);
+ assert.equal(GEAR_BASE.oneStaff.hands??1,1);
+ assert.equal(GEAR_BASE.shield.slot,'leftHand');
  assert.ok(!GEAR_BASE.mace.jobs.includes('wizard'),'mage weapon restrictions remain intact');
 });
 
