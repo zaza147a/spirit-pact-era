@@ -1,5 +1,5 @@
 // Cosmetic identities only. Never imported by combat formulas.
-export const RANK_OUTFIT_VERSION='6.5.0';
+export const RANK_OUTFIT_VERSION='6.5.0-spirit-20261104';
 export const RANK_OUTFITS=Object.freeze({
  knight:{motif:'龍槍、騎兵甲、龍紋重裝',names:['赤槍遊騎','龍紋槍衛','焰龍盧恩統御者']},
  crusader:{motif:'皇家劍盾、王庭重甲、聖誓反擊',names:['青誓禁衛','王庭聖盾','獅心皇家統帥']},
@@ -10,7 +10,9 @@ export const RANK_OUTFITS=Object.freeze({
  priest:{motif:'祈禱書、主教冠、聖堂祭服',names:['晨禱療者','聖域主祭','天穹聖典大主教']},
  monk:{motif:'拳纏、金剛拳鎧、修羅氣勁',names:['赤心修行者','金剛氣鬥士','極意修羅']},
  hunter:{motif:'長弓、鷹獵披風、天弓羽甲',names:['林哨獵手','銀羽鷹衛','天弓巡界者']},
- performer:{motif:'豎琴、演奏禮服、晶弦舞台裝',names:['旅歌奏者','晶弦領奏者','萬籟星律詠者']}
+ performer:{motif:'豎琴、演奏禮服、晶弦舞台裝',names:['旅歌奏者','晶弦領奏者','萬籟星律詠者']},
+ pactWarrior:{motif:'幽藍契刃、靈魂誓約、君王戰甲',names:['幽藍靈刃','蒼碧魂刃','幽藍誓劍']},
+ spiritCommander:{motif:'紫銀雙晶、雙靈戰術、月杖宗師禮裝',names:['紫銀雙晶','銀紫雙靈','雙靈月杖']}
 });
 const ranks=['S','SS','SSS'];
 export function rankOutfitArt(job,rank){return Object.hasOwn(RANK_OUTFITS,job)&&ranks.includes(rank)?`assets/rank-outfits/${job}-${rank}.webp?v=${RANK_OUTFIT_VERSION}`:null;}
