@@ -74,7 +74,7 @@ export function highLevelSpiritPlayer({level=200,job='pactWarrior',pairKey='atta
  }
  p.activePetId=p.pets[0].id;p.secondaryPetId=p.pets[1].id;
  p.petStances=Object.fromEntries(p.pets.map(pet=>[pet.id,'assist']));
- for(const [slot,id] of [['headUpper','helm'],['headMiddle','visor'],['headLower','mask'],['armor','plate'],['rightHand','mace'],['leftHand','shield'],['garment','cloak'],['shoes','boots'],['accessory1','chip'],['accessory2','ring']]){
+ for(const [slot,id] of [['headUpper','helm'],['headMiddle','visor'],['headLower','mask'],['armor','plate'],['rightHand',job==='pactWarrior'?'blade':'oneStaff'],['leftHand','shield'],['garment','cloak'],['shoes','boots'],['accessory1','chip'],['accessory2','ring']]){
   if(GEAR_BASE[id].jobs&&!GEAR_BASE[id].jobs.includes(job))throw Error('illegal weapon '+id);
   const gear=rollGear(id,200,gearRarity,rng);
   gear.uid='fixture-player-'+slot;

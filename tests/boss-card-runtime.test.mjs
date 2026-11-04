@@ -23,16 +23,16 @@ const legacy={job:'wizard',sockets:{rightHand:'dawn-archon'},cards:[]};
 assert.equal(migrateCardBindings(legacy,cards,{rightHand:1}).length,1);
 assert.equal(legacy.cards[0].id,'dawn-archon');
 
-// Six real original hits produce a single independent 210 card attack.
+// Three real original hits produce a single independent 210 card attack.
 const pact=player('pactWarrior','dawnrift');
-for(let i=0;i<5;i++)assert.equal(hit(pact,{now:1_000_000+i*100}),0);
-assert.equal(hit(pact,{now:1_000_600}),650);
-assert.equal(hit(pact,{now:1_000_700}),0,'extra damage must not recursively trigger');
+for(let i=0;i<2;i++)assert.equal(hit(pact,{now:1_000_000+i*100}),0);
+assert.equal(hit(pact,{now:1_000_200}),4200);
+assert.equal(hit(pact,{now:1_000_300}),0,'extra damage must not recursively trigger');
 const commander=player('spiritCommander','dawnrift');
 assert.equal(hit(commander,{source:'pet',petId:'first'}),0);
 assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_100}),0,'same pet cannot complete a dual attack');
-assert.equal(hit(commander,{source:'pet',petId:'second',now:1_000_200}),240,'兩夥伴各命中後啟動雙靈追擊');
-assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_300}),240,'8秒內各次命中繼續追加24%');
+assert.equal(hit(commander,{source:'pet',petId:'second',now:1_000_200}),2200,'兩夥伴各命中後啟動雙靈追擊');
+assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_300}),2200,'8秒內各次命中繼續追加220%');
 
 const ranger=player('hunter','skyport');
 for(let i=0;i<4;i++)assert.equal(hit(ranger,{range:'ranged',now:1_000_000+i*100}),0);
