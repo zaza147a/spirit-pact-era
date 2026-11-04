@@ -45,7 +45,7 @@ assert.ok(original.hp>0||original.autoRevive===true,'save must be alive or enabl
 const seed=Number(process.env.SPIRIT_BENCH_SEED||'12648430')>>>0;
 const epoch=2000000000000;
 const times=(process.env.SPIRIT_BENCH_HOURS||'1,6,12,24').split(',').map(Number);
-assert.ok(times.length>0&&times.every(h=>[1,6,12,24].includes(h)),'hours must be a subset of 1,6,12,24');
+assert.ok(times.length>0&&times.every(h=>Number.isFinite(h)&&h>0&&h<=24),'hours must be greater than 0 and at most 24');
 const repeats=Number(process.env.SPIRIT_BENCH_REPEAT||1);
 assert.ok(Number.isInteger(repeats)&&repeats>=1&&repeats<=3,'repeat count must be an integer between 1 and 3');
 const maxWallMs=Number(process.env.SPIRIT_BENCH_TIMEOUT_MS||600000);
