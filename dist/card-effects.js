@@ -62,25 +62,65 @@ export const CARD_SLOT_PROFILES=Object.fromEntries(Object.keys(CARD_THEMES).map(
  const order=PROGRESSION_BOSS_ZONES.indexOf(id);
  return [id,{profiles:CARD_SLOT_ORDER.map(slot=>[slot]),boss:id==='dawnrift'?['rightHand','leftHand']:[CARD_SLOT_ORDER[order%CARD_SLOT_ORDER.length]]}];
 }));
-// Conditional boss signatures use actual combat circumstances, beyond static stat increases.
-// These moderate bonuses share an 18% cap to avoid a ten-card exponential power spike.
-const BOSS_TRAIT_TYPES=['opening','execute','isolated','cleave','wounded','pet','owner'];
-export const BOSS_TRAITS=Object.fromEntries(Object.keys(CARD_THEMES).map((id,index)=>[id,{
- kind:BOSS_TRAIT_TYPES[index%BOSS_TRAIT_TYPES.length],
- power:4+(index%4),
- name:({opening:'先聲奪勢',execute:'終結追擊',isolated:'孤敵決鬥',cleave:'連鎖清場',wounded:'逆境反擊',pet:'靈獸共擊',owner:'主人號令'})[BOSS_TRAIT_TYPES[index%BOSS_TRAIT_TYPES.length]]
-}]));
+// Each boss signature is a different combat window. These are stateless so that
+// online and offline simulations share exactly the same damage calculation.
+// Their additive contribution is capped globally instead of multiplying per card.
+const BOSS_SIGNATURES={
+ starter:['opening',5,'鐘樓先鋒','敵人生命高於 85% 時',.85],
+ forest:['wounded',5,'菌冠復甦','自身生命低於 70% 時',.70],
+ desert:['execute',6,'蠍毒收割','敵人生命低於 40% 時',.40],
+ frost:['isolated',5,'冰封決鬥','面對單一敵人且自身生命高於 50% 時',.50],
+ astral:['pet',6,'星核使魔','夥伴攻擊生命高於 60% 的敵人時',.60],
+ volcano:['owner',6,'熔心處刑','自身攻擊生命低於 50% 的敵人時',.50],
+ abyss:['wounded',6,'深潮反擊','自身生命低於 45% 時',.45],
+ ruins:['cleave',5,'齒輪掃蕩','自身範圍攻擊時',0],
+ eclipse:['execute',7,'月蝕追魂','敵人生命低於 25% 時',.25],
+ celestial:['pet',5,'星宮共鳴','夥伴攻擊且場上只有一個敵人時',1],
+ skyport:['opening',6,'巡天制空','自身攻擊生命高於 70% 的敵人時',.70],
+ gearfell:['isolated',6,'千輪固守','單一敵人且自身生命低於 65% 時',.65],
+ aether:['pet',7,'以太聚能','夥伴攻擊生命低於 55% 的敵人時',.55],
+ stormforge:['cleave',7,'雷鍛掃射','夥伴範圍攻擊時',0],
+ zenith:['execute',7,'天極裁斷','自身攻擊生命低於 30% 的敵人時',.30],
+ starshore:['opening',6,'星潮先獵','夥伴攻擊生命高於 75% 的敵人時',.75],
+ oathwood:['wounded',7,'古誓護戰','自身生命低於 60% 且僅剩一個敵人時',.60],
+ nightclock:['cleave',6,'永夜輪舞','自身範圍攻擊且敵人不只一個時',0],
+ sungrave:['owner',7,'曜龍孤斬','自身攻擊且場上只有一個敵人時',1],
+ worldroot:['isolated',7,'界源共守','夥伴攻擊單一敵人且自身生命高於 50% 時',.50],
+ dawnrift:['owner',7,'黎明裁界','自身攻擊生命低於 35% 的單一敵人時',.35]
+};
+export const BOSS_TRAITS=Object.fromEntries(Object.entries(BOSS_SIGNATURES).map(([id,[kind,power,name,condition,threshold]])=>[id,{kind,power,name,condition,threshold}]));
+function bossSignatureActive(trait,context){
+ const hp=context.enemyHpFraction??1,own=context.ownerHpFraction??1,count=context.enemyCount??99;
+ const pet=context.source==='pet',owner=context.source==='owner',area=!!context.secondary;
+ switch(trait.name){
+  case '鐘樓先鋒':return hp>=trait.threshold;
+  case '菌冠復甦':case '深潮反擊':return own<=trait.threshold;
+  case '蠍毒收割':case '月蝕追魂':return hp<=trait.threshold;
+  case '冰封決鬥':return count===1&&own>=trait.threshold;
+  case '星核使魔':return pet&&hp>=trait.threshold;
+  case '熔心處刑':return owner&&hp<=trait.threshold;
+  case '齒輪掃蕩':return area&&owner;
+  case '星宮共鳴':return pet&&count===1;
+  case '巡天制空':return owner&&hp>=trait.threshold;
+  case '千輪固守':return count===1&&own<=trait.threshold;
+  case '以太聚能':return pet&&hp<=trait.threshold;
+  case '雷鍛掃射':return area&&pet;
+  case '天極裁斷':return owner&&hp<=trait.threshold;
+  case '星潮先獵':return pet&&hp>=trait.threshold;
+  case '古誓護戰':return own<=trait.threshold&&count===1;
+  case '永夜輪舞':return area&&owner&&count>1;
+  case '曜龍孤斬':return owner&&count===1;
+  case '界源共守':return pet&&count===1&&own>=trait.threshold;
+  case '黎明裁界':return owner&&hp<=trait.threshold&&count===1;
+  default:return false;
+ }
+}
 export function bossCardDamageFactor(sockets,cards,context={}){
  let total=0;
  for(const id of new Set(Object.values(sockets||{}))){
   const card=cards[id];if(!card?.boss)continue;
   const trait=BOSS_TRAITS[card.map];if(!trait)continue;
-  const active=trait.kind==='opening'?(context.enemyHpFraction??0)>=.8:
-   trait.kind==='execute'?(context.enemyHpFraction??1)<=.35:
-   trait.kind==='isolated'?(context.enemyCount??99)===1:
-   trait.kind==='cleave'?!!context.secondary:
-   trait.kind==='wounded'?(context.ownerHpFraction??1)<=.55:
-   trait.kind==='pet'?context.source==='pet':context.source==='owner';
+  const active=bossSignatureActive(trait,context);
   if(active)total+=trait.power;
  }
  return 1+Math.min(18,total)/100;
@@ -93,5 +133,5 @@ export function cardEffectsFor(card,level=1){const power=GEAR_TIERS[gearTierForL
 export const cardDescription=(card,level=1)=>card?`${card.theme}：${describeCardEffects(cardEffectsFor(card,level))}。`:'空卡位';
 export function cardAllowedInSlot(card,slot){return !!card?.slots?.includes(slot);}
 export function migrateCardBindings(player,cards,slots){const returned=[];for(const slot of Object.keys(slots)){const id=player.sockets[slot];if(!id||cardAllowedInSlot(cards[id],slot))continue;if(!cards[id])continue;const held=player.cards.find(c=>c.id===id);if(held)held.qty++;else player.cards.push({id,qty:1});player.sockets[slot]=null;returned.push({id,slot});}if(returned.length)player.cardBindingMigration={version:2,returned};return returned;}
-export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:m.boss?BOSS_TRAITS[m.map]:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。'+(BOSS_TRAITS[m.map]?('專屬特性「'+BOSS_TRAITS[m.map].name+'」：符合條件時傷害增加 '+BOSS_TRAITS[m.map].power+'%。'):'')):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
+export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:m.boss?BOSS_TRAITS[m.map]:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。'+(BOSS_TRAITS[m.map]?('專屬特性「'+BOSS_TRAITS[m.map].name+'」：'+BOSS_TRAITS[m.map].condition+'，傷害增加 '+BOSS_TRAITS[m.map].power+'%（多張王卡合計上限 18%）。'):'')):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
 export function socketCardBonus(sockets,cards,key,level=1){return Object.values(sockets||{}).reduce((sum,id)=>sum+(cardEffectsFor(cards[id],level)[key]||0),0);}

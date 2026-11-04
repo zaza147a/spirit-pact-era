@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import {cardDropChance} from '../dist/map-rules.js';
-import {readFileSync} from 'node:fs';
 import {shouldAutoSalvage} from '../dist/salvage-rules.js';
 import {gearTier} from '../dist/loot.js';
 import {BOSS_IDENTITIES,CARD_PROFILES,CARD_SLOT_PROFILES,CARD_SLOT_ORDER,BOSS_TRAITS,bossCardDamageFactor,createWorldCards} from '../dist/card-effects.js';
+import {cardDropChance} from '../dist/map-rules.js';
+import {readFileSync} from 'node:fs';
 
 // 傳說以上＋創世階以上：此案例用於防止把兩項門檻誤當作一項。
 const settings={autoSalvage:true,keepRarity:true,salvageMaxRarity:'legendary',keepTier:true,salvageMaxTier:6,keepStat:false,salvageMatchMode:'all',job:'swordsman'};
@@ -42,16 +42,25 @@ console.log('all twenty boss card identities passed');
 const coverage=Object.fromEntries(CARD_SLOT_ORDER.map(slot=>[slot,0]));
 for(const zone of zones){
  assert.ok(BOSS_TRAITS[zone]?.name,'首領缺少戰鬥特性：'+zone);
+ assert.ok(BOSS_TRAITS[zone]?.condition,'首領特色須說明實際觸發條件：'+zone);
  for(const slot of CARD_SLOT_PROFILES[zone].boss)coverage[slot]++;
 }
+assert.equal(new Set(zones.map(zone=>BOSS_TRAITS[zone].name)).size,21,'21 張王卡應有各自的特性名稱');
+assert.equal(new Set(zones.map(zone=>BOSS_TRAITS[zone].condition)).size,21,'21 張王卡應有各自的觸發條件');
 for(const [slot,count] of Object.entries(coverage))assert.ok(count>=2,slot+' 缺少兩種畢業首領卡');
 const dawnCard=createWorldCards([],{dawnrift:{id:'dawn-archon',name:'黎明裁界者',map:'dawnrift',level:210,boss:true}})['dawn-archon'];
 assert.ok(dawnCard?.boss&&dawnCard.slots.includes('rightHand'),'210 首領必須有武器／副手王卡');
 assert.match(dawnCard.description,/專屬特性/,'首領卡片必須顯示條件式特色');
 assert.ok(bossCardDamageFactor({rightHand:'dawn-archon'},{'dawn-archon':dawnCard},{source:'owner',enemyHpFraction:1,enemyCount:1,ownerHpFraction:1})>=1,'王卡戰鬥倍率應可安全計算');
+assert.equal(bossCardDamageFactor({rightHand:'dawn-archon'},{'dawn-archon':dawnCard},{source:'owner',enemyHpFraction:.2,enemyCount:1}),1.07,'210 王卡須在單體斬殺時生效');
+assert.equal(bossCardDamageFactor({rightHand:'dawn-archon'},{'dawn-archon':dawnCard},{source:'pet',enemyHpFraction:.2,enemyCount:1}),1,'210 王卡不能在非自身攻擊生效');
+assert.match(dawnCard.description,/生命低於 35%/,'卡面須明確顯示實際觸發條件');
+const sampleBosses=Object.fromEntries(zones.map((zone,i)=>[zone+'-boss',{id:zone+'-boss',name:zone,map:zone,level:10+i*10,boss:true}]));
+const sampleCards=createWorldCards([],sampleBosses);
+const allSockets=Object.fromEntries(zones.map((zone,i)=>[String(i),zone+'-boss']));
+for(const context of [{source:'owner',enemyHpFraction:.1,enemyCount:1,ownerHpFraction:.1,secondary:true},{source:'pet',enemyHpFraction:.9,enemyCount:2,ownerHpFraction:.9,secondary:true}])assert.ok(bossCardDamageFactor(allSockets,sampleCards,context)<=1.18,'王卡疊加必須限制在18%');
 console.log('boss slot coverage, special mechanics and Lv210 card regression passed');
-
-// Deterministic Lv210 drop boundary and real reward-path regression.
+// Force the drop boundary without a long simulation: only the Lv210 boss may drop in dawnrift.
 assert.equal(cardDropChance('dawnrift',{id:'dawn-archon',boss:true}),.001);
 for(const id of ['dawn-sentinel','dawn-watcher','dawn-minion'])assert.equal(cardDropChance('dawnrift',{id,boss:false}),0);
 assert.equal(cardDropChance('dawnrift',{id:'other-boss',boss:true}),0);
