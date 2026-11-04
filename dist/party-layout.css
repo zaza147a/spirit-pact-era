@@ -106,3 +106,12 @@
  #gameShell>.layout>.panel{height:auto;max-height:none;overflow:visible}
  #gameShell>.layout>.collection #side{max-height:none;overflow-y:visible}
 }
+
+/* Compact companion portraits to the character-card visual scale. */
+#gameShell #characterPanel #companion .dual-pet-unit{padding:5px 6px 7px}
+#gameShell #characterPanel #companion .dual-pet-unit .hero{min-height:0!important;padding:5px 4px 7px!important;margin:0 0 5px!important;gap:3px!important}
+#gameShell #characterPanel #companion .dual-pet-unit .hero .art-hero{width:min(78%,145px)!important;height:clamp(86px,10vh,125px)!important;max-height:125px!important;object-fit:contain!important;margin:0 auto 3px!important}
+#gameShell #characterPanel #companion .dual-pet-unit .meterline{line-height:1.3;margin-top:3px}
+#gameShell #characterPanel #companion .dual-pet-unit .bar{margin:2px 0 5px}
+#gameShell #characterPanel #companion .dual-pet-unit .hero strong{font-size:14px;line-height:1.3}
+#gameShell #characterPanel #companion .dual-pet-unit .hero .pill{font-size:11px;line-height:1.35}
