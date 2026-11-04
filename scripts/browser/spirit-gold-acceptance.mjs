@@ -55,6 +55,7 @@ try{
    assert.deepEqual(dims,[1024,1536]);
    assert.ok((await tile.innerText()).includes(COSMETIC_JOBS[job][i]));
    await page.locator('[data-cosmetic-outfit="'+id+'"]').click();
+   console.log('After outfit click',job,i,await page.locator('#toast').innerText().catch(()=>''),await page.locator('#character .hero').innerHTML().then(x=>x.slice(0,600)).catch(()=>''),await page.evaluate(()=>localStorage.getItem('spirit-pact-cosmetic-collection-v1')));
    await page.locator('#character img.cosmetic-equipped').waitFor();
    assert.equal(await page.locator('#character img.cosmetic-equipped').getAttribute('src'),src);
    results.push({job,variant:i,src,dims,pass:true});
