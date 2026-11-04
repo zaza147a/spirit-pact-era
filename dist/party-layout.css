@@ -88,3 +88,11 @@
  #gameShell>.layout>.collection #side{max-height:65dvh;overflow-y:auto}
  #gameShell>.layout>.battle{overflow:visible}
 }
+
+/* Match the companion rail to the character rail's width and portrait scale. */
+#gameShell #characterPanel>.party-hud{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+#gameShell #characterPanel #companion .dual-pet-unit{padding:7px;min-width:0}
+#gameShell #characterPanel #companion .dual-pet-unit .hero{width:100%;padding:9px 5px 11px!important;margin:0 0 8px!important}
+#gameShell #characterPanel #companion .dual-pet-unit .hero .art-hero{width:min(86%,170px)!important;max-width:100%!important;height:clamp(118px,14vh,170px)!important;object-fit:contain}
+#gameShell #characterPanel #companion .dual-pet-unit .hero strong{font-size:15px;line-height:1.5}
+@media(max-width:520px){#gameShell #characterPanel>.party-hud{grid-template-columns:minmax(0,1fr)}}
