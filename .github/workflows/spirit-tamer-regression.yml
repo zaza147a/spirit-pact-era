@@ -383,3 +383,14 @@ jobs:
         with:
           name: spirit-gold-costumes-browser-qa
           path: browser-qa/spirit-gold/
+
+  normal-card-uplift-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare no cards and ten normal cards for all twelve jobs in live 201 map Worker
+        run: node tests/spirit-normal-card-uplift-audit.mjs
