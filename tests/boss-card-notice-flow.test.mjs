@@ -17,12 +17,12 @@ const clicked=[],button={onclick:null,textContent:'',focus(){clicked.push('focus
  assert.equal(id,'#bossCardNoticeNext');return button;
 }};
 const offlineModal={hidden:true};
-const cards={bossA:{boss:true,name:'首領卡 A',description:'物理追擊',slots:['rightHand']},bossB:{boss:true,name:'首領卡 B',description:'魔法回響',slots:['accessory1']},normal:{boss:false}};
+const cards={bossA:{boss:true,name:'首領卡 A',description:'專屬效果：物理追擊。',effects:{atkPct:25},slots:['rightHand']},bossB:{boss:true,name:'首領卡 B',description:'專屬效果：魔法回響。',effects:{matkPct:25},slots:['accessory1']},normal:{boss:false}};
 const ctx={CARDS:cards,SLOTS:{rightHand:'武器',accessory1:'飾品 1'},player:{level:210},offlineSimulation:false,
  offlineMetrics:null,gameRunning:true,bossCardNotices:[],bossCardNoticeOpen:false,clicked,
  document:{getElementById(id){return id==='bossCardNotice'&&!modal.hidden?modal:null;},createElement(){return modal;},body:{append(){}}},
  $:id=>id==='offlineModal'?offlineModal:null,
- spriteHtml:()=>'<img alt="王卡">',escapeHtml:x=>String(x),cardDescription:()=>''};
+ spriteHtml:()=>'<img alt="王卡">',escapeHtml:x=>String(x),cardDescription:()=>'',cardEffectsFor:card=>card.effects,describeCardEffects:effects=>Object.entries(effects).map(([key,value])=>`${key} +${value}%`).join('、')};
 // An existing DOM node remains discoverable even after it has been hidden.
 ctx.document.getElementById=id=>id==='bossCardNotice'&&ctx.created?modal:id==='bossCardNoticeNext'&&ctx.created?button:null;
 ctx.document.body.append=()=>{ctx.created=true;};
@@ -31,7 +31,9 @@ runInNewContext('let bossCardNotices=[],bossCardNoticeOpen=false;'+source.slice(
 runInNewContext('queueBossCardNotice("bossA");queueBossCardNotice("bossB");',ctx);
 assert.match(modal.innerHTML,/首領卡 A/);
 assert.match(modal.innerHTML,/物理追擊/);
-assert.match(modal.innerHTML,/box-sizing:border-box;width:min\(440px,100%\)/,'小螢幕卡片不得超出容器');
+assert.match(modal.innerHTML,/class="boss-notice-card"/,'王卡應使用新的響應式排版');
+assert.match(readFileSync(new URL('../dist/v11.css',import.meta.url),'utf8'),/#bossCardNotice \.boss-notice-card\{[^}]*width:min\(460px,100%\)/,'小螢幕卡片不得超出容器');
+assert.doesNotMatch(modal.innerHTML,/首領專屬|畢業.*選擇|基本上限/,'王卡提示框不得顯示冗餘說明');
 assert.match(button.textContent,/下一張/);
 // DOM mock records the renderer's callback on this latest button.
 assert.equal(clicked.length,1);
