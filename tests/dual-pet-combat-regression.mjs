@@ -198,7 +198,7 @@ assert.equal(runDualTick(100,100,true),'ability:one,attack:one,ability:two,attac
 const commanderTransferCode=loadFunction(game,'commanderTransferredPetStats','setPetStance');
 for(const job of ['pactWarrior','spiritCommander']){
  const commander=player(job),input={atk:1000,matk:1000,def:500,mdef:500};
- const ctx={player:commander,activePetRoster:()=>commander.pets,commanderInheritedPetStats,
+ const ctx={player:commander,activePetRoster:()=>commander.pets,commanderInheritedPetStats,enhancedAffixes:()=>({}),
   stat:key=>({atk:200,matk:400,def:100,mdef:80})[key]||0,
   rawStat:key=>({atk:200,matk:400})[key]||1,cardBonus:()=>0};
  vm.runInNewContext(commanderTransferCode+'\nthis.transfer=commanderTransferredPetStats',ctx);
