@@ -227,6 +227,17 @@ jobs:
       - name: Rank 200 five-boss clears against ten existing jobs with SS gear
         run: node tests/spirit-twelve-job-five-boss-ranking.mjs
 
+  spirit-twelve-job-sss-sigil8-five-boss-ranking:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare all twelve jobs in five-boss trials with full mythic SSS and sigil 8
+        run: node tests/spirit-twelve-job-sss-sigil8-five-boss-ranking.mjs
+
   spirit-cultivation-field-audit:
     runs-on: ubuntu-latest
     timeout-minutes: 20
