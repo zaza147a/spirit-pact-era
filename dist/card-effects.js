@@ -31,7 +31,7 @@ const attributes=['STR','AGI','VIT','INT','DEX','LUK'];
 function effectsFor(zone,index,boss=false){const z=Object.keys(CARD_THEMES).indexOf(zone);if(index<3){const h=z*3+index,k=Math.floor(h/5)%6,t=h%5,j=t>=k?t+1:t,primary=5+Math.floor(h/30),secondary=8-primary;const result={[attributes[k]]:primary,[attributes[j]]:secondary};if(result.AGI){const other=Object.keys(result).find(k=>k!=='AGI');result.AGI=k===1?(h>=30?3:2):(h>=30?4:1);result[other]=8-result.AGI;}return result;}if(index===3)return {hpPct:17+(z%5),defPct:8+Math.floor(z/5),hp:3+z*.12};if(index===6)return {fleePct:13+(z%6),damageReduction:2+Math.floor(z/6),flee:1+z*.09};if(index===7)return {hpPct:11+(z%4),mdefPct:10+(z%5),mpPct:8+Math.floor(z/5),mdef:.3+z*.035};const p=({4:0,5:1,8:2,9:3})[index],effect={...offensive[z%offensive.length][p]};delete effect.atkPct;delete effect.matkPct;if(effect.magicDamage)effect.magicDamage=Math.min(5,effect.magicDamage);if(index===4)Object.assign(effect,{atkPct:16+z%5*1.5,matkPct:16+z%5*1.5,atk:1+z*.055,matk:1+z*.055});if(index===5)Object.assign(effect,{magicDamage:6+z%3*.5,atk:.5+z*.03,matk:.5+z*.03,hit:.5+z*.05});if(index===8)effect.hit=.3+z*.04;if(index===9)effect.critDmg=Math.max(effect.critDmg||0,12+z*.7);if(boss)effect.critDmg=18+z;return effect;}
 // Each map boss has its own accessory-card identity. These bonuses use existing
 // supported combat stats, so the same rules apply to online/offline combat.
-export const BOSS_IDENTITIES=Object.freeze({
+const BOSS_IDENTITIES_BASE={
  dawnrift:{title:'黎明裁界',effects:{atkPct:25,matkPct:25,critDmg:30,mpPct:20},detail:'終局裁界之力，以集中打擊和夥伴連攜構築物法雙向畢業選擇'},
  starter:{title:'鐘樓守望',effects:{hpPct:24,atkPct:12,matkPct:12},detail:'初期同時提升生命與雙系輸出，適合尚未定型的冒險者'},
  forest:{title:'菌冠再生',effects:{hpPct:21,mpPct:18,damageReduction:3},detail:'兼顧生命、法力與減傷的持久戰護符'},
@@ -53,78 +53,44 @@ export const BOSS_IDENTITIES=Object.freeze({
  nightclock:{title:'永夜時序',effects:{aspdPct:16,matkPct:22,mpPct:15},detail:'攻速與魔法同步成長的特殊流派'},
  sungrave:{title:'曜骨滅界',effects:{atkPct:27,critDmg:35,hit:11},detail:'後期高命中物理終結配裝'},
  worldroot:{title:'界源調律',effects:{atkPct:22,matkPct:22,hpPct:20,mpPct:20},detail:'終局物法雙修與生存兼顧的通用核心'}
+};
+// Boss cards are the final progression for every slot, independently of job
+// balancing. The two map bosses assigned to each slot offer different builds.
+// Head slots improve attributes, four defensive slots improve survival, and
+// weapon/accessory slots improve offence. No shared damage multiplier/cap.
+export const BOSS_SLOT_EFFECTS=Object.freeze({
+ starter:{STR:9,VIT:7},skyport:{DEX:9,AGI:7},
+ forest:{INT:9,DEX:7},gearfell:{VIT:10,STR:6},
+ desert:{LUK:9,DEX:7},aether:{INT:10,LUK:6},
+ frost:{hpPct:26,defPct:18,mdefPct:13},stormforge:{hpPct:24,defPct:15,damageReduction:3},
+ astral:{atkPct:25,matkPct:25,hit:8},zenith:{atkPct:28,critDmg:30,crit:6},
+ volcano:{hpPct:23,defPct:15,damageReduction:3},starshore:{hpPct:21,mdefPct:18,fleePct:17},
+ abyss:{hpPct:25,mdefPct:17,damageReduction:3},oathwood:{hpPct:27,defPct:16,mdefPct:16},
+ ruins:{hpPct:22,fleePct:20,mdefPct:13},nightclock:{hpPct:24,defPct:14,mpPct:18},
+ eclipse:{atkPct:24,crit:14,critDmg:27},sungrave:{atkPct:27,critDmg:33,hit:11},
+ celestial:{matkPct:25,magicDamage:10,aspdPct:7},worldroot:{atkPct:23,matkPct:23,critDmg:25},
+ dawnrift:{atkPct:28,matkPct:28,critDmg:30,hit:10}
 });
+const BOSS_ROLE_DESCRIPTIONS={
+ headUpper:'上段頭飾的畢業能力值選擇',headMiddle:'中段頭飾的畢業能力值選擇',headLower:'下段頭飾的畢業能力值選擇',
+ armor:'盔甲的生命與抗性畢業選擇',leftHand:'副手的生命與防護畢業選擇',
+ garment:'披風的生存與抗性畢業選擇',shoes:'鞋子的生命與續戰畢業選擇',
+ rightHand:'武器的物理／魔法輸出畢業選擇',accessory1:'第一飾品的輸出畢業選擇',accessory2:'第二飾品的輸出畢業選擇'
+};
+export const BOSS_IDENTITIES=Object.freeze(Object.fromEntries(Object.entries(BOSS_IDENTITIES_BASE).map(([id,identity])=>{
+ const slot=id==='dawnrift'?'rightHand':CARD_SLOT_ORDER[Object.keys(CARD_THEMES).filter(zone=>zone!=='dawnrift').indexOf(id)%10];
+ return [id,{...identity,effects:BOSS_SLOT_EFFECTS[id],detail:`${identity.title}：${BOSS_ROLE_DESCRIPTIONS[slot]}；王卡效果獨立累加，不受共用王卡增傷上限限制`}];
+})));
 export const CARD_PROFILES=Object.fromEntries(Object.entries(CARD_THEMES).map(([id,theme])=>[id,{theme,profiles:Array.from({length:10},(_,i)=>effectsFor(id,i)),boss:BOSS_IDENTITIES[id]?.effects||effectsFor(id,8,true)}]));
 // Twenty progression bosses form two distinct graduating options for each of ten slots.
 // The final Lv210 boss may serve either hand, but can still be socketed only once.
 const PROGRESSION_BOSS_ZONES=Object.keys(CARD_THEMES).filter(id=>id!=='dawnrift');
 export const CARD_SLOT_PROFILES=Object.fromEntries(Object.keys(CARD_THEMES).map(id=>{
  const order=PROGRESSION_BOSS_ZONES.indexOf(id);
- return [id,{profiles:CARD_SLOT_ORDER.map(slot=>[slot]),boss:id==='dawnrift'?['rightHand','leftHand']:[CARD_SLOT_ORDER[order%CARD_SLOT_ORDER.length]]}];
+ return [id,{profiles:CARD_SLOT_ORDER.map(slot=>[slot]),boss:id==='dawnrift'?['rightHand']:[CARD_SLOT_ORDER[order%CARD_SLOT_ORDER.length]]}];
 }));
-// Each boss signature is a different combat window. These are stateless so that
-// online and offline simulations share exactly the same damage calculation.
-// Their additive contribution is capped globally instead of multiplying per card.
-const BOSS_SIGNATURES={
- starter:['opening',5,'鐘樓先鋒','敵人生命高於 85% 時',.85],
- forest:['wounded',5,'菌冠復甦','自身生命低於 70% 時',.70],
- desert:['execute',6,'蠍毒收割','敵人生命低於 40% 時',.40],
- frost:['isolated',5,'冰封決鬥','面對單一敵人且自身生命高於 50% 時',.50],
- astral:['pet',6,'星核使魔','夥伴攻擊生命高於 60% 的敵人時',.60],
- volcano:['owner',6,'熔心處刑','自身攻擊生命低於 50% 的敵人時',.50],
- abyss:['wounded',6,'深潮反擊','自身生命低於 45% 時',.45],
- ruins:['cleave',5,'齒輪掃蕩','自身範圍攻擊時',0],
- eclipse:['execute',7,'月蝕追魂','敵人生命低於 25% 時',.25],
- celestial:['pet',5,'星宮共鳴','夥伴攻擊且場上只有一個敵人時',1],
- skyport:['opening',6,'巡天制空','自身攻擊生命高於 70% 的敵人時',.70],
- gearfell:['isolated',6,'千輪固守','單一敵人且自身生命低於 65% 時',.65],
- aether:['pet',7,'以太聚能','夥伴攻擊生命低於 55% 的敵人時',.55],
- stormforge:['cleave',7,'雷鍛掃射','夥伴範圍攻擊時',0],
- zenith:['execute',7,'天極裁斷','自身攻擊生命低於 30% 的敵人時',.30],
- starshore:['opening',6,'星潮先獵','夥伴攻擊生命高於 75% 的敵人時',.75],
- oathwood:['wounded',7,'古誓護戰','自身生命低於 60% 且僅剩一個敵人時',.60],
- nightclock:['cleave',6,'永夜輪舞','自身範圍攻擊且敵人不只一個時',0],
- sungrave:['owner',7,'曜龍孤斬','自身攻擊且場上只有一個敵人時',1],
- worldroot:['isolated',7,'界源共守','夥伴攻擊單一敵人且自身生命高於 50% 時',.50],
- dawnrift:['owner',7,'黎明裁界','自身攻擊生命低於 35% 的單一敵人時',.35]
-};
-export const BOSS_TRAITS=Object.fromEntries(Object.entries(BOSS_SIGNATURES).map(([id,[kind,power,name,condition,threshold]])=>[id,{kind,power,name,condition,threshold}]));
-function bossSignatureActive(trait,context){
- const hp=context.enemyHpFraction??1,own=context.ownerHpFraction??1,count=context.enemyCount??99;
- const pet=context.source==='pet',owner=context.source==='owner',area=!!context.secondary;
- switch(trait.name){
-  case '鐘樓先鋒':return hp>=trait.threshold;
-  case '菌冠復甦':case '深潮反擊':return own<=trait.threshold;
-  case '蠍毒收割':case '月蝕追魂':return hp<=trait.threshold;
-  case '冰封決鬥':return count===1&&own>=trait.threshold;
-  case '星核使魔':return pet&&hp>=trait.threshold;
-  case '熔心處刑':return owner&&hp<=trait.threshold;
-  case '齒輪掃蕩':return area&&owner;
-  case '星宮共鳴':return pet&&count===1;
-  case '巡天制空':return owner&&hp>=trait.threshold;
-  case '千輪固守':return count===1&&own<=trait.threshold;
-  case '以太聚能':return pet&&hp<=trait.threshold;
-  case '雷鍛掃射':return area&&pet;
-  case '天極裁斷':return owner&&hp<=trait.threshold;
-  case '星潮先獵':return pet&&hp>=trait.threshold;
-  case '古誓護戰':return own<=trait.threshold&&count===1;
-  case '永夜輪舞':return area&&owner&&count>1;
-  case '曜龍孤斬':return owner&&count===1;
-  case '界源共守':return pet&&count===1&&own>=trait.threshold;
-  case '黎明裁界':return owner&&hp<=trait.threshold&&count===1;
-  default:return false;
- }
-}
-export function bossCardDamageFactor(sockets,cards,context={}){
- let total=0;
- for(const id of new Set(Object.values(sockets||{}))){
-  const card=cards[id];if(!card?.boss)continue;
-  const trait=BOSS_TRAITS[card.map];if(!trait)continue;
-  const active=bossSignatureActive(trait,context);
-  if(active)total+=trait.power;
- }
- return 1+Math.min(18,total)/100;
-}
+// Boss bonuses use ordinary equipment stats; each equipped card contributes
+// independently, with no boss-only shared cap or conditional damage bonus.
 export const LEGACY_CARD_SLOTS={fang:['rightHand'],wisp:['headMiddle'],shell:['armor'],sprout:['shoes'],sandbug:['garment'],dog:['headUpper'],guardian:['headLower'],boss_petland:['accessory1','accessory2']};
 export const LEGACY_CARD_EFFECTS={fang:{atkPct:19,crit:5},wisp:{INT:7,DEX:1},shell:{defPct:18,hpPct:13},sprout:{hpPct:16,mpPct:14},sandbug:{fleePct:17,mdefPct:11},dog:{AGI:7,LUK:1},guardian:{STR:7,VIT:1},boss_petland:{atkPct:11,matkPct:11,mpPct:11}};
 const LABELS={atk:'ATK',matk:'MATK',hp:'HP',mp:'SP',def:'DEF',mdef:'MDEF',atkPct:'ATK',matkPct:'MATK',hpPct:'HP',mpPct:'SP',defPct:'DEF',mdefPct:'MDEF',fleePct:'FLEE',hit:'HIT',flee:'FLEE',aspd:'ASPD',aspdPct:'攻速加成',crit:'暴擊率',critDmg:'暴擊傷害',ignoreDef:'無視防禦',magicDamage:'魔法傷害',damageReduction:'最終減傷',DEX:'DEX',INT:'INT'};
@@ -133,5 +99,5 @@ export function cardEffectsFor(card,level=1){const power=GEAR_TIERS[gearTierForL
 export const cardDescription=(card,level=1)=>card?`${card.theme}：${describeCardEffects(cardEffectsFor(card,level))}。`:'空卡位';
 export function cardAllowedInSlot(card,slot){return !!card?.slots?.includes(slot);}
 export function migrateCardBindings(player,cards,slots){const returned=[];for(const slot of Object.keys(slots)){const id=player.sockets[slot];if(!id||cardAllowedInSlot(cards[id],slot))continue;if(!cards[id])continue;const held=player.cards.find(c=>c.id===id);if(held)held.qty++;else player.cards.push({id,qty:1});player.sockets[slot]=null;returned.push({id,slot});}if(returned.length)player.cardBindingMigration={version:2,returned};return returned;}
-export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:m.boss?BOSS_TRAITS[m.map]:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。'+(BOSS_TRAITS[m.map]?('專屬特性「'+BOSS_TRAITS[m.map].name+'」：'+BOSS_TRAITS[m.map].condition+'，傷害增加 '+BOSS_TRAITS[m.map].power+'%（多張王卡合計上限 18%）。'):'')):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
+export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。'):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
 export function socketCardBonus(sockets,cards,key,level=1){return Object.values(sockets||{}).reduce((sum,id)=>sum+(cardEffectsFor(cards[id],level)[key]||0),0);}
