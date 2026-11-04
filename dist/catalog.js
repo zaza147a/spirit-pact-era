@@ -3,6 +3,7 @@ import {fusedPair,companionRole} from './pet-fusion.js?v=6.5.0';
 import {captureQuality,MYTHIC_MUTATION} from './pet-acquisition.js?v=6.5.0';
 import {SECOND_JOBS,parentJob} from './jobs.js?v=6.5.0';
 import {MAP_BOSSES} from './map-bosses.js?v=6.5.0';
+import {DAWN_BOSS} from './dawn-world.js?v=6.5.0';
 import {createWorldCards,LEGACY_CARD_SLOTS,LEGACY_CARD_EFFECTS,cardDescription} from './card-effects.js?v=6.5.45';
 import {PETLAND_MONSTERS} from './catalog-petland.js?v=6.5.0';
 export {PETLAND_MONSTERS};
@@ -10,7 +11,7 @@ import {petForm} from './pet-evolution.js?v=6.5.0';
 // Shared definitions: UI, future server combat engine and 2D renderer can consume the same IDs.
 import {WORLD_MONSTERS,WORLD_MAPS} from './world-data.js?v=6.5.0';
 import {LOOT_ITEMS,GEAR_BASE,PET_GEAR_BASE,PET_SLOTS} from './loot.js?v=6.5.45';
-export const CLASSES={swordsman:{name:'劍士',symbol:'⚔',hp:145,mp:55,atk:13,def:7,skill:'重擊',skill2:'狂擊'},acolyte:{name:'服事',symbol:'✚',hp:115,mp:105,atk:9,def:5,skill:'聖光攻擊',skill2:'治癒術'},mage:{name:'法師',symbol:'✧',hp:95,mp:125,atk:14,def:3,skill:'火箭術',skill2:'冰箭術'},thief:{name:'盜賊',symbol:'◆',hp:115,mp:70,atk:16,def:4,skill:'二連擊',skill2:'殘影'},archer:{name:'弓箭手',symbol:'🏹',hp:108,mp:83,atk:15,def:4,skill:'精準射擊',skill2:'二連矢'}};
+export const CLASSES={swordsman:{name:'劍士',symbol:'⚔',hp:145,mp:55,atk:13,def:7,skill:'重擊',skill2:'狂擊'},acolyte:{name:'服事',symbol:'✚',hp:115,mp:105,atk:9,def:5,skill:'聖光攻擊',skill2:'治癒術'},mage:{name:'法師',symbol:'✧',hp:95,mp:125,atk:14,def:3,skill:'火箭術',skill2:'冰箭術'},thief:{name:'盜賊',symbol:'◆',hp:115,mp:70,atk:16,def:4,skill:'二連擊',skill2:'殘影'},archer:{name:'弓箭手',symbol:'🏹',hp:108,mp:83,atk:15,def:4,skill:'精準射擊',skill2:'二連矢'},spiritist:{name:'御靈使',symbol:'✦',hp:112,mp:98,atk:10,def:5,skill:'靈契指令',skill2:'靈紋護持'}};
 for(const [id,job] of Object.entries(SECOND_JOBS))CLASSES[id]={...CLASSES[job.parent],name:job.name,symbol:CLASSES[job.parent].symbol};
 export const ATTRS={STR:'力量',AGI:'敏捷',VIT:'體質',INT:'智力',DEX:'靈巧',LUK:'幸運'};
 export const ITEMS={...GEAR_BASE,...PET_GEAR_BASE,med:{name:'急救包',heal:55,cost:25},cell:{name:'能量電池',energy:45,cost:25},orb:{name:'捕捉球',capture:true,cost:35}};
@@ -27,6 +28,7 @@ Object.assign(ITEMS,LOOT_ITEMS);
 Object.assign(MAPS,WORLD_MAPS);
 for(const m of [...WORLD_MONSTERS,...Object.values(MAP_BOSSES)])SPECIES[m.id]={name:m.name,icon:m.icon,role:m.role,roleName:m.roleName,level:m.level};
 Object.assign(CARDS,createWorldCards(WORLD_MONSTERS,MAP_BOSSES));
+Object.assign(CARDS,createWorldCards([],{dawnrift:DAWN_BOSS}));
 // Retain already-earned legacy cards without leaving a spawn or drop route.
 CARDS.boss_petland={name:'森境聖角獸紀念卡',stat:'LUK',bonus:0,effect:'hpPct',amount:10,effects:{hpPct:10,mpPct:8},theme:'舊版紀念（已停止掉落）',boss:true,map:'legacy',description:'舊版紀念卡片：HP +10%、SP +8%。已停止掉落，既有卡片仍可使用。'};
 SPECIES.boss_petland={name:'森境聖角獸（舊版）',icon:'♛',role:'none',roleName:'舊版首領',level:10};

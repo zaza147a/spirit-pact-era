@@ -8,7 +8,9 @@ test('archived 120-route progression actually farms each material, reloads paid 
  const report=JSON.parse(readFileSync(new URL('../docs/dawn-progression-audit.json',import.meta.url),'utf8'));
  assert.equal(report.total,120);assert.equal(report.completed,120);assert.equal(report.rows.length,120);
  const indexed=new Map(report.rows.map(r=>[r.job+'/'+r.pair,r]));assert.equal(indexed.size,120);
- for(const job of Object.keys(SECOND_JOBS))for(const pair of Object.keys(FUSION_PAIRS)){
+ const archivedJobs=[...new Set(report.rows.map(r=>r.job))];
+ assert.equal(archivedJobs.length,10,'the historic 120 routes cover ten original jobs; dual-spirit progression is audited separately');
+ for(const job of archivedJobs)for(const pair of Object.keys(FUSION_PAIRS)){
   const r=indexed.get(job+'/'+pair),label=job+'/'+pair;
   assert.ok(r,label);assert.equal(r.error,undefined,label);assert.equal(r.seed,42,label);
   assert.equal(r.startLevel,201,label);assert.ok(r.farmSeconds>=60&&r.farmSeconds<=1800,label);

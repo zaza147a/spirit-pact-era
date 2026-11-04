@@ -23,12 +23,12 @@ export const GEAR_BASE={
 };
 Object.assign(GEAR_BASE,{spellFist:{name:'符紋魔拳套',slot:'rightHand',weaponType:'spellfist',hands:2,matk:12,cost:190,jobs:['sage']},knuckles:{name:'修行拳套',slot:'rightHand',weaponType:'knuckle',hands:2,atk:12,cost:190,jobs:['monk']},instrument:{name:'旅歌豎琴',slot:'rightHand',weaponType:'instrument',hands:2,atk:12,cost:190,jobs:['performer']}});
 for(const [id,meta] of Object.entries(SECOND_JOBS))for(const base of Object.values(GEAR_BASE))if(base.jobs?.includes(meta.parent)&&!base.jobs.includes(id))base.jobs.push(id);
-GEAR_BASE.katar.jobs=['assassin'];GEAR_BASE.offDagger.jobs=['assassin'];GEAR_BASE.twoSword.jobs=['knight'];GEAR_BASE.twoSpear.jobs=['knight'];GEAR_BASE.oneSpear.jobs=['knight','crusader'];GEAR_BASE.mace.jobs=['acolyte','priest'];GEAR_BASE.crossbow.jobs=['hunter'];
+GEAR_BASE.katar.jobs=['assassin'];GEAR_BASE.offDagger.jobs=['assassin'];GEAR_BASE.twoSword.jobs=['knight'];GEAR_BASE.twoSpear.jobs=['knight'];GEAR_BASE.oneSpear.jobs=['knight','crusader'];GEAR_BASE.mace.jobs=['acolyte','priest','spiritist'];GEAR_BASE.blade.jobs.push('pactWarrior');GEAR_BASE.oneStaff.jobs.push('spiritCommander');GEAR_BASE.crossbow.jobs=['hunter'];
 export const PET_GEAR_BASE={petHelm:{name:'靈獸角冠',petSlot:'head',cost:65},petCirclet:{name:'靈獸星環',petSlot:'head',cost:65},petArmor:{name:'靈獸戰甲',petSlot:'body',cost:105},petRobe:{name:'靈獸法袍',petSlot:'body',cost:105},petBoots:{name:'靈獸迅足',petSlot:'shoes',cost:70},petGreaves:{name:'靈獸護足',petSlot:'shoes',cost:70}};
 export const PET_SLOTS={head:'頭部',body:'身體',shoes:'鞋'};
 export const RARITIES=[{id:'common',name:'普通',count:2,weight:700,color:'common'},{id:'rare',name:'稀有',count:3,weight:250,color:'rare'},{id:'uncommon',name:'罕見',count:4,weight:40,color:'uncommon'},{id:'legendary',name:'傳說',count:5,weight:9,color:'legendary'},{id:'mythic',name:'神話',count:6,weight:1,color:'mythic'}];
 export const TIER_NAMES=GEAR_TIERS.map(t=>t.name);
-export const AFFIX_NAMES={atk:'ATK 物攻',matk:'MATK 魔攻',def:'DEF 防禦',mdef:'MDEF 魔防',hit:'HIT 命中',flee:'FLEE 迴避',crit:'CRIT 暴擊率',STR:'STR 力量',AGI:'AGI 敏捷',VIT:'VIT 體質',INT:'INT 智力',DEX:'DEX 靈巧',LUK:'LUK 幸運',ignoreDef:'無視防禦',critDmg:'暴擊傷害',aspd:'ASPD 攻速',magicDamage:'魔法傷害加成',fleePct:'FLEE 加成',defPct:'防禦加成',hpPct:'HP 加成',aspdPct:'攻速加成',damageReduction:'最終減傷'};
+export const AFFIX_NAMES={hp:'HP 生命',atk:'ATK 物攻',matk:'MATK 魔攻',def:'DEF 防禦',mdef:'MDEF 魔防',hit:'HIT 命中',flee:'FLEE 迴避',crit:'CRIT 暴擊率',STR:'STR 力量',AGI:'AGI 敏捷',VIT:'VIT 體質',INT:'INT 智力',DEX:'DEX 靈巧',LUK:'LUK 幸運',ignoreDef:'無視防禦',critDmg:'暴擊傷害',aspd:'ASPD 攻速',magicDamage:'魔法傷害加成',fleePct:'FLEE 加成',defPct:'防禦加成',hpPct:'HP 加成',aspdPct:'攻速加成',damageReduction:'最終減傷'};
 export const PERCENT_AFFIXES=new Set(['ignoreDef','critDmg','magicDamage','fleePct','defPct','hpPct','aspdPct','damageReduction','crit']);
 export const SPECIAL_AFFIXES=new Set(['ignoreDef','critDmg','aspdPct','crit','fleePct','damageReduction','hpPct','magicDamage','defPct','aspd']);
 export const gearTier=gearTierForLevel;
@@ -68,4 +68,12 @@ export function addStack(bag,id,qty=1){const existing=bag.find(x=>x.id===id&&!x.
 export function consumeStack(bag,id){const i=bag.findIndex(x=>x.id===id&&!x.uid&&x.qty>0);if(i<0)return false;bag[i].qty--;if(bag[i].qty<=0)bag.splice(i,1);return true;}
 
 export function gearStatValue(item,type){if(!item)return 0;const base=GEAR_BASE[item.id]||PET_GEAR_BASE[item.id];return enhancedStat(item,type,(item.powerVersion>=23&&type===primaryAffix(item.id)?0:base?.[type]||0)+(item.affixes?.[type]||0));}
-export function equipmentDrop(boss=false,lootBonus=0,rng=Math.random){const roll=rng();if(boss)return roll<.9?'character':'pet';const boost=Math.max(0,Math.min(4,1+lootBonus/100));return roll<.18*boost?'character':roll<.2*boost?'pet':null;}
+// characterShare changes only the conditional equipment-kind split; the total
+// equipment probability and existing loot bonus remain unchanged.
+export function equipmentDrop(boss=false,lootBonus=0,rng=Math.random,characterShare=.9){
+ const share=Math.max(0,Math.min(1,Number(characterShare)||0));
+ const roll=rng();
+ if(boss)return roll<share?'character':'pet';
+ const boost=Math.max(0,Math.min(4,1+lootBonus/100)),total=.2*boost;
+ return roll<total*share?'character':roll<total?'pet':null;
+}

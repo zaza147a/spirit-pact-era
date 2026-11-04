@@ -6,7 +6,8 @@ import {FUSION_PAIRS} from '../dist/pet-fusion.js';
 
 test('audited dawn farming matrix covers every ordered fusion and has no 60s cash deficits',()=>{
  const data=JSON.parse(readFileSync(new URL('../docs/dawn-fusion-economy-matrix.json',import.meta.url),'utf8'));
- const jobs=Object.keys(SECOND_JOBS),pairs=Object.keys(FUSION_PAIRS);
+ const jobs=[...new Set(data.rows.map(r=>r.job))],pairs=Object.keys(FUSION_PAIRS);
+ assert.equal(jobs.length,10,'the archived 480-scenario report covers the ten original jobs; new spirit jobs use separate audits');
  assert.equal(data.count,480);
  assert.equal(data.rows.length,480);
  const identities=new Set(data.rows.map(r=>[r.level,r.pair,r.job,r.seed].join('|')));

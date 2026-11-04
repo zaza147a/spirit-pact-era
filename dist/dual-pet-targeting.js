@@ -1,0 +1,36 @@
+// Experimental target allocation among an already-selected pet target.
+// The existing chooseMonsterTarget() makes the player-vs-pet decision first.
+// Do not call this to increase the aggregate chance of a pet being targeted.
+export function chooseDefendingPet(roster,roleOf,{mode='focus',guardingIds=[],rng=Math.random}={}){
+ const alive=(roster||[]).filter(p=>p&&p.hp>0);
+ if(!alive.length)return null;
+ if(alive.length===1)return alive[0];
+ const guards=new Set(guardingIds);
+ const weights=alive.map(p=>{
+  const role=roleOf(p);
+  const defensive=role==='defense'||p.fusion?.main==='defense'||p.fusion?.sub==='defense';
+  let weight=defensive?1.6:role==='support'?.8:1;
+  if(guards.has(p.id))weight*=1.7;
+  if(mode==='guard'&&defensive)weight*=1.3;
+  return weight;
+ });
+ const total=weights.reduce((a,b)=>a+b,0);
+ let choice=Math.max(0,Math.min(.999999,Number(rng())||0))*total;
+ for(let i=0;i<alive.length;i++){choice-=weights[i];if(choice<0)return alive[i];}
+ return alive.at(-1);
+}
+
+/** Spirit-only aggro rule: while a Pact Warrior channels at least one active
+ * companion, all direct enemy attacks target the owner. Commander and legacy
+ * jobs retain normal owner/pet target selection. */
+export function pactOwnerOnlyAggro(player,roster=[]) {
+ return player?.job==='pactWarrior'&&roster.some(p=>player.petStances?.[p.id]==='assimilate');
+}
+
+/** Commander battles are a genuine three-unit frontline: one owner slot and
+ * one slot for each living deployed pet. Defense/guard weighting applies when
+ * choosing which pet receives the shared pet-side target. */
+export function commanderPetTargetChance(roster=[]) {
+ const living=(roster||[]).filter(p=>p?.hp>0).length;
+ return living/(living+1);
+}

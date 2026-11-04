@@ -9,7 +9,7 @@ import {readCharacterSlot,writeCharacterSlot} from '../dist/character-slots.js';
 const combinations=Array.from({length:6},(_,a)=>Array.from({length:6-a-1},(_,b)=>Array.from({length:6-a-b-2},(_,c)=>[a,a+b+1,a+b+c+2]))).flat(2);
 const storage=()=>{const data=new Map();return {getItem:key=>data.get(key)??null,setItem:(key,value)=>data.set(key,value)};};
 
-test('all 2400 job/fusion/three-skill choices keep their order through UI, migration and save-load',async()=>{
+test('all 2880 twelve-job/fusion/three-skill choices keep their order through UI, migration and save-load',async()=>{
  assert.equal(combinations.length,20,'six choose three must have twenty distinct choices');
  const jobs=Object.keys(SECOND_JOBS),pairs=Object.keys(FUSION_PAIRS);
  let checked=0;
@@ -60,5 +60,5 @@ test('all 2400 job/fusion/three-skill choices keep their order through UI, migra
    }
   }
  }
- assert.equal(checked,10*12*20);
+ assert.equal(checked,Object.keys(SECOND_JOBS).length*12*20);
 });

@@ -14,7 +14,7 @@ import {WORLD_MONSTERS} from '../dist/world-data.js';
 import {encounterLimit} from '../dist/encounter-rules.js';
 const dist=new URL('../dist/',import.meta.url);
 async function app(){const context={console,confirm:()=>true,document:{getElementById:()=>({style:{},hidden:false})},localStorage:{setItem:()=>{}},Math:Object.create(Math)};
- let source=readFileSync(new URL('game.js',dist),'utf8');for(const match of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const module=await import(new URL(match[2],dist));for(const name of match[1].split(',').map(n=>n.trim()))context[name]=module[name];}
+ let source=readFileSync(new URL('game.js',dist),'utf8');for(const match of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const module=await import(new URL(match[2],dist));for(const name of match[1].split(',').map(n=>n.trim())){const [original,alias]=name.split(/\s+as\s+/);context[alias||original]=module[original];}}
  source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,capture,releasePet,stat,playerAttack,emitEvent,classTactic,enemyAttack,petAutoAbility,renderJobTree,renderPetSkillConfig,state:()=>({player,enemy,timers,petSkillTimers,petEffects}),setup:(p,e)=>{player=p;enemy=e;enemies=[e];timers={attack:0,skill:0,pet:0,resonance:0,tactic:0};jobSkillTimers={};}};render=()=>{};renderSide=()=>{};message=()=>{};save=()=>true;toast=()=>{};award=()=>{};');vm.createContext(context);vm.runInContext(source,context);context.Math.random=()=>.1;context.rand=(min,max)=>Math.round((min+max)/2);return context;
 }
 const foe=()=>({id:'world_50',hp:100000,maxHp:100000,def:0,flee:0,atk:30,hit:999,appearedAt:1});

@@ -7,7 +7,7 @@ import {THIRD_FUSION_RULES,fusionTransformAtLevel,companionResonance} from '../d
 const oldFamilies=['attack-magic','attack-defense','attack-support','magic-defense','magic-support','defense-support'];
 const fingerprint=rule=>JSON.stringify({events:rule.events,perSkill:rule.perSkill});
 test('60 classic job/fusion contracts have individual payloads rather than mere names',()=>{
- const jobs=Object.keys(SECOND_JOBS);
+ const jobs=Object.keys(THIRD_FUSION_RULES);
  assert.equal(jobs.length,10);
  const all=[];
  for(const job of jobs){
@@ -20,7 +20,7 @@ test('60 classic job/fusion contracts have individual payloads rather than mere 
 });
 test('120 ordered routes use 12 distinct per-class combat effects',()=>{
  const allPairs=Object.keys(FUSION_PAIRS);assert.equal(allPairs.length,12);
- for(const job of Object.keys(SECOND_JOBS)){
+ for(const job of Object.keys(THIRD_FUSION_RULES)){
   const rules=allPairs.map(key=>THIRD_FUSION_RULES[job][key]);
   assert.equal(new Set(rules.map(r=>r.name)).size,12,job);
   assert.equal(new Set(rules.map(fingerprint)).size,12,job);
@@ -35,7 +35,7 @@ test('120 ordered routes use 12 distinct per-class combat effects',()=>{
  }
 });
 test('a reversed pair has different combat modifiers at all three skill positions',()=>{
- for(const job of Object.keys(SECOND_JOBS))
+ for(const job of Object.keys(THIRD_FUSION_RULES))
  for(const key of oldFamilies){
   const reverse=key.split('-').reverse().join('-');
   const old=THIRD_FUSION_RULES[job][key],newRule=THIRD_FUSION_RULES[job][reverse];
