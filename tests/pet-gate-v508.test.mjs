@@ -24,6 +24,6 @@ test('unascended level99 pet receives no battle XP even when owner is reborn',as
 });
 test('worn gear and socket cards survive rebirth and loading even when the new class or level cannot normally equip it',async()=>{
  const c=await runtime(),a=c.api,p=a.normalize(a.fresh('裝備保留','knight'));
- Object.assign(p,{level:99,jobLevel:50,location:'town',quests:Object.fromEntries(['volcano','abyss','ruins','eclipse','celestial'].map(id=>[id,{done:true}]))});
+ Object.assign(p,{level:99,jobLevel:50,location:'town',bag:[...p.bag,{id:'rebirth_core',qty:1}],quests:{}});
  p.gear.rightHand=c.rollGear('twoSpear',99,'legendary');p.sockets.rightHand='fang';const uid=p.gear.rightHand.uid;a.setup(p,null);a.rebirthCharacter();assert.equal(p.job,'swordsman');assert.equal(p.gear.rightHand.uid,uid);a.normalize(p);assert.equal(p.gear.rightHand.uid,uid);assert.equal(p.sockets.rightHand,'fang');
 });
