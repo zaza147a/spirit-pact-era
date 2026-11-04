@@ -70,3 +70,21 @@
  #gameShell #characterPanel #companion .dual-pet-hud{grid-template-columns:1fr}
  #gameShell #characterPanel #companion .dual-pet-unit .art-pet{max-height:130px}
 }
+
+/* Keep dual-companion controls and levels visible in the narrow HUD. */
+#gameShell #characterPanel .party-hud>#partyQuestSlot{grid-column:1/-1;min-width:0}
+#gameShell #characterPanel #companion .dual-pet-level{display:inline-block;color:#f4db9f;font-size:13px;font-weight:750;line-height:1.45}
+#gameShell #characterPanel #companion [data-rename-active-pet]{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:4px 10px;margin:3px 0;color:#e9d9b3;font-size:12px}
+#gameShell #characterPanel #partyQuestSlot .quest-tracker{min-width:0;overflow:visible}
+#gameShell #characterPanel #partyQuestSlot .quest-tracker-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+#gameShell #characterPanel #partyQuestSlot .quest-track-card{min-width:0;padding:8px;overflow-wrap:anywhere}
+#gameShell #characterPanel #partyQuestSlot .quest-track-card button{max-width:100%;white-space:normal}
+@media(min-width:1001px) and (max-height:900px){
+ body:has(#gameShell:not([hidden])){overflow-x:hidden;overflow-y:auto}
+ #gameShell:not([hidden]){height:auto;min-height:100dvh;overflow:visible}
+ #gameShell>.layout{height:auto;min-height:0;flex:none;align-items:start}
+ #gameShell>.layout>.panel{height:auto;max-height:none;overflow:visible}
+ #gameShell>.layout>.collection{min-height:440px}
+ #gameShell>.layout>.collection #side{max-height:65dvh;overflow-y:auto}
+ #gameShell>.layout>.battle{overflow:visible}
+}
