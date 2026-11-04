@@ -332,6 +332,17 @@ jobs:
       - name: Rank 200 five-boss clears against ten existing jobs with SS gear
         run: node tests/spirit-twelve-job-five-boss-ranking.mjs
 
+  spirit-cultivation-field-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify twelve-class low, mythic and SSS cultivation field DPS
+        run: node tests/spirit-cultivation-field-audit.mjs
+
   spirit-210-max-sigil-ranking:
     runs-on: ubuntu-latest
     timeout-minutes: 15
