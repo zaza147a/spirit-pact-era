@@ -355,3 +355,26 @@ jobs:
           node-version: '22'
       - name: Search legal max-sigil gear card stats weapons fusion and compare 12 jobs
         run: node tests/spirit-201-optimized-archetype-search.mjs
+
+  gold-costume-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check gold costume purchase and ownership logic
+        run: node --test tests/cosmetic-gallery.test.mjs
+      - name: Install browser runtime
+        run: npm install --no-save --package-lock=false playwright@1.62.1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Test six gold outfits in the real game UI
+        run: node scripts/browser/spirit-gold-acceptance.mjs
+      - name: Preserve screenshots and verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spirit-gold-costumes-browser-qa
+          path: browser-qa/spirit-gold/
