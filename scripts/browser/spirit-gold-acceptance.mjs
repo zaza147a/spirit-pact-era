@@ -29,6 +29,8 @@ page.on('pageerror',e=>errors.push(e.message));
 page.on('dialog',dialog=>dialog.accept());
 try{
  for(const job of ['pactWarrior','spiritCommander']){
+  // The previous job finishes at mobile width; reset before desktop assertions.
+  await page.setViewportSize({width:1440,height:900});
   await page.goto(base);
   const fixture=highLevelSpiritPlayer({level:200,job});
   fixture.name=job==='pactWarrior'?'時裝驗收-靈契':'時裝驗收-萬靈';
