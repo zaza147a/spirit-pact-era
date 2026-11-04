@@ -9,7 +9,9 @@ test('full 2400 five-boss audit preserves every legal triplet and every failure 
  assert.equal(d.count,2400);assert.equal(d.rows.length,2400);assert.equal(d.regressions.length,0);
  assert.ok(d.wins>=d.baselineWins);assert.equal(d.wins,d.rows.filter(r=>r.won).length);
  assert.equal(d.failed.length,d.rows.filter(r=>!r.won).length);
- for(const job of Object.keys(SECOND_JOBS))for(const pair of Object.keys(FUSION_PAIRS)){
+ const archivedJobs=[...new Set(d.rows.map(r=>r.job))];
+ assert.equal(archivedJobs.length,10,'the archived 2400-choice five-boss baseline predates the two spirit jobs');
+ for(const job of archivedJobs)for(const pair of Object.keys(FUSION_PAIRS)){
   const a=d.rows.filter(r=>r.job===job&&r.pair===pair);assert.equal(a.length,20,job+'/'+pair);
   assert.equal(new Set(a.map(r=>r.choice.join(','))).size,20);
   assert.ok(a.some(r=>r.won),job+'/'+pair+' needs at least one usable configuration');
