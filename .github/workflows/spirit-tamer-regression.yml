@@ -241,7 +241,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Compare 1h and 6h sustained survival for both spirit roles
+      - name: Compare 5m and 10m sustained survival for both spirit roles
         run: node tests/spirit-survival-sweep.mjs
 
   spirit-underlevel-legacy-control:
