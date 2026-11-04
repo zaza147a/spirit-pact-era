@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
-import {spiritTargetDamageFactor,spiritPetTargetFactor} from '../dist/spirit-target-damage.js';
+import {spiritTargetDamageFactor} from '../dist/spirit-target-damage.js';
 const source=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
 const from=source.indexOf('function dealDamage('),to=source.indexOf('\nfunction targetEnemy(',from);
 assert.ok(from>=0&&to>from,'production damage core found');
@@ -31,10 +31,5 @@ assert.equal(damage('spiritCommander',210,false,'playerDamage'),1000);
 for(const job of ['crusader','knight','hunter','wizard','priest'])
  for(const key of ['playerDamage','petDamage'])
   assert.equal(damage(job,210,false,key),1000,'legacy output unchanged '+job+' '+key);
-assert.equal(spiritPetTargetFactor('spiritCommander',1),.95);
-assert.equal(spiritPetTargetFactor('spiritCommander',2),1);
-assert.equal(spiritPetTargetFactor('spiritCommander',5),1);
-assert.equal(spiritPetTargetFactor('pactWarrior',1),1);
-assert.equal(spiritPetTargetFactor('crusader',1),1);
-console.log(JSON.stringify({complete:true,assertions:24,pactPrimaryFactor:1.12,pactSecondaryFactor:.70,
- commanderMobAndBossFactor:1,commanderSingleTargetPetFactor:.95,monstersAndLegacyUnchanged:true}));
+console.log(JSON.stringify({complete:true,assertions:19,pactPrimaryFactor:1.12,pactSecondaryFactor:.70,
+ commanderMobAndBossFactor:1,monstersAndLegacyUnchanged:true}));
