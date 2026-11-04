@@ -5,3 +5,9 @@ export function spiritTargetDamageFactor(job,key,{boss=false,secondary=false,lev
  if(job==='pactWarrior'&&key==='playerDamage')return secondary?.70:1.12;
  return 1;
 }
+
+// Multi-target identity: slightly weaker when there is only one live target.
+// Does not discriminate between normal monsters and bosses.
+export function spiritPetTargetFactor(job,availableTargets=1){
+ return job==='spiritCommander'&&availableTargets<=1?.95:1;
+}
