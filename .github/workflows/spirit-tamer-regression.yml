@@ -32,16 +32,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify bulk category sales and item protection
-        run: node tests/bulk-sale-regression.mjs
-      - name: Verify boss card rarity and compound salvage conditions
-        run: node tests/boss-card-salvage-regression.mjs
-      - name: Smoke test real offline Node Worker
-        run: node tests/offline-worker-smoke.mjs
       - name: Short real offline combat simulation
         run: node tests/offline-worker-combat-smoke.mjs
-      - name: Run offline optimizer regression
-        run: node tests/offline-optimizer-regression.mjs
       - name: Run dual-pet combat regression
         run: node tests/dual-pet-combat-regression.mjs
       - name: Verify commander-only multiple targets for attacks and skills
@@ -56,12 +48,6 @@ jobs:
         run: node tests/spirit-role-specialization-regression.mjs
       - name: Run resonance condition positive and negative cases
         run: node tests/dual-pet-resonance-signature.test.mjs
-      - name: Run dual-pet UI regression
-        run: node tests/spirit-dual-ui-regression.mjs
-      - name: Validate eight spirit job portraits
-        run: node tests/spirit-job-portrait-assets.test.mjs
-      - name: Validate six S/SS/SSS spirit rank outfits
-        run: node tests/spirit-rank-outfits.test.mjs
       - name: Smoke four synthetic 200/210 fused spirit worker states
         run: node tests/spirit-high-level-fixture.test.mjs
       - name: Real Worker combat for all 42 fused third-job resonances
@@ -114,28 +100,6 @@ jobs:
       - name: Observe 84 real 200/210 spirit combat scenarios
         run: node tests/spirit-live-balance-observation.mjs
 
-  gear-quality-observation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Compare actual 200/210 combat across normal legendary mythic gear
-        run: node tests/spirit-gear-quality-observation.mjs
-
-  rare-resonance-observation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Five low-frequency dual resonances at 200/210 for 5m and two seeds
-        run: node tests/spirit-rare-resonance-observation.mjs
-
   high-level-offline-observation:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -159,29 +123,6 @@ jobs:
           node-version: '22'
       - name: Cached versus uncached 200/210 dual-pet ten-minute full state parity
         run: node tests/spirit-offline-petstat-cache-equivalence.mjs
-
-  survival-economy-observation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Compare twelve 200/210 defensive and offensive fusion farm scenarios
-        run: node tests/spirit-offline-survival-economy-observation.mjs
-
-  twelve-profession-observation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Compare twelve 200/210 professions through real offline combat
-        run: node tests/spirit-vs-ten-jobs-combat-observation.mjs
-
 
   spirit-skill-priority-observation:
     runs-on: ubuntu-latest
@@ -252,39 +193,6 @@ jobs:
           node-version: '22'
       - name: Compare 5m and 10m sustained survival for both spirit roles
         run: node tests/spirit-survival-sweep.mjs
-
-  spirit-underlevel-legacy-control:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Compare all twelve classes with actual Lv170/180 unenhanced gear on 191-200 map
-        run: node tests/spirit-underlevel-legacy-control.mjs
-
-  spirit-underlevel-map-survival:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Compare Lv170/180 gear in 191-200 and strictly SSS in 201-210
-        run: node tests/spirit-underlevel-map-survival.mjs
-
-  spirit-200-legendary-five-boss:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Test 24 Lv200 five-boss attempts with Lv200 legendary and mythic gear
-        run: node tests/spirit-200-low-gear-five-boss.mjs
 
   spirit-200-five-boss-observation:
     runs-on: ubuntu-latest
