@@ -29,7 +29,7 @@ try{
  for(const job of ['pactWarrior','spiritCommander']){
   await page.goto(base);
   const fixture=highLevelSpiritPlayer({level:200,job});
-  fixture.name='金幣時裝驗收-'+job;
+  fixture.name=job==='pactWarrior'?'時裝驗收-靈契':'時裝驗收-萬靈';
   fixture.location='skycity';
   fixture.manualPaused=true;
   fixture.offline={at:Date.now(),enabled:false};
@@ -40,6 +40,7 @@ try{
   fixture.bag.push({id:'gold_bar',qty:55});
   await page.locator('[data-slot-select="0"]').click();
   await page.locator('#saveFile').setInputFiles({name:job+'.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:2,player:fixture}))});
+  console.log('Import status',job,await page.locator('#toast').innerText().catch(()=>''));
   await page.getByRole('heading',{name:fixture.name,exact:true}).waitFor();
   await page.locator('#enterGameBtn').click();
   await page.locator('[data-tab="character"]').click();
