@@ -23,5 +23,7 @@ export function spiritCultivationMultiplier(player,pets=[]){
  // Preserve the existing 151–200 world and five-boss trial progression.
  // Only the 201+ endgame applies the new steep equipment-investment curve.
  if(Number.isFinite(player?.level)&&player.level<201)return 1;
- return .35+.65*spiritCultivationProgress(player,pets);
+ const linear=.35+.65*spiritCultivationProgress(player,pets);
+ // Back-load endgame strength: early mythic items should not already beat all jobs.
+ return linear*linear;
 }
