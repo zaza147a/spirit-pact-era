@@ -76,7 +76,7 @@ test('evolution guide hides legendary/mythic appearances and clamps stale qualit
 });
 test('overview and automation settings are separate and legacy capture-zone cards are retained',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('設定','mage'));a.setup(p,foe());const overview=a.renderOverview(),settings=a.renderAutomation();assert.ok(!overview.includes('data-autopotion'));assert.ok(settings.includes('data-autopotion="playerHp"'));assert.ok(settings.includes('data-autobuy-enabled="hp"'));assert.ok(settings.includes('data-escape-boss'));assert.ok(settings.includes('data-autoultimate'));
- p.cards=[{id:'boss_petland',qty:1}];a.normalize(p);assert.equal(p.cards[0].id,'boss_petland');assert.match(c.CARDS.boss_petland.description,/停止掉落/);
+ p.cards=[{id:'boss_petland',qty:1}];a.normalize(p);assert.equal(p.cards[0].id,'boss_petland');assert.equal(c.CARDS.boss_petland.effects.atkPct,11);assert.equal(c.CARDS.boss_petland.effects.matkPct,11);
 });
 
 test('shop purchases requested quantities atomically and rejects insufficient funds or invalid quantities',async()=>{
