@@ -6,8 +6,11 @@ on:
       - feature/spirit-tamer-dual-pets
     paths:
       - 'dist/**'
+      - '!dist/assets/cosmetics/**'
+      - '!dist/cosmetic-gallery.js'
+      - '!dist/cosmetic-gallery.css'
       - 'tests/**'
-      - 'scripts/browser/spirit-gold-acceptance.mjs'
+      - '!tests/cosmetic-gallery.test.mjs'
       - '.github/workflows/spirit-tamer-regression.yml'
   workflow_dispatch:
 
