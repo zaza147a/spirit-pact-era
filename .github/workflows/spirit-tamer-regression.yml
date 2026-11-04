@@ -23,6 +23,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify boss card rarity and compound salvage conditions
+        run: node tests/boss-card-salvage-regression.mjs
       - name: Smoke test real offline Node Worker
         run: node tests/offline-worker-smoke.mjs
       - name: Short real offline combat simulation
