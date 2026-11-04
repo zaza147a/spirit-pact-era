@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import {cardDropChance} from '../dist/map-rules.js';
+import {readFileSync} from 'node:fs';
 import {shouldAutoSalvage} from '../dist/salvage-rules.js';
 import {gearTier} from '../dist/loot.js';
 import {BOSS_IDENTITIES,CARD_PROFILES,CARD_SLOT_PROFILES,CARD_SLOT_ORDER,BOSS_TRAITS,bossCardDamageFactor,createWorldCards} from '../dist/card-effects.js';
@@ -48,3 +50,18 @@ assert.ok(dawnCard?.boss&&dawnCard.slots.includes('rightHand'),'210 首領必須
 assert.match(dawnCard.description,/專屬特性/,'首領卡片必須顯示條件式特色');
 assert.ok(bossCardDamageFactor({rightHand:'dawn-archon'},{'dawn-archon':dawnCard},{source:'owner',enemyHpFraction:1,enemyCount:1,ownerHpFraction:1})>=1,'王卡戰鬥倍率應可安全計算');
 console.log('boss slot coverage, special mechanics and Lv210 card regression passed');
+
+// Deterministic Lv210 drop boundary and real reward-path regression.
+assert.equal(cardDropChance('dawnrift',{id:'dawn-archon',boss:true}),.001);
+for(const id of ['dawn-sentinel','dawn-watcher','dawn-minion'])assert.equal(cardDropChance('dawnrift',{id,boss:false}),0);
+assert.equal(cardDropChance('dawnrift',{id:'other-boss',boss:true}),0);
+assert.equal(.0009<cardDropChance('dawnrift',{id:'dawn-archon',boss:true}),true);
+assert.equal(.0011<cardDropChance('dawnrift',{id:'dawn-archon',boss:true}),false);
+const gameSource=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
+const dawnAward=gameSource.match(/function awardDawnMonster\(\)\{[^\n]+/ )?.[0]||'';
+assert.match(dawnAward,/cardDropChance\(player\.location,defeated\)/,'曙界獨立結算必須真的判斷王卡掉落');
+assert.match(dawnAward,/addCard\(defeated\.id\)/,'曙界王卡須進入背包');
+assert.match(dawnAward,/queueBossCardNotice\(defeated\.id\)/,'曙界王卡須進入提示佇列');
+assert.match(gameSource,/offlineSummary\.bossCards\|\|\[\]/,'離線王卡須保留順序');
+assert.match(gameSource,/showNextBossCardNotice\(\);\};/,'離線報告關閉後應可繼續提示');
+console.log('Lv210 boss deterministic drop and notice wiring regression passed');
