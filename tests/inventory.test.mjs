@@ -14,7 +14,7 @@ test('class eligibility includes universal gear, excludes other classes, and lea
  assert.ok(matchesGearFilters({id:'petCirclet',affixes:{matk:3}},PET_GEAR_BASE.petCirclet,{...defaults,job:'unusable',stat:'matk'},'mage',1));
 });
 async function app(){let source=readFileSync(new URL('game.js',root),'utf8'),context={console,document:{getElementById:()=>({})},localStorage:{setItem:()=>{}}};
- for(const match of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const module=await import(new URL(match[2],root));for(const name of match[1].split(',').map(n=>n.trim()))context[name]=module[name];}
+ for(const match of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const module=await import(new URL(match[2],root));for(const name of match[1].split(',').map(n=>n.trim())){const[original,alias]=name.split(/\s+as\s+/);context[alias||original]=module[original];}}
  source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,gearComparison,dismantle,renderBag,setCategory:c=>bagCategory=c};render=()=>{};message=()=>{};toast=()=>{};save=()=>{};');vm.createContext(context);vm.runInContext(source,context);return context;
 }
 test('player and pet comparisons include MATK, always show ATK/MATK even when unchanged, and restore equipped gear',async()=>{
