@@ -6,6 +6,8 @@ const initial=commanderInheritedPetStats(pet,owner);
 const boosted=commanderInheritedPetStats(pet,{...owner,atk:18000,matk:14500,def:2500,mdef:2200});
 assert.ok(boosted.atk>initial.atk,'owner ATK increase must grow companion physical offense');
 const invested=commanderInheritedPetStats(pet,{...owner,cardPower:80});
+const equipped=commanderInheritedPetStats(pet,{...owner,gearPower:80});
+assert.ok(equipped.atk>initial.atk&&equipped.matk>initial.matk,'owner enhanced equipment must strengthen both pets');
 assert.ok(invested.atk>initial.atk&&invested.matk>initial.matk,'offensive character cards must strengthen both pets');
 assert.ok(invested.atk<=(pet.atk+owner.atk*.30)*1.36+1,'card-based pet growth must be capped at 36%');
 assert.ok(boosted.matk>initial.matk,'owner MATK increase must grow companion magic offense');
