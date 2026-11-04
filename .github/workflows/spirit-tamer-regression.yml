@@ -37,6 +37,8 @@ jobs:
         run: node tests/dual-pet-combat-regression.mjs
       - name: Verify commander-only multiple targets for attacks and skills
         run: node tests/spirit-commander-cleave-regression.mjs
+      - name: Verify commander pets progressively inherit owner combat strength
+        run: node tests/spirit-commander-owner-growth.test.mjs
       - name: Verify contract sigil scales assimilated stats and leaves legacy jobs unchanged
         run: node tests/spirit-sigil-assimilation-regression.mjs
       - name: Verify boss and 201-plus field role multipliers exclude legacy jobs
