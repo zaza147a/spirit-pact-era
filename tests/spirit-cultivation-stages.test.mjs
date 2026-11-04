@@ -9,6 +9,13 @@ const early=spiritCultivationMultiplier(player(gear('rare',null,151)),pets(gear(
 const mythic=spiritCultivationMultiplier(player(gear('mythic')),pets(gear('mythic')));
 const full=spiritCultivationMultiplier(player(gear('mythic','SSS'),8),pets(gear('mythic','SSS')));
 assert.equal(bare,.35);
+for(const level of [151,171,191,200]){
+ const trialPlayer={...player(null),level};
+ assert.equal(spiritCultivationMultiplier(trialPlayer,pets(null)),1,
+  '151–200 trial maps must retain previous damage inheritance at level '+level);
+}
+assert.equal(spiritCultivationMultiplier({...player(null),level:201},pets(null)),.35,
+ 'endgame gate begins at 201');
 assert.ok(bare<early&&early<mythic&&mythic<full,'growth must increase from weak to 200 mythic to SSS sigil 8');
 assert.equal(full,1,'full level 200 mythic SSS and sigil 8 restores full strength');
 assert.ok(mythic>.5&&mythic<.7,'unenhanced mythic should start catching up');
