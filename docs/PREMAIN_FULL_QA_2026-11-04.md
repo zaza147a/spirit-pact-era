@@ -56,10 +56,10 @@
 - `spirit-underlevel-legacy-control.mjs`：24 個 170／180 等神話無強化裝備於 191–200 地圖的情境，程序 exit 0。
 - `spirit-underlevel-map-survival.mjs`：24 個低等裝及 201–210 SSS 地圖對照情境，程序 exit 0。
 - `spirit-gear-quality-observation.mjs`：18 個裝備品質對照，程序 exit 0。
-- `spirit-200-low-gear-five-boss.mjs`：16 個 200 神話裝五連戰情境，程序 exit 0；兩個新職業無強化場次未全通關，SS 強化場次 4/4 通關，屬原先預期的裝備門檻，不代表所有配置可無強化通關。
+- `spirit-200-low-gear-five-boss.mjs`：16 個 200 神話裝五連戰情境，程序 exit 0，但**並非所有場次通關**。靈契無強化 0/4、SS 強化 **2/4**；萬靈無強化 0/4、SS 強化 **4/4**。靈契 SS 的兩個失敗配置保留為平衡待辦（原 GitHub issue #9），不自行調整職業傷害／怪物難度。此獨立觀察不包含在 601 項 Node 回歸的 pass/fail 總數中。
 
 上述報告有明確的裝備、場景、種子與時間限制，不能直接外推為所有玩家配置或最優 DPS。
 
 ## 發版判定
 
-**程式層完整回歸已通過，Git 三方合併預演無衝突；可進入合併前最後人工驗收。** 正式版 WIKI 保持不變，王卡 WIKI 更新留後續。線上正式瀏覽器、手機 Safari、GitHub Actions 的遠端執行狀態仍需分別確認。不得由測試結果推論「零缺陷」或自動合併／部署。現有 GitHub Pages 的完整回歸保護保留。
+**程式層完整回歸已通過，Git 三方合併預演無衝突；但 200 神話 SS 靈契五連戰仍有 2/4 未通過，需作為平衡待辦而非誤報全面驗收成功。** 正式版 WIKI 保持不變，王卡 WIKI 更新留後續。線上正式瀏覽器、手機 Safari、GitHub Actions 的遠端執行狀態仍需分別確認。不得由測試結果推論「零缺陷」或自動合併／部署。現有 GitHub Pages 的完整回歸保護保留。
