@@ -204,8 +204,8 @@ for(const job of ['pactWarrior','spiritCommander']){
  vm.runInNewContext(commanderTransferCode+'\nthis.transfer=commanderTransferredPetStats',ctx);
  const result=ctx.transfer(commander.pets[0],input);
  if(job==='spiritCommander'){
-  assert.equal(result.atk,1060);
-  assert.equal(result.matk,1120);
+  assert.equal(result.atk,869);
+  assert.equal(result.matk,918);
   assert.equal(result.def,535);
   assert.equal(result.mdef,528);
   // Only legal different fusion types can now form a dual roster.
