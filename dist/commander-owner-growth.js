@@ -9,8 +9,11 @@ export function commanderOwnerGrowth(current,raw){
 }
 export function commanderInheritedPetStats(base,owner){
  const atk=nonnegative(owner.atk),matk=nonnegative(owner.matk);
- const physical=commanderOwnerGrowth(atk,owner.rawAtk);
- const magical=commanderOwnerGrowth(matk,owner.rawMatk);
+ // A character's offensive cards represent learned combat power as well as flat stats.
+ // Share it with both pets, with an overall soft cap to avoid runaway two-pet DPS.
+ const training=Math.min(.22,nonnegative(owner.cardPower)/100);
+ const physical=Math.min(.28,commanderOwnerGrowth(atk,owner.rawAtk)+training);
+ const magical=Math.min(.28,commanderOwnerGrowth(matk,owner.rawMatk)+training);
  return {...base,
   atk:Math.round((base.atk+atk*.30)*(1+physical)),
   matk:Math.round((base.matk+matk*.30)*(1+magical)),
