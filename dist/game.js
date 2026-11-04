@@ -1,6 +1,6 @@
 import {ensurePetEffects} from './dual-pet-effects.js';
 import {commanderInheritedPetStats} from './commander-owner-growth.js';
-import {spiritTargetDamageFactor,spiritPetTargetFactor} from './spirit-target-damage.js';
+import {spiritTargetDamageFactor} from './spirit-target-damage.js';
 import {chooseDefendingPet,pactOwnerOnlyAggro,commanderPetTargetChance} from './dual-pet-targeting.js';
 import {dualSpiritResonance,canTriggerDualSpirit} from './dual-fusion-resonance.js';
 import {queueCombatVfx} from './skill-effects.js?v=6.5.12';
@@ -888,7 +888,7 @@ function award(){if(enemy?.trial)return awardTrialBoss();if(enemy?.dawn)return a
  if(Math.random()<cardDropChance(player.location,enemy)){addCard(enemy.id);if(enemy.boss)queueBossCardNotice(enemy.id);message(`✦ ${enemy.boss?'首領專屬':''}卡片掉落：${CARDS[enemy.id].name}！（${enemy.boss?'0.1':'0.2'}%）`,'rare');}
  while(player.level<characterLevelCap(player)&&player.xp>=threshold()){player.xp-=threshold();player.level++;clearStatSnapshots();player.statPoints+=2;player.hp=stat('hp');player.mp=stat('mp');message(`Base LV.${player.level}！獲得 2 點能力點數。`,'good');}if(player.level>=characterLevelCap(player))player.xp=0;while(player.jobLevel<jobLevelCap(player)&&player.jobXp>=jobThreshold()){player.jobXp-=jobThreshold();player.jobLevel++;clearStatSnapshots();reconcileSkillPoints(player,JOB_SKILLS[player.job],!!SECOND_JOBS[player.job]);message(`Job LV.${player.jobLevel}！獲得 1 點職業技能點。`,'good');}if(player.jobLevel>=jobLevelCap(player))player.jobXp=0;syncRebirthSkills();awardActivePetProgress(defeated);enemies=enemies.filter(e=>e!==defeated&&e.hp>0);enemy=selectEncounterTarget(enemies,player.targetPriority)||defeated;if(enemies.length)startReport();nextEncounterAt=Math.min(nextEncounterAt,gameNow()+replacementDelay());dirty=true;save();}
 function creditOwnerTelemetry(amount){if(offlineSimulation||!amount)return;const sample=combatSamples.at(-1);if(!sample||sample.at!==gameNow())return;const credit=Math.min(sample.pet,amount);sample.owner+=credit;sample.pet-=credit;}
-function dealPetDamage(amount,key='petDamage',sourcePet=activePet(),sourceFactor=1){const boost=classBuffPower('pet'),manual=currentTactic()?.kind==='duet'?1.2:1,actual=dealDamage(amount*manual*petDirectRoleMultiplier(companionRole(sourcePet),player.level)*(key==='petDamage'?fusionDirectOutputFactor(sourcePet):1)*sigilBonus(player).petDamage*(1+boost)*sourceFactor*spiritPetTargetFactor(player.job,multiTargets(enemies,enemy,2,encounterLimit(player.location)).length),key),owned=Math.round(actual*boost/(1+boost));if(report&&owned){report.metrics[key]-=owned;record(report,'playerBuffDamage',owned);}creditOwnerTelemetry(owned);
+function dealPetDamage(amount,key='petDamage',sourcePet=activePet(),sourceFactor=1){const boost=classBuffPower('pet'),manual=currentTactic()?.kind==='duet'?1.2:1,actual=dealDamage(amount*manual*petDirectRoleMultiplier(companionRole(sourcePet),player.level)*(key==='petDamage'?fusionDirectOutputFactor(sourcePet):1)*sigilBonus(player).petDamage*(1+boost)*sourceFactor,key),owned=Math.round(actual*boost/(1+boost));if(report&&owned){report.metrics[key]-=owned;record(report,'playerBuffDamage',owned);}creditOwnerTelemetry(owned);
  if(offlineMetrics&&actual){
   const d=offlineMetrics.damage;
   d.other-=actual;
