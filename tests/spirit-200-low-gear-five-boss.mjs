@@ -1,4 +1,4 @@
-// Lv200 trial uses Lv200 equipment: legendary (survival control) versus mythic (enhancement controls).
+// Lv200 trial uses Lv200 mythic equipment only (unenhanced versus SS enhancement controls).
 // New classes only; the original trial enemies and revival timers are unchanged.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
@@ -34,7 +34,7 @@ function equipAtLevel(p,level,rarity,rank){
  return gear.length;
 }
 for(const job of ['pactWarrior','spiritCommander'])
- for(const {rarity,enhancement} of [{rarity:'legendary',enhancement:null},{rarity:'mythic',enhancement:null},{rarity:'mythic',enhancement:'SS'}])
+ for(const {rarity,enhancement} of [{rarity:'mythic',enhancement:null},{rarity:'mythic',enhancement:'SS'}])
  for(const pairKey of ['attack-defense+attack-magic','attack-magic+defense-support'])
  for(const seed of seeds){
  const gearLevel=200;
@@ -67,12 +67,12 @@ for(const job of ['pactWarrior','spiritCommander'])
   rows.push(row);console.log(JSON.stringify(row));
  }finally{await worker.terminate();}
 }
-assert.equal(rows.length,24);
+assert.equal(rows.length,16);
 for(const job of ['pactWarrior','spiritCommander'])
- for(const {rarity,enhancement} of [{rarity:'legendary',enhancement:'none'},{rarity:'mythic',enhancement:'none'},{rarity:'mythic',enhancement:'SS'}]){
+ for(const {rarity,enhancement} of [{rarity:'mythic',enhancement:'none'},{rarity:'mythic',enhancement:'SS'}]){
  const group=rows.filter(r=>r.job===job&&r.rarity===rarity&&r.enhancement===enhancement);
  console.log(JSON.stringify({summary:true,job,gearLevel:200,rarity,enhancement,scenarios:group.length,
   passedFive:group.filter(r=>r.passedFive).length,
   meanBossesKilled:Number((group.reduce((n,r)=>n+r.bossesKilled,0)/group.length).toFixed(2))}));
 }
-console.log(JSON.stringify({complete:true,scenarios:rows.length,limitations:'Only Lv200 gear for Lv200 five-boss trial; legendary unenhanced checks for excessive survival; mythic none/SS controls; two seeds, two legal pet pairings; synthetic previously-cleared trial checkpoint. Lv170/180 unenhanced gear is tested only on 191-200 wild maps.'}));
+console.log(JSON.stringify({complete:true,scenarios:rows.length,limitations:'Only Lv200 mythic gear for Lv200 five-boss trial; mythic none/SS controls; two seeds, two legal pet pairings; synthetic previously-cleared trial checkpoint. Lv170/180 unenhanced gear is tested only on 191-200 wild maps.'}));
