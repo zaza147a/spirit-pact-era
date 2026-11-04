@@ -124,7 +124,12 @@ function commanderTransferredPetStats(pet,base){
  // Derive from current owner combat stats every time; never mutate pet's cached base.
  return commanderInheritedPetStats(base,{
   atk:stat('atk'),rawAtk:rawStat('atk'),matk:stat('matk'),rawMatk:rawStat('matk'),
-  def:stat('def'),mdef:stat('mdef')
+  def:stat('def'),mdef:stat('mdef'),
+  // Character-bound offensive card effects reinforce the deployed companions.
+  cardPower:(cardBonus('atkPct')+cardBonus('matkPct'))*.70
+   +cardBonus('crit')*.35+cardBonus('critDmg')*.16
+   +cardBonus('aspdPct')*.45+cardBonus('magicDamage')*.40
+   +cardBonus('ignoreDef')*.18
  });
 }
 function setPetStance(id,stance){if(player?.job!=='pactWarrior'||!['assist','assimilate'].includes(stance))return;const pet=activePetRoster(player).find(p=>p.id===id);if(!pet)return;player.petStances??={};player.petStances[id]=stance;clearStatSnapshots();player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));dirty=true;save();render();}
