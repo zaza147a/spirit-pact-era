@@ -11,6 +11,12 @@ on:
       - '.github/workflows/spirit-tamer-regression.yml'
   workflow_dispatch:
 
+# Cancel superseded automatic runs on this test branch.
+# Manual full-acceptance runs have a separate group and are never auto-cancelled.
+concurrency:
+  group: spirit-tamer-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
+
 permissions:
   contents: read
 
