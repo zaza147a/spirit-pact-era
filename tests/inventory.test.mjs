@@ -19,9 +19,20 @@ async function app(){let source=readFileSync(new URL('game.js',root),'utf8'),con
 }
 test('player and pet comparisons include MATK, always show ATK/MATK even when unchanged, and restore equipped gear',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('比較測試','mage'));a.setPlayer(p);
- const staff={id:'oneStaff',uid:'new-staff',level:1,rarity:'common',affixes:{matk:10}};const snapshot=JSON.stringify({gear:p.gear,sockets:p.sockets});assert.match(a.gearComparison(staff),/MATK/);assert.equal(JSON.stringify({gear:p.gear,sockets:p.sockets}),snapshot);
- const neutral=a.gearComparison({id:'helm',uid:'helm',affixes:{def:1}});assert.match(neutral,/ATK/);assert.match(neutral,/MATK/);assert.match(neutral,/±0/);
- const pet=c.makePet('wisp');p.pets=[pet];p.activePetId=pet.id;const petBefore=JSON.stringify(pet.gear);assert.match(a.gearComparison({id:'petCirclet',uid:'circlet',affixes:{matk:5}}),/MATK/);assert.equal(JSON.stringify(pet.gear),petBefore);
+ const staff={id:'oneStaff',uid:'new-staff',level:1,rarity:'common',affixes:{matk:10}};const snapshot=JSON.stringify({gear:p.gear,sockets:p.sockets});assert.match(a.gearComparison(staff),/魔法攻擊/);assert.equal(JSON.stringify({gear:p.gear,sockets:p.sockets}),snapshot);
+ const neutral=a.gearComparison({id:'helm',uid:'helm',affixes:{def:1}});assert.match(neutral,/物理攻擊/);assert.match(neutral,/魔法攻擊/);assert.match(neutral,/±0/);
+ const pet=c.makePet('wisp');p.pets=[pet];p.activePetId=pet.id;const petBefore=JSON.stringify(pet.gear);assert.match(a.gearComparison({id:'petCirclet',uid:'circlet',affixes:{matk:5}}),/魔法攻擊/);assert.equal(JSON.stringify(pet.gear),petBefore);
+});
+test('equipment comparison localizes labels and previews capped mitigation and pet special affixes without mutations',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('減傷比較','mage'));a.setPlayer(p);
+ const armor={id:'vest',uid:'mitigation-preview',level:1,rarity:'mythic',affixes:{damageReduction:25,hpPct:5}};
+ const original=JSON.stringify(p.gear),preview=a.gearComparison(armor);
+ assert.match(preview,/最終減傷/);assert.match(preview,/25%/);assert.match(preview,/個百分點/);assert.match(preview,/生命值/);assert.doesNotMatch(preview,/>HP</);
+ assert.equal(JSON.stringify(p.gear),original);
+ const pet=c.makePet('wisp');p.pets=[pet];p.activePetId=pet.id;
+ const petOriginal=JSON.stringify(pet.gear),petPreview=a.gearComparison({id:'petArmor',uid:'pet-preview',level:1,rarity:'mythic',affixes:{damageReduction:12,critDmg:8,ignoreDef:5}});
+ assert.match(petPreview,/最終減傷/);assert.match(petPreview,/暴擊傷害/);assert.match(petPreview,/無視防禦/);
+ assert.equal(JSON.stringify(pet.gear),petOriginal);
 });
 test('manual dismantle finds exact UID after bag reorder; character and pet equipment buttons are present; worn gear stays untouched',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('分解測試','mage'));a.setPlayer(p);const kept={id:'oneStaff',uid:'worn',level:1,rarity:'common',affixes:{matk:1}},target={id:'blade',uid:'target',level:1,rarity:'rare',affixes:{atk:8}},other={id:'ring',uid:'other',level:1,rarity:'common',affixes:{matk:1}};p.gear.rightHand=kept;p.bag=[other,{id:'red_small',qty:2},target,{id:'petCirclet',uid:'petgear',level:1,rarity:'common',affixes:{matk:5}}];
