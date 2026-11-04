@@ -118,7 +118,8 @@
 
 /* Three independently scrolling desktop rails; fluid two/one-column fallback. */
 @media(min-width:1301px){
- html{overflow:hidden}
+ html:has(#gameShell:not([hidden])){overflow:hidden}
+ html:has(#entryScreen:not([hidden])){overflow-y:auto}
  body:has(#gameShell:not([hidden])){overflow:hidden}
  #gameShell:not([hidden]){height:100dvh;min-height:0;overflow:hidden}
  #gameShell>.layout{flex:1;min-height:0;height:auto;overflow:hidden;align-items:stretch}
