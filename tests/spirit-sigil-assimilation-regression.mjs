@@ -17,7 +17,7 @@ const base={atk:100,matk:60,hp:1000,def:50,mdef:40};
 for(const job of ['pactWarrior','spiritCommander','wizard']){
  for(const sigil of [0,DAWN_SIGIL_MAX]){
   const player={job,dawnSigil:sigil,petStances:{p1:'assimilate',p2:'assimilate'}};
-  const ctx={player,sigilBonus,commanderInheritedPetStats,activePetRoster:()=>[pet1,pet2],
+  const ctx={player:{...player,gear:{}},sigilBonus,commanderInheritedPetStats,enhancedAffixes:()=>({}),activePetRoster:()=>[pet1,pet2],
    petStats:()=>base,stat:()=>200,rawStat:()=>200,cardBonus:()=>0};
   vm.runInNewContext(source+'\nthis.absorb=pactAssimilationBonus;this.transfer=commanderTransferredPetStats',ctx);
   for(const [type,ratio] of Object.entries({atk:3.20,matk:1.65,hp:.16,def:.28,mdef:.28})){
