@@ -9,9 +9,9 @@ export function commanderOwnerGrowth(current,raw){
 }
 export function commanderInheritedPetStats(base,owner){
  const atk=nonnegative(owner.atk),matk=nonnegative(owner.matk);
- // A character's offensive cards represent learned combat power as well as flat stats.
+ // A character's offensive card and equipped affix effects strengthen pet training.
  // Share it with both pets, with a 36% shared offense cap to avoid runaway two-pet DPS.
- const training=Math.min(.28,nonnegative(owner.cardPower)/100);
+ const training=Math.min(.28,(nonnegative(owner.cardPower)+nonnegative(owner.gearPower))/100);
  const physical=Math.min(.36,commanderOwnerGrowth(atk,owner.rawAtk)+training);
  const magical=Math.min(.36,commanderOwnerGrowth(matk,owner.rawMatk)+training);
  return {...base,
