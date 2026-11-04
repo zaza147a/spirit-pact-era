@@ -24,7 +24,28 @@ permissions:
   contents: read
 
 jobs:
+  boss-card-focused:
+    if: ${{ contains(github.event.head_commit.message, '[card-only]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate boss-card data, sockets and salvage
+        run: node tests/boss-card-salvage-regression.mjs
+      - name: Validate card effects and card recycling
+        run: |
+          node tests/card-balance-v404.test.mjs
+          node tests/card-recycling.test.mjs
+      - name: Validate card collection and runtime syntax
+        run: |
+          node tests/card-collection.test.mjs
+          node --check dist/game.js
+
   regression:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -63,6 +84,7 @@ jobs:
           done
 
   benchmark-starter:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -90,6 +112,7 @@ jobs:
         run: node tests/offline-worker-benchmark.mjs --starter-dual-salvage
 
   balance-observation:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -101,6 +124,7 @@ jobs:
         run: node tests/spirit-live-balance-observation.mjs
 
   high-level-offline-observation:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -114,6 +138,7 @@ jobs:
         run: node tests/spirit-high-level-offline-benchmark.mjs
 
   petstat-cache-equivalence:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -125,6 +150,7 @@ jobs:
         run: node tests/spirit-offline-petstat-cache-equivalence.mjs
 
   spirit-skill-priority-observation:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -137,6 +163,7 @@ jobs:
 
 
   all-fusion-priority-observation:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -149,6 +176,7 @@ jobs:
 
 
   warrior-assimilation-observation:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -161,6 +189,7 @@ jobs:
 
 
   spirit-role-42-matrix:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -173,6 +202,7 @@ jobs:
 
 
   legacy-survival-control:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -184,6 +214,7 @@ jobs:
         run: node tests/spirit-legacy-survival-control.mjs
 
   spirit-survival-sweep:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -195,6 +226,7 @@ jobs:
         run: node tests/spirit-survival-sweep.mjs
 
   spirit-specialization-matrix:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -206,6 +238,7 @@ jobs:
         run: node tests/spirit-specialization-matrix.mjs
 
   spirit-twelve-job-five-minute-ranking:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -217,6 +250,7 @@ jobs:
         run: node tests/spirit-twelve-job-five-minute-ranking.mjs
 
   spirit-twelve-job-five-boss-ranking:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -228,6 +262,7 @@ jobs:
         run: node tests/spirit-twelve-job-five-boss-ranking.mjs
 
   spirit-twelve-job-sss-sigil8-five-boss-ranking:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -239,6 +274,7 @@ jobs:
         run: node tests/spirit-twelve-job-sss-sigil8-five-boss-ranking.mjs
 
   spirit-cultivation-field-audit:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -250,6 +286,7 @@ jobs:
         run: node tests/spirit-cultivation-field-audit.mjs
 
   spirit-210-max-sigil-ranking:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -261,6 +298,7 @@ jobs:
         run: node tests/spirit-210-max-sigil-ranking.mjs
 
   spirit-201-mixed-build-search:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -272,6 +310,7 @@ jobs:
         run: node tests/spirit-201-mixed-build-search.mjs
 
   spirit-201-optimized-archetype-search:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -283,6 +322,7 @@ jobs:
         run: node tests/spirit-201-optimized-archetype-search.mjs
 
   normal-card-uplift-audit:
+    if: ${{ !contains(github.event.head_commit.message, '[card-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
