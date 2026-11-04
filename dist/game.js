@@ -1,6 +1,5 @@
 import {ensurePetEffects} from './dual-pet-effects.js';
 import {commanderInheritedPetStats} from './commander-owner-growth.js';
-import {spiritCultivationMultiplier} from './spirit-cultivation.js';
 import {spiritTargetDamageFactor} from './spirit-target-damage.js';
 import {chooseDefendingPet,pactOwnerOnlyAggro,commanderPetTargetChance} from './dual-pet-targeting.js';
 import {dualSpiritResonance,canTriggerDualSpirit} from './dual-fusion-resonance.js';
@@ -137,7 +136,7 @@ function pactAssimilationBonus(type){
   },0);
   const gearTraining=['atk','matk'].includes(type)?1+Math.min(.20,Math.max(0,affixes)/200):1;
   return total+base*ratios[type]*gearTraining;
- },0)*sigilBonus(player)[type]*spiritCultivationMultiplier(player,activePetRoster(player));
+ },0)*sigilBonus(player)[type];
 }
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
@@ -145,7 +144,6 @@ function commanderTransferredPetStats(pet,base){
  return commanderInheritedPetStats(base,{
   atk:stat('atk'),rawAtk:rawStat('atk'),matk:stat('matk'),rawMatk:rawStat('matk'),
   def:stat('def'),mdef:stat('mdef'),
-  cultivation:spiritCultivationMultiplier(player,activePetRoster(player)),
   // Both equipped affixes (including upgraded tiers) and cards train the pets.
   // Base equipment ATK/MATK/DEF/MDEF is already included in stat() above.
   cardPower:(cardBonus('atkPct')+cardBonus('matkPct'))*.70
