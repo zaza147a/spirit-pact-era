@@ -7,6 +7,7 @@ on:
     paths:
       - 'dist/**'
       - 'tests/**'
+      - 'scripts/browser/spirit-gold-acceptance.mjs'
       - '.github/workflows/spirit-tamer-regression.yml'
   workflow_dispatch:
 
