@@ -12,7 +12,9 @@ export const COSMETIC_JOBS={
  priest:['神聖教皇','星辰聖諭者','永恆救贖者'],
  monk:['金剛戰神','鬼神修羅','無我天尊'],
  hunter:['蒼穹獵神','森羅守望者','星隕狙擊王'],
- performer:['天界奏鳴者','星河交響師','永恆樂章王']
+ performer:['天界奏鳴者','星河交響師','永恆樂章王'],
+ pactWarrior:['雙契銀翼劍姬','永恆魂刃皇后','靈契君王'],
+ spiritCommander:['白曜雙靈召令','紫霄萬靈帝師','萬靈宗師']
 };
 export const COSMETIC_OUTFIT_PRICES=[500_000_000,1_500_000_000,3_000_000_000];
 export const COSMETIC_BACKGROUNDS=[

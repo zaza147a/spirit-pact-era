@@ -5,8 +5,8 @@ import {COSMETIC_JOBS,COSMETIC_BACKGROUNDS,COSMETIC_OUTFIT_PRICES,cosmeticOutfit
 const fresh=()=>({job:'assassin',thirdJob:true,outfitUnlocks:['S','SS','SSS'],gold:400_000_000,bag:[{id:'gold_bar',qty:40}]});
 const empty=()=>({outfits:[],backgrounds:[]});
 test('every job has three unique, separately addressed SSS illustrations',()=>{
- assert.equal(Object.keys(COSMETIC_JOBS).length,10);
- assert.equal(new Set(Object.values(COSMETIC_JOBS).flat()).size,30);
+ assert.equal(Object.keys(COSMETIC_JOBS).length,12);
+ assert.equal(new Set(Object.values(COSMETIC_JOBS).flat()).size,36);
  assert.equal(COSMETIC_OUTFIT_PRICES.length,3);
  for(const [job,names] of Object.entries(COSMETIC_JOBS))for(let i=0;i<3;i++){
   assert.ok(names[i]);assert.match(cosmeticOutfitArt(job,i),new RegExp(`fixed-${job}-${i}\\.webp$`));
@@ -38,4 +38,11 @@ test('selection is sanitized against ownership, class and rank',()=>{
 test('collection parser refuses bogus identifiers and duplicate unlocks',()=>{
  const storage={getItem:()=>JSON.stringify({outfits:['assassin-1','assassin-1','missing-1','assassin-3'],backgrounds:['gold','gold','unknown']})};
  assert.deepEqual(readCosmeticCollection(storage),{outfits:['assassin-1'],backgrounds:['gold']});
+});
+
+test('two new third jobs have three gold costumes each',()=>{
+ for(const job of ['pactWarrior','spiritCommander']){
+  assert.equal(COSMETIC_JOBS[job].length,3);
+  for(let i=0;i<3;i++)assert.equal(cosmeticOutfitArt(job,i),`assets/cosmetics/fixed-${job}-${i}.webp`);
+ }
 });
