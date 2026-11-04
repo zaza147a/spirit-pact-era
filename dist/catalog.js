@@ -3,6 +3,7 @@ import {fusedPair,companionRole} from './pet-fusion.js?v=6.5.0';
 import {captureQuality,MYTHIC_MUTATION} from './pet-acquisition.js?v=6.5.0';
 import {SECOND_JOBS,parentJob} from './jobs.js?v=6.5.0';
 import {MAP_BOSSES} from './map-bosses.js?v=6.5.0';
+import {DAWN_BOSS} from './dawn-world.js?v=6.5.0';
 import {createWorldCards,LEGACY_CARD_SLOTS,LEGACY_CARD_EFFECTS,cardDescription} from './card-effects.js?v=6.5.45';
 import {PETLAND_MONSTERS} from './catalog-petland.js?v=6.5.0';
 export {PETLAND_MONSTERS};
@@ -27,6 +28,7 @@ Object.assign(ITEMS,LOOT_ITEMS);
 Object.assign(MAPS,WORLD_MAPS);
 for(const m of [...WORLD_MONSTERS,...Object.values(MAP_BOSSES)])SPECIES[m.id]={name:m.name,icon:m.icon,role:m.role,roleName:m.roleName,level:m.level};
 Object.assign(CARDS,createWorldCards(WORLD_MONSTERS,MAP_BOSSES));
+Object.assign(CARDS,createWorldCards([],{dawnrift:DAWN_BOSS}));
 // Retain already-earned legacy cards without leaving a spawn or drop route.
 CARDS.boss_petland={name:'森境聖角獸紀念卡',stat:'LUK',bonus:0,effect:'hpPct',amount:10,effects:{hpPct:10,mpPct:8},theme:'舊版紀念（已停止掉落）',boss:true,map:'legacy',description:'舊版紀念卡片：HP +10%、SP +8%。已停止掉落，既有卡片仍可使用。'};
 SPECIES.boss_petland={name:'森境聖角獸（舊版）',icon:'♛',role:'none',roleName:'舊版首領',level:10};

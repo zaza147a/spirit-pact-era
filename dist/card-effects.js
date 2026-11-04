@@ -1,5 +1,5 @@
 import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=6.5.0';
-export const CARD_THEMES={starter:'精準啟程',forest:'疾風連擊',desert:'破甲獵殺',frost:'寒霜堅守',astral:'秘法儲能',volcano:'燼火爆發',abyss:'潮汐續航',ruins:'機巧貫穿',eclipse:'月影奇襲',celestial:'星宮協調',skyport:'蒼港風行',gearfell:'千輪重擊',aether:'以太共振',stormforge:'雷霆迅擊',zenith:'天極決斷',starshore:'星瀾追獵',oathwood:'古誓共生',nightclock:'永夜時序',sungrave:'曜龍決意',worldroot:'界源調律'};
+export const CARD_THEMES={starter:'精準啟程',forest:'疾風連擊',desert:'破甲獵殺',frost:'寒霜堅守',astral:'秘法儲能',volcano:'燼火爆發',abyss:'潮汐續航',ruins:'機巧貫穿',eclipse:'月影奇襲',celestial:'星宮協調',skyport:'蒼港風行',gearfell:'千輪重擊',aether:'以太共振',stormforge:'雷霆迅擊',zenith:'天極決斷',starshore:'星瀾追獵',oathwood:'古誓共生',nightclock:'永夜時序',sungrave:'曜龍決意',worldroot:'界源調律',dawnrift:'黎明裁界'};
 export const CARD_SLOT_ORDER=['headUpper','headMiddle','headLower','armor','rightHand','leftHand','garment','shoes','accessory1','accessory2'];
 const offensive=[
  [{atkPct:18,hit:2},{matkPct:18,hit:2},{crit:8,hit:2},{critDmg:18,hit:2}],
@@ -32,6 +32,7 @@ function effectsFor(zone,index,boss=false){const z=Object.keys(CARD_THEMES).inde
 // Each map boss has its own accessory-card identity. These bonuses use existing
 // supported combat stats, so the same rules apply to online/offline combat.
 export const BOSS_IDENTITIES=Object.freeze({
+ dawnrift:{title:'黎明裁界',effects:{atkPct:25,matkPct:25,critDmg:30,mpPct:20},detail:'終局裁界之力，以集中打擊和夥伴連攜構築物法雙向畢業選擇'},
  starter:{title:'鐘樓守望',effects:{hpPct:24,atkPct:12,matkPct:12},detail:'初期同時提升生命與雙系輸出，適合尚未定型的冒險者'},
  forest:{title:'菌冠再生',effects:{hpPct:21,mpPct:18,damageReduction:3},detail:'兼顧生命、法力與減傷的持久戰護符'},
  desert:{title:'蠍神毒針',effects:{crit:10,critDmg:24,hit:5},detail:'偏向爆擊與命中，適合早期追擊高迴避目標'},
@@ -54,7 +55,36 @@ export const BOSS_IDENTITIES=Object.freeze({
  worldroot:{title:'界源調律',effects:{atkPct:22,matkPct:22,hpPct:20,mpPct:20},detail:'終局物法雙修與生存兼顧的通用核心'}
 });
 export const CARD_PROFILES=Object.fromEntries(Object.entries(CARD_THEMES).map(([id,theme])=>[id,{theme,profiles:Array.from({length:10},(_,i)=>effectsFor(id,i)),boss:BOSS_IDENTITIES[id]?.effects||effectsFor(id,8,true)}]));
-export const CARD_SLOT_PROFILES=Object.fromEntries(Object.keys(CARD_THEMES).map(id=>[id,{profiles:CARD_SLOT_ORDER.map(s=>[s]),boss:['accessory1','accessory2']}]));
+// Twenty progression bosses form two distinct graduating options for each of ten slots.
+// The final Lv210 boss may serve either hand, but can still be socketed only once.
+const PROGRESSION_BOSS_ZONES=Object.keys(CARD_THEMES).filter(id=>id!=='dawnrift');
+export const CARD_SLOT_PROFILES=Object.fromEntries(Object.keys(CARD_THEMES).map(id=>{
+ const order=PROGRESSION_BOSS_ZONES.indexOf(id);
+ return [id,{profiles:CARD_SLOT_ORDER.map(slot=>[slot]),boss:id==='dawnrift'?['rightHand','leftHand']:[CARD_SLOT_ORDER[order%CARD_SLOT_ORDER.length]]}];
+}));
+// Conditional boss signatures use actual combat circumstances, beyond static stat increases.
+// These moderate bonuses share an 18% cap to avoid a ten-card exponential power spike.
+const BOSS_TRAIT_TYPES=['opening','execute','isolated','cleave','wounded','pet','owner'];
+export const BOSS_TRAITS=Object.fromEntries(Object.keys(CARD_THEMES).map((id,index)=>[id,{
+ kind:BOSS_TRAIT_TYPES[index%BOSS_TRAIT_TYPES.length],
+ power:4+(index%4),
+ name:({opening:'先聲奪勢',execute:'終結追擊',isolated:'孤敵決鬥',cleave:'連鎖清場',wounded:'逆境反擊',pet:'靈獸共擊',owner:'主人號令'})[BOSS_TRAIT_TYPES[index%BOSS_TRAIT_TYPES.length]]
+}]));
+export function bossCardDamageFactor(sockets,cards,context={}){
+ let total=0;
+ for(const id of new Set(Object.values(sockets||{}))){
+  const card=cards[id];if(!card?.boss)continue;
+  const trait=BOSS_TRAITS[card.map];if(!trait)continue;
+  const active=trait.kind==='opening'?(context.enemyHpFraction??0)>=.8:
+   trait.kind==='execute'?(context.enemyHpFraction??1)<=.35:
+   trait.kind==='isolated'?(context.enemyCount??99)===1:
+   trait.kind==='cleave'?!!context.secondary:
+   trait.kind==='wounded'?(context.ownerHpFraction??1)<=.55:
+   trait.kind==='pet'?context.source==='pet':context.source==='owner';
+  if(active)total+=trait.power;
+ }
+ return 1+Math.min(18,total)/100;
+}
 export const LEGACY_CARD_SLOTS={fang:['rightHand'],wisp:['headMiddle'],shell:['armor'],sprout:['shoes'],sandbug:['garment'],dog:['headUpper'],guardian:['headLower'],boss_petland:['accessory1','accessory2']};
 export const LEGACY_CARD_EFFECTS={fang:{atkPct:19,crit:5},wisp:{INT:7,DEX:1},shell:{defPct:18,hpPct:13},sprout:{hpPct:16,mpPct:14},sandbug:{fleePct:17,mdefPct:11},dog:{AGI:7,LUK:1},guardian:{STR:7,VIT:1},boss_petland:{atkPct:11,matkPct:11,mpPct:11}};
 const LABELS={atk:'ATK',matk:'MATK',hp:'HP',mp:'SP',def:'DEF',mdef:'MDEF',atkPct:'ATK',matkPct:'MATK',hpPct:'HP',mpPct:'SP',defPct:'DEF',mdefPct:'MDEF',fleePct:'FLEE',hit:'HIT',flee:'FLEE',aspd:'ASPD',aspdPct:'攻速加成',crit:'暴擊率',critDmg:'暴擊傷害',ignoreDef:'無視防禦',magicDamage:'魔法傷害',damageReduction:'最終減傷',DEX:'DEX',INT:'INT'};
@@ -63,5 +93,5 @@ export function cardEffectsFor(card,level=1){const power=GEAR_TIERS[gearTierForL
 export const cardDescription=(card,level=1)=>card?`${card.theme}：${describeCardEffects(cardEffectsFor(card,level))}。`:'空卡位';
 export function cardAllowedInSlot(card,slot){return !!card?.slots?.includes(slot);}
 export function migrateCardBindings(player,cards,slots){const returned=[];for(const slot of Object.keys(slots)){const id=player.sockets[slot];if(!id||cardAllowedInSlot(cards[id],slot))continue;if(!cards[id])continue;const held=player.cards.find(c=>c.id===id);if(held)held.qty++;else player.cards.push({id,qty:1});player.sockets[slot]=null;returned.push({id,slot});}if(returned.length)player.cardBindingMigration={version:2,returned};return returned;}
-export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?['accessory1','accessory2']:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。'):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
+export function createWorldCards(monsters,bosses){return Object.fromEntries([...monsters,...Object.values(bosses)].filter(m=>CARD_PROFILES[m.map]).map(m=>{const group=CARD_PROFILES[m.map],index=m.level-(monsters.find(x=>x.map===m.map)?.level||1),effects=m.boss?group.boss:group.profiles[index],slots=m.boss?CARD_SLOT_PROFILES[m.map].boss:[CARD_SLOT_ORDER[index]],first=Object.entries(effects)[0];return [m.id,{name:`${m.name}卡片`,slots,stat:'LUK',bonus:0,effect:first[0],amount:first[1],effects:{...effects},theme:m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme,boss:!!m.boss,map:m.map,trait:m.boss?BOSS_TRAITS[m.map]:null,description:`${m.boss?'首領專屬 · ':''}${m.boss?(BOSS_IDENTITIES[m.map]?.title||group.theme):group.theme}：${describeCardEffects(effects)}。${m.boss?(BOSS_IDENTITIES[m.map]?.detail+'。'+(BOSS_TRAITS[m.map]?('專屬特性「'+BOSS_TRAITS[m.map].name+'」：符合條件時傷害增加 '+BOSS_TRAITS[m.map].power+'%。'):'')):''}固定數值隨人物裝備階段成長；能力值依每項基本上限的20%計算，溢出轉為遞減潛能。`}];}));}
 export function socketCardBonus(sockets,cards,key,level=1){return Object.values(sockets||{}).reduce((sum,id)=>sum+(cardEffectsFor(cards[id],level)[key]||0),0);}

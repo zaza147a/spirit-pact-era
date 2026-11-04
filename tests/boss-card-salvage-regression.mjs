@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {shouldAutoSalvage} from '../dist/salvage-rules.js';
 import {gearTier} from '../dist/loot.js';
-import {BOSS_IDENTITIES,CARD_PROFILES} from '../dist/card-effects.js';
+import {BOSS_IDENTITIES,CARD_PROFILES,CARD_SLOT_PROFILES,CARD_SLOT_ORDER,BOSS_TRAITS,bossCardDamageFactor,createWorldCards} from '../dist/card-effects.js';
 
 // 傳說以上＋創世階以上：此案例用於防止把兩項門檻誤當作一項。
 const settings={autoSalvage:true,keepRarity:true,salvageMaxRarity:'legendary',keepTier:true,salvageMaxTier:6,keepStat:false,salvageMatchMode:'all',job:'swordsman'};
@@ -27,11 +27,24 @@ assert.equal(shouldAutoSalvage(gear('rare',70),{...settings,keepRarity:false,kee
 console.log('salvage rarity/tier combination regression passed');
 
 const zones=Object.keys(BOSS_IDENTITIES);
-assert.equal(zones.length,20,'二十張地圖首領卡片皆有獨立設計');
-assert.equal(new Set(zones.map(z=>BOSS_IDENTITIES[z].title)).size,20,'首領主題不可重複');
-assert.equal(new Set(zones.map(z=>JSON.stringify(CARD_PROFILES[z].boss))).size,20,'首領能力組合不可重複');
+assert.equal(zones.length,21,'二十張既有首領與 210 首領皆有獨立設計');
+assert.equal(new Set(zones.map(z=>BOSS_IDENTITIES[z].title)).size,21,'首領主題不可重複');
+assert.equal(new Set(zones.map(z=>JSON.stringify(CARD_PROFILES[z].boss))).size,21,'首領能力組合不可重複');
 for(const zone of zones){
  assert.ok(BOSS_IDENTITIES[zone].detail.length>=8,zone+' 缺少卡片介紹');
  assert.deepEqual(CARD_PROFILES[zone].boss,BOSS_IDENTITIES[zone].effects,zone+' 配置未套用');
 }
 console.log('all twenty boss card identities passed');
+
+// Every socket gets at least two graduating boss-card choices (physical/magic/pet branches).
+const coverage=Object.fromEntries(CARD_SLOT_ORDER.map(slot=>[slot,0]));
+for(const zone of zones){
+ assert.ok(BOSS_TRAITS[zone]?.name,'首領缺少戰鬥特性：'+zone);
+ for(const slot of CARD_SLOT_PROFILES[zone].boss)coverage[slot]++;
+}
+for(const [slot,count] of Object.entries(coverage))assert.ok(count>=2,slot+' 缺少兩種畢業首領卡');
+const dawnCard=createWorldCards([],{dawnrift:{id:'dawn-archon',name:'黎明裁界者',map:'dawnrift',level:210,boss:true}})['dawn-archon'];
+assert.ok(dawnCard?.boss&&dawnCard.slots.includes('rightHand'),'210 首領必須有武器／副手王卡');
+assert.match(dawnCard.description,/專屬特性/,'首領卡片必須顯示條件式特色');
+assert.ok(bossCardDamageFactor({rightHand:'dawn-archon'},{'dawn-archon':dawnCard},{source:'owner',enemyHpFraction:1,enemyCount:1,ownerHpFraction:1})>=1,'王卡戰鬥倍率應可安全計算');
+console.log('boss slot coverage, special mechanics and Lv210 card regression passed');
