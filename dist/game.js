@@ -125,11 +125,20 @@ function commanderTransferredPetStats(pet,base){
  return commanderInheritedPetStats(base,{
   atk:stat('atk'),rawAtk:rawStat('atk'),matk:stat('matk'),rawMatk:rawStat('matk'),
   def:stat('def'),mdef:stat('mdef'),
-  // Character-bound offensive card effects reinforce the deployed companions.
+  // Both equipped affixes (including upgraded tiers) and cards train the pets.
+  // Base equipment ATK/MATK/DEF/MDEF is already included in stat() above.
   cardPower:(cardBonus('atkPct')+cardBonus('matkPct'))*.70
    +cardBonus('crit')*.35+cardBonus('critDmg')*.16
    +cardBonus('aspdPct')*.45+cardBonus('magicDamage')*.40
-   +cardBonus('ignoreDef')*.18
+   +cardBonus('ignoreDef')*.18,
+  gearPower:Object.values(player.gear).reduce((n,item)=>{
+   if(!item)return n;
+   const e=enhancedAffixes(item);
+   return n+(e.atkPct||0)*.70+(e.matkPct||0)*.70
+    +(e.crit||0)*.35+(e.critDmg||0)*.16
+    +(e.aspdPct||0)*.45+(e.magicDamage||0)*.40
+    +(e.ignoreDef||0)*.18;
+  },0)
  });
 }
 function setPetStance(id,stance){if(player?.job!=='pactWarrior'||!['assist','assimilate'].includes(stance))return;const pet=activePetRoster(player).find(p=>p.id===id);if(!pet)return;player.petStances??={};player.petStances[id]=stance;clearStatSnapshots();player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));dirty=true;save();render();}
