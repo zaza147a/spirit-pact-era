@@ -14,5 +14,11 @@
 .cosmetic-control{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;color:#e6d5b1}.cosmetic-control input[type=range]{flex:1;min-width:0}
 #gameShell .character .hero img.art-hero.cosmetic-equipped{object-fit:contain!important;transform:none!important;object-position:center!important;filter:drop-shadow(0 3px 7px #0008)}
 #gameShell .character .hero.cosmetic-scene-active{background-color:#142234;background-repeat:no-repeat;border:1px solid #b29a68;border-radius:12px}
+/* Background art remains visible, while identity labels stay legible on bright scenery. */
+#gameShell #character>.hero.cosmetic-scene-active .character-name{position:relative;z-index:1;max-width:calc(100% - 12px)!important;margin:5px auto!important;padding:5px 14px!important;border:1px solid #bbd8e166!important;border-radius:9px!important;background:#061321d9!important;color:#fff!important;text-shadow:0 2px 4px #000,0 0 12px #000b!important;box-shadow:0 3px 12px #0007;line-height:1.45}
+#gameShell #character>.hero.cosmetic-scene-active .character-name small{color:#ffe1a0!important}
+#gameShell #character>.hero.cosmetic-scene-active .pill{position:relative;z-index:1;max-width:calc(100% - 12px)!important;padding:5px 11px!important;border:1px solid #c9d9d6a1!important;border-radius:999px!important;background:#071b27e8!important;color:#f0fffb!important;text-shadow:0 1px 3px #000!important;box-shadow:0 2px 9px #0006;font-weight:700;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+#gameShell #character>.hero.cosmetic-scene-active .eyebrow{position:relative;z-index:1;padding:2px 7px;border-radius:4px;background:#06132199;color:#f2e6c8;text-shadow:0 1px 3px #000}
+#gameShell #character>.hero.cosmetic-scene-active .gold-collector-title{position:relative;z-index:1;max-width:calc(100% - 12px);padding:3px 10px;border-radius:7px;background:#1f1a13e8;border:1px solid #b59153;color:#ffe2a1;text-shadow:0 1px 3px #000,0 0 7px #0009;box-shadow:0 2px 8px #0005;font-weight:700;white-space:normal;overflow-wrap:anywhere}
 #character[data-cosmetic-aura="off"]>.hero::before,#character[data-cosmetic-aura="off"]>.hero::after{display:none!important}
 @media(max-width:490px){.cosmetic-portrait{height:150px}.cosmetic-grid{gap:5px}.cosmetic-tile{padding:5px}.cosmetic-background-grid{grid-template-columns:1fr 1fr}}

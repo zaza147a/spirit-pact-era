@@ -1749,7 +1749,7 @@ function applyCosmeticHero(){
  }
  if(player.cosmeticBackground){
   const darkness=1-player.cosmeticBrightness/100;
-  hero.style.backgroundImage=`linear-gradient(rgba(7,13,26,${darkness}),rgba(7,13,26,${darkness})),url("${cosmeticBackgroundArt(player.cosmeticBackground)}")`;
+  hero.style.backgroundImage=`linear-gradient(to bottom,transparent 44%,rgba(5,12,23,.32) 65%,rgba(5,12,23,.88) 100%),linear-gradient(rgba(7,13,26,${darkness}),rgba(7,13,26,${darkness})),url("${cosmeticBackgroundArt(player.cosmeticBackground)}")`;
   hero.style.backgroundSize='cover';hero.style.backgroundPosition='center';
   hero.classList.add('cosmetic-scene-active');
  }

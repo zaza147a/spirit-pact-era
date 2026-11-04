@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {COSMETIC_JOBS,COSMETIC_BACKGROUNDS,COSMETIC_OUTFIT_PRICES,cosmeticOutfitArt,cosmeticBackgroundArt,readCosmeticCollection,normalizeCosmeticSelection,buyCosmetic,cosmeticWealth} from '../dist/cosmetic-gallery.js';
 
 const fresh=()=>({job:'assassin',thirdJob:true,outfitUnlocks:['S','SS','SSS'],gold:400_000_000,bag:[{id:'gold_bar',qty:40}]});
@@ -45,4 +46,10 @@ test('two new third jobs have three gold costumes each',()=>{
   assert.equal(COSMETIC_JOBS[job].length,3);
   for(let i=0;i<3;i++)assert.equal(cosmeticOutfitArt(job,i),`assets/cosmetics/fixed-${job}-${i}.webp`);
  }
+});
+test('background scenes retain readable character identity overlays',()=>{
+ const css=readFileSync(new URL('../dist/cosmetic-gallery.css',import.meta.url),'utf8');
+ const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
+ for(const selector of ['.character-name','.pill','.gold-collector-title'])assert.ok(css.includes(`.hero.cosmetic-scene-active ${selector}`));
+ assert.match(game,/linear-gradient\(to bottom,transparent 44%/);
 });
