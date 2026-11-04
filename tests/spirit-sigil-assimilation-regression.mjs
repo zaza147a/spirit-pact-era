@@ -17,7 +17,7 @@ const base={atk:100,matk:60,hp:1000,def:50,mdef:40};
 for(const job of ['pactWarrior','spiritCommander','wizard']){
  for(const sigil of [0,DAWN_SIGIL_MAX]){
   const player={job,dawnSigil:sigil,petStances:{p1:'assimilate',p2:'assimilate'}};
-  const ctx={player:{...player,gear:{}},sigilBonus,commanderInheritedPetStats,enhancedAffixes:item=>item?.affixes||{},activePetRoster:()=>[pet1,pet2],
+  const ctx={player:{...player,gear:{}},sigilBonus,commanderInheritedPetStats,spiritCultivationMultiplier:()=>1,enhancedAffixes:item=>item?.affixes||{},activePetRoster:()=>[pet1,pet2],
    petStats:()=>base,stat:()=>200,rawStat:()=>200,cardBonus:()=>0};
   vm.runInNewContext(source+'\nthis.absorb=pactAssimilationBonus;this.transfer=commanderTransferredPetStats',ctx);
   for(const [type,ratio] of Object.entries({atk:3.20,matk:1.65,hp:.16,def:.28,mdef:.28})){
@@ -33,7 +33,7 @@ for(const job of ['pactWarrior','spiritCommander','wizard']){
 }
 const equippedPet={...pet1,gear:{weapon:{level:200,affixes:{atkPct:30,matkPct:24,crit:15}}},level:200};
 const gearedPlayer={job:'pactWarrior',petStances:{p1:'assimilate'},dawnSigil:0};
-const gearCtx={player:gearedPlayer,activePetRoster:()=>[equippedPet],petStats:()=>base,enhancedAffixes:item=>item?.affixes||{},sigilBonus};
+const gearCtx={player:gearedPlayer,activePetRoster:()=>[equippedPet],petStats:()=>base,spiritCultivationMultiplier:()=>1,enhancedAffixes:item=>item?.affixes||{},sigilBonus};
 vm.runInNewContext(source+'\nthis.absorb=pactAssimilationBonus',gearCtx);
 assert.ok(gearCtx.absorb('atk')>base.atk*3.20,'pet weapon affixes increase King physical assimilation');
 assert.ok(gearCtx.absorb('matk')>base.matk*1.65,'pet equipment strengthens King magic assimilation');
