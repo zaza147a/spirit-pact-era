@@ -183,9 +183,10 @@ function showNextBossCardNotice(){
  if(!modal){modal=document.createElement('div');modal.id='bossCardNotice';modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','bossCardNoticeTitle');modal.style.cssText='position:fixed;inset:0;z-index:10050;display:grid;place-items:center;background:rgba(4,8,25,.86);padding:16px';document.body.append(modal);}
  modal.innerHTML=`<section style="box-sizing:border-box;width:min(440px,100%);max-height:90vh;overflow-y:auto;padding:24px;border:2px solid #e9c977;border-radius:20px;background:linear-gradient(155deg,#2d254c,#15172d 70%,#39243a);box-shadow:0 0 55px #caa65c77;color:white;text-align:center"><p style="color:#f4d988;letter-spacing:.12em">♛ BOSS CARD ♛</p><h2 id="bossCardNoticeTitle" style="color:#ffe3a1">恭喜獲得首領卡片！</h2><div style="height:220px;display:grid;place-items:center;overflow:hidden;border:1px solid #987e5a;border-radius:12px;background:radial-gradient(circle,#605075,#171a30 70%)">${spriteHtml(id,'large')||'♛'}</div><h3>${escapeHtml(card.name)}</h3><p style="color:#f8d58a">${escapeHtml(card.theme||'首領專屬')}</p><p style="line-height:1.65">${escapeHtml(card.description||cardDescription(card,player?.level||1))}</p><p>限定部位：${card.slots.map(slot=>SLOTS[slot]).join('／')}</p><button id="bossCardNoticeNext">收下卡片${bossCardNotices.length?' · 下一張':''}</button></section>`;
  modal.hidden=false;modal.style.display='grid';
- modal.querySelector('#bossCardNoticeNext').onclick=()=>{modal.hidden=true;modal.style.display='none';bossCardNoticeOpen=false;showNextBossCardNotice();};
- modal.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();modal.querySelector('#bossCardNoticeNext').click();}else if(e.key==='Tab'){e.preventDefault();modal.querySelector('#bossCardNoticeNext').focus();}};
- modal.querySelector('#bossCardNoticeNext').focus();
+ const noticeNext=modal.querySelector?.('#bossCardNoticeNext');
+ if(noticeNext)noticeNext.onclick=()=>{modal.hidden=true;modal.style.display='none';bossCardNoticeOpen=false;showNextBossCardNotice();};
+ modal.onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();noticeNext?.click();}else if(e.key==='Tab'){e.preventDefault();noticeNext?.focus();}};
+ noticeNext?.focus();
 }
 function takeCard(id){const entry=player.cards.find(x=>x.id===id);if(!entry||entry.qty<1)return false;if(!--entry.qty)player.cards.splice(player.cards.indexOf(entry),1);return true;}
 const LEGACY_JOBS={soldier:'swordsman',gunner:'thief',tech:'mage'};
