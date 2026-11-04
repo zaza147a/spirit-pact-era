@@ -14,9 +14,12 @@ export function commanderInheritedPetStats(base,owner){
  const training=Math.min(.28,(nonnegative(owner.cardPower)+nonnegative(owner.gearPower))/100);
  const physical=Math.min(.36,commanderOwnerGrowth(atk,owner.rawAtk)+training);
  const magical=Math.min(.36,commanderOwnerGrowth(matk,owner.rawMatk)+training);
+ // Shift strength out of the free baseline and into earned owner growth.
+ // At full training (.36), 1.3528 is almost the old 1.36; at zero, it is .82.
+ const trainedMultiplier=growth=>.82+growth*1.48;
  return {...base,
-  atk:Math.round((base.atk+atk*.30)*(1+physical)),
-  matk:Math.round((base.matk+matk*.30)*(1+magical)),
+  atk:Math.round((base.atk+atk*.30)*trainedMultiplier(physical)),
+  matk:Math.round((base.matk+matk*.30)*trainedMultiplier(magical)),
   def:base.def+nonnegative(owner.def)*.35,
   mdef:base.mdef+nonnegative(owner.mdef)*.35};
 }
