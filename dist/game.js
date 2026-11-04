@@ -173,7 +173,7 @@ function addCard(id){const entry=player.cards.find(x=>x.id===id);if(entry)entry.
 function queueBossCardNotice(id){
  if(!CARDS[id]?.boss)return;
  if(offlineSimulation){if(offlineMetrics)(offlineMetrics.bossCards??=[]).push(id);return;}
- bossCardNotices.push(id);showNextBossCardNotice();
+ bossCardNotices.push(id);if(bossCardNoticeOpen){const next=document.getElementById('bossCardNoticeNext');if(next)next.textContent='收下卡片 · 下一張';}showNextBossCardNotice();
 }
 function showNextBossCardNotice(){
  if(bossCardNoticeOpen||!bossCardNotices.length||!gameRunning||!$('offlineModal')?.hidden)return;

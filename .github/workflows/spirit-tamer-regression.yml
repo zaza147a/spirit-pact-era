@@ -37,6 +37,9 @@ jobs:
         run: |
           node tests/boss-card-salvage-regression.mjs
           node tests/boss-card-runtime.test.mjs
+          node tests/boss-card-notice-flow.test.mjs
+          node tests/wiki-and-trial-boss-ui.test.mjs
+          node tests/spirit-weapon-role-compatibility.test.mjs
       - name: Validate card effects and card recycling
         run: |
           node tests/card-balance-v404.test.mjs
