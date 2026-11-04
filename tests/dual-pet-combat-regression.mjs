@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
+import {commanderInheritedPetStats} from '../dist/commander-owner-growth.js';
 
 const game = readFileSync(new URL('../dist/game.js', import.meta.url), 'utf8');
 const formation = readFileSync(new URL('../dist/dual-pet-formation.js', import.meta.url), 'utf8');
@@ -197,7 +198,9 @@ assert.equal(runDualTick(100,100,true),'ability:one,attack:one,ability:two,attac
 const commanderTransferCode=loadFunction(game,'commanderTransferredPetStats','setPetStance');
 for(const job of ['pactWarrior','spiritCommander']){
  const commander=player(job),input={atk:1000,matk:1000,def:500,mdef:500};
- const ctx={player:commander,activePetRoster:()=>commander.pets,stat:key=>({atk:200,matk:400,def:100,mdef:80})[key]||0};
+ const ctx={player:commander,activePetRoster:()=>commander.pets,commanderInheritedPetStats,
+  stat:key=>({atk:200,matk:400,def:100,mdef:80})[key]||0,
+  rawStat:key=>({atk:200,matk:400})[key]||1};
  vm.runInNewContext(commanderTransferCode+'\nthis.transfer=commanderTransferredPetStats',ctx);
  const result=ctx.transfer(commander.pets[0],input);
  if(job==='spiritCommander'){
