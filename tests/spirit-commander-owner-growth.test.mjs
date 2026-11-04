@@ -12,7 +12,13 @@ assert.ok(invested.atk>initial.atk&&invested.matk>initial.matk,'offensive charac
 assert.ok(invested.atk<=(pet.atk+owner.atk*.30)*1.36+1,'card-based pet growth must be capped at 36%');
 assert.ok(boosted.matk>initial.matk,'owner MATK increase must grow companion magic offense');
 assert.ok(boosted.def>initial.def&&boosted.mdef>initial.mdef,'owner defensive progression must be inherited');
-assert.ok(invested.atk>=Math.round((pet.atk+owner.atk*.30)*1.28),'substantial owner card training must empower pets');
+assert.ok(invested.atk>=Math.round((pet.atk+owner.atk*.30)*1.26),'substantial owner card training must empower pets');
+const freshOwner={...owner,atk:owner.rawAtk,matk:owner.rawMatk,cardPower:0,gearPower:0};
+const fresh=commanderInheritedPetStats(pet,freshOwner);
+assert.equal(fresh.atk,Math.round((pet.atk+freshOwner.atk*.30)*.82),'untrained owner must have reduced free pet offense');
+const fullyTrained=commanderInheritedPetStats(pet,{...owner,atk:owner.rawAtk*3,matk:owner.rawMatk*3,cardPower:200,gearPower:200});
+assert.equal(fullyTrained.atk,Math.round((pet.atk+owner.rawAtk*3*.30)*(.82+.36*1.48)),'fully trained owner approaches previous maximum');
+assert.ok(invested.atk/fresh.atk>1.2,'cards must give meaningful progression compared with untrained baseline');
 assert.equal(pet.atk,20000,'owner transfer must not mutate cached pet stats');
 assert.equal(initial.aspd,pet.aspd,'unrelated pet stats must be preserved');
 assert.ok(commanderOwnerGrowth(50000,10000)<=.24,'growth cap must hold');
