@@ -24,12 +24,12 @@ assert.equal(damage('pactWarrior',200,false,'playerDamage'),1120);
 assert.equal(damage('pactWarrior',210,true,'playerDamage',true),700);
 assert.equal(damage('pactWarrior',210,false,'playerDamage',true),700);
 assert.equal(damage('pactWarrior',210,true,'petDamage'),1000);
-assert.equal(damage('spiritCommander',210,false,'petDamage'),1350);
+assert.equal(damage('spiritCommander',210,false,'petDamage'),1000);
 assert.equal(damage('spiritCommander',210,true,'petDamage'),1000);
-assert.equal(damage('spiritCommander',200,false,'petDamage'),1200);
+assert.equal(damage('spiritCommander',200,false,'petDamage'),1000);
 assert.equal(damage('spiritCommander',210,false,'playerDamage'),1000);
 for(const job of ['crusader','knight','hunter','wizard','priest'])
  for(const key of ['playerDamage','petDamage'])
   assert.equal(damage(job,210,false,key),1000,'legacy output unchanged '+job+' '+key);
 console.log(JSON.stringify({complete:true,assertions:19,pactPrimaryFactor:1.12,pactSecondaryFactor:.70,
- commander201FieldPetFactor:1.35,monstersAndLegacyUnchanged:true}));
+ commanderMobAndBossFactor:1,monstersAndLegacyUnchanged:true}));
