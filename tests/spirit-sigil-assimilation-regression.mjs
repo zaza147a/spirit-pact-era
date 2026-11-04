@@ -25,8 +25,8 @@ for(const job of ['pactWarrior','spiritCommander','wizard']){
    assert.ok(Math.abs(ctx.absorb(type)-expected)<1e-9,job+' '+sigil+' '+type);
   }
   const adjusted=ctx.transfer(pet1,base);
-  assert.equal(adjusted.atk,job==='spiritCommander'?base.atk+60:base.atk);
-  assert.equal(adjusted.matk,job==='spiritCommander'?base.matk+60:base.matk);
+  assert.equal(adjusted.atk,job==='spiritCommander'?Math.round((base.atk+60)*.82):base.atk);
+  assert.equal(adjusted.matk,job==='spiritCommander'?Math.round((base.matk+60)*.82):base.matk);
   assert.equal(adjusted.def,job==='spiritCommander'?base.def+70:base.def);
   assert.equal(adjusted.mdef,job==='spiritCommander'?base.mdef+70:base.mdef);
  }
