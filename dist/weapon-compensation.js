@@ -35,23 +35,32 @@ export function compensationPreview(id,proof,chosen){
  const tier=gearTier(proof.level),keys=[...regular,...(special?[special]:[])];
  return Object.fromEntries(keys.map(k=>[k,affixRange(k,tier,proof.rarity,id)[1]]));
 }
-export function claimWeaponCompensation(player,selection){
+export function compensationCanCorrect(player){
+ const state=player?.weaponCompensation;
+ return state?.version===WEAPON_COMPENSATION_VERSION&&state.state==='claimed'&&!state.correctionClaimedAt&&!!state.proof;
+}
+function verifiedReward(id,proof,chosen){
+ const expected=compensationPreview(id,proof,chosen);
+ const gear=rollGear(id,proof.level,proof.rarity);
+ gear.affixes={...expected};
+ if(proof.enhancement)gear.enhancement=proof.enhancement;
+ gear.weaponCompensation=true;
+ if(gear.id!==id||gear.level!==proof.level||gear.rarity!==proof.rarity||gear.enhancement!==(proof.enhancement||undefined)||Object.keys(gear.affixes).length!==Object.keys(expected).length||Object.entries(expected).some(([key,value])=>gear.affixes[key]!==value))throw Error('補償裝備與所選詞條不一致，未消耗領取資格');
+ return gear;
+}
+function grantWeaponCompensation(player,selection,correction){
  const state=player.weaponCompensation;
- if(state?.version!==WEAPON_COMPENSATION_VERSION||state.state!=='pending')throw Error('此角色沒有可領取的武器改版補償');
+ if(state?.version!==WEAPON_COMPENSATION_VERSION||(correction?!compensationCanCorrect(player):state.state!=='pending'))throw Error('此角色沒有可領取的武器改版補償');
  const option=compensationWeaponOptions(player.job).find(o=>o.id===selection?.id);
  if(!option)throw Error('無法領取其他職業武器');
  const ids=option.id==='dualDagger'?['rifle','offDagger']:[option.id];
  if((player.bag?.length||0)+ids.length>2000)throw Error('背包空間不足，請先整理再領取');
- const items=ids.map((id,i)=>{
-  const affixes=compensationPreview(id,state.proof,i===1?selection.offhand:selection.main);
-  const gear=rollGear(id,state.proof.level,state.proof.rarity);
-  gear.affixes=affixes;
-  if(state.proof.enhancement)gear.enhancement=state.proof.enhancement;
-  gear.weaponCompensation=true;
-  return gear;
- });
+ const items=ids.map((id,i)=>verifiedReward(id,state.proof,i===1?selection.offhand:selection.main));
+ // All validation completes before either inventory or entitlement changes.
  player.bag.push(...items);
- player.weaponCompensation={...state,state:'claimed',claimedAt:Date.now(),reward:items.map(i=>i.uid)};
+ player.weaponCompensation=correction?{...state,correctionClaimedAt:Date.now(),correctionReward:items.map(i=>i.uid)}:{...state,state:'claimed',claimedAt:Date.now(),reward:items.map(i=>i.uid)};
  return items;
 }
+export function claimWeaponCompensation(player,selection){return grantWeaponCompensation(player,selection,false);}
+export function claimWeaponCompensationCorrection(player,selection){return grantWeaponCompensation(player,selection,true);}
 export const compensationAffixDescription=(id,proof,choice)=>Object.entries(compensationPreview(id,proof,choice)).map(([k,v])=>affixLabel(k,v));
