@@ -20,7 +20,7 @@ async function app(){let source=readFileSync(new URL('game.js',root),'utf8'),con
 test('new comparisons identify source and candidate unambiguously and highlight the direction of changes',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('直覺對比','mage'));a.setPlayer(p);
  const oldGear=p.gear.rightHand,preview=a.gearComparison({id:'oneStaff',name:'候選法杖',uid:'test-new',level:1,rarity:'legendary',affixes:{matk:80,INT:9}});
- assert.match(preview,/目前穿戴/);assert.match(preview,/準備穿戴/);assert.match(preview,/候選法杖/);assert.match(preview,/能力取捨/);assert.match(preview,/本職業重點/);assert.match(preview,/展開完整屬性對比/);
+ assert.match(preview,/目前穿戴/);assert.match(preview,/準備穿戴/);assert.match(preview,/候選法杖/);assert.match(preview,/能力取捨/);assert.match(preview,/本職業重點/);assert.match(preview,/全部屬性（/);assert.match(preview,/本職業相關屬性（/);assert.doesNotMatch(preview,/<details class="compare-details"/);
  assert.equal(p.gear.rightHand,oldGear);
  const slot='rightHand',bossId=Object.keys(c.CARDS).find(id=>c.CARDS[id].boss&&c.CARDS[id].slots.includes(slot));
  const regularId=Object.keys(c.CARDS).find(id=>!c.CARDS[id].boss&&c.CARDS[id].slots.includes(slot));
