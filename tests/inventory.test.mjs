@@ -53,6 +53,17 @@ test('comparison prioritizes the current job damage type, keeps mixed spell fist
  p.job='sage';const hybrid=a.gearComparison(candidate).split('data-compare-content="all"')[0];
  assert.match(hybrid,/魔法攻擊/);assert.match(hybrid,/物理攻擊/);assert.match(hybrid,/近距離物理傷害%/);
 });
+test('comparison selection persists after rerender and pet mode stays visible',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('模式測試','knight'));a.setPlayer(p);
+ const candidate={id:'helm',uid:'mode',level:200,rarity:'mythic',affixes:{INT:9,matk:200}};
+ vm.runInContext("gearCompareMode='all'",c);
+ const html=a.gearComparison(candidate);
+ assert.match(html,/data-compare-mode="all" aria-pressed="true"/);
+ assert.match(html,/data-compare-content="all" ><div/);
+ assert.match(a.gearComparison(candidate),/data-compare-mode="all" aria-pressed="true"/);
+ const pet=c.makePet('wisp');p.pets=[pet];p.activePetId=pet.id;
+ assert.match(a.gearComparison({id:'petCirclet',uid:'pet-mode',affixes:{matk:5}}),/data-compare-content="relevant" ><div/);
+});
 test('equipment comparison localizes labels and previews capped mitigation and pet special affixes without mutations',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('減傷比較','mage'));a.setPlayer(p);
  const armor={id:'vest',uid:'mitigation-preview',level:1,rarity:'mythic',affixes:{damageReduction:25,hpPct:5}};
