@@ -32,7 +32,7 @@ function equipBossCards(player){
   if(!player.gear[slot]){player.sockets[slot]=null;continue;}
   let best=null,bestScore=-Infinity;
   for(const [id,card] of Object.entries(CARDS)){
-   if(!card.boss||!cardAllowedInSlot(card,slot,player.job))continue;
+   if(!card.boss||card.map==='dawnrift'||card.map==='legacy'||!cardAllowedInSlot(card,slot,player.job))continue;
    const effects=cardEffectsFor(card,200),score=Object.entries(effects).reduce((total,[key,value])=>{
     const weight={hpPct:8,damageReduction:12,defPct:5,mdefPct:4,fleePct:2,
      VIT:5,STR:player.job==='pactWarrior'?3:1,INT:player.job==='spiritCommander'?3:1,
@@ -77,7 +77,7 @@ async function evaluate(job,level,fusion,build='baseline'){
   });
   const summary=result.summary,targets=summary.spiritEnemyTargets||{},damage=summary.damage;
   assert.ok(summary.simulated>0&&summary.simulated<=DURATION);
-  if(bossCards)assert.ok(Object.values(p.sockets).every(id=>!id||CARDS[id]?.boss),'boss-card build must use only boss cards');
+  if(bossCards)assert.ok(Object.values(p.sockets).every(id=>!id||(CARDS[id]?.boss&&CARDS[id].map!=='dawnrift'&&CARDS[id].map!=='legacy')),'boss-card build must exclude Lv210 and unobtainable legacy cards');
   assert.equal(result.player.pets.length,1);
   assert.equal(targets.pet2||0,0);
   assert.equal(damage.pet2||0,0);
