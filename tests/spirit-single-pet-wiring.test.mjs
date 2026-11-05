@@ -8,6 +8,20 @@ import vm from 'node:vm';
 const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
 const between=(start,end)=>game.slice(game.indexOf(start),game.indexOf(end,game.indexOf(start)));
 
+test('commander inherited HP changes the actual companion max HP used by combat, healing and UI',()=>{
+ const snippet=between('function petStats(pet){','function basePetStats(pet){');
+ const pet={id:'pet-1'},player={job:'spiritCommander',activePetId:'pet-1',gear:{},attributes:{}};
+ const context={player,basePetStats:()=>({hp:2000,def:100}),stat:()=>4000,Math};
+ vm.runInNewContext(snippet+'\nthis.stats=petStats',context);
+ assert.equal(context.stats(pet).hp,3000);
+ assert.equal(context.stats(pet).def,100);
+ assert.equal(context.stats({id:'benched'}).hp,2000);
+ player.job='pactWarrior';
+ assert.equal(context.stats(pet).hp,2000,'existing jobs and Pact do not inherit vitality');
+ assert.match(game,/max:petStats\(pet\)\.hp/,'healing targets the effective maximum');
+ assert.match(game,/petStats\(pet\)\.hp\*\.5/,'revival targets the effective maximum');
+});
+
 test('owner main attacks use the pact pet profile and its damage channel',()=>{
  const playerAttack=between('function playerAttack(','function autoCastJobs(');
  assert.match(playerAttack,/spiritMainProfile\(chosen\)/);
