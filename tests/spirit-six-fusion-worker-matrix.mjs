@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {FUSION_TYPES,canonicalFusionKey} from '../dist/spirit-job-rules.js';
+import {fusionSkills} from '../dist/pet-fusion.js';
 import {rollGear,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,affixRange} from '../dist/loot.js';
 import {CARDS,SLOTS} from '../dist/catalog.js';
 import {cardAllowedInSlot,cardEffectsFor} from '../dist/card-effects.js';
@@ -56,6 +57,15 @@ async function evaluate(job,level,fusion,build='baseline'){
   p.attributes[main]=transferred;p.attributes[other]=1;
  }
  const pet=p.pets.find(unit=>canonicalFusionKey(unit)===fusion);
+ const requestedSkills=process.env.SPIRIT_SKILL_INDEXES;
+ if(requestedSkills){
+  const pool=fusionSkills(pet)||[];
+  const indices=requestedSkills.split(',').map(value=>Number(value.trim()));
+  assert.equal(indices.length,3,'SPIRIT_SKILL_INDEXES requires exactly three indices');
+  assert.ok(indices.every(index=>Number.isInteger(index)&&index>=0&&index<pool.length),'skill index outside fusion skill pool');
+  assert.equal(new Set(indices).size,3,'skill choices must be distinct');
+  pet.equippedSkills=indices.map(index=>pool[index].id);
+ }
  assert.ok(pet,`missing generated fusion ${fusion}`);
  p.pets=[pet];p.activePetId=pet.id;p.secondaryPetId=null;
  p.petStances={[pet.id]:job==='pactWarrior'?'assimilate':'assist'};
@@ -98,7 +108,7 @@ async function evaluate(job,level,fusion,build='baseline'){
    }
   }
   const bossCores=(result.player.bag.find(item=>item.id==='dawn_archon_core')?.qty||0)-(p.bag.find(item=>item.id==='dawn_archon_core')?.qty||0);
-  return {job,level,fusion,build,kills:summary.kills,simulatedSeconds:summary.simulated/1000,bossCores,bossesEncountered:summary.bossesEncountered||0,revives:summary.revives||0,spiritDefeats:summary.spiritDefeats||null,
+  return {job,level,fusion,build,equippedSkillIds:[...pet.equippedSkills],kills:summary.kills,simulatedSeconds:summary.simulated/1000,bossCores,bossesEncountered:summary.bossesEncountered||0,revives:summary.revives||0,spiritDefeats:summary.spiritDefeats||null,
    dps:Math.round(damage.total/(summary.simulated/1000)),
    ownerDps:Math.round(damage.player/(summary.simulated/1000)),petDps:Math.round((damage.pet1||0)/(summary.simulated/1000)),
    ownerHits:targets.owner||0,petHits:targets.pet1||0,
@@ -115,4 +125,4 @@ for(const level of [200,210].filter(x=>!process.env.SPIRIT_LEVEL_FILTER||String(
  for(const fusion of FUSION_TYPES.filter(x=>!process.env.SPIRIT_FUSION_FILTER||x===process.env.SPIRIT_FUSION_FILTER))for(const build of process.env.SPIRIT_BUILD_SWEEP==='1'?['physical','magical']:['baseline'])
   rows.push(await evaluate(job,level,fusion,build));
 }
-console.log(JSON.stringify({condition:`${DURATION/1000}s real Worker; single fusion pet; ${bossCards?'legal boss cards':'normal cards'}; ${survivalAffixes?'survival mythic specials':'original mythic specials'}; boss ${allowBoss?'enabled':'escaped'}; sigil0`,rows},null,2));
+console.log(JSON.stringify({condition:`${DURATION/1000}s real Worker; single fusion pet; ${bossCards?'legal boss cards':'normal cards'}; ${survivalAffixes?'survival mythic specials':'original mythic specials'}; boss ${allowBoss?'enabled':'escaped'}; sigil0; skill slots ${process.env.SPIRIT_SKILL_INDEXES||'default'}`,rows},null,2));
