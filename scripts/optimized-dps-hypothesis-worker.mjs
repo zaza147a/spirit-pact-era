@@ -2,7 +2,7 @@ import {parentPort} from 'node:worker_threads';
 import {runBuild} from './optimized-dps-simulator.mjs';
 import {SECOND_JOBS} from '../dist/jobs.js';
 import {FUSION_SKILLS} from '../dist/pet-fusion.js';
-import {affixRange,primaryAffix,GEAR_BASE,PET_GEAR_BASE,rollPetGear,rollGear,SPECIAL_AFFIXES} from '../dist/loot.js';
+import {affixRange,primaryAffix,GEAR_BASE,PET_GEAR_BASE,WEAPON_PRIMARY_AFFIX_BONUSES,rollPetGear,rollGear,SPECIAL_AFFIXES} from '../dist/loot.js';
 import {CARDS,SLOTS} from '../dist/catalog.js';
 import {cardEffectsFor} from '../dist/card-effects.js';
 import {ZONES} from '../dist/world-data.js';
@@ -23,6 +23,12 @@ if(GEAR_BASE[p.gear.rightHand?.id]?.hands===2&&job!=='assassin'){
  const k=primaryAffix(p.gear.rightHand.id);
  if(['atk','matk'].includes(k))p.gear.rightHand.affixes[k]=Math.round(p.gear.rightHand.affixes[k]*selectedTwoHandBonus/1.15);
 }
+// The optimizer builds an idealized base affix without itemId; restore the
+// published item-specific primary ranges for assassin weapons as well.
+for(const gear of Object.values(p.gear))if(gear&&['offDagger','katar'].includes(gear.id))
+ gear.affixes.atk=Math.round(gear.affixes.atk*WEAPON_PRIMARY_AFFIX_BONUSES[gear.id]);
+if(p.gear.rightHand?.id==='oneStaff')
+ p.gear.rightHand.affixes.matk=Math.round(p.gear.rightHand.affixes.matk*WEAPON_PRIMARY_AFFIX_BONUSES.oneStaff);
 if(cfg.head==='magic'&&pet.gear.head.id!=='petCirclet'||cfg.head==='attack'&&pet.gear.head.id!=='petHelm'){const old=pet.gear.head;pet.gear.head=rollPetGear(cfg.head==='magic'?'petCirclet':'petHelm',200,'mythic',()=>.5);const g=pet.gear.head;let n=[primaryAffix(g.id),'hit',...cfg.petStats,...keys];n=[...new Set(n)].slice(0,5);g.affixes=Object.fromEntries(n.map(k=>[k,Math.round(affixRange(k,g.tier,'mythic')[1]*(!['atk','matk'].includes(k)?10/3:1))]));g.affixes[cfg.special]=affixRange(cfg.special,g.tier,'mythic')[1];g.enhancement='SSS';}
 };}
 function run(job,pair,cfg,seconds=12,seed=731,fixture=false){return runBuild(job,pair.split('-')[0],{level:210,encounterLevel:201,gearLevel:200,petLevelOverride:200,scenario:'regional',seconds,seed,reborn:true,thirdJob:true,referenceBuild:true,referenceQuality:'mythic',rarity:'mythic',fusionPair:pair,enhancement:'SSS',petEnhancement:'SSS',dawnSigil:0,petSkills:cfg.skills,searchConfig:configure(job,cfg),fixture});}
