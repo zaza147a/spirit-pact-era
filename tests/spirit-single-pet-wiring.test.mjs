@@ -11,9 +11,9 @@ const between=(start,end)=>game.slice(game.indexOf(start),game.indexOf(end,game.
 test('commander inherited HP changes the actual companion max HP used by combat, healing and UI',()=>{
  const snippet=between('function petStats(pet){','function basePetStats(pet){');
  const pet={id:'pet-1'},player={job:'spiritCommander',activePetId:'pet-1',gear:{},attributes:{}};
- const context={player,basePetStats:()=>({hp:2000,def:100}),stat:()=>4000,Math};
+ const context={player,basePetStats:()=>({hp:2000,def:100}),commanderTransferredPetStats:()=>({hp:3800}),Math};
  vm.runInNewContext(snippet+'\nthis.stats=petStats',context);
- assert.equal(context.stats(pet).hp,3000);
+ assert.equal(context.stats(pet).hp,3800);
  assert.equal(context.stats(pet).def,100);
  assert.equal(context.stats({id:'benched'}).hp,2000);
  player.job='pactWarrior';
@@ -57,7 +57,7 @@ test('commander spellblade attunement applies only to pure-magic fusion pets',()
  const inherited=between('function commanderTransferredPetStats(','function setPetStance(');
  assert.match(inherited,/spiritSinglePetProfile\(player,pet\)\?\.kind==='magic'/);
  assert.match(inherited,/Math\.round\(inherited\.atk\*\.55\)/);
- assert.match(inherited,/inherited\.matk\+=magicAttunement/);
+ assert.match(inherited,/synced\.matk\+=magicAttunement/);
  const commander={job:'spiritCommander',thirdJob:true};
  assert.equal(spiritSinglePetProfile(commander,{fusion:{main:'magic',sub:'defense'}}).kind,'magic');
  assert.equal(spiritSinglePetProfile(commander,{fusion:{main:'magic',sub:'support'}}).kind,'magic');
@@ -69,7 +69,7 @@ test('commander attack-defense converts bounded inherited defense into active of
  const inherited=between('function commanderTransferredPetStats(','function setPetStance(');
  assert.match(inherited,/fusion==='attack-defense'/);
  assert.match(inherited,/Math\.min\(\(inherited\.def\+inherited\.mdef\)\*\.18,170000\)/);
- assert.match(inherited,/inherited\.atk\+=bulwarkPower/);
+ assert.match(inherited,/synced\.atk\+=bulwarkPower/);
  assert.doesNotMatch(inherited,/bulwarkCounter|bulwarkRetaliation/);
 });
 
