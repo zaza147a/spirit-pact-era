@@ -35,8 +35,8 @@ export function commanderInheritedPetStats(base,owner){
  return {...base,
   atk:Math.round(nonnegative(base.atk)*trainedMultiplier(physical)*cultivation),
   matk:Math.round(nonnegative(base.matk)*trainedMultiplier(magical)*cultivation),
-  def:base.def+nonnegative(owner.def)*.50,
-  mdef:base.mdef+nonnegative(owner.mdef)*.50,
-  hp:Math.round(nonnegative(base.hp)+nonnegative(owner.hp)*.45),
+  def:base.def*.80+nonnegative(owner.def)*.18,
+  mdef:base.mdef+nonnegative(owner.mdef)*.32,
+  hp:Math.round(nonnegative(base.hp)+nonnegative(owner.hp)*.16),
   damageReduction:Math.min(40,nonnegative(base.damageReduction)+nonnegative(owner.damageReduction)*.50)};
 }
