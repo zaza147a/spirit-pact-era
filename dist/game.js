@@ -243,7 +243,8 @@ function weaponTypes(){return {right:GEAR_BASE[player.gear.rightHand?.id]?.weapo
 function canCastJobSkill(s){if(s.thirdOnly&&!player.thirdJob||s.rebornOnly&&!player.reborn||supersededSkill(player,s))return false;if(s.kind==='passive')return false;const w=weaponTypes();return weaponSkillAllowed(s,w.right,w.left);}
 const activePet=()=>player?.pets.find(p=>p.id===player.activePetId)||null;
 function clearStatSnapshots(){attributeSnapshot=null;attributeBreakdownSnapshot=null;cardSnapshot={};passiveSnapshot=null;}
-function cachedPassives(){if(inCombatTick||offlineSimulation)return passiveSnapshot??=jobPassives(player);return jobPassives(player);}
+function daggerShieldSpeedBonus(){return player?.job==='assassin'&&player.gear?.rightHand?.id==='rifle'&&player.gear?.leftHand?.id==='shield'?35:0;}
+function cachedPassives(){const base=inCombatTick||offlineSimulation?passiveSnapshot??=jobPassives(player):jobPassives(player);const bonus=daggerShieldSpeedBonus();return bonus?{...base,aspdPct:(base.aspdPct||0)+bonus,critDmg:(base.critDmg||0)+45}:base;}
 function attributeDetails(){if(inCombatTick||offlineSimulation)return attributeBreakdownSnapshot??=attributeBreakdown(player,CARDS);return attributeBreakdown(player,CARDS);}
 function potentialBonus(key){return attributeDetails().potential[key]||0;}
 function ownerHitChance(hit,flee,magical=false){return Math.max(.05,monsterHitChance(hit,flee,magical)-potentialBonus('AGI')*(magical?.25:1));}
