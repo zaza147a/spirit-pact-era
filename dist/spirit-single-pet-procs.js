@@ -21,7 +21,7 @@ export const SPIRIT_PROC_RULES=Object.freeze({
  petChase:{charges:2,cooldownMs:6500,bonusPct:15,cleaveTargets:2},
  arcaneRetaliation:{charges:1,cooldownMs:8000,bonusPct:17,shieldPct:4,magic:true},
  petCooldown:{charges:3,cooldownMs:8000,bonusPct:12,cooldownReductionMs:500},
- guardianReprisal:{charges:1,cooldownMs:10000,bonusPct:18,healPct:4,hpBelow:40}
+ guardianReprisal:{charges:3,cooldownMs:6500,bonusPct:20,healPct:3}
 });
 
 export function createSpiritProcState(){return {key:null,charges:0,lastAt:-Infinity,lastChannel:null,lastTarget:null};}
