@@ -22,11 +22,11 @@ for(const m of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){
 source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'');
 source+="\nglobalThis.api={normalize,valid,stat,petStats,setup:(p,scenario,scale)=>{player=p;resetSession();offlineSimulation=true;offlineClock=Date.now();auto=true;player.hp=stat('hp');player.mp=stat('mp');for(const pet of p.pets){pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;}petDeathSequence=0;globalThis.bossKills=0;"+
 "startReport=()=>{report=newReport(player.location,enemy.id,activePet());};const originalEnd=endReport;endReport=(outcome)=>{captureReport(report);originalEnd(outcome);};"+
-"const originalDamage=dealDamage;dealDamage=(...args)=>{const n=originalDamage(...args);countApplied(n);return n;};"+
+"const originalDamage=dealDamage;dealDamage=(...args)=>{if(!report&&enemy?.hp>0)startReport();const n=originalDamage(...args);countApplied(n);return n;};"+
 "const originalAdd=addEncounter;addEncounter=(...args)=>{const old=new Set(enemies);originalAdd(...args);for(const foe of enemies)if(!old.has(foe)){foe.atk*=scale;foe.matk*=scale;}};"+
 "const originalAward=award;award=()=>{const first=enemy&&enemy.hp<=0&&!enemy.rewarded,boss=enemy?.boss;originalAward();if(first&&boss)globalThis.bossKills++;};"+
 "if(scenario==='boss'){const t=MAP_BOSSES.dawnrift;enemy={...t,...monsterRuntimeStats(t),hp:t.hp*10000,maxHp:t.hp*10000,lastAttack:gameNow(),appearedAt:gameNow(),instanceId:'sustained-boss'};enemies=[enemy];tickEncounters=()=>{};startReport();}else spawn();},"+
-"tick:now=>{offlineClock=now;combatTick(now);},finish:()=>captureReport(report),state:()=>({player,enemies,petDeaths:petDeathSequence,bossKills:globalThis.bossKills})};"+
+"tick:now=>{offlineClock=now;if(!report&&enemies.some(e=>e.hp>0))startReport();combatTick(now);},finish:()=>captureReport(report),state:()=>({player,enemies,petDeaths:petDeathSequence,bossKills:globalThis.bossKills})};"+
 "render=()=>{};renderSide=()=>{};message=()=>{};toast=()=>{};save=()=>true;showReviveDialog=()=>{};";
 const compiled=new vm.Script(source);
 function gear(id,primary,pet=false,special='hpPct'){
