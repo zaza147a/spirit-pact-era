@@ -17,6 +17,18 @@ export function commanderSkillOutputScale(pet){
  const fusion=[pet?.fusion?.main,pet?.fusion?.sub].sort((a,b)=>['attack','magic','defense','support'].indexOf(a)-['attack','magic','defense','support'].indexOf(b)).join('-');
  return FUSION_SKILL_SCALES[fusion]||2.4;
 }
+const FUSION_DAMAGE_FACTORS=Object.freeze({
+ 'attack-magic':.90,
+ 'attack-defense':.65,
+ 'attack-support':.90,
+ 'magic-defense':.65,
+ 'magic-support':.65,
+ 'defense-support':.60
+});
+export function commanderFinalDamageFactor(pet){
+ const fusion=[pet?.fusion?.main,pet?.fusion?.sub].sort((a,b)=>['attack','magic','defense','support'].indexOf(a)-['attack','magic','defense','support'].indexOf(b)).join('-');
+ return FUSION_DAMAGE_FACTORS[fusion]||1;
+}
 export function commanderPetSkillForm(player,pet,skill){
  if(player?.job!=='spiritCommander'||!pet?.fusion||!skill)return null;
  const selected=pet.equippedSkills||[];

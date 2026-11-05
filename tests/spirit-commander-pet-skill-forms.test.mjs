@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {commanderPetSkillForm,commanderSkillOutputScale} from '../dist/commander-pet-skill-forms.js';
+import {commanderPetSkillForm,commanderSkillOutputScale,commanderFinalDamageFactor} from '../dist/commander-pet-skill-forms.js';
 
 const pet={fusion:{main:'attack',sub:'magic'},equippedSkills:['main','wide','finish']};
 const player={job:'spiritCommander'};
@@ -17,6 +17,11 @@ assert.equal(commanderPetSkillForm({job:'pactWarrior'},pet,{id:'main',kind:'magi
 assert.equal(commanderPetSkillForm(player,{...pet,fusion:null},{id:'main',kind:'magic'}),null);
 const reordered={...pet,equippedSkills:['finish','main','wide']};
 assert.equal(commanderPetSkillForm(player,reordered,{id:'main',kind:'strike'}).name,'範圍');
+for(const [fusion,factor] of [['attack-magic',.90],['attack-defense',.65],['attack-support',.90],['magic-defense',.65],['magic-support',.65],['defense-support',.60]]){
+ const [main,sub]=fusion.split('-');
+ assert.equal(commanderFinalDamageFactor({fusion:{main,sub}}),factor);
+ assert.equal(commanderFinalDamageFactor({fusion:{main:sub,sub:main}}),factor,'reverse-order fusion must share identical damage factors');
+}
 for(const [fusion,scale] of [['attack-magic',1.55],['attack-defense',8],['attack-support',2.4],['magic-defense',8],['magic-support',8],['defense-support',3.5]]){
  const [main,sub]=fusion.split('-');
  assert.equal(commanderSkillOutputScale({fusion:{main,sub}}),scale);
