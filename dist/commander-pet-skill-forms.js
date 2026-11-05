@@ -1,9 +1,9 @@
 // The Commander reshapes the ONE fused pet's three equipped skill slots.
 // The role follows the player's skill order, never the unordered fusion input.
 export const COMMANDER_SKILL_FORMS=Object.freeze([
- {name:'主攻',targets:3,primary:1.20,secondary:.50},
- {name:'範圍',targets:6,primary:.95,secondary:.75},
- {name:'終結',targets:4,primary:1.80,secondary:.40}
+ {name:'主攻',targets:3,primary:1.20,secondary:1.20},
+ {name:'範圍',targets:4,primary:.95,secondary:.95},
+ {name:'終結',targets:2,primary:1.80,secondary:.40}
 ]);
 export function commanderPetSkillForm(player,pet,skill){
  if(player?.job!=='spiritCommander'||!pet?.fusion||!skill)return null;
