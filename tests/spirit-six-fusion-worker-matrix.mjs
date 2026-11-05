@@ -9,10 +9,16 @@ import {rollGear} from '../dist/loot.js';
 
 const START=2000000000000,DURATION=120000;
 
-async function evaluate(job,level,fusion){
+async function evaluate(job,level,fusion,build='baseline'){
  const partner=FUSION_TYPES.find(x=>x!==fusion);
  const pairKey=[fusion,partner].sort().join('+');
  const p=highLevelSpiritPlayer({job,level,pairKey});
+ if(build==='physical'||build==='magical'){
+  // Swap only the primary STR/INT budget; all other legal stats are held fixed.
+  const main=build==='physical'?'STR':'INT',other=main==='STR'?'INT':'STR';
+  const transferred=p.attributes.STR+p.attributes.INT-1;
+  p.attributes[main]=transferred;p.attributes[other]=1;
+ }
  const pet=p.pets.find(unit=>canonicalFusionKey(unit)===fusion);
  assert.ok(pet,`missing generated fusion ${fusion}`);
  p.pets=[pet];p.activePetId=pet.id;p.secondaryPetId=null;
@@ -44,7 +50,7 @@ async function evaluate(job,level,fusion){
    assert.equal(targets.owner||0,0);
    assert.ok(targets.pet1>0);
   }
-  return {job,level,fusion,kills:summary.kills,dps:Math.round(damage.total/(DURATION/1000)),
+  return {job,level,fusion,build,kills:summary.kills,dps:Math.round(damage.total/(DURATION/1000)),
    ownerDps:Math.round(damage.player/(DURATION/1000)),petDps:Math.round((damage.pet1||0)/(DURATION/1000)),
    ownerHits:targets.owner||0,petHits:targets.pet1||0,
    potions:Object.values(summary.potions||{}).reduce((sum,n)=>sum+n,0),
@@ -54,6 +60,7 @@ async function evaluate(job,level,fusion){
 
 const rows=[];
 for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander']){
- for(const fusion of FUSION_TYPES)rows.push(await evaluate(job,level,fusion));
+ for(const fusion of FUSION_TYPES)for(const build of process.env.SPIRIT_BUILD_SWEEP==='1'?['physical','magical']:['baseline'])
+  rows.push(await evaluate(job,level,fusion,build));
 }
 console.log(JSON.stringify({condition:'120s real Worker; single fusion pet; fixed synthetic gear; no boss; sigil0',rows},null,2));
