@@ -1,10 +1,11 @@
 <!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>返鄉支線｜獨立流程測試</title><style>
 *{box-sizing:border-box}body{margin:0;background:#10151d;color:#e7e9ee;font:16px/1.7 system-ui}main{max-width:1050px;margin:auto;padding:28px}h1,h2,p{margin-top:0}button,select{font:inherit;padding:9px 14px;background:#263648;color:inherit;border:1px solid #52667c;border-radius:8px;cursor:pointer}button:hover{background:#384c62}.note{color:#b6c5d4}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.card{padding:20px;border:1px solid #3b4e60;border-radius:14px;background:#19222d}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.journey{min-height:240px;padding:35px;border-left:4px solid var(--accent);background:linear-gradient(140deg,#25354b,#18202c);display:flex;flex-direction:column;justify-content:center}.journey p{font-size:23px}.badge{color:#eac984}#status{min-height:30px;color:#ffdb9a}small{color:#a8b9cb}a{color:#9dc4ff}</style>
-<main><p class="badge">測試分支 · 獨立沙盒</p><h1>十二大陸・返鄉契約</h1><p class="note">本頁測試旅行、任務狀態與獎勵記帳，使用獨立測試存檔，不會讀寫正式遊戲角色。戰鬥按鈕是模擬事件；第四技能與傳承數值尚未在本頁造成實戰傷害。旅行插畫待接入。</p>
+<main><p class="badge">測試分支 · 獨立沙盒</p><h1>十二大陸・返鄉契約</h1><p class="note">本頁測試十二種不同玩法、首次旅行與獎勵記帳，使用獨立測試存檔，不會讀寫正式遊戲角色。戰鬥按鈕是模擬事件；第四技能與傳承數值尚未在本頁造成實戰傷害。旅行插畫待接入。</p>
 <div class="card"><label>模擬職業 <select id="job"></select></label><div class="actions"><button id="discover">模擬達成條件，收取十二封來信</button><button id="reset">重設本頁測試進度</button></div><p id="bonus"></p><div id="continents"></div></div><p id="status" role="status" aria-live="polite"></p><div id="routes" class="grid"></div></main>
 <script type="module">
 import {HOMECOMING_ROUTES} from './homecoming-data.js';
-import {normalizeHomecoming,discoverHomecoming,homecomingContinents,homecomingBonuses,homecomingTransition,recordHomecomingVictory} from './homecoming-state.js';
+import {normalizeHomecoming,discoverHomecoming,homecomingContinents,homecomingBonuses,homecomingTransition,recordHomecomingVictory,homecomingAdventureAction} from './homecoming-state.js';
+import {HOMECOMING_ADVENTURES,adventureLocation} from './homecoming-adventures.js';
 import {FOURTH_SKILLS,fourthPair,fourthUnlocked} from './companion-fourth-skill.js';
 const key='spirit-pact-homecoming-preview-v1',jobs={knight:'盧恩騎士',crusader:'皇家禁衛',wizard:'大法師',sage:'元素使',assassin:'十字斬首者',rogue:'魅影追獵者',priest:'大主教',monk:'修羅',hunter:'遊俠',performer:'舞樂家',pactWarrior:'靈契君王（排除）',spiritCommander:'萬靈統御者（排除）'};
 const fresh=()=>({job:'knight',dawnSigil:8,location:'town'});let p=fresh();try{const raw=JSON.parse(localStorage.getItem(key));if(raw&&jobs[raw.job])p=raw;}catch{}normalizeHomecoming(p);
@@ -26,13 +27,14 @@ function render(){
  if(p.location!==r.townId)html+=button(r,'return','返回'+r.town);
  if(q.phase==='arrived')html+='<p>'+esc(r.npc)+'：「'+esc(r.letter)+'」</p>'+button(r,'accept','確認接受任務');
  if(q.phase==='active'){
- if(!q.investigated)html+='<p>向'+esc(r.npc)+'確認調查方向：</p>'+r.choices.map((c,i)=>button(r,'investigate',c,i)).join('');
- else{html+='<p>調查事件 '+q.nodes+'/3；已擊敗 '+q.kills+' 名敵人</p>'+button(r,'field','前往野外');
- if(p.location===r.fieldId)html+=button(r,'testKill','模擬擊敗一名野外敵人')+(q.nodes<3?button(r,'node',r.nodes[q.nodes]+'（需 '+r.gates[q.nodes]+' 次擊敗）'):'');
- if(q.nodes===3)html+=button(r,'boss','前往首領區域');
- if(p.location===r.bossMapId)html+='<p>'+esc(r.boss)+'</p>'+button(r,'testBoss','模擬首領戰勝利');}
+ const d=HOMECOMING_ADVENTURES[r.id],a=q.adventure,step=d.nodes[a.step],map=adventureLocation(r,step);
+ const labels={heat:'熱量',pressure:'壓力',beacons:'航標',supplies:'補給',rescued:'救援記錄',alarm:'警戒',key:'鑰匙',grain:'穀物',herb:'藥草',wheel:'車輪',wins:'演武進度',notes:'音節',keeper:'守門人證詞',child:'孩童證詞',record:'舊誓文',spring:'春風',summer:'夏雨',autumn:'秋霜',winter:'冬雪',sap:'樹液',people:'居民',trunk:'主根',seed:'幼苗',fuel:'燃料',scouted:'偵察'};
+ html+='<h3>'+esc(d.mechanic)+'</h3><p>'+esc(step.text)+'</p><p class="note">'+Object.entries(a.vars).map(([k,v])=>esc(labels[k]||k)+' '+v).join(' · ')+'</p>';
+ if(p.location!==map)html+=button(r,'questGo','前往'+({town:r.town,field:'任務現場',boss:'首領區域'})[step.location]);
+ else if(step.combat)html+=button(r,step.location==='boss'?'testBoss':'testKill','模擬這場'+(step.location==='boss'?'首領':'任務')+'戰鬥勝利');
+ else html+='<div class="actions">'+step.choices.map(c=>button(r,'questChoice',c.label,c.id)).join('')+'</div>';
  }
- if(q.phase==='ready')html+='<p>討伐完成，請回城交付。</p>'+button(r,'claim','與'+r.npc+'交付任務');
+ if(q.phase==='ready')html+='<p>委託已完成，請回城與委託人交付。</p>'+button(r,'claim','與'+r.npc+'交付任務');
  if(q.phase==='claimed')html+='<p>'+esc(r.ending)+'</p><p class="badge">人物傳承已領取，不會重複發放。</p>';
  }
  const sk=FOURTH_SKILLS[fourthPair(pet(r))];html+='<p>第四格：'+esc(sk.name)+' · '+(fourthUnlocked(p,pet(r))?'已解放（含反向外觀）':'未解放')+'</p></article>';return html;
@@ -44,6 +46,7 @@ document.querySelector('#discover').onclick=()=>transact(()=>discoverHomecoming(
 document.querySelector('#reset').onclick=()=>transact(()=>{p=fresh();normalizeHomecoming(p);});
 document.querySelector('#routes').onclick=e=>{const b=e.target.closest('[data-action]');if(!b)return;const r=HOMECOMING_ROUTES.find(r=>r.id===b.dataset.route);transact(()=>{
  if(b.dataset.action==='testKill'||b.dataset.action==='testBoss'){if(!recordHomecomingVictory(p,r.id,{pet:pet(r),mapId:p.location,boss:b.dataset.action==='testBoss'}))throw Error('目前階段或地點不符合討伐條件');}
+ else if(b.dataset.action==='questGo'||b.dataset.action==='questChoice')homecomingAdventureAction(p,r.id,b.dataset.choice,{pet:pet(r),go:b.dataset.action==='questGo'});
  else homecomingTransition(p,r.id,b.dataset.action,{pet:pet(r),town:b.dataset.action==='begin',choice:b.dataset.choice});
  });};
 render();

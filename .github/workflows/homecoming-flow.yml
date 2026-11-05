@@ -22,5 +22,6 @@ jobs:
         run: |
           node --check dist/homecoming-data.js
           node --check dist/homecoming-state.js
+          node --check dist/homecoming-adventures.js
       - name: Verify independent quest state and fourth slot
         run: node --test tests/homecoming-state.test.mjs tests/homecoming-preview.test.mjs tests/companion-fourth-skill.test.mjs

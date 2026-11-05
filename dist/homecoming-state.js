@@ -1,3 +1,4 @@
+import {HOMECOMING_ADVENTURES,newHomecomingAdventure,normalizeHomecomingAdventure,adventureLocation,advanceAdventure} from './homecoming-adventures.js';
 import {HOMECOMING_ROUTES,HOMECOMING_BY_ID,homecomingIdentity} from './homecoming-data.js';
 const JOBS=new Set(['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer']);
 const PHASES=new Set(['letter','traveling','arrived','active','ready','claimed']);
@@ -8,10 +9,10 @@ export function normalizeHomecoming(p){
  for(const r of HOMECOMING_ROUTES){
   const q=raw[r.id];if(!q||!PHASES.has(q.phase))continue;
   const phase=q.phase;
-  routes[r.id]={phase,journeyIndex:count(q.journeyIndex,2),investigated:q.investigated===true,kills:count(q.kills,100000),nodes:count(q.nodes,3)};
+  routes[r.id]={phase,journeyIndex:count(q.journeyIndex,2),investigated:q.investigated===true,kills:count(q.kills,100000),nodes:count(q.nodes,3),...(['active','ready','claimed'].includes(phase)?{adventure:normalizeHomecomingAdventure(r.id,q.adventure)}:{})};
   if(phase==='claimed')completedRoutes[r.id]=true;
  }
- p.homecoming={version:1,routes,completedRoutes};return p.homecoming;
+ p.homecoming={version:2,routes,completedRoutes};return p.homecoming;
 }
 export function discoverHomecoming(p,pets,{town=false,offline=false}={}){
  normalizeHomecoming(p);if(!town||offline)return [];
@@ -35,7 +36,8 @@ export function homecomingTransition(p,id,action,{pet,town=false,offline=false,c
  else if(action==='next'){requireMatch();if(q.phase!=='traveling'||q.journeyIndex>=2)throw Error('目前不能翻到下一頁');q.journeyIndex++;}
  else if(action==='arrive'){requireMatch();if(q.phase!=='traveling'||q.journeyIndex!==2)throw Error('尚未走完首次旅程');q.phase='arrived';p.location=r.townId;}
  else if(action==='revisit'){if(['letter','traveling'].includes(q.phase))throw Error('請先完成首次旅程');p.location=r.townId;}
- else if(action==='accept'){requireMatch();if(q.phase!=='arrived'||location!==r.townId)throw Error('請到當地城鎮與委託人交談');q.phase='active';}
+ else if(action==='accept'){requireMatch();if(q.phase!=='arrived'||location!==r.townId)throw Error('請到當地城鎮與委託人交談');q.phase='active';q.adventure=newHomecomingAdventure(id);}
+ else if(['investigate','field','node','boss'].includes(action)&&q.adventure){throw Error('此支線使用專屬流程，請依目前任務節點行動');}
  else if(action==='investigate'){requireMatch();if(q.phase!=='active'||q.investigated||location!==r.townId)throw Error('目前不能調查');if(Number(choice)!==r.answer)throw Error('線索還不吻合，請重新判斷');q.investigated=true;}
  else if(action==='field'){requireMatch();if(q.phase!=='active'||!q.investigated)throw Error('請先完成城鎮調查');p.location=r.fieldId;}
  else if(action==='node'){requireMatch();if(q.phase!=='active'||!q.investigated||location!==r.fieldId||q.nodes>=3||q.kills<r.gates[q.nodes])throw Error('請先完成這一階段的野外調查');q.nodes++;}
@@ -45,11 +47,23 @@ export function homecomingTransition(p,id,action,{pet,town=false,offline=false,c
  else throw Error('未知的返鄉操作');
  return q;
 }
+export function homecomingAdventureAction(p,id,choiceId,{pet,offline=false,go=false}={}){
+ if(offline)throw Error('返鄉故事需在線上手動進行');
+ const r=HOMECOMING_BY_ID[id],q=p.homecoming?.routes?.[id];
+ if(!r||q?.phase!=='active'||!eligibleHomecoming(p,pet)||homecomingIdentity(pet)!==id)throw Error('請攜帶對應夥伴，並確認任務正在進行');
+ q.adventure=normalizeHomecomingAdventure(id,q.adventure);
+ const step=HOMECOMING_ADVENTURES[id].nodes[q.adventure.step],map=adventureLocation(r,step);
+ if(go){p.location=map;return q;}
+ if(p.location!==map)throw Error('請先前往當前任務地點');
+ if(advanceAdventure(r,q.adventure,choiceId))q.phase='ready';
+ return q;
+}
 // Call only after the combat engine confirms an actual, previously uncredited death.
 export function recordHomecomingVictory(p,id,{pet,mapId,boss=false,offline=false}={}){
  const r=HOMECOMING_BY_ID[id],q=p.homecoming?.routes?.[id];
- if(!r||!q||offline||q.phase!=='active'||!eligibleHomecoming(p,pet)||homecomingIdentity(pet)!==id||Number(pet.hp)<=0)return false;
- if(!boss&&mapId===r.fieldId&&q.investigated){q.kills=count(q.kills+1,100000);return true;}
- if(boss&&mapId===r.bossMapId&&q.nodes===3){q.phase='ready';return true;}
- return false;
+ if(!r||!q||offline||q.phase!=='active'||!eligibleHomecoming(p,pet)||homecomingIdentity(pet)!==id||!(Number(pet.hp)>0))return false;
+ const a=q.adventure,step=HOMECOMING_ADVENTURES[id]?.nodes[a?.step];
+ if(!step?.combat||mapId!==p.location||mapId!==adventureLocation(r,step)||boss!==(step.location==='boss'))return false;
+ if(advanceAdventure(r,a,null,{victory:true}))q.phase='ready';
+ return true;
 }
