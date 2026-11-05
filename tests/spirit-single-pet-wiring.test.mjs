@@ -126,3 +126,36 @@ test('both pact and commander share linked defeat, while legacy jobs are untouch
  assert.equal(knight.context.defeat(),false);
  assert.equal(knight.pet.hp,100);
 });
+
+test('reviving a linked pair restores both sides, including an unexpired pet timer',()=>{
+ const snippet=between('function revive(mode=','function useItem(');
+ const pet={id:'pet',hp:0,sp:0,reviveAt:25000},player={job:'spiritCommander',hp:0,mp:0,gold:100,trialDefeated:false,pets:[pet],activePetId:'pet',location:'field',manualPaused:false};
+ const context={player,activePet:()=>pet,gameNow:()=>11000,deathRemaining:()=>0,reviveCost:()=>10,
+  stat:key=>key==='hp'?2000:500,petStats:()=>({hp:4000,sp:100}),isSpiritJob:()=>true,
+  $:()=>({style:{}}),auto:false,timers:{},toast:()=>{},homeTown:()=> 'village',message:()=>{},spawn:()=>{},save:()=>{}};
+ vm.runInNewContext(snippet+'\nthis.revive=revive',context);
+ context.revive('place');
+ assert.equal(player.hp,1000);
+ assert.equal(pet.hp,2000);
+ assert.equal(pet.reviveAt,undefined);
+ player.hp=0;pet.hp=0;pet.reviveAt=25000;
+ context.revive('town');
+ assert.equal(player.hp,2000);
+ assert.equal(player.mp,500);
+ assert.equal(pet.hp,4000);
+ assert.equal(pet.sp,100);
+});
+
+test('insufficient gold auto-revive returns the linked pair home alive',()=>{
+ const snippet=between('function autoRevivePlayer(','function showCaptureReward(');
+ const pet={id:'pet',hp:0,sp:0,reviveAt:8000},player={job:'spiritCommander',hp:0,mp:0,gold:0,pets:[pet],location:'field',autoRevive:true,reviveAt:8000};
+ const context={player,gameNow:()=>15000,PLAYER_REVIVE_MS:10000,auto:true,offlineMetrics:null,
+  reviveCost:()=>100,stat:key=>key==='hp'?1000:300,petStats:()=>({hp:2000,sp:200}),isSpiritJob:()=>true,activePet:()=>pet,
+  timers:{},spawn:()=>{},message:()=>{},homeTown:()=> 'village',offlineSimulation:true,save:()=>{}};
+ vm.runInNewContext(snippet+'\nthis.autoRevive=autoRevivePlayer',context);
+ assert.equal(context.autoRevive(),true);
+ assert.equal(player.location,'village');
+ assert.equal(player.hp,1000);
+ assert.equal(pet.hp,2000);
+ assert.equal(pet.reviveAt,undefined);
+});
