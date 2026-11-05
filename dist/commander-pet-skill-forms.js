@@ -18,12 +18,12 @@ export function commanderSkillOutputScale(pet){
  return FUSION_SKILL_SCALES[fusion]||2.4;
 }
 const FUSION_DAMAGE_FACTORS=Object.freeze({
- 'attack-magic':.90,
- 'attack-defense':.65,
- 'attack-support':.90,
- 'magic-defense':.65,
- 'magic-support':.65,
- 'defense-support':.60
+ 'attack-magic':.37,
+ 'attack-defense':.36,
+ 'attack-support':.49,
+ 'magic-defense':.36,
+ 'magic-support':.36,
+ 'defense-support':.33
 });
 export function commanderFinalDamageFactor(pet){
  const fusion=[pet?.fusion?.main,pet?.fusion?.sub].sort((a,b)=>['attack','magic','defense','support'].indexOf(a)-['attack','magic','defense','support'].indexOf(b)).join('-');

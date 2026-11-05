@@ -32,18 +32,20 @@ async function strike({player,job},kind,power){
  const foe={...DAWN_BOSS,id:'dawn-scout',name:'逐級增傷測試怪',boss:false,
   attackType:kind,atk:power,matk:power,hit:1000000,hp:1e18,maxHp:1e18,lastAttack:0};
  c.api.setup(p,foe);
- c.chooseMonsterTarget=()=> 'owner';
+ // The jobs have different mandatory aggro: King = owner; Commander = pet.
+ // Do NOT force Commander attacks onto the owner: that produced a false ceiling.
  c.Math.random=()=>0;
  c.rand=(a)=>a;
  p.hp=c.api.stat('hp');p.mp=c.api.stat('mp');
- const maxHp=p.hp,def=c.api.stat('def'),mdef=c.api.stat('mdef');
+ const victim=job==='spiritCommander'?p.pets[0]:p;
+ const maxHp=victim.hp,def=c.api.stat('def'),mdef=c.api.stat('mdef');
  let failAt=null,minimum=100;
  const before=p.bag.find(item=>item.id==='red_large')?.qty||0;
  for(let hit=0;hit<HITS;hit++){
   c.setTime(1000000+hit*1000);
   c.api.enemyAttack();
-  minimum=Math.min(minimum,100*p.hp/maxHp);
-  if(p.hp<=0){failAt=hit+1;break;}
+  minimum=Math.min(minimum,100*victim.hp/maxHp);
+  if(victim.hp<=0){failAt=hit+1;break;}
   c.api.autoUsePotions();
  }
  const after=p.bag.find(item=>item.id==='red_large')?.qty||0;
@@ -52,7 +54,8 @@ async function strike({player,job},kind,power){
 }
 
 const results=[];
-for(const data of saves)for(const kind of ['physical','magic']){
+for(const data of saves.filter(x=>!process.env.SPIRIT_JOB_FILTER||x.job===process.env.SPIRIT_JOB_FILTER))
+for(const kind of ['physical','magic'].filter(x=>!process.env.SPIRIT_ATTACK_FILTER||x===process.env.SPIRIT_ATTACK_FILTER)){
  let low=0,high=1;
  const trial=multiplier=>strike(data,kind,Math.round(DAWN_BOSS.atk*multiplier));
  let highResult=await trial(high);
@@ -72,5 +75,6 @@ for(const data of saves)for(const kind of ['physical','magic']){
   passingPotions:lastPass?.potionsUsed??null,firstDefeatHit:firstFail.failAt});
  console.log(JSON.stringify({progress:data.job,kind,maximumPassingAtk:Math.round(DAWN_BOSS.atk*low)}));
 }
-writeFileSync(resolve(OUTPUT,'pressure-results.json'),JSON.stringify({conditions:'One immortal enemy, 1 guaranteed attack per second, 90% potion threshold, real enemyAttack and autoUsePotions, no auto revive, original final DEF',hits:HITS,results},null,2)+'\n');
+if(!process.env.SPIRIT_JOB_FILTER&&!process.env.SPIRIT_ATTACK_FILTER)
+ writeFileSync(resolve(OUTPUT,'pressure-results.json'),JSON.stringify({conditions:'One immortal enemy, 1 guaranteed attack per second, 90% potion threshold, real enemyAttack and autoUsePotions, no auto revive, original final DEF',hits:HITS,results},null,2)+'\n');
 console.log(JSON.stringify({complete:true,hits:HITS,results},null,2));

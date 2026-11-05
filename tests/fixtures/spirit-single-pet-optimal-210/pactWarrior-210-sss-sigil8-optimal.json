@@ -11,7 +11,7 @@
     "jobXp": 0,
     "jobPoints": 0,
     "statPoints": 0,
-    "hp": 275883,
+    "hp": 215714,
     "mp": 3676,
     "gold": 50000000,
     "kills": 0,
@@ -101,7 +101,7 @@
       },
       "rightHand": {
         "id": "staffSword",
-        "uid": "g-1793900385144-hh59kxeb",
+        "uid": "g-1793901391942-zcvu0ay3",
         "level": 200,
         "tier": 11,
         "rarity": "mythic",

@@ -17,7 +17,7 @@ assert.equal(commanderPetSkillForm({job:'pactWarrior'},pet,{id:'main',kind:'magi
 assert.equal(commanderPetSkillForm(player,{...pet,fusion:null},{id:'main',kind:'magic'}),null);
 const reordered={...pet,equippedSkills:['finish','main','wide']};
 assert.equal(commanderPetSkillForm(player,reordered,{id:'main',kind:'strike'}).name,'範圍');
-for(const [fusion,factor] of [['attack-magic',.90],['attack-defense',.65],['attack-support',.90],['magic-defense',.65],['magic-support',.65],['defense-support',.60]]){
+for(const [fusion,factor] of [['attack-magic',.37],['attack-defense',.36],['attack-support',.49],['magic-defense',.36],['magic-support',.36],['defense-support',.33]]){
  const [main,sub]=fusion.split('-');
  assert.equal(commanderFinalDamageFactor({fusion:{main,sub}}),factor);
  assert.equal(commanderFinalDamageFactor({fusion:{main:sub,sub:main}}),factor,'reverse-order fusion must share identical damage factors');

@@ -183,14 +183,16 @@ function pactAssimilationBonus(type){
  // Each fusion keeps its own offensive identity. Survival assimilation remains
  // identical across the six routes and the ten existing jobs are untouched.
  const offense={
-  'attack-magic':{atk:9.0,matk:1.65},
-  'attack-defense':{atk:9.0,matk:1.65},
-  'attack-support':{atk:9.0,matk:1.65},
-  'magic-defense':{atk:3.20,matk:20.0},
-  'magic-support':{atk:3.20,matk:20.0},
-  'defense-support':{atk:20.0,matk:1.65}
- }[fusion]||{atk:3.20,matk:1.65};
- const ratios={...offense,def:.42,mdef:.42,hp:.28};
+  'attack-magic':{atk:5.0,matk:.90},
+  'attack-defense':{atk:5.0,matk:.90},
+  'attack-support':{atk:5.0,matk:.90},
+  'magic-defense':{atk:1.80,matk:3.05},
+  'magic-support':{atk:1.80,matk:3.05},
+  'defense-support':{atk:11.0,matk:.90}
+ }[fusion]||{atk:1.80,matk:.90};
+ // Only the PET -> owner inheritance is reduced. Do not scale final DEF or
+ // incoming monster damage by a special class-specific multiplier.
+ const ratios={...offense,def:.19,mdef:.19,hp:.15};
  if(!ratios[type])return 0;
  return activePetRoster(player).filter(p=>p.hp>0).reduce((total,pet)=>{
   const base=petStats(pet)[type]; // already includes pet level, rarity, evolution, IV and flat equipment
