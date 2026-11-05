@@ -1,0 +1,584 @@
+{
+  "conditions": "Legal SSS gear, class output affixes, boss-only cards with profitable single-slot swaps combined; 210 regional boss + four live normals; 3 seeds x 240s; sigil 8",
+  "rows": [
+    {
+      "key": "crusader/oneSpear/shield/attack-magic/1/aspdPct",
+      "job": "crusader",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1217708633.5365856,
+      "bossSeconds": 8.2,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1460873559.5600116,
+      "meanKillSeconds": 6.82,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.2,
+          "elapsed": 8.2
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.2,
+          "elapsed": 8.2
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.2,
+          "elapsed": 8.2
+        }
+      ],
+      "cardOverrides": {
+        "leftHand": "boss_volcano",
+        "shoes": "boss_nightclock",
+        "accessory1": "boss_sungrave"
+      },
+      "verified": true
+    },
+    {
+      "key": "assassin/rifle/offDagger/attack-magic/1/aspdPct",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 84,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 716805962.6666666,
+      "bossSeconds": 16.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 729714391.9090437,
+      "meanKillSeconds": 16.606666666666666,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        }
+      ],
+      "cardOverrides": {
+        "accessory1": "boss_sungrave"
+      },
+      "verified": true
+    },
+    {
+      "key": "wizard/twoStaff/null/attack-magic/1/critDmg",
+      "job": "wizard",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 136,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 665170287.8620102,
+      "bossSeconds": 23.48,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 684472638.9144348,
+      "meanKillSeconds": 23.3,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.48,
+          "elapsed": 23.48
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.28,
+          "elapsed": 25.28
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.28,
+          "elapsed": 22.28
+        }
+      ],
+      "cardOverrides": {
+        "headMiddle": "boss_gearfell",
+        "rightHand": "boss_zenith"
+      },
+      "verified": true
+    },
+    {
+      "key": "knight/twoSpear/null/attack-magic/1/aspdPct",
+      "job": "knight",
+      "weapon": "twoSpear",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 672835503.2851511,
+      "bossSeconds": 15.22,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 674779637.1574178,
+      "meanKillSeconds": 15.719999999999999,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 15.22,
+          "elapsed": 15.22
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 15.46,
+          "elapsed": 15.46
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.1,
+          "elapsed": 16.1
+        }
+      ],
+      "cardOverrides": {
+        "shoes": "boss_nightclock",
+        "accessory1": "boss_sungrave"
+      },
+      "verified": true
+    },
+    {
+      "key": "rogue/rifle/shield/attack-magic/1/aspdPct",
+      "job": "rogue",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 80,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 630595043.2121212,
+      "bossSeconds": 16.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 650168422.7825166,
+      "meanKillSeconds": 16.726666666666663,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        }
+      ],
+      "cardOverrides": {
+        "accessory1": "boss_sungrave"
+      },
+      "verified": true
+    },
+    {
+      "key": "hunter/shortBow/null/attack-magic/1/aspdPct",
+      "job": "hunter",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 558965934.6678799,
+      "bossSeconds": 21.98,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 582207279.5146366,
+      "meanKillSeconds": 22.066666666666666,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.98,
+          "elapsed": 21.98
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.32,
+          "elapsed": 20.32
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.74,
+          "elapsed": 21.74
+        }
+      ],
+      "cardOverrides": {
+        "accessory1": "boss_sungrave"
+      },
+      "verified": true
+    },
+    {
+      "key": "sage/spellFist/null/attack-magic/1/aspdPct",
+      "job": "sage",
+      "weapon": "spellFist",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 569587277.9783393,
+      "bossSeconds": 22.16,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 566454290.2640742,
+      "meanKillSeconds": 22.366666666666664,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.16,
+          "elapsed": 22.16
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.26,
+          "elapsed": 22.26
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.68,
+          "elapsed": 22.68
+        }
+      ],
+      "cardOverrides": {},
+      "verified": true
+    },
+    {
+      "key": "monk/knuckles/null/attack-magic/0/aspdPct",
+      "job": "monk",
+      "weapon": "knuckles",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 76,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 538161755.5383023,
+      "bossSeconds": 19.32,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 560413043.2110744,
+      "meanKillSeconds": 19.48,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.32,
+          "elapsed": 19.32
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.52,
+          "elapsed": 18.52
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.52,
+          "elapsed": 18.52
+        }
+      ],
+      "cardOverrides": {
+        "garment": "boss_abyss",
+        "accessory1": "boss_sungrave"
+      },
+      "verified": true
+    },
+    {
+      "key": "performer/shortBow/null/attack-magic/1/aspdPct",
+      "job": "performer",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 34,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 543517546.2867012,
+      "bossSeconds": 23.16,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 547233661.4790835,
+      "meanKillSeconds": 22.320000000000004,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.16,
+          "elapsed": 23.16
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.38,
+          "elapsed": 23.38
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.42,
+          "elapsed": 20.42
+        }
+      ],
+      "cardOverrides": {},
+      "verified": true
+    },
+    {
+      "key": "priest/mace/shield/attack-magic/1/aspdPct",
+      "job": "priest",
+      "weapon": "mace",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 130,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 531789951.336675,
+      "bossSeconds": 23.94,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 533046160.63945824,
+      "meanKillSeconds": 23.813333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.94,
+          "elapsed": 23.94
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.86,
+          "elapsed": 23.86
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.64,
+          "elapsed": 23.64
+        }
+      ],
+      "cardOverrides": {},
+      "verified": true
+    }
+  ]
+}

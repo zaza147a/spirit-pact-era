@@ -1,0 +1,5623 @@
+{
+  "version": 1,
+  "conditions": "Original 10 jobs; 210-region boss plus four live mobs; 3 seeds × 240s; legal gear, boss-only cards, attack+magic pet; candidate stage 2",
+  "completed": 104,
+  "rows": [
+    {
+      "key": "monk/knuckles/null/attack-magic/0/aspdPct",
+      "job": "monk",
+      "weapon": "knuckles",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 76,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 538161755.5383023,
+      "bossSeconds": 19.32,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 558355494.7546681,
+      "meanKillSeconds": 18.786666666666665,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.32,
+          "elapsed": 19.32
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.52,
+          "elapsed": 18.52
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.52,
+          "elapsed": 18.52
+        }
+      ]
+    },
+    {
+      "key": "monk/knuckles/null/attack-magic/0/critDmg",
+      "job": "monk",
+      "weapon": "knuckles",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 76,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 538171209.1506572,
+      "bossSeconds": 19.78,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 528870632.48453635,
+      "meanKillSeconds": 19.80666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.78,
+          "elapsed": 19.78
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.66,
+          "elapsed": 19.66
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.98,
+          "elapsed": 19.98
+        }
+      ]
+    },
+    {
+      "key": "monk/knuckles/null/attack-magic/1/aspdPct",
+      "job": "monk",
+      "weapon": "knuckles",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 121,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 546919174.4525547,
+      "bossSeconds": 19.18,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 557820620.4919618,
+      "meanKillSeconds": 18.819999999999997,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.18,
+          "elapsed": 19.18
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.34,
+          "elapsed": 19.34
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 17.94,
+          "elapsed": 17.94
+        }
+      ]
+    },
+    {
+      "key": "monk/knuckles/null/attack-magic/1/critDmg",
+      "job": "monk",
+      "weapon": "knuckles",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 121,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 521756588.37784374,
+      "bossSeconds": 20.22,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 523452360.30753905,
+      "meanKillSeconds": 20.06,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.22,
+          "elapsed": 20.22
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.74,
+          "elapsed": 19.74
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.22,
+          "elapsed": 20.22
+        }
+      ]
+    },
+    {
+      "key": "knight/twoSpear/null/attack-magic/0/aspdPct",
+      "job": "knight",
+      "weapon": "twoSpear",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 70,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 643952724.5962732,
+      "bossSeconds": 16.1,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 654551882.4282562,
+      "meanKillSeconds": 15.813333333333334,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.1,
+          "elapsed": 16.1
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 15.24,
+          "elapsed": 15.24
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.1,
+          "elapsed": 16.1
+        }
+      ]
+    },
+    {
+      "key": "knight/twoSpear/null/attack-magic/0/critDmg",
+      "job": "knight",
+      "weapon": "twoSpear",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 70,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 619515491.8280872,
+      "bossSeconds": 16.52,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 601333307.8367134,
+      "meanKillSeconds": 17.16,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.52,
+          "elapsed": 16.52
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.76,
+          "elapsed": 16.76
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.2,
+          "elapsed": 18.2
+        }
+      ]
+    },
+    {
+      "key": "knight/twoSpear/null/attack-magic/1/aspdPct",
+      "job": "knight",
+      "weapon": "twoSpear",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 672835503.2851511,
+      "bossSeconds": 15.22,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 661697287.5051543,
+      "meanKillSeconds": 15.593333333333334,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 15.22,
+          "elapsed": 15.22
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 15.46,
+          "elapsed": 15.46
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.1,
+          "elapsed": 16.1
+        }
+      ]
+    },
+    {
+      "key": "knight/twoSpear/null/attack-magic/1/critDmg",
+      "job": "knight",
+      "weapon": "twoSpear",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 634414829.939394,
+      "bossSeconds": 16.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 630360426.2828283,
+      "meanKillSeconds": 16.5,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        }
+      ]
+    },
+    {
+      "key": "knight/twoSword/null/attack-magic/0/aspdPct",
+      "job": "knight",
+      "weapon": "twoSword",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 70,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 620493529.7313797,
+      "bossSeconds": 16.38,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 639266673.1274709,
+      "meanKillSeconds": 16.19333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.38,
+          "elapsed": 16.38
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 15.7,
+          "elapsed": 15.7
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        }
+      ]
+    },
+    {
+      "key": "knight/twoSword/null/attack-magic/0/critDmg",
+      "job": "knight",
+      "weapon": "twoSword",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 70,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 604192599.2325855,
+      "bossSeconds": 16.94,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 582178130.1614674,
+      "meanKillSeconds": 17.64,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.94,
+          "elapsed": 16.94
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 17.92,
+          "elapsed": 17.92
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.06,
+          "elapsed": 18.06
+        }
+      ]
+    },
+    {
+      "key": "knight/twoSword/null/attack-magic/1/aspdPct",
+      "job": "knight",
+      "weapon": "twoSword",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 652681779.7619047,
+      "bossSeconds": 15.96,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 645319548.1848035,
+      "meanKillSeconds": 16.060000000000002,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 15.96,
+          "elapsed": 15.96
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.24,
+          "elapsed": 16.24
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 15.98,
+          "elapsed": 15.98
+        }
+      ]
+    },
+    {
+      "key": "knight/twoSword/null/attack-magic/1/critDmg",
+      "job": "knight",
+      "weapon": "twoSword",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 629301084.7878788,
+      "bossSeconds": 16.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 614275404.0055404,
+      "meanKillSeconds": 16.900000000000002,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.7,
+          "elapsed": 16.7
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 17.5,
+          "elapsed": 17.5
+        }
+      ]
+    },
+    {
+      "key": "knight/oneSpear/shield/attack-magic/0/aspdPct",
+      "job": "knight",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 70,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 535083863.9773895,
+      "bossSeconds": 19.46,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 563226744.8126956,
+      "meanKillSeconds": 18.52,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.46,
+          "elapsed": 19.46
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.36,
+          "elapsed": 18.36
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 17.74,
+          "elapsed": 17.74
+        }
+      ]
+    },
+    {
+      "key": "knight/oneSpear/shield/attack-magic/0/critDmg",
+      "job": "knight",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 70,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 536369684.5323741,
+      "bossSeconds": 19.46,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 528642760.1824558,
+      "meanKillSeconds": 19.786666666666665,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.46,
+          "elapsed": 19.46
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.72,
+          "elapsed": 20.72
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.18,
+          "elapsed": 19.18
+        }
+      ]
+    },
+    {
+      "key": "knight/oneSpear/shield/attack-magic/1/aspdPct",
+      "job": "knight",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 570781970.4872648,
+      "bossSeconds": 18.06,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 563154694.4810747,
+      "meanKillSeconds": 18.58,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.06,
+          "elapsed": 18.06
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.8,
+          "elapsed": 18.8
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.88,
+          "elapsed": 18.88
+        }
+      ]
+    },
+    {
+      "key": "knight/oneSpear/shield/attack-magic/1/critDmg",
+      "job": "knight",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 545824125.2934899,
+      "bossSeconds": 18.74,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 526759353.8584814,
+      "meanKillSeconds": 19.680000000000003,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.74,
+          "elapsed": 18.74
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.96,
+          "elapsed": 19.96
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.34,
+          "elapsed": 20.34
+        }
+      ]
+    },
+    {
+      "key": "knight/blade/shield/attack-magic/0/aspdPct",
+      "job": "knight",
+      "weapon": "blade",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 70,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 569408775.1925193,
+      "bossSeconds": 18.18,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 551494610.3949633,
+      "meanKillSeconds": 18.926666666666666,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.18,
+          "elapsed": 18.18
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.8,
+          "elapsed": 19.8
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.8,
+          "elapsed": 18.8
+        }
+      ]
+    },
+    {
+      "key": "knight/blade/shield/attack-magic/0/critDmg",
+      "job": "knight",
+      "weapon": "blade",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 70,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 537228234.1463414,
+      "bossSeconds": 19.68,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 521548052.46868867,
+      "meanKillSeconds": 20.19333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.68,
+          "elapsed": 19.68
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.06,
+          "elapsed": 21.06
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.84,
+          "elapsed": 19.84
+        }
+      ]
+    },
+    {
+      "key": "knight/blade/shield/attack-magic/1/aspdPct",
+      "job": "knight",
+      "weapon": "blade",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 558616003.7234043,
+      "bossSeconds": 18.8,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 555280201.7861418,
+      "meanKillSeconds": 18.90666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.8,
+          "elapsed": 18.8
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.96,
+          "elapsed": 18.96
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.96,
+          "elapsed": 18.96
+        }
+      ]
+    },
+    {
+      "key": "knight/blade/shield/attack-magic/1/critDmg",
+      "job": "knight",
+      "weapon": "blade",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 115,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 554102403.8668098,
+      "bossSeconds": 18.62,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 528380169.3962369,
+      "meanKillSeconds": 19.686666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.62,
+          "elapsed": 18.62
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.1,
+          "elapsed": 20.1
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.34,
+          "elapsed": 20.34
+        }
+      ]
+    },
+    {
+      "key": "crusader/oneSpear/shield/attack-magic/0/aspdPct",
+      "job": "crusader",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1207972163.4146342,
+      "bossSeconds": 8.2,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1215123355.5972483,
+      "meanKillSeconds": 8.066666666666666,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.2,
+          "elapsed": 8.2
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.2,
+          "elapsed": 8.2
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 7.8,
+          "elapsed": 7.8
+        }
+      ]
+    },
+    {
+      "key": "crusader/oneSpear/shield/attack-magic/0/critDmg",
+      "job": "crusader",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1109063400.8908684,
+      "bossSeconds": 8.98,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1131316996.1998994,
+      "meanKillSeconds": 8.786666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.98,
+          "elapsed": 8.98
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.68,
+          "elapsed": 8.68
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.7,
+          "elapsed": 8.7
+        }
+      ]
+    },
+    {
+      "key": "crusader/oneSpear/shield/attack-magic/1/aspdPct",
+      "job": "crusader",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1217708633.5365856,
+      "bossSeconds": 8.2,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1263307984.308943,
+      "meanKillSeconds": 8.2,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.2,
+          "elapsed": 8.2
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.2,
+          "elapsed": 8.2
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.2,
+          "elapsed": 8.2
+        }
+      ]
+    },
+    {
+      "key": "crusader/oneSpear/shield/attack-magic/1/critDmg",
+      "job": "crusader",
+      "weapon": "oneSpear",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1160948889.6674585,
+      "bossSeconds": 8.42,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1160631372.9820907,
+      "meanKillSeconds": 8.506666666666668,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.42,
+          "elapsed": 8.42
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.82,
+          "elapsed": 8.82
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.28,
+          "elapsed": 8.28
+        }
+      ]
+    },
+    {
+      "key": "crusader/blade/shield/attack-magic/0/aspdPct",
+      "job": "crusader",
+      "weapon": "blade",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1106034358.668076,
+      "bossSeconds": 9.46,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1150964435.7972581,
+      "meanKillSeconds": 8.82,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 9.46,
+          "elapsed": 9.46
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.6,
+          "elapsed": 8.6
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.4,
+          "elapsed": 8.4
+        }
+      ]
+    },
+    {
+      "key": "crusader/blade/shield/attack-magic/0/critDmg",
+      "job": "crusader",
+      "weapon": "blade",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1108689745.9910913,
+      "bossSeconds": 8.98,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1127314639.9913437,
+      "meanKillSeconds": 8.84,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.98,
+          "elapsed": 8.98
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.7,
+          "elapsed": 8.7
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.84,
+          "elapsed": 8.84
+        }
+      ]
+    },
+    {
+      "key": "crusader/blade/shield/attack-magic/1/aspdPct",
+      "job": "crusader",
+      "weapon": "blade",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1219234383.4939759,
+      "bossSeconds": 8.3,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1238235718.9988186,
+      "meanKillSeconds": 8.366666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.3,
+          "elapsed": 8.3
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.5,
+          "elapsed": 8.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.3,
+          "elapsed": 8.3
+        }
+      ]
+    },
+    {
+      "key": "crusader/blade/shield/attack-magic/1/critDmg",
+      "job": "crusader",
+      "weapon": "blade",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 1,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 1128146651.3824885,
+      "bossSeconds": 8.68,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 1132783902.1463668,
+      "meanKillSeconds": 8.786666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.68,
+          "elapsed": 8.68
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 9.26,
+          "elapsed": 9.26
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 8.42,
+          "elapsed": 8.42
+        }
+      ]
+    },
+    {
+      "key": "wizard/oneStaff/shield/attack-magic/0/aspdPct",
+      "job": "wizard",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 91,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 463337931.1227298,
+      "bossSeconds": 36.34,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 480728502.0200567,
+      "meanKillSeconds": 35.12,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 36.34,
+          "elapsed": 36.34
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 33.88,
+          "elapsed": 33.88
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 35.14,
+          "elapsed": 35.14
+        }
+      ]
+    },
+    {
+      "key": "wizard/oneStaff/shield/attack-magic/0/critDmg",
+      "job": "wizard",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 91,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 530056193.85382056,
+      "bossSeconds": 30.1,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 572717554.6799389,
+      "meanKillSeconds": 28.426666666666666,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 30.1,
+          "elapsed": 30.1
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.68,
+          "elapsed": 27.68
+        }
+      ]
+    },
+    {
+      "key": "wizard/oneStaff/shield/attack-magic/1/aspdPct",
+      "job": "wizard",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 136,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 519584984.84848493,
+      "bossSeconds": 33,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 512134193.02110046,
+      "meanKillSeconds": 33.13999999999999,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 33,
+          "elapsed": 33
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 32.48,
+          "elapsed": 32.48
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 33.94,
+          "elapsed": 33.94
+        }
+      ]
+    },
+    {
+      "key": "wizard/oneStaff/shield/attack-magic/1/critDmg",
+      "job": "wizard",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 136,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 609687755.9667673,
+      "bossSeconds": 26.48,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 607221097.2580422,
+      "meanKillSeconds": 26.393333333333334,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.48,
+          "elapsed": 26.48
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.2,
+          "elapsed": 25.2
+        }
+      ]
+    },
+    {
+      "key": "wizard/oneStaff/shield/attack-magic/2/aspdPct",
+      "job": "wizard",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "aspdPct",
+      "seed": 55,
+      "agility": 135,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 488229596.7865566,
+      "bossSeconds": 33.92,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 485498914.0345063,
+      "meanKillSeconds": 34.72,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 33.92,
+          "elapsed": 33.92
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 34.52,
+          "elapsed": 34.52
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 35.72,
+          "elapsed": 35.72
+        }
+      ]
+    },
+    {
+      "key": "wizard/oneStaff/shield/attack-magic/2/critDmg",
+      "job": "wizard",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "critDmg",
+      "seed": 55,
+      "agility": 135,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 573607538.0622838,
+      "bossSeconds": 28.9,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 583964975.6236254,
+      "meanKillSeconds": 28.486666666666665,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 28.9,
+          "elapsed": 28.9
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 28.9,
+          "elapsed": 28.9
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.66,
+          "elapsed": 27.66
+        }
+      ]
+    },
+    {
+      "key": "wizard/twoStaff/null/attack-magic/0/aspdPct",
+      "job": "wizard",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 91,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 515208864.698647,
+      "bossSeconds": 32.52,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 557052796.0475435,
+      "meanKillSeconds": 30.120000000000005,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 32.52,
+          "elapsed": 32.52
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 28.92,
+          "elapsed": 28.92
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 28.92,
+          "elapsed": 28.92
+        }
+      ]
+    },
+    {
+      "key": "wizard/twoStaff/null/attack-magic/0/critDmg",
+      "job": "wizard",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 91,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 676208696.179402,
+      "bossSeconds": 24.08,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 667318057.689365,
+      "meanKillSeconds": 24.28,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.08,
+          "elapsed": 24.08
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.28,
+          "elapsed": 25.28
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.48,
+          "elapsed": 23.48
+        }
+      ]
+    },
+    {
+      "key": "wizard/twoStaff/null/attack-magic/1/aspdPct",
+      "job": "wizard",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 136,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 561119610.192563,
+      "bossSeconds": 30.12,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 583963331.2405639,
+      "meanKillSeconds": 28.69333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 30.12,
+          "elapsed": 30.12
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.68,
+          "elapsed": 27.68
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 28.28,
+          "elapsed": 28.28
+        }
+      ]
+    },
+    {
+      "key": "wizard/twoStaff/null/attack-magic/1/critDmg",
+      "job": "wizard",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 136,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 665170287.8620102,
+      "bossSeconds": 23.48,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 676914458.3768543,
+      "meanKillSeconds": 23.680000000000003,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.48,
+          "elapsed": 23.48
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.28,
+          "elapsed": 25.28
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.28,
+          "elapsed": 22.28
+        }
+      ]
+    },
+    {
+      "key": "wizard/twoStaff/null/attack-magic/2/aspdPct",
+      "job": "wizard",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "aspdPct",
+      "seed": 55,
+      "agility": 135,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 536307674.65798044,
+      "bossSeconds": 30.7,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 529058547.0293105,
+      "meanKillSeconds": 31.100000000000005,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 30.7,
+          "elapsed": 30.7
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 32.5,
+          "elapsed": 32.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 30.1,
+          "elapsed": 30.1
+        }
+      ]
+    },
+    {
+      "key": "wizard/twoStaff/null/attack-magic/2/critDmg",
+      "job": "wizard",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "critDmg",
+      "seed": 55,
+      "agility": 135,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 701335427.5153106,
+      "bossSeconds": 22.86,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 662550428.2222115,
+      "meanKillSeconds": 24.66,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.86,
+          "elapsed": 22.86
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.46,
+          "elapsed": 23.46
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.66,
+          "elapsed": 27.66
+        }
+      ]
+    },
+    {
+      "key": "sage/spellFist/null/attack-magic/0/aspdPct",
+      "job": "sage",
+      "weapon": "spellFist",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 65,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 554617540.2814424,
+      "bossSeconds": 22.74,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 543819301.1939024,
+      "meanKillSeconds": 23.2,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.74,
+          "elapsed": 22.74
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.14,
+          "elapsed": 23.14
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.72,
+          "elapsed": 23.72
+        }
+      ]
+    },
+    {
+      "key": "sage/spellFist/null/attack-magic/0/critDmg",
+      "job": "sage",
+      "weapon": "spellFist",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 65,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 499559643.685052,
+      "bossSeconds": 25.02,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 490094037.5580056,
+      "meanKillSeconds": 25.646666666666665,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.02,
+          "elapsed": 25.02
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.84,
+          "elapsed": 25.84
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.08,
+          "elapsed": 26.08
+        }
+      ]
+    },
+    {
+      "key": "sage/spellFist/null/attack-magic/1/aspdPct",
+      "job": "sage",
+      "weapon": "spellFist",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 569587277.9783393,
+      "bossSeconds": 22.16,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 566454290.2640742,
+      "meanKillSeconds": 22.366666666666664,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.16,
+          "elapsed": 22.16
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.26,
+          "elapsed": 22.26
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.68,
+          "elapsed": 22.68
+        }
+      ]
+    },
+    {
+      "key": "sage/spellFist/null/attack-magic/1/critDmg",
+      "job": "sage",
+      "weapon": "spellFist",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 529306117.0598147,
+      "bossSeconds": 23.74,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 522168509.15323645,
+      "meanKillSeconds": 24.206666666666663,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.74,
+          "elapsed": 23.74
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.86,
+          "elapsed": 23.86
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.02,
+          "elapsed": 25.02
+        }
+      ]
+    },
+    {
+      "key": "sage/spellFist/null/attack-magic/2/aspdPct",
+      "job": "sage",
+      "weapon": "spellFist",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "aspdPct",
+      "seed": 55,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 554617540.2814424,
+      "bossSeconds": 22.74,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 543819301.1939024,
+      "meanKillSeconds": 23.2,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.74,
+          "elapsed": 22.74
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.14,
+          "elapsed": 23.14
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.72,
+          "elapsed": 23.72
+        }
+      ]
+    },
+    {
+      "key": "sage/spellFist/null/attack-magic/2/critDmg",
+      "job": "sage",
+      "weapon": "spellFist",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "critDmg",
+      "seed": 55,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 499559643.685052,
+      "bossSeconds": 25.02,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 490094037.5580056,
+      "meanKillSeconds": 25.646666666666665,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.02,
+          "elapsed": 25.02
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.84,
+          "elapsed": 25.84
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.08,
+          "elapsed": 26.08
+        }
+      ]
+    },
+    {
+      "key": "sage/twoStaff/null/attack-magic/0/aspdPct",
+      "job": "sage",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 65,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 520721386.5353038,
+      "bossSeconds": 24.36,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 532515336.5573306,
+      "meanKillSeconds": 23.900000000000002,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.36,
+          "elapsed": 24.36
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.4,
+          "elapsed": 23.4
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.94,
+          "elapsed": 23.94
+        }
+      ]
+    },
+    {
+      "key": "sage/twoStaff/null/attack-magic/0/critDmg",
+      "job": "sage",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 65,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 497054150.2768987,
+      "bossSeconds": 25.28,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 488569829.2725398,
+      "meanKillSeconds": 25.959999999999997,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.28,
+          "elapsed": 25.28
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.14,
+          "elapsed": 26.14
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.46,
+          "elapsed": 26.46
+        }
+      ]
+    },
+    {
+      "key": "sage/twoStaff/null/attack-magic/1/aspdPct",
+      "job": "sage",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 565294025.3798034,
+      "bossSeconds": 22.38,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 559188980.7553626,
+      "meanKillSeconds": 22.666666666666668,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.38,
+          "elapsed": 22.38
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.98,
+          "elapsed": 22.98
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.64,
+          "elapsed": 22.64
+        }
+      ]
+    },
+    {
+      "key": "sage/twoStaff/null/attack-magic/1/critDmg",
+      "job": "sage",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 492255718.69666404,
+      "bossSeconds": 25.78,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 500998375.5322644,
+      "meanKillSeconds": 25,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.78,
+          "elapsed": 25.78
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.16,
+          "elapsed": 25.16
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.06,
+          "elapsed": 24.06
+        }
+      ]
+    },
+    {
+      "key": "sage/twoStaff/null/attack-magic/2/aspdPct",
+      "job": "sage",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "aspdPct",
+      "seed": 55,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 520721386.5353038,
+      "bossSeconds": 24.36,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 532515336.5573306,
+      "meanKillSeconds": 23.900000000000002,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.36,
+          "elapsed": 24.36
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.4,
+          "elapsed": 23.4
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.94,
+          "elapsed": 23.94
+        }
+      ]
+    },
+    {
+      "key": "sage/twoStaff/null/attack-magic/2/critDmg",
+      "job": "sage",
+      "weapon": "twoStaff",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "critDmg",
+      "seed": 55,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 497054150.2768987,
+      "bossSeconds": 25.28,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 488569829.2725398,
+      "meanKillSeconds": 25.959999999999997,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.28,
+          "elapsed": 25.28
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.14,
+          "elapsed": 26.14
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.46,
+          "elapsed": 26.46
+        }
+      ]
+    },
+    {
+      "key": "sage/oneStaff/shield/attack-magic/0/aspdPct",
+      "job": "sage",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 65,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 461432503.7818182,
+      "bossSeconds": 27.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 463422357.7442433,
+      "meanKillSeconds": 27.540000000000003,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.62,
+          "elapsed": 27.62
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        }
+      ]
+    },
+    {
+      "key": "sage/oneStaff/shield/attack-magic/0/critDmg",
+      "job": "sage",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 65,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 431067814.65986395,
+      "bossSeconds": 29.4,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 427952283.6154511,
+      "meanKillSeconds": 29.706666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 29.4,
+          "elapsed": 29.4
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 30.28,
+          "elapsed": 30.28
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 29.44,
+          "elapsed": 29.44
+        }
+      ]
+    },
+    {
+      "key": "sage/oneStaff/shield/attack-magic/1/aspdPct",
+      "job": "sage",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 481877799.0650711,
+      "bossSeconds": 26.74,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 479534229.42635584,
+      "meanKillSeconds": 27,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.74,
+          "elapsed": 26.74
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.76,
+          "elapsed": 26.76
+        }
+      ]
+    },
+    {
+      "key": "sage/oneStaff/shield/attack-magic/1/critDmg",
+      "job": "sage",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 442528721.31997234,
+      "bossSeconds": 28.94,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 439447532.9800193,
+      "meanKillSeconds": 28.986666666666668,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 28.94,
+          "elapsed": 28.94
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 29.32,
+          "elapsed": 29.32
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 28.7,
+          "elapsed": 28.7
+        }
+      ]
+    },
+    {
+      "key": "sage/oneStaff/shield/attack-magic/2/aspdPct",
+      "job": "sage",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "aspdPct",
+      "seed": 55,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 461432503.7818182,
+      "bossSeconds": 27.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 463422357.7442433,
+      "meanKillSeconds": 27.540000000000003,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.62,
+          "elapsed": 27.62
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        }
+      ]
+    },
+    {
+      "key": "sage/oneStaff/shield/attack-magic/2/critDmg",
+      "job": "sage",
+      "weapon": "oneStaff",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "critDmg",
+      "seed": 55,
+      "agility": 110,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 431067814.65986395,
+      "bossSeconds": 29.4,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 427952283.6154511,
+      "meanKillSeconds": 29.706666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 29.4,
+          "elapsed": 29.4
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 30.28,
+          "elapsed": 30.28
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 29.44,
+          "elapsed": 29.44
+        }
+      ]
+    },
+    {
+      "key": "assassin/katar/null/attack-magic/0/aspdPct",
+      "job": "assassin",
+      "weapon": "katar",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 603541546.5034965,
+      "bossSeconds": 20.02,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 598222669.1762692,
+      "meanKillSeconds": 19.959999999999997,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.02,
+          "elapsed": 20.02
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.88,
+          "elapsed": 19.88
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.98,
+          "elapsed": 19.98
+        }
+      ]
+    },
+    {
+      "key": "assassin/katar/null/attack-magic/0/critDmg",
+      "job": "assassin",
+      "weapon": "katar",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 628693066.6666666,
+      "bossSeconds": 18.48,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 651090316.2829081,
+      "meanKillSeconds": 17.78,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.48,
+          "elapsed": 18.48
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.94,
+          "elapsed": 16.94
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 17.92,
+          "elapsed": 17.92
+        }
+      ]
+    },
+    {
+      "key": "assassin/katar/null/attack-magic/1/aspdPct",
+      "job": "assassin",
+      "weapon": "katar",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 85,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 607288944.4387754,
+      "bossSeconds": 19.6,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 603416016.8761322,
+      "meanKillSeconds": 19.453333333333337,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.6,
+          "elapsed": 19.6
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.66,
+          "elapsed": 19.66
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.1,
+          "elapsed": 19.1
+        }
+      ]
+    },
+    {
+      "key": "assassin/katar/null/attack-magic/1/critDmg",
+      "job": "assassin",
+      "weapon": "katar",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 85,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 690210866.2665066,
+      "bossSeconds": 16.66,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 691819526.7769562,
+      "meanKillSeconds": 16.74,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.66,
+          "elapsed": 16.66
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.78,
+          "elapsed": 16.78
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.78,
+          "elapsed": 16.78
+        }
+      ]
+    },
+    {
+      "key": "assassin/rifle/offDagger/attack-magic/0/aspdPct",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 39,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 709766390.3030303,
+      "bossSeconds": 16.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 707187556.7272726,
+      "meanKillSeconds": 16.5,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        }
+      ]
+    },
+    {
+      "key": "assassin/rifle/offDagger/attack-magic/0/critDmg",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 39,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 624198455.2688172,
+      "bossSeconds": 18.6,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 614477680.3177644,
+      "meanKillSeconds": 18.773333333333337,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.6,
+          "elapsed": 18.6
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.74,
+          "elapsed": 18.74
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.98,
+          "elapsed": 18.98
+        }
+      ]
+    },
+    {
+      "key": "assassin/rifle/offDagger/attack-magic/1/aspdPct",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 84,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 716805962.6666666,
+      "bossSeconds": 16.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 710044583.1111112,
+      "meanKillSeconds": 16.5,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        }
+      ]
+    },
+    {
+      "key": "assassin/rifle/offDagger/attack-magic/1/critDmg",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 84,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 635553235.6584821,
+      "bossSeconds": 17.92,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 623747199.459431,
+      "meanKillSeconds": 18.42666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 17.92,
+          "elapsed": 17.92
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.76,
+          "elapsed": 18.76
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.6,
+          "elapsed": 18.6
+        }
+      ]
+    },
+    {
+      "key": "assassin/rifle/shield/attack-magic/0/aspdPct",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 542545759.1363636,
+      "bossSeconds": 22,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 550629406.8228799,
+      "meanKillSeconds": 21.546666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22,
+          "elapsed": 22
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22,
+          "elapsed": 22
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.64,
+          "elapsed": 20.64
+        }
+      ]
+    },
+    {
+      "key": "assassin/rifle/shield/attack-magic/0/critDmg",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 534013575.27472526,
+      "bossSeconds": 21.84,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 549339007.8544116,
+      "meanKillSeconds": 21.66,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.84,
+          "elapsed": 21.84
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22,
+          "elapsed": 22
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.14,
+          "elapsed": 21.14
+        }
+      ]
+    },
+    {
+      "key": "assassin/rifle/shield/attack-magic/1/aspdPct",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 85,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 543773522.7900553,
+      "bossSeconds": 21.72,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 548372757.4645163,
+      "meanKillSeconds": 21.893333333333334,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.72,
+          "elapsed": 21.72
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22,
+          "elapsed": 22
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.96,
+          "elapsed": 21.96
+        }
+      ]
+    },
+    {
+      "key": "assassin/rifle/shield/attack-magic/1/critDmg",
+      "job": "assassin",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 85,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 544580182.4099723,
+      "bossSeconds": 21.66,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 548809428.751429,
+      "meanKillSeconds": 21.53333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.66,
+          "elapsed": 21.66
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.66,
+          "elapsed": 21.66
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.28,
+          "elapsed": 21.28
+        }
+      ]
+    },
+    {
+      "key": "rogue/rifle/shield/attack-magic/0/aspdPct",
+      "job": "rogue",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 35,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 632420424.1818181,
+      "bossSeconds": 16.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 628976036.5414134,
+      "meanKillSeconds": 16.506666666666664,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.38,
+          "elapsed": 16.38
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.64,
+          "elapsed": 16.64
+        }
+      ]
+    },
+    {
+      "key": "rogue/rifle/shield/attack-magic/0/critDmg",
+      "job": "rogue",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 35,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 540740116.6130761,
+      "bossSeconds": 18.66,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 534235135.6596742,
+      "meanKillSeconds": 19.22,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.66,
+          "elapsed": 18.66
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.36,
+          "elapsed": 19.36
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.64,
+          "elapsed": 19.64
+        }
+      ]
+    },
+    {
+      "key": "rogue/rifle/shield/attack-magic/1/aspdPct",
+      "job": "rogue",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 80,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 630595043.2121212,
+      "bossSeconds": 16.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 629891035.070707,
+      "meanKillSeconds": 16.5,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.5,
+          "elapsed": 16.5
+        }
+      ]
+    },
+    {
+      "key": "rogue/rifle/shield/attack-magic/1/critDmg",
+      "job": "rogue",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "STR",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 80,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 546216461.5755627,
+      "bossSeconds": 18.66,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 568831044.7617354,
+      "meanKillSeconds": 18.18,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 18.66,
+          "elapsed": 18.66
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 16.8,
+          "elapsed": 16.8
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 19.08,
+          "elapsed": 19.08
+        }
+      ]
+    },
+    {
+      "key": "priest/mace/shield/attack-magic/0/aspdPct",
+      "job": "priest",
+      "weapon": "mace",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 85,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 508086698.0031949,
+      "bossSeconds": 25.04,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 507460606.6712182,
+      "meanKillSeconds": 25.159999999999997,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.04,
+          "elapsed": 25.04
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.54,
+          "elapsed": 24.54
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.9,
+          "elapsed": 25.9
+        }
+      ]
+    },
+    {
+      "key": "priest/mace/shield/attack-magic/0/critDmg",
+      "job": "priest",
+      "weapon": "mace",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 85,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 499293077.9776179,
+      "bossSeconds": 25.02,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 474183509.87067515,
+      "meanKillSeconds": 26.55333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.02,
+          "elapsed": 25.02
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.14,
+          "elapsed": 27.14
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        }
+      ]
+    },
+    {
+      "key": "priest/mace/shield/attack-magic/1/aspdPct",
+      "job": "priest",
+      "weapon": "mace",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 130,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 531789951.336675,
+      "bossSeconds": 23.94,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 533046160.63945824,
+      "meanKillSeconds": 23.813333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.94,
+          "elapsed": 23.94
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.86,
+          "elapsed": 23.86
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.64,
+          "elapsed": 23.64
+        }
+      ]
+    },
+    {
+      "key": "priest/mace/shield/attack-magic/1/critDmg",
+      "job": "priest",
+      "weapon": "mace",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 130,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 494868239.65785384,
+      "bossSeconds": 25.72,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 484565297.2844105,
+      "meanKillSeconds": 26.099999999999998,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.72,
+          "elapsed": 25.72
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.44,
+          "elapsed": 25.44
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.14,
+          "elapsed": 27.14
+        }
+      ]
+    },
+    {
+      "key": "priest/mace/shield/attack-magic/2/aspdPct",
+      "job": "priest",
+      "weapon": "mace",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "aspdPct",
+      "seed": 55,
+      "agility": 130,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 508086698.0031949,
+      "bossSeconds": 25.04,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 503932521.5514622,
+      "meanKillSeconds": 25.233333333333334,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.04,
+          "elapsed": 25.04
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.94,
+          "elapsed": 24.94
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.72,
+          "elapsed": 25.72
+        }
+      ]
+    },
+    {
+      "key": "priest/mace/shield/attack-magic/2/critDmg",
+      "job": "priest",
+      "weapon": "mace",
+      "offhand": "shield",
+      "pair": "attack-magic",
+      "armorPair": [
+        "INT",
+        "DEX"
+      ],
+      "special": "critDmg",
+      "seed": 55,
+      "agility": 130,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 480843885.7304217,
+      "bossSeconds": 26.56,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 468033779.12160975,
+      "meanKillSeconds": 27.066666666666666,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.56,
+          "elapsed": 26.56
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.14,
+          "elapsed": 27.14
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 27.5,
+          "elapsed": 27.5
+        }
+      ]
+    },
+    {
+      "key": "hunter/shortBow/null/attack-magic/0/aspdPct",
+      "job": "hunter",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 33,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 560739249.5483288,
+      "bossSeconds": 22.14,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 562428631.2172064,
+      "meanKillSeconds": 21.86,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.14,
+          "elapsed": 22.14
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.44,
+          "elapsed": 21.44
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22,
+          "elapsed": 22
+        }
+      ]
+    },
+    {
+      "key": "hunter/shortBow/null/attack-magic/0/critDmg",
+      "job": "hunter",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 33,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 532595075.0862069,
+      "bossSeconds": 23.2,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 529796598.25224465,
+      "meanKillSeconds": 23.233333333333334,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.2,
+          "elapsed": 23.2
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.3,
+          "elapsed": 23.3
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.2,
+          "elapsed": 23.2
+        }
+      ]
+    },
+    {
+      "key": "hunter/shortBow/null/attack-magic/1/aspdPct",
+      "job": "hunter",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 558965934.6678799,
+      "bossSeconds": 21.98,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 575085709.4934072,
+      "meanKillSeconds": 21.346666666666664,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.98,
+          "elapsed": 21.98
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.32,
+          "elapsed": 20.32
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.74,
+          "elapsed": 21.74
+        }
+      ]
+    },
+    {
+      "key": "hunter/shortBow/null/attack-magic/1/critDmg",
+      "job": "hunter",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 538624751.0078878,
+      "bossSeconds": 22.82,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 544823704.4891435,
+      "meanKillSeconds": 22.52,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.82,
+          "elapsed": 22.82
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.74,
+          "elapsed": 22.74
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22,
+          "elapsed": 22
+        }
+      ]
+    },
+    {
+      "key": "hunter/longBow/null/attack-magic/0/aspdPct",
+      "job": "hunter",
+      "weapon": "longBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 33,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 559420548.5175202,
+      "bossSeconds": 22.26,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 542391853.7533365,
+      "meanKillSeconds": 22.853333333333335,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.26,
+          "elapsed": 22.26
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.3,
+          "elapsed": 23.3
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23,
+          "elapsed": 23
+        }
+      ]
+    },
+    {
+      "key": "hunter/longBow/null/attack-magic/0/critDmg",
+      "job": "hunter",
+      "weapon": "longBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 33,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 497637125.2415459,
+      "bossSeconds": 24.84,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 496733632.8402777,
+      "meanKillSeconds": 25.08,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.84,
+          "elapsed": 24.84
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.7,
+          "elapsed": 26.7
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.7,
+          "elapsed": 23.7
+        }
+      ]
+    },
+    {
+      "key": "hunter/longBow/null/attack-magic/1/aspdPct",
+      "job": "hunter",
+      "weapon": "longBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 548173519.375,
+      "bossSeconds": 22.4,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 547691119.0765909,
+      "meanKillSeconds": 22.46666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.4,
+          "elapsed": 22.4
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.4,
+          "elapsed": 22.4
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.6,
+          "elapsed": 22.6
+        }
+      ]
+    },
+    {
+      "key": "hunter/longBow/null/attack-magic/1/critDmg",
+      "job": "hunter",
+      "weapon": "longBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 527268121.64634144,
+      "bossSeconds": 22.96,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 503526362.9375438,
+      "meanKillSeconds": 24.55333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.96,
+          "elapsed": 22.96
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.42,
+          "elapsed": 25.42
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.28,
+          "elapsed": 25.28
+        }
+      ]
+    },
+    {
+      "key": "hunter/crossbow/null/attack-magic/0/aspdPct",
+      "job": "hunter",
+      "weapon": "crossbow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 33,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 533042586.0210342,
+      "bossSeconds": 22.82,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 533118658.3520406,
+      "meanKillSeconds": 22.80666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.82,
+          "elapsed": 22.82
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.8,
+          "elapsed": 22.8
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.8,
+          "elapsed": 22.8
+        }
+      ]
+    },
+    {
+      "key": "hunter/crossbow/null/attack-magic/0/critDmg",
+      "job": "hunter",
+      "weapon": "crossbow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 33,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 499565252.3133117,
+      "bossSeconds": 24.64,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 499209992.6337695,
+      "meanKillSeconds": 24.653333333333332,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.64,
+          "elapsed": 24.64
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.66,
+          "elapsed": 24.66
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.66,
+          "elapsed": 24.66
+        }
+      ]
+    },
+    {
+      "key": "hunter/crossbow/null/attack-magic/1/aspdPct",
+      "job": "hunter",
+      "weapon": "crossbow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 555509352.1877848,
+      "bossSeconds": 21.94,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 547233125.7665237,
+      "meanKillSeconds": 22.266666666666666,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.94,
+          "elapsed": 21.94
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.38,
+          "elapsed": 22.38
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.48,
+          "elapsed": 22.48
+        }
+      ]
+    },
+    {
+      "key": "hunter/crossbow/null/attack-magic/1/critDmg",
+      "job": "hunter",
+      "weapon": "crossbow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 40,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 506385901.63265306,
+      "bossSeconds": 24.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 495577482.0248206,
+      "meanKillSeconds": 24.593333333333334,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.5,
+          "elapsed": 24.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.48,
+          "elapsed": 24.48
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.8,
+          "elapsed": 24.8
+        }
+      ]
+    },
+    {
+      "key": "performer/shortBow/null/attack-magic/0/aspdPct",
+      "job": "performer",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 28,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 521049896.6938776,
+      "bossSeconds": 24.5,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 522621420.37996846,
+      "meanKillSeconds": 23.426666666666666,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.5,
+          "elapsed": 24.5
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.7,
+          "elapsed": 24.7
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.08,
+          "elapsed": 21.08
+        }
+      ]
+    },
+    {
+      "key": "performer/shortBow/null/attack-magic/0/critDmg",
+      "job": "performer",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 28,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 524326442.4558587,
+      "bossSeconds": 24.92,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 516312817.5295403,
+      "meanKillSeconds": 23.84,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.92,
+          "elapsed": 24.92
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.16,
+          "elapsed": 25.16
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 21.44,
+          "elapsed": 21.44
+        }
+      ]
+    },
+    {
+      "key": "performer/shortBow/null/attack-magic/1/aspdPct",
+      "job": "performer",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 34,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 543517546.2867012,
+      "bossSeconds": 23.16,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 547233661.4790835,
+      "meanKillSeconds": 22.320000000000004,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.16,
+          "elapsed": 23.16
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.38,
+          "elapsed": 23.38
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 20.42,
+          "elapsed": 20.42
+        }
+      ]
+    },
+    {
+      "key": "performer/shortBow/null/attack-magic/1/critDmg",
+      "job": "performer",
+      "weapon": "shortBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 34,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 555501617.485182,
+      "bossSeconds": 23.62,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 545966240.9606034,
+      "meanKillSeconds": 23.55333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.62,
+          "elapsed": 23.62
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.5,
+          "elapsed": 24.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.54,
+          "elapsed": 22.54
+        }
+      ]
+    },
+    {
+      "key": "performer/longBow/null/attack-magic/0/aspdPct",
+      "job": "performer",
+      "weapon": "longBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 28,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 536539741.2510566,
+      "bossSeconds": 23.66,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 533221624.05878466,
+      "meanKillSeconds": 23.75333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.66,
+          "elapsed": 23.66
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.92,
+          "elapsed": 23.92
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.68,
+          "elapsed": 23.68
+        }
+      ]
+    },
+    {
+      "key": "performer/longBow/null/attack-magic/0/critDmg",
+      "job": "performer",
+      "weapon": "longBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 28,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 474548399.3953137,
+      "bossSeconds": 26.46,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 482046881.359135,
+      "meanKillSeconds": 25.913333333333338,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.46,
+          "elapsed": 26.46
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.5,
+          "elapsed": 25.5
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.78,
+          "elapsed": 25.78
+        }
+      ]
+    },
+    {
+      "key": "performer/longBow/null/attack-magic/1/aspdPct",
+      "job": "performer",
+      "weapon": "longBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 34,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 541844894.6350044,
+      "bossSeconds": 22.74,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 544941480.8266981,
+      "meanKillSeconds": 22.679999999999996,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.74,
+          "elapsed": 22.74
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.74,
+          "elapsed": 22.74
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 22.56,
+          "elapsed": 22.56
+        }
+      ]
+    },
+    {
+      "key": "performer/longBow/null/attack-magic/1/critDmg",
+      "job": "performer",
+      "weapon": "longBow",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 34,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 492192836.28526646,
+      "bossSeconds": 25.52,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 498494539.14512205,
+      "meanKillSeconds": 25.046666666666663,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.52,
+          "elapsed": 25.52
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.08,
+          "elapsed": 25.08
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.54,
+          "elapsed": 24.54
+        }
+      ]
+    },
+    {
+      "key": "performer/instrument/null/attack-magic/0/aspdPct",
+      "job": "performer",
+      "weapon": "instrument",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "aspdPct",
+      "seed": 53,
+      "agility": 28,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 516843273.93617016,
+      "bossSeconds": 24.44,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 517227949.61544293,
+      "meanKillSeconds": 24.400000000000002,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.44,
+          "elapsed": 24.44
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.44,
+          "elapsed": 24.44
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 24.32,
+          "elapsed": 24.32
+        }
+      ]
+    },
+    {
+      "key": "performer/instrument/null/attack-magic/0/critDmg",
+      "job": "performer",
+      "weapon": "instrument",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "AGI"
+      ],
+      "special": "critDmg",
+      "seed": 53,
+      "agility": 28,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 480633868.2605422,
+      "bossSeconds": 26.56,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 477762621.7225914,
+      "meanKillSeconds": 26.646666666666665,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.56,
+          "elapsed": 26.56
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.82,
+          "elapsed": 26.82
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 26.56,
+          "elapsed": 26.56
+        }
+      ]
+    },
+    {
+      "key": "performer/instrument/null/attack-magic/1/aspdPct",
+      "job": "performer",
+      "weapon": "instrument",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "aspdPct",
+      "seed": 54,
+      "agility": 34,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 535788216.60988075,
+      "bossSeconds": 23.48,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 533535952.5241353,
+      "meanKillSeconds": 23.526666666666667,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.48,
+          "elapsed": 23.48
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.36,
+          "elapsed": 23.36
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 23.74,
+          "elapsed": 23.74
+        }
+      ]
+    },
+    {
+      "key": "performer/instrument/null/attack-magic/1/critDmg",
+      "job": "performer",
+      "weapon": "instrument",
+      "offhand": null,
+      "pair": "attack-magic",
+      "armorPair": [
+        "DEX",
+        "LUK"
+      ],
+      "special": "critDmg",
+      "seed": 54,
+      "agility": 34,
+      "aspd": 193,
+      "survived": true,
+      "fieldAlive": true,
+      "fieldPetDeaths": 0,
+      "bossVictory": true,
+      "bossPetDeaths": 0,
+      "bossDps": 497878434.2525979,
+      "bossSeconds": 25.02,
+      "validated": true,
+      "bossWins": 3,
+      "playerSurvival": 3,
+      "petSurvival": 3,
+      "meanEffectiveDps": 494577680.224083,
+      "meanKillSeconds": 25.293333333333333,
+      "seedResults": [
+        {
+          "seed": 42,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.02,
+          "elapsed": 25.02
+        },
+        {
+          "seed": 137,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.36,
+          "elapsed": 25.36
+        },
+        {
+          "seed": 731,
+          "bossVictory": true,
+          "alive": true,
+          "petDeaths": 0,
+          "timeToKill": 25.5,
+          "elapsed": 25.5
+        }
+      ]
+    }
+  ]
+}

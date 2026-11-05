@@ -1,0 +1,1207 @@
+{
+  "version": 1,
+  "conditions": "Independent slot output-pair swap, all other armor fixed, legitimate boss cards, 3 seeds x 240s live mixed encounter",
+  "completed": 100,
+  "rows": [
+    {
+      "key": "crusader/headUpper/STR-AGI",
+      "job": "crusader",
+      "slot": "headUpper",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "crusader/headMiddle/STR-AGI",
+      "job": "crusader",
+      "slot": "headMiddle",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "crusader/headLower/STR-AGI",
+      "job": "crusader",
+      "slot": "headLower",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "crusader/armor/STR-AGI",
+      "job": "crusader",
+      "slot": "armor",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "crusader/garment/STR-AGI",
+      "job": "crusader",
+      "slot": "garment",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "crusader/shoes/STR-AGI",
+      "job": "crusader",
+      "slot": "shoes",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "crusader/accessory1/STR-AGI",
+      "job": "crusader",
+      "slot": "accessory1",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "crusader/accessory2/STR-AGI",
+      "job": "crusader",
+      "slot": "accessory2",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "crusader/leftHand/STR-AGI",
+      "job": "crusader",
+      "slot": "leftHand",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 1460873559.5600116,
+      "verified": true,
+      "meanEffectiveDps": 1477030228.1296635
+    },
+    {
+      "key": "assassin/headUpper/STR-AGI",
+      "job": "assassin",
+      "slot": "headUpper",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 729714391.9090437,
+      "verified": true,
+      "meanEffectiveDps": 729479807.2696146
+    },
+    {
+      "key": "assassin/headMiddle/STR-AGI",
+      "job": "assassin",
+      "slot": "headMiddle",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 729714391.9090437,
+      "verified": true,
+      "meanEffectiveDps": 729479807.2696146
+    },
+    {
+      "key": "assassin/headLower/STR-AGI",
+      "job": "assassin",
+      "slot": "headLower",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 729714391.9090437,
+      "verified": true,
+      "meanEffectiveDps": 729479807.2696146
+    },
+    {
+      "key": "assassin/armor/STR-AGI",
+      "job": "assassin",
+      "slot": "armor",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 729714391.9090437,
+      "verified": true,
+      "meanEffectiveDps": 729479807.2696146
+    },
+    {
+      "key": "assassin/garment/STR-AGI",
+      "job": "assassin",
+      "slot": "garment",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 729714391.9090437,
+      "verified": true,
+      "meanEffectiveDps": 729479807.2696146
+    },
+    {
+      "key": "assassin/shoes/STR-AGI",
+      "job": "assassin",
+      "slot": "shoes",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 729714391.9090437,
+      "verified": true,
+      "meanEffectiveDps": 729479807.2696146
+    },
+    {
+      "key": "assassin/accessory1/STR-AGI",
+      "job": "assassin",
+      "slot": "accessory1",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 729714391.9090437,
+      "verified": true,
+      "meanEffectiveDps": 729479807.2696146
+    },
+    {
+      "key": "assassin/accessory2/STR-AGI",
+      "job": "assassin",
+      "slot": "accessory2",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 729714391.9090437,
+      "verified": true,
+      "meanEffectiveDps": 729479807.2696146
+    },
+    {
+      "key": "wizard/headUpper/INT-AGI",
+      "job": "wizard",
+      "slot": "headUpper",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 684461667.2041268
+    },
+    {
+      "key": "wizard/headUpper/INT-DEX",
+      "job": "wizard",
+      "slot": "headUpper",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 681368488.5373842
+    },
+    {
+      "key": "wizard/headMiddle/INT-AGI",
+      "job": "wizard",
+      "slot": "headMiddle",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 684461667.2041268
+    },
+    {
+      "key": "wizard/headMiddle/INT-DEX",
+      "job": "wizard",
+      "slot": "headMiddle",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 681368488.5373842
+    },
+    {
+      "key": "wizard/headLower/INT-AGI",
+      "job": "wizard",
+      "slot": "headLower",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 684461667.2041268
+    },
+    {
+      "key": "wizard/headLower/INT-DEX",
+      "job": "wizard",
+      "slot": "headLower",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 681368488.5373842
+    },
+    {
+      "key": "wizard/armor/INT-AGI",
+      "job": "wizard",
+      "slot": "armor",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 684461667.2041268
+    },
+    {
+      "key": "wizard/armor/INT-DEX",
+      "job": "wizard",
+      "slot": "armor",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 681368488.5373842
+    },
+    {
+      "key": "wizard/garment/INT-AGI",
+      "job": "wizard",
+      "slot": "garment",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 684461667.2041268
+    },
+    {
+      "key": "wizard/garment/INT-DEX",
+      "job": "wizard",
+      "slot": "garment",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 681368488.5373842
+    },
+    {
+      "key": "wizard/shoes/INT-AGI",
+      "job": "wizard",
+      "slot": "shoes",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 684461667.2041268
+    },
+    {
+      "key": "wizard/shoes/INT-DEX",
+      "job": "wizard",
+      "slot": "shoes",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 681368488.5373842
+    },
+    {
+      "key": "wizard/accessory1/INT-AGI",
+      "job": "wizard",
+      "slot": "accessory1",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 684461667.2041268
+    },
+    {
+      "key": "wizard/accessory1/INT-DEX",
+      "job": "wizard",
+      "slot": "accessory1",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 681368488.5373842
+    },
+    {
+      "key": "wizard/accessory2/INT-AGI",
+      "job": "wizard",
+      "slot": "accessory2",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 684461667.2041268
+    },
+    {
+      "key": "wizard/accessory2/INT-DEX",
+      "job": "wizard",
+      "slot": "accessory2",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 684472638.9144348,
+      "verified": true,
+      "meanEffectiveDps": 681368488.5373842
+    },
+    {
+      "key": "knight/headUpper/STR-AGI",
+      "job": "knight",
+      "slot": "headUpper",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 674779637.1574178,
+      "verified": true,
+      "meanEffectiveDps": 692639333.9760436
+    },
+    {
+      "key": "knight/headMiddle/STR-AGI",
+      "job": "knight",
+      "slot": "headMiddle",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 674779637.1574178,
+      "verified": true,
+      "meanEffectiveDps": 692639333.9760436
+    },
+    {
+      "key": "knight/headLower/STR-AGI",
+      "job": "knight",
+      "slot": "headLower",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 674779637.1574178,
+      "verified": true,
+      "meanEffectiveDps": 692639333.9760436
+    },
+    {
+      "key": "knight/armor/STR-AGI",
+      "job": "knight",
+      "slot": "armor",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 674779637.1574178,
+      "verified": true,
+      "meanEffectiveDps": 692639333.9760436
+    },
+    {
+      "key": "knight/garment/STR-AGI",
+      "job": "knight",
+      "slot": "garment",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 674779637.1574178,
+      "verified": true,
+      "meanEffectiveDps": 692639333.9760436
+    },
+    {
+      "key": "knight/shoes/STR-AGI",
+      "job": "knight",
+      "slot": "shoes",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 674779637.1574178,
+      "verified": true,
+      "meanEffectiveDps": 692639333.9760436
+    },
+    {
+      "key": "knight/accessory1/STR-AGI",
+      "job": "knight",
+      "slot": "accessory1",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 674779637.1574178,
+      "verified": true,
+      "meanEffectiveDps": 692639333.9760436
+    },
+    {
+      "key": "knight/accessory2/STR-AGI",
+      "job": "knight",
+      "slot": "accessory2",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 674779637.1574178,
+      "verified": true,
+      "meanEffectiveDps": 692639333.9760436
+    },
+    {
+      "key": "rogue/headUpper/STR-AGI",
+      "job": "rogue",
+      "slot": "headUpper",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "rogue/headMiddle/STR-AGI",
+      "job": "rogue",
+      "slot": "headMiddle",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "rogue/headLower/STR-AGI",
+      "job": "rogue",
+      "slot": "headLower",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "rogue/armor/STR-AGI",
+      "job": "rogue",
+      "slot": "armor",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "rogue/garment/STR-AGI",
+      "job": "rogue",
+      "slot": "garment",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "rogue/shoes/STR-AGI",
+      "job": "rogue",
+      "slot": "shoes",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "rogue/accessory1/STR-AGI",
+      "job": "rogue",
+      "slot": "accessory1",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "rogue/accessory2/STR-AGI",
+      "job": "rogue",
+      "slot": "accessory2",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "rogue/leftHand/STR-AGI",
+      "job": "rogue",
+      "slot": "leftHand",
+      "pair": [
+        "STR",
+        "AGI"
+      ],
+      "baselineDps": 650168422.7825166,
+      "verified": true,
+      "meanEffectiveDps": 651093737.3817686
+    },
+    {
+      "key": "hunter/headUpper/DEX-AGI",
+      "job": "hunter",
+      "slot": "headUpper",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 582207279.5146366,
+      "verified": true,
+      "meanEffectiveDps": 586099549.894415
+    },
+    {
+      "key": "hunter/headMiddle/DEX-AGI",
+      "job": "hunter",
+      "slot": "headMiddle",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 582207279.5146366,
+      "verified": true,
+      "meanEffectiveDps": 586099549.894415
+    },
+    {
+      "key": "hunter/headLower/DEX-AGI",
+      "job": "hunter",
+      "slot": "headLower",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 582207279.5146366,
+      "verified": true,
+      "meanEffectiveDps": 586099549.894415
+    },
+    {
+      "key": "hunter/armor/DEX-AGI",
+      "job": "hunter",
+      "slot": "armor",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 582207279.5146366,
+      "verified": true,
+      "meanEffectiveDps": 586099549.894415
+    },
+    {
+      "key": "hunter/garment/DEX-AGI",
+      "job": "hunter",
+      "slot": "garment",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 582207279.5146366,
+      "verified": true,
+      "meanEffectiveDps": 586099549.894415
+    },
+    {
+      "key": "hunter/shoes/DEX-AGI",
+      "job": "hunter",
+      "slot": "shoes",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 582207279.5146366,
+      "verified": true,
+      "meanEffectiveDps": 586099549.894415
+    },
+    {
+      "key": "hunter/accessory1/DEX-AGI",
+      "job": "hunter",
+      "slot": "accessory1",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 582207279.5146366,
+      "verified": true,
+      "meanEffectiveDps": 586099549.894415
+    },
+    {
+      "key": "hunter/accessory2/DEX-AGI",
+      "job": "hunter",
+      "slot": "accessory2",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 582207279.5146366,
+      "verified": true,
+      "meanEffectiveDps": 586099549.894415
+    },
+    {
+      "key": "sage/headUpper/INT-AGI",
+      "job": "sage",
+      "slot": "headUpper",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/headUpper/INT-DEX",
+      "job": "sage",
+      "slot": "headUpper",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/headMiddle/INT-AGI",
+      "job": "sage",
+      "slot": "headMiddle",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/headMiddle/INT-DEX",
+      "job": "sage",
+      "slot": "headMiddle",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/headLower/INT-AGI",
+      "job": "sage",
+      "slot": "headLower",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/headLower/INT-DEX",
+      "job": "sage",
+      "slot": "headLower",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/armor/INT-AGI",
+      "job": "sage",
+      "slot": "armor",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/armor/INT-DEX",
+      "job": "sage",
+      "slot": "armor",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/garment/INT-AGI",
+      "job": "sage",
+      "slot": "garment",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/garment/INT-DEX",
+      "job": "sage",
+      "slot": "garment",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/shoes/INT-AGI",
+      "job": "sage",
+      "slot": "shoes",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/shoes/INT-DEX",
+      "job": "sage",
+      "slot": "shoes",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/accessory1/INT-AGI",
+      "job": "sage",
+      "slot": "accessory1",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/accessory1/INT-DEX",
+      "job": "sage",
+      "slot": "accessory1",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/accessory2/INT-AGI",
+      "job": "sage",
+      "slot": "accessory2",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "sage/accessory2/INT-DEX",
+      "job": "sage",
+      "slot": "accessory2",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 566454290.2640742,
+      "verified": true,
+      "meanEffectiveDps": 564467429.965366
+    },
+    {
+      "key": "monk/headUpper/STR-LUK",
+      "job": "monk",
+      "slot": "headUpper",
+      "pair": [
+        "STR",
+        "LUK"
+      ],
+      "baselineDps": 560413043.2110744,
+      "verified": true,
+      "meanEffectiveDps": 561861371.9871422
+    },
+    {
+      "key": "monk/headMiddle/STR-LUK",
+      "job": "monk",
+      "slot": "headMiddle",
+      "pair": [
+        "STR",
+        "LUK"
+      ],
+      "baselineDps": 560413043.2110744,
+      "verified": true,
+      "meanEffectiveDps": 561861371.9871422
+    },
+    {
+      "key": "monk/headLower/STR-LUK",
+      "job": "monk",
+      "slot": "headLower",
+      "pair": [
+        "STR",
+        "LUK"
+      ],
+      "baselineDps": 560413043.2110744,
+      "verified": true,
+      "meanEffectiveDps": 561861371.9871422
+    },
+    {
+      "key": "monk/armor/STR-LUK",
+      "job": "monk",
+      "slot": "armor",
+      "pair": [
+        "STR",
+        "LUK"
+      ],
+      "baselineDps": 560413043.2110744,
+      "verified": true,
+      "meanEffectiveDps": 561861371.9871422
+    },
+    {
+      "key": "monk/garment/STR-LUK",
+      "job": "monk",
+      "slot": "garment",
+      "pair": [
+        "STR",
+        "LUK"
+      ],
+      "baselineDps": 560413043.2110744,
+      "verified": true,
+      "meanEffectiveDps": 561861371.9871422
+    },
+    {
+      "key": "monk/shoes/STR-LUK",
+      "job": "monk",
+      "slot": "shoes",
+      "pair": [
+        "STR",
+        "LUK"
+      ],
+      "baselineDps": 560413043.2110744,
+      "verified": true,
+      "meanEffectiveDps": 561861371.9871422
+    },
+    {
+      "key": "monk/accessory1/STR-LUK",
+      "job": "monk",
+      "slot": "accessory1",
+      "pair": [
+        "STR",
+        "LUK"
+      ],
+      "baselineDps": 560413043.2110744,
+      "verified": true,
+      "meanEffectiveDps": 561861371.9871422
+    },
+    {
+      "key": "monk/accessory2/STR-LUK",
+      "job": "monk",
+      "slot": "accessory2",
+      "pair": [
+        "STR",
+        "LUK"
+      ],
+      "baselineDps": 560413043.2110744,
+      "verified": true,
+      "meanEffectiveDps": 561861371.9871422
+    },
+    {
+      "key": "performer/headUpper/DEX-AGI",
+      "job": "performer",
+      "slot": "headUpper",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 547233661.4790835,
+      "verified": true,
+      "meanEffectiveDps": 547220967.5424222
+    },
+    {
+      "key": "performer/headMiddle/DEX-AGI",
+      "job": "performer",
+      "slot": "headMiddle",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 547233661.4790835,
+      "verified": true,
+      "meanEffectiveDps": 547220967.5424222
+    },
+    {
+      "key": "performer/headLower/DEX-AGI",
+      "job": "performer",
+      "slot": "headLower",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 547233661.4790835,
+      "verified": true,
+      "meanEffectiveDps": 547220967.5424222
+    },
+    {
+      "key": "performer/armor/DEX-AGI",
+      "job": "performer",
+      "slot": "armor",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 547233661.4790835,
+      "verified": true,
+      "meanEffectiveDps": 547220967.5424222
+    },
+    {
+      "key": "performer/garment/DEX-AGI",
+      "job": "performer",
+      "slot": "garment",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 547233661.4790835,
+      "verified": true,
+      "meanEffectiveDps": 547220967.5424222
+    },
+    {
+      "key": "performer/shoes/DEX-AGI",
+      "job": "performer",
+      "slot": "shoes",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 547233661.4790835,
+      "verified": true,
+      "meanEffectiveDps": 547220967.5424222
+    },
+    {
+      "key": "performer/accessory1/DEX-AGI",
+      "job": "performer",
+      "slot": "accessory1",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 547233661.4790835,
+      "verified": true,
+      "meanEffectiveDps": 547220967.5424222
+    },
+    {
+      "key": "performer/accessory2/DEX-AGI",
+      "job": "performer",
+      "slot": "accessory2",
+      "pair": [
+        "DEX",
+        "AGI"
+      ],
+      "baselineDps": 547233661.4790835,
+      "verified": true,
+      "meanEffectiveDps": 547220967.5424222
+    },
+    {
+      "key": "priest/headUpper/INT-AGI",
+      "job": "priest",
+      "slot": "headUpper",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/headUpper/INT-DEX",
+      "job": "priest",
+      "slot": "headUpper",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/headMiddle/INT-AGI",
+      "job": "priest",
+      "slot": "headMiddle",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/headMiddle/INT-DEX",
+      "job": "priest",
+      "slot": "headMiddle",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/headLower/INT-AGI",
+      "job": "priest",
+      "slot": "headLower",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/headLower/INT-DEX",
+      "job": "priest",
+      "slot": "headLower",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/armor/INT-AGI",
+      "job": "priest",
+      "slot": "armor",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/armor/INT-DEX",
+      "job": "priest",
+      "slot": "armor",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/garment/INT-AGI",
+      "job": "priest",
+      "slot": "garment",
+      "pair": [
+        "INT",
+        "AGI"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    },
+    {
+      "key": "priest/garment/INT-DEX",
+      "job": "priest",
+      "slot": "garment",
+      "pair": [
+        "INT",
+        "DEX"
+      ],
+      "baselineDps": 533046160.63945824,
+      "verified": true,
+      "meanEffectiveDps": 523754470.6403315
+    }
+  ]
+}

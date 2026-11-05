@@ -1,0 +1,440 @@
+{
+  "version": 2,
+  "player": {
+    "version": 51,
+    "name": "合法首領測試-performer",
+    "job": "performer",
+    "location": "dawncity",
+    "level": 210,
+    "xp": 0,
+    "jobLevel": 70,
+    "jobXp": 0,
+    "jobPoints": 0,
+    "jobSkills": {
+      "sonicNote": 10,
+      "aimShot": 10,
+      "doubleArrow": 10,
+      "eagleEye": 10,
+      "piercingArrow": 10,
+      "bowTraining": 5,
+      "owlEye": 5,
+      "battleSong": 10,
+      "dissonance": 10,
+      "encore": 10,
+      "rhythm": 5,
+      "inspiration": 5,
+      "thirdMain_performer": 10,
+      "thirdWide_performer": 10,
+      "thirdFinish_performer": 10,
+      "thirdUtility_performer": 10,
+      "thirdStance_performer": 10,
+      "thirdPassive0_performer": 5,
+      "thirdPassive1_performer": 5,
+      "thirdPassive2_performer": 5,
+      "thirdPassive3_performer": 5,
+      "rebirthBuff_performer": 10,
+      "rebirthMain_performer": 10
+    },
+    "equippedJobSkill": "sonicNote",
+    "gold": 90,
+    "cardRecyclePoints": 0,
+    "tacticReadyAt": 0,
+    "tacticEffect": null,
+    "hp": 95984,
+    "mp": 3066,
+    "kills": 0,
+    "bag": [
+      {
+        "id": "red_large",
+        "qty": 9999
+      },
+      {
+        "id": "blue_large",
+        "qty": 9999
+      }
+    ],
+    "gear": {
+      "headUpper": {
+        "id": "helm",
+        "uid": "g-1793851973834-swxm9vpr",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·輕型頭盔",
+        "affixes": {
+          "def": 8983,
+          "mdef": 7187,
+          "flee": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "hpPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      },
+      "headMiddle": {
+        "id": "visor",
+        "uid": "g-1793851973834-dcdc9khf",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·瞄準護目鏡",
+        "affixes": {
+          "def": 8983,
+          "mdef": 7187,
+          "flee": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "hpPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      },
+      "headLower": {
+        "id": "mask",
+        "uid": "g-1793851973834-z72hlcoz",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·防護口罩",
+        "affixes": {
+          "def": 8983,
+          "mdef": 7187,
+          "flee": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "hpPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      },
+      "armor": {
+        "id": "vest",
+        "uid": "g-1793851973834-on70g34y",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·旅行防具",
+        "affixes": {
+          "def": 8983,
+          "mdef": 7187,
+          "flee": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "hpPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      },
+      "rightHand": {
+        "id": "shortBow",
+        "uid": "g-1793851973834-vn917sj4",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·獵人短弓",
+        "affixes": {
+          "atk": 21559,
+          "hit": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "AGI": 12,
+          "aspdPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      },
+      "leftHand": null,
+      "garment": {
+        "id": "cloak",
+        "uid": "g-1793851973834-7n3y89sc",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·旅者披風",
+        "affixes": {
+          "def": 8983,
+          "mdef": 7187,
+          "flee": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "hpPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      },
+      "shoes": {
+        "id": "boots",
+        "uid": "g-1793851973834-v7lm7gc0",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·輕步長靴",
+        "affixes": {
+          "def": 8983,
+          "mdef": 7187,
+          "flee": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "hpPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      },
+      "accessory1": {
+        "id": "chip",
+        "uid": "g-1793851973834-sjar22oc",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·戰術紋章",
+        "affixes": {
+          "def": 8983,
+          "mdef": 7187,
+          "flee": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "hpPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      },
+      "accessory2": {
+        "id": "ring",
+        "uid": "g-1793851973834-h8jurhb9",
+        "level": 200,
+        "tier": 11,
+        "rarity": "mythic",
+        "name": "神話 界源·靈巧指環",
+        "affixes": {
+          "def": 8983,
+          "mdef": 7187,
+          "flee": 8983,
+          "DEX": 12,
+          "LUK": 12,
+          "hpPct": 13
+        },
+        "powerVersion": 50,
+        "enhancement": "SSS"
+      }
+    },
+    "attributes": {
+      "STR": 1,
+      "AGI": 34,
+      "VIT": 108,
+      "INT": 1,
+      "DEX": 150,
+      "LUK": 150
+    },
+    "statPoints": 0,
+    "cards": [],
+    "sockets": {
+      "headUpper": "boss_skyport",
+      "headMiddle": "boss_forest",
+      "headLower": "boss_desert",
+      "armor": "boss_frost",
+      "rightHand": "boss_zenith",
+      "leftHand": null,
+      "garment": "boss_oathwood",
+      "shoes": "boss_ruins",
+      "accessory1": "boss_eclipse",
+      "accessory2": "boss_worldroot"
+    },
+    "pets": [
+      {
+        "id": "79158294-1b53-4969-8629-6f2dfe0bab0d",
+        "species": "fang",
+        "nickname": "火狼幼獸",
+        "level": 200,
+        "xp": 0,
+        "rarity": "mythic",
+        "evolution": 4,
+        "iv": {
+          "hp": 3,
+          "atk": 3,
+          "def": 3,
+          "matk": 3,
+          "sp": 3,
+          "aspd": 3
+        },
+        "hp": 339976,
+        "sp": 3391,
+        "active": false,
+        "gear": {
+          "head": {
+            "id": "petHelm",
+            "uid": "pg-1793851973834-0ezcfsqd",
+            "level": 200,
+            "tier": 11,
+            "rarity": "mythic",
+            "name": "神話 界源·靈獸角冠",
+            "affixes": {
+              "atk": 21559,
+              "hit": 29943,
+              "DEX": 40,
+              "VIT": 40,
+              "AGI": 40,
+              "damageReduction": 11
+            },
+            "powerVersion": 50,
+            "enhancement": "SSS"
+          },
+          "body": {
+            "id": "petArmor",
+            "uid": "pg-1793851973834-xe9ypvbf",
+            "level": 200,
+            "tier": 11,
+            "rarity": "mythic",
+            "name": "神話 界源·靈獸戰甲",
+            "affixes": {
+              "hp": 269477,
+              "def": 29943,
+              "mdef": 23957,
+              "VIT": 40,
+              "AGI": 40,
+              "hpPct": 13
+            },
+            "powerVersion": 50,
+            "enhancement": "SSS"
+          },
+          "shoes": {
+            "id": "petBoots",
+            "uid": "pg-1793851973834-92p9vwsu",
+            "level": 200,
+            "tier": 11,
+            "rarity": "mythic",
+            "name": "神話 界源·靈獸迅足",
+            "affixes": {
+              "flee": 29943,
+              "hit": 29943,
+              "def": 29943,
+              "VIT": 40,
+              "AGI": 40,
+              "hpPct": 13
+            },
+            "powerVersion": 50,
+            "enhancement": "SSS"
+          }
+        },
+        "ascended": true,
+        "fusion": {
+          "main": "attack",
+          "sub": "magic",
+          "version": 1
+        },
+        "equippedSkills": [
+          "fusion_attack-magic_0",
+          "fusion_attack-magic_1",
+          "fusion_attack-magic_5"
+        ]
+      }
+    ],
+    "activePetId": "79158294-1b53-4969-8629-6f2dfe0bab0d",
+    "petBook": {},
+    "resonance": 0,
+    "shield": 0,
+    "battleHistory": [],
+    "autoUltimate": true,
+    "autoEscapeBoss": false,
+    "autoPotions": {
+      "playerHp": true,
+      "playerSp": true,
+      "petHp": true,
+      "petSp": true
+    },
+    "autoSalvage": false,
+    "salvageMaxRarity": "rare",
+    "salvageMaxTier": 3,
+    "salvageStat": "STR",
+    "salvageStatBelow": 3,
+    "keepRarity": true,
+    "keepTier": true,
+    "keepStat": false,
+    "salvageMatchMode": "any",
+    "weaponCompensation": {
+      "version": 1,
+      "state": "ineligible"
+    },
+    "goldCollectionTier": 0,
+    "reborn": true,
+    "thirdJob": true,
+    "secondJobLevel": 70,
+    "quests": {},
+    "autoSellJunk": [],
+    "capturePity": {},
+    "free201ResetUsed": false,
+    "outfitUnlocks": [],
+    "selectedOutfit": null,
+    "trialClears": {
+      "starshore": 0,
+      "oathwood": 0,
+      "nightclock": 0,
+      "sungrave": 0,
+      "worldroot": 0
+    },
+    "autoRevive": false,
+    "manualPaused": false,
+    "potionPriority": {
+      "playerHp": "high",
+      "playerSp": "high",
+      "petHp": "high",
+      "petSp": "high"
+    },
+    "potionThresholds": {
+      "playerHp": 45,
+      "playerSp": 45,
+      "petHp": 45,
+      "petSp": 45
+    },
+    "fusionSettings": {
+      "tier": 1,
+      "base": "blade",
+      "stat": "atk",
+      "minimum": 5,
+      "rarity": "any",
+      "limit": 100000
+    },
+    "fusionNotice": null,
+    "targetPriority": "lowestHp",
+    "firstJobLevel": 50,
+    "firstJobPoints": 0,
+    "autoSkills": {
+      "version": 2,
+      "order": [
+        "thirdUtility_performer",
+        "thirdStance_performer",
+        "thirdMain_performer",
+        "thirdWide_performer",
+        "thirdFinish_performer"
+      ],
+      "disabled": []
+    },
+    "autoCaptureRoles": [],
+    "rebornJobPoints": 0,
+    "growthVersion": 50,
+    "salvageInventory": false,
+    "salvageOtherJobs": false,
+    "autoBuyPotions": {
+      "hp": {
+        "enabled": false,
+        "id": "red_small",
+        "min": 5,
+        "target": 25
+      },
+      "sp": {
+        "enabled": false,
+        "id": "blue_small",
+        "min": 5,
+        "target": 25
+      }
+    },
+    "thirdJobPoints": 0,
+    "dawnSigil": 8,
+    "dawnUnlocked": true,
+    "lastMap": "dawnrift",
+    "offline": {
+      "at": 1793851973835,
+      "enabled": true
+    }
+  }
+}
