@@ -5,7 +5,7 @@ on:
     paths:
       - 'dist/homecoming-*'
       - 'dist/companion-fourth-skill.js'
-      - 'tests/homecoming-state.test.mjs'
+      - 'tests/homecoming-*.test.mjs'
       - '.github/workflows/homecoming-flow.yml'
   workflow_dispatch:
 permissions:
@@ -23,4 +23,4 @@ jobs:
           node --check dist/homecoming-data.js
           node --check dist/homecoming-state.js
       - name: Verify independent quest state and fourth slot
-        run: node --test tests/homecoming-state.test.mjs tests/companion-fourth-skill.test.mjs
+        run: node --test tests/homecoming-state.test.mjs tests/homecoming-preview.test.mjs tests/companion-fourth-skill.test.mjs
