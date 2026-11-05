@@ -59,7 +59,7 @@ async function evaluate(job,level,fusion,build='baseline'){
    }
   }
   const bossCores=(result.player.bag.find(item=>item.id==='dawn_archon_core')?.qty||0)-(p.bag.find(item=>item.id==='dawn_archon_core')?.qty||0);
-  return {job,level,fusion,build,kills:summary.kills,simulatedSeconds:summary.simulated/1000,bossCores,bossesEncountered:summary.bossesEncountered||0,revives:summary.revives||0,
+  return {job,level,fusion,build,kills:summary.kills,simulatedSeconds:summary.simulated/1000,bossCores,bossesEncountered:summary.bossesEncountered||0,revives:summary.revives||0,spiritDefeats:summary.spiritDefeats||null,
    dps:Math.round(damage.total/(summary.simulated/1000)),
    ownerDps:Math.round(damage.player/(summary.simulated/1000)),petDps:Math.round((damage.pet1||0)/(summary.simulated/1000)),
    ownerHits:targets.owner||0,petHits:targets.pet1||0,
