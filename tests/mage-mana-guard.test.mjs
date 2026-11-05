@@ -6,9 +6,9 @@ import {LOOT_ITEMS} from '../dist/loot.js';
 import {preferredPotion} from '../dist/supply-rules.js';
 
 const foe=()=>({id:'world_1',map:'starter',level:1,hp:1e9,maxHp:1e9,atk:9000,def:0,hit:1e9,flee:0,aspd:150,instanceId:'mana-guard-test'});
-async function hit(job,rank,mpRatio=1){
+async function hit(job,rank,mpRatio=1,enabled=true){
  const c=await runtime(),a=c.api,p=a.normalize(a.fresh('SP護體',job));
- p.level=200;p.reborn=true;p.thirdJob=true;p.jobSkills.manaStudy=rank;
+ p.level=200;p.reborn=true;p.thirdJob=true;p.jobSkills.manaStudy=rank;p.manaGuardEnabled=enabled;
  a.setup(p,foe());p.hp=1e6;p.mp=Math.round(a.stat('mp')*mpRatio);p.shield=0;
  const beforeHp=p.hp,beforeMp=p.mp,maxMp=a.stat('mp');
  a.enemyAttack();
@@ -34,6 +34,14 @@ test('insufficient SP disables conversion and the passive never benefits non-mag
  assert.equal(low.spentSp,0);
  assert.equal(low.lostHp,without.lostHp);
  assert.equal(other.spentSp,0);
+});
+
+test('mana guard is a persistent non-casting switch and can be disabled',async()=>{
+ const enabled=await hit('wizard',5,1,true),disabled=await hit('wizard',5,1,false),without=await hit('wizard',0);
+ assert.ok(enabled.spentSp>0);
+ assert.equal(disabled.spentSp,0);
+ assert.equal(disabled.lostHp,without.lostHp);
+ assert.equal(disabled.p.manaGuardEnabled,false);
 });
 
 test('high-grade blue potion restores flat 220 plus 10% maximum SP and is preferred automatically',()=>{
