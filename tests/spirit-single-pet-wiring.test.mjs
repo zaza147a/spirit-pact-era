@@ -100,23 +100,17 @@ test('incoming real damage hooks schedule a single reactive owner or pet bonus',
  assert.equal(context.hit('petDamage'),10);
 });
 
-test('guardian healing produces a capped next-hit echo without affecting other profiles',()=>{
- const snippet=between('function spiritReactiveEvent(','function pactAssimilationBonus(');
- const pet={id:'guard',species:'shell',fusion:{main:'defense',sub:'support'},hp:500};
- const context={player:{job:'spiritCommander',thirdJob:true,hp:1000},enemy:{id:'mob'},activePet:()=>pet,
-  spiritSinglePetProfile,advanceSpiritProc,createSpiritProcState,spiritProcState:createSpiritProcState(),
-  spiritGuardianEchoPct:0,spiritGuardianEchoPetId:null,spiritGuardianWave:null,spiritGuardianTempoUntil:0,spiritReactiveCharge:null,offlineMetrics:null,
-  stat:()=>1000,petStats:()=>({hp:1000}),gameNow:()=>10000,
-  effectsForPet:()=>({shield:0}),grantPlayerShield:()=>{},bossHitMeta:{magical:false}};
- vm.runInNewContext(snippet+'\nthis.event=spiritReactiveEvent',context);
- assert.equal(context.event('petDamaged'),null);
- assert.equal(context.event('petDamaged'),null);
- assert.equal(context.event('petDamaged')?.effect,'guardianReprisal');
- assert.equal(pet.hp,530);
- assert.ok(context.spiritGuardianEchoPct>0&&context.spiritGuardianEchoPct<=.5);
- assert.equal(context.spiritGuardianEchoPetId,'guard');
- assert.equal(context.spiritGuardianWave.petId,'guard');
- assert.equal(context.spiritGuardianTempoUntil,13200);
+test('commander defense-support uses proactive defense and healing damage, not retaliation',()=>{
+ const petAttack=between('function petAttack(','function absorbDamageWithMana(');
+ const inherited=between('function commanderTransferredPetStats(','function setPetStance(');
+ const profile=spiritSinglePetProfile({job:'spiritCommander',thirdJob:true},{fusion:{main:'defense',sub:'support'}});
+ assert.equal(profile.trigger,'petHit');
+ assert.equal(profile.effect,'guardianVerdict');
+ assert.match(inherited,/guardTempo=18/);
+ assert.match(petAttack,/timers\.guardianVerdictAt/);
+ assert.match(petAttack,/healingPower:effective\+\(healing-effective\)\*\.25/);
+ assert.match(petAttack,/multiTargets\(enemies,selected,3/);
+ assert.doesNotMatch(petAttack,/spiritGuardianWave|spiritGuardianTempoUntil/);
 });
 
 test('both pact and commander share linked defeat, while legacy jobs are untouched',()=>{
