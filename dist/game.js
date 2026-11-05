@@ -1083,6 +1083,7 @@ function resolveSpiritPairDefeat(){
  if(!player||!['pactWarrior','spiritCommander'].includes(player.job))return false;
  const pet=activePet();
  if(!pet||player.hp>0&&pet.hp>0||player.hp<=0&&pet.hp<=0)return false;
+ if(offlineMetrics){const deaths=offlineMetrics.spiritDefeats??={boss:0,mob:0};deaths[enemy?.boss?'boss':'mob']++;}
  if(offlineMetrics)offlineMetrics.spiritFatal={
   at:gameNow(),target:pet.hp<=0?'pet':'owner',trialIndex:player.trialRun?.index??null,
   enemyId:enemy?.id||null,enemyLevel:enemy?.level??null,enemyAttackType:enemy?.attackType||null,
