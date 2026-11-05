@@ -1,0 +1,60 @@
+{
+  "seconds": 600,
+  "seeds": [
+    42,
+    137,
+    731
+  ],
+  "shifts": [
+    40
+  ],
+  "card": "headMiddle:boss_gearfell",
+  "conditions": "Existing legal boss-card and SSS loadout, transfer LUK to VIT without exceeding stat cap, genuine spawn and death; candidate search only",
+  "rows": [
+    {
+      "job": "sage",
+      "shift": 40,
+      "card": "headMiddle:boss_gearfell",
+      "valid": true,
+      "meanDps": 428907865.305,
+      "trials": [
+        {
+          "seed": 42,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 47036,
+          "kills": 674,
+          "bossKills": 4,
+          "ownerDps": 301914994.7366667,
+          "petDps": 126215501.54166667,
+          "dps": 428130496.2783333
+        },
+        {
+          "seed": 137,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 47914,
+          "kills": 661,
+          "bossKills": 6,
+          "ownerDps": 301799923.2916667,
+          "petDps": 128284008.82333334,
+          "dps": 430083932.115
+        },
+        {
+          "seed": 731,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 47171,
+          "kills": 657,
+          "bossKills": 6,
+          "ownerDps": 300886577.5366667,
+          "petDps": 127622589.985,
+          "dps": 428509167.52166665
+        }
+      ]
+    }
+  ]
+}

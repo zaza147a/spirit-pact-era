@@ -1,0 +1,60 @@
+{
+  "seconds": 600,
+  "seeds": [
+    42,
+    137,
+    731
+  ],
+  "shifts": [
+    40
+  ],
+  "card": "shoes:boss_nightclock",
+  "conditions": "Existing legal boss-card and SSS loadout, transfer LUK to VIT without exceeding stat cap, genuine spawn and death; candidate search only",
+  "rows": [
+    {
+      "job": "sage",
+      "shift": 40,
+      "card": "shoes:boss_nightclock",
+      "valid": false,
+      "meanDps": 341525176.055,
+      "trials": [
+        {
+          "seed": 42,
+          "alive": false,
+          "petDeaths": 0,
+          "elapsed": 146,
+          "remainingHp": 0,
+          "kills": 167,
+          "bossKills": 1,
+          "ownerDps": 78799176.44666667,
+          "petDps": 32533370.911666665,
+          "dps": 111332547.35833333
+        },
+        {
+          "seed": 137,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 48979,
+          "kills": 705,
+          "bossKills": 6,
+          "ownerDps": 327257469.1816667,
+          "petDps": 131210949.93166667,
+          "dps": 458468419.11333334
+        },
+        {
+          "seed": 731,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 54897,
+          "kills": 710,
+          "bossKills": 5,
+          "ownerDps": 326016544.69166666,
+          "petDps": 128758017.00166667,
+          "dps": 454774561.6933333
+        }
+      ]
+    }
+  ]
+}

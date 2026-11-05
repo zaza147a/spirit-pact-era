@@ -7,6 +7,8 @@ const jobs=(process.argv.find(x=>x.startsWith('--jobs='))?.slice(7)||'wizard,sag
 const seconds=Number(process.argv.find(x=>x.startsWith('--seconds='))?.slice(10)||600);
 const seeds=(process.argv.find(x=>x.startsWith('--seeds='))?.slice(8)||'42,137,731').split(',').map(Number);
 const shifts=(process.argv.find(x=>x.startsWith('--shifts='))?.slice(9)||'0,40,80,120').split(',').map(Number);
+const cardArg=process.argv.find(x=>x.startsWith('--card='))?.slice(7)||'';
+const [cardSlot,cardId]=cardArg?cardArg.split(':'):[];
 const rows=[];
 for(const job of jobs){
  const row=source.rows.find(r=>r.job===job);
@@ -14,7 +16,7 @@ for(const job of jobs){
  for(const shift of shifts){
   const trials=[];
   for(const seed of seeds){
-   const setup=build(row.job,row.weapon,row.offhand,row.armorPair,row.agility,row.special,row.seed,row.cardOverrides,row.armorOverrides);
+   const setup=build(row.job,row.weapon,row.offhand,row.armorPair,row.agility,row.special,row.seed,{...row.cardOverrides,...(cardSlot?{[cardSlot]:cardId}:{})},row.armorOverrides);
    const result=runBuild(job,'attack',{level:210,encounterLevel:210,gearLevel:200,petLevelOverride:200,seconds,seed,scenario:'pack',reborn:true,thirdJob:true,rarity:'mythic',gearRarity:'mythic',fusionPair:'attack-magic',enhancement:'SSS',petEnhancement:'SSS',dawnSigil:8,searchConfig:(p,pet,imports)=>{
     setup(p,pet,imports);
     const transfer=Math.min(shift,150-p.attributes.VIT,p.attributes.LUK-1);
@@ -27,8 +29,8 @@ for(const job of jobs){
    trials.push({seed,alive:result.alive,petDeaths:result.petDeaths,elapsed:result.elapsed,remainingHp:result.remainingHp,kills:result.kills,bossKills:m.bossKills||0,ownerDps:owner/seconds,petDps:partner/seconds,dps:(owner+partner)/seconds});
   }
   const valid=trials.every(x=>x.alive&&x.petDeaths===0);
-  rows.push({job,shift,valid,meanDps:trials.reduce((s,x)=>s+x.dps,0)/trials.length,trials});
+  rows.push({job,shift,card:cardArg||null,valid,meanDps:trials.reduce((s,x)=>s+x.dps,0)/trials.length,trials});
   console.log(JSON.stringify({job,shift,valid,dps:Math.round(rows.at(-1).meanDps),deaths:trials.filter(x=>!x.alive).map(x=>x.seed)}));
-  writeFileSync(new URL(`../docs/legal-210-survival-recovery-${jobs.join('-')}-checkpoint.json`,import.meta.url),JSON.stringify({seconds,seeds,shifts,conditions:'Existing legal boss-card and SSS loadout, transfer LUK to VIT without exceeding stat cap, genuine spawn and death; candidate search only',rows},null,2)+'\n');
+  writeFileSync(new URL(`../docs/legal-210-survival-recovery-${jobs.join('-')}${cardArg?'-'+cardSlot+'-'+cardId:''}-checkpoint.json`,import.meta.url),JSON.stringify({seconds,seeds,shifts,card:cardArg||null,conditions:'Existing legal boss-card and SSS loadout, transfer LUK to VIT without exceeding stat cap, genuine spawn and death; candidate search only',rows},null,2)+'\n');
  }
 }

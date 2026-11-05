@@ -6,51 +6,53 @@
     731
   ],
   "shifts": [
-    80
+    63
   ],
+  "card": null,
   "conditions": "Existing legal boss-card and SSS loadout, transfer LUK to VIT without exceeding stat cap, genuine spawn and death; candidate search only",
   "rows": [
     {
       "job": "wizard",
-      "shift": 80,
+      "shift": 63,
+      "card": null,
       "valid": true,
-      "meanDps": 406561643.69,
+      "meanDps": 429424538.7127778,
       "trials": [
         {
           "seed": 42,
           "alive": true,
           "petDeaths": 0,
           "elapsed": 599.98,
-          "remainingHp": 51335,
-          "kills": 629,
-          "bossKills": 5,
-          "ownerDps": 292669848.94166666,
-          "petDps": 114894226.82666667,
-          "dps": 407564075.7683333
+          "remainingHp": 36629,
+          "kills": 651,
+          "bossKills": 6,
+          "ownerDps": 304155930.735,
+          "petDps": 119076784.95333333,
+          "dps": 423232715.68833333
         },
         {
           "seed": 137,
           "alive": true,
           "petDeaths": 0,
           "elapsed": 599.98,
-          "remainingHp": 38964,
-          "kills": 613,
-          "bossKills": 5,
-          "ownerDps": 288212225.37333333,
-          "petDps": 114026102.22833334,
-          "dps": 402238327.6016667
+          "remainingHp": 40603,
+          "kills": 658,
+          "bossKills": 6,
+          "ownerDps": 314509829.595,
+          "petDps": 116780795.09666666,
+          "dps": 431290624.69166666
         },
         {
           "seed": 731,
           "alive": true,
           "petDeaths": 0,
           "elapsed": 599.98,
-          "remainingHp": 52125,
-          "kills": 628,
+          "remainingHp": 44435,
+          "kills": 667,
           "bossKills": 6,
-          "ownerDps": 295210520.7183333,
-          "petDps": 114672006.98166667,
-          "dps": 409882527.7
+          "ownerDps": 315500984.2133333,
+          "petDps": 118249291.545,
+          "dps": 433750275.7583333
         }
       ]
     }
