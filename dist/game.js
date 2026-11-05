@@ -188,7 +188,7 @@ function commanderTransferredPetStats(pet,base){
  // Derive from current owner combat stats every time; never mutate pet's cached base.
  return commanderInheritedPetStats(base,{
   atk:stat('atk'),rawAtk:rawStat('atk'),matk:stat('matk'),rawMatk:rawStat('matk'),
-  def:stat('def'),mdef:stat('mdef'),
+  def:stat('def'),mdef:stat('mdef'),hp:stat('hp'),damageReduction:stat('damageReduction'),
   // Both equipped affixes (including upgraded tiers) and cards train the pets.
   // Base equipment ATK/MATK/DEF/MDEF is already included in stat() above.
   cardPower:(cardBonus('atkPct')+cardBonus('matkPct'))*.70
@@ -1015,14 +1015,32 @@ function absorbDamageWithMana(damage){
  if(report){report.metrics.manaDamageAbsorbed=(report.metrics.manaDamageAbsorbed||0)+prevented;report.metrics.manaGuardSpSpent=(report.metrics.manaGuardSpSpent||0)+spSpent;if(emergency)report.metrics.manaGuardEmergencyTriggers=(report.metrics.manaGuardEmergencyTriggers||0)+1;}
  return {damage:damage-prevented,prevented,spSpent};
 }
+function resolveSpiritPairDefeat(){
+ if(!player||!['pactWarrior','spiritCommander'].includes(player.job))return false;
+ const pet=activePet();
+ if(!pet||player.hp>0&&pet.hp>0||player.hp<=0&&pet.hp<=0)return false;
+ const ownerWasAlive=player.hp>0;
+ player.hp=0;pet.hp=0;
+ if(!Number.isFinite(pet.reviveAt))pet.reviveAt=gameNow()+PET_REVIVE_MS;
+ if(player.trialRun){exitTrial('契約雙方戰敗，試煉已結束');return true;}
+ if(ownerWasAlive||!Number.isFinite(player.reviveAt)){
+  player.reviveAt=gameNow()+PLAYER_REVIVE_MS;
+  stopAutoFusion('契約雙方倒下');
+  endReport('戰敗');
+  message('契約任一方倒下，人物與夥伴同時戰敗。','bad');
+  if(!player.autoRevive)showReviveDialog();
+  save();
+ }
+ return true;
+}
 function enemyAttack(){
+ if(resolveSpiritPairDefeat())return;
  if(!player.hp||!enemy?.hp||gameNow()<(timers.respawnGrace||0))return;
  let petWasHit=false;const attacker=enemy,roster=activePetRoster(player),firstAlive=roster.find(unit=>unit.hp>0),now=gameNow();
- // A second defensive or guarding pet must influence player-vs-pet aggro too.
- // Use the strongest *single* pet weight: two companions do not double aggro.
+ // Legacy jobs retain weighted aggro; the two spirit careers have fixed targets.
  const petAggroWeight=unit=>monsterTargetWeights(player,unit,companionRole(unit),now<effectsForPet(unit).guardUntil).find(entry=>entry.kind==='pet')?.weight||0;
  const aggroPet=roster.filter(unit=>unit.hp>0).reduce((best,unit)=>!best||petAggroWeight(unit)>petAggroWeight(best)?unit:best,null);
- const targetPet=player.job==='spiritCommander'?Math.random()<commanderPetTargetChance(roster):!pactOwnerOnlyAggro(player,roster)&&chooseMonsterTarget(player,aggroPet,aggroPet?companionRole(aggroPet):null,aggroPet?now<effectsForPet(aggroPet).guardUntil:false)==='pet';
+ const targetPet=player.job==='spiritCommander'?!!firstAlive:player.job==='pactWarrior'?false:chooseMonsterTarget(player,aggroPet,aggroPet?companionRole(aggroPet):null,aggroPet?now<effectsForPet(aggroPet).guardUntil:false)==='pet';
  const pet=targetPet?chooseDefendingPet(roster,companionRole,{mode:player.dualPetMode||'focus',guardingIds:roster.filter(unit=>gameNow()<effectsForPet(unit).guardUntil).map(unit=>unit.id)}):firstAlive;
  const role=pet?companionRole(pet):null,fx=effectsForPet(pet);
  if(offlineMetrics&&isSpiritJob(player.job)){
@@ -1034,7 +1052,7 @@ function enemyAttack(){
  if(targetPet){
   const s=player.job==='spiritCommander'?commanderTransferredPetStats(pet,petStats(pet)):petStats(pet);
   if(Math.random()>monsterHitChance(attacker.hit,s.flee,attacker.attackType==='magic'))message(`${pet.nickname} 閃避了 ${SPECIES[attacker.id].name} 的攻擊。`,'good');
-  else{petWasHit=true;const d=Math.max(1,Math.round(incomingMonsterDamage(monsterAttackPower(attacker),attacker.attackType==='magic'?s.mdef:s.def,roll)*(1-(s.damageReduction||0)/100)*(1-(classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0))*tacticIncomingFactor(currentTactic(),true))),capacity=pet.hp+(fx.shield||0),absorbed=Math.min(fx.shield||0,d),effective=Math.min(pet.hp,d-absorbed);fx.shield=Math.max(0,(fx.shield||0)-absorbed);pet.hp=Math.max(0,pet.hp-(d-absorbed));record(report,'shieldPrevented',absorbed);record(report,'petTaken',effective);if(absorbed>0)spiritReactiveEvent('petShieldLost');if(effective>0){spiritReactiveEvent('petDamaged');spiritReactiveEvent('petLowHp');}record(report,'petTanked',effective);record(report,'petProtection',Math.max(0,Math.min(capacity,Math.round(attacker.atk*roll))-Math.min(capacity,d)));if(role==='defense')record(report,'interceptPrevented',Math.min(player.hp,incomingMonsterDamage(attacker.atk,stat('def'),roll)));message(`⚔ ${SPECIES[attacker.id].name} 命中 ${pet.nickname}，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad','damage');if(role==='defense')emitEvent('pet_guard');if(!pet.hp){pet.reviveAt=gameNow()+PET_REVIVE_MS;petDeathSequence++;fx.shield=0;if(pet.id!==player.activePetId){delete secondaryPetEffects[pet.id];delete timers.petById?.[pet.id];delete timers.petAbilityById?.[pet.id];}message(`${pet.nickname} 暫時失去戰鬥能力，請使用藥水；人物戰敗復活時也會恢復夥伴。`,'bad','damage');}}
+  else{petWasHit=true;const d=Math.max(1,Math.round(incomingMonsterDamage(monsterAttackPower(attacker),attacker.attackType==='magic'?s.mdef:s.def,roll)*(1-(s.damageReduction||0)/100)*(1-(classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0))*tacticIncomingFactor(currentTactic(),true))),capacity=pet.hp+(fx.shield||0),absorbed=Math.min(fx.shield||0,d),effective=Math.min(pet.hp,d-absorbed);fx.shield=Math.max(0,(fx.shield||0)-absorbed);pet.hp=Math.max(0,pet.hp-(d-absorbed));record(report,'shieldPrevented',absorbed);record(report,'petTaken',effective);if(absorbed>0)spiritReactiveEvent('petShieldLost');if(effective>0){spiritReactiveEvent('petDamaged');spiritReactiveEvent('petLowHp');}record(report,'petTanked',effective);record(report,'petProtection',Math.max(0,Math.min(capacity,Math.round(attacker.atk*roll))-Math.min(capacity,d)));if(role==='defense')record(report,'interceptPrevented',Math.min(player.hp,incomingMonsterDamage(attacker.atk,stat('def'),roll)));message(`⚔ ${SPECIES[attacker.id].name} 命中 ${pet.nickname}，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad','damage');if(role==='defense')emitEvent('pet_guard');if(!pet.hp){pet.reviveAt=gameNow()+PET_REVIVE_MS;petDeathSequence++;fx.shield=0;if(pet.id!==player.activePetId){delete secondaryPetEffects[pet.id];delete timers.petById?.[pet.id];delete timers.petAbilityById?.[pet.id];}message(`${pet.nickname} 暫時失去戰鬥能力，請使用藥水；人物戰敗復活時也會恢復夥伴。`,'bad','damage');if(player.job==='spiritCommander'&&resolveSpiritPairDefeat())return;}}
 
  }else if(Math.random()>ownerHitChance(attacker.hit,stat('flee'),attacker.attackType==='magic')){bossCardDodge(player,CARDS,gameNow(),stat('hp'));message('角色閃避了敵人的攻擊。','good');emitEvent('dodge');}
  else{
@@ -1046,7 +1064,7 @@ function enemyAttack(){
    if(st){dealPetDamage(hitDamage((st.def*.55+st.matk*.35)*timers.soundShieldCharge,attacker.def*.5),'resonanceDamage');if(!attacker.hp)award();}
    timers.soundShieldCharge=0;timers.soundShieldUntil=0;enemy=selected;
  }
- if(effective>0&&player.hp>0)emitEvent('damageTaken');message(`⚔ ${SPECIES[attacker.id].name} 命中玩家，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad');if(!player.hp){if(player.trialRun){exitTrial('戰敗，試煉已結束');return;}player.reviveAt=gameNow()+PLAYER_REVIVE_MS;stopAutoFusion('角色倒下');endReport('戰敗');message('角色倒下，請決定是否原地復活或回城。','bad');if(!player.autoRevive)showReviveDialog();save();}
+ if(effective>0&&player.hp>0)emitEvent('damageTaken');message(`⚔ ${SPECIES[attacker.id].name} 命中玩家，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad');if(!player.hp){if(resolveSpiritPairDefeat())return;if(player.trialRun){exitTrial('戰敗，試煉已結束');return;}player.reviveAt=gameNow()+PLAYER_REVIVE_MS;stopAutoFusion('角色倒下');endReport('戰敗');message('角色倒下，請決定是否原地復活或回城。','bad');if(!player.autoRevive)showReviveDialog();save();}
  }
  if(petEffects.guardUntil>gameNow()&&petEffects.guardCounter&&activePet()?.hp>0&&attacker.hp>0&&gameNow()>=(petEffects.counterNext||0)){petEffects.counterNext=gameNow()+800;const selected=enemy;enemy=attacker;dealPetDamage(hitDamage(petStats(activePet()).def*petEffects.guardCounter,attacker.def),'petDamage');if(!attacker.hp)award();enemy=selected;}
  if(petWasHit&&pet?.id===activePet()?.id&&classBuffs.pact?.until>gameNow()&&classBuffs.pact.counter&&activePet()?.hp>0&&attacker.hp>0){const selected=enemy;enemy=attacker;dealPetDamage(hitDamage(petStats(activePet()).def*classBuffs.pact.counter,attacker.def),'resonanceDamage');if(!attacker.hp)award();enemy=selected;}
@@ -1593,7 +1611,7 @@ function autoRevivePlayer(){if(player?.trialRun||player?.trialDefeated)return fa
 function showCaptureReward(pet){if(offlineSimulation)return;$('captureRewardContent').innerHTML=`${petSprite(pet,'capture')}<h3 class="grade-${pet.rarity}">恭喜抓到 ${escapeHtml(petForm(pet)||pet.nickname)}！</h3><p>${petRarity(pet).name} · ${(fusedPair(pet)?.name||SPECIES[pet.species].roleName)}</p>`;$('captureRewardModal').hidden=false;}
 function renderEncounterSlots(){if(player.trialRun)return renderTrialEncounter();const capacity=encounterLimit(player.location);if(!capacity)return '<div class="enemy-idle">安全區域，沒有敵人。</div>';const card=foe=>`<button class="enemy-target ${enemy===foe?'active':''} ${foe.boss?'map-boss':''}" data-target="${foe.instanceId}">${spriteHtml(foe.id,'monster')}<span class="enemy-label">${foe.boss?'♛ 首領 ':''}Lv.${foe.level||1} ${SPECIES[foe.id].name}</span><span class="enemy-hp">${foe.hp}/${foe.maxHp} HP</span>${meter(foe.hp,foe.maxHp,'red')}<small>${enemy===foe?'◎ 目前鎖定':'點擊指定'}</small></button>`;return Array.from({length:capacity},(_,slot)=>{const foe=enemies.find(e=>!e.boss&&e.hp>0&&e.slotIndex===slot);return foe?card(foe):`<div class="enemy-target empty-slot" data-ui-key="empty-${slot}"><span>探索中</span><small>此格獨立隨機遇怪</small></div>`;}).join('')+enemies.filter(e=>e.boss&&e.hp>0).map(card).join('');}
 
-function combatTick(now=gameNow()){if(player?.trialRun&&player.hp<=0){exitTrial('戰敗，試煉已結束');return;}inCombatTick=true;if(!offlineSimulation)clearStatSnapshots();try{if(!player.hp){casting=null;if(auto&&player.autoRevive)autoRevivePlayer();if(!offlineSimulation&&$('reviveModal').style.display==='flex')showReviveDialog();return;}if(now>(timers.petShieldExpires||Infinity)){player.shield=Math.max(0,player.shield-petShield);petShield=0;}if(now>(timers.playerShieldExpires||Infinity))player.shield=Math.min(player.shield,petShield);if(now>(petEffects.shieldExpires||Infinity))petEffects.shield=0;
+function combatTick(now=gameNow()){if(resolveSpiritPairDefeat())return;if(player?.trialRun&&player.hp<=0){exitTrial('戰敗，試煉已結束');return;}inCombatTick=true;if(!offlineSimulation)clearStatSnapshots();try{if(!player.hp){casting=null;if(auto&&player.autoRevive)autoRevivePlayer();if(!offlineSimulation&&$('reviveModal').style.display==='flex')showReviveDialog();return;}if(now>(timers.petShieldExpires||Infinity)){player.shield=Math.max(0,player.shield-petShield);petShield=0;}if(now>(timers.playerShieldExpires||Infinity))player.shield=Math.min(player.shield,petShield);if(now>(petEffects.shieldExpires||Infinity))petEffects.shield=0;
  tickTrialControl(now);tickEncounters(now);chooseAttackTarget();autoCapturePet(now);if(casting&&now>=casting.until){const id=casting.id;casting=null;playerAttack(true,id,true);}if(casting&&!player.hp)casting=null;
  if(now-timers.regen>=4000){timers.regen=now;for(const pet of activePetRoster(player))if(pet.hp>0)pet.sp=Math.min(petStats(pet).sp,pet.sp+Math.max(1,Math.ceil(pet.level/8)));const intRegen=['mage','wizard','sage'].includes(player.job)?Math.ceil(stat('mp')*Math.min(150,effectiveAttributes().INT)*.0004):0;player.mp=Math.min(stat('mp'),player.mp+2+passiveBonus('spRegen')+cardBonus('spRegen')+intRegen);dirty=true;}
  if(enemy.hp&&player.hp){const trialAtTick=player.trialRun;if(auto&&now-(timers.potions||0)>800){timers.potions=now;autoUsePotions();}tickPetEffects(now);const selected=enemy;for(const foe of [...enemies]){if(!player.hp)break;if(foe.hp&&now-foe.lastAttack>=aspdAttackIntervalMs(foe.aspd)){foe.lastAttack=now;enemy=foe;enemyAttack();if(trialAtTick&&!player.trialRun)return;}}enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;if(enemy.hp&&auto){for(const companion of activePetRoster(player)){if(!enemy.hp)break;if(companion?.hp>0&&combatPetFactor(companion.id)>0){const dualPetAbility=player.job==='spiritist'||player.job==='pactWarrior'||player.job==='spiritCommander';const lastPetAbility=dualPetAbility?(timers.petAbilityById?.[companion.id]||0):(timers.petAbility||0);if(now-lastPetAbility>=850)petAutoAbility(companion,commanderTransferredPetStats(companion,petStats(companion)),now);if(enemy.hp)petAttack(companion,combatPetFactor(companion.id));}}if(enemy.hp)autoCastJobs();if(enemy.hp)playerAttack();if(enemy.hp&&player.autoUltimate&&player.resonance>=ULTIMATE_COST&&now-timers.ultimate>=ULTIMATE_COOLDOWN)ultimate();}}
