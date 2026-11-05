@@ -44,7 +44,7 @@ function gear(id,primary,pet=false,special='hpPct'){
 }
 function fixture(job,pair){
  const p=comparisonPlayer({job,level:210});
- Object.assign(p,{name:'夥伴適性測試',dawnSigil:8,autoEscapeBoss:false,autoRevive:false,autoUltimate:true,
+ Object.assign(p,{name:'夥伴適性測試',growthVersion:50,dawnSigil:8,autoEscapeBoss:false,autoRevive:false,autoUltimate:true,
  potionThresholds:{playerHp:90,playerSp:90,petHp:90,petSp:90},autoPotions:{playerHp:true,playerSp:true,petHp:true,petSp:true},
  bag:[{id:'red_large',qty:50000},{id:'blue_large',qty:50000}],gold:50000000});
  const main=job==='crusader'?'STR':SECOND_JOBS[job].attribute;let budget=438;
@@ -104,7 +104,7 @@ function run(base,{scenario='field',scale=1,seconds=180,seed=471122,skills=null,
   assert.ok(a.stat('damageReduction')<=40);assert.ok(a.petStats(p.pets[0]).damageReduction<=40);
   for(const branch of ['first','second','third']){
    const sum=JOB_SKILLS[p.job].filter(s=>s.branch===branch).reduce((n,s)=>n+(p.jobSkills[s.id]||0),0);
-   assert.equal(sum,branch==='first'?49:69,'normalized legal skills');
+   assert.equal(sum,branch==='first'?49:69,'normalized legal skills '+branch);
   }
   const initial={owner:Object.fromEntries(['hp','mp','atk','matk','def','mdef','aspd','damageReduction'].map(k=>[k,a.stat(k)])),pet:a.petStats(p.pets[0]),thresholds:p.potionThresholds};
   const startKills=p.kills;let elapsed=0,minHp=1;
