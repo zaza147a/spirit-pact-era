@@ -1578,7 +1578,8 @@ function refreshWeaponCompensationReminder(){
  if(!badge){badge=document.createElement('button');badge.id='weaponCompensationReminder';badge.type='button';badge.className='weapon-compensation-reminder';badge.innerHTML='<span>✦ 武器改版感謝禮</span><small>尚未領取 · 點擊自選武器</small>';badge.onclick=showWeaponCompensation;document.body.append(badge);}
  const correction=compensationCanCorrect(player);
  badge.hidden=!player||(player.weaponCompensation?.state!=='pending'&&!correction)||!gameRunning||$('gameShell')?.hidden;
- badge.querySelector('small').textContent=correction?'可補發第二把 · 僅限一次':'尚未領取 · 點擊自選武器';
+ const reminderText=badge.querySelector?.('small');
+ if(reminderText)reminderText.textContent=correction?'可補發第二把 · 僅限一次':'尚未領取 · 點擊自選武器';
 }
 function compensationDraft(id){
  const proof=player.weaponCompensation.proof;
