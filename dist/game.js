@@ -179,8 +179,18 @@ function spiritAttackProcBonus(key,secondary=false){
 }
 function pactAssimilationBonus(type){
  if(player?.job!=='pactWarrior')return 0;
- const magicAssimilation=spiritSinglePetProfile(player,activePet())?.kind==='magic';
- const ratios={atk:3.20,matk:magicAssimilation?3.00:1.65,def:.42,mdef:.42,hp:.28};
+ const fusion=spiritSinglePetProfile(player,activePet())?.fusion;
+ // Each fusion keeps its own offensive identity. Survival assimilation remains
+ // identical across the six routes and the ten existing jobs are untouched.
+ const offense={
+  'attack-magic':{atk:9.0,matk:1.65},
+  'attack-defense':{atk:9.0,matk:1.65},
+  'attack-support':{atk:9.0,matk:1.65},
+  'magic-defense':{atk:3.20,matk:20.0},
+  'magic-support':{atk:3.20,matk:20.0},
+  'defense-support':{atk:20.0,matk:1.65}
+ }[fusion]||{atk:3.20,matk:1.65};
+ const ratios={...offense,def:.42,mdef:.42,hp:.28};
  if(!ratios[type])return 0;
  return activePetRoster(player).filter(p=>p.hp>0).reduce((total,pet)=>{
   const base=petStats(pet)[type]; // already includes pet level, rarity, evolution, IV and flat equipment

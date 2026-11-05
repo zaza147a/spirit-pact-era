@@ -33,10 +33,13 @@ test('owner main attacks use the pact pet profile and its damage channel',()=>{
  assert.equal(p.kind,'magic');
 });
 
-test('magic assimilation applies only to a pure-magic pact profile',()=>{
+test('pact six-fusion assimilation retains separate physical and magical scales',()=>{
  const assimilation=between('function pactAssimilationBonus(','function commanderTransferredPetStats(');
- assert.match(assimilation,/spiritSinglePetProfile\(player,activePet\(\)\)\?\.kind==='magic'/);
- assert.match(assimilation,/matk:magicAssimilation\?3\.00:1\.65/);
+ assert.match(assimilation,/spiritSinglePetProfile\(player,activePet\(\)\)\?\.fusion/);
+ assert.match(assimilation,/'magic-defense':\{atk:3\.20,matk:20\.0\}/);
+ assert.match(assimilation,/'magic-support':\{atk:3\.20,matk:20\.0\}/);
+ assert.match(assimilation,/'defense-support':\{atk:20\.0,matk:1\.65\}/);
+ assert.match(assimilation,/def:\.42,mdef:\.42,hp:\.28/);
  const warrior={job:'pactWarrior',thirdJob:true};
  assert.equal(spiritSinglePetProfile(warrior,{fusion:{main:'magic',sub:'defense'}}).kind,'magic');
  assert.equal(spiritSinglePetProfile(warrior,{fusion:{main:'magic',sub:'support'}}).kind,'magic');
