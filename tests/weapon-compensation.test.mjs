@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {rollGear,GEAR_BASE,gearTier} from '../dist/loot.js';
-import {initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,claimWeaponCompensation} from '../dist/weapon-compensation.js';
+import {initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from '../dist/weapon-compensation.js';
 
 const choice=id=>({regular:compensationNormalKeys(id).slice(0,5),special:compensationSpecialKeys('mythic')[0]});
 test('legacy 190/200 weapon produces one durable reward eligibility',()=>{
@@ -44,4 +44,32 @@ test('class weapon choices are based on actual equip legality',()=>{
  }
  assert.deepEqual(compensationWeaponOptions('monk').map(w=>w.id),['knuckles']);
  assert.ok(!compensationWeaponOptions('rogue').some(w=>w.id==='katar'));
+});
+test('selected STR/VIT/LUK and ASPD special are granted exactly, then corrected once with a second weapon',()=>{
+ const p={job:'crusader',gear:{rightHand:rollGear('oneSpear',200,'mythic')},bag:[]};
+ initializeWeaponCompensation(p);
+ const wanted={id:'oneSpear',main:{regular:['atk','hit','STR','VIT','LUK'],special:'aspdPct'}};
+ const first=claimWeaponCompensation(p,wanted)[0];
+ assert.deepEqual(Object.keys(first.affixes),['atk','hit','STR','VIT','LUK','aspdPct']);
+ assert.ok(!('crit' in first.affixes));
+ assert.ok(!('AGI' in first.affixes));
+ assert.ok(!('INT' in first.affixes));
+ assert.ok(compensationCanCorrect(p));
+ const replacement=claimWeaponCompensationCorrection(p,wanted)[0];
+ assert.notEqual(replacement.uid,first.uid);
+ assert.deepEqual(replacement.affixes,first.affixes);
+ assert.equal(p.bag.length,2);
+ assert.equal(p.bag[0],first);
+ assert.equal(p.weaponCompensation.reward[0],first.uid);
+ assert.equal(p.weaponCompensation.correctionReward[0],replacement.uid);
+ assert.equal(compensationCanCorrect(p),false);
+ assert.throws(()=>claimWeaponCompensationCorrection(p,wanted),/沒有可領取/);
+});
+test('invalid compensation selection leaves inventory and eligibility intact',()=>{
+ const p={job:'crusader',gear:{rightHand:rollGear('oneSpear',200,'mythic')},bag:[]};
+ initializeWeaponCompensation(p);
+ const before=structuredClone(p.weaponCompensation);
+ assert.throws(()=>claimWeaponCompensation(p,{id:'oneSpear',main:{regular:['atk','hit','STR','STR','LUK'],special:'aspdPct'}}),/詞條/);
+ assert.deepEqual(p.bag,[]);
+ assert.deepEqual(p.weaponCompensation,before);
 });
