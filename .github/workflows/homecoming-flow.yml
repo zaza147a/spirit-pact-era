@@ -4,6 +4,7 @@ on:
     branches: [feature/companion-homecoming]
     paths:
       - 'dist/homecoming-*'
+      - 'dist/assets/homecoming/**'
       - 'dist/companion-fourth-skill.js'
       - 'tests/homecoming-*.test.mjs'
       - '.github/workflows/homecoming-flow.yml'
@@ -23,5 +24,7 @@ jobs:
           node --check dist/homecoming-data.js
           node --check dist/homecoming-state.js
           node --check dist/homecoming-adventures.js
+          node --check dist/homecoming-art.js
+          node --check dist/homecoming-encounters.js
       - name: Verify independent quest state and fourth slot
-        run: node --test tests/homecoming-state.test.mjs tests/homecoming-preview.test.mjs tests/companion-fourth-skill.test.mjs
+        run: node --test tests/homecoming-state.test.mjs tests/homecoming-preview.test.mjs tests/companion-fourth-skill.test.mjs tests/homecoming-assets.test.mjs

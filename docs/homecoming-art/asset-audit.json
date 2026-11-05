@@ -1,0 +1,203 @@
+[
+  {
+    "asset": "monsters/crystal",
+    "path": "assets/homecoming/monsters/crystal.webp",
+    "width": 768,
+    "height": 768,
+    "bytes": 255208,
+    "alpha": true,
+    "silhouetteBounds": [
+      32,
+      32,
+      733,
+      736
+    ],
+    "transparentFraction": 0.5945
+  },
+  {
+    "asset": "monsters/furnace",
+    "path": "assets/homecoming/monsters/furnace.webp",
+    "width": 768,
+    "height": 768,
+    "bytes": 161004,
+    "alpha": true,
+    "silhouetteBounds": [
+      32,
+      39,
+      726,
+      736
+    ],
+    "transparentFraction": 0.5682
+  },
+  {
+    "asset": "monsters/master",
+    "path": "assets/homecoming/monsters/master.webp",
+    "width": 768,
+    "height": 768,
+    "bytes": 142828,
+    "alpha": true,
+    "silhouetteBounds": [
+      32,
+      32,
+      725,
+      736
+    ],
+    "transparentFraction": 0.6303
+  },
+  {
+    "asset": "monsters/parasite",
+    "path": "assets/homecoming/monsters/parasite.webp",
+    "width": 768,
+    "height": 768,
+    "bytes": 185204,
+    "alpha": true,
+    "silhouetteBounds": [
+      32,
+      37,
+      721,
+      736
+    ],
+    "transparentFraction": 0.6782
+  },
+  {
+    "asset": "monsters/patrol",
+    "path": "assets/homecoming/monsters/patrol.webp",
+    "width": 768,
+    "height": 768,
+    "bytes": 165494,
+    "alpha": true,
+    "silhouetteBounds": [
+      39,
+      32,
+      735,
+      736
+    ],
+    "transparentFraction": 0.5767
+  },
+  {
+    "asset": "monsters/scout",
+    "path": "assets/homecoming/monsters/scout.webp",
+    "width": 768,
+    "height": 768,
+    "bytes": 164388,
+    "alpha": true,
+    "silhouetteBounds": [
+      32,
+      37,
+      729,
+      736
+    ],
+    "transparentFraction": 0.6115
+  },
+  {
+    "asset": "monsters/siege",
+    "path": "assets/homecoming/monsters/siege.webp",
+    "width": 768,
+    "height": 768,
+    "bytes": 201670,
+    "alpha": true,
+    "silhouetteBounds": [
+      38,
+      40,
+      736,
+      736
+    ],
+    "transparentFraction": 0.506
+  },
+  {
+    "asset": "scenes/attack-defense",
+    "path": "assets/homecoming/scenes/attack-defense.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 346030,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/attack-magic",
+    "path": "assets/homecoming/scenes/attack-magic.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 286238,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/attack-support",
+    "path": "assets/homecoming/scenes/attack-support.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 434364,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/defense-attack",
+    "path": "assets/homecoming/scenes/defense-attack.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 318726,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/defense-magic",
+    "path": "assets/homecoming/scenes/defense-magic.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 343698,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/defense-support",
+    "path": "assets/homecoming/scenes/defense-support.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 350698,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/magic-attack",
+    "path": "assets/homecoming/scenes/magic-attack.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 333690,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/magic-defense",
+    "path": "assets/homecoming/scenes/magic-defense.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 326046,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/magic-support",
+    "path": "assets/homecoming/scenes/magic-support.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 267800,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/support-attack",
+    "path": "assets/homecoming/scenes/support-attack.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 364458,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/support-defense",
+    "path": "assets/homecoming/scenes/support-defense.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 382666,
+    "alpha": false
+  },
+  {
+    "asset": "scenes/support-magic",
+    "path": "assets/homecoming/scenes/support-magic.webp",
+    "width": 1152,
+    "height": 768,
+    "bytes": 363612,
+    "alpha": false
+  }
+]

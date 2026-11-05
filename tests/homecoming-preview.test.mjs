@@ -5,6 +5,7 @@ import {readFileSync} from 'node:fs';
 import * as data from '../dist/homecoming-data.js';
 import * as state from '../dist/homecoming-state.js';
 import * as adventures from '../dist/homecoming-adventures.js';
+import * as art from '../dist/homecoming-art.js';
 import * as fourth from '../dist/companion-fourth-skill.js';
 function preview(){
  const html=readFileSync(new URL('../dist/homecoming-preview.html',import.meta.url),'utf8');
@@ -12,7 +13,7 @@ function preview(){
  const elements=new Map(),storage=new Map();let fail=false;
  const document={querySelector(id){if(!elements.has(id))elements.set(id,{innerHTML:'',textContent:'',value:''});return elements.get(id);}};
  const localStorage={getItem:k=>storage.get(k)||null,setItem(k,v){if(fail)throw Error('quota');storage.set(k,v);}};
- const context=vm.createContext({...data,...state,...fourth,...adventures,document,localStorage});
+ const context=vm.createContext({...data,...state,...fourth,...adventures,...art,document,localStorage});
  vm.runInContext(script,context);
  return {context,elements,storage,failSave(){fail=true;},click(id){elements.get(id).onclick();},action(action,route='attack-magic',choice){elements.get('#routes').onclick({target:{closest:()=>({dataset:{action,route,choice}})}});},value:()=>JSON.parse(vm.runInContext('JSON.stringify(p)',context))};
 }
