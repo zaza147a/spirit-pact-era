@@ -49,18 +49,24 @@ async function evaluate(job,level,fusion,build='baseline'){
   }else{
    assert.equal(targets.owner||0,0);
    assert.ok(targets.pet1>0);
+   if(fusion==='defense-support'){
+    assert.ok(summary.guardian?.triggers>0,'guardian must trigger during real incoming combat');
+    assert.ok(summary.guardian.echoUses>0,'healing conversion must be consumed by real attacks');
+    assert.ok(summary.guardian.overheal>=0&&summary.guardian.effectiveHeal>=0);
+   }
   }
   return {job,level,fusion,build,kills:summary.kills,dps:Math.round(damage.total/(DURATION/1000)),
    ownerDps:Math.round(damage.player/(DURATION/1000)),petDps:Math.round((damage.pet1||0)/(DURATION/1000)),
    ownerHits:targets.owner||0,petHits:targets.pet1||0,
    potions:Object.values(summary.potions||{}).reduce((sum,n)=>sum+n,0),
-   endedOwnerHp:result.player.hp,endedPetHp:result.player.pets[0].hp};
+   endedOwnerHp:result.player.hp,endedPetHp:result.player.pets[0].hp,
+   guardian:summary.guardian||null};
  }finally{await worker.terminate();}
 }
 
 const rows=[];
-for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander']){
- for(const fusion of FUSION_TYPES)for(const build of process.env.SPIRIT_BUILD_SWEEP==='1'?['physical','magical']:['baseline'])
+for(const level of [200,210].filter(x=>!process.env.SPIRIT_LEVEL_FILTER||String(x)===process.env.SPIRIT_LEVEL_FILTER))for(const job of ['pactWarrior','spiritCommander'].filter(x=>!process.env.SPIRIT_JOB_FILTER||x===process.env.SPIRIT_JOB_FILTER)){
+ for(const fusion of FUSION_TYPES.filter(x=>!process.env.SPIRIT_FUSION_FILTER||x===process.env.SPIRIT_FUSION_FILTER))for(const build of process.env.SPIRIT_BUILD_SWEEP==='1'?['physical','magical']:['baseline'])
   rows.push(await evaluate(job,level,fusion,build));
 }
 console.log(JSON.stringify({condition:'120s real Worker; single fusion pet; fixed synthetic gear; no boss; sigil0',rows},null,2));
