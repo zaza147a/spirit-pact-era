@@ -1,0 +1,74 @@
+{
+  "seconds": 600,
+  "seeds": [
+    42,
+    137,
+    731
+  ],
+  "shifts": [
+    40
+  ],
+  "card": null,
+  "tag": "mana-guard-rank4",
+  "conditions": "Existing legal boss-card and SSS loadout, transfer LUK to VIT without exceeding stat cap, genuine spawn and death; candidate search only",
+  "rows": [
+    {
+      "job": "wizard",
+      "shift": 40,
+      "card": null,
+      "guardRank": 4,
+      "valid": false,
+      "meanDps": 355298331.465,
+      "trials": [
+        {
+          "seed": 42,
+          "alive": false,
+          "petDeaths": 0,
+          "elapsed": 235.5,
+          "remainingHp": 0,
+          "kills": 269,
+          "bossKills": 2,
+          "manaWardGenerated": 0,
+          "manaDamageAbsorbed": 139470,
+          "manaGuardSpSpent": 7066,
+          "shieldPrevented": 17688,
+          "ownerDps": 128620762.13333334,
+          "petDps": 46350004.086666666,
+          "dps": 174970766.22
+        },
+        {
+          "seed": 137,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 40050,
+          "kills": 678,
+          "bossKills": 6,
+          "manaWardGenerated": 0,
+          "manaDamageAbsorbed": 357734,
+          "manaGuardSpSpent": 18143,
+          "shieldPrevented": 70752,
+          "ownerDps": 322456422.24666667,
+          "petDps": 118818686.93833333,
+          "dps": 441275109.185
+        },
+        {
+          "seed": 731,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 42505,
+          "kills": 690,
+          "bossKills": 6,
+          "manaWardGenerated": 0,
+          "manaDamageAbsorbed": 349318,
+          "manaGuardSpSpent": 17720,
+          "shieldPrevented": 70752,
+          "ownerDps": 329014016.86833334,
+          "petDps": 120635102.12166667,
+          "dps": 449649118.99
+        }
+      ]
+    }
+  ]
+}
