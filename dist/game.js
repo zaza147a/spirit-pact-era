@@ -193,7 +193,7 @@ function pactAssimilationBonus(type){
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
  // Derive from current owner combat stats every time; never mutate pet's cached base.
- return commanderInheritedPetStats({...base,hp:basePetStats(pet).hp},{
+ const inherited=commanderInheritedPetStats({...base,hp:basePetStats(pet).hp},{
   atk:stat('atk'),rawAtk:rawStat('atk'),matk:stat('matk'),rawMatk:rawStat('matk'),
   def:stat('def'),mdef:stat('mdef'),hp:stat('hp'),damageReduction:stat('damageReduction'),
   // Both equipped affixes (including upgraded tiers) and cards train the pets.
@@ -211,6 +211,13 @@ function commanderTransferredPetStats(pet,base){
     +(e.ignoreDef||0)*.18;
   },0)
  });
+ // Guardian fusion converts its own defenses into offensive power; the attack
+ // source remains the pet, while guard-triggered healing fuels its resonance.
+ if(spiritSinglePetProfile(player,pet)?.fusion==='defense-support'){
+  const guardPower=Math.round((inherited.def+inherited.mdef)*.65);
+  return {...inherited,atk:inherited.atk+guardPower,matk:inherited.matk+guardPower};
+ }
+ return inherited;
 }
 function setPetStance(id,stance){return;}
 function effectsForPet(pet){return pet?.id&&pet.id!==player?.activePetId?ensurePetEffects(secondaryPetEffects,pet.id):petEffects;}
