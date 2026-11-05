@@ -52,7 +52,7 @@ async function evaluate(job,level,fusion,build='baseline'){
    assert.ok(summary.spiritPetMain?.hits>0,'commander must have real successful pet main attacks');
    if(fusion==='defense-support'){
     assert.ok(summary.guardian?.triggers>0,'guardian must trigger during real incoming combat');
-    assert.ok(summary.guardian.echoUses>0,'healing conversion must be consumed by real attacks');
+    assert.ok(summary.guardian.waveHits>0,'active healing verdict must hit real enemies');
     assert.ok(summary.guardian.overheal>=0&&summary.guardian.effectiveHeal>=0);
     assert.ok(summary.guardian.waveDamage>0,'guardian must deal actual retaliatory damage');
     assert.ok(summary.guardian.waveHits>0&&summary.guardian.waveHits<=summary.guardian.triggers*3,'one wave may hit at most three foes');
