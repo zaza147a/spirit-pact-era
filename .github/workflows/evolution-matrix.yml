@@ -1,12 +1,5 @@
 name: Full pet evolution visual acceptance
 on:
-  push:
-    branches: [main]
-    paths:
-      - "scripts/browser/evolution-matrix-acceptance.mjs"
-      - "dist/evolution-motion.css"
-      - "dist/index.html"
-      - ".github/workflows/evolution-matrix.yml"
   workflow_dispatch:
 permissions:
   contents: read
