@@ -64,7 +64,7 @@ async function evaluate(job,level,fusion,build='baseline'){
    potions:Object.values(summary.potions||{}).reduce((sum,n)=>sum+n,0),
    endedOwnerHp:result.player.hp,endedPetHp:result.player.pets[0].hp,
    guardian:summary.guardian||null,guardianConversion:summary.guardianConversion||null,
-   magicAttunement:summary.magicAttunement||null,
+   magicAttunement:summary.magicAttunement||null,bulwarkAssault:summary.bulwarkAssault||null,
    petMain:summary.spiritPetMain||null,skillCasts:summary.skillCasts||{}};
  }finally{await worker.terminate();}
 }
