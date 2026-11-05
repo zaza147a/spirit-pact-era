@@ -1573,7 +1573,7 @@ function renderWeaponCompensation(){
 function showWeaponCompensation(){
  if(player?.weaponCompensation?.state!=='pending')return false;
  const options=compensationWeaponOptions(player.job);if(!options.length)return false;
- compensationChoice=compensationDraft(options[0].id);
+ if(!compensationChoice||!options.some(o=>o.id===compensationChoice.id))compensationChoice=compensationDraft(options[0].id);
  renderWeaponCompensation();weaponCompensationDialog().hidden=false;refreshWeaponCompensationReminder();$('weaponCompensationClaim').focus();return true;
 }
 function showOfflineReport(summary){
