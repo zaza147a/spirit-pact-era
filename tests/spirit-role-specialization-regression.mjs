@@ -13,6 +13,8 @@ function damage(job,level,boss,key,secondary=false){
   report:null,activePet:()=>null,fusedPair:()=>false,isSpiritJob:()=>false,spiritTargetDamageFactor,
   jobZoneOutputFactor:()=>1,dawnArchonPreparationFactor:()=>1,
   gameNow:()=>0,currentTactic:()=>null,tacticDamageFactor:()=>1,
+  // Isolated role multipliers: boss-card effects are outside this assertion's scope.
+  CARDS:[],bossHitMeta:null,bossCardHitBonus:()=>0,
   record:()=>{},combatSamples:[],activePetRoster:()=>[],petEffects:{}};
  vm.runInNewContext(snippet+'\nthis.invoke=dealDamage',ctx);
  const actual=ctx.invoke(1000,key,secondary);
