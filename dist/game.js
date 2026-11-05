@@ -223,6 +223,13 @@ function commanderTransferredPetStats(pet,base){
   inherited.matk+=magicAttunement;
   if(offlineMetrics)offlineMetrics.magicAttunement={atk:inherited.atk,bonusMatk:magicAttunement};
  }
+ if(spiritSinglePetProfile(player,pet)?.fusion==='attack-defense'){
+  // Bulwark assault: inherited defenses sharpen the pet's active physical main.
+  // This is independent of damage taken and never grants counterattacks.
+  const bulwarkPower=Math.round(Math.min((inherited.def+inherited.mdef)*.18,170000));
+  inherited.atk+=bulwarkPower;
+  if(offlineMetrics)offlineMetrics.bulwarkAssault={bonusAtk:bulwarkPower};
+ }
  // Guardian fusion converts both defenses and healing potency into active
  // offensive power. The attack source remains the pet; no counterattack triggers.
  if(spiritSinglePetProfile(player,pet)?.fusion==='defense-support'){
