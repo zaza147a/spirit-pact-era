@@ -118,7 +118,7 @@ test('both pact and commander share linked defeat, while legacy jobs are untouch
  const create=(job,ownerHp,petHp,trial=false)=>{
   const pet={id:'a',hp:petHp},player={job,hp:ownerHp,autoRevive:true,trialRun:trial?{map:'trial'}:null};
   const calls=[];
-  const context={player,activePet:()=>pet,gameNow:()=>10000,PET_REVIVE_MS:3000,PLAYER_REVIVE_MS:10000,
+  const context={player,activePet:()=>pet,gameNow:()=>10000,PET_REVIVE_MS:3000,PLAYER_REVIVE_MS:10000,offlineMetrics:null,
    exitTrial:()=>calls.push('trial'),stopAutoFusion:()=>calls.push('stop'),endReport:()=>calls.push('report'),
    message:()=>calls.push('message'),save:()=>calls.push('save'),showReviveDialog:()=>calls.push('dialog')};
   vm.runInNewContext(snippet+'\nthis.defeat=resolveSpiritPairDefeat',context);
