@@ -65,6 +65,14 @@ test('commander spellblade attunement applies only to pure-magic fusion pets',()
  assert.equal(spiritSinglePetProfile(commander,{fusion:{main:'defense',sub:'support'}}).kind,'hybrid');
 });
 
+test('commander attack-defense converts bounded inherited defense into active offense',()=>{
+ const inherited=between('function commanderTransferredPetStats(','function setPetStance(');
+ assert.match(inherited,/fusion==='attack-defense'/);
+ assert.match(inherited,/Math\.min\(\(inherited\.def\+inherited\.mdef\)\*\.18,170000\)/);
+ assert.match(inherited,/inherited\.atk\+=bulwarkPower/);
+ assert.doesNotMatch(inherited,/bulwarkCounter|bulwarkRetaliation/);
+});
+
 test('real damage hook grants one bounded bonus to the correct owner or pet lane',()=>{
  const snippet=between('function spiritAttackProcBonus(','function pactAssimilationBonus(');
  const pet={id:'a',species:'fang',hp:100};
