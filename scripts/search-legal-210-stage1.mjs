@@ -20,7 +20,7 @@ const rows=previous?.version===5?previous.rows:[];
 const done=new Set(rows.map(x=>x.key));
 const attrsFor=(order)=>{const attrs=Object.fromEntries(statNames.map(k=>[k,1]));let left=438;for(const key of [...new Set([...order,...statNames])]){const n=Math.min(left,149);attrs[key]+=n;left-=n;}return attrs;};
 
-function build(job,weapon,offhand,armorPair,agility,weaponSpecial,seed,cardOverrides={},armorOverrides={}){
+export function build(job,weapon,offhand,armorPair,agility,weaponSpecial,seed,cardOverrides={},armorOverrides={}){
  return(player,pet)=>{
   player.attributes=allocateForAspd(job,agility);
   player.dawnUnlocked=true;
