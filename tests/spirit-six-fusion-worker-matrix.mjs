@@ -49,6 +49,7 @@ async function evaluate(job,level,fusion,build='baseline'){
   }else{
    assert.equal(targets.owner||0,0);
    assert.ok(targets.pet1>0);
+   assert.ok(summary.spiritPetMain?.hits>0,'commander must have real successful pet main attacks');
    if(fusion==='defense-support'){
     assert.ok(summary.guardian?.triggers>0,'guardian must trigger during real incoming combat');
     assert.ok(summary.guardian.echoUses>0,'healing conversion must be consumed by real attacks');
@@ -62,7 +63,8 @@ async function evaluate(job,level,fusion,build='baseline'){
    ownerHits:targets.owner||0,petHits:targets.pet1||0,
    potions:Object.values(summary.potions||{}).reduce((sum,n)=>sum+n,0),
    endedOwnerHp:result.player.hp,endedPetHp:result.player.pets[0].hp,
-   guardian:summary.guardian||null};
+   guardian:summary.guardian||null,
+   petMain:summary.spiritPetMain||null,skillCasts:summary.skillCasts||{}};
  }finally{await worker.terminate();}
 }
 
