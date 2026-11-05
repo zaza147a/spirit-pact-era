@@ -33,6 +33,16 @@ test('owner main attacks use the pact pet profile and its damage channel',()=>{
  assert.equal(p.kind,'magic');
 });
 
+test('magic assimilation applies only to a pure-magic pact profile',()=>{
+ const assimilation=between('function pactAssimilationBonus(','function commanderTransferredPetStats(');
+ assert.match(assimilation,/spiritSinglePetProfile\(player,activePet\(\)\)\?\.kind==='magic'/);
+ assert.match(assimilation,/matk:magicAssimilation\?3\.00:1\.65/);
+ const warrior={job:'pactWarrior',thirdJob:true};
+ assert.equal(spiritSinglePetProfile(warrior,{fusion:{main:'magic',sub:'defense'}}).kind,'magic');
+ assert.equal(spiritSinglePetProfile(warrior,{fusion:{main:'magic',sub:'support'}}).kind,'magic');
+ assert.equal(spiritSinglePetProfile(warrior,{fusion:{main:'attack',sub:'magic'}}).kind,'hybrid');
+});
+
 test('commander pet attacks apply the one fused pet profile without extra pet lanes',()=>{
  const petAttack=between('function petAttack(','function absorbDamageWithMana(');
  assert.match(petAttack,/spiritSinglePetProfile\(player,pet\)/);
