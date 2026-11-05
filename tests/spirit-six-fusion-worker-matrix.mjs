@@ -5,9 +5,45 @@ import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {FUSION_TYPES,canonicalFusionKey} from '../dist/spirit-job-rules.js';
-import {rollGear} from '../dist/loot.js';
+import {rollGear,GEAR_BASE,PET_GEAR_BASE,SPECIAL_AFFIXES,affixRange} from '../dist/loot.js';
+import {CARDS,SLOTS} from '../dist/catalog.js';
+import {cardAllowedInSlot,cardEffectsFor} from '../dist/card-effects.js';
 
 const START=2000000000000,DURATION=Number(process.env.SPIRIT_DURATION_MS||120000),allowBoss=process.env.SPIRIT_ALLOW_BOSS==='1';
+const bossCards=process.env.SPIRIT_BOSS_CARDS==='1';
+const survivalAffixes=process.env.SPIRIT_SURVIVAL_AFFIXES==='1';
+function prioritizeSurvivalAffix(player){
+ for(const gear of [...Object.values(player.gear),...player.pets.flatMap(pet=>Object.values(pet.gear||{}))]){
+  if(!gear)continue;
+  const base=GEAR_BASE[gear.id]||PET_GEAR_BASE[gear.id];
+  const weapon=!!base?.weaponType||base?.petSlot==='head';
+  const preferred=weapon?'damageReduction':'hpPct';
+  const next={...gear.affixes};
+  for(const key of Object.keys(next))if(SPECIAL_AFFIXES.has(key))delete next[key];
+  const allowed=weapon?['aspdPct','crit','critDmg','damageReduction']:['fleePct','damageReduction','hpPct'];
+  assert.ok(allowed.includes(preferred));
+  next[preferred]=affixRange(preferred,gear.tier,gear.rarity,gear.id)[1];
+  assert.equal(Object.keys(next).length,Object.keys(gear.affixes).length,'preserve rolled mythic affix count');
+  gear.affixes=next;
+ }
+}
+function equipBossCards(player){
+ for(const slot of Object.keys(SLOTS)){
+  if(!player.gear[slot]){player.sockets[slot]=null;continue;}
+  let best=null,bestScore=-Infinity;
+  for(const [id,card] of Object.entries(CARDS)){
+   if(!card.boss||!cardAllowedInSlot(card,slot,player.job))continue;
+   const effects=cardEffectsFor(card,200),score=Object.entries(effects).reduce((total,[key,value])=>{
+    const weight={hpPct:8,damageReduction:12,defPct:5,mdefPct:4,fleePct:2,
+     VIT:5,STR:player.job==='pactWarrior'?3:1,INT:player.job==='spiritCommander'?3:1,
+     atkPct:3,matkPct:3,crit:2,critDmg:2,aspdPct:2,ignoreDef:2}[key]||0;
+    return total+Math.min(100,value)*weight;
+   },0);
+   if(score>bestScore){best=id;bestScore=score;}
+  }
+  assert.ok(best,`boss card missing for ${slot}`);player.sockets[slot]=best;
+ }
+}
 
 async function evaluate(job,level,fusion,build='baseline'){
  const partner=FUSION_TYPES.find(x=>x!==fusion);
@@ -25,6 +61,8 @@ async function evaluate(job,level,fusion,build='baseline'){
  p.petStances={[pet.id]:job==='pactWarrior'?'assimilate':'assist'};
  p.gear.rightHand=rollGear('staffSword',200,'mythic',()=>.25);
  if(level===210)p.gear.rightHand.enhancement='SSS';
+ if(bossCards)equipBossCards(p);
+ if(survivalAffixes)prioritizeSurvivalAffix(p);
  const worker=new Worker(new URL('./offline-worker-node-entry.mjs',import.meta.url),
   {type:'module',workerData:{seed:Number(process.env.SPIRIT_SEED||9100+level+(job==='pactWarrior'?1:2))}});
  try{
@@ -39,6 +77,7 @@ async function evaluate(job,level,fusion,build='baseline'){
   });
   const summary=result.summary,targets=summary.spiritEnemyTargets||{},damage=summary.damage;
   assert.ok(summary.simulated>0&&summary.simulated<=DURATION);
+  if(bossCards)assert.ok(Object.values(p.sockets).every(id=>!id||CARDS[id]?.boss),'boss-card build must use only boss cards');
   assert.equal(result.player.pets.length,1);
   assert.equal(targets.pet2||0,0);
   assert.equal(damage.pet2||0,0);
@@ -76,4 +115,4 @@ for(const level of [200,210].filter(x=>!process.env.SPIRIT_LEVEL_FILTER||String(
  for(const fusion of FUSION_TYPES.filter(x=>!process.env.SPIRIT_FUSION_FILTER||x===process.env.SPIRIT_FUSION_FILTER))for(const build of process.env.SPIRIT_BUILD_SWEEP==='1'?['physical','magical']:['baseline'])
   rows.push(await evaluate(job,level,fusion,build));
 }
-console.log(JSON.stringify({condition:`${DURATION/1000}s real Worker; single fusion pet; fixed synthetic gear; boss ${allowBoss?'enabled':'escaped'}; sigil0`,rows},null,2));
+console.log(JSON.stringify({condition:`${DURATION/1000}s real Worker; single fusion pet; ${bossCards?'legal boss cards':'normal cards'}; ${survivalAffixes?'survival mythic specials':'original mythic specials'}; boss ${allowBoss?'enabled':'escaped'}; sigil0`,rows},null,2));
