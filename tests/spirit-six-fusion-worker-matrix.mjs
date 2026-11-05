@@ -57,6 +57,7 @@ async function evaluate(job,level,fusion,build='baseline'){
   p.attributes[main]=transferred;p.attributes[other]=1;
  }
  const pet=p.pets.find(unit=>canonicalFusionKey(unit)===fusion);
+ assert.ok(pet,`missing generated fusion ${fusion}`);
  const requestedSkills=process.env.SPIRIT_SKILL_INDEXES;
  if(requestedSkills){
   const pool=fusionSkills(pet)||[];
@@ -66,7 +67,6 @@ async function evaluate(job,level,fusion,build='baseline'){
   assert.equal(new Set(indices).size,3,'skill choices must be distinct');
   pet.equippedSkills=indices.map(index=>pool[index].id);
  }
- assert.ok(pet,`missing generated fusion ${fusion}`);
  p.pets=[pet];p.activePetId=pet.id;p.secondaryPetId=null;
  p.petStances={[pet.id]:job==='pactWarrior'?'assimilate':'assist'};
  p.gear.rightHand=rollGear('staffSword',200,'mythic',()=>.25);
