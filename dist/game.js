@@ -134,6 +134,7 @@ let spiritProcState=createSpiritProcState();
 let spiritReactiveCharge=null;
 let spiritGuardianEchoPct=0;
 let spiritGuardianEchoPetId=null;
+let spiritGuardianWave=null;
 function combatPetFactor(pet){const petId=typeof pet==='string'?pet:pet?.id;return secondPetDamageFactor(player,petId,{overload:player?.job==='spiritCommander'&&player.thirdJob&&classBuffs.dualOverload?.until>gameNow()});}
 function spiritMainProfile(chosen){if(player?.job!=='pactWarrior'||!['pactSlash','rebirthMain_pactWarrior','thirdMain_pactWarrior'].includes(chosen?.id))return null;return spiritSinglePetProfile(player,activePet());}
 function spiritAttackIsMagic(profile,atk,matk,fallback=false){return profile?.kind==='magic'||profile?.kind==='hybrid'&&matk>atk||!profile&&fallback;}
@@ -153,6 +154,8 @@ function spiritReactiveEvent(event){
    if(spiritGuardianEchoPetId!==pet.id){spiritGuardianEchoPetId=pet.id;spiritGuardianEchoPct=0;}
    // Effective healing converts to next-hit power; overheal has quarter efficiency.
    spiritGuardianEchoPct=Math.min(.5,spiritGuardianEchoPct+(effective+(healing-effective)*.25)/maxHp*10);
+   // One bounded retaliatory wave is held until the next landed pet attack.
+   spiritGuardianWave={petId:pet.id,createdAt:now,effectiveHeal:effective,overheal:healing-effective,echoPct:spiritGuardianEchoPct};
    if(offlineMetrics){const m=offlineMetrics.guardian??={triggers:0,effectiveHeal:0,overheal:0,echoUses:0,echoPctUsed:0};m.triggers++;m.effectiveHeal+=effective;m.overheal+=healing-effective;}
   }
  }
@@ -226,15 +229,14 @@ function commanderTransferredPetStats(pet,base){
  // source remains the pet, while guard-triggered healing fuels its resonance.
  if(spiritSinglePetProfile(player,pet)?.fusion==='defense-support'){
   const guardPower=Math.round((inherited.def+inherited.mdef)*.65);
-  const echo=spiritGuardianEchoPetId===pet.id?spiritGuardianEchoPct:0;
-  return {...inherited,atk:Math.round((inherited.atk+guardPower)*(1+echo)),matk:Math.round((inherited.matk+guardPower)*(1+echo))};
+  return {...inherited,atk:inherited.atk+guardPower,matk:inherited.matk+guardPower};
  }
  return inherited;
 }
 function setPetStance(id,stance){return;}
 function effectsForPet(pet){return pet?.id&&pet.id!==player?.activePetId?ensurePetEffects(secondaryPetEffects,pet.id):petEffects;}
 let petEffects={bleedTicks:0,bleedNext:0,bleedPower:0,burnTicks:0,burnNext:0,burnPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0};
-function clearPetEffects(){spiritProcState=createSpiritProcState();spiritReactiveCharge=null;spiritGuardianEchoPct=0;spiritGuardianEchoPetId=null;timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.wizardWardChargedAt=0;timers.wizardWardChargeUntil=0;timers.wizardWardChargedPetId=null;timers.soundShieldCharge=0;timers.soundShieldUntil=0;timers.knightBrokenShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();delete classBuffs.pact;delete classBuffs.resonanceHaste;delete classBuffs.resonanceCrit;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,burnTicks:0,burnNext:0,burnPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};secondaryPetEffects={};petSkillTimers={};timers.petAbility=gameNow()-12000;timers.petAbilityById={};timers.petById={};timers.dualSpiritAt=0;}
+function clearPetEffects(){spiritProcState=createSpiritProcState();spiritReactiveCharge=null;spiritGuardianEchoPct=0;spiritGuardianEchoPetId=null;spiritGuardianWave=null;timers.wizardStoredCharges=0;timers.wizardStoredUntil=0;timers.wizardWardChargedAt=0;timers.wizardWardChargeUntil=0;timers.wizardWardChargedPetId=null;timers.soundShieldCharge=0;timers.soundShieldUntil=0;timers.knightBrokenShieldUntil=0;originalPactHitCount=0;originalPactCounters.clear();delete classBuffs.pact;delete classBuffs.resonanceHaste;delete classBuffs.resonanceCrit;petEffects={shield:0,bleedTicks:0,bleedNext:0,bleedPower:0,burnTicks:0,burnNext:0,burnPower:0,markHits:0,markPower:0,guardUntil:0,blessingUntil:0,blessingPower:0};secondaryPetEffects={};petSkillTimers={};timers.petAbility=gameNow()-12000;timers.petAbilityById={};timers.petById={};timers.dualSpiritAt=0;}
 
 function fresh(name,job){const c=CLASSES[job];const p={version:51,name,job,location:'petland',level:1,xp:0,jobLevel:1,jobXp:0,jobPoints:0,jobSkills:initialJobSkills(job),equippedJobSkill:Object.keys(initialJobSkills(job))[0],gold:90,cardRecyclePoints:0,tacticReadyAt:0,tacticEffect:null,hp:c.hp,mp:c.mp,kills:0,bag:[{id:'med',qty:2},{id:'cell',qty:1},{id:'orb',qty:3}],gear:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),attributes:{STR:1,AGI:1,VIT:1,INT:1,DEX:1,LUK:1},statPoints:0,cards:[],sockets:Object.fromEntries(Object.keys(SLOTS).map(s=>[s,null])),pets:[],activePetId:null,petBook:{},resonance:0,shield:0,battleHistory:[],autoUltimate:true,autoEscapeBoss:false,autoPotions:{playerHp:true,playerSp:true,petHp:true,petSp:true},manaGuardEnabled:true,autoSalvage:false,salvageMaxRarity:'rare',salvageMaxTier:3,salvageStat:'STR',salvageStatBelow:3,keepRarity:true,keepTier:true,keepStat:false,salvageMatchMode:'any'};const id=SECOND_JOBS[job]?.weapon||({swordsman:'blade',mage:'oneStaff',acolyte:'mace',thief:'rifle',archer:'shortBow',spiritist:'mace'})[job];p.gear.rightHand=rollGear(id,1,'common');return p;}
 function normalizeCards(cards){const result=[];for(const entry of cards||[]){const id=typeof entry==='string'?entry:entry?.id;if(!CARDS[id])continue;const qty=typeof entry==='string'?1:Math.max(1,Math.floor(entry.qty||1));const found=result.find(x=>x.id===id);if(found)found.qty+=qty;else result.push({id,qty});}return result;}
@@ -1016,8 +1018,21 @@ function playerAttack(skill=false,skillId=null,completed=false){if(isControlled(
 function autoCastJobs(){if(casting||!auto||!player.hp||!enemy?.hp||gameNow()-timers.skill<(timers.actionDelay||GLOBAL_SKILL_COOLDOWN))return;const skills=orderedAutoSkills(player.autoSkills,JOB_SKILLS[player.job]);for(const skill of skills){if(!player.jobSkills[skill.id]||!canCastJobSkill(skill)||player.mp<skill.mp)continue;if(skill.kind==='heal'&&player.hp>stat('hp')*.65&&!((skill.id==='sanctuary'||skill.partyHeal)&&activePetRoster(player).some(pet=>pet.hp>0&&pet.hp<petStats(pet).hp*.65)))continue;if(skill.kind==='shield'&&player.shield>=stat('hp')*(skill.id==='barrier'?.2:.15))continue;if(skill.kind==='mana'&&player.mp>stat('mp')*.55&&!(isHealingMelody(skill)&&(player.hp<=stat('hp')*.65||activePet().hp<=petStats(activePet()).hp*.65)))continue;if(skill.kind==='buff'&&classBuffs[skill.buff]?.until>gameNow())continue;const before=timers.skill;playerAttack(true,skill.id);if(timers.skill!==before){timers.autoJob=gameNow();break;}}}
 function petAttack(pet=activePet(),sourceFactor=combatPetFactor(pet?.id)){chooseAttackTarget();if(!pet||!enemy?.hp||!player.hp||pet.hp<=0||sourceFactor<=0)return;const now=gameNow(),s=commanderTransferredPetStats(pet,petStats(pet)),species=SPECIES[pet.species],primary=pet.id===player.activePetId,last=primary?timers.pet:(timers.petById?.[pet.id]||0);const attackInterval=Math.max(80,aspdAttackIntervalMs(s.aspd)/(1+(s.aspdPct||0)/100+(classBuffs.resonanceHaste?.until>now?classBuffs.resonanceHaste.power:0)));if(now-last<attackInterval)return;const attackAt=now-last>attackInterval*2?now:last+attackInterval;if(primary)timers.pet=attackAt;else (timers.petById??={})[pet.id]=attackAt;if(companionRole(pet)==='support'&&pet.sp>=3){pet.sp-=3;const pulse=supportPulse(s),healed=healPetParty(pulse.hp),mp=Math.min(stat('mp')-player.mp,pulse.sp);player.mp+=mp;record(report,'effectiveMana',mp);if(healed||mp)message(`${pet.nickname} 施放 ${species.skill}（SP -3），恢復 HP ${healed}、SP ${mp}。`,'good','pet');}const critical=Math.random()<(s.crit+(classBuffs.resonanceCrit?.until>now?classBuffs.resonanceCrit.power:0))/100;if(!critical&&Math.random()>hitChance(s.hit,enemy.flee)){message(`${pet.nickname} 的攻擊被閃避。`,'','pet');}else{const morph=player.job==='spiritCommander'?spiritSinglePetProfile(player,pet):null,role=companionRole(pet),magic=spiritAttackIsMagic(morph,s.atk,s.matk,['magic','support'].includes(role)),attackSource=morph?(magic?s.matk:role==='defense'?petOffensivePower(s,role):s.atk):petOffensivePower(s,role),rolled=hitDamage(attackSource,monsterDefenseAgainst(enemy,magic)*(1-(s.ignoreDef||0)/100),critical?(s.critDmg||140)/100:1),damage=(bossHitMeta={critical,magical:magic,petId:pet.id,range:'pet'},dealPetDamage(rolled,'petDamage',pet,sourceFactor));bossHitMeta=null;
 if(player.job==='spiritCommander'){
+ const wave=spiritGuardianWave?.petId===pet.id&&now-spiritGuardianWave.createdAt<=8000?spiritGuardianWave:null;
  if(damage>0&&spiritGuardianEchoPetId===pet.id){if(offlineMetrics&&spiritGuardianEchoPct>0){const m=offlineMetrics.guardian??={triggers:0,effectiveHeal:0,overheal:0,echoUses:0,echoPctUsed:0};m.echoUses++;m.echoPctUsed+=spiritGuardianEchoPct;}spiritGuardianEchoPct=0;}
  const selected=enemy,dead=[];
+ if(wave&&damage>0){
+  spiritGuardianWave=null;
+  const power=Math.round(((s.def+s.mdef)*2.5+wave.effectiveHeal+wave.overheal*.25)*(1+wave.echoPct));
+  for(const foe of multiTargets(enemies,selected,3,encounterLimit(player.location))){
+   if(!foe.hp)continue;
+   enemy=foe;
+   const applied=dealPetDamage(hitDamage(power,monsterDefenseAgainst(foe,magic)*(1-(s.ignoreDef||0)/100)),'petDamage',pet,sourceFactor);
+   if(offlineMetrics&&applied){const m=offlineMetrics.guardian??={};m.waveHits=(m.waveHits||0)+1;m.waveDamage=(m.waveDamage||0)+applied;}
+   if(foe!==selected&&!foe.hp)dead.push(foe);
+  }
+  enemy=selected;
+ }
  for(const [index,foe] of multiTargets(enemies,selected,3,encounterLimit(player.location)).slice(1).entries()){
   if(!foe.hp)continue;enemy=foe;
   const extra=hitDamage(attackSource*(index===0?.75:.5),monsterDefenseAgainst(foe,magic)*(1-(s.ignoreDef||0)/100),critical?(s.critDmg||140)/100:1);
