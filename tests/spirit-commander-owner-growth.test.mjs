@@ -12,6 +12,10 @@ assert.ok(invested.atk>initial.atk&&invested.matk>initial.matk,'offensive charac
 assert.ok(invested.atk<=(pet.atk+owner.atk*.30)*1.36+1,'card-based pet growth must be capped at 36%');
 assert.ok(boosted.matk>initial.matk,'owner MATK increase must grow companion magic offense');
 assert.ok(boosted.def>initial.def&&boosted.mdef>initial.mdef,'owner defensive progression must be inherited');
+const durable=commanderInheritedPetStats({...pet,hp:10000,damageReduction:8},{...owner,hp:20000,damageReduction:30});
+assert.equal(durable.hp,15000,'commander transfers 25% of owner maximum HP');
+assert.equal(durable.damageReduction,18.5,'commander inherits 35% of owner damage reduction');
+assert.ok(commanderInheritedPetStats({...pet,hp:10000,damageReduction:35},{...owner,hp:20000,damageReduction:40}).damageReduction<=40,'pet reduction respects 40% cap');
 assert.ok(invested.atk>=Math.round((pet.atk+owner.atk*.30)*1.26),'substantial owner card training must empower pets');
 const freshOwner={...owner,atk:owner.rawAtk,matk:owner.rawMatk,cardPower:0,gearPower:0};
 const fresh=commanderInheritedPetStats(pet,freshOwner);
