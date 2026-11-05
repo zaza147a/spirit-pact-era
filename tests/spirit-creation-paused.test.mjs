@@ -19,6 +19,10 @@ test('創角入口拒絕所有御靈使職系', () => {
 });
 
 test('遊戲版本顯示與腳本快取號同步', () => {
-  assert.equal((page.match(/V6\.5\.61/g)||[]).length, 3);
-  assert.match(page, /game\.js\?v=6\.5\.61/);
+  const version=page.match(/<title>[^<]*V(\d+\.\d+\.\d+)<\/title>/)?.[1];
+  assert.ok(version, '首頁標題必須有版本號');
+  const displayed=[...page.matchAll(/V(\d+\.\d+\.\d+)/g)].map(match=>match[1]);
+  assert.ok(displayed.length>=3,'首頁應顯示版本號');
+  assert.ok(displayed.every(value=>value===version),'所有顯示版本應一致');
+  assert.ok(page.includes(`game.js?v=${version}`),'遊戲主程式快取號應與顯示版本一致');
 });
