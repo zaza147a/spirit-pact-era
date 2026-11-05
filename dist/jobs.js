@@ -9,8 +9,8 @@ export const SECOND_JOBS={
  monk:{parent:'acolyte',name:'武僧',range:'melee',weapon:'knuckles',attribute:'STR',style:'STR提升拳傷，AGI驅動連環拳，氣功與阿修羅爆發'},
  hunter:{parent:'archer',name:'獵人',range:'ranged',weapon:'longBow',attribute:'DEX',style:'弓箭與獵鷹協同追擊'},
  performer:{parent:'archer',name:'詩人／舞孃',range:'ranged',weapon:'instrument',attribute:'DEX',style:'樂曲增益、音波攻擊與夥伴協奏'},
- pactWarrior:{parent:'spiritist',name:'靈契戰使',range:'melee',weapon:'blade',attribute:'STR',style:'單手劍搭配盾牌的ATK主攻；一同化一協戰或雙同化'},
- spiritCommander:{parent:'spiritist',name:'雙靈指揮官',range:'ranged',weapon:'oneStaff',attribute:'INT',style:'單手法杖搭配盾牌的MATK指揮；依靠雙夥伴的協同支援'}
+ pactWarrior:{parent:'spiritist',name:'靈契戰使',range:'melee',weapon:'staffSword',attribute:'STR',style:'單手杖劍搭配盾牌；固定同化唯一夥伴，以人物物理與魔法主攻'},
+ spiritCommander:{parent:'spiritist',name:'雙靈指揮官',range:'ranged',weapon:'staffSword',attribute:'INT',style:'單手杖劍搭配盾牌；固定協戰唯一夥伴，將人物物理與魔法能力導流給夥伴'}
 };
 export const parentJob=job=>SECOND_JOBS[job]?.parent||job;
 export const secondJobChoices=job=>Object.entries(SECOND_JOBS).filter(([,s])=>s.parent===job);
