@@ -1,0 +1,58 @@
+{
+  "seconds": 600,
+  "seeds": [
+    42,
+    137,
+    731
+  ],
+  "shifts": [
+    80
+  ],
+  "conditions": "Existing legal boss-card and SSS loadout, transfer LUK to VIT without exceeding stat cap, genuine spawn and death; candidate search only",
+  "rows": [
+    {
+      "job": "wizard",
+      "shift": 80,
+      "valid": true,
+      "meanDps": 406561643.69,
+      "trials": [
+        {
+          "seed": 42,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 51335,
+          "kills": 629,
+          "bossKills": 5,
+          "ownerDps": 292669848.94166666,
+          "petDps": 114894226.82666667,
+          "dps": 407564075.7683333
+        },
+        {
+          "seed": 137,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 38964,
+          "kills": 613,
+          "bossKills": 5,
+          "ownerDps": 288212225.37333333,
+          "petDps": 114026102.22833334,
+          "dps": 402238327.6016667
+        },
+        {
+          "seed": 731,
+          "alive": true,
+          "petDeaths": 0,
+          "elapsed": 599.98,
+          "remainingHp": 52125,
+          "kills": 628,
+          "bossKills": 6,
+          "ownerDps": 295210520.7183333,
+          "petDps": 114672006.98166667,
+          "dps": 409882527.7
+        }
+      ]
+    }
+  ]
+}
