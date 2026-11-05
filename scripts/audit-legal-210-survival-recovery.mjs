@@ -41,7 +41,7 @@ for(const job of jobs){
    const m=result.metrics;
    const owner=(m.playerDamage||0)+(m.playerBuffDamage||0);
    const partner=(m.petDamage||0)+(m.resonanceDamage||0)+(m.buffDamage||0);
-   trials.push({seed,alive:result.alive,petDeaths:result.petDeaths,elapsed:result.elapsed,remainingHp:result.remainingHp,kills:result.kills,bossKills:m.bossKills||0,potionsUsed:result.potions,intSpRegen:m.intSpRegen||0,playerSpPotionRestore:m.playerSpPotionRestore||0,manaWardGenerated:m.manaWardGenerated||0,manaDamageAbsorbed:m.manaDamageAbsorbed||0,manaGuardSpSpent:m.manaGuardSpSpent||0,shieldPrevented:m.playerShieldPrevented||0,ownerDps:owner/seconds,petDps:partner/seconds,dps:(owner+partner)/seconds});
+   trials.push({seed,alive:result.alive,petDeaths:result.petDeaths,elapsed:result.elapsed,remainingHp:result.remainingHp,kills:result.kills,bossKills:m.bossKills||0,potionsUsed:result.potions,intSpRegen:m.intSpRegen||0,playerSpPotionRestore:m.playerSpPotionRestore||0,manaGuardDeathSnapshot:m.manaGuardDeathSnapshot||null,manaWardGenerated:m.manaWardGenerated||0,manaDamageAbsorbed:m.manaDamageAbsorbed||0,manaGuardSpSpent:m.manaGuardSpSpent||0,shieldPrevented:m.playerShieldPrevented||0,ownerDps:owner/seconds,petDps:partner/seconds,dps:(owner+partner)/seconds});
   }
   const valid=trials.every(x=>x.alive&&x.petDeaths===0);
   rows.push({job,shift,card:cardArg||null,guardRank:guardRankArg===undefined?null:Number(guardRankArg),vitZero,mageDefenses,valid,meanDps:trials.reduce((s,x)=>s+x.dps,0)/trials.length,trials});
