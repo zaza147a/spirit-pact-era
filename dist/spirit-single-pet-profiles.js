@@ -14,7 +14,7 @@ export const SPIRIT_FUSION_PROFILES=Object.freeze({
  'attack-support':{pact:{name:'戰誓連斬',kind:'physical',trigger:'ownerKill',effect:'chainSlash'},commander:{name:'靈獵連攜',kind:'physical',trigger:'ownerMark',effect:'petChase'}},
  'magic-defense':{pact:{name:'玄盾咒刃',kind:'magic',trigger:'ownerShieldLost',effect:'arcaneCounter'},commander:{name:'法盾震盪',kind:'magic',trigger:'petShieldLost',effect:'arcaneRetaliation'}},
  'magic-support':{pact:{name:'星環裁決',kind:'magic',trigger:'ownerCastCycle',effect:'castHaste'},commander:{name:'星術奔流',kind:'magic',trigger:'petCastCycle',effect:'petCooldown'}},
- 'defense-support':{pact:{name:'永誓聖裁',kind:'hybrid',trigger:'ownerLowHp',effect:'oathBurst'},commander:{name:'不滅靈衛',kind:'hybrid',trigger:'petLowHp',effect:'guardianReprisal'}}
+ 'defense-support':{pact:{name:'永誓聖裁',kind:'hybrid',trigger:'ownerLowHp',effect:'oathBurst'},commander:{name:'不滅靈衛',kind:'hybrid',trigger:'petDamaged',effect:'guardianReprisal'}}
 });
 
 export function spiritSinglePetProfile(player,pet){
