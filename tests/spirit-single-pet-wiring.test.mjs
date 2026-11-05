@@ -85,3 +85,30 @@ test('incoming real damage hooks schedule a single reactive owner or pet bonus',
  assert.equal(context.hit('playerDamage'),0);
  assert.equal(context.hit('petDamage'),10);
 });
+
+test('both pact and commander share linked defeat, while legacy jobs are untouched',()=>{
+ const snippet=between('function resolveSpiritPairDefeat(','function enemyAttack(');
+ const create=(job,ownerHp,petHp,trial=false)=>{
+  const pet={id:'a',hp:petHp},player={job,hp:ownerHp,autoRevive:true,trialRun:trial?{map:'trial'}:null};
+  const calls=[];
+  const context={player,activePet:()=>pet,gameNow:()=>10000,PET_REVIVE_MS:3000,PLAYER_REVIVE_MS:10000,
+   exitTrial:()=>calls.push('trial'),stopAutoFusion:()=>calls.push('stop'),endReport:()=>calls.push('report'),
+   message:()=>calls.push('message'),save:()=>calls.push('save'),showReviveDialog:()=>calls.push('dialog')};
+  vm.runInNewContext(snippet+'\nthis.defeat=resolveSpiritPairDefeat',context);
+  return {context,player,pet,calls};
+ };
+ const pact=create('pactWarrior',0,100);
+ assert.equal(pact.context.defeat(),true);
+ assert.equal(pact.pet.hp,0);
+ assert.ok(pact.player.reviveAt>10000);
+ const commander=create('spiritCommander',100,0);
+ assert.equal(commander.context.defeat(),true);
+ assert.equal(commander.player.hp,0);
+ assert.ok(commander.calls.includes('report'));
+ const trial=create('spiritCommander',100,0,true);
+ assert.equal(trial.context.defeat(),true);
+ assert.deepEqual(trial.calls,['trial']);
+ const knight=create('knight',0,100);
+ assert.equal(knight.context.defeat(),false);
+ assert.equal(knight.pet.hp,100);
+});
