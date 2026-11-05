@@ -53,6 +53,18 @@ test('commander pet attacks apply the one fused pet profile without extra pet la
  assert.equal(p.fusion,'magic-support');
 });
 
+test('commander spellblade attunement applies only to pure-magic fusion pets',()=>{
+ const inherited=between('function commanderTransferredPetStats(','function setPetStance(');
+ assert.match(inherited,/spiritSinglePetProfile\(player,pet\)\?\.kind==='magic'/);
+ assert.match(inherited,/Math\.round\(inherited\.atk\*\.55\)/);
+ assert.match(inherited,/inherited\.matk\+=magicAttunement/);
+ const commander={job:'spiritCommander',thirdJob:true};
+ assert.equal(spiritSinglePetProfile(commander,{fusion:{main:'magic',sub:'defense'}}).kind,'magic');
+ assert.equal(spiritSinglePetProfile(commander,{fusion:{main:'magic',sub:'support'}}).kind,'magic');
+ assert.equal(spiritSinglePetProfile(commander,{fusion:{main:'attack',sub:'magic'}}).kind,'hybrid');
+ assert.equal(spiritSinglePetProfile(commander,{fusion:{main:'defense',sub:'support'}}).kind,'hybrid');
+});
+
 test('real damage hook grants one bounded bonus to the correct owner or pet lane',()=>{
  const snippet=between('function spiritAttackProcBonus(','function pactAssimilationBonus(');
  const pet={id:'a',species:'fang',hp:100};
