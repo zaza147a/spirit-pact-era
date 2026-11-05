@@ -1,4 +1,5 @@
 import {ensurePetEffects} from './dual-pet-effects.js';
+import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation} from './weapon-compensation.js';
 import {commanderInheritedPetStats} from './commander-owner-growth.js';
 import {spiritTargetDamageFactor} from './spirit-target-damage.js';
 import {chooseDefendingPet,pactOwnerOnlyAggro,commanderPetTargetChance} from './dual-pet-targeting.js';
@@ -1526,6 +1527,49 @@ async function simulateOffline(state,now=Date.now(),progress=()=>{}){
   return {player,summary};
  }finally{clearStatSnapshots();offlineClock=null;offlineSimulation=false;offlineMetrics=null;}
 }
+let compensationChoice=null;
+function compensationDraft(id){
+ const proof=player.weaponCompensation.proof;
+ const make=weaponId=>({regular:compensationNormalKeys(weaponId).slice(0,compensationAffixCount(proof.rarity)),special:compensationSpecialKeys(proof.rarity)[0]||null});
+ return {id,main:make(id==='dualDagger'?'rifle':id),...(id==='dualDagger'?{offhand:make('offDagger')}:{})};
+}
+function weaponCompensationDialog(){
+ let modal=$('weaponCompensationModal');if(modal)return modal;
+ modal=document.createElement('div');modal.id='weaponCompensationModal';modal.className='overlay weapon-compensation-modal';modal.hidden=true;
+ modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','weaponCompensationTitle');
+ modal.innerHTML='<section class="modal"><div class="eyebrow">WEAPON REFORGE GRATITUDE</div><h2 id="weaponCompensationTitle">✦ 武器改版感謝禮</h2><div id="weaponCompensationContent"></div><div class="revive-actions"><button id="weaponCompensationLater" type="button">稍後領取</button><button id="weaponCompensationClaim" class="goldbtn" type="button">確認領取（僅一次）</button></div></section>';
+ document.body.append(modal);
+ $('weaponCompensationLater').onclick=()=>{modal.hidden=true;showNextBossCardNotice();};
+ $('weaponCompensationClaim').onclick=()=>{try{const rewarded=claimWeaponCompensation(player,compensationChoice);save();modal.hidden=true;render();toast(`已領取改版武器：${rewarded.map(g=>g.name).join('、')}`);showNextBossCardNotice();}catch(error){toast(error.message);}};
+ return modal;
+}
+function renderWeaponCompensation(){
+ const proof=player.weaponCompensation.proof,modal=weaponCompensationDialog();
+ const choices=compensationWeaponOptions(player.job);
+ if(!choices.some(w=>w.id===compensationChoice?.id))compensationChoice=compensationDraft(choices[0]?.id);
+ const chosen=choices.find(w=>w.id===compensationChoice.id);
+ const controls=(id,field)=>{
+  const choice=compensationChoice[field],regular=compensationNormalKeys(id),locked=regular.slice(0,2),count=compensationAffixCount(proof.rarity);
+  const selector=(n)=>`<label>第 ${n+1} 詞條<select data-comp-field="${field}" data-comp-index="${n}">${regular.filter(key=>!locked.includes(key)).map(key=>`<option value="${key}" ${choice.regular[n]===key?'selected':''}>${escapeHtml(AFFIX_NAMES[key])}</option>`).join('')}</select></label>`;
+  const special=compensationSpecialKeys(proof.rarity);
+  return `<div class="comp-affix-panel"><h4>${escapeHtml(GEAR_BASE[id].name)}</h4><p>固定詞條：${locked.map(k=>escapeHtml(AFFIX_NAMES[k])).join('、')}</p><div class="comp-selectors">${Array.from({length:count-2},(_,i)=>selector(i+2)).join('')}${special.length?`<label>神話特殊詞條<select data-comp-field="${field}" data-comp-special="1">${special.map(k=>`<option value="${k}" ${choice.special===k?'selected':''}>${escapeHtml(AFFIX_NAMES[k])}</option>`).join('')}</select></label>`:''}</div><p class="tiny">預覽：${compensationAffixDescription(id,proof,choice).map(escapeHtml).join('、')}</p></div>`;
+ };
+ const rank=RARITIES.find(r=>r.id===proof.rarity)?.name||proof.rarity;
+ $('weaponCompensationContent').innerHTML=`<p>感謝支持！更新前已持有 Lv.190～200 武器的角色，可免費自選一次本職武器。領取後直接放入背包，保留補償資格的 <b>Lv.${proof.level}／${rank}${proof.enhancement?'／'+proof.enhancement+'階':''}</b>，不會取走原武器。</p><div class="comp-weapon-grid">${choices.map(w=>`<button class="comp-weapon-option ${w.id===chosen.id?'selected':''}" type="button" data-comp-weapon="${w.id}"><b>${escapeHtml(w.name)}</b><span>${escapeHtml(w.trait)}</span></button>`).join('')}</div><div class="comp-selected-trait"><b>選定武器特性</b><p>${escapeHtml(chosen.trait)}</p><small>固有武器特性不會因 SSS 強化而放大；下方自選詞條依裝備等級及品質計算。</small></div>${controls(chosen.id==='dualDagger'?'rifle':chosen.id,'main')}${chosen.id==='dualDagger'?controls('offDagger','offhand'):''}`;
+ for(const b of modal.querySelectorAll('[data-comp-weapon]'))b.onclick=()=>{compensationChoice=compensationDraft(b.dataset.compWeapon);renderWeaponCompensation();};
+ for(const s of modal.querySelectorAll('[data-comp-field]'))s.onchange=()=>{
+  const part=compensationChoice[s.dataset.compField];
+  if(s.dataset.compSpecial)part.special=s.value;
+  else {const n=Number(s.dataset.compIndex);const other=part.regular.findIndex((v,i)=>i>=2&&i!==n&&v===s.value);if(other>=0)part.regular[other]=part.regular[n];part.regular[n]=s.value;}
+  renderWeaponCompensation();
+ };
+}
+function showWeaponCompensation(){
+ if(player?.weaponCompensation?.state!=='pending')return false;
+ const options=compensationWeaponOptions(player.job);if(!options.length)return false;
+ compensationChoice=compensationDraft(options[0].id);
+ renderWeaponCompensation();weaponCompensationDialog().hidden=false;$('weaponCompensationClaim').focus();return true;
+}
 function showOfflineReport(summary){
  if(!summary)return;const modal=$('offlineModal');$('offlineTitle').textContent='歡迎回來，離線掛機已結算';
  $('offlineContent').innerHTML=`<p>${escapeHtml(MAPS[summary.map]?.name||summary.map)} · 離開 ${offlineDuration(summary.elapsed)}<br>實際掛機 ${offlineDuration(summary.simulated)}${summary.capped?' · 已套用 24 小時上限':''}</p><p>${escapeHtml(summary.reason)}${summary.trialRounds?` · 完整通關 ${summary.trialRounds} 輪`:''}</p><div class="offline-totals"><div>擊殺<b>${summary.kills.toLocaleString()} 隻</b></div><div>金幣淨收益<b>${summary.gold>=0?'+':''}${summary.gold.toLocaleString()}</b></div><div>Base EXP<b>+${summary.baseXp.toLocaleString()}</b></div><div>Job EXP<b>+${summary.jobXp.toLocaleString()}</b></div><div>夥伴 EXP<b>+${summary.petXp.toLocaleString()}</b></div><div>掉落裝備保留<b>${summary.equipment.length} 件</b></div></div><p>Base Level ${summary.baseBefore} → ${summary.baseAfter} · Job Level ${summary.jobBefore} → ${summary.jobAfter}<br>金幣獲得 ${summary.goldEarned.toLocaleString()} · 補給／復活支出 ${summary.spent.toLocaleString()} · 自動復活 ${summary.revives||0} 次 · 避開首領 ${summary.bossesEscaped} 隻</p><details><summary>補給與掉落明細</summary><p>消耗藥水：${Object.entries(summary.potions).map(([id,qty])=>`${escapeHtml(ITEMS[id]?.name||id)} ×${qty}`).join('、')||'無'}</p><p>購入藥水：${Object.entries(summary.purchased).map(([id,qty])=>`${escapeHtml(ITEMS[id]?.name||id)} ×${qty}`).join('、')||'無'}</p><p>背包堆疊物品淨變動：${summary.stacks.map(e=>`${escapeHtml(ITEMS[e.id]?.name||e.id)} ${e.qty>0?'+':''}${e.qty}`).join('、')||'無'}</p><p>離線捕捉：${(summary.captures||[]).length} 隻${summary.captures?.length?' · '+summary.captures.map(e=>`${escapeHtml(e.name)}（${PET_RARITIES.find(r=>r.id===e.rarity)?.name||e.rarity}）`).join('、'):''}</p><p>卡片：${summary.cards.map(e=>`${escapeHtml(CARDS[e.id]?.name||e.id)} ×${e.qty}`).join('、')||'無'}</p><p>保留裝備：${summary.equipment.map(e=>`${escapeHtml(RARITIES.find(r=>r.id===e.rarity)?.name||'')} ${escapeHtml(e.name)}`).join('、')||'無'}</p></details><p class="tiny">收益已自動存入此角色；不需額外領取。依目前配置與原掉落規則補算，收益可能與即時戰鬥略有差異；滿級後的 EXP 不會繼續累積。</p>`;modal.hidden=false;$('offlineClose').focus();
@@ -1592,7 +1636,7 @@ function init(){if(typeof document==='undefined'){self.onmessage=async event=>{t
   if(!backgroundPaused||!gameRunning||settlingOffline)return;backgroundPaused=false;if(player?.trialRun&&!player.trialRun.continuous){resumeTrial();return;}
   try{const summary=await settleOffline();resetSession();spawn();save();if(summary){bossCardNotices.push(...(summary.bossCards||[]));showOfflineReport(summary);}else showNextBossCardNotice();if(!player.hp&&(!player.autoRevive||player.trialDefeated))showReviveDialog();}catch(error){returnToEntry(false);toast(error.message);}
  });
- $('offlineClose').onclick=()=>{$('offlineModal').hidden=true;if(!player.hp&&(!player.autoRevive||player.trialDefeated))showReviveDialog();maybeRevealTrueForm();showNextBossCardNotice();};
+ $('offlineClose').onclick=()=>{$('offlineModal').hidden=true;if(!player.hp&&(!player.autoRevive||player.trialDefeated))showReviveDialog();maybeRevealTrueForm();if(!showWeaponCompensation())showNextBossCardNotice();};
 }
 
 
@@ -1795,5 +1839,11 @@ function openPetRename(id){
  $('renameInput').focus();
 }
 bindCosmeticGalleryEvents();
+// Snapshot legacy eligibility once, before later gear drops can change it.
+// Newly created characters must never qualify through future Lv190/200 drops.
+const normalizeBeforeWeaponCompensation=normalize;
+normalize=function(p){initializeWeaponCompensation(p);return normalizeBeforeWeaponCompensation(p);};
+const freshBeforeWeaponCompensation=fresh;
+fresh=function(...args){const p=freshBeforeWeaponCompensation(...args);p.weaponCompensation={version:WEAPON_COMPENSATION_VERSION,state:'ineligible'};return p;};
 init();
 import {exchangeOverflowGold,sellSurplusPotions} from './economy-limits.js?v=6.5.1';
