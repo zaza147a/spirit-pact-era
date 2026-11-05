@@ -170,6 +170,21 @@ test('both pact and commander share linked defeat, while legacy jobs are untouch
  assert.equal(knight.pet.hp,100);
 });
 
+test('offline linked defeats distinguish boss attacks from ordinary mobs',()=>{
+ const defeat=between('function resolveSpiritPairDefeat(','function enemyAttack(');
+ const player={job:'spiritCommander',hp:100,trialRun:null,autoRevive:true};
+ const pet={hp:0,reviveAt:100};
+ const metrics={};
+ const ctx={player,enemy:{id:'dawn-archon',boss:true},offlineMetrics:metrics,activePet:()=>pet,
+  gameNow:()=>1000,PET_REVIVE_MS:3000,PLAYER_REVIVE_MS:10000,
+  stat:()=>100,petStats:()=>({hp:100}),commanderTransferredPetStats:()=>({hp:100}),
+  stopAutoFusion:()=>{},endReport:()=>{},message:()=>{},save:()=>{}};
+ vm.runInNewContext(defeat+'\nthis.defeat=resolveSpiritPairDefeat',ctx);
+ assert.equal(ctx.defeat(),true);
+ assert.equal(metrics.spiritDefeats.boss,1);
+ assert.equal(metrics.spiritDefeats.mob,0);
+});
+
 test('reviving a linked pair restores both sides, including an unexpired pet timer',()=>{
  const snippet=between('function revive(mode=','function useItem(');
  const pet={id:'pet',hp:0,sp:0,reviveAt:25000},player={job:'spiritCommander',hp:0,mp:0,gold:100,trialDefeated:false,pets:[pet],activePetId:'pet',location:'field',manualPaused:false};
