@@ -5,8 +5,10 @@ import {runBuild} from './optimized-dps-simulator.mjs';
 // Uses the actual combat engine. Survivability and real-world drop rarity are separate concerns.
 const source=JSON.parse(readFileSync('docs/weapon-fusion-audit-v6547.json'));
 if(source.completed!==source.total)throw Error('Weapon/fusion optimization is not complete');
-const rows=[];
-for(const entry of source.rows){
+const selected=new Set((process.env.WEAPON_AUDIT_JOBS||'').split(',').filter(Boolean));
+const old=selected.size?JSON.parse(readFileSync('docs/weapon-boss-audit-v6547.json')).rows:[];
+const rows=old.filter(r=>!selected.has(r.job));
+for(const entry of source.rows.filter(r=>!selected.size||selected.has(r.job))){
  const {job,pair,weapon,offhand,cfg,equipment}=entry;
  const samples=[42,137,731].map(seed=>runBuild(job,pair.split('-')[0],{
   level:210,encounterLevel:201,gearLevel:200,petLevelOverride:200,

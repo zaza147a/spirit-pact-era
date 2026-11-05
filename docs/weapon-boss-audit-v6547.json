@@ -1599,798 +1599,6 @@
       ]
     },
     {
-      "job": "assassin",
-      "pair": "attack-magic",
-      "weapon": "rifle",
-      "offhand": "shield",
-      "pureDps": 525122276.00555557,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 439066318.10555553,
-      "meanKills": 64.33333333333333,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 64,
-          "dps": 440145346.25,
-          "ownerDps": 231459508.06666666,
-          "petDps": 208685838.18333334,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 64,
-          "dps": 433375440.8833333,
-          "ownerDps": 230270077.98333332,
-          "petDps": 203105362.9,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 65,
-          "dps": 443678167.18333334,
-          "ownerDps": 230297501.25,
-          "petDps": 213380665.93333334,
-          "remainingHp": 1
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "attack-defense",
-      "weapon": "rifle",
-      "offhand": "shield",
-      "pureDps": 380008895.8666666,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 311573454.1722222,
-      "meanKills": 45.333333333333336,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 46,
-          "dps": 316631491.53333336,
-          "ownerDps": 237912272.7,
-          "petDps": 78719218.83333333,
-          "remainingHp": 7861
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 45,
-          "dps": 306899024.78333336,
-          "ownerDps": 229423629.31666666,
-          "petDps": 77475395.46666667,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 45,
-          "dps": 311189846.2,
-          "ownerDps": 232540017.13333333,
-          "petDps": 78649829.06666666,
-          "remainingHp": 2621
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "magic-defense",
-      "weapon": "rifle",
-      "offhand": "shield",
-      "pureDps": 414790044.89444447,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 343095907.3888889,
-      "meanKills": 49.666666666666664,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 49,
-          "dps": 342822101.98333335,
-          "ownerDps": 231983321.61666667,
-          "petDps": 110838780.36666666,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 50,
-          "dps": 343868947.53333336,
-          "ownerDps": 232664597.26666668,
-          "petDps": 111204350.26666667,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 50,
-          "dps": 342596672.65,
-          "ownerDps": 231551982.03333333,
-          "petDps": 111044690.61666666,
-          "remainingHp": 2621
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "attack-support",
-      "weapon": "rifle",
-      "offhand": "shield",
-      "pureDps": 395439972.9111111,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 328521843.34444445,
-      "meanKills": 47.666666666666664,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 48,
-          "dps": 328321057.26666665,
-          "ownerDps": 228085200.65,
-          "petDps": 100235856.61666666,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 48,
-          "dps": 330646317.85,
-          "ownerDps": 228950834.26666668,
-          "petDps": 101695483.58333333,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 47,
-          "dps": 326598154.9166667,
-          "ownerDps": 227991876.5,
-          "petDps": 98606278.41666667,
-          "remainingHp": 14669
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "magic-support",
-      "weapon": "rifle",
-      "offhand": "shield",
-      "pureDps": 437115029.7388889,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 364052806.7611111,
-      "meanKills": 52.666666666666664,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 53,
-          "dps": 365198080.6,
-          "ownerDps": 232649594.46666667,
-          "petDps": 132548486.13333334,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 52,
-          "dps": 363727675.56666666,
-          "ownerDps": 230968559.26666668,
-          "petDps": 132759116.3,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 53,
-          "dps": 363232664.1166667,
-          "ownerDps": 230904533.28333333,
-          "petDps": 132328130.83333333,
-          "remainingHp": 2621
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "defense-support",
-      "weapon": "rifle",
-      "offhand": "shield",
-      "pureDps": 342553253.48333335,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 266178490.77777776,
-      "meanKills": 37,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 37,
-          "dps": 267805973.93333334,
-          "ownerDps": 227000801.58333334,
-          "petDps": 40805172.35,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 40,
-          "dps": 275265174.15,
-          "ownerDps": 233857265.95,
-          "petDps": 41407908.2,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 34,
-          "dps": 255464324.25,
-          "ownerDps": 216247552.85,
-          "petDps": 39216771.4,
-          "remainingHp": 1
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "attack-magic",
-      "weapon": "rifle",
-      "offhand": "offDagger",
-      "pureDps": 698006726.1444443,
-      "bossVictories": 3,
-      "alive": 3,
-      "meanBossTime": 51.839999999999996,
-      "meanDps": 496175246.13333327,
-      "meanKills": 73,
-      "samples": [
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 45.94,
-          "kills": 64,
-          "dps": 436176979.21666664,
-          "ownerDps": 258054216.13333333,
-          "petDps": 178122763.08333334,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 54.5,
-          "kills": 77,
-          "dps": 519877534.3666667,
-          "ownerDps": 317997761.96666664,
-          "petDps": 201879772.4,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 55.08,
-          "kills": 78,
-          "dps": 532471224.81666666,
-          "ownerDps": 323088525.1666667,
-          "petDps": 209382699.65,
-          "remainingHp": 2621
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "attack-defense",
-      "weapon": "rifle",
-      "offhand": "offDagger",
-      "pureDps": 547775229.3055555,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 445873429.48333335,
-      "meanKills": 64.33333333333333,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 64,
-          "dps": 449521906.8833333,
-          "ownerDps": 356816255.51666665,
-          "petDps": 92705651.36666666,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 65,
-          "dps": 444559783.53333336,
-          "ownerDps": 353824276.1166667,
-          "petDps": 90735507.41666667,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 64,
-          "dps": 443538598.03333336,
-          "ownerDps": 352113516.7,
-          "petDps": 91425081.33333333,
-          "remainingHp": 2621
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "attack-support",
-      "weapon": "rifle",
-      "offhand": "offDagger",
-      "pureDps": 571777337.3222222,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 471437095.32222223,
-      "meanKills": 68.33333333333333,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 68,
-          "dps": 472386651.56666666,
-          "ownerDps": 353597616.81666666,
-          "petDps": 118789034.75,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 68,
-          "dps": 470423601.6,
-          "ownerDps": 350810946.43333334,
-          "petDps": 119612655.16666667,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 69,
-          "dps": 471501032.8,
-          "ownerDps": 353884570.46666664,
-          "petDps": 117616462.33333333,
-          "remainingHp": 14669
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "magic-defense",
-      "weapon": "rifle",
-      "offhand": "offDagger",
-      "pureDps": 566747879.6999999,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 463799995.8277778,
-      "meanKills": 66.66666666666667,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 67,
-          "dps": 459567501.93333334,
-          "ownerDps": 352548900.25,
-          "petDps": 107018601.68333334,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 67,
-          "dps": 466019692.85,
-          "ownerDps": 359879152.6666667,
-          "petDps": 106140540.18333334,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 66,
-          "dps": 465812792.7,
-          "ownerDps": 358097201.1333333,
-          "petDps": 107715591.56666666,
-          "remainingHp": 5241
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "magic-support",
-      "weapon": "rifle",
-      "offhand": "offDagger",
-      "pureDps": 610483707.3111111,
-      "bossVictories": 1,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 499052034.57222223,
-      "meanKills": 72.66666666666667,
-      "samples": [
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 59.82,
-          "kills": 72,
-          "dps": 495817694.76666665,
-          "ownerDps": 345822755.55,
-          "petDps": 149994939.21666667,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 73,
-          "dps": 500324522.5,
-          "ownerDps": 351970447.05,
-          "petDps": 148354075.45,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 73,
-          "dps": 501013886.45,
-          "ownerDps": 350042184.15,
-          "petDps": 150971702.3,
-          "remainingHp": 2621
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "attack-magic",
-      "weapon": "katar",
-      "offhand": null,
-      "pureDps": 724588434.0166668,
-      "bossVictories": 3,
-      "alive": 3,
-      "meanBossTime": 52.30666666666667,
-      "meanDps": 519836853.65555555,
-      "meanKills": 77.33333333333333,
-      "samples": [
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 52.22,
-          "kills": 77,
-          "dps": 522344047.6333333,
-          "ownerDps": 318768225.3,
-          "petDps": 203575822.33333334,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 52.4,
-          "kills": 78,
-          "dps": 523134430.6666667,
-          "ownerDps": 320434863.46666664,
-          "petDps": 202699567.2,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 52.3,
-          "kills": 77,
-          "dps": 514032082.6666667,
-          "ownerDps": 319057532.26666665,
-          "petDps": 194974550.4,
-          "remainingHp": 1
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "defense-support",
-      "weapon": "rifle",
-      "offhand": "offDagger",
-      "pureDps": 512094750.5222222,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 413148048.87222224,
-      "meanKills": 58.666666666666664,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 60,
-          "dps": 415142523.25,
-          "ownerDps": 353291343.9,
-          "petDps": 61851179.35,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 58,
-          "dps": 414288063.93333334,
-          "ownerDps": 353262276.3,
-          "petDps": 61025787.63333333,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 58,
-          "dps": 410013559.43333334,
-          "ownerDps": 350725703.3833333,
-          "petDps": 59287856.05,
-          "remainingHp": 14669
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "attack-defense",
-      "weapon": "katar",
-      "offhand": null,
-      "pureDps": 580968125.7166666,
-      "bossVictories": 1,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 469100638.8666666,
-      "meanKills": 67.33333333333333,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 70,
-          "dps": 484190112.43333334,
-          "ownerDps": 385185184.1,
-          "petDps": 99004928.33333333,
-          "remainingHp": 7861
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 68,
-          "dps": 475211812.6333333,
-          "ownerDps": 378486345.8333333,
-          "petDps": 96725466.8,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 57.84,
-          "kills": 64,
-          "dps": 447899991.53333336,
-          "ownerDps": 354684827.8833333,
-          "petDps": 93215163.65,
-          "remainingHp": 2621
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "attack-support",
-      "weapon": "katar",
-      "offhand": null,
-      "pureDps": 602378655.25,
-      "bossVictories": 1,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 493669598.62222224,
-      "meanKills": 70.66666666666667,
-      "samples": [
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 59.92,
-          "kills": 71,
-          "dps": 494543613.23333335,
-          "ownerDps": 371799587.8333333,
-          "petDps": 122744025.4,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 70,
-          "dps": 492495259.45,
-          "ownerDps": 370308998.1,
-          "petDps": 122186261.35,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 71,
-          "dps": 493969923.18333334,
-          "ownerDps": 370909292.21666664,
-          "petDps": 123060630.96666667,
-          "remainingHp": 14669
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "magic-defense",
-      "weapon": "katar",
-      "offhand": null,
-      "pureDps": 594752050.8111111,
-      "bossVictories": 1,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 484862249.85555553,
-      "meanKills": 69.33333333333333,
-      "samples": [
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 59.64,
-          "kills": 70,
-          "dps": 488288424.3833333,
-          "ownerDps": 378801133.4,
-          "petDps": 109487290.98333333,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 68,
-          "dps": 482168934.3666667,
-          "ownerDps": 373930279.28333336,
-          "petDps": 108238655.08333333,
-          "remainingHp": 2621
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 70,
-          "dps": 484129390.81666666,
-          "ownerDps": 376091144.3833333,
-          "petDps": 108038246.43333334,
-          "remainingHp": 2621
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "magic-support",
-      "weapon": "katar",
-      "offhand": null,
-      "pureDps": 641461547.7555556,
-      "bossVictories": 3,
-      "alive": 3,
-      "meanBossTime": 57.14000000000001,
-      "meanDps": 503597692.60555553,
-      "meanKills": 73.33333333333333,
-      "samples": [
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 57.2,
-          "kills": 73,
-          "dps": 504202069.48333335,
-          "ownerDps": 357310190.15,
-          "petDps": 146891879.33333334,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 57.36,
-          "kills": 73,
-          "dps": 506180569.48333335,
-          "ownerDps": 357907485.6333333,
-          "petDps": 148273083.85,
-          "remainingHp": 1
-        },
-        {
-          "bossVictory": true,
-          "alive": true,
-          "timeToKill": 56.86,
-          "kills": 74,
-          "dps": 500410438.85,
-          "ownerDps": 352390047.8,
-          "petDps": 148020391.05,
-          "remainingHp": 1
-        }
-      ]
-    },
-    {
-      "job": "assassin",
-      "pair": "defense-support",
-      "weapon": "katar",
-      "offhand": null,
-      "pureDps": 545454438.0055555,
-      "bossVictories": 0,
-      "alive": 3,
-      "meanBossTime": null,
-      "meanDps": 438779689.63888884,
-      "meanKills": 62.666666666666664,
-      "samples": [
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 62,
-          "dps": 438140374.51666665,
-          "ownerDps": 377005019.6,
-          "petDps": 61135354.916666664,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 63,
-          "dps": 440663936.8,
-          "ownerDps": 376974982.71666664,
-          "petDps": 63688954.083333336,
-          "remainingHp": 14669
-        },
-        {
-          "bossVictory": false,
-          "alive": true,
-          "timeToKill": null,
-          "kills": 63,
-          "dps": 437534757.6,
-          "ownerDps": 376509551.85,
-          "petDps": 61025205.75,
-          "remainingHp": 14669
-        }
-      ]
-    },
-    {
       "job": "rogue",
       "pair": "attack-defense",
       "weapon": "rifle",
@@ -6083,6 +5291,798 @@
           "ownerDps": 348101269.25,
           "petDps": 56766107.733333334,
           "remainingHp": 16001
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-defense",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pureDps": 414790044.89444447,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 343095907.3888889,
+      "meanKills": 49.666666666666664,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 49,
+          "dps": 342822101.98333335,
+          "ownerDps": 231983321.61666667,
+          "petDps": 110838780.36666666,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 50,
+          "dps": 343868947.53333336,
+          "ownerDps": 232664597.26666668,
+          "petDps": 111204350.26666667,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 50,
+          "dps": 342596672.65,
+          "ownerDps": 231551982.03333333,
+          "petDps": 111044690.61666666,
+          "remainingHp": 2621
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-magic",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pureDps": 525122276.00555557,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 439066318.10555553,
+      "meanKills": 64.33333333333333,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 64,
+          "dps": 440145346.25,
+          "ownerDps": 231459508.06666666,
+          "petDps": 208685838.18333334,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 64,
+          "dps": 433375440.8833333,
+          "ownerDps": 230270077.98333332,
+          "petDps": 203105362.9,
+          "remainingHp": 1
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 65,
+          "dps": 443678167.18333334,
+          "ownerDps": 230297501.25,
+          "petDps": 213380665.93333334,
+          "remainingHp": 1
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-defense",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pureDps": 380008895.8666666,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 311573454.1722222,
+      "meanKills": 45.333333333333336,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 46,
+          "dps": 316631491.53333336,
+          "ownerDps": 237912272.7,
+          "petDps": 78719218.83333333,
+          "remainingHp": 7861
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 45,
+          "dps": 306899024.78333336,
+          "ownerDps": 229423629.31666666,
+          "petDps": 77475395.46666667,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 45,
+          "dps": 311189846.2,
+          "ownerDps": 232540017.13333333,
+          "petDps": 78649829.06666666,
+          "remainingHp": 2621
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-support",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pureDps": 395439972.9111111,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 328521843.34444445,
+      "meanKills": 47.666666666666664,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 48,
+          "dps": 328321057.26666665,
+          "ownerDps": 228085200.65,
+          "petDps": 100235856.61666666,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 48,
+          "dps": 330646317.85,
+          "ownerDps": 228950834.26666668,
+          "petDps": 101695483.58333333,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 47,
+          "dps": 326598154.9166667,
+          "ownerDps": 227991876.5,
+          "petDps": 98606278.41666667,
+          "remainingHp": 14669
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-support",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pureDps": 437115029.7388889,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 364052806.7611111,
+      "meanKills": 52.666666666666664,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 53,
+          "dps": 365198080.6,
+          "ownerDps": 232649594.46666667,
+          "petDps": 132548486.13333334,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 52,
+          "dps": 363727675.56666666,
+          "ownerDps": 230968559.26666668,
+          "petDps": 132759116.3,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 53,
+          "dps": 363232664.1166667,
+          "ownerDps": 230904533.28333333,
+          "petDps": 132328130.83333333,
+          "remainingHp": 2621
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-magic",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pureDps": 698006726.1444443,
+      "bossVictories": 3,
+      "alive": 3,
+      "meanBossTime": 51.839999999999996,
+      "meanDps": 496175246.13333327,
+      "meanKills": 73,
+      "samples": [
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 45.94,
+          "kills": 64,
+          "dps": 436176979.21666664,
+          "ownerDps": 258054216.13333333,
+          "petDps": 178122763.08333334,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 54.5,
+          "kills": 77,
+          "dps": 519877534.3666667,
+          "ownerDps": 317997761.96666664,
+          "petDps": 201879772.4,
+          "remainingHp": 1
+        },
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 55.08,
+          "kills": 78,
+          "dps": 532471224.81666666,
+          "ownerDps": 323088525.1666667,
+          "petDps": 209382699.65,
+          "remainingHp": 2621
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "defense-support",
+      "weapon": "rifle",
+      "offhand": "shield",
+      "pureDps": 342553253.48333335,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 266178490.77777776,
+      "meanKills": 37,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 37,
+          "dps": 267805973.93333334,
+          "ownerDps": 227000801.58333334,
+          "petDps": 40805172.35,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 40,
+          "dps": 275265174.15,
+          "ownerDps": 233857265.95,
+          "petDps": 41407908.2,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 34,
+          "dps": 255464324.25,
+          "ownerDps": 216247552.85,
+          "petDps": 39216771.4,
+          "remainingHp": 1
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-defense",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pureDps": 547775229.3055555,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 445873429.48333335,
+      "meanKills": 64.33333333333333,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 64,
+          "dps": 449521906.8833333,
+          "ownerDps": 356816255.51666665,
+          "petDps": 92705651.36666666,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 65,
+          "dps": 444559783.53333336,
+          "ownerDps": 353824276.1166667,
+          "petDps": 90735507.41666667,
+          "remainingHp": 1
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 64,
+          "dps": 443538598.03333336,
+          "ownerDps": 352113516.7,
+          "petDps": 91425081.33333333,
+          "remainingHp": 2621
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-support",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pureDps": 571777337.3222222,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 471437095.32222223,
+      "meanKills": 68.33333333333333,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 68,
+          "dps": 472386651.56666666,
+          "ownerDps": 353597616.81666666,
+          "petDps": 118789034.75,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 68,
+          "dps": 470423601.6,
+          "ownerDps": 350810946.43333334,
+          "petDps": 119612655.16666667,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 69,
+          "dps": 471501032.8,
+          "ownerDps": 353884570.46666664,
+          "petDps": 117616462.33333333,
+          "remainingHp": 14669
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "defense-support",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pureDps": 512094750.5222222,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 413148048.87222224,
+      "meanKills": 58.666666666666664,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 60,
+          "dps": 415142523.25,
+          "ownerDps": 353291343.9,
+          "petDps": 61851179.35,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 58,
+          "dps": 414288063.93333334,
+          "ownerDps": 353262276.3,
+          "petDps": 61025787.63333333,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 58,
+          "dps": 410013559.43333334,
+          "ownerDps": 350725703.3833333,
+          "petDps": 59287856.05,
+          "remainingHp": 14669
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-support",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pureDps": 610483707.3111111,
+      "bossVictories": 1,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 499052034.57222223,
+      "meanKills": 72.66666666666667,
+      "samples": [
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 59.82,
+          "kills": 72,
+          "dps": 495817694.76666665,
+          "ownerDps": 345822755.55,
+          "petDps": 149994939.21666667,
+          "remainingHp": 1
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 73,
+          "dps": 500324522.5,
+          "ownerDps": 351970447.05,
+          "petDps": 148354075.45,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 73,
+          "dps": 501013886.45,
+          "ownerDps": 350042184.15,
+          "petDps": 150971702.3,
+          "remainingHp": 2621
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-defense",
+      "weapon": "rifle",
+      "offhand": "offDagger",
+      "pureDps": 566747879.6999999,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 463799995.8277778,
+      "meanKills": 66.66666666666667,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 67,
+          "dps": 459567501.93333334,
+          "ownerDps": 352548900.25,
+          "petDps": 107018601.68333334,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 67,
+          "dps": 466019692.85,
+          "ownerDps": 359879152.6666667,
+          "petDps": 106140540.18333334,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 66,
+          "dps": 465812792.7,
+          "ownerDps": 358097201.1333333,
+          "petDps": 107715591.56666666,
+          "remainingHp": 5241
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-magic",
+      "weapon": "katar",
+      "offhand": null,
+      "pureDps": 710912152.75,
+      "bossVictories": 3,
+      "alive": 3,
+      "meanBossTime": 50.26,
+      "meanDps": 489543093.1333334,
+      "meanKills": 71.33333333333333,
+      "samples": [
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 51.8,
+          "kills": 75,
+          "dps": 507673486.5,
+          "ownerDps": 303591976.8666667,
+          "petDps": 204081509.63333333,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 45.2,
+          "kills": 62,
+          "dps": 437158605.18333334,
+          "ownerDps": 256735488.66666666,
+          "petDps": 180423116.51666668,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 53.78,
+          "kills": 77,
+          "dps": 523797187.71666664,
+          "ownerDps": 318799126.51666665,
+          "petDps": 204998061.2,
+          "remainingHp": 1
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-defense",
+      "weapon": "katar",
+      "offhand": null,
+      "pureDps": 572718685.8,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 458269576.4166667,
+      "meanKills": 66,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 66,
+          "dps": 459909420.68333334,
+          "ownerDps": 363284289.9,
+          "petDps": 96625130.78333333,
+          "remainingHp": 6831
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 66,
+          "dps": 460604445.68333334,
+          "ownerDps": 366490698.23333335,
+          "petDps": 94113747.45,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 66,
+          "dps": 454294862.8833333,
+          "ownerDps": 358516142.05,
+          "petDps": 95778720.83333333,
+          "remainingHp": 2621
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-defense",
+      "weapon": "katar",
+      "offhand": null,
+      "pureDps": 594226337.6055555,
+      "bossVictories": 3,
+      "alive": 3,
+      "meanBossTime": 53.04,
+      "meanDps": 404747051.8555556,
+      "meanKills": 57.333333333333336,
+      "samples": [
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 53.1,
+          "kills": 57,
+          "dps": 406613427.6166667,
+          "ownerDps": 320182537.76666665,
+          "petDps": 86430889.85,
+          "remainingHp": 1
+        },
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 52.92,
+          "kills": 57,
+          "dps": 403354261.53333336,
+          "ownerDps": 317172294.9166667,
+          "petDps": 86181966.61666666,
+          "remainingHp": 1
+        },
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 53.1,
+          "kills": 58,
+          "dps": 404273466.4166667,
+          "ownerDps": 318127909.5833333,
+          "petDps": 86145556.83333333,
+          "remainingHp": 1
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "attack-support",
+      "weapon": "katar",
+      "offhand": null,
+      "pureDps": 583205760.9166666,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 480537186.5,
+      "meanKills": 69.33333333333333,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 69,
+          "dps": 480389584.25,
+          "ownerDps": 360657895.25,
+          "petDps": 119731689,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 69,
+          "dps": 479676743.1166667,
+          "ownerDps": 359952330.05,
+          "petDps": 119724413.06666666,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 70,
+          "dps": 481545232.1333333,
+          "ownerDps": 359880207.81666666,
+          "petDps": 121665024.31666666,
+          "remainingHp": 14669
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "magic-support",
+      "weapon": "katar",
+      "offhand": null,
+      "pureDps": 623881270.8444445,
+      "bossVictories": 3,
+      "alive": 3,
+      "meanBossTime": 59.419999999999995,
+      "meanDps": 503643194.10555553,
+      "meanKills": 73.33333333333333,
+      "samples": [
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 59.58,
+          "kills": 73,
+          "dps": 506429838.06666666,
+          "ownerDps": 356973353.81666666,
+          "petDps": 149456484.25,
+          "remainingHp": 1
+        },
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 59.34,
+          "kills": 73,
+          "dps": 503655741.78333336,
+          "ownerDps": 356311211.01666665,
+          "petDps": 147344530.76666668,
+          "remainingHp": 2621
+        },
+        {
+          "bossVictory": true,
+          "alive": true,
+          "timeToKill": 59.34,
+          "kills": 74,
+          "dps": 500844002.46666664,
+          "ownerDps": 356087689.95,
+          "petDps": 144756312.51666668,
+          "remainingHp": 1
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "pair": "defense-support",
+      "weapon": "katar",
+      "offhand": null,
+      "pureDps": 529720174.6722222,
+      "bossVictories": 0,
+      "alive": 3,
+      "meanBossTime": null,
+      "meanDps": 433066805.81666666,
+      "meanKills": 61,
+      "samples": [
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 62,
+          "dps": 438039014.8,
+          "ownerDps": 375541247.53333336,
+          "petDps": 62497767.266666666,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 60,
+          "dps": 431907711.1166667,
+          "ownerDps": 369618430.48333335,
+          "petDps": 62289280.63333333,
+          "remainingHp": 14669
+        },
+        {
+          "bossVictory": false,
+          "alive": true,
+          "timeToKill": null,
+          "kills": 61,
+          "dps": 429253691.53333336,
+          "ownerDps": 366107931.45,
+          "petDps": 63145760.083333336,
+          "remainingHp": 14669
         }
       ]
     }
