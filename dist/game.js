@@ -85,6 +85,13 @@ const gameNow=()=>offlineClock??Date.now();
 // Live UI always uses the uncached production calculator.
 const offlinePetStatCache=new WeakMap();
 function petStats(pet){
+ const base=basePetStats(pet);
+ if(player?.job!=='spiritCommander'||!pet||pet.id!==player.activePetId||!player.gear||!player.attributes)return base;
+ // The Commander shares owner vitality with its only active companion.
+ // Return a new view so cached/base companion data remains untouched.
+ return {...base,hp:Math.max(base.hp,Math.round(base.hp+Math.max(0,stat('hp'))*.25))};
+}
+function basePetStats(pet){
  if(!offlineSimulation||pet?.level!==200||globalThis.__spiritDisablePetStatsCache)return rawPetStats(pet);
  const previous=offlinePetStatCache.get(pet);
  if(previous&&previous.gear===pet.gear&&previous.iv===pet.iv&&
@@ -186,7 +193,7 @@ function pactAssimilationBonus(type){
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
  // Derive from current owner combat stats every time; never mutate pet's cached base.
- return commanderInheritedPetStats(base,{
+ return commanderInheritedPetStats({...base,hp:basePetStats(pet).hp},{
   atk:stat('atk'),rawAtk:rawStat('atk'),matk:stat('matk'),rawMatk:rawStat('matk'),
   def:stat('def'),mdef:stat('mdef'),hp:stat('hp'),damageReduction:stat('damageReduction'),
   // Both equipped affixes (including upgraded tiers) and cards train the pets.
