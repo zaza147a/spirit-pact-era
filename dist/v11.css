@@ -97,3 +97,4 @@ body.spirit-dual-ui .dual-growth-next li+li{margin-top:4px}
 #bossCardNotice #bossCardNoticeNext:focus-visible{outline:3px solid #f5d982;outline-offset:3px}
 @media(max-width:520px){#bossCardNotice .boss-notice-card{padding:15px 14px 18px}#bossCardNotice h2{font-size:19px}#bossCardNotice .boss-notice-art{height:180px}#bossCardNotice .art-large{width:165px;height:165px}}
 .item:has(> .card-comparison-v2)>p{display:none}
+.compare-mode-switch{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:12px 0 4px}.compare-mode-switch>span{margin-right:auto;color:#c4d9e6;font-size:12px;font-weight:700}.compare-mode-switch button{border:1px solid #537082;border-radius:6px;padding:5px 9px;background:#1a3343;color:#d5e6ee;font-size:12px;cursor:pointer}.compare-mode-switch button[aria-pressed="true"]{background:#50603d;border-color:#e2bc64;color:#ffedaf;font-weight:800}.comparison-v2 [data-compare-content][hidden]{display:none}
