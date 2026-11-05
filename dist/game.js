@@ -1205,6 +1205,17 @@ function equippedCardDisplay(slot){
  if(!card)return '<div class="equipped-card-empty">◇ 卡片插槽 · 尚未鑲嵌</div>';
  return `<div class="equipped-card ${card.boss?'equipped-card-boss':''}"><div class="equipped-card-header"><span class="equipped-card-symbol" aria-hidden="true">${card.boss?'♛':'✦'}</span><div><small>已鑲嵌${card.boss?' · 首領卡片':' · 怪物卡片'}</small><strong>${escapeHtml(card.name)}</strong></div></div><div class="equipped-card-effect">${cardDescription(card,player.level)}</div><div class="equipped-card-footer"><span>綁定${SLOTS[slot]} · 換裝保留</span><button data-unsocket="${slot}">卸下卡片</button></div></div>`;
 }
+function gearComparisonProfile(job,weaponType){
+ const magic=['mage','acolyte','wizard','priest','spiritCommander'].includes(job),hybrid=job==='sage';
+ const ranged=['archer','hunter','performer'].includes(job)||(job==='rogue'&&weaponType==='rifle');
+ const physical=!magic||hybrid,melee=physical&&(!ranged||job==='rogue');
+ return {name:hybrid?'魔拳／魔法混合':magic?'魔法輸出':ranged?'遠距物理':'近戰物理',
+  relevant:key=>!(['atk','matk','magicDamage','crit','critDmg','ignoreDef','近距離物理傷害%','遠距離物理傷害%','魔法傷害%'].includes(key))
+   ||(key==='atk'&&physical)||(key==='matk'&&(magic||hybrid))||(key==='magicDamage'&&(magic||hybrid))
+   ||(['crit','critDmg','ignoreDef'].includes(key)&&physical)
+   ||(key==='近距離物理傷害%'&&melee)||(key==='遠距離物理傷害%'&&ranged)
+   ||(key==='魔法傷害%'&&(magic||hybrid))};
+}
 function gearComparison(g){const base=ITEMS[g.id],pet=selectedGearPet(),isPet=!!base.petSlot;
  if(isPet&&!pet)return '<div class="gear-compare">出戰夥伴後可比較數值。</div>';
  if(!isPet&&base.jobs&&!base.jobs.includes(player.job))return '<div class="gear-compare">此武器不適用目前職業。</div>';
@@ -1219,20 +1230,25 @@ function gearComparison(g){const base=ITEMS[g.id],pet=selectedGearPet(),isPet=!!
   gears[slot]=g;
   if(!isPet&&slot==='rightHand'&&(base.hands===2||base.weaponType!=='dagger'&&left?.id==='offDagger'))player.gear.leftHand=null;
   const after=snapshot(),format=(n,percent)=>Number(n.toFixed(percent?2:1));
-  const changes=Object.keys(before).filter(k=>k==='atk'||k==='matk'||Math.abs(after[k]-before[k])>.001).map(k=>{
+  const changes=Object.keys(before).filter(k=>Math.abs(after[k]-before[k])>.001).map(k=>{
    const delta=after[k]-before[k],percent=percentKeys.has(k)||k.endsWith('%'),unit=percent?'%':'',label=labels[k]||k;
    const text=`${format(before[k],percent)}${unit} → ${format(after[k],percent)}${unit}`;
    const deltaText=`${delta===0?'±':delta>0?'+':''}${format(delta,percent)}${percent?' 個百分點':''}`;
    return {k,label,delta,text,deltaText,sign:Math.abs(delta)<.001?'zero':delta>0?'up':'down'};
   });
-  const up=changes.filter(c=>c.sign==='up'),down=changes.filter(c=>c.sign==='down');
+  const profile=isPet?null:gearComparisonProfile(player.job,base.weaponType||GEAR_BASE[player.gear.rightHand?.id]?.weaponType);
+  const relevant=profile?changes.filter(c=>profile.relevant(c.k)):changes;
   const oldName=previous?.name||'尚未穿戴',newName=g.name||base.name;
-  const headline=up.length&&down.length?'能力取捨':up.length?'能力提升':down.length?'能力下降':'能力相同';
-  const badge=up.length&&down.length?'mixed':up.length?'positive':down.length?'negative':'neutral';
-  const important=[...up,...down].sort((a,b)=>Math.abs(b.delta)/Math.max(1,Math.abs(before[b.k]))-Math.abs(a.delta)/Math.max(1,Math.abs(before[a.k]))).slice(0,4);
-  const quick=important.map(c=>`<div class="compare-quick-item ${c.sign}"><small>${escapeHtml(c.label)}</small><strong>${c.delta>0?'+':''}${format(c.delta,percentKeys.has(c.k)||c.k.endsWith('%'))}${percentKeys.has(c.k)||c.k.endsWith('%')?' 個百分點':''}</strong></div>`).join('');
-  const all=changes.map(c=>`<div class="compare-stat"><span>${escapeHtml(c.label)}</span><span>${c.text} <b class="delta-${c.sign}">${c.deltaText}</b></span></div>`).join('');
-  return `<section class="gear-compare comparison-v2"><div class="compare-direction"><div class="compare-source"><small>目前穿戴</small><strong>${escapeHtml(oldName)}</strong></div><span class="compare-arrow" aria-label="更換為">→</span><div class="compare-target"><small>準備穿戴</small><strong>${escapeHtml(newName)}</strong></div></div><div class="compare-verdict ${badge}"><b>${headline}</b><span class="delta-up">▲ ${up.length} 項增加</span><span class="delta-down">▼ ${down.length} 項減少</span></div>${quick?`<div class="compare-quick">${quick}</div>`:''}<details class="compare-details"><summary>展開全部屬性對比（${changes.length} 項）</summary><div class="compare-stats">${all||'<span>總屬性無變化</span>'}</div></details>${!isPet&&base.hands===2&&left?'<small class="compare-caution">已包含卸除左手裝備的影響</small>':''}<small class="compare-caution">這是穿戴後總屬性的增減；不同玩法的暴擊、攻速與生存仍需自行取捨。</small></section>`;
+  const comparisonView=(list,mode)=>{
+   const up=list.filter(c=>c.sign==='up'),down=list.filter(c=>c.sign==='down');
+   const headline=up.length&&down.length?'能力取捨':up.length?'能力提升':down.length?'能力下降':'能力相同';
+   const badge=up.length&&down.length?'mixed':up.length?'positive':down.length?'negative':'neutral';
+   const important=[...up,...down].sort((a,b)=>Math.abs(b.delta)/Math.max(1,Math.abs(before[b.k]))-Math.abs(a.delta)/Math.max(1,Math.abs(before[a.k]))).slice(0,4);
+   const quick=important.map(c=>`<div class="compare-quick-item ${c.sign}"><small>${escapeHtml(c.label)}</small><strong>${c.delta>0?'+':''}${format(c.delta,percentKeys.has(c.k)||c.k.endsWith('%'))}${percentKeys.has(c.k)||c.k.endsWith('%')?' 個百分點':''}</strong></div>`).join('');
+   const all=list.map(c=>`<div class="compare-stat"><span>${escapeHtml(c.label)}</span><span>${c.text} <b class="delta-${c.sign}">${c.deltaText}</b></span></div>`).join('');
+   return `<div class="compare-mode-content" data-compare-content="${mode}" ${mode==='all'?'hidden':''}><div class="compare-verdict ${badge}"><b>${headline}</b><span class="delta-up">▲ ${up.length} 項增加</span><span class="delta-down">▼ ${down.length} 項減少</span></div>${quick?`<div class="compare-quick">${quick}</div>`:''}<details class="compare-details"><summary>展開${mode==='all'?'完整':'相關'}屬性對比（${list.length} 項）</summary><div class="compare-stats">${all||'<span>此範圍沒有屬性變化</span>'}</div></details></div>`;
+  };
+  return `<section class="gear-compare comparison-v2"><div class="compare-direction"><div class="compare-source"><small>目前穿戴</small><strong>${escapeHtml(oldName)}</strong></div><span class="compare-arrow" aria-label="更換為">→</span><div class="compare-target"><small>準備穿戴</small><strong>${escapeHtml(newName)}</strong></div></div>${profile?`<div class="compare-mode-switch" role="group" aria-label="比較範圍"><span>${escapeHtml(profile.name)}</span><button type="button" data-compare-mode="relevant" aria-pressed="true">本職業重點</button><button type="button" data-compare-mode="all" aria-pressed="false">全部屬性</button></div>`:''}${comparisonView(relevant,'relevant')}${profile?comparisonView(changes,'all'):''}${!isPet&&base.hands===2&&left?'<small class="compare-caution">已包含卸除左手裝備的影響</small>':''}<small class="compare-caution">這是穿戴後總屬性的增減；隱藏的比較欄位仍會正常套用到裝備與戰鬥。</small></section>`;
  }finally{gears[slot]=previous;if(!isPet){player.gear.leftHand=left;player.sockets[slot]=socket;player.sockets.leftHand=leftSocket;}clearStatSnapshots();}
 }
 function equipmentFilters(petOnly=false){return `<div class="gear-filters"><label>稀有度<select data-gearfilter="rarity"><option value="all">全部稀有度</option>${RARITIES.map(r=>`<option value="${r.id}" ${gearFilterRarity===r.id?'selected':''}>${r.name} · ${r.count}詞</option>`).join('')}</select></label><label>階級<select data-gearfilter="tier"><option value="all">全部階級</option>${TIER_NAMES.map((t,i)=>`<option value="${i+1}" ${gearFilterTier===String(i+1)?'selected':''}>${t}階 Lv.${GEAR_TIERS[i].min}–${GEAR_TIERS[i].max}</option>`).join('')}</select></label><label>部位<select data-gearfilter="slot"><option value="all">全部部位</option>${Object.entries(petOnly?PET_SLOTS:SLOTS).map(([id,label])=>`<option value="${petOnly?'pet-':''}${id}" ${gearFilterSlot===(petOnly?'pet-':'')+id?'selected':''}>${label}</option>`).join('')}</select></label><label>攻擊屬性<select data-gearfilter="stat">${[['all','全部屬性'],['atk','含 ATK 物理攻擊'],['matk','含 MATK 魔法攻擊']].map(([id,label])=>`<option value="${id}" ${gearFilterStat===id?'selected':''}>${label}</option>`).join('')}</select></label>${petOnly?'':`<label>職業適用<select data-gearfilter="job">${[['all','全部職業'],['usable','本職業可用（含通用）'],['unusable','其他職業專用']].map(([id,label])=>`<option value="${id}" ${gearFilterJob===id?'selected':''}>${label}</option>`).join('')}</select></label>`}</div><p class="tiny">ATK／MATK 依裝備基礎值與詞綴篩選。${petOnly?'夥伴裝備不限角色職業。':'本職業可用包含通用裝備；穿戴等級仍需另外達標。'}</p>`;}
@@ -1446,6 +1462,7 @@ for(const b of document.querySelectorAll('[data-bagcategory]'))b.onclick=()=>{ba
 for(const b of document.querySelectorAll('[data-sell-stack]'))b.onclick=()=>sellOneBagStack(b.dataset.sellStack);
 for(const b of document.querySelectorAll('[data-petoff]'))b.onclick=()=>unequipPetGear(b.dataset.petoff);for(const b of document.querySelectorAll('[data-dual-config]'))b.onclick=()=>{petGearTargetId=b.dataset.dualConfig;renderSide(true);};
 for(const b of document.querySelectorAll('[data-gearfilter]'))b.onchange=()=>{if(b.dataset.gearfilter==='rarity')gearFilterRarity=b.value;else if(b.dataset.gearfilter==='tier')gearFilterTier=b.value;else if(b.dataset.gearfilter==='stat')gearFilterStat=b.value;else if(b.dataset.gearfilter==='job')gearFilterJob=b.value;else gearFilterSlot=b.value;renderSide(true)};
+for(const b of $('side').querySelectorAll('[data-compare-mode]'))b.onclick=()=>{const section=b.closest('.gear-compare'),mode=b.dataset.compareMode;for(const panel of section.querySelectorAll('[data-compare-content]'))panel.hidden=panel.dataset.compareContent!==mode;for(const button of section.querySelectorAll('[data-compare-mode]'))button.setAttribute('aria-pressed',String(button.dataset.compareMode===mode));};
 for(const b of document.querySelectorAll('[data-dismantle]'))b.onclick=()=>dismantle(b.dataset.dismantle);
 for(const b of document.querySelectorAll('[data-autosalvage]'))b.onchange=()=>{player.autoSalvage=b.checked;save();renderSide(true)};
 for(const b of document.querySelectorAll('[data-salvageinventory]'))b.onchange=()=>{player.salvageInventory=b.checked;save();renderSide(true)};
