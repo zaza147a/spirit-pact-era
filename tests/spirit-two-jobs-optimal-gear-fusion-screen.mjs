@@ -10,6 +10,8 @@ import {CARDS,SLOTS} from '../dist/catalog.js';
 import {cardAllowedInSlot} from '../dist/card-effects.js';
 import {petStats} from '../dist/catalog.js';
 import {runtime} from './runtime31-helper.mjs';
+import {fileURLToPath} from 'node:url';
+import {resolve} from 'node:path';
 
 const START=2000000000000,DURATION=Number(process.env.SPIRIT_DURATION_MS||120000);
 const SEEDS=process.env.SPIRIT_FAST==='1'?[471122]:[471122,93217,81733];
@@ -20,7 +22,7 @@ const PRESETS={
  str_agi_luk:{STR:150,AGI:150,VIT:41,INT:1,DEX:2,LUK:100},
  hybrid:{STR:150,AGI:90,VIT:23,INT:120,DEX:1,LUK:60}
 };
-async function spiritCandidate(job,fusion,preset){
+export async function spiritCandidate(job,fusion,preset){
  const other=FUSION_TYPES.find(x=>x!==fusion);
  const p=highLevelSpiritPlayer({job,level:210,pairKey:[fusion,other].sort().join('+'),allowBoss:true});
  const pet=p.pets.find(x=>canonicalFusionKey(x)===fusion);assert.ok(pet);
@@ -62,6 +64,7 @@ async function spiritCandidate(job,fusion,preset){
  assert.ok(p.hp>0&&p.hp<999999,'initial HP must equal legal maximum');
  return p;
 }
+if(process.argv[1]&&fileURLToPath(import.meta.url)===resolve(process.argv[1])){
 const jobs=['pactWarrior','spiritCommander'].filter(j=>!process.env.SPIRIT_JOB_FILTER||j===process.env.SPIRIT_JOB_FILTER);
 const rows=[];
 for(const job of jobs)for(const fusion of FUSION_TYPES.filter(f=>!process.env.SPIRIT_FUSION_FILTER||process.env.SPIRIT_FUSION_FILTER===f))for(const preset of ['int_agi_luk','str_agi_luk','hybrid'].filter(x=>!process.env.SPIRIT_PRESET_FILTER||process.env.SPIRIT_PRESET_FILTER===x)){
@@ -97,3 +100,4 @@ const results=jobs.flatMap(job=>[...new Set(rows.filter(r=>r.job===job).map(r=>r
 }))).sort((a,b)=>b.meanDps-a.meanDps);
 console.log(JSON.stringify({complete:true,conditions:'User-supplied optimum armor + pet gear, 200 mythic SSS, level210 sigil8, one fusion, 90% potions, real Worker, three stat presets',
  seeds:SEEDS,durationSeconds:DURATION/1000,results,...(process.env.SPIRIT_REPORT_COMPACT==='1'?{}:{rows})},null,2));
+}

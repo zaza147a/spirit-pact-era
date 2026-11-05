@@ -1,0 +1,54 @@
+{
+  "conditions": "One immortal enemy, 1 guaranteed attack per second, 90% potion threshold, real enemyAttack and autoUsePotions, no auto revive, original final DEF",
+  "hits": 120,
+  "results": [
+    {
+      "job": "pactWarrior",
+      "kind": "physical",
+      "baseAtk": 14665255,
+      "maximumPassingAtk": 97959321,
+      "minimumFailingAtk": 98073893,
+      "maxHp": 275883,
+      "def": 951098,
+      "mdef": 618173,
+      "passingPotions": 120,
+      "firstDefeatHit": 118
+    },
+    {
+      "job": "pactWarrior",
+      "kind": "magic",
+      "baseAtk": 14665255,
+      "maximumPassingAtk": 63587629,
+      "minimumFailingAtk": 63702201,
+      "maxHp": 275883,
+      "def": 951098,
+      "mdef": 618173,
+      "passingPotions": 120,
+      "firstDefeatHit": 120
+    },
+    {
+      "job": "spiritCommander",
+      "kind": "physical",
+      "baseAtk": 14665255,
+      "maximumPassingAtk": 234414935,
+      "minimumFailingAtk": 234644080,
+      "maxHp": 144787,
+      "def": 647072,
+      "mdef": 510457,
+      "passingPotions": 120,
+      "firstDefeatHit": 118
+    },
+    {
+      "job": "spiritCommander",
+      "kind": "magic",
+      "baseAtk": 14665255,
+      "maximumPassingAtk": 160630371,
+      "minimumFailingAtk": 160859516,
+      "maxHp": 144787,
+      "def": 647072,
+      "mdef": 510457,
+      "passingPotions": 120,
+      "firstDefeatHit": 113
+    }
+  ]
+}
