@@ -1,5 +1,5 @@
 import {ensurePetEffects} from './dual-pet-effects.js';
-import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation} from './weapon-compensation.js';
+import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from './weapon-compensation.js?v=6.5.62';
 import {commanderInheritedPetStats} from './commander-owner-growth.js';
 import {spiritTargetDamageFactor} from './spirit-target-damage.js';
 import {chooseDefendingPet,pactOwnerOnlyAggro,commanderPetTargetChance} from './dual-pet-targeting.js';
@@ -1576,7 +1576,9 @@ let compensationChoice=null;
 function refreshWeaponCompensationReminder(){
  let badge=$('weaponCompensationReminder');
  if(!badge){badge=document.createElement('button');badge.id='weaponCompensationReminder';badge.type='button';badge.className='weapon-compensation-reminder';badge.innerHTML='<span>✦ 武器改版感謝禮</span><small>尚未領取 · 點擊自選武器</small>';badge.onclick=showWeaponCompensation;document.body.append(badge);}
- badge.hidden=!player||player.weaponCompensation?.state!=='pending'||!gameRunning||$('gameShell')?.hidden;
+ const correction=compensationCanCorrect(player);
+ badge.hidden=!player||(player.weaponCompensation?.state!=='pending'&&!correction)||!gameRunning||$('gameShell')?.hidden;
+ badge.querySelector('small').textContent=correction?'可補發第二把 · 僅限一次':'尚未領取 · 點擊自選武器';
 }
 function compensationDraft(id){
  const proof=player.weaponCompensation.proof;
@@ -1590,11 +1592,21 @@ function weaponCompensationDialog(){
  modal.innerHTML='<section class="modal"><div class="eyebrow">WEAPON REFORGE GRATITUDE</div><h2 id="weaponCompensationTitle">✦ 武器改版感謝禮</h2><div id="weaponCompensationContent"></div><div class="revive-actions"><button id="weaponCompensationLater" type="button">－ 先縮小，稍後再選</button><button id="weaponCompensationClaim" class="goldbtn" type="button">確認領取（僅一次）</button></div></section>';
  document.body.append(modal);
  $('weaponCompensationLater').onclick=()=>{modal.hidden=true;refreshWeaponCompensationReminder();showNextBossCardNotice();};
- $('weaponCompensationClaim').onclick=()=>{try{const rewarded=claimWeaponCompensation(player,compensationChoice);save();modal.hidden=true;refreshWeaponCompensationReminder();render();toast(`已領取改版武器：${rewarded.map(g=>g.name).join('、')}`);showNextBossCardNotice();}catch(error){toast(error.message);}};
+ $('weaponCompensationClaim').onclick=()=>{try{
+  const correction=compensationCanCorrect(player),proof=player.weaponCompensation.proof,option=compensationWeaponOptions(player.job).find(w=>w.id===compensationChoice?.id);
+  const ids=option?.id==='dualDagger'?['rifle','offDagger']:[option?.id];
+  const details=ids.map((id,i)=>`${GEAR_BASE[id]?.name||id}：${compensationAffixDescription(id,proof,i===1?compensationChoice.offhand:compensationChoice.main).join('、')}`).join('\n');
+  if(!window.confirm(`${correction?'補發第二把（原武器保留）':'確認領取'}，請核對最終詞條：\n\n${details}\n\n確認後${correction?'不可再次補發':'將消耗本次領取資格'}。`))return;
+  const beforeBag=player.bag.slice(),beforeState=player.weaponCompensation;
+  const rewarded=correction?claimWeaponCompensationCorrection(player,compensationChoice):claimWeaponCompensation(player,compensationChoice);
+  const exact=rewarded.every((gear,i)=>{const expected=compensationAffixDescription(gear.id,proof,i===1?compensationChoice.offhand:compensationChoice.main);return expected.length===Object.keys(gear.affixes).length&&expected.every(x=>Object.entries(gear.affixes).some(([k,v])=>affixLabel(k,v)===x));});
+  if(!exact||!save()){player.bag=beforeBag;player.weaponCompensation=beforeState;throw Error('詞條校驗或存檔失敗，領取資格保持不變');}
+  modal.hidden=true;refreshWeaponCompensationReminder();render();toast(`${correction?'已補發':'已領取'}改版武器：${rewarded.map(g=>g.name).join('、')}`);showNextBossCardNotice();
+ }catch(error){toast(error.message);}};
  return modal;
 }
 function renderWeaponCompensation(){
- const proof=player.weaponCompensation.proof,modal=weaponCompensationDialog();
+ const proof=player.weaponCompensation.proof,modal=weaponCompensationDialog(),correction=compensationCanCorrect(player);
  const choices=compensationWeaponOptions(player.job);
  if(!choices.some(w=>w.id===compensationChoice?.id))compensationChoice=compensationDraft(choices[0]?.id);
  const chosen=choices.find(w=>w.id===compensationChoice.id);
@@ -1605,7 +1617,8 @@ function renderWeaponCompensation(){
   return `<div class="comp-affix-panel"><h4>${escapeHtml(GEAR_BASE[id].name)}</h4><p>固定詞條：${locked.map(k=>escapeHtml(AFFIX_NAMES[k])).join('、')}</p><div class="comp-selectors">${Array.from({length:count-2},(_,i)=>selector(i+2)).join('')}${special.length?`<label>神話特殊詞條<select data-comp-field="${field}" data-comp-special="1">${special.map(k=>`<option value="${k}" ${choice.special===k?'selected':''}>${escapeHtml(AFFIX_NAMES[k])}</option>`).join('')}</select></label>`:''}</div><p class="tiny">預覽：${compensationAffixDescription(id,proof,choice).map(escapeHtml).join('、')}</p></div>`;
  };
  const rank=RARITIES.find(r=>r.id===proof.rarity)?.name||proof.rarity;
- $('weaponCompensationContent').innerHTML=`<p>感謝支持！更新前已持有 Lv.190～200 武器的角色，可免費自選一次本職武器。領取後直接放入背包，保留補償資格的 <b>Lv.${proof.level}／${rank}${proof.enhancement?'／'+proof.enhancement+'階':''}</b>，不會取走原武器。<br><b>現在不決定也沒關係，點「先縮小」後可隨時由右側感謝禮提示重新開啟。</b></p><div class="comp-weapon-grid">${choices.map(w=>`<button class="comp-weapon-option ${w.id===chosen.id?'selected':''}" type="button" data-comp-weapon="${w.id}"><b>${escapeHtml(w.name)}</b><span>${escapeHtml(w.trait)}</span></button>`).join('')}</div><div class="comp-selected-trait"><b>選定武器特性</b><p>${escapeHtml(chosen.trait)}</p><small>固有武器特性不會因 SSS 強化而放大；下方自選詞條依裝備等級及品質計算。</small></div>${controls(chosen.id==='dualDagger'?'rifle':chosen.id,'main')}${chosen.id==='dualDagger'?controls('offDagger','offhand'):''}`;
+ $('weaponCompensationContent').innerHTML=`<p>${correction?'✦ 一次性補發：原先領取的武器不回收，這次會額外發放第二把（雙短劍選項則為第二組）。補發成功後不能再次補發。':'感謝支持！更新前已持有 Lv.190～200 武器的角色，可免費自選一次本職武器。'} 武器直接放入背包，保留補償資格的 <b>Lv.${proof.level}／${rank}${proof.enhancement?'／'+proof.enhancement+'階':''}</b>。<br><b>現在不決定也沒關係，點「先縮小」後可隨時由右側感謝禮提示重新開啟。</b></p><div class="comp-weapon-grid">${choices.map(w=>`<button class="comp-weapon-option ${w.id===chosen.id?'selected':''}" type="button" data-comp-weapon="${w.id}"><b>${escapeHtml(w.name)}</b><span>${escapeHtml(w.trait)}</span></button>`).join('')}</div><div class="comp-selected-trait"><b>選定武器特性</b><p>${escapeHtml(chosen.trait)}</p><small>固有武器特性不會因 SSS 強化而放大；下方自選詞條依裝備等級及品質計算。</small></div>${controls(chosen.id==='dualDagger'?'rifle':chosen.id,'main')}${chosen.id==='dualDagger'?controls('offDagger','offhand'):''}`;
+ $('weaponCompensationClaim').textContent=correction?'確認補發第二把（僅一次）':'確認領取（僅一次）';
  for(const b of modal.querySelectorAll('[data-comp-weapon]'))b.onclick=()=>{compensationChoice=compensationDraft(b.dataset.compWeapon);renderWeaponCompensation();};
  for(const s of modal.querySelectorAll('[data-comp-field]'))s.onchange=()=>{
   const part=compensationChoice[s.dataset.compField];
@@ -1615,7 +1628,7 @@ function renderWeaponCompensation(){
  };
 }
 function showWeaponCompensation(){
- if(player?.weaponCompensation?.state!=='pending')return false;
+ if(player?.weaponCompensation?.state!=='pending'&&!compensationCanCorrect(player))return false;
  const options=compensationWeaponOptions(player.job);if(!options.length)return false;
  if(!compensationChoice||!options.some(o=>o.id===compensationChoice.id))compensationChoice=compensationDraft(options[0].id);
  renderWeaponCompensation();weaponCompensationDialog().hidden=false;refreshWeaponCompensationReminder();$('weaponCompensationClaim').focus();return true;
