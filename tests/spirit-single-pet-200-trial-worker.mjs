@@ -4,12 +4,13 @@ import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {rollGear} from '../dist/loot.js';
-import {canonicalFusionKey} from '../dist/spirit-job-rules.js';
+import {canonicalFusionKey,FUSION_TYPES} from '../dist/spirit-job-rules.js';
 
 const epoch=2000000000000,minutes=Number(process.env.SPIRIT_TRIAL_MINUTES||20),duration=minutes*60000;
-const pairKey='attack-magic+defense-support';
 
 async function run(job,fusion){
+ const partner=FUSION_TYPES.find(type=>type!==fusion);
+ const pairKey=[fusion,partner].sort().join('+');
  const p=highLevelSpiritPlayer({level:200,job,pairKey});
  if(process.env.SPIRIT_BUILD==='physical'&&job==='spiritCommander'){
   p.attributes.STR=p.attributes.STR+p.attributes.INT-1;
@@ -42,7 +43,7 @@ async function run(job,fusion){
 }
 
 const rows=[];
-for(const job of ['pactWarrior','spiritCommander'].filter(x=>!process.env.SPIRIT_JOB_FILTER||x===process.env.SPIRIT_JOB_FILTER))for(const fusion of ['attack-magic','defense-support'].filter(x=>!process.env.SPIRIT_FUSION_FILTER||x===process.env.SPIRIT_FUSION_FILTER)){
+for(const job of ['pactWarrior','spiritCommander'].filter(x=>!process.env.SPIRIT_JOB_FILTER||x===process.env.SPIRIT_JOB_FILTER))for(const fusion of FUSION_TYPES.filter(x=>!process.env.SPIRIT_FUSION_FILTER||x===process.env.SPIRIT_FUSION_FILTER)){
  const result=await run(job,fusion),s=result.summary;
  assert.ok(s?.simulated>0&&Number.isFinite(s.damage?.total));
  assert.equal(result.player.pets.length,1);
