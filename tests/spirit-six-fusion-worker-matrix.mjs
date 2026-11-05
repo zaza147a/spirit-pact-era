@@ -82,6 +82,10 @@ async function evaluate(job,level,fusion,build='baseline'){
  const partner=FUSION_TYPES.find(x=>x!==fusion);
  const pairKey=[fusion,partner].sort().join('+');
  const p=highLevelSpiritPlayer({job,level,pairKey,allowBoss});
+ const sigil=Number(process.env.SPIRIT_SIGIL_LEVEL||0);
+ assert.ok(Number.isInteger(sigil)&&sigil>=0&&sigil<=8,'invalid sigil rank');
+ if(sigil)assert.equal(level,210,'sigil ranking requires Lv210');
+ p.dawnSigil=sigil;
  if(BUILD_PRESETS[build]){
   assert.equal(level,210,'optimized stat presets require Lv210');
   p.attributes={...BUILD_PRESETS[build]};
@@ -164,4 +168,4 @@ for(const level of [200,210].filter(x=>!process.env.SPIRIT_LEVEL_FILTER||String(
  for(const fusion of FUSION_TYPES.filter(x=>!process.env.SPIRIT_FUSION_FILTER||x===process.env.SPIRIT_FUSION_FILTER))for(const build of process.env.SPIRIT_BUILD_PRESETS?process.env.SPIRIT_BUILD_PRESETS.split(','):process.env.SPIRIT_BUILD_SWEEP==='1'?['physical','magical']:['baseline'])
   rows.push(await evaluate(job,level,fusion,build));
 }
-console.log(JSON.stringify({condition:`${DURATION/1000}s real Worker; single fusion pet; ${bossCards?'legal boss cards ('+cardStyle+')':'normal cards'}; ${offenseAffixes?'maximum offensive mythic affixes':survivalAffixes?'survival mythic specials':'original mythic specials'}; boss ${allowBoss?'enabled':'escaped'}; sigil0; skill slots ${process.env.SPIRIT_SKILL_INDEXES||'default'}`,rows},null,2));
+console.log(JSON.stringify({condition:`${DURATION/1000}s real Worker; single fusion pet; ${bossCards?'legal boss cards ('+cardStyle+')':'normal cards'}; ${offenseAffixes?'maximum offensive mythic affixes':survivalAffixes?'survival mythic specials':'original mythic specials'}; boss ${allowBoss?'enabled':'escaped'}; sigil${Number(process.env.SPIRIT_SIGIL_LEVEL||0)}; skill slots ${process.env.SPIRIT_SKILL_INDEXES||'default'}`,rows},null,2));
