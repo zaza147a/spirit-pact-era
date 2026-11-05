@@ -398,10 +398,10 @@
       "petSp": "high"
     },
     "potionThresholds": {
-      "playerHp": 45,
-      "playerSp": 45,
-      "petHp": 45,
-      "petSp": 45
+      "playerHp": 90,
+      "playerSp": 90,
+      "petHp": 90,
+      "petSp": 90
     },
     "fusionSettings": {
       "tier": 1,
