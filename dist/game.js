@@ -62,6 +62,7 @@ import {rollGear,rollPetGear,rebalanceGear,gearStatValue,affixRange,normalizeBag
 import {spiritEquipmentSplit,isSpiritJob,spiritThirdJobExtraError,SPIRIT_TRIAL_ID,SPIRIT_TRIAL_KILLS,spiritQuestState,spiritGrowthGuide,startSpiritQuest,recordSpiritQuestVictory,completeSpiritQuest} from './spirit-job-rules.js';
 import {activePetRoster,normalizeDualPetState,canSetSecondaryPet,secondPetDamageFactor,equipmentTargetPet} from './dual-pet-formation.js';
 import {spiritSinglePetProfile} from './spirit-single-pet-profiles.js';
+import {synchronizeCommanderCards} from './commander-card-sync.js';
 import {createSpiritProcState,advanceSpiritProc} from './spirit-single-pet-procs.js';
 import {outgoingHitDamage,incomingMonsterDamage,monsterAttackPower,monsterDefenseAgainst,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterHitChance,monsterCombatStats,monsterRuntimeStats,jobZoneOutputFactor,LEVEL_CAPS} from './combat-balance.js?v=6.5.0';
 import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.5.45';
@@ -89,7 +90,7 @@ function petStats(pet){
  if(player?.job!=='spiritCommander'||!pet||pet.id!==player.activePetId||!player.gear||!player.attributes)return base;
  // The Commander shares owner vitality with its only active companion.
  // Return a new view so cached/base companion data remains untouched.
- return {...base,hp:Math.max(base.hp,Math.round(base.hp+Math.max(0,stat('hp'))*.25))};
+ return {...base,hp:commanderTransferredPetStats(pet,base).hp};
 }
 function basePetStats(pet){
  if(!offlineSimulation||pet?.level!==200||globalThis.__spiritDisablePetStatsCache)return rawPetStats(pet);
@@ -197,16 +198,20 @@ function pactAssimilationBonus(type){
 }
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
+ const cardEffects=Object.fromEntries(['atk','matk','hp','mp','def','mdef','hit','flee',
+  'atkPct','matkPct','hpPct','mpPct','defPct','mdefPct','fleePct','aspdPct',
+  'crit','critDmg','ignoreDef','magicDamage','damageReduction',
+  'STR','AGI','VIT','INT','DEX','LUK'].map(key=>[key,cardBonus(key)]));
+ const uncoupled=(type,pct)=>Math.max(0,Math.round(stat(type)/(1+(cardEffects[pct]||0)/100)-(cardEffects[type]||0)));
  // Derive from current owner combat stats every time; never mutate pet's cached base.
  const inherited=commanderInheritedPetStats({...base,hp:basePetStats(pet).hp},{
-  atk:stat('atk'),rawAtk:rawStat('atk'),matk:stat('matk'),rawMatk:rawStat('matk'),
-  def:stat('def'),mdef:stat('mdef'),hp:stat('hp'),damageReduction:stat('damageReduction'),
+  atk:uncoupled('atk','atkPct'),rawAtk:rawStat('atk')-cardEffects.atk,
+  matk:uncoupled('matk','matkPct'),rawMatk:rawStat('matk')-cardEffects.matk,
+  def:uncoupled('def','defPct'),mdef:uncoupled('mdef','mdefPct'),
+  hp:uncoupled('hp','hpPct'),damageReduction:Math.max(0,stat('damageReduction')-cardEffects.damageReduction),
   // Both equipped affixes (including upgraded tiers) and cards train the pets.
   // Base equipment ATK/MATK/DEF/MDEF is already included in stat() above.
-  cardPower:(cardBonus('atkPct')+cardBonus('matkPct'))*.70
-   +cardBonus('crit')*.35+cardBonus('critDmg')*.16
-   +cardBonus('aspdPct')*.45+cardBonus('magicDamage')*.40
-   +cardBonus('ignoreDef')*.18,
+  cardPower:0, // card power is copied directly below, never multiplied twice
   gearPower:Object.values(player.gear).reduce((n,item)=>{
    if(!item)return n;
    const e=enhancedAffixes(item);
@@ -216,18 +221,19 @@ function commanderTransferredPetStats(pet,base){
     +(e.ignoreDef||0)*.18;
   },0)
  });
+ const synced=synchronizeCommanderCards(inherited,cardEffects);
  // Pure-magic fusion converts part of its inherited physical power into
  // spellblade power. Other fusion types retain their original attack channels.
  if(spiritSinglePetProfile(player,pet)?.kind==='magic'){
   const magicAttunement=Math.round(inherited.atk*.55);
-  inherited.matk+=magicAttunement;
+  synced.matk+=magicAttunement;
   if(offlineMetrics)offlineMetrics.magicAttunement={atk:inherited.atk,bonusMatk:magicAttunement};
  }
  if(spiritSinglePetProfile(player,pet)?.fusion==='attack-defense'){
   // Bulwark assault: inherited defenses sharpen the pet's active physical main.
   // This is independent of damage taken and never grants counterattacks.
   const bulwarkPower=Math.round(Math.min((inherited.def+inherited.mdef)*.18,170000));
-  inherited.atk+=bulwarkPower;
+  synced.atk+=bulwarkPower;
   if(offlineMetrics)offlineMetrics.bulwarkAssault={bonusAtk:bulwarkPower};
  }
  // Guardian fusion converts both defenses and healing potency into active
@@ -239,10 +245,10 @@ function commanderTransferredPetStats(pet,base){
   const guardPower=Math.round(Math.min((inherited.def+inherited.mdef)*3.5+guardianHealingPower*170,1850000));
   if(offlineMetrics)offlineMetrics.guardianConversion={def:inherited.def,mdef:inherited.mdef,guardPower};
   const guardTempo=18;
-  return {...inherited,atk:inherited.atk+guardPower,matk:inherited.matk+guardPower,
-   aspd:Math.min(193,(inherited.aspd||140)+guardTempo)};
+  return {...synced,atk:synced.atk+guardPower,matk:synced.matk+guardPower,
+   aspd:Math.min(193,(synced.aspd||140)+guardTempo)};
  }
- return inherited;
+ return synced;
 }
 function setPetStance(id,stance){return;}
 function effectsForPet(pet){return pet?.id&&pet.id!==player?.activePetId?ensurePetEffects(secondaryPetEffects,pet.id):petEffects;}
@@ -1122,8 +1128,8 @@ function enemyAttack(){
  const roll=rand(85,115)/100;
  if(targetPet){
   const s=player.job==='spiritCommander'?commanderTransferredPetStats(pet,petStats(pet)):petStats(pet);
-  if(Math.random()>monsterHitChance(attacker.hit,s.flee,attacker.attackType==='magic'))message(`${pet.nickname} 閃避了 ${SPECIES[attacker.id].name} 的攻擊。`,'good');
-  else{petWasHit=true;const d=Math.max(1,Math.round(incomingMonsterDamage(monsterAttackPower(attacker),attacker.attackType==='magic'?s.mdef:s.def,roll)*(1-(s.damageReduction||0)/100)*(1-(classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0))*tacticIncomingFactor(currentTactic(),true))),capacity=pet.hp+(fx.shield||0),absorbed=Math.min(fx.shield||0,d),effective=Math.min(pet.hp,d-absorbed);fx.shield=Math.max(0,(fx.shield||0)-absorbed);pet.hp=Math.max(0,pet.hp-(d-absorbed));if(offlineMetrics)offlineMetrics.spiritLastPetHit={at:gameNow(),damage:d,absorbed,effective,preHp:pet.hp+effective,attacker:attacker.id,attackerAtk:attacker.atk,petDef:s.def,petMdef:s.mdef,petReduction:s.damageReduction};record(report,'shieldPrevented',absorbed);record(report,'petTaken',effective);if(absorbed>0)spiritReactiveEvent('petShieldLost');if(effective>0){spiritReactiveEvent('petDamaged');spiritReactiveEvent('petLowHp');}record(report,'petTanked',effective);record(report,'petProtection',Math.max(0,Math.min(capacity,Math.round(attacker.atk*roll))-Math.min(capacity,d)));if(role==='defense')record(report,'interceptPrevented',Math.min(player.hp,incomingMonsterDamage(attacker.atk,stat('def'),roll)));message(`⚔ ${SPECIES[attacker.id].name} 命中 ${pet.nickname}，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad','damage');if(role==='defense')emitEvent('pet_guard');if(!pet.hp){pet.reviveAt=gameNow()+PET_REVIVE_MS;petDeathSequence++;fx.shield=0;if(pet.id!==player.activePetId){delete secondaryPetEffects[pet.id];delete timers.petById?.[pet.id];delete timers.petAbilityById?.[pet.id];}message(`${pet.nickname} 暫時失去戰鬥能力，請使用藥水；人物戰敗復活時也會恢復夥伴。`,'bad','damage');if(player.job==='spiritCommander'&&resolveSpiritPairDefeat())return;}}
+  if(Math.random()>monsterHitChance(attacker.hit,s.flee,attacker.attackType==='magic')){if(player.job==='spiritCommander')bossCardDodge(player,CARDS,gameNow(),s.hp,pet);message(`${pet.nickname} 閃避了 ${SPECIES[attacker.id].name} 的攻擊。`,'good');}
+  else{petWasHit=true;let d=Math.max(1,Math.round(incomingMonsterDamage(monsterAttackPower(attacker),attacker.attackType==='magic'?s.mdef:s.def,roll)*(1-(s.damageReduction||0)/100)*(1-(classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0))*tacticIncomingFactor(currentTactic(),true)));if(player.job==='spiritCommander'){const cardGuard=bossCardIncoming(player,CARDS,{now:gameNow(),boss:!!attacker.boss,magic:attacker.attackType==='magic',damage:d,maxHp:s.hp,currentHp:pet.hp});d=cardGuard.damage;if(cardGuard.shield)fx.shield=Math.min(Math.round(s.hp*.25),(fx.shield||0)+cardGuard.shield);if(cardGuard.heal)pet.hp=Math.min(s.hp,pet.hp+cardGuard.heal);}const capacity=pet.hp+(fx.shield||0),absorbed=Math.min(fx.shield||0,d),effective=Math.min(pet.hp,d-absorbed);fx.shield=Math.max(0,(fx.shield||0)-absorbed);pet.hp=Math.max(0,pet.hp-(d-absorbed));if(offlineMetrics)offlineMetrics.spiritLastPetHit={at:gameNow(),damage:d,absorbed,effective,preHp:pet.hp+effective,attacker:attacker.id,attackerAtk:attacker.atk,petDef:s.def,petMdef:s.mdef,petReduction:s.damageReduction};record(report,'shieldPrevented',absorbed);record(report,'petTaken',effective);if(absorbed>0)spiritReactiveEvent('petShieldLost');if(effective>0){spiritReactiveEvent('petDamaged');spiritReactiveEvent('petLowHp');}record(report,'petTanked',effective);record(report,'petProtection',Math.max(0,Math.min(capacity,Math.round(attacker.atk*roll))-Math.min(capacity,d)));if(role==='defense')record(report,'interceptPrevented',Math.min(player.hp,incomingMonsterDamage(attacker.atk,stat('def'),roll)));message(`⚔ ${SPECIES[attacker.id].name} 命中 ${pet.nickname}，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad','damage');if(role==='defense')emitEvent('pet_guard');if(!pet.hp){pet.reviveAt=gameNow()+PET_REVIVE_MS;petDeathSequence++;fx.shield=0;if(pet.id!==player.activePetId){delete secondaryPetEffects[pet.id];delete timers.petById?.[pet.id];delete timers.petAbilityById?.[pet.id];}message(`${pet.nickname} 暫時失去戰鬥能力，請使用藥水；人物戰敗復活時也會恢復夥伴。`,'bad','damage');if(player.job==='spiritCommander'&&resolveSpiritPairDefeat())return;}}
 
  }else if(Math.random()>ownerHitChance(attacker.hit,stat('flee'),attacker.attackType==='magic')){bossCardDodge(player,CARDS,gameNow(),stat('hp'));message('角色閃避了敵人的攻擊。','good');emitEvent('dodge');}
  else{
