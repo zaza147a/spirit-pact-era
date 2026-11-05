@@ -10,7 +10,7 @@ export function commanderOwnerGrowth(current,raw){
 export function commanderInheritedPetStats(base,owner){
  const atk=nonnegative(owner.atk),matk=nonnegative(owner.matk);
  // A character's offensive card and equipped affix effects strengthen pet training.
- // Share it with both pets, with a 36% shared offense cap to avoid runaway two-pet DPS.
+ // The one companion receives earned offense with a 36% growth cap.
  const training=Math.min(.28,(nonnegative(owner.cardPower)+nonnegative(owner.gearPower))/100);
  const physical=Math.min(.36,commanderOwnerGrowth(atk,owner.rawAtk)+training);
  const magical=Math.min(.36,commanderOwnerGrowth(matk,owner.rawMatk)+training);
@@ -22,5 +22,7 @@ export function commanderInheritedPetStats(base,owner){
   atk:Math.round((base.atk+atk*.30)*trainedMultiplier(physical)*cultivation),
   matk:Math.round((base.matk+matk*.30)*trainedMultiplier(magical)*cultivation),
   def:base.def+nonnegative(owner.def)*.35,
-  mdef:base.mdef+nonnegative(owner.mdef)*.35};
+  mdef:base.mdef+nonnegative(owner.mdef)*.35,
+  hp:Math.round(nonnegative(base.hp)+nonnegative(owner.hp)*.25),
+  damageReduction:Math.min(40,nonnegative(base.damageReduction)+nonnegative(owner.damageReduction)*.35)};
 }
