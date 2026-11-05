@@ -177,6 +177,7 @@ function queueBossCardNotice(id){
  bossCardNotices.push(id);if(bossCardNoticeOpen){const next=document.getElementById('bossCardNoticeNext');if(next)next.textContent='收下卡片 · 下一張';}showNextBossCardNotice();
 }
 function showNextBossCardNotice(){
+ if(typeof document!=='undefined'&&typeof refreshWeaponCompensationReminder==='function')refreshWeaponCompensationReminder();
  if(bossCardNoticeOpen||!bossCardNotices.length||!gameRunning||!$('offlineModal')?.hidden)return;
  const id=bossCardNotices.shift(),card=CARDS[id];if(!card)return showNextBossCardNotice();
  bossCardNoticeOpen=true;
@@ -1528,6 +1529,11 @@ async function simulateOffline(state,now=Date.now(),progress=()=>{}){
  }finally{clearStatSnapshots();offlineClock=null;offlineSimulation=false;offlineMetrics=null;}
 }
 let compensationChoice=null;
+function refreshWeaponCompensationReminder(){
+ let badge=$('weaponCompensationReminder');
+ if(!badge){badge=document.createElement('button');badge.id='weaponCompensationReminder';badge.type='button';badge.className='weapon-compensation-reminder';badge.innerHTML='<span>✦ 武器改版感謝禮</span><small>尚未領取 · 點擊自選武器</small>';badge.onclick=showWeaponCompensation;document.body.append(badge);}
+ badge.hidden=!player||player.weaponCompensation?.state!=='pending'||!gameRunning||$('gameShell')?.hidden;
+}
 function compensationDraft(id){
  const proof=player.weaponCompensation.proof;
  const make=weaponId=>({regular:compensationNormalKeys(weaponId).slice(0,compensationAffixCount(proof.rarity)),special:compensationSpecialKeys(proof.rarity)[0]||null});
@@ -1537,10 +1543,10 @@ function weaponCompensationDialog(){
  let modal=$('weaponCompensationModal');if(modal)return modal;
  modal=document.createElement('div');modal.id='weaponCompensationModal';modal.className='overlay weapon-compensation-modal';modal.hidden=true;
  modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','weaponCompensationTitle');
- modal.innerHTML='<section class="modal"><div class="eyebrow">WEAPON REFORGE GRATITUDE</div><h2 id="weaponCompensationTitle">✦ 武器改版感謝禮</h2><div id="weaponCompensationContent"></div><div class="revive-actions"><button id="weaponCompensationLater" type="button">稍後領取</button><button id="weaponCompensationClaim" class="goldbtn" type="button">確認領取（僅一次）</button></div></section>';
+ modal.innerHTML='<section class="modal"><div class="eyebrow">WEAPON REFORGE GRATITUDE</div><h2 id="weaponCompensationTitle">✦ 武器改版感謝禮</h2><div id="weaponCompensationContent"></div><div class="revive-actions"><button id="weaponCompensationLater" type="button">－ 先縮小，稍後再選</button><button id="weaponCompensationClaim" class="goldbtn" type="button">確認領取（僅一次）</button></div></section>';
  document.body.append(modal);
- $('weaponCompensationLater').onclick=()=>{modal.hidden=true;showNextBossCardNotice();};
- $('weaponCompensationClaim').onclick=()=>{try{const rewarded=claimWeaponCompensation(player,compensationChoice);save();modal.hidden=true;render();toast(`已領取改版武器：${rewarded.map(g=>g.name).join('、')}`);showNextBossCardNotice();}catch(error){toast(error.message);}};
+ $('weaponCompensationLater').onclick=()=>{modal.hidden=true;refreshWeaponCompensationReminder();showNextBossCardNotice();};
+ $('weaponCompensationClaim').onclick=()=>{try{const rewarded=claimWeaponCompensation(player,compensationChoice);save();modal.hidden=true;refreshWeaponCompensationReminder();render();toast(`已領取改版武器：${rewarded.map(g=>g.name).join('、')}`);showNextBossCardNotice();}catch(error){toast(error.message);}};
  return modal;
 }
 function renderWeaponCompensation(){
@@ -1555,7 +1561,7 @@ function renderWeaponCompensation(){
   return `<div class="comp-affix-panel"><h4>${escapeHtml(GEAR_BASE[id].name)}</h4><p>固定詞條：${locked.map(k=>escapeHtml(AFFIX_NAMES[k])).join('、')}</p><div class="comp-selectors">${Array.from({length:count-2},(_,i)=>selector(i+2)).join('')}${special.length?`<label>神話特殊詞條<select data-comp-field="${field}" data-comp-special="1">${special.map(k=>`<option value="${k}" ${choice.special===k?'selected':''}>${escapeHtml(AFFIX_NAMES[k])}</option>`).join('')}</select></label>`:''}</div><p class="tiny">預覽：${compensationAffixDescription(id,proof,choice).map(escapeHtml).join('、')}</p></div>`;
  };
  const rank=RARITIES.find(r=>r.id===proof.rarity)?.name||proof.rarity;
- $('weaponCompensationContent').innerHTML=`<p>感謝支持！更新前已持有 Lv.190～200 武器的角色，可免費自選一次本職武器。領取後直接放入背包，保留補償資格的 <b>Lv.${proof.level}／${rank}${proof.enhancement?'／'+proof.enhancement+'階':''}</b>，不會取走原武器。</p><div class="comp-weapon-grid">${choices.map(w=>`<button class="comp-weapon-option ${w.id===chosen.id?'selected':''}" type="button" data-comp-weapon="${w.id}"><b>${escapeHtml(w.name)}</b><span>${escapeHtml(w.trait)}</span></button>`).join('')}</div><div class="comp-selected-trait"><b>選定武器特性</b><p>${escapeHtml(chosen.trait)}</p><small>固有武器特性不會因 SSS 強化而放大；下方自選詞條依裝備等級及品質計算。</small></div>${controls(chosen.id==='dualDagger'?'rifle':chosen.id,'main')}${chosen.id==='dualDagger'?controls('offDagger','offhand'):''}`;
+ $('weaponCompensationContent').innerHTML=`<p>感謝支持！更新前已持有 Lv.190～200 武器的角色，可免費自選一次本職武器。領取後直接放入背包，保留補償資格的 <b>Lv.${proof.level}／${rank}${proof.enhancement?'／'+proof.enhancement+'階':''}</b>，不會取走原武器。<br><b>現在不決定也沒關係，點「先縮小」後可隨時由右側感謝禮提示重新開啟。</b></p><div class="comp-weapon-grid">${choices.map(w=>`<button class="comp-weapon-option ${w.id===chosen.id?'selected':''}" type="button" data-comp-weapon="${w.id}"><b>${escapeHtml(w.name)}</b><span>${escapeHtml(w.trait)}</span></button>`).join('')}</div><div class="comp-selected-trait"><b>選定武器特性</b><p>${escapeHtml(chosen.trait)}</p><small>固有武器特性不會因 SSS 強化而放大；下方自選詞條依裝備等級及品質計算。</small></div>${controls(chosen.id==='dualDagger'?'rifle':chosen.id,'main')}${chosen.id==='dualDagger'?controls('offDagger','offhand'):''}`;
  for(const b of modal.querySelectorAll('[data-comp-weapon]'))b.onclick=()=>{compensationChoice=compensationDraft(b.dataset.compWeapon);renderWeaponCompensation();};
  for(const s of modal.querySelectorAll('[data-comp-field]'))s.onchange=()=>{
   const part=compensationChoice[s.dataset.compField];
@@ -1568,7 +1574,7 @@ function showWeaponCompensation(){
  if(player?.weaponCompensation?.state!=='pending')return false;
  const options=compensationWeaponOptions(player.job);if(!options.length)return false;
  compensationChoice=compensationDraft(options[0].id);
- renderWeaponCompensation();weaponCompensationDialog().hidden=false;$('weaponCompensationClaim').focus();return true;
+ renderWeaponCompensation();weaponCompensationDialog().hidden=false;refreshWeaponCompensationReminder();$('weaponCompensationClaim').focus();return true;
 }
 function showOfflineReport(summary){
  if(!summary)return;const modal=$('offlineModal');$('offlineTitle').textContent='歡迎回來，離線掛機已結算';
@@ -1845,5 +1851,7 @@ const normalizeBeforeWeaponCompensation=normalize;
 normalize=function(p){initializeWeaponCompensation(p);return normalizeBeforeWeaponCompensation(p);};
 const freshBeforeWeaponCompensation=fresh;
 fresh=function(...args){const p=freshBeforeWeaponCompensation(...args);p.weaponCompensation={version:WEAPON_COMPENSATION_VERSION,state:'ineligible'};return p;};
+const returnBeforeWeaponCompensation=returnToEntry;
+returnToEntry=function(...args){const done=returnBeforeWeaponCompensation(...args);if(done)refreshWeaponCompensationReminder();return done;};
 init();
 import {exchangeOverflowGold,sellSurplusPotions} from './economy-limits.js?v=6.5.1';
