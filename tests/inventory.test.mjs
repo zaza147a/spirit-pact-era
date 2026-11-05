@@ -15,8 +15,21 @@ test('class eligibility includes universal gear, excludes other classes, and lea
 });
 async function app(){let source=readFileSync(new URL('game.js',root),'utf8'),context={console,document:{getElementById:()=>({})},localStorage:{setItem:()=>{}}};
  for(const match of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const module=await import(new URL(match[2],root));for(const name of match[1].split(',').map(n=>n.trim())){const[original,alias]=name.split(/\s+as\s+/);context[alias||original]=module[original];}}
- source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,gearComparison,equippedCardDisplay,dismantle,renderBag,setCategory:c=>bagCategory=c};render=()=>{};message=()=>{};toast=()=>{};save=()=>{};');vm.createContext(context);vm.runInContext(source,context);return context;
+ source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,gearComparison,cardComparison,equippedCardDisplay,dismantle,renderBag,setCategory:c=>bagCategory=c};render=()=>{};message=()=>{};toast=()=>{};save=()=>{};');vm.createContext(context);vm.runInContext(source,context);return context;
 }
+test('new comparisons identify source and candidate unambiguously and highlight the direction of changes',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('直覺對比','mage'));a.setPlayer(p);
+ const oldGear=p.gear.rightHand,preview=a.gearComparison({id:'oneStaff',name:'候選法杖',uid:'test-new',level:1,rarity:'legendary',affixes:{matk:80,INT:9}});
+ assert.match(preview,/目前穿戴/);assert.match(preview,/準備穿戴/);assert.match(preview,/候選法杖/);assert.match(preview,/能力取捨/);assert.match(preview,/展開全部屬性對比/);
+ assert.equal(p.gear.rightHand,oldGear);
+ const slot='rightHand',bossId=Object.keys(c.CARDS).find(id=>c.CARDS[id].boss&&c.CARDS[id].slots.includes(slot));
+ const regularId=Object.keys(c.CARDS).find(id=>!c.CARDS[id].boss&&c.CARDS[id].slots.includes(slot));
+ p.sockets[slot]=regularId;
+ const card=a.cardComparison(bossId,slot);
+ assert.ok(card.indexOf(c.CARDS[regularId].name)<card.indexOf(c.CARDS[bossId].name));
+ assert.match(card,/目前鑲嵌 · 將卸下/);assert.match(card,/背包候選 · 將鑲入/);assert.match(card,/基本能力差異/);assert.match(card,/特殊觸發/);
+ assert.equal(p.sockets[slot],regularId);
+});
 test('player and pet comparisons include MATK, always show ATK/MATK even when unchanged, and restore equipped gear',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('比較測試','mage'));a.setPlayer(p);
  const staff={id:'oneStaff',uid:'new-staff',level:1,rarity:'common',affixes:{matk:10}};const snapshot=JSON.stringify({gear:p.gear,sockets:p.sockets});assert.match(a.gearComparison(staff),/魔法攻擊/);assert.equal(JSON.stringify({gear:p.gear,sockets:p.sockets}),snapshot);
