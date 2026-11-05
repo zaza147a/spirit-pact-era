@@ -1,15 +1,6 @@
 name: Spirit gold costume acceptance (test branch)
 
 on:
-  push:
-    branches: [feature/spirit-tamer-dual-pets]
-    paths:
-      - 'dist/assets/cosmetics/**'
-      - 'dist/cosmetic-gallery.js'
-      - 'dist/cosmetic-gallery.css'
-      - 'tests/cosmetic-gallery.test.mjs'
-      - 'scripts/browser/spirit-gold-acceptance.mjs'
-      - '.github/workflows/spirit-gold-costume.yml'
   workflow_dispatch:
 
 permissions:
