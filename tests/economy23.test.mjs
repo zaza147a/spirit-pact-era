@@ -10,8 +10,12 @@ test('all eight named stages have matching shards and higher-tier common core be
  assert.deepEqual(GEAR_TIERS.map(t=>t.name),['晨曦','征途','星輝','天啟','聖域','創世','蒼穹','永恆','星瀾','聖誓','界源']);
  for(const t of GEAR_TIERS)for(const kind of ['weapon','armor'])assert.ok(LOOT_ITEMS[`shard_${kind}_${t.tier}`].name.startsWith(t.name));
  const all={...GEAR_BASE,...PET_GEAR_BASE};for(const id of Object.keys(all)){const roller=PET_GEAR_BASE[id]?rollPetGear:rollGear,key=primaryAffix(id);for(let tier=1;tier<11;tier++){const low=roller(id,GEAR_TIERS[tier-1].max,'mythic',()=>.999999),high=roller(id,GEAR_TIERS[tier].min,'common',()=>0);assert.ok(gearStatValue(high,key)>gearStatValue(low,key),`${id}/${tier}/${key}`);}}
- // Main ATK/MATK no longer gains a hidden unscaled weapon-base advantage.
- for(let t=1;t<8;t++){const lows=Object.keys(GEAR_BASE).filter(id=>GEAR_BASE[id].weaponType&&primaryAffix(id)==='atk').map(id=>gearStatValue(rollGear(id,GEAR_TIERS[t-1].max,'mythic',()=>.999999),'atk'));const highs=Object.keys(GEAR_BASE).filter(id=>GEAR_BASE[id].weaponType&&primaryAffix(id)==='atk').map(id=>gearStatValue(rollGear(id,GEAR_TIERS[t].min,'common',()=>0),'atk'));assert.ok(Math.min(...highs)>Math.max(...lows));}
+ // Published weapon-specific primary affix ranges differ between weapon types.
+ // Cross-weapon minimum/maximum comparisons are no longer valid; the per-item
+ // tier guarantee above remains mandatory for every weapon and armor piece.
+ const tier=GEAR_TIERS[8].min;
+ assert.ok(rollGear('twoSword',tier,'mythic',()=>.5).affixes.atk>rollGear('blade',tier,'mythic',()=>.5).affixes.atk);
+ assert.ok(rollGear('offDagger',tier,'mythic',()=>.5).affixes.atk<rollGear('rifle',tier,'mythic',()=>.5).affixes.atk);
 });
 test('rarity increases core bands and affix count; only mythic contains a special trait, old gear migration is stable',()=>{
  for(const tier of GEAR_TIERS){let last=0;for(const quality of RARITIES){const g=rollGear('longBow',tier.min,quality.id,()=>.5);assert.equal(Object.keys(g.affixes).length,quality.count);assert.ok(g.affixes.atk>=last);last=g.affixes.atk;assert.equal(Object.keys(g.affixes).filter(k=>SPECIAL_AFFIXES.has(k)).length,quality.id==='mythic'?1:0);assert.equal(g.powerVersion,50);}}
