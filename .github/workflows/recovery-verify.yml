@@ -1,7 +1,5 @@
 name: Recovery branch verification
 on:
-  push:
-    branches: [feature/humanoid-pet-evolution]
   workflow_dispatch:
 concurrency:
   group: recovery-${{ github.ref }}
