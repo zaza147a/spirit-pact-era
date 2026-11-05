@@ -178,7 +178,7 @@ function spiritAttackProcBonus(key,secondary=false){
 function pactAssimilationBonus(type){
  if(player?.job!=='pactWarrior')return 0;
  const magicAssimilation=spiritSinglePetProfile(player,activePet())?.kind==='magic';
- const ratios={atk:3.20,matk:magicAssimilation?3.00:1.65,def:.28,mdef:.28,hp:.16};
+ const ratios={atk:3.20,matk:magicAssimilation?3.00:1.65,def:.42,mdef:.42,hp:.28};
  if(!ratios[type])return 0;
  return activePetRoster(player).filter(p=>p.hp>0).reduce((total,pet)=>{
   const base=petStats(pet)[type]; // already includes pet level, rarity, evolution, IV and flat equipment
