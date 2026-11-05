@@ -105,7 +105,7 @@ test('guardian healing produces a capped next-hit echo without affecting other p
  const pet={id:'guard',species:'shell',fusion:{main:'defense',sub:'support'},hp:500};
  const context={player:{job:'spiritCommander',thirdJob:true,hp:1000},enemy:{id:'mob'},activePet:()=>pet,
   spiritSinglePetProfile,advanceSpiritProc,createSpiritProcState,spiritProcState:createSpiritProcState(),
-  spiritGuardianEchoPct:0,spiritGuardianEchoPetId:null,spiritReactiveCharge:null,
+  spiritGuardianEchoPct:0,spiritGuardianEchoPetId:null,spiritGuardianWave:null,spiritReactiveCharge:null,offlineMetrics:null,
   stat:()=>1000,petStats:()=>({hp:1000}),gameNow:()=>10000,
   effectsForPet:()=>({shield:0}),grantPlayerShield:()=>{},bossHitMeta:{magical:false}};
  vm.runInNewContext(snippet+'\nthis.event=spiritReactiveEvent',context);
@@ -115,6 +115,7 @@ test('guardian healing produces a capped next-hit echo without affecting other p
  assert.equal(pet.hp,530);
  assert.ok(context.spiritGuardianEchoPct>0&&context.spiritGuardianEchoPct<=.5);
  assert.equal(context.spiritGuardianEchoPetId,'guard');
+ assert.equal(context.spiritGuardianWave.petId,'guard');
 });
 
 test('both pact and commander share linked defeat, while legacy jobs are untouched',()=>{
