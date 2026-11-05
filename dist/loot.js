@@ -25,6 +25,17 @@ export const GEAR_BASE={
 Object.assign(GEAR_BASE,{spellFist:{name:'符紋魔拳套',slot:'rightHand',weaponType:'spellfist',hands:2,matk:12,aspdPct:5,weaponTrait:'符紋連擊：攻速加成 +5%（固定，不隨強化）',cost:190,jobs:['sage']},knuckles:{name:'修行拳套',slot:'rightHand',weaponType:'knuckle',hands:2,atk:12,cost:190,jobs:['monk']},instrument:{name:'旅歌豎琴',slot:'rightHand',weaponType:'instrument',hands:2,atk:12,critDmg:30,damageReduction:15,weaponTrait:'協奏庇護：固有暴擊傷害 +30%、最終減傷 +15%（均不隨強化，減傷受上限限制）',cost:190,jobs:['performer']}});
 for(const [id,meta] of Object.entries(SECOND_JOBS))for(const base of Object.values(GEAR_BASE))if(base.jobs?.includes(meta.parent)&&!base.jobs.includes(id))base.jobs.push(id);
 GEAR_BASE.katar.jobs=['assassin'];GEAR_BASE.offDagger.jobs=['assassin'];GEAR_BASE.twoSword.jobs=['knight'];GEAR_BASE.twoSpear.jobs=['knight'];GEAR_BASE.oneSpear.jobs=['knight','crusader'];GEAR_BASE.mace.jobs=['acolyte','priest','spiritist'];GEAR_BASE.blade.jobs.push('pactWarrior');GEAR_BASE.oneStaff.jobs.push('spiritCommander');GEAR_BASE.crossbow.jobs=['hunter'];
+// The job-specific source-strengthening trait operates before enemy defense,
+// not as a final-damage buff; display its exact scope for existing saved gear.
+for(const [id,trait] of Object.entries({
+ rifle:'逐影者專屬：精準節奏，主角物理攻擊來源 ×0.86',
+ shortBow:'遊俠專屬：高速連射，主角攻擊來源 ×1.13',
+ longBow:'遊俠專屬：蓄力狙擊，主角攻擊來源 ×1.04',
+ crossbow:'遊俠專屬：重弩貫穿，主角攻擊來源 ×1.055',
+ oneStaff:'元素使專屬：持盾法杖共振，主角攻擊來源 ×1.38',
+ spellFist:'元素使專屬：符紋魔拳連擊，主角攻擊來源 ×1.25',
+ instrument:'宮廷樂師專屬：戰歌協奏，主角攻擊來源 ×1.23'
+ }))GEAR_BASE[id].weaponTrait=[GEAR_BASE[id].weaponTrait,trait].filter(Boolean).join('；');
 export const PET_GEAR_BASE={petHelm:{name:'靈獸角冠',petSlot:'head',cost:65},petCirclet:{name:'靈獸星環',petSlot:'head',cost:65},petArmor:{name:'靈獸戰甲',petSlot:'body',cost:105},petRobe:{name:'靈獸法袍',petSlot:'body',cost:105},petBoots:{name:'靈獸迅足',petSlot:'shoes',cost:70},petGreaves:{name:'靈獸護足',petSlot:'shoes',cost:70}};
 export const PET_SLOTS={head:'頭部',body:'身體',shoes:'鞋'};
 export const RARITIES=[{id:'common',name:'普通',count:2,weight:700,color:'common'},{id:'rare',name:'稀有',count:3,weight:250,color:'rare'},{id:'uncommon',name:'罕見',count:4,weight:40,color:'uncommon'},{id:'legendary',name:'傳說',count:5,weight:9,color:'legendary'},{id:'mythic',name:'神話',count:6,weight:1,color:'mythic'}];
