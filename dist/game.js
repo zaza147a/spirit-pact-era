@@ -215,10 +215,14 @@ function commanderTransferredPetStats(pet,base){
     +(e.ignoreDef||0)*.18;
   },0)
  });
- // Guardian fusion converts its own defenses into offensive power; the attack
- // source remains the pet, while guard-triggered healing fuels its resonance.
+ // Guardian fusion converts both defenses and healing potency into active
+ // offensive power. The attack source remains the pet; no counterattack triggers.
  if(spiritSinglePetProfile(player,pet)?.fusion==='defense-support'){
-  const guardPower=Math.round((inherited.def+inherited.mdef)*.65);
+  // Convert defense aggressively at Lv200, but cap the bonus before SSS
+  // Lv210 defense values turn a survival build into the top pure DPS option.
+  const guardianHealingPower=Math.max(0,basePetStats(pet).healPower||0);
+  const guardPower=Math.round(Math.min((inherited.def+inherited.mdef)*3.5+guardianHealingPower*170,1850000));
+  if(offlineMetrics)offlineMetrics.guardianConversion={def:inherited.def,mdef:inherited.mdef,guardPower};
   const guardTempo=18;
   return {...inherited,atk:inherited.atk+guardPower,matk:inherited.matk+guardPower,
    aspd:Math.min(193,(inherited.aspd||140)+guardTempo)};
