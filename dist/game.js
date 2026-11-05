@@ -216,6 +216,13 @@ function commanderTransferredPetStats(pet,base){
     +(e.ignoreDef||0)*.18;
   },0)
  });
+ // Pure-magic fusion converts part of its inherited physical power into
+ // spellblade power. Other fusion types retain their original attack channels.
+ if(spiritSinglePetProfile(player,pet)?.kind==='magic'){
+  const magicAttunement=Math.round(inherited.atk*.55);
+  inherited.matk+=magicAttunement;
+  if(offlineMetrics)offlineMetrics.magicAttunement={atk:inherited.atk,bonusMatk:magicAttunement};
+ }
  // Guardian fusion converts both defenses and healing potency into active
  // offensive power. The attack source remains the pet; no counterattack triggers.
  if(spiritSinglePetProfile(player,pet)?.fusion==='defense-support'){
