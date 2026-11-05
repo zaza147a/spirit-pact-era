@@ -31,3 +31,17 @@ test('changing profiles resets charges, low-HP and alternating guards are enforc
  assert.ok(advanceSpiritProc(state,q,q.trigger,{now:11001,hpPercent:35}));
  assert.equal(state.charges,0);
 });
+
+test('commander guardian reprisal accumulates received hits even above low HP',()=>{
+ const profile={...SPIRIT_FUSION_PROFILES['defense-support'].commander,stage:'third',source:'pet',fusion:'defense-support'};
+ const state=createSpiritProcState(),rule=SPIRIT_PROC_RULES.guardianReprisal;
+ assert.equal(profile.trigger,'petDamaged');
+ assert.equal(rule.charges,3);
+ assert.equal(rule.hpBelow,undefined);
+ assert.equal(advanceSpiritProc(state,profile,'petDamaged',{now:10000,hpPercent:99}),null);
+ assert.equal(advanceSpiritProc(state,profile,'petDamaged',{now:10100,hpPercent:99}),null);
+ const first=advanceSpiritProc(state,profile,'petDamaged',{now:10200,hpPercent:99});
+ assert.ok(first&&first.healPct>0);
+ for(let i=0;i<3;i++)assert.equal(advanceSpiritProc(state,profile,'petDamaged',{now:10300+i*100,hpPercent:99}),null);
+ assert.ok(advanceSpiritProc(state,profile,'petDamaged',{now:17000,hpPercent:99}));
+});
