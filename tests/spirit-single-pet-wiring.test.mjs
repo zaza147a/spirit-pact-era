@@ -54,3 +54,34 @@ test('real damage hook grants one bounded bonus to the correct owner or pet lane
  commander.player.thirdJob=true;
  assert.equal(commander.proc('petDamage'),0,'third jobs require a fused companion');
 });
+
+test('pact warrior cannot leak companion damage through direct skill, counter or resonance calls',()=>{
+ const petDamage=between('function dealPetDamage(','function playerAttack(');
+ assert.match(petDamage,/if\(player\?\.job==='pactWarrior'\)return 0/);
+ const ctx={player:{job:'pactWarrior'}};
+ // The early return must occur before any combat service is accessed.
+ vm.runInNewContext(petDamage+'\nthis.damage=dealPetDamage',ctx);
+ assert.equal(ctx.damage(99999,'petDamage',{id:'pet'}),0);
+ assert.equal(ctx.damage(99999,'resonanceDamage',{id:'pet'}),0);
+});
+
+test('incoming real damage hooks schedule a single reactive owner or pet bonus',()=>{
+ const snippet=between('function spiritReactiveEvent(','function pactAssimilationBonus(');
+ const pet={id:'pet',species:'shell',hp:90},player={job:'pactWarrior',thirdJob:false,hp:90};
+ const context={player,enemy:{id:'mob'},activePet:()=>pet,
+  spiritSinglePetProfile,advanceSpiritProc,createSpiritProcState,
+  spiritProcState:createSpiritProcState(),spiritReactiveCharge:null,
+  stat:()=>100,petStats:()=>({hp:100}),gameNow:()=>10000,
+  grantPlayerShield:()=>{},effectsForPet:()=>({shield:0}),bossHitMeta:{magical:false}};
+ vm.runInNewContext(snippet+'\nthis.event=spiritReactiveEvent;this.hit=spiritAttackProcBonus',context);
+ assert.equal(context.event('petDamaged'),null);
+ assert.equal(context.event('ownerDamaged')?.effect,'retaliation');
+ assert.equal(context.hit('petDamage'),0);
+ assert.equal(context.hit('playerDamage'),10);
+ assert.equal(context.hit('playerDamage'),0,'reactive charge is consumed once');
+ context.player.job='spiritCommander';
+ context.spiritProcState=createSpiritProcState();
+ assert.equal(context.event('petDamaged')?.effect,'guardCounter');
+ assert.equal(context.hit('playerDamage'),0);
+ assert.equal(context.hit('petDamage'),10);
+});
