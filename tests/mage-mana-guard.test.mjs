@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {runtime} from './runtime31-helper.mjs';
+import {potionRestore} from '../dist/restoration.js';
+import {LOOT_ITEMS} from '../dist/loot.js';
+import {preferredPotion} from '../dist/supply-rules.js';
 
 const foe=()=>({id:'world_1',map:'starter',level:1,hp:1e9,maxHp:1e9,atk:9000,def:0,hit:1e9,flee:0,aspd:150,instanceId:'mana-guard-test'});
 async function hit(job,rank,mpRatio=1){
@@ -20,7 +23,9 @@ test('first-job mage passive converts actual HP damage to SP cost for both advan
   assert.ok(guard.lostHp<base.lostHp,job+' should reduce HP loss');
   assert.ok(guard.spentSp<=Math.floor(guard.maxMp*.10));
   assert.ok(guard.p.mp>=Math.ceil(guard.maxMp*.15));
-  assert.ok(base.lostHp-guard.lostHp<=Math.floor(base.lostHp*.15)+1);
+  assert.ok(base.lostHp-guard.lostHp<=Math.floor(base.lostHp*.30)+1);
+  assert.ok(base.lostHp-guard.lostHp<=guard.spentSp*30,job+' must absorb at most 30 damage per SP');
+  assert.ok(base.lostHp-guard.lostHp>Math.max(0,(guard.spentSp-1)*30),job+' should spend no excess SP');
  }
 });
 
@@ -29,4 +34,11 @@ test('insufficient SP disables conversion and the passive never benefits non-mag
  assert.equal(low.spentSp,0);
  assert.equal(low.lostHp,without.lostHp);
  assert.equal(other.spentSp,0);
+});
+
+test('high-grade blue potion restores flat 220 plus 10% maximum SP and is preferred automatically',()=>{
+ const maximum=10000,item=LOOT_ITEMS.blue_large;
+ assert.equal(potionRestore(item,'mp',210,maximum),1220);
+ assert.equal(potionRestore(item,'mp',50,maximum),220);
+ assert.equal(preferredPotion([{id:'blue_small',qty:3},{id:'blue_large',qty:2}],LOOT_ITEMS,'mp','high',maximum).id,'blue_large');
 });
