@@ -7,6 +7,20 @@ export function commanderOwnerGrowth(current,raw){
  // owner-to-pet link without an unlimited second damage multiplier.
  return Math.min(.24,Math.max(0,nonnegative(current)/reference-1)*.13);
 }
+export function commanderMainSkillMultiplier(owner,pet,fusion){
+ // The owner contributes 120% of the relevant attribute to the first equipped
+ // pet skill's damage ratio, not to the companion's permanent ATK/MATK panel.
+ const sources={
+  'attack-magic':['atk','matk'],
+  'attack-defense':['atk','def'],
+  'attack-support':['atk','matk'],
+  'magic-defense':['matk','mdef'],
+  'magic-support':['matk'],
+  'defense-support':['def','mdef']
+ }[fusion]||['atk','matk'];
+ const contribution=sources.reduce((sum,key)=>sum+nonnegative(owner[key])/Math.max(1,nonnegative(pet[key])),0)/sources.length;
+ return 1+Math.min(1.20,contribution*1.20);
+}
 export function commanderInheritedPetStats(base,owner){
  const atk=nonnegative(owner.atk),matk=nonnegative(owner.matk);
  // A character's offensive card and equipped affix effects strengthen pet training.
@@ -19,8 +33,8 @@ export function commanderInheritedPetStats(base,owner){
  const trainedMultiplier=growth=>.91+growth*1.23;
  const cultivation=Number.isFinite(owner.cultivation)?Math.min(1,Math.max(0,owner.cultivation)):1;
  return {...base,
-  atk:Math.round((base.atk+atk*.42)*trainedMultiplier(physical)*cultivation),
-  matk:Math.round((base.matk+matk*.42)*trainedMultiplier(magical)*cultivation),
+  atk:Math.round(nonnegative(base.atk)*trainedMultiplier(physical)*cultivation),
+  matk:Math.round(nonnegative(base.matk)*trainedMultiplier(magical)*cultivation),
   def:base.def+nonnegative(owner.def)*.50,
   mdef:base.mdef+nonnegative(owner.mdef)*.50,
   hp:Math.round(nonnegative(base.hp)+nonnegative(owner.hp)*.45),

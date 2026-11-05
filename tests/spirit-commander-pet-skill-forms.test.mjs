@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {commanderPetSkillForm} from '../dist/commander-pet-skill-forms.js';
+import {commanderPetSkillForm,commanderSkillOutputScale} from '../dist/commander-pet-skill-forms.js';
 
 const pet={fusion:{main:'attack',sub:'magic'},equippedSkills:['main','wide','finish']};
 const player={job:'spiritCommander'};
@@ -17,4 +17,9 @@ assert.equal(commanderPetSkillForm({job:'pactWarrior'},pet,{id:'main',kind:'magi
 assert.equal(commanderPetSkillForm(player,{...pet,fusion:null},{id:'main',kind:'magic'}),null);
 const reordered={...pet,equippedSkills:['finish','main','wide']};
 assert.equal(commanderPetSkillForm(player,reordered,{id:'main',kind:'strike'}).name,'範圍');
+for(const [fusion,scale] of [['attack-magic',1.55],['attack-defense',8],['attack-support',2.4],['magic-defense',8],['magic-support',8],['defense-support',3.5]]){
+ const [main,sub]=fusion.split('-');
+ assert.equal(commanderSkillOutputScale({fusion:{main,sub}}),scale);
+ assert.equal(commanderSkillOutputScale({fusion:{main:sub,sub:main}}),scale,'reverse fusion must preserve the same multiplier');
+}
 console.log('PASS: Commander fusion pet skill slots reshape main/wide/finisher independently');

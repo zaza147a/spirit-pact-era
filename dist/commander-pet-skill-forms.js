@@ -5,6 +5,18 @@ export const COMMANDER_SKILL_FORMS=Object.freeze([
  {name:'範圍',targets:4,primary:.95,secondary:.95},
  {name:'終結',targets:2,primary:1.80,secondary:.40}
 ]);
+const FUSION_SKILL_SCALES=Object.freeze({
+ 'attack-magic':1.55,
+ 'attack-defense':8.00,
+ 'attack-support':2.40,
+ 'magic-defense':8.00,
+ 'magic-support':8.00,
+ 'defense-support':3.50
+});
+export function commanderSkillOutputScale(pet){
+ const fusion=[pet?.fusion?.main,pet?.fusion?.sub].sort((a,b)=>['attack','magic','defense','support'].indexOf(a)-['attack','magic','defense','support'].indexOf(b)).join('-');
+ return FUSION_SKILL_SCALES[fusion]||2.4;
+}
 export function commanderPetSkillForm(player,pet,skill){
  if(player?.job!=='spiritCommander'||!pet?.fusion||!skill)return null;
  const selected=pet.equippedSkills||[];
