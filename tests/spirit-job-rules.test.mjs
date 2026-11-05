@@ -1,6 +1,6 @@
 import test from 'node:test';
 import {jobLevelCap} from '../dist/adventure-progression.js';
-import {GEAR_BASE} from '../dist/loot.js';
+import {GEAR_BASE,rollGear} from '../dist/loot.js';
 import {JOB_ATTRIBUTE_MAX,jobAttributeBonus} from '../dist/job-attributes.js';
 import {SECOND_JOBS} from '../dist/jobs.js';
 import {thirdJobError,THIRD_SEAL,THIRD_SEAL_COST,PET_REVIVE_MS} from '../dist/frontier.js';
@@ -93,14 +93,15 @@ test('both reborn spirit second jobs can earn Job 70 and satisfy ordinary third-
  assert.equal(jobLevelCap({job:'spiritist',reborn:true}),50,'first job unchanged');
 });
 
-test('spirit jobs retain their designated one-hand weapon roles',()=>{
+test('spirit second jobs share the new one-hand dual-attack staff sword',()=>{
  assert.ok(GEAR_BASE.mace.jobs.includes('spiritist'),'first-job spiritist retains its starting mace');
- assert.ok(GEAR_BASE.blade.jobs.includes('pactWarrior'),'physical pact warrior must equip one-hand swords');
- assert.ok(GEAR_BASE.oneStaff.jobs.includes('spiritCommander'),'magical spirit commander must equip one-hand staves');
+ assert.deepEqual(GEAR_BASE.staffSword.jobs,['pactWarrior','spiritCommander']);
+ assert.ok(GEAR_BASE.staffSword.atk>0&&GEAR_BASE.staffSword.matk>0);
+ assert.equal(GEAR_BASE.staffSword.hands??1,1);
+ const sword=rollGear('staffSword',200,'mythic',()=>.5);
+ assert.ok(sword.affixes.atk>0&&sword.affixes.matk>0,'both damage affixes coexist');
  assert.ok(!GEAR_BASE.mace.jobs.includes('pactWarrior'),'physical pact warrior no longer uses mace');
  assert.ok(!GEAR_BASE.mace.jobs.includes('spiritCommander'),'magical spirit commander no longer uses mace');
- assert.equal(GEAR_BASE.blade.hands??1,1);
- assert.equal(GEAR_BASE.oneStaff.hands??1,1);
  assert.equal(GEAR_BASE.shield.slot,'leftHand');
  assert.ok(!GEAR_BASE.mace.jobs.includes('wizard'),'mage weapon restrictions remain intact');
 });
