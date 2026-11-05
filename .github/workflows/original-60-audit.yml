@@ -1,7 +1,5 @@
 name: Original 60 fusion mechanic gap audit
 on:
-  push:
-    branches: [feature/humanoid-pet-evolution]
   workflow_dispatch:
 jobs:
   audit:
