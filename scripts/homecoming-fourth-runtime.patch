@@ -1,5 +1,5 @@
 diff --git a/dist/game.js b/dist/game.js
-index 9492a5c..22a3799 100644
+index 9492a5c..ee1e861 100644
 --- a/dist/game.js
 +++ b/dist/game.js
 @@ -1,3 +1,4 @@
@@ -7,7 +7,7 @@ index 9492a5c..22a3799 100644
  import {ensurePetEffects} from './dual-pet-effects.js';
  import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from './weapon-compensation.js?v=6.5.62';
  import {commanderInheritedPetStats} from './commander-owner-growth.js';
-@@ -847,7 +848,26 @@ function triggerDualSpiritResonance(event){
+@@ -847,7 +848,27 @@ function triggerDualSpiritResonance(event){
   for(const foe of enemies.filter(e=>e.hp<=0&&!e.rewarded)){enemy=foe;award();}
   enemy=selectEncounterTarget(enemies,player.targetPriority,primary)||primary;
  }
@@ -18,14 +18,15 @@ index 9492a5c..22a3799 100644
 +function tickCompanionFourth(now){
 + const pet=activePet();if(!fourthUnlocked(player,pet))return;
 + const state=fourthState(pet,now),active=player.hp>0&&pet.hp>0&&!isTown(player.location)&&enemies.some(e=>e.hp>0)&&!isControlled();
-+ advanceFourthCharge(state,now,active);if(!active)return;
++ advanceFourthCharge(state,now,active);if(!active||now<(timers.homecomingNextAt||0))return;
 + const pair=fourthPair(pet),skill=consumeFourth(state,pair,now,pet.sp,active);if(!skill)return;
-+ pet.sp-=skill.cost;chooseAttackTarget();const selected=enemy,s=petStats(pet),victims=[];
++ pet.sp-=skill.cost;timers.homecomingNextAt=now+skill.cooldown;chooseAttackTarget();const selected=enemy,s=petStats(pet),victims=[];
++ const [main,sub]=pair.split('-'),sourcePet=pet.fusion.main===main?pet:{...pet,fusion:{...pet.fusion,main,sub}};
 + const targets=multiTargets(enemies,selected,skill.targets,encounterLimit(player.location));
 + for(const [index,foe]of targets.entries()){
 +  enemy=foe;const amount=fourthOffense(s,pair)*skill.power*(index?skill.splash:1);
 +  bossHitMeta={critical:false,magical:skill.magical,petId:pet.id,range:'pet',skillId:'homecoming_'+pair};
-+  const dealt=dealPetDamage(hitDamage(amount,monsterDefenseAgainst(foe,skill.magical)*(1-(s.ignoreDef||0)/100)),'petDamage',pet,combatPetFactor(pet.id));if(report)report.metrics.homecomingDamage=(report.metrics.homecomingDamage||0)+dealt;bossHitMeta=null;
++  const dealt=dealPetDamage(hitDamage(amount,monsterDefenseAgainst(foe,skill.magical)*(1-(s.ignoreDef||0)/100)),'petDamage',sourcePet,combatPetFactor(pet.id));if(report)report.metrics.homecomingDamage=(report.metrics.homecomingDamage||0)+dealt;bossHitMeta=null;
 +  if(foe.hp<=0)victims.push(foe);
 + }
 + finishVictims(victims);enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;
@@ -35,7 +36,7 @@ index 9492a5c..22a3799 100644
   if(event==='shieldBreak'&&player.job==='knight'&&pet.fusion?.main==='attack'&&pet.fusion?.sub==='defense')timers.knightBrokenShieldUntil=gameNow()+6000;
   if(event==='thirdHit_wizard'&&player.job==='wizard'&&pet.fusion?.main==='attack'&&pet.fusion?.sub==='defense'&&(timers.wizardStoredCharges||0)>0){
     const now=gameNow(),charges=timers.wizardStoredCharges;timers.wizardStoredCharges=0;
-@@ -938,7 +958,9 @@ function playerAttack(skill=false,skillId=null,completed=false){if(isControlled(
+@@ -938,7 +959,9 @@ function playerAttack(skill=false,skillId=null,completed=false){if(isControlled(
    jobSkillTimers[chosen.id]=Math.max(0,(jobSkillTimers[chosen.id]||now)-Math.min(2500,cooldown*.35));
    timers.lastSkillRefresh=now;emitEvent('skillRefresh');
   }
@@ -45,7 +46,7 @@ index 9492a5c..22a3799 100644
    if(chosen.id==='thirdMain_'+player.job)emitEvent('thirdHit_'+player.job);
    if(chosen.id==='thirdWide_'+player.job)emitEvent('thirdWideHit_'+player.job);
    if(player.job==='knight'&&chosen.id==='thirdMain_knight'){timers.knightCombo=(timers.knightCombo||0)+1;if(timers.knightCombo%2===0)emitEvent('combo');}
-@@ -1526,7 +1548,7 @@ function refreshSpiritCreationLock(){const button=$('classChoices').querySelecto
+@@ -1526,7 +1549,7 @@ function refreshSpiritCreationLock(){const button=$('classChoices').querySelecto
  function openCharacterCreation(index){const slot=readCharacterSlot(localStorage,index,normalize,valid);if((slot.player||slot.error)&&!confirm(`新建角色將覆蓋第 ${index+1} 格「${slot.player?.name||'現有存檔'}」，其他七格不受影響。確定繼續？`))return;creatingSlot=index;selectedClass='swordsman';$('classChoices').querySelectorAll('[data-class]').forEach(b=>b.classList.toggle('active',b.dataset.class===selectedClass));refreshSpiritCreationLock();$('createSlotLabel').textContent=`第 ${index+1} 格 · 建立獨立角色`;$('nameInput').value='';$('createModal').style.display='grid';$('entryScreen').inert=true;$('nameInput').focus();}
  function closeCharacterCreation(){$('createModal').style.display='none';$('spiritCreateModal').style.display='none';$('entryScreen').inert=false;creatingSlot=null;}
  function start(name,job){if(creatingSlot===null)return;if(['spiritist','pactWarrior','spiritCommander'].includes(job))return toast('御靈使職系重製中，暫停建立新角色');try{const index=creatingSlot,candidate=normalize(fresh(name.trim().slice(0,16)||'無名冒險者',job));if(!valid(candidate))throw Error('存檔資料驗證未通過');writeCharacterSlot(localStorage,index,candidate);selectedSlot=index;closeCharacterCreation();renderEntry();toast('角色已建立，請選擇後按「進入遊戲」');}catch(error){toast('建立失敗：'+error.message);}}
@@ -54,7 +55,7 @@ index 9492a5c..22a3799 100644
  async function enterCharacterSlot(index){if(settlingOffline)return;const slot=readCharacterSlot(localStorage,index,normalize,valid);if(!slot.player)return toast(slot.error||'請先建立或導入角色');resetSession();activeSlot=index;selectedSlot=index;player=slot.player;gameRunning=false;auto=!player.manualPaused;delete player.autoStoppedReason;let offlineSummary;try{offlineSummary=await settleOffline();}catch(error){player=null;activeSlot=null;renderEntry();toast(error.message);return;}resetSession();gameRunning=true;selectedContinent=continentFor(player.location);renderMapChoices();player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));$('entryScreen').hidden=true;$('gameShell').hidden=false;$('gameShell').inert=false;$('createModal').style.display='none';$('activeSlotLabel').textContent=`第 ${index+1} 格`;message(`歡迎，${player.name}！已進入第 ${index+1} 格的獨立冒險。`,'good');spawn();save();if(!player.hp&&(!player.autoRevive||player.trialDefeated))showReviveDialog();if(player.fusionNotice)showFusionResult();if(offlineSummary){bossCardNotices.push(...(offlineSummary.bossCards||[]));showOfflineReport(offlineSummary);}else showNextBossCardNotice();if(document.hidden)backgroundPaused=true;}
  function returnToEntry(saveCurrent=true){bossCardNotices=[];bossCardNoticeOpen=false;const notice=document.getElementById('bossCardNotice');if(notice){notice.hidden=true;notice.style.display='none';}if(player?.trialRun&&!player.trialRun.continuous)exitTrial('返回選角，試煉已結束');if(settlingOffline)return false;if(saveCurrent&&player){endReport('返回選角');if(!save())return false;}stopAutoFusion('已返回選角');gameRunning=false;player=null;activeSlot=null;resetSession();for(const id of ['createModal','reviveModal','renameModal','fusionResultModal'])$(id).style.display='none';$('entryScreen').inert=false;$('gameShell').hidden=true;$('gameShell').inert=false;$('entryScreen').hidden=false;renderEntry();window.scrollTo(0,0);return true;}
  function exportCharacterSlot(index){try{if(gameRunning&&activeSlot===index&&!save())return;const slot=readCharacterSlot(localStorage,index,normalize,valid);if(!slot.player)return toast(slot.error||'這一格沒有角色');const blob=new Blob([JSON.stringify({version:2,player:slot.player},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`icarus-slot-${index+1}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}catch(error){toast('匯出失敗：'+error.message);}}
-@@ -1555,6 +1577,7 @@ function combatTick(now=gameNow()){if(player?.trialRun&&player.hp<=0){exitTrial(
+@@ -1555,6 +1578,7 @@ function combatTick(now=gameNow()){if(player?.trialRun&&player.hp<=0){exitTrial(
   tickTrialControl(now);tickEncounters(now);chooseAttackTarget();autoCapturePet(now);if(casting&&now>=casting.until){const id=casting.id;casting=null;playerAttack(true,id,true);}if(casting&&!player.hp)casting=null;
   if(now-timers.regen>=4000){timers.regen=now;for(const pet of activePetRoster(player))if(pet.hp>0)pet.sp=Math.min(petStats(pet).sp,pet.sp+Math.max(1,Math.ceil(pet.level/8)));const intRegen=['mage','wizard','sage'].includes(player.job)?Math.ceil(stat('mp')*Math.min(150,effectiveAttributes().INT)*.0004):0;player.mp=Math.min(stat('mp'),player.mp+2+passiveBonus('spRegen')+cardBonus('spRegen')+intRegen);dirty=true;}
   if(enemy.hp&&player.hp){const trialAtTick=player.trialRun;if(auto&&now-(timers.potions||0)>800){timers.potions=now;autoUsePotions();}tickPetEffects(now);const selected=enemy;for(const foe of [...enemies]){if(!player.hp)break;if(foe.hp&&now-foe.lastAttack>=aspdAttackIntervalMs(foe.aspd)){foe.lastAttack=now;enemy=foe;enemyAttack();if(trialAtTick&&!player.trialRun)return;}}enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;if(enemy.hp&&auto){for(const companion of activePetRoster(player)){if(!enemy.hp)break;if(companion?.hp>0&&combatPetFactor(companion.id)>0){const dualPetAbility=player.job==='spiritist'||player.job==='pactWarrior'||player.job==='spiritCommander';const lastPetAbility=dualPetAbility?(timers.petAbilityById?.[companion.id]||0):(timers.petAbility||0);if(now-lastPetAbility>=850)petAutoAbility(companion,commanderTransferredPetStats(companion,petStats(companion)),now);if(enemy.hp)petAttack(companion,combatPetFactor(companion.id));}}if(enemy.hp)autoCastJobs();if(enemy.hp)playerAttack();if(enemy.hp&&player.autoUltimate&&player.resonance>=ULTIMATE_COST&&now-timers.ultimate>=ULTIMATE_COOLDOWN)ultimate();}}

@@ -156,7 +156,7 @@ const grouped=PAIRS.filter(pair=>rows.some(r=>r.pair===pair)).flatMap(pair=>(pro
 const output={sourceSha:process.env.AUDIT_SOURCE_SHA,conditions:{level:210,petLevel:200,gearLevel:200,rarity:'mythic',enhancement:'SSS',dawnSigil:8,
  scope:JOBS,tickMs:100,seconds:pilot?30:RUN_SECONDS,seeds:pilot?[471122]:[471122,93217],screenSeed:1007,screenSeconds:pilot?10:20,
  ownerBuild:'one controlled legal build per job; primary then AGI (wizard DEX) then VIT; fixed default weapon, boss cards; not global max-DPS optimization',
- petSkills:'all 20 combinations in ascending slot order screened separately per scenario; best short-run survivor then boss DPS or field kills; not all skill permutations',
+ petSkills:SKIP_SCREEN?'frozen baseline triples per scenario; no new optimization':'all 20 combinations in ascending slot order screened separately per scenario; not all permutations',
  field:'real 201 map spawns, replacements, loot, natural bosses and lethal damage',
  boss:'single real Dawn boss with only HP x10000 for sustained diagnostic; not actual boss TTK',
  pressure:'field with test-only ATK and MATK x4; not production difficulty',

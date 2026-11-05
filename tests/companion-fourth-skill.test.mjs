@@ -5,7 +5,7 @@ const pet={trueForm:true,humanoidStage:3,fusion:{main:'attack',sub:'defense'}};
 const owner={job:'knight',dawnSigil:8,homecoming:{completedRoutes:{'attack-defense':true}}};
 test('fourth slot requires completed route, SSS human form and sigil 8',()=>{
  assert.equal(fourthUnlocked(owner,pet),true);
- for(const p of [{...owner,homecoming:{}},{...owner,dawnSigil:7}])assert.equal(fourthUnlocked(p,pet),false);
+ for(const p of [{...owner,homecoming:{}},{...owner,dawnSigil:7},{...owner,dawnSigil:undefined},{...owner,dawnSigil:NaN}])assert.equal(fourthUnlocked(p,pet),false);
  for(const p of [{...pet,trueForm:false},{...pet,humanoidStage:2},{...pet,fusion:null}])assert.equal(fourthUnlocked(owner,p),false);
 });
 test('reverse fusion shares unlock and skill, duplicate routes do not stack',()=>{
@@ -30,7 +30,7 @@ test('duplicate same-frame events and arbitrary events cannot produce extra char
 });
 test('cast requires energy, cooldown and SP and consumes one charge',()=>{
  const s=newFourthState(0);assert.equal(consumeFourth(s,'attack-defense',1000,100),null);
- s.energy=100;assert.equal(consumeFourth(s,'attack-defense',1000,19),null);assert.equal(s.energy,100);
+ s.energy=100;assert.equal(consumeFourth(s,'attack-defense',NaN,100),null);assert.equal(consumeFourth(s,'attack-defense',1000,19),null);assert.equal(s.energy,100);
  assert.ok(consumeFourth(s,'attack-defense',1000,20));assert.equal(s.energy,0);assert.equal(s.casts,1);
  s.energy=100;assert.equal(consumeFourth(s,'attack-defense',2000,100),null);
  assert.equal(consumeFourth(s,'attack-defense',6000,100,false),null);assert.ok(consumeFourth(s,'attack-defense',6000,100));
