@@ -2,23 +2,13 @@
 // Intentionally do not regenerate their gear from an approximation algorithm.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
-import {fileURLToPath} from 'node:url';
-import {resolve} from 'node:path';
+import {LEGACY_OPTIMAL_MANIFEST,LEGACY_OPTIMAL_BUILD_NAMES,legacyOptimalPlayer} from './fixtures/legacy-optimal-player.mjs';
 import {CARDS} from '../dist/catalog.js';
 import {cardAllowedInSlot} from '../dist/card-effects.js';
 import {rankOf} from '../dist/sky-trials.js';
 import {GEAR_BASE} from '../dist/loot.js';
 
-const root=fileURLToPath(new URL('./fixtures/legacy-best-v6559/',import.meta.url));
-const manifest=JSON.parse(readFileSync(resolve(root,'manifest.json'),'utf8'));
-export const LEGACY_OPTIMAL_BUILD_NAMES=Object.freeze(manifest.rows.map(row=>row.job));
-export function legacyOptimalPlayer(job){
- const row=manifest.rows.find(entry=>entry.job===job);
- if(!row)throw Error('No user-provided optimum save for '+job);
- const save=JSON.parse(readFileSync(resolve(root,row.file),'utf8'));
- return structuredClone(save.player);
-}
+const manifest=LEGACY_OPTIMAL_MANIFEST;
 
 test('all ten original jobs have one user-supplied optimum fixture',()=>{
  assert.equal(manifest.rows.length,10);
