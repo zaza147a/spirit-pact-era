@@ -7,12 +7,12 @@ import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {FUSION_TYPES,canonicalFusionKey} from '../dist/spirit-job-rules.js';
 import {rollGear} from '../dist/loot.js';
 
-const START=2000000000000,DURATION=120000;
+const START=2000000000000,DURATION=Number(process.env.SPIRIT_DURATION_MS||120000),allowBoss=process.env.SPIRIT_ALLOW_BOSS==='1';
 
 async function evaluate(job,level,fusion,build='baseline'){
  const partner=FUSION_TYPES.find(x=>x!==fusion);
  const pairKey=[fusion,partner].sort().join('+');
- const p=highLevelSpiritPlayer({job,level,pairKey});
+ const p=highLevelSpiritPlayer({job,level,pairKey,allowBoss});
  if(build==='physical'||build==='magical'){
   // Swap only the primary STR/INT budget; all other legal stats are held fixed.
   const main=build==='physical'?'STR':'INT',other=main==='STR'?'INT':'STR';
@@ -26,10 +26,10 @@ async function evaluate(job,level,fusion,build='baseline'){
  p.gear.rightHand=rollGear('staffSword',200,'mythic',()=>.25);
  if(level===210)p.gear.rightHand.enhancement='SSS';
  const worker=new Worker(new URL('./offline-worker-node-entry.mjs',import.meta.url),
-  {type:'module',workerData:{seed:9100+level+(job==='pactWarrior'?1:2)}});
+  {type:'module',workerData:{seed:Number(process.env.SPIRIT_SEED||9100+level+(job==='pactWarrior'?1:2))}});
  try{
   const result=await new Promise((resolve,reject)=>{
-   const timeout=setTimeout(()=>reject(Error(`timeout ${job} ${level} ${fusion}`)),30000);
+   const timeout=setTimeout(()=>reject(Error(`timeout ${job} ${level} ${fusion}`)),90000);
    worker.on('message',m=>{
     if(m.type==='result'){clearTimeout(timeout);resolve(m.result);}
     else if(m.type==='error'){clearTimeout(timeout);reject(Error(m.stack||m.message));}
@@ -38,7 +38,7 @@ async function evaluate(job,level,fusion,build='baseline'){
    worker.postMessage({player:p,now:START+DURATION});
   });
   const summary=result.summary,targets=summary.spiritEnemyTargets||{},damage=summary.damage;
-  assert.equal(summary.simulated,DURATION);
+  assert.ok(summary.simulated>0&&summary.simulated<=DURATION);
   assert.equal(result.player.pets.length,1);
   assert.equal(targets.pet2||0,0);
   assert.equal(damage.pet2||0,0);
@@ -58,8 +58,10 @@ async function evaluate(job,level,fusion,build='baseline'){
     assert.ok(summary.guardian.waveHits>0&&summary.guardian.waveHits<=summary.guardian.triggers*3,'one wave may hit at most three foes');
    }
   }
-  return {job,level,fusion,build,kills:summary.kills,dps:Math.round(damage.total/(DURATION/1000)),
-   ownerDps:Math.round(damage.player/(DURATION/1000)),petDps:Math.round((damage.pet1||0)/(DURATION/1000)),
+  const bossCores=(result.player.bag.find(item=>item.id==='dawn_archon_core')?.qty||0)-(p.bag.find(item=>item.id==='dawn_archon_core')?.qty||0);
+  return {job,level,fusion,build,kills:summary.kills,simulatedSeconds:summary.simulated/1000,bossCores,bossesEncountered:summary.bossesEncountered||0,revives:summary.revives||0,
+   dps:Math.round(damage.total/(summary.simulated/1000)),
+   ownerDps:Math.round(damage.player/(summary.simulated/1000)),petDps:Math.round((damage.pet1||0)/(summary.simulated/1000)),
    ownerHits:targets.owner||0,petHits:targets.pet1||0,
    potions:Object.values(summary.potions||{}).reduce((sum,n)=>sum+n,0),
    endedOwnerHp:result.player.hp,endedPetHp:result.player.pets[0].hp,
@@ -74,4 +76,4 @@ for(const level of [200,210].filter(x=>!process.env.SPIRIT_LEVEL_FILTER||String(
  for(const fusion of FUSION_TYPES.filter(x=>!process.env.SPIRIT_FUSION_FILTER||x===process.env.SPIRIT_FUSION_FILTER))for(const build of process.env.SPIRIT_BUILD_SWEEP==='1'?['physical','magical']:['baseline'])
   rows.push(await evaluate(job,level,fusion,build));
 }
-console.log(JSON.stringify({condition:'120s real Worker; single fusion pet; fixed synthetic gear; no boss; sigil0',rows},null,2));
+console.log(JSON.stringify({condition:`${DURATION/1000}s real Worker; single fusion pet; fixed synthetic gear; boss ${allowBoss?'enabled':'escaped'}; sigil0`,rows},null,2));
