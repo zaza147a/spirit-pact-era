@@ -2,15 +2,16 @@
 .town-scene-town{background-image:linear-gradient(180deg,#07162127,#07162196),url('assets/towns/town.webp')}
 .town-scene-skycity{background-image:linear-gradient(180deg,#07162125,#0716219c),url('assets/towns/skycity.webp')}
 .town-scene-dawncity{background-image:linear-gradient(180deg,#07162125,#071621a3),url('assets/towns/dawncity.webp')}
-.town-scene-heading{display:flex;align-items:baseline;gap:12px;color:#fff;text-shadow:0 2px 7px #07121c,0 1px 2px #07121c}
+.town-scene-heading{display:flex;align-items:center;gap:12px;color:#fff;text-shadow:0 2px 7px #07121c,0 1px 2px #07121c}
 .town-scene-heading strong{font-size:20px}.town-scene-heading span{font-size:12px;color:#f6e8ce}
-.town-scene-roster{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;gap:8px 12px;min-height:420px;margin-top:18px;perspective:900px}
+.town-scene-controls{display:flex;gap:6px;margin-left:auto}.town-scene-controls button{font-size:12px;padding:4px 9px;background:#0e253ac9;border-color:#cfb27c;color:#f8e9c8}
+.town-scene-roster{display:flex;align-items:end;gap:12px;min-height:410px;margin-top:10px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#bca17085 transparent;padding-bottom:8px}
 .town-scene-npc{display:flex;flex-direction:column;justify-content:end;align-items:center;min-width:0;position:relative;z-index:2;padding:2px 2px 5px;border-radius:10px;background:linear-gradient(180deg,transparent 75%,#07142088);transition:transform .17s,filter .17s}
-.town-scene-npc:nth-child(5n+2),.town-scene-npc:nth-child(5n+4){transform:translateY(-25px) scale(.91);z-index:1}
-.town-scene-npc:hover,.town-scene-npc:focus-within,.town-scene-npc:nth-child(n):hover,.town-scene-npc:nth-child(n):focus-within{transform:translateY(-9px) scale(1.07);filter:brightness(1.12);z-index:5}
+.town-scene-npc{flex:0 0 calc((100% - 48px)/5);scroll-snap-align:start}
+.town-scene-npc:hover,.town-scene-npc:focus-within{transform:translateY(-9px) scale(1.035);filter:brightness(1.12);z-index:5}
 .town-scene-portrait-button{display:block;width:100%;padding:0;background:none!important;border:0!important;cursor:pointer;border-radius:8px}
 .town-scene-portrait-button:focus-visible{outline:2px solid #ffdc95;outline-offset:2px}
-.town-scene-npc img{width:100%;height:155px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 5px 7px #080f1e);pointer-events:none}
+.town-scene-npc img{width:100%;height:235px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 5px 7px #080f1e);pointer-events:none}
 .town-scene-action{position:relative!important;z-index:1!important;width:100%!important;min-height:37px;font-size:11px!important;font-weight:700;line-height:1.35;white-space:normal!important;background:#12293de8!important;border-color:#c6a368!important;color:#fff4d5!important}
 .town-scene-action:hover{background:#3b4b52!important}
 .town-npc-dialog-overlay{position:fixed;inset:0;z-index:10050;background:#06111bca;display:grid;place-items:center;padding:16px;backdrop-filter:blur(5px)}
@@ -18,4 +19,4 @@
 .town-npc-dialog>img{width:100%;max-height:290px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 7px 10px #06111b)}
 .town-npc-dialog-copy h3{margin:0 0 12px;color:#ffdc95;font-size:22px}.town-npc-dialog-copy p{line-height:1.85;min-height:72px;color:#f0f4f8}
 .town-npc-dialog-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
-@media(max-width:700px){.town-scene{padding:9px;min-height:0}.town-scene-roster{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;min-height:0}.town-scene-npc img{height:115px}.town-scene-npc:nth-child(n){transform:none}.town-scene-action{font-size:10px!important;padding:5px 2px!important}.town-npc-dialog{grid-template-columns:105px minmax(0,1fr);padding:12px;gap:10px}.town-npc-dialog-copy h3{font-size:17px}.town-npc-dialog-copy p{font-size:12px}.town-npc-dialog-actions button{font-size:11px}}
+@media(max-width:700px){.town-scene{padding:9px;min-height:0}.town-scene-heading{flex-wrap:wrap;gap:4px}.town-scene-heading span{font-size:10px}.town-scene-controls{width:100%;justify-content:end}.town-scene-roster{gap:6px;min-height:275px}.town-scene-npc{flex-basis:calc((100% - 12px)/3)}.town-scene-npc img{height:175px}.town-scene-action{font-size:10px!important;padding:5px 2px!important}.town-npc-dialog{grid-template-columns:105px minmax(0,1fr);padding:12px;gap:10px}.town-npc-dialog-copy h3{font-size:17px}.town-npc-dialog-copy p{font-size:12px}.town-npc-dialog-actions button{font-size:11px}}

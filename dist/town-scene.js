@@ -70,8 +70,14 @@ export function decorateTownScene(area,location){
   scene.setAttribute('aria-label','村莊 NPC 互動場景');
   const heading=document.createElement('div');
   heading.className='town-scene-heading';
-  heading.innerHTML='<strong>村莊漫步</strong><span>選擇想拜訪的居民</span>';
+  heading.innerHTML='<strong>村莊居民</strong><span>所有 NPC 都站在廣場上，左右切換即可拜訪</span>';
   const roster=document.createElement('div');roster.className='town-scene-roster';
+  const controls=document.createElement('div');controls.className='town-scene-controls';
+  const previous=document.createElement('button');previous.type='button';previous.textContent='‹ 上一區';previous.setAttribute('aria-label','查看左側 NPC');
+  const next=document.createElement('button');next.type='button';next.textContent='下一區 ›';next.setAttribute('aria-label','查看右側 NPC');
+  previous.onclick=()=>roster.scrollBy({left:-roster.clientWidth*.8,behavior:'smooth'});
+  next.onclick=()=>roster.scrollBy({left:roster.clientWidth*.8,behavior:'smooth'});
+  controls.append(previous,next);heading.append(controls);
   for(const button of buttons){
     const role=actionFor(button);
     if(!NPC_ART[role])continue;
@@ -115,5 +121,5 @@ export function patchTownArea(area,html){
 }
 
 if(typeof document!=='undefined'){
-  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.75';document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.76';document.head.append(css);
 }

@@ -1,5 +1,5 @@
 import {ensurePetEffects} from './dual-pet-effects.js';
-import {patchTownArea} from './town-scene.js?v=6.5.75';
+import {patchTownArea} from './town-scene.js?v=6.5.76';
 import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from './weapon-compensation.js?v=6.5.62';
 import {commanderInheritedPetStats,commanderMainSkillMultiplier} from './commander-owner-growth.js';
 import {spiritTargetDamageFactor} from './spirit-target-damage.js';

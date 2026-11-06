@@ -16,14 +16,14 @@
 </head>
 <body>
 <main>
-  <header><div><h1>村莊場景驗收 · V6.5.75</h1><p>三座村莊、13 種 NPC 角色及對話互動的獨立預覽，不讀寫角色存檔。</p></div>
+  <header><div><h1>村莊場景驗收 · V6.5.76</h1><p>三座村莊、13 種 NPC 角色及對話互動的獨立預覽，不讀寫角色存檔。</p></div>
     <div class="switches"><button data-city="town">靈契主城</button><button data-city="skycity">蒼穹樞城</button><button data-city="dawncity">曙光聖港</button></div>
   </header>
   <section id="area" class="area town"></section>
   <div id="status" class="status" role="status">請點擊場景中的任一 NPC 立繪，測試對話及功能按鈕。</div>
 </main>
 <script type="module">
-  import {patchTownArea} from './town-scene.js?v=6.5.75';
+  import {patchTownArea} from './town-scene.js?v=6.5.76';
   const area=document.getElementById('area'),status=document.getElementById('status');
   const towns={town:['靈契主城','契約之始，冒險者的故鄉'],skycity:['蒼穹樞城','漂浮在雲層上的魔導都市'],dawncity:['曙光聖港','黎明照耀的海港聖城']};
   const shared=['enhancement','warehouse','reforge','collection','cardrecycle','cardcollection'];
