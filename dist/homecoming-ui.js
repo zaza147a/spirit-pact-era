@@ -13,7 +13,7 @@ export function homecomingTracker(p){
 }
 export function renderHomecomingPanel(p){
  const b=homecomingBonuses(p),pet=p.pets?.find(x=>x.id===p.activePetId);
- const summary=`<div class="item"><h3>十二大陸・返鄉契約</h3><p>高階人形（SSS）與契印 8 開啟返鄉來信。首次逐頁旅行後抵達城鎮；每條故事需帶上對應外觀的出戰夥伴，並在線上手動推進。</p><p>已完成 ${b.count}／12。人物永久傳承：傷害 +${(b.damage*100).toFixed(2)}%、HP +${Math.round(b.hp*100)}%、雙防 +${Math.round(b.def*100)}%、技能受療 +${Math.round(b.recovery*100)}%。</p><p class="muted">測試版：首次旅行插畫恢復中（4／36）；人物傳承與第四格專屬技能已生效。</p></div>`;
+ const summary=`<div class="item"><h3>十二大陸・返鄉契約</h3><p>高階人形（SSS）與契印 8 開啟返鄉來信。首次逐頁旅行後抵達城鎮；每條故事需帶上對應外觀的出戰夥伴，並在線上手動推進。</p><p>已完成 ${b.count}／12。人物永久傳承：傷害 +${(b.damage*100).toFixed(2)}%、HP +${Math.round(b.hp*100)}%、雙防 +${Math.round(b.def*100)}%、技能受療 +${Math.round(b.recovery*100)}%。</p><p class="muted">測試版：首次旅行插畫已齊全（36／36）；人物傳承與第四格專屬技能已生效。</p></div>`;
  return summary+HOMECOMING_ROUTES.map(r=>{
  const q=p.homecoming?.routes?.[r.id];let html=`<section class="item homecoming-card" style="--homecoming-color:${r.color}"><small>${esc(r.continent)}・${esc(r.companion)}</small><h3>${esc(r.title)}</h3>`;
  if(!q)return html+'<p class="muted">達成條件後，在安全城鎮收到家鄉來信。</p></section>';

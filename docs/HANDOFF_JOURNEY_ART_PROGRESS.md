@@ -68,3 +68,9 @@
 ## 最後驗證
 
 `node --test tests/homecoming-assets.test.mjs tests/homecoming-state.test.mjs tests/homecoming-preview.test.mjs tests/homecoming-game.test.mjs`：52／52 通過。素材測試已要求完整 36 張並逐頁檢查對應，所有圖片完整解碼通過。此為單元、VM 與 DOM 驗證，尚未替代真實瀏覽器驗收；下一階段先做瀏覽器視覺／互動驗收，不要重新繪製已完成的 36 張，也不要自行合併 main 或發布正式版。
+
+## 桌面瀏覽器驗收接續中
+
+已修正主遊戲仍寫 4／36、沙盒仍寫分鏡待製作的舊提示。新增 `scripts/browser/homecoming-acceptance.mjs` 與僅在此分支觸發的 `homecoming-browser.yml`。預計用實際 Chromium 檢查 12 路線 × 3 頁 × 1440／1280 桌面寬度，包含第 2 頁重整、第 3 頁關分頁重開、抵達 NPC、接受委託、匯出及再登入。此時尚未取得瀏覽器成功報告，不可宣稱驗收通過。
+
+本機已確認 socket() 被環境拒絕（EPERM），不能在這裡啟動 Chromium。改由 GitHub Actions 執行並上傳 `homecoming-desktop-browser` 報告與截圖。仍不合併 main、不部署正式版。
