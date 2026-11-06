@@ -6,6 +6,7 @@ import {normalizeHomecoming,discoverHomecoming,homecomingBonuses,eligibleHomecom
 import {HOMECOMING_OPPONENTS} from './homecoming-encounters.js';
 import {HOMECOMING_MAPS,homecomingEntryError,homecomingBattle,completeHomecomingBattle} from './homecoming-runtime.js';
 import {homecomingTracker,renderHomecomingPanel,renderHomecomingTown} from './homecoming-ui.js';
+import {homecomingPicture,showHomecomingPicture} from './homecoming-modal.js';
 import {ensurePetEffects} from './dual-pet-effects.js';
 import {patchTownArea} from './town-scene.js?v=6.5.77';
 import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from './weapon-compensation.js?v=6.5.62';
@@ -2213,9 +2214,10 @@ function discoverHomecomingLetters(){
 function homecomingAction(id,action,choice){
  if(offlineSimulation||!player?.hp)return false;
  if(action==='open'){openPanel('homecoming');return true;}
+ if(action==='view-art')return showHomecomingPicture(player,id);
  if(player.trialRun){toast('請先離開天穹試煉');return false;}
  if(!['return','revisit'].includes(action)&&!(activePet()?.hp>0)){toast('請先讓同行夥伴恢復');return false;}
- const previous=structuredClone(player),beforeMap=player.location;
+ const previous=structuredClone(player),beforeMap=player.location,beforePicture=homecomingPicture(player,id)?.key;
  try{
   if(['go','choose'].includes(action)){
    if(action==='go'&&enemies.some(e=>e.hp>0))throw Error('請先完成或離開當前戰鬥');
@@ -2226,7 +2228,10 @@ function homecomingAction(id,action,choice){
  }catch(error){player=previous;clearStatSnapshots();toast(error.message);return false;}
  if(beforeMap!==player.location||['go','choose','arrive','revisit','return'].includes(action)){endReport('離開任務現場');spawn();}
  selectedContinent=continentFor(player.location);if(action==='begin')selectedContinent=HOMECOMING_BY_ID[id].continentId;
- tab='homecoming';renderMapChoices();dirty=true;render();return true;
+ tab='homecoming';renderMapChoices();dirty=true;render();
+ const afterPicture=homecomingPicture(player,id)?.key;
+ if(afterPicture&&afterPicture!==beforePicture)showHomecomingPicture(player,id);
+ return true;
 }
 function addHomecomingEncounter(now=gameNow()){
  if(offlineSimulation||enemies.some(e=>e.hp>0))return;
