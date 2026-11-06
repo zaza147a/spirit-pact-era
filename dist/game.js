@@ -1439,6 +1439,21 @@ function deferTrueFormReveal(){if(!evolutionPreview?.trueForm)return;trueFormTok
 function beginTrueFormReveal(){const pet=player?.pets.find(p=>p.id===evolutionPreview?.id);if(trueFormBlocked()||!pet||!trueFormReady(pet)){deferTrueFormReveal();return;}stopAutoFusion('夥伴真形顯現中');const owner=player,token=++trueFormToken;evolutionRunning=true;$('evolutionScene').className='evolution-scene evolving';$('evolutionTitle').textContent='熟悉的氣息，陌生的輪廓…';$('evolutionStatus').textContent=TRUE_FORM_MESSAGE;$('evolutionStart').hidden=true;$('evolutionClose').disabled=true;$('evolutionClose').textContent='見證羈絆…';evolutionTimer=setTimeout(()=>{if(token!==trueFormToken)return;if(owner!==player||trueFormBlocked()||!trueFormReady(pet)){deferTrueFormReveal();return;}const stageBeforeReveal=pet.humanoidStage;pet.trueForm=true;reconcileHumanoidStages(pet);dirty=true;if(save()===false){delete pet.trueForm;if(stageBeforeReveal===undefined)delete pet.humanoidStage;else pet.humanoidStage=stageBeforeReveal;evolutionRunning=false;$('evolutionScene').className='evolution-scene preview';$('evolutionAfter').src=petArt(pet);$('evolutionTitle').textContent='真形尚未保存';$('evolutionStatus').textContent='存檔失敗，原有夥伴與進度已保留，稍後可再次相見。';}else{evolutionRunning=false;$('evolutionScene').className='evolution-scene complete';$('evolutionTitle').textContent=`原來，你是【${petForm(pet)}】！`;$('evolutionStatus').textContent=TRUE_FORM_MESSAGE;message(`與${pet.nickname}的羈絆，迎來了全新的模樣。`,'rare');render();}$('evolutionClose').disabled=false;$('evolutionClose').textContent='繼續同行';$('evolutionClose').focus();},4000);}
 
 function closeEvolution(){if(evolutionRunning)return;$('evolutionModal').style.display='none';$('gameShell').inert=false;evolutionPreview=null;render();}
+function showPermanentFormEvolution(pet,before,title,detail){
+ if(typeof document==='undefined'||!pet)return;
+ evolutionPreview={id:pet.id,completedForm:true,before};
+ $('evolutionBefore').src=petArt(before);
+ $('evolutionAfter').src=petArt(pet);
+ $('evolutionTitle').textContent=title;
+ $('evolutionStatus').textContent=detail;
+ $('evolutionScene').className='evolution-scene complete';
+ $('evolutionStart').hidden=true;
+ $('evolutionClose').disabled=false;
+ $('evolutionClose').textContent='見證新的羈絆';
+ $('evolutionModal').style.display='grid';
+ $('gameShell').inert=true;
+ $('evolutionClose').focus();
+}
 function renderResonanceGuide(){return renderThirdResonanceGuide()+`<div class="item"><b>一轉／二轉 × 四種夥伴 · 60組核心共鳴</b><p>攻擊事件需命中，治療／回魔需實際回復；防禦型夥伴攔截需實際受擊。每個配對有一組共用冷卻，夥伴共鳴不會再觸發共鳴。一轉效果依夥伴裝備能力計算；二轉共鳴命中觸發時即可改造當次及後續6秒的指定技能，夥伴本身攻擊／坦傷／治療仍依能力成長。</p>${Object.entries(RESONANCE_RULES).map(([job,roles])=>`<details ${job===player.job?'open':''}><summary>${CLASSES[job].name}${job===player.job?' · 目前職業':''}</summary>${Object.entries(roles).map(([role,rule])=>`<div class="skill-option"><b>${({attack:'攻擊',magic:'魔法',defense:'防禦',support:'輔助'})[role]}夥伴 · ${rule.name}</b><small>${rule.description}${JOB_SKILLS[job]?.some(s=>s.rebornOnly)?`<br>轉生主攻「${JOB_SKILLS[job].find(s=>s.id==='rebirthMain_'+job)?.name}」完整承接此效果並取代原主攻；常駐BUFF下，獵鷹／聖盾命中可維持原BUFF觸發的共鳴；觸發仍須滿足下方條件。`:''}<br>觸發：${rule.events.map(e=>RESONANCE_EVENTS[e]).join('／')} · CD ${(rule.cooldown/1000).toFixed(1)}秒</small></div>`).join('')}</details>`).join('')}</div>`;}
 
 function renderSpiritResonanceStatus(pet){
@@ -2061,10 +2076,11 @@ function doPetEnhance(slot){
  if(!confirm(`強化夥伴【${g.name}】至${next}階？消耗1個結晶，成功率100%。`))return;
  const snapshot=structuredClone(player),result=enhancePetEquipped(player,pet,g,next);
  if(result.error)return toast(result.error);
- const evolution=reconcileHumanoidStages(pet);clearStatSnapshots();
+ const beforeForm=structuredClone(pet),evolution=reconcileHumanoidStages(pet);clearStatSnapshots();
  if(!save()){player=snapshot;clearStatSnapshots();return;}
  toast(evolution.changed?`${pet.nickname}進化成${HUMANOID_STAGES[evolution.stage].label}！`:`${pet.nickname}的${g.name}強化至${next}階`);
  render();renderSide(true);
+ if(evolution.changed)showPermanentFormEvolution(pet,beforeForm,`恭喜！${pet.nickname}進化為${HUMANOID_STAGES[evolution.stage].label}！`,'三件夥伴裝備達成進化條件，新的姿態已永久解鎖。');
 }
 function renderPetEnhancement(){
  const pet=player?.pets.find(p=>p.id===player.activePetId);
@@ -2224,6 +2240,7 @@ function homecomingAction(id,action,choice){
  if(player.trialRun){toast('請先離開天穹試煉');return false;}
  if(!['return','revisit'].includes(action)&&!(activePet()?.hp>0)){toast('請先讓同行夥伴恢復');return false;}
  const previous=structuredClone(player),beforeMap=player.location,beforePicture=homecomingPicture(player,id)?.key;
+ const homecomingPet=action==='claim'?activePet():null,homecomingBefore=homecomingPet?structuredClone(homecomingPet):null;
  try{
   if(['go','choose'].includes(action)){
    if(action==='go'&&enemies.some(e=>e.hp>0))throw Error('請先完成或離開當前戰鬥');
@@ -2236,7 +2253,9 @@ function homecomingAction(id,action,choice){
  selectedContinent=continentFor(player.location);if(action==='begin')selectedContinent=HOMECOMING_BY_ID[id].continentId;
  tab='homecoming';renderMapChoices();dirty=true;render();
  const afterPicture=homecomingPicture(player,id)?.key;
- if(afterPicture&&afterPicture!==beforePicture)showHomecomingPicture(player,id);
+ if(action==='claim'&&homecomingPet?.homecomingEvolved){
+  showPermanentFormEvolution(homecomingPet,homecomingBefore,`返鄉契約完成！${homecomingPet.nickname}覺醒全新型態！`,'家鄉的羈絆化為新的力量。夥伴完成最終進化，返鄉誓約形態永久解鎖。');
+ }else if(afterPicture&&afterPicture!==beforePicture)showHomecomingPicture(player,id);
  return true;
 }
 function addHomecomingEncounter(now=gameNow()){

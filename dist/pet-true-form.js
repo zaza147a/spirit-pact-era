@@ -11,6 +11,7 @@ export const trueFormName=pet=>pet?.trueForm===true&&TRUE_FORMS[trueFormKey(pet)
 export const trueFormArt=pet=>{
  if(!trueFormName(pet))return null;
  const stage=humanoidStage(pet),key=trueFormKey(pet);
+ if(stage===3&&pet.homecomingEvolved===true)return `assets/true-forms/homecoming/${key}.webp`;
  return stage===0?`assets/true-forms/juvenile/${key}.webp`:`assets/true-forms/${['','S','SS','SSS'][stage]}/${key}.webp`;
 };
 export const TRUE_FORM_MESSAGE='恭喜！一路同行至今，你們早已親密無間。如今，牠終於願意卸下守護的外形，以原本的模樣與你相見。';
