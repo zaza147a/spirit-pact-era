@@ -8,7 +8,7 @@ export function renderHomecomingArt(routeId,stepId){
  return `<figure class="homecoming-scene"><img src="${scene.src}" alt="${escapeHtml(scene.alt)}" loading="lazy" decoding="async" width="1152" height="768"></figure>`+(foe?`<figure class="homecoming-opponent"><img src="${foe.artPath}" alt="${escapeHtml(foe.name)}" loading="lazy" decoding="async" width="768" height="768"><figcaption><b>${escapeHtml(foe.name)}</b><span>${escapeHtml(foe.description)}</span></figcaption></figure>`:'');
 }
 
-// Recovered first-trip illustrations. Missing pages remain explicitly pending.
+// Complete first-trip illustrations: twelve routes, three independently drawn pages each.
 export const HOMECOMING_JOURNEY_ART=Object.freeze({
  'support-defense':Object.freeze(['assets/homecoming/journeys/support-defense-1.webp','assets/homecoming/journeys/support-defense-2.webp','assets/homecoming/journeys/support-defense-3.webp']),
  'defense-support':Object.freeze(['assets/homecoming/journeys/defense-support-1.webp','assets/homecoming/journeys/defense-support-2.webp','assets/homecoming/journeys/defense-support-3.webp']),

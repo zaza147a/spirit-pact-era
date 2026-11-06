@@ -41,7 +41,7 @@ test('recovered journey pages render only their own illustration in the main pan
  const {HOMECOMING_JOURNEY_ART,renderHomecomingJourneyArt}=await import('../dist/homecoming-art.js');
  const {renderHomecomingPanel}=await import('../dist/homecoming-ui.js');
  const sources=Object.values(HOMECOMING_JOURNEY_ART).flat().filter(Boolean);
- assert.ok(sources.length>=4 && sources.length<=36);assert.equal(new Set(sources).size,sources.length);
+ assert.equal(sources.length,36);assert.equal(new Set(sources).size,sources.length);
  for(const [routeId,pages] of Object.entries(HOMECOMING_JOURNEY_ART))for(let index=0;index<3;index++){
   const html=renderHomecomingPanel({pets:[],homecoming:{routes:{[routeId]:{phase:'traveling',journeyIndex:index}}}});
   if(pages[index]){checkWebp(pages[index]);assert.ok(html.includes(pages[index]));assert.match(html,/width="1280" height="720"/);}

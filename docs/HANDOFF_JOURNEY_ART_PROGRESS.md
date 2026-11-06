@@ -6,7 +6,7 @@
 
 已完成並接入 **36／36** 張。本次完成 `support-defense-3.webp`。
 
-**下一張：全部完成；接續完整瀏覽器視覺驗收**
+**下一步：圖片繪製已完成；接續完整瀏覽器視覺與互動驗收。**
 
 每張圖片、接入設定、本文件與提示詞紀錄一起提交。若中斷，以遠端圖片和本文件最新版本為準，不依賴 scratch 或先前對話聲稱的數量。
 
@@ -60,3 +60,11 @@
 ## 原始起點
 
 基底 `3014278` 僅有 4 張：support-attack 1/2、attack-support 2/3。逐張重繪由 attack-magic 第 1 頁開始。第一張提交 `a23bf238e229588b788b7ed3840b764dbe327b5a`。
+
+## 整套素材核對
+
+36 張均可完整解碼且為 1280×720，36 個檔案雜湊互不相同；原有四張保留。32 張新繪提示詞已記錄。`docs/homecoming-art/journey-asset-audit.json` 提供檔案大小、SHA-256 及 Git blob SHA，供下一階段核對。
+
+## 最後驗證
+
+`node --test tests/homecoming-assets.test.mjs tests/homecoming-state.test.mjs tests/homecoming-preview.test.mjs tests/homecoming-game.test.mjs`：52／52 通過。素材測試已要求完整 36 張並逐頁檢查對應，所有圖片完整解碼通過。此為單元、VM 與 DOM 驗證，尚未替代真實瀏覽器驗收；下一階段先做瀏覽器視覺／互動驗收，不要重新繪製已完成的 36 張，也不要自行合併 main 或發布正式版。
