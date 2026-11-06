@@ -26,3 +26,5 @@
 下一步先檢查此提交的 Homecoming flow、Homecoming desktop browser acceptance、Homecoming twelve complete browser stories。失敗時依工作日誌修正，通過後保存新的報告／截圖／實際匯出存檔與來源提交。保持 main 不變。
 
 原圖片已完成36／36，不需重新生成。其餘未驗證範圍仍見 HANDOFF_JOURNEY_ART_PROGRESS.md，尤其錯誤選項、第四技能實際能量／SP／冷卻與跨職業最佳融合排名。
+
+另同步更新 Worker 的建立網址及 importmap 快取號，避免已開過舊返鄉版的瀏覽器繼續使用舊離線核心。
