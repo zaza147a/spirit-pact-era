@@ -76,5 +76,12 @@
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-attack-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Massive subterranean iron-forging civilization, mine rails and minecarts, black iron and brass pipes, amber furnace glow against cold blue cavern shadows, deserted mechanical forge.. Journey destination: 赤砧爐堡. Illustrate ONLY this page's narrative: 穿過鐵橋，赤砧爐堡的主爐仍在失控運轉。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
   }
 ]
