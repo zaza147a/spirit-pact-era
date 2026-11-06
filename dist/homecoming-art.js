@@ -7,3 +7,15 @@ export function renderHomecomingArt(routeId,stepId){
  const foe=homecomingOpponent(routeId,stepId);
  return `<figure class="homecoming-scene"><img src="${scene.src}" alt="${escapeHtml(scene.alt)}" loading="lazy" decoding="async" width="1152" height="768"></figure>`+(foe?`<figure class="homecoming-opponent"><img src="${foe.artPath}" alt="${escapeHtml(foe.name)}" loading="lazy" decoding="async" width="768" height="768"><figcaption><b>${escapeHtml(foe.name)}</b><span>${escapeHtml(foe.description)}</span></figcaption></figure>`:'');
 }
+
+// Recovered first-trip illustrations. Missing pages remain explicitly pending.
+export const HOMECOMING_JOURNEY_ART=Object.freeze({
+ 'support-attack':Object.freeze(['assets/homecoming/journeys/support-attack-1.webp','assets/homecoming/journeys/support-attack-2.webp',null]),
+ 'attack-support':Object.freeze([null,'assets/homecoming/journeys/attack-support-2.webp','assets/homecoming/journeys/attack-support-3.webp'])
+});
+export function renderHomecomingJourneyArt(routeId,index){
+ const route=HOMECOMING_ROUTES.find(r=>r.id===routeId);
+ const src=Number.isInteger(index)&&index>=0&&index<3?HOMECOMING_JOURNEY_ART[routeId]?.[index]:null;
+ if(!route||!src)return '<small>此頁旅行插畫準備中</small>';
+ return `<figure class="homecoming-journey-art"><img src="${src}" alt="${escapeHtml(route.journey[index])}" width="1280" height="720" decoding="async"></figure>`;
+}

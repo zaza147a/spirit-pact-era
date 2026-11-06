@@ -1,7 +1,7 @@
 import {HOMECOMING_ROUTES,homecomingIdentity} from './homecoming-data.js';
 import {HOMECOMING_ADVENTURES,adventureLocation} from './homecoming-adventures.js';
 import {eligibleHomecoming,homecomingBonuses} from './homecoming-state.js';
-import {renderHomecomingArt} from './homecoming-art.js';
+import {renderHomecomingArt,renderHomecomingJourneyArt} from './homecoming-art.js';
 import {fourthPair,FOURTH_SKILLS,fourthUnlocked} from './companion-fourth-skill.js';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(id,action,label,choice)=>`<button data-homecoming="${action}" data-route="${id}"${choice===undefined?'':` data-choice="${esc(choice)}"`}>${esc(label)}</button>`;
@@ -13,14 +13,14 @@ export function homecomingTracker(p){
 }
 export function renderHomecomingPanel(p){
  const b=homecomingBonuses(p),pet=p.pets?.find(x=>x.id===p.activePetId);
- const summary=`<div class="item"><h3>十二大陸・返鄉契約</h3><p>高階人形（SSS）與契印 8 開啟返鄉來信。首次逐頁旅行後抵達城鎮；每條故事需帶上對應外觀的出戰夥伴，並在線上手動推進。</p><p>已完成 ${b.count}／12。人物永久傳承：傷害 +${(b.damage*100).toFixed(2)}%、HP +${Math.round(b.hp*100)}%、雙防 +${Math.round(b.def*100)}%、技能受療 +${Math.round(b.recovery*100)}%。</p><p class="muted">測試版：首次旅行插畫仍待接入；人物傳承與第四格專屬技能已生效。</p></div>`;
+ const summary=`<div class="item"><h3>十二大陸・返鄉契約</h3><p>高階人形（SSS）與契印 8 開啟返鄉來信。首次逐頁旅行後抵達城鎮；每條故事需帶上對應外觀的出戰夥伴，並在線上手動推進。</p><p>已完成 ${b.count}／12。人物永久傳承：傷害 +${(b.damage*100).toFixed(2)}%、HP +${Math.round(b.hp*100)}%、雙防 +${Math.round(b.def*100)}%、技能受療 +${Math.round(b.recovery*100)}%。</p><p class="muted">測試版：首次旅行插畫恢復中（4／36）；人物傳承與第四格專屬技能已生效。</p></div>`;
  return summary+HOMECOMING_ROUTES.map(r=>{
  const q=p.homecoming?.routes?.[r.id];let html=`<section class="item homecoming-card" style="--homecoming-color:${r.color}"><small>${esc(r.continent)}・${esc(r.companion)}</small><h3>${esc(r.title)}</h3>`;
  if(!q)return html+'<p class="muted">達成條件後，在安全城鎮收到家鄉來信。</p></section>';
  const match=eligibleHomecoming(p,pet)&&homecomingIdentity(pet)===r.id;
  if(!match&&q.phase!=='claimed')html+='<p class="muted">請出戰這條路線對應的高階人形夥伴。</p>';
  if(q.phase==='letter')html+=`<p>${esc(r.letter)}</p>`+button(r.id,'begin','帶夥伴啟程');
- else if(q.phase==='traveling')html+=`<div class="homecoming-journey"><small>${['啟程','途中','抵達'][q.journeyIndex]}・${q.journeyIndex+1}／3</small><p>${esc(r.journey[q.journeyIndex])}</p><small>此頁旅行插畫準備中</small></div>`+button(r.id,q.journeyIndex===2?'arrive':'next',q.journeyIndex===2?'進入'+r.town:'下一張');
+ else if(q.phase==='traveling')html+=`<div class="homecoming-journey"><small>${['啟程','途中','抵達'][q.journeyIndex]}・${q.journeyIndex+1}／3</small><p>${esc(r.journey[q.journeyIndex])}</p>${renderHomecomingJourneyArt(r.id,q.journeyIndex)}</div>`+button(r.id,q.journeyIndex===2?'arrive':'next',q.journeyIndex===2?'進入'+r.town:'下一張');
  else {
  if(p.location!==r.townId)html+=button(r.id,'return','返回'+r.town);
  if(q.phase==='arrived')html+=`<p>${esc(r.npc)}：「${esc(r.letter)}」</p>`+button(r.id,'accept','確認接受委託');

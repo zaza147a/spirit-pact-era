@@ -36,3 +36,18 @@ test('post-Dawn opponents exceed the corresponding Dawn monster stat budget',()=
   for(const stat of ['hp','atk','def'])assert.ok(foe[stat]>reference[stat],foe.name+' '+stat+' must exceed Dawn');
  }
 });
+
+test('recovered journey pages render only their own illustration in the main panel',async()=>{
+ const {HOMECOMING_JOURNEY_ART,renderHomecomingJourneyArt}=await import('../dist/homecoming-art.js');
+ const {renderHomecomingPanel}=await import('../dist/homecoming-ui.js');
+ const sources=Object.values(HOMECOMING_JOURNEY_ART).flat().filter(Boolean);
+ assert.equal(sources.length,4);assert.equal(new Set(sources).size,4);
+ for(const [routeId,pages] of Object.entries(HOMECOMING_JOURNEY_ART))for(let index=0;index<3;index++){
+  const html=renderHomecomingPanel({pets:[],homecoming:{routes:{[routeId]:{phase:'traveling',journeyIndex:index}}}});
+  if(pages[index]){checkWebp(pages[index]);assert.ok(html.includes(pages[index]));assert.match(html,/width="1280" height="720"/);}
+  else assert.match(html,/此頁旅行插畫準備中/);
+  for(const other of sources.filter(s=>s!==pages[index]))assert.ok(!html.includes(other));
+ }
+ for(const index of [-1,3,1.5])assert.ok(!renderHomecomingJourneyArt('support-attack',index).includes('<img'));
+ assert.ok(!renderHomecomingJourneyArt('unknown',0).includes('<img'));
+});
