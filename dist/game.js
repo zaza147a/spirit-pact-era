@@ -1928,7 +1928,7 @@ async function settleOffline(){
  let worker;
  try{
   const result=await new Promise((resolve,reject)=>{
-   worker=new Worker(new URL('offline-worker.js?v=6.5.80-homecoming-premerge',document.baseURI),{type:'module'});
+   worker=new Worker(new URL('offline-worker.js?v=7.0.0-homecoming',document.baseURI),{type:'module'});
    worker.onmessage=event=>{if(event.data.type==='progress')$('offlineProgressText').textContent=`正在補算離線掛機… ${Math.floor(event.data.value*100)}%`;else if(event.data.type==='result')resolve(event.data.result);else reject(Error(event.data.message||'離線結算失敗'));};
    worker.onerror=()=>reject(Error('離線結算載入失敗，請重新整理再試'));
    const simulatedPlayer=structuredClone(player);simulatedPlayer.cardAlbumGoldBonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));worker.postMessage({player:simulatedPlayer,now});
