@@ -1,3 +1,4 @@
+import {homecomingMap} from './homecoming-data.js';
 export const TARGET_PRIORITIES={lowestHp:'血量最少',oldest:'最早出現',manual:'手動指定'};
 export function selectEncounterTarget(enemies,priority='lowestHp',current=null){
  const alive=enemies.filter(e=>e.hp>0);if(!alive.length)return null;
@@ -6,4 +7,4 @@ export function selectEncounterTarget(enemies,priority='lowestHp',current=null){
 }
 export const encounterDelay=(rng=Math.random)=>100+Math.floor(rng()*801);
 export const replacementDelay=(rng=Math.random)=>250+Math.floor(rng()*1151);
-export const encounterLimit=location=>['town','skycity','dawncity'].includes(location)?0:location==='petland'?1:['starter','forest'].includes(location)?2:['desert','frost','astral'].includes(location)?3:4;
+export const encounterLimit=location=>homecomingMap(location)?(homecomingMap(location).kind==='town'?0:1):['town','skycity','dawncity'].includes(location)?0:location==='petland'?1:['starter','forest'].includes(location)?2:['desert','frost','astral'].includes(location)?3:4;

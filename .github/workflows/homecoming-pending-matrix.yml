@@ -1,0 +1,41 @@
+name: Homecoming remaining balance matrix
+on:
+  push:
+    branches: [feature/companion-homecoming]
+    paths:
+      - 'scripts/homecoming-pending-matrix.mjs'
+      - '.github/workflows/homecoming-pending-matrix.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matrix:
+    if: github.ref == 'refs/heads/feature/companion-homecoming'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        job: [knight, crusader, wizard, sage, assassin, rogue, priest, monk, hunter, performer]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare six fusions and screen twenty skill subsets
+        env:
+          AUDIT_JOB: ${{ matrix.job }}
+          AUDIT_SOURCE_SHA: ${{ github.sha }}
+        run: node scripts/homecoming-pending-matrix.mjs ranking
+      - name: Check three investments and three new seeds at eight story fights
+        if: always()
+        env:
+          AUDIT_JOB: ${{ matrix.job }}
+          AUDIT_SOURCE_SHA: ${{ github.sha }}
+        run: node scripts/homecoming-pending-matrix.mjs difficulty
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homecoming-pending-${{ matrix.job }}
+          path: docs/homecoming-pending-matrix/
+          retention-days: 14

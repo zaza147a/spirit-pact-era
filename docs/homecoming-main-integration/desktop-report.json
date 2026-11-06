@@ -1,0 +1,1240 @@
+{
+  "passed": true,
+  "browserVersion": "141.0.7390.37",
+  "sourceSha": "b55785e4320559ac151d7c2512c896ef24e9c1fd",
+  "desktopWidths": [
+    1440,
+    1280
+  ],
+  "rows": [
+    {
+      "width": 1440,
+      "route": "attack-magic",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_1_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "magic-attack",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_2_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "attack-defense",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_3_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "defense-attack",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_4_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "attack-support",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_5_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "support-attack",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_6_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "magic-defense",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_7_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "defense-magic",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_8_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "magic-support",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_9_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "support-magic",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_10_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "defense-support",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_11_town",
+      "phase": "active"
+    },
+    {
+      "width": 1440,
+      "route": "support-defense",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_12_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "attack-magic",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_1_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "magic-attack",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_2_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "attack-defense",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_3_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "defense-attack",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_4_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "attack-support",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_5_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "support-attack",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_6_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "magic-defense",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_7_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "defense-magic",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_8_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "magic-support",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_9_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "support-magic",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_10_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "defense-support",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_11_town",
+      "phase": "active"
+    },
+    {
+      "width": 1280,
+      "route": "support-defense",
+      "loadedPages": 3,
+      "reloadPage": 2,
+      "reopenedPage": 3,
+      "arrival": "hc_12_town",
+      "phase": "active"
+    }
+  ],
+  "journeyRows": [
+    {
+      "width": 1440,
+      "route": "attack-magic",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-magic-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "attack-magic",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-magic-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "attack-magic",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-magic-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-attack",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-attack-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-attack",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-attack-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-attack",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-attack-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "attack-defense",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-defense-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "attack-defense",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-defense-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "attack-defense",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-defense-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-attack",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-attack-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-attack",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-attack-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-attack",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-attack-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "attack-support",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-support-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "attack-support",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-support-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "attack-support",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-attack-support-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-attack",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-attack-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-attack",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-attack-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-attack",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-attack-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-defense",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-defense-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-defense",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-defense-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-defense",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-defense-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-magic",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-magic-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-magic",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-magic-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-magic",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-magic-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-support",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-support-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-support",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-support-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "magic-support",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-magic-support-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-magic",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-magic-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-magic",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-magic-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-magic",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-magic-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-support",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-support-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-support",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-support-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "defense-support",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-defense-support-3.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-defense",
+      "page": 1,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-defense-1.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-defense",
+      "page": 2,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-defense-2.png"
+    },
+    {
+      "width": 1440,
+      "route": "support-defense",
+      "page": 3,
+      "geometry": {
+        "width": 253,
+        "height": 142.3125,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440
+      },
+      "screenshot": "1440-support-defense-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-magic",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-magic-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-magic",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-magic-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-magic",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-magic-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-attack",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-attack-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-attack",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-attack-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-attack",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-attack-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-defense",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-defense-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-defense",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-defense-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-defense",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-defense-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-attack",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-attack-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-attack",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-attack-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-attack",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-attack-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-support",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-support-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-support",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-support-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "attack-support",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-attack-support-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-attack",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-attack-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-attack",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-attack-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-attack",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-attack-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-defense",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-defense-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-defense",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-defense-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-defense",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-defense-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-magic",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-magic-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-magic",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-magic-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-magic",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-magic-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-support",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-support-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-support",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-support-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "magic-support",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-magic-support-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-magic",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-magic-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-magic",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-magic-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-magic",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-magic-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-support",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-support-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-support",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-support-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "defense-support",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-defense-support-3.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-defense",
+      "page": 1,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-defense-1.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-defense",
+      "page": 2,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-defense-2.png"
+    },
+    {
+      "width": 1280,
+      "route": "support-defense",
+      "page": 3,
+      "geometry": {
+        "width": 268,
+        "height": 150.75,
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "viewportWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "screenshot": "1280-support-defense-3.png"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "scope": "Real desktop Chromium: 12 routes × 3 pages × 2 widths; actual save-file import, page-two reload, page-three tab reopen, arrival/NPC/accept/export/re-entry, isolated preview. No combat balance or mobile coverage claimed."
+}

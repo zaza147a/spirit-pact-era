@@ -26,6 +26,12 @@ try{
  const page=await context.newPage();
  const screenshotDir=resolve('artifacts/spirit-premerge');
  await mkdir(screenshotDir,{recursive:true});
+ async function npc(selector){
+  const target=page.locator(selector),previous=page.getByRole('button',{name:'查看左側 NPC',exact:true}),next=page.getByRole('button',{name:'查看右側 NPC',exact:true});
+  if(await previous.count())while(await previous.isEnabled())await previous.click();
+  for(let i=0;i<5&&!await target.isVisible();i++){assert.ok(await next.isEnabled(),'NPC cannot be found: '+selector);await next.click();}
+  await target.click();const dialog=page.locator('.town-npc-dialog');if(await dialog.count())await dialog.locator('.goldbtn').click();
+ }
  const errors=[];
  page.on('pageerror',e=>errors.push(e.message));
  page.on('dialog',d=>d.accept());
@@ -96,7 +102,7 @@ try{
   assert.equal(await relevant.isVisible(),true,`${job} relevant stats cannot be restored`);
   assert.equal(await all.isVisible(),false,`${job} all stats remained visible`);
   await page.locator('[data-tab="pets"]').click();
-  await page.locator('#area [data-open="warehouse"]').click();
+  await npc('#area [data-open="warehouse"]');
   await page.locator('#warehouseModal').waitFor({state:'visible'});
   await page.screenshot({path:resolve(screenshotDir,`${job}-warehouse.png`),fullPage:true});
   await page.locator('#warehouseModal button[aria-label="關閉倉庫"]').click();
@@ -117,7 +123,7 @@ try{
  await page.locator('#saveFile').setInputFiles({name:'first-transfer.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(first))});
  await page.locator('[data-slot-select="3"]').click();
  await page.locator('#enterGameBtn').click();
- await page.locator('#townTransferBtn').click();
+ await npc('#townTransferBtn');
  const secondButton=page.locator('[data-transfer="pactWarrior"]');
  assert.equal(await secondButton.isEnabled(),true,'eligible first job cannot second-transfer');
  await secondButton.click();
@@ -143,7 +149,7 @@ try{
   await page.locator('#saveFile').setInputFiles({name:`${job}-prethird.json`,mimeType:'application/json',buffer:Buffer.from(JSON.stringify(save))});
   await page.locator(`[data-slot-select="${index}"]`).click();
   await page.locator('#enterGameBtn').click();
-  await page.locator('#townThirdBtn').click();
+  await npc('#townThirdBtn');
   const thirdButton=page.locator('[data-third-transfer]');
   assert.equal(await thirdButton.isEnabled(),true,`${job} cannot third-transfer with legal completed quest`);
   await thirdButton.click();

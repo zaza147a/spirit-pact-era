@@ -1,0 +1,3538 @@
+{
+  "summary": {
+    "builds": 50,
+    "qualifiedBuilds": 50,
+    "qualifiedStoryWins": 100
+  },
+  "conditions": {
+    "jobs": [
+      "knight",
+      "crusader",
+      "wizard",
+      "sage",
+      "assassin",
+      "rogue",
+      "priest",
+      "monk",
+      "hunter",
+      "performer"
+    ],
+    "seeds": [
+      93217,
+      44021
+    ],
+    "level": 210,
+    "gearLevel": 200,
+    "gear": "mythic SSS, legal maximum affixes and role-scored boss cards",
+    "sigil": 8,
+    "attributes": 438,
+    "attributeCap": 150,
+    "fourthSkill": false,
+    "stepMs": 100,
+    "limitMs": 180000,
+    "dawnQualification": "same-build mixed fight beginning with Dawn boss and three Dawn monsters, no death, boss defeated and at least 60 seconds survived; ordinary encounters replenish naturally",
+    "limitations": "Controlled synthetic builds, not global optimum or actual browser acceptance. Two seeds are a preliminary stability screen."
+  },
+  "rows": [
+    {
+      "job": "knight",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 23.8,
+            "minHpPercent": 94.63,
+            "petDeaths": 0,
+            "potions": 15,
+            "kills": 51,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.8,
+            "bossKillSeconds": 5.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27.3,
+            "minHpPercent": 99.04,
+            "petDeaths": 0,
+            "potions": 20,
+            "kills": 47,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.5,
+            "bossKillSeconds": 5.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "knight",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 23.8,
+            "minHpPercent": 94.63,
+            "petDeaths": 0,
+            "potions": 15,
+            "kills": 51,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.8,
+            "bossKillSeconds": 5.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27.3,
+            "minHpPercent": 99.04,
+            "petDeaths": 0,
+            "potions": 20,
+            "kills": 47,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.5,
+            "bossKillSeconds": 5.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "knight",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 28.2,
+            "minHpPercent": 99.58,
+            "petDeaths": 0,
+            "potions": 17,
+            "kills": 41,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.7,
+            "bossKillSeconds": 7.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 31.1,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 12,
+            "kills": 47,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8,
+            "bossKillSeconds": 8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "knight",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 31.2,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 36,
+            "kills": 45,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.7,
+            "bossKillSeconds": 8.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 36.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 24,
+            "kills": 42,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 10.2,
+            "bossKillSeconds": 10.2,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "knight",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27.4,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 7,
+            "kills": 45,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.3,
+            "bossKillSeconds": 8.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 25.5,
+            "minHpPercent": 99.1,
+            "petDeaths": 0,
+            "potions": 8,
+            "kills": 49,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.6,
+            "bossKillSeconds": 8.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 169025,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "crusader",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 37.4,
+            "minHpPercent": 95.87,
+            "petDeaths": 0,
+            "potions": 16,
+            "kills": 37,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 36,
+            "minHpPercent": 95.04,
+            "petDeaths": 0,
+            "potions": 17,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.1,
+            "bossKillSeconds": 7.1,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "crusader",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 37.4,
+            "minHpPercent": 95.87,
+            "petDeaths": 0,
+            "potions": 16,
+            "kills": 37,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 36,
+            "minHpPercent": 95.04,
+            "petDeaths": 0,
+            "potions": 17,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.1,
+            "bossKillSeconds": 7.1,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "crusader",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 35.4,
+            "minHpPercent": 92.82,
+            "petDeaths": 0,
+            "potions": 9,
+            "kills": 39,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9,
+            "bossKillSeconds": 9,
+            "minHpPercent": 99.16,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 36,
+            "minHpPercent": 99.1,
+            "petDeaths": 0,
+            "potions": 11,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.4,
+            "bossKillSeconds": 9.4,
+            "minHpPercent": 99.6,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "crusader",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 41.4,
+            "minHpPercent": 97.26,
+            "petDeaths": 0,
+            "potions": 29,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11.4,
+            "bossKillSeconds": 11.4,
+            "minHpPercent": 99.16,
+            "petDeaths": 0,
+            "potions": 1,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 43.6,
+            "minHpPercent": 99.34,
+            "petDeaths": 0,
+            "potions": 32,
+            "kills": 34,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 12.1,
+            "bossKillSeconds": 12.1,
+            "minHpPercent": 99.14,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "crusader",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 36.9,
+            "minHpPercent": 98.43,
+            "petDeaths": 0,
+            "potions": 10,
+            "kills": 33,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11,
+            "bossKillSeconds": 11,
+            "minHpPercent": 99.06,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 39.4,
+            "minHpPercent": 96.83,
+            "petDeaths": 0,
+            "potions": 8,
+            "kills": 31,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 12.2,
+            "bossKillSeconds": 12.2,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 208953,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "wizard",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.5,
+            "minHpPercent": 85.75,
+            "petDeaths": 0,
+            "potions": 23,
+            "kills": 46,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7,
+            "bossKillSeconds": 7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 48.9,
+            "minHpPercent": 93.38,
+            "petDeaths": 0,
+            "potions": 26,
+            "kills": 41,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7,
+            "bossKillSeconds": 7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "wizard",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.5,
+            "minHpPercent": 85.75,
+            "petDeaths": 0,
+            "potions": 23,
+            "kills": 46,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7,
+            "bossKillSeconds": 7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 48.9,
+            "minHpPercent": 93.38,
+            "petDeaths": 0,
+            "potions": 26,
+            "kills": 41,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7,
+            "bossKillSeconds": 7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "wizard",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.5,
+            "minHpPercent": 84.72,
+            "petDeaths": 0,
+            "potions": 22,
+            "kills": 46,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.3,
+            "bossKillSeconds": 8.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 48.9,
+            "minHpPercent": 88.06,
+            "petDeaths": 0,
+            "potions": 26,
+            "kills": 41,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.6,
+            "bossKillSeconds": 9.6,
+            "minHpPercent": 98.01,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "wizard",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 50.7,
+            "minHpPercent": 93.12,
+            "petDeaths": 0,
+            "potions": 52,
+            "kills": 45,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11.8,
+            "bossKillSeconds": 11.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 53.9,
+            "minHpPercent": 91.99,
+            "petDeaths": 0,
+            "potions": 44,
+            "kills": 43,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.5,
+            "bossKillSeconds": 9.5,
+            "minHpPercent": 98,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "wizard",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 51.7,
+            "minHpPercent": 92.84,
+            "petDeaths": 0,
+            "potions": 8,
+            "kills": 38,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.9,
+            "bossKillSeconds": 8.9,
+            "minHpPercent": 97.92,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 51,
+            "minHpPercent": 98.48,
+            "petDeaths": 0,
+            "potions": 11,
+            "kills": 37,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11.5,
+            "bossKillSeconds": 11.5,
+            "minHpPercent": 98.01,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112484,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "sage",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 45.6,
+            "minHpPercent": 84.73,
+            "petDeaths": 0,
+            "potions": 18,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.4,
+            "minHpPercent": 86.9,
+            "petDeaths": 0,
+            "potions": 21,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.3,
+            "bossKillSeconds": 7.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "sage",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 45.6,
+            "minHpPercent": 84.73,
+            "petDeaths": 0,
+            "potions": 18,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.4,
+            "minHpPercent": 86.9,
+            "petDeaths": 0,
+            "potions": 21,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.3,
+            "bossKillSeconds": 7.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "sage",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 45.6,
+            "minHpPercent": 84.01,
+            "petDeaths": 0,
+            "potions": 17,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.4,
+            "bossKillSeconds": 8.4,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.4,
+            "minHpPercent": 85.89,
+            "petDeaths": 0,
+            "potions": 18,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.7,
+            "bossKillSeconds": 8.7,
+            "minHpPercent": 97.6,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "sage",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 52.3,
+            "minHpPercent": 94.63,
+            "petDeaths": 0,
+            "potions": 28,
+            "kills": 33,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.5,
+            "bossKillSeconds": 9.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 53.6,
+            "minHpPercent": 94.62,
+            "petDeaths": 0,
+            "potions": 25,
+            "kills": 32,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11.1,
+            "bossKillSeconds": 11.1,
+            "minHpPercent": 98.68,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "sage",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 45.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 1,
+            "kills": 31,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.8,
+            "bossKillSeconds": 9.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 45.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 29,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 10.3,
+            "bossKillSeconds": 10.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 124692,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 25.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 16,
+            "kills": 61,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 4.7,
+            "bossKillSeconds": 4.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 23.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 18,
+            "kills": 62,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 4.6,
+            "bossKillSeconds": 4.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 25.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 16,
+            "kills": 61,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 4.7,
+            "bossKillSeconds": 4.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 23.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 18,
+            "kills": 62,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 4.6,
+            "bossKillSeconds": 4.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 26.2,
+            "minHpPercent": 87.56,
+            "petDeaths": 0,
+            "potions": 14,
+            "kills": 58,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 25.6,
+            "minHpPercent": 96.52,
+            "petDeaths": 0,
+            "potions": 12,
+            "kills": 57,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.8,
+            "bossKillSeconds": 5.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 28.7,
+            "minHpPercent": 97.54,
+            "petDeaths": 0,
+            "potions": 29,
+            "kills": 52,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.8,
+            "bossKillSeconds": 7.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 29.5,
+            "minHpPercent": 92.49,
+            "petDeaths": 0,
+            "potions": 38,
+            "kills": 50,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.7,
+            "bossKillSeconds": 7.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 1,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "assassin",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 24.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 9,
+            "kills": 61,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.3,
+            "bossKillSeconds": 6.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 22.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 10,
+            "kills": 59,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.4,
+            "bossKillSeconds": 6.4,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 115932,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "rogue",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27.5,
+            "minHpPercent": 98.16,
+            "petDeaths": 0,
+            "potions": 14,
+            "kills": 49,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.5,
+            "bossKillSeconds": 5.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 26.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 17,
+            "kills": 49,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.9,
+            "bossKillSeconds": 5.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "rogue",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27.5,
+            "minHpPercent": 98.16,
+            "petDeaths": 0,
+            "potions": 14,
+            "kills": 49,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.5,
+            "bossKillSeconds": 5.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 26.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 17,
+            "kills": 49,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.9,
+            "bossKillSeconds": 5.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "rogue",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 30.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 11,
+            "kills": 47,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.9,
+            "bossKillSeconds": 6.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 34,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 11,
+            "kills": 43,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.8,
+            "bossKillSeconds": 7.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "rogue",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 35.1,
+            "minHpPercent": 99.21,
+            "petDeaths": 0,
+            "potions": 29,
+            "kills": 40,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9,
+            "bossKillSeconds": 9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 1,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 33.1,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 23,
+            "kills": 41,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 10.2,
+            "bossKillSeconds": 10.2,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 1,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "rogue",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 29.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 7,
+            "kills": 42,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.3,
+            "bossKillSeconds": 8.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 6,
+            "kills": 44,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.9,
+            "bossKillSeconds": 8.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 146171,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "priest",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 41,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 19,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.9,
+            "bossKillSeconds": 5.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44,
+            "minHpPercent": 99.5,
+            "petDeaths": 0,
+            "potions": 13,
+            "kills": 37,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.6,
+            "bossKillSeconds": 6.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "priest",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 41,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 19,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.9,
+            "bossKillSeconds": 5.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44,
+            "minHpPercent": 99.5,
+            "petDeaths": 0,
+            "potions": 13,
+            "kills": 37,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.6,
+            "bossKillSeconds": 6.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "priest",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 41,
+            "minHpPercent": 96.54,
+            "petDeaths": 0,
+            "potions": 15,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.8,
+            "bossKillSeconds": 7.8,
+            "minHpPercent": 98.27,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44,
+            "minHpPercent": 94.08,
+            "petDeaths": 0,
+            "potions": 10,
+            "kills": 37,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.6,
+            "bossKillSeconds": 8.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "priest",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 46.4,
+            "minHpPercent": 93.41,
+            "petDeaths": 0,
+            "potions": 46,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11.1,
+            "bossKillSeconds": 11.1,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 50.6,
+            "minHpPercent": 95.14,
+            "petDeaths": 0,
+            "potions": 53,
+            "kills": 33,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 10.3,
+            "bossKillSeconds": 10.3,
+            "minHpPercent": 98.51,
+            "petDeaths": 0,
+            "potions": 1,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "priest",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 42.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 9,
+            "kills": 34,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.6,
+            "bossKillSeconds": 9.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 43.5,
+            "minHpPercent": 99.24,
+            "petDeaths": 0,
+            "potions": 10,
+            "kills": 32,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 10.6,
+            "bossKillSeconds": 10.6,
+            "minHpPercent": 98.48,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 142888,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "monk",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 26.7,
+            "minHpPercent": 85.68,
+            "petDeaths": 0,
+            "potions": 24,
+            "kills": 43,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6,
+            "bossKillSeconds": 6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 28.3,
+            "minHpPercent": 84.73,
+            "petDeaths": 0,
+            "potions": 16,
+            "kills": 47,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "monk",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 26.7,
+            "minHpPercent": 85.68,
+            "petDeaths": 0,
+            "potions": 24,
+            "kills": 43,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6,
+            "bossKillSeconds": 6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 28.3,
+            "minHpPercent": 84.73,
+            "petDeaths": 0,
+            "potions": 16,
+            "kills": 47,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "monk",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 26.7,
+            "minHpPercent": 81.99,
+            "petDeaths": 0,
+            "potions": 22,
+            "kills": 43,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.5,
+            "bossKillSeconds": 7.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27,
+            "minHpPercent": 87.97,
+            "petDeaths": 0,
+            "potions": 14,
+            "kills": 48,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.9,
+            "bossKillSeconds": 7.9,
+            "minHpPercent": 98.17,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "monk",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 28.8,
+            "minHpPercent": 90.21,
+            "petDeaths": 0,
+            "potions": 31,
+            "kills": 40,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.8,
+            "bossKillSeconds": 8.8,
+            "minHpPercent": 98.15,
+            "petDeaths": 0,
+            "potions": 1,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 29.5,
+            "minHpPercent": 92.36,
+            "petDeaths": 0,
+            "potions": 31,
+            "kills": 43,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.5,
+            "bossKillSeconds": 9.5,
+            "minHpPercent": 98.36,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "monk",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27.1,
+            "minHpPercent": 90.39,
+            "petDeaths": 0,
+            "potions": 7,
+            "kills": 46,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.9,
+            "bossKillSeconds": 8.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 27.1,
+            "minHpPercent": 97.45,
+            "petDeaths": 0,
+            "potions": 7,
+            "kills": 44,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.8,
+            "bossKillSeconds": 9.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 152983,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "hunter",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 36.1,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 20,
+            "kills": 43,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.7,
+            "bossKillSeconds": 5.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 34.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 25,
+            "kills": 46,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.4,
+            "bossKillSeconds": 6.4,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "hunter",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 36.1,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 20,
+            "kills": 43,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 5.7,
+            "bossKillSeconds": 5.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 34.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 25,
+            "kills": 46,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.4,
+            "bossKillSeconds": 6.4,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "hunter",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 38.8,
+            "minHpPercent": 98.22,
+            "petDeaths": 0,
+            "potions": 20,
+            "kills": 44,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.7,
+            "bossKillSeconds": 7.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 38.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 28,
+            "kills": 39,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.6,
+            "bossKillSeconds": 8.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "hunter",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 45.4,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 46,
+            "kills": 38,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.7,
+            "bossKillSeconds": 9.7,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 46.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 51,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 10.9,
+            "bossKillSeconds": 10.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "hunter",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 37.4,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 5,
+            "kills": 38,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 9.1,
+            "bossKillSeconds": 9.1,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 39.2,
+            "minHpPercent": 98.66,
+            "petDeaths": 0,
+            "potions": 8,
+            "kills": 36,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 10.6,
+            "bossKillSeconds": 10.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112598,
+            "ownerDamageReduction": 35.2,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    },
+    {
+      "job": "performer",
+      "routeId": "attack-defense",
+      "step": "ambush",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 43.3,
+            "minHpPercent": 84.33,
+            "petDeaths": 0,
+            "potions": 33,
+            "kills": 33,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.8,
+            "minHpPercent": 84.43,
+            "petDeaths": 0,
+            "potions": 21,
+            "kills": 34,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.3,
+            "bossKillSeconds": 7.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "performer",
+      "routeId": "attack-defense",
+      "step": "rear",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 43.3,
+            "minHpPercent": 84.33,
+            "petDeaths": 0,
+            "potions": 33,
+            "kills": 33,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 6.5,
+            "bossKillSeconds": 6.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.8,
+            "minHpPercent": 84.43,
+            "petDeaths": 0,
+            "potions": 21,
+            "kills": 34,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 7.3,
+            "bossKillSeconds": 7.3,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4575560,
+            "enemyMagicAttack": 5124627
+          }
+        }
+      ]
+    },
+    {
+      "job": "performer",
+      "routeId": "defense-attack",
+      "step": "patrol",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.4,
+            "minHpPercent": 85.7,
+            "petDeaths": 0,
+            "potions": 22,
+            "kills": 35,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 8.7,
+            "bossKillSeconds": 8.7,
+            "minHpPercent": 97.28,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 44.8,
+            "minHpPercent": 85.87,
+            "petDeaths": 0,
+            "potions": 21,
+            "kills": 34,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 10.6,
+            "bossKillSeconds": 10.6,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 1,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4783540,
+            "enemyMagicAttack": 5357565
+          }
+        }
+      ]
+    },
+    {
+      "job": "performer",
+      "routeId": "support-attack",
+      "step": "duel",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 54.6,
+            "minHpPercent": 84.49,
+            "petDeaths": 0,
+            "potions": 55,
+            "kills": 32,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11.9,
+            "bossKillSeconds": 11.9,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 54.9,
+            "minHpPercent": 83.32,
+            "petDeaths": 0,
+            "potions": 55,
+            "kills": 31,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11.6,
+            "bossKillSeconds": 11.6,
+            "minHpPercent": 97.82,
+            "petDeaths": 0,
+            "potions": 2,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4367580,
+            "enemyMagicAttack": 4891690
+          }
+        }
+      ]
+    },
+    {
+      "job": "performer",
+      "routeId": "defense-support",
+      "step": "defend",
+      "qualified": true,
+      "runs": [
+        {
+          "seed": 93217,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 48.8,
+            "minHpPercent": 85.02,
+            "petDeaths": 0,
+            "potions": 11,
+            "kills": 28,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 11.5,
+            "bossKillSeconds": 11.5,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        },
+        {
+          "seed": 44021,
+          "dawn": {
+            "outcome": "qualified",
+            "seconds": 60,
+            "bossKillSeconds": 49.9,
+            "minHpPercent": 89.4,
+            "petDeaths": 0,
+            "potions": 15,
+            "kills": 28,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 14665255,
+            "enemyMagicAttack": 16425086
+          },
+          "story": {
+            "outcome": "win",
+            "seconds": 12.8,
+            "bossKillSeconds": 12.8,
+            "minHpPercent": 100,
+            "petDeaths": 0,
+            "potions": 0,
+            "kills": 0,
+            "enemyHpPercent": 0,
+            "ownerMaxHp": 112817,
+            "ownerDamageReduction": 40,
+            "enemyAttack": 4991520,
+            "enemyMagicAttack": 5590502
+          }
+        }
+      ]
+    }
+  ]
+}
