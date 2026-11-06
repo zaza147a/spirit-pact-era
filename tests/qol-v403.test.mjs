@@ -17,7 +17,7 @@ test('boss weapon card comparison shows both legal choices without changing equi
  const before=JSON.stringify(p),html=a.cardComparison(next,'rightHand');
  assert.equal(JSON.stringify(p),before);
  assert.ok(html.includes(c.CARDS[old].name)&&html.includes(c.CARDS[next].name));
- assert.match(html,/ATK/);
+ assert.match(html,/物理攻擊加成/);
  assert.ok(a.renderCards().includes('限定部位'));
 });
 // Class/zone output balancing rounds at the final damage boundary as well as
