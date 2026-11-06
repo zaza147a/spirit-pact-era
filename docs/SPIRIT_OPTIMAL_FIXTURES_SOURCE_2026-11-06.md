@@ -15,3 +15,8 @@
 唯一檢查入口：`node --test tests/spirit-legacy-optimal-fixtures.test.mjs`。它只做存檔合法性與對應裝備查驗，不會重寫玩家資料。
 
 注意：原始 `manifest.json` 標明 **stage-one candidate optimum**，通過三個 240 秒種子的混戰生存檢查，並非對所有裝備、卡片詞條做過數學上的全組合證明；不要將清單中的舊 DPS 當成新版程式的即時 DPS。使用目前分支程式時，仍須由上述真實存檔重新跑同條件實戰。
+
+
+## 比較條件糾正（2026-11-06）
+
+原 manifest 的刺客 729,714,391.909 DPS 來自三次 **240 秒混合首領戰**；120 秒自然生怪的 505,983,772 DPS 不能據此判定削弱。刺客存檔是主手匕首＋副手匕首，不是盾。固定五隻 1e15 HP 目標的腳本已從測試目錄移除；詳見 `docs/SPIRIT_DPS_BENCHMARK_CONDITIONS_CORRECTION_2026-11-06.md`。

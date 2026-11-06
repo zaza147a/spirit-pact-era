@@ -1,4 +1,4 @@
-// Measure the ten user-supplied optimum saves in the current production Worker.
+// Diagnostic only: 120s natural spawn on stage-one 240s mixed-boss candidate saves.\n// Do NOT compare these results to the historical manifest.dps.
 // No random gear generation, attribute changes, card scoring or skill optimization.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
