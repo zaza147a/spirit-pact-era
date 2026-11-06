@@ -277,3 +277,22 @@ test('fatal damage cannot trigger low-HP resonance healing, while living low HP 
   if(hp===0)assert.equal(context.spiritReactiveCharge,null);
  }
 });
+
+test('each linked defeat resets an expired revival timer without extending an ongoing death',()=>{
+ const snippet=between('function resolveSpiritPairDefeat(','function enemyAttack(');
+ for(const job of ['pactWarrior','spiritCommander']){
+  let now=50000;
+  const pet={hp:100},player={job,hp:0,autoRevive:true,reviveAt:1000};
+  const context={player,activePet:()=>pet,gameNow:()=>now,PET_REVIVE_MS:10000,PLAYER_REVIVE_MS:15000,
+   offlineMetrics:null,stopAutoFusion:()=>{},endReport:()=>{},message:()=>{},save:()=>{}};
+  vm.runInNewContext(snippet+'\nthis.defeat=resolveSpiritPairDefeat',context);
+  assert.equal(context.defeat(),true);
+  assert.equal(player.reviveAt,65000);
+  now=51000;
+  assert.equal(context.defeat(),false);
+  assert.equal(player.reviveAt,65000);
+  now=80000;player.hp=0;pet.hp=100;
+  assert.equal(context.defeat(),true);
+  assert.equal(player.reviveAt,95000);
+ }
+});
