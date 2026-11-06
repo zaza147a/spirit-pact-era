@@ -6,7 +6,7 @@
 
 已完成並接入 **36／36** 張。本次完成 `support-defense-3.webp`。
 
-**下一步：旅程圖片與桌面旅程瀏覽器驗收已完成；接續八個戰鬥節點的自然戰鬥難度驗收。**
+**下一步：圖片、桌面旅程及八節點自然戰鬥瀏覽器初驗已完成；接續十二條任務的完整對話／交付獎勵／第四技能解鎖瀏覽器流程。**
 
 每張圖片、接入設定、本文件與提示詞紀錄一起提交。若中斷，以遠端圖片和本文件最新版本為準，不依賴 scratch 或先前對話聲稱的數量。
 
@@ -55,7 +55,7 @@
 
 ## 接入與驗證
 
-圖片位於 `dist/assets/homecoming/journeys/`，由 `dist/homecoming-art.js` 的 `HOMECOMING_JOURNEY_ART` 接入。提示詞紀錄：`docs/homecoming-art/journey-redraw-log.json`。已檢查解碼與尺寸，素材／沙盒／主遊戲回歸 52／52 通過。首次旅程、續讀、抵達及接受委託的實際桌面 Chromium 驗收已通過，證據見 `docs/homecoming-browser/REPORT.md`；八個戰鬥節點的自然實戰難度仍待驗收。
+圖片位於 `dist/assets/homecoming/journeys/`，由 `dist/homecoming-art.js` 的 `HOMECOMING_JOURNEY_ART` 接入。提示詞紀錄：`docs/homecoming-art/journey-redraw-log.json`。已檢查解碼與尺寸，素材／沙盒／主遊戲回歸 52／52 通過。首次旅程、續讀、抵達及接受委託的實際桌面 Chromium 驗收已通過，證據見 `docs/homecoming-browser/REPORT.md`；八個戰鬥節點的盧恩騎士自然瀏覽器初驗已通過，見 `docs/homecoming-natural-browser/REPORT.md`；不同投資程度與多種子的難度驗證仍待後續。
 
 ## 原始起點
 
@@ -74,18 +74,19 @@
 - 修正主遊戲仍顯示 4／36、沙盒仍說待製作的舊提示。目視截圖發現後方路線被未收取卡片推到很下面，已把目前旅程置頂、未收到的來信預設收合；修正後重新通過實際瀏覽器驗收。
 - 永久保存的原始報告、代表截圖與 36 張瀏覽器總覽：`docs/homecoming-browser/`。完整截圖也在 Actions artifact（保留 14 天），後續應優先讀取分支中的報告。
 
+## 八節點自然戰鬥完成斷點
+
+- 實際瀏覽器來源 `dbf83efddcc3cf266f3ba5215a3b1637698700dd`，Actions `42222421359` 成功。
+- 盧恩騎士、210 等、200 神話 SSS／最高合法詞條與首領卡、對應 SSS 融合夥伴、契印 8、第四技能未解鎖：8／8 自然勝利。三首領為 43.433／53.244／36.844 秒，八場沒有夥伴倒下。
+- 另做 2／2 合法卸裝戰敗控制：免費回對應家鄉、滿血、節點不變、匯出重登與關閉離線收益均正確。
+- 有實際傷害戰報，未注入傷害或直接勝利；沒有額外經驗／金幣／卡片／故事掉落。
+- 完整原始數據與代表截圖已永久保存在 `docs/homecoming-natural-browser/`，不得只依賴 14 天到期的 Actions artifact。
+- 單職八場原生亂數僅是瀏覽器初驗，不能宣稱全職／任意配裝穩定性已完成。這輪沒有更改怪物數值、傷害公式或掉落。
+
 ## 下一階段接續
 
-1. 圖片 36／36 已齊全，不要重新生成或把舊四張刪掉。
-2. 自然戰鬥難度仍待完成，先讀 `docs/HOMECOMING_FLOW_HANDOFF.md`、`docs/homecoming-post-dawn/REPORT.md`、`scripts/homecoming-combat-observation.mjs`。基準為合法 210 等、人物與夥伴 SSS、契印 8，返鄉挑戰應高於曙光野外；不能以 VM 測試強制大傷害冒充自然通關。
-3. 本次桌面瀏覽器範圍是旅程、續讀、抵達與接受委託，不代表全部任務結局及八個戰鬥節點已在瀏覽器自然實戰驗收。
-4. 所有修改只提交 `feature/companion-homecoming`，不合併 main、不部署正式版；未來合併時須先檢視最新 main，避免覆蓋其他更新。
-5. 本機已確認 Chromium 必要的 socket() 會被環境拒絕（EPERM），不要反覆下載瀏覽器；使用已建好的 `.github/workflows/homecoming-browser.yml` 在測試分支執行。現有流程只測返鄉桌面，不會執行全職 DPS 大矩陣。
-
-## 自然戰鬥瀏覽器驗收接續中
-
-現有 `homecoming-post-dawn` 已有舊十職 × 八節點 × 兩種子共 160 場 VM 自然初驗，不重跑同一矩陣。本階段新增 `scripts/browser/homecoming-combat-acceptance.mjs`，以合法 210 等盧恩騎士、200 神話 SSS、對應 SSS 融合夥伴、契印 8、第四技能未解鎖，於真實 Chromium 正常時間完成八節點，另做祖爐／演武兩個合法卸裝戰敗控制。
-
-腳本只匯入指定戰鬥節點的合法存檔，按前往與自動戰鬥；不注入傷害、直接勝利或加速時間。檢查自然戰報、勝利推進、零額外掉落／經驗／金幣、匯出重登與免費敗退回家鄉。卸裝戰敗控制不列入難度通關樣本。VM 僅用於準備合法滿 HP／SP 與驗證減傷上限。
-
-新工作 `.github/workflows/homecoming-combat-browser.yml` 僅在本分支的這支驗收腳本／工作本身修改時觸發，或手動啟動，不在每次圖片或一般遊戲更新時重跑。尚未取得結果，不可宣稱八場瀏覽器自然戰鬥已通過。保持本分支，不合併 main、不部署正式版。
+1. 圖片 36／36 已齊全；桌面旅程 24 組／72 次顯示與八節點自然戰鬥已通過，不要重新生成圖片或重跑舊的 160 場矩陣。
+2. 下一步是十二條任務從對話選擇到回城交付的完整瀏覽器流程，檢查獎勵只領一次、人物傳承、第四格技能解鎖與存讀。先讀 `tests/homecoming-state.test.mjs` 的 `plans`、`dist/homecoming-adventures.js`、`scripts/browser/homecoming-combat-acceptance.mjs`，沿實際按鈕與正常戰鬥推進，不能用直接修改節點或強制傷害冒充完整通關。
+3. 難度後續可針對多種子與不同投資程度做比較，但必須先以同套合法配裝實證通關曙光，再比較返鄉，不能把未達曙光基準的失敗當削弱依據。既有證據見 `docs/homecoming-post-dawn/REPORT.md`。
+4. 所有修改只提交 `feature/companion-homecoming`，不合併 main、不部署正式版；未來合併須先檢視最新 main，避免覆蓋其他更新。
+5. 本機 Chromium 的 socket() 受環境拒絕（EPERM），使用 GitHub Actions；旅程工作為 `homecoming-browser.yml`，自然戰鬥為 `homecoming-combat-browser.yml`。後者只在本分支驗收腳本／工作自身修改或手動啟動時執行，不隨每次一般遊戲／圖片更新重跑。
