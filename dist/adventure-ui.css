@@ -64,3 +64,10 @@ button,input,select,summary{touch-action:manipulation}button:focus-visible,summa
 @media(max-width:550px){.pet-gear-details .gear-affixes{grid-template-columns:1fr}}
 .quick-nav .wiki-nav-link{display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:0;min-height:34px;border-radius:7px;padding:5px 9px;background:#213b49;border:1px solid #4e7788;color:#dbedee;text-decoration:none;font-size:13px;font-weight:700;text-align:center}
 .quick-nav .wiki-nav-link:hover,.quick-nav .wiki-nav-link:focus-visible{background:#2d5764;color:#fff4cf;outline:2px solid #89e1cc;outline-offset:1px}
+.attack-identity{display:inline-flex;align-items:center;justify-content:center;gap:4px;margin:6px 0 4px;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.025em;border:1px solid;max-width:100%;box-sizing:border-box}
+.attack-physical{color:#ffe4bf;background:#53311d;border-color:#c68b51}
+.attack-magic{color:#d2e4ff;background:#193b6a;border-color:#75a6eb}
+.attack-hybrid{color:#f0d8ff;background:#493365;border-color:#b99be9}
+.attack-gear-hint{margin:8px 0;padding:9px 11px;background:#183443;border-left:3px solid #6eb3cc;border-radius:5px;color:#d5ebf3;font-size:12px;line-height:1.7}
+.dual-pet-hud .attack-identity{margin:5px auto 3px;font-size:11px}
+.hero>.attack-identity{display:flex;width:max-content;margin-left:auto;margin-right:auto}
