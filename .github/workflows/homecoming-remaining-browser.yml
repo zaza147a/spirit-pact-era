@@ -26,7 +26,7 @@ jobs:
       - name: Configure native visibility in the browser runner
         run: node scripts/browser/disable-focus-emulation.cjs
       - name: Test all story choices and native tab lifecycle with real Worker
-        run: xvfb-run -a sh -c 'openbox >/tmp/homecoming-openbox.log 2>&1 & node scripts/browser/homecoming-remaining-acceptance.mjs' 
+        run: xvfb-run -a sh -c 'openbox >/tmp/homecoming-openbox.log 2>&1 & node scripts/browser/homecoming-remaining-acceptance.mjs'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
