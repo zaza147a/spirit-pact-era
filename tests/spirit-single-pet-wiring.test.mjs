@@ -8,6 +8,46 @@ import vm from 'node:vm';
 const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
 const between=(start,end)=>game.slice(game.indexOf(start),game.indexOf(end,game.indexOf(start)));
 
+test('third-job pursuit and guard resonance receive real combat events',()=>{
+ const combatAbility=between('function petAutoAbility(','function petAttack(');
+ assert.match(combatAbility,/skill\.kind==='mark'[^\n]*spiritReactiveEvent\('ownerMark'\)/);
+ assert.match(combatAbility,/skill\.kind==='guard'[^\n]*spiritReactiveEvent\('petGuard'\)/);
+ const defense=between('function enemyAttack(','function awardTrialBoss(');
+ assert.match(defense,/spiritSinglePetProfile\(player,pet\)\?\.trigger==='petGuard'\)spiritReactiveEvent\('petGuard'\)/,
+  'attack-defense fusion must trigger armor pierce when its active pet tanks damage');
+});
+
+test('triggered resonance healing and cooldown effects are real and bounded',()=>{
+ const snippet=between('function spiritHitProcEffects(','function pactAssimilationBonus(');
+ const owner={hp:80},pet={id:'active',hp:50};
+ const ctx={jobSkillTimers:{attack:1200,heal:300},petSkillTimers:{'active:main':900,'other:main':1100},
+  report:{},record:()=>{}};
+ vm.runInNewContext(snippet+'\nthis.apply=spiritHitProcEffects',ctx);
+ ctx.apply({effect:'selfSustain',healPct:2},true,owner,100);
+ assert.equal(owner.hp,82);
+ ctx.apply({effect:'castHaste',cooldownReductionMs:400},true,owner,100);
+ assert.equal(ctx.jobSkillTimers.attack,800);
+ assert.equal(ctx.jobSkillTimers.heal,0);
+ ctx.apply({effect:'petCooldown',cooldownReductionMs:500},false,pet,100);
+ assert.equal(ctx.petSkillTimers['active:main'],400);
+ assert.equal(ctx.petSkillTimers['other:main'],1100,'other companions cannot receive this reduction');
+ ctx.apply({effect:'guardianVerdict',healPct:3},false,pet,100);
+ assert.equal(pet.hp,50,'the bespoke verdict healing must not be duplicated');
+});
+
+test('resonance armor penetration reuses the same hit roll, crit and enemy defense',()=>{
+ const source=between('function spiritApplyPierce(','function damageText(');
+ const enemy={id:'boss'},context={enemy,spiritHitRoll:null,gameNow:()=>3000,
+  outgoingHitDamage:(power,def,roll,crit)=>Math.max(1,Math.round((power-def)*roll*crit))};
+ vm.runInNewContext(source+'\nthis.pierce=spiritApplyPierce',context);
+ context.spiritHitRoll={target:enemy,at:3000,power:1000,def:600,roll:1,crit:1.5,base:600};
+ assert.equal(context.pierce(600,10),690,'10% DEF ignore refunds exactly 60 defense before crit');
+ assert.equal(context.pierce(600,10),600,'one proc must not be applied twice');
+ context.spiritHitRoll={target:{id:'other'},at:3000,power:1000,def:600,roll:1,crit:1,base:400};
+ assert.equal(context.pierce(400,12),400,'cannot move a proc to another enemy');
+ assert.match(game,/amount=spiritApplyPierce\(amount,spiritPiercePct\)/);
+});
+
 test('commander inherited HP changes the actual companion max HP used by combat, healing and UI',()=>{
  const snippet=between('function petStats(pet){','function basePetStats(pet){');
  const pet={id:'pet-1'},player={job:'spiritCommander',activePetId:'pet-1',gear:{},attributes:{}};
@@ -83,7 +123,7 @@ test('real damage hook grants one bounded bonus to the correct owner or pet lane
   const context={player:{job,thirdJob:false,hp:100},enemy:{id:'mob',instanceId:'mob-1'},
    activePet:()=>pet,stat:()=>100,petStats:()=>({hp:100}),
    spiritSinglePetProfile,createSpiritProcState,advanceSpiritProc,
-   spiritProcState:createSpiritProcState(),gameNow:()=>10000,
+   spiritProcState:createSpiritProcState(),spiritPiercePct:0,gameNow:()=>10000,
    bossHitMeta:{magical:false,skillId:'main'}};
   vm.runInNewContext(snippet+'\nthis.proc=spiritAttackProcBonus',context);
   return context;
@@ -93,6 +133,7 @@ test('real damage hook grants one bounded bonus to the correct owner or pet lane
  assert.equal(pact.proc('playerDamage'),0);
  assert.equal(pact.proc('playerDamage'),0);
  assert.equal(pact.proc('playerDamage'),12);
+ assert.equal(pact.spiritPiercePct,10,'armor-break hits must deliver their 10% DEF ignore');
  assert.equal(pact.proc('playerDamage',true),0,'secondary target must not duplicate a proc');
  const commander=make('spiritCommander');
  assert.equal(commander.proc('playerDamage'),0);

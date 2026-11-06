@@ -12,13 +12,13 @@ export const SPIRIT_PROC_RULES=Object.freeze({
  supportCycle:{charges:3,cooldownMs:7000,bonusPct:8,healPct:3},
  dualPolarity:{charges:2,cooldownMs:7500,bonusPct:18,ignoreDef:6,alternating:true},
  armorBurst:{charges:2,cooldownMs:7000,bonusPct:17,ignoreDef:12},
- chainSlash:{charges:2,cooldownMs:6500,bonusPct:15,cleaveTargets:2},
+ chainSlash:{charges:2,cooldownMs:6500,bonusPct:15},
  arcaneCounter:{charges:1,cooldownMs:8000,bonusPct:18,shieldPct:3,magic:true},
  castHaste:{charges:3,cooldownMs:8000,bonusPct:14,cooldownReductionMs:400},
  oathBurst:{charges:1,cooldownMs:10000,bonusPct:20,healPct:3,hpBelow:40},
  dualElement:{charges:2,cooldownMs:7500,bonusPct:18,alternating:true},
  armorPierce:{charges:1,cooldownMs:7000,bonusPct:17,ignoreDef:12},
- petChase:{charges:2,cooldownMs:6500,bonusPct:15,cleaveTargets:2},
+ petChase:{charges:2,cooldownMs:6500,bonusPct:15},
  arcaneRetaliation:{charges:1,cooldownMs:8000,bonusPct:17,shieldPct:4,magic:true},
  petCooldown:{charges:3,cooldownMs:8000,bonusPct:12,cooldownReductionMs:500},
  guardianVerdict:{charges:3,cooldownMs:6500,bonusPct:20,healPct:3}
@@ -41,5 +41,5 @@ export function advanceSpiritProc(state,profile,event,{now=0,channel='physical',
  state.charges=0;state.lastAt=now;state.lastTarget=targetId;
  return {effect:profile.effect,source:profile.source,bonusPct:rule.bonusPct,
   ignoreDef:rule.ignoreDef||0,shieldPct:rule.shieldPct||0,healPct:rule.healPct||0,
-  cooldownReductionMs:rule.cooldownReductionMs||0,cleaveTargets:rule.cleaveTargets||0};
+  cooldownReductionMs:rule.cooldownReductionMs||0};
 }

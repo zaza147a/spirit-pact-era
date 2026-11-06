@@ -2,6 +2,7 @@ import {ensurePetEffects} from './dual-pet-effects.js';
 import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from './weapon-compensation.js?v=6.5.62';
 import {commanderInheritedPetStats,commanderMainSkillMultiplier} from './commander-owner-growth.js';
 import {spiritTargetDamageFactor} from './spirit-target-damage.js';
+import {spiritPreFusionAttack} from './spirit-dual-offense.js?v=6.5.67';
 import {chooseDefendingPet,pactOwnerOnlyAggro,commanderPetTargetChance} from './dual-pet-targeting.js';
 import {dualSpiritResonance,canTriggerDualSpirit} from './dual-fusion-resonance.js';
 import {queueCombatVfx} from './skill-effects.js?v=6.5.12';
@@ -64,7 +65,7 @@ import {activePetRoster,normalizeDualPetState,canSetSecondaryPet,secondPetDamage
 import {spiritSinglePetProfile} from './spirit-single-pet-profiles.js';
 import {synchronizeCommanderCards} from './commander-card-sync.js';
 import {commanderPetSkillForm,commanderSupportSkillPower,commanderSkillOutputScale,commanderFinalDamageFactor} from './commander-pet-skill-forms.js';
-import {createSpiritProcState,advanceSpiritProc} from './spirit-single-pet-procs.js';
+import {createSpiritProcState,advanceSpiritProc} from './spirit-single-pet-procs.js?v=6.5.67';
 import {outgoingHitDamage,incomingMonsterDamage,monsterAttackPower,monsterDefenseAgainst,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterHitChance,monsterCombatStats,monsterRuntimeStats,jobZoneOutputFactor,LEVEL_CAPS} from './combat-balance.js?v=6.5.0';
 import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.5.45';
 
@@ -134,6 +135,8 @@ let originalPactCounters=new Map();
 let secondaryPetEffects={};
 let spiritProcState=createSpiritProcState();
 let spiritReactiveCharge=null;
+let spiritPiercePct=0;
+let spiritHitRoll=null;
 let spiritGuardianVerdict=null;
 function combatPetFactor(pet){const petId=typeof pet==='string'?pet:pet?.id;return secondPetDamageFactor(player,petId,{overload:player?.job==='spiritCommander'&&player.thirdJob&&classBuffs.dualOverload?.until>gameNow()});}
 function spiritMainProfile(chosen){if(player?.job!=='pactWarrior'||!['pactSlash','rebirthMain_pactWarrior','thirdMain_pactWarrior'].includes(chosen?.id))return null;return spiritSinglePetProfile(player,activePet());}
@@ -146,7 +149,7 @@ function spiritReactiveEvent(event){
  const now=gameNow(),proc=advanceSpiritProc(spiritProcState,profile,event,{now,
   hpPercent:100*source.hp/Math.max(1,maxHp),targetId:enemy?.instanceId||enemy?.id});
  if(!proc)return null;
- spiritReactiveCharge={source:profile.source,bonusPct:proc.bonusPct,until:now+8000};
+ spiritReactiveCharge={source:profile.source,bonusPct:proc.bonusPct,ignoreDef:proc.ignoreDef||0,until:now+8000};
  if(proc.healPct){
   const healing=Math.round(maxHp*proc.healPct/100),effective=Math.min(Math.max(0,maxHp-source.hp),healing);
   source.hp=Math.min(maxHp,source.hp+healing);
@@ -158,6 +161,7 @@ function spiritReactiveEvent(event){
  return proc;
 }
 function spiritAttackProcBonus(key,secondary=false){
+ spiritPiercePct=0;
  if(secondary||!['playerDamage','petDamage'].includes(key)||!activePet()?.hp)return 0;
  const profile=spiritSinglePetProfile(player,activePet());
  if(!profile||key!==(profile.source==='owner'?'playerDamage':'petDamage'))return 0;
@@ -166,7 +170,7 @@ function spiritAttackProcBonus(key,secondary=false){
  const hitTriggers=owner?['ownerHit','ownerSkill','ownerCombo','ownerAlternatingHit','ownerCastCycle']:['petHit','petSkill','petAlternatingHit','petCastCycle'];
  if(!hitTriggers.includes(trigger)){
   if(spiritReactiveCharge?.source===profile.source&&spiritReactiveCharge.until>=gameNow()){
-   const bonus=spiritReactiveCharge.bonusPct;spiritReactiveCharge=null;return bonus;
+   const bonus=spiritReactiveCharge.bonusPct;spiritPiercePct=spiritReactiveCharge.ignoreDef||0;spiritReactiveCharge=null;return bonus;
   }
   return 0;
  }
@@ -175,7 +179,25 @@ function spiritAttackProcBonus(key,secondary=false){
  const proc=advanceSpiritProc(spiritProcState,profile,trigger,{now:gameNow(),
   channel:bossHitMeta?.magical?'magic':'physical',hpPercent:100*source.hp/Math.max(1,maxHp),
   targetId:enemy.instanceId||enemy.id});
+ if(proc){spiritPiercePct=proc.ignoreDef||0;spiritHitProcEffects(proc,owner,source,maxHp);}
  return proc?.bonusPct||0;
+}
+function spiritHitProcEffects(proc,owner,source,maxHp){
+ if(!proc)return;
+ // Guardian Verdict already heals through its dedicated pet-attack sequence.
+ if(proc.healPct&&proc.effect!=='guardianVerdict'){
+  const healed=Math.min(Math.max(0,maxHp-source.hp),Math.round(maxHp*proc.healPct/100));
+  source.hp+=healed;
+  if(healed)record(report,'effectiveHeal',healed);
+ }
+ if(proc.cooldownReductionMs){
+  const timersToReduce=owner?jobSkillTimers:petSkillTimers;
+  const prefix=owner?'':`${source.id}:`;
+  for(const id of Object.keys(timersToReduce)){
+   if(!owner&&!id.startsWith(prefix))continue;
+   timersToReduce[id]=Math.max(0,timersToReduce[id]-proc.cooldownReductionMs);
+  }
+ }
 }
 function pactAssimilationBonus(type){
  if(player?.job!=='pactWarrior')return 0;
@@ -362,7 +384,7 @@ function activeJobBuffBonus(key){return Object.values(classBuffs).reduce((n,b)=>
 function passiveBonus(key){return (cachedPassives()[key]||0)+activeJobBuffBonus(key);}
 function stat(type){const bonuses=cachedPassives(),value=rawStat(type)+(bonuses[type]||0)+activeJobBuffBonus(type),cardType=({atk:'atkPct',matk:'matkPct',def:'defPct',flee:'fleePct',hp:'hpPct',hit:'hitPct',mp:'mpPct',mdef:'mdefPct'})[type];let result=cardType?value*(1+cardBonus(cardType)/100)*(1+((bonuses[cardType]||0)+activeJobBuffBonus(cardType))/100):value;if(['def','mdef'].includes(type))result*=1+effectiveAttributes().VIT*.006;if(type==='flee')result*=1+effectiveAttributes().AGI*.0045;if(type==='hp')result*=1+potentialBonus('VIT');if(type==='critDmg')result+=potentialBonus('LUK')*100;if(type==='crit'&&classBuffs.resonanceCrit?.until>gameNow())result=Math.min(100,result+classBuffs.resonanceCrit.power);if(['atk','matk','hp','def','mdef'].includes(type))result*=sigilBonus(player)[type];result+=pactAssimilationBonus(type);if(type==='speed')return Math.round(result/(1+passiveBonus('aspdPct')/100+Object.values(player.gear).reduce((n,g)=>n+(GEAR_BASE[g?.id]?.aspdPct||0),0)/100+(currentTactic()?.kind==='frenzy'?.1:0)));if(type==='damageReduction')return Math.min(40,result);if(type==='crit')return Math.min(100,result+(currentTactic()?.kind==='firstFocus'?5:0));if(type==='critDmg')return Math.round(result*10)/10;if(type==='aspd')return Math.round(clamp(result,140,193)*10)/10;return Math.round(result);}
 function classBuffPower(target='owner'){return passiveBonus('teamDamagePct')/100+Object.entries(classBuffs).reduce((sum,[key,b])=>sum+(!['autoSpell','pact','quickCast','resonanceHaste','resonanceCrit','teamWard'].includes(key)&&(key!=='devotion'||target==='pet')&&b.until>gameNow()&&(!b.modifiers||b.teamDamage)?b.power:0),0);}
-function offensiveSource(skill=null){const shield=skill?.source==='holyShield'||skill?.source==='shield',magical=!shield&&(skill?.kind==='magic'||!skill&&['mage','wizard','acolyte','priest','sage'].includes(player.job)),atk=stat('atk'),defenseForDamage=shield&&player.job==='crusader'?Math.min(stat('def'),atk*2):stat('def'),power=skill?.source==='holyShield'?atk*.85+defenseForDamage*(player.job==='crusader'?.06:.15):skill?.source==='shield'?atk*.8+defenseForDamage*(player.job==='crusader'?.08:.2):magical?stat('matk'):atk;return power*allocationDamageMultiplier(player.job,magical,effectiveAttributes(),playerRange(player.job)==='ranged')*(1+potentialBonus(magical?'INT':playerRange(player.job)==='ranged'?'DEX':'STR'));}
+function offensiveSource(skill=null){const shield=skill?.source==='holyShield'||skill?.source==='shield',magical=!shield&&(skill?.kind==='magic'||!skill&&['mage','wizard','acolyte','priest','sage'].includes(player.job)),atk=stat('atk'),matk=stat('matk'),preFusionAttack=spiritPreFusionAttack(player.job,player.thirdJob,atk,matk),defenseForDamage=shield&&player.job==='crusader'?Math.min(stat('def'),atk*2):stat('def'),power=skill?.source==='holyShield'?atk*.85+defenseForDamage*(player.job==='crusader'?.06:.15):skill?.source==='shield'?atk*.8+defenseForDamage*(player.job==='crusader'?.08:.2):(preFusionAttack??(magical?matk:atk));return power*allocationDamageMultiplier(player.job,magical,effectiveAttributes(),playerRange(player.job)==='ranged')*(1+potentialBonus(magical?'INT':playerRange(player.job)==='ranged'?'DEX':'STR'));}
 
 function threshold(){return baseExperienceNeed(player);}
 function petThreshold(pet){return petExperienceNeed(pet);}
@@ -411,8 +433,16 @@ function spawn(){if(restoreTrialCheckpoint())return;casting=null;if(report)endRe
  enemy={id:WORLD_MONSTERS.find(m=>m.map===player.location)?.id||'fang',level:1,hp:0,maxHp:1,atk:0,def:0};nextEncounterAt=gameNow()+encounterDelay();render();}
 
 function travel(mapId){if(player.trialRun){if(confirm('離開將結束本次試煉，入場券不退還。確定離場？'))exitTrial('主動離場');return;}if(['dawncity','dawnrift'].includes(mapId)){const error=dawnEntryError(player);if(error){renderMapChoices();return toast(error);}}if(!player.hp){$('mapSelect').value=player.location;return toast('角色倒地時不能移動，請先選擇復活方式');}if(MAPS[mapId]?.min>=151&&!player.thirdJob){renderMapChoices();return toast('151級以上區域需要完成三轉');}if((MAPS[mapId]?.min>=101||mapId==='skycity')&&!player.reborn)return toast('新大陸需要先完成靈契轉生');if(!MAPS[mapId]||mapId===player.location)return;endReport('撤退');player.location=mapId;selectedContinent=continentFor(mapId);renderMapChoices();if(isTown(mapId))tab='combat';else player.lastMap=mapId;deadUntil=0;message(`已前往${MAPS[mapId].name}。`,'good');spawn();dirty=true;save();}
-function playerHitDamage(power,def,petCrit,petHaste,criticalMultiplier,pactRatio=1,pactOnly=false,critical=false){const roll=rand(90,110)/100,exposed=enemy?.exposedUntil>gameNow()?enemy.exposedPower||0:0,actual=outgoingHitDamage(power,def*(1-exposed),roll,critical?criticalMultiplier:1),without=outgoingHitDamage(power*pactRatio,def,roll,critical&&!petCrit?criticalMultiplier:1);pendingPetCredit=Math.max(0,Math.min(enemy?.hp||0,actual)-Math.min(enemy?.hp||0,petHaste||pactOnly?0:without));return actual;}
-function hitDamage(atk,def,criticalMultiplier=1){if(enemy?.exposedUntil>gameNow())def*=1-(enemy.exposedPower||0);return outgoingHitDamage(atk,def,rand(90,110)/100,criticalMultiplier);}
+function playerHitDamage(power,def,petCrit,petHaste,criticalMultiplier,pactRatio=1,pactOnly=false,critical=false){const roll=rand(90,110)/100,exposed=enemy?.exposedUntil>gameNow()?enemy.exposedPower||0:0,actual=outgoingHitDamage(power,def*(1-exposed),roll,critical?criticalMultiplier:1),without=outgoingHitDamage(power*pactRatio,def,roll,critical&&!petCrit?criticalMultiplier:1);spiritHitRoll={target:enemy,at:gameNow(),power,def:def*(1-exposed),roll,crit:critical?criticalMultiplier:1,base:actual};pendingPetCredit=Math.max(0,Math.min(enemy?.hp||0,actual)-Math.min(enemy?.hp||0,petHaste||pactOnly?0:without));return actual;}
+function hitDamage(atk,def,criticalMultiplier=1){if(enemy?.exposedUntil>gameNow())def*=1-(enemy.exposedPower||0);const roll=rand(90,110)/100,actual=outgoingHitDamage(atk,def,roll,criticalMultiplier);spiritHitRoll={target:enemy,at:gameNow(),power:atk,def,roll,crit:criticalMultiplier,base:actual};return actual;}
+function spiritApplyPierce(amount,pct){
+ const hit=spiritHitRoll;spiritHitRoll=null;
+ if(!pct||!hit||hit.target!==enemy||hit.at!==gameNow())return amount;
+ // Reuse the original hit's attack, mitigation, roll and crit. This avoids
+ // approximating DEF ignore as a flat damage bonus or rolling a second hit.
+ const pierced=outgoingHitDamage(hit.power,hit.def*(1-Math.min(90,pct)/100),hit.roll,hit.crit);
+ return amount*pierced/Math.max(1,hit.base);
+}
 function damageText(rolled,effective){return `命中傷害 ${Math.round(rolled)}${Math.round(effective)<Math.round(rolled)?`（有效扣血 ${Math.round(effective)}）`:''}`;}
 
 function originalGuardKey(pet){return 'guardFollow|'+player.job+'|'+pet.id+'|'+pet.fusion?.main+'-'+pet.fusion?.sub;}
@@ -430,7 +460,7 @@ function activePetMarkPower(now=gameNow()){
  if(petEffects.markWardOnly&&((petEffects.markUntil||0)<=now||petEffects.markSourcePetId!==activePet()?.id||!originalGuardActive(now))){petEffects.markHits=0;return 0;}
  return petEffects.markHits>0?petEffects.markPower:0;
 }
-function dealDamage(amount,key,secondary=false){if(!enemy?.hp)return 0;amount*=1+spiritAttackProcBonus(key,secondary)/100;const fused=key==='playerDamage'&&fusedPair(activePet())&&activePet()?.hp>0,spiritSupport=key==='playerDamage'&&isSpiritJob(player.job),preparation=enemy.dawn&&enemy.boss&&enemy.id==='dawn-archon'?dawnArchonPreparationFactor(player):1,roleFactor=spiritTargetDamageFactor(player.job,key,{boss:!!enemy.boss,secondary,level:player.level}),base=Math.max(0,Math.round(amount*jobZoneOutputFactor(player.job,player.level)*preparation*roleFactor));let blessing=fused&&petEffects.blessingUntil>gameNow()?base*petEffects.blessingPower:0,mark=fused?activePetMarkPower():0,markFx=mark?petEffects:null;if(spiritSupport){let bestBlessing=0;mark=0;markFx=null;for(const unit of activePetRoster(player)){if(unit.hp<=0)continue;const fx=effectsForPet(unit),power=fx.markWardOnly&&unit.id===player.activePetId?activePetMarkPower():fx.markHits>0?fx.markPower:0;if(power>mark){mark=power;markFx=fx;}if(fx.blessingUntil>gameNow())bestBlessing=Math.max(bestBlessing,fx.blessingPower||0);}blessing=base*Math.min(.25,bestBlessing);}if(mark&&markFx)markFx.markHits--;const effect=currentTactic(),magical=['mage','wizard','sage','acolyte','priest'].includes(player.job),bonus=key==='playerDamage'?tacticDamageFactor(effect,player.job,enemy,magical)*(effect?.kind==='instantDamage'?1.3:1)*(effect?.kind==='elemental'&&effect.charges>0&&manualElementalStrike?1.4:1):1,rolled=(base+blessing+mark)*bonus,original=Math.min(enemy.hp,Math.max(0,Math.round(rolled))),cardExtra=bossCardHitBonus(player,CARDS,{now:gameNow(),source:key==='playerDamage'?'owner':key==='petDamage'?'pet':'other',damage:original,critical:!!bossHitMeta?.critical,magical:!!bossHitMeta?.magical,secondary,range:bossHitMeta?.range||'melee',skillId:bossHitMeta?.skillId||'',petId:bossHitMeta?.petId||'',targetHpFraction:enemy.hp/Math.max(1,enemy.maxHp)}),actual=Math.min(enemy.hp,original+cardExtra);enemy.hp-=actual;const cardApplied=Math.max(0,actual-original);if(cardApplied&&offlineMetrics)offlineMetrics.damage.bossCard=(offlineMetrics.damage.bossCard||0)+cardApplied;if(cardApplied&&report)report.bossCardDamage=(report.bossCardDamage||0)+cardApplied;const petCredit=key==='playerDamage'?((fused||spiritSupport)?Math.min(actual,Math.round(actual*(Math.min(base,pendingPetCredit)+blessing+mark)/Math.max(1,rolled))):Math.min(actual,pendingPetCredit)):0;pendingPetCredit=0;
+function dealDamage(amount,key,secondary=false){if(!enemy?.hp)return 0;const procBonus=spiritAttackProcBonus(key,secondary);amount=spiritApplyPierce(amount,spiritPiercePct)*(1+procBonus/100);const fused=key==='playerDamage'&&fusedPair(activePet())&&activePet()?.hp>0,spiritSupport=key==='playerDamage'&&isSpiritJob(player.job),preparation=enemy.dawn&&enemy.boss&&enemy.id==='dawn-archon'?dawnArchonPreparationFactor(player):1,roleFactor=spiritTargetDamageFactor(player.job,key,{boss:!!enemy.boss,secondary,level:player.level}),base=Math.max(0,Math.round(amount*jobZoneOutputFactor(player.job,player.level)*preparation*roleFactor));let blessing=fused&&petEffects.blessingUntil>gameNow()?base*petEffects.blessingPower:0,mark=fused?activePetMarkPower():0,markFx=mark?petEffects:null;if(spiritSupport){let bestBlessing=0;mark=0;markFx=null;for(const unit of activePetRoster(player)){if(unit.hp<=0)continue;const fx=effectsForPet(unit),power=fx.markWardOnly&&unit.id===player.activePetId?activePetMarkPower():fx.markHits>0?fx.markPower:0;if(power>mark){mark=power;markFx=fx;}if(fx.blessingUntil>gameNow())bestBlessing=Math.max(bestBlessing,fx.blessingPower||0);}blessing=base*Math.min(.25,bestBlessing);}if(mark&&markFx)markFx.markHits--;const effect=currentTactic(),magical=['mage','wizard','sage','acolyte','priest'].includes(player.job),bonus=key==='playerDamage'?tacticDamageFactor(effect,player.job,enemy,magical)*(effect?.kind==='instantDamage'?1.3:1)*(effect?.kind==='elemental'&&effect.charges>0&&manualElementalStrike?1.4:1):1,rolled=(base+blessing+mark)*bonus,original=Math.min(enemy.hp,Math.max(0,Math.round(rolled))),cardExtra=bossCardHitBonus(player,CARDS,{now:gameNow(),source:key==='playerDamage'?'owner':key==='petDamage'?'pet':'other',damage:original,critical:!!bossHitMeta?.critical,magical:!!bossHitMeta?.magical,secondary,range:bossHitMeta?.range||'melee',skillId:bossHitMeta?.skillId||'',petId:bossHitMeta?.petId||'',targetHpFraction:enemy.hp/Math.max(1,enemy.maxHp)}),actual=Math.min(enemy.hp,original+cardExtra);enemy.hp-=actual;const cardApplied=Math.max(0,actual-original);if(cardApplied&&offlineMetrics)offlineMetrics.damage.bossCard=(offlineMetrics.damage.bossCard||0)+cardApplied;if(cardApplied&&report)report.bossCardDamage=(report.bossCardDamage||0)+cardApplied;const petCredit=key==='playerDamage'?((fused||spiritSupport)?Math.min(actual,Math.round(actual*(Math.min(base,pendingPetCredit)+blessing+mark)/Math.max(1,rolled))):Math.min(actual,pendingPetCredit)):0;pendingPetCredit=0;
  if(offlineMetrics&&actual){
   const d=offlineMetrics.damage;
   d.total+=actual;
@@ -455,8 +485,8 @@ function petAutoAbility(pet,s,now){const dual=player.job==='spiritist'||player.j
 
   const effect=petSkillEffect(skill,s,role),spiritForm=commanderPetSkillForm(player,pet,skill);if(spiritForm)effect.value*=commanderSkillOutputScale(pet);pet.sp-=cost;petSkillTimers[dual?`${pet.id}:${id}`:id]=now;if(dual)(timers.petAbilityById??={})[pet.id]=now;else timers.petAbility=now;let outcome='';
   if(skill.kind==='bleed'){fx.bleedTicks=skill.ticks||3;fx.bleedTargetId=enemy?.instanceId;fx.bleedPower=effect.value;fx.bleedInterval=skill.interval||2000;fx.bleedLeech=skill.leech||0;delete fx.bleedSource;fx.bleedNext=now+fx.bleedInterval;outcome=`每${fx.bleedInterval/1000}秒造成 ${effect.value} 傷害，共${fx.bleedTicks}跳`;}
-  else if(skill.kind==='mark'){fx.markWardOnly=false;fx.markHits=skill.hits||2;fx.markPower=effect.value;outcome=`接下來${fx.markHits}次主人命中各附加 ${effect.value} 傷害`;}
-  else if(skill.kind==='guard'){const amount=grantPetShield(effect.value,true,pet,fx);fx.guardUntil=now+effect.duration;fx.guardRegen=Math.round(s.def*.08);fx.guardRegenNext=now+1000;fx.guardCounter=skill.counter||0;outcome=`護盾 +${amount}，${role==='defense'?'提高攔截優先級':'守護自療'} ${(effect.duration/1000).toFixed(1)}秒`;}
+  else if(skill.kind==='mark'){fx.markWardOnly=false;fx.markHits=skill.hits||2;fx.markPower=effect.value;spiritReactiveEvent('ownerMark');outcome=`接下來${fx.markHits}次主人命中各附加 ${effect.value} 傷害`;}
+  else if(skill.kind==='guard'){const amount=grantPetShield(effect.value,true,pet,fx);fx.guardUntil=now+effect.duration;fx.guardRegen=Math.round(s.def*.08);fx.guardRegenNext=now+1000;fx.guardCounter=skill.counter||0;spiritReactiveEvent('petGuard');outcome=`護盾 +${amount}，${role==='defense'?'提高攔截優先級':'守護自療'} ${(effect.duration/1000).toFixed(1)}秒`;}
   else if(skill.kind==='shield'){const beforePet=fx.shield||0,beforeOwner=player.shield;grantPetShield(effect.value,true,pet,fx);outcome=`夥伴護盾 +${(fx.shield||0)-beforePet}、主人護盾 +${player.shield-beforeOwner}（持續6.5秒）`;}
   else if(skill.kind==='blessing'){fx.blessingUntil=now+effect.duration;fx.blessingPower=effect.value;outcome=`主人傷害 +${(effect.value*100).toFixed(1)}%，持續 ${effect.duration/1000}秒`;}
   else if(skill.kind==='regen'){fx.regenTicks=skill.ticks||5;fx.regenPower=effect.value;fx.regenInterval=skill.interval||1500;fx.regenNext=now+fx.regenInterval;outcome=`持續恢復 ${fx.regenTicks} 次，每次 ${effect.value} HP`;}
@@ -1170,7 +1200,7 @@ function enemyAttack(){
  if(targetPet){
   const s=player.job==='spiritCommander'?commanderTransferredPetStats(pet,petStats(pet)):petStats(pet);
   if(Math.random()>monsterHitChance(attacker.hit,s.flee,attacker.attackType==='magic')){if(player.job==='spiritCommander')bossCardDodge(player,CARDS,gameNow(),s.hp,pet);message(`${pet.nickname} 閃避了 ${SPECIES[attacker.id].name} 的攻擊。`,'good');}
-  else{petWasHit=true;let d=Math.max(1,Math.round(incomingMonsterDamage(monsterAttackPower(attacker),attacker.attackType==='magic'?s.mdef:s.def,roll)*(1-(s.damageReduction||0)/100)*(1-(classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0))*tacticIncomingFactor(currentTactic(),true)));if(player.job==='spiritCommander'){const cardGuard=bossCardIncoming(player,CARDS,{now:gameNow(),boss:!!attacker.boss,magic:attacker.attackType==='magic',damage:d,maxHp:s.hp,currentHp:pet.hp});d=cardGuard.damage;if(cardGuard.shield)fx.shield=Math.min(Math.round(s.hp*.25),(fx.shield||0)+cardGuard.shield);if(cardGuard.heal)pet.hp=Math.min(s.hp,pet.hp+cardGuard.heal);}const capacity=pet.hp+(fx.shield||0),absorbed=Math.min(fx.shield||0,d),effective=Math.min(pet.hp,d-absorbed);fx.shield=Math.max(0,(fx.shield||0)-absorbed);pet.hp=Math.max(0,pet.hp-(d-absorbed));if(offlineMetrics)offlineMetrics.spiritLastPetHit={at:gameNow(),damage:d,absorbed,effective,preHp:pet.hp+effective,attacker:attacker.id,attackerAtk:attacker.atk,petDef:s.def,petMdef:s.mdef,petReduction:s.damageReduction};record(report,'shieldPrevented',absorbed);record(report,'petTaken',effective);if(absorbed>0)spiritReactiveEvent('petShieldLost');if(effective>0){spiritReactiveEvent('petDamaged');spiritReactiveEvent('petLowHp');}record(report,'petTanked',effective);record(report,'petProtection',Math.max(0,Math.min(capacity,Math.round(attacker.atk*roll))-Math.min(capacity,d)));if(role==='defense')record(report,'interceptPrevented',Math.min(player.hp,incomingMonsterDamage(attacker.atk,stat('def'),roll)));message(`⚔ ${SPECIES[attacker.id].name} 命中 ${pet.nickname}，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad','damage');if(role==='defense')emitEvent('pet_guard');if(!pet.hp){pet.reviveAt=gameNow()+PET_REVIVE_MS;petDeathSequence++;fx.shield=0;if(pet.id!==player.activePetId){delete secondaryPetEffects[pet.id];delete timers.petById?.[pet.id];delete timers.petAbilityById?.[pet.id];}message(`${pet.nickname} 暫時失去戰鬥能力，請使用藥水；人物戰敗復活時也會恢復夥伴。`,'bad','damage');if(player.job==='spiritCommander'&&resolveSpiritPairDefeat())return;}}
+  else{petWasHit=true;let d=Math.max(1,Math.round(incomingMonsterDamage(monsterAttackPower(attacker),attacker.attackType==='magic'?s.mdef:s.def,roll)*(1-(s.damageReduction||0)/100)*(1-(classBuffs.teamWard?.until>gameNow()?classBuffs.teamWard.power:0))*tacticIncomingFactor(currentTactic(),true)));if(player.job==='spiritCommander'){const cardGuard=bossCardIncoming(player,CARDS,{now:gameNow(),boss:!!attacker.boss,magic:attacker.attackType==='magic',damage:d,maxHp:s.hp,currentHp:pet.hp});d=cardGuard.damage;if(cardGuard.shield)fx.shield=Math.min(Math.round(s.hp*.25),(fx.shield||0)+cardGuard.shield);if(cardGuard.heal)pet.hp=Math.min(s.hp,pet.hp+cardGuard.heal);}const capacity=pet.hp+(fx.shield||0),absorbed=Math.min(fx.shield||0,d),effective=Math.min(pet.hp,d-absorbed);fx.shield=Math.max(0,(fx.shield||0)-absorbed);pet.hp=Math.max(0,pet.hp-(d-absorbed));if(offlineMetrics)offlineMetrics.spiritLastPetHit={at:gameNow(),damage:d,absorbed,effective,preHp:pet.hp+effective,attacker:attacker.id,attackerAtk:attacker.atk,petDef:s.def,petMdef:s.mdef,petReduction:s.damageReduction};record(report,'shieldPrevented',absorbed);record(report,'petTaken',effective);if(absorbed>0)spiritReactiveEvent('petShieldLost');if(effective>0){spiritReactiveEvent('petDamaged');spiritReactiveEvent('petLowHp');}record(report,'petTanked',effective);record(report,'petProtection',Math.max(0,Math.min(capacity,Math.round(attacker.atk*roll))-Math.min(capacity,d)));if(role==='defense')record(report,'interceptPrevented',Math.min(player.hp,incomingMonsterDamage(attacker.atk,stat('def'),roll)));message(`⚔ ${SPECIES[attacker.id].name} 命中 ${pet.nickname}，HP -${effective}${absorbed?`（護盾吸收 ${absorbed}）`:''}。`,'bad','damage');if(role==='defense')emitEvent('pet_guard');if(pet.id===player.activePetId&&spiritSinglePetProfile(player,pet)?.trigger==='petGuard')spiritReactiveEvent('petGuard');if(!pet.hp){pet.reviveAt=gameNow()+PET_REVIVE_MS;petDeathSequence++;fx.shield=0;if(pet.id!==player.activePetId){delete secondaryPetEffects[pet.id];delete timers.petById?.[pet.id];delete timers.petAbilityById?.[pet.id];}message(`${pet.nickname} 暫時失去戰鬥能力，請使用藥水；人物戰敗復活時也會恢復夥伴。`,'bad','damage');if(player.job==='spiritCommander'&&resolveSpiritPairDefeat())return;}}
 
  }else if(Math.random()>ownerHitChance(attacker.hit,stat('flee'),attacker.attackType==='magic')){bossCardDodge(player,CARDS,gameNow(),stat('hp'));message('角色閃避了敵人的攻擊。','good');emitEvent('dodge');}
  else{

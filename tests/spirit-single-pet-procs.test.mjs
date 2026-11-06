@@ -46,3 +46,7 @@ test('commander life verdict is triggered by outgoing hits, never by received da
  for(let i=0;i<3;i++)assert.equal(advanceSpiritProc(state,profile,'petHit',{now:10300+i*100,hpPercent:99}),null);
  assert.ok(advanceSpiritProc(state,profile,'petHit',{now:17000,hpPercent:99}));
 });
+
+test('attack-support resonance does not add secondary targets',()=>{
+ for(const name of ['chainSlash','petChase'])assert.equal(SPIRIT_PROC_RULES[name].cleaveTargets,undefined);
+});
