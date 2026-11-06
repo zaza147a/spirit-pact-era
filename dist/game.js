@@ -1170,11 +1170,10 @@ function resolveSpiritPairDefeat(){
   enemyAtk:enemy?.atk??null,ownerHpBefore:player.hp,ownerMaxHp:stat('hp'),
   petMaxHp:petStats(pet).hp,petStats:commanderTransferredPetStats(pet,petStats(pet)),
   lastPetHit:offlineMetrics.spiritLastPetHit||null};
- const ownerWasAlive=player.hp>0;
  player.hp=0;pet.hp=0;
  if(!Number.isFinite(pet.reviveAt))pet.reviveAt=gameNow()+PET_REVIVE_MS;
  if(player.trialRun){exitTrial('契約雙方戰敗，試煉已結束');return true;}
- if(ownerWasAlive||!Number.isFinite(player.reviveAt)){
+ { // A newly linked defeat always starts a fresh owner revival countdown.
   player.reviveAt=gameNow()+PLAYER_REVIVE_MS;
   stopAutoFusion('契約雙方倒下');
   endReport('戰敗');
