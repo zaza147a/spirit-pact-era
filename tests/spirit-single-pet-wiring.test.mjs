@@ -261,3 +261,19 @@ test('insufficient gold auto-revive returns the linked pair home alive',()=>{
  assert.equal(pet.hp,2000);
  assert.equal(pet.reviveAt,undefined);
 });
+
+test('fatal damage cannot trigger low-HP resonance healing, while living low HP still heals',()=>{
+ const snippet=between('function spiritReactiveEvent(','function spiritAttackProcBonus(');
+ for(const hp of [0,2000,5000]){
+  const player={job:'pactWarrior',thirdJob:true,hp};
+  const pet={hp:100,fusion:{main:'defense',sub:'support'}};
+  const context={player,enemy:{id:'mob'},activePet:()=>pet,spiritSinglePetProfile,advanceSpiritProc,
+   spiritProcState:createSpiritProcState(),spiritReactiveCharge:null,stat:()=>10000,
+   petStats:()=>({hp:100}),gameNow:()=>10000};
+  vm.runInNewContext(snippet+'\nthis.event=spiritReactiveEvent',context);
+  const proc=context.event('ownerLowHp');
+  assert.equal(player.hp,hp===2000?2300:hp);
+  assert.equal(!!proc,hp===2000);
+  if(hp===0)assert.equal(context.spiritReactiveCharge,null);
+ }
+});
