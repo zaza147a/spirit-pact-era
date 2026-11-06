@@ -160,5 +160,12 @@
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-magic-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Dreamlike floating East Asian silk-weaver village above mountains, pearly cloud sea, pastel jade and lavender architecture, silk bridges and ribbons, cloud platforms losing support.. Journey destination: 雲織仙鄉. Illustrate ONLY this page's narrative: 乘天河小舟進入高空雲海。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
   }
 ]
