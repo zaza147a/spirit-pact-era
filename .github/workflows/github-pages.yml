@@ -74,6 +74,7 @@ jobs:
           rm -f pages-site/test-saves/weapon-compensation-assassin-200.json
           rmdir pages-site/test-saves 2>/dev/null || true
           test -s pages-site/index.html
+          test -s pages-site/spirit-sanctuary.js
           test -s pages-site/wiki/index.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
