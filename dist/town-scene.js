@@ -78,7 +78,7 @@ export function decorateTownScene(area,location){
     const card=document.createElement('div');card.className='town-scene-npc';
     const portrait=document.createElement('img');
     portrait.src=`assets/towns/npc-${NPC_ART[role]}.webp`;
-    portrait.alt=`${button.textContent.trim()}角色立繪`;
+    portrait.alt=`${NPC_DIALOG[role][0]}角色立繪`;
     portrait.loading='lazy';portrait.decoding='async';
     portrait.onerror=()=>{portrait.style.display='none';card.classList.add('art-missing');};
     const portraitButton=document.createElement('button');
@@ -86,6 +86,9 @@ export function decorateTownScene(area,location){
     portraitButton.setAttribute('aria-label',`與${NPC_DIALOG[role][0]}對話`);
     portraitButton.append(portrait);
     portraitButton.onclick=()=>button.click();
+    // Short labels keep the village readable; the dialogue explains each service.
+    button.title=button.textContent.trim();
+    button.textContent=NPC_DIALOG[role][0];
     button.classList.add('town-scene-action');
     button.classList.remove('town-evolution');
     button.addEventListener('click',event=>{
@@ -112,5 +115,5 @@ export function patchTownArea(area,html){
 }
 
 if(typeof document!=='undefined'){
-  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.73';document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.74';document.head.append(css);
 }
