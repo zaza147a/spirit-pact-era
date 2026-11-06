@@ -132,5 +132,12 @@
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-magic-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Ancient magical desert city, sandstone monuments, teal luminous non-readable magical geometric motifs, shifting mirage roads, segmented floating gate architecture.. Journey destination: 環符祕城. Illustrate ONLY this page's narrative: 環符祕城的分段城門正反覆重組。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
   }
 ]
