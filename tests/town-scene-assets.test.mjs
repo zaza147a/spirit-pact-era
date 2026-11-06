@@ -42,11 +42,13 @@ test('isolated village preview covers three towns without touching save data',()
   assert.doesNotMatch(preview,/localStorage|sessionStorage/);
 });
 
-test('NPCs share one ground line with horizontal village navigation',()=>{
+test('NPCs share one ground line with paged village navigation and no scrollbar',()=>{
   const scene=readFileSync(new URL('town-scene.js',root),'utf8');
   const css=readFileSync(new URL('town-scene.css',root),'utf8');
-  assert.match(scene,/roster\.scrollBy\(/);
-  assert.match(css,/\.town-scene-roster\{display:flex;align-items:end/);
-  assert.match(css,/overflow-x:auto/);
+  assert.match(scene,/Math\.floor\(index\/pageSize\)!==page/);
+  assert.match(scene,/pageLabel\.textContent/);
+  assert.match(css,/\.town-scene-roster\{display:grid;grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/);
+  assert.match(css,/overflow:hidden/);
+  assert.doesNotMatch(css,/overflow-x:auto|scrollbar-width/);
   assert.doesNotMatch(css,/nth-child\(5n/);
 });

@@ -70,14 +70,13 @@ export function decorateTownScene(area,location){
   scene.setAttribute('aria-label','村莊 NPC 互動場景');
   const heading=document.createElement('div');
   heading.className='town-scene-heading';
-  heading.innerHTML='<strong>村莊居民</strong><span>所有 NPC 都站在廣場上，左右切換即可拜訪</span>';
+  heading.innerHTML='<strong>村莊居民</strong><span>點擊人物與居民對話</span>';
   const roster=document.createElement('div');roster.className='town-scene-roster';
   const controls=document.createElement('div');controls.className='town-scene-controls';
   const previous=document.createElement('button');previous.type='button';previous.textContent='‹ 上一區';previous.setAttribute('aria-label','查看左側 NPC');
   const next=document.createElement('button');next.type='button';next.textContent='下一區 ›';next.setAttribute('aria-label','查看右側 NPC');
-  previous.onclick=()=>roster.scrollBy({left:-roster.clientWidth*.8,behavior:'smooth'});
-  next.onclick=()=>roster.scrollBy({left:roster.clientWidth*.8,behavior:'smooth'});
-  controls.append(previous,next);heading.append(controls);
+  const pageLabel=document.createElement('span');pageLabel.className='town-scene-page';pageLabel.setAttribute('aria-live','polite');
+  controls.append(previous,pageLabel,next);heading.append(controls);
   for(const button of buttons){
     const role=actionFor(button);
     if(!NPC_ART[role])continue;
@@ -103,6 +102,18 @@ export function decorateTownScene(area,location){
     },true);
     card.append(portraitButton,button);roster.append(card);
   }
+  let page=0;
+  const showPage=()=>{
+    const pageSize=window.matchMedia('(max-width:700px)').matches?3:5;
+    const pages=Math.max(1,Math.ceil(roster.children.length/pageSize));
+    page=Math.min(page,pages-1);
+    [...roster.children].forEach((card,index)=>{card.hidden=Math.floor(index/pageSize)!==page;});
+    pageLabel.textContent=`${page+1} / ${pages}`;
+    previous.disabled=page===0;next.disabled=page===pages-1;
+  };
+  previous.onclick=()=>{page=Math.max(0,page-1);showPage();};
+  next.onclick=()=>{page+=1;showPage();};
+  showPage();
   area.querySelector(':scope > .town-npc')?.remove();
   scene.append(heading,roster);area.append(scene);
 }
@@ -121,5 +132,5 @@ export function patchTownArea(area,html){
 }
 
 if(typeof document!=='undefined'){
-  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.76';document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.77';document.head.append(css);
 }
