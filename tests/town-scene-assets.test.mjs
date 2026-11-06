@@ -11,7 +11,7 @@ test('every city has distinct background art and all NPC roles have sprites',()=
   for(const id of ['guide','guild','evolution','merchant','warehouse','enhancer','reforge','collector','alchemist','archivist','guardian','sigil','awakener']){
     assert.ok(existsSync(new URL(`npc-${id}.webp`,townAssets)),`missing ${id} NPC art`);
   }
-  assert.match(readFileSync(new URL('game.js',root),'utf8'),/import '\.\/town-scene\.js/);
+  assert.match(readFileSync(new URL('game.js',root),'utf8'),/from '\.\/town-scene\.js/);
 });
 
 test('all thirteen NPC actions have unique dialogue and preserve the original button route',()=>{
@@ -22,4 +22,13 @@ test('all thirteen NPC actions have unique dialogue and preserve the original bu
   assert.match(scene,/bypassDialog\.add\(button\);button\.click\(\)/);
   assert.match(scene,/event\.stopImmediatePropagation\(\);showNpcDialog/);
   assert.match(scene,/aria-modal/);
+});
+
+test('village is not destroyed by repeated combat rendering',()=>{
+  const scene=readFileSync(new URL('town-scene.js',root),'utf8');
+  const game=readFileSync(new URL('game.js',root),'utf8');
+  assert.match(scene,/if\(previousMarkup\.get\(area\)===html\)return/);
+  assert.match(scene,/queueMicrotask\(/);
+  assert.match(game,/patchTownArea\(\$\('area'\),/);
+  assert.doesNotMatch(scene,/MutationObserver/);
 });

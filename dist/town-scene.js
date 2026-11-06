@@ -1,3 +1,5 @@
+import {patchHtml} from './ui-patch.js';
+
 const NPC_ART = {
   quests:'guide', guild:'guild', evolution:'evolution', shop:'merchant', warehouse:'warehouse',
   enhancement:'enhancer', reforge:'reforge', collection:'collector', cardrecycle:'alchemist',
@@ -19,6 +21,7 @@ const NPC_DIALOG = {
   sigilcraft:['契印師・曦紋','曙光會回應耐心雕琢之人。讓我看看你收集到的契印材料。','製作契印']
 };
 const bypassDialog=new WeakSet();
+const previousMarkup=new WeakMap();
 
 export function showNpcDialog(role,button){
   const info=NPC_DIALOG[role];if(!info)return;
@@ -90,17 +93,19 @@ export function decorateTownScene(area,location){
   scene.append(heading,roster);area.append(scene);
 }
 
+/** Avoid dismantling the illustrated scene on every combat render tick. */
+export function patchTownArea(area,html){
+  if(previousMarkup.get(area)===html)return;
+  previousMarkup.set(area,html);
+  patchHtml(area,html);
+  const location=['town','skycity','dawncity'].find(x=>area.classList.contains(x));
+  // The game adds shared NPCs and their original onclick handlers just after this render.
+  if(location)queueMicrotask(()=>{
+    if(area.classList.contains(location)&&!area.querySelector('.town-scene'))decorateTownScene(area,location);
+  });
+  else document.querySelector('.town-npc-dialog-overlay')?.remove();
+}
+
 if(typeof document!=='undefined'){
-  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.71';document.head.append(css);
-  const initialize=()=>{
-    const area=document.getElementById('area');if(!area)return;
-    let pending=false;
-    new MutationObserver(()=>{
-      if(pending||area.querySelector('.town-scene'))return;
-      pending=true;
-      queueMicrotask(()=>{pending=false;if(!area.querySelector('.town-scene'))decorateTownScene(area,['town','skycity','dawncity'].find(x=>area.classList.contains(x)));});
-    }).observe(area,{childList:true});
-    decorateTownScene(area,['town','skycity','dawncity'].find(x=>area.classList.contains(x)));
-  };
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initialize,{once:true});else initialize();
+  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.72';document.head.append(css);
 }
