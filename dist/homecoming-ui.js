@@ -14,8 +14,11 @@ export function homecomingTracker(p){
 export function renderHomecomingPanel(p){
  const b=homecomingBonuses(p),pet=p.pets?.find(x=>x.id===p.activePetId);
  const summary=`<div class="item"><h3>十二大陸・返鄉契約</h3><p>高階人形（SSS）與契印 8 開啟返鄉來信。首次逐頁旅行後抵達城鎮；每條故事需帶上對應外觀的出戰夥伴，並在線上手動推進。</p><p>已完成 ${b.count}／12。人物永久傳承：傷害 +${(b.damage*100).toFixed(2)}%、HP +${Math.round(b.hp*100)}%、雙防 +${Math.round(b.def*100)}%、技能受療 +${Math.round(b.recovery*100)}%。</p><p class="muted">測試版：首次旅行插畫已齊全（36／36）；人物傳承與第四格專屬技能已生效。</p></div>`;
- return summary+HOMECOMING_ROUTES.map(r=>{
- const q=p.homecoming?.routes?.[r.id];let html=`<section class="item homecoming-card" style="--homecoming-color:${r.color}"><small>${esc(r.continent)}・${esc(r.companion)}</small><h3>${esc(r.title)}</h3>`;
+ const current=homecomingIdentity(pet),quests=p.homecoming?.routes||{};
+ const priority=r=>{const q=quests[r.id];return q?.phase==='traveling'?0:r.id===current&&q?1:q&&q.phase!=='claimed'?2:q?3:4;};
+ const ordered=[...HOMECOMING_ROUTES].sort((a,b)=>priority(a)-priority(b));
+ const renderRoute=r=>{
+ const q=p.homecoming?.routes?.[r.id];let html=`<section class="item homecoming-card" data-homecoming-route="${r.id}" style="--homecoming-color:${r.color}"><small>${esc(r.continent)}・${esc(r.companion)}</small><h3>${esc(r.title)}</h3>`;
  if(!q)return html+'<p class="muted">達成條件後，在安全城鎮收到家鄉來信。</p></section>';
  const match=eligibleHomecoming(p,pet)&&homecomingIdentity(pet)===r.id;
  if(!match&&q.phase!=='claimed')html+='<p class="muted">請出戰這條路線對應的高階人形夥伴。</p>';
@@ -36,7 +39,9 @@ export function renderHomecomingPanel(p){
  }
  const sk=FOURTH_SKILLS[fourthPair({fusion:{main:r.id.split('-')[0],sub:r.id.split('-')[1]}})];
  return html+`<p>第四格：${esc(sk.name)}・${fourthUnlocked(p,{trueForm:true,humanoidStage:3,fusion:{main:r.id.split('-')[0],sub:r.id.split('-')[1]}})?'已解放，可在夥伴技能頁查看':'尚未解放'}</p></section>`;
- }).join('');
+ };
+ const known=ordered.filter(r=>quests[r.id]),waiting=ordered.filter(r=>!quests[r.id]);
+ return summary+known.map(renderRoute).join('')+(waiting.length?`<details class="homecoming-waiting"><summary>尚未收到的家鄉來信（${waiting.length}）</summary>${waiting.map(renderRoute).join('')}</details>`:'');
 }
 export function renderHomecomingTown(p){
  const route=HOMECOMING_ROUTES.find(r=>r.townId===p.location);if(!route)return '';

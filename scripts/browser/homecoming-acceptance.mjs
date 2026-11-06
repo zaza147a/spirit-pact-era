@@ -47,6 +47,8 @@ try{
    await page.locator('#enterGameBtn').waitFor({state:'visible'});await enter(page);
    await page.locator('#homecomingOpen').click();
    await page.locator(`[data-homecoming="begin"][data-route="${route.id}"]`).click();
+   assert.equal(await page.locator('.homecoming-card:visible').first().getAttribute('data-homecoming-route'),route.id);
+   assert.equal(await page.locator('.homecoming-waiting').getAttribute('open'),null);
    for(let step=0;step<3;step++){
     const img=page.locator('.homecoming-journey-art img');await img.waitFor();assert.equal(await img.count(),1);
     await img.evaluate(el=>el.decode());await img.scrollIntoViewIfNeeded();
@@ -58,6 +60,7 @@ try{
     const shot=`${viewport.width}-${route.id}-${step+1}.png`;
     await img.screenshot({path:resolve(out,shot)});
     journeyRows.push({width:viewport.width,route:route.id,page:step+1,geometry,screenshot:shot});
+    if(step===1&&(index===0||index===11))await page.screenshot({path:resolve(out,`${viewport.width}-${route.id}-journey-viewport.png`)});
     if(step===1){
      // Reload uses the saved imported character, with no localStorage injection.
      await page.reload();await enter(page);
@@ -73,10 +76,11 @@ try{
    await page.locator(`[data-homecoming="accept"][data-route="${route.id}"]`).waitFor();
    assert.ok((await page.locator('#area').innerText()).includes(route.npc),'Correct home NPC');
    assert.equal(await page.locator('.homecoming-journey-art img').count(),0);
+   assert.equal(await page.locator('.homecoming-card:visible').first().getAttribute('data-homecoming-route'),route.id);
    await page.locator(`[data-homecoming="accept"][data-route="${route.id}"]`).click();
    const scene=page.locator('.homecoming-card .homecoming-scene img');await scene.evaluate(el=>el.decode());
    assert.equal(await scene.getAttribute('src'),`assets/homecoming/scenes/${route.id}.webp`);
-   if(index===0||index===11)await page.screenshot({path:resolve(out,`${viewport.width}-${route.id}-arrival-viewport.png`)});
+   if(index===0||index===11){await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:resolve(out,`${viewport.width}-${route.id}-arrival-viewport.png`)});}
    const saved=await exported(page);
    assert.equal(saved.homecoming.routes[route.id].phase,'active');assert.equal(saved.location,route.townId);
    assert.equal(saved.offline.enabled,false);assert.equal(saved.manualPaused,true);
