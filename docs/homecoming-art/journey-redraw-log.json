@@ -188,5 +188,12 @@
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-support-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Ancient emerald world-tree civilization, enormous roots and tree-trunk dwellings, amber sap and tiny bioluminescent life lights, wounded inner gardens, sympathetic natural textures.. Journey destination: 翠庭樹城. Illustrate ONLY this page's narrative: 枯萎內庭的深處，有生命光點持續流失。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
   }
 ]
