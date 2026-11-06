@@ -28,7 +28,7 @@ export const COSMETIC_BACKGROUNDS=[
  {id:'heaven',name:'永恆天國',price:10_000_000_000}
 ];
 export const cosmeticOutfitId=(job,variant)=>`${job}-${variant}`;
-export const cosmeticOutfitArt=(job,variant)=>COSMETIC_PATH+`fixed-${job}-${variant}.webp`;
+export const cosmeticOutfitArt=(job,variant)=>COSMETIC_PATH+`fixed-${job}-${variant}.webp?v=gold-frame-20261106`;
 export const cosmeticBackgroundArt=id=>COSMETIC_PATH+`bg-${id}.webp`;
 export const isCosmeticOutfitId=id=>typeof id==='string'&&Object.prototype.hasOwnProperty.call(COSMETIC_JOBS,id.split('-')[0])&&/^[0-2]$/.test(id.split('-')[1]||'')&&id===id.split('-').slice(0,2).join('-');
 export const isCosmeticBackgroundId=id=>COSMETIC_BACKGROUNDS.some(bg=>bg.id===id);
