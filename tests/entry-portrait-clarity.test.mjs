@@ -8,5 +8,8 @@ test('character-select art preserves portrait aspect and loads its stylesheet',(
  assert.match(css,/\.slot-select img\.art-entry\s*\{/);
  assert.match(css,/object-fit:contain/);
  assert.match(css,/height:240px/);
+ assert.match(css,/\.slot-art-stage\s*\{/);
+ const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
+ assert.match(game,/class="slot-art-stage"/);
  assert.match(html,/entry-portrait-clarity\.css\?v=/);
 });
