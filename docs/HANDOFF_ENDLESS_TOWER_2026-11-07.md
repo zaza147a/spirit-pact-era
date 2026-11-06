@@ -6,12 +6,15 @@
 - 不提供永久戰鬥數值獎勵，只給外觀、稱號、收藏和便利功能。
 - 高層校準目標：210 等、合法 SSS 裝、SSS 夥伴、契印 8、返鄉進化。
 - **不動** `dist/sky-trials.js` 的舊五連戰與現有掉落。
-- 本分支第一批只新增規則核心和單元測試；**尚未接入遊戲 UI、敵人生成、戰鬥或真實存檔**，不得宣稱可玩。
+- 本分支已新增規則核心、戰鬥介接層與 UI 渲染器，但**尚未接到 `dist/game.js` 主循環和真實存檔**，不得宣稱可玩。
 
 ## 已實作
 
 - `dist/endless-tower.js`：十區首領／怪物配置、固定關卡與深淵生成、時間上限、入場條件、進度檢查點、首次稱號防重領、塔幣初稿、同基準 DPS／生存粗估。
 - `tests/endless-tower.test.mjs`：關卡與首領映射、深淵變化、入場條件、首次獎勵與估算防呆。
+- `dist/endless-tower-runtime.js`：曙界真實怪物／首領數值接入契約、1～30 層敵人生成、首領階段 metadata、挑戰啟動／計時／擊殺去重／結算。
+- `dist/endless-tower-ui.js`、`dist/endless-tower.css`：三區入口、解鎖狀態、進度、倒數與獎勵呈現；不影響舊五連戰畫面。
+- `tests/endless-tower-runtime.test.mjs`、`tests/endless-tower-ui.test.mjs`：規則、獎勵防重發、實際曙界數值、XSS 安全驗證。
 
 ## 極重要：不得直接拿舊 DPS 排名作通關判斷
 
@@ -19,8 +22,8 @@
 
 ## 下一步實作順序
 
-1. 把 1～30 層接入正式戰鬥 runtime，建立 `towerRun` 與獨立 `towerProgress` 的存檔正規化。不可和 `trialRun` 同時運行；切換角色／離線／死亡／撤退要妥善退出。
-2. 以現有 `DAWN_MONSTERS`／`DAWN_BOSS` 真實數值作 base，避免僅有倍率卻無實際 HP 的錯誤估算。生成敵人時要套用既有 `monsterRuntimeStats`、攻擊目標與共鳴防重擊邏輯。
+1. 把 1～30 層介接層接入正式 `game.js` 戰鬥 runtime，建立 `towerRun` 與獨立 `towerProgress` 的存檔正規化。不可和 `trialRun` 同時運行；切換角色／離線／死亡／撤退要妥善退出。
+2. 敵人可由現有 `DAWN_MONSTERS`／`DAWN_BOSS` 真實數值生成；整合時還要套用既有 `monsterRuntimeStats`、攻擊目標與共鳴防重擊邏輯，並處理多目標逐個死亡後的選敵及階段召喚。
 3. 前 30 層三個區域大型首領需有實際分階段技能，含召喚與防控上限。自動戰鬥必須能處理，不能需要走位。
 4. 配置遊戲入口、進度與挑戰結果 UI；獎勵先在獨立帳號獎勵欄位記帳，未接入外觀倉庫前不可誤標「已取得外觀」。
 5. 用十二職合法 210／契印8 存檔跑同條件實際模擬。先調整最難職業能合理通關 1～30 層，再決定 31～100 層的數值。
@@ -28,7 +31,9 @@
 
 ## 測試
 
-`node --test tests/endless-tower.test.mjs`
+`node --test tests/endless-tower*.test.mjs`
+
+已執行原有天穹試煉、連續試煉、曙界首領、返鄉系統與新增塔測試，60／60 通過（本次最後一次新增 live baseline 測試後須再執行一次）。
 
 ## 狀態
 
