@@ -1,4 +1,5 @@
 name: Publish Spirit Pact Era
+# Retry publication with a fresh run after Pages artifact duplication.
 on:
   push:
     branches: [main]
@@ -21,7 +22,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -62,6 +63,11 @@ jobs:
         run: |
           mkdir -p pages-site
           cp -a dist/. pages-site/
+          # WebP files are the runtime assets; their matching PNG sources are not deployed.
+          for png in pages-site/assets/true-forms/{S,SS,SSS}/*.png; do
+            test -f "${png%.png}.webp" || { echo "Missing WebP for $png"; exit 1; }
+            rm -f "$png"
+          done
           rm -f pages-site/effects-lab.html
           rm -f pages-site/weapon-compensation-test.html
           rm -f pages-site/balance-sim.mjs
@@ -78,3 +84,5 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          timeout: 1200000
