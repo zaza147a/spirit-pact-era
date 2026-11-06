@@ -5,6 +5,12 @@ export function petAttackIdentity(role){
  return {type:'physical',label:'物理主攻',primary:'ATK',secondary:'MATK'};
 }
 
+// Compact HUD wording: combat numbers remain in the detailed attributes panel.
+export function compactAttackLabel(identity,range){
+ const type=identity?.type==='magic'?'魔法':identity?.type==='hybrid'?'物魔':'物理';
+ return `${type}・${range==='ranged'?'遠距':'近距'}`;
+}
+
 export function ownerAttackIdentity(job,thirdJob,atk,matk,profileKind=null){
  if(!thirdJob&&['spiritist','pactWarrior'].includes(job))return (matk>atk)
   ?{type:'magic',label:'魔法主攻',primary:'MATK',secondary:'ATK'}

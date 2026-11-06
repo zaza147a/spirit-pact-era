@@ -71,3 +71,6 @@ button,input,select,summary{touch-action:manipulation}button:focus-visible,summa
 .attack-gear-hint{margin:8px 0;padding:9px 11px;background:#183443;border-left:3px solid #6eb3cc;border-radius:5px;color:#d5ebf3;font-size:12px;line-height:1.7}
 .dual-pet-hud .attack-identity{margin:5px auto 3px;font-size:11px}
 .hero>.attack-identity{display:flex;width:max-content;margin-left:auto;margin-right:auto}
+.hero>.pill.attack-identity{display:inline-flex;width:auto;max-width:100%;margin:5px auto;padding:5px 9px;white-space:normal;text-align:center;overflow-wrap:anywhere}
+.pet-role-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:5px;max-width:100%;margin:4px auto}
+.pet-role-row .pill,.pet-role-row .attack-identity{margin:0;display:inline-flex;width:auto;max-width:100%;font-size:11px;padding:4px 8px}
