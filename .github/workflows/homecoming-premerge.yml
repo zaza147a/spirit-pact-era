@@ -3,6 +3,8 @@ on:
   push:
     branches: [feature/companion-homecoming]
     paths:
+      - 'dist/v2.css'
+      - 'dist/index.html'
       - '.github/workflows/homecoming-premerge.yml'
       - 'scripts/release/homecoming-premerge*'
       - 'scripts/browser/homecoming-premerge-entry.mjs'
