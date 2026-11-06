@@ -9,10 +9,13 @@ export function normalizeHomecoming(p){
  for(const r of HOMECOMING_ROUTES){
   const q=raw[r.id];if(!q||!PHASES.has(q.phase))continue;
   const phase=q.phase;
-  routes[r.id]={phase,journeyIndex:count(q.journeyIndex,2),investigated:q.investigated===true,kills:count(q.kills,100000),nodes:count(q.nodes,3),...(['active','ready','claimed'].includes(phase)?{adventure:normalizeHomecomingAdventure(r.id,q.adventure)}:{})};
+  routes[r.id]={phase,journeyIndex:count(q.journeyIndex,2),investigated:q.investigated===true,kills:count(q.kills,100000),nodes:count(q.nodes,3),...(typeof q.evolvedPetId==='string'?{evolvedPetId:q.evolvedPetId}:{}),...(['active','ready','claimed'].includes(phase)?{adventure:normalizeHomecomingAdventure(r.id,q.adventure)}:{})};
   if(phase==='claimed')completedRoutes[r.id]=true;
  }
- p.homecoming={version:2,routes,completedRoutes};return p.homecoming;
+ p.homecoming={version:2,routes,completedRoutes};
+ // Legacy completed quests also receive the permanent visual unlock.
+ for(const r of HOMECOMING_ROUTES){const q=routes[r.id];if(q?.phase!=='claimed')continue;const matching=(p.pets||[]).filter(pet=>homecomingIdentity(pet)===r.id&&pet.trueForm===true&&pet.humanoidStage===3);const chosen=matching.find(pet=>pet.id===q.evolvedPetId)||(!q.evolvedPetId?matching[0]:null);if(chosen){chosen.homecomingEvolved=true;q.evolvedPetId=chosen.id;}}
+ return p.homecoming;
 }
 export function discoverHomecoming(p,pets,{town=false,offline=false}={}){
  normalizeHomecoming(p);if(!town||offline)return [];
@@ -43,7 +46,7 @@ export function homecomingTransition(p,id,action,{pet,town=false,offline=false,c
  else if(action==='node'){requireMatch();if(q.phase!=='active'||!q.investigated||location!==r.fieldId||q.nodes>=3||q.kills<r.gates[q.nodes])throw Error('請先完成這一階段的野外調查');q.nodes++;}
  else if(action==='boss'){requireMatch();if(q.phase!=='active'||q.nodes!==3)throw Error('請先完成三個野外事件');p.location=r.bossMapId;}
  else if(action==='return'){if(['letter','traveling'].includes(q.phase))throw Error('尚未抵達城鎮');p.location=r.townId;}
- else if(action==='claim'){requireMatch();if(q.phase!=='ready'||location!==r.townId)throw Error('請完成討伐並回到城鎮交付任務');q.phase='claimed';p.homecoming.completedRoutes[id]=true;}
+ else if(action==='claim'){requireMatch();if(q.phase!=='ready'||location!==r.townId)throw Error('請完成討伐並回到城鎮交付任務');q.phase='claimed';q.evolvedPetId=pet.id;p.homecoming.completedRoutes[id]=true;pet.homecomingEvolved=true;}
  else throw Error('未知的返鄉操作');
  return q;
 }
