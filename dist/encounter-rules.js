@@ -7,4 +7,4 @@ export function selectEncounterTarget(enemies,priority='lowestHp',current=null){
 }
 export const encounterDelay=(rng=Math.random)=>100+Math.floor(rng()*801);
 export const replacementDelay=(rng=Math.random)=>250+Math.floor(rng()*1151);
-export const encounterLimit=location=>homecomingMap(location)?(homecomingMap(location).kind==='town'?0:1):['town','skycity','dawncity'].includes(location)?0:location==='petland'?1:['starter','forest'].includes(location)?2:['desert','frost','astral'].includes(location)?3:4;
+export const encounterLimit=location=>homecomingMap(location)?(homecomingMap(location).kind==='town'?0:1):['town','skycity','dawncity'].includes(location)?0:['petland','spirit-sanctuary'].includes(location)?1:['starter','forest'].includes(location)?2:['desert','frost','astral'].includes(location)?3:4;

@@ -1,7 +1,7 @@
 import {HOMECOMING_ROUTES,homecomingMap} from './homecoming-data.js';
 export const CONTINENTS={...Object.fromEntries(HOMECOMING_ROUTES.map(r=>[r.continentId,{name:r.continent,range:'返鄉契約',town:r.townId}])),dawn:{name:'曙界新陸',range:'201–210',town:'dawncity'},icarus:{name:'伊卡洛斯大陸',range:'1–99',town:'town'},sky:{name:'蒼穹彼岸',range:'101–200',town:'skycity'}};
 export const FRONTIER_MAPS=['starshore','oathwood','nightclock','sungrave','worldroot'];
-export const continentFor=location=>homecomingMap(location)?.route.continentId||(['dawncity','dawnrift'].includes(location)?'dawn':['skycity','skyport','gearfell','aether','stormforge','zenith',...FRONTIER_MAPS].includes(location)?'sky':'icarus');
+export const continentFor=location=>homecomingMap(location)?.route.continentId||(['dawncity','dawnrift','spirit-sanctuary'].includes(location)?'dawn':['skycity','skyport','gearfell','aether','stormforge','zenith',...FRONTIER_MAPS].includes(location)?'sky':'icarus');
 export const PLAYER_REVIVE_MS=15000,PET_REVIVE_MS=10000;
 export const deathRemaining=(unit,now)=>Math.max(0,Math.ceil(((unit?.reviveAt||0)-now)/1000));
 export const baseExperienceNeed=p=>Math.round((250+17*p.level**2.05)*(p.level>=181?10:p.level>=151?5:p.reborn?2:1));
