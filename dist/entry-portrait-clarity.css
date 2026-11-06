@@ -1,0 +1,14 @@
+/* Character-select portraits are tall illustrations, not square sprites.
+   Preserve their original geometry for both gold and ranked outfits. */
+.slot-select img.art-entry{
+  width:min(200px,75%);
+  height:240px;
+  margin:8px auto 4px;
+  object-fit:contain;
+  object-position:center;
+  image-rendering:auto;
+  filter:drop-shadow(0 5px 6px #0004);
+}
+@media(max-width:600px){
+  .slot-select img.art-entry{width:min(148px,82%);height:188px;margin:7px auto 3px}
+}
