@@ -1,5 +1,5 @@
-// End-to-end controlled combat through production offline Worker for all 30 routes.
-// This is a trigger/attribution smoke, NOT a 200-trial or DPS ranking.
+// Legacy dual-pet resonance guard through production offline Worker for all 30 routes.
+// Current single-pet jobs must NOT accidentally activate retired two-pet resonance.
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {DUAL_FUSION_TYPES,canonicalDualFusionKey} from '../dist/spirit-job-rules.js';
@@ -43,7 +43,9 @@ for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of DUAL_FUS
    'all main-skill events must have a trigger or recorded blocker');
   for(const key of Object.keys(blockerTotals))blockerTotals[key]+=counters[key];
   assert.equal(result.player.pets.length,2);
-  assert.ok(result.summary.damage.pet1>0&&result.summary.damage.pet2>0,'both fused pets contribute '+job+' '+pairKey);
+  assert.equal(result.summary.damage.pet2,0,'stored secondary fusion must not fight '+job+' '+pairKey);
+  if(job==='pactWarrior')assert.equal(result.summary.damage.pet1,0,'King assimilates rather than pet attacks');
+  else assert.ok(result.summary.damage.pet1>=0,'Commander pet output is nonnegative');
   activations+=count;activationByJob[job]+=count;
   assert.ok(Number.isFinite(result.summary.damage.resonance)&&result.summary.damage.resonance>=0);
   damage+=result.summary.damage.resonance;routes++;
@@ -52,6 +54,6 @@ for(const job of ['pactWarrior','spiritCommander'])for(const pairKey of DUAL_FUS
  }finally{await worker.terminate();}
 }
 assert.equal(routes,30);
-assert.ok(activationByJob.pactWarrior>0&&activationByJob.spiritCommander>0,'each job activates resonance in actual combat');
+assert.equal(activations,0,'retired two-pet resonance must never activate in single-pet jobs');
 console.log(JSON.stringify({routes,activations,activationByJob,zeroActivationRoutes,
  blockerTotals,resonanceDamage:damage,complete:true}));

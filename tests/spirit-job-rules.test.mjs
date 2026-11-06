@@ -94,8 +94,8 @@ test('both reborn spirit second jobs can earn Job 70 and satisfy ordinary third-
 });
 
 test('spirit second jobs share the new one-hand dual-attack staff sword',()=>{
- assert.ok(GEAR_BASE.mace.jobs.includes('spiritist'),'first-job spiritist retains its starting mace');
- assert.deepEqual(GEAR_BASE.staffSword.jobs,['pactWarrior','spiritCommander']);
+ assert.ok(!GEAR_BASE.mace.jobs.includes('spiritist'),'first-job spiritist must not use mace');
+ assert.deepEqual(GEAR_BASE.staffSword.jobs,['spiritist','pactWarrior','spiritCommander']);
  assert.ok(GEAR_BASE.staffSword.atk>0&&GEAR_BASE.staffSword.matk>0);
  assert.equal(GEAR_BASE.staffSword.hands??1,1);
  const sword=rollGear('staffSword',200,'mythic',()=>.5);

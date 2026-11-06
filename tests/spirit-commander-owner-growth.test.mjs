@@ -16,12 +16,12 @@ const durable=commanderInheritedPetStats({...pet,hp:10000,damageReduction:8},{..
 assert.equal(durable.hp,10200,'commander transfers 1% of owner maximum HP after survival rebalance');
 assert.equal(durable.damageReduction,2.9,'commander receives a reduced pre-combat defense conversion');
 assert.ok(commanderInheritedPetStats({...pet,hp:10000,damageReduction:35},{...owner,hp:20000,damageReduction:40}).damageReduction<=40,'pet reduction respects 40% cap');
-assert.ok(invested.atk>=Math.round(pet.atk*1.26),'substantial owner card training must empower pets');
+assert.ok(invested.atk>=Math.round(pet.atk*1.10),'substantial owner card training must empower pets after the requested output reduction');
 const freshOwner={...owner,atk:owner.rawAtk,matk:owner.rawMatk,cardPower:0,gearPower:0};
 const fresh=commanderInheritedPetStats(pet,freshOwner);
-assert.equal(fresh.atk,Math.round(pet.atk*.91),'untrained owner must have reduced free pet offense');
+assert.equal(fresh.atk,Math.round(pet.atk*.74),'untrained owner must have reduced free pet offense');
 const fullyTrained=commanderInheritedPetStats(pet,{...owner,atk:owner.rawAtk*3,matk:owner.rawMatk*3,cardPower:200,gearPower:200});
-assert.equal(fullyTrained.atk,Math.round(pet.atk*(.91+.36*1.23)),'fully trained owner retains bounded growth');
+assert.equal(fullyTrained.atk,Math.round(pet.atk*(.74+.36*1.23)),'fully trained owner retains bounded growth');
 assert.equal(commanderMainSkillMultiplier({atk:0,matk:0},pet,'attack-magic'),1,'zero owner offense grants no main skill bonus');
 assert.equal(commanderMainSkillMultiplier({atk:1000000,matk:1000000},pet,'attack-magic'),2.2,'main skill bonus is capped at +120%');
 assert.ok(commanderMainSkillMultiplier(owner,pet,'attack-magic')>1,'owner offense raises main skill');

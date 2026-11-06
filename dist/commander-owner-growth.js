@@ -28,9 +28,9 @@ export function commanderInheritedPetStats(base,owner){
  const training=Math.min(.28,(nonnegative(owner.cardPower)+nonnegative(owner.gearPower))/100);
  const physical=Math.min(.36,commanderOwnerGrowth(atk,owner.rawAtk)+training);
  const magical=Math.min(.36,commanderOwnerGrowth(matk,owner.rawMatk)+training);
- // Single-companion baseline is stronger, while fully trained multiplier stays
- // at 1.3528; card and gear investment retain their original soft cap.
- const trainedMultiplier=growth=>.91+growth*1.23;
+ // Single-companion offense now has a lower native ATK/MATK baseline while
+ // preserving the same card and gear training increments and growth cap.
+ const trainedMultiplier=growth=>.74+growth*1.23;
  const cultivation=Number.isFinite(owner.cultivation)?Math.min(1,Math.max(0,owner.cultivation)):1;
  return {...base,
   atk:Math.round(nonnegative(base.atk)*trainedMultiplier(physical)*cultivation),

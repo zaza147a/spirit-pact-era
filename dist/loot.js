@@ -24,10 +24,10 @@ export const GEAR_BASE={
 };
 Object.assign(GEAR_BASE,{spellFist:{name:'符紋魔拳套',slot:'rightHand',weaponType:'spellfist',hands:2,matk:12,aspdPct:5,weaponTrait:'符紋連擊：攻速加成 +5%（固定，不隨強化）',cost:190,jobs:['sage']},knuckles:{name:'修行拳套',slot:'rightHand',weaponType:'knuckle',hands:2,atk:12,cost:190,jobs:['monk']},instrument:{name:'旅歌豎琴',slot:'rightHand',weaponType:'instrument',hands:2,atk:12,critDmg:30,damageReduction:15,weaponTrait:'協奏庇護：固有暴擊傷害 +30%、最終減傷 +15%（均不隨強化，減傷受上限限制）',cost:190,jobs:['performer']}});
 for(const [id,meta] of Object.entries(SECOND_JOBS))for(const base of Object.values(GEAR_BASE))if(base.jobs?.includes(meta.parent)&&!base.jobs.includes(id))base.jobs.push(id);
-GEAR_BASE.katar.jobs=['assassin'];GEAR_BASE.offDagger.jobs=['assassin'];GEAR_BASE.twoSword.jobs=['knight'];GEAR_BASE.twoSpear.jobs=['knight'];GEAR_BASE.oneSpear.jobs=['knight','crusader'];GEAR_BASE.mace.jobs=['acolyte','priest','spiritist'];GEAR_BASE.blade.jobs.push('pactWarrior');GEAR_BASE.oneStaff.jobs.push('spiritCommander');GEAR_BASE.crossbow.jobs=['hunter'];
-// Fixed, visible weapon ATK/MATK values, not damage multipliers.
-// At Lv.200 these values are base stats before equipment enhancement.
-// Existing saves receive these through the stat resolver without mutating legal affixes.
+GEAR_BASE.katar.jobs=['assassin'];GEAR_BASE.offDagger.jobs=['assassin'];GEAR_BASE.twoSword.jobs=['knight'];GEAR_BASE.twoSpear.jobs=['knight'];GEAR_BASE.oneSpear.jobs=['knight','crusader'];GEAR_BASE.mace.jobs=['acolyte','priest'];GEAR_BASE.staffSword.jobs=['spiritist','pactWarrior','spiritCommander'];GEAR_BASE.crossbow.jobs=['hunter'];
+// Visible fixed weapon ATK/MATK, rather than a hidden final/source damage multiplier.
+// The base amount is at Lv.200 before enhancement and scales with weapon level.
+// This also applies to existing saved weapons without rewriting their legal affixes.
 export const WEAPON_FIXED_ATTACK={
  rifle:{atk:-2200},shortBow:{atk:3300},longBow:{atk:500},crossbow:{atk:1100},
  oneStaff:{matk:9800},spellFist:{matk:7200},instrument:{atk:5300}
@@ -35,8 +35,8 @@ export const WEAPON_FIXED_ATTACK={
 export const WEAPON_FIXED_ATTACK_JOB={rifle:'rogue',shortBow:'hunter',longBow:'hunter',crossbow:'hunter',oneStaff:'sage',spellFist:'sage',instrument:'performer'};
 for(const [id,stats] of Object.entries(WEAPON_FIXED_ATTACK)){
  const title={rogue:'逐影者',hunter:'遊俠',sage:'元素使',performer:'宮廷樂師'}[WEAPON_FIXED_ATTACK_JOB[id]];
- const description=Object.entries(stats).map(([key,value])=>`${key.toUpperCase()} ${value>=0?'+':''}${value}（Lv.200 基準，隨武器等級與強化成長）`).join('、');
- GEAR_BASE[id].weaponTrait=[GEAR_BASE[id].weaponTrait,`${title}專屬固定武器能力：${description}`].filter(Boolean).join('；');
+ const text=Object.entries(stats).map(([key,value])=>`${key.toUpperCase()} ${value>=0?'+':''}${value}（Lv.200 基準，隨武器等級與強化成長）`).join('、');
+ GEAR_BASE[id].weaponTrait=[GEAR_BASE[id].weaponTrait,`${title}專屬固定武器能力：${text}`].filter(Boolean).join('；');
 }
 export const PET_GEAR_BASE={petHelm:{name:'靈獸角冠',petSlot:'head',cost:65},petCirclet:{name:'靈獸星環',petSlot:'head',cost:65},petArmor:{name:'靈獸戰甲',petSlot:'body',cost:105},petRobe:{name:'靈獸法袍',petSlot:'body',cost:105},petBoots:{name:'靈獸迅足',petSlot:'shoes',cost:70},petGreaves:{name:'靈獸護足',petSlot:'shoes',cost:70}};
 export const PET_SLOTS={head:'頭部',body:'身體',shoes:'鞋'};

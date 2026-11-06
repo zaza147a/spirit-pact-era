@@ -18,6 +18,13 @@ const buffModifiers={knight:{atkPct:20,hitPct:15},crusader:{defPct:25,aspd:10},w
 export function thirdSkills(job){const [name,main,wide,finish,utility,stance,power,targets,event,passives]=defs[job],magic=['wizard','sage','priest'].includes(job),wizard=job==='wizard',base={branch:'third',thirdOnly:true,maxRank:10,weapons:[],kind:magic?'magic':'physical',mp:3,event,desc:'三轉專屬；主攻依ASPD動作間隔，承接本職共鳴。'},make=(id,title,extra)=>({...base,id:id+'_'+job,name:title,...extra});
  const wideRatio=job==='pactWarrior'?4.2:(wizard?1.35:6.5),finishRatio=job==='pactWarrior'?7.5:(wizard?2.8:12);
  const list=[make('thirdMain',main,{unlock:1,power,attackCycle:true,cooldown:0,aoe:true,targets,mp:wizard?18:3,...(wizard?{castMs:2200,recovery:600}:{}),...(job==='crusader'?{source:'holyShield'}:{}),...(job==='rogue'?{steal:true}:{})}),make('thirdWide',wide,{unlock:5,power:power*wideRatio,mp:18,cooldown:8000,aoe:true,targets:wizard?5:4,...(wizard?{castMs:2600,recovery:1200}:{}),desc:'三轉範圍攻擊；同時打擊多體，每體獨立計傷，需承受技能動作間隔。'}),make('thirdFinish',finish,{unlock:40,power:power*finishRatio,mp:24,cooldown:12000,targets:1,...(wizard?{castMs:3000,recovery:1200}:{}),desc:'三轉單體終結技；高倍率、高消耗，適合首領與厚血目標。'})];
+ if(job==='assassin'){
+  // Main target executes at full focused skill force; secondary enemies take
+  // reduced splash. Both values are part of the displayed skill definition.
+  Object.assign(list[0],{primaryTargetPower:1.50,secondaryTargetPower:.70});
+  Object.assign(list[1],{primaryTargetPower:1.20,secondaryTargetPower:.70});
+  for(const skill of list.slice(0,2))skill.desc+=` 主目標傷害 ${Math.round(skill.primaryTargetPower*100)}%，副目標傷害 ${Math.round(skill.secondaryTargetPower*100)}%。`;
+ }
  for(const [i,ratio]of [[0,1],[1,wideRatio],[2,finishRatio]]){list[i].thirdGrowth={job,ratio};list[i].desc+=' 技能倍率隨Base151–200逐級成長；下方顯示目前實際倍率。';}
  let util={kind:'shield',power:2.5,cooldown:2800,exclusiveGroup:'personalShield',mp:16};
  if(['crusader','priest','monk'].includes(job))util={kind:'heal',power:job==='monk'?3:4,cooldown:7500,mp:18,healSource:job==='priest'?'matk':'atk',partyHeal:job!=='monk'};

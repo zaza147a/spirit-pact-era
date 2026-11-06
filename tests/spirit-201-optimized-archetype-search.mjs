@@ -56,7 +56,7 @@ function createPlayer(cfg){
  assert.equal(Object.values(p.attributes).reduce((a,b)=>a+b-1,0),allocationBudget(210,true));
  assert.ok(Object.values(p.attributes).every(n=>n>=1&&n<=attributeCap(p)));
  assert.ok(p.gear.rightHand&&Object.values(p.gear).filter(Boolean).every(g=>g.level===200&&g.enhancement==='SSS'));
- if(spirit){assert.equal(p.gear.rightHand.id,cfg.job==='pactWarrior'?'blade':'oneStaff');assert.equal(p.gear.leftHand?.id,'shield');}
+ if(spirit){assert.equal(p.gear.rightHand.id,'staffSword');assert.equal(p.gear.leftHand?.id,'shield');}
  assert.ok(p.pets.every(pet=>Object.values(pet.gear).filter(Boolean).every(g=>g.level===200&&g.enhancement==='SSS')));
  assert.ok(Object.values(p.sockets).every(id=>!id||CARDS[id]&&CARDS[id].boss===bossMode),'測試卡片類型不符');
  if(spirit)assert.equal(p.pets.length,2);
