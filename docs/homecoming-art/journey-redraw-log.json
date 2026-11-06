@@ -90,5 +90,12 @@
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-attack-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: East Asian martial mountain village, crimson maple trees, old red war banners, stone courtyards and tiled wooden halls, serene but unusually deserted.. Journey destination: 丹旌武鄉. Illustrate ONLY this page's narrative: 丹旌武鄉的百旗迎風飄揚，練武場卻異常安靜。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
   }
 ]
