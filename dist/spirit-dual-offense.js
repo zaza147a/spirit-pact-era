@@ -7,3 +7,9 @@ export function spiritPreFusionAttack(job,thirdJob,atk,matk){
  const physical=Math.max(0,Number(atk)||0),magical=Math.max(0,Number(matk)||0);
  return Math.max(physical,magical)+Math.min(physical,magical)*SPIRIT_PRE_FUSION_MINOR_ATTACK_RATIO;
 }
+
+// Equal values use physical damage as a deterministic tie-breaker.
+export function spiritPreFusionIsMagic(job,thirdJob,atk,matk){
+ if(thirdJob||!['spiritist','pactWarrior'].includes(job))return null;
+ return (Number(matk)||0)>(Number(atk)||0);
+}
