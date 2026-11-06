@@ -37,17 +37,32 @@ test('post-Dawn opponents exceed the corresponding Dawn monster stat budget',()=
  }
 });
 
-test('recovered journey pages render only their own illustration in the main panel',async()=>{
+test('journey illustrations are available in a popup, never embedded below the story',async()=>{
  const {HOMECOMING_JOURNEY_ART,renderHomecomingJourneyArt}=await import('../dist/homecoming-art.js');
  const {renderHomecomingPanel}=await import('../dist/homecoming-ui.js');
+ const {homecomingPicture}=await import('../dist/homecoming-modal.js');
  const sources=Object.values(HOMECOMING_JOURNEY_ART).flat().filter(Boolean);
  assert.equal(sources.length,36);assert.equal(new Set(sources).size,sources.length);
  for(const [routeId,pages] of Object.entries(HOMECOMING_JOURNEY_ART))for(let index=0;index<3;index++){
   const html=renderHomecomingPanel({pets:[],homecoming:{routes:{[routeId]:{phase:'traveling',journeyIndex:index}}}});
-  if(pages[index]){checkWebp(pages[index]);assert.ok(html.includes(pages[index]));assert.match(html,/width="1280" height="720"/);}
-  else assert.match(html,/此頁旅行插畫準備中/);
+  const picture=homecomingPicture({homecoming:{routes:{[routeId]:{phase:'traveling',journeyIndex:index}}}},routeId);
+  assert.ok(html.includes('data-homecoming="view-art"'));
+  assert.ok(!html.includes('<figure'));
+  if(pages[index]){checkWebp(pages[index]);assert.ok(picture.html.includes(pages[index]));assert.match(picture.html,/width="1280" height="720"/);}
+  else assert.match(picture.html,/此頁旅行插畫準備中/);
   for(const other of sources.filter(s=>s!==pages[index]))assert.ok(!html.includes(other));
  }
  for(const index of [-1,3,1.5])assert.ok(!renderHomecomingJourneyArt('support-attack',index).includes('<img'));
  assert.ok(!renderHomecomingJourneyArt('unknown',0).includes('<img'));
+});
+test('active story image is only in the popup and follows its current step',async()=>{
+ const {renderHomecomingPanel}=await import('../dist/homecoming-ui.js');
+ const {homecomingPicture}=await import('../dist/homecoming-modal.js');
+ const r=HOMECOMING_ROUTES[0],step=Object.keys(HOMECOMING_ADVENTURES[r.id].nodes)[0];
+ const p={pets:[],location:r.townId,homecoming:{routes:{[r.id]:{phase:'active',adventure:{step,vars:{}}}}}};
+ const panel=renderHomecomingPanel(p),picture=homecomingPicture(p,r.id);
+ assert.ok(panel.includes('data-homecoming="view-art"'));
+ assert.ok(!panel.includes('homecoming-scene'));
+ assert.ok(picture.html.includes(HOMECOMING_SCENE_ART[r.id].src));
+ assert.equal(homecomingPicture(p,'unknown'),null);
 });

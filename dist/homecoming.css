@@ -4,3 +4,12 @@
 .homecoming-journey-art{margin:12px 0}.homecoming-journey-art img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:10px}
 
 .homecoming-waiting{margin-top:12px;border:1px solid #3f596c;border-radius:10px;padding:12px}.homecoming-waiting>summary{cursor:pointer;color:#b9c7d6}.homecoming-waiting[open]>summary{margin-bottom:12px}
+.homecoming-picture-dialog{width:min(920px,94vw);max-height:92dvh;max-height:92vh;border:1px solid #c4a46e;border-radius:16px;padding:0;color:#f4eedf;background:#172235;box-shadow:0 24px 90px #000d;overflow:auto}
+.homecoming-picture-dialog::backdrop{background:#070b13d9;backdrop-filter:blur(5px)}
+.homecoming-picture-content{padding:clamp(12px,3vw,25px)}
+.homecoming-picture-content header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.homecoming-picture-content h2{margin:0;font-size:clamp(1.05rem,2.5vw,1.5rem);color:#f0d39b}
+.homecoming-picture-content p{line-height:1.7;margin:12px 0}
+.homecoming-picture-content figure{margin:12px 0}.homecoming-picture-content figure img{max-height:62vh;object-fit:contain}
+.homecoming-picture-content .homecoming-opponent img{max-height:220px}
+.homecoming-picture-continue{display:block;margin:16px auto 0;min-width:180px}
