@@ -115,5 +115,5 @@ export function patchTownArea(area,html){
 }
 
 if(typeof document!=='undefined'){
-  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.74';document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.75';document.head.append(css);
 }

@@ -34,3 +34,10 @@ test('village is not destroyed by repeated combat rendering',()=>{
   assert.match(game,/patchTownArea\(\$\('area'\),/);
   assert.doesNotMatch(scene,/MutationObserver/);
 });
+
+test('isolated village preview covers three towns without touching save data',()=>{
+  const preview=readFileSync(new URL('village-preview.html',root),'utf8');
+  for(const city of ['town','skycity','dawncity'])assert.match(preview,new RegExp(`data-city="${city}"`));
+  assert.match(preview,/patchTownArea\(area,markup\)/);
+  assert.doesNotMatch(preview,/localStorage|sessionStorage/);
+});

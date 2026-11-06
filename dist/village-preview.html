@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>靈契紀元｜村莊場景驗收</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:#091520;color:#eff4f8;font:14px/1.6 system-ui,'Noto Sans TC',sans-serif}
+    button{cursor:pointer;color:#e7eff4;background:#234155;border:1px solid #68879b;border-radius:8px;padding:8px 12px;font:inherit}
+    button:hover{background:#355870}.goldbtn{background:#6b4b2e;color:#fff1d0;border-color:#b99555}
+    main{max-width:1160px;margin:0 auto;padding:25px 16px 60px}header{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:16px}
+    header h1{font-size:23px;margin:0}header p{margin:2px 0;color:#aabdc9}.switches{display:flex;flex-wrap:wrap;gap:8px}
+    .area{border-radius:15px;border:1px solid #5e7b8b;background:#1e3545;padding:15px;overflow:hidden}.area>h2{margin:0}.eyebrow{font-size:11px;color:#a9e4de;letter-spacing:2px}
+    .chips{color:#c6d5dc;font-size:12px}.status{margin-top:12px;border:1px solid #506a78;border-radius:9px;padding:12px;background:#122638}
+  </style>
+</head>
+<body>
+<main>
+  <header><div><h1>村莊場景驗收 · V6.5.75</h1><p>三座村莊、13 種 NPC 角色及對話互動的獨立預覽，不讀寫角色存檔。</p></div>
+    <div class="switches"><button data-city="town">靈契主城</button><button data-city="skycity">蒼穹樞城</button><button data-city="dawncity">曙光聖港</button></div>
+  </header>
+  <section id="area" class="area town"></section>
+  <div id="status" class="status" role="status">請點擊場景中的任一 NPC 立繪，測試對話及功能按鈕。</div>
+</main>
+<script type="module">
+  import {patchTownArea} from './town-scene.js?v=6.5.75';
+  const area=document.getElementById('area'),status=document.getElementById('status');
+  const towns={town:['靈契主城','契約之始，冒險者的故鄉'],skycity:['蒼穹樞城','漂浮在雲層上的魔導都市'],dawncity:['曙光聖港','黎明照耀的海港聖城']};
+  const shared=['enhancement','warehouse','reforge','collection','cardrecycle','cardcollection'];
+  const npc={quests:'征途引導官・艾琳',guild:'公會轉職官',third:'覺醒導師',evolution:'夥伴進化師',shop:'旅途補給商',warehouse:'倉庫管理員・米菈',enhancement:'星鑄師・赫瑟',reforge:'靈紋重鑄師',collection:'鑄金典藏師',cardrecycle:'卡片鍊成師',cardcollection:'星頁典藏師・露娜',trials:'試煉守門人',sigilcraft:'契印師・曦紋'};
+  function render(city){
+    area.className=`area ${city}`;
+    const roles=city==='town'?['guild','quests','evolution','shop']:city==='skycity'?['trials','third','evolution','shop']:['sigilcraft','evolution','shop'];
+    const markup=`<div class="eyebrow">SPIRIT PACT / TOWN SCENE</div><h2>${towns[city][0]}</h2><div class="chips">${towns[city][1]}</div>`+
+      roles.map(role=>role==='quests'?`<div class="town-npc"><button data-open="quests">${npc[role]}</button></div>`:
+        `<button class="town-evolution" ${role==='guild'?'id="townTransferBtn"':role==='third'?'id="townThirdBtn"':role==='evolution'?'id="townEvolutionBtn"':`data-open="${role}"`}>${npc[role]}</button>`).join('');
+    patchTownArea(area,markup);
+    // Match the game render order: common NPCs are appended before click handlers.
+    if(!area.querySelector('[data-open="reforge"]'))area.insertAdjacentHTML('beforeend',shared.map(role=>`<button class="town-evolution" data-open="${role}">${npc[role]}</button>`).join(''));
+    for(const button of area.querySelectorAll('button[data-open],#townTransferBtn,#townThirdBtn,#townEvolutionBtn')){
+      button.onclick=()=>{status.textContent=`已選擇：${button.title||button.textContent.trim()}。正式遊戲會開啟原有功能面板。`;};
+    }
+  }
+  document.querySelectorAll('[data-city]').forEach(button=>button.onclick=()=>render(button.dataset.city));
+  render('town');
+</script>
+</body>
+</html>
