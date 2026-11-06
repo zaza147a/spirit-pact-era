@@ -44,6 +44,15 @@ test('all 2880 twelve-job/fusion/three-skill choices keep their order through UI
     p.hp=Math.max(1,Math.floor(a.stat('hp')*.5));p.mp=0;p.shield=0;
     const stats=c.petStats(pet);pet.hp=Math.max(1,Math.floor(stats.hp*.5));pet.sp=stats.sp;
     const opening=fusionSkills(pet).find(s=>s.id===expected[0]);
+    // The new Spirit paths use separate combat controllers: Pact Warrior
+    // assimilates the pet and Spirit Commander substitutes pet skill forms.
+    // The 2880-choice matrix still verifies UI, migration and save/load here;
+    // combat for these paths is covered by spirit-specific runtime tests.
+    if(job==='pactWarrior'||job==='spiritCommander'){
+     if(job==='pactWarrior')assert.equal(a.petSkillStatus(pet,opening,now),'同化中');
+     checked++;
+     continue;
+    }
     assert.equal(a.petSkillStatus(pet,opening,now),'可施放',job+'/'+pair+'/'+selected+' first selected ability was unusable');
     a.petAutoAbility(pet,stats,now);
     assert.match(a.petSkillStatus(pet,opening,now),/冷卻/,job+'/'+pair+'/'+selected+' did not execute selected combat skill');
