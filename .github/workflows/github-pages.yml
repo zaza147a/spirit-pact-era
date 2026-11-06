@@ -1,4 +1,5 @@
 name: Publish Spirit Pact Era
+# Retry publication with a fresh run after Pages artifact duplication.
 on:
   push:
     branches: [main]
