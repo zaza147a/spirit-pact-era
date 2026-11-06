@@ -60,15 +60,36 @@ try{
  await page.getByRole('heading',{name:'第八格御靈使',exact:true}).waitFor();
  for(const [index,job] of [[1,'pactWarrior'],[2,'spiritCommander']]){
   const bytes=await readFile(resolve(`tests/fixtures/spirit-single-pet-optimal-210/${job}-210-sss-sigil8-optimal.json`));
-  const saved=JSON.parse(bytes.toString('utf8')).player;
+  const importedSave=JSON.parse(bytes.toString('utf8'));
+  const saved=importedSave.player;
   assert.equal(saved.thirdJob,true,`${job} fixture is not third job`);
+  // Add one legal same-slot candidate so the real inventory renders comparison controls.
+  const candidate=structuredClone(saved.gear.rightHand);
+  candidate.uid=`premerge-compare-${job}`;
+  candidate.affixes.atk=Math.max(1,candidate.affixes.atk-100);
+  candidate.affixes.matk=Math.max(1,candidate.affixes.matk-200);
+  saved.bag.push(candidate);
   await page.locator(`#slotGrid [data-slot-import="${index}"]`).click();
-  await page.locator('#saveFile').setInputFiles({name:`${job}.json`,mimeType:'application/json',buffer:bytes});
+  await page.locator('#saveFile').setInputFiles({name:`${job}.json`,mimeType:'application/json',buffer:Buffer.from(JSON.stringify(importedSave))});
   await page.getByRole('heading',{name:saved.name,exact:true}).waitFor();
   await page.locator(`[data-slot-select="${index}"]`).click();
   await page.locator('#enterGameBtn').click();
   await page.locator('#gameShell').waitFor({state:'visible'});
   await page.locator('[data-tab="bag"]').click();
+  await page.locator('[data-bagcategory="equipment"]').click();
+  const compare=page.locator(`[data-ui-key="bag-${candidate.uid}"] .gear-compare`);
+  await compare.waitFor({state:'visible'});
+  const relevant=compare.locator('[data-compare-content="relevant"]');
+  const all=compare.locator('[data-compare-content="all"]');
+  assert.equal(await relevant.isVisible(),true,`${job} relevant stats should be default`);
+  assert.equal(await all.isVisible(),false,`${job} all stats should initially be hidden`);
+  await compare.locator('[data-compare-mode="all"]').click();
+  assert.equal(await all.isVisible(),true,`${job} all stats did not become visible`);
+  assert.equal(await relevant.isVisible(),false,`${job} relevant stats still visible`);
+  assert.equal(await compare.locator('[data-compare-mode="all"]').getAttribute('aria-pressed'),'true');
+  await compare.locator('[data-compare-mode="relevant"]').click();
+  assert.equal(await relevant.isVisible(),true,`${job} relevant stats cannot be restored`);
+  assert.equal(await all.isVisible(),false,`${job} all stats remained visible`);
   await page.locator('[data-tab="pets"]').click();
   await page.locator('#area [data-open="warehouse"]').click();
   await page.locator('#warehouseModal').waitFor({state:'visible'});
@@ -126,6 +147,6 @@ try{
   assert.equal(completed.player.jobLevel,1);
  }
  assert.deepEqual(errors,[],'uncaught browser runtime errors');
- console.log(JSON.stringify({passed:true,firstJob:'spiritist',level:1,slots:[1,8],reloaded:true,thirdJobs:['pactWarrior','spiritCommander'],warehouse:true,secondTransfer:true,thirdTransfer:true}));
+ console.log(JSON.stringify({passed:true,firstJob:'spiritist',level:1,slots:[1,8],reloaded:true,thirdJobs:['pactWarrior','spiritCommander'],warehouse:true,gearCompareModes:true,secondTransfer:true,thirdTransfer:true}));
  await context.close();
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
