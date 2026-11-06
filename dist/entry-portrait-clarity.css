@@ -12,3 +12,17 @@
 @media(max-width:600px){
   .slot-select img.art-entry{width:min(148px,82%);height:188px;margin:7px auto 3px}
 }
+
+/* Reserve the same vertical area for every outfit tier; text starts evenly. */
+.slot-select .slot-art-stage{
+  display:grid;
+  place-items:center;
+  height:260px;
+  width:100%;
+  margin:8px auto 4px;
+}
+.slot-select .slot-art-stage > .art-entry,
+.slot-select .slot-art-stage > .slot-empty-art{margin:0 auto}
+@media(max-width:600px){
+  .slot-select .slot-art-stage{height:195px;margin:7px auto 3px}
+}
