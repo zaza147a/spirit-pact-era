@@ -58,7 +58,28 @@ try{
  await page.reload();
  await page.getByRole('heading',{name:'御靈使審核',exact:true}).waitFor();
  await page.getByRole('heading',{name:'第八格御靈使',exact:true}).waitFor();
+ for(const [index,job] of [[1,'pactWarrior'],[2,'spiritCommander']]){
+  const bytes=await readFile(resolve(`tests/fixtures/spirit-single-pet-optimal-210/${job}-210-sss-sigil8-optimal.json`));
+  const saved=JSON.parse(bytes.toString('utf8')).player;
+  assert.equal(saved.thirdJob,true,`${job} fixture is not third job`);
+  await page.locator(`#slotGrid [data-slot-import="${index}"]`).click();
+  await page.locator('#saveFile').setInputFiles({name:`${job}.json`,mimeType:'application/json',buffer:bytes});
+  await page.getByRole('heading',{name:saved.name,exact:true}).waitFor();
+  await page.locator(`[data-slot-select="${index}"]`).click();
+  await page.locator('#enterGameBtn').click();
+  await page.locator('#gameShell').waitFor({state:'visible'});
+  await page.locator('[data-tab="bag"]').click();
+  await page.locator('[data-tab="pets"]').click();
+  await page.locator('#area [data-open="warehouse"]').click();
+  await page.locator('#warehouseModal').waitFor({state:'visible'});
+  await page.locator('#warehouseModal button[aria-label="關閉倉庫"]').click();
+  await page.locator('#returnEntryBtn').click();
+  await page.locator('#entryScreen').waitFor({state:'visible'});
+  const imported=await page.evaluate(i=>JSON.parse(localStorage.getItem(`icarus-character-slot-${i+1}`)),index);
+  assert.equal(imported.player.job,job);
+  assert.equal(imported.player.thirdJob,true);
+ }
  assert.deepEqual(errors,[],'uncaught browser runtime errors');
- console.log(JSON.stringify({passed:true,firstJob:'spiritist',level:1,slots:[1,8],reloaded:true}));
+ console.log(JSON.stringify({passed:true,firstJob:'spiritist',level:1,slots:[1,8],reloaded:true,thirdJobs:['pactWarrior','spiritCommander'],warehouse:true}));
  await context.close();
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
