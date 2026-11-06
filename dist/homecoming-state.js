@@ -21,7 +21,7 @@ export function discoverHomecoming(p,pets,{town=false,offline=false}={}){
 export function homecomingContinents(p){return HOMECOMING_ROUTES.filter(r=>{const q=p.homecoming?.routes?.[r.id];return q&&q.phase!=='letter';});}
 export function homecomingBonuses(p){
  const b={damage:0,hp:0,def:0,recovery:0,count:0};
- if(!JOBS.has(p?.job))return b;
+ if(!JOBS.has(p?.job)||!p.homecoming?.routes||Object.keys(p.homecoming.routes).length===0)return b;
  for(const r of HOMECOMING_ROUTES)if(p.homecoming?.routes?.[r.id]?.phase==='claimed'){b.count++;b[r.inheritance]++;}
  b.damage=b.count*.0025;b.hp*=.01;b.def*=.01;b.recovery*=.01;return b;
 }
