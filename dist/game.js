@@ -67,7 +67,7 @@ import {activePetRoster,normalizeDualPetState,canSetSecondaryPet,secondPetDamage
 import {spiritSinglePetProfile} from './spirit-single-pet-profiles.js';
 import {synchronizeCommanderCards} from './commander-card-sync.js';
 import {commanderPetSkillForm,commanderSupportSkillPower,commanderSkillOutputScale,commanderFinalDamageFactor} from './commander-pet-skill-forms.js';
-import {createSpiritProcState,advanceSpiritProc} from './spirit-single-pet-procs.js?v=6.5.67';
+import {SPIRIT_PROC_RULES,createSpiritProcState,advanceSpiritProc} from './spirit-single-pet-procs.js?v=6.5.67';
 import {outgoingHitDamage,incomingMonsterDamage,monsterAttackPower,monsterDefenseAgainst,aspdAttackIntervalMs,roStyleCritRate,hitChance,monsterHitChance,monsterCombatStats,monsterRuntimeStats,jobZoneOutputFactor,LEVEL_CAPS} from './combat-balance.js?v=6.5.0';
 import {shouldAutoSalvage,SALVAGE_STATS} from './salvage-rules.js?v=6.5.45';
 
@@ -1321,7 +1321,7 @@ if(goldCollectionTier(player)>=1)$('character').querySelector('.hero')?.insertAd
 const species=SPECIES[enemy.id];patchHtml($('encounter'),`${player.trialRun?renderTrialProgress():''}<div class="encounter-heading"><span class="tiny">${player.trialRun?'首領試煉 · 單體五連戰':isTown(player.location)?'安全區':`持續隨機遭遇 · 一般 ${enemies.filter(e=>!e.boss).length}/${encounterLimit(player.location)}${player.location==='petland'?'':` · 首領 ${enemies.filter(e=>e.boss).length}/1`}`}</span>${!isTown(player.location)&&!player.trialRun?`<label>鎖定目標<select id="targetPriority" aria-label="鎖定目標">${Object.entries(TARGET_PRIORITIES).map(([id,name])=>`<option value="${id}" ${player.targetPriority===id?'selected':''}>${name}</option>`).join('')}</select></label>`:''}</div><div class="enemy-lineup">${renderEncounterSlots()}</div><div class="tiny">${player.trialRun?'逐隻挑戰五位首領 · 控制期間人物無法行動 · 死亡立即離場':isTown(player.location)?(player.location==='dawncity'?'曙光聖港提供契印製作、星鑄強化、夥伴進化與補給商店。':player.location==='skycity'?'蒼穹樞城提供首領試煉、星鑄強化、三轉與融合進化。':'可在村莊進化夥伴、接取任務、整理裝備與購買補給。'):map.capture?'滿血也能直接丟球 · 基礎成功率55%，HP低於50%可提高至最高85%':'各格獨立隨機遭遇，擊殺後各自重新探索，沒有固定進場順序。'}</div>`);for(const b of $('encounter').querySelectorAll('[data-target]'))b.onclick=()=>targetEnemy(b.dataset.target);const priority=$('targetPriority');if(priority)priority.onchange=()=>{player.targetPriority=priority.value;chooseAttackTarget();save();render();};
 
 $('petStatus').innerHTML='';$('petStatus').style.display='none';
-$('resonancePanel').innerHTML=`<div class="rule">${pet?`<strong>✦ 核心共鳴：${companionResonance(player,pet)?.name||'共鳴'}</strong> · ${companionResonance(player,pet)?.description||'與主人協同作戰'} · 冷卻 ${((companionResonance(player,pet)?.cooldown||0)/1000).toFixed(1)} 秒`:'尚未有出戰夥伴，核心共鳴不會觸發'}</div><div class="tiny">人物護盾 ${player.shield||0} · 夥伴護盾 ${petEffects.shield||0} · 核心共鳴自動觸發，獨立冷卻</div>`;
+$('resonancePanel').innerHTML=['pactWarrior','spiritCommander'].includes(player.job)?renderSpiritResonanceStatus(pet):`<div class="rule">${pet?`<strong>✦ 核心共鳴：${companionResonance(player,pet)?.name||'共鳴'}</strong> · ${companionResonance(player,pet)?.description||'與主人協同作戰'} · 冷卻 ${((companionResonance(player,pet)?.cooldown||0)/1000).toFixed(1)} 秒`:'尚未有出戰夥伴，核心共鳴不會觸發'}</div><div class="tiny">人物護盾 ${player.shield||0} · 夥伴護盾 ${petEffects.shield||0} · 核心共鳴自動觸發，獨立冷卻</div>`;
 $('skillBar').innerHTML=orderedAutoSkills(player.autoSkills,autoQueueSkills()).map(s=>`<button data-cast="${s.id}" ${mainSkillState(s)!=='可施放'?'disabled':''}>✦ ${s.name} Lv.${player.jobSkills[s.id]} · SP ${s.mp}<small class="skill-spec">${jobSkillSpec(s,player.jobSkills[s.id],player.job,skillContext(s)).text}</small>${!canCastJobSkill(s)?' · 武器不符':''}</button>`).join('');
 for(const b of $('skillBar').querySelectorAll('[data-cast]'))b.onclick=()=>playerAttack(true,b.dataset.cast);
 const equippedSkill=jobSkillById(player.job,player.equippedJobSkill)||JOB_SKILLS[player.job][0];bindTrialControls();$('attackBtn').disabled=!player.hp||!enemy.hp||isControlled();$('skillBtn').disabled=mainSkillState(equippedSkill)!=='可施放';$('skillBtn').textContent=`✦ ${equippedSkill.name} (-${equippedSkill.mp} SP)`;$('skillBtn').title=jobSkillSpec(equippedSkill,player.jobSkills[equippedSkill.id],player.job,skillContext(equippedSkill)).text;if($('selectedSkillInfo'))$('selectedSkillInfo').innerHTML=`<b>目前人物技能：${equippedSkill.name} Lv.${player.jobSkills[equippedSkill.id]||0} · SP ${equippedSkill.mp}</b><span>${jobSkillSpec(equippedSkill,player.jobSkills[equippedSkill.id],player.job,skillContext(equippedSkill)).text}</span><span>${mainSkillState(equippedSkill)}</span>`;$('captureBtn').hidden=!map.capture;$('fleeBossBtn').hidden=!player.trialRun&&!mapRules(player.location).bosses;$('fleeBossBtn').textContent=player.trialRun?'離開試煉':'逃離首領';$('captureBtn').disabled=!player.hp||!enemy.hp||!map.capture||enemy.boss;$('captureBtn').textContent=enemy.boss?'♛ 首領不可捕捉':map.capture?'◈ 丟球捕捉':'◈ 此地禁止捕捉';$('fleeBossBtn').disabled=!enemies.some(e=>e.boss&&e.hp>0);$('autoBtn').textContent=auto?'⏸ 暫停自動戰鬥':'▶ 開始自動戰鬥';$('autoBtn').setAttribute('aria-pressed',String(auto));document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));renderSide();
@@ -1406,6 +1406,24 @@ function beginTrueFormReveal(){const pet=player?.pets.find(p=>p.id===evolutionPr
 
 function closeEvolution(){if(evolutionRunning)return;$('evolutionModal').style.display='none';$('gameShell').inert=false;evolutionPreview=null;render();}
 function renderResonanceGuide(){return renderThirdResonanceGuide()+`<div class="item"><b>一轉／二轉 × 四種夥伴 · 60組核心共鳴</b><p>攻擊事件需命中，治療／回魔需實際回復；防禦型夥伴攔截需實際受擊。每個配對有一組共用冷卻，夥伴共鳴不會再觸發共鳴。一轉效果依夥伴裝備能力計算；二轉共鳴命中觸發時即可改造當次及後續6秒的指定技能，夥伴本身攻擊／坦傷／治療仍依能力成長。</p>${Object.entries(RESONANCE_RULES).map(([job,roles])=>`<details ${job===player.job?'open':''}><summary>${CLASSES[job].name}${job===player.job?' · 目前職業':''}</summary>${Object.entries(roles).map(([role,rule])=>`<div class="skill-option"><b>${({attack:'攻擊',magic:'魔法',defense:'防禦',support:'輔助'})[role]}夥伴 · ${rule.name}</b><small>${rule.description}${JOB_SKILLS[job]?.some(s=>s.rebornOnly)?`<br>轉生主攻「${JOB_SKILLS[job].find(s=>s.id==='rebirthMain_'+job)?.name}」完整承接此效果並取代原主攻；常駐BUFF下，獵鷹／聖盾命中可維持原BUFF觸發的共鳴；觸發仍須滿足下方條件。`:''}<br>觸發：${rule.events.map(e=>RESONANCE_EVENTS[e]).join('／')} · CD ${(rule.cooldown/1000).toFixed(1)}秒</small></div>`).join('')}</details>`).join('')}</div>`;}
+
+function renderSpiritResonanceStatus(pet){
+ const profile=spiritSinglePetProfile(player,pet);
+ if(!profile)return '<div class="rule">尚未具備專屬共鳴條件；三轉需配置一隻融合夥伴。</div>';
+ const rule=SPIRIT_PROC_RULES[profile.effect];
+ if(!rule)return '<div class="rule">尚未具備專屬共鳴條件。</div>';
+ const triggers={ownerHit:'人物命中',ownerSkill:'人物技能命中',ownerCombo:'人物連續命中',ownerAlternatingHit:'人物物理／魔法交替命中',ownerDamaged:'人物受到傷害',ownerKill:'擊敗敵人',ownerShieldLost:'人物護盾受損',ownerCastCycle:'人物施法命中',ownerLowHp:'人物受傷後 HP 不高於 40%（必須存活）',petHit:'夥伴命中',petSkill:'夥伴技能命中',petAlternatingHit:'夥伴物理／魔法交替命中',petDamaged:'夥伴受到傷害',petGuard:'夥伴施放守護或承受攻擊',ownerMark:'夥伴施放標記',petShieldLost:'夥伴護盾受損',petCastCycle:'夥伴施法命中'};
+ const owner=profile.source==='owner',who=owner?'人物':'夥伴',details=[who+'觸發攻擊傷害提高 '+rule.bonusPct+'%'];
+ if(rule.ignoreDef)details.push('觸發攻擊額外無視防禦 '+rule.ignoreDef+'%');
+ if(rule.healPct&&profile.effect!=='guardianVerdict')details.push('恢復'+who+'最大 HP 的 '+rule.healPct+'%');
+ if(rule.shieldPct)details.push('獲得'+who+'最大 HP 的 '+rule.shieldPct+'% 護盾');
+ if(rule.cooldownReductionMs)details.push(who+'技能冷卻縮短 '+(rule.cooldownReductionMs/1000).toFixed(1)+' 秒');
+ if(profile.effect==='guardianVerdict')details.push('另於夥伴命中時每 6.5 秒恢復最大 HP 的 3%，以雙防與治療量追加最多三目標傷害；溢出治療以 25% 計入');
+ const matching=spiritProcState.key?.endsWith(':'+profile.effect),charges=matching?spiritProcState.charges:0;
+ const remaining=matching?Math.max(0,rule.cooldownMs-(gameNow()-spiritProcState.lastAt)):0;
+ const ready=player.hp>0&&pet?.hp>0;
+ return '<div class="rule"><strong>✦ 專屬共鳴：'+escapeHtml(profile.name)+'</strong><br>'+details.join('；')+'<br>觸發：'+triggers[profile.trigger]+'，累積 '+rule.charges+' 次 · 冷卻 '+(rule.cooldownMs/1000).toFixed(1)+' 秒</div><div class="tiny">'+(ready?'自動觸發':'人物或夥伴倒地，暫停觸發')+' · 累積 '+charges+'／'+rule.charges+' · '+(remaining>0?'冷卻剩餘 '+(remaining/1000).toFixed(1)+' 秒':'冷卻就緒')+'</div>';
+}
 
 function renderCombatPanel(){
  const pet=activePet(),s=pet?petStats(pet):null;
