@@ -41,5 +41,12 @@
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-defense-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Harsh sandstone frontier badlands, defensive layered fortress gates, turquoise luminous tectonic fissures, weary civilian evacuation wagons, protective sober atmosphere.. Journey destination: 玄關壁城. Illustrate ONLY this page's narrative: 踏上荒原中的舊軍道。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
   }
 ]
