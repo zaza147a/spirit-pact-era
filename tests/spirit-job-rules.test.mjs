@@ -76,6 +76,9 @@ test('spirit third-job requirement is disclosed from first job onward',()=>{
  assert.match(spiritGrowthGuide(p,[]).message,/蒼穹樞城/);
  p.quests[SPIRIT_TRIAL_ID]={started:true,kills:4,done:false};
  assert.match(spiritGrowthGuide(p,[]).message,/4／24/);
+ p.thirdJob=true;
+ assert.equal(spiritGrowthGuide(p,[]),null,'completed third job hides stale growth hint even for unfinished legacy quest');
+ p.thirdJob=false;
  p.job='wizard';
  assert.equal(spiritGrowthGuide(p,[]),null);
 });
