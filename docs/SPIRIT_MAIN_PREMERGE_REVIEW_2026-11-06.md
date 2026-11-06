@@ -33,10 +33,19 @@ PR #20 建立後額外驗證：原有 60 組共鳴與騎士連擊契約、離線
 
 相對地，`tests/spirit-single-pet-real-worker.mjs` 使用未最佳化合成基準存檔，萬靈在 200／210 地圖皆提前死亡；`tests/spirit-single-pet-200-trial-worker.mjs` 攻魔組合在 191 首領約 4.2 秒失敗。該差異證明測試結果高度依賴合法配置，**不能引用基準存檔失敗判定新職業平衡或正式發布阻擋**；若要平衡結論須使用同標準合法最佳化存檔重跑五連戰。
 
+## GitHub Actions 實際 Chromium 驗收
+
+新增專用 `.github/workflows/spirit-premerge-browser.yml`，在 GitHub Ubuntu runner 安裝 Chromium／Playwright，以 `scripts/browser/spirit-premerge-acceptance.mjs` 操作真正的網頁與遊戲事件；只對本審核分支及指定測試檔案觸發，未觸及正式站。
+
+- Run [42149833075](https://github.com/zaza147a/spirit-pact-era/actions/runs/42149833075)：**success**。Lv.1 御靈使創角，第 1、8 格存檔及重新載入。
+- Run [42151291559](https://github.com/zaza147a/spirit-pact-era/actions/runs/42151291559)：**success**。追加兩個三轉路線的最佳化存檔匯入、進入遊戲、背包／夥伴頁、倉庫。
+- Run [42151729009](https://github.com/zaza147a/spirit-pact-era/actions/runs/42151729009)：**success**。額外以符合條件的測試存檔實際點擊二轉與兩條三轉按鈕；輸出 `secondTransfer:true`、`thirdTransfer:true`，並保留先前所有驗收。
+
+測試的二轉、三轉起始存檔具備正確轉職前置條件，測試的是 UI 控制流程、事件及實際轉職結果，**非從 Lv.1 全程手動練等與任務**。裝備比較「全部屬性」切換尚未由這支 Chromium 腳本覆蓋，不應宣稱已通過該項 UI 點擊驗收。
+
 ## MAIN 合併前仍待人工確認
 
-1. 當前執行環境已裝 Playwright 套件，但在 `/opt`、`/usr/local`、`/root/.cache` 以及系統可執行路徑內未找到可用 Chromium/Chrome/Firefox；因此**沒有宣稱完成真實瀏覽器點擊 UI 驗收**。待具備 Chromium 的環境驗證創角、角色進入、二轉、三轉、倉庫比較切換。
-   - 已用真實 `game.js` 創角控制器函式、模擬 DOM 和八格存檔介面額外驗證：御靈使按鈕解除鎖定、成功寫入第八格、關閉視窗與選角狀態恢復。
+1. GitHub Actions Chromium 已驗證創角、進入遊戲、二轉、三轉、存檔與倉庫開啟。仍待最後人工核對裝備比較「全部屬性」切換、正式遊戲顯示／版面；相關 UI 項目若無驗證不可逕稱通過。
 2. 本地舊工作區有大量尚未提交的歷史 DPS 原始報告、測試 JSON 與快取；其中部分已由遠端獨立保存。這些不是啟動遊戲所需檔案，**未批量搬入合併候選版，也未刪除原檔**；個別歷史報告不可誤作目前 DPS 排名。
 3. 正式合併前再次 `git fetch` 並確認 MAIN 未前進，若有新提交應先整合，禁止用整個分支檔案直接覆蓋 MAIN。
 
