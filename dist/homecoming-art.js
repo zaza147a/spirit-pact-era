@@ -15,7 +15,7 @@ export const HOMECOMING_JOURNEY_ART=Object.freeze({
  'magic-attack':Object.freeze(['assets/homecoming/journeys/magic-attack-1.webp','assets/homecoming/journeys/magic-attack-2.webp','assets/homecoming/journeys/magic-attack-3.webp']),
  'attack-magic':Object.freeze(['assets/homecoming/journeys/attack-magic-1.webp','assets/homecoming/journeys/attack-magic-2.webp','assets/homecoming/journeys/attack-magic-3.webp']),
  'support-attack':Object.freeze(['assets/homecoming/journeys/support-attack-1.webp','assets/homecoming/journeys/support-attack-2.webp',null]),
- 'attack-support':Object.freeze([null,'assets/homecoming/journeys/attack-support-2.webp','assets/homecoming/journeys/attack-support-3.webp'])
+ 'attack-support':Object.freeze(['assets/homecoming/journeys/attack-support-1.webp','assets/homecoming/journeys/attack-support-2.webp','assets/homecoming/journeys/attack-support-3.webp'])
 });
 export function renderHomecomingJourneyArt(routeId,index){
  const route=HOMECOMING_ROUTES.find(r=>r.id===routeId);
