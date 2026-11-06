@@ -27,5 +27,12 @@
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-attack-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Floating avian sky civilization with white stone and feather-shaped silver ornament, flying wind-sail ships and suspended navigation beacons, peach light against threatening blue thunderclouds.. Journey destination: 赤羽天都. Illustrate ONLY this page's narrative: 雷暴中，斷裂的航標指向相反星路。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
   }
 ]
