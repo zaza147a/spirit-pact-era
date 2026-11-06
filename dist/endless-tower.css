@@ -1,0 +1,6 @@
+.tower-intro{border-color:rgba(206,165,87,.5);background:linear-gradient(130deg,rgba(48,57,99,.22),rgba(153,111,51,.12));}
+.tower-region{border-left:3px solid rgba(211,177,102,.55);}
+.tower-active{border:2px solid rgba(211,177,102,.75);}
+.tower-region button{min-height:36px;margin:6px 6px 0 0;}
+.tower-reward{border:2px solid rgba(211,177,102,.75);}
+@media(max-width:650px){.tower-region button{max-width:100%;white-space:normal;}}
