@@ -1,7 +1,22 @@
 [
   {
+    "asset": "dist/assets/homecoming/journeys/attack-magic-1.webp",
+    "prompt": "ONE 16:9 finished hand-painted anime fantasy JRPG environment. Along an ancient glossy fractured obsidian road climbing a volcanic mountainside toward a smoking volcano. Weathered basalt waystones, faint ember seams, cold drifting ash, distant restrained orange lava glow under dramatic clouds. Strong traversable path and atmospheric depth, no city yet, no text, UI, watermark, panels or portrait. Opaque background.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720,
+    "note": "Prompt summary restored for first checkpoint."
+  },
+  {
     "asset": "dist/assets/homecoming/journeys/attack-magic-2.webp",
     "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. Cinderstar volcanic continent, journey page 2: Cold grey ash drifts across an ancient basalt bridge spanning a lava chasm. Along the bridge multiple cylindrical heat supply towers with dragon-inspired copper pipes recede into distance; nearest tower fire is weak, middle almost extinguished, far towers dark. Ember-orange lava below contrasts with cold ash-grey atmosphere. Same volcanic world as the obsidian ascent. Emphasize bridge and dying tower lights.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-magic-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. Cinderstar journey page 3: Arrival outside 燼星龍城, an imposing dragon-themed volcanic fortress built of black obsidian and bronze heating conduits. The city's enormous ancestral furnace is dim, windows mostly cold. A small elderly furnace keeper waits by the city gate beside a protected tiny last ember. Epic wide establishing shot, emotionally hopeful, lava fissures below, smoky dusk sky. Environment dominates, keeper small.",
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
