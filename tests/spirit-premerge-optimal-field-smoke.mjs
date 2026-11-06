@@ -7,6 +7,7 @@ import {Worker} from 'node:worker_threads';
 const start=2000000000000;
 const duration=120000;
 for(const job of ['pactWarrior','spiritCommander']){
+ for(const seed of [20261106,471122,93217]){
  const file=new URL(`./fixtures/spirit-single-pet-optimal-210/${job}-210-sss-sigil8-optimal.json`,import.meta.url);
  const p=JSON.parse(readFileSync(file,'utf8')).player;
  assert.equal(p.level,210);
@@ -15,7 +16,7 @@ for(const job of ['pactWarrior','spiritCommander']){
  p.location='dawnrift';
  p.offline={at:start,enabled:true};
  const worker=new Worker(new URL(`./offline-worker-node-entry.mjs?clock=${start}`,import.meta.url),{
-  type:'module',workerData:{seed:20261106}
+  type:'module',workerData:{seed}
  });
  try{
   const result=await new Promise((resolve,reject)=>{
@@ -29,14 +30,15 @@ for(const job of ['pactWarrior','spiritCommander']){
   });
   const s=result.summary;
   assert.ok(s?.simulated>0&&s.simulated<=duration);
-  assert.equal(s.simulated,duration,`${job} must survive the full optimal field smoke`);
-  assert.ok((s.bossesEncountered||0)>0,`${job} must encounter a boss`);
-  assert.equal(s.revives||0,0,`${job} should not require revival in this fixed-seed smoke`);
+  assert.equal(s.simulated,duration,`${job}/${seed} stopped early`);
+  assert.ok((s.bossesEncountered||0)>=1,`${job}/${seed} saw no boss`);
+  assert.equal(s.revives||0,0,`${job}/${seed} required a revive`);
   assert.equal(result.player.pets.length,1);
   assert.equal(s.damage?.pet2||0,0);
-  console.log(JSON.stringify({job,simulatedMs:s.simulated,reason:s.reason,
+  console.log(JSON.stringify({job,seed,simulatedMs:s.simulated,reason:s.reason,
    kills:s.kills,bosses:s.bossesEncountered||0,revives:s.revives||0,
    totalDps:Math.round(s.damage.total/(s.simulated/1000)),
    playerHp:result.player.hp,petHp:result.player.pets[0].hp}));
  }finally{await worker.terminate();}
+ }
 }
