@@ -6,7 +6,7 @@
 
 已完成並接入 **36／36** 張。本次完成 `support-defense-3.webp`。
 
-**下一步：圖片繪製已完成；接續完整瀏覽器視覺與互動驗收。**
+**下一步：旅程圖片與桌面旅程瀏覽器驗收已完成；接續八個戰鬥節點的自然戰鬥難度驗收。**
 
 每張圖片、接入設定、本文件與提示詞紀錄一起提交。若中斷，以遠端圖片和本文件最新版本為準，不依賴 scratch 或先前對話聲稱的數量。
 
@@ -55,7 +55,7 @@
 
 ## 接入與驗證
 
-圖片位於 `dist/assets/homecoming/journeys/`，由 `dist/homecoming-art.js` 的 `HOMECOMING_JOURNEY_ART` 接入。提示詞紀錄：`docs/homecoming-art/journey-redraw-log.json`。已檢查解碼與尺寸；素材與沙盒測試逐批執行，完整瀏覽器驗收仍待完成。不可宣稱已完成真實瀏覽器驗收。
+圖片位於 `dist/assets/homecoming/journeys/`，由 `dist/homecoming-art.js` 的 `HOMECOMING_JOURNEY_ART` 接入。提示詞紀錄：`docs/homecoming-art/journey-redraw-log.json`。已檢查解碼與尺寸，素材／沙盒／主遊戲回歸 52／52 通過。首次旅程、續讀、抵達及接受委託的實際桌面 Chromium 驗收已通過，證據見 `docs/homecoming-browser/REPORT.md`；八個戰鬥節點的自然實戰難度仍待驗收。
 
 ## 原始起點
 
@@ -65,16 +65,19 @@
 
 36 張均可完整解碼且為 1280×720，36 個檔案雜湊互不相同；原有四張保留。32 張新繪提示詞已記錄。`docs/homecoming-art/journey-asset-audit.json` 提供檔案大小、SHA-256 及 Git blob SHA，供下一階段核對。
 
-## 最後驗證
+## 目前驗證與完成斷點
 
-`node --test tests/homecoming-assets.test.mjs tests/homecoming-state.test.mjs tests/homecoming-preview.test.mjs tests/homecoming-game.test.mjs`：52／52 通過。素材測試已要求完整 36 張並逐頁檢查對應，所有圖片完整解碼通過。此為單元、VM 與 DOM 驗證，尚未替代真實瀏覽器驗收；下一階段先做瀏覽器視覺／互動驗收，不要重新繪製已完成的 36 張，也不要自行合併 main 或發布正式版。
+- `node --test tests/homecoming-assets.test.mjs tests/homecoming-state.test.mjs tests/homecoming-preview.test.mjs tests/homecoming-game.test.mjs`：52／52 通過。
+- 實際桌面 Chromium 141.0.7390.37：來源提交 `c2838ce103e58bdf5e29fd9a6ccad798161bbb80`，Actions `42219342703` 成功。
+- 12 路線 × 3 頁 × 1440／1280 兩種桌面寬度：72 次主遊戲圖片顯示、24 組真實操作流程，另驗證沙盒 36 張。
+- 每組檢查第 2 頁重整、第 3 頁關分頁重開、對應 NPC、抵達接受委託、匯出、重新進入不重播；腳本錯誤與失敗請求均為 0。
+- 修正主遊戲仍顯示 4／36、沙盒仍說待製作的舊提示。目視截圖發現後方路線被未收取卡片推到很下面，已把目前旅程置頂、未收到的來信預設收合；修正後重新通過實際瀏覽器驗收。
+- 永久保存的原始報告、代表截圖與 36 張瀏覽器總覽：`docs/homecoming-browser/`。完整截圖也在 Actions artifact（保留 14 天），後續應優先讀取分支中的報告。
 
-## 桌面瀏覽器驗收接續中
+## 下一階段接續
 
-已修正主遊戲仍寫 4／36、沙盒仍寫分鏡待製作的舊提示。新增 `scripts/browser/homecoming-acceptance.mjs` 與僅在此分支觸發的 `homecoming-browser.yml`。預計用實際 Chromium 檢查 12 路線 × 3 頁 × 1440／1280 桌面寬度，包含第 2 頁重整、第 3 頁關分頁重開、抵達 NPC、接受委託、匯出及再登入。此時尚未取得瀏覽器成功報告，不可宣稱驗收通過。
-
-本機已確認 socket() 被環境拒絕（EPERM），不能在這裡啟動 Chromium。改由 GitHub Actions 執行並上傳 `homecoming-desktop-browser` 報告與截圖。仍不合併 main、不部署正式版。
-
-## 第一輪實際瀏覽器結果與版面修正
-
-Actions `42218688918`（來源 `725d707`）已通過：24 組桌面路線流程、72 次旅程圖片與沙盒 36 張；無腳本錯誤或失敗請求。截圖人工檢查發現後方路線會被未收取的卡片推到很下方。因此把進行中／目前夥伴路線置頂，未收到的來信收進可展開區塊。新版已補瀏覽器斷言，需以修正後的下一輪 Actions 結果為準，不以第一輪結果代替新版驗收。
+1. 圖片 36／36 已齊全，不要重新生成或把舊四張刪掉。
+2. 自然戰鬥難度仍待完成，先讀 `docs/HOMECOMING_FLOW_HANDOFF.md`、`docs/homecoming-post-dawn/REPORT.md`、`scripts/homecoming-combat-observation.mjs`。基準為合法 210 等、人物與夥伴 SSS、契印 8，返鄉挑戰應高於曙光野外；不能以 VM 測試強制大傷害冒充自然通關。
+3. 本次桌面瀏覽器範圍是旅程、續讀、抵達與接受委託，不代表全部任務結局及八個戰鬥節點已在瀏覽器自然實戰驗收。
+4. 所有修改只提交 `feature/companion-homecoming`，不合併 main、不部署正式版；未來合併時須先檢視最新 main，避免覆蓋其他更新。
+5. 本機已確認 Chromium 必要的 socket() 會被環境拒絕（EPERM），不要反覆下載瀏覽器；使用已建好的 `.github/workflows/homecoming-browser.yml` 在測試分支執行。現有流程只測返鄉桌面，不會執行全職 DPS 大矩陣。
