@@ -81,13 +81,18 @@ export function decorateTownScene(area,location){
     portrait.alt=`${button.textContent.trim()}角色立繪`;
     portrait.loading='lazy';portrait.decoding='async';
     portrait.onerror=()=>{portrait.style.display='none';card.classList.add('art-missing');};
+    const portraitButton=document.createElement('button');
+    portraitButton.type='button';portraitButton.className='town-scene-portrait-button';
+    portraitButton.setAttribute('aria-label',`與${NPC_DIALOG[role][0]}對話`);
+    portraitButton.append(portrait);
+    portraitButton.onclick=()=>button.click();
     button.classList.add('town-scene-action');
     button.classList.remove('town-evolution');
     button.addEventListener('click',event=>{
       if(bypassDialog.delete(button))return;
       event.preventDefault();event.stopImmediatePropagation();showNpcDialog(role,button);
     },true);
-    card.append(portrait,button);roster.append(card);
+    card.append(portraitButton,button);roster.append(card);
   }
   area.querySelector(':scope > .town-npc')?.remove();
   scene.append(heading,roster);area.append(scene);
@@ -107,5 +112,5 @@ export function patchTownArea(area,html){
 }
 
 if(typeof document!=='undefined'){
-  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.72';document.head.append(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='town-scene.css?v=6.5.73';document.head.append(css);
 }

@@ -21,6 +21,7 @@ test('all thirteen NPC actions have unique dialogue and preserve the original bu
   }
   assert.match(scene,/bypassDialog\.add\(button\);button\.click\(\)/);
   assert.match(scene,/event\.stopImmediatePropagation\(\);showNpcDialog/);
+  assert.match(scene,/portraitButton\.onclick=\(\)=>button\.click\(\)/);
   assert.match(scene,/aria-modal/);
 });
 
