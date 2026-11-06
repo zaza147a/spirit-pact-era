@@ -202,5 +202,12 @@
     "tool": "built-in imagegen",
     "width": 1280,
     "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-defense-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Remote snowy alpine hot-spring village, timber mountain houses, icy suspension bridges, deep cobalt winter air and warm amber windows, last hot spring steaming.. Journey destination: 磐泉隱村. Illustrate ONLY this page's narrative: 隨雪地商隊沿山路向上。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
   }
 ]
