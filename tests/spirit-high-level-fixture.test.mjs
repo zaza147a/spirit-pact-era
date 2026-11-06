@@ -74,7 +74,9 @@ for(const job of ['pactWarrior','spiritCommander'])for(const level of [200,210])
   assert.ok(result.summary.damage&&Number.isFinite(result.summary.damage.total));
   assert.ok(Number.isFinite(result.summary.damage.resonance),'resonance damage must be tracked even if short combat does not activate it');
   assert.ok(Number.isInteger(result.summary.resonanceActivations||0),'resonance activation tally must be integral');
-  assert.ok(result.summary.damage.pet1>0&&result.summary.damage.pet2>0,'both fused pets must deal damage');
+  assert.equal(result.summary.damage.pet2,0,'second stored fused pet must not participate in single-pet combat');
+  if(job==='pactWarrior')assert.equal(result.summary.damage.pet1,0,'King assimilates pet power into owner attacks');
+  else assert.ok(result.summary.damage.pet1>0,'Commander active fused pet must deal damage');
   console.log(JSON.stringify({job,level,simulatedMs:result.summary.simulated,reason:result.summary.reason,
    kills:result.summary.kills,damage:result.summary.damage}));
  }finally{await worker.terminate();}

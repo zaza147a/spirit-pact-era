@@ -27,6 +27,7 @@ export const SPIRIT_SECOND = Object.freeze([
 ]);
 export const isSpiritJob = job => job === SPIRIT_FIRST || SPIRIT_SECOND.includes(job);
 
+// Keep the legacy quest key so existing quest progress survives migration.
 export const SPIRIT_TRIAL_ID = 'dual_spirit_pact';
 export const PET_ROLES = Object.freeze(['attack','magic','defense','support']);
 const roleIndex = role => PET_ROLES.indexOf(role);
@@ -56,8 +57,8 @@ export const DUAL_FUSION_TYPES = Object.freeze(
 // existing thirdJobError() first, retaining town, level, job, rebirth and seal.
 export function spiritThirdJobExtraError(player,firstPet,secondPet) {
   if (!SPIRIT_SECOND.includes(player?.job)) return null;
-  if (!canonicalDualFusionKey(firstPet,secondPet)) return '三轉需要同時攜帶兩隻融合夥伴';
-  if (player?.quests?.[SPIRIT_TRIAL_ID]?.done !== true) return '尚未通過雙生靈契試煉';
+  if (!canonicalFusionKey(firstPet)) return '三轉需要一隻出戰融合夥伴';
+  if (player?.quests?.[SPIRIT_TRIAL_ID]?.done !== true) return '尚未通過單靈誓約試煉';
   return null;
 }
 
@@ -98,10 +99,10 @@ export function spiritQuestState(player) {
  return player?.quests?.[SPIRIT_TRIAL_ID]||null;
 }
 export function startSpiritQuest(player,roster) {
- if(!SPIRIT_SECOND.includes(player?.job))return '僅御靈使二轉職業可接受雙生靈契';
+ if(!SPIRIT_SECOND.includes(player?.job))return '僅御靈使二轉職業可接受單靈誓約';
  if(!player.reborn||player.level<140)return '需轉生後達到 Base Lv.140';
  if(player.location!=='skycity')return '請前往蒼穹樞城';
- if(!canonicalDualFusionKey(roster?.[0],roster?.[1]))return '需要兩隻出戰融合夥伴';
+ if(!canonicalFusionKey(roster?.[0]))return '需要一隻出戰融合夥伴';
  player.quests??={};
  if(!player.quests[SPIRIT_TRIAL_ID])player.quests[SPIRIT_TRIAL_ID]={started:true,kills:0,done:false};
  return null;
@@ -110,16 +111,16 @@ export function recordSpiritQuestVictory(player,roster,defeated) {
  const q=spiritQuestState(player);
  if(!SPIRIT_SECOND.includes(player?.job)||!q?.started||q.done)return false;
  if(!defeated||!Number.isFinite(defeated.level)||defeated.level<101||defeated.level>150)return false;
- if(!canonicalDualFusionKey(roster?.[0],roster?.[1])||roster.some(p=>p.hp<=0))return false;
+ if(!canonicalFusionKey(roster?.[0])||roster[0].hp<=0)return false;
  q.kills=Math.min(SPIRIT_TRIAL_KILLS,Math.max(0,Math.floor(q.kills||0))+1);
  return true;
 }
 export function completeSpiritQuest(player,roster) {
  const q=spiritQuestState(player);
- if(!q?.started||q.done)return q?.done?null:'尚未接受雙生靈契試煉';
- if(player.location!=='skycity')return '必須回蒼穹樞城立下雙靈誓約';
- if(!canonicalDualFusionKey(roster?.[0],roster?.[1]))return '完成誓約仍需同時攜帶兩隻融合夥伴';
- if((q.kills||0)<SPIRIT_TRIAL_KILLS)return `雙靈共同戰勝101–150級敵人 ${q.kills||0}／${SPIRIT_TRIAL_KILLS}`;
+ if(!q?.started||q.done)return q?.done?null:'尚未接受單靈誓約試煉';
+ if(player.location!=='skycity')return '必須回蒼穹樞城立下單靈誓約';
+ if(!canonicalFusionKey(roster?.[0]))return '完成誓約仍需一隻出戰融合夥伴';
+ if((q.kills||0)<SPIRIT_TRIAL_KILLS)return `與融合夥伴戰勝101–150級敵人 ${q.kills||0}／${SPIRIT_TRIAL_KILLS}`;
  q.done=true;q.completedAt=Date.now();
  return null;
 }
@@ -128,10 +129,10 @@ export function spiritGrowthGuide(player,roster=[]) {
  if(!isSpiritJob(player?.job))return null;
  const fused=roster.filter(p=>canonicalFusionKey(p)).length;
  const q=spiritQuestState(player);
- if(player.thirdJob)return {stage:'完成三轉',message:'雙生靈契已覺醒；雙融合共鳴可以繼續培養。',fused};
- if(q?.done)return {stage:'三轉準備完成',message:'已完成雙生靈契；保持兩隻融合夥伴出戰，準備 Base150／轉生二轉Job70 和天極覺醒聖印。',fused};
- if(q?.started)return {stage:'雙靈試煉進行中',message:`兩隻融合夥伴共同擊敗101–150級敵人：${q.kills||0}／${SPIRIT_TRIAL_KILLS}。兩隻都要存活；完成後回蒼穹樞城立誓。`,fused};
- if(player.level>=140&&player.reborn&&SPIRIT_SECOND.includes(player.job))return {stage:'雙生靈契即將開啟',message:`已可在蒼穹樞城接受專屬三轉支線。當前出戰融合夥伴 ${fused}／2；三轉必須同時攜帶兩隻融合夥伴。`,fused};
- if(player.reborn||player.level>=99)return {stage:'長期養成：雙融合準備',message:`請提前準備兩隻不同個體的夥伴，分別培養至150級完成融合。當前出戰融合夥伴 ${fused}／2；Base140起可準備雙生靈契支線。`,fused};
- return {stage:'御靈使職業預告',message:'你從一轉就能攜帶兩隻夥伴。請同步培養兩隻與各自裝備；將來三轉必須兩隻都完成融合，並通過雙生靈契專屬試煉。',fused};
+ if(player.thirdJob)return {stage:'完成三轉',message:'單靈誓約已覺醒；可繼續培養出戰融合夥伴的專屬共鳴。',fused};
+ if(q?.done)return {stage:'三轉準備完成',message:'已完成單靈誓約；保持一隻融合夥伴出戰，準備 Base150／轉生二轉Job70 和天極覺醒聖印。',fused};
+ if(q?.started)return {stage:'單靈試煉進行中',message:`與一隻存活的融合夥伴擊敗101–150級敵人：${q.kills||0}／${SPIRIT_TRIAL_KILLS}。完成後回蒼穹樞城立誓。`,fused};
+ if(player.level>=140&&player.reborn&&SPIRIT_SECOND.includes(player.job))return {stage:'單靈誓約即將開啟',message:`已可在蒼穹樞城接受專屬三轉支線。當前出戰融合夥伴 ${fused}／1；三轉需要一隻出戰融合夥伴。`,fused};
+ if(player.reborn||player.level>=99)return {stage:'長期養成：單融合準備',message:`請提前培養一隻融合夥伴。當前出戰融合夥伴 ${fused}／1；Base140起可準備單靈誓約支線。`,fused};
+ return {stage:'御靈使職業預告',message:'御靈使與其他職業相同，只攜帶一隻出戰夥伴；三轉前須取得融合夥伴並完成單靈誓約試煉。',fused};
 }
