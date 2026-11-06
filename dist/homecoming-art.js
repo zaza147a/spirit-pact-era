@@ -10,7 +10,7 @@ export function renderHomecomingArt(routeId,stepId){
 
 // Recovered first-trip illustrations. Missing pages remain explicitly pending.
 export const HOMECOMING_JOURNEY_ART=Object.freeze({
- 'attack-magic':Object.freeze(['assets/homecoming/journeys/attack-magic-1.webp',null,null]),
+ 'attack-magic':Object.freeze(['assets/homecoming/journeys/attack-magic-1.webp','assets/homecoming/journeys/attack-magic-2.webp',null]),
  'support-attack':Object.freeze(['assets/homecoming/journeys/support-attack-1.webp','assets/homecoming/journeys/support-attack-2.webp',null]),
  'attack-support':Object.freeze([null,'assets/homecoming/journeys/attack-support-2.webp','assets/homecoming/journeys/attack-support-3.webp'])
 });
