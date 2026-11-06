@@ -56,7 +56,7 @@ import {potionRestore} from './restoration.js?v=6.5.44';
 import {combatContribution} from './combat-contribution.js?v=6.5.0';
 import {SECOND_JOBS,parentJob,secondJobChoices,transferEligibility} from './jobs.js?v=6.5.47';
 import {MAP_BOSSES,canEncounterBoss,BOSS_RESPITE_MS,bossRarity,BOSS_CARD_CHANCE} from './map-bosses.js?v=6.5.0';
-import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migrateCardBindings,cardEffectsFor,cardDescription} from './card-effects.js?v=6.5.50';
+import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migrateCardBindings,cardEffectsFor,cardDescription,CARD_EFFECT_LABELS,formatCardNumber} from './card-effects.js?v=7.0.4';
 import {bossCardEquipAllowed,bossCardHitBonus,bossCardIncoming,bossCardDodge,bossCardSong} from './boss-card-runtime.js?v=6.5.47';
 let bossHitMeta=null;
 import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.5.0';
@@ -1551,14 +1551,13 @@ function cardComparison(cardId,slot=cardCompareSlots[cardId]||CARDS[cardId]?.slo
  const previous=CARDS[player.sockets[slot]];
  const oldEffects=previous?cardEffectsFor(previous,player.level):{},newEffects=cardEffectsFor(card,player.level);
  const keys=[...new Set([...Object.keys(oldEffects),...Object.keys(newEffects)])];
- const names={atkPct:'物理攻擊加成',matkPct:'魔法攻擊加成',hpPct:'生命值加成',defPct:'物理防禦加成',mdefPct:'魔法防禦加成',magicDamage:'魔法傷害加成',aspdPct:'攻速加成',critDmg:'暴擊傷害',damageReduction:'最終減傷',ignoreDef:'無視防禦'};
  const percent=new Set(['atkPct','matkPct','hpPct','defPct','mdefPct','magicDamage','aspdPct','critDmg','damageReduction','ignoreDef','crit']);
- const changes=keys.map(k=>({key:k,old:Number(oldEffects[k]||0),next:Number(newEffects[k]||0)})).map(c=>({...c,delta:c.next-c.old}));
+ const changes=keys.map(k=>({key:k,old:Number(oldEffects[k]||0),next:Number(newEffects[k]||0)})).map(c=>({...c,delta:Number((c.next-c.old).toFixed(2))}));
  const up=changes.filter(c=>c.delta>0),down=changes.filter(c=>c.delta<0);
  const kind=up.length&&down.length?'mixed':down.length?'negative':up.length?'positive':'neutral';
  const verdict=up.length&&down.length?'能力各有優勢':down.length?'能力偏向舊卡':up.length?'能力偏向新卡':'基本能力相同';
  const trait=c=>c?.description?.split('專屬效果：')[1]?.replace(/。\s*$/,'')||'無額外專屬觸發';
- const statRows=changes.map(({key,old,next,delta})=>{const unit=percent.has(key)?'%':'',sign=delta>0?'up':delta<0?'down':'zero';return `<div class="card-compare-stat"><span>${escapeHtml(names[key]||AFFIX_NAMES[key]||key)}</span><span>${old}${unit} → ${next}${unit}</span><b class="delta-${sign}">${delta>0?'+':''}${delta}${percent.has(key)?' 個百分點':''}</b></div>`;}).join('');
+ const statRows=changes.map(({key,old,next,delta})=>{const unit=percent.has(key)||key.endsWith('Pct')?'%':'',sign=delta>0?'up':delta<0?'down':'zero';return `<div class="card-compare-stat"><span>${escapeHtml(CARD_EFFECT_LABELS[key]||key)}</span><span>${formatCardNumber(old)}${unit} → ${formatCardNumber(next)}${unit}</span><b class="delta-${sign}">${delta>0?'+':''}${formatCardNumber(delta)}${unit?' 個百分點':''}</b></div>`;}).join('');
  return `<section class="gear-compare comparison-v2 card-comparison-v2"><div class="compare-slot-label">${escapeHtml(SLOTS[slot])}部位 · 卡片替換預覽</div><div class="compare-direction"><div class="compare-source"><small>目前鑲嵌 · 將卸下</small><strong>${escapeHtml(previous?.name||'空插槽')}</strong></div><span class="compare-arrow" aria-label="替換為">→</span><div class="compare-target"><small>背包候選 · 將鑲入</small><strong>${escapeHtml(card.name)}</strong></div></div><div class="compare-verdict ${kind}"><b>${verdict}</b><span class="delta-up">▲ ${up.length} 項增加</span><span class="delta-down">▼ ${down.length} 項減少</span></div><div class="card-compare-effect-title">基本能力差異</div><div class="card-compare-stat-list">${statRows||'<p>沒有可比較的基本能力詞條</p>'}</div><details class="compare-details"><summary>檢視兩張卡片的完整功能與特殊觸發</summary><div class="card-effect-compare"><div class="compare-source"><small>目前卡片</small><strong>${escapeHtml(previous?.name||'無')}</strong><p>${previous?escapeHtml(cardDescription(previous,player.level)):'目前沒有卡片效果'}</p><b>特殊觸發</b><p>${escapeHtml(trait(previous))}</p></div><div class="compare-target"><small>候選卡片</small><strong>${escapeHtml(card.name)}</strong><p>${escapeHtml(cardDescription(card,player.level))}</p><b>特殊觸發</b><p>${escapeHtml(trait(card))}</p></div></div></details><small class="compare-caution">上方僅比較基本能力數值；首領卡的特殊觸發可能改變實戰結果，無法單靠增減項數判斷。</small></section>`;
 }
 function renderCardCollection(){

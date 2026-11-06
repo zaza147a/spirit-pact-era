@@ -87,8 +87,19 @@ export const CARD_SLOT_PROFILES=Object.fromEntries(Object.keys(CARD_THEMES).map(
 // independently, with no boss-only shared cap or conditional damage bonus.
 export const LEGACY_CARD_SLOTS={fang:['rightHand'],wisp:['headMiddle'],shell:['armor'],sprout:['shoes'],sandbug:['garment'],dog:['headUpper'],guardian:['headLower'],boss_petland:['accessory1','accessory2']};
 export const LEGACY_CARD_EFFECTS={fang:{atkPct:19,crit:5},wisp:{INT:7,DEX:1},shell:{defPct:18,hpPct:13},sprout:{hpPct:16,mpPct:14},sandbug:{fleePct:17,mdefPct:11},dog:{AGI:7,LUK:1},guardian:{STR:7,VIT:1},boss_petland:{atkPct:11,matkPct:11,mpPct:11}};
-const LABELS={atk:'ATK',matk:'MATK',hp:'HP',mp:'SP',def:'DEF',mdef:'MDEF',atkPct:'ATK',matkPct:'MATK',hpPct:'HP',mpPct:'SP',defPct:'DEF',mdefPct:'MDEF',fleePct:'FLEE',hit:'HIT',flee:'FLEE',aspd:'ASPD',aspdPct:'攻速加成',crit:'暴擊率',critDmg:'暴擊傷害',ignoreDef:'無視防禦',magicDamage:'魔法傷害',damageReduction:'最終減傷',DEX:'DEX',INT:'INT'};
-export const describeCardEffects=effects=>Object.entries(effects).map(([key,v])=>`${LABELS[key]||key} ${v>=0?'+':''}${Number(v.toFixed(2))}${key.endsWith('Pct')||['crit','critDmg','ignoreDef','magicDamage','damageReduction'].includes(key)?'%':''}`).join('、');
+export const CARD_EFFECT_LABELS=Object.freeze({
+ atk:'物理攻擊',matk:'魔法攻擊',hp:'生命值',mp:'魔力值',def:'物理防禦',mdef:'魔法防禦',
+ atkPct:'物理攻擊加成',matkPct:'魔法攻擊加成',hpPct:'生命值加成',mpPct:'魔力值加成',
+ defPct:'物理防禦加成',mdefPct:'魔法防禦加成',fleePct:'迴避加成',hit:'命中',flee:'迴避',
+ aspd:'攻擊速度',aspdPct:'攻速加成',crit:'暴擊率',critDmg:'暴擊傷害',ignoreDef:'無視防禦',
+ magicDamage:'魔法傷害加成',damageReduction:'最終減傷',STR:'力量',AGI:'敏捷',VIT:'體質',
+ INT:'智力',DEX:'靈巧',LUK:'幸運'
+});
+export const formatCardNumber=value=>{
+ const n=Number(value);
+ return Number.isFinite(n)?String(Number(n.toFixed(2))):'0';
+};
+export const describeCardEffects=effects=>Object.entries(effects).map(([key,v])=>`${CARD_EFFECT_LABELS[key]||key} ${v>=0?'+':''}${formatCardNumber(v)}${key.endsWith('Pct')||['crit','critDmg','ignoreDef','magicDamage','damageReduction'].includes(key)?'%':''}`).join('、');
 export function cardEffectsFor(card,level=1){const power=GEAR_TIERS[gearTierForLevel(level)-1].power;return Object.fromEntries(Object.entries(card?.effects||{}).map(([k,v])=>[k,['atk','matk','def','mdef','hp','mp','hit','flee'].includes(k)?Math.round(v*power):v]));}
 export const cardDescription=(card,level=1)=>{if(!card)return '空卡位';const stats=describeCardEffects(cardEffectsFor(card,level));const special=card.boss?(BOSS_MECHANIC_TEXT[card.map]||''):'';return `${stats||'無基礎能力'}。${special?`特殊效果：${special}。`:''}`;};
 export function cardAllowedInSlot(card,slot,job=null){return !!card?.slots?.includes(slot)&&(card.map!=='dawnrift'||job===null||['pactWarrior','spiritCommander'].includes(job));}
