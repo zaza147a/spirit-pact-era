@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 import {createServer} from 'node:http';
-import {readFile} from 'node:fs/promises';
+import {readFile,mkdir} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 
 const root=resolve('dist');
@@ -24,12 +24,15 @@ const browser=await chromium.launch({headless:true});
 try{
  const context=await browser.newContext({viewport:{width:1440,height:900}});
  const page=await context.newPage();
+ const screenshotDir=resolve('artifacts/spirit-premerge');
+ await mkdir(screenshotDir,{recursive:true});
  const errors=[];
  page.on('pageerror',e=>errors.push(e.message));
  page.on('dialog',d=>d.accept());
  await page.goto(base);
  await page.locator('#slotGrid [data-slot-new="0"]').click();
  await page.locator('#createModal').waitFor({state:'visible'});
+ await page.screenshot({path:resolve(screenshotDir,'create-desktop.png'),fullPage:true});
  const spirit=page.locator('#classChoices [data-class="spiritist"]');
  assert.equal(await spirit.count(),1,'missing spirit first job');
  assert.equal(await spirit.isEnabled(),true,'spirit first job must not have a Lv210 gate');
@@ -75,6 +78,7 @@ try{
   await page.locator(`[data-slot-select="${index}"]`).click();
   await page.locator('#enterGameBtn').click();
   await page.locator('#gameShell').waitFor({state:'visible'});
+  await page.screenshot({path:resolve(screenshotDir,`${job}-game-desktop.png`),fullPage:true});
   await page.locator('[data-tab="bag"]').click();
   await page.locator('[data-bagcategory="equipment"]').click();
   const compare=page.locator(`[data-ui-key="bag-${candidate.uid}"] .gear-compare`);
@@ -87,12 +91,14 @@ try{
   assert.equal(await all.isVisible(),true,`${job} all stats did not become visible`);
   assert.equal(await relevant.isVisible(),false,`${job} relevant stats still visible`);
   assert.equal(await compare.locator('[data-compare-mode="all"]').getAttribute('aria-pressed'),'true');
+  await page.screenshot({path:resolve(screenshotDir,`${job}-compare-all.png`),fullPage:true});
   await compare.locator('[data-compare-mode="relevant"]').click();
   assert.equal(await relevant.isVisible(),true,`${job} relevant stats cannot be restored`);
   assert.equal(await all.isVisible(),false,`${job} all stats remained visible`);
   await page.locator('[data-tab="pets"]').click();
   await page.locator('#area [data-open="warehouse"]').click();
   await page.locator('#warehouseModal').waitFor({state:'visible'});
+  await page.screenshot({path:resolve(screenshotDir,`${job}-warehouse.png`),fullPage:true});
   await page.locator('#warehouseModal button[aria-label="關閉倉庫"]').click();
   await page.locator('#returnEntryBtn').click();
   await page.locator('#entryScreen').waitFor({state:'visible'});

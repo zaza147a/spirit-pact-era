@@ -23,3 +23,11 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Test real creator, entering game, slots, reload
         run: node scripts/browser/spirit-premerge-acceptance.mjs
+      - name: Save candidate screenshots for visual inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spirit-premerge-chromium-screenshots
+          path: artifacts/spirit-premerge/*.png
+          if-no-files-found: warn
+          retention-days: 7
