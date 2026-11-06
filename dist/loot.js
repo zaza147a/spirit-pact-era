@@ -25,17 +25,19 @@ export const GEAR_BASE={
 Object.assign(GEAR_BASE,{spellFist:{name:'符紋魔拳套',slot:'rightHand',weaponType:'spellfist',hands:2,matk:12,aspdPct:5,weaponTrait:'符紋連擊：攻速加成 +5%（固定，不隨強化）',cost:190,jobs:['sage']},knuckles:{name:'修行拳套',slot:'rightHand',weaponType:'knuckle',hands:2,atk:12,cost:190,jobs:['monk']},instrument:{name:'旅歌豎琴',slot:'rightHand',weaponType:'instrument',hands:2,atk:12,critDmg:30,damageReduction:15,weaponTrait:'協奏庇護：固有暴擊傷害 +30%、最終減傷 +15%（均不隨強化，減傷受上限限制）',cost:190,jobs:['performer']}});
 for(const [id,meta] of Object.entries(SECOND_JOBS))for(const base of Object.values(GEAR_BASE))if(base.jobs?.includes(meta.parent)&&!base.jobs.includes(id))base.jobs.push(id);
 GEAR_BASE.katar.jobs=['assassin'];GEAR_BASE.offDagger.jobs=['assassin'];GEAR_BASE.twoSword.jobs=['knight'];GEAR_BASE.twoSpear.jobs=['knight'];GEAR_BASE.oneSpear.jobs=['knight','crusader'];GEAR_BASE.mace.jobs=['acolyte','priest','spiritist'];GEAR_BASE.blade.jobs.push('pactWarrior');GEAR_BASE.oneStaff.jobs.push('spiritCommander');GEAR_BASE.crossbow.jobs=['hunter'];
-// The job-specific source-strengthening trait operates before enemy defense,
-// not as a final-damage buff; display its exact scope for existing saved gear.
-for(const [id,trait] of Object.entries({
- rifle:'逐影者專屬：精準節奏，主角物理攻擊來源 ×0.86',
- shortBow:'遊俠專屬：高速連射，主角攻擊來源 ×1.13',
- longBow:'遊俠專屬：蓄力狙擊，主角攻擊來源 ×1.04',
- crossbow:'遊俠專屬：重弩貫穿，主角攻擊來源 ×1.055',
- oneStaff:'元素使專屬：持盾法杖共振，主角攻擊來源 ×1.38',
- spellFist:'元素使專屬：符紋魔拳連擊，主角攻擊來源 ×1.25',
- instrument:'宮廷樂師專屬：戰歌協奏，主角攻擊來源 ×1.23'
- }))GEAR_BASE[id].weaponTrait=[GEAR_BASE[id].weaponTrait,trait].filter(Boolean).join('；');
+// Fixed, visible weapon ATK/MATK values, not damage multipliers.
+// At Lv.200 these values are base stats before equipment enhancement.
+// Existing saves receive these through the stat resolver without mutating legal affixes.
+export const WEAPON_FIXED_ATTACK={
+ rifle:{atk:-2200},shortBow:{atk:3300},longBow:{atk:500},crossbow:{atk:1100},
+ oneStaff:{matk:9800},spellFist:{matk:7200},instrument:{atk:5300}
+};
+export const WEAPON_FIXED_ATTACK_JOB={rifle:'rogue',shortBow:'hunter',longBow:'hunter',crossbow:'hunter',oneStaff:'sage',spellFist:'sage',instrument:'performer'};
+for(const [id,stats] of Object.entries(WEAPON_FIXED_ATTACK)){
+ const title={rogue:'逐影者',hunter:'遊俠',sage:'元素使',performer:'宮廷樂師'}[WEAPON_FIXED_ATTACK_JOB[id]];
+ const description=Object.entries(stats).map(([key,value])=>`${key.toUpperCase()} ${value>=0?'+':''}${value}（Lv.200 基準，隨武器等級與強化成長）`).join('、');
+ GEAR_BASE[id].weaponTrait=[GEAR_BASE[id].weaponTrait,`${title}專屬固定武器能力：${description}`].filter(Boolean).join('；');
+}
 export const PET_GEAR_BASE={petHelm:{name:'靈獸角冠',petSlot:'head',cost:65},petCirclet:{name:'靈獸星環',petSlot:'head',cost:65},petArmor:{name:'靈獸戰甲',petSlot:'body',cost:105},petRobe:{name:'靈獸法袍',petSlot:'body',cost:105},petBoots:{name:'靈獸迅足',petSlot:'shoes',cost:70},petGreaves:{name:'靈獸護足',petSlot:'shoes',cost:70}};
 export const PET_SLOTS={head:'頭部',body:'身體',shoes:'鞋'};
 export const RARITIES=[{id:'common',name:'普通',count:2,weight:700,color:'common'},{id:'rare',name:'稀有',count:3,weight:250,color:'rare'},{id:'uncommon',name:'罕見',count:4,weight:40,color:'uncommon'},{id:'legendary',name:'傳說',count:5,weight:9,color:'legendary'},{id:'mythic',name:'神話',count:6,weight:1,color:'mythic'}];
@@ -81,7 +83,7 @@ export const normalizeBag=(bag,items)=>{const out=[];for(const item of Array.isA
 export function addStack(bag,id,qty=1){const existing=bag.find(x=>x.id===id&&!x.uid);if(existing)existing.qty+=qty;else bag.push(asStack(id,qty));}
 export function consumeStack(bag,id){const i=bag.findIndex(x=>x.id===id&&!x.uid&&x.qty>0);if(i<0)return false;bag[i].qty--;if(bag[i].qty<=0)bag.splice(i,1);return true;}
 
-export function gearStatValue(item,type){if(!item)return 0;const base=GEAR_BASE[item.id]||PET_GEAR_BASE[item.id],intrinsic=(item.powerVersion>=23&&type===primaryAffix(item.id)?0:base?.[type]||0),fixed=base?.weaponType&&['critDmg','ignoreDef','damageReduction','aspdPct'].includes(type)?intrinsic:0;return enhancedStat(item,type,intrinsic-fixed+(item.affixes?.[type]||0))+fixed;}
+export function gearStatValue(item,type,job=null){if(!item)return 0;const base=GEAR_BASE[item.id]||PET_GEAR_BASE[item.id],intrinsic=(item.powerVersion>=23&&type===primaryAffix(item.id)?0:base?.[type]||0),fixed=base?.weaponType&&['critDmg','ignoreDef','damageReduction','aspdPct'].includes(type)?intrinsic:0,weaponPower=(job===WEAPON_FIXED_ATTACK_JOB[item.id]?WEAPON_FIXED_ATTACK[item.id]?.[type]||0:0)*Math.min(200,Math.max(1,item.level||1))/200;return enhancedStat(item,type,intrinsic-fixed+(item.affixes?.[type]||0)+weaponPower)+fixed;}
 // characterShare changes only the conditional equipment-kind split; the total
 // equipment probability and existing loot bonus remain unchanged.
 export function equipmentDrop(boss=false,lootBonus=0,rng=Math.random,characterShare=.9){
