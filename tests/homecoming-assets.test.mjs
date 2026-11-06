@@ -5,6 +5,7 @@ import {HOMECOMING_ROUTES} from '../dist/homecoming-data.js';
 import {HOMECOMING_ADVENTURES} from '../dist/homecoming-adventures.js';
 import {HOMECOMING_OPPONENTS,HOMECOMING_ENCOUNTERS,homecomingOpponent} from '../dist/homecoming-encounters.js';
 import {HOMECOMING_SCENE_ART,renderHomecomingArt} from '../dist/homecoming-art.js';
+import {DAWN_BOSS,DAWN_MONSTERS} from '../dist/dawn-world.js';
 function checkWebp(src){const file=new URL('../dist/'+src,import.meta.url),buf=readFileSync(file);assert.equal(buf.toString('ascii',0,4),'RIFF');assert.equal(buf.toString('ascii',8,12),'WEBP');assert.ok(statSync(file).size>2000);assert.ok(statSync(file).size<550000);}
 test('twelve unique scene images exist and every route renders the correct scene',()=>{
  assert.equal(new Set(Object.values(HOMECOMING_SCENE_ART).map(a=>a.src)).size,12);
@@ -28,4 +29,10 @@ test('sprites use real alpha, sane draft stats and do not inherit Dawn loot flag
  assert.equal(foe.dawn,false);assert.equal(foe.capture,false);assert.equal(foe.xp,0);assert.equal(foe.gold,0);assert.deepEqual(foe.drops,[]);assert.equal(foe.junkId,null);
  }
  assert.equal(HOMECOMING_OPPONENTS.master.nonlethal,true);
+});
+test('post-Dawn opponents exceed the corresponding Dawn monster stat budget',()=>{
+ for(const foe of Object.values(HOMECOMING_OPPONENTS)){
+  const reference=foe.boss?DAWN_BOSS:DAWN_MONSTERS[2];
+  for(const stat of ['hp','atk','def'])assert.ok(foe[stat]>reference[stat],foe.name+' '+stat+' must exceed Dawn');
+ }
 });
