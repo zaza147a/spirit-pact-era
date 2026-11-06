@@ -23,7 +23,7 @@ export const BOSS_MECHANIC_TEXT=Object.freeze({
  nightclock:'生命低於50%且受到攻擊時恢復最大生命12%（24秒冷卻）',
  sungrave:'遠距物理或魔法每5次攻擊追加70%曜龍追擊；近戰物理每6次追加40%追擊',
  worldroot:'舞孃每4次主攻追加90%協奏音刃（3.5秒冷卻）；其他職業每5次追加35%共鳴攻擊（5秒冷卻）',
- dawnrift:'只限靈契君王與萬靈宗師：靈契君王每3次主攻引爆420%同化裁決；萬靈宗師雙夥伴在8秒內分別命中後啟動雙靈領域，領域內每次夥伴命中追加220%雙靈追擊'
+ dawnrift:'只限靈契君王與萬靈宗師：靈契君王每3次主攻引爆90%同化裁決；萬靈宗師唯一夥伴每3次主攻追加310%靈魂追擊'
 });
 export const bossCardEquipAllowed=(card,slot,job)=>!!card?.slots?.includes(slot)&&
  (card.map!=='dawnrift'||NEW_JOBS.has(job));
@@ -39,7 +39,9 @@ export function bossCardHitBonus(player,cards,event){
  const {now,source,damage,critical=false,magical=false,secondary=false,range='melee',skillId='',petId='',targetHpFraction=1}=event;
  if(!(damage>0))return 0;
  let extra=0;
- const owner=source==='owner',pet=source==='pet';
+ // Commander routes the owner's equipped-card hit triggers through its sole
+ // attacking companion; do not require a non-existent second pet.
+ const owner=source==='owner'||player.job==='spiritCommander'&&source==='pet',pet=source==='pet';
  for(const {id,card} of attached(player,cards)){
   const s=stateFor(player,id),zone=card.map;
   const add=(ratio,options)=>{if(proc(s,now,options))extra+=damage*ratio;};
@@ -73,14 +75,8 @@ export function bossCardHitBonus(player,cards,event){
     add(dance?.90:.35,{every:dance?(ready?3:4):5,cooldown:dance?3500:5000});
    }break;
    case 'dawnrift':
-    if(player.job==='pactWarrior'&&owner)add(4.20,{every:3});
-    else if(player.job==='spiritCommander'&&pet){
-     if(!petId)break;
-     if(!s.windowAt||now-s.windowAt>8000){s.windowAt=now;s.seen={};}
-     (s.seen??={})[petId]=true;
-     if(Object.keys(s.seen).length>=2&&!(s.activatedUntil>now))s.activatedUntil=now+8000;
-     if(s.activatedUntil>now)extra+=damage*2.20;
-    }
+    if(player.job==='pactWarrior'&&owner)add(.90,{every:3});
+    else if(player.job==='spiritCommander'&&pet&&petId)add(3.10,{every:3});
     break;
   }
  }
@@ -92,14 +88,14 @@ export function bossCardSong(player,cards){
   const s=stateFor(player,id);s.songCharge=Math.min(2,(s.songCharge||0)+1);
  }
 }
-export function bossCardDodge(player,cards,now,maxHp){
+export function bossCardDodge(player,cards,now,maxHp,target=player){
  for(const {id,card} of attached(player,cards)){
   const s=stateFor(player,id);
-  if(card.map==='starshore'&&now-(s.at||0)>=5000){s.at=now;player.hp=Math.min(maxHp,player.hp+Math.max(1,Math.round(maxHp*.03)));}
+  if(card.map==='starshore'&&now-(s.at||0)>=5000){s.at=now;target.hp=Math.min(maxHp,target.hp+Math.max(1,Math.round(maxHp*.03)));}
   if(card.map==='ruins'&&proc(s,now,{every:2,cooldown:8000}))s.dodgeGuard=true;
  }
 }
-export function bossCardIncoming(player,cards,{now,boss=false,magic=false,damage,maxHp}){
+export function bossCardIncoming(player,cards,{now,boss=false,magic=false,damage,maxHp,currentHp=player.hp}){
  if(!(damage>0))return {damage,shield:0,heal:0};
  let amount=damage,shield=0,heal=0;
  for(const {id,card} of attached(player,cards)){
@@ -110,10 +106,10 @@ export function bossCardIncoming(player,cards,{now,boss=false,magic=false,damage
    case 'frost':if(boss&&magic&&now-(s.at||0)>=6000){s.at=now;amount*=.88;}break;
    case 'stormforge':if(boss&&!magic&&now-(s.at||0)>=6000){s.at=now;amount*=.88;}break;
    case 'volcano':if(boss&&now-(s.at||0)>=12000){s.at=now;shield+=maxHp*.12;}break;
-   case 'abyss':if(player.hp<maxHp*.4&&now-(s.at||0)>=20000){s.at=now;shield+=maxHp*.15;}break;
+   case 'abyss':if(currentHp<maxHp*.4&&now-(s.at||0)>=20000){s.at=now;shield+=maxHp*.15;}break;
    case 'ruins':if(boss&&s.dodgeGuard){s.dodgeGuard=false;amount*=.85;}break;
    case 'oathwood':if(boss&&now-(s.at||0)>=20000){s.at=now;heal+=maxHp*.12;}break;
-   case 'nightclock':if(player.hp<maxHp*.5&&now-(s.at||0)>=24000){s.at=now;heal+=maxHp*.12;}break;
+   case 'nightclock':if(currentHp<maxHp*.5&&now-(s.at||0)>=24000){s.at=now;heal+=maxHp*.12;}break;
   }
  }
  return {damage:Math.max(1,Math.round(amount)),shield:Math.round(shield),heal:Math.round(heal)};

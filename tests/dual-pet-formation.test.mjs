@@ -14,30 +14,30 @@ test('existing jobs remain strictly one companion',()=>{
   const p=sample('wizard');
   assert.deepEqual(activePetRoster(p).map(x=>x.id),['a']);
   assert.equal(secondPetDamageFactor(p,'b'),0);
-  assert.match(canSetSecondaryPet(p,'b'),/只有御靈使/);
+  assert.match(canSetSecondaryPet(p,'b'),/只能攜帶一隻/);
 });
 
-test('dual roster preserves independent pet objects and legal slots',()=>{
+test('former dual roster safely keeps the second pet in the collection',()=>{
   const p=normalizeDualPetState(sample());
-  assert.deepEqual(activePetRoster(p).map(x=>x.id),['a','b']);
-  assert.equal(activePetRoster(p)[1].hp,50);
+  assert.deepEqual(activePetRoster(p).map(x=>x.id),['a']);
+  assert.equal(p.pets[1].hp,50);
   assert.equal(secondPetDamageFactor(p,'a'),1);
-  assert.equal(secondPetDamageFactor(p,'b'),.5);
-  assert.match(canSetSecondaryPet(p,'a'),/同一隻/);
+  assert.equal(secondPetDamageFactor(p,'b'),0);
+  assert.match(canSetSecondaryPet(p,'a'),/只能攜帶一隻/);
   p.secondaryPetId='a';normalizeDualPetState(p);
   assert.equal(p.secondaryPetId,null);
   assert.deepEqual(activePetRoster(p).map(x=>x.id),['a']);
 });
 
-test('second job roles use distinct damage caps',()=>{
-  assert.equal(secondPetDamageFactor(sample('spiritCommander'),'b'),.7);
-  assert.equal(secondPetDamageFactor(sample('spiritCommander'),'b',{overload:true}),1);
-  assert.equal(secondPetDamageFactor(sample('pactWarrior'),'b'),.35);
-  assert.equal(secondPetDamageFactor(sample('pactWarrior'),'a'),.5);
+test('fixed job modes suppress pact pet damage but keep commander pet damage',()=>{
+  assert.equal(secondPetDamageFactor(sample('spiritCommander'),'a'),1);
+  assert.equal(secondPetDamageFactor(sample('spiritCommander'),'b',{overload:true}),0);
+  assert.equal(secondPetDamageFactor(sample('pactWarrior'),'b'),0);
+  assert.equal(secondPetDamageFactor(sample('pactWarrior'),'a'),0);
   const warrior=sample('pactWarrior');
   warrior.petStances={a:'assimilate',b:'assist'};
-  assert.equal(secondPetDamageFactor(warrior,'a'),.10);
-  assert.equal(secondPetDamageFactor(warrior,'b'),.35);
+  assert.equal(secondPetDamageFactor(warrior,'a'),0);
+  assert.equal(secondPetDamageFactor(warrior,'b'),0);
 });
 
 test('old saves without second pet normalize safely',()=>{
@@ -48,9 +48,9 @@ test('old saves without second pet normalize safely',()=>{
   assert.equal(p.dualPetMode,'focus');
 });
 
-test('equipment targeting follows selected spirit slot but preserves old jobs',()=>{
+test('equipment targeting is always the one equipped companion',()=>{
  const p=sample('spiritCommander');
- assert.equal(equipmentTargetPet(p,'b').id,'b');
+ assert.equal(equipmentTargetPet(p,'b').id,'a');
  assert.equal(equipmentTargetPet(p,'unknown').id,'a');
  assert.equal(equipmentTargetPet(p,null).id,'a');
  const wizard=sample('wizard');
@@ -59,7 +59,7 @@ test('equipment targeting follows selected spirit slot but preserves old jobs',(
  assert.equal(equipmentTargetPet(wizard,'b'),null);
 });
 
-test('benched companion keeps its own stance when switched back',()=>{
+test('pact stance is fixed to assimilation for the entire owned roster',()=>{
   const p=sample('pactWarrior');
   p.petStances={a:'assist',b:'assimilate',c:'assist',removed:'assimilate'};
   normalizeDualPetState(p);
@@ -67,23 +67,25 @@ test('benched companion keeps its own stance when switched back',()=>{
   p.secondaryPetId='c';normalizeDualPetState(p);
   assert.equal(p.petStances.b,'assimilate');
   p.secondaryPetId='b';normalizeDualPetState(p);
-  assert.equal(secondPetDamageFactor(p,'b'),.10);
+  assert.equal(secondPetDamageFactor(p,'b'),0);
+  assert.equal(p.petStances.a,'assimilate');
+  assert.equal(p.petStances.c,'assimilate');
   assert.equal(p.petStances.removed,undefined,'stale released pet state is discarded');
 });
 
-test('two different pet IDs with the same unordered fusion cannot both deploy',()=>{
+test('all second companions remain benched regardless of fusion type',()=>{
  const p=sample('pactWarrior');
  p.pets[0].fusion={main:'attack',sub:'magic'};
  p.pets[1].fusion={main:'magic',sub:'attack'};
  p.pets[2].fusion={main:'defense',sub:'support'};
- assert.match(canSetSecondaryPet(p,'b'),/相同融合類型/);
+ assert.match(canSetSecondaryPet(p,'b'),/只能攜帶一隻/);
  assert.deepEqual(activePetRoster(p).map(x=>x.id),['a'],'old unnormalized save cannot gain double damage');
  normalizeDualPetState(p);
  assert.equal(p.secondaryPetId,null,'migration unequips duplicate second slot');
  assert.equal(p.pets.length,3,'does not delete owned pets');
- assert.equal(canSetSecondaryPet(p,'c'),null);
+ assert.match(canSetSecondaryPet(p,'c'),/只能攜帶一隻/);
  p.secondaryPetId='c';
- assert.deepEqual(activePetRoster(p).map(x=>x.id),['a','c']);
+ assert.deepEqual(activePetRoster(p).map(x=>x.id),['a']);
  const ordinary=sample('wizard');
  ordinary.pets[0].fusion=p.pets[0].fusion;
  ordinary.pets[1].fusion=p.pets[1].fusion;

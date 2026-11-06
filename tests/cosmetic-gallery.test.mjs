@@ -10,7 +10,7 @@ test('every job has three unique, separately addressed SSS illustrations',()=>{
  assert.equal(new Set(Object.values(COSMETIC_JOBS).flat()).size,36);
  assert.equal(COSMETIC_OUTFIT_PRICES.length,3);
  for(const [job,names] of Object.entries(COSMETIC_JOBS))for(let i=0;i<3;i++){
-  assert.ok(names[i]);assert.match(cosmeticOutfitArt(job,i),new RegExp(`fixed-${job}-${i}\\.webp$`));
+  assert.ok(names[i]);assert.match(cosmeticOutfitArt(job,i),new RegExp(`fixed-${job}-${i}\\.webp\\?v=gold-frame-`));
  }
  assert.equal(COSMETIC_BACKGROUNDS.length,8);
  for(const bg of COSMETIC_BACKGROUNDS)assert.match(cosmeticBackgroundArt(bg.id),/\.webp$/);
@@ -44,7 +44,7 @@ test('collection parser refuses bogus identifiers and duplicate unlocks',()=>{
 test('two new third jobs have three gold costumes each',()=>{
  for(const job of ['pactWarrior','spiritCommander']){
   assert.equal(COSMETIC_JOBS[job].length,3);
-  for(let i=0;i<3;i++)assert.equal(cosmeticOutfitArt(job,i),`assets/cosmetics/fixed-${job}-${i}.webp`);
+  for(let i=0;i<3;i++)assert.match(cosmeticOutfitArt(job,i),new RegExp(`assets/cosmetics/fixed-${job}-${i}\\.webp\\?v=`));
  }
 });
 test('background scenes retain readable character identity overlays',()=>{
@@ -52,4 +52,10 @@ test('background scenes retain readable character identity overlays',()=>{
  const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
  for(const selector of ['.character-name','.pill','.gold-collector-title'])assert.ok(css.includes(`.hero.cosmetic-scene-active ${selector}`));
  assert.match(game,/linear-gradient\(to bottom,transparent 44%/);
+});
+test('home loads gold outfit styles and normalizes the equipped portrait',()=>{
+ const html=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
+ const css=readFileSync(new URL('../dist/cosmetic-gallery.css',import.meta.url),'utf8');
+ assert.match(html,/cosmetic-gallery\.css\?v=/);
+ assert.match(css,/\.art-hero\.cosmetic-equipped\{[^}]*object-fit:contain/);
 });

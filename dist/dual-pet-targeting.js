@@ -20,17 +20,13 @@ export function chooseDefendingPet(roster,roleOf,{mode='focus',guardingIds=[],rn
  return alive.at(-1);
 }
 
-/** Spirit-only aggro rule: while a Pact Warrior channels at least one active
- * companion, all direct enemy attacks target the owner. Commander and legacy
- * jobs retain normal owner/pet target selection. */
+/** Fixed single-pet job aggro: Pact Warrior always tanks for its pact. */
 export function pactOwnerOnlyAggro(player,roster=[]) {
- return player?.job==='pactWarrior'&&roster.some(p=>player.petStances?.[p.id]==='assimilate');
+ return player?.job==='pactWarrior';
 }
 
-/** Commander battles are a genuine three-unit frontline: one owner slot and
- * one slot for each living deployed pet. Defense/guard weighting applies when
- * choosing which pet receives the shared pet-side target. */
+/** Commander enemies target the sole living companion, never the owner. */
 export function commanderPetTargetChance(roster=[]) {
  const living=(roster||[]).filter(p=>p?.hp>0).length;
- return living/(living+1);
+ return living>0?1:0;
 }

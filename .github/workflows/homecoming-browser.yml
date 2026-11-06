@@ -3,6 +3,9 @@ on:
   push:
     branches: [feature/companion-homecoming]
     paths:
+      - 'dist/game.js'
+      - 'dist/index.html'
+      - 'dist/town-scene.js'
       - 'dist/homecoming*'
       - 'dist/assets/homecoming/**'
       - 'scripts/browser/homecoming-acceptance.mjs'

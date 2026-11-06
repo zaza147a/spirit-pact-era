@@ -3,6 +3,9 @@ on:
   push:
     branches: [feature/companion-homecoming]
     paths:
+      - 'dist/game.js'
+      - 'dist/index.html'
+      - 'dist/town-scene.js'
       - 'scripts/browser/homecoming-full-story.mjs'
       - '.github/workflows/homecoming-full-story.yml'
   workflow_dispatch:

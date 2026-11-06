@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {runtime} from './runtime31-helper.mjs';
-import {runBuild} from '../scripts/balance-v24.mjs';
+import {legacyOptimalPlayer} from './fixtures/legacy-optimal-player.mjs';
 import {readCharacterSlot,writeCharacterSlot,characterSlotKey} from '../dist/character-slots.js';
 import {FUSION_PAIRS,fusionKey} from '../dist/pet-fusion.js';
 import {reconcileHumanoidStages,humanoidStage} from '../dist/pet-humanoid-evolution.js';
@@ -14,10 +14,10 @@ test('eight slots retain real normalized SSS equipment, ordered skills, humanoid
  for(let batch=0;batch<3;batch++){
   const expected=[];
   for(let slot=0;slot<8;slot++){
-   const job=jobs[slot%jobs.length],pair=pairs[(batch*8+slot)%pairs.length];
-   const p=runBuild(job,pair.split('-')[0],{level:201,encounterLevel:201,gearLevel:200,seconds:0,
-    scenario:'regional',reborn:true,thirdJob:true,rarity:'mythic',referenceBuild:true,
-    referenceQuality:'mythic',fusionPair:pair,enhancement:'SSS',petEnhancement:'SSS',fixture:true}).fixture;
+   const job=jobs[slot%jobs.length];
+   // Use an existing verified save, not a removed historical build generator.
+   // Keep its real equipment, cards and legal stat allocation intact.
+   const p=legacyOptimalPlayer(job),pair=fusionKey(p.pets[0].fusion.main,p.pets[0].fusion.sub);
    const pet=p.pets[0];pet.trueForm=true;reconcileHumanoidStages(pet);
    pet.equippedSkills=[`fusion_${pair}_4`,`fusion_${pair}_2`,`fusion_${pair}_1`];
    p.dawnSigil=slot+1;p.dawnUnlocked=true;p.name=`slot-${batch}-${slot}`;

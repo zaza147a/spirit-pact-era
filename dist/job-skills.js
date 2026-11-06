@@ -67,6 +67,18 @@ for(const [job,id] of [['crusader','shieldBash'],['priest','holyJudgment']]){con
 SECOND_SKILLS.crusader.find(s=>s.id==='fortress').bonuses.aspd=2;
 for(const [id,meta] of Object.entries(SECOND_JOBS))JOB_SKILLS[id]=[...JOB_SKILLS[meta.parent],...SECOND_SKILLS[id]];
 for(const job of Object.keys(SECOND_JOBS))JOB_SKILLS[job].push(...thirdSkills(job));
+// The spirit base class and Pact branch use dual-offense until third-job fusion.
+// Keep the skill tooltip in sync with the battle engine's dynamic damage type.
+const spiritDualAttackDescription='三轉前攻擊基礎＝較高的ATK／MATK＋較低者25%；MATK較高時計為魔法傷害（對MDEF，受魔法傷害加成），ATK較高或相同時計為物理傷害（對DEF）。三轉後依融合夥伴決定。';
+for(const job of ['spiritist','pactWarrior'])for(const skill of JOB_SKILLS[job]){
+ if(!['physical','magic'].includes(skill.kind)||skill.thirdOnly)continue;
+ if(job==='pactWarrior'&&skill.branch==='first')continue; // shared first-job skill already updated
+ skill.desc+=' · '+spiritDualAttackDescription;
+}
+// These are single-fused-pet professions; the former dual-pet descriptions are obsolete.
+JOB_SKILLS.pactWarrior.find(s=>s.id==='pactWave').desc=JOB_SKILLS.pactWarrior.find(s=>s.id==='pactWave').desc.replace('人物範圍協戰','人物範圍攻擊（夥伴同化時不獨立攻擊）');
+JOB_SKILLS.spiritCommander.find(s=>s.id==='spiritFocus').desc='指定目標引導唯一融合夥伴集火';
+JOB_SKILLS.spiritCommander.find(s=>s.id==='commandFocus').desc='每級 MATK +1.3%，融合夥伴系數由獨立戰鬥系統決定';
 export const jobSkillById=(job,id)=>JOB_SKILLS[job]?.find(s=>s.id===id);
 export const activeJobSkills=job=>JOB_SKILLS[job].filter(s=>s.kind!=='passive');
 export const initialJobSkills=job=>({[activeJobSkills(job).find(s=>!SECOND_JOBS[job]||s.branch==='second').id]:1});

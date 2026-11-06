@@ -20,7 +20,7 @@ async function app(){let source=readFileSync(new URL('game.js',root),'utf8'),con
 test('new comparisons identify source and candidate unambiguously and highlight the direction of changes',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('直覺對比','mage'));a.setPlayer(p);
  const oldGear=p.gear.rightHand,preview=a.gearComparison({id:'oneStaff',name:'候選法杖',uid:'test-new',level:1,rarity:'legendary',affixes:{matk:80,INT:9}});
- assert.match(preview,/目前穿戴/);assert.match(preview,/準備穿戴/);assert.match(preview,/候選法杖/);assert.match(preview,/能力取捨/);assert.match(preview,/展開全部屬性對比/);
+ assert.match(preview,/目前穿戴/);assert.match(preview,/準備穿戴/);assert.match(preview,/候選法杖/);assert.match(preview,/能力取捨/);assert.match(preview,/本職業重點/);assert.match(preview,/data-compare-content="all"/);assert.match(preview,/compare-quick-item/);assert.doesNotMatch(preview,/compare-inline-title|compare-stat|<details class="compare-details"/);
  assert.equal(p.gear.rightHand,oldGear);
  const slot='rightHand',bossId=Object.keys(c.CARDS).find(id=>c.CARDS[id].boss&&c.CARDS[id].slots.includes(slot));
  const regularId=Object.keys(c.CARDS).find(id=>!c.CARDS[id].boss&&c.CARDS[id].slots.includes(slot));
@@ -30,17 +30,45 @@ test('new comparisons identify source and candidate unambiguously and highlight 
  assert.match(card,/目前鑲嵌 · 將卸下/);assert.match(card,/背包候選 · 將鑲入/);assert.match(card,/基本能力差異/);assert.match(card,/特殊觸發/);
  assert.equal(p.sockets[slot],regularId);
 });
-test('player and pet comparisons include MATK, always show ATK/MATK even when unchanged, and restore equipped gear',async()=>{
+test('player and pet comparisons include changed MATK, omit unchanged ATK/MATK, and restore equipped gear',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('比較測試','mage'));a.setPlayer(p);
  const staff={id:'oneStaff',uid:'new-staff',level:1,rarity:'common',affixes:{matk:10}};const snapshot=JSON.stringify({gear:p.gear,sockets:p.sockets});assert.match(a.gearComparison(staff),/魔法攻擊/);assert.equal(JSON.stringify({gear:p.gear,sockets:p.sockets}),snapshot);
- const neutral=a.gearComparison({id:'helm',uid:'helm',affixes:{def:1}});assert.match(neutral,/物理攻擊/);assert.match(neutral,/魔法攻擊/);assert.match(neutral,/±0/);
+ const neutral=a.gearComparison({id:'helm',uid:'helm',affixes:{def:1}});assert.match(neutral,/物理防禦/);assert.doesNotMatch(neutral,/物理攻擊|魔法攻擊|±0/);
  const pet=c.makePet('wisp');p.pets=[pet];p.activePetId=pet.id;const petBefore=JSON.stringify(pet.gear);assert.match(a.gearComparison({id:'petCirclet',uid:'circlet',affixes:{matk:5}}),/魔法攻擊/);assert.equal(JSON.stringify(pet.gear),petBefore);
+});
+test('comparison prioritizes the current job damage type, keeps mixed spell fist and exposes full details without mutating gear',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('職業相關比較','knight'));a.setPlayer(p);
+ const worn=JSON.stringify(p.gear),sockets=JSON.stringify(p.sockets);
+ const candidate={id:'helm',uid:'mixed-helm',level:200,rarity:'mythic',affixes:{STR:9,DEX:9,INT:9,matk:400,atk:400,damageReduction:4}};
+ const character=a.gearComparison(candidate),focused=character.split('data-compare-content="all"')[0];
+ assert.match(character,/本職業重點/);assert.match(character,/全部屬性/);
+ assert.match(focused,/近距離物理傷害%/);assert.match(focused,/物理攻擊/);assert.match(focused,/最終減傷/);
+ assert.doesNotMatch(focused,/魔法攻擊|魔法傷害%|遠距離物理傷害%/);
+ assert.match(character,/魔法攻擊/);assert.match(character,/遠距離物理傷害%/);
+ assert.equal(JSON.stringify(p.gear),worn);assert.equal(JSON.stringify(p.sockets),sockets);
+ p.job='hunter';const ranged=a.gearComparison(candidate).split('data-compare-content="all"')[0];
+ assert.match(ranged,/遠距離物理傷害%/);assert.doesNotMatch(ranged,/近距離物理傷害%|魔法傷害%/);
+ p.job='wizard';const magic=a.gearComparison(candidate).split('data-compare-content="all"')[0];
+ assert.match(magic,/魔法攻擊|魔法傷害%/);assert.doesNotMatch(magic,/遠距離物理傷害%|近距離物理傷害%/);
+ p.job='sage';const hybrid=a.gearComparison(candidate).split('data-compare-content="all"')[0];
+ assert.match(hybrid,/魔法攻擊/);assert.match(hybrid,/物理攻擊/);assert.match(hybrid,/近距離物理傷害%/);
+});
+test('comparison selection persists after rerender and pet mode stays visible',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('模式測試','knight'));a.setPlayer(p);
+ const candidate={id:'helm',uid:'mode',level:200,rarity:'mythic',affixes:{INT:9,matk:200}};
+ vm.runInContext("gearCompareMode='all'",c);
+ const html=a.gearComparison(candidate);
+ assert.match(html,/data-compare-mode="all" aria-pressed="true"/);
+ assert.match(html,/data-compare-content="all" ><div/);
+ assert.match(a.gearComparison(candidate),/data-compare-mode="all" aria-pressed="true"/);
+ const pet=c.makePet('wisp');p.pets=[pet];p.activePetId=pet.id;
+ assert.match(a.gearComparison({id:'petCirclet',uid:'pet-mode',affixes:{matk:5}}),/data-compare-content="relevant" ><div/);
 });
 test('equipment comparison localizes labels and previews capped mitigation and pet special affixes without mutations',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('減傷比較','mage'));a.setPlayer(p);
  const armor={id:'vest',uid:'mitigation-preview',level:1,rarity:'mythic',affixes:{damageReduction:25,hpPct:5}};
  const original=JSON.stringify(p.gear),preview=a.gearComparison(armor);
- assert.match(preview,/最終減傷/);assert.match(preview,/25%/);assert.match(preview,/個百分點/);assert.match(preview,/生命值/);assert.doesNotMatch(preview,/>HP</);
+ assert.match(preview,/最終減傷/);assert.match(preview,/25 個百分點/);assert.match(preview,/生命值/);assert.doesNotMatch(preview,/>HP</);
  assert.equal(JSON.stringify(p.gear),original);
  const pet=c.makePet('wisp');p.pets=[pet];p.activePetId=pet.id;
  const petOriginal=JSON.stringify(pet.gear),petPreview=a.gearComparison({id:'petArmor',uid:'pet-preview',level:1,rarity:'mythic',affixes:{damageReduction:12,critDmg:8,ignoreDef:5}});
