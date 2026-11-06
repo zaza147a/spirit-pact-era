@@ -129,7 +129,8 @@ export function spiritGrowthGuide(player,roster=[]) {
  if(!isSpiritJob(player?.job))return null;
  const fused=roster.filter(p=>canonicalFusionKey(p)).length;
  const q=spiritQuestState(player);
- if(player.thirdJob)return {stage:'完成三轉',message:'單靈誓約已覺醒；可繼續培養出戰融合夥伴的專屬共鳴。',fused};
+ // The growth guide ends at third job, regardless of legacy quest flags.
+ if(player.thirdJob)return null;
  if(q?.done)return {stage:'三轉準備完成',message:'已完成單靈誓約；保持一隻融合夥伴出戰，準備 Base150／轉生二轉Job70 和天極覺醒聖印。',fused};
  if(q?.started)return {stage:'單靈試煉進行中',message:`與一隻存活的融合夥伴擊敗101–150級敵人：${q.kills||0}／${SPIRIT_TRIAL_KILLS}。完成後回蒼穹樞城立誓。`,fused};
  if(player.level>=140&&player.reborn&&SPIRIT_SECOND.includes(player.job))return {stage:'單靈誓約即將開啟',message:`已可在蒼穹樞城接受專屬三轉支線。當前出戰融合夥伴 ${fused}／1；三轉需要一隻出戰融合夥伴。`,fused};
