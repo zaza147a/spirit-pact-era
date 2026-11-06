@@ -13,3 +13,13 @@ test('every city has distinct background art and all NPC roles have sprites',()=
   }
   assert.match(readFileSync(new URL('game.js',root),'utf8'),/import '\.\/town-scene\.js/);
 });
+
+test('all thirteen NPC actions have unique dialogue and preserve the original button route',()=>{
+  const scene=readFileSync(new URL('town-scene.js',root),'utf8');
+  for(const id of ['quests','guild','third','evolution','shop','warehouse','enhancement','reforge','collection','cardrecycle','cardcollection','trials','sigilcraft']){
+    assert.match(scene,new RegExp(`\\b${id}:\\[`),`${id} missing dialogue`);
+  }
+  assert.match(scene,/bypassDialog\.add\(button\);button\.click\(\)/);
+  assert.match(scene,/event\.stopImmediatePropagation\(\);showNpcDialog/);
+  assert.match(scene,/aria-modal/);
+});
