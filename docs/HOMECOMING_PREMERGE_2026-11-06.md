@@ -32,3 +32,7 @@ main來源：89de7f774b09a00bff4b23fdbdbfbfece33fbab4。
 ## 合併前發現與修正
 
 第一輪實際新職業／NPC操作發現村莊area::after裝飾層攔住倉庫按鈕，Playwright確認點擊位置被area截走。已讓裝飾層pointer-events:none，更新v2.css快取版本；保留視覺與NPC正常點擊。修正後重跑合併前流程，不用強制點擊繞過產品問題。
+
+## 修正後驗收檢查點
+
+候選程式來源68e2b6fc72861fe9dea858c0ff96ff1743d75cae。本機215項重驗通過。待查Actions：42239239619（desktop）、42239239986（pre-MAIN）、42239239890（flow）、42239239403（十二故事）。main仍為89de7f774b09a00bff4b23fdbdbfbfece33fbab4，已納入此候選父提交。
