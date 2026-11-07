@@ -81,6 +81,19 @@ test('twelve additive rewards; reverse progress separate but fourth skill shared
  }
  assert.deepEqual(homecomingBonuses(p),{damage:.03,hp:.04,def:.04,recovery:.04,count:12});
 });
+test('late returning banner master victory credits a companion that fought but fell on the final exchange',()=>{
+ const r=routes.find(route=>route.id==='support-attack');
+ for(const job of ['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer']){
+  const p={...fresh(),job};discoverHomecoming(p,[pet(r)],{town:true});start(p,r);
+  for(const choice of ['begin','back','side','break','take'])step(p,r,choice);
+  assert.equal(p.homecoming.routes[r.id].adventure.step,'duel');
+  act(p,r.id,null,{pet:pet(r),go:true});
+  const fallen={...pet(r),hp:0};
+  assert.equal(victory(p,r.id,{pet:fallen,mapId:p.location,boss:false}),false,job+' must not accept an unverified fainted pet');
+  assert.equal(victory(p,r.id,{pet:fallen,mapId:p.location,boss:false,companionPresentAtStart:true}),true,job);
+  assert.equal(p.homecoming.routes[r.id].phase,'ready',job);
+ }
+});
 test('legacy active quests migrate to their new start; claimed rewards survive normalization',()=>{
  const p=fresh();p.homecoming={version:1,completedRoutes:{'magic-attack':true},routes:{'attack-magic':{phase:'active',nodes:2},'attack-defense':{phase:'claimed'}}};
  normalizeHomecoming(p);assert.equal(p.homecoming.routes['attack-magic'].adventure.step,'valve');
