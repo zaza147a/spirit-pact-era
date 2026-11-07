@@ -64,3 +64,17 @@ test('all twelve profession wardrobes point to their own correct artwork',async(
   assert.doesNotMatch(html,/disabled/,`${job} should be available at 30`);
  }
 });
+
+test('frost selection survives a serialized save/load and remains cosmetic',async()=>{
+ const {game,character}=await fixture(30);
+ const originalStats={attributes:structuredClone(character.attributes),gear:structuredClone(character.gear),cards:structuredClone(character.cards),pets:structuredClone(character.pets)};
+ assert.equal(game.normalize(character).towerCostume,null);
+ assert.equal((await import('../dist/tower-costumes.js')).chooseTowerCostume(character,'frost'),true);
+ const saved=JSON.parse(JSON.stringify({version:2,player:character}));
+ const loaded=game.normalize(saved.player);
+ assert.equal(loaded.towerCostume,'frost');
+ for(const key of Object.keys(originalStats))assert.deepEqual(JSON.parse(JSON.stringify(loaded[key])),originalStats[key],key+' changed after choosing costume');
+ loaded.towerProgress.highest=29;
+ game.normalize(loaded);
+ assert.equal(loaded.towerCostume,null,'cannot use a floor-30 reward after invalidating its unlock');
+});

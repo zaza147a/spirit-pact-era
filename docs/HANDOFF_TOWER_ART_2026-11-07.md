@@ -45,9 +45,9 @@ UI：`dist/game.js` 的 `TOWER_BACKGROUND_STYLES` 與 `dist/endless-tower.css` �
 1. 新增 `dist/tower-costumes.js` 管理十二職業的永凍時裝、30 層通關和三轉驗證、手動穿戴互斥；不參與任何戰鬥數值。
 2. `dist/game.js` 角色外觀選單加入單張本職業永凍時裝；未通關顯示鎖定，通關後可選擇或取消。
 3. 首頁角色立繪與登入選角按同一 `towerCostume` 存檔欄位顯示；已有原階級／金幣外觀時互斥，選用塔時裝會清掉其他穿著設定。
-4. 新增 `tests/tower-costumes.test.mjs` 純邏輯回歸，並用 `tests/tower-costumes-game-integration.test.mjs` 實際執行遊戲函式，確認未解鎖／通關解鎖／取消穿戴／主頁與選角使用相同圖片／十二職業各自正確圖片。共 63／63 項相關測試通過。
+4. 新增 `tests/tower-costumes.test.mjs` 純邏輯回歸，並用 `tests/tower-costumes-game-integration.test.mjs` 實際執行遊戲函式，確認未解鎖／通關解鎖／取消穿戴／主頁與選角使用相同圖片／十二職業各自正確圖片。再加入存檔 JSON 往返測試，發現並修正 `normalize()` 沒有即時清除失效永凍時裝選擇的缺口。**相關回歸共 64／64 通過**。
 5. 十二職業素材經 ImageMagick 再次確認全部為 1024×1504 並具有 alpha 通道。
-6. **待辦：** 在可執行本分支的瀏覽器預覽環境進行圖片實際視覺／縮放／存檔重載驗收，尤其君王、萬靈的選角框大小。現階段沒有瀏覽器實際截圖，因此不能宣稱視覺驗收通過。尚未合併 `main`。
+6. 已新增 `scripts/browser/tower-frost-acceptance.mjs` 可重跑桌面 Chromium 驗收：十二職業選角圖載入與縮放、首頁換裝、手動取消／重新穿戴與刷新保存。**目前執行環境沒有 Chromium 執行檔**（雖已安裝 Playwright 套件），此項仍未實際跑通，沒有真實截圖，不能宣稱視覺驗收通過；尤其待核對君王／萬靈的選角框大小。尚未合併 `main`。
 
 ## 既有邏輯驗證
 
