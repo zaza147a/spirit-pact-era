@@ -37,12 +37,30 @@ test('five-boss trial officiant has an independent portrait asset',async()=>{
  assert.match(css,/\.trial-gatekeeper-profile img/);
 });
 
+test('tower battle portrait and long warning occupy separate layout regions',async()=>{
+ const game=await readFile('dist/game.js','utf8');
+ const css=await readFile('dist/endless-tower.css','utf8');
+ assert.match(game,/<div class="tower-encounter-main"><div class="tower-monster-portrait">\$\{spriteHtml\(foe\.id,'monster'\)\}<\/div><div class="tower-encounter-info">/);
+ assert.match(game,/<\/small><\/div><\/div>\$\{cast\}<\/div>`;/);
+ assert.match(css,/#encounter \.enemy-target\.trial-boss\.tower-encounter\{[^\n]*display:flex!important/);
+ assert.match(css,/#encounter \.tower-monster-portrait \.art-monster\{position:static!important/);
+ assert.match(css,/#encounter \.tower-encounter>\.tower-cast-warning\{[^\n]*width:100%/);
+ assert.doesNotMatch(css,/\.tower-encounter \.art-monster\{grid-row:1 \/ span 5/);
+});
+
+test('equipped character name frame wins over portrait background styling',async()=>{
+ const css=await readFile('dist/endless-tower.css','utf8');
+ for(const frame of ['dawn','flame','frost','collect-dawn','collect-flame','collect-frost']){
+  assert.match(css,new RegExp(`#gameShell #character>\\.hero\\.cosmetic-scene-active \\.character-name\\.tower-frame-${frame}\\{[^\\n]*background:[^\\n]*!important`));
+ }
+});
+
 test('release entrypoint and title module use synchronized cache versions',async()=>{
  const html=await readFile('dist/index.html','utf8');
  const game=await readFile('dist/game.js','utf8');
- assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.5/);
- assert.match(html,/game\.js\?v=7\.1\.5/);
- assert.match(html,/endless-tower\.css\?v=7\.1\.5/);
- assert.match(game,/tower-honors\.js\?v=7\.1\.5/);
- assert.match(game,/town-scene\.js\?v=7\.1\.5/);
+ assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.6/);
+ assert.match(html,/game\.js\?v=7\.1\.6/);
+ assert.match(html,/endless-tower\.css\?v=7\.1\.6/);
+ assert.match(game,/tower-honors\.js\?v=7\.1\.6/);
+ assert.match(game,/town-scene\.js\?v=7\.1\.6/);
 });

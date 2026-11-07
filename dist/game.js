@@ -9,7 +9,7 @@ import {homecomingTracker,renderHomecomingPanel,renderHomecomingTown} from './ho
 import {SPIRIT_SANCTUARY_MAP,SPIRIT_SANCTUARY_MONSTERS,spiritSanctuaryUnlocked,isCaptureSanctuary,announceSpiritSanctuary,visitSpiritSanctuary,spiritSanctuaryTracker,blessSanctuaryPet} from './spirit-sanctuary.js';
 import {homecomingPicture,showHomecomingPicture} from './homecoming-modal.js';
 import {ensurePetEffects} from './dual-pet-effects.js';
-import {patchTownArea} from './town-scene.js?v=7.1.5';
+import {patchTownArea} from './town-scene.js?v=7.1.6';
 import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from './weapon-compensation.js?v=6.5.62';
 import {commanderInheritedPetStats,commanderMainSkillMultiplier} from './commander-owner-growth.js';
 import {spiritTargetDamageFactor} from './spirit-target-damage.js';
@@ -35,7 +35,7 @@ import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} f
 import {towerFrostUnlocked,normalizeTowerCostume,towerFrostArt,chooseTowerCostume} from './tower-costumes.js';
 import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature,postponeTowerPursuer} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
-import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.5';
+import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.6';
 import {TOWER_SHOP_ITEMS,normalizeTowerCollection,buyTowerShopItem,towerCollectedBackgrounds,selectTowerBackground,awardTowerCoins} from './tower-reward-shop.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
 import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';
@@ -2237,7 +2237,7 @@ function renderTowerEncounter(){const foe=enemies.find(e=>e.hp>0),run=player.tow
  const pursuer=enemies.find(e=>e.towerPursuer&&e.hp>0),pursuerCast=pursuer&&towerFloor(run.floor).objective==='hunt'?`<div class="tower-cast-warning" role="status">⚠ ${pursuer.name} 準備【終境追獵・裁決】 · ${Math.max(0,Math.ceil((pursuer.towerNextStrikeAt-gameNow())/1000))} 秒後施放 · 擊殺 1 隻小怪延後 8 秒</div>`:'';
  const cast=skill?`<div class="tower-cast-warning" role="status">⚠ ${skill.name} · ${foe.towerNextSkill?`約 ${Math.max(0,Math.ceil((foe.towerNextSkill-gameNow())/1000))} 秒後施放`:'蓄力中'}${skill.type==='freeze'?' · 可由控制抗性抵擋':''}</div>`:pursuerCast;
  const stage=towerFloor(run.floor),progress=stage.objective==='hunt'?`逃離倒數 ${Math.max(0,stage.goal-Math.floor((gameNow()-run.stageStartedAt)/1000))} 秒 · 已擊殺 ${run.huntKills||0} 隻`:stage.objective==='survive'?`已存活 ${Math.max(0,Math.floor((gameNow()-run.stageStartedAt)/1000))}／${stage.goal} 秒`:`目標 ${run.completedEnemyIds.length}／${stage.enemyCount}`;
- return `<div class="enemy-target trial-boss tower-encounter ${run.floor<=10?'tower-dawn':run.floor<=20?'tower-flame':'tower-frost'}">${spriteHtml(foe.id,'monster')}<b>✧ 天穹終境 · 第 ${run.floor} 層<br>${escapeHtml(foe.name)}</b><span>生命值 ${foe.hp.toLocaleString()}／${foe.maxHp.toLocaleString()} HP</span>${meter(foe.hp,foe.maxHp,'red')}<div class="tower-objective-banner">${towerObjectiveLabel(stage)}<br>${progress}</div>${cast}<small>⏳ 剩餘 ${Math.ceil(towerRemainingSeconds(run,gameNow()))} 秒 · 場上 ${enemies.filter(e=>e.hp>0).length} 名敵人</small></div>`;}
+ return `<div class="enemy-target trial-boss tower-encounter ${run.floor<=10?'tower-dawn':run.floor<=20?'tower-flame':'tower-frost'}"><div class="tower-encounter-main"><div class="tower-monster-portrait">${spriteHtml(foe.id,'monster')}</div><div class="tower-encounter-info"><b>✧ 天穹終境 · 第 ${run.floor} 層<br>${escapeHtml(foe.name)}</b><span>生命值 ${foe.hp.toLocaleString()}／${foe.maxHp.toLocaleString()} HP</span>${meter(foe.hp,foe.maxHp,'red')}<div class="tower-objective-banner">${towerObjectiveLabel(stage)}<br>${progress}</div><small>⏳ 剩餘 ${Math.ceil(towerRemainingSeconds(run,gameNow()))} 秒 · 場上 ${enemies.filter(e=>e.hp>0).length} 名敵人</small></div></div>${cast}</div>`;}
 function tickTowerBossMechanics(now){
  if(!player?.towerRun)return;
  const towerStage=towerFloor(player.towerRun.floor);
