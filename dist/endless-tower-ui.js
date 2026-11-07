@@ -12,7 +12,7 @@ export function renderTowerPanel(player,{maxFloor=TOWER_FIRST_RELEASE_MAX,now=0}
     return title+`<section class="item trial-route tower-active" aria-live="polite"><h3>${stage.floor} 層 · ${escapeHtml(stage.name)}</h3><p>${escapeHtml(stage.region)} · ${escapeHtml(stage.mechanic)} · 剩餘 ${Math.ceil(towerRemainingSeconds(active,now))} 秒</p><p>已擊敗 ${active.completedEnemyIds?.length||0}／${stage.enemyCount} 隻</p><button data-tower-exit>結束天穹終境挑戰</button></section>`;
   }
   const regions=TOWER_REGIONS.slice(0,Math.ceil(maxFloor/10));
-  return title+(player?.towerLastResult?towerRewardNotice(player.towerLastResult):'')+`<section class="item"><b>開放條件</b><p>${escapeHtml(entryError||'已符合入場條件')}</p><p>第一階段開放 1～${maxFloor} 層，後續樓層將於實戰平衡驗收後開放。</p></section>`+
+  return title+(player?.towerLastFailure?towerFailureNotice(player.towerLastFailure):player?.towerLastResult?towerRewardNotice(player.towerLastResult):'')+`<section class="item"><b>開放條件</b><p>${escapeHtml(entryError||'已符合入場條件')}</p><p>第一階段開放 1～${maxFloor} 層，後續樓層將於實戰平衡驗收後開放。</p></section>`+
     regions.map((region,i)=>{
       const from=i*10+1,to=Math.min(maxFloor,(i+1)*10),unlocked=progress.highest>=from-1;
       const next=progress.highest>=from&&progress.highest<to?progress.highest+1:from;
@@ -23,4 +23,8 @@ export function renderTowerPanel(player,{maxFloor=TOWER_FIRST_RELEASE_MAX,now=0}
 
 export function towerRewardNotice({floor,coins=0,firstReward=null,clearSeconds=0}={}) {
   return `<section class="item quest-ready tower-reward" role="status"><h3>✦ 天穹終境 · 第 ${Math.max(1,Math.floor(Number(floor)||1))} 層通關</h3><p>通關時間 ${Math.max(0,Number(clearSeconds)||0).toFixed(1)} 秒 · 天穹塔幣 +${Math.max(0,Math.floor(Number(coins)||0))}</p>${firstReward?`<p>首次通關稱號：${escapeHtml(firstReward)}</p>`:''}</section>`;
+}
+
+export function towerFailureNotice({floor,reason='',elapsedSeconds=0}={}) {
+  return `<section class="item tower-failure" role="status"><h3>⚠ 天穹終境 · 第 ${Math.max(1,Math.floor(Number(floor)||1))} 層未通關</h3><p>原因：${escapeHtml(reason)} · 持續 ${Math.max(0,Math.floor(Number(elapsedSeconds)||0))} 秒</p><small>不扣除已通關進度，可調整生存裝備或夥伴後再次挑戰。</small></section>`;
 }

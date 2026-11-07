@@ -2084,6 +2084,7 @@ function awardTowerEnemy(){
   if(settled.error)return exitTower(settled.error);
   player.towerProgress=settled.progress;player.towerCoins=(player.towerCoins||0)+settled.coins;
   player.towerLastResult={floor:run.floor,coins:settled.coins,firstReward:settled.firstReward,clearSeconds:settled.clearSeconds};
+  delete player.towerLastFailure;
   const floor=run.floor;endReport(`天穹終境第${floor}層通關`);
   message(`✦ 第${floor}層通關！天穹塔幣 +${settled.coins}${settled.firstReward?' · 解鎖稱號：'+settled.firstReward:''}`,'rare','system');
   exitTower('通關',false);
@@ -2092,6 +2093,7 @@ function awardTowerEnemy(){
 }
 function exitTower(reason='離開挑戰',failed=true){
  if(!player?.towerRun)return;
+ if(failed)player.towerLastFailure={floor:player.towerRun.floor,reason:String(reason).slice(0,60),elapsedSeconds:Math.max(0,Math.round((gameNow()-player.towerRun.stageStartedAt)/1000))};
  endReport(`天穹終境：${reason}`);delete player.towerRun;controlEffect=null;casting=null;
  player.location='dawncity';selectedContinent='dawn';
  if(player.hp<=0){delete player.reviveAt;player.hp=stat('hp');player.mp=stat('mp');player.shield=0;
@@ -2101,7 +2103,9 @@ function exitTower(reason='離開挑戰',failed=true){
  dirty=true;save();if(!offlineSimulation){$('reviveModal').style.display='none';renderMapChoices();render();renderSide(true);}
 }
 function renderTowerEncounter(){const foe=enemies.find(e=>e.hp>0),run=player.towerRun;if(!foe)return '<div class="enemy-idle">結算中…</div>';
- return `<div class="enemy-target trial-boss">${spriteHtml(foe.id,'monster')}<b>第 ${run.floor} 層 · ${foe.name}</b><span>${foe.hp.toLocaleString()}／${foe.maxHp.toLocaleString()} HP</span>${meter(foe.hp,foe.maxHp,'red')}<small>剩餘 ${Math.ceil(towerRemainingSeconds(run,gameNow()))} 秒</small></div>`;}
+ const skill=foe.bossPattern?towerBossSignature(run.floor,foe.towerPhase||0):null;
+ const cast=skill?`<div class="tower-cast-warning" role="status">⚠ ${skill.name} · ${foe.towerNextSkill?`約 ${Math.max(0,Math.ceil((foe.towerNextSkill-gameNow())/1000))} 秒後施放`:'蓄力中'}${skill.type==='freeze'?' · 可由控制抗性抵擋':''}</div>`:'';
+ return `<div class="enemy-target trial-boss tower-encounter">${spriteHtml(foe.id,'monster')}<b>第 ${run.floor} 層 · ${foe.name}</b><span>${foe.hp.toLocaleString()}／${foe.maxHp.toLocaleString()} HP</span>${meter(foe.hp,foe.maxHp,'red')}${cast}<small>剩餘 ${Math.ceil(towerRemainingSeconds(run,gameNow()))} 秒</small></div>`;}
 function tickTowerBossMechanics(now){
  if(!player?.towerRun)return;
  for(const foe of [...enemies]){

@@ -30,3 +30,10 @@ test('latest successful clear remains visible without a combat stat bonus',()=>{
  assert.match(html,/破曉挑戰者/);
  assert.doesNotMatch(html,/永久傷害 \+/);
 });
+test('tower failure message reports reason safely and suggests survival adjustments',()=>{
+ const html=renderTowerPanel({...eligible(),towerLastFailure:{floor:30,reason:'戰敗<script>',elapsedSeconds:17}});
+ assert.match(html,/第 30 層未通關/);
+ assert.match(html,/持續 17 秒/);
+ assert.match(html,/調整生存裝備/);
+ assert.doesNotMatch(html,/<script>/);
+});

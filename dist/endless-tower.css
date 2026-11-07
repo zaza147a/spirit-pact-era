@@ -3,4 +3,6 @@
 .tower-active{border:2px solid rgba(211,177,102,.75);}
 .tower-region button{min-height:36px;margin:6px 6px 0 0;}
 .tower-reward{border:2px solid rgba(211,177,102,.75);}
+.tower-cast-warning{margin:8px 0;padding:8px 10px;border:1px solid rgba(243,160,91,.65);border-radius:8px;background:rgba(103,47,27,.3);color:#ffdaa9;font-weight:600;font-size:.9em;}
+.tower-failure{border:1px solid rgba(229,115,107,.7);background:rgba(126,47,47,.18);}
 @media(max-width:650px){.tower-region button{max-width:100%;white-space:normal;}}

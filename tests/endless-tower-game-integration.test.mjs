@@ -17,6 +17,7 @@ test('actual game rewards once after all kills and safely returns to dawn city',
  for(let i=0;i<3;i++){const foe=a.state().enemy;assert.ok(foe.hp>0);foe.hp=0;a.award();}
  assert.equal(p.towerRun,undefined);assert.equal(p.location,'dawncity');
  assert.equal(p.towerProgress.highest,1);assert.ok(p.towerCoins>0);
+ assert.equal(p.towerLastFailure,undefined);
  assert.equal(p.towerLastResult.floor,1);
  a.startTower(2);assert.equal(p.towerRun.floor,2);
  a.exitTower('撤退');assert.equal(p.towerRun,undefined);
@@ -36,12 +37,14 @@ test('actual combat timeout exits safely and preserves prior progress',async()=>
  c.setTime(1e6+181000);a.tickEncounters(1e6+181000);
  assert.equal(p.location,'dawncity');assert.equal(p.towerRun,undefined);
  assert.equal(p.towerProgress.highest,9);
+ assert.match(p.towerLastFailure.reason,/超時/);
 });
 test('actual combat death exits before auto revival and restores town party',async()=>{
  const {a,p}=await fixture();a.startTower(1);
  p.hp=0;a.combatTick();
  assert.equal(p.towerRun,undefined);assert.equal(p.location,'dawncity');
  assert.ok(p.hp>0);assert.equal(p.towerProgress.highest,0);
+ assert.equal(p.towerLastFailure.floor,1);
 });
 test('twentieth-floor boss summons bounded adds and they do not count as floor clears',async()=>{
  const {a,p}=await fixture();p.towerProgress={highest:19};a.startTower(20);
@@ -61,6 +64,7 @@ test('twentieth-floor boss summons bounded adds and they do not count as floor c
 test('fire boss signature causes bounded periodic damage without duplicate casts',async()=>{
  const {a,p}=await fixture();p.towerProgress={highest:19};a.startTower(20);
  const boss=a.state().enemy,now=1e6+9000,before=p.hp;
+ assert.match(a.renderTowerEncounter(),/炎龍灼燒/);
  a.tickTowerBossMechanics(now);
  assert.ok(p.hp<before);const after=p.hp;
  a.tickTowerBossMechanics(now+100);
