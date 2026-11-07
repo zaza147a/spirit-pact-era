@@ -27,6 +27,9 @@ globalThis.__spiritDisableOfflineAffixCache=workerData?.disableOfflineAffixCache
 globalThis.__spiritDisableOfflineGearStatCache=workerData?.disableOfflineGearStatCache===true;
 globalThis.__spiritDisableOfflineGearTotals=workerData?.disableOfflineGearTotals===true;
 globalThis.__spiritDisableOfflineIdleSkip=workerData?.disableOfflineIdleSkip===true;
+globalThis.__spiritDisableOfflineEffectGuards=workerData?.disableOfflineEffectGuards===true;
+globalThis.__spiritDisableOfflineStorageGuard=workerData?.disableOfflineStorageGuard===true;
+globalThis.__spiritDisableOfflinePactFusionCache=workerData?.disableOfflinePactFusionCache===true;
 globalThis.self={
  postMessage(message){
   parentPort.postMessage(message.type==='result'
