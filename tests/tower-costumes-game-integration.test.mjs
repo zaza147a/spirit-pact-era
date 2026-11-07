@@ -78,3 +78,19 @@ test('frost selection survives a serialized save/load and remains cosmetic',asyn
  game.normalize(loaded);
  assert.equal(loaded.towerCostume,null,'cannot use a floor-30 reward after invalidating its unlock');
 });
+
+test('live character honor wardrobe recognizes gold collection and preserves a chosen title',async()=>{
+ const {context,game,character}=await fixture(10);
+ context.localStorage.getItem=()=>null;
+ character.goldCollectionTier=1;
+ character.towerProgress.claimed=[10];
+ vm.runInContext('refreshCollectionHonorTitles(player)',context);
+ let html=vm.runInContext("renderTowerHonors('title')",context);
+ assert.match(html,/黃金冒險者/);
+ assert.match(html,/破曉挑戰者/);
+ assert.equal(context.selectTowerHonor(character,'title','黃金冒險者'),true);
+ html=vm.runInContext("renderTowerHonors('title')",context);
+ assert.match(html,/黃金冒險者 · 使用中/);
+ const restored=game.normalize(JSON.parse(JSON.stringify(character)));
+ assert.equal(context.normalizeTowerHonorSelection(restored).title,'黃金冒險者');
+});
