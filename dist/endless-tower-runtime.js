@@ -98,7 +98,7 @@ export function settleTowerRun(player,run,now,{alive=true,totalEnemies}={}) {
     return {error:'尚未擊敗所有敵人'};
   const result=finishTowerFloor(player.towerProgress,run.floor,(now-run.stageStartedAt)/1000,alive);
   if(!result.success)return {error:result.reason};
-  return {progress:result.progress,coins:result.towerCoins,firstReward:result.firstReward,
+  return {progress:result.progress,coins:result.towerCoins,firstReward:result.firstReward,firstClear:result.firstClear,
     clearSeconds:(now-run.stageStartedAt)/1000};
 }
 
