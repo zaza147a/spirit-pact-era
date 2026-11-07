@@ -1,4 +1,4 @@
-import {applyWarehouseCustody,acknowledgeWarehouseDeliveries} from './shared-warehouse.js?v=6.5.0';
+import {applyWarehouseCustody,acknowledgeWarehouseDeliveries} from './shared-warehouse.js?v=7.1.6';
 import {applyReselectLedger,recordReselectLedger} from './reselect-ledger.js?v=6.5.0';
 export const CHARACTER_SLOT_COUNT=8;
 export const SLOT_MIGRATION_KEY='icarus-character-slots-migrated-v1';

@@ -26,7 +26,7 @@ import {GOLD_COLLECTIBLES,goldCollectionTier,goldCollectionBonus,earnGold,buyGol
 import {multiTargets} from './adjacent-targets.js?v=6.5.12';
 import {rankOutfitArt,rankOutfitName,RANK_OUTFITS} from './rank-outfits.js?v=6.5.0-spirit-20261104';
 import {COSMETIC_STORAGE_KEY,COSMETIC_JOBS,COSMETIC_OUTFIT_PRICES,COSMETIC_BACKGROUNDS,cosmeticOutfitId,cosmeticOutfitArt,cosmeticBackgroundArt,readCosmeticCollection,normalizeCosmeticSelection,buyCosmetic,cosmeticWealth} from './cosmetic-gallery.js?v=6.5.35-spirit-gold-1';
-import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,warehouseStackAllowed,warehouseStackItems,WAREHOUSE_BATCH_LIMIT,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,transferWarehouseStack,exportWarehouse,importWarehouse} from './shared-warehouse.js?v=homecoming-1';
+import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,warehouseStackAllowed,warehouseStackItems,WAREHOUSE_BATCH_LIMIT,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,transferWarehouseStack,exportWarehouse,importWarehouse} from './shared-warehouse.js?v=7.1.6';
 import {migrateLegacyReselect,reselectionPet,RESELECT_ORDERED_TYPES} from './pet-legacy-reselect.js?v=6.5.0';
 import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArchonPreparationFactor} from './dawn-sigil.js?v=6.5.38';
 import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,nextHumanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
@@ -66,7 +66,7 @@ import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migr
 import {bossCardEquipAllowed,bossCardHitBonus,bossCardIncoming,bossCardDodge,bossCardSong} from './boss-card-runtime.js?v=6.5.47';
 let bossHitMeta=null;
 import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.5.0';
-import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=6.5.0';
+import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=7.1.6';
 import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.5.57';
 import {matchesGearFilters} from './inventory-rules.js?v=6.5.0';
 import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=7.0.1';

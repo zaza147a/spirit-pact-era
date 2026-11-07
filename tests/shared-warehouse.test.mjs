@@ -46,6 +46,19 @@ test('stack ledger replays exactly once if character write fails after shared co
  assert.equal(load(s,0).bag.find(x=>x.id==='med').qty,40);
  s.fail(null);writeCharacterSlot(s,0,load(s,0));assert.equal(load(s,0).bag.find(x=>x.id==='med').qty,40);
 });
+test('gold bars withdraw even if newer cloud character receipt exceeds local warehouse history',()=>{
+ const {s,players}=fixture();
+ const owner=players[0];owner.bag=[{id:'gold_bar',qty:12}];
+ owner.warehouseStackReceipts={'item:gold_bar':{deposit:120,withdraw:90}};
+ s.setItem(WAREHOUSE_KEY,JSON.stringify({version:1,records:{},stacks:{'item:gold_bar':{qty:7,flows:{'0':{deposit:7,withdraw:0}}}}}));
+ const result=transferWarehouseStack(s,0,owner,'withdraw','item','gold_bar',7,next=>writeCharacterSlot(s,0,next));
+ assert.equal(result.pendingSync,false);
+ assert.equal(result.player.bag.find(item=>item.id==='gold_bar').qty,19);
+ assert.equal(load(s,0).bag.find(item=>item.id==='gold_bar').qty,19);
+ assert.deepEqual(warehouseStackItems(s),[]);
+ assert.equal(readWarehouse(s).stacks['item:gold_bar'].flows[0].withdraw,97);
+ assert.equal(readCharacterSlot(s,0,p=>p,()=>true).player.bag.find(item=>item.id==='gold_bar').qty,19);
+});
 test('mission items, tickets and malformed warehouse stacks are rejected without changing saves',()=>{
  const {s,players}=fixture(),original=new Map(s.values);
  assert.throws(()=>transferWarehouseStack(s,0,players[0],'deposit','item','unknown_item',1));

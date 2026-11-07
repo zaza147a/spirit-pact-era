@@ -110,7 +110,16 @@ export function transferWarehouseStack(storage,index,player,direction,kind,id,am
   if(!inventory.some(e=>e.id===id&&!e.uid)&&inventory.length>=2000)throw Error('背包已滿');
   record.qty-=amount;
  }
+ // A character restored from cloud may carry newer delivery receipts than this
+ // browser's warehouse flow history. Align the counters before adding a new
+ // transfer, otherwise its first withdrawals are silently swallowed.
  const flow=record.flows[index]||{deposit:0,withdraw:0};
+ const receipt=player.warehouseStackReceipts?.[key]||{};
+ flow.deposit=Math.max(flow.deposit,Number.isSafeInteger(receipt.deposit)?receipt.deposit:0);
+ flow.withdraw=Math.max(flow.withdraw,Number.isSafeInteger(receipt.withdraw)?receipt.withdraw:0);
+ if(flow.deposit>Number.MAX_SAFE_INTEGER-amount||flow.withdraw>Number.MAX_SAFE_INTEGER-amount)throw Error('倉庫流水帳已達安全上限，請先備份');
+ next.warehouseStackReceipts??={};
+ next.warehouseStackReceipts[key]={deposit:flow.deposit,withdraw:flow.withdraw};
  flow[direction==='deposit'?'deposit':'withdraw']+=amount;
  record.flows[index]=flow;state.stacks[key]=record;
  storage.setItem(WAREHOUSE_KEY,JSON.stringify(state));
