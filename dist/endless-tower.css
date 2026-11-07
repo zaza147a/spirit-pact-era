@@ -10,3 +10,10 @@
 .tower-floor-picker select{min-width:140px;max-width:100%;}
 .tower-objective-banner{margin:8px 0;padding:8px;border:1px solid rgba(153,204,247,.55);border-radius:8px;background:rgba(41,87,128,.25);font-weight:600;}
 @media(max-width:650px){.tower-region button{max-width:100%;white-space:normal;}}
+.tower-honor-choices{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0;}
+.tower-honor-choices button.active{border-color:#f6d899;background:rgba(215,172,88,.19);color:#ffefc8;}
+.slot-select h2.tower-honor-name{display:table;margin-left:auto;margin-right:auto;max-width:94%;padding:5px 15px;border-radius:9px;}
+.slot-select h2.tower-frame-dawn{border:2px solid #e7c66a;background:linear-gradient(110deg,#2c303c,#66512e,#2c303c);color:#fff1bf;}
+.slot-select h2.tower-frame-flame{border:2px solid #e7834a;background:linear-gradient(110deg,#351f30,#8c342b,#351f30);color:#ffe2bd;}
+.slot-select h2.tower-frame-frost{border:2px solid #9be4f5;background:linear-gradient(110deg,#223445,#416d92,#223445);color:#edfaff;}
+.slot-select .tower-honor-title{display:block;margin:4px auto 7px;color:#f5d89b;font-size:.76rem;letter-spacing:.08em;text-shadow:0 1px 3px #101722;}
