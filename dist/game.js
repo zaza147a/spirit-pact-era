@@ -1928,6 +1928,10 @@ tickCompanionFourth(now);
 // Skip only completely idle 100ms slices; retain the original time grid and
 // never jump over encounter, regeneration or supply deadlines.
 function offlineIdleSkipSteps(now,remaining){
+ if(globalThis.__spiritDisableOfflineIdleSkip===true)return 0;
+ // The selected live target is sufficient to disqualify idle skipping.
+ // This constant-time guard avoids scanning the encounter roster on most combat ticks.
+ if(enemy?.hp>0)return 0;
  if(player?.trialRun||casting||controlEffect||enemies.some(foe=>foe.hp>0)||!encounterSlots.length||encounterSlots.some(at=>!Number.isFinite(at)))return 0;
  const regenAt=Number.isFinite(timers.regen)?timers.regen+4000:now;
  const suppliesAt=Number.isFinite(timers.offlineSupplies)?timers.offlineSupplies+4000:now;
