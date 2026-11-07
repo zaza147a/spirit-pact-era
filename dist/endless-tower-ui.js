@@ -12,7 +12,7 @@ export function renderTowerPanel(player,{maxFloor=TOWER_FIRST_RELEASE_MAX,now=0}
     return title+`<section class="item trial-route tower-active" aria-live="polite"><h3>${stage.floor} 層 · ${escapeHtml(stage.name)}</h3><p>${escapeHtml(stage.region)} · ${escapeHtml(stage.mechanic)} · 剩餘 ${Math.ceil(towerRemainingSeconds(active,now))} 秒</p><p>已擊敗 ${active.completedEnemyIds?.length||0}／${stage.enemyCount} 隻</p><button data-tower-exit>結束天穹終境挑戰</button></section>`;
   }
   const regions=TOWER_REGIONS.slice(0,Math.ceil(maxFloor/10));
-  return title+`<section class="item"><b>開放條件</b><p>${escapeHtml(entryError||'已符合入場條件')}</p><p>第一階段開放 1～${maxFloor} 層，後續樓層將於實戰平衡驗收後開放。</p></section>`+
+  return title+(player?.towerLastResult?towerRewardNotice(player.towerLastResult):'')+`<section class="item"><b>開放條件</b><p>${escapeHtml(entryError||'已符合入場條件')}</p><p>第一階段開放 1～${maxFloor} 層，後續樓層將於實戰平衡驗收後開放。</p></section>`+
     regions.map((region,i)=>{
       const from=i*10+1,to=Math.min(maxFloor,(i+1)*10),unlocked=progress.highest>=from-1;
       const next=progress.highest>=from&&progress.highest<to?progress.highest+1:from;
