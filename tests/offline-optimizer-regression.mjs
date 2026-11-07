@@ -45,7 +45,7 @@ const optimized=game.slice(encounterStart,encounterEnd);
 const original=`function tickEncounters(now){if(player.trialRun){if(!enemies.some(e=>e.hp>0)&&now>=player.trialRun.nextAt)spawnTrialBoss();return;}if(isTown(player.location)||!player.hp)return;const capacity=encounterLimit(player.location);let changed=false;enemies=enemies.filter(e=>e.hp>0);for(let slot=0;slot<capacity;slot++){if(encounterSlots[slot]===undefined)encounterSlots[slot]=now+rand(100,900);if(!enemies.some(e=>!e.boss&&e.slotIndex===slot)&&now>=encounterSlots[slot]){encounterSlots[slot]=now+rand(250,1400);addEncounter(now,slot);changed=true;}}if(changed)render();}`;
 function encounterState(fn,initial){
  const state={player:{location:'field',hp:100},enemies:structuredClone(initial.enemies),encounterSlots:initial.slots.slice(),rng:0,renders:0};
- const env={...state,isTown:()=>false,encounterLimit:()=>3,
+ const env={...state,isTown:()=>false,homecomingMap:()=>null,encounterLimit:()=>3,
    rand:(a,b)=>a+(env.rng++%Math.max(1,b-a+1)),
    addEncounter:(now,slot)=>env.enemies.push({slotIndex:slot,hp:100,boss:false,id:'spawn'+slot}),
    render:()=>{env.renders++},spawnTrialBoss:()=>{}};
