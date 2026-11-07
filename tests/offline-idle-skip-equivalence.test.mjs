@@ -18,9 +18,9 @@ function semanticState(value){
  };
  return visit(value);
 }
-async function settle(player,minutes,disableOfflineIdleSkip,disableOfflineEffectGuards=false,disableOfflineStorageGuard=false,disableOfflinePactFusionCache=false){
+async function settle(player,minutes,disableOfflineIdleSkip,disableOfflineEffectGuards=false,disableOfflineStorageGuard=false,disableOfflinePactFusionCache=false,disableOfflineAutoSkillCache=false){
  const worker=new Worker(new URL('./offline-worker-node-entry.mjs?clock='+epoch,import.meta.url),{
-  type:'module',workerData:{seed:471122,disableOfflineIdleSkip,disableOfflineEffectGuards,disableOfflineStorageGuard,disableOfflinePactFusionCache}
+  type:'module',workerData:{seed:471122,disableOfflineIdleSkip,disableOfflineEffectGuards,disableOfflineStorageGuard,disableOfflinePactFusionCache,disableOfflineAutoSkillCache}
  });
  const started=performance.now();
  try{return await new Promise((resolve,reject)=>{
@@ -36,6 +36,16 @@ async function settle(player,minutes,disableOfflineIdleSkip,disableOfflineEffect
   worker.on('error',error=>{clearTimeout(timeout);reject(error)});
   worker.postMessage({player:structuredClone(player),now:epoch+minutes*60000});
  });}finally{await worker.terminate();}
+}
+
+for(const [level,job] of [[200,'pactWarrior'],[200,'spiritCommander'],[210,'pactWarrior'],[210,'spiritCommander']]){
+ test(`offline auto-skill order memo preserves ${level} ${job} combat`,async()=>{
+  const player=highLevelSpiritPlayer({level,job,pairKey:'attack-magic+defense-support',gearRarity:'mythic'});
+  const baseline=await settle(player,10,false,false,false,false,true);
+  const optimized=await settle(player,10,false,false,false,false,false);
+  assert.deepEqual(semanticState(optimized.result),semanticState(baseline.result));
+  console.log(JSON.stringify({autoSkillCache:true,level,job,baselineMs:baseline.wallMs,optimizedMs:optimized.wallMs}));
+ });
 }
 
 for(const [level,minutes] of [[200,10],[200,60],[210,10]]){
