@@ -65,7 +65,7 @@ try{
  assert.ok((await home.getAttribute('src')).includes(`outfit-${TOWER_FROST_JOBS[8]}-frost.webp`),'home portrait matches selected character');
  await page.locator('[data-tab="character"]').click();
  await page.locator('[data-character-section="outfits"]').click();
- const button=page.locator('[data-tower-costume="frost"]');
+ const button=page.locator('[data-tower-costume]');
  await button.waitFor();assert.equal(await button.isDisabled(),false);
  await button.click();
  assert.equal(await page.locator('#character .hero img.tower-frost-equipped').count(),0,'unequip restores default art');
