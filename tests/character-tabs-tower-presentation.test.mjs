@@ -66,13 +66,24 @@ test('honor selection immediately rerenders the character portrait without reloa
  assert.match(game,/selectTowerHonor\(player,b\.dataset\.towerHonorPick,b\.dataset\.towerHonorValue\)/);
  assert.match(game,/save\(\);render\(\);renderSide\(true\);toast\('已更新天穹稱號／名稱框，角色畫面立即生效'\)/);
 });
+test('purchased three-region showcase renders its own character card and toggle',async()=>{
+ const game=await readFile('dist/game.js','utf8');
+ const css=await readFile('dist/endless-tower.css','utf8');
+ assert.match(game,/data-tower-showcase="on"/);
+ assert.match(game,/data-tower-showcase="off"/);
+ assert.match(game,/normalizeTowerCollection\(player\.towerCollection\)\.selectedShowcase/);
+ assert.match(game,/tower-showcase-display/);
+ assert.match(game,/selectTowerShowcase\(player,b\.dataset\.towerShowcase==='on'\)/);
+ assert.match(css,/#gameShell #character>\.hero \.tower-showcase-display/);
+ for(const i of [10,20,30])assert.match(game,new RegExp(`assets/tower/boss-${i}\\.webp`));
+});
 
 test('release entrypoint and title module use synchronized cache versions',async()=>{
  const html=await readFile('dist/index.html','utf8');
  const game=await readFile('dist/game.js','utf8');
- assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.8/);
- assert.match(html,/game\.js\?v=7\.1\.8/);
- assert.match(html,/endless-tower\.css\?v=7\.1\.8/);
- assert.match(game,/tower-honors\.js\?v=7\.1\.8/);
- assert.match(game,/town-scene\.js\?v=7\.1\.8/);
+ assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.9/);
+ assert.match(html,/game\.js\?v=7\.1\.9/);
+ assert.match(html,/endless-tower\.css\?v=7\.1\.9/);
+ assert.match(game,/tower-honors\.js\?v=7\.1\.9/);
+ assert.match(game,/town-scene\.js\?v=7\.1\.9/);
 });

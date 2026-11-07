@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {finishTowerFloor} from '../dist/endless-tower.js';
-import {buyTowerShopItem,selectTowerBackground,normalizeTowerCollection,awardTowerCoins} from '../dist/tower-reward-shop.js';
+import {buyTowerShopItem,selectTowerBackground,towerShowcaseOwned,selectTowerShowcase,normalizeTowerCollection,awardTowerCoins} from '../dist/tower-reward-shop.js';
 import {selectTowerHonor,towerHonorOptions} from '../dist/tower-honors.js';
 import {renderTowerRewards} from '../dist/endless-tower-ui.js';
 
@@ -48,6 +48,22 @@ test('daily replay cap leaves first-clears untouched and resets next day',()=>{
  assert.equal(awardTowerCoins(player,300,{firstClear:true,day:'2026-11-07'}),300);
  assert.equal(awardTowerCoins(player,20,{day:'2026-11-08'}),20);
  assert.equal(player.towerCoins,470);
+});
+test('three-region boss showcase is opt-in, cosmetic and persistent after purchase',()=>{
+ const player={towerProgress:{highest:30,claimed:[10,20,30]},towerCoins:1300};
+ assert.equal(towerShowcaseOwned(player),false);
+ assert.equal(selectTowerShowcase(player,true),false);
+ assert.equal(normalizeTowerCollection(player.towerCollection).selectedShowcase,false);
+ assert.equal(buyTowerShopItem(player,'collection_three').item.cost,1200);
+ assert.equal(player.towerCoins,100);
+ assert.equal(towerShowcaseOwned(player),true);
+ assert.equal(selectTowerShowcase(player,true),true);
+ assert.equal(normalizeTowerCollection(player.towerCollection).selectedShowcase,true);
+ const restored=structuredClone(player);
+ assert.equal(normalizeTowerCollection(restored.towerCollection).selectedShowcase,true);
+ assert.equal(selectTowerShowcase(restored,false),true);
+ assert.equal(normalizeTowerCollection(restored.towerCollection).selectedShowcase,false);
+ assert.equal(restored.towerCoins,100);
 });
 
 test('tower album and shop render without combat rewards or unowned unlock buttons',()=>{

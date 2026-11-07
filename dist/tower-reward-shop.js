@@ -22,7 +22,16 @@ export function awardTowerCoins(player,coins,{firstClear=false,day=new Date().to
 export function normalizeTowerCollection(value){
  const ids=new Set(TOWER_SHOP_ITEMS.map(item=>item.id));
  return {purchases:Array.isArray(value?.purchases)?[...new Set(value.purchases.filter(id=>ids.has(id)))]:[],
-   selectedBackground:typeof value?.selectedBackground==='string'&&ids.has(value.selectedBackground)?value.selectedBackground:null};
+   selectedBackground:typeof value?.selectedBackground==='string'&&ids.has(value.selectedBackground)?value.selectedBackground:null,
+   selectedShowcase:value?.selectedShowcase===true&&Array.isArray(value?.purchases)&&value.purchases.includes('collection_three')};
+}
+export function towerShowcaseOwned(player){return normalizeTowerCollection(player?.towerCollection).purchases.includes('collection_three');}
+export function selectTowerShowcase(player,enabled){
+ const collection=normalizeTowerCollection(player?.towerCollection);
+ if(enabled&&!collection.purchases.includes('collection_three'))return false;
+ collection.selectedShowcase=enabled===true;
+ player.towerCollection=collection;
+ return true;
 }
 export function towerShopItem(id){return TOWER_SHOP_ITEMS.find(item=>item.id===id)||null;}
 export function buyTowerShopItem(player,id){

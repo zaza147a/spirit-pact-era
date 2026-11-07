@@ -12,6 +12,12 @@
 @media(max-width:650px){.tower-region button{max-width:100%;white-space:normal;}}
 .tower-honor-choices{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0;}
 .tower-honor-choices button.active{border-color:#f6d899;background:rgba(215,172,88,.19);color:#ffefc8;}
+.tower-showcase-preview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0;padding:9px;background:#112537;border:1px solid #9d8157;border-radius:12px;}
+.tower-showcase-preview img{display:block;width:100%;height:100px;object-fit:contain;filter:drop-shadow(0 3px 6px #0008);}
+#gameShell #character>.hero .tower-showcase-display{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;align-self:center;gap:5px;width:min(100%,245px);max-width:100%;margin:7px auto;padding:6px 9px;border:2px double #d6b976;border-radius:12px;background:linear-gradient(115deg,#102238ed,#53402bee,#162e42ed);box-shadow:0 4px 13px #0007;box-sizing:border-box;}
+#gameShell #character>.hero .tower-showcase-display>span{font-size:11px!important;color:#ffe5a5!important;letter-spacing:.08em;line-height:1.35;}
+#gameShell #character>.hero .tower-showcase-display>div{display:flex;justify-content:space-evenly;align-items:center;gap:6px;width:100%;}
+#gameShell #character>.hero .tower-showcase-display img{display:block;width:28%;max-width:60px;height:58px;object-fit:contain;filter:drop-shadow(0 2px 4px #000c);}
 .slot-select h2.tower-honor-name{display:table;margin-left:auto;margin-right:auto;max-width:94%;padding:5px 15px;border-radius:9px;}
 .slot-select h2.tower-frame-dawn{border:2px solid #e7c66a;background:linear-gradient(110deg,#2c303c,#66512e,#2c303c);color:#fff1bf;}
 .slot-select h2.tower-frame-flame{border:2px solid #e7834a;background:linear-gradient(110deg,#351f30,#8c342b,#351f30);color:#ffe2bd;}
