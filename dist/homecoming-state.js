@@ -62,9 +62,9 @@ export function homecomingAdventureAction(p,id,choiceId,{pet,offline=false,go=fa
  return q;
 }
 // Call only after the combat engine confirms an actual, previously uncredited death.
-export function recordHomecomingVictory(p,id,{pet,mapId,boss=false,offline=false}={}){
+export function recordHomecomingVictory(p,id,{pet,mapId,boss=false,offline=false,companionPresentAtStart=false}={}){
  const r=HOMECOMING_BY_ID[id],q=p.homecoming?.routes?.[id];
- if(!r||!q||offline||q.phase!=='active'||!eligibleHomecoming(p,pet)||homecomingIdentity(pet)!==id||!(Number(pet.hp)>0))return false;
+ if(!r||!q||offline||q.phase!=='active'||!eligibleHomecoming(p,pet)||homecomingIdentity(pet)!==id||(!(Number(pet.hp)>0)&&!companionPresentAtStart))return false;
  const a=q.adventure,step=HOMECOMING_ADVENTURES[id]?.nodes[a?.step];
  if(!step?.combat||mapId!==p.location||mapId!==adventureLocation(r,step)||boss!==(step.location==='boss'))return false;
  if(advanceAdventure(r,a,null,{victory:true}))q.phase='ready';
