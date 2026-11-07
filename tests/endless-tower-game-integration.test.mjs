@@ -17,6 +17,7 @@ test('actual game rewards once after all kills and safely returns to dawn city',
  for(let i=0;i<3;i++){const foe=a.state().enemy;assert.ok(foe.hp>0);foe.hp=0;a.award();}
  assert.equal(p.towerRun,undefined);assert.equal(p.location,'dawncity');
  assert.equal(p.towerProgress.highest,1);assert.ok(p.towerCoins>0);
+ assert.equal(p.towerLastResult.floor,1);
  a.startTower(2);assert.equal(p.towerRun.floor,2);
  a.exitTower('撤退');assert.equal(p.towerRun,undefined);
  assert.equal(p.towerProgress.highest,1);
@@ -41,4 +42,18 @@ test('actual combat death exits before auto revival and restores town party',asy
  p.hp=0;a.combatTick();
  assert.equal(p.towerRun,undefined);assert.equal(p.location,'dawncity');
  assert.ok(p.hp>0);assert.equal(p.towerProgress.highest,0);
+});
+test('twentieth-floor boss summons bounded adds and they do not count as floor clears',async()=>{
+ const {a,p}=await fixture();p.towerProgress={highest:19};a.startTower(20);
+ const boss=a.state().enemy;boss.hp=Math.round(boss.maxHp*.69);
+ a.tickTowerBossMechanics(1e6+1000);
+ assert.equal(a.state().enemies.length,5);
+ assert.equal(boss.towerPhase,1);
+ const summon=a.state().enemies.find(e=>e.towerSummon);summon.hp=0;
+ a.setEnemies([summon,boss,...a.state().enemies.filter(e=>e!==summon&&e!==boss)]);
+ a.award();
+ assert.equal(p.towerRun.completedEnemyIds.length,0);
+ assert.equal(p.towerProgress.highest,19);
+ a.tickTowerBossMechanics(1e6+2000);
+ assert.equal(a.state().enemies.length,4);
 });
