@@ -2333,7 +2333,11 @@ function renderBackgroundGallery(){
   return `<article class="cosmetic-bg"><img loading="lazy" src="${cosmeticBackgroundArt(bg.id)}" alt="${bg.name}"><div><b>${bg.name}</b><small>${bg.price/100_000_000} 億金</small><button data-cosmetic-background="${bg.id}">${owned?(selected?'取消背景':'使用背景'):'永久收藏'}</button></div></article>`;}).join('');
  return `<section class="item cosmetic-gallery"><h3>角色背景</h3><p>金幣背景與天穹背景只能選用一款，亦可不使用；不影響戰力。</p><p>已收藏 ${collection.backgrounds.length}/8 款金幣背景，${towerBackgrounds? towerCollectedBackgrounds(player).length:0}/3 款天穹背景。</p><button data-cosmetic-background="default">回到預設背景</button><h3>天穹背景</h3><div class="cosmetic-background-grid">${towerBackgrounds||'<p>尚未收藏天穹背景，可在天穹終境商店解鎖。</p>'}</div><h3>金幣背景</h3><div class="cosmetic-background-grid">${backgrounds}</div><label class="cosmetic-control">背景亮度 ${player.cosmeticBrightness||75}%<input type="range" min="30" max="100" step="5" data-cosmetic-brightness value="${player.cosmeticBrightness||75}"></label><label class="cosmetic-control"><input type="checkbox" data-cosmetic-aura ${player.cosmeticAura!==false?'checked':''}> 顯示角色光環</label></section>`;
 }
-const TOWER_BACKGROUND_STYLES={background_dawn:'radial-gradient(circle at 65% 22%,#e9bc71 0%,#785b6c 36%,#172b46 100%)',background_flame:'radial-gradient(circle at 55% 27%,#fc9c48 0%,#9c393a 34%,#23192d 100%)',background_frost:'radial-gradient(circle at 55% 20%,#cbf4ff 0%,#5b92c4 40%,#1a304d 100%)'};
+const TOWER_BACKGROUND_STYLES={
+ background_dawn:'linear-gradient(140deg,rgba(37,41,73,.3),rgba(65,47,37,.1)),url("assets/tower/background-dawn.webp?v=tower-art-1")',
+ background_flame:'linear-gradient(140deg,rgba(27,13,30,.23),rgba(28,14,24,.2)),url("assets/tower/background-flame.webp?v=tower-art-1")',
+ background_frost:'linear-gradient(140deg,rgba(16,32,62,.3),rgba(20,37,58,.15)),url("assets/tower/background-frost.webp?v=tower-art-1")'
+};
 function applyCosmeticHero(){
  const hero=$('character')?.querySelector('.hero');if(!hero)return;
  const collection=readCosmeticCollection(localStorage);
