@@ -87,4 +87,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          timeout: 1200000
+          # deploy-pages has a hard maximum of 600000ms; higher values are ignored.
+          timeout: 600000
