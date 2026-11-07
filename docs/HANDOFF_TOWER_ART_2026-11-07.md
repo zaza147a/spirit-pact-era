@@ -17,7 +17,7 @@
 
 UI：`dist/game.js` 的 `TOWER_BACKGROUND_STYLES` 與 `dist/endless-tower.css` 已指向上述 WebP，圖片載入失敗時沿用底色。需進行瀏覽器視覺驗收與快取版本更新。
 
-## 已完成：第 30 層專屬永凍時裝首批
+## 已完成：第 30 層專屬永凍時裝（六職）
 
 路徑均在 `dist/assets/tower/`，尺寸 **1024×1504 WebP，帶 alpha 真透明**：
 
@@ -26,20 +26,20 @@ UI：`dist/game.js` 的 `TOWER_BACKGROUND_STYLES` 與 `dist/endless-tower.css` �
 | 皇家 / crusader | `outfit-crusader-frost.webp` | 女性銀白冰晶聖騎士，大型紋章冰盾＋單手長劍 |
 | 騎士 / knight | `outfit-knight-frost.webp` | 女性冰龍槍騎士，雙手冰龍長槍與藍銀披風 |
 | 大法師 / wizard | `outfit-wizard-frost.webp` | 女性冰晶大法師，冰霜法杖與雪花魔法陣 |
+| 賢者 / sage | `outfit-sage-frost.webp` | 女性冰系魔拳賢者，元素拳套與四元素浮空法書 |
+| 十字斬首者 / assassin | `outfit-assassin-frost.webp` | 女性冰影刺客，雙腕拳刃與低姿態突襲造型 |
+| 流氓 / rogue | `outfit-rogue-frost.webp` | 女性冰霜遊俠型流氓，華麗羽帽、手弩與短刃 |
 
-三張均使用現有 `dist/assets/cosmetics/fixed-<job>-0.webp` 作為職業識別／精緻度參考；新圖獨立生成並保留真透明。
+六張均使用現有 `dist/assets/cosmetics/fixed-<job>-0.webp` 作為職業識別／精緻度參考；新圖逐張獨立生成並保留真透明。尚未開放換裝。
 
-## 待製作的九職（請逐張生成與保存，不要一張大圖裁切）
+## 待製作的六職（請逐張生成與保存，不要一張大圖裁切）
 
-1. `sage`：賢者／元素、魔拳身分；注意要符合原職業武器特色。
-2. `assassin`：十字斬首者／拳刃或雙短劍刺客。
-3. `rogue`：流氓／遊俠型暗影武器，參照既有時裝。
-4. `priest`：主教／聖系法杖與治療意象。
-5. `monk`：修羅／拳套與氣勁意象。
-6. `hunter`：遊俠／弓系遠距。
-7. `performer`：舞孃／樂器與音律。
-8. `pactWarrior`：君王／杖劍與雙同化夥伴。
-9. `spiritCommander`：萬靈／雙協戰夥伴。
+1. `priest`：主教／聖系法杖與治療意象。
+2. `monk`：修羅／拳套與氣勁意象。
+3. `hunter`：遊俠／弓系遠距。
+4. `performer`：舞孃／樂器與音律。
+5. `pactWarrior`：君王／杖劍與雙同化夥伴。
+6. `spiritCommander`：萬靈／雙協戰夥伴。
 
 每張先檢查參考既有職業立繪的性別、姿態和職業武器，優先設計相反性別，維持高精緻度與獨立構圖。生成後轉為 1024×1504、透明 WebP，檢查 alpha 與繪圖完整度，逐張存入此分支。不要臆造圖片已完成。
 
