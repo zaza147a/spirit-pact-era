@@ -47,7 +47,8 @@ UI：`dist/game.js` 的 `TOWER_BACKGROUND_STYLES` 與 `dist/endless-tower.css` �
 3. 首頁角色立繪與登入選角按同一 `towerCostume` 存檔欄位顯示；已有原階級／金幣外觀時互斥，選用塔時裝會清掉其他穿著設定。
 4. 新增 `tests/tower-costumes.test.mjs` 純邏輯回歸，並用 `tests/tower-costumes-game-integration.test.mjs` 實際執行遊戲函式，確認未解鎖／通關解鎖／取消穿戴／主頁與選角使用相同圖片／十二職業各自正確圖片。再加入存檔 JSON 往返測試，發現並修正 `normalize()` 沒有即時清除失效永凍時裝選擇的缺口。**相關回歸共 64／64 通過**。
 5. 十二職業素材經 ImageMagick 再次確認全部為 1024×1504 並具有 alpha 通道。
-6. 已新增 `scripts/browser/tower-frost-acceptance.mjs` 可重跑桌面 Chromium 驗收：十二職業選角圖載入與縮放、首頁換裝、手動取消／重新穿戴與刷新保存。**目前執行環境沒有 Chromium 執行檔**（雖已安裝 Playwright 套件），此項仍未實際跑通，沒有真實截圖，不能宣稱視覺驗收通過；尤其待核對君王／萬靈的選角框大小。尚未合併 `main`。
+6. 已新增 `scripts/browser/tower-frost-acceptance.mjs`、`.github/workflows/tower-frost-browser.yml` 執行桌面 Chromium 驗收：十二職業選角圖可載入、尺寸一致、`object-fit: contain`、首頁換裝、手動取消／重新穿戴及刷新後保存。**2026-11-07 GitHub Actions 第三次驗收成功**：Run `42367049789`，提交 `30f947d`，產出 `tower-frost-desktop-evidence`（含兩張選角截圖與 JSON 報告）；前兩次失敗分別為測資角色名稱超過 16 字與測試腳本未辨認「取消穿戴」按鈕，均已修正。這是實際瀏覽器自動化合格，仍建議由玩家最後主觀檢視美術與帽子透視。
+7. **合併前留意：** 正式 `main` 的 `f0357cf`（統一君王／萬靈單夥伴 HUD）比本測試分支的共同祖先多一個提交，並與塔功能同時修改 `dist/game.js`。尚未整合此正式更新進測試分支；合併前必須保留兩邊改動並重跑相關驗證。**尚未合併 `main`，正式版沒有變更。**
 
 ## 既有邏輯驗證
 
