@@ -56,4 +56,5 @@ test('twentieth-floor boss summons bounded adds and they do not count as floor c
  assert.equal(p.towerProgress.highest,19);
  a.tickTowerBossMechanics(1e6+2000);
  assert.equal(a.state().enemies.length,4);
+ assert.match(a.spriteHtml(boss.id,'monster'),/assets\/tower\/boss-20.webp/);
 });
