@@ -35,7 +35,7 @@ import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} f
 import {towerFrostUnlocked,normalizeTowerCostume,towerFrostArt,chooseTowerCostume} from './tower-costumes.js';
 import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature,postponeTowerPursuer} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
-import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js';
+import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.2';
 import {TOWER_SHOP_ITEMS,normalizeTowerCollection,buyTowerShopItem,towerCollectedBackgrounds,selectTowerBackground,awardTowerCoins} from './tower-reward-shop.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
 import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';

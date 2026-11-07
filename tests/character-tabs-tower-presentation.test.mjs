@@ -25,3 +25,12 @@ test('first thirty floors use three transparent independent regional monster ima
   assert.ok((await stat(file)).size>15_000,file);
  }
 });
+
+test('release entrypoint and title module use synchronized cache versions',async()=>{
+ const html=await readFile('dist/index.html','utf8');
+ const game=await readFile('dist/game.js','utf8');
+ assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.2/);
+ assert.match(html,/game\.js\?v=7\.1\.2/);
+ assert.match(html,/endless-tower\.css\?v=7\.1\.2/);
+ assert.match(game,/tower-honors\.js\?v=7\.1\.2/);
+});
