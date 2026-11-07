@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossPhase,TOWER_BOSS_PATTERNS} from '../dist/endless-tower-runtime.js';
+import {buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossPhase,towerBossSignature,TOWER_BOSS_PATTERNS} from '../dist/endless-tower-runtime.js';
 import {DAWN_MONSTERS,DAWN_BOSS} from '../dist/dawn-world.js';
 
 const player=()=>({thirdJob:true,level:210,hp:300000,dawnUnlocked:true,towerProgress:{highest:0}});
@@ -46,4 +46,11 @@ test('boss phases never go backward and summons have deterministic thresholds',(
   assert.equal(towerBossPhase(pattern,.2,1),2);
   assert.equal(towerBossPhase(pattern,.9,2),2);
   assert.deepEqual(pattern.summons,[4,0]);
+});
+test('signature skills are bounded, periodic and region-specific',()=>{
+ const light=towerBossSignature(10,2),fire=towerBossSignature(20,2),ice=towerBossSignature(30,2);
+ assert.equal(light.type,'strike');assert.ok(light.maxHpRatio<=.12);
+ assert.equal(fire.type,'burn');assert.ok(fire.hpRatio<=fire.maxHpRatio);
+ assert.equal(ice.type,'freeze');assert.ok(ice.durationMs<=ice.maxDurationMs);
+ for(const skill of [light,fire,ice])assert.ok(skill.intervalMs>=7000);
 });

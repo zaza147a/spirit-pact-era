@@ -32,7 +32,7 @@ import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArc
 import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
 import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_RESISTANCE,CONTROL_SLOTS,CONTROL_NAMES,enhancedAffixes,rankOf,fullSetRank,normalizeEnhancements,unlockRankOutfits,controlResistance,enhanceEquipped,enhancePetEquipped,trialEntryError,TRIAL_ROUTES,createTrialBoss,trialDropTable,trialDrops,dawnEntryError} from './sky-trials.js?v=6.5.44';
 import {towerFloor,towerEntryError,normalizeTowerProgress} from './endless-tower.js';
-import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds} from './endless-tower-runtime.js';
+import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
 import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';
@@ -2120,6 +2120,26 @@ function tickTowerBossMechanics(now){
      lastAttack:now,appearedAt:now,instanceId:`tower-summon-${++encounterSerial}`};
     SPECIES[id]={name:summon.name,role:'attack',roleName:'天穹召喚體',level:210};enemies.push(summon);
    }
+  }
+  const skill=towerBossSignature(player.towerRun.floor,foe.towerPhase||0);
+  if(!foe.towerNextSkill)foe.towerNextSkill=foe.appearedAt+skill.intervalMs;
+  if(now>=foe.towerNextSkill){
+   foe.towerNextSkill=now+skill.intervalMs;
+   if(skill.type==='strike'){
+    const damage=Math.min(Math.floor(stat('hp')*skill.maxHpRatio),incomingMonsterDamage(foe.atk*skill.power,stat('def')));
+    player.hp=Math.max(0,player.hp-Math.max(1,damage));
+    message(`⚠ ${foe.name} 發動【${skill.name}】！HP -${damage}`,'bad','system');
+   }else if(skill.type==='burn'){
+    const damage=Math.max(1,Math.floor(stat('hp')*Math.min(skill.hpRatio,skill.maxHpRatio)));
+    player.hp=Math.max(0,player.hp-damage);
+    message(`⚠ ${foe.name} 發動【${skill.name}】！HP -${damage}`,'bad','system');
+   }else if(skill.type==='freeze'){
+    const resisted=controlResistance(player,'freeze',GEAR_BASE);
+    if(resisted>=1||Math.random()<resisted)message('✧ 抵抗了永凍束縛！','good','system');
+    else if(!controlEffect||controlEffect.until<=now){controlEffect={type:'freeze',until:now+Math.min(skill.durationMs,skill.maxDurationMs)};casting=null;message(`⚠ ${foe.name} 施放【${skill.name}】！`,'bad','system');}
+   }
+   dirty=true;
+   if(player.hp<=0){exitTower('首領技能擊敗玩家');return;}
   }
  }
 }

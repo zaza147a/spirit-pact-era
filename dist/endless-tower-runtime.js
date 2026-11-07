@@ -82,3 +82,12 @@ export function towerBossPhase(pattern,healthRatio,previous=0) {
   for(let i=previous;i<pattern.phases.length;i++)if(healthRatio<=pattern.phases[i])next=i+1;
   return next;
 }
+
+// Signature casts have fixed intervals and upper bounds; no infinite crowd control.
+export function towerBossSignature(floor,phase=0) {
+ const region=Math.ceil(Math.min(30,Math.max(1,Number(floor)||1))/10);
+ const stage=Math.min(2,Math.max(0,Math.floor(phase)));
+ if(region===1)return Object.freeze({type:'strike',name:'聖光裁決',intervalMs:10000-stage*1000,power:.30+stage*.08,maxHpRatio:.12});
+ if(region===2)return Object.freeze({type:'burn',name:'炎龍灼燒',intervalMs:9000-stage*1000,hpRatio:.015+stage*.005,maxHpRatio:.03});
+ return Object.freeze({type:'freeze',name:'永凍束縛',intervalMs:12000-stage*1000,durationMs:1100+stage*150,maxDurationMs:1400});
+}

@@ -58,3 +58,19 @@ test('twentieth-floor boss summons bounded adds and they do not count as floor c
  assert.equal(a.state().enemies.length,4);
  assert.match(a.spriteHtml(boss.id,'monster'),/assets\/tower\/boss-20.webp/);
 });
+test('fire boss signature causes bounded periodic damage without duplicate casts',async()=>{
+ const {a,p}=await fixture();p.towerProgress={highest:19};a.startTower(20);
+ const boss=a.state().enemy,now=1e6+9000,before=p.hp;
+ a.tickTowerBossMechanics(now);
+ assert.ok(p.hp<before);const after=p.hp;
+ a.tickTowerBossMechanics(now+100);
+ assert.equal(p.hp,after);
+ assert.ok(boss.towerNextSkill>now+100);
+});
+test('ice boss control is bounded and can be resisted by the existing SSS rule',async()=>{
+ const {c,a,p}=await fixture();p.towerProgress={highest:29};a.startTower(30);
+ const boss=a.state().enemy,now=1e6+12000;
+ a.tickTowerBossMechanics(now);assert.equal(a.isControlled(),true);
+ c.setTime(now+1500);assert.equal(a.isControlled(),false);
+ a.exitTower('測試完成');
+});
