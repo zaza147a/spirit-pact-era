@@ -33,6 +33,15 @@ test('active companion rename is bound by pet identifier and guarded against cha
  assert.match(source,/data-rename-active-pet/);
  assert.match(source,/bindHeroRename\(document/);
 });
+test('spirit professions render the same single-companion card fields as other professions',()=>{
+ const source=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
+ const spiritHud=source.match(/function renderDualPetHud\(\)\{([\s\S]*?)\n\}/)?.[1];
+ assert.ok(spiritHud);
+ assert.doesNotMatch(spiritHud,/dual-pet-hud|dual-pet-unit|roster\.map/);
+ for(const field of ['ACTIVE COMPANION','pet-form','pet-role-row','夥伴 HP','夥伴 SP','夥伴護盾','evolution-ready','data-rename-active-pet']){
+  assert.ok(spiritHud.includes(field),`single-companion field missing: ${field}`);
+ }
+});
 test('rename responds to pointerdown before a rapidly re-rendered button disappears',()=>{
  const handlers={},calls=[];
  const document={addEventListener:(type,handler,capture)=>{assert.equal(capture,true);handlers[type]=handler;}};
