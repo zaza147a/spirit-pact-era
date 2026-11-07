@@ -9,12 +9,12 @@ async function fixture(){const c=await runtime(),a=c.api,p=a.normalize(a.fresh('
 test('actual game starts a tower floor without altering five-boss trial state',async()=>{
  const {a,p}=await fixture();a.startTower(1);
  assert.equal(p.towerRun.floor,1);assert.equal(p.location,'dawnrift');assert.equal(p.trialRun,undefined);
- assert.equal(a.state().enemies.length,3);assert.ok(a.state().enemies.every(e=>e.tower&&e.xp===0&&e.gold===0));
+ assert.equal(a.state().enemies.length,2);assert.ok(a.state().enemies.every(e=>e.tower&&e.xp===0&&e.gold===0));
  assert.match(a.renderTowerEncounter(),/第 1 層/);
 });
 test('actual game rewards once after all kills and safely returns to dawn city',async()=>{
  const {a,p}=await fixture();a.startTower(1);
- for(let i=0;i<3;i++){const foe=a.state().enemy;assert.ok(foe.hp>0);foe.hp=0;a.award();}
+ for(let i=0;i<2;i++){const foe=a.state().enemy;assert.ok(foe.hp>0);foe.hp=0;a.award();}
  assert.equal(p.towerRun,undefined);assert.equal(p.location,'dawncity');
  assert.equal(p.towerProgress.highest,1);assert.ok(p.towerCoins>0);
  assert.equal(p.towerLastFailure,undefined);
@@ -29,7 +29,7 @@ test('actual game rewards once after all kills and safely returns to dawn city',
 });
 test('finishing a floor allows changing character setup before entering the next one',async()=>{
  const {a,p}=await fixture();a.startTower(1);
- for(let i=0;i<3;i++){a.state().enemy.hp=0;a.award();}
+ for(let i=0;i<2;i++){a.state().enemy.hp=0;a.award();}
  assert.equal(p.location,'dawncity');
  const previousVitality=p.attributes.VIT;p.attributes.VIT=previousVitality+1;p.attributes.AGI-=1;
  a.startTower(2);
@@ -93,39 +93,53 @@ test('ice boss control is bounded and can be resisted by the existing SSS rule',
  c.setTime(now+1500);assert.equal(a.isControlled(),false);
  a.exitTower('測試完成');
 });
-test('pursuit floor requires four minor kills while an attacking boss remains alive',async()=>{
+test('pursuit minions respawn indefinitely until the escape timer ends',async()=>{
  const {a,p}=await fixture();p.towerProgress={highest:2};a.startTower(3);
- assert.equal(a.state().enemies.length,5);
+ assert.equal(a.state().enemies.length,3);
  assert.ok(a.state().enemies.some(e=>e.towerPursuer&&e.boss));
- for(let i=0;i<4;i++){
+ for(let i=0;i<12;i++){
   const foes=a.state().enemies,minor=foes.find(e=>!e.towerPursuer);
   a.setEnemies([minor,...foes.filter(e=>e!==minor)]);minor.hp=0;a.award();
+  assert.equal(a.state().enemies.length,3);
  }
+ assert.equal(p.towerProgress.highest,2);
+ assert.equal(p.towerRun.huntKills,12);
+ assert.equal(p.towerRun.completedEnemyIds.length,0);
+ a.tickTowerBossMechanics(1e6+24900);assert.equal(p.towerProgress.highest,2);
+ a.tickTowerBossMechanics(1e6+25000);
  assert.equal(p.towerProgress.highest,3);
+ assert.equal(p.towerLastResult.huntKills,12);
  assert.equal(p.location,'dawncity');
 });
 test('hunt boss has no ordinary attacks, broadcasts a skill timer and each minor kill postpones it',async()=>{
  const {c,a,p}=await fixture();p.towerProgress={highest:2};a.startTower(3);
  const chaser=a.state().enemies.find(e=>e.towerPursuer),initial=chaser.towerNextStrikeAt;
- assert.equal(initial,1e6+12000);
+ assert.equal(initial,1e6+24000);
  assert.match(a.renderTowerEncounter(),/終境追獵・裁決/);
  const minor=a.state().enemies.find(e=>!e.towerPursuer);
  a.setEnemies([minor,...a.state().enemies.filter(e=>e!==minor)]);minor.hp=0;a.award();
- assert.equal(chaser.towerNextStrikeAt,initial+8000);
+ assert.equal(chaser.towerNextStrikeAt,initial+14000);
  a.setEnemies([chaser]);a.setAutoForTest(false);
  const before=p.hp;c.setTime(initial-100);a.combatTick(initial-100);
  assert.equal(p.hp,before,'charged boss must not use basic attacks');
  c.setTime(initial);a.combatTick(initial);assert.equal(p.hp,before,'kill postpones the strike');
- c.setTime(initial+8000);a.tickTowerBossMechanics(initial+8000);
- assert.ok(p.hp<before,'the postponed attack eventually fires');
- assert.equal(chaser.towerNextStrikeAt,initial+8000+12000);
+ a.exitTower('測試延後完成');
+});
+test('a pursuer ultimate cast is fatal regardless of HP and defense',async()=>{
+ const {a,p}=await fixture();p.towerProgress={highest:22};a.startTower(23);
+ const castAt=a.state().enemies.find(e=>e.towerPursuer).towerNextStrikeAt;
+ assert.equal(castAt,1e6+22000);
+ a.tickTowerBossMechanics(castAt);
+ assert.equal(p.towerRun,undefined);
+ assert.equal(p.location,'dawncity');
+ assert.match(p.towerLastFailure.reason,/追獵裁決必殺/);
 });
 test('survival floor completes on elapsed time, without killing the pursuer',async()=>{
  const {a,p}=await fixture();p.towerProgress={highest:5};a.startTower(6);
  assert.ok(a.state().enemies.some(e=>e.towerPursuer));
- a.tickTowerBossMechanics(1e6+34900);
+ a.tickTowerBossMechanics(1e6+17900);
  assert.equal(p.towerProgress.highest,5);
- a.tickTowerBossMechanics(1e6+35000);
+ a.tickTowerBossMechanics(1e6+18000);
  assert.equal(p.towerProgress.highest,6);
  assert.equal(p.towerRun,undefined);
 });

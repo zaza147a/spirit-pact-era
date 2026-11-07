@@ -36,6 +36,7 @@ for(const job of jobs)for(const floor of floors){
  const result={job,build,floor,ticks,success:p.towerProgress.highest>=floor,
   elapsedSeconds:Math.round(ticks/10),coins:p.towerCoins,hp:p.hp,
   status:p.towerRun?'not-finished':p.towerProgress.highest>=floor?'clear':'failed',
+  ...((p.towerLastResult?.huntKills!==undefined||p.towerLastFailure?.huntKills!==undefined)?{huntKills:p.towerLastResult?.huntKills??p.towerLastFailure?.huntKills}:{}),
   ...(p.towerLastFailure?{failureReason:p.towerLastFailure.reason,failedAtSeconds:p.towerLastFailure.elapsedSeconds}:{})};
  results.push(result);console.log(JSON.stringify(result));
 }

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossPhase,towerBossSignature,TOWER_BOSS_PATTERNS} from '../dist/endless-tower-runtime.js';
+import {towerFloor} from '../dist/endless-tower.js';
 import {DAWN_MONSTERS,DAWN_BOSS} from '../dist/dawn-world.js';
 
 const player=()=>({thirdJob:true,level:210,hp:300000,dawnUnlocked:true,towerProgress:{highest:0}});
@@ -13,12 +14,13 @@ test('first thirty floors produce actual bounded combat enemy stats',()=>{
   }
   assert.equal(buildTowerEnemies(10,bases)[0].name,'破曉守門者・艾德蘭');
   assert.ok(buildTowerEnemies(30,bases)[0].bossPattern.abilities.includes('永凍領域'));
+  assert.equal(buildTowerEnemies(3,bases)[0].hp,Math.round(1000*towerFloor(3).hpMultiplier*towerFloor(3).huntHpFactor));
 });
 test('live dawn baselines yield actual tower HP/ATK with no field rewards',()=>{
   const live={monster:DAWN_MONSTERS[0],boss:DAWN_BOSS};
   const tenth=buildTowerEnemies(10,live)[0],twentieth=buildTowerEnemies(20,live)[0],thirtieth=buildTowerEnemies(30,live)[0];
-  assert.equal(tenth.hp,Math.round(DAWN_BOSS.hp*2));
-  assert.equal(tenth.atk,Math.round(DAWN_BOSS.atk*1.1));
+  assert.equal(tenth.hp,Math.round(DAWN_BOSS.hp*towerFloor(10).hpMultiplier));
+  assert.equal(tenth.atk,Math.round(DAWN_BOSS.atk*towerFloor(10).atkMultiplier));
   assert.ok(tenth.hp<twentieth.hp&&twentieth.hp<thirtieth.hp);
   for(const foe of [tenth,twentieth,thirtieth])assert.deepEqual(foe.drops,[]);
 });

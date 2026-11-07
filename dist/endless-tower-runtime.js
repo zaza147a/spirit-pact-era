@@ -26,10 +26,10 @@ export function buildTowerEnemies(floor,{monster,boss},now=0) {
     id:`tower-${floor}-${index}`,name:stage.enemyCount===1?stage.name:`${stage.name}・${index+1}`,
     map:'tower',level:210,role:'attack',roleName:'天穹終境',boss:isBoss||stage.objective==='assassinate',elite:stage.kind==='elite'||stage.kind==='guardian',tower:true,
     towerFloor:floor,towerRegion:stage.regionIndex,slotIndex:isBoss?null:index,
-    hp:Math.round(base.hp*stage.hpMultiplier*(stage.kind==='guardian'?.65:1)),
+    hp:Math.round(base.hp*stage.hpMultiplier*stage.huntHpFactor*(stage.kind==='guardian'?.65:1)),
     atk:Math.round(base.atk*stage.atkMultiplier),
     def:Math.max(0,Math.round((base.def||0)*(1+.06*stage.regionIndex))),
-    maxHp:Math.round(base.hp*stage.hpMultiplier*(stage.kind==='guardian'?.65:1)),
+    maxHp:Math.round(base.hp*stage.hpMultiplier*stage.huntHpFactor*(stage.kind==='guardian'?.65:1)),
     xp:0,gold:0,drops:[],appearedAt:now,
     bossPattern:isBoss?TOWER_BOSS_PATTERNS[(stage.regionIndex+1)*10]:null
   }));
@@ -93,8 +93,8 @@ export function markTowerEnemyDefeated(run,enemyId,totalEnemies,now) {
 export function settleTowerRun(player,run,now,{alive=true,totalEnemies}={}) {
   if(!validateTowerRun(run,now))return {error:'挑戰狀態無效'};
   const stage=towerFloor(run.floor);
-  if(stage.objective==='survive'&&(now-run.stageStartedAt)/1000<stage.goal)return {error:'尚未達成生存時間'};
-  if(stage.objective!=='survive'&&(!Number.isInteger(totalEnemies)||totalEnemies!==stage.enemyCount||run.completedEnemyIds.length!==totalEnemies))
+  if((stage.objective==='survive'||stage.objective==='hunt')&&(now-run.stageStartedAt)/1000<stage.goal)return {error:'尚未達成逃離時間'};
+  if(stage.objective!=='survive'&&stage.objective!=='hunt'&&(!Number.isInteger(totalEnemies)||totalEnemies!==stage.enemyCount||run.completedEnemyIds.length!==totalEnemies))
     return {error:'尚未擊敗所有敵人'};
   const result=finishTowerFloor(player.towerProgress,run.floor,(now-run.stageStartedAt)/1000,alive);
   if(!result.success)return {error:result.reason};

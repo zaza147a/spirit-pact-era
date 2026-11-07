@@ -2056,7 +2056,7 @@ function startTower(floor){
  if(player.location!=='dawncity')return toast('請前往曙光聖港挑戰天穹終境');
  const now=gameNow(),result=beginTowerRun(player,floor,now);
  if(result.error)return toast(result.error);
- const stage=towerFloor(floor),objective=stage.objective==='hunt'?`在追獵首領攻擊下，${stage.timeLimitSeconds} 秒內擊敗 ${stage.goal} 隻小怪`:stage.objective==='survive'?`在首領追擊下存活 ${stage.goal} 秒`:stage.objective==='assassinate'?'擊敗目標首領即可通關，護衛會一起撤退':'擊敗本層全部指定敵人';
+ const stage=towerFloor(floor),objective=stage.objective==='hunt'?`在不斷重生的小怪中撐過 ${stage.goal} 秒，每擊殺小怪就延後王的必殺技；必殺施放即失敗`:stage.objective==='survive'?`在首領追擊下存活 ${stage.goal} 秒`:stage.objective==='assassinate'?'擊敗目標首領即可通關，護衛會一起撤退':'擊敗本層全部指定敵人';
  if(!confirm(`挑戰天穹終境第 ${floor} 層？\n通關條件：${objective}。\n死亡、超時、關閉頁面都會結束本次挑戰。`))return;
  const previous=structuredClone(player);
  player.towerProgress=result.progress;player.towerRun=result.run;player.location='dawnrift';player.offline={at:Date.now(),enabled:false};
@@ -2076,13 +2076,20 @@ function spawnTowerEnemies(){
 function awardTowerEnemy(){
  const defeated=enemy,run=player?.towerRun;if(!run||!defeated||defeated.hp>0||defeated.rewarded)return;
  if(defeated.towerSummon||defeated.towerPursuer||defeated.towerEscort){defeated.rewarded=true;enemies=enemies.filter(e=>e!==defeated&&e.hp>0);enemy=selectEncounterTarget(enemies,player.targetPriority)||{id:'town',hp:0,maxHp:1};message(`已消滅 ${defeated.name}。`,'good','system');dirty=true;return;}
+ if(towerFloor(run.floor).objective==='hunt'){
+  const now=gameNow(),stage=towerFloor(run.floor);defeated.rewarded=true;run.huntKills=(run.huntKills||0)+1;player.kills++;
+  for(const pursuer of enemies.filter(e=>e.towerPursuer&&e.hp>0))postponeTowerPursuer(pursuer,stage.pursuerDelayPerKillSeconds);
+  const serial=++encounterSerial,respawn={...defeated,id:`tower-${run.floor}-wave-${serial}`,name:`${stage.name}・增援`,
+   hp:defeated.maxHp,atk:defeated.atk,hasReward:false,rewarded:false,appearedAt:now,lastAttack:now,instanceId:`tower-${run.floor}-wave-${serial}`};
+  SPECIES[respawn.id]={name:respawn.name,role:'attack',roleName:'天穹追擊增援',level:210};
+  enemies=enemies.filter(e=>e!==defeated&&e.hp>0);enemies.push(respawn);
+  enemy=selectEncounterTarget(enemies.filter(e=>!e.towerPursuer),player.targetPriority)||respawn;
+  message(`✦ 已擊殺 ${run.huntKills} 隻小怪！下一隻立刻補上，首領必殺延後 ${stage.pursuerDelayPerKillSeconds} 秒。`,'good','system');
+  dirty=true;save();render();return;
+ }
  const now=gameNow(),result=markTowerEnemyDefeated(run,defeated.id,towerFloor(run.floor).enemyCount,now);
  if(result.error)return;
  defeated.rewarded=true;player.towerRun=result.run;player.kills++;
- if(towerFloor(run.floor).objective==='hunt')for(const pursuer of enemies.filter(e=>e.towerPursuer&&e.hp>0)){
-  postponeTowerPursuer(pursuer,towerFloor(run.floor).pursuerDelayPerKillSeconds);
-  message(`✦ 擊殺小怪打斷蓄力！【終境追獵・裁決】延後 ${towerFloor(run.floor).pursuerDelayPerKillSeconds} 秒。`,'good','system');
- }
  const wasSelected=enemy===defeated;enemies=enemies.filter(foe=>foe!==defeated&&foe.hp>0);
  enemy=selectEncounterTarget(enemies,player.targetPriority)||{id:'town',hp:0,maxHp:1};
  message(`擊敗 ${defeated.name}！`,'good','system');
@@ -2096,7 +2103,7 @@ function completeTowerRun(now){
  const settled=settleTowerRun(player,run,now,{alive:player.hp>0,totalEnemies:run.completedEnemyIds.length});
  if(settled.error)return exitTower(settled.error);
  player.towerProgress=settled.progress;player.towerCoins=(player.towerCoins||0)+settled.coins;
- player.towerLastResult={floor:run.floor,coins:settled.coins,firstReward:settled.firstReward,clearSeconds:settled.clearSeconds};
+ player.towerLastResult={floor:run.floor,coins:settled.coins,firstReward:settled.firstReward,clearSeconds:settled.clearSeconds,...(towerFloor(run.floor).objective==='hunt'?{huntKills:run.huntKills||0}:{})};
  delete player.towerLastFailure;
  const cleared=run.floor;endReport(`天穹終境第${cleared}層通關`);
  message(`✦ 第${cleared}層達成目標！天穹塔幣 +${settled.coins}${settled.firstReward?' · 解鎖稱號：'+settled.firstReward:''}`,'rare','system');
@@ -2104,7 +2111,7 @@ function completeTowerRun(now){
 }
 function exitTower(reason='離開挑戰',failed=true){
  if(!player?.towerRun)return;
- if(failed)player.towerLastFailure={floor:player.towerRun.floor,reason:String(reason).slice(0,60),elapsedSeconds:Math.max(0,Math.round((gameNow()-player.towerRun.stageStartedAt)/1000))};
+ if(failed)player.towerLastFailure={floor:player.towerRun.floor,reason:String(reason).slice(0,60),elapsedSeconds:Math.max(0,Math.round((gameNow()-player.towerRun.stageStartedAt)/1000)),...(towerFloor(player.towerRun.floor).objective==='hunt'?{huntKills:player.towerRun.huntKills||0}:{})};
  endReport(`天穹終境：${reason}`);delete player.towerRun;controlEffect=null;casting=null;
  player.location='dawncity';selectedContinent='dawn';
  if(player.hp<=0){delete player.reviveAt;player.hp=stat('hp');player.mp=stat('mp');player.shield=0;
@@ -2117,19 +2124,18 @@ function renderTowerEncounter(){const foe=enemies.find(e=>e.hp>0),run=player.tow
  const skill=foe.bossPattern?towerBossSignature(run.floor,foe.towerPhase||0):null;
  const pursuer=enemies.find(e=>e.towerPursuer&&e.hp>0),pursuerCast=pursuer&&towerFloor(run.floor).objective==='hunt'?`<div class="tower-cast-warning" role="status">⚠ ${pursuer.name} 準備【終境追獵・裁決】 · ${Math.max(0,Math.ceil((pursuer.towerNextStrikeAt-gameNow())/1000))} 秒後施放 · 擊殺 1 隻小怪延後 8 秒</div>`:'';
  const cast=skill?`<div class="tower-cast-warning" role="status">⚠ ${skill.name} · ${foe.towerNextSkill?`約 ${Math.max(0,Math.ceil((foe.towerNextSkill-gameNow())/1000))} 秒後施放`:'蓄力中'}${skill.type==='freeze'?' · 可由控制抗性抵擋':''}</div>`:pursuerCast;
- const stage=towerFloor(run.floor),progress=stage.objective==='survive'?`已存活 ${Math.max(0,Math.floor((gameNow()-run.stageStartedAt)/1000))}／${stage.goal} 秒`:`目標 ${run.completedEnemyIds.length}／${stage.enemyCount}`;
+ const stage=towerFloor(run.floor),progress=stage.objective==='hunt'?`逃離倒數 ${Math.max(0,stage.goal-Math.floor((gameNow()-run.stageStartedAt)/1000))} 秒 · 已擊殺 ${run.huntKills||0} 隻`:stage.objective==='survive'?`已存活 ${Math.max(0,Math.floor((gameNow()-run.stageStartedAt)/1000))}／${stage.goal} 秒`:`目標 ${run.completedEnemyIds.length}／${stage.enemyCount}`;
  return `<div class="enemy-target trial-boss tower-encounter">${spriteHtml(foe.id,'monster')}<b>第 ${run.floor} 層 · ${foe.name}</b><span>${foe.hp.toLocaleString()}／${foe.maxHp.toLocaleString()} HP</span>${meter(foe.hp,foe.maxHp,'red')}<div class="tower-objective-banner">${towerObjectiveLabel(stage)} · ${progress}</div>${cast}<small>剩餘 ${Math.ceil(towerRemainingSeconds(run,gameNow()))} 秒</small></div>`;}
 function tickTowerBossMechanics(now){
  if(!player?.towerRun)return;
  const towerStage=towerFloor(player.towerRun.floor);
- if(towerStage.objective==='survive'&&player.hp>0&&now-player.towerRun.stageStartedAt>=towerStage.goal*1000){completeTowerRun(now);return;}
+ if((towerStage.objective==='survive'||towerStage.objective==='hunt')&&player.hp>0&&now-player.towerRun.stageStartedAt>=towerStage.goal*1000){completeTowerRun(now);return;}
  if(towerStage.objective==='hunt')for(const pursuer of enemies.filter(e=>e.towerPursuer&&e.hp>0)){
   if(now<pursuer.towerNextStrikeAt)continue;
   pursuer.towerNextStrikeAt=now+pursuer.towerCastIntervalMs;
-  const damage=Math.max(1,Math.min(Math.floor(stat('hp')*.15),Math.max(Math.floor(stat('hp')*(.05+.01*towerStage.regionIndex)),incomingMonsterDamage(pursuer.atk*1.1,stat('def')))));
-  player.hp=Math.max(0,player.hp-damage);
-  message(`⚠ ${pursuer.name} 施放【終境追獵・裁決】！HP -${damage}。擊殺小怪可延後下一次施放。`,'bad','system');dirty=true;
-  if(player.hp<=0){exitTower('追獵裁決擊敗玩家');return;}
+  player.hp=0;
+  message(`⚠ ${pursuer.name} 完成【終境追獵・裁決】！必殺施放，挑戰直接失敗。`,'bad','system');dirty=true;
+  exitTower('追獵裁決必殺');return;
  }
  for(const foe of [...enemies]){
   if(!foe.boss||!foe.tower||foe.hp<=0||!foe.bossPattern)continue;

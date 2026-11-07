@@ -31,9 +31,10 @@ test('locked status and active timer are displayed',()=>{
   assert.match(active,/data-tower-exit/);
 });
 test('reward HTML escapes values and never invents bonus stats',()=>{
-  const html=towerRewardNotice({floor:10,coins:300,firstReward:'<script>alert(1)</script>',clearSeconds:15});
+  const html=towerRewardNotice({floor:10,coins:300,firstReward:'<script>alert(1)</script>',clearSeconds:15,huntKills:11});
   assert.doesNotMatch(html,/<script>/);
   assert.match(html,/&lt;script&gt;/);
+  assert.match(html,/擊殺 11 隻重生小怪/);
   assert.doesNotMatch(html,/ATK|MATK/);
 });
 test('latest successful clear remains visible without a combat stat bonus',()=>{
