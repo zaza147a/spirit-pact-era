@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {renderTowerPanel,towerRewardNotice} from '../dist/endless-tower-ui.js';
-const eligible=()=>({thirdJob:true,level:210,hp:300,dawnUnlocked:true,towerProgress:{highest:9},towerCoins:350});
+const eligible=()=>({thirdJob:true,level:210,hp:300,dawnUnlocked:true,location:'dawncity',towerProgress:{highest:9},towerCoins:350});
 test('panel exposes first three regions only, and correct next floor',()=>{
   const html=renderTowerPanel(eligible());
   assert.match(html,/第 10 層/);
