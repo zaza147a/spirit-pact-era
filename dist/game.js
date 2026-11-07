@@ -32,6 +32,7 @@ import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArc
 import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
 import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_RESISTANCE,CONTROL_SLOTS,CONTROL_NAMES,enhancedAffixes,rankOf,fullSetRank,normalizeEnhancements,unlockRankOutfits,controlResistance,enhanceEquipped,enhancePetEquipped,trialEntryError,TRIAL_ROUTES,createTrialBoss,trialDropTable,trialDrops,dawnEntryError} from './sky-trials.js?v=6.5.44';
 import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} from './endless-tower.js';
+import {towerFrostUnlocked,normalizeTowerCostume,towerFrostArt,chooseTowerCostume} from './tower-costumes.js';
 import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature,postponeTowerPursuer} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
 import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js';
@@ -1840,6 +1841,10 @@ function decorateTowerHonorEntry(slots){
     if(!character)continue;
     const slot=$('slotGrid').querySelector(`[data-slot-select="${index}"]`),name=slot?.querySelector('h2');
     if(!name)continue;
+    if(normalizeTowerCostume(character)==='frost'){
+      const stage=slot.querySelector('.slot-art-stage'),oldArt=stage?.querySelector('.art-sprite');
+      if(oldArt){const art=document.createElement('img');art.className='art-sprite art-entry cosmetic-equipped tower-frost-equipped';art.src=towerFrostArt(character.job);art.alt='第30層永凍限定外觀';oldArt.replaceWith(art);}
+    }
     const honor=normalizeTowerHonorSelection(character),frameClass=towerHonorFrameClass(character);
     if(frameClass)name.classList.add('tower-honor-name',frameClass);
     if(honor.title){const label=document.createElement('span');label.className='tower-honor-title';label.textContent=honor.title;name.insertAdjacentElement('afterend',label);}
@@ -2323,7 +2328,12 @@ function renderCosmeticGallery(){
  const jobs=COSMETIC_JOBS[player.job]||[];
  const outfits=jobs.map((name,index)=>{const id=cosmeticOutfitId(player.job,index),owned=collection.outfits.includes(id),selected=player.cosmeticOutfit===id;
   return `<article class="cosmetic-tile"><div class="cosmetic-portrait"><img loading="lazy" src="${cosmeticOutfitArt(player.job,index)}" alt="${escapeHtml(name)}完整立繪"></div><b>${name}</b><small>${(COSMETIC_OUTFIT_PRICES[index]/100_000_000).toLocaleString()} 億金</small><button data-cosmetic-outfit="${id}" ${!owned&&!eligible?'disabled':''}>${owned?(selected?'取消裝備':'裝備幻化'):eligible?'永久收藏':'三轉＋SSS全身裝備'}</button></article>`;}).join('');
- return `<section class="item cosmetic-gallery"><h3>✦ SSS 專屬幻化 · 收藏殿堂</h3><p>十二職業各三套獨立繪製，購買後八角色共享收藏；每位角色獨立指定穿戴。純外觀，無能力加成。購買可使用金幣與 1 億金條。</p><p>總資產：${(cosmeticWealth(player)/100_000_000).toFixed(2)} 億金；已收藏 ${collection.outfits.length}/36 套幻化。</p><div class="cosmetic-grid">${outfits}</div></section>`;
+ return `<section class="item cosmetic-gallery"><h3>✦ SSS 專屬幻化 · 收藏殿堂</h3><p>十二職業各三套獨立繪製，購買後八角色共享收藏；每位角色獨立指定穿戴。純外觀，無能力加成。購買可使用金幣與 1 億金條。</p><p>總資產：${(cosmeticWealth(player)/100_000_000).toFixed(2)} 億金；已收藏 ${collection.outfits.length}/36 套幻化。</p><div class="cosmetic-grid">${outfits}</div></section>`+renderTowerCostumeGallery();
+}
+function renderTowerCostumeGallery(){
+ const art=towerFrostArt(player.job);if(!art)return '';
+ const unlocked=towerFrostUnlocked(player),selected=normalizeTowerCostume(player)==='frost';
+ return `<section class="item cosmetic-gallery tower-frost-gallery"><h3>❄ 天穹終境 · 第30層永凍時裝</h3><p>本職業首次通關第30層即可永久解鎖。只能穿戴本職業的外觀，不影響攻擊、防禦、技能或戰鬥能力。</p><div class="cosmetic-grid"><article class="cosmetic-tile"><div class="cosmetic-portrait">${unlocked?`<img loading="lazy" src="${art}" alt="${escapeHtml(THIRD_JOBS[player.job]?.name||player.job)} 永凍時裝">`:'<div class="unknown-form">?</div>'}</div><b>${escapeHtml(THIRD_JOBS[player.job]?.name||player.job)} · 永凍之誓</b><small>${unlocked?'已永久解鎖，可隨時更換':'通關天穹終境第30層解鎖'}</small><button data-tower-costume="${selected?'default':'frost'}" ${unlocked?'':'disabled'}>${selected?'取消穿戴':unlocked?'穿戴永凍時裝':'尚未解鎖'}</button></article></div></section>`;
 }
 function renderBackgroundGallery(){
  const collection=readCosmeticCollection(localStorage);
@@ -2340,6 +2350,10 @@ const TOWER_BACKGROUND_STYLES={
 };
 function applyCosmeticHero(){
  const hero=$('character')?.querySelector('.hero');if(!hero)return;
+ if(normalizeTowerCostume(player)==='frost'){
+  const oldArt=hero.querySelector('.art-sprite');
+  if(oldArt){const art=document.createElement('img');art.className=`${oldArt.className} cosmetic-equipped tower-frost-equipped`;art.src=towerFrostArt(player.job);art.alt='第30層永凍限定外觀';oldArt.replaceWith(art);}
+ }
  const collection=readCosmeticCollection(localStorage);
  normalizeCosmeticSelection(player,collection);
  const tower=normalizeTowerCollection(player.towerCollection);
@@ -2356,13 +2370,20 @@ function applyCosmeticHero(){
 function bindCosmeticGalleryEvents(){
  if(typeof document==='undefined'||typeof document.addEventListener!=='function')return;
  document.addEventListener('click',event=>{
+  const towerButton=event.target.closest('[data-tower-costume]');
+  if(towerButton&&player&&$('side')?.contains(towerButton)){
+    const prior={towerCostume:player.towerCostume,selectedOutfit:player.selectedOutfit,cosmeticOutfit:player.cosmeticOutfit};
+    if(!chooseTowerCostume(player,towerButton.dataset.towerCostume==='frost'?'frost':null))return toast('請先以此職業通關第30層');
+    if(save()===false){Object.assign(player,prior);return toast('存檔失敗，已恢復原外觀');}
+    render();return;
+  }
   const button=event.target.closest('[data-cosmetic-outfit],[data-cosmetic-background]');
   if(!button||!player||!$('side')?.contains(button))return;
   const outfit=button.hasAttribute('data-cosmetic-outfit'),id=outfit?button.dataset.cosmeticOutfit:button.dataset.cosmeticBackground;
   const key=outfit?'cosmeticOutfit':'cosmeticBackground',collection=readCosmeticCollection(localStorage);
   if(id==='default'){player.cosmeticBackground=null;selectTowerBackground(player,'');save();render();return;}
   const owned=collection[outfit?'outfits':'backgrounds'].includes(id);
-  if(owned){player[key]=player[key]===id?null:id;if(!outfit)selectTowerBackground(player,'');save();render();return;}
+  if(owned){player[key]=player[key]===id?null:id;if(outfit&&player[key])player.towerCostume=null;if(!outfit)selectTowerBackground(player,'');save();render();return;}
   const oldGold=player.gold,oldBag=structuredClone(player.bag);
   const result=buyCosmetic(player,collection,outfit?'outfit':'background',id);
   if(result.error)return toast(result.error);
@@ -2370,6 +2391,7 @@ function bindCosmeticGalleryEvents(){
   let previous=null;try{previous=localStorage.getItem(COSMETIC_STORAGE_KEY);localStorage.setItem(COSMETIC_STORAGE_KEY,JSON.stringify(result.collection));}
   catch(error){player.gold=oldGold;player.bag=oldBag;return toast('收藏紀錄無法儲存，未扣款');}
   player[key]=id;
+  if(outfit)player.towerCostume=null;
   if(!outfit)selectTowerBackground(player,'');
   if(!save()){
    player.gold=oldGold;player.bag=oldBag;player[key]=null;
