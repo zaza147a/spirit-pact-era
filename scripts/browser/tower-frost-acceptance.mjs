@@ -38,7 +38,7 @@ try{
    for(let i=0;i<8;i++){
     const id=jobs[i];if(!id){localStorage.removeItem('icarus-character-slot-'+(i+1));continue;}
     const p=structuredClone(fixture);
-    Object.assign(p,{name:'永凍-'+id,job:id,reborn:true,thirdJob:true,manualPaused:true,towerProgress:{highest:30},towerCostume:'frost',selectedOutfit:null,cosmeticOutfit:null,offline:{at:Date.now(),enabled:false}});
+    Object.assign(p,{name:'冰-'+id.slice(0,10),job:id,reborn:true,thirdJob:true,manualPaused:true,towerProgress:{highest:30},towerCostume:'frost',selectedOutfit:null,cosmeticOutfit:null,offline:{at:Date.now(),enabled:false}});
     localStorage.setItem('icarus-character-slot-'+(i+1),JSON.stringify({version:2,player:p}));
    }
   },{jobs,fixture});
