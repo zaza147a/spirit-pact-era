@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import vm from 'node:vm';
 import {runtime} from './runtime31-helper.mjs';
 
 async function fixture(){const c=await runtime(),a=c.api,p=a.normalize(a.fresh('終境測試','knight'));
@@ -7,10 +8,23 @@ async function fixture(){const c=await runtime(),a=c.api,p=a.normalize(a.fresh('
  a.setup(p,null);p.hp=a.stat('hp');p.mp=a.stat('mp');return {c,a,p};}
 
 test('actual game starts a tower floor without altering five-boss trial state',async()=>{
- const {a,p}=await fixture();a.startTower(1);
+ const {c,a,p}=await fixture();a.startTower(1);
  assert.equal(p.towerRun.floor,1);assert.equal(p.location,'dawnrift');assert.equal(p.trialRun,undefined);
+ assert.equal(vm.runInContext('tab',c),'tower','tower entry opens its own panel');
  assert.equal(a.state().enemies.length,2);assert.ok(a.state().enemies.every(e=>e.tower&&e.xp===0&&e.gold===0));
  assert.match(a.renderTowerEncounter(),/第 1 層/);
+});
+test('tower and five-boss trials render independently',async()=>{
+ const {c,a,p}=await fixture();
+ const tower=vm.runInContext('renderTowerPanel(player,{now:gameNow()})',c);
+ const trials=a.renderTrials();
+ assert.match(tower,/ENDLESS TOWER/);
+ assert.doesNotMatch(tower,/FIVE GUARDIANS|data-trial-start/);
+ assert.match(trials,/FIVE GUARDIANS/);
+ assert.doesNotMatch(trials,/ENDLESS TOWER|data-tower-floor-go/);
+ a.startTower(1);a.exitTower('測試返回');
+ assert.equal(vm.runInContext('tab',c),'tower','leaving tower returns to tower panel');
+ assert.equal(p.location,'dawncity');
 });
 test('actual game rewards once after all kills and safely returns to dawn city',async()=>{
  const {a,p}=await fixture();a.startTower(1);

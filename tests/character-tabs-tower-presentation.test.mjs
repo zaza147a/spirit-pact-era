@@ -15,6 +15,8 @@ test('dawn city gatekeeper and home name-frame use the same character honor sele
  assert.match(game,/nameButton\.classList\.add\('tower-honor-name',chosenFrame\)/);
  assert.match(game,/refreshCollectionHonorTitles\(player\)/);
  assert.doesNotMatch(game,/insertAdjacentHTML\('beforeend','<span class="gold-collector-title">/);
+ assert.match(game,/data-open="tower" class="goldbtn">與賽菈對話/);
+ assert.match(game,/data-open="trials" class="goldbtn town-evolution">✧ 五連戰試煉之門/);
 });
 
 test('first thirty floors use three transparent independent regional monster images',async()=>{
@@ -29,8 +31,8 @@ test('first thirty floors use three transparent independent regional monster ima
 test('release entrypoint and title module use synchronized cache versions',async()=>{
  const html=await readFile('dist/index.html','utf8');
  const game=await readFile('dist/game.js','utf8');
- assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.2/);
- assert.match(html,/game\.js\?v=7\.1\.2/);
- assert.match(html,/endless-tower\.css\?v=7\.1\.2/);
- assert.match(game,/tower-honors\.js\?v=7\.1\.2/);
+ assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.3/);
+ assert.match(html,/game\.js\?v=7\.1\.3/);
+ assert.match(html,/endless-tower\.css\?v=7\.1\.3/);
+ assert.match(game,/tower-honors\.js\?v=7\.1\.3/);
 });
