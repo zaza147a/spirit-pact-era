@@ -58,9 +58,9 @@ test('equipped character name frame wins over portrait background styling',async
 test('release entrypoint and title module use synchronized cache versions',async()=>{
  const html=await readFile('dist/index.html','utf8');
  const game=await readFile('dist/game.js','utf8');
- assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.6/);
- assert.match(html,/game\.js\?v=7\.1\.6/);
- assert.match(html,/endless-tower\.css\?v=7\.1\.6/);
- assert.match(game,/tower-honors\.js\?v=7\.1\.6/);
- assert.match(game,/town-scene\.js\?v=7\.1\.6/);
+ assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.7/);
+ assert.match(html,/game\.js\?v=7\.1\.7/);
+ assert.match(html,/endless-tower\.css\?v=7\.1\.7/);
+ assert.match(game,/tower-honors\.js\?v=7\.1\.7/);
+ assert.match(game,/town-scene\.js\?v=7\.1\.7/);
 });

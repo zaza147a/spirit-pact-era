@@ -3,11 +3,17 @@ import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,warehouseEquipment
 import {writeCharacterSlot,readCharacterSlot,readCharacterSlots} from '../dist/character-slots.js';
 import {rollGear,rollPetGear} from '../dist/loot.js';
 import {runtime} from './runtime31-helper.mjs';
+import {readFileSync} from 'node:fs';
 const copy=x=>structuredClone(x);
 function storage(){const values=new Map();let fail=null;return {values,getItem:k=>values.get(k)??null,setItem(k,v){if(fail?.(k,v))throw Error('quota');values.set(k,String(v));},fail:fn=>fail=fn};}
 function fixture(){const s=storage(),gear=rollGear('blade',190,'mythic',()=>.5);gear.uid='shared-sword';gear.enhancement='SSS';const petGear=rollPetGear('petArmor',190,'legendary',()=>.5);petGear.uid='shared-pet-armor';petGear.enhancement='SS';const players=Array.from({length:8},(_,i)=>({name:'角色'+i,location:i===3?'dawncity':'town',hp:100,gold:i,bag:i===0?[gear,petGear,{id:'med',qty:2}]:[],gear:{rightHand:null},pets:[]}));players.forEach((p,i)=>writeCharacterSlot(s,i,p));return {s,gear,petGear,players};}
 const load=(s,i)=>readCharacterSlot(s,i,p=>p,()=>true).player;
 const move=(s,i,p,d,uid)=>transferWarehouseEquipment(s,i,p,d,uid,next=>writeCharacterSlot(s,i,next));
+test('warehouse deposit and withdrawal buttons read quantities from their own rows',()=>{
+ const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
+ assert.match(game,/b\.closest\('\.warehouse-row'\)\?\.querySelector\('\[data-warehouse-qty\]'\)/);
+ assert.doesNotMatch(game,/root\.querySelector\('\[data-warehouse-qty="'\+kind\+':'\+id\+'"\]'\)/);
+});
 test('eight slots share exact original character and pet gear, with affixes enhancement and UID unchanged',()=>{const {s,gear,petGear,players}=fixture();move(s,0,players[0],'deposit',gear.uid);assert.equal(load(s,0).bag.some(g=>g.uid===gear.uid),false);assert.deepEqual(warehouseItems(s),[gear]);const r=move(s,3,load(s,3),'withdraw',gear.uid);assert.deepEqual(r.player.bag[0],gear);assert.deepEqual(warehouseItems(s),[]);move(s,0,load(s,0),'deposit',petGear.uid);move(s,2,load(s,2),'withdraw',petGear.uid);assert.deepEqual(load(s,2).bag[0],petGear);assert.equal(load(s,1).gold,1);});
 test('stale source save and imported older backups cannot resurrect transferred equipment in any location',()=>{const {s,gear,players}=fixture();const old=copy(players[0]);old.gear.rightHand=copy(gear);old.pets=[{gear:{head:copy(gear)}}];move(s,0,players[0],'deposit',gear.uid);move(s,1,load(s,1),'withdraw',gear.uid);writeCharacterSlot(s,0,old);const p=load(s,0);assert.equal(p.gear.rightHand,null);assert.equal(p.pets[0].gear.head,null);assert.ok(!p.bag.some(g=>g.uid===gear.uid));assert.deepEqual(load(s,1).bag,[gear]);});
 test('old destination import cannot recreate a consumed delivery, but a current destination backup remains usable',()=>{const {s,gear,players}=fixture();const old=copy(players[1]);move(s,0,players[0],'deposit',gear.uid);move(s,1,load(s,1),'withdraw',gear.uid);const current=copy(load(s,1));const used=load(s,1);used.bag=[];writeCharacterSlot(s,1,used);writeCharacterSlot(s,1,old);assert.equal(load(s,1).bag.length,0);writeCharacterSlot(s,1,current);assert.deepEqual(load(s,1).bag,[gear]);assert.throws(()=>move(s,2,{...players[2],bag:[gear]},'deposit',gear.uid));});

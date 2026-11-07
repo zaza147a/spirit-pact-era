@@ -9,7 +9,7 @@ import {homecomingTracker,renderHomecomingPanel,renderHomecomingTown} from './ho
 import {SPIRIT_SANCTUARY_MAP,SPIRIT_SANCTUARY_MONSTERS,spiritSanctuaryUnlocked,isCaptureSanctuary,announceSpiritSanctuary,visitSpiritSanctuary,spiritSanctuaryTracker,blessSanctuaryPet} from './spirit-sanctuary.js';
 import {homecomingPicture,showHomecomingPicture} from './homecoming-modal.js';
 import {ensurePetEffects} from './dual-pet-effects.js';
-import {patchTownArea} from './town-scene.js?v=7.1.6';
+import {patchTownArea} from './town-scene.js?v=7.1.7';
 import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from './weapon-compensation.js?v=6.5.62';
 import {commanderInheritedPetStats,commanderMainSkillMultiplier} from './commander-owner-growth.js';
 import {spiritTargetDamageFactor} from './spirit-target-damage.js';
@@ -26,7 +26,7 @@ import {GOLD_COLLECTIBLES,goldCollectionTier,goldCollectionBonus,earnGold,buyGol
 import {multiTargets} from './adjacent-targets.js?v=6.5.12';
 import {rankOutfitArt,rankOutfitName,RANK_OUTFITS} from './rank-outfits.js?v=6.5.0-spirit-20261104';
 import {COSMETIC_STORAGE_KEY,COSMETIC_JOBS,COSMETIC_OUTFIT_PRICES,COSMETIC_BACKGROUNDS,cosmeticOutfitId,cosmeticOutfitArt,cosmeticBackgroundArt,readCosmeticCollection,normalizeCosmeticSelection,buyCosmetic,cosmeticWealth} from './cosmetic-gallery.js?v=6.5.35-spirit-gold-1';
-import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,warehouseStackAllowed,warehouseStackItems,WAREHOUSE_BATCH_LIMIT,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,transferWarehouseStack,exportWarehouse,importWarehouse} from './shared-warehouse.js?v=7.1.6';
+import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,warehouseStackAllowed,warehouseStackItems,WAREHOUSE_BATCH_LIMIT,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,transferWarehouseStack,exportWarehouse,importWarehouse} from './shared-warehouse.js?v=7.1.7';
 import {migrateLegacyReselect,reselectionPet,RESELECT_ORDERED_TYPES} from './pet-legacy-reselect.js?v=6.5.0';
 import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArchonPreparationFactor} from './dawn-sigil.js?v=6.5.38';
 import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,nextHumanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
@@ -35,7 +35,7 @@ import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} f
 import {towerFrostUnlocked,normalizeTowerCostume,towerFrostArt,chooseTowerCostume} from './tower-costumes.js';
 import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature,postponeTowerPursuer} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
-import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.6';
+import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.7';
 import {TOWER_SHOP_ITEMS,normalizeTowerCollection,buyTowerShopItem,towerCollectedBackgrounds,selectTowerBackground,awardTowerCoins} from './tower-reward-shop.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
 import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';
@@ -66,7 +66,7 @@ import {CARD_PROFILES,socketCardBonus,describeCardEffects,cardAllowedInSlot,migr
 import {bossCardEquipAllowed,bossCardHitBonus,bossCardIncoming,bossCardDodge,bossCardSong} from './boss-card-runtime.js?v=6.5.47';
 let bossHitMeta=null;
 import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.5.0';
-import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=7.1.6';
+import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=7.1.7';
 import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.5.57';
 import {matchesGearFilters} from './inventory-rules.js?v=6.5.0';
 import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=7.0.1';
@@ -2389,7 +2389,7 @@ function bindWarehouseControls(){
  for(const b of root.querySelectorAll('[data-warehouse-category]'))b.onclick=()=>{warehouseCategory=b.dataset.warehouseCategory;refreshWarehouseModal();};
  for(const b of root.querySelectorAll('[data-warehouse-stack]'))b.onclick=async()=>{
   if(warehouseBusy)return;
-  const [direction,kind,id]=b.dataset.warehouseStack.split(':'),input=root.querySelector('[data-warehouse-qty="'+kind+':'+id+'"]'),quantity=Number(input?.value);
+  const [direction,kind,id]=b.dataset.warehouseStack.split(':'),input=b.closest('.warehouse-row')?.querySelector('[data-warehouse-qty]'),quantity=Number(input?.value);
   if(!Number.isInteger(quantity)||quantity<1||quantity>WAREHOUSE_BATCH_LIMIT)return toast('請輸入 1～50 件');
   const session=player,index=activeSlot;warehouseBusy=true;
   try{await withWarehouseLock(navigator.locks,()=>{
