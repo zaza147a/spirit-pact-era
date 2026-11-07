@@ -15,7 +15,7 @@ test('class eligibility includes universal gear, excludes other classes, and lea
 });
 async function app(){let source=readFileSync(new URL('game.js',root),'utf8'),context={console,document:{getElementById:()=>({})},localStorage:{setItem:()=>{}}};
  for(const match of source.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const module=await import(new URL(match[2],root));for(const name of match[1].split(',').map(n=>n.trim())){const[original,alias]=name.split(/\s+as\s+/);context[alias||original]=module[original];}}
- source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,gearComparison,cardComparison,equippedCardDisplay,dismantle,renderBag,setCategory:c=>bagCategory=c};render=()=>{};message=()=>{};toast=()=>{};save=()=>{};');vm.createContext(context);vm.runInContext(source,context);return context;
+ source=source.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,setPlayer:p=>player=p,gearComparison,cardComparison,equippedCardDisplay,dismantle,renderBag,setCategory:c=>bagCategory=c,setPage:n=>bagGearPage=n};render=()=>{};message=()=>{};toast=()=>{};save=()=>{};');vm.createContext(context);vm.runInContext(source,context);return context;
 }
 test('new comparisons identify source and candidate unambiguously and highlight the direction of changes',async()=>{
  const c=await app(),a=c.api,p=a.normalize(a.fresh('直覺對比','mage'));a.setPlayer(p);
@@ -102,4 +102,23 @@ test('live bag keeps canonical descriptions for all seven starforge ranks and fo
   for(const [id,item] of Object.entries(items)){assert.equal(c.ITEMS[id].description,item.description,id+' must retain catalog description');assert.ok(html.includes(item.description),id+' description must be visible');assert.equal(c.ITEMS[id].cost,item.cost);assert.equal(c.ITEMS[id].map,item.map);}
   assert.equal(JSON.stringify(p.bag),before,'rendering must preserve quantities');
  }
+});
+
+test('large equipment bag renders only thirty comparisons while retaining original action indices',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('大量裝備','mage'));
+ p.bag=Array.from({length:1200},(_,i)=>({id:'oneStaff',uid:`staff-${i}`,name:`測試杖-${i}`,level:1,rarity:'common',affixes:{matk:i%15+1}}));
+ a.setPlayer(p);a.setCategory('equipment');a.setPage(0);
+ const first=a.renderBag();
+ assert.equal((first.match(/<section class="gear-compare /g)||[]).length,30);
+ assert.match(first,/符合條件 1200 件/);
+ assert.match(first,/data-use="0"/);
+ assert.doesNotMatch(first,/data-use="30"/);
+ a.setPage(1);const second=a.renderBag();
+ assert.equal((second.match(/<section class="gear-compare /g)||[]).length,30);
+ assert.match(second,/data-use="30"/);
+ assert.doesNotMatch(second,/data-use="0"/);
+ a.setPage(999);const last=a.renderBag();
+ assert.match(last,/第 40\/40 頁/);
+ assert.match(last,/data-use="1199"/);
+ assert.equal(p.bag.length,1200,'paging does not mutate inventory');
 });
