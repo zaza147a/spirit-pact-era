@@ -32,7 +32,7 @@ import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArc
 import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
 import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_RESISTANCE,CONTROL_SLOTS,CONTROL_NAMES,enhancedAffixes,rankOf,fullSetRank,normalizeEnhancements,unlockRankOutfits,controlResistance,enhanceEquipped,enhancePetEquipped,trialEntryError,TRIAL_ROUTES,createTrialBoss,trialDropTable,trialDrops,dawnEntryError} from './sky-trials.js?v=6.5.44';
 import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} from './endless-tower.js';
-import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature} from './endless-tower-runtime.js';
+import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature,postponeTowerPursuer} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
 import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';
@@ -1841,7 +1841,7 @@ function renderEncounterSlots(){if(player.towerRun)return renderTowerEncounter()
 function combatTick(now=gameNow()){if(player?.towerRun&&player.hp<=0){exitTower('挑戰失敗');return;}if(resolveSpiritPairDefeat())return;if(player?.trialRun&&player.hp<=0){exitTrial('戰敗，試煉已結束');return;}inCombatTick=true;if(!offlineSimulation)clearStatSnapshots();try{if(!player.hp){casting=null;if(auto&&player.autoRevive)autoRevivePlayer();if(!offlineSimulation&&$('reviveModal').style.display==='flex')showReviveDialog();return;}if(now>(timers.petShieldExpires||Infinity)){player.shield=Math.max(0,player.shield-petShield);petShield=0;}if(now>(timers.playerShieldExpires||Infinity))player.shield=Math.min(player.shield,petShield);if(now>(petEffects.shieldExpires||Infinity))petEffects.shield=0;
  const wasTowerRun=!!player.towerRun;tickTrialControl(now);tickTowerBossMechanics(now);if(wasTowerRun&&!player.towerRun)return;tickEncounters(now);chooseAttackTarget();autoCapturePet(now);if(casting&&now>=casting.until){const id=casting.id;casting=null;playerAttack(true,id,true);}if(casting&&!player.hp)casting=null;
  if(now-timers.regen>=4000){timers.regen=now;for(const pet of activePetRoster(player))if(pet.hp>0)pet.sp=Math.min(petStats(pet).sp,pet.sp+Math.max(1,Math.ceil(pet.level/8)));const intRegen=['mage','wizard','sage'].includes(player.job)?Math.ceil(stat('mp')*Math.min(150,effectiveAttributes().INT)*.0004):0;player.mp=Math.min(stat('mp'),player.mp+2+passiveBonus('spRegen')+cardBonus('spRegen')+intRegen);dirty=true;}
- if(enemy.hp&&player.hp){const trialAtTick=player.trialRun;if(auto&&now-(timers.potions||0)>800){timers.potions=now;autoUsePotions();}tickPetEffects(now);const selected=enemy;for(const foe of [...enemies]){if(!player.hp)break;if(foe.hp&&now-foe.lastAttack>=aspdAttackIntervalMs(foe.aspd)){foe.lastAttack=now;enemy=foe;enemyAttack();if(trialAtTick&&!player.trialRun)return;}}enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;if(player.hp<=0){casting=null;return;}if(enemy.hp&&auto){for(const companion of activePetRoster(player)){if(!enemy.hp)break;if(companion?.hp>0&&combatPetFactor(companion.id)>0){const dualPetAbility=player.job==='spiritist'||player.job==='pactWarrior'||player.job==='spiritCommander';const lastPetAbility=dualPetAbility?(timers.petAbilityById?.[companion.id]||0):(timers.petAbility||0);if(now-lastPetAbility>=850)petAutoAbility(companion,commanderTransferredPetStats(companion,petStats(companion)),now);if(enemy.hp)petAttack(companion,combatPetFactor(companion.id));}}if(enemy.hp)autoCastJobs();if(enemy.hp)playerAttack();if(enemy.hp&&player.autoUltimate&&player.resonance>=ULTIMATE_COST&&now-timers.ultimate>=ULTIMATE_COOLDOWN)ultimate();}}
+ if(enemy.hp&&player.hp){const trialAtTick=player.trialRun;if(auto&&now-(timers.potions||0)>800){timers.potions=now;autoUsePotions();}tickPetEffects(now);const selected=enemy;for(const foe of [...enemies]){if(!player.hp)break;if(foe.towerPursuer&&player.towerRun&&towerFloor(player.towerRun.floor).objective==='hunt')continue;if(foe.hp&&now-foe.lastAttack>=aspdAttackIntervalMs(foe.aspd)){foe.lastAttack=now;enemy=foe;enemyAttack();if(trialAtTick&&!player.trialRun)return;}}enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;if(player.hp<=0){casting=null;return;}if(enemy.hp&&auto){for(const companion of activePetRoster(player)){if(!enemy.hp)break;if(companion?.hp>0&&combatPetFactor(companion.id)>0){const dualPetAbility=player.job==='spiritist'||player.job==='pactWarrior'||player.job==='spiritCommander';const lastPetAbility=dualPetAbility?(timers.petAbilityById?.[companion.id]||0):(timers.petAbility||0);if(now-lastPetAbility>=850)petAutoAbility(companion,commanderTransferredPetStats(companion,petStats(companion)),now);if(enemy.hp)petAttack(companion,combatPetFactor(companion.id));}}if(enemy.hp)autoCastJobs();if(enemy.hp)playerAttack();if(enemy.hp&&player.autoUltimate&&player.resonance>=ULTIMATE_COST&&now-timers.ultimate>=ULTIMATE_COOLDOWN)ultimate();}}
 tickCompanionFourth(now);
 }finally{inCombatTick=false;if(!offlineSimulation)clearStatSnapshots();}}
 // Skip only completely idle 100ms slices; retain the original time grid and
@@ -2079,6 +2079,10 @@ function awardTowerEnemy(){
  const now=gameNow(),result=markTowerEnemyDefeated(run,defeated.id,towerFloor(run.floor).enemyCount,now);
  if(result.error)return;
  defeated.rewarded=true;player.towerRun=result.run;player.kills++;
+ if(towerFloor(run.floor).objective==='hunt')for(const pursuer of enemies.filter(e=>e.towerPursuer&&e.hp>0)){
+  postponeTowerPursuer(pursuer,towerFloor(run.floor).pursuerDelayPerKillSeconds);
+  message(`✦ 擊殺小怪打斷蓄力！【終境追獵・裁決】延後 ${towerFloor(run.floor).pursuerDelayPerKillSeconds} 秒。`,'good','system');
+ }
  const wasSelected=enemy===defeated;enemies=enemies.filter(foe=>foe!==defeated&&foe.hp>0);
  enemy=selectEncounterTarget(enemies,player.targetPriority)||{id:'town',hp:0,maxHp:1};
  message(`擊敗 ${defeated.name}！`,'good','system');
@@ -2111,13 +2115,22 @@ function exitTower(reason='離開挑戰',failed=true){
 }
 function renderTowerEncounter(){const foe=enemies.find(e=>e.hp>0),run=player.towerRun;if(!foe)return '<div class="enemy-idle">結算中…</div>';
  const skill=foe.bossPattern?towerBossSignature(run.floor,foe.towerPhase||0):null;
- const cast=skill?`<div class="tower-cast-warning" role="status">⚠ ${skill.name} · ${foe.towerNextSkill?`約 ${Math.max(0,Math.ceil((foe.towerNextSkill-gameNow())/1000))} 秒後施放`:'蓄力中'}${skill.type==='freeze'?' · 可由控制抗性抵擋':''}</div>`:'';
+ const pursuer=enemies.find(e=>e.towerPursuer&&e.hp>0),pursuerCast=pursuer&&towerFloor(run.floor).objective==='hunt'?`<div class="tower-cast-warning" role="status">⚠ ${pursuer.name} 準備【終境追獵・裁決】 · ${Math.max(0,Math.ceil((pursuer.towerNextStrikeAt-gameNow())/1000))} 秒後施放 · 擊殺 1 隻小怪延後 8 秒</div>`:'';
+ const cast=skill?`<div class="tower-cast-warning" role="status">⚠ ${skill.name} · ${foe.towerNextSkill?`約 ${Math.max(0,Math.ceil((foe.towerNextSkill-gameNow())/1000))} 秒後施放`:'蓄力中'}${skill.type==='freeze'?' · 可由控制抗性抵擋':''}</div>`:pursuerCast;
  const stage=towerFloor(run.floor),progress=stage.objective==='survive'?`已存活 ${Math.max(0,Math.floor((gameNow()-run.stageStartedAt)/1000))}／${stage.goal} 秒`:`目標 ${run.completedEnemyIds.length}／${stage.enemyCount}`;
  return `<div class="enemy-target trial-boss tower-encounter">${spriteHtml(foe.id,'monster')}<b>第 ${run.floor} 層 · ${foe.name}</b><span>${foe.hp.toLocaleString()}／${foe.maxHp.toLocaleString()} HP</span>${meter(foe.hp,foe.maxHp,'red')}<div class="tower-objective-banner">${towerObjectiveLabel(stage)} · ${progress}</div>${cast}<small>剩餘 ${Math.ceil(towerRemainingSeconds(run,gameNow()))} 秒</small></div>`;}
 function tickTowerBossMechanics(now){
  if(!player?.towerRun)return;
  const towerStage=towerFloor(player.towerRun.floor);
  if(towerStage.objective==='survive'&&player.hp>0&&now-player.towerRun.stageStartedAt>=towerStage.goal*1000){completeTowerRun(now);return;}
+ if(towerStage.objective==='hunt')for(const pursuer of enemies.filter(e=>e.towerPursuer&&e.hp>0)){
+  if(now<pursuer.towerNextStrikeAt)continue;
+  pursuer.towerNextStrikeAt=now+pursuer.towerCastIntervalMs;
+  const damage=Math.max(1,Math.min(Math.floor(stat('hp')*.15),Math.max(Math.floor(stat('hp')*(.05+.01*towerStage.regionIndex)),incomingMonsterDamage(pursuer.atk*1.1,stat('def')))));
+  player.hp=Math.max(0,player.hp-damage);
+  message(`⚠ ${pursuer.name} 施放【終境追獵・裁決】！HP -${damage}。擊殺小怪可延後下一次施放。`,'bad','system');dirty=true;
+  if(player.hp<=0){exitTower('追獵裁決擊敗玩家');return;}
+ }
  for(const foe of [...enemies]){
   if(!foe.boss||!foe.tower||foe.hp<=0||!foe.bossPattern)continue;
   const pattern=foe.bossPattern,ratio=foe.hp/foe.maxHp;

@@ -33,7 +33,7 @@ export function towerFloor(floor) {
   return Object.freeze({floor,regionIndex,region:region.name,kind,endless,
     name:objective==='assassinate'?`${region.name}追捕首領`:kind==='boss'?region.boss:kind==='guardian'?`${region.name}守衛者`:region.enemies[(position-1)%region.enemies.length],
     enemyCount:objective==='hunt'?4:objective==='survive'?0:objective==='assassinate'?1:kind==='boss'||kind==='guardian'?1:kind==='elite'?2:3,
-    objective,goal,
+    objective,goal,pursuerCastSeconds:objective==='hunt'?12:0,pursuerDelayPerKillSeconds:objective==='hunt'?8:0,
     hpMultiplier:(kind==='boss'?region.bossHp:region.hp)*hpGrowth,
     atkMultiplier:region.atk*atkGrowth,
     timeLimitSeconds:objective==='hunt'?75:objective==='survive'?70:kind==='boss'?Math.min(360,180+30*regionIndex):kind==='guardian'||kind==='elite'?180:120,
@@ -44,7 +44,7 @@ export function towerFloor(floor) {
 }
 
 export function towerObjectiveLabel(stage) {
-  if(stage.objective==='hunt')return `追擊殲敵：${stage.timeLimitSeconds} 秒內擊敗 ${stage.goal} 隻小怪，追獵首領全程攻擊`;
+  if(stage.objective==='hunt')return `追擊殲敵：${stage.timeLimitSeconds} 秒內擊敗 ${stage.goal} 隻小怪；追獵首領只會蓄力施放技能，每擊敗 1 隻小怪，施放時間延後 ${stage.pursuerDelayPerKillSeconds} 秒`;
   if(stage.objective==='survive')return `堅守逃離：在追獵首領攻擊下存活 ${stage.goal} 秒，不要求擊殺敵人`;
   if(stage.objective==='assassinate')return '首領斬首：擊敗指定首領立即通關，護衛一同消失';
   return `殲滅關卡：擊敗 ${stage.enemyCount} 隻指定敵人`;

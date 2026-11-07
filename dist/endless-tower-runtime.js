@@ -36,6 +36,7 @@ export function buildTowerEnemies(floor,{monster,boss},now=0) {
   if(stage.objective==='hunt'||stage.objective==='survive'){
     // Chasing boss is a hazard, not a required kill; no normal drops or score.
     targets.push({id:`tower-chaser-${floor}`,name:`${stage.region}・追獵者`,tower:true,towerPursuer:true,boss:true,
+      towerNextStrikeAt:now+stage.pursuerCastSeconds*1000,towerCastIntervalMs:stage.pursuerCastSeconds*1000,
       map:'tower',level:210,role:'attack',roleName:'天穹追獵首領',
       hp:Math.round(boss.hp*stage.hpMultiplier*10),maxHp:Math.round(boss.hp*stage.hpMultiplier*10),
       atk:Math.round(boss.atk*stage.atkMultiplier*.32),def:Math.round((boss.def||0)*1.2),
@@ -49,6 +50,13 @@ export function buildTowerEnemies(floor,{monster,boss},now=0) {
       xp:0,gold:0,drops:[],appearedAt:now});
   }
   return targets;
+}
+
+export function postponeTowerPursuer(foe,seconds=8) {
+  if(!foe?.towerPursuer||!Number.isFinite(foe.towerNextStrikeAt))return null;
+  const delay=Math.min(15000,Math.max(0,Number(seconds)||0))*1000;
+  foe.towerNextStrikeAt+=delay;
+  return foe.towerNextStrikeAt;
 }
 
 export function beginTowerRun(player,floor,now=0,maxFloor=TOWER_FIRST_RELEASE_MAX) {

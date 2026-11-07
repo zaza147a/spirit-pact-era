@@ -104,6 +104,22 @@ test('pursuit floor requires four minor kills while an attacking boss remains al
  assert.equal(p.towerProgress.highest,3);
  assert.equal(p.location,'dawncity');
 });
+test('hunt boss has no ordinary attacks, broadcasts a skill timer and each minor kill postpones it',async()=>{
+ const {c,a,p}=await fixture();p.towerProgress={highest:2};a.startTower(3);
+ const chaser=a.state().enemies.find(e=>e.towerPursuer),initial=chaser.towerNextStrikeAt;
+ assert.equal(initial,1e6+12000);
+ assert.match(a.renderTowerEncounter(),/終境追獵・裁決/);
+ const minor=a.state().enemies.find(e=>!e.towerPursuer);
+ a.setEnemies([minor,...a.state().enemies.filter(e=>e!==minor)]);minor.hp=0;a.award();
+ assert.equal(chaser.towerNextStrikeAt,initial+8000);
+ a.setEnemies([chaser]);a.setAutoForTest(false);
+ const before=p.hp;c.setTime(initial-100);a.combatTick(initial-100);
+ assert.equal(p.hp,before,'charged boss must not use basic attacks');
+ c.setTime(initial);a.combatTick(initial);assert.equal(p.hp,before,'kill postpones the strike');
+ c.setTime(initial+8000);a.tickTowerBossMechanics(initial+8000);
+ assert.ok(p.hp<before,'the postponed attack eventually fires');
+ assert.equal(chaser.towerNextStrikeAt,initial+8000+12000);
+});
 test('survival floor completes on elapsed time, without killing the pursuer',async()=>{
  const {a,p}=await fixture();p.towerProgress={highest:5};a.startTower(6);
  assert.ok(a.state().enemies.some(e=>e.towerPursuer));

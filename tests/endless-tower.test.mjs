@@ -28,6 +28,7 @@ test('each ten-floor region rotates combat, pursuit, survival, and assassination
   assert.equal(towerFloor(start+1).objective,'eliminate');
   assert.equal(towerFloor(start+3).objective,'hunt');
   assert.equal(towerFloor(start+3).enemyCount,4);
+  assert.equal(towerFloor(start+3).pursuerDelayPerKillSeconds,8);
   assert.equal(towerFloor(start+6).objective,'survive');
   assert.equal(towerFloor(start+6).goal,35);
   assert.equal(towerFloor(start+9).objective,'assassinate');
