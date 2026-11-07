@@ -18,9 +18,24 @@ test('actual game rewards once after all kills and safely returns to dawn city',
  assert.equal(p.towerRun,undefined);assert.equal(p.location,'dawncity');
  assert.equal(p.towerProgress.highest,1);assert.ok(p.towerCoins>0);
  assert.equal(p.towerLastFailure,undefined);
+ a.startTower(1);assert.equal(p.towerRun.floor,1);a.exitTower('重戰撤退');
+ assert.equal(p.towerProgress.highest,1);
  assert.equal(p.towerLastResult.floor,1);
  a.startTower(2);assert.equal(p.towerRun.floor,2);
+ // A player may respec, switch gear/pets, or recover in town between floors.
+ assert.equal(p.location,'dawnrift');
  a.exitTower('撤退');assert.equal(p.towerRun,undefined);
+ assert.equal(p.towerProgress.highest,1);
+});
+test('finishing a floor allows changing character setup before entering the next one',async()=>{
+ const {a,p}=await fixture();a.startTower(1);
+ for(let i=0;i<3;i++){a.state().enemy.hp=0;a.award();}
+ assert.equal(p.location,'dawncity');
+ const previousVitality=p.attributes.VIT;p.attributes.VIT=previousVitality+1;p.attributes.AGI-=1;
+ a.startTower(2);
+ assert.equal(p.towerRun.floor,2);
+ assert.equal(p.attributes.VIT,previousVitality+1);
+ a.exitTower('測試切換配置');
  assert.equal(p.towerProgress.highest,1);
 });
 test('interrupted tower cannot resume with stale enemies or get duplicate rewards',async()=>{
@@ -77,4 +92,34 @@ test('ice boss control is bounded and can be resisted by the existing SSS rule',
  a.tickTowerBossMechanics(now);assert.equal(a.isControlled(),true);
  c.setTime(now+1500);assert.equal(a.isControlled(),false);
  a.exitTower('測試完成');
+});
+test('pursuit floor requires four minor kills while an attacking boss remains alive',async()=>{
+ const {a,p}=await fixture();p.towerProgress={highest:2};a.startTower(3);
+ assert.equal(a.state().enemies.length,5);
+ assert.ok(a.state().enemies.some(e=>e.towerPursuer&&e.boss));
+ for(let i=0;i<4;i++){
+  const foes=a.state().enemies,minor=foes.find(e=>!e.towerPursuer);
+  a.setEnemies([minor,...foes.filter(e=>e!==minor)]);minor.hp=0;a.award();
+ }
+ assert.equal(p.towerProgress.highest,3);
+ assert.equal(p.location,'dawncity');
+});
+test('survival floor completes on elapsed time, without killing the pursuer',async()=>{
+ const {a,p}=await fixture();p.towerProgress={highest:5};a.startTower(6);
+ assert.ok(a.state().enemies.some(e=>e.towerPursuer));
+ a.tickTowerBossMechanics(1e6+34900);
+ assert.equal(p.towerProgress.highest,5);
+ a.tickTowerBossMechanics(1e6+35000);
+ assert.equal(p.towerProgress.highest,6);
+ assert.equal(p.towerRun,undefined);
+});
+test('assassination floor clears when boss dies, even with both escorts still alive',async()=>{
+ const {a,p}=await fixture();p.towerProgress={highest:8};a.startTower(9);
+ assert.equal(a.state().enemies.length,3);
+ assert.equal(a.state().enemies.filter(e=>e.towerEscort).length,2);
+ const boss=a.state().enemies.find(e=>e.boss);
+ a.setEnemies([boss,...a.state().enemies.filter(e=>e!==boss)]);boss.hp=0;a.award();
+ assert.equal(p.towerProgress.highest,9);
+ assert.equal(p.location,'dawncity');
+ assert.ok(a.state().enemies.every(e=>!e.towerEscort));
 });

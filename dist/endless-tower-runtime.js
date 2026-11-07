@@ -19,12 +19,12 @@ export const TOWER_BOSS_PATTERNS=Object.freeze({
 });
 
 export function buildTowerEnemies(floor,{monster,boss},now=0) {
-  const stage=towerFloor(floor),base=stage.kind==='boss'||stage.kind==='guardian'?boss:monster;
+  const stage=towerFloor(floor),base=stage.objective==='assassinate'||stage.kind==='boss'||stage.kind==='guardian'?boss:monster;
   if(!base||!Number.isFinite(base.hp)||base.hp<=0||!Number.isFinite(base.atk)||base.atk<=0)throw Error('缺少有效的曙界怪物或首領基準');
   const isBoss=stage.kind==='boss';
-  return Array.from({length:stage.enemyCount},(_,index)=>({
+  const targets=Array.from({length:stage.enemyCount},(_,index)=>({
     id:`tower-${floor}-${index}`,name:stage.enemyCount===1?stage.name:`${stage.name}・${index+1}`,
-    map:'tower',level:210,role:'attack',roleName:'天穹終境',boss:isBoss,elite:stage.kind==='elite'||stage.kind==='guardian',tower:true,
+    map:'tower',level:210,role:'attack',roleName:'天穹終境',boss:isBoss||stage.objective==='assassinate',elite:stage.kind==='elite'||stage.kind==='guardian',tower:true,
     towerFloor:floor,towerRegion:stage.regionIndex,slotIndex:isBoss?null:index,
     hp:Math.round(base.hp*stage.hpMultiplier*(stage.kind==='guardian'?.65:1)),
     atk:Math.round(base.atk*stage.atkMultiplier),
@@ -33,6 +33,22 @@ export function buildTowerEnemies(floor,{monster,boss},now=0) {
     xp:0,gold:0,drops:[],appearedAt:now,
     bossPattern:isBoss?TOWER_BOSS_PATTERNS[(stage.regionIndex+1)*10]:null
   }));
+  if(stage.objective==='hunt'||stage.objective==='survive'){
+    // Chasing boss is a hazard, not a required kill; no normal drops or score.
+    targets.push({id:`tower-chaser-${floor}`,name:`${stage.region}・追獵者`,tower:true,towerPursuer:true,boss:true,
+      map:'tower',level:210,role:'attack',roleName:'天穹追獵首領',
+      hp:Math.round(boss.hp*stage.hpMultiplier*10),maxHp:Math.round(boss.hp*stage.hpMultiplier*10),
+      atk:Math.round(boss.atk*stage.atkMultiplier*.32),def:Math.round((boss.def||0)*1.2),
+      xp:0,gold:0,drops:[],appearedAt:now});
+  }
+  if(stage.objective==='survive'||stage.objective==='assassinate'){
+    for(let i=0;i<2;i++)targets.push({id:`tower-escort-${floor}-${i}`,name:`${stage.region}・追隨護衛`,tower:true,towerEscort:true,
+      map:'tower',level:210,role:'attack',roleName:'天穹護衛',boss:false,
+      hp:Math.round(monster.hp*stage.hpMultiplier*.7),maxHp:Math.round(monster.hp*stage.hpMultiplier*.7),
+      atk:Math.round(monster.atk*stage.atkMultiplier*.55),def:monster.def||0,
+      xp:0,gold:0,drops:[],appearedAt:now});
+  }
+  return targets;
 }
 
 export function beginTowerRun(player,floor,now=0,maxFloor=TOWER_FIRST_RELEASE_MAX) {
@@ -68,7 +84,9 @@ export function markTowerEnemyDefeated(run,enemyId,totalEnemies,now) {
 
 export function settleTowerRun(player,run,now,{alive=true,totalEnemies}={}) {
   if(!validateTowerRun(run,now))return {error:'挑戰狀態無效'};
-  if(!Number.isInteger(totalEnemies)||totalEnemies!==towerFloor(run.floor).enemyCount||run.completedEnemyIds.length!==totalEnemies)
+  const stage=towerFloor(run.floor);
+  if(stage.objective==='survive'&&(now-run.stageStartedAt)/1000<stage.goal)return {error:'尚未達成生存時間'};
+  if(stage.objective!=='survive'&&(!Number.isInteger(totalEnemies)||totalEnemies!==stage.enemyCount||run.completedEnemyIds.length!==totalEnemies))
     return {error:'尚未擊敗所有敵人'};
   const result=finishTowerFloor(player.towerProgress,run.floor,(now-run.stageStartedAt)/1000,alive);
   if(!result.success)return {error:result.reason};

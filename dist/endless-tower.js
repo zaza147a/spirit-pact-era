@@ -22,6 +22,8 @@ export function towerFloor(floor) {
   const position = (floor-1)%10+1;
   const endless = floor>100;
   const kind = position===10?'boss':position===5?'guardian':position===4||position===8||position===9?'elite':'normal';
+  const objective=position===3?'hunt':position===6?'survive':position===9?'assassinate':'eliminate';
+  const goal=objective==='hunt'?4:objective==='survive'?35:objective==='assassinate'?1:null;
   const depth = Math.max(0,floor-100);
   const hpGrowth = endless?1+.045*depth+.0003*depth*depth:1;
   const atkGrowth = endless?1+.015*depth+.00004*depth*depth:1;
@@ -29,15 +31,23 @@ export function towerFloor(floor) {
   const affixPool=['狂暴之境','魔力枯竭','重甲領域','靈魂壓制','生命侵蝕','增援號角'];
   const activeAffixes=Array.from({length:affixes},(_,index)=>affixPool[(floor*7+index)%affixPool.length]);
   return Object.freeze({floor,regionIndex,region:region.name,kind,endless,
-    name:kind==='boss'?region.boss:kind==='guardian'?`${region.name}守衛者`:region.enemies[(position-1)%region.enemies.length],
-    enemyCount:kind==='boss'||kind==='guardian'?1:kind==='elite'?2:3,
+    name:objective==='assassinate'?`${region.name}追捕首領`:kind==='boss'?region.boss:kind==='guardian'?`${region.name}守衛者`:region.enemies[(position-1)%region.enemies.length],
+    enemyCount:objective==='hunt'?4:objective==='survive'?0:objective==='assassinate'?1:kind==='boss'||kind==='guardian'?1:kind==='elite'?2:3,
+    objective,goal,
     hpMultiplier:(kind==='boss'?region.bossHp:region.hp)*hpGrowth,
     atkMultiplier:region.atk*atkGrowth,
-    timeLimitSeconds:kind==='boss'?Math.min(360,180+30*regionIndex):kind==='guardian'||kind==='elite'?180:120,
+    timeLimitSeconds:objective==='hunt'?75:objective==='survive'?70:kind==='boss'?Math.min(360,180+30*regionIndex):kind==='guardian'||kind==='elite'?180:120,
     mechanic:region.mechanic,affixes,activeAffixes,
     reward:kind==='boss'&&!endless?region.reward:null,
     checkpoint:floor%10===0
   });
+}
+
+export function towerObjectiveLabel(stage) {
+  if(stage.objective==='hunt')return `追擊殲敵：${stage.timeLimitSeconds} 秒內擊敗 ${stage.goal} 隻小怪，追獵首領全程攻擊`;
+  if(stage.objective==='survive')return `堅守逃離：在追獵首領攻擊下存活 ${stage.goal} 秒，不要求擊殺敵人`;
+  if(stage.objective==='assassinate')return '首領斬首：擊敗指定首領立即通關，護衛一同消失';
+  return `殲滅關卡：擊敗 ${stage.enemyCount} 隻指定敵人`;
 }
 
 export function towerEntryError(player) {
@@ -52,6 +62,14 @@ export function normalizeTowerProgress(value) {
   const highest=Math.max(0,Math.min(1_000_000,Math.floor(Number(value?.highest)||0)));
   return {highest,checkpoint:Math.floor(highest/10)*10,deepest:Math.max(0,Math.floor(Number(value?.deepest)||0)),
     claimed:Array.isArray(value?.claimed)?[...new Set(value.claimed.filter(n=>Number.isInteger(n)&&n>=10&&n<=100&&n%10===0))]:[]};
+}
+
+// Each cleared floor stays available independently; the next uncleared floor
+// unlocks immediately, without requiring a continuous tower run.
+export function towerAvailableFloors(progress,maxFloor=100) {
+  const highest=normalizeTowerProgress(progress).highest;
+  const cap=Math.max(0,Math.min(1000000,Math.floor(Number(maxFloor)||0)));
+  return Array.from({length:Math.min(cap,highest+1)},(_,index)=>index+1);
 }
 
 export function finishTowerFloor(progress,floor,elapsedSeconds,alive=true) {
@@ -73,8 +91,9 @@ export function estimateTowerClear(floor,{dps,hp,baselineEnemyHp,incomingDps,hea
   if(!Number.isFinite(dps)||dps<=0||!Number.isFinite(hp)||hp<=0||!Number.isFinite(baselineEnemyHp)||baselineEnemyHp<=0||!Number.isFinite(incomingDps)||incomingDps<0)
     return {viable:false,reason:'缺少同一戰鬥基準的 HP、DPS 與承傷數據'};
   const targetHp=baselineEnemyHp*stage.hpMultiplier*stage.enemyCount;
-  const time=targetHp/dps;
+  const time=stage.objective==='survive'?stage.goal:targetHp/dps;
   const survival=incomingDps>healingDps?hp/(incomingDps-healingDps):Infinity;
   return {viable:time<=stage.timeLimitSeconds&&time<survival,estimatedSeconds:time,survivalSeconds:survival,
-    note:'此為初篩，不包含技能控制、首領階段、生怪延遲、技能輸出分布或真實戰鬥 AI'};
+    note:stage.objective==='survive'?'此層只需撐過指定秒數；須另評估追獵首領與護衛的瞬間傷害':
+      '此為初篩，不包含技能控制、首領階段、生怪延遲、技能輸出分布或真實戰鬥 AI'};
 }

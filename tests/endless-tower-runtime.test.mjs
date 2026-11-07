@@ -8,7 +8,7 @@ const bases={monster:{hp:1000,atk:100,def:50},boss:{hp:10000,atk:200,def:100}};
 test('first thirty floors produce actual bounded combat enemy stats',()=>{
   for(let floor=1;floor<=30;floor++){
     const foes=buildTowerEnemies(floor,bases,1000);
-    assert.ok(foes.length>=1&&foes.length<=3);
+    assert.ok(foes.length>=1&&foes.length<=5);
     for(const foe of foes){assert.ok(foe.hp>0&&foe.atk>0);assert.equal(foe.xp,0);assert.equal(foe.gold,0);}
   }
   assert.equal(buildTowerEnemies(10,bases)[0].name,'破曉守門者・艾德蘭');

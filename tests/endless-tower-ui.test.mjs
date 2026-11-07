@@ -9,7 +9,19 @@ test('panel exposes first three regions only, and correct next floor',()=>{
   assert.match(html,/焚天炎龍/);
   assert.match(html,/永凍女皇/);
   assert.doesNotMatch(html,/鋼鐵巨神/);
-  assert.match(html,/data-tower-enter="10"/);
+  assert.match(html,/data-tower-floor-select="0"/);
+  assert.match(html,/value="10"[^>]*selected/);
+  assert.match(html,/value="11" disabled/);
+});
+test('previous floors can be selected independently after progressing',()=>{
+ const html=renderTowerPanel({...eligible(),towerProgress:{highest:14}});
+ assert.match(html,/value="2"[^>]*>第 2 層 · 殲滅 · 已通關/);
+ assert.match(html,/value="14"[^>]*>第 14 層 · 殲滅 · 已通關/);
+ assert.match(html,/第 13 層 · 追擊殲敵/);
+ assert.match(html,/第 16 層 · 堅守逃離/);
+ assert.match(html,/value="15"[^>]*selected/);
+ assert.match(html,/value="16" disabled/);
+ assert.match(html,/更換裝備／卡片／夥伴／配點/);
 });
 test('locked status and active timer are displayed',()=>{
   const html=renderTowerPanel({...eligible(),level:199});

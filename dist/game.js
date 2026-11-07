@@ -31,7 +31,7 @@ import {migrateLegacyReselect,reselectionPet,RESELECT_ORDERED_TYPES} from './pet
 import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArchonPreparationFactor} from './dawn-sigil.js?v=6.5.38';
 import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
 import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_RESISTANCE,CONTROL_SLOTS,CONTROL_NAMES,enhancedAffixes,rankOf,fullSetRank,normalizeEnhancements,unlockRankOutfits,controlResistance,enhanceEquipped,enhancePetEquipped,trialEntryError,TRIAL_ROUTES,createTrialBoss,trialDropTable,trialDrops,dawnEntryError} from './sky-trials.js?v=6.5.44';
-import {towerFloor,towerEntryError,normalizeTowerProgress} from './endless-tower.js';
+import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} from './endless-tower.js';
 import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
@@ -409,7 +409,7 @@ function petThreshold(pet){return petExperienceNeed(pet);}
 function jobThreshold(){return Math.round(80+15*player.jobLevel**2.1);}
 function endReport(outcome){const completed=finish(report,outcome);if(completed){player.battleHistory.push(completed);player.battleHistory=player.battleHistory.slice(-12);dirty=true;}report=null;}
 function startReport(){if(offlineSimulation){report=null;return;}report=newReport(player.location,enemy.id,activePet());if(isSpiritJob(player.job)){const roster=activePetRoster(player);report.dualPetDamage={first:0,second:0,dualResonance:0,firstName:roster[0]?.nickname||'第一夥伴',secondName:roster[1]?.nickname||'第二夥伴'};}}
-function chooseAttackTarget(){const target=selectEncounterTarget(enemies,player?.targetPriority,enemy);if(target)enemy=target;return target;}
+function chooseAttackTarget(){let candidates=enemies;if(player?.towerRun){const objective=towerFloor(player.towerRun.floor).objective;if(objective==='hunt')candidates=enemies.filter(e=>e.hp>0&&!e.towerPursuer);if(objective==='assassinate')candidates=enemies.filter(e=>e.hp>0&&!e.towerEscort);}const target=selectEncounterTarget(candidates.length?candidates:enemies,player?.targetPriority,enemy);if(target)enemy=target;return target;}
 const encounterMonsterPools=new Map();
 function encounterMonsterPool(map){let pool=encounterMonsterPools.get(map);if(!pool){pool=WORLD_MONSTERS.filter(m=>m.map===map);encounterMonsterPools.set(map,pool);}return pool;}
 function addEncounter(now=gameNow(),slotIndex=null){
@@ -1839,7 +1839,7 @@ function showCaptureReward(pet){if(offlineSimulation)return;$('captureRewardCont
 function renderEncounterSlots(){if(player.towerRun)return renderTowerEncounter();if(player.trialRun)return renderTrialEncounter();const capacity=encounterLimit(player.location);if(!capacity)return '<div class="enemy-idle">安全區域，沒有敵人。</div>';const card=foe=>`<button class="enemy-target ${enemy===foe?'active':''} ${foe.boss?'map-boss':''}" data-target="${foe.instanceId}">${spriteHtml(foe.id,'monster')}<span class="enemy-label">${foe.boss?'♛ 首領 ':''}Lv.${foe.level||1} ${SPECIES[foe.id].name}</span><span class="enemy-hp">${foe.hp}/${foe.maxHp} HP</span>${meter(foe.hp,foe.maxHp,'red')}<small>${enemy===foe?'◎ 目前鎖定':'點擊指定'}</small></button>`;return Array.from({length:capacity},(_,slot)=>{const foe=enemies.find(e=>!e.boss&&e.hp>0&&e.slotIndex===slot);return foe?card(foe):`<div class="enemy-target empty-slot" data-ui-key="empty-${slot}"><span>探索中</span><small>此格獨立隨機遇怪</small></div>`;}).join('')+enemies.filter(e=>e.boss&&e.hp>0).map(card).join('');}
 
 function combatTick(now=gameNow()){if(player?.towerRun&&player.hp<=0){exitTower('挑戰失敗');return;}if(resolveSpiritPairDefeat())return;if(player?.trialRun&&player.hp<=0){exitTrial('戰敗，試煉已結束');return;}inCombatTick=true;if(!offlineSimulation)clearStatSnapshots();try{if(!player.hp){casting=null;if(auto&&player.autoRevive)autoRevivePlayer();if(!offlineSimulation&&$('reviveModal').style.display==='flex')showReviveDialog();return;}if(now>(timers.petShieldExpires||Infinity)){player.shield=Math.max(0,player.shield-petShield);petShield=0;}if(now>(timers.playerShieldExpires||Infinity))player.shield=Math.min(player.shield,petShield);if(now>(petEffects.shieldExpires||Infinity))petEffects.shield=0;
- tickTrialControl(now);tickTowerBossMechanics(now);tickEncounters(now);chooseAttackTarget();autoCapturePet(now);if(casting&&now>=casting.until){const id=casting.id;casting=null;playerAttack(true,id,true);}if(casting&&!player.hp)casting=null;
+ const wasTowerRun=!!player.towerRun;tickTrialControl(now);tickTowerBossMechanics(now);if(wasTowerRun&&!player.towerRun)return;tickEncounters(now);chooseAttackTarget();autoCapturePet(now);if(casting&&now>=casting.until){const id=casting.id;casting=null;playerAttack(true,id,true);}if(casting&&!player.hp)casting=null;
  if(now-timers.regen>=4000){timers.regen=now;for(const pet of activePetRoster(player))if(pet.hp>0)pet.sp=Math.min(petStats(pet).sp,pet.sp+Math.max(1,Math.ceil(pet.level/8)));const intRegen=['mage','wizard','sage'].includes(player.job)?Math.ceil(stat('mp')*Math.min(150,effectiveAttributes().INT)*.0004):0;player.mp=Math.min(stat('mp'),player.mp+2+passiveBonus('spRegen')+cardBonus('spRegen')+intRegen);dirty=true;}
  if(enemy.hp&&player.hp){const trialAtTick=player.trialRun;if(auto&&now-(timers.potions||0)>800){timers.potions=now;autoUsePotions();}tickPetEffects(now);const selected=enemy;for(const foe of [...enemies]){if(!player.hp)break;if(foe.hp&&now-foe.lastAttack>=aspdAttackIntervalMs(foe.aspd)){foe.lastAttack=now;enemy=foe;enemyAttack();if(trialAtTick&&!player.trialRun)return;}}enemy=selectEncounterTarget(enemies,player.targetPriority,selected)||selected;if(player.hp<=0){casting=null;return;}if(enemy.hp&&auto){for(const companion of activePetRoster(player)){if(!enemy.hp)break;if(companion?.hp>0&&combatPetFactor(companion.id)>0){const dualPetAbility=player.job==='spiritist'||player.job==='pactWarrior'||player.job==='spiritCommander';const lastPetAbility=dualPetAbility?(timers.petAbilityById?.[companion.id]||0):(timers.petAbility||0);if(now-lastPetAbility>=850)petAutoAbility(companion,commanderTransferredPetStats(companion,petStats(companion)),now);if(enemy.hp)petAttack(companion,combatPetFactor(companion.id));}}if(enemy.hp)autoCastJobs();if(enemy.hp)playerAttack();if(enemy.hp&&player.autoUltimate&&player.resonance>=ULTIMATE_COST&&now-timers.ultimate>=ULTIMATE_COOLDOWN)ultimate();}}
 tickCompanionFourth(now);
@@ -1977,6 +1977,8 @@ function init(){if(typeof document==='undefined'){self.onmessage=async event=>{t
  $('enterGameBtn').onclick=()=>enterCharacterSlot(selectedSlot);$('returnEntryBtn').onclick=()=>returnToEntry();$('cancelCreateBtn').onclick=closeCharacterCreation;$('fusionQuickStop').onclick=()=>{stopAutoFusion();renderSide()};$('fusionResultClose').onclick=()=>closeFusionResult();$('fusionResultBag').onclick=()=>closeFusionResult(true);
 
  bindHeroRename(document,{character:openCharacterRename,pet:openPetRename,activePet:()=>openPetRename(activePet()?.id)});
+ // Delegated so the floor picker survives side-panel redraws and equipment changes.
+ $('side').addEventListener('click',event=>{const button=event.target.closest('[data-tower-floor-go]');if(!button||button.disabled)return;const selector=button.closest('.tower-region')?.querySelector('[data-tower-floor-select]');if(selector&&!selector.disabled)startTower(Number(selector.value));});
  const closeRename=()=>{$('renameModal').style.display='none';delete $('renameModal').dataset.petId;delete $('renameModal').dataset.renameTarget;};$('renameCancel').onclick=closeRename;$('renameForm').onsubmit=e=>{e.preventDefault();const name=$('renameInput').value.trim().slice(0,16);if(!name)return toast('請輸入名稱');const petId=$('renameModal').dataset.petId;if($('renameModal').dataset.renameTarget==='pet'){if(!petId)return toast('夥伴識別遺失，請重新開啟改名');const pet=player?.pets.find(p=>String(p.id)===petId);if(!pet)return toast('夥伴已不存在');const before=pet.nickname,customBefore=pet.customNickname;pet.nickname=name;pet.customNickname=true;if(save()===false){pet.nickname=before;pet.customNickname=customBefore;return toast('夥伴名稱儲存失敗');}closeRename();render();renderSide(true);return toast('夥伴暱稱已更新');}const before=player.name;player.name=name;if(save()===false){player.name=before;return toast('角色名稱儲存失敗');}closeRename();render();toast('角色名稱已更新');};
 
  $('logFilters')?.querySelectorAll('[data-logview]').forEach(b=>b.onclick=()=>{logView=b.dataset.logview;$('logFilters').querySelectorAll('[data-logview]').forEach(x=>x.classList.toggle('active',x===b));renderLog()});
@@ -2054,7 +2056,8 @@ function startTower(floor){
  if(player.location!=='dawncity')return toast('請前往曙光聖港挑戰天穹終境');
  const now=gameNow(),result=beginTowerRun(player,floor,now);
  if(result.error)return toast(result.error);
- if(!confirm(`挑戰天穹終境第 ${floor} 層？死亡、超時、關閉頁面都會結束本次挑戰。`))return;
+ const stage=towerFloor(floor),objective=stage.objective==='hunt'?`在追獵首領攻擊下，${stage.timeLimitSeconds} 秒內擊敗 ${stage.goal} 隻小怪`:stage.objective==='survive'?`在首領追擊下存活 ${stage.goal} 秒`:stage.objective==='assassinate'?'擊敗目標首領即可通關，護衛會一起撤退':'擊敗本層全部指定敵人';
+ if(!confirm(`挑戰天穹終境第 ${floor} 層？\n通關條件：${objective}。\n死亡、超時、關閉頁面都會結束本次挑戰。`))return;
  const previous=structuredClone(player);
  player.towerProgress=result.progress;player.towerRun=result.run;player.location='dawnrift';player.offline={at:Date.now(),enabled:false};
  stopAutoFusion('進入天穹終境');spawn();spawnTowerEnemies();tab='trials';auto=!player.manualPaused;
@@ -2072,7 +2075,7 @@ function spawnTowerEnemies(){
 }
 function awardTowerEnemy(){
  const defeated=enemy,run=player?.towerRun;if(!run||!defeated||defeated.hp>0||defeated.rewarded)return;
- if(defeated.towerSummon){defeated.rewarded=true;enemies=enemies.filter(e=>e!==defeated&&e.hp>0);enemy=selectEncounterTarget(enemies,player.targetPriority)||{id:'town',hp:0,maxHp:1};message(`已消滅 ${defeated.name}。`,'good','system');dirty=true;return;}
+ if(defeated.towerSummon||defeated.towerPursuer||defeated.towerEscort){defeated.rewarded=true;enemies=enemies.filter(e=>e!==defeated&&e.hp>0);enemy=selectEncounterTarget(enemies,player.targetPriority)||{id:'town',hp:0,maxHp:1};message(`已消滅 ${defeated.name}。`,'good','system');dirty=true;return;}
  const now=gameNow(),result=markTowerEnemyDefeated(run,defeated.id,towerFloor(run.floor).enemyCount,now);
  if(result.error)return;
  defeated.rewarded=true;player.towerRun=result.run;player.kills++;
@@ -2080,16 +2083,20 @@ function awardTowerEnemy(){
  enemy=selectEncounterTarget(enemies,player.targetPriority)||{id:'town',hp:0,maxHp:1};
  message(`擊敗 ${defeated.name}！`,'good','system');
  if(result.stageCleared){
-  const settled=settleTowerRun(player,player.towerRun,now,{alive:player.hp>0,totalEnemies:run.completedEnemyIds.length+1});
-  if(settled.error)return exitTower(settled.error);
-  player.towerProgress=settled.progress;player.towerCoins=(player.towerCoins||0)+settled.coins;
-  player.towerLastResult={floor:run.floor,coins:settled.coins,firstReward:settled.firstReward,clearSeconds:settled.clearSeconds};
-  delete player.towerLastFailure;
-  const floor=run.floor;endReport(`天穹終境第${floor}層通關`);
-  message(`✦ 第${floor}層通關！天穹塔幣 +${settled.coins}${settled.firstReward?' · 解鎖稱號：'+settled.firstReward:''}`,'rare','system');
-  exitTower('通關',false);
+  completeTowerRun(now);
  }else if(wasSelected)startReport();
  dirty=true;save();render();
+}
+function completeTowerRun(now){
+ const run=player?.towerRun;if(!run)return;
+ const settled=settleTowerRun(player,run,now,{alive:player.hp>0,totalEnemies:run.completedEnemyIds.length});
+ if(settled.error)return exitTower(settled.error);
+ player.towerProgress=settled.progress;player.towerCoins=(player.towerCoins||0)+settled.coins;
+ player.towerLastResult={floor:run.floor,coins:settled.coins,firstReward:settled.firstReward,clearSeconds:settled.clearSeconds};
+ delete player.towerLastFailure;
+ const cleared=run.floor;endReport(`天穹終境第${cleared}層通關`);
+ message(`✦ 第${cleared}層達成目標！天穹塔幣 +${settled.coins}${settled.firstReward?' · 解鎖稱號：'+settled.firstReward:''}`,'rare','system');
+ exitTower('通關',false);
 }
 function exitTower(reason='離開挑戰',failed=true){
  if(!player?.towerRun)return;
@@ -2105,9 +2112,12 @@ function exitTower(reason='離開挑戰',failed=true){
 function renderTowerEncounter(){const foe=enemies.find(e=>e.hp>0),run=player.towerRun;if(!foe)return '<div class="enemy-idle">結算中…</div>';
  const skill=foe.bossPattern?towerBossSignature(run.floor,foe.towerPhase||0):null;
  const cast=skill?`<div class="tower-cast-warning" role="status">⚠ ${skill.name} · ${foe.towerNextSkill?`約 ${Math.max(0,Math.ceil((foe.towerNextSkill-gameNow())/1000))} 秒後施放`:'蓄力中'}${skill.type==='freeze'?' · 可由控制抗性抵擋':''}</div>`:'';
- return `<div class="enemy-target trial-boss tower-encounter">${spriteHtml(foe.id,'monster')}<b>第 ${run.floor} 層 · ${foe.name}</b><span>${foe.hp.toLocaleString()}／${foe.maxHp.toLocaleString()} HP</span>${meter(foe.hp,foe.maxHp,'red')}${cast}<small>剩餘 ${Math.ceil(towerRemainingSeconds(run,gameNow()))} 秒</small></div>`;}
+ const stage=towerFloor(run.floor),progress=stage.objective==='survive'?`已存活 ${Math.max(0,Math.floor((gameNow()-run.stageStartedAt)/1000))}／${stage.goal} 秒`:`目標 ${run.completedEnemyIds.length}／${stage.enemyCount}`;
+ return `<div class="enemy-target trial-boss tower-encounter">${spriteHtml(foe.id,'monster')}<b>第 ${run.floor} 層 · ${foe.name}</b><span>${foe.hp.toLocaleString()}／${foe.maxHp.toLocaleString()} HP</span>${meter(foe.hp,foe.maxHp,'red')}<div class="tower-objective-banner">${towerObjectiveLabel(stage)} · ${progress}</div>${cast}<small>剩餘 ${Math.ceil(towerRemainingSeconds(run,gameNow()))} 秒</small></div>`;}
 function tickTowerBossMechanics(now){
  if(!player?.towerRun)return;
+ const towerStage=towerFloor(player.towerRun.floor);
+ if(towerStage.objective==='survive'&&player.hp>0&&now-player.towerRun.stageStartedAt>=towerStage.goal*1000){completeTowerRun(now);return;}
  for(const foe of [...enemies]){
   if(!foe.boss||!foe.tower||foe.hp<=0||!foe.bossPattern)continue;
   const pattern=foe.bossPattern,ratio=foe.hp/foe.maxHp;
