@@ -4,7 +4,7 @@ import {TOWER_FIRST_RELEASE_MAX,towerRemainingSeconds} from './endless-tower-run
 const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 export function renderTowerPanel(player,{maxFloor=TOWER_FIRST_RELEASE_MAX,now=0}={}) {
-  const progress=normalizeTowerProgress(player?.towerProgress),entryError=towerEntryError(player);
+  const progress=normalizeTowerProgress(player?.towerProgress),entryError=towerEntryError(player)||(!player?.towerRun&&player?.location!=='dawncity'?'請前往曙光聖港':null);
   const active=player?.towerRun;
   const title=`<section class="item trial-intro tower-intro"><span class="eyebrow">ENDLESS TOWER / 天穹終境</span><h3>✧ ${TOWER_NAME}</h3><p>共100層固定關卡，101層後開放無盡深淵。每10層解鎖檢查點；死亡或超時立即停止。獎勵限稱號、外觀、收藏與便利功能，沒有永久戰鬥加成。</p><p>最高紀錄：<b>${progress.highest} 層</b> · 檢查點 ${progress.checkpoint} 層 · 塔幣 ${Math.max(0,Math.floor(Number(player?.towerCoins)||0)).toLocaleString('zh-TW')}</p></section>`;
   if(active){
