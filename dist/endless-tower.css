@@ -43,6 +43,13 @@
 #gameShell #character .tower-honor-title{display:block;text-align:center;margin:3px auto 8px;color:#f7d898;font-size:12px;font-weight:700;letter-spacing:.08em;text-shadow:0 2px 7px #000;}
 .tower-gatekeeper{border:1px solid #c6a86d88;background:linear-gradient(120deg,#1b2c3d,#38304a);border-radius:12px;padding:12px;margin:12px 0;}
 .tower-gatekeeper p{color:#bcd2dc;line-height:1.7;}
+.trial-gatekeeper{border:1px solid #79b4d188;background:linear-gradient(120deg,#172d42,#253d58);border-radius:12px;padding:12px;margin:12px 0;}
+.trial-gatekeeper b{color:#d7edff;}
+.trial-gatekeeper p{color:#c0d8e9;line-height:1.7;}
+.trial-gatekeeper-profile{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center;}
+.trial-gatekeeper-profile img{display:block;width:96px;height:132px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 5px 8px #0008);}
+.trial-gatekeeper-profile b{color:#d7edff;display:block;font-size:16px;}
+@media(max-width:420px){.trial-gatekeeper-profile{grid-template-columns:72px minmax(0,1fr);gap:8px}.trial-gatekeeper-profile img{width:72px;height:100px}.trial-gatekeeper-profile b{font-size:13px}}
 .tower-encounter{flex:1 1 100%!important;max-width:none!important;min-width:0!important;display:grid!important;grid-template-columns:minmax(95px,145px) minmax(0,1fr);gap:7px 18px!important;text-align:left!important;align-items:center;position:relative;padding:16px!important;border:1px solid #bba371a0!important;border-radius:15px!important;background:linear-gradient(135deg,#12243be8,#28314de8 70%,#4a3642c9)!important;box-shadow:inset 0 1px #ffffff17,0 8px 24px #0005;}
 .tower-encounter .art-monster{grid-row:1 / span 5;width:100%!important;height:160px!important;object-fit:contain;filter:drop-shadow(0 7px 13px #0009);}
 .tower-encounter>b{color:#ffe0a1;font-size:17px;line-height:1.5;}
