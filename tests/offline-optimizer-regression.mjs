@@ -10,7 +10,7 @@ const end=game.indexOf('\nasync function simulateOffline(',start);
 assert.ok(start>=0&&end>start,'offline idle helper missing');
 const code=game.slice(start,end);
 const context={
-  player:{},casting:null,controlEffect:null,enemies:[],
+  player:{},enemy:{hp:0},casting:null,controlEffect:null,enemies:[],
   encounterSlots:[1000],timers:{regen:0,offlineSupplies:0},OFFLINE_STEP_MS:100
 };
 vm.runInNewContext(code+'\nthis.skip=offlineIdleSkipSteps',context);
