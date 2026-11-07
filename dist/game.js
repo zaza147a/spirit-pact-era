@@ -9,7 +9,7 @@ import {homecomingTracker,renderHomecomingPanel,renderHomecomingTown} from './ho
 import {SPIRIT_SANCTUARY_MAP,SPIRIT_SANCTUARY_MONSTERS,spiritSanctuaryUnlocked,isCaptureSanctuary,announceSpiritSanctuary,visitSpiritSanctuary,spiritSanctuaryTracker,blessSanctuaryPet} from './spirit-sanctuary.js';
 import {homecomingPicture,showHomecomingPicture} from './homecoming-modal.js';
 import {ensurePetEffects} from './dual-pet-effects.js';
-import {patchTownArea} from './town-scene.js?v=6.5.77';
+import {patchTownArea} from './town-scene.js?v=7.1.5';
 import {WEAPON_COMPENSATION_VERSION,initializeWeaponCompensation,compensationWeaponOptions,compensationNormalKeys,compensationSpecialKeys,compensationAffixCount,compensationAffixDescription,claimWeaponCompensation,compensationCanCorrect,claimWeaponCompensationCorrection} from './weapon-compensation.js?v=6.5.62';
 import {commanderInheritedPetStats,commanderMainSkillMultiplier} from './commander-owner-growth.js';
 import {spiritTargetDamageFactor} from './spirit-target-damage.js';
@@ -35,7 +35,7 @@ import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} f
 import {towerFrostUnlocked,normalizeTowerCostume,towerFrostArt,chooseTowerCostume} from './tower-costumes.js';
 import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature,postponeTowerPursuer} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
-import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.4';
+import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.5';
 import {TOWER_SHOP_ITEMS,normalizeTowerCollection,buyTowerShopItem,towerCollectedBackgrounds,selectTowerBackground,awardTowerCoins} from './tower-reward-shop.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
 import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';

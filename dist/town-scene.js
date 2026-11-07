@@ -3,7 +3,7 @@ import {patchHtml} from './ui-patch.js';
 const NPC_ART = {
   quests:'guide', guild:'guild', evolution:'evolution', shop:'merchant', warehouse:'warehouse',
   enhancement:'enhancer', reforge:'reforge', collection:'collector', cardrecycle:'alchemist',
-  cardcollection:'archivist', trials:'guardian', sigilcraft:'sigil', third:'awakener'
+  cardcollection:'archivist', trials:'trial-officiant', tower:'guardian', sigilcraft:'sigil', third:'awakener'
 };
 const NPC_DIALOG = {
   quests:['征途引導官・艾琳','每段旅程都有自己的故事。你想查看目前的委託，還是準備迎接下一次試煉？','查看任務'],
@@ -17,7 +17,8 @@ const NPC_DIALOG = {
   collection:['鑄金典藏師','真正的收藏家，追求的可不只是金幣。來看看你的收藏成就吧。','查看收藏館'],
   cardrecycle:['命運卡片鍊成師','不需要的卡片，也能成為下一張珍稀卡片的起點。','進行卡片鍊成'],
   cardcollection:['星頁典藏師・露娜','每一張卡片都是冒險世界的一頁紀錄。要翻閱你的收藏嗎？','查看卡片收藏'],
-  trials:['試煉之門守護者','門後的守衛會檢驗你的實力。準備好接受連續五場挑戰了嗎？','進入試煉'],
+  trials:['星穹試煉官・艾莉亞','五位首領已在試煉門後等候。帶上入場券，你要挑戰單次五連戰，還是已解鎖的連續挑戰？','查看五連戰'],
+  tower:['終境守望者・賽菈','天穹終境每一層都是獨立試煉，通關即可回到曙光聖港整備，再選擇下一層。','查看天穹終境'],
   sigilcraft:['契印師・曦紋','曙光會回應耐心雕琢之人。讓我看看你收集到的契印材料。','製作契印']
 };
 const bypassDialog=new WeakSet();
