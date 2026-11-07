@@ -29,7 +29,7 @@ UI：`dist/game.js` 的 `TOWER_BACKGROUND_STYLES` 與 `dist/endless-tower.css` �
 | 賢者 / sage | `outfit-sage-frost.webp` | 女性冰系魔拳賢者，元素拳套與四元素浮空法書 |
 | 十字斬首者 / assassin | `outfit-assassin-frost.webp` | 女性冰影刺客，雙腕拳刃與低姿態突襲造型 |
 | 流氓 / rogue | `outfit-rogue-frost.webp` | 女性冰霜遊俠型流氓，華麗羽帽、手弩與短刃 |
-| 主教 / priest | `outfit-priest-frost.webp` | 女性永凍聖女，冰晶聖杖、祝禱聖環與禮袍；依玩家回饋已校正原先歪斜的主教帽冠，帽尖與頭頂居中 |
+| 主教 / priest | `outfit-priest-frost.webp` | **依玩家第二次回饋完全重新繪製**：女性正面站姿、面朝前方、中央對齊的對稱冰晶主教冠帽、十字聖杖、祝禱與禮袍；不再沿用先前歪帽圖構圖 |
 | 修羅 / monk | `outfit-monk-frost.webp` | **已重新繪製差異版**：男性短髮赤膊冰紋武僧、粗獷獸首雙拳套、巨型念珠與銅色曼荼羅；刻意區分賢者的女性四元素魔拳 |
 | 遊俠 / hunter | `outfit-hunter-frost.webp` | 女性冰雪弓手，銀藍長弓、冰箭與雪鴞羽披風 |
 | 舞孃 / performer | `outfit-performer-frost.webp` | 男性冰晶樂師，銀藍豎琴與冰雪音律長袍 |
