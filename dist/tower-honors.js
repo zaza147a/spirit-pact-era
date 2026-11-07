@@ -14,14 +14,14 @@ export function unlockedTowerHonors(player) {
 
 export function towerHonorOptions(player,type){
  const base=unlockedTowerHonors(player).map(h=>h[type]);
- if(type!=='frame')return base;
+ if(type!=='frame')return [...new Set([...base,...(Array.isArray(player?.extraHonorTitles)?player.extraHonorTitles.filter(name=>typeof name==='string'):[])])];
  const bought=new Set(normalizeTowerCollection(player?.towerCollection).purchases);
  return [...base,...TOWER_SHOP_ITEMS.filter(i=>i.type==='frame'&&bought.has(i.id)).map(i=>i.name)];
 }
 
 export function normalizeTowerHonorSelection(player) {
   const unlocked=unlockedTowerHonors(player);
-  const titles=new Set(unlocked.map(h=>h.title));
+  const titles=new Set(towerHonorOptions(player,'title'));
   const frames=new Set(towerHonorOptions(player,'frame'));
   const previous=player?.towerHonorSelection||{};
   return {

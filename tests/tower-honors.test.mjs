@@ -26,3 +26,11 @@ test('invalid saved selections are hidden and title selectors are not in tower c
  assert.deepEqual(normalizeTowerHonorSelection(p),{title:null,frame:null});
  assert.doesNotMatch(renderTowerPanel(p),/data-tower-honor/);
 });
+
+test('gold and continent collection titles use the single-select title wardrobe',()=>{
+ const p={towerProgress:{highest:0,claimed:[]},extraHonorTitles:['黃金冒險者','大陸典藏家']};
+ assert.equal(selectTowerHonor(p,'title','黃金冒險者'),true);
+ assert.equal(selectTowerHonor(p,'title','大陸典藏家'),true);
+ assert.deepEqual(normalizeTowerHonorSelection(p),{title:'大陸典藏家',frame:null});
+ assert.equal(selectTowerHonor(p,'title','未取得稱號'),false);
+});
