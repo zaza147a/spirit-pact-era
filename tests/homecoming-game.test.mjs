@@ -55,6 +55,22 @@ test('failed save rolls back journey and first invitation; offline never advance
  const before=structuredClone(p());before.location=r.fieldId;before.offline={at:0,enabled:true};
  const result=await api.simulateOffline(before,10000000);assert.equal(result.summary,null);assert.deepEqual(result.player.homecoming,before.homecoming);
 });
+for(const job of ['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer'])test('banner duel finishes even when the participating pet faints: '+job,async()=>{
+ const route=HOMECOMING_ROUTES.find(r=>r.id==='support-attack'),{api,act,p}=await setup(route,job);
+ for(const action of ['begin','next','next','arrive','accept'])assert.equal(act(action),true,job+'/'+action);
+ for(const choice of ['begin','back','side','break','take']){
+  const node=HOMECOMING_ADVENTURES[route.id].nodes[p().homecoming.routes[route.id].adventure.step];
+  if(p().location!==adventureLocation(route,node))assert.equal(act('go'),true);
+  assert.equal(act('choose',choice),true,job+'/'+choice);
+ }
+ assert.equal(p().homecoming.routes[route.id].adventure.step,'duel');
+ const foe=api.addHomecomingEncounter();assert.ok(foe);
+ assert.equal(foe.homecomingPetId,p().activePetId);
+ p().pets[0].hp=0;foe.hp=0;api.award();
+ assert.equal(p().homecoming.routes[route.id].phase,'ready',job);
+ assert.equal(act('return'),true);assert.equal(act('claim'),true);
+ assert.equal(p().homecoming.routes[route.id].phase,'claimed');
+});
 test('map locks, noncombat spawn suppression and current-stage load repair',async()=>{
  const r=HOMECOMING_ROUTES[1],{api,act,p}=await setup(r);
  assert.ok(homecomingEntryError(p(),r.townId,p().pets[0]));
