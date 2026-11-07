@@ -27,9 +27,9 @@
 .tower-shop-item small{display:block;opacity:.7;margin-top:3px;}
 .tower-shop-item button{flex-shrink:0;}
 .tower-background-preview{width:100%;min-height:95px;border-radius:9px;}
-.tower-background-dawn{background:radial-gradient(circle at 65% 22%,#e9bc71,#785b6c 36%,#172b46);}
-.tower-background-flame{background:radial-gradient(circle at 55% 27%,#fc9c48,#9c393a 34%,#23192d);}
-.tower-background-frost{background:radial-gradient(circle at 55% 20%,#cbf4ff,#5b92c4 40%,#1a304d);}
+.tower-background-dawn{background-image:url('assets/tower/background-dawn.webp?v=tower-art-1'),radial-gradient(circle at 65% 22%,#e9bc71,#785b6c 36%,#172b46);background-size:cover;}
+.tower-background-flame{background-image:url('assets/tower/background-flame.webp?v=tower-art-1'),radial-gradient(circle at 55% 27%,#fc9c48,#9c393a 34%,#23192d);background-size:cover;}
+.tower-background-frost{background-image:url('assets/tower/background-frost.webp?v=tower-art-1'),radial-gradient(circle at 55% 20%,#cbf4ff,#5b92c4 40%,#1a304d);background-size:cover;}
 .slot-select h2.tower-frame-collect-dawn{border:3px double #fff0ae;background:linear-gradient(120deg,#35303b,#97794b,#35303b);color:#fff6ca;box-shadow:0 0 15px #f5bf6970;}
 .slot-select h2.tower-frame-collect-flame{border:3px double #ffd18f;background:linear-gradient(120deg,#3c1b27,#ae493a,#3c1b27);color:#ffe9c9;box-shadow:0 0 15px #e8796470;}
 .slot-select h2.tower-frame-collect-frost{border:3px double #e5fbff;background:linear-gradient(120deg,#1c3550,#438fbb,#1c3550);color:#f0faff;box-shadow:0 0 15px #9cdeff70;}
