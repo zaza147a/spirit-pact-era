@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/tower-frost-browser.yml'
       - 'scripts/browser/tower-frost-acceptance.mjs'
+      - 'dist/game.js'
+      - 'dist/index.html'
   workflow_dispatch:
 permissions:
   contents: read
