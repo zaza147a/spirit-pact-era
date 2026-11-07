@@ -24,3 +24,9 @@ test('reward HTML escapes values and never invents bonus stats',()=>{
   assert.match(html,/&lt;script&gt;/);
   assert.doesNotMatch(html,/ATK|MATK/);
 });
+test('latest successful clear remains visible without a combat stat bonus',()=>{
+ const html=renderTowerPanel({...eligible(),towerLastResult:{floor:10,coins:300,firstReward:'破曉挑戰者',clearSeconds:35}});
+ assert.match(html,/第 10 層通關/);
+ assert.match(html,/破曉挑戰者/);
+ assert.doesNotMatch(html,/永久傷害 \+/);
+});
