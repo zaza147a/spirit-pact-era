@@ -25,6 +25,7 @@ globalThis.__spiritBenchmarkStack=true;
 globalThis.__spiritDisablePetStatsCache=workerData?.disablePetStatsCache===true;
 globalThis.__spiritDisableOfflineAffixCache=workerData?.disableOfflineAffixCache===true;
 globalThis.__spiritDisableOfflineGearStatCache=workerData?.disableOfflineGearStatCache===true;
+globalThis.__spiritDisableOfflineGearTotals=workerData?.disableOfflineGearTotals===true;
 globalThis.self={
  postMessage(message){
   parentPort.postMessage(message.type==='result'
