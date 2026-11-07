@@ -17,6 +17,7 @@
 - `tests/endless-tower-runtime.test.mjs`、`tests/endless-tower-ui.test.mjs`：規則、獎勵防重發、實際曙界數值、XSS 安全驗證。
 - `dist/game.js`：新塔採獨立 `towerRun`／`towerProgress`，使用曙光聖港入口，與既有五連戰互斥；角色死亡、超時、主動撤退、選角、中斷讀檔都會安全離場。
 - `tests/endless-tower-game-integration.test.mjs`：實際主遊戲函式的開始／連殺結算／中斷／死亡／超時測試。
+- 前三區大型首領已接入 70%／30% 階段，部分階段會召喚受限數量的敵人；召喚物不計入本層主敵擊殺數，也不掉落普通野外獎勵。首領完整的元素／異常效果與獨立美術仍待補。
 
 ## 極重要：不得直接拿舊 DPS 排名作通關判斷
 
@@ -35,7 +36,7 @@
 
 `node --test tests/endless-tower*.test.mjs`
 
-已執行原有天穹試煉、連續試煉、曙界首領、返鄉系統與新增塔測試，66／66 通過。
+已執行原有天穹試煉、連續試煉、曙界首領、返鄉系統與新增塔測試，68／68 通過。
 
 ## 狀態
 
