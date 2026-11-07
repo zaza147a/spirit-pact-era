@@ -108,6 +108,7 @@ const gameNow=()=>offlineClock??Date.now();
 // Live UI always uses the uncached production calculator.
 const offlinePetStatCache=new WeakMap();
 let offlineAffixCache=new WeakMap();
+let offlineGearStatCache=new WeakMap();
 function combatEnhancedAffixes(item){
  if(!offlineSimulation||!item||globalThis.__spiritDisableOfflineAffixCache)return enhancedAffixes(item);
  const existing=offlineAffixCache.get(item);
@@ -115,6 +116,19 @@ function combatEnhancedAffixes(item){
  const values=enhancedAffixes(item);
  offlineAffixCache.set(item,{affixes:item.affixes,enhancement:item.enhancement,level:item.level,id:item.id,values});
  return values;
+}
+// Equipment rolls are immutable while offline; level and job bonuses are
+// calculated elsewhere. Cache only the item-level gear contribution.
+function combatGearStatValue(item,type,job){
+ if(!offlineSimulation||!item||globalThis.__spiritDisableOfflineGearStatCache)return gearStatValue(item,type,job);
+ let entry=offlineGearStatCache.get(item);
+ if(!entry||entry.affixes!==item.affixes||entry.enhancement!==item.enhancement||entry.level!==item.level||entry.id!==item.id||entry.powerVersion!==item.powerVersion){
+  entry={affixes:item.affixes,enhancement:item.enhancement,level:item.level,id:item.id,powerVersion:item.powerVersion,values:new Map()};
+  offlineGearStatCache.set(item,entry);
+ }
+ const key=`${job||''}:${type}`;
+ if(!entry.values.has(key))entry.values.set(key,gearStatValue(item,type,job));
+ return entry.values.get(key);
 }
 function petStats(pet){
  const base=basePetStats(pet);
@@ -410,7 +424,7 @@ function ownerHitChance(hit,flee,magical=false){return Math.max(.05,monsterHitCh
 function effectiveAttributes(){if((inCombatTick||offlineSimulation)&&attributeSnapshot)return attributeSnapshot;const attrs={...player.attributes},jobBonus=jobAttributeBonus(player,SECOND_JOBS),details=attributeDetails();for(const key of Object.keys(attrs))attrs[key]+=(jobBonus[key]||0)+details.gear[key]+details.card[key];if(inCombatTick||offlineSimulation)attributeSnapshot=attrs;return attrs;}
 
 function cardBonus(key){if((inCombatTick||offlineSimulation)&&Object.hasOwn(cardSnapshot,key))return cardSnapshot[key];const n=socketCardBonus(player.sockets,CARDS,key,player.level);if(inCombatTick||offlineSimulation)cardSnapshot[key]=n;return n;}
-function rawStat(type){const c=CLASSES[player.job],a=effectiveAttributes(),equipped=Object.values(player.gear);const gear=equipped.reduce((n,item)=>n+gearStatValue(item,type,player.job),0)+cardBonus(type);const percent=t=>equipped.reduce((n,item)=>n+enhancedStat(item,t,item?.affixes?.[t]||0),0)/100;switch(type){case 'hp':return Math.round((c.hp+(player.level-1)*38+a.VIT*25+gear)*(1+percent('hpPct')));case 'mp':return c.mp+(player.level-1)*12+a.INT*5+gear;case 'atk':return playerAttackValue(player.job,c.atk,player.level,a,gear);case 'matk':return playerMagicAttackValue(player.level,a,gear);case 'def':return Math.round((c.def+(player.level-1)*2.8+a.VIT*3+gear)*(1+percent('defPct')));case 'mdef':return Math.round(player.level*.9+a.INT*1.5+a.VIT*1.2+gear);case 'hit':return (gameNow()<(timers.eagleUntil||0)?20:0)+(currentTactic()?.kind==='firstFocus'?20:0)+80+player.level*2+a.DEX*2+a.LUK*.3+gear;case 'flee':return (gameNow()<(timers.shadowUntil||0)?20:0)+Math.round((65+player.level*2+a.AGI*2+a.LUK*.15+gear)*(1+percent('fleePct')));case 'aspdPct':return gear;case 'ignoreDef':case 'magicDamage':return Math.min(60,gear);case 'crit':return roStyleCritRate(a.LUK,gear)+(gameNow()<(timers.eagleUntil||0)?5:0);case 'critDmg':return 140+Math.max(0,a.LUK-1)*.5+gear;case 'aspd':return Math.round(clamp(({swordsman:151,acolyte:147,mage:145,thief:156,archer:153,spiritist:150})[parentJob(player.job)]+a.AGI*.32+a.DEX*.025+gear,140,193)*10)/10;case 'speed':return Math.max(80,aspdAttackIntervalMs(stat('aspd'))/(1+(classBuffs.resonanceHaste?.until>gameNow()?classBuffs.resonanceHaste.power:0)+(equipped.reduce((n,g)=>n+(enhancedAffixes(g).aspdPct||0),0)+cardBonus('aspdPct'))/100));case 'damageReduction':return Math.min(40,gear);default:return 0;}}
+function rawStat(type){const c=CLASSES[player.job],a=effectiveAttributes(),equipped=Object.values(player.gear);const gear=equipped.reduce((n,item)=>n+combatGearStatValue(item,type,player.job),0)+cardBonus(type);const percent=t=>equipped.reduce((n,item)=>n+enhancedStat(item,t,item?.affixes?.[t]||0),0)/100;switch(type){case 'hp':return Math.round((c.hp+(player.level-1)*38+a.VIT*25+gear)*(1+percent('hpPct')));case 'mp':return c.mp+(player.level-1)*12+a.INT*5+gear;case 'atk':return playerAttackValue(player.job,c.atk,player.level,a,gear);case 'matk':return playerMagicAttackValue(player.level,a,gear);case 'def':return Math.round((c.def+(player.level-1)*2.8+a.VIT*3+gear)*(1+percent('defPct')));case 'mdef':return Math.round(player.level*.9+a.INT*1.5+a.VIT*1.2+gear);case 'hit':return (gameNow()<(timers.eagleUntil||0)?20:0)+(currentTactic()?.kind==='firstFocus'?20:0)+80+player.level*2+a.DEX*2+a.LUK*.3+gear;case 'flee':return (gameNow()<(timers.shadowUntil||0)?20:0)+Math.round((65+player.level*2+a.AGI*2+a.LUK*.15+gear)*(1+percent('fleePct')));case 'aspdPct':return gear;case 'ignoreDef':case 'magicDamage':return Math.min(60,gear);case 'crit':return roStyleCritRate(a.LUK,gear)+(gameNow()<(timers.eagleUntil||0)?5:0);case 'critDmg':return 140+Math.max(0,a.LUK-1)*.5+gear;case 'aspd':return Math.round(clamp(({swordsman:151,acolyte:147,mage:145,thief:156,archer:153,spiritist:150})[parentJob(player.job)]+a.AGI*.32+a.DEX*.025+gear,140,193)*10)/10;case 'speed':return Math.max(80,aspdAttackIntervalMs(stat('aspd'))/(1+(classBuffs.resonanceHaste?.until>gameNow()?classBuffs.resonanceHaste.power:0)+(equipped.reduce((n,g)=>n+enhancedStat(g,'aspdPct',g?.affixes?.aspdPct||0),0)+cardBonus('aspdPct'))/100));case 'damageReduction':return Math.min(40,gear);default:return 0;}}
 function activeJobBuffBonus(key){return Object.values(classBuffs).reduce((n,b)=>n+(b.until>gameNow()?(b.modifiers?.[key]||0):0),0);}
 function passiveBonus(key){return (cachedPassives()[key]||0)+activeJobBuffBonus(key);}
 function stat(type,excludeHomecoming=false){const bonuses=cachedPassives(),value=rawStat(type)+(bonuses[type]||0)+activeJobBuffBonus(type),cardType=({atk:'atkPct',matk:'matkPct',def:'defPct',flee:'fleePct',hp:'hpPct',hit:'hitPct',mp:'mpPct',mdef:'mdefPct'})[type];let result=cardType?value*(1+cardBonus(cardType)/100)*(1+((bonuses[cardType]||0)+activeJobBuffBonus(cardType))/100):value;if(['def','mdef'].includes(type))result*=1+effectiveAttributes().VIT*.006;if(type==='flee')result*=1+effectiveAttributes().AGI*.0045;if(type==='hp')result*=1+potentialBonus('VIT');if(type==='critDmg')result+=potentialBonus('LUK')*100;if(type==='crit'&&classBuffs.resonanceCrit?.until>gameNow())result=Math.min(100,result+classBuffs.resonanceCrit.power);if(['atk','matk','hp','def','mdef'].includes(type))result*=sigilBonus(player)[type];result+=pactAssimilationBonus(type);if(!excludeHomecoming&&['hp','def','mdef'].includes(type)){const b=homecomingBonuses(player);result*=1+(type==='hp'?b.hp:b.def);}if(type==='speed')return Math.round(result/(1+passiveBonus('aspdPct')/100+Object.values(player.gear).reduce((n,g)=>n+(GEAR_BASE[g?.id]?.aspdPct||0),0)/100+(currentTactic()?.kind==='frenzy'?.1:0)));if(type==='damageReduction')return Math.min(40,result);if(type==='crit')return Math.min(100,result+(currentTactic()?.kind==='firstFocus'?5:0));if(type==='critDmg')return Math.round(result*10)/10;if(type==='aspd')return Math.round(clamp(result,140,193)*10)/10;return Math.round(result);}
@@ -1914,7 +1928,7 @@ async function simulateOffline(state,now=Date.now(),progress=()=>{}){
  if(homecomingMap(state?.location))return {player:state,summary:null};
  const window=offlineWindow(state,now),before=structuredClone(state);
  if(!window.eligible)return {player:state,summary:null};
- clearStatSnapshots();offlineAffixCache=new WeakMap();offlineSimulation=true;offlineClock=state.offline.at;offlineMetrics={bossCards:[],captures:[],baseXp:0,jobXp:0,petXp:0,goldEarned:0,potions:{},purchased:{},spent:0,bossesEscaped:0,skillCasts:{},dualSpiritMainEvents:0,dualSpiritBlockedDeadTarget:0,dualSpiritBlockedFormation:0,dualSpiritBlockedPetDown:0,dualSpiritBlockedMissingPair:0,dualSpiritBlockedCooldown:0,damage:{player:0,pet1:0,pet2:0,resonance:0,petSupport:0,other:0,total:0}};
+ clearStatSnapshots();offlineAffixCache=new WeakMap();offlineGearStatCache=new WeakMap();offlineSimulation=true;offlineClock=state.offline.at;offlineMetrics={bossCards:[],captures:[],baseXp:0,jobXp:0,petXp:0,goldEarned:0,potions:{},purchased:{},spent:0,bossesEscaped:0,skillCasts:{},dualSpiritMainEvents:0,dualSpiritBlockedDeadTarget:0,dualSpiritBlockedFormation:0,dualSpiritBlockedPetDown:0,dualSpiritBlockedMissingPair:0,dualSpiritBlockedCooldown:0,damage:{player:0,pet1:0,pet2:0,resonance:0,petSupport:0,other:0,total:0}};
  try{
   player=normalize(structuredClone(state));player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));resetSession();auto=true;spawn();const trialMode=!!player.trialRun?.continuous;let simulated=0,reason='已完成離線時間',yieldSteps=0,lastYieldAt=performance.now();
   for(;simulated<window.duration;){
@@ -1931,7 +1945,7 @@ async function simulateOffline(state,now=Date.now(),progress=()=>{}){
   if(trialMode)checkpointTrial();
   const summary={...window,simulated,reason,map:state.location,trialRounds:trialMode?Math.max(0,(player.trialClears?.[state.trialRun.map]||0)-(before.trialClears?.[state.trialRun.map]||0)):0,kills:player.kills-before.kills,gold:player.gold-before.gold,baseBefore:before.level,baseAfter:player.level,jobBefore:before.jobLevel,jobAfter:player.jobLevel,...offlineMetrics,...inventoryDelta(before,player)};
   return {player,summary};
- }finally{clearStatSnapshots();offlineAffixCache=new WeakMap();offlineClock=null;offlineSimulation=false;offlineMetrics=null;}
+ }finally{clearStatSnapshots();offlineAffixCache=new WeakMap();offlineGearStatCache=new WeakMap();offlineClock=null;offlineSimulation=false;offlineMetrics=null;}
 }
 let compensationChoice=null;
 function refreshWeaponCompensationReminder(){

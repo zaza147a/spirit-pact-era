@@ -24,6 +24,7 @@ Math.random=seededRandom;
 globalThis.__spiritBenchmarkStack=true;
 globalThis.__spiritDisablePetStatsCache=workerData?.disablePetStatsCache===true;
 globalThis.__spiritDisableOfflineAffixCache=workerData?.disableOfflineAffixCache===true;
+globalThis.__spiritDisableOfflineGearStatCache=workerData?.disableOfflineGearStatCache===true;
 globalThis.self={
  postMessage(message){
   parentPort.postMessage(message.type==='result'
