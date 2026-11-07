@@ -30,6 +30,7 @@ globalThis.__spiritDisableOfflineIdleSkip=workerData?.disableOfflineIdleSkip===t
 globalThis.__spiritDisableOfflineEffectGuards=workerData?.disableOfflineEffectGuards===true;
 globalThis.__spiritDisableOfflineStorageGuard=workerData?.disableOfflineStorageGuard===true;
 globalThis.__spiritDisableOfflinePactFusionCache=workerData?.disableOfflinePactFusionCache===true;
+globalThis.__spiritDisableOfflineAutoSkillCache=workerData?.disableOfflineAutoSkillCache===true;
 globalThis.self={
  postMessage(message){
   parentPort.postMessage(message.type==='result'
