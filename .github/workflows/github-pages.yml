@@ -1,5 +1,5 @@
 name: Publish Spirit Pact Era
-# Retry publication with a fresh run after Pages artifact duplication.
+# A failed-job rerun can duplicate the fixed-name github-pages artifact; retry with a fresh run.
 on:
   push:
     branches: [main]
@@ -76,6 +76,7 @@ jobs:
           test -s pages-site/index.html
           test -s pages-site/spirit-sanctuary.js
           test -s pages-site/wiki/index.html
+          du -sh pages-site
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload game
