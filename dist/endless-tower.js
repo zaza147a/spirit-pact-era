@@ -78,7 +78,8 @@ export function towerEntryError(player) {
 export function normalizeTowerProgress(value) {
   const highest=Math.max(0,Math.min(1_000_000,Math.floor(Number(value?.highest)||0)));
   return {highest,checkpoint:Math.floor(highest/10)*10,deepest:Math.max(0,Math.floor(Number(value?.deepest)||0)),
-    claimed:Array.isArray(value?.claimed)?[...new Set(value.claimed.filter(n=>Number.isInteger(n)&&n>=10&&n<=100&&n%10===0))]:[]};
+    claimed:Array.isArray(value?.claimed)?[...new Set(value.claimed.filter(n=>Number.isInteger(n)&&n>=10&&n<=100&&n%10===0))]:[],
+    firstClears:Array.isArray(value?.firstClears)?[...new Set(value.firstClears.filter(n=>Number.isInteger(n)&&n>=1&&n<=100))]:[]};
 }
 
 // Each cleared floor stays available independently; the next uncleared floor
@@ -94,13 +95,16 @@ export function finishTowerFloor(progress,floor,elapsedSeconds,alive=true) {
   if(floor>state.highest+1) return {success:false,reason:'尚未解鎖此樓層',progress:state};
   if(!alive||!Number.isFinite(elapsedSeconds)||elapsedSeconds<0||elapsedSeconds>stage.timeLimitSeconds)
     return {success:false,reason:'挑戰失敗或超時',progress:state};
+  const firstClear=!state.firstClears.includes(floor)&&(floor>state.highest||floor%10===0&&!state.claimed.includes(floor));
   state.highest=Math.max(state.highest,floor);
   state.checkpoint=Math.floor(state.highest/10)*10;
   if(floor>100)state.deepest=Math.max(state.deepest,floor);
   const firstReward=stage.reward&&!state.claimed.includes(floor)?stage.reward:null;
   if(firstReward)state.claimed.push(floor);
-  const towerCoins=stage.kind==='boss'?(firstReward?300:50):stage.kind==='elite'||stage.kind==='guardian'?15:5;
-  return {success:true,progress:state,firstReward,towerCoins};
+  if(firstClear)state.firstClears.push(floor);
+  const special=['hunt','survive','assassinate'].includes(stage.objective);
+  const towerCoins=stage.kind==='boss'?(firstClear?300:30):stage.kind==='guardian'?(firstClear?80:15):special?(firstClear?60:10):(firstClear?30:5);
+  return {success:true,progress:state,firstReward,towerCoins,firstClear};
 }
 
 export function estimateTowerClear(floor,{dps,hp,baselineEnemyHp,incomingDps,healingDps=0}={}) {
