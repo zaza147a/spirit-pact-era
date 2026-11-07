@@ -47,3 +47,17 @@ test('pet enhancement success toast resolves the real stage label, not an undefi
  assert.match(game,/進化成\$\{HUMANOID_STAGES\[evolution\.stage\]\.label\}/);
  assert.doesNotMatch(game,/進化成\$\{evolution\.label\}/);
 });
+
+test('star sigil crystal titan catches up to SSS when equipped gear was already upgraded',()=>{
+ const pet={id:'star-titan',species:'fang',trueForm:true,humanoidStage:2,
+  fusion:{main:'defense',sub:'magic'},gear:{head:{enhancement:'SSS'},body:{enhancement:'SSS'},shoes:{enhancement:'SSS'}}};
+ assert.equal(trueFormName(pet),'星曜符衛・成熟期人形');
+ const evolution=reconcileHumanoidStages(pet);
+ assert.equal(evolution.changed,true);
+ assert.equal(evolution.stage,3);
+ assert.equal(trueFormArt(pet),'assets/true-forms/SSS/defense-magic.webp');
+ const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
+ assert.match(game,/function completePendingPetEvolution\(\)/);
+ assert.match(game,/data-reconcile-pet-evolution/);
+ assert.match(game,/let petEvolutionNotice=null/);
+});

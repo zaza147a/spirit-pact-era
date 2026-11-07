@@ -23,6 +23,14 @@ if(args.has('clock')){
 Math.random=seededRandom;
 globalThis.__spiritBenchmarkStack=true;
 globalThis.__spiritDisablePetStatsCache=workerData?.disablePetStatsCache===true;
+globalThis.__spiritDisableOfflineAffixCache=workerData?.disableOfflineAffixCache===true;
+globalThis.__spiritDisableOfflineGearStatCache=workerData?.disableOfflineGearStatCache===true;
+globalThis.__spiritDisableOfflineGearTotals=workerData?.disableOfflineGearTotals===true;
+globalThis.__spiritDisableOfflineIdleSkip=workerData?.disableOfflineIdleSkip===true;
+globalThis.__spiritDisableOfflineEffectGuards=workerData?.disableOfflineEffectGuards===true;
+globalThis.__spiritDisableOfflineStorageGuard=workerData?.disableOfflineStorageGuard===true;
+globalThis.__spiritDisableOfflinePactFusionCache=workerData?.disableOfflinePactFusionCache===true;
+globalThis.__spiritDisableOfflineAutoSkillCache=workerData?.disableOfflineAutoSkillCache===true;
 globalThis.self={
  postMessage(message){
   parentPort.postMessage(message.type==='result'

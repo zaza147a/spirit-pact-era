@@ -29,8 +29,8 @@ import {COSMETIC_STORAGE_KEY,COSMETIC_JOBS,COSMETIC_OUTFIT_PRICES,COSMETIC_BACKG
 import {WAREHOUSE_KEY,WAREHOUSE_ACK_PREFIX,WAREHOUSE_CAPACITY,WAREHOUSE_KEEPER,warehouseEquipment,warehouseItems,warehouseStackAllowed,warehouseStackItems,WAREHOUSE_BATCH_LIMIT,readWarehouse,applyWarehouseCustody,withWarehouseLock,transferWarehouseEquipment,transferWarehouseStack,exportWarehouse,importWarehouse} from './shared-warehouse.js?v=homecoming-1';
 import {migrateLegacyReselect,reselectionPet,RESELECT_ORDERED_TYPES} from './pet-legacy-reselect.js?v=6.5.0';
 import {upgradeDawnSigil,sigilLevel,sigilCost,sigilBonus,dawnBossRewards,dawnArchonPreparationFactor} from './dawn-sigil.js?v=6.5.38';
-import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
-import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_RESISTANCE,CONTROL_SLOTS,CONTROL_NAMES,enhancedAffixes,rankOf,fullSetRank,normalizeEnhancements,unlockRankOutfits,controlResistance,enhanceEquipped,enhancePetEquipped,trialEntryError,TRIAL_ROUTES,createTrialBoss,trialDropTable,trialDrops,dawnEntryError} from './sky-trials.js?v=6.5.44';
+import {advanceHumanoidEvolution,reconcileHumanoidStages,humanoidStage,nextHumanoidStage,HUMANOID_STAGES} from './pet-humanoid-evolution.js?v=6.5.0';
+import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_RESISTANCE,CONTROL_SLOTS,CONTROL_NAMES,enhancedAffixes,enhancedStat,rankOf,fullSetRank,normalizeEnhancements,unlockRankOutfits,controlResistance,enhanceEquipped,enhancePetEquipped,trialEntryError,TRIAL_ROUTES,createTrialBoss,trialDropTable,trialDrops,dawnEntryError} from './sky-trials.js?v=6.5.44';
 import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} from './endless-tower.js';
 import {towerFrostUnlocked,normalizeTowerCostume,towerFrostArt,chooseTowerCostume} from './tower-costumes.js';
 import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature,postponeTowerPursuer} from './endless-tower-runtime.js';
@@ -107,6 +107,39 @@ const gameNow=()=>offlineClock??Date.now();
 // during an offline encounter, while HP/SP and skill cooldowns remain dynamic.
 // Live UI always uses the uncached production calculator.
 const offlinePetStatCache=new WeakMap();
+let offlineAffixCache=new WeakMap();
+let offlinePactFusionCache=new WeakMap();
+let offlineAutoSkillCache=null;
+let offlineGearStatCache=new WeakMap();
+let offlineGearTotals=new Map();
+function combatEnhancedAffixes(item){
+ if(!offlineSimulation||!item||globalThis.__spiritDisableOfflineAffixCache)return enhancedAffixes(item);
+ const existing=offlineAffixCache.get(item);
+ if(existing&&existing.affixes===item.affixes&&existing.enhancement===item.enhancement&&existing.level===item.level&&existing.id===item.id)return existing.values;
+ const values=enhancedAffixes(item);
+ offlineAffixCache.set(item,{affixes:item.affixes,enhancement:item.enhancement,level:item.level,id:item.id,values});
+ return values;
+}
+// Equipment rolls are immutable while offline; level and job bonuses are
+// calculated elsewhere. Cache only the item-level gear contribution.
+function combatGearStatValue(item,type,job){
+ if(!offlineSimulation||!item||globalThis.__spiritDisableOfflineGearStatCache)return gearStatValue(item,type,job);
+ let entry=offlineGearStatCache.get(item);
+ if(!entry||entry.affixes!==item.affixes||entry.enhancement!==item.enhancement||entry.level!==item.level||entry.id!==item.id||entry.powerVersion!==item.powerVersion){
+  entry={affixes:item.affixes,enhancement:item.enhancement,level:item.level,id:item.id,powerVersion:item.powerVersion,values:new Map()};
+  offlineGearStatCache.set(item,entry);
+ }
+ const key=`${job||''}:${type}`;
+ if(!entry.values.has(key))entry.values.set(key,gearStatValue(item,type,job));
+ return entry.values.get(key);
+}
+function combatGearTotal(type,equipped){
+ if(!offlineSimulation||globalThis.__spiritDisableOfflineGearTotals)return equipped.reduce((n,item)=>n+combatGearStatValue(item,type,player.job),0);
+ if(offlineGearTotals.has(type))return offlineGearTotals.get(type);
+ const total=equipped.reduce((n,item)=>n+combatGearStatValue(item,type,player.job),0);
+ offlineGearTotals.set(type,total);
+ return total;
+}
 function petStats(pet){
  const base=basePetStats(pet);
  if(player?.job!=='spiritCommander'||!pet||pet.id!==player.activePetId||!player.gear||!player.attributes)return base;
@@ -220,37 +253,47 @@ function spiritHitProcEffects(proc,owner,source,maxHp){
   }
  }
 }
+const PACT_ASSIMILATION_RATIOS=Object.freeze(Object.fromEntries(Object.entries({
+ 'attack-magic':{atk:4.0,matk:.90},
+ 'attack-defense':{atk:4.0,matk:.90},
+ 'attack-support':{atk:4.0,matk:.90},
+ 'magic-defense':{atk:1.28,matk:2.10},
+ 'magic-support':{atk:1.28,matk:2.10},
+ 'defense-support':{atk:8.80,matk:.90},
+ default:{atk:1.80,matk:.90}
+}).map(([key,offense])=>[key,{...offense,def:.19,mdef:.19,hp:.15}])));
 function pactAssimilationBonus(type){
  if(player?.job!=='pactWarrior')return 0;
- const fusion=spiritSinglePetProfile(player,activePet())?.fusion;
+ const companion=activePet(),pair=companion?.fusion;
+ let fusion;
+ if(offlineSimulation&&!globalThis.__spiritDisableOfflinePactFusionCache&&pair?.main&&pair?.sub){
+  const cached=offlinePactFusionCache.get(companion);
+  if(cached&&cached.main===pair.main&&cached.sub===pair.sub&&cached.thirdJob===player.thirdJob)fusion=cached.fusion;
+  else{fusion=spiritSinglePetProfile(player,companion)?.fusion;offlinePactFusionCache.set(companion,{main:pair.main,sub:pair.sub,thirdJob:player.thirdJob,fusion});}
+ }else fusion=spiritSinglePetProfile(player,companion)?.fusion;
  // Each fusion keeps its own offensive identity. Survival assimilation remains
  // identical across the six routes and the ten existing jobs are untouched.
- const offense={
-  'attack-magic':{atk:4.0,matk:.90},
-  'attack-defense':{atk:4.0,matk:.90},
-  'attack-support':{atk:4.0,matk:.90},
-  'magic-defense':{atk:1.28,matk:2.10},
-  'magic-support':{atk:1.28,matk:2.10},
-  'defense-support':{atk:8.80,matk:.90}
- }[fusion]||{atk:1.80,matk:.90};
  // Only the PET -> owner inheritance is reduced. Do not scale final DEF or
  // incoming monster damage by a special class-specific multiplier.
- const ratios={...offense,def:.19,mdef:.19,hp:.15};
+ const ratios=PACT_ASSIMILATION_RATIOS[fusion]||PACT_ASSIMILATION_RATIOS.default;
  if(!ratios[type])return 0;
- return activePetRoster(player).filter(p=>p.hp>0).reduce((total,pet)=>{
+ let total=0;
+ for(const pet of activePetRoster(player)){
+  if(pet.hp<=0)continue;
   const base=petStats(pet)[type]; // already includes pet level, rarity, evolution, IV and flat equipment
   // Pet weapon/armor affix investment additionally trains assimilation. HP% is
   // already included in petStats, so never double-count that multiplier.
   const affixes=Object.values(pet.gear||{}).reduce((n,item)=>{
    if(!item||(item.level||1)>pet.level)return n;
-   const e=enhancedAffixes(item);
+   const e=combatEnhancedAffixes(item);
    if(type==='atk')return n+(e.atkPct||0)+((e.crit||0)*.20)+((e.critDmg||0)*.08)+((e.aspdPct||0)*.20);
    if(type==='matk')return n+(e.matkPct||0)+((e.magicDamage||0)*.30)+((e.ignoreDef||0)*.10);
    return n;
   },0);
   const gearTraining=['atk','matk'].includes(type)?1+Math.min(.20,Math.max(0,affixes)/200):1;
-  return total+base*ratios[type]*gearTraining;
- },0)*sigilBonus(player)[type];
+  total+=base*ratios[type]*gearTraining;
+ }
+ return total*sigilBonus(player)[type];
 }
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
@@ -270,7 +313,7 @@ function commanderTransferredPetStats(pet,base){
   cardPower:0, // card power is copied directly below, never multiplied twice
   gearPower:Object.values(player.gear).reduce((n,item)=>{
    if(!item)return n;
-   const e=enhancedAffixes(item);
+   const e=combatEnhancedAffixes(item);
    return n+(e.atkPct||0)*.70+(e.matkPct||0)*.70
     +(e.crit||0)*.35+(e.critDmg||0)*.16
     +(e.aspdPct||0)*.45+(e.magicDamage||0)*.40
@@ -362,7 +405,7 @@ function normalize(p){p.towerProgress=normalizeTowerProgress(p.towerProgress);p.
 function migrate(old){const job=LEGACY_JOBS[old.job]||old.job;const p=fresh(old.name,job);for(const k of ['level','xp','gold','hp','mp','kills'])if(Number.isFinite(old[k]))p[k]=old[k];p.bag=normalizeBag(old.bag,ITEMS);for(const [from,to] of [['weapon','rightHand'],['armor','armor'],['accessory','accessory1']])if(old.gear?.[from]&&ITEMS[old.gear[from]])p.gear[to]=rollGear(old.gear[from],1);p.statPoints=Math.max(0,(p.level-1)*2);return p;}
 function valid(p){return !!p&&typeof p.name==='string'&&p.name.length<=16&&CLASSES[p.job]&&Number.isInteger(p.level)&&p.level>=1&&p.level<=characterLevelCap(p)&&['hp','mp','xp','gold','kills','statPoints','jobLevel','jobXp','jobPoints'].every(k=>Number.isFinite(p[k])&&p[k]>=0&&p[k]<1e9)&&p.jobLevel<=jobLevelCap(p)&&Array.isArray(p.bag)&&p.bag.length<=2000&&p.bag.every(e=>e&&ITEMS[e.id]&&(ITEMS[e.id].slot||ITEMS[e.id].petSlot?!!e.uid:Number.isInteger(e.qty)&&e.qty>0))&&p.gear&&Object.keys(SLOTS).every(s=>p.gear[s]===null||ITEMS[p.gear[s]?.id]?.slot===s)&&p.attributes&&Object.keys(ATTRS).every(k=>Number.isInteger(p.attributes[k])&&p.attributes[k]>=1&&p.attributes[k]<=attributeCap(p))&&Array.isArray(p.cards)&&p.cards.length<=1000&&p.cards.every(c=>CARDS[c.id]&&Number.isInteger(c.qty)&&c.qty>0)&&Number.isSafeInteger(p.cardRecyclePoints)&&p.cardRecyclePoints>=0&&p.cardRecyclePoints<1e9&&p.sockets&&Object.keys(SLOTS).every(s=>p.sockets[s]===null||cardAllowedInSlot(CARDS[p.sockets[s]],s,p.job))&&Array.isArray(p.pets)&&p.pets.length<=100&&p.pets.every(q=>q&&SPECIES[q.species]&&typeof q.id==='string'&&Number.isInteger(q.level)&&q.level>=1&&q.level<=9999&&Number.isFinite(q.xp)&&q.xp>=0&&q.iv&&['hp','atk','def'].every(k=>Number.isInteger(q.iv[k])&&q.iv[k]>=0&&q.iv[k]<=5)&&q.gear&&Object.keys(PET_SLOTS).every(s=>q.gear[s]===null||ITEMS[q.gear[s]?.id]?.petSlot===s))&&(p.activePetId===null||p.pets.some(q=>q.id===p.activePetId))&&(!isSpiritJob(p.job)||p.secondaryPetId===null||p.secondaryPetId!==p.activePetId&&p.pets.some(q=>q.id===p.secondaryPetId));}
 function load(){try{const v2=JSON.parse(localStorage.getItem(KEY)||'null');if(v2?.version===2&&v2.player){const p=normalize(v2.player);if(valid(p))return p;}const v1=JSON.parse(localStorage.getItem(OLD)||'null');if(v1?.v===1&&v1.p&&(CLASSES[v1.p.job]||LEGACY_JOBS[v1.p.job]))return migrate(v1.p);}catch(err){console.warn('Save read failed',err)}return null;}
-function albumEarnGold(base,p,extra=0){let bonus=Number.isFinite(p?.cardAlbumGoldBonus)?p.cardAlbumGoldBonus:0;try{bonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));}catch{}return Math.round(earnGold(base,p,extra)*(1+bonus/100));}
+function albumEarnGold(base,p,extra=0){let bonus=Number.isFinite(p?.cardAlbumGoldBonus)?p.cardAlbumGoldBonus:0;if(typeof localStorage!=='undefined'||globalThis.__spiritDisableOfflineStorageGuard===true)try{bonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));}catch{}return Math.round(earnGold(base,p,extra)*(1+bonus/100));}
 function save(notifyUser=false){
  if(offlineSimulation)return true;if(!player||activeSlot===null)return false;
  const beforeCards=player.cards.map(card=>({...card})),beforePoints=player.cardRecyclePoints;
@@ -401,8 +444,8 @@ function ownerHitChance(hit,flee,magical=false){return Math.max(.05,monsterHitCh
 function effectiveAttributes(){if((inCombatTick||offlineSimulation)&&attributeSnapshot)return attributeSnapshot;const attrs={...player.attributes},jobBonus=jobAttributeBonus(player,SECOND_JOBS),details=attributeDetails();for(const key of Object.keys(attrs))attrs[key]+=(jobBonus[key]||0)+details.gear[key]+details.card[key];if(inCombatTick||offlineSimulation)attributeSnapshot=attrs;return attrs;}
 
 function cardBonus(key){if((inCombatTick||offlineSimulation)&&Object.hasOwn(cardSnapshot,key))return cardSnapshot[key];const n=socketCardBonus(player.sockets,CARDS,key,player.level);if(inCombatTick||offlineSimulation)cardSnapshot[key]=n;return n;}
-function rawStat(type){const c=CLASSES[player.job],a=effectiveAttributes(),equipped=Object.values(player.gear);const gear=equipped.reduce((n,item)=>n+gearStatValue(item,type,player.job),0)+cardBonus(type);const percent=t=>equipped.reduce((n,item)=>n+(enhancedAffixes(item)[t]||0),0)/100;switch(type){case 'hp':return Math.round((c.hp+(player.level-1)*38+a.VIT*25+gear)*(1+percent('hpPct')));case 'mp':return c.mp+(player.level-1)*12+a.INT*5+gear;case 'atk':return playerAttackValue(player.job,c.atk,player.level,a,gear);case 'matk':return playerMagicAttackValue(player.level,a,gear);case 'def':return Math.round((c.def+(player.level-1)*2.8+a.VIT*3+gear)*(1+percent('defPct')));case 'mdef':return Math.round(player.level*.9+a.INT*1.5+a.VIT*1.2+gear);case 'hit':return (gameNow()<(timers.eagleUntil||0)?20:0)+(currentTactic()?.kind==='firstFocus'?20:0)+80+player.level*2+a.DEX*2+a.LUK*.3+gear;case 'flee':return (gameNow()<(timers.shadowUntil||0)?20:0)+Math.round((65+player.level*2+a.AGI*2+a.LUK*.15+gear)*(1+percent('fleePct')));case 'aspdPct':return gear;case 'ignoreDef':case 'magicDamage':return Math.min(60,gear);case 'crit':return roStyleCritRate(a.LUK,gear)+(gameNow()<(timers.eagleUntil||0)?5:0);case 'critDmg':return 140+Math.max(0,a.LUK-1)*.5+gear;case 'aspd':return Math.round(clamp(({swordsman:151,acolyte:147,mage:145,thief:156,archer:153,spiritist:150})[parentJob(player.job)]+a.AGI*.32+a.DEX*.025+gear,140,193)*10)/10;case 'speed':return Math.max(80,aspdAttackIntervalMs(stat('aspd'))/(1+(classBuffs.resonanceHaste?.until>gameNow()?classBuffs.resonanceHaste.power:0)+(equipped.reduce((n,g)=>n+(enhancedAffixes(g).aspdPct||0),0)+cardBonus('aspdPct'))/100));case 'damageReduction':return Math.min(40,gear);default:return 0;}}
-function activeJobBuffBonus(key){return Object.values(classBuffs).reduce((n,b)=>n+(b.until>gameNow()?(b.modifiers?.[key]||0):0),0);}
+function rawStat(type){const c=CLASSES[player.job],a=effectiveAttributes(),equipped=Object.values(player.gear);const gear=combatGearTotal(type,equipped)+cardBonus(type);const percent=t=>equipped.reduce((n,item)=>n+enhancedStat(item,t,item?.affixes?.[t]||0),0)/100;switch(type){case 'hp':return Math.round((c.hp+(player.level-1)*38+a.VIT*25+gear)*(1+percent('hpPct')));case 'mp':return c.mp+(player.level-1)*12+a.INT*5+gear;case 'atk':return playerAttackValue(player.job,c.atk,player.level,a,gear);case 'matk':return playerMagicAttackValue(player.level,a,gear);case 'def':return Math.round((c.def+(player.level-1)*2.8+a.VIT*3+gear)*(1+percent('defPct')));case 'mdef':return Math.round(player.level*.9+a.INT*1.5+a.VIT*1.2+gear);case 'hit':return (gameNow()<(timers.eagleUntil||0)?20:0)+(currentTactic()?.kind==='firstFocus'?20:0)+80+player.level*2+a.DEX*2+a.LUK*.3+gear;case 'flee':return (gameNow()<(timers.shadowUntil||0)?20:0)+Math.round((65+player.level*2+a.AGI*2+a.LUK*.15+gear)*(1+percent('fleePct')));case 'aspdPct':return gear;case 'ignoreDef':case 'magicDamage':return Math.min(60,gear);case 'crit':return roStyleCritRate(a.LUK,gear)+(gameNow()<(timers.eagleUntil||0)?5:0);case 'critDmg':return 140+Math.max(0,a.LUK-1)*.5+gear;case 'aspd':return Math.round(clamp(({swordsman:151,acolyte:147,mage:145,thief:156,archer:153,spiritist:150})[parentJob(player.job)]+a.AGI*.32+a.DEX*.025+gear,140,193)*10)/10;case 'speed':return Math.max(80,aspdAttackIntervalMs(stat('aspd'))/(1+(classBuffs.resonanceHaste?.until>gameNow()?classBuffs.resonanceHaste.power:0)+(equipped.reduce((n,g)=>n+enhancedStat(g,'aspdPct',g?.affixes?.aspdPct||0),0)+cardBonus('aspdPct'))/100));case 'damageReduction':return Math.min(40,gear);default:return 0;}}
+function activeJobBuffBonus(key){let sum=0;for(const name in classBuffs){const buff=classBuffs[name];if(buff.until>gameNow())sum+=buff.modifiers?.[key]||0;}return sum;}
 function passiveBonus(key){return (cachedPassives()[key]||0)+activeJobBuffBonus(key);}
 function stat(type,excludeHomecoming=false){const bonuses=cachedPassives(),value=rawStat(type)+(bonuses[type]||0)+activeJobBuffBonus(type),cardType=({atk:'atkPct',matk:'matkPct',def:'defPct',flee:'fleePct',hp:'hpPct',hit:'hitPct',mp:'mpPct',mdef:'mdefPct'})[type];let result=cardType?value*(1+cardBonus(cardType)/100)*(1+((bonuses[cardType]||0)+activeJobBuffBonus(cardType))/100):value;if(['def','mdef'].includes(type))result*=1+effectiveAttributes().VIT*.006;if(type==='flee')result*=1+effectiveAttributes().AGI*.0045;if(type==='hp')result*=1+potentialBonus('VIT');if(type==='critDmg')result+=potentialBonus('LUK')*100;if(type==='crit'&&classBuffs.resonanceCrit?.until>gameNow())result=Math.min(100,result+classBuffs.resonanceCrit.power);if(['atk','matk','hp','def','mdef'].includes(type))result*=sigilBonus(player)[type];result+=pactAssimilationBonus(type);if(!excludeHomecoming&&['hp','def','mdef'].includes(type)){const b=homecomingBonuses(player);result*=1+(type==='hp'?b.hp:b.def);}if(type==='speed')return Math.round(result/(1+passiveBonus('aspdPct')/100+Object.values(player.gear).reduce((n,g)=>n+(GEAR_BASE[g?.id]?.aspdPct||0),0)/100+(currentTactic()?.kind==='frenzy'?.1:0)));if(type==='damageReduction')return Math.min(40,result);if(type==='crit')return Math.min(100,result+(currentTactic()?.kind==='firstFocus'?5:0));if(type==='critDmg')return Math.round(result*10)/10;if(type==='aspd')return Math.round(clamp(result,140,193)*10)/10;return Math.round(result);}
 function classBuffPower(target='owner'){return passiveBonus('teamDamagePct')/100+Object.entries(classBuffs).reduce((sum,[key,b])=>sum+(!['autoSpell','pact','quickCast','resonanceHaste','resonanceCrit','teamWard'].includes(key)&&(key!=='devotion'||target==='pet')&&b.until>gameNow()&&(!b.modifiers||b.teamDamage)?b.power:0),0);}
@@ -568,14 +611,19 @@ function tickSongRain(now){
 }
 function tickPetEffects(now){
  if(!player?.hp||!enemies.some(e=>e.hp>0))return;
+ const effectGuard=offlineSimulation&&!globalThis.__spiritDisableOfflineEffectGuards;
  if(now<petEffects.guardUntil&&now>=(petEffects.guardRegenNext||0)){
   const pet=activePet();if(pet?.hp>0){const restored=Math.min(Math.max(0,petStats(pet).hp-pet.hp),petEffects.guardRegen||0);pet.hp+=restored;record(report,'effectiveHeal',restored);}
   petEffects.guardRegenNext=now+1000;
  }
  if(petEffects.regenTicks&&now>=petEffects.regenNext){healPetParty(petEffects.regenPower);petEffects.regenTicks--;petEffects.regenNext=now+petEffects.regenInterval;}
- activePetMarkPower(now);
- tickDamageOverTime(now,'bleed');tickDamageOverTime(now,'burn');tickSongRain(now);
- for(const pet of activePetRoster(player).slice(1)){
+ if(!effectGuard||petEffects.markWardOnly||petEffects.markHits>0)activePetMarkPower(now);
+ if(!effectGuard||petEffects.bleedTicks)tickDamageOverTime(now,'bleed');
+ if(!effectGuard||petEffects.burnTicks)tickDamageOverTime(now,'burn');
+ if(!effectGuard||petEffects.songRain?.remaining>0)tickSongRain(now);
+ const companionRoster=activePetRoster(player);
+ for(let companionIndex=1;companionIndex<companionRoster.length;companionIndex++){
+  const pet=companionRoster[companionIndex];
   const fx=effectsForPet(pet);
   if(now<fx.guardUntil&&now>=(fx.guardRegenNext||0)){
    if(pet.hp>0){const restored=Math.min(Math.max(0,petStats(pet).hp-pet.hp),fx.guardRegen||0);pet.hp+=restored;record(report,'effectiveHeal',restored);}
@@ -583,7 +631,8 @@ function tickPetEffects(now){
   }
   if(fx.regenTicks&&now>=fx.regenNext){healPetParty(fx.regenPower);fx.regenTicks--;fx.regenNext=now+fx.regenInterval;}
   if(now>(fx.shieldExpires||Infinity))fx.shield=0;
-  tickDamageOverTime(now,'bleed',pet,fx);tickDamageOverTime(now,'burn',pet,fx);
+  if(!effectGuard||fx.bleedTicks)tickDamageOverTime(now,'bleed',pet,fx);
+  if(!effectGuard||fx.burnTicks)tickDamageOverTime(now,'burn',pet,fx);
  }
 }
 function addEnergy(amount){if(!activePet()||!player.hp)return;player.resonance=clamp(player.resonance+amount,0,RESONANCE_MAX);dirty=true;}
@@ -1116,10 +1165,10 @@ function skillContext(skill){const pact=pactFor(skill);return {reborn:player.reb
 function skillCooldown(skill){return jobSkillCooldownMs(skill,skillContext(skill))*(1-(pactFor(skill).cooldown||0));}
 function unassistedAction(key,interval,now){timers.unassisted=timers.unassisted||{};const next=timers.unassisted[key]??now,extra=now+0.001<next;if(!extra)timers.unassisted[key]=now-next<interval?next+interval:now+interval;return extra;}
 function isHealingMelody(skill){const pet=activePet();return skill?.id==='thirdUtility_performer'&&pet?.hp>0&&pet.fusion?.main==='defense'&&pet.fusion?.sub==='support';}
-function playerAttack(skill=false,skillId=null,completed=false){if(isControlled())return;chooseAttackTarget();if(!player||!enemy?.hp||!player.hp)return;const now=gameNow(),chosen=jobSkillById(player.job,skillId||player.equippedJobSkill)||activeJobSkills(player.job)[0],rank=player.jobSkills[chosen.id]||0;if(casting&&!completed)return;if(skill&&!completed){const context=skillContext(chosen),delay=skillActionDelay(chosen,context);if(chosen.kind==='passive'||!rank||!skillUnlocked(player,chosen)||!canCastJobSkill(chosen)||player.mp<chosen.mp||now-timers.skill<(timers.actionDelay||GLOBAL_SKILL_COOLDOWN)||now-Math.max(jobSkillTimers[chosen.id]||0,chosen.kind==='shield'?jobSkillTimers.personalShield||0:0)<skillCooldown(chosen)||chosen.attackCycle&&now-timers.attack<delay)return;player.mp-=chosen.mp;if(offlineMetrics&&skill){offlineMetrics.skillCasts=offlineMetrics.skillCasts||{};offlineMetrics.skillCasts[chosen.id]=(offlineMetrics.skillCasts[chosen.id]||0)+1;}const actionAt=chosen.attackCycle&&timers.actionDelay===delay&&now-timers.skill<delay*2?timers.skill+delay:now;timers.skill=actionAt;timers.actionDelay=delay;jobSkillTimers[chosen.id]=actionAt;if(chosen.kind==='shield')jobSkillTimers.personalShield=actionAt;if(chosen.attackCycle)timers.attack=actionAt;if(chosen.castMs)emitEvent('castStart');const instant=chosen.kind==='magic'&&currentTactic()?.kind==='instant';if(instant)player.tacticEffect.kind='instantDamage';const cast=instant?0:skillCastMs(chosen,effectiveAttributes(),player)*skillContext(chosen).castFactor;if(cast>0){casting={id:chosen.id,until:now+cast,started:now};message(`開始詠唱【${chosen.name}】（${(cast/1000).toFixed(2)}秒）。`,'good','player');dirty=true;render();return;}}else if(!skill){if(now-timers.attack<stat('speed')||now-timers.skill<(timers.actionDelay||0))return;timers.attack=now;}
+function playerAttack(skill=false,skillId=null,completed=false){if(isControlled())return;chooseAttackTarget();if(!player||!enemy?.hp||!player.hp)return;const now=gameNow();if(casting&&!completed)return;if(!skill&&(now-timers.attack<stat('speed')||now-timers.skill<(timers.actionDelay||0)))return;const chosen=jobSkillById(player.job,skillId||player.equippedJobSkill)||activeJobSkills(player.job)[0],rank=player.jobSkills[chosen.id]||0;if(skill&&!completed){const context=skillContext(chosen),delay=skillActionDelay(chosen,context);if(chosen.kind==='passive'||!rank||!skillUnlocked(player,chosen)||!canCastJobSkill(chosen)||player.mp<chosen.mp||now-timers.skill<(timers.actionDelay||GLOBAL_SKILL_COOLDOWN)||now-Math.max(jobSkillTimers[chosen.id]||0,chosen.kind==='shield'?jobSkillTimers.personalShield||0:0)<skillCooldown(chosen)||chosen.attackCycle&&now-timers.attack<delay)return;player.mp-=chosen.mp;if(offlineMetrics&&skill){offlineMetrics.skillCasts=offlineMetrics.skillCasts||{};offlineMetrics.skillCasts[chosen.id]=(offlineMetrics.skillCasts[chosen.id]||0)+1;}const actionAt=chosen.attackCycle&&timers.actionDelay===delay&&now-timers.skill<delay*2?timers.skill+delay:now;timers.skill=actionAt;timers.actionDelay=delay;jobSkillTimers[chosen.id]=actionAt;if(chosen.kind==='shield')jobSkillTimers.personalShield=actionAt;if(chosen.attackCycle)timers.attack=actionAt;if(chosen.castMs)emitEvent('castStart');const instant=chosen.kind==='magic'&&currentTactic()?.kind==='instant';if(instant)player.tacticEffect.kind='instantDamage';const cast=instant?0:skillCastMs(chosen,effectiveAttributes(),player)*skillContext(chosen).castFactor;if(cast>0){casting={id:chosen.id,until:now+cast,started:now};message(`開始詠唱【${chosen.name}】（${(cast/1000).toFixed(2)}秒）。`,'good','player');dirty=true;render();return;}}else if(!skill){timers.attack=now;}
 
  let pact=skill?pactFor(chosen):{};const accelerated=skill?unassistedAction(chosen.id,(chosen.attackCycle?skillActionDelay(chosen,{speed:stat('speed')}):jobSkillCooldownMs(chosen,{speed:stat('speed')})),now):false;
- const utility=skill&&['heal','shield','mana','buff'].includes(chosen.kind),criticalRoll=Math.random()*100,critical=!utility&&criticalRoll<stat('crit'),petCrit=critical&&classBuffs.resonanceCrit?.until>now&&criticalRoll>=stat('crit')-classBuffs.resonanceCrit.power,petHaste=skill&&accelerated&&((pact.haste||0)>0||(pact.cooldown||0)>0)||!skill&&classBuffs.resonanceHaste?.until>now&&now<(timers.unhastedAttackNext||0),primary=enemy,spiritMorph=skill?spiritMainProfile(chosen):null;let damage=0,effectEvent=null,action=spiritMorph?.name||(skill?chosen.name:'普通攻擊');const victims=[primary];if(!skill&&!petHaste)timers.unhastedAttackNext=now+aspdAttackIntervalMs(stat('aspd'))/(1+(Object.values(player.gear).reduce((n,g)=>n+(enhancedAffixes(g).aspdPct||0),0)+cardBonus('aspdPct'))/100);if(!utility&&!(currentTactic()?.kind==='mark'&&currentTactic().target===primary.instanceId)&&Math.random()>hitChance(stat('hit'),primary.flee)&&!critical){if(currentTactic()?.kind==='instantDamage')player.tacticEffect=null;message(`${action} 未命中 ${SPECIES[primary.id].name}。`,'','player');dirty=true;render();return;}
+ const utility=skill&&['heal','shield','mana','buff'].includes(chosen.kind),criticalRoll=Math.random()*100,critical=!utility&&criticalRoll<stat('crit'),petCrit=critical&&classBuffs.resonanceCrit?.until>now&&criticalRoll>=stat('crit')-classBuffs.resonanceCrit.power,petHaste=skill&&accelerated&&((pact.haste||0)>0||(pact.cooldown||0)>0)||!skill&&classBuffs.resonanceHaste?.until>now&&now<(timers.unhastedAttackNext||0),primary=enemy,spiritMorph=skill?spiritMainProfile(chosen):null;let damage=0,effectEvent=null,action=spiritMorph?.name||(skill?chosen.name:'普通攻擊');const victims=[primary];if(!skill&&!petHaste)timers.unhastedAttackNext=now+aspdAttackIntervalMs(stat('aspd'))/(1+(Object.values(player.gear).reduce((n,g)=>n+(combatEnhancedAffixes(g).aspdPct||0),0)+cardBonus('aspdPct'))/100);if(!utility&&!(currentTactic()?.kind==='mark'&&currentTactic().target===primary.instanceId)&&Math.random()>hitChance(stat('hit'),primary.flee)&&!critical){if(currentTactic()?.kind==='instantDamage')player.tacticEffect=null;message(`${action} 未命中 ${SPECIES[primary.id].name}。`,'','player');dirty=true;render();return;}
  if(skill&&!utility&&player.reborn&&player.jobSkills['rebirthBuff_'+player.job]&&['hunter','crusader'].includes(player.job))emitEvent('buff');if(skill&&!utility){const companion=activePet(),rule=companion&&companionResonance(player,companion);if(rule?.mode==='pact'){if(rule.perSkill)emitEvent(chosen.id);else emitEvent(chosen.event||'skill');if(chosen.event&&chosen.event!=='skill')emitEvent('skill');if(critical)emitEvent('crit');pact=pactFor(chosen);}}if(skill&&pact.refund){const gain=Math.min(stat('mp')-player.mp,pact.refund);player.mp+=gain;record(report,'effectiveMana',gain);}
  if(skill&&chosen.kind==='heal'){const budget=Math.round(stat(chosen.healSource||(['recover','breathing'].includes(chosen.id)?'atk':'matk'))*jobSkillMultiplier(chosen,rank,skillContext(chosen))*(1+passiveBonus('healingPct')/100)),targets=[{unit:player,max:stat('hp')}];if(chosen.id==='sanctuary'||chosen.partyHeal)for(const pet of activePetRoster(player))if(pet.hp>0)targets.push({unit:pet,max:petStats(pet).hp});targets.sort((a,b)=>a.unit.hp/a.max-b.unit.hp/b.max);let remaining=budget,healed=0;for(const {unit,max} of targets){const missing=Math.max(0,max-unit.hp),baseGain=Math.min(missing,remaining),gain=Math.min(missing,Math.round(baseGain*(unit===player?1+homecomingBonuses(player).recovery:1)));unit.hp+=gain;remaining-=baseGain;healed+=gain;}record(report,'playerHeal',healed);if(healed)effectEvent='heal';if(player.job==='priest'&&remaining>0){timers.pendingOriginalOverheal=remaining;emitEvent('overheal');timers.pendingOriginalOverheal=0;}message(`${action} 恢復 ${healed} HP。`,'good','player');}
  else if(skill&&chosen.kind==='shield'){const shield=grantPlayerShield(Math.round(stat('hp')*.1*jobSkillMultiplier(chosen,rank,skillContext(chosen)),chosen.id==='barrier'?9000:6500));if(shield)effectEvent='shield';message(`${action} 獲得 ${shield} 護盾。`,'good','player');}
@@ -1149,7 +1198,16 @@ function playerAttack(skill=false,skillId=null,completed=false){if(isControlled(
   if(player.job==='rogue'){timers.rogueCombo=(timers.rogueCombo||0)+1;if(timers.rogueCombo%2===0)emitEvent('combo');}
  }
  if(currentTactic()?.kind==='elemental'&&damage>0&&(!skill||['thirdMain_sage','rebirthMain_sage','spellFist'].includes(chosen.id))){player.tacticEffect.charges--;if(player.tacticEffect.charges<=0)player.tacticEffect=null;}if(currentTactic()?.kind==='instantDamage'&&skill&&chosen.kind==='magic')player.tacticEffect=null;if(skill&&chosen.castMs)emitEvent('castComplete');dirty=true;if(skill&&utility&&chosen.thirdOnly)emitEvent(chosen.id);if(effectEvent)emitEvent(effectEvent);else if(!utility){emitEvent(skill?(chosen.event||'skill'):'attack');if(critical&&damage)emitEvent('crit');}if(skill&&chosen.kind==='buff'&&effectEvent!=='buff')emitEvent('buff',false);if(!offlineSimulation)queueCombatVfx({source:skill?'skill':'normal',skillId:skill?chosen.id:'',kind:skill?chosen.kind:'physical',name:action,critical,range:playerRange(player.job),targetIds:[...new Set(victims)].map(foe=>foe.instanceId).filter(Boolean),finisher:skill&&chosen.id.startsWith('thirdFinish_'),aoe:skill&&victims.length>1});finishVictims(victims);render();}
-function autoCastJobs(){if(casting||!auto||!player.hp||!enemy?.hp||gameNow()-timers.skill<(timers.actionDelay||GLOBAL_SKILL_COOLDOWN))return;const skills=orderedAutoSkills(player.autoSkills,JOB_SKILLS[player.job]);for(const skill of skills){if(!player.jobSkills[skill.id]||!canCastJobSkill(skill)||player.mp<skill.mp)continue;if(skill.kind==='heal'&&player.hp>stat('hp')*.65&&!((skill.id==='sanctuary'||skill.partyHeal)&&activePetRoster(player).some(pet=>pet.hp>0&&pet.hp<petStats(pet).hp*.65)))continue;if(skill.kind==='shield'&&player.shield>=stat('hp')*(skill.id==='barrier'?.2:.15))continue;if(skill.kind==='mana'&&player.mp>stat('mp')*.55&&!(isHealingMelody(skill)&&(player.hp<=stat('hp')*.65||activePet().hp<=petStats(activePet()).hp*.65)))continue;if(skill.kind==='buff'&&classBuffs[skill.buff]?.until>gameNow())continue;const before=timers.skill;playerAttack(true,skill.id);if(timers.skill!==before){timers.autoJob=gameNow();break;}}}
+function offlineOrderedAutoSkills(settings,skills){
+ if(!offlineSimulation||globalThis.__spiritDisableOfflineAutoSkillCache)return orderedAutoSkills(settings,skills);
+ const signature=(settings?.order||[]).join('\u0001')+'|'+(settings?.disabled||[]).join('\u0001');
+ const cache=offlineAutoSkillCache;
+ if(cache?.settings===settings&&cache.skills===skills&&cache.signature===signature)return cache.result;
+ const result=orderedAutoSkills(settings,skills);
+ offlineAutoSkillCache={settings,skills,signature,result};
+ return result;
+}
+function autoCastJobs(){if(casting||!auto||!player.hp||!enemy?.hp||gameNow()-timers.skill<(timers.actionDelay||GLOBAL_SKILL_COOLDOWN))return;const skills=offlineOrderedAutoSkills(player.autoSkills,JOB_SKILLS[player.job]);for(const skill of skills){if(!player.jobSkills[skill.id]||!canCastJobSkill(skill)||player.mp<skill.mp)continue;if(skill.kind==='heal'&&player.hp>stat('hp')*.65&&!((skill.id==='sanctuary'||skill.partyHeal)&&activePetRoster(player).some(pet=>pet.hp>0&&pet.hp<petStats(pet).hp*.65)))continue;if(skill.kind==='shield'&&player.shield>=stat('hp')*(skill.id==='barrier'?.2:.15))continue;if(skill.kind==='mana'&&player.mp>stat('mp')*.55&&!(isHealingMelody(skill)&&(player.hp<=stat('hp')*.65||activePet().hp<=petStats(activePet()).hp*.65)))continue;if(skill.kind==='buff'&&classBuffs[skill.buff]?.until>gameNow())continue;const before=timers.skill;playerAttack(true,skill.id);if(timers.skill!==before){timers.autoJob=gameNow();break;}}}
 function petAttack(pet=activePet(),sourceFactor=combatPetFactor(pet?.id)){chooseAttackTarget();if(!pet||!enemy?.hp||!player.hp||pet.hp<=0||sourceFactor<=0)return;const now=gameNow(),s=commanderTransferredPetStats(pet,petStats(pet)),species=SPECIES[pet.species],primary=pet.id===player.activePetId,last=primary?timers.pet:(timers.petById?.[pet.id]||0);const attackInterval=Math.max(80,aspdAttackIntervalMs(s.aspd)/(1+(s.aspdPct||0)/100+(classBuffs.resonanceHaste?.until>now?classBuffs.resonanceHaste.power:0)));if(now-last<attackInterval)return;const attackAt=now-last>attackInterval*2?now:last+attackInterval;if(primary)timers.pet=attackAt;else (timers.petById??={})[pet.id]=attackAt;if(companionRole(pet)==='support'&&pet.sp>=3){pet.sp-=3;const pulse=supportPulse(s),healed=healPetParty(pulse.hp),mp=Math.min(stat('mp')-player.mp,pulse.sp);player.mp+=mp;record(report,'effectiveMana',mp);if(healed||mp)message(`${pet.nickname} 施放 ${species.skill}（SP -3），恢復 HP ${healed}、SP ${mp}。`,'good','pet');}const critical=Math.random()<(s.crit+(classBuffs.resonanceCrit?.until>now?classBuffs.resonanceCrit.power:0))/100;if(!critical&&Math.random()>hitChance(s.hit,enemy.flee)){message(`${pet.nickname} 的攻擊被閃避。`,'','pet');}else{const morph=player.job==='spiritCommander'?spiritSinglePetProfile(player,pet):null,role=companionRole(pet),magic=spiritAttackIsMagic(morph,s.atk,s.matk,['magic','support'].includes(role)),attackSource=morph?(magic?s.matk:role==='defense'?petOffensivePower(s,role):s.atk):petOffensivePower(s,role),rolled=hitDamage(attackSource,monsterDefenseAgainst(enemy,magic)*(1-(s.ignoreDef||0)/100),critical?(s.critDmg||140)/100:1),damage=(bossHitMeta={critical,magical:magic,petId:pet.id,range:'pet'},dealPetDamage(rolled,'petDamage',pet,sourceFactor));bossHitMeta=null;
 if(offlineMetrics&&player.job==='spiritCommander'){
  const m=offlineMetrics.spiritPetMain??={hits:0,damage:0,sourcePower:0,magicHits:0};
@@ -1274,7 +1332,7 @@ function revive(mode='town'){if(player?.trialDefeated)mode='town';if(!player||pl
 function applyPoints(attr,amount=1){if(!Object.hasOwn(ATTRS,attr))return 0;const requested=Number(amount),cap=attributeCap(player);if(!Number.isSafeInteger(requested)||requested<1){toast('請輸入大於0的整數配點數量');return 0;}if(player.statPoints<1){toast('目前沒有可配置點數');return 0;}if(player.attributes[attr]>=cap){toast(`${ATTRS[attr]}基本值已達上限${cap}，Job、裝備與卡片加成不占此上限`);return 0;}const before=player.attributes[attr],points=player.statPoints;amount=Math.min(points,cap-before,requested);player.attributes[attr]+=amount;player.statPoints-=amount;dirty=true;if(save()===false){player.attributes[attr]=before;player.statPoints=points;return 0;}allocationAmounts[attr]=Math.max(1,Math.min(requested,player.statPoints,cap-player.attributes[attr]));clearStatSnapshots();render();renderSide(true);toast(`${ATTRS[attr]}成功配置${amount}點，剩餘${player.statPoints}點${amount<requested?'（已依剩餘點數與基本值上限調整）':''}`);return amount;}
 function applyPointsFromInput(attr,input){return applyPoints(attr,input?input.value:allocationAmounts[attr]??1);}
 function stowEquipped(slot){if(player.gear[slot]){player.gear[slot].swapProtected=true;player.bag.push(player.gear[slot]);player.gear[slot]=null;}}
-function useItem(index){if(isControlled())return toast('受控制效果影響，暫時無法行動');const entry=player.bag[index],it=ITEMS[entry?.id];if(!it)return;if(player.trialRun&&(it.slot||it.petSlot))return toast('試煉中無法換裝，請先離場；補給仍可使用');if(it.capture||it.junk||it.craft||it.evolution||it.quest)return toast('此物品不能直接使用');if(it.petSlot){const pet=selectedGearPet();if(!pet)return toast('請先讓一隻夥伴出戰，再替牠裝備');if(pet.level<(entry.level||1))return toast(`夥伴需要 Lv.${entry.level} 才能穿戴`);if(pet.gear[it.petSlot]){pet.gear[it.petSlot].swapProtected=true;player.bag.push(pet.gear[it.petSlot]);}player.bag.splice(index,1);pet.gear[it.petSlot]=entry;pet.hp=Math.min(pet.hp,petStats(pet).hp);pet.sp=Math.min(pet.sp,petStats(pet).sp);message(`${pet.nickname} 穿戴 ${entry.name}。`,'good');}else if(it.heal||it.energy){if(player.hp<=0)return toast('人物倒下後需等待15秒，請選擇復活方式');const hp=clamp(player.hp+potionRestore(it,'hp',player.level,stat('hp')),0,stat('hp')),mp=clamp(player.mp+potionRestore(it,'mp',player.level,stat('mp')),0,stat('mp'));if(hp===player.hp&&mp===player.mp)return toast('目前不需要使用');player.hp=hp;player.mp=mp;consumeStack(player.bag,entry.id);message(`使用 ${it.name}。`,'good');}
+function useItem(index){if(isControlled())return toast('受控制效果影響，暫時無法行動');const entry=player.bag[index],it=ITEMS[entry?.id];let petEvolutionNotice=null;if(!it)return;if(player.trialRun&&(it.slot||it.petSlot))return toast('試煉中無法換裝，請先離場；補給仍可使用');if(it.capture||it.junk||it.craft||it.evolution||it.quest)return toast('此物品不能直接使用');if(it.petSlot){const pet=selectedGearPet();if(!pet)return toast('請先讓一隻夥伴出戰，再替牠裝備');if(pet.level<(entry.level||1))return toast(`夥伴需要 Lv.${entry.level} 才能穿戴`);const beforeForm=structuredClone(pet);if(pet.gear[it.petSlot]){pet.gear[it.petSlot].swapProtected=true;player.bag.push(pet.gear[it.petSlot]);}player.bag.splice(index,1);pet.gear[it.petSlot]=entry;const evolution=reconcileHumanoidStages(pet);if(evolution.changed)petEvolutionNotice={pet,beforeForm,evolution};pet.hp=Math.min(pet.hp,petStats(pet).hp);pet.sp=Math.min(pet.sp,petStats(pet).sp);message(`${pet.nickname} 穿戴 ${entry.name}。`,'good');}else if(it.heal||it.energy){if(player.hp<=0)return toast('人物倒下後需等待15秒，請選擇復活方式');const hp=clamp(player.hp+potionRestore(it,'hp',player.level,stat('hp')),0,stat('hp')),mp=clamp(player.mp+potionRestore(it,'mp',player.level,stat('mp')),0,stat('mp'));if(hp===player.hp&&mp===player.mp)return toast('目前不需要使用');player.hp=hp;player.mp=mp;consumeStack(player.bag,entry.id);message(`使用 ${it.name}。`,'good');}
  else{if(!ignoresGearLevel(player,entry)&&player.level<(entry.level||1))return toast(`裝備需要 Base Lv.${entry.level}`);if(it.jobs&&!it.jobs.includes(player.job))return toast('這件武器不適合目前職業');if(it.slot==='leftHand'&&ITEMS[player.gear.rightHand?.id]?.hands===2)return toast('雙手武器佔用左手，請先卸下');if(it.id==='offDagger'&&GEAR_BASE[player.gear.rightHand?.id]?.weaponType!=='dagger')return toast('副手匕首需要先裝備主手匕首');const slot=it.slot;if(rankOf(player.gear[slot])&&!confirm('換下的裝備會完整保留原強化；強化不能轉移，新裝備不會繼承原裝備的階級，需要各自強化。確定換裝？'))return;const returnCount=Number(!!player.gear[slot])+Number(slot==='rightHand'&&!!player.gear.leftHand&&(it.hands===2||it.weaponType!=='dagger'&&player.gear.leftHand?.id==='offDagger'));if(player.bag.length-1+returnCount>2000)return toast('背包空間不足以收回換下裝備');player.bag.splice(index,1);if(slot==='rightHand'&&(it.hands===2||it.weaponType!=='dagger'&&player.gear.leftHand?.id==='offDagger'))stowEquipped('leftHand');stowEquipped(slot);player.gear[slot]=entry;player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));message(`裝備 ${entry.name}${it.hands===2?'（雙手武器，佔用左右手）':''}。`,'good');}dirty=true;save();render();}
 function usePetItem(index,petId=null){if(isControlled())return toast('受控制效果影響，暫時無法行動');const pet=petId?activePetRoster(player).find(p=>p.id===petId):activePet(),entry=player.bag[index],it=ITEMS[entry?.id];if(!pet)return toast('尚無出戰夥伴');if(!it?.heal&&!it?.energy)return;if(pet.hp<=0&&gameNow()<(pet.reviveAt||(pet.reviveAt=gameNow()+PET_REVIVE_MS)))return toast('夥伴倒下後需等待 10 秒才能復活');const max=petStats(pet),hp=Math.min(max.hp,pet.hp+potionRestore(it,'hp',pet.level,max.hp,true)),sp=Math.min(max.sp,pet.sp+potionRestore(it,'mp',pet.level,max.sp,true));if(hp===pet.hp&&sp===pet.sp)return toast('夥伴目前不需要補給');pet.hp=hp;pet.sp=sp;consumeStack(player.bag,entry.id);message(`替 ${pet.nickname} 使用 ${it.name}。`,'good');dirty=true;save();render();}
 function unequip(slot){if(player.towerRun)return toast('天穹終境中無法換裝');if(player.trialRun)return toast('試煉中無法換裝');if(!player.gear[slot])return;if(player.bag.length>=2000)return toast('背包已滿');stowEquipped(slot);player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));save();render();}
@@ -1895,6 +1953,10 @@ tickCompanionFourth(now);
 // Skip only completely idle 100ms slices; retain the original time grid and
 // never jump over encounter, regeneration or supply deadlines.
 function offlineIdleSkipSteps(now,remaining){
+ if(globalThis.__spiritDisableOfflineIdleSkip===true)return 0;
+ // The selected live target is sufficient to disqualify idle skipping.
+ // This constant-time guard avoids scanning the encounter roster on most combat ticks.
+ if(enemy?.hp>0)return 0;
  if(player?.trialRun||casting||controlEffect||enemies.some(foe=>foe.hp>0)||!encounterSlots.length||encounterSlots.some(at=>!Number.isFinite(at)))return 0;
  const regenAt=Number.isFinite(timers.regen)?timers.regen+4000:now;
  const suppliesAt=Number.isFinite(timers.offlineSupplies)?timers.offlineSupplies+4000:now;
@@ -1905,7 +1967,7 @@ async function simulateOffline(state,now=Date.now(),progress=()=>{}){
  if(homecomingMap(state?.location))return {player:state,summary:null};
  const window=offlineWindow(state,now),before=structuredClone(state);
  if(!window.eligible)return {player:state,summary:null};
- clearStatSnapshots();offlineSimulation=true;offlineClock=state.offline.at;offlineMetrics={bossCards:[],captures:[],baseXp:0,jobXp:0,petXp:0,goldEarned:0,potions:{},purchased:{},spent:0,bossesEscaped:0,skillCasts:{},dualSpiritMainEvents:0,dualSpiritBlockedDeadTarget:0,dualSpiritBlockedFormation:0,dualSpiritBlockedPetDown:0,dualSpiritBlockedMissingPair:0,dualSpiritBlockedCooldown:0,damage:{player:0,pet1:0,pet2:0,resonance:0,petSupport:0,other:0,total:0}};
+ clearStatSnapshots();offlineAffixCache=new WeakMap();offlineGearStatCache=new WeakMap();offlineGearTotals=new Map();offlineSimulation=true;offlineClock=state.offline.at;offlineMetrics={bossCards:[],captures:[],baseXp:0,jobXp:0,petXp:0,goldEarned:0,potions:{},purchased:{},spent:0,bossesEscaped:0,skillCasts:{},dualSpiritMainEvents:0,dualSpiritBlockedDeadTarget:0,dualSpiritBlockedFormation:0,dualSpiritBlockedPetDown:0,dualSpiritBlockedMissingPair:0,dualSpiritBlockedCooldown:0,damage:{player:0,pet1:0,pet2:0,resonance:0,petSupport:0,other:0,total:0}};
  try{
   player=normalize(structuredClone(state));player.hp=Math.min(player.hp,stat('hp'));player.mp=Math.min(player.mp,stat('mp'));resetSession();auto=true;spawn();const trialMode=!!player.trialRun?.continuous;let simulated=0,reason='已完成離線時間',yieldSteps=0,lastYieldAt=performance.now();
   for(;simulated<window.duration;){
@@ -1915,14 +1977,14 @@ async function simulateOffline(state,now=Date.now(),progress=()=>{}){
    const delta=Math.min(OFFLINE_STEP_MS,window.duration-simulated);offlineClock+=delta;simulated+=delta;combatTick(offlineClock);
    if(trialMode&&!player.trialRun){reason=player.trialStopReason||'連續試煉已停止';break;}
    if(offlineClock-(timers.offlineSupplies||0)>=4000){timers.offlineSupplies=offlineClock;if(player.hp>0)autoBuyPotions();if(player.autoSalvage&&player.salvageInventory)salvageBagEquipment();}
-   if(++yieldSteps>=256){yieldSteps=0;const wallNow=performance.now();if(wallNow-lastYieldAt>=24){progress(simulated/window.duration);await new Promise(resolve=>setTimeout(resolve,0));lastYieldAt=performance.now();}}
+   if(++yieldSteps>=256){yieldSteps=0;const wallNow=performance.now();if(wallNow-lastYieldAt>=100){progress(simulated/window.duration);if(typeof document!=='undefined')await new Promise(resolve=>setTimeout(resolve,0));lastYieldAt=performance.now();}}
   }
   if(!player.hp)reason=player.trialStopReason||'角色倒下，掛機停止';
   progress(simulated/window.duration);
   if(trialMode)checkpointTrial();
   const summary={...window,simulated,reason,map:state.location,trialRounds:trialMode?Math.max(0,(player.trialClears?.[state.trialRun.map]||0)-(before.trialClears?.[state.trialRun.map]||0)):0,kills:player.kills-before.kills,gold:player.gold-before.gold,baseBefore:before.level,baseAfter:player.level,jobBefore:before.jobLevel,jobAfter:player.jobLevel,...offlineMetrics,...inventoryDelta(before,player)};
   return {player,summary};
- }finally{clearStatSnapshots();offlineClock=null;offlineSimulation=false;offlineMetrics=null;}
+ }finally{clearStatSnapshots();offlineAffixCache=new WeakMap();offlineGearStatCache=new WeakMap();offlineGearTotals=new Map();offlineClock=null;offlineSimulation=false;offlineMetrics=null;}
 }
 let compensationChoice=null;
 function refreshWeaponCompensationReminder(){
@@ -2263,10 +2325,21 @@ function doPetEnhance(slot){
  render();renderSide(true);
  if(evolution.changed)showPermanentFormEvolution(pet,beforeForm,`恭喜！${pet.nickname}進化為${HUMANOID_STAGES[evolution.stage].label}！`,'三件夥伴裝備達成進化條件，新的姿態已永久解鎖。');
 }
+function completePendingPetEvolution(){
+ if(!isTown(player.location)||!player.hp)return toast('請在城鎮完成夥伴進化');
+ const pet=player?.pets.find(p=>p.id===player.activePetId);
+ if(!pet||nextHumanoidStage(pet)===humanoidStage(pet))return toast('目前沒有待完成的人形進化');
+ const snapshot=structuredClone(player),before=structuredClone(pet),evolution=reconcileHumanoidStages(pet);
+ if(!evolution.changed)return;
+ dirty=true;
+ if(save()===false){player=snapshot;clearStatSnapshots();return;}
+ render();renderSide(true);
+ showPermanentFormEvolution(pet,before,`恭喜！${pet.nickname}進化為${HUMANOID_STAGES[evolution.stage].label}！`,'三件夥伴裝備的進化條件已達成，新的姿態永久解鎖。');
+}
 function renderPetEnhancement(){
  const pet=player?.pets.find(p=>p.id===player.activePetId);
  if(!pet)return '<div class="item">選擇出戰夥伴後可強化夥伴裝備。</div>';
- return `<section class="item"><h3>夥伴星鑄 · ${escapeHtml(pet.nickname)}</h3><p>頭部／身體／鞋子逐階D～SSS強化。已解鎖忠誠度人形後，三件全S、SS、SSS會觸發永久人形進化。不可切換回舊造型。</p><p>目前：${pet.trueForm?HUMANOID_STAGES[humanoidStage(pet)].label:'尚未解鎖忠誠度人形'}</p></section>${Object.entries(PET_SLOTS).map(([slot,label])=>{const g=pet.gear?.[slot];if(!g)return `<div class="item"><b>${label}</b> · 尚未裝備</div>`;const next=ENHANCEMENT_RANKS[ENHANCEMENT_RANKS.indexOf(rankOf(g))+1],held=player.bag.find(x=>x.id==='rank_core_'+next)?.qty||0;return `<div class="item"><b>${label} · ${escapeHtml(g.name)}</b><p>${rankOf(g)||'未強化'} · ${Object.entries(enhancedAffixes(g)).map(([k,v])=>affixLabel(k,v)).join('、')}</p>${next?`<button data-enhance-pet="${slot}" ${!isTown(player.location)||!player.hp||!held?'disabled':''}>強化至${next}階（結晶${held}）</button>`:'<small>已達SSS階</small>'}</div>`}).join('')}`;
+ return `<section class="item"><h3>夥伴星鑄 · ${escapeHtml(pet.nickname)}</h3><p>頭部／身體／鞋子逐階D～SSS強化。已解鎖忠誠度人形後，三件全S、SS、SSS會觸發永久人形進化。不可切換回舊造型。</p><p>目前：${pet.trueForm?HUMANOID_STAGES[humanoidStage(pet)].label:'尚未解鎖忠誠度人形'}</p>${nextHumanoidStage(pet)>humanoidStage(pet)?'<button data-reconcile-pet-evolution>完成已達條件的人形進化</button>':''}</section>${Object.entries(PET_SLOTS).map(([slot,label])=>{const g=pet.gear?.[slot];if(!g)return `<div class="item"><b>${label}</b> · 尚未裝備</div>`;const next=ENHANCEMENT_RANKS[ENHANCEMENT_RANKS.indexOf(rankOf(g))+1],held=player.bag.find(x=>x.id==='rank_core_'+next)?.qty||0;return `<div class="item"><b>${label} · ${escapeHtml(g.name)}</b><p>${rankOf(g)||'未強化'} · ${Object.entries(enhancedAffixes(g)).map(([k,v])=>affixLabel(k,v)).join('、')}</p>${next?`<button data-enhance-pet="${slot}" ${!isTown(player.location)||!player.hp||!held?'disabled':''}>強化至${next}階（結晶${held}）</button>`:'<small>已達SSS階</small>'}</div>`}).join('')}`;
 }
 function warehouseModalRoot(){return $('warehouseModalContent');}
 function refreshWarehouseModal(){const root=warehouseModalRoot();if(root&&$('warehouseModal')?.open){root.innerHTML=renderWarehouse();bindWarehouseControls();}}
@@ -2411,7 +2484,7 @@ function bindCosmeticGalleryEvents(){
   if(event.target.matches('[data-cosmetic-aura]')){player.cosmeticAura=event.target.checked;save();render();}
  });
 }
-function bindTrialControls(){for(const b of $('side').querySelectorAll('[data-tower-enter]'))b.onclick=()=>startTower(Number(b.dataset.towerEnter));for(const b of $('side').querySelectorAll('[data-tower-exit]'))b.onclick=()=>{if(confirm('確定結束天穹終境挑戰？'))exitTower('主動離場');};bindWarehouseControls();for(const b of $('side').querySelectorAll('[data-continuous-trial]'))b.onclick=()=>startTrial(b.dataset.continuousTrial,true);for(const b of $('side').querySelectorAll('[data-enter-trial]'))b.onclick=()=>startTrial(b.dataset.enterTrial);for(const b of document.querySelectorAll('[data-trial-stop-after]'))b.onclick=toggleTrialStopAfterRound;for(const b of document.querySelectorAll('[data-trial-exit]'))b.onclick=()=>{if(confirm('確定離開試煉？不退還入場券，已取得的結晶保留。'))exitTrial('主動離場');};for(const b of $('side').querySelectorAll('[data-enhance-slot]'))b.onclick=()=>doEnhance(b.dataset.enhanceSlot);for(const b of $('side').querySelectorAll('[data-enhance-pet]'))b.onclick=()=>doPetEnhance(b.dataset.enhancePet);for(const b of $('side').querySelectorAll('[data-reselect-fusion]'))b.onclick=()=>doLegacyFusionReselect(b.dataset.reselectFusion);for(const b of $('side').querySelectorAll('[data-upgrade-sigil]'))b.onclick=()=>doUpgradeSigil();for(const b of $('side').querySelectorAll('[data-outfit]'))b.onclick=()=>{const r=b.dataset.outfit;if(r!=='default'&&!player.outfitUnlocks?.includes(r))return;player.selectedOutfit=r==='default'?null:r;player.cosmeticOutfit=null;save();render();renderSide(true);};}
+function bindTrialControls(){for(const b of $('side').querySelectorAll('[data-tower-enter]'))b.onclick=()=>startTower(Number(b.dataset.towerEnter));for(const b of $('side').querySelectorAll('[data-tower-exit]'))b.onclick=()=>{if(confirm('確定結束天穹終境挑戰？'))exitTower('主動離場');};bindWarehouseControls();for(const b of $('side').querySelectorAll('[data-continuous-trial]'))b.onclick=()=>startTrial(b.dataset.continuousTrial,true);for(const b of $('side').querySelectorAll('[data-enter-trial]'))b.onclick=()=>startTrial(b.dataset.enterTrial);for(const b of document.querySelectorAll('[data-trial-stop-after]'))b.onclick=toggleTrialStopAfterRound;for(const b of document.querySelectorAll('[data-trial-exit]'))b.onclick=()=>{if(confirm('確定離開試煉？不退還入場券，已取得的結晶保留。'))exitTrial('主動離場');};for(const b of $('side').querySelectorAll('[data-enhance-slot]'))b.onclick=()=>doEnhance(b.dataset.enhanceSlot);for(const b of $('side').querySelectorAll('[data-enhance-pet]'))b.onclick=()=>doPetEnhance(b.dataset.enhancePet);for(const b of $('side').querySelectorAll('[data-reconcile-pet-evolution]'))b.onclick=completePendingPetEvolution;for(const b of $('side').querySelectorAll('[data-reselect-fusion]'))b.onclick=()=>doLegacyFusionReselect(b.dataset.reselectFusion);for(const b of $('side').querySelectorAll('[data-upgrade-sigil]'))b.onclick=()=>doUpgradeSigil();for(const b of $('side').querySelectorAll('[data-outfit]'))b.onclick=()=>{const r=b.dataset.outfit;if(r!=='default'&&!player.outfitUnlocks?.includes(r))return;player.selectedOutfit=r==='default'?null:r;player.cosmeticOutfit=null;save();render();renderSide(true);};}
 
 function openCharacterRename(){
  const modal=$('renameModal');
@@ -2485,7 +2558,7 @@ function homecomingAction(id,action,choice){
 function addHomecomingEncounter(now=gameNow()){
  if(offlineSimulation||enemies.some(e=>e.hp>0))return;
  const template=homecomingBattle(player,activePet());if(!template)return;
- const foe={...template,...monsterRuntimeStats(template),hp:template.hp,maxHp:template.hp,lastAttack:now,appearedAt:now,instanceId:`homecoming-${now}-${++encounterSerial}`,slotIndex:0};
+ const foe={...template,...monsterRuntimeStats(template),hp:template.hp,maxHp:template.hp,lastAttack:now,appearedAt:now,instanceId:`homecoming-${now}-${++encounterSerial}`,slotIndex:0,homecomingPetId:activePet()?.id};
  enemies=[foe];enemy=foe;startReport();message(`${foe.nonlethal?'演武開始：':'任務挑戰：'}${foe.name}`,'rare','system');return foe;
 }
 function tickHomecomingEncounters(now){
@@ -2499,7 +2572,10 @@ function awardHomecomingEncounter(){
  const previous=structuredClone(player),advanced=completeHomecomingBattle(player,foe,activePet(),{offline:offlineSimulation});
  foe.rewarded=true;endReport(foe.nonlethal?'演武通過':'任務戰鬥完成');dirty=true;
  if(advanced&&save()===false){player=previous;clearStatSnapshots();return;}
- message(advanced?(foe.nonlethal?'師父收招微笑，認可了夥伴的守鄉誓言。':'挑戰完成，請在返鄉契約繼續事件。'):'未符合同行條件，請帶對應存活夥伴重新挑戰。',advanced?'good':'rare','system');render();
+ message(advanced?(foe.nonlethal?'師父收招微笑，認可了夥伴的守鄉誓言。':'挑戰完成，請在返鄉契約繼續事件。'):'未符合同行條件，請帶對應夥伴重新挑戰。',advanced?'good':'rare','system');
+ if(advanced&&player.homecoming?.routes?.[foe.homecomingRoute]?.phase==='ready'){
+  openPanel('homecoming');toast('演武已通過！請按「返回家鄉」並交付返鄉契約。');
+ }else render();
 }
 
 function renderPetSkillConfig(){return renderBasePetSkillConfig()+renderCompanionFourthSlot(selectedGearPet());}
