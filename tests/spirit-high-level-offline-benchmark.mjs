@@ -9,9 +9,18 @@ const epoch=2000000000000,seed=471122;
 const fastMinutes=Number(process.env.SPIRIT_HIGH_LEVEL_BENCH_MINUTES||0);
 if(fastMinutes&&(!Number.isInteger(fastMinutes)||fastMinutes<1||fastMinutes>30))throw Error('fast benchmark minutes must be 1..30');
 const durations=fastMinutes?[fastMinutes/60]:[1,6,12,24];
+const selectedDurations=process.env.SPIRIT_HIGH_LEVEL_BENCH_HOURS
+ ?process.env.SPIRIT_HIGH_LEVEL_BENCH_HOURS.split(',').map(Number):durations;
+const selectedLevels=process.env.SPIRIT_HIGH_LEVEL_BENCH_LEVELS
+ ?process.env.SPIRIT_HIGH_LEVEL_BENCH_LEVELS.split(',').map(Number):[200,210];
+const selectedJobs=process.env.SPIRIT_HIGH_LEVEL_BENCH_JOBS
+ ?process.env.SPIRIT_HIGH_LEVEL_BENCH_JOBS.split(','):['pactWarrior','spiritCommander'];
+assert.ok(selectedDurations.length&&selectedDurations.every(h=>h>0&&h<=24));
+assert.ok(selectedLevels.every(level=>[200,210].includes(level)));
+assert.ok(selectedJobs.every(job=>['pactWarrior','spiritCommander'].includes(job)));
 const records=[];
-for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander']){
- for(const hours of durations){
+for(const level of selectedLevels)for(const job of selectedJobs){
+ for(const hours of selectedDurations){
   const player=highLevelSpiritPlayer({level,job,pairKey:'attack-magic+defense-support',gearRarity:'mythic'});
   if(job==='pactWarrior')player.petStances={[player.pets[0].id]:'assimilate',[player.pets[1].id]:'assist'};
   // Consistent with 200 unenhanced / 210 SSS normal-field difficulty baseline.
@@ -37,8 +46,10 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
    assert.equal(response.result.player.pets.length,2,'fusion pair persisted');
    const simulatedFull=s.simulated===hours*3600000;
    const full=simulatedFull&&s.reason==='已完成離線時間'&&response.result.player.hp>0;
+   const wallMs=Math.round(performance.now()-started);
    const row={job,level,gearRarity:'mythic',hours,simulatedHours:Math.round(s.simulated/3600000*1000)/1000,
-    completed:full,simulatedFull,reason:s.reason,wallMs:Math.round(performance.now()-started),
+    completed:full,simulatedFull,reason:s.reason,wallMs,
+    under30s:hours===24?full&&wallMs<=30000:null,
     workerHeapMb:Math.round((response.workerHeapUsed||0)/1048576),progressEvents,
     kills:s.kills,revives:s.revives||0,pet1Damage:d.pet1,pet2Damage:d.pet2,
     resonanceActivations:s.resonanceActivations||0,damageTotal:d.total,
@@ -47,7 +58,8 @@ for(const level of [200,210])for(const job of ['pactWarrior','spiritCommander'])
   }finally{await worker.terminate();}
  }
 }
-assert.equal(records.length,4*durations.length);
+assert.equal(records.length,selectedLevels.length*selectedJobs.length*selectedDurations.length);
 console.log(JSON.stringify({summary:true,scenarioCount:records.length,fastMinutes,complete24h:records.filter(r=>r.hours===24&&r.completed).length,
+ target24hMs:30000,met24hTarget:records.filter(r=>r.hours===24&&r.completed&&r.under30s).length,
  stopped24h:records.filter(r=>r.hours===24&&!r.completed).map(r=>({job:r.job,level:r.level,reason:r.reason,simulatedHours:r.simulatedHours})),
  benchmarkIsObservational:true,completionRequiresAlive:true}));
