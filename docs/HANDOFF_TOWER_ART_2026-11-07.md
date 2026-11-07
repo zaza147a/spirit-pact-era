@@ -17,7 +17,7 @@
 
 UI：`dist/game.js` 的 `TOWER_BACKGROUND_STYLES` 與 `dist/endless-tower.css` 已指向上述 WebP，圖片載入失敗時沿用底色。需進行瀏覽器視覺驗收與快取版本更新。
 
-## 已完成：第 30 層專屬永凍時裝（九職）
+## 已完成：第 30 層專屬永凍時裝（十二職）
 
 路徑均在 `dist/assets/tower/`，尺寸 **1024×1504 WebP，帶 alpha 真透明**：
 
@@ -30,18 +30,15 @@ UI：`dist/game.js` 的 `TOWER_BACKGROUND_STYLES` 與 `dist/endless-tower.css` �
 | 十字斬首者 / assassin | `outfit-assassin-frost.webp` | 女性冰影刺客，雙腕拳刃與低姿態突襲造型 |
 | 流氓 / rogue | `outfit-rogue-frost.webp` | 女性冰霜遊俠型流氓，華麗羽帽、手弩與短刃 |
 | 主教 / priest | `outfit-priest-frost.webp` | 女性永凍聖女，冰晶聖杖、祝禱聖環與禮袍 |
-| 修羅 / monk | `outfit-monk-frost.webp` | 女性冰勁武僧，雙大型寒霜拳套與念珠 |
+| 修羅 / monk | `outfit-monk-frost.webp` | **已重新繪製差異版**：男性短髮赤膊冰紋武僧、粗獷獸首雙拳套、巨型念珠與銅色曼荼羅；刻意區分賢者的女性四元素魔拳 |
 | 遊俠 / hunter | `outfit-hunter-frost.webp` | 女性冰雪弓手，銀藍長弓、冰箭與雪鴞羽披風 |
+| 舞孃 / performer | `outfit-performer-frost.webp` | 男性冰晶樂師，銀藍豎琴與冰雪音律長袍 |
+| 君王 / pactWarrior | `outfit-pactWarrior-frost.webp` | 男性冰霜契約君王，長型魔法杖劍與單枚浮空契約晶體 |
+| 萬靈 / spiritCommander | `outfit-spiritCommander-frost.webp` | 女性寒霜萬靈指揮官，雙契約印記魔典與銀藍戰術長衣 |
 
-九張均使用現有 `dist/assets/cosmetics/fixed-<job>-0.webp` 作為職業識別／精緻度參考；新圖逐張獨立生成並保留真透明。尚未開放換裝。
+十二張均使用現有 `dist/assets/cosmetics/fixed-<job>-0.webp` 作為職業識別／精緻度參考；新圖逐張獨立生成並保留真透明。修羅因初版與賢者辨識度不足，已依需求全面重繪。**素材已齊，尚待完整換裝接入與 UI 驗收。**
 
-## 待製作的三職（請逐張生成與保存，不要一張大圖裁切）
-
-1. `performer`：舞孃／樂器與音律。
-2. `pactWarrior`：君王／杖劍與雙同化夥伴。
-3. `spiritCommander`：萬靈／雙協戰夥伴。
-
-每張先檢查參考既有職業立繪的性別、姿態和職業武器，優先設計相反性別，維持高精緻度與獨立構圖。生成後轉為 1024×1504、透明 WebP，檢查 alpha 與繪圖完整度，逐張存入此分支。不要臆造圖片已完成。
+美術已完成，全部為獨立生成的 1024×1504 透明 WebP，不能把舊版修羅重新接回。注意君王與萬靈現為**單夥伴職業**，圖片只表現職業技能／契約意象，沒有要求雙夥伴角色立繪。
 
 ## 美術全部完成後才接入
 

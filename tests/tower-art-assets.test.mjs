@@ -14,12 +14,12 @@ test('first three tower backgrounds exist as standalone WebP assets',()=>{
  }
 });
 
-test('first nine frozen costumes have independent alpha-capable WebP files',()=>{
- const buffers=['outfit-crusader-frost.webp','outfit-knight-frost.webp','outfit-wizard-frost.webp','outfit-sage-frost.webp','outfit-assassin-frost.webp','outfit-rogue-frost.webp','outfit-priest-frost.webp','outfit-monk-frost.webp','outfit-hunter-frost.webp'].map(name=>readFileSync(asset(name)));
+test('all twelve frozen costumes have independent alpha-capable WebP files',()=>{
+ const buffers=['outfit-crusader-frost.webp','outfit-knight-frost.webp','outfit-wizard-frost.webp','outfit-sage-frost.webp','outfit-assassin-frost.webp','outfit-rogue-frost.webp','outfit-priest-frost.webp','outfit-monk-frost.webp','outfit-hunter-frost.webp','outfit-performer-frost.webp','outfit-pactWarrior-frost.webp','outfit-spiritCommander-frost.webp'].map(name=>readFileSync(asset(name)));
  for(const bytes of buffers){
   assert.equal(bytes.toString('ascii',0,4),'RIFF');
   assert.equal(bytes.toString('ascii',8,12),'WEBP');
   assert.ok(bytes.length>100_000);
  }
- assert.equal(new Set(buffers.map(b=>b.toString('base64'))).size,9);
+ assert.equal(new Set(buffers.map(b=>b.toString('base64'))).size,12);
 });
