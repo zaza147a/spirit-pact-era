@@ -34,7 +34,8 @@ import {TRIAL_PORTAL,ENHANCER_NAME,ENHANCEMENT_RANKS,ENHANCEMENT_POWER,CONTROL_R
 import {towerFloor,towerEntryError,normalizeTowerProgress,towerObjectiveLabel} from './endless-tower.js';
 import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDefeated,settleTowerRun,towerRemainingSeconds,towerBossSignature,postponeTowerPursuer} from './endless-tower-runtime.js';
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
-import {unlockedTowerHonors,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js';
+import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js';
+import {TOWER_SHOP_ITEMS,normalizeTowerCollection,buyTowerShopItem,towerCollectedBackgrounds,selectTowerBackground,awardTowerCoins} from './tower-reward-shop.js';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
 import {trueFormReady,TRUE_FORM_MESSAGE} from './pet-true-form.js?v=6.5.0';
 import {companionResonance} from './fusion-resonance.js?v=6.5.0';
@@ -1410,8 +1411,8 @@ function transferJob(target){const error=transferEligibility(player,target);if(e
 function readinessNote(){const r=equipmentReadiness(player,player.location,rollGear,gearStatValue,SECOND_JOBS[player.job]?.weapon||({mage:'oneStaff',acolyte:'mace',archer:'shortBow',swordsman:'blade',thief:'rifle'})[player.job]);return r?`<p class="gear-readiness">裝備準備：對照前階段Lv.${r.level}完整罕見核心約${Math.round(r.ratio*100)}%。建議累積60～70%再穩定推進；不計神話特殊詞，不限制提早挑戰。夥伴、配點與操作仍會影響生存。</p>`:'';}
 function renderCharacterTabs(){return `<div class="section-tabs" aria-label="角色分頁">${[['attributes','人物能力'],['gear','角色裝備'],['skills','技能配置'],['sigil','契印'],['outfits','角色外觀'],['honortitle','稱號'],['honorframe','名稱框'],['background','背景']].map(([id,label])=>`<button data-character-section="${id}" class="${characterSection===id?'active':''}">${label}</button>`).join('')}</div>`;}
 function renderTowerHonors(type){
- const honors=unlockedTowerHonors(player),selected=normalizeTowerHonorSelection(player),label=type==='title'?'稱號':'名稱框';
- return `<section class="item tower-honor-wardrobe"><h3>天穹榮譽 · ${label}</h3><p>已解鎖的${label}可自由切換，同時僅啟用一款，也可以不顯示。登入選角頁同步呈現，沒有能力加成。</p><div class="tower-honor-choices"><button data-tower-honor-pick="${type}" data-tower-honor-value="" class="${!selected[type]?'active':''}">不顯示</button>${honors.map(h=>`<button data-tower-honor-pick="${type}" data-tower-honor-value="${escapeHtml(h[type])}" class="${selected[type]===h[type]?'active':''}">${escapeHtml(h[type])}${selected[type]===h[type]?' · 使用中':''}</button>`).join('')}</div><p>目前已解鎖 ${honors.length}／3 款。通關天穹終境第 10、20、30 層首領後可取得更多。</p></section>`;
+ const options=towerHonorOptions(player,type),selected=normalizeTowerHonorSelection(player),label=type==='title'?'稱號':'名稱框';
+ return `<section class="item tower-honor-wardrobe"><h3>天穹榮譽 · ${label}</h3><p>已解鎖的${label}可自由切換，同時僅啟用一款，也可以不顯示。登入選角頁同步呈現，沒有能力加成。</p><div class="tower-honor-choices"><button data-tower-honor-pick="${type}" data-tower-honor-value="" class="${!selected[type]?'active':''}">不顯示</button>${options.map(name=>`<button data-tower-honor-pick="${type}" data-tower-honor-value="${escapeHtml(name)}" class="${selected[type]===name?'active':''}">${escapeHtml(name)}${selected[type]===name?' · 使用中':''}</button>`).join('')}</div><p>目前已解鎖 ${options.length} 款；通關第 10、20、30 層還可解鎖獎勵，商店另售典藏名稱框。</p></section>`;
 }
 function renderCharacterAttributes(){const attrs=effectiveAttributes(),bonus=jobAttributeBonus(player,SECOND_JOBS),d=attributeDetails(),fmt=n=>Number(n.toFixed(2)),free=free201AttributeReset(player),values={'攻擊距離':rangeLabel(playerRange(player.job)),HP:`${player.hp} / ${stat('hp')}`,SP:`${player.mp} / ${stat('mp')}`,'護盾':player.shield||0,ATK:stat('atk'),MATK:stat('matk'),DEF:stat('def'),MDEF:stat('mdef'),ASPD:stat('aspd').toFixed(1),'攻擊間隔':`${(stat('speed')/1000).toFixed(3)}秒`,'實際每秒攻擊次數':`${(1000/stat('speed')).toFixed(2)}次／秒`,'攻速加成':`${stat('aspdPct')}%`,HIT:stat('hit'),FLEE:stat('flee'),'暴擊率':`${stat('crit')}%`,'暴擊傷害':`${stat('critDmg')}%`,'無視防禦':`${stat('ignoreDef')}%`,'魔法傷害加成':`${stat('magicDamage')}%`,'最終減傷':`${stat('damageReduction')}%`,'最終減傷':`${stat('damageReduction')}%`,'近距離物理傷害':`×${((1+attrs.STR*.008)*(1+d.potential.STR)).toFixed(3)}`,'遠距離物理傷害':`×${((1+attrs.DEX*.008)*(1+d.potential.DEX)).toFixed(3)}`,'魔法傷害':`×${((1+attrs.INT*.008)*(1+d.potential.INT)).toFixed(3)}`,'無詠唱進度':`${fmt(attrs.INT+2*attrs.DEX)} / ${freecastThreshold(player)}`};return `<div class="item"><h3>${escapeHtml(player.name)} · ${player.thirdJob?THIRD_JOBS[player.job].name:CLASSES[player.job].name}${player.reborn?' · 轉生':''}</h3><p>Base ${player.level}／${characterLevelCap(player)} · Job ${player.jobLevel}／${jobLevelCap(player)}</p><div class="allocation-summary"><b>可配置點數 <strong>${player.statPoints}</strong></b><span>單項上限 ${attributeCap(player)}</span></div><p>+值顯示Job、裝備與卡片的完整加成；超出各項上限的部分轉為遞減成長的溢出潛能。</p><button data-retrain="attributes" ${!isTown(player.location)||!player.hp?'disabled':''}>${free?'使用201級免費素質重置（本角色1次）':`重置素質 · ${retrainCost(player.level)}金`}</button>${player.level<201?'<small>Base201起單項上限提升至150，並贈送一次免費素質重置。</small>':''}${Object.entries(ATTRS).map(([id,label])=>`<div class="allocation-row" data-ui-key="allocation-${id}"><div><b>${id} ${label}</b><small>${attributeDescriptions[id]}</small><small data-allocation-limit="${id}">本次最多 ${Math.max(0,Math.min(player.statPoints,attributeCap(player)-player.attributes[id]))} 點${player.attributes[id]>=attributeCap(player)?'（已滿）':''}</small></div><span class="full-attribute-value" title="Job +${bonus[id]}／裝備完整 +${fmt(d.rawGear[id])}（正常生效${fmt(d.gear[id])}）／卡片完整 +${fmt(d.rawCards[id])}（正常生效${fmt(d.card[id])}）；溢出${fmt(d.overflow[id])} → ${POTENTIAL_NAMES[id]} +${(d.potential[id]*100).toFixed(2)}${id==='AGI'||id==='LUK'?'個百分點':'%'}">${player.attributes[id]}<b class="attribute-bonus">+${fmt(bonus[id]+d.rawGear[id]+d.rawCards[id])}</b></span><input type="number" min="1" max="${Math.max(1,Math.min(player.statPoints,attributeCap(player)-player.attributes[id]))}" value="${escapeHtml(allocationAmounts[id]??1)}" data-allocation-amount="${id}" aria-label="${label}配置數量"><button data-add="${id}" ${player.statPoints&&player.attributes[id]<attributeCap(player)?'':'disabled'}>配置</button></div>`).join('')}<p>裝備每項正常加成上限 ${d.gearLimit}（基本上限30%）；卡片每項 ${d.cardLimit}（20%），六項分別計算，Job另計。</p><details class="overflow-details" data-ui-key="overflow-details"><summary>溢出潛能明細</summary>${ATTRIBUTE_KEYS.map(k=>`<p>${k}：裝備 +${fmt(d.rawGear[k])}／卡片 +${fmt(d.rawCards[k])} · 溢出 ${fmt(d.overflow[k])} → ${POTENTIAL_NAMES[k]} +${(d.potential[k]*100).toFixed(2)}${k==='AGI'||k==='LUK'?'個百分點':'%'}</p>`).join('')}<p>溢出50／100／200點分別提供4%／6%／8%效果，之後持續成長、增幅遞減。溢出不重複加入ATK、MATK、ASPD或詠唱公式。</p></details></div><div class="item"><h3>人物完整能力</h3><p class="attack-gear-hint">目前主攻判定：${ownerAttackIdentity(player.job,player.thirdJob,stat("atk"),stat("matk"),activePet()?spiritSinglePetProfile(player,activePet())?.kind:null).label}。御靈使三轉前取 ATK／MATK 較高者判定傷害類型。</p><div class="numbers combat-numbers">${Object.entries(values).map(([label,value])=>`<div><span class="tiny">${label}</span><b>${value}</b></div>`).join('')}</div></div>`;}
 
@@ -1748,6 +1749,21 @@ for(const b of $('side').querySelectorAll('[data-open]'))b.onclick=()=>openPanel
 for(const b of $('side').querySelectorAll('[data-tower-honor-pick]'))b.onclick=()=>{
   if(!selectTowerHonor(player,b.dataset.towerHonorPick,b.dataset.towerHonorValue)){toast('尚未解鎖此榮譽');renderSide(true);return;}
   save();renderSide(true);toast('已更新天穹稱號／名稱框，登入選角將同步顯示');
+};
+for(const b of $('side').querySelectorAll('[data-tower-buy]'))b.onclick=()=>{
+ const item=TOWER_SHOP_ITEMS.find(i=>i.id===b.dataset.towerBuy);
+ if(!item)return;
+ if(!confirm(`花費 ${item.cost} 天穹塔幣永久收藏「${item.name}」？`))return;
+ const oldCoins=player.towerCoins,oldCollection=structuredClone(player.towerCollection||{});
+ const bought=buyTowerShopItem(player,item.id);
+ if(bought.error)return toast(bought.error);
+ if(save()===false){player.towerCoins=oldCoins;player.towerCollection=oldCollection;return toast('存檔失敗，已退還塔幣');}
+ renderSide(true);toast(`✦ 已收藏 ${item.name}！`);
+};
+for(const b of $('side').querySelectorAll('[data-tower-background-pick]'))b.onclick=()=>{
+ if(!selectTowerBackground(player,b.dataset.towerBackgroundPick))return toast('尚未收藏此背景');
+ player.cosmeticBackground=null;
+ save();render();renderSide(true);
 };
 if(tab==='pets')for(const b of $('side').querySelectorAll('[data-pet]')){const p=player.pets.find(x=>x.id===b.dataset.pet);const head=b.closest('.item')?.querySelector('.itemhead');if(head){head.querySelector('.art-pet')?.remove();head.insertAdjacentHTML('afterbegin',petSprite(p,'pet'));}}
 for(const b of document.querySelectorAll('[data-add]'))b.onclick=()=>applyPointsFromInput(b.dataset.add,$('side').querySelector(`[data-allocation-amount="${b.dataset.add}"]`));
@@ -2124,11 +2140,11 @@ function completeTowerRun(now){
  const run=player?.towerRun;if(!run)return;
  const settled=settleTowerRun(player,run,now,{alive:player.hp>0,totalEnemies:run.completedEnemyIds.length});
  if(settled.error)return exitTower(settled.error);
- player.towerProgress=settled.progress;player.towerCoins=(player.towerCoins||0)+settled.coins;
- player.towerLastResult={floor:run.floor,coins:settled.coins,firstReward:settled.firstReward,clearSeconds:settled.clearSeconds,...(towerFloor(run.floor).objective==='hunt'?{huntKills:run.huntKills||0}:{})};
+ player.towerProgress=settled.progress;const paid=awardTowerCoins(player,settled.coins,{firstClear:settled.firstClear});
+ player.towerLastResult={floor:run.floor,coins:paid,firstReward:settled.firstReward,clearSeconds:settled.clearSeconds,...(towerFloor(run.floor).objective==='hunt'?{huntKills:run.huntKills||0}:{})};
  delete player.towerLastFailure;
  const cleared=run.floor;endReport(`天穹終境第${cleared}層通關`);
- message(`✦ 第${cleared}層達成目標！天穹塔幣 +${settled.coins}${settled.firstReward?' · 解鎖稱號：'+settled.firstReward:''}`,'rare','system');
+ message(`✦ 第${cleared}層達成目標！天穹塔幣 +${paid}${settled.firstReward?' · 解鎖稱號：'+settled.firstReward:''}`,'rare','system');
  exitTower('通關',false);
 }
 function exitTower(reason='離開挑戰',failed=true){
@@ -2311,14 +2327,20 @@ function renderCosmeticGallery(){
 }
 function renderBackgroundGallery(){
  const collection=readCosmeticCollection(localStorage);
+ const tower=normalizeTowerCollection(player.towerCollection);
+ const towerBackgrounds=towerCollectedBackgrounds(player).map(item=>`<article class="cosmetic-bg"><div class="tower-background-preview tower-background-${item.id.replace('background_','')}"></div><div><b>${escapeHtml(item.name)}</b><small>天穹終境永久收藏</small><button data-tower-background-pick="${item.id}">${tower.selectedBackground===item.id?'使用中':'使用背景'}</button></div></article>`).join('');
  const backgrounds=COSMETIC_BACKGROUNDS.map(bg=>{const owned=collection.backgrounds.includes(bg.id),selected=player.cosmeticBackground===bg.id;
   return `<article class="cosmetic-bg"><img loading="lazy" src="${cosmeticBackgroundArt(bg.id)}" alt="${bg.name}"><div><b>${bg.name}</b><small>${bg.price/100_000_000} 億金</small><button data-cosmetic-background="${bg.id}">${owned?(selected?'取消背景':'使用背景'):'永久收藏'}</button></div></article>`;}).join('');
- return `<section class="item cosmetic-gallery"><h3>角色背景</h3><p>背景收藏可由八個角色共用，每個角色可獨立選擇使用一款或不使用；不影響戰力。</p><p>已收藏 ${collection.backgrounds.length}/8 款背景。</p><button data-cosmetic-background="default">回到預設背景</button><div class="cosmetic-background-grid">${backgrounds}</div><label class="cosmetic-control">背景亮度 ${player.cosmeticBrightness||75}%<input type="range" min="30" max="100" step="5" data-cosmetic-brightness value="${player.cosmeticBrightness||75}"></label><label class="cosmetic-control"><input type="checkbox" data-cosmetic-aura ${player.cosmeticAura!==false?'checked':''}> 顯示角色光環</label></section>`;
+ return `<section class="item cosmetic-gallery"><h3>角色背景</h3><p>金幣背景與天穹背景只能選用一款，亦可不使用；不影響戰力。</p><p>已收藏 ${collection.backgrounds.length}/8 款金幣背景，${towerBackgrounds? towerCollectedBackgrounds(player).length:0}/3 款天穹背景。</p><button data-cosmetic-background="default">回到預設背景</button><h3>天穹背景</h3><div class="cosmetic-background-grid">${towerBackgrounds||'<p>尚未收藏天穹背景，可在天穹終境商店解鎖。</p>'}</div><h3>金幣背景</h3><div class="cosmetic-background-grid">${backgrounds}</div><label class="cosmetic-control">背景亮度 ${player.cosmeticBrightness||75}%<input type="range" min="30" max="100" step="5" data-cosmetic-brightness value="${player.cosmeticBrightness||75}"></label><label class="cosmetic-control"><input type="checkbox" data-cosmetic-aura ${player.cosmeticAura!==false?'checked':''}> 顯示角色光環</label></section>`;
 }
+const TOWER_BACKGROUND_STYLES={background_dawn:'radial-gradient(circle at 65% 22%,#e9bc71 0%,#785b6c 36%,#172b46 100%)',background_flame:'radial-gradient(circle at 55% 27%,#fc9c48 0%,#9c393a 34%,#23192d 100%)',background_frost:'radial-gradient(circle at 55% 20%,#cbf4ff 0%,#5b92c4 40%,#1a304d 100%)'};
 function applyCosmeticHero(){
  const hero=$('character')?.querySelector('.hero');if(!hero)return;
  const collection=readCosmeticCollection(localStorage);
  normalizeCosmeticSelection(player,collection);
+ const tower=normalizeTowerCollection(player.towerCollection);
+ const towerBackground=towerCollectedBackgrounds(player).some(item=>item.id===tower.selectedBackground)?tower.selectedBackground:null;
+ if(towerBackground){hero.style.backgroundImage=`linear-gradient(to bottom,transparent 40%,rgba(5,12,23,.9) 100%),${TOWER_BACKGROUND_STYLES[towerBackground]}`;hero.style.backgroundSize='cover';hero.classList.add('cosmetic-scene-active');}
  if(player.cosmeticBackground){
   const darkness=1-player.cosmeticBrightness/100;
   hero.style.backgroundImage=`linear-gradient(to bottom,transparent 44%,rgba(5,12,23,.32) 65%,rgba(5,12,23,.88) 100%),linear-gradient(rgba(7,13,26,${darkness}),rgba(7,13,26,${darkness})),url("${cosmeticBackgroundArt(player.cosmeticBackground)}")`;
@@ -2334,9 +2356,9 @@ function bindCosmeticGalleryEvents(){
   if(!button||!player||!$('side')?.contains(button))return;
   const outfit=button.hasAttribute('data-cosmetic-outfit'),id=outfit?button.dataset.cosmeticOutfit:button.dataset.cosmeticBackground;
   const key=outfit?'cosmeticOutfit':'cosmeticBackground',collection=readCosmeticCollection(localStorage);
-  if(id==='default'){player.cosmeticBackground=null;save();render();return;}
+  if(id==='default'){player.cosmeticBackground=null;selectTowerBackground(player,'');save();render();return;}
   const owned=collection[outfit?'outfits':'backgrounds'].includes(id);
-  if(owned){player[key]=player[key]===id?null:id;save();render();return;}
+  if(owned){player[key]=player[key]===id?null:id;if(!outfit)selectTowerBackground(player,'');save();render();return;}
   const oldGold=player.gold,oldBag=structuredClone(player.bag);
   const result=buyCosmetic(player,collection,outfit?'outfit':'background',id);
   if(result.error)return toast(result.error);
@@ -2344,6 +2366,7 @@ function bindCosmeticGalleryEvents(){
   let previous=null;try{previous=localStorage.getItem(COSMETIC_STORAGE_KEY);localStorage.setItem(COSMETIC_STORAGE_KEY,JSON.stringify(result.collection));}
   catch(error){player.gold=oldGold;player.bag=oldBag;return toast('收藏紀錄無法儲存，未扣款');}
   player[key]=id;
+  if(!outfit)selectTowerBackground(player,'');
   if(!save()){
    player.gold=oldGold;player.bag=oldBag;player[key]=null;
    if(previous===null)localStorage.removeItem(COSMETIC_STORAGE_KEY);else localStorage.setItem(COSMETIC_STORAGE_KEY,previous);
