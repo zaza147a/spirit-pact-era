@@ -41,10 +41,17 @@ test('tower battle portrait and long warning occupy separate layout regions',asy
  const game=await readFile('dist/game.js','utf8');
  const css=await readFile('dist/endless-tower.css','utf8');
  assert.match(game,/<div class="tower-encounter-main"><div class="tower-monster-portrait">\$\{spriteHtml\(foe\.id,'monster'\)\}<\/div><div class="tower-encounter-info">/);
- assert.match(game,/<\/small><\/div><\/div>\$\{cast\}<\/div>`;/);
- assert.match(css,/#encounter \.enemy-target\.trial-boss\.tower-encounter\{[^\n]*display:flex!important/);
+ assert.match(game,/<\/small>\$\{cast\}<\/div><\/div><\/div>`;/);
+ assert.match(css,/#encounter \.enemy-target\.tower-encounter\{[^\n]*display:flex!important/);
+ assert.match(css,/#encounter:has\(\.tower-encounter\) \.enemy-lineup\{[^\n]*grid-template-columns:minmax\(0,1fr\)/);
  assert.match(css,/#encounter \.tower-monster-portrait \.art-monster\{position:static!important/);
- assert.match(css,/#encounter \.tower-encounter>\.tower-cast-warning\{[^\n]*width:100%/);
+ assert.match(css,/#encounter \.tower-encounter-info>\.tower-cast-warning\{[^\n]*width:100%/);
+ assert.doesNotMatch(game,/enemy-target trial-boss tower-encounter/);
+ assert.match(game,/const towerVariant=\/\^tower-\(\?:\(\\d\+\)-wave-/);
+ for(const special of ['tower-chaser-26','tower-escort-26-0','tower-26-wave-11']){
+  const match=/^tower-(?:(\d+)-wave-\d+|chaser-(\d+)|escort-(\d+)-\d+)$/.exec(special);
+  assert.equal(Number(match?.[1]||match?.[2]||match?.[3]),26,`${special} must resolve to frost art`);
+ }
  assert.doesNotMatch(css,/\.tower-encounter \.art-monster\{grid-row:1 \/ span 5/);
 });
 
@@ -54,13 +61,18 @@ test('equipped character name frame wins over portrait background styling',async
   assert.match(css,new RegExp(`#gameShell #character>\\.hero\\.cosmetic-scene-active \\.character-name\\.tower-frame-${frame}\\{[^\\n]*background:[^\\n]*!important`));
  }
 });
+test('honor selection immediately rerenders the character portrait without reloading',async()=>{
+ const game=await readFile('dist/game.js','utf8');
+ assert.match(game,/selectTowerHonor\(player,b\.dataset\.towerHonorPick,b\.dataset\.towerHonorValue\)/);
+ assert.match(game,/save\(\);render\(\);renderSide\(true\);toast\('已更新天穹稱號／名稱框，角色畫面立即生效'\)/);
+});
 
 test('release entrypoint and title module use synchronized cache versions',async()=>{
  const html=await readFile('dist/index.html','utf8');
  const game=await readFile('dist/game.js','utf8');
- assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.7/);
- assert.match(html,/game\.js\?v=7\.1\.7/);
- assert.match(html,/endless-tower\.css\?v=7\.1\.7/);
- assert.match(game,/tower-honors\.js\?v=7\.1\.7/);
- assert.match(game,/town-scene\.js\?v=7\.1\.7/);
+ assert.match(html,/靈契紀元 · 夥伴返鄉 V7\.1\.8/);
+ assert.match(html,/game\.js\?v=7\.1\.8/);
+ assert.match(html,/endless-tower\.css\?v=7\.1\.8/);
+ assert.match(game,/tower-honors\.js\?v=7\.1\.8/);
+ assert.match(game,/town-scene\.js\?v=7\.1\.8/);
 });
