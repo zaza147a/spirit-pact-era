@@ -26,7 +26,8 @@ export function completeHomecomingBattle(p,foe,pet,{offline=false}={}){
  if(offline||!foe?.homecomingRoute||foe.hp>0||foe.rewarded)return false;
  const r=foe.homecomingRoute,q=p.homecoming?.routes?.[r],expected=homecomingOpponent(r,q?.adventure?.step);
  if(!p.hp||foe.homecomingStep!==q?.adventure?.step||foe.id!==expected?.id)return false;
- const changed=recordHomecomingVictory(p,r,{pet,mapId:foe.map,boss:!!foe.boss,offline});
+ const changed=recordHomecomingVictory(p,r,{pet,mapId:foe.map,boss:!!foe.boss,offline,
+  companionPresentAtStart:foe.homecomingPetId===pet?.id});
  if(changed)foe.rewarded=true;
  return changed;
 }
