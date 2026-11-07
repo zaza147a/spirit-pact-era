@@ -108,6 +108,7 @@ const gameNow=()=>offlineClock??Date.now();
 // Live UI always uses the uncached production calculator.
 const offlinePetStatCache=new WeakMap();
 let offlineAffixCache=new WeakMap();
+let offlinePactFusionCache=new WeakMap();
 let offlineGearStatCache=new WeakMap();
 let offlineGearTotals=new Map();
 function combatEnhancedAffixes(item){
@@ -251,24 +252,33 @@ function spiritHitProcEffects(proc,owner,source,maxHp){
   }
  }
 }
+const PACT_ASSIMILATION_RATIOS=Object.freeze(Object.fromEntries(Object.entries({
+ 'attack-magic':{atk:4.0,matk:.90},
+ 'attack-defense':{atk:4.0,matk:.90},
+ 'attack-support':{atk:4.0,matk:.90},
+ 'magic-defense':{atk:1.28,matk:2.10},
+ 'magic-support':{atk:1.28,matk:2.10},
+ 'defense-support':{atk:8.80,matk:.90},
+ default:{atk:1.80,matk:.90}
+}).map(([key,offense])=>[key,{...offense,def:.19,mdef:.19,hp:.15}])));
 function pactAssimilationBonus(type){
  if(player?.job!=='pactWarrior')return 0;
- const fusion=spiritSinglePetProfile(player,activePet())?.fusion;
+ const companion=activePet(),pair=companion?.fusion;
+ let fusion;
+ if(offlineSimulation&&!globalThis.__spiritDisableOfflinePactFusionCache&&pair?.main&&pair?.sub){
+  const cached=offlinePactFusionCache.get(companion);
+  if(cached&&cached.main===pair.main&&cached.sub===pair.sub&&cached.thirdJob===player.thirdJob)fusion=cached.fusion;
+  else{fusion=spiritSinglePetProfile(player,companion)?.fusion;offlinePactFusionCache.set(companion,{main:pair.main,sub:pair.sub,thirdJob:player.thirdJob,fusion});}
+ }else fusion=spiritSinglePetProfile(player,companion)?.fusion;
  // Each fusion keeps its own offensive identity. Survival assimilation remains
  // identical across the six routes and the ten existing jobs are untouched.
- const offense={
-  'attack-magic':{atk:4.0,matk:.90},
-  'attack-defense':{atk:4.0,matk:.90},
-  'attack-support':{atk:4.0,matk:.90},
-  'magic-defense':{atk:1.28,matk:2.10},
-  'magic-support':{atk:1.28,matk:2.10},
-  'defense-support':{atk:8.80,matk:.90}
- }[fusion]||{atk:1.80,matk:.90};
  // Only the PET -> owner inheritance is reduced. Do not scale final DEF or
  // incoming monster damage by a special class-specific multiplier.
- const ratios={...offense,def:.19,mdef:.19,hp:.15};
+ const ratios=PACT_ASSIMILATION_RATIOS[fusion]||PACT_ASSIMILATION_RATIOS.default;
  if(!ratios[type])return 0;
- return activePetRoster(player).filter(p=>p.hp>0).reduce((total,pet)=>{
+ let total=0;
+ for(const pet of activePetRoster(player)){
+  if(pet.hp<=0)continue;
   const base=petStats(pet)[type]; // already includes pet level, rarity, evolution, IV and flat equipment
   // Pet weapon/armor affix investment additionally trains assimilation. HP% is
   // already included in petStats, so never double-count that multiplier.
@@ -280,8 +290,9 @@ function pactAssimilationBonus(type){
    return n;
   },0);
   const gearTraining=['atk','matk'].includes(type)?1+Math.min(.20,Math.max(0,affixes)/200):1;
-  return total+base*ratios[type]*gearTraining;
- },0)*sigilBonus(player)[type];
+  total+=base*ratios[type]*gearTraining;
+ }
+ return total*sigilBonus(player)[type];
 }
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
@@ -393,7 +404,7 @@ function normalize(p){p.towerProgress=normalizeTowerProgress(p.towerProgress);p.
 function migrate(old){const job=LEGACY_JOBS[old.job]||old.job;const p=fresh(old.name,job);for(const k of ['level','xp','gold','hp','mp','kills'])if(Number.isFinite(old[k]))p[k]=old[k];p.bag=normalizeBag(old.bag,ITEMS);for(const [from,to] of [['weapon','rightHand'],['armor','armor'],['accessory','accessory1']])if(old.gear?.[from]&&ITEMS[old.gear[from]])p.gear[to]=rollGear(old.gear[from],1);p.statPoints=Math.max(0,(p.level-1)*2);return p;}
 function valid(p){return !!p&&typeof p.name==='string'&&p.name.length<=16&&CLASSES[p.job]&&Number.isInteger(p.level)&&p.level>=1&&p.level<=characterLevelCap(p)&&['hp','mp','xp','gold','kills','statPoints','jobLevel','jobXp','jobPoints'].every(k=>Number.isFinite(p[k])&&p[k]>=0&&p[k]<1e9)&&p.jobLevel<=jobLevelCap(p)&&Array.isArray(p.bag)&&p.bag.length<=2000&&p.bag.every(e=>e&&ITEMS[e.id]&&(ITEMS[e.id].slot||ITEMS[e.id].petSlot?!!e.uid:Number.isInteger(e.qty)&&e.qty>0))&&p.gear&&Object.keys(SLOTS).every(s=>p.gear[s]===null||ITEMS[p.gear[s]?.id]?.slot===s)&&p.attributes&&Object.keys(ATTRS).every(k=>Number.isInteger(p.attributes[k])&&p.attributes[k]>=1&&p.attributes[k]<=attributeCap(p))&&Array.isArray(p.cards)&&p.cards.length<=1000&&p.cards.every(c=>CARDS[c.id]&&Number.isInteger(c.qty)&&c.qty>0)&&Number.isSafeInteger(p.cardRecyclePoints)&&p.cardRecyclePoints>=0&&p.cardRecyclePoints<1e9&&p.sockets&&Object.keys(SLOTS).every(s=>p.sockets[s]===null||cardAllowedInSlot(CARDS[p.sockets[s]],s,p.job))&&Array.isArray(p.pets)&&p.pets.length<=100&&p.pets.every(q=>q&&SPECIES[q.species]&&typeof q.id==='string'&&Number.isInteger(q.level)&&q.level>=1&&q.level<=9999&&Number.isFinite(q.xp)&&q.xp>=0&&q.iv&&['hp','atk','def'].every(k=>Number.isInteger(q.iv[k])&&q.iv[k]>=0&&q.iv[k]<=5)&&q.gear&&Object.keys(PET_SLOTS).every(s=>q.gear[s]===null||ITEMS[q.gear[s]?.id]?.petSlot===s))&&(p.activePetId===null||p.pets.some(q=>q.id===p.activePetId))&&(!isSpiritJob(p.job)||p.secondaryPetId===null||p.secondaryPetId!==p.activePetId&&p.pets.some(q=>q.id===p.secondaryPetId));}
 function load(){try{const v2=JSON.parse(localStorage.getItem(KEY)||'null');if(v2?.version===2&&v2.player){const p=normalize(v2.player);if(valid(p))return p;}const v1=JSON.parse(localStorage.getItem(OLD)||'null');if(v1?.v===1&&v1.p&&(CLASSES[v1.p.job]||LEGACY_JOBS[v1.p.job]))return migrate(v1.p);}catch(err){console.warn('Save read failed',err)}return null;}
-function albumEarnGold(base,p,extra=0){let bonus=Number.isFinite(p?.cardAlbumGoldBonus)?p.cardAlbumGoldBonus:0;try{bonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));}catch{}return Math.round(earnGold(base,p,extra)*(1+bonus/100));}
+function albumEarnGold(base,p,extra=0){let bonus=Number.isFinite(p?.cardAlbumGoldBonus)?p.cardAlbumGoldBonus:0;if(typeof localStorage!=='undefined'||globalThis.__spiritDisableOfflineStorageGuard===true)try{bonus=collectionGoldBonus(CARDS,readCardCollection(localStorage,CARDS));}catch{}return Math.round(earnGold(base,p,extra)*(1+bonus/100));}
 function save(notifyUser=false){
  if(offlineSimulation)return true;if(!player||activeSlot===null)return false;
  const beforeCards=player.cards.map(card=>({...card})),beforePoints=player.cardRecyclePoints;
@@ -433,7 +444,7 @@ function effectiveAttributes(){if((inCombatTick||offlineSimulation)&&attributeSn
 
 function cardBonus(key){if((inCombatTick||offlineSimulation)&&Object.hasOwn(cardSnapshot,key))return cardSnapshot[key];const n=socketCardBonus(player.sockets,CARDS,key,player.level);if(inCombatTick||offlineSimulation)cardSnapshot[key]=n;return n;}
 function rawStat(type){const c=CLASSES[player.job],a=effectiveAttributes(),equipped=Object.values(player.gear);const gear=combatGearTotal(type,equipped)+cardBonus(type);const percent=t=>equipped.reduce((n,item)=>n+enhancedStat(item,t,item?.affixes?.[t]||0),0)/100;switch(type){case 'hp':return Math.round((c.hp+(player.level-1)*38+a.VIT*25+gear)*(1+percent('hpPct')));case 'mp':return c.mp+(player.level-1)*12+a.INT*5+gear;case 'atk':return playerAttackValue(player.job,c.atk,player.level,a,gear);case 'matk':return playerMagicAttackValue(player.level,a,gear);case 'def':return Math.round((c.def+(player.level-1)*2.8+a.VIT*3+gear)*(1+percent('defPct')));case 'mdef':return Math.round(player.level*.9+a.INT*1.5+a.VIT*1.2+gear);case 'hit':return (gameNow()<(timers.eagleUntil||0)?20:0)+(currentTactic()?.kind==='firstFocus'?20:0)+80+player.level*2+a.DEX*2+a.LUK*.3+gear;case 'flee':return (gameNow()<(timers.shadowUntil||0)?20:0)+Math.round((65+player.level*2+a.AGI*2+a.LUK*.15+gear)*(1+percent('fleePct')));case 'aspdPct':return gear;case 'ignoreDef':case 'magicDamage':return Math.min(60,gear);case 'crit':return roStyleCritRate(a.LUK,gear)+(gameNow()<(timers.eagleUntil||0)?5:0);case 'critDmg':return 140+Math.max(0,a.LUK-1)*.5+gear;case 'aspd':return Math.round(clamp(({swordsman:151,acolyte:147,mage:145,thief:156,archer:153,spiritist:150})[parentJob(player.job)]+a.AGI*.32+a.DEX*.025+gear,140,193)*10)/10;case 'speed':return Math.max(80,aspdAttackIntervalMs(stat('aspd'))/(1+(classBuffs.resonanceHaste?.until>gameNow()?classBuffs.resonanceHaste.power:0)+(equipped.reduce((n,g)=>n+enhancedStat(g,'aspdPct',g?.affixes?.aspdPct||0),0)+cardBonus('aspdPct'))/100));case 'damageReduction':return Math.min(40,gear);default:return 0;}}
-function activeJobBuffBonus(key){return Object.values(classBuffs).reduce((n,b)=>n+(b.until>gameNow()?(b.modifiers?.[key]||0):0),0);}
+function activeJobBuffBonus(key){let sum=0;for(const name in classBuffs){const buff=classBuffs[name];if(buff.until>gameNow())sum+=buff.modifiers?.[key]||0;}return sum;}
 function passiveBonus(key){return (cachedPassives()[key]||0)+activeJobBuffBonus(key);}
 function stat(type,excludeHomecoming=false){const bonuses=cachedPassives(),value=rawStat(type)+(bonuses[type]||0)+activeJobBuffBonus(type),cardType=({atk:'atkPct',matk:'matkPct',def:'defPct',flee:'fleePct',hp:'hpPct',hit:'hitPct',mp:'mpPct',mdef:'mdefPct'})[type];let result=cardType?value*(1+cardBonus(cardType)/100)*(1+((bonuses[cardType]||0)+activeJobBuffBonus(cardType))/100):value;if(['def','mdef'].includes(type))result*=1+effectiveAttributes().VIT*.006;if(type==='flee')result*=1+effectiveAttributes().AGI*.0045;if(type==='hp')result*=1+potentialBonus('VIT');if(type==='critDmg')result+=potentialBonus('LUK')*100;if(type==='crit'&&classBuffs.resonanceCrit?.until>gameNow())result=Math.min(100,result+classBuffs.resonanceCrit.power);if(['atk','matk','hp','def','mdef'].includes(type))result*=sigilBonus(player)[type];result+=pactAssimilationBonus(type);if(!excludeHomecoming&&['hp','def','mdef'].includes(type)){const b=homecomingBonuses(player);result*=1+(type==='hp'?b.hp:b.def);}if(type==='speed')return Math.round(result/(1+passiveBonus('aspdPct')/100+Object.values(player.gear).reduce((n,g)=>n+(GEAR_BASE[g?.id]?.aspdPct||0),0)/100+(currentTactic()?.kind==='frenzy'?.1:0)));if(type==='damageReduction')return Math.min(40,result);if(type==='crit')return Math.min(100,result+(currentTactic()?.kind==='firstFocus'?5:0));if(type==='critDmg')return Math.round(result*10)/10;if(type==='aspd')return Math.round(clamp(result,140,193)*10)/10;return Math.round(result);}
 function classBuffPower(target='owner'){return passiveBonus('teamDamagePct')/100+Object.entries(classBuffs).reduce((sum,[key,b])=>sum+(!['autoSpell','pact','quickCast','resonanceHaste','resonanceCrit','teamWard'].includes(key)&&(key!=='devotion'||target==='pet')&&b.until>gameNow()&&(!b.modifiers||b.teamDamage)?b.power:0),0);}
@@ -599,13 +610,16 @@ function tickSongRain(now){
 }
 function tickPetEffects(now){
  if(!player?.hp||!enemies.some(e=>e.hp>0))return;
+ const effectGuard=offlineSimulation&&!globalThis.__spiritDisableOfflineEffectGuards;
  if(now<petEffects.guardUntil&&now>=(petEffects.guardRegenNext||0)){
   const pet=activePet();if(pet?.hp>0){const restored=Math.min(Math.max(0,petStats(pet).hp-pet.hp),petEffects.guardRegen||0);pet.hp+=restored;record(report,'effectiveHeal',restored);}
   petEffects.guardRegenNext=now+1000;
  }
  if(petEffects.regenTicks&&now>=petEffects.regenNext){healPetParty(petEffects.regenPower);petEffects.regenTicks--;petEffects.regenNext=now+petEffects.regenInterval;}
- activePetMarkPower(now);
- tickDamageOverTime(now,'bleed');tickDamageOverTime(now,'burn');tickSongRain(now);
+ if(!effectGuard||petEffects.markWardOnly||petEffects.markHits>0)activePetMarkPower(now);
+ if(!effectGuard||petEffects.bleedTicks)tickDamageOverTime(now,'bleed');
+ if(!effectGuard||petEffects.burnTicks)tickDamageOverTime(now,'burn');
+ if(!effectGuard||petEffects.songRain?.remaining>0)tickSongRain(now);
  const companionRoster=activePetRoster(player);
  for(let companionIndex=1;companionIndex<companionRoster.length;companionIndex++){
   const pet=companionRoster[companionIndex];
@@ -616,7 +630,8 @@ function tickPetEffects(now){
   }
   if(fx.regenTicks&&now>=fx.regenNext){healPetParty(fx.regenPower);fx.regenTicks--;fx.regenNext=now+fx.regenInterval;}
   if(now>(fx.shieldExpires||Infinity))fx.shield=0;
-  tickDamageOverTime(now,'bleed',pet,fx);tickDamageOverTime(now,'burn',pet,fx);
+  if(!effectGuard||fx.bleedTicks)tickDamageOverTime(now,'bleed',pet,fx);
+  if(!effectGuard||fx.burnTicks)tickDamageOverTime(now,'burn',pet,fx);
  }
 }
 function addEnergy(amount){if(!activePet()||!player.hp)return;player.resonance=clamp(player.resonance+amount,0,RESONANCE_MAX);dirty=true;}
@@ -1952,7 +1967,7 @@ async function simulateOffline(state,now=Date.now(),progress=()=>{}){
    const delta=Math.min(OFFLINE_STEP_MS,window.duration-simulated);offlineClock+=delta;simulated+=delta;combatTick(offlineClock);
    if(trialMode&&!player.trialRun){reason=player.trialStopReason||'連續試煉已停止';break;}
    if(offlineClock-(timers.offlineSupplies||0)>=4000){timers.offlineSupplies=offlineClock;if(player.hp>0)autoBuyPotions();if(player.autoSalvage&&player.salvageInventory)salvageBagEquipment();}
-   if(++yieldSteps>=256){yieldSteps=0;const wallNow=performance.now();if(wallNow-lastYieldAt>=24){progress(simulated/window.duration);await new Promise(resolve=>setTimeout(resolve,0));lastYieldAt=performance.now();}}
+   if(++yieldSteps>=256){yieldSteps=0;const wallNow=performance.now();if(wallNow-lastYieldAt>=100){progress(simulated/window.duration);if(typeof document!=='undefined')await new Promise(resolve=>setTimeout(resolve,0));lastYieldAt=performance.now();}}
   }
   if(!player.hp)reason=player.trialStopReason||'角色倒下，掛機停止';
   progress(simulated/window.duration);
