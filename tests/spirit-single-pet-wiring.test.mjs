@@ -74,8 +74,8 @@ test('owner main attacks use the pact pet profile and its damage channel',()=>{
 });
 
 test('pact six-fusion assimilation retains separate physical and magical scales',()=>{
- const assimilation=between('function pactAssimilationBonus(','function commanderTransferredPetStats(');
- assert.match(assimilation,/spiritSinglePetProfile\(player,activePet\(\)\)\?\.fusion/);
+ const assimilation=between('const PACT_ASSIMILATION_RATIOS=','function commanderTransferredPetStats(');
+ assert.match(assimilation,/spiritSinglePetProfile\(player,companion\)\?\.fusion/);
  assert.match(assimilation,/'magic-defense':\{atk:1\.28,matk:2\.10\}/);
  assert.match(assimilation,/'magic-support':\{atk:1\.28,matk:2\.10\}/);
  assert.match(assimilation,/'defense-support':\{atk:8\.80,matk:\.90\}/);
