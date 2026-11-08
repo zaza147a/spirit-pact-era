@@ -2200,7 +2200,7 @@ function restoreTrialCheckpoint(){const run=player?.trialRun;if(!run?.continuous
 function nextContinuousTrial(route){const run=player.trialRun;if(run.stopAfterRound)return exitTrial('本輪五戰已完成，依設定停止連續試煉');const candidate={...player,location:'skycity',trialRun:null},error=trialEntryError(candidate,route);if(error)return exitTrial(error==='缺少對應入場券'?'入場券已用完，連續挑戰停止':error);consumeStack(player.bag,route.ticket);run.index=0;run.round=(run.round||1)+1;run.nextAt=gameNow()+2500;enemy={id:'town',hp:0,maxHp:1};enemies=[];message(`本輪通關！消耗1張${ITEMS[route.ticket].name}，準備第${run.round}輪。`,'good','system');dirty=true;save();render();}
 function toggleTrialStopAfterRound(){const run=player?.trialRun;if(!run?.continuous)return;const previous=run.stopAfterRound===true;run.stopAfterRound=!previous;if(save()===false){run.stopAfterRound=previous;return;}message(run.stopAfterRound?'已設定：完成本輪五戰後停止，不再扣下一張入場券。':'已取消本輪停止設定，將繼續下一輪試煉。','good','system');render();renderSide(true);}
 function resumeTrial(){const now=gameNow(),delta=Math.max(0,now-(player.trialRun?.pausedAt||now));if(controlEffect)controlEffect.until+=delta;if(casting)casting.until+=delta;if(player.trialRun){player.trialRun.nextAt+=delta;delete player.trialRun.pausedAt;}for(const foe of enemies){foe.lastAttack=now;foe.appearedAt+=delta;foe.controlNext=(foe.controlNext||now)+delta;if(foe.controlCast)foe.controlCast.until+=delta;}save();render();}
-// 三域極限試煉：使用現有戰鬥循環，禁止正常怪物收益、離線推進及死亡復活刷分。
+// 四域極限試煉：使用現有戰鬥循環，禁止正常怪物收益、離線推進及死亡復活刷分。
 function startExtreme(kind,floor){
  const result=beginExtremeRun(player,kind,floor,gameNow());
  if(result.error)return toast(result.error);
@@ -2546,7 +2546,7 @@ function renderTowerCostumeGallery(){
 function renderExtremeCostumeGallery(){
  const types=['mantle','aura'];
  return `<section class="item extreme-cosmetic-wardrobe"><h3>四域極限 · 戰袍與光環</h3><p>同一類型只能選擇一款；都是外觀特效，不改變人物技能、減傷或傷害。</p>`+
- types.map(type=>`<div class="extreme-cosmetic-choice"><h4>${type==='mantle'?'第 50 階戰袍特效':'第 75 階光環'}</h4><button data-extreme-cosmetic="${type}" data-extreme-kind="">不使用</button>`+
+ types.map(type=>`<div class="extreme-cosmetic-choice"><h4>${type==='mantle'?'第 25 階戰袍特效':'第 30 階光環'}</h4><button data-extreme-cosmetic="${type}" data-extreme-kind="">不使用</button>`+
  Object.entries(EXTREME_MILESTONE_LABELS).map(([kind,labels])=>{
   const owned=extremeUnlockedCosmetics(player,type).includes(kind),selected=player[type==='mantle'?'extremeSelectedMantle':'extremeSelectedAura']===kind;
   return `<button data-extreme-cosmetic="${type}" data-extreme-kind="${kind}" ${owned?'':'disabled'}>${labels[type]}${selected?' · 使用中':owned?'':' · 尚未解鎖'}</button>`;
