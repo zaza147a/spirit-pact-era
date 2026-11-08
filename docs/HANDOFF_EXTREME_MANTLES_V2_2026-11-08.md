@@ -240,3 +240,9 @@
 - 「翠影旗術流氓」：Young clever rogue saboteur with an emerald folding war-fan made of five triangular signal pennants, utility belt full of chained throwing cards, one high boot and one knee guard, playful side-stepping pose, cropped asymmetrical tan-green tactical coat, no dual daggers, no giant banner, no bow. Broad fan silhouette distinct from assassin's chained knives.
 - `dist/assets/extreme/mantles-v2/clear-rogue.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **40/48**。
 - 下一套 `clear_hunter`。僅測試分支，不合併 main。
+
+## V2單套備份 #41：clear_hunter（2026-11-09）
+
+- 「萬箭軍陣遊俠」：Lean ranged archer with a completely novel emerald mechanical RECURVE BOW built from linked tactical signal blades, long green scarf bearing geometric troop insignia, hovering miniature arrow-routing flags, poised upright drawing pose, deep jade and muted brass, no cross-shaped tower shield, no dagger, no book.
+- `dist/assets/extreme/mantles-v2/clear-hunter.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **41/48**。
+- 下一套 `clear_performer`。僅測試分支，不合併 main。
