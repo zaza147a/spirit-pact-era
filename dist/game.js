@@ -67,6 +67,7 @@ import {bossCardEquipAllowed,bossCardHitBonus,bossCardIncoming,bossCardDodge,bos
 let bossHitMeta=null;
 import {playerRange,companionRange,rangeLabel,monsterTargetWeights,chooseMonsterTarget} from './formation.js?v=6.5.0';
 import {CHARACTER_SLOT_COUNT,characterSlotKey,readCharacterSlot,writeCharacterSlot,readCharacterSlots,migrateLegacyCharacter} from './character-slots.js?v=7.1.9';
+import {readCharacterOrder,moveCharacterOrder,saveCharacterOrder} from './character-order.js?v=7.1.9';
 import {FUSION_STATS,fusionStatsFor,normalizeFusionSettings,fuseOne,fusionTargetInfo} from './fusion.js?v=6.5.57';
 import {matchesGearFilters} from './inventory-rules.js?v=6.5.0';
 import {TARGET_PRIORITIES,selectEncounterTarget,encounterDelay,replacementDelay,encounterLimit} from './encounter-rules.js?v=7.0.1';
@@ -1923,6 +1924,26 @@ function decorateTowerHonorEntry(slots){
   }
 }
 function renderEntry(){const slots=lobbySlots();$('slotGrid').innerHTML=slots.map(({index,player:p,error})=>`<article class="slot-card ${selectedSlot===index?'selected':''} ${p?'occupied':'empty'}"><button class="slot-select" data-slot-select="${index}" aria-label="選擇第 ${index+1} 格${p?' '+escapeHtml(p.name):' 空白角色'}"><span class="slot-number">CHARACTER 0${index+1}</span><span class="slot-art-stage">${p?spriteHtml(p.job,'entry',p.reborn,p.thirdJob,p.selectedOutfit,p.cosmeticOutfit):'<span class="slot-empty-art">＋</span>'}</span><h2>${p?escapeHtml(p.name):error?'存檔待還原':'尚未建立角色'}</h2><p>${p?`${p.thirdJob?'三轉 · ':p.reborn?'轉生 · ':''}${p.thirdJob?THIRD_JOBS[p.job].name:CLASSES[p.job].name} · ${rangeLabel(playerRange(p.job))}`:error||'建立一位新的冒險者'}</p>${p?`<div class="slot-levels"><span>BLV <b>${p.level}</b></span><span>JLV <b>${p.jobLevel}</b></span><span>夥伴 <b>${p.pets.length}</b></span></div><small>${MAPS[p.location]?.name||'夥伴之地'} · 金幣 ${Number(p.gold).toLocaleString('zh-TW')}</small>`:'<small>獨立角色、背包、夥伴與進度</small>'}</button><div class="slot-actions"><button data-slot-new="${index}" aria-label="第 ${index+1} 格新建或覆蓋">${p||error?'新建覆蓋':'建立角色'}</button><button data-slot-import="${index}" aria-label="第 ${index+1} 格導入存檔">導入</button><button data-slot-export="${index}" aria-label="第 ${index+1} 格匯出存檔" ${p?'':'disabled'}>匯出</button></div></article>`).join('');decorateTowerHonorEntry(slots);const selected=slots[selectedSlot];$('enterGameBtn').disabled=!selected?.player;$('enterGameBtn').textContent=selected?.player?`進入遊戲 · ${selected.player.name}`:'請先建立或導入角色';$('entrySelection').textContent=`目前選擇第 ${selectedSlot+1} 格 · ${selected?.player?.name||'空白存檔'}`;for(const button of $('slotGrid').querySelectorAll('[data-slot-select]'))button.onclick=()=>{selectedSlot=Number(button.dataset.slotSelect);renderEntry()};for(const button of $('slotGrid').querySelectorAll('[data-slot-new]'))button.onclick=()=>openCharacterCreation(Number(button.dataset.slotNew));for(const button of $('slotGrid').querySelectorAll('[data-slot-import]'))button.onclick=()=>{importTargetSlot=Number(button.dataset.slotImport);$('saveFile').click()};for(const button of $('slotGrid').querySelectorAll('[data-slot-export]'))button.onclick=()=>exportCharacterSlot(Number(button.dataset.slotExport));}
+const renderEntryWithoutOrdering=renderEntry;
+renderEntry=function(){
+ renderEntryWithoutOrdering();
+ const grid=$('slotGrid'),order=readCharacterOrder(localStorage);
+ const cards=new Map([...grid.children].map(card=>[Number(card.querySelector('[data-slot-select]').dataset.slotSelect),card]));
+ for(const [position,index] of order.entries()){
+  const card=cards.get(index);if(!card)continue;grid.append(card);
+  const controls=document.createElement('div');controls.className='slot-order-controls';
+  controls.style.cssText='display:flex;justify-content:center;gap:12px;padding:7px 12px 12px;background:#0a1a244d';
+  for(const [direction,label,symbol] of [[-1,'向前移動','←'],[1,'向後移動','→']]){
+   const button=document.createElement('button');button.type='button';button.textContent=symbol;
+   button.style.cssText='min-width:58px;padding:6px 15px;font-size:16px;border:1px solid #4a6873;border-radius:7px;background:#193543;color:#e6cc8e;cursor:pointer';
+   button.title=`${label}「${card.querySelector('h2').textContent}」`;button.setAttribute('aria-label',button.title);
+   button.disabled=position+direction<0||position+direction>=order.length;
+   button.onclick=()=>{try{saveCharacterOrder(localStorage,moveCharacterOrder(order,index,direction));renderEntry();}catch(error){toast('無法儲存角色順序：'+error.message);}};
+   controls.append(button);
+  }
+  card.querySelector('.slot-actions').after(controls);
+ }
+};
 function refreshSpiritCreationLock(){const button=$('classChoices').querySelector('[data-class="spiritist"]');if(!button)return;button.disabled=false;button.classList.remove('spirit-locked');button.removeAttribute('aria-label');const hint=button.querySelector('.spirit-unlock-hint');if(hint)hint.textContent='從 1 等開始正常養成';}
 function openCharacterCreation(index){const slot=readCharacterSlot(localStorage,index,normalize,valid);if((slot.player||slot.error)&&!confirm(`新建角色將覆蓋第 ${index+1} 格「${slot.player?.name||'現有存檔'}」，其他七格不受影響。確定繼續？`))return;creatingSlot=index;selectedClass='swordsman';$('classChoices').querySelectorAll('[data-class]').forEach(b=>b.classList.toggle('active',b.dataset.class===selectedClass));refreshSpiritCreationLock();$('createSlotLabel').textContent=`第 ${index+1} 格 · 建立獨立角色`;$('nameInput').value='';$('createModal').style.display='grid';$('entryScreen').inert=true;$('nameInput').focus();}
 function closeCharacterCreation(){$('createModal').style.display='none';$('entryScreen').inert=false;creatingSlot=null;}
