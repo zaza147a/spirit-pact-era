@@ -6,7 +6,7 @@ const game=await readFile(new URL('../dist/game.js',import.meta.url),'utf8');
 const entry=await readFile(new URL('../dist/index.html',import.meta.url),'utf8');
 
 test('四王試煉已接進正式遊戲模組與曙光 NPC',()=>{
-  for(const token of ['startExtreme(kind,floor)','spawnExtremeBoss()','tickExtreme(now)','renderExtremeEncounter()','與亞爾德對話','renderExtremePanel(player'])
+  for(const token of ['startExtreme(kind,floor)','spawnExtremeBoss()','tickExtreme(now)','renderExtremeEncounter()','與亞爾德對話','renderExtremePanel({...player'])
     assert.ok(game.includes(token),token);
   assert.match(entry,/extreme-trials\.css/);
 });
