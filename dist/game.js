@@ -2318,7 +2318,8 @@ function tickExtreme(now){
 function exitExtreme(reason='主動離場'){
  if(!player?.extremeRun)return;
  const finished=player.extremeRun;endReport(`極限試煉：${reason}`);
- player.extremeLastResult={kind:finished.kind,floor:finished.floor,reason};
+ player.extremeLastResult={kind:finished.kind,floor:finished.floor,reason,
+  stageDamage:finished.stageDamage||0,stageKills:finished.stageKills||0};
  delete player.extremeRun;controlEffect=null;casting=null;
  player.location='dawncity';selectedContinent='dawn';
  player.hp=stat('hp');player.mp=stat('mp');player.shield=0;
