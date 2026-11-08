@@ -54,3 +54,17 @@ test('首次突破前 30 階可得徽記，31 階後只有稱號進度',()=>{
   assert.equal(data.coins,320);
   assert.equal(settleExtremeStage(data.progress,'atk',100).coins,0);
 });
+
+test('30 階後不封頂，極高層數不溢位、不建立巨大首次獎勵陣列',()=>{
+ const floor=1000000000;
+ const progress={atk:{highest:floor-1},hp:{highest:floor-1}};
+ assert.equal(normalizeExtremeProgress(progress).atk.highest,floor-1);
+ assert.ok(extremeStage('atk',floor).attackMultiplier>0);
+ assert.ok(Number.isSafeInteger(extremeStage('hp',floor).requiredDamage));
+ assert.ok(Number.isSafeInteger(extremeStage('clear',floor).requiredKills));
+ assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:floor}}},'atk',floor,0).run);
+ const claimed=settleExtremeStage(null,'hp',floor);
+ assert.equal(claimed.progress.hp.highest,floor);
+ assert.equal(claimed.coins,450);
+ assert.ok(claimed.firstClears.length<=31);
+});
