@@ -103,3 +103,8 @@
 
 - 新增 `dist/assets/extreme/mantles/atk-spiritCommander.webp`；圖片、啟用、測試與交接同一個 GitHub 提交。
 - 累計 12/48；下張依資料模型順序，不可重做已完成項。
+
+## 逐套備份 #13：冥界 × knight
+
+- `dist/assets/extreme/mantles/matk-knight.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
+- 累計 13/48；下一張依四王 × 十二職順序，勿重做。
