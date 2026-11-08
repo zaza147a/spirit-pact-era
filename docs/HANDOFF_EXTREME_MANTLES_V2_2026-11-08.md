@@ -148,3 +148,9 @@
 - 血淵全新原創「血淵聖甲守護者」：enormous upright cathedral-like ivory ribcage shield and one-handed red crystalline mace, segmented white shell armor with huge rounded pauldrons, protective solemn stance。
 - 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-crusader.webp`；更新 V2_READY 與對應測試。V2 累計 26/48。
 - 下一套 `hp_assassin`；僅測試分支，未合併 main。
+
+## V2單套備份 #27：hp_assassin（2026-11-09）
+
+- 血淵全新原創「赤脈螳螂刺客」：ultra-slim insectoid mantis biocarapace costume with two reverse-jointed blade gauntlets, spined dorsal fins, crouched high-speed stalking pose, black crimson skeletal seams。
+- 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-assassin.webp`；更新 V2_READY 與對應測試。V2 累計 27/48。
+- 下一套 `hp_rogue`；僅測試分支，未合併 main。
