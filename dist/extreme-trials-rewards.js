@@ -47,11 +47,26 @@ export function extremeMilestoneTitles(ledger){
  });
 }
 
+export const EXTREME_MILESTONE_LABELS=Object.freeze({
+ atk:{frame:'破軍名稱框',mantle:'破軍戰袍',aura:'破軍戰意'},
+ matk:{frame:'冥界名稱框',mantle:'冥界法袍',aura:'冥界星環'},
+ hp:{frame:'血淵名稱框',mantle:'血淵龍袍',aura:'血淵龍焰'},
+ clear:{frame:'萬軍名稱框',mantle:'萬軍統帥袍',aura:'萬軍魂焰'}
+});
+export function extremeMilestoneFrames(ledger){
+ return Object.entries(EXTREME_MILESTONE_LABELS).filter(([kind])=>(ledger.progress[kind]?.highest||0)>=20).map(([,labels])=>labels.frame);
+}
+export function extremeUnlockedCosmetics(player,type){
+ const threshold=type==='mantle'?50:type==='aura'?75:type==='background'?30:Infinity;
+ const ledger=extremeCharacterLedger(player);
+ return Object.keys(EXTREME_MILESTONE_LABELS).filter(kind=>ledger.progress[kind].highest>=threshold);
+}
+
 export function syncExtremeHonorOwnership(player){
  const ledger=extremeCharacterLedger(player);
  player.extraHonorTitles=[...new Set([...(player.extraHonorTitles||[]),...extremeMilestoneTitles(ledger)])];
- player.extremeFrames=EXTREME_SHOP_ITEMS.filter(item=>item.type==='frame'&&ledger.purchases.includes(item.id)).map(item=>item.name);
- player.extremeBackgrounds=EXTREME_SHOP_ITEMS.filter(item=>item.type==='background'&&ledger.purchases.includes(item.id)).map(item=>item.id);
+ player.extremeFrames=[...extremeMilestoneFrames(ledger),...EXTREME_SHOP_ITEMS.filter(item=>item.type==='frame'&&ledger.purchases.includes(item.id)).map(item=>item.name)];
+ player.extremeBackgrounds=[...extremeUnlockedCosmetics(player,'background').map(kind=>kind+'_milestone'),...EXTREME_SHOP_ITEMS.filter(item=>item.type==='background'&&ledger.purchases.includes(item.id)).map(item=>item.id)];
  player.extremeCoins=ledger.coins;
  player.extremePurchases=ledger.purchases;
  return player;
