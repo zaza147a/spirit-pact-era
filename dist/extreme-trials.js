@@ -2,14 +2,18 @@
 export const EXTREME_TRIALS=Object.freeze({
   atk:{name:'破軍戰神',stat:'atk',seconds:20,baseMultiplier:1,stepMultiplier:.15},
   matk:{name:'冥界魔皇',stat:'matk',seconds:20,baseMultiplier:1,stepMultiplier:.15},
-  hp:{name:'血淵暴君',stat:'hp',seconds:30,baseDps:100000000,stepDps:50000000}
+  hp:{name:'血淵暴君',stat:'hp',seconds:30,baseDps:100000000,stepDps:50000000},
+  clear:{name:'萬軍魔主',stat:'clear',seconds:30,baseKills:10,stepKills:2,simultaneous:5,hpStep:.1}
 });
 
 const floorValue=n=>Number.isSafeInteger(n)&&n>=1&&n<=1000000;
 export function extremeStage(kind,floor){
   const config=EXTREME_TRIALS[kind];
   if(!config||!floorValue(floor))throw Error('無效的極限試煉階段');
-  return kind==='hp'
+  return kind==='clear'
+    ?{floor,seconds:config.seconds,requiredKills:config.baseKills+(floor-1)*config.stepKills,
+      hpMultiplier:1+(floor-1)*config.hpStep,simultaneous:config.simultaneous}
+    :kind==='hp'
     ?{floor,seconds:config.seconds,requiredDps:config.baseDps+(floor-1)*config.stepDps,
       requiredDamage:(config.baseDps+(floor-1)*config.stepDps)*config.seconds}
     :{floor,seconds:config.seconds,attackMultiplier:config.baseMultiplier+(floor-1)*config.stepMultiplier};
@@ -40,7 +44,7 @@ export function extremeEntryError(player,kind,floor){
 export function beginExtremeRun(player,kind,floor,now){
   const error=extremeEntryError(player,kind,floor);
   if(error)return {error};
-  return {run:{kind,floor,startedAt:now,stageStartedAt:now,stageDamage:0,status:'active'}};
+  return {run:{kind,floor,startedAt:now,stageStartedAt:now,stageDamage:0,stageKills:0,status:'active'}};
 }
 
 export function recordExtremeDamage(run,damage){
@@ -57,6 +61,8 @@ export function extremeStageResult(run,now,{alive=true}={}){
   if(now-run.stageStartedAt<stage.seconds*1000)return {status:'active'};
   if(run.kind==='hp'&&(run.stageDamage||0)<stage.requiredDamage)
     return {status:'failed',reason:'階段傷害不足',required:stage.requiredDamage,actual:run.stageDamage||0};
+  if(run.kind==='clear'&&(run.stageKills||0)<stage.requiredKills)
+    return {status:'failed',reason:'階段擊殺數不足',required:stage.requiredKills,actual:run.stageKills||0};
   return {status:'cleared',floor:run.floor};
 }
 
