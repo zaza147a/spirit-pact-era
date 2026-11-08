@@ -142,3 +142,9 @@
 - 血淵全新原創「龍骨堡壘騎士」：colossal skeletal dragon vertebrae as asymmetric shield-wall over left shoulder, thick armored plated knight holding a jagged bone greatsword, red-black carapace, stalwart guard stance。
 - 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-knight.webp`；更新 V2_READY 與對應測試。V2 累計 25/48。
 - 下一套 `hp_crusader`；僅測試分支，未合併 main。
+
+## V2單套備份 #26：hp_crusader（2026-11-09）
+
+- 血淵全新原創「血淵聖甲守護者」：enormous upright cathedral-like ivory ribcage shield and one-handed red crystalline mace, segmented white shell armor with huge rounded pauldrons, protective solemn stance。
+- 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-crusader.webp`；更新 V2_READY 與對應測試。V2 累計 26/48。
+- 下一套 `hp_assassin`；僅測試分支，未合併 main。
