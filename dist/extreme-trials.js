@@ -6,17 +6,20 @@ export const EXTREME_TRIALS=Object.freeze({
   clear:{name:'萬軍魔主',stat:'clear',seconds:30,baseKills:6,post30StepKills:2,simultaneous:5,hpStep:.02,post30HpStep:.1}
 });
 
-const floorValue=n=>Number.isSafeInteger(n)&&n>=1&&n<=1000000;
+// No gameplay floor ceiling. JavaScript's maximum safe integer is the only
+// representational boundary; objectives are saturated before overflowing it.
+const floorValue=n=>Number.isSafeInteger(n)&&n>=1;
+const safeCount=n=>Math.min(Number.MAX_SAFE_INTEGER,Math.max(0,Math.floor(n)));
 export function extremeStage(kind,floor){
   const config=EXTREME_TRIALS[kind];
   if(!config||!floorValue(floor))throw Error('無效的極限試煉階段');
   const early=Math.min(29,floor-1),late=Math.max(0,floor-30);
   const requiredDps=config.stat==='hp'?config.baseDps+early*config.stepDps+late*config.post30StepDps:0;
   return kind==='clear'
-    ?{floor,seconds:config.seconds,requiredKills:config.baseKills+Math.floor(early/2)+late*config.post30StepKills,
+    ?{floor,seconds:config.seconds,requiredKills:safeCount(config.baseKills+Math.floor(early/2)+late*config.post30StepKills),
       hpMultiplier:1+early*config.hpStep+late*config.post30HpStep,simultaneous:config.simultaneous}
     :kind==='hp'
-    ?{floor,seconds:config.seconds,requiredDps,requiredDamage:requiredDps*config.seconds}
+    ?{floor,seconds:config.seconds,requiredDps:safeCount(requiredDps),requiredDamage:safeCount(requiredDps*config.seconds)}
     :{floor,seconds:config.seconds,attackMultiplier:config.baseMultiplier+(floor-1)*config.stepMultiplier};
 }
 
@@ -25,7 +28,7 @@ export function normalizeExtremeProgress(value){
   for(const kind of Object.keys(EXTREME_TRIALS)){
     const source=value?.[kind]||{};
     const highest=Number(source.highest);
-    result[kind]={highest:Number.isSafeInteger(highest)?Math.max(0,Math.min(1000000,highest)):0};
+    result[kind]={highest:Number.isSafeInteger(highest)?Math.max(0,highest):0};
   }
   return result;
 }
@@ -77,7 +80,11 @@ export function settleExtremeStage(progress,kind,floor){
   if(!EXTREME_TRIALS[kind]||!floorValue(floor))throw Error('無效的通關資料');
   const next=normalizeExtremeProgress(progress),old=next[kind].highest;
   if(floor<=old)return {progress:next,firstClears:[],coins:0};
-  const firstClears=Array.from({length:floor-old},(_,i)=>old+i+1);
+  // A corrupt/imported jump must not allocate millions of entries. Beyond
+  // stage 30 there is no currency, so only the reached floor is needed.
+  const rewardedFrom=Math.max(old+1,1),rewardedTo=Math.min(floor,30);
+  const rewarded=rewardedTo>=rewardedFrom?Array.from({length:rewardedTo-rewardedFrom+1},(_,i)=>rewardedFrom+i):[];
+  const firstClears=floor<=30?rewarded:[...rewarded,floor];
   next[kind].highest=floor;
-  return {progress:next,firstClears,coins:firstClears.reduce((sum,n)=>sum+extremeFirstClearReward(n),0)};
+  return {progress:next,firstClears,coins:rewarded.reduce((sum,n)=>sum+extremeFirstClearReward(n),0)};
 }
