@@ -1,6 +1,15 @@
 .extreme-trial-panel{display:grid;gap:12px}
-.extreme-trial-panel .extreme-boss-card{padding:14px;border:1px solid #9a7c4a66;border-radius:12px;background:linear-gradient(120deg,#1b2032,#282133);display:grid;gap:8px}
+.extreme-trial-panel .extreme-boss-card{padding:14px;border:1px solid #9a7c4a66;border-radius:12px;background:linear-gradient(120deg,#1b2032,#282133);display:grid;grid-template-columns:84px minmax(0,1fr);align-items:center;gap:8px}
+.extreme-boss-thumb{width:80px;height:110px;object-fit:contain;grid-row:span 3}
+.extreme-npc-art{width:90px;height:120px;object-fit:contain;float:left;margin:0 12px 8px 0}
+.extreme-boss-art{object-fit:contain}
 .extreme-boss-card h4,.extreme-boss-card p{margin:0}
 .extreme-boss-card label{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .extreme-boss-card select{background:#182132;color:#f1e7ca;border:1px solid #9a7c4a;border-radius:6px;padding:6px}
 .extreme-boss-card button{justify-self:start}
+.extreme-shop-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px;border-bottom:1px solid #9a7c4a44}
+.extreme-shop-row small{color:#cfbf9a;flex:1 1 150px}
+.tower-honor-name.extreme-frame-atk,.extreme-frame-atk .character-name{box-shadow:0 0 0 2px #de8e48,0 0 14px #de8e4877}
+.tower-honor-name.extreme-frame-matk,.extreme-frame-matk .character-name{box-shadow:0 0 0 2px #a482fa,0 0 14px #a482fa77}
+.tower-honor-name.extreme-frame-hp,.extreme-frame-hp .character-name{box-shadow:0 0 0 2px #d34b65,0 0 14px #d34b6577}
+.tower-honor-name.extreme-frame-clear,.extreme-frame-clear .character-name{box-shadow:0 0 0 2px #66c2b3,0 0 14px #66c2b377}
