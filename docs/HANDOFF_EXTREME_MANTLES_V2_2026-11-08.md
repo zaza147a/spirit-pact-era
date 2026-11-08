@@ -63,3 +63,8 @@
 
 - 全新無參考重製 `dist/assets/extreme/mantles-v2/atk-spiritCommander.webp`，職業專屬新姿勢／裝備剪影。
 - 圖片、接線與測試清單同一提交，累計 12/48，V1仍不計入驗收。
+
+## V2單套備份 #13：matk-knight
+
+- 新構圖天文儀器主題，獨立生成 `dist/assets/extreme/mantles-v2/matk-knight.webp`，圖片／啟用／測試／交接同一 GitHub 提交。
+- V2 累計 13/48；舊版不計入。
