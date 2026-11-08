@@ -270,3 +270,9 @@
 - 「翡翠戰禱主教」：Graceful cleric of mass formation blessings wearing long white-jade geometric vestments resembling numerous layered triangular pennants, a compact chained emerald reliquary censer held in both palms, emerald ribbon halo made of tessellated signal flags framing head, serene centered stance, no huge shield, no weapon or book, distinct from blood priest's pink bone gown.
 - `dist/assets/extreme/mantles-v2/clear-priest.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **45/48**。
 - 下一套 `clear_monk`。僅測試分支，不合併 main。
+
+## V2單套備份 #46：clear_monk（2026-11-09）
+
+- 「萬軍破陣修羅」：Stocky male fist-fighting martial monk in strong upright grounded stance, sleeveless charcoal tunic and short layered emerald tactical sash, pair of massive polygonal jade gauntlets linked by a short tactical chain, triangular combat insignia flaring behind elbows, no weapons apart from martial gauntlets, no staff, not armored knight.
+- `dist/assets/extreme/mantles-v2/clear-monk.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **46/48**。
+- 下一套 `clear_pactWarrior`。僅測試分支，不合併 main。
