@@ -1,10 +1,11 @@
 import {EXTREME_TRIALS,extremeStage,normalizeExtremeProgress} from './extreme-trials.js';
+import {EXTREME_SHOP_ITEMS} from './extreme-trials-account.js';
 
 const escapeText=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const format=n=>Math.round(n).toLocaleString('zh-TW');
 
 // HTML only; host binds data-extreme-enter and data-extreme-exit to actual actions.
-export function renderExtremePanel(player,{now=0}={}){
+export function renderExtremePanel(player,{now=0,account=null}={}){
   const progress=normalizeExtremeProgress(player?.extremeProgress);
   const current=player?.extremeRun;
   if(current){
@@ -20,8 +21,13 @@ export function renderExtremePanel(player,{now=0}={}){
       const high=progress[kind].highest,maxStart=Math.floor(high/10)*10;
       const options=[1,...Array.from({length:maxStart/10},(_,i)=>(i+1)*10)];
       const detail=kind==='clear'?'30 秒內擊殺指定數量怪物':kind==='hp'?'30 秒內達成傷害門檻':'存活 20 秒，攻擊每階增加 15%';
-      return `<article class="extreme-boss-card"><h4>${escapeText(config.name)}</h4><p>${detail} · 歷史最高第 ${high} 階</p>`+
+      return `<article class="extreme-boss-card"><img class="extreme-boss-thumb" src="assets/extreme/boss-${kind}.webp" alt="${escapeText(config.name)}立繪" loading="lazy"><div><h4>${escapeText(config.name)}</h4><p>${detail} · 歷史最高第 ${high} 階</p></div>`+
         `<label>入場階段 <select data-extreme-select="${kind}">${options.map(f=>`<option value="${f}">第 ${f} 階</option>`).join('')}</select></label>`+
         `<button data-extreme-enter="${kind}" ${player?.level<200?'disabled title="需要 200 等"':''}>開始挑戰</button></article>`;
-    }).join('')+`<p>極限徽記：${format(player?.extremeCoins||0)} 枚。試煉不提供一般經驗值、金幣或怪物掉落。</p></section>`;
+    }).join('')+`<p>極限徽記：${format(account?.coins??player?.extremeCoins??0)} 枚。試煉不提供一般經驗值、金幣或怪物掉落。</p>`+
+    `<h3>極限商店 · 帳號共用</h3>`+
+    EXTREME_SHOP_ITEMS.map(item=>{
+      const owned=account?.purchases?.includes(item.id),unlocked=(account?.progress?.[item.kind]?.highest||0)>=item.floor;
+      return `<div class="extreme-shop-row"><b>${escapeText(item.name)}</b><small>${item.cost} 徽記 · ${escapeText(EXTREME_TRIALS[item.kind].name)}第 ${item.floor} 階解鎖</small><button data-extreme-buy="${item.id}" ${owned||!unlocked||(account?.coins||0)<item.cost?'disabled':''}>${owned?'已收藏':!unlocked?'尚未解鎖':'永久購買'}</button></div>`;
+    }).join('')+`</section>`;
 }
