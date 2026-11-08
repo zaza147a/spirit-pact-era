@@ -1926,6 +1926,17 @@ function decorateTowerHonorEntry(slots){
       const stage=slot.querySelector('.slot-art-stage'),oldArt=stage?.querySelector('.art-sprite');
       if(oldArt){const art=document.createElement('img');art.className='art-sprite art-entry cosmetic-equipped tower-frost-equipped';art.src=towerFrostArt(character.job);art.alt='第30層永凍限定外觀';oldArt.replaceWith(art);}
     }
+    const mantle=character.extremeSelectedMantle;
+    if(mantle&&extremeUnlockedCosmetics(character,'mantle').includes(mantle)){
+      const stage=slot.querySelector('.slot-art-stage'),oldArt=stage?.querySelector('.art-sprite');
+      if(oldArt){const art=document.createElement('img');art.className='art-sprite art-entry cosmetic-equipped extreme-outfit-equipped';art.src=`assets/extreme/outfit-${mantle}.webp`;art.alt='極限試煉獨立戰袍';oldArt.replaceWith(art);}
+    }
+    const background=character.extremeSelectedBackground;
+    if(background&&character.extremeBackgrounds?.includes(background)){
+      const stage=slot.querySelector('.slot-art-stage');
+      if(stage){stage.style.backgroundImage=`linear-gradient(180deg,rgba(7,13,23,.23),rgba(7,13,23,.7)),url("${extremeBackgroundArt(background)}")`;stage.classList.add('extreme-entry-scene');}
+    }
+    if(character.extremeSelectedAura&&extremeUnlockedCosmetics(character,'aura').includes(character.extremeSelectedAura))slot.classList.add(`extreme-entry-aura-${character.extremeSelectedAura}`);
     const honor=normalizeTowerHonorSelection(character),frameClass=towerHonorFrameClass(character);
     if(frameClass)name.classList.add('tower-honor-name',frameClass);
     if(honor.title){const label=document.createElement('span');label.className='tower-honor-title';label.textContent=honor.title;name.insertAdjacentElement('afterend',label);}
@@ -2130,6 +2141,7 @@ function init(){if(typeof document==='undefined'){self.onmessage=async event=>{t
    const type=cosmetic.dataset.extremeCosmetic,kind=cosmetic.dataset.extremeKind;
    if(!['mantle','aura'].includes(type)||kind&&!extremeUnlockedCosmetics(player,type).includes(kind))return;
    player[type==='mantle'?'extremeSelectedMantle':'extremeSelectedAura']=kind||null;
+   if(type==='mantle'&&kind){player.towerCostume=null;player.selectedOutfit=null;player.cosmeticOutfit=null;}
    save();render();renderSide(true);
   }
  });
@@ -2582,18 +2594,19 @@ function renderTowerCostumeGallery(){
 }
 function renderExtremeCostumeGallery(){
  const types=['mantle','aura'];
- return `<section class="item extreme-cosmetic-wardrobe"><h3>四域極限 · 戰袍與光環</h3><p>同一類型只能選擇一款；都是外觀特效，不改變人物技能、減傷或傷害。</p>`+
- types.map(type=>`<div class="extreme-cosmetic-choice"><h4>${type==='mantle'?'第 25 階戰袍特效':'第 30 階光環'}</h4><button data-extreme-cosmetic="${type}" data-extreme-kind="">不使用</button>`+
+ return `<section class="item extreme-cosmetic-wardrobe"><h3>四域極限 · 獨立戰袍時裝與光環</h3><p>第 25 階取得可替換全身立繪的獨立戰袍；第 30 階解鎖動態光環。兩類可分別穿戴，不改變任何戰鬥能力。</p>`+
+ types.map(type=>`<div class="extreme-cosmetic-choice"><h4>${type==='mantle'?'第 25 階 · 獨立戰袍時裝':'第 30 階 · 動態光環'}</h4><button data-extreme-cosmetic="${type}" data-extreme-kind="">不使用</button>`+
  Object.entries(EXTREME_MILESTONE_LABELS).map(([kind,labels])=>{
   const owned=extremeUnlockedCosmetics(player,type).includes(kind),selected=player[type==='mantle'?'extremeSelectedMantle':'extremeSelectedAura']===kind;
-  return `<button data-extreme-cosmetic="${type}" data-extreme-kind="${kind}" ${owned?'':'disabled'}>${labels[type]}${selected?' · 使用中':owned?'':' · 尚未解鎖'}</button>`;
+  return `<button class="extreme-wardrobe-button" data-extreme-cosmetic="${type}" data-extreme-kind="${kind}" ${owned?'':'disabled'}>${type==='mantle'?`<img src="assets/extreme/outfit-${kind}.webp" alt="${escapeHtml(labels.mantle)}時裝預覽" loading="lazy">`:`<span class="extreme-aura-swatch extreme-aura-swatch-${kind}"></span>`}<span>${labels[type]}${selected?' · 使用中':owned?'':' · 尚未解鎖'}</span></button>`;
  }).join('')+`</div>`).join('')+`</section>`;
 }
+function extremeBackgroundArt(id){const kind=String(id).split('_')[0];return `assets/extreme/background-${kind}-${String(id).endsWith('_milestone')?'milestone':'collector'}.webp`;}
 function renderBackgroundGallery(){
  const collection=readCosmeticCollection(localStorage);
  const tower=normalizeTowerCollection(player.towerCollection);
  const extreme=extremeCharacterLedger(player);
- const extremeBackgrounds=player.extremeBackgrounds?.map(id=>{const kind=id.split('_')[0],name=id.endsWith('_milestone')?`${EXTREME_MILESTONE_LABELS[kind]?.frame||kind}・首領背景`:EXTREME_SHOP_ITEMS.find(item=>item.id===id)?.name||id;return `<article class="cosmetic-bg"><img loading="lazy" src="assets/extreme/boss-${kind}.webp" alt="${escapeHtml(name)}"><div><b>${escapeHtml(name)}</b><small>${id.endsWith('_milestone')?'第 30 階突破獎勵':'極限商店永久收藏'}</small><button data-extreme-background-pick="${id}">${player.extremeSelectedBackground===id?'使用中':'使用背景'}</button></div></article>`;}).join('')||'';
+ const extremeBackgrounds=player.extremeBackgrounds?.map(id=>{const kind=id.split('_')[0],name=id.endsWith('_milestone')?`${EXTREME_MILESTONE_LABELS[kind]?.frame||kind}・首領背景`:EXTREME_SHOP_ITEMS.find(item=>item.id===id)?.name||id;return `<article class="cosmetic-bg"><img loading="lazy" src="${extremeBackgroundArt(id)}" alt="${escapeHtml(name)}"><div><b>${escapeHtml(name)}</b><small>${id.endsWith('_milestone')?'第 30 階突破獎勵':'極限商店永久收藏'}</small><button data-extreme-background-pick="${id}">${player.extremeSelectedBackground===id?'使用中':'使用背景'}</button></div></article>`;}).join('')||'';
  const towerBackgrounds=towerCollectedBackgrounds(player).map(item=>`<article class="cosmetic-bg"><div class="tower-background-preview tower-background-${item.id.replace('background_','')}"></div><div><b>${escapeHtml(item.name)}</b><small>天穹終境永久收藏</small><button data-tower-background-pick="${item.id}">${tower.selectedBackground===item.id?'使用中':'使用背景'}</button></div></article>`).join('');
  const backgrounds=COSMETIC_BACKGROUNDS.map(bg=>{const owned=collection.backgrounds.includes(bg.id),selected=player.cosmeticBackground===bg.id;
   return `<article class="cosmetic-bg"><img loading="lazy" src="${cosmeticBackgroundArt(bg.id)}" alt="${bg.name}"><div><b>${bg.name}</b><small>${bg.price/100_000_000} 億金</small><button data-cosmetic-background="${bg.id}">${owned?(selected?'取消背景':'使用背景'):'永久收藏'}</button></div></article>`;}).join('');
@@ -2614,14 +2627,18 @@ function applyCosmeticHero(){
   const oldArt=hero.querySelector('.art-sprite');
   if(oldArt){const art=document.createElement('img');art.className=`${oldArt.className} cosmetic-equipped tower-frost-equipped`;art.src=towerFrostArt(player.job);art.alt='第30層永凍限定外觀';oldArt.replaceWith(art);}
  }
+ const mantle=player.extremeSelectedMantle;
+ if(mantle&&extremeUnlockedCosmetics(player,'mantle').includes(mantle)){
+  const oldArt=hero.querySelector('.art-sprite');
+  if(oldArt){const art=document.createElement('img');art.className=`${oldArt.className} cosmetic-equipped extreme-outfit-equipped`;art.src=`assets/extreme/outfit-${mantle}.webp`;art.alt='極限試煉獨立戰袍';oldArt.replaceWith(art);}
+ }
  const collection=readCosmeticCollection(localStorage);
  normalizeCosmeticSelection(player,collection);
  const tower=normalizeTowerCollection(player.towerCollection);
  const towerBackground=towerCollectedBackgrounds(player).some(item=>item.id===tower.selectedBackground)?tower.selectedBackground:null;
  if(towerBackground){hero.style.backgroundImage=`linear-gradient(to bottom,transparent 40%,rgba(5,12,23,.9) 100%),${TOWER_BACKGROUND_STYLES[towerBackground]}`;hero.style.backgroundSize='cover';hero.classList.add('cosmetic-scene-active');}
  if(player.extremeSelectedBackground&&player.extremeBackgrounds?.includes(player.extremeSelectedBackground)){
-  const kind=player.extremeSelectedBackground.split('_')[0];
-  hero.style.backgroundImage=`linear-gradient(to bottom,rgba(8,15,25,.7),rgba(8,15,25,.9)),url("assets/extreme/boss-${kind}.webp")`;
+  hero.style.backgroundImage=`linear-gradient(to bottom,rgba(8,15,25,.35),rgba(8,15,25,.83)),url("${extremeBackgroundArt(player.extremeSelectedBackground)}")`;
   hero.style.backgroundSize='cover';hero.style.backgroundPosition='center';hero.classList.add('cosmetic-scene-active');
  }
  if(player.cosmeticBackground){
