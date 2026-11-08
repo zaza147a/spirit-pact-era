@@ -180,3 +180,9 @@
 - 血淵全新原創「血晶戰歌舞者」：dramatic long crimson layered petal-armored gown with spiny ribcage corset, playing a curved giant blood-crystal cello with bone bow, fierce operatic gesture, scarlet pink and pearl。
 - 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-performer.webp`；更新 V2_READY 與對應測試。V2 累計 30/48。
 - 下一套 `hp_wizard`；僅測試分支，未合併 main。
+
+## V2單套備份 #31：hp_wizard（2026-11-09）
+
+- 血淵「龍髓堡壘法師」：高挑法師、龍椎骨法杖與血晶提燈、左右直立六角生體護甲盾，白骨和深酒紅構成防禦系法術服裝；避免與騎士／十字軍的近戰輪廓重複。
+- 透明圖已正規化為 1024×1536 WebP：`dist/assets/extreme/mantles-v2/hp-wizard.webp`；更新 V2_READY 和測試清單，V2 累計 **31/48**。
+- 下一張 `hp_sage`；另有 `matk-monk`、`hp-assassin`、`hp-hunter` 仍需直式構圖重繪驗收。正式版 main 不動。
