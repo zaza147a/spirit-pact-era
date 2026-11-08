@@ -143,3 +143,8 @@
 
 - `dist/assets/extreme/mantles/matk-sage.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
 - 累計 20/48；下一張依四王 × 十二職順序，勿重做。
+
+## 逐套備份 #21：冥界 × priest
+
+- `dist/assets/extreme/mantles/matk-priest.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
+- 累計 21/48；下一張依四王 × 十二職順序，勿重做。
