@@ -166,3 +166,9 @@
 - 血淵全新原創「獵骸射手」：organic large ribbed bone longbow with glowing red sinew string, layered vertebral quiver and sharp protective shoulder shell, taut horizontal firing pose, white ash and arterial red。
 - 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-hunter.webp`；更新 V2_READY 與對應測試。V2 累計 29/48。
 - 下一套 `hp_performer`；僅測試分支，未合併 main。
+
+## V2單套備份 #30：hp_performer（2026-11-09）
+
+- 血淵全新原創「血晶戰歌舞者」：dramatic long crimson layered petal-armored gown with spiny ribcage corset, playing a curved giant blood-crystal cello with bone bow, fierce operatic gesture, scarlet pink and pearl。
+- 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-performer.webp`；更新 V2_READY 與對應測試。V2 累計 30/48。
+- 下一套 `hp_wizard`；僅測試分支，未合併 main。
