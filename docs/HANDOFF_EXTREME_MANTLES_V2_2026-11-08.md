@@ -80,3 +80,10 @@
 - 圖片 `dist/assets/extreme/mantles-v2/matk-assassin.webp`，啟用 `matk_assassin`，更新專項測試。
 - V2 累計 **15/48**；其餘 33 張尚待重新生成，下一張為 `matk-rogue`。
 - 此批只更新測試分支，未合併 main，亦未部署正式版。GitHub 推送及提交 SHA 以推送結果為準。
+
+## V2單套備份 #16：matk-rogue（2026-11-09）
+
+- 全新原創「星圖走私客」：三角寬簷導航帽、酒紅燕尾外套、星牌暗器、反重力星圖箱與破碎時鐘平台；不沿用刺客雙刃及星環構圖。
+- `dist/assets/extreme/mantles-v2/matk-rogue.webp`，已更新 V2_READY 和對應專項測試。
+- V2 累計 **16/48**，還剩 32 套；下一張 `matk-hunter`。
+- 本批仍限制測試分支，未合併 main 或更新正式網站。遠端 SHA 於成功備份後回報。
