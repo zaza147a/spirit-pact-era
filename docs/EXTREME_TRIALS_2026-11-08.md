@@ -34,6 +34,13 @@
 - 失敗包括天穹塔、返鄉、夥伴型態、職業外觀、村莊等舊圖片與預覽相關測試。本地工作區採 sparse checkout，缺少大量既有美術檔；部分舊測試也可能有其他前置環境需求。這些失敗尚未逐項完成與 `main` 的差異比對，因此**不能直接斷言全數與本功能無關**。
 - 新增的 `extreme-trials*.test.mjs` 專項測試獨立執行通過；但真正瀏覽器、長階段與雲端存檔尚未完成驗收，故**維持測試分支，不部署正式版**。
 
+### 後續補驗（同日）
+
+- 確認先前 24 項失敗中大量項目來自工作區的 sparse checkout：原設定只載入 `dist/*.js`、`dist/*.css` 和 `dist/index.html`，沒有舊美術及預覽 HTML；本地已增加 `dist/assets/**` 與 `dist/*.html` 的檢出（**只改本機工作區，不改 GitHub 程式內容**）。
+- 補圖後第二輪全套回歸進行到後期，已觀察到先前大部分圖片類錯誤消失，但耗時案例久未前進，手動中止；**這一輪不算完成，不能把它當作全綠**。
+- `tests/homecoming-preview.test.mjs` 先前的 3 項失敗明確是缺少 `dist/homecoming-preview.html`；補檔後單獨重跑 **3/3 通過**。
+- `node --test tests/extreme-trials*.test.mjs tests/homecoming-preview.test.mjs` 完整執行 **22/22 通過**。後續應在完整資源的 CI runner 執行全套並保留機器可讀結果，確認是否還有真正的程式回歸。
+
 ## 測試
 
 ```bash
