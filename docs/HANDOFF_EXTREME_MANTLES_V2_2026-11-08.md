@@ -198,3 +198,9 @@
 - 血淵「聖骸守護主教」：珍珠白骨膜層疊祭服、玫瑰骨窗聖輪、雙手捧護血紅聖心，與賢者的標本和研究典籍、法師的骨杖護盾截然不同。
 - `dist/assets/extreme/mantles-v2/hp-priest.webp` 已正規化為 1024×1536 透明 WebP，加入 V2_READY 與測試，累計 **33/48**。
 - 下一套 `hp_monk`；其後 `hp_pactWarrior`、`hp_spiritCommander`，再進入萬軍系列。3 張先前構圖重繪仍列待辦。
+
+## V2單套備份 #34：hp_monk（2026-11-09）
+
+- 「龍髓鐵身修羅」：剃髮體術家、外露雙臂、雙拳骨甲護臂、赤髓腹甲和短版武道服，與前幾套的長袍／護盾／典籍完全不同。
+- `dist/assets/extreme/mantles-v2/hp-monk.webp` 已完成 1024×1536 透明安全畫布，加入 V2_READY、測試，累計 **34/48**。
+- 下一套 `hp_pactWarrior`，僅測試分支，正式版 main 不動。
