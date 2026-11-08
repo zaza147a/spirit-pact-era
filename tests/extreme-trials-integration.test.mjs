@@ -26,4 +26,6 @@ test('清怪王以實際死亡計數，立即補怪且沒有一般掉落',()=>{
   assert.match(game,/run\.stageKills=\(run\.stageKills\|\|0\)\+1/);
   assert.match(game,/spawnExtremeMinion\(\);enemy=/);
   assert.match(game,/xp:0,gold:0,drops:\[\]/);
+  assert.match(game,/class="extreme-minion-grid"/);
+  assert.match(game,/data-target="\$\{unit\.instanceId\}"/);
 });
