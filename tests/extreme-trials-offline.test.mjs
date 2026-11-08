@@ -52,3 +52,43 @@ test('離線極限試煉首次失敗就停止、回城、保留已獲進度',asy
  assert.equal(player.location,'dawncity');
  assert.equal(c.api.valid(player),true);
 });
+
+test('跨兩次登入與 JSON 存檔，戰鬥繼續推進且每階徽記只領一次',async()=>{
+ const firstRuntime=await runtime(),initial=ready(firstRuntime,'atk',1);
+ const first=(await firstRuntime.api.simulateOffline(initial,epoch+20500)).player;
+ assert.equal(first.extremeRun.floor,2);
+ assert.equal(first.extremeCoins,10);
+ const serialized=JSON.stringify(first);
+ const secondRuntime=await runtime(),restored=JSON.parse(serialized);
+ restored.offline={at:epoch+20500,enabled:true};
+ const result=await secondRuntime.api.simulateOffline(restored,epoch+41000);
+ assert.equal(result.summary.extremeFloors,1);
+ assert.equal(result.summary.extremeCoins,10);
+ assert.equal(result.player.extremeRun.floor,3);
+ assert.equal(result.player.extremeProgress.atk.highest,2);
+ assert.equal(result.player.extremeCoins,20);
+ assert.equal(first.extremeCoins,10);
+ assert.ok(result.player.extremeRun.checkpoint.at>=epoch+41000);
+});
+
+test('損壞的極限 checkpoint 只中止此角色試煉、不動已通關紀錄',async()=>{
+ const c=await runtime(),p=ready(c,'atk',10);
+ p.extremeProgress.atk.highest=9;
+ p.extremeRun.checkpoint.enemies=[];
+ const normalized=c.api.normalize(p);
+ assert.equal(normalized.extremeRun,undefined);
+ assert.equal(normalized.location,'dawncity');
+ assert.equal(normalized.extremeProgress.atk.highest,9);
+ assert.equal(normalized.offline.enabled,false);
+});
+
+test('清怪王離線時恢復五個獨立目標，擊殺即補位並連續進階',async()=>{
+ const c=await runtime(),p=ready(c,'clear',1),beforeGold=p.gold;
+ assert.equal(p.extremeRun.checkpoint.enemies.length,5);
+ const {player,summary}=await c.api.simulateOffline(p,epoch+31500);
+ assert.equal(summary.extremeFloors,1);
+ assert.equal(player.extremeRun.floor,2);
+ assert.equal(player.extremeRun.checkpoint.enemies.length,5);
+ assert.ok(player.extremeRun.checkpoint.enemies.every(e=>e.hp>0&&e.extremeKind==='clear'));
+ assert.equal(player.gold,beforeGold);
+});
