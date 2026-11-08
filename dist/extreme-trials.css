@@ -13,3 +13,13 @@
 .tower-honor-name.extreme-frame-matk,.extreme-frame-matk .character-name{box-shadow:0 0 0 2px #a482fa,0 0 14px #a482fa77}
 .tower-honor-name.extreme-frame-hp,.extreme-frame-hp .character-name{box-shadow:0 0 0 2px #d34b65,0 0 14px #d34b6577}
 .tower-honor-name.extreme-frame-clear,.extreme-frame-clear .character-name{box-shadow:0 0 0 2px #66c2b3,0 0 14px #66c2b377}
+.extreme-cosmetic-choice{display:flex;flex-wrap:wrap;gap:7px;padding:12px 0;border-top:1px solid #9a7c4a44}
+.extreme-cosmetic-choice h4{flex-basis:100%;margin:0 0 5px}
+.extreme-mantle-atk{outline:2px solid #d99a53;outline-offset:-3px;background-color:#36231a30}
+.extreme-mantle-matk{outline:2px solid #a68cfa;outline-offset:-3px;background-color:#281c4230}
+.extreme-mantle-hp{outline:2px solid #db6b7b;outline-offset:-3px;background-color:#4a162130}
+.extreme-mantle-clear{outline:2px solid #59c0a8;outline-offset:-3px;background-color:#0d3a3430}
+.extreme-aura-atk{filter:drop-shadow(0 0 12px #d9944b)}
+.extreme-aura-matk{filter:drop-shadow(0 0 12px #aa8cfa)}
+.extreme-aura-hp{filter:drop-shadow(0 0 12px #ef536d)}
+.extreme-aura-clear{filter:drop-shadow(0 0 12px #49d0b5)}
