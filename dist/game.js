@@ -37,6 +37,7 @@ import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDe
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
 import {EXTREME_TRIALS,extremeStage,normalizeExtremeProgress,beginExtremeRun,recordExtremeDamage,extremeStageResult,settleExtremeStage} from './extreme-trials.js';
 import {renderExtremePanel} from './extreme-trials-ui.js';
+import {readExtremeAccount,claimExtremeAccountStage} from './extreme-trials-account.js';
 import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.9';
 import {TOWER_SHOP_ITEMS,normalizeTowerCollection,buyTowerShopItem,towerCollectedBackgrounds,selectTowerBackground,towerShowcaseOwned,selectTowerShowcase,awardTowerCoins} from './tower-reward-shop.js?v=7.1.9';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
@@ -421,7 +422,7 @@ function save(notifyUser=false){
    if(result.changed){localStorage.setItem(CARD_COLLECTION_KEY,JSON.stringify(result.collection));albumChanged=true;}
   }catch(albumError){player.cards=beforeCards;player.cardRecyclePoints=beforePoints;console.warn('卡片自動整理暫停：',albumError);}
   sellSurplusPotions(player,ITEMS);exchangeOverflowGold(player);checkpointTrial();
-  player.offline={at:Date.now(),enabled:auto&&!homecomingMap(player.location)&&(!player.trialRun||player.trialRun.continuous===true)};
+  player.offline={at:Date.now(),enabled:auto&&!player.extremeRun&&!homecomingMap(player.location)&&(!player.trialRun||player.trialRun.continuous===true)};
   writeCharacterSlot(localStorage,activeSlot,player);dirty=false;lastSave=gameNow();
   if(notifyUser)toast(`第 ${activeSlot+1} 格角色已儲存`);return true;
  }catch(err){
@@ -1793,7 +1794,7 @@ else if(tab==='background'){html=renderBackgroundGallery();}
 else if(tab==='skills'){html=renderJobTree();}
 else if(tab==='cards'){html=renderCards();}
 else if(tab==='gear'){html='<p class="muted">10 個裝備部位。雙手武器同時佔用右手與左手。下方可分解／融合裝備。</p>'+equipmentFilters()+Object.entries(SLOTS).filter(([slot])=>gearFilterSlot==='all'||gearFilterSlot===slot).map(([slot,label])=>{const g=player.gear[slot],blocked=slot==='leftHand'&&ITEMS[player.gear.rightHand?.id]?.hands===2;if(g&&!matchesGear(g))return '';return `<div class="item"><div class="itemhead"><div><span class="tiny">${label}</span><div>${g?equipmentLine(g):blocked?'被雙手武器佔用':'未裝備'}</div>${equippedCardDisplay(slot)}</div>${g?`<button data-off="${slot}">卸下</button>`:''}</div></div>`}).join('')+'<button data-open="salvage" class="wide">前往裝備工坊：分解／融合</button>';}
-else if(tab==='cardcollection'){html=isTown(player.location)?renderCardCollection():'<div class="item">請回村莊拜訪星頁典藏師・露娜。</div>';}else if(tab==='cardrecycle'){html=isTown(player.location)?renderCardRecycler():'<div class="item">請回村莊拜訪命運卡片鍊成師。</div>';}else if(tab==='reforge'){html=isTown(player.location)?renderReforge():'<div class="item">請回村莊拜訪靈紋重鑄師。</div>';}else if(tab==='collection'){html=isTown(player.location)?renderGoldCollection():'<div class="item">請回村莊拜訪黃金收藏館。</div>';}else if(tab==='tower'){html=renderTowerPanel(player,{now:gameNow()});}else if(tab==='extreme'){html=renderExtremePanel(player,{now:gameNow()});}else if(tab==='trials'){html=renderTrials();}else if(tab==='enhancement'){html=renderEnhancement();}else if(tab==='sigil'){html=renderDawnSigil();}else if(tab==='sigilcraft'){html=renderDawnSigil(true);}else if(tab==='outfits'){html=renderOutfits();}else if(tab==='warehouse'){html='<div class="item">請在村莊點選倉庫 NPC 開啟視窗。</div>';}else if(tab==='salvage'){html=renderCrafting();}
+else if(tab==='cardcollection'){html=isTown(player.location)?renderCardCollection():'<div class="item">請回村莊拜訪星頁典藏師・露娜。</div>';}else if(tab==='cardrecycle'){html=isTown(player.location)?renderCardRecycler():'<div class="item">請回村莊拜訪命運卡片鍊成師。</div>';}else if(tab==='reforge'){html=isTown(player.location)?renderReforge():'<div class="item">請回村莊拜訪靈紋重鑄師。</div>';}else if(tab==='collection'){html=isTown(player.location)?renderGoldCollection():'<div class="item">請回村莊拜訪黃金收藏館。</div>';}else if(tab==='tower'){html=renderTowerPanel(player,{now:gameNow()});}else if(tab==='extreme'){html=renderExtremePanel({...player,extremeCoins:readExtremeAccount(localStorage).coins},{now:gameNow()});}else if(tab==='trials'){html=renderTrials();}else if(tab==='enhancement'){html=renderEnhancement();}else if(tab==='sigil'){html=renderDawnSigil();}else if(tab==='sigilcraft'){html=renderDawnSigil(true);}else if(tab==='outfits'){html=renderOutfits();}else if(tab==='warehouse'){html='<div class="item">請在村莊點選倉庫 NPC 開啟視窗。</div>';}else if(tab==='salvage'){html=renderCrafting();}
 else if(tab==='bag'){html=renderBag();}
 else if(tab==='shop'){if(!isTown(player.location))html='<div class="item">請回村莊購買補給。</div>';else html=`<div class="item"><b>旅途補給所</b><p>持有 ${player.gold} 金 · 補充生命、魔力與捕捉球。角色與夥伴裝備可由戰鬥掉落及碎晶融合取得。</p></div>`+SHOP_GROUPS.map(group=>`<section class="shop-group"><h3>${group.name}</h3>${group.ids.map(id=>{const it=ITEMS[id];return `<div class="item itemhead" data-ui-key="shop-${id}"><div><b>${it.name}</b><p>${it.cost} 金${it.heal?` · HP +${it.heal}${it.healPct?'，Lv.51起另回復最大HP15%':''}`:''}${it.energy?` · SP +${it.energy}${it.energyPct?'，Lv.51起另回復最大SP10%':''}`:''}${it.capture?' · 在夥伴之地直接丟球捕捉':''}</p><small>背包持有 ${player.bag.find(e=>e.id===id&&!e.uid)?.qty||0} 個${id==='orb'?' · 丟球時缺球會自動購買 1 顆（需足夠金幣）':''}</small></div><div class="shop-purchase"><label>數量<input type="number" min="1" max="999" step="1" data-shop-quantity="${id}" aria-label="${it.name}購買數量" value="${escapeHtml(shopQuantities[id]??1)}"></label><button data-buy="${id}" aria-label="購買${it.name}" ${player.gold<it.cost?'disabled':''}>購買 · ${it.cost*Number(shopQuantities[id]||1)} 金</button></div></div>`;}).join('')}</section>`).join('');}
 tab=requestedTab;if(characterView)html=renderCharacterTabs()+html;if(tab==='evolution')html=html.replace(/<details[^>]*>[\s\S]*?查看一般品質進化圖鑑[\s\S]*?<\/details>/,'');const openDetails=[...$('side').querySelectorAll('.evolution-altar details')].map(d=>d.open);patchHtml($('side'),html);[...$('side').querySelectorAll('.evolution-altar details')].forEach((d,i)=>d.open=!!openDetails[i]);bindTrialControls();const artSelect=$('evolutionArtSelect');if(artSelect)artSelect.onchange=()=>{evolutionArtRarity=artSelect.value;renderSide(true)};for(const b of $('side').querySelectorAll('[data-pet-fuse]'))b.onclick=()=>openPetFusion(b.dataset.petFuse);for(const b of $('side').querySelectorAll('[data-third-transfer]'))b.onclick=thirdTransfer;for(const b of $('side').querySelectorAll('[data-spirit-quest]'))b.onclick=()=>spiritQuestAction(b.dataset.spiritQuest);for(const b of $('side').querySelectorAll('[data-essence]'))b.onclick=()=>combineEssence(Number(b.dataset.essence));
@@ -2187,6 +2188,7 @@ function startExtreme(kind,floor){
  if(result.error)return toast(result.error);
  if(!confirm(`挑戰${EXTREME_TRIALS[kind].name}第 ${floor} 階？\n挑戰將在死亡、離場或關閉頁面時結束。`))return;
  const previous=structuredClone(player);
+ player.extremeCoins=readExtremeAccount(localStorage).coins;
  player.extremeRun=result.run;player.location='dawnrift';player.offline={at:Date.now(),enabled:false};
  stopAutoFusion('進入極限試煉');spawn();spawnExtremeBoss();tab='extreme';auto=!player.manualPaused;
  if(!save()){player=previous;spawn();return toast('無法保存試煉入場狀態');}
@@ -2247,8 +2249,11 @@ function tickExtreme(now){
  const result=extremeStageResult(run,now,{alive:player.hp>0&&!(['pactWarrior','spiritCommander'].includes(player.job)&&activePet()?.hp<=0)});
  if(result.status==='active')return;
  if(result.status==='failed')return exitExtreme(result.reason);
- const reward=settleExtremeStage(player.extremeProgress,run.kind,run.floor);
- player.extremeProgress=reward.progress;player.extremeCoins=(player.extremeCoins||0)+reward.coins;
+ const characterClear=settleExtremeStage(player.extremeProgress,run.kind,run.floor);
+ player.extremeProgress=characterClear.progress;
+ let reward;
+ try{reward=claimExtremeAccountStage(localStorage,run.kind,run.floor);}catch(error){return exitExtreme('獎勵儲存失敗，請確認儲存空間');}
+ player.extremeCoins=reward.account.coins;
  if(reward.coins)message(`✦ 首次突破第 ${run.floor} 階，極限徽記 +${reward.coins}！`,'rare','system');
  run.floor++;run.stageStartedAt=now;run.stageDamage=0;
  player.hp=stat('hp');player.mp=stat('mp');player.shield=0;
