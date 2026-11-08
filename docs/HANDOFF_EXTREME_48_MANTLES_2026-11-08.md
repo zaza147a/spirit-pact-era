@@ -88,3 +88,8 @@
 
 - 新增 `dist/assets/extreme/mantles/atk-priest.webp`；圖片、啟用、測試與交接同一個 GitHub 提交。
 - 累計 9/48；下張依資料模型順序，不可重做已完成項。
+
+## 逐套備份 #10：破軍 × monk
+
+- 新增 `dist/assets/extreme/mantles/atk-monk.webp`；圖片、啟用、測試與交接同一個 GitHub 提交。
+- 累計 10/48；下張依資料模型順序，不可重做已完成項。
