@@ -118,3 +118,9 @@
 - 全新職業造型「宇宙聖職者」：serene celestial cleric with high cathedral star window shaped crown, massive asymmetric crescent monstrance held before chest, layered white deep indigo vestments constructed like segmented observatory stained-glass windows, delicate floating prayer ribbons, solemn gentle praying stance, pearlescent white and aurora mint, no book, no staff, no harp。
 - `dist/assets/extreme/mantles-v2/matk-priest.webp`，接線／測試／交接同步更新；V2 累計 21/48。
 - 下一張 `matk-monk`；未更新正式版。
+
+## V2單套備份 #22：matk_monk（2026-11-09）
+
+- 全新職業造型「星墜武僧」：bare-armed cosmic martial monk in aggressive low lunging combat stance, six floating rotating miniature brass gravity gyroscopes encircle FISTS, sleeveless indigo fighting jacket with rectangular gold embroidery, long ivory belt strips flowing outward, angular shin guards and bare knuckles, bright comet turquoise and dark ruby accents, strong athletic pose, no staff, no book, no religious priest crown。
+- `dist/assets/extreme/mantles-v2/matk-monk.webp`，接線／測試／交接同步更新；V2 累計 22/48。
+- 下一張 `matk-pactWarrior`；未更新正式版。
