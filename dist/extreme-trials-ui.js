@@ -17,7 +17,7 @@ export function renderExtremePanel(player,{now=0}={}){
       :`首領 ${current.kind.toUpperCase()} × ${stage.attackMultiplier.toFixed(2)} · 撐過本階攻擊`;
     return `<section class="item extreme-trial-panel"><h3>⚔ ${escapeText(config.name)} · 第 ${current.floor} 階</h3><p>${objective}</p><p>⏳ 本階剩餘 ${seconds} 秒</p><button data-extreme-exit="1">主動退出試煉</button></section>`;
   }
-  return `<section class="item extreme-trial-panel"><h3>✦ 四域極限試煉</h3><p>極限試煉官・亞爾德 · 每隻角色各自紀錄四王最高階與首次突破獎勵，互不共用。</p>`+
+  return `<section class="item extreme-trial-panel"><h3>✦ 四域極限試煉</h3><p>極限試煉官・亞爾德 · 每隻角色各自紀錄四王最高階與首次突破獎勵，互不共用。第 30 階前可取得所有主要獎勵，第 31 階起僅追求稱號與突破紀錄。</p>`+
     Object.entries(EXTREME_TRIALS).map(([kind,config])=>{
       const high=progress[kind].highest,maxStart=Math.floor(high/10)*10;
       const options=[1,...Array.from({length:maxStart/10},(_,i)=>(i+1)*10)];
