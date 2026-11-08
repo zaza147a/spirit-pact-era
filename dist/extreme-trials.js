@@ -2,7 +2,7 @@
 export const EXTREME_TRIALS=Object.freeze({
   atk:{name:'破軍戰神',stat:'atk',seconds:20,baseMultiplier:1,stepMultiplier:.15},
   matk:{name:'冥界魔皇',stat:'matk',seconds:20,baseMultiplier:1,stepMultiplier:.15},
-  hp:{name:'血淵暴君',stat:'hp',seconds:30,baseDps:50000000,stepDps:5000000,post30StepDps:50000000},
+  hp:{name:'血淵暴君',stat:'hp',seconds:30,baseDps:50000000,stepDps:4500000,post30StepDps:50000000},
   clear:{name:'萬軍魔主',stat:'clear',seconds:30,baseKills:6,post30StepKills:2,simultaneous:5,hpStep:.02,post30HpStep:.1}
 });
 
