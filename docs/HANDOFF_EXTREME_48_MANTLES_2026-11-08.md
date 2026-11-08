@@ -78,3 +78,8 @@
 
 - 已完成 `dist/assets/extreme/mantles/atk-wizard.webp`，啟用和測試與圖片同一提交。
 - 累計 7/48；下一套依職業／四王清單順序，不能重做已完成項目。
+
+## 逐套備份 #8：破軍 × sage
+
+- 已完成 `dist/assets/extreme/mantles/atk-sage.webp`，啟用和測試與圖片同一提交。
+- 累計 8/48；下一套依職業／四王清單順序，不能重做已完成項目。
