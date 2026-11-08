@@ -163,3 +163,8 @@
 
 - `dist/assets/extreme/mantles/matk-spiritCommander.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
 - 累計 24/48；下一張依四王 × 十二職順序，勿重做。
+
+## 逐套備份 #25：血淵 × knight
+
+- `dist/assets/extreme/mantles/hp-knight.webp` 已繪製、接線啟用、測試對應與交接備份；每件單獨 commit。
+- 累計 25/48；未完成外觀仍用原型圖片避免破圖。
