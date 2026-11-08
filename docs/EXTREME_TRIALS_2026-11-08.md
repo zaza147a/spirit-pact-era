@@ -28,6 +28,7 @@
 - **損壞 checkpoint 防護**：匯入的戰鬥快照若缺敵人等關鍵資料，會安全結束本次試煉並回城，不會抹掉此角色之前的最高階紀錄。
 - **獨立 Worker 驗收**：`tests/extreme-trials-worker.test.mjs` 在真正獨立的 Node Worker 執行緒載入 `dist/offline-worker.js` 及實際遊戲模組（僅以 `self` shim 銜接執行緒訊息），透過 `postMessage` 傳入存檔；已驗證成功續關回傳角色及傷害不足立即停戰。這比同一 VM 的 API 模擬更接近正式 worker，但**仍非 Chromium／Firefox 的 Web Worker**。
 - **八格角色隔離驗收**：`tests/extreme-trials-slots.test.mjs` 直接呼叫遊戲既有 `writeCharacterSlot`／`readCharacterSlot`，A 角色首次突破與購買名稱框後，B 角色存檔原始內容完全不變；這是本地八格角色存取測試，並非 Cloudflare 雲端帳號 API 測試。
+- **本輪專項回歸 39／39 通過**：涵蓋極限試煉規則、四王實戰、跨登入 checkpoint、獨立離線 Worker、八格角色隔離，以及既有 `tests/offline.test.mjs`。
 - 個別角色進度、商店交易與首次突破記錄都有單元測試；補充角色 JSON 存檔往返及另一角色欄位不被污染的測試。
 
 ## 尚需驗收／完成
@@ -48,6 +49,7 @@
 
 - 確認先前 24 項失敗中大量項目來自工作區的 sparse checkout：原設定只載入 `dist/*.js`、`dist/*.css` 和 `dist/index.html`，沒有舊美術及預覽 HTML；本地已增加 `dist/assets/**` 與 `dist/*.html` 的檢出（**只改本機工作區，不改 GitHub 程式內容**）。
 - 補圖後第二輪全套回歸進行到後期，已觀察到先前大部分圖片類錯誤消失，但耗時案例久未前進，手動中止；**這一輪不算完成，不能把它當作全綠**。
+- 本輪再以補齊圖片與預覽 HTML 的工作區重跑 `node --test --test-concurrency=4 tests/*.test.mjs`，輸出約 **575 項成功、未觀察到失敗**後又在同一區域長時間沒有新輸出，已手動停止；**並非全部測試通過**，可能有執行時間過長／測試程序未退出的問題，需要另行分批定位。
 - `tests/homecoming-preview.test.mjs` 先前的 3 項失敗明確是缺少 `dist/homecoming-preview.html`；補檔後單獨重跑 **3/3 通過**。
 - `node --test tests/extreme-trials*.test.mjs tests/homecoming-preview.test.mjs` 完整執行 **22/22 通過**。後續應在完整資源的 CI runner 執行全套並保留機器可讀結果，確認是否還有真正的程式回歸。
 
