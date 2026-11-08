@@ -1,0 +1,76 @@
+// 三域極限試煉：純規則模組。實際攻擊及技能仍由遊戲戰鬥引擎處理。
+export const EXTREME_TRIALS=Object.freeze({
+  atk:{name:'破軍戰神',stat:'atk',seconds:20,baseMultiplier:1,stepMultiplier:.15},
+  matk:{name:'冥界魔皇',stat:'matk',seconds:20,baseMultiplier:1,stepMultiplier:.15},
+  hp:{name:'血淵暴君',stat:'hp',seconds:30,baseDps:100000000,stepDps:50000000}
+});
+
+const floorValue=n=>Number.isSafeInteger(n)&&n>=1&&n<=1000000;
+export function extremeStage(kind,floor){
+  const config=EXTREME_TRIALS[kind];
+  if(!config||!floorValue(floor))throw Error('無效的極限試煉階段');
+  return kind==='hp'
+    ?{floor,seconds:config.seconds,requiredDps:config.baseDps+(floor-1)*config.stepDps,
+      requiredDamage:(config.baseDps+(floor-1)*config.stepDps)*config.seconds}
+    :{floor,seconds:config.seconds,attackMultiplier:config.baseMultiplier+(floor-1)*config.stepMultiplier};
+}
+
+export function normalizeExtremeProgress(value){
+  const result={};
+  for(const kind of Object.keys(EXTREME_TRIALS)){
+    const source=value?.[kind]||{};
+    const highest=Number(source.highest);
+    result[kind]={highest:Number.isSafeInteger(highest)?Math.max(0,Math.min(1000000,highest)):0};
+  }
+  return result;
+}
+
+export function extremeEntryError(player,kind,floor){
+  if(!EXTREME_TRIALS[kind])return '無效的挑戰類型';
+  if(!floorValue(floor))return '無效的挑戰階段';
+  if((player?.level||0)<200)return '角色達到 200 等才能參加極限試煉';
+  if(player.towerRun||player.trialRun||player.extremeRun)return '目前已有其他挑戰進行中';
+  if(player.location!=='dawncity')return '請前往曙光聖港尋找極限試煉官';
+  const highest=normalizeExtremeProgress(player.extremeProgress)[kind].highest;
+  if(floor>Math.max(1,Math.floor(highest/10)*10))return '尚未解鎖此起始階段';
+  if(floor!==1&&floor%10!==0)return '僅能從第 1 階或已解鎖的十階節點入場';
+  return null;
+}
+
+export function beginExtremeRun(player,kind,floor,now){
+  const error=extremeEntryError(player,kind,floor);
+  if(error)return {error};
+  return {run:{kind,floor,startedAt:now,stageStartedAt:now,stageDamage:0,status:'active'}};
+}
+
+export function recordExtremeDamage(run,damage){
+  if(run?.status!=='active'||!Number.isFinite(damage)||damage<=0)return 0;
+  const amount=Math.min(Number.MAX_SAFE_INTEGER,damage);
+  run.stageDamage=Math.min(Number.MAX_SAFE_INTEGER,(run.stageDamage||0)+amount);
+  return amount;
+}
+
+export function extremeStageResult(run,now,{alive=true}={}){
+  if(!run||run.status!=='active')return {status:'invalid'};
+  const stage=extremeStage(run.kind,run.floor);
+  if(!alive)return {status:'failed',reason:'戰敗'};
+  if(now-run.stageStartedAt<stage.seconds*1000)return {status:'active'};
+  if(run.kind==='hp'&&(run.stageDamage||0)<stage.requiredDamage)
+    return {status:'failed',reason:'階段傷害不足',required:stage.requiredDamage,actual:run.stageDamage||0};
+  return {status:'cleared',floor:run.floor};
+}
+
+export function extremeFirstClearReward(floor){
+  if(!floorValue(floor))throw Error('無效的獎勵階段');
+  return floor<=10?10:floor<=20?15:floor<=30?20:floor<=50?25:30;
+}
+
+// 只為真正超過歷史最高的階段發獎，避免快速入場與重打重複領取。
+export function settleExtremeStage(progress,kind,floor){
+  if(!EXTREME_TRIALS[kind]||!floorValue(floor))throw Error('無效的通關資料');
+  const next=normalizeExtremeProgress(progress),old=next[kind].highest;
+  if(floor<=old)return {progress:next,firstClears:[],coins:0};
+  const firstClears=Array.from({length:floor-old},(_,i)=>old+i+1);
+  next[kind].highest=floor;
+  return {progress:next,firstClears,coins:firstClears.reduce((sum,n)=>sum+extremeFirstClearReward(n),0)};
+}
