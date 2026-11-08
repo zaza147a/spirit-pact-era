@@ -37,7 +37,7 @@ import {TOWER_FIRST_RELEASE_MAX,buildTowerEnemies,beginTowerRun,markTowerEnemyDe
 import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
 import {EXTREME_TRIALS,extremeStage,normalizeExtremeProgress,beginExtremeRun,recordExtremeDamage,extremeStageResult,settleExtremeStage} from './extreme-trials.js';
 import {renderExtremePanel} from './extreme-trials-ui.js';
-import {EXTREME_SHOP_ITEMS,extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,syncExtremeHonorOwnership} from './extreme-trials-rewards.js';
+import {EXTREME_SHOP_ITEMS,EXTREME_MILESTONE_LABELS,extremeUnlockedCosmetics,extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,syncExtremeHonorOwnership} from './extreme-trials-rewards.js';
 import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.9';
 import {TOWER_SHOP_ITEMS,normalizeTowerCollection,buyTowerShopItem,towerCollectedBackgrounds,selectTowerBackground,towerShowcaseOwned,selectTowerShowcase,awardTowerCoins} from './tower-reward-shop.js?v=7.1.9';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
@@ -2116,6 +2116,13 @@ function init(){if(typeof document==='undefined'){self.onmessage=async event=>{t
     syncExtremeHonorOwnership(player);save();render();renderSide(true);return toast(`已永久收藏：${result.item.name}`);}
    catch(error){return toast('極限商店購買失敗：'+error.message);}
   }
+  const cosmetic=event.target.closest('[data-extreme-cosmetic]');
+  if(cosmetic&&!cosmetic.disabled){
+   const type=cosmetic.dataset.extremeCosmetic,kind=cosmetic.dataset.extremeKind;
+   if(!['mantle','aura'].includes(type)||kind&&!extremeUnlockedCosmetics(player,type).includes(kind))return;
+   player[type==='mantle'?'extremeSelectedMantle':'extremeSelectedAura']=kind||null;
+   save();render();renderSide(true);
+  }
  });
  document.addEventListener('click',event=>{
   if(!event.target.closest('[data-extreme-exit]')||!player?.extremeRun)return;
@@ -2521,7 +2528,7 @@ function bindWarehouseControls(){
  for(const b of root.querySelectorAll('[data-warehouse-export]'))b.onclick=()=>{try{const blob=new Blob([JSON.stringify(exportWarehouse(localStorage),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='spirit-pact-warehouse.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);}catch(error){toast(error.message);}};
  for(const input of root.querySelectorAll('[data-warehouse-import]'))input.onchange=async()=>{const file=input.files[0];if(!file||warehouseBusy)return;warehouseBusy=true;try{if(file.size>4*1024*1024)throw Error('倉庫備份超過4MB');const data=JSON.parse(await file.text()),session=player,index=activeSlot;const result=await withWarehouseLock(navigator.locks,()=>{if(player!==session||activeSlot!==index||!isTown(player.location)||!player.hp||player.trialRun)throw Error('請在村莊重新操作倉庫');return importWarehouse(localStorage,data);});applyWarehouseCustody(localStorage,index,player);save();toast(`已匯入${result.imported}件，略過${result.skipped}件已存在或已轉交裝備`);}catch(error){toast(error.message);}finally{warehouseBusy=false;if(player)refreshWarehouseModal();}};
 }
-function renderOutfits(){return `<section class="item"><h3>角色外觀 · 全身星鑄解鎖</h3><p>全身至少S／SS／SSS階各解鎖一套。較高階可滿足較低階條件，解鎖永久保留；換裝不會失去已解鎖外觀。外觀不影響能力。</p><p>目前全身最低階：${fullSetRank(player,GEAR_BASE)||'未集齊'}${player.dawnUnlocked?' · 已開放曙界新陸':''}</p><button data-outfit="default">使用原職業外觀</button></section>${SECOND_JOBS[player.job]?['S','SS','SSS'].map(rank=>{const unlocked=player.outfitUnlocks?.includes(rank);return `<div class="item outfit-card">${unlocked?`<img src="${rankOutfitArt(player.job,rank)}" alt="${THIRD_JOBS[player.job].name} ${rank}階外觀">`:'<div class="unknown-form">?</div>'}<b>${rankOutfitName(player.job,rank)} · ${rank}階</b><small>${THIRD_JOBS[player.job].name} · ${RANK_OUTFITS[player.job].motif}</small><button data-outfit="${rank}" ${unlocked?'':'disabled'}>${unlocked?(player.selectedOutfit===rank?'使用中':'選用外觀'):`全身至少${rank}階解鎖`}</button></div>`;}).join(''):'<div class="item">完成二轉後可使用對應職業外觀。</div>'}`+renderCosmeticGallery();}
+function renderOutfits(){return `<section class="item"><h3>角色外觀 · 全身星鑄解鎖</h3><p>全身至少S／SS／SSS階各解鎖一套。較高階可滿足較低階條件，解鎖永久保留；換裝不會失去已解鎖外觀。外觀不影響能力。</p><p>目前全身最低階：${fullSetRank(player,GEAR_BASE)||'未集齊'}${player.dawnUnlocked?' · 已開放曙界新陸':''}</p><button data-outfit="default">使用原職業外觀</button></section>${SECOND_JOBS[player.job]?['S','SS','SSS'].map(rank=>{const unlocked=player.outfitUnlocks?.includes(rank);return `<div class="item outfit-card">${unlocked?`<img src="${rankOutfitArt(player.job,rank)}" alt="${THIRD_JOBS[player.job].name} ${rank}階外觀">`:'<div class="unknown-form">?</div>'}<b>${rankOutfitName(player.job,rank)} · ${rank}階</b><small>${THIRD_JOBS[player.job].name} · ${RANK_OUTFITS[player.job].motif}</small><button data-outfit="${rank}" ${unlocked?'':'disabled'}>${unlocked?(player.selectedOutfit===rank?'使用中':'選用外觀'):`全身至少${rank}階解鎖`}</button></div>`;}).join(''):'<div class="item">完成二轉後可使用對應職業外觀。</div>'}`+renderCosmeticGallery()+renderExtremeCostumeGallery();}
 function renderCosmeticGallery(){
  const collection=readCosmeticCollection(localStorage),eligible=!!player.thirdJob&&player.outfitUnlocks?.includes('SSS');
  const jobs=COSMETIC_JOBS[player.job]||[];
@@ -2534,15 +2541,24 @@ function renderTowerCostumeGallery(){
  const unlocked=towerFrostUnlocked(player),selected=normalizeTowerCostume(player)==='frost';
  return `<section class="item cosmetic-gallery tower-frost-gallery"><h3>❄ 天穹終境 · 第30層永凍時裝</h3><p>本職業首次通關第30層即可永久解鎖。只能穿戴本職業的外觀，不影響攻擊、防禦、技能或戰鬥能力。</p><div class="cosmetic-grid"><article class="cosmetic-tile"><div class="cosmetic-portrait">${unlocked?`<img loading="lazy" src="${art}" alt="${escapeHtml(THIRD_JOBS[player.job]?.name||player.job)} 永凍時裝">`:'<div class="unknown-form">?</div>'}</div><b>${escapeHtml(THIRD_JOBS[player.job]?.name||player.job)} · 永凍之誓</b><small>${unlocked?'已永久解鎖，可隨時更換':'通關天穹終境第30層解鎖'}</small><button data-tower-costume="${selected?'default':'frost'}" ${unlocked?'':'disabled'}>${selected?'取消穿戴':unlocked?'穿戴永凍時裝':'尚未解鎖'}</button></article></div></section>`;
 }
+function renderExtremeCostumeGallery(){
+ const types=['mantle','aura'];
+ return `<section class="item extreme-cosmetic-wardrobe"><h3>四域極限 · 戰袍與光環</h3><p>同一類型只能選擇一款；都是外觀特效，不改變人物技能、減傷或傷害。</p>`+
+ types.map(type=>`<div class="extreme-cosmetic-choice"><h4>${type==='mantle'?'第 50 階戰袍特效':'第 75 階光環'}</h4><button data-extreme-cosmetic="${type}" data-extreme-kind="">不使用</button>`+
+ Object.entries(EXTREME_MILESTONE_LABELS).map(([kind,labels])=>{
+  const owned=extremeUnlockedCosmetics(player,type).includes(kind),selected=player[type==='mantle'?'extremeSelectedMantle':'extremeSelectedAura']===kind;
+  return `<button data-extreme-cosmetic="${type}" data-extreme-kind="${kind}" ${owned?'':'disabled'}>${labels[type]}${selected?' · 使用中':owned?'':' · 尚未解鎖'}</button>`;
+ }).join('')+`</div>`).join('')+`</section>`;
+}
 function renderBackgroundGallery(){
  const collection=readCosmeticCollection(localStorage);
  const tower=normalizeTowerCollection(player.towerCollection);
  const extreme=extremeCharacterLedger(player);
- const extremeBackgrounds=EXTREME_SHOP_ITEMS.filter(item=>item.type==='background'&&extreme.purchases.includes(item.id)).map(item=>`<article class="cosmetic-bg"><img loading="lazy" src="assets/extreme/boss-${item.kind}.webp" alt="${escapeHtml(item.name)}"><div><b>${escapeHtml(item.name)}</b><small>極限試煉永久收藏</small><button data-extreme-background-pick="${item.id}">${player.extremeSelectedBackground===item.id?'使用中':'使用背景'}</button></div></article>`).join('');
+ const extremeBackgrounds=player.extremeBackgrounds?.map(id=>{const kind=id.split('_')[0],name=id.endsWith('_milestone')?`${EXTREME_MILESTONE_LABELS[kind]?.frame||kind}・首領背景`:EXTREME_SHOP_ITEMS.find(item=>item.id===id)?.name||id;return `<article class="cosmetic-bg"><img loading="lazy" src="assets/extreme/boss-${kind}.webp" alt="${escapeHtml(name)}"><div><b>${escapeHtml(name)}</b><small>${id.endsWith('_milestone')?'第 30 階突破獎勵':'極限商店永久收藏'}</small><button data-extreme-background-pick="${id}">${player.extremeSelectedBackground===id?'使用中':'使用背景'}</button></div></article>`;}).join('')||'';
  const towerBackgrounds=towerCollectedBackgrounds(player).map(item=>`<article class="cosmetic-bg"><div class="tower-background-preview tower-background-${item.id.replace('background_','')}"></div><div><b>${escapeHtml(item.name)}</b><small>天穹終境永久收藏</small><button data-tower-background-pick="${item.id}">${tower.selectedBackground===item.id?'使用中':'使用背景'}</button></div></article>`).join('');
  const backgrounds=COSMETIC_BACKGROUNDS.map(bg=>{const owned=collection.backgrounds.includes(bg.id),selected=player.cosmeticBackground===bg.id;
   return `<article class="cosmetic-bg"><img loading="lazy" src="${cosmeticBackgroundArt(bg.id)}" alt="${bg.name}"><div><b>${bg.name}</b><small>${bg.price/100_000_000} 億金</small><button data-cosmetic-background="${bg.id}">${owned?(selected?'取消背景':'使用背景'):'永久收藏'}</button></div></article>`;}).join('');
- return `<section class="item cosmetic-gallery"><h3>角色背景</h3><p>金幣、天穹與極限背景只能選用一款；不影響戰力。</p><p>已收藏 ${collection.backgrounds.length}/8 款金幣背景、${towerCollectedBackgrounds(player).length}/3 款天穹背景、${extremeBackgrounds?extreme.purchases.filter(id=>id.endsWith('_background')).length:0}/4 款極限背景。</p><button data-cosmetic-background="default">回到預設背景</button><h3>極限背景</h3><div class="cosmetic-background-grid">${extremeBackgrounds||'<p>尚未收藏極限背景，可在極限試煉商店解鎖。</p>'}</div><h3>天穹背景</h3><div class="cosmetic-background-grid">${towerBackgrounds||'<p>尚未收藏天穹背景，可在天穹終境商店解鎖。</p>'}</div><h3>金幣背景</h3><div class="cosmetic-background-grid">${backgrounds}</div><label class="cosmetic-control">背景亮度 ${player.cosmeticBrightness||75}%<input type="range" min="30" max="100" step="5" data-cosmetic-brightness value="${player.cosmeticBrightness||75}"></label><label class="cosmetic-control"><input type="checkbox" data-cosmetic-aura ${player.cosmeticAura!==false?'checked':''}> 顯示角色光環</label></section>`;
+ return `<section class="item cosmetic-gallery"><h3>角色背景</h3><p>金幣、天穹與極限背景只能選用一款；不影響戰力。</p><p>已收藏 ${collection.backgrounds.length}/8 款金幣背景、${towerCollectedBackgrounds(player).length}/3 款天穹背景、${player.extremeBackgrounds?.length||0}/8 款極限背景。</p><button data-cosmetic-background="default">回到預設背景</button><h3>極限背景</h3><div class="cosmetic-background-grid">${extremeBackgrounds||'<p>尚未收藏極限背景，可在極限試煉商店解鎖。</p>'}</div><h3>天穹背景</h3><div class="cosmetic-background-grid">${towerBackgrounds||'<p>尚未收藏天穹背景，可在天穹終境商店解鎖。</p>'}</div><h3>金幣背景</h3><div class="cosmetic-background-grid">${backgrounds}</div><label class="cosmetic-control">背景亮度 ${player.cosmeticBrightness||75}%<input type="range" min="30" max="100" step="5" data-cosmetic-brightness value="${player.cosmeticBrightness||75}"></label><label class="cosmetic-control"><input type="checkbox" data-cosmetic-aura ${player.cosmeticAura!==false?'checked':''}> 顯示角色光環</label></section>`;
 }
 const TOWER_BACKGROUND_STYLES={
  background_dawn:'linear-gradient(140deg,rgba(37,41,73,.3),rgba(65,47,37,.1)),url("assets/tower/background-dawn.webp?v=tower-art-1")',
@@ -2551,6 +2567,10 @@ const TOWER_BACKGROUND_STYLES={
 };
 function applyCosmeticHero(){
  const hero=$('character')?.querySelector('.hero');if(!hero)return;
+ for(const kind of ['atk','matk','hp','clear']){
+  hero.classList.toggle(`extreme-mantle-${kind}`,player.extremeSelectedMantle===kind&&extremeUnlockedCosmetics(player,'mantle').includes(kind));
+  hero.classList.toggle(`extreme-aura-${kind}`,player.extremeSelectedAura===kind&&extremeUnlockedCosmetics(player,'aura').includes(kind));
+ }
  if(normalizeTowerCostume(player)==='frost'){
   const oldArt=hero.querySelector('.art-sprite');
   if(oldArt){const art=document.createElement('img');art.className=`${oldArt.className} cosmetic-equipped tower-frost-equipped`;art.src=towerFrostArt(player.job);art.alt='第30層永凍限定外觀';oldArt.replaceWith(art);}
