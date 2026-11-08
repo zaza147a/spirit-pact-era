@@ -258,3 +258,9 @@
 - 「蒼翠軍略大法師」：Distinguished male battle mage commanding a fleet of emerald rectangular floating tactical map tablets with subtle geometric targeting lines, narrow forked ceremonial spell staff made of crystal and silver, sharply tailored dark-green high-collared officer coat with divided apron tails, strong vertical silhouette; no giant tome, no harp, no shield.
 - `dist/assets/extreme/mantles-v2/clear-wizard.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **43/48**。
 - 下一套 `clear_sage`。僅測試分支，不合併 main。
+
+## V2單套備份 #44：clear_sage（2026-11-09）
+
+- 「萬象戰圖賢者」：Androgynous young scholar-engineer strategist with giant angular folding battle MAP TABLE made of emerald glass panels on one forearm, other hand projecting chained miniature military units as green prism pieces, cream waistcoat and short jade academic cloak, narrow silhouette, spectacles, no staff, no bard instrument, no shield.
+- `dist/assets/extreme/mantles-v2/clear-sage.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **44/48**。
+- 下一套 `clear_priest`。僅測試分支，不合併 main。
