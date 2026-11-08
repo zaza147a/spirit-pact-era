@@ -1,21 +1,22 @@
-// 三域極限試煉：純規則模組。實際攻擊及技能仍由遊戲戰鬥引擎處理。
+// 四域極限試煉：前 30 階是所有職業可完成的主要獎勵區，之後是極限排行。
 export const EXTREME_TRIALS=Object.freeze({
   atk:{name:'破軍戰神',stat:'atk',seconds:20,baseMultiplier:1,stepMultiplier:.15},
   matk:{name:'冥界魔皇',stat:'matk',seconds:20,baseMultiplier:1,stepMultiplier:.15},
-  hp:{name:'血淵暴君',stat:'hp',seconds:30,baseDps:100000000,stepDps:50000000},
-  clear:{name:'萬軍魔主',stat:'clear',seconds:30,baseKills:10,stepKills:2,simultaneous:5,hpStep:.1}
+  hp:{name:'血淵暴君',stat:'hp',seconds:30,baseDps:50000000,stepDps:5000000,post30StepDps:50000000},
+  clear:{name:'萬軍魔主',stat:'clear',seconds:30,baseKills:6,post30StepKills:2,simultaneous:5,hpStep:.02,post30HpStep:.1}
 });
 
 const floorValue=n=>Number.isSafeInteger(n)&&n>=1&&n<=1000000;
 export function extremeStage(kind,floor){
   const config=EXTREME_TRIALS[kind];
   if(!config||!floorValue(floor))throw Error('無效的極限試煉階段');
+  const early=Math.min(29,floor-1),late=Math.max(0,floor-30);
+  const requiredDps=config.stat==='hp'?config.baseDps+early*config.stepDps+late*config.post30StepDps:0;
   return kind==='clear'
-    ?{floor,seconds:config.seconds,requiredKills:config.baseKills+(floor-1)*config.stepKills,
-      hpMultiplier:1+(floor-1)*config.hpStep,simultaneous:config.simultaneous}
+    ?{floor,seconds:config.seconds,requiredKills:config.baseKills+Math.floor(early/2)+late*config.post30StepKills,
+      hpMultiplier:1+early*config.hpStep+late*config.post30HpStep,simultaneous:config.simultaneous}
     :kind==='hp'
-    ?{floor,seconds:config.seconds,requiredDps:config.baseDps+(floor-1)*config.stepDps,
-      requiredDamage:(config.baseDps+(floor-1)*config.stepDps)*config.seconds}
+    ?{floor,seconds:config.seconds,requiredDps,requiredDamage:requiredDps*config.seconds}
     :{floor,seconds:config.seconds,attackMultiplier:config.baseMultiplier+(floor-1)*config.stepMultiplier};
 }
 
@@ -68,7 +69,7 @@ export function extremeStageResult(run,now,{alive=true}={}){
 
 export function extremeFirstClearReward(floor){
   if(!floorValue(floor))throw Error('無效的獎勵階段');
-  return floor<=10?10:floor<=20?15:floor<=30?20:floor<=50?25:30;
+  return floor<=10?10:floor<=20?15:floor<=30?20:0;
 }
 
 // 只為真正超過歷史最高的階段發獎，避免快速入場與重打重複領取。
