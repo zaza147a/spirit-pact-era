@@ -158,3 +158,8 @@
 
 - `dist/assets/extreme/mantles/matk-pactWarrior.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
 - 累計 23/48；下一張依四王 × 十二職順序，勿重做。
+
+## 逐套備份 #24：冥界 × spiritCommander
+
+- `dist/assets/extreme/mantles/matk-spiritCommander.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
+- 累計 24/48；下一張依四王 × 十二職順序，勿重做。
