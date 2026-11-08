@@ -13,3 +13,8 @@
 
 - 全新無參考重製 `dist/assets/extreme/mantles-v2/atk-crusader.webp`，職業專屬新姿勢／裝備剪影。
 - 圖片、接線與測試清單同一提交，累計 2/48，V1仍不計入驗收。
+
+## V2單套備份 #3: atk-assassin
+
+- 全新無參考重製 `dist/assets/extreme/mantles-v2/atk-assassin.webp`，職業專屬新姿勢／裝備剪影。
+- 圖片、接線與測試清單同一提交，累計 3/48，V1仍不計入驗收。
