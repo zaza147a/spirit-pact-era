@@ -11,7 +11,7 @@ test('四王乘十二職共有48個不重複戰袍資產規格',()=>{
  assert.equal(new Set(EXTREME_MANTLE_CATALOG.map(v=>v.art)).size,48);
  for(const {job,kind,art} of EXTREME_MANTLE_CATALOG){
   assert.equal(extremeMantleVariant(job,kind)?.art,art);
-  assert.equal(extremeMantleArt(job,kind,{classArtReady:true}),art);
+  assert.equal(extremeMantleArt(job,kind,{classArtReady:true}),EXTREME_MANTLE_V2_READY.includes(`${kind}_${job}`)?`assets/extreme/mantles-v2/${kind}-${job}.webp`:art);
   assert.ok(existsSync(new URL(`../dist/${extremeMantleArt(job,kind)}`,import.meta.url)));
  }
  assert.equal(extremeMantleArt('unknown','atk'),null);
@@ -19,7 +19,7 @@ test('四王乘十二職共有48個不重複戰袍資產規格',()=>{
  for(const variant of EXTREME_MANTLE_CATALOG){
   const resolved=extremeMantleArt(variant.job,variant.kind);
   assert.ok(existsSync(new URL(`../dist/${resolved}`,import.meta.url)),resolved);
-  assert.equal(resolved===variant.art,EXTREME_MANTLE_READY.includes(variant.id));
+  assert.equal(resolved===variant.art,EXTREME_MANTLE_READY.includes(variant.id)&&!EXTREME_MANTLE_V2_READY.includes(variant.id));
  }
 });
 
