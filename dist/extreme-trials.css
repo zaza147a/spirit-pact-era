@@ -1,0 +1,6 @@
+.extreme-trial-panel{display:grid;gap:12px}
+.extreme-trial-panel .extreme-boss-card{padding:14px;border:1px solid #9a7c4a66;border-radius:12px;background:linear-gradient(120deg,#1b2032,#282133);display:grid;gap:8px}
+.extreme-boss-card h4,.extreme-boss-card p{margin:0}
+.extreme-boss-card label{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.extreme-boss-card select{background:#182132;color:#f1e7ca;border:1px solid #9a7c4a;border-radius:6px;padding:6px}
+.extreme-boss-card button{justify-self:start}
