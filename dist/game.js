@@ -2217,7 +2217,9 @@ function renderExtremeEncounter(){
  if(!foe)return '<div class="enemy-idle">極限首領準備中…</div>';
  const left=Math.max(0,Math.ceil((run.stageStartedAt+stage.seconds*1000-gameNow())/1000));
  const objective=run.kind==='clear'?`已擊殺 ${run.stageKills||0}／${stage.requiredKills} 隻 · 場上 ${enemies.filter(e=>e.hp>0).length} 隻`:run.kind==='hp'?`傷害 ${Math.round(run.stageDamage||0).toLocaleString()}／${stage.requiredDamage.toLocaleString()}`:`${run.kind.toUpperCase()} 倍率 ${stage.attackMultiplier.toFixed(2)} · 存活挑戰`;
- return `<div class="enemy-target tower-encounter"><div class="tower-encounter-main"><div class="tower-monster-portrait">${spriteHtml(foe.id,'monster')}</div><div class="tower-encounter-info"><b>⚔ 四域極限試煉 · 第 ${run.floor} 階<br>${EXTREME_TRIALS[run.kind].name}</b><div class="tower-objective-banner">${objective}</div><small>⏳ 本階剩餘 ${left} 秒</small><button data-extreme-exit="1">結束挑戰</button></div></div></div>`;
+ const portrait=run.kind==='clear'?'<img class="art-sprite extreme-boss-art" src="assets/extreme/boss-clear.webp" alt="萬軍魔主立繪">':spriteHtml(foe.id,'monster');
+ const minions=run.kind==='clear'?`<div class="extreme-minion-grid">${enemies.filter(e=>e.hp>0).map(unit=>`<button class="enemy-target ${unit===enemy?'active':''}" data-target="${unit.instanceId}">${spriteHtml(unit.id,'monster')}<small>軍勢 HP ${Math.ceil(unit.hp).toLocaleString()}／${Math.ceil(unit.maxHp).toLocaleString()}</small></button>`).join('')}</div>`:'';
+ return `<div class="extreme-encounter-wrap"><div class="enemy-target tower-encounter"><div class="tower-encounter-main"><div class="tower-monster-portrait">${portrait}</div><div class="tower-encounter-info"><b>⚔ 四域極限試煉 · 第 ${run.floor} 階<br>${EXTREME_TRIALS[run.kind].name}</b><div class="tower-objective-banner">${objective}</div><small>⏳ 本階剩餘 ${left} 秒</small><button data-extreme-exit="1">結束挑戰</button></div></div></div>${minions}</div>`;
 }
 function spawnExtremeMinion(now=gameNow()){
  const run=player?.extremeRun;if(run?.kind!=='clear')return;
@@ -2246,7 +2248,7 @@ function spawnExtremeBoss(){
    atk:run.kind==='hp'?0:Math.max(1,Math.round(base.atk*.2*stage.attackMultiplier)),
    matk:run.kind==='matk'?Math.max(1,Math.round((base.matk||base.atk)*.2*stage.attackMultiplier)):0,
    attackType:run.kind==='matk'?'magic':'physical',xp:0,gold:0,drops:[],
-   hit:base.hit||250,def:base.def||0,mdef:base.mdef||0,
+   hit:(base.hit||250)+(run.floor-1)*15,def:base.def||0,mdef:base.mdef||0,
    aspd:run.kind==='hp'?1:base.aspd||160,lastAttack:now,appearedAt:now,
    instanceId:`extreme-${run.kind}-${run.floor}-${++encounterSerial}`};
  SPECIES[foe.id]={name:foe.name,role:'attack',roleName:'極限試煉',level:210};
