@@ -118,3 +118,8 @@
 
 - `dist/assets/extreme/mantles/matk-assassin.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
 - 累計 15/48；下一張依四王 × 十二職順序，勿重做。
+
+## 逐套備份 #16：冥界 × rogue
+
+- `dist/assets/extreme/mantles/matk-rogue.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
+- 累計 16/48；下一張依四王 × 十二職順序，勿重做。
