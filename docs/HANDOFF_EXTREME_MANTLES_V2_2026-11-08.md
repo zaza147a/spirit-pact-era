@@ -136,3 +136,9 @@
 - 全新職業造型「銀河馭靈師」：elegant female cosmic creature commander and summoner in sculptural outerwear made from flowing long double-triangle star-map banners, a small transparent floating mechanical celestial DRAGON winding around a gigantic orbital command baton, one hand raised directing cosmic familiars, slim fitted navy-white ceremonial uniform, intricate silver glass pauldrons, lilac cyan gold accents, distinct wing-like banner silhouette, no wolf, no sword, no harp。
 - `dist/assets/extreme/mantles-v2/matk-spiritCommander.webp`，接線／測試／交接同步更新；V2 累計 24/48。
 - 下一張 `hp-knight`；未更新正式版。
+
+## V2單套備份 #25：hp_knight（2026-11-09）
+
+- 血淵全新原創「龍骨堡壘騎士」：colossal skeletal dragon vertebrae as asymmetric shield-wall over left shoulder, thick armored plated knight holding a jagged bone greatsword, red-black carapace, stalwart guard stance。
+- 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-knight.webp`；更新 V2_READY 與對應測試。V2 累計 25/48。
+- 下一套 `hp_crusader`；僅測試分支，未合併 main。
