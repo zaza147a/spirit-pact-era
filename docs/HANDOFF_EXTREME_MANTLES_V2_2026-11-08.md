@@ -210,3 +210,9 @@
 - 血淵「龍骸契王」：單側龍顱骨肩甲、雙攻杖劍與赤紅守護龍靈形成防禦戰袍，輪廓不同於重甲騎士、法師或修羅。
 - `dist/assets/extreme/mantles-v2/hp-pactWarrior.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **35/48**。
 - 下一套 `hp_spiritCommander`；每套獨立遠端備份，尚未合併 main。
+
+## V2單套備份 #36：hp_spiritCommander（2026-11-09）
+
+- 「血淵孵龍宗師」：女性御靈統帥、護巢骨膜式肩翼、手掌保護著赤繭中幼龍，保有召喚師輪廓，不使用君王的杖劍。
+- `dist/assets/extreme/mantles-v2/hp-spiritCommander.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **36/48**。
+- 血淵 V2 12/12 全部完成；下一套 `clear_knight`，開始萬軍清怪系列。不合併 main。
