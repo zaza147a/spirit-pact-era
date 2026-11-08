@@ -124,3 +124,9 @@
 - 全新職業造型「星墜武僧」：bare-armed cosmic martial monk in aggressive low lunging combat stance, six floating rotating miniature brass gravity gyroscopes encircle FISTS, sleeveless indigo fighting jacket with rectangular gold embroidery, long ivory belt strips flowing outward, angular shin guards and bare knuckles, bright comet turquoise and dark ruby accents, strong athletic pose, no staff, no book, no religious priest crown。
 - `dist/assets/extreme/mantles-v2/matk-monk.webp`，接線／測試／交接同步更新；V2 累計 22/48。
 - 下一張 `matk-pactWarrior`；未更新正式版。
+
+## V2單套備份 #23：matk_pactWarrior（2026-11-09）
+
+- 全新職業造型「天狼契王」：commanding astral beast-bonded spellblade king in unique high-collared split-shoulder armor with one enormous spectral celestial WOLF head emerging from the left pauldron, long straight two-tone staff-sword planted into floating star dial, sleek fitted trouser and angular short mantle, constellation chain extending from gloved hand to wolf spirit, black silver turquoise palette, regal three-quarter stance, no priest robes, no monk gloves。
+- `dist/assets/extreme/mantles-v2/matk-pactWarrior.webp`，接線／測試／交接同步更新；V2 累計 23/48。
+- 下一張 `matk-spiritCommander`；未更新正式版。
