@@ -173,3 +173,8 @@
 
 - `dist/assets/extreme/mantles/hp-crusader.webp` 已繪製、接線啟用、測試對應與交接備份；每件單獨 commit。
 - 累計 26/48；未完成外觀仍用原型圖片避免破圖。
+
+## 逐套備份 #27：血淵 × assassin
+
+- `dist/assets/extreme/mantles/hp-assassin.webp` 已繪製、接線啟用、測試對應與交接備份；每件單獨 commit。
+- 累計 27/48；未完成外觀仍用原型圖片避免破圖。
