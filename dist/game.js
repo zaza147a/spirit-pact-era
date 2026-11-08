@@ -38,6 +38,7 @@ import {renderTowerPanel,towerRewardNotice} from './endless-tower-ui.js';
 import {EXTREME_TRIALS,extremeStage,normalizeExtremeProgress,beginExtremeRun,recordExtremeDamage,extremeStageResult,settleExtremeStage} from './extreme-trials.js';
 import {renderExtremePanel} from './extreme-trials-ui.js';
 import {EXTREME_SHOP_ITEMS,EXTREME_MILESTONE_LABELS,extremeUnlockedCosmetics,extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,syncExtremeHonorOwnership} from './extreme-trials-rewards.js';
+import {extremeMantleArt} from './extreme-mantle-catalog.js';
 import {unlockedTowerHonors,towerHonorOptions,normalizeTowerHonorSelection,selectTowerHonor,towerHonorFrameClass} from './tower-honors.js?v=7.1.9';
 import {TOWER_SHOP_ITEMS,normalizeTowerCollection,buyTowerShopItem,towerCollectedBackgrounds,selectTowerBackground,towerShowcaseOwned,selectTowerShowcase,awardTowerCoins} from './tower-reward-shop.js?v=7.1.9';
 import {DAWN_ZONE,DAWN_MONSTERS,DAWN_BOSS,DAWN_MAPS} from './dawn-world.js?v=6.5.0';
@@ -1929,7 +1930,7 @@ function decorateTowerHonorEntry(slots){
     const mantle=character.extremeSelectedMantle;
     if(mantle&&extremeUnlockedCosmetics(character,'mantle').includes(mantle)){
       const stage=slot.querySelector('.slot-art-stage'),oldArt=stage?.querySelector('.art-sprite');
-      if(oldArt){const art=document.createElement('img');art.className='art-sprite art-entry cosmetic-equipped extreme-outfit-equipped';art.src=`assets/extreme/outfit-${mantle}.webp`;art.alt='極限試煉獨立戰袍';oldArt.replaceWith(art);}
+      if(oldArt){const art=document.createElement('img');art.className='art-sprite art-entry cosmetic-equipped extreme-outfit-equipped';art.src=extremeMantleArt(character.job,mantle);art.alt='極限試煉獨立戰袍';oldArt.replaceWith(art);}
     }
     const background=character.extremeSelectedBackground;
     if(background&&character.extremeBackgrounds?.includes(background)){
@@ -2598,7 +2599,7 @@ function renderExtremeCostumeGallery(){
  types.map(type=>`<div class="extreme-cosmetic-choice"><h4>${type==='mantle'?'第 25 階 · 獨立戰袍時裝':'第 30 階 · 動態光環'}</h4><button data-extreme-cosmetic="${type}" data-extreme-kind="">不使用</button>`+
  Object.entries(EXTREME_MILESTONE_LABELS).map(([kind,labels])=>{
   const owned=extremeUnlockedCosmetics(player,type).includes(kind),selected=player[type==='mantle'?'extremeSelectedMantle':'extremeSelectedAura']===kind;
-  return `<button class="extreme-wardrobe-button" data-extreme-cosmetic="${type}" data-extreme-kind="${kind}" ${owned?'':'disabled'}>${type==='mantle'?`<img src="assets/extreme/outfit-${kind}.webp" alt="${escapeHtml(labels.mantle)}時裝預覽" loading="lazy">`:`<span class="extreme-aura-swatch extreme-aura-swatch-${kind}"></span>`}<span>${labels[type]}${selected?' · 使用中':owned?'':' · 尚未解鎖'}</span></button>`;
+  return `<button class="extreme-wardrobe-button" data-extreme-cosmetic="${type}" data-extreme-kind="${kind}" ${owned?'':'disabled'}>${type==='mantle'?`<img src="${extremeMantleArt(player.job,kind)}" alt="${escapeHtml(labels.mantle)}時裝預覽" loading="lazy">`:`<span class="extreme-aura-swatch extreme-aura-swatch-${kind}"></span>`}<span>${labels[type]}${selected?' · 使用中':owned?'':' · 尚未解鎖'}</span></button>`;
  }).join('')+`</div>`).join('')+`</section>`;
 }
 function extremeBackgroundArt(id){const kind=String(id).split('_')[0];return `assets/extreme/background-${kind}-${String(id).endsWith('_milestone')?'milestone':'collector'}.webp`;}
@@ -2630,7 +2631,7 @@ function applyCosmeticHero(){
  const mantle=player.extremeSelectedMantle;
  if(mantle&&extremeUnlockedCosmetics(player,'mantle').includes(mantle)){
   const oldArt=hero.querySelector('.art-sprite');
-  if(oldArt){const art=document.createElement('img');art.className=`${oldArt.className} cosmetic-equipped extreme-outfit-equipped`;art.src=`assets/extreme/outfit-${mantle}.webp`;art.alt='極限試煉獨立戰袍';oldArt.replaceWith(art);}
+  if(oldArt){const art=document.createElement('img');art.className=`${oldArt.className} cosmetic-equipped extreme-outfit-equipped`;art.src=extremeMantleArt(player.job,mantle);art.alt='極限試煉獨立戰袍';oldArt.replaceWith(art);}
  }
  const collection=readCosmeticCollection(localStorage);
  normalizeCosmeticSelection(player,collection);
