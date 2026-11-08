@@ -48,5 +48,5 @@ export function towerHonorFrameClass(player) {
   if(bought)return `tower-frame-collect-${bought.id.replace('frame_','')}`;
   const extreme=['破軍典藏名稱框','冥界典藏名稱框','血淵典藏名稱框','萬軍典藏名稱框','破軍名稱框','冥界名稱框','血淵名稱框','萬軍名稱框'];
   const index=extreme.indexOf(selection.frame);
-  return index<0?'':`extreme-frame-${['atk','matk','hp','clear'][index%4]}`;
+  return index<0?'':`extreme-frame-${['atk','matk','hp','clear'][index%4]}${index<4?'-collector':''}`;
 }
