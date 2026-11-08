@@ -23,3 +23,8 @@
 
 - 全新無參考重製 `dist/assets/extreme/mantles-v2/atk-rogue.webp`，職業專屬新姿勢／裝備剪影。
 - 圖片、接線與測試清單同一提交，累計 4/48，V1仍不計入驗收。
+
+## V2單套備份 #5: atk-hunter
+
+- 全新無參考重製 `dist/assets/extreme/mantles-v2/atk-hunter.webp`，職業專屬新姿勢／裝備剪影。
+- 圖片、接線與測試清單同一提交，累計 5/48，V1仍不計入驗收。
