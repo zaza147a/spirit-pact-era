@@ -1,11 +1,12 @@
 import {EXTREME_TRIALS,extremeStage,normalizeExtremeProgress} from './extreme-trials.js';
-import {EXTREME_SHOP_ITEMS} from './extreme-trials-account.js';
+import {EXTREME_SHOP_ITEMS,extremeCharacterLedger} from './extreme-trials-rewards.js';
 
 const escapeText=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const format=n=>Math.round(n).toLocaleString('zh-TW');
 
 // HTML only; host binds data-extreme-enter and data-extreme-exit to actual actions.
-export function renderExtremePanel(player,{now=0,account=null}={}){
+export function renderExtremePanel(player,{now=0}={}){
+  const account=extremeCharacterLedger(player);
   const progress=normalizeExtremeProgress(player?.extremeProgress);
   const current=player?.extremeRun;
   if(current){
@@ -16,7 +17,7 @@ export function renderExtremePanel(player,{now=0,account=null}={}){
       :`首領 ${current.kind.toUpperCase()} × ${stage.attackMultiplier.toFixed(2)} · 撐過本階攻擊`;
     return `<section class="item extreme-trial-panel"><h3>⚔ ${escapeText(config.name)} · 第 ${current.floor} 階</h3><p>${objective}</p><p>⏳ 本階剩餘 ${seconds} 秒</p><button data-extreme-exit="1">主動退出試煉</button></section>`;
   }
-  return `<section class="item extreme-trial-panel"><h3>✦ 四域極限試煉</h3><p>極限試煉官・亞爾德 · 每階首次突破才可領取極限徽記。四隻王獨立記錄成績。</p>`+
+  return `<section class="item extreme-trial-panel"><h3>✦ 四域極限試煉</h3><p>極限試煉官・亞爾德 · 每隻角色各自紀錄四王最高階與首次突破獎勵，互不共用。</p>`+
     Object.entries(EXTREME_TRIALS).map(([kind,config])=>{
       const high=progress[kind].highest,maxStart=Math.floor(high/10)*10;
       const options=[1,...Array.from({length:maxStart/10},(_,i)=>(i+1)*10)];
@@ -25,7 +26,7 @@ export function renderExtremePanel(player,{now=0,account=null}={}){
         `<label>入場階段 <select data-extreme-select="${kind}">${options.map(f=>`<option value="${f}">第 ${f} 階</option>`).join('')}</select></label>`+
         `<button data-extreme-enter="${kind}" ${player?.level<200?'disabled title="需要 200 等"':''}>開始挑戰</button></article>`;
     }).join('')+`<p>極限徽記：${format(account?.coins??player?.extremeCoins??0)} 枚。試煉不提供一般經驗值、金幣或怪物掉落。</p>`+
-    `<h3>極限商店 · 帳號共用</h3>`+
+    `<h3>極限商店 · 當前角色專屬</h3>`+
     EXTREME_SHOP_ITEMS.map(item=>{
       const owned=account?.purchases?.includes(item.id),unlocked=(account?.progress?.[item.kind]?.highest||0)>=item.floor;
       return `<div class="extreme-shop-row"><b>${escapeText(item.name)}</b><small>${item.cost} 徽記 · ${escapeText(EXTREME_TRIALS[item.kind].name)}第 ${item.floor} 階解鎖</small><button data-extreme-buy="${item.id}" ${owned||!unlocked||(account?.coins||0)<item.cost?'disabled':''}>${owned?'已收藏':!unlocked?'尚未解鎖':'永久購買'}</button></div>`;
