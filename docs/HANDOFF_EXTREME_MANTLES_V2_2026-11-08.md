@@ -216,3 +216,9 @@
 - 「血淵孵龍宗師」：女性御靈統帥、護巢骨膜式肩翼、手掌保護著赤繭中幼龍，保有召喚師輪廓，不使用君王的杖劍。
 - `dist/assets/extreme/mantles-v2/hp-spiritCommander.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **36/48**。
 - 血淵 V2 12/12 全部完成；下一套 `clear_knight`，開始萬軍清怪系列。不合併 main。
+
+## V2單套備份 #37：clear_knight（2026-11-09）
+
+- 萬軍「翠旗攻城騎士」：鎧甲重騎士擎起巨大幾何軍旗，鎖鏈旗陣與翡翠隊列象徵範圍清怪。
+- `dist/assets/extreme/mantles-v2/clear-knight.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **37/48**。
+- 下一套 `clear_crusader`。僅測試分支，不合併 main。
