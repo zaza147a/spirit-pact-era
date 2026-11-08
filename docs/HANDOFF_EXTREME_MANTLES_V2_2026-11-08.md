@@ -276,3 +276,9 @@
 - 「萬軍破陣修羅」：Stocky male fist-fighting martial monk in strong upright grounded stance, sleeveless charcoal tunic and short layered emerald tactical sash, pair of massive polygonal jade gauntlets linked by a short tactical chain, triangular combat insignia flaring behind elbows, no weapons apart from martial gauntlets, no staff, not armored knight.
 - `dist/assets/extreme/mantles-v2/clear-monk.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **46/48**。
 - 下一套 `clear_pactWarrior`。僅測試分支，不合併 main。
+
+## V2單套備份 #47：clear_pactWarrior（2026-11-09）
+
+- 「翠軍契約君王」：Regal male beast-bonded spellblade commander wearing asymmetric structured dark-green and pale-gold military coat, unique STAFF-SWORD planted beside him with a chain of small military standards curling from hilt, one summoned crystalline emerald tiger guardian nestled against one shoulder, tall angular cape tails, no dragon bone, no long banner, no priest robes.
+- `dist/assets/extreme/mantles-v2/clear-pactWarrior.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **47/48**。
+- 下一套 `clear_spiritCommander`。僅測試分支，不合併 main。

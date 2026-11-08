@@ -32,7 +32,7 @@ test('人物與選角的極限戰袍使用同一職業資產函式',()=>{
 
 
 test('重新設計版獨立於舊圖：優先使用有圖的V2時裝',()=>{
-assert.deepEqual(EXTREME_MANTLE_V2_READY,['atk_knight','atk_crusader','atk_assassin','atk_rogue','atk_hunter','atk_performer','atk_wizard','atk_sage','atk_priest','atk_monk','atk_pactWarrior','atk_spiritCommander','matk_knight','matk_crusader','matk_assassin','matk_rogue','matk_hunter','matk_performer','matk_wizard','matk_sage','matk_priest','matk_monk','matk_pactWarrior','matk_spiritCommander','hp_knight','hp_crusader','hp_assassin','hp_rogue','hp_hunter','hp_performer','hp_wizard','hp_sage','hp_priest','hp_monk','hp_pactWarrior','hp_spiritCommander','clear_knight','clear_crusader','clear_assassin','clear_rogue','clear_hunter','clear_performer','clear_wizard','clear_sage','clear_priest','clear_monk']);
+assert.deepEqual(EXTREME_MANTLE_V2_READY,['atk_knight','atk_crusader','atk_assassin','atk_rogue','atk_hunter','atk_performer','atk_wizard','atk_sage','atk_priest','atk_monk','atk_pactWarrior','atk_spiritCommander','matk_knight','matk_crusader','matk_assassin','matk_rogue','matk_hunter','matk_performer','matk_wizard','matk_sage','matk_priest','matk_monk','matk_pactWarrior','matk_spiritCommander','hp_knight','hp_crusader','hp_assassin','hp_rogue','hp_hunter','hp_performer','hp_wizard','hp_sage','hp_priest','hp_monk','hp_pactWarrior','hp_spiritCommander','clear_knight','clear_crusader','clear_assassin','clear_rogue','clear_hunter','clear_performer','clear_wizard','clear_sage','clear_priest','clear_monk','clear_pactWarrior']);
  for(const id of EXTREME_MANTLE_V2_READY){
   const [kind,job]=id.split('_');
   const art=extremeMantleArt(job,kind);
