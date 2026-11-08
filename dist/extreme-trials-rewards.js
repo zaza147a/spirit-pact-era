@@ -3,14 +3,14 @@ import {normalizeExtremeProgress,settleExtremeStage} from './extreme-trials.js';
 // Every character owns their own extreme-trial records and purchases.
 // No account-wide storage or cross-slot inheritance.
 export const EXTREME_SHOP_ITEMS=Object.freeze([
- {id:'atk_frame',kind:'atk',type:'frame',name:'破軍典藏名稱框',cost:200,floor:20},
- {id:'matk_frame',kind:'matk',type:'frame',name:'冥界典藏名稱框',cost:200,floor:20},
- {id:'hp_frame',kind:'hp',type:'frame',name:'血淵典藏名稱框',cost:200,floor:20},
- {id:'clear_frame',kind:'clear',type:'frame',name:'萬軍典藏名稱框',cost:200,floor:20},
- {id:'atk_background',kind:'atk',type:'background',name:'破軍戰場背景',cost:300,floor:30},
- {id:'matk_background',kind:'matk',type:'background',name:'冥界法陣背景',cost:300,floor:30},
- {id:'hp_background',kind:'hp',type:'background',name:'血淵龍巢背景',cost:300,floor:30},
- {id:'clear_background',kind:'clear',type:'background',name:'萬軍戰場背景',cost:300,floor:30}
+ {id:'atk_frame',kind:'atk',type:'frame',name:'破軍典藏名稱框',cost:150,floor:20},
+ {id:'matk_frame',kind:'matk',type:'frame',name:'冥界典藏名稱框',cost:150,floor:20},
+ {id:'hp_frame',kind:'hp',type:'frame',name:'血淵典藏名稱框',cost:150,floor:20},
+ {id:'clear_frame',kind:'clear',type:'frame',name:'萬軍典藏名稱框',cost:150,floor:20},
+ {id:'atk_background',kind:'atk',type:'background',name:'破軍戰場背景',cost:250,floor:30},
+ {id:'matk_background',kind:'matk',type:'background',name:'冥界法陣背景',cost:250,floor:30},
+ {id:'hp_background',kind:'hp',type:'background',name:'血淵龍巢背景',cost:250,floor:30},
+ {id:'clear_background',kind:'clear',type:'background',name:'萬軍戰場背景',cost:250,floor:30}
 ]);
 
 export function extremeCharacterLedger(player){
@@ -40,10 +40,10 @@ export function buyExtremeShopItem(player,id){
 }
 
 export function extremeMilestoneTitles(ledger){
- const names={atk:['破軍挑戰者','物理不滅者'],matk:['冥界挑戰者','魔法不滅者'],hp:['血戰挑戰者','極限征服者'],clear:['萬軍挑戰者','千軍殲滅者']};
- return Object.entries(names).flatMap(([kind,[novice,master]])=>{
+ const names={atk:['破軍挑戰者','破軍破限者','物理不滅者'],matk:['冥界挑戰者','冥界破限者','魔法不滅者'],hp:['血戰挑戰者','血淵破限者','極限征服者'],clear:['萬軍挑戰者','萬軍破限者','千軍殲滅者']};
+ return Object.entries(names).flatMap(([kind,[novice,advanced,master]])=>{
   const highest=ledger?.progress?.[kind]?.highest||0;
-  return [...(highest>=10?[novice]:[]),...(highest>=100?[master]:[])];
+  return [...(highest>=10?[novice]:[]),...(highest>=50?[advanced]:[]),...(highest>=100?[master]:[])];
  });
 }
 
@@ -57,7 +57,7 @@ export function extremeMilestoneFrames(ledger){
  return Object.entries(EXTREME_MILESTONE_LABELS).filter(([kind])=>(ledger.progress[kind]?.highest||0)>=20).map(([,labels])=>labels.frame);
 }
 export function extremeUnlockedCosmetics(player,type){
- const threshold=type==='mantle'?50:type==='aura'?75:type==='background'?30:Infinity;
+ const threshold=type==='mantle'?25:type==='aura'?30:type==='background'?30:Infinity;
  const ledger=extremeCharacterLedger(player);
  return Object.keys(EXTREME_MILESTONE_LABELS).filter(kind=>ledger.progress[kind].highest>=threshold);
 }
