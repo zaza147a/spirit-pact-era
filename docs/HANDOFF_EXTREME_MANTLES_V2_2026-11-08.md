@@ -264,3 +264,9 @@
 - 「萬象戰圖賢者」：Androgynous young scholar-engineer strategist with giant angular folding battle MAP TABLE made of emerald glass panels on one forearm, other hand projecting chained miniature military units as green prism pieces, cream waistcoat and short jade academic cloak, narrow silhouette, spectacles, no staff, no bard instrument, no shield.
 - `dist/assets/extreme/mantles-v2/clear-sage.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **44/48**。
 - 下一套 `clear_priest`。僅測試分支，不合併 main。
+
+## V2單套備份 #45：clear_priest（2026-11-09）
+
+- 「翡翠戰禱主教」：Graceful cleric of mass formation blessings wearing long white-jade geometric vestments resembling numerous layered triangular pennants, a compact chained emerald reliquary censer held in both palms, emerald ribbon halo made of tessellated signal flags framing head, serene centered stance, no huge shield, no weapon or book, distinct from blood priest's pink bone gown.
+- `dist/assets/extreme/mantles-v2/clear-priest.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **45/48**。
+- 下一套 `clear_monk`。僅測試分支，不合併 main。
