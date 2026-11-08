@@ -48,3 +48,8 @@
 
 - 全新無參考重製 `dist/assets/extreme/mantles-v2/atk-priest.webp`，職業專屬新姿勢／裝備剪影。
 - 圖片、接線與測試清單同一提交，累計 9/48，V1仍不計入驗收。
+
+## V2單套備份 #10: atk-monk
+
+- 全新無參考重製 `dist/assets/extreme/mantles-v2/atk-monk.webp`，職業專屬新姿勢／裝備剪影。
+- 圖片、接線與測試清單同一提交，累計 10/48，V1仍不計入驗收。
