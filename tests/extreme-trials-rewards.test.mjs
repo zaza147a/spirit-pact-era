@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,extremeMilestoneTitles} from '../dist/extreme-trials-rewards.js';
+import {extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,extremeMilestoneTitles,extremeMilestoneFrames,extremeUnlockedCosmetics,syncExtremeHonorOwnership} from '../dist/extreme-trials-rewards.js';
 
 test('角色獨立：同帳號兩個角色可以分別突破及領取自己的首次獎勵',()=>{
  const a={},b={};
@@ -10,6 +10,21 @@ test('角色獨立：同帳號兩個角色可以分別突破及領取自己的�
  assert.equal(extremeCharacterLedger(a).coins,100);
  assert.equal(extremeCharacterLedger(b).coins,100);
  assert.notEqual(a.extremeProgress,b.extremeProgress);
+});
+test('20／30／50／75／100 階里程碑逐步解鎖且不跨角色',()=>{
+ const a={},b={};
+ claimExtremeCharacterStage(a,'clear',20);syncExtremeHonorOwnership(a);
+ assert.ok(extremeMilestoneFrames(extremeCharacterLedger(a)).includes('萬軍名稱框'));
+ assert.equal(extremeUnlockedCosmetics(a,'background').length,0);
+ claimExtremeCharacterStage(a,'clear',30);syncExtremeHonorOwnership(a);
+ assert.ok(a.extremeBackgrounds.includes('clear_milestone'));
+ claimExtremeCharacterStage(a,'clear',50);
+ assert.ok(extremeUnlockedCosmetics(a,'mantle').includes('clear'));
+ claimExtremeCharacterStage(a,'clear',75);
+ assert.ok(extremeUnlockedCosmetics(a,'aura').includes('clear'));
+ claimExtremeCharacterStage(a,'clear',100);
+ assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes('千軍殲滅者'));
+ assert.deepEqual(extremeUnlockedCosmetics(b,'aura'),[]);
 });
 
 test('商店購買、收藏及稱號都只作用於當前角色',()=>{
