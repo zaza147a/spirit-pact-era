@@ -288,3 +288,8 @@
 - 「翠靈萬軍宗師」：Elegant female creature-commander in brilliant verdigris fitted commander uniform, unique broad butterfly-shaped articulated tactical pennant mantle behind shoulders, one arm raised directing a formation of three small translucent emerald spirit birds, other holding a short triangular signal baton, wide fan silhouette, no sword, no tiger, no harp, no wizard tome.
 - `dist/assets/extreme/mantles-v2/clear-spiritCommander.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **48/48**。
 - 下一套 `V2_VISUAL_AUDIT`。僅測試分支，不合併 main。
+
+## V2直式構圖重繪 R1：matk_monk（2026-11-09）
+
+- 冥界修羅：由橫向小比例重繪為完整直式星墜拳僧，人物主體填滿縱向畫布，雙拳黃銅重力儀環、靛藍星紋戰衣。
+- 更新 `dist/assets/extreme/mantles-v2/matk-monk.webp`；原圖可自 Git 歷史還原。繼續重繪 `hp_assassin`、`hp_hunter`。
