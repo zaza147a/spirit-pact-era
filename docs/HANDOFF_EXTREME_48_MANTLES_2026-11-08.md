@@ -28,3 +28,11 @@
 
 ## GitHub 備份注意
 本次環境 git push 因缺少 HTTPS 憑證失敗；變更以 GitHub connector 暫存補丁檔 `docs/EXTREME_48_MANTLES_STAGE1.patch` 備份。此文件存在不表示程式已部署。
+
+## 2026-11-08 第二批補記（遠端接線完成）
+
+- GitHub 已直接建立 `dist/extreme-mantle-catalog.js`、`tests/extreme-mantle-catalog.test.mjs`，並更新 `dist/game.js` 三處顯示接線。
+- 程式推送成功：`115c96bacddd0512e5cb47899bade4399e7f33cd`（本批結束前的 GitHub SHA）。
+- 原始 `.patch` 是可追溯備份，**已不再需要另行套用**，否則可能重複修改。
+- 本地專項測試：15/15 通過；尚未做完整瀏覽器驗收。
+- **待辦**：48 張職業專屬戰袍原圖；現有四張通用戰袍仍作畫面佔位，不等於 48 套美術完成。
