@@ -73,3 +73,10 @@
 
 - 新構圖天文儀器主題，獨立生成 `dist/assets/extreme/mantles-v2/matk-crusader.webp`，圖片／啟用／測試／交接同一 GitHub 提交。
 - V2 累計 14/48；舊版不計入。
+
+## V2單套備份 #15：matk-assassin（2026-11-09）
+
+- 全新原創「日蝕天文鐘刺客」：不對稱星鐘披肩、雙月刃、環繞式星軌儀，與舊版及騎士／十字軍構圖區分。
+- 圖片 `dist/assets/extreme/mantles-v2/matk-assassin.webp`，啟用 `matk_assassin`，更新專項測試。
+- V2 累計 **15/48**；其餘 33 張尚待重新生成，下一張為 `matk-rogue`。
+- 此批只更新測試分支，未合併 main，亦未部署正式版。GitHub 推送及提交 SHA 以推送結果為準。
