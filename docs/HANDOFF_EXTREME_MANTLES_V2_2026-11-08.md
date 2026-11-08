@@ -282,3 +282,9 @@
 - 「翠軍契約君王」：Regal male beast-bonded spellblade commander wearing asymmetric structured dark-green and pale-gold military coat, unique STAFF-SWORD planted beside him with a chain of small military standards curling from hilt, one summoned crystalline emerald tiger guardian nestled against one shoulder, tall angular cape tails, no dragon bone, no long banner, no priest robes.
 - `dist/assets/extreme/mantles-v2/clear-pactWarrior.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **47/48**。
 - 下一套 `clear_spiritCommander`。僅測試分支，不合併 main。
+
+## V2單套備份 #48：clear_spiritCommander（2026-11-09）
+
+- 「翠靈萬軍宗師」：Elegant female creature-commander in brilliant verdigris fitted commander uniform, unique broad butterfly-shaped articulated tactical pennant mantle behind shoulders, one arm raised directing a formation of three small translucent emerald spirit birds, other holding a short triangular signal baton, wide fan silhouette, no sword, no tiger, no harp, no wizard tome.
+- `dist/assets/extreme/mantles-v2/clear-spiritCommander.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **48/48**。
+- 下一套 `V2_VISUAL_AUDIT`。僅測試分支，不合併 main。
