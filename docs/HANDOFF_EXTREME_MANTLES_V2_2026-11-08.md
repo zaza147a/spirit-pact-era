@@ -68,3 +68,8 @@
 
 - 新構圖天文儀器主題，獨立生成 `dist/assets/extreme/mantles-v2/matk-knight.webp`，圖片／啟用／測試／交接同一 GitHub 提交。
 - V2 累計 13/48；舊版不計入。
+
+## V2單套備份 #14：matk-crusader
+
+- 新構圖天文儀器主題，獨立生成 `dist/assets/extreme/mantles-v2/matk-crusader.webp`，圖片／啟用／測試／交接同一 GitHub 提交。
+- V2 累計 14/48；舊版不計入。
