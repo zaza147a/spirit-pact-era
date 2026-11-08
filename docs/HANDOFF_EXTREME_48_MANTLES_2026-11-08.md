@@ -68,3 +68,8 @@
 
 - 已完成 `dist/assets/extreme/mantles/atk-hunter.webp`，啟用和測試與圖片同一提交。
 - 累計 5/48；下一套依職業／四王清單順序，不能重做已完成項目。
+
+## 逐套備份 #6：破軍 × performer
+
+- 已完成 `dist/assets/extreme/mantles/atk-performer.webp`，啟用和測試與圖片同一提交。
+- 累計 6/48；下一套依職業／四王清單順序，不能重做已完成項目。
