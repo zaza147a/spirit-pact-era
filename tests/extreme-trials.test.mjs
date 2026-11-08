@@ -7,9 +7,9 @@ test('四種首領前 30 階平緩成長，31 階後提高極限門檻',()=>{
   assert.equal(extremeStage('atk',10).attackMultiplier,2.3499999999999996);
   assert.equal(extremeStage('matk',100).attackMultiplier,15.85);
   assert.equal(extremeStage('hp',1).requiredDamage,1500000000);
-  assert.equal(extremeStage('hp',10).requiredDps,95000000);
-  assert.equal(extremeStage('hp',30).requiredDps,195000000);
-  assert.equal(extremeStage('hp',31).requiredDps,245000000);
+  assert.equal(extremeStage('hp',10).requiredDps,90500000);
+  assert.equal(extremeStage('hp',30).requiredDps,180500000);
+  assert.equal(extremeStage('hp',31).requiredDps,230500000);
   assert.equal(extremeStage('clear',1).requiredKills,6);
   assert.equal(extremeStage('clear',30).requiredKills,20);
   assert.equal(extremeStage('clear',31).requiredKills,22);
