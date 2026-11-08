@@ -293,3 +293,8 @@
 
 - 冥界修羅：由橫向小比例重繪為完整直式星墜拳僧，人物主體填滿縱向畫布，雙拳黃銅重力儀環、靛藍星紋戰衣。
 - 更新 `dist/assets/extreme/mantles-v2/matk-monk.webp`；原圖可自 Git 歷史還原。繼續重繪 `hp_assassin`、`hp_hunter`。
+
+## V2直式構圖重繪 R2：hp_assassin（2026-11-09）
+
+- 血淵刺客：橫向螳螂突襲重繪為縱向站姿，赤脈甲殼、收束的雙螳刃及完整雙腿，改善人物過小。
+- 更新 `dist/assets/extreme/mantles-v2/hp-assassin.webp`；原圖可自 Git 歷史還原。下一張重繪 `hp_hunter`。
