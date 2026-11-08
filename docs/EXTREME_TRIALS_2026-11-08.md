@@ -41,6 +41,12 @@
 - `tests/homecoming-preview.test.mjs` 先前的 3 項失敗明確是缺少 `dist/homecoming-preview.html`；補檔後單獨重跑 **3/3 通過**。
 - `node --test tests/extreme-trials*.test.mjs tests/homecoming-preview.test.mjs` 完整執行 **22/22 通過**。後續應在完整資源的 CI runner 執行全套並保留機器可讀結果，確認是否還有真正的程式回歸。
 
+### 12 職業高階實戰觀察
+
+- 已新增 `scripts/audit-extreme-trials-high-floors.mjs`，完成第 1／10／30／50／100 階 × 四模式 × 12 職業，共 **240 組**；無執行錯誤、無普通經驗或金幣外漏。
+- **血量王第 10 階後 0/12 達標，清怪王第 30 階後 0/12 達標；生存兩王第 30 階仍 12/12 存活**。目前數值曲線偏差大；因測試配置與使用者高 DPS 實測存在落差，先記錄數據、避免貿然改倍率。
+- 詳見 `docs/EXTREME_TRIALS_HIGH_FLOOR_AUDIT_2026-11-08.md`；仍需以實際玩家存檔校準。
+
 ## 測試
 
 ```bash
