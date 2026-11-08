@@ -112,3 +112,9 @@
 - 全新職業造型「星象賢者」：young analytical celestial alchemist, one arm covered by an enormous floating folding square star-map BOOK of brass hinges, the other manipulating a cluster of glass orbital cubes, tailored asymmetric short academic waistcoat over long split scholar apron, prism-spectacles, deep sapphire and amber, side-stepping pose, no staff, no harp。
 - `dist/assets/extreme/mantles-v2/matk-sage.webp`，接線／測試／交接同步更新；V2 累計 20/48。
 - 下一張 `matk-priest`；未更新正式版。
+
+## V2單套備份 #21：matk_priest（2026-11-09）
+
+- 全新職業造型「宇宙聖職者」：serene celestial cleric with high cathedral star window shaped crown, massive asymmetric crescent monstrance held before chest, layered white deep indigo vestments constructed like segmented observatory stained-glass windows, delicate floating prayer ribbons, solemn gentle praying stance, pearlescent white and aurora mint, no book, no staff, no harp。
+- `dist/assets/extreme/mantles-v2/matk-priest.webp`，接線／測試／交接同步更新；V2 累計 21/48。
+- 下一張 `matk-monk`；未更新正式版。
