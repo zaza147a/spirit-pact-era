@@ -94,3 +94,9 @@
 - `dist/assets/extreme/mantles-v2/matk-hunter.webp`，更新 V2_READY、測試清單。
 - V2 累計 **17/48**，尚缺 31 套；下一張 `matk-performer`。
 - 僅更新測試分支；未合併 main 或發布正式網站。
+
+## V2單套備份 #18：matk-performer（2026-11-09）
+
+- 「星穹奏者」：華麗星軌豎琴、舞步姿態、環形天文服裝與浮動音符，與前述遠距機械武器和刺客衣裝明顯區分。
+- `dist/assets/extreme/mantles-v2/matk-performer.webp`，更新 V2_READY 及專項測試；V2 累計 18/48。
+- 下一張 `matk-wizard`；限測試分支，尚未更新正式版。
