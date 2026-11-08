@@ -8,6 +8,7 @@ export const EXTREME_MANTLE_KINDS=Object.freeze(['atk','matk','hp','clear']);
 export const EXTREME_MANTLE_CATALOG=Object.freeze(EXTREME_MANTLE_KINDS.flatMap(kind=>
  EXTREME_MANTLE_JOBS.map(job=>Object.freeze({id:`${kind}_${job}`,kind,job,
   art:`assets/extreme/mantles/${kind}-${job}.webp`}))));
+export const EXTREME_MANTLE_READY=Object.freeze(['atk_knight']);
 
 export function extremeMantleVariant(job,kind){
  return EXTREME_MANTLE_CATALOG.find(item=>item.job===job&&item.kind===kind)||null;
@@ -15,7 +16,7 @@ export function extremeMantleVariant(job,kind){
 
 // Existing trial-specific artwork remains visible until all 48 class-specific
 // illustrations have been produced and reviewed; no broken-image placeholders.
-export function extremeMantleArt(job,kind,{classArtReady=false}={}){
+export function extremeMantleArt(job,kind,{classArtReady=EXTREME_MANTLE_READY.includes(`${kind}_${job}`)}={}){
  const variant=extremeMantleVariant(job,kind);
  if(!variant)return null;
  return classArtReady?variant.art:`assets/extreme/outfit-${kind}.webp`;
