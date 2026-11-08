@@ -100,3 +100,9 @@
 - 「星穹奏者」：華麗星軌豎琴、舞步姿態、環形天文服裝與浮動音符，與前述遠距機械武器和刺客衣裝明顯區分。
 - `dist/assets/extreme/mantles-v2/matk-performer.webp`，更新 V2_READY 及專項測試；V2 累計 18/48。
 - 下一張 `matk-wizard`；限測試分支，尚未更新正式版。
+
+## V2單套備份 #19：matk-wizard（2026-11-09）
+
+- 「天測大法師」：白髮星象學者、巨型星座量規杖與矩形浮動星圖刻板，和舞孃飄逸樂器輪廓完全不同。
+- 圖片 `dist/assets/extreme/mantles-v2/matk-wizard.webp`，更新 V2_READY 與測試；V2 累計 19/48。
+- 下一張 `matk-sage`；僅測試分支，不動正式版。
