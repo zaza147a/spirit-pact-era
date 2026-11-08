@@ -298,3 +298,8 @@
 
 - 血淵刺客：橫向螳螂突襲重繪為縱向站姿，赤脈甲殼、收束的雙螳刃及完整雙腿，改善人物過小。
 - 更新 `dist/assets/extreme/mantles-v2/hp-assassin.webp`；原圖可自 Git 歷史還原。下一張重繪 `hp_hunter`。
+
+## V2直式構圖重繪 R3：hp_hunter（2026-11-09）
+
+- 血淵獵人：橫向拉弓重繪為縱向持龍椎長弓守衛，保留骨弓、箭袋與護肩，人物全身與弓端可見。
+- 更新 `dist/assets/extreme/mantles-v2/hp-hunter.webp`；原圖可自 Git 歷史還原。三張橫向異常重繪全部完成，進入 48 張整體稽核。
