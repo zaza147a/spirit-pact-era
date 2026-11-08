@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,extremeMilestoneTitles,extremeMilestoneFrames,extremeUnlockedCosmetics,syncExtremeHonorOwnership} from '../dist/extreme-trials-rewards.js';
+import {towerHonorFrameClass} from '../dist/tower-honors.js';
+import {readFileSync} from 'node:fs';
 
 test('角色獨立：同帳號兩個角色可以分別突破及領取自己的首次獎勵',()=>{
  const a={},b={};
@@ -68,4 +70,24 @@ test('存檔 JSON 往返與不同角色欄位不會互相繼承極限記錄',()=
  claimExtremeCharacterStage(restored,'matk',31);
  assert.equal(extremeCharacterLedger(first).progress.matk.highest,30);
  assert.equal(extremeCharacterLedger(restored).progress.matk.highest,31);
+});
+
+test('四王普通與典藏名稱框是八種不同動態外觀，登入選角與角色欄共用樣式',()=>{
+ const css=readFileSync(new URL('../dist/extreme-trials.css',import.meta.url),'utf8');
+ for(const [kind,free,collector] of [
+  ['atk','破軍名稱框','破軍典藏名稱框'],
+  ['matk','冥界名稱框','冥界典藏名稱框'],
+  ['hp','血淵名稱框','血淵典藏名稱框'],
+  ['clear','萬軍名稱框','萬軍典藏名稱框']]){
+  const p={extremeFrames:[free,collector],towerHonorSelection:{frame:free}};
+  assert.equal(towerHonorFrameClass(p),`extreme-frame-${kind}`);
+  p.towerHonorSelection.frame=collector;
+  assert.equal(towerHonorFrameClass(p),`extreme-frame-${kind}-collector`);
+  assert.match(css,new RegExp(`extreme-frame-${kind}-collector`));
+ }
+ assert.match(css,/slot-select h2\.tower-honor-name/);
+ assert.match(css,/#gameShell #character \.character-name/);
+ assert.match(css,/@keyframes extreme-collector-sweep/);
+ assert.match(css,/@keyframes extreme-rune-hover/);
+ assert.match(css,/prefers-reduced-motion/);
 });
