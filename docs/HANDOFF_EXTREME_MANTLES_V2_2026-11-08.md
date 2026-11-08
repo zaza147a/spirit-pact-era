@@ -222,3 +222,9 @@
 - 萬軍「翠旗攻城騎士」：鎧甲重騎士擎起巨大幾何軍旗，鎖鏈旗陣與翡翠隊列象徵範圍清怪。
 - `dist/assets/extreme/mantles-v2/clear-knight.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **37/48**。
 - 下一套 `clear_crusader`。僅測試分支，不合併 main。
+
+## V2單套備份 #38：clear_crusader（2026-11-09）
+
+- 萬軍「翡翠方陣聖騎」：十字軍八角透光方陣盾、短權槌與四條連鎖戰旗，以聖陣清怪；與破軍巨旗騎士差異明確。
+- `dist/assets/extreme/mantles-v2/clear-crusader.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **38/48**。
+- 下一套 `clear_assassin`。僅測試分支，不合併 main。
