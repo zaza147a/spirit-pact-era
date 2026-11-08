@@ -98,3 +98,8 @@
 
 - 新增 `dist/assets/extreme/mantles/atk-pactWarrior.webp`；圖片、啟用、測試與交接同一個 GitHub 提交。
 - 累計 11/48；下張依資料模型順序，不可重做已完成項。
+
+## 逐套備份 #12：破軍 × spiritCommander
+
+- 新增 `dist/assets/extreme/mantles/atk-spiritCommander.webp`；圖片、啟用、測試與交接同一個 GitHub 提交。
+- 累計 12/48；下張依資料模型順序，不可重做已完成項。
