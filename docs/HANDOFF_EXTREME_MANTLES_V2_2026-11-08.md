@@ -204,3 +204,9 @@
 - 「龍髓鐵身修羅」：剃髮體術家、外露雙臂、雙拳骨甲護臂、赤髓腹甲和短版武道服，與前幾套的長袍／護盾／典籍完全不同。
 - `dist/assets/extreme/mantles-v2/hp-monk.webp` 已完成 1024×1536 透明安全畫布，加入 V2_READY、測試，累計 **34/48**。
 - 下一套 `hp_pactWarrior`，僅測試分支，正式版 main 不動。
+
+## V2單套備份 #35：hp_pactWarrior（2026-11-09）
+
+- 血淵「龍骸契王」：單側龍顱骨肩甲、雙攻杖劍與赤紅守護龍靈形成防禦戰袍，輪廓不同於重甲騎士、法師或修羅。
+- `dist/assets/extreme/mantles-v2/hp-pactWarrior.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **35/48**。
+- 下一套 `hp_spiritCommander`；每套獨立遠端備份，尚未合併 main。
