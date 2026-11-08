@@ -1,7 +1,7 @@
 // Homecoming fourth-slot prototype. Coefficients are experimental, not a release balance.
 // No profession-name multipliers: real combat events determine charge gain.
 const ROLES=['attack','magic','defense','support'];
-const LEGACY=new Set(['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer']);
+const HOMECOMING_JOBS=new Set(['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer','pactWarrior','spiritCommander']);
 export const FOURTH_SKILLS=Object.freeze({
  'attack-magic':Object.freeze({name:'雙極超載',power:40,cooldown:6000,cost:20,magical:true,targets:3,splash:.35,events:{crit:8}}),
  'attack-defense':Object.freeze({name:'裂陣戰旗',power:220,cooldown:4000,cost:20,magical:false,targets:3,splash:.45,events:{charge:14,snatch:14,combo:4}}),
@@ -12,7 +12,7 @@ export const FOURTH_SKILLS=Object.freeze({
 });
 export function fourthPair(pet){const a=pet?.fusion?.main,b=pet?.fusion?.sub;return a!==b&&ROLES.includes(a)&&ROLES.includes(b)?[a,b].sort((x,y)=>ROLES.indexOf(x)-ROLES.indexOf(y)).join('-'):null;}
 export function fourthUnlocked(player,pet){
- if(!LEGACY.has(player?.job)||pet?.trueForm!==true||Number(pet?.humanoidStage)!==3||Number(player?.dawnSigil)!==8)return false;
+ if(!HOMECOMING_JOBS.has(player?.job)||pet?.trueForm!==true||Number(pet?.humanoidStage)!==3||Number(player?.dawnSigil)!==8)return false;
  const pair=fourthPair(pet);if(!FOURTH_SKILLS[pair])return false;
  const done=player.homecoming?.completedRoutes;
  return [pair,pair.split('-').reverse().join('-')].some(key=>done?.[key]===true);

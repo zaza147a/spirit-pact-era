@@ -26,6 +26,20 @@ test('36 registered maps have correct town, continent and encounter capacity',()
  for(const r of HOMECOMING_ROUTES){assert.equal(isTown(r.townId),true);assert.equal(isTown(r.fieldId),false);assert.equal(homeTown(r.bossMapId),r.townId);assert.equal(continentFor(r.fieldId),r.continentId);assert.equal(encounterLimit(r.townId),0);assert.equal(encounterLimit(r.fieldId),1);}
  assert.equal(homeTown('dawnrift'),'dawncity');assert.equal(continentFor('worldroot'),'sky');assert.equal(encounterLimit('worldroot'),4);
 });
+for(const job of ['pactWarrior','spiritCommander'])test('spirit job receives retroactive invitation and completes homecoming: '+job,async()=>{
+ const route=HOMECOMING_ROUTES.find(r=>r.id==='magic-attack');
+ const {api,act,p}=await setup(route,job);
+ assert.equal(p().homecoming.routes[route.id].phase,'letter');
+ for(const action of ['begin','next','next','arrive','accept'])assert.equal(act(action),true,job+'/'+action);
+ for(const key of plans[route.id]){
+  const q=p().homecoming.routes[route.id],node=HOMECOMING_ADVENTURES[route.id].nodes[q.adventure.step];
+  if(p().location!==adventureLocation(route,node))assert.equal(act('go'),true);
+  assert.equal(act('choose',key),true,key);
+ }
+ assert.equal(p().homecoming.routes[route.id].phase,'ready');
+ assert.equal(act('return'),true);assert.equal(act('claim'),true);
+ assert.equal(p().homecoming.completedRoutes[route.id],true);
+});
 for(const route of HOMECOMING_ROUTES)test('game runtime complete route: '+route.id,async()=>{
  const {api,act,p}=await setup(route);
  for(const action of ['begin','next','next','arrive','accept'])assert.equal(act(action),true,action);

@@ -35,7 +35,14 @@ for(const r of routes)test(r.id+' unique walkthrough reaches reward once',()=>{
 });
 test('letters gate continents and eligibility; first journey survives reload',()=>{
  const p=fresh();assert.equal(discoverHomecoming(p,routes.map(pet),{town:true,offline:true}).length,0);
- for(const job of ['pactWarrior','spiritCommander'])assert.equal(discoverHomecoming({...fresh(),job},routes.map(pet),{town:true}).length,0);
+ for(const job of ['pactWarrior','spiritCommander']){
+  const newcomer={...fresh(),job};
+  assert.equal(discoverHomecoming(newcomer,routes.map(pet),{town:true}).length,12);
+  assert.equal(discoverHomecoming(newcomer,routes.map(pet),{town:true}).length,0);
+  assert.equal(homecomingBonuses(newcomer).count,0);
+  move(newcomer,routes[0].id,'begin',{pet:pet(routes[0]),town:true});
+  assert.equal(newcomer.homecoming.routes[routes[0].id].phase,'traveling');
+ }
  assert.equal(discoverHomecoming({...fresh(),dawnSigil:7},routes.map(pet),{town:true}).length,0);
  discoverHomecoming(p,routes.map(pet),{town:true});assert.equal(homecomingContinents(p).length,0);
  move(p,routes[0].id,'begin',{pet:pet(routes[0]),town:true});assert.equal(homecomingContinents(p).length,1);

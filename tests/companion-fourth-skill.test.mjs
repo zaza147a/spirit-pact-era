@@ -14,8 +14,8 @@ test('reverse fusion shares unlock and skill, duplicate routes do not stack',()=
  assert.ok(fourthUnlocked({...owner,homecoming:{completedRoutes:{'defense-attack':true}}},pet));
  assert.equal(Object.keys(FOURTH_SKILLS).length,6);
 });
-test('both dual-pet jobs are excluded even with a forged completion flag',()=>{
- for(const job of ['pactWarrior','spiritCommander'])assert.equal(fourthUnlocked({...owner,job},pet),false);
+test('both spirit jobs unlock the fourth slot after completing homecoming',()=>{
+ for(const job of ['pactWarrior','spiritCommander'])assert.equal(fourthUnlocked({...owner,job},pet),true);
 });
 test('idle/dead time and delayed frames cannot bank unlimited charge',()=>{
  const s=newFourthState(0);advanceFourthCharge(s,20000,false);assert.equal(s.energy,0);

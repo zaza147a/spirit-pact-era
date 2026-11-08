@@ -1,6 +1,6 @@
 import {HOMECOMING_ADVENTURES,newHomecomingAdventure,normalizeHomecomingAdventure,adventureLocation,advanceAdventure} from './homecoming-adventures.js';
 import {HOMECOMING_ROUTES,HOMECOMING_BY_ID,homecomingIdentity} from './homecoming-data.js';
-const JOBS=new Set(['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer']);
+const JOBS=new Set(['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer','pactWarrior','spiritCommander']);
 const PHASES=new Set(['letter','traveling','arrived','active','ready','claimed']);
 const count=(v,max)=>Math.max(0,Math.min(max,Number.isFinite(v)?Math.floor(v):0));
 export function eligibleHomecoming(p,pet){return JOBS.has(p?.job)&&Number(p?.dawnSigil)===8&&pet?.trueForm===true&&Number(pet?.humanoidStage)===3&&!!HOMECOMING_BY_ID[homecomingIdentity(pet)];}
