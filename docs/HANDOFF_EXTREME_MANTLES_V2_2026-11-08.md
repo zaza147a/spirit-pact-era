@@ -246,3 +246,9 @@
 - 「萬箭軍陣遊俠」：Lean ranged archer with a completely novel emerald mechanical RECURVE BOW built from linked tactical signal blades, long green scarf bearing geometric troop insignia, hovering miniature arrow-routing flags, poised upright drawing pose, deep jade and muted brass, no cross-shaped tower shield, no dagger, no book.
 - `dist/assets/extreme/mantles-v2/clear-hunter.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **41/48**。
 - 下一套 `clear_performer`。僅測試分支，不合併 main。
+
+## V2單套備份 #42：clear_performer（2026-11-09）
+
+- 「碧音戰陣舞孃」：Elegant female harp performer weaving battle formations: asymmetrical emerald silk dancer outfit, large angular standing HARP with crystal strings making tiny green pennant glyphs, one leg in a flowing mid-dance pose, braided ribbons like chain banners. Luminous turquoise and pale gold, no swords, no bow, no armor shield.
+- `dist/assets/extreme/mantles-v2/clear-performer.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **42/48**。
+- 下一套 `clear_wizard`。僅測試分支，不合併 main。
