@@ -16,7 +16,7 @@ export function towerHonorOptions(player,type){
  const base=unlockedTowerHonors(player).map(h=>h[type]);
  if(type!=='frame')return [...new Set([...base,...(Array.isArray(player?.extraHonorTitles)?player.extraHonorTitles.filter(name=>typeof name==='string'):[])])];
  const bought=new Set(normalizeTowerCollection(player?.towerCollection).purchases);
- return [...base,...TOWER_SHOP_ITEMS.filter(i=>i.type==='frame'&&bought.has(i.id)).map(i=>i.name)];
+ return [...base,...TOWER_SHOP_ITEMS.filter(i=>i.type==='frame'&&bought.has(i.id)).map(i=>i.name),...(player?.extremeFrames||[])];
 }
 
 export function normalizeTowerHonorSelection(player) {
@@ -45,5 +45,8 @@ export function towerHonorFrameClass(player) {
   const regular=TOWER_HONORS.find(h=>h.frame===selection.frame);
   if(regular)return regular.frameClass;
   const bought=TOWER_SHOP_ITEMS.find(i=>i.type==='frame'&&i.name===selection.frame);
-  return bought?`tower-frame-collect-${bought.id.replace('frame_','')}`:'';
+  if(bought)return `tower-frame-collect-${bought.id.replace('frame_','')}`;
+  const extreme=['破軍典藏名稱框','冥界典藏名稱框','血淵典藏名稱框','萬軍典藏名稱框'];
+  const index=extreme.indexOf(selection.frame);
+  return index<0?'':`extreme-frame-${['atk','matk','hp','clear'][index]}`;
 }
