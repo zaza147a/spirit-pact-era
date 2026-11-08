@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {existsSync,readFileSync} from 'node:fs';
-import {EXTREME_MANTLE_CATALOG,EXTREME_MANTLE_JOBS,EXTREME_MANTLE_KINDS,EXTREME_MANTLE_READY,extremeMantleVariant,extremeMantleArt} from '../dist/extreme-mantle-catalog.js';
+import {EXTREME_MANTLE_CATALOG,EXTREME_MANTLE_JOBS,EXTREME_MANTLE_KINDS,EXTREME_MANTLE_READY,EXTREME_MANTLE_V2_READY,extremeMantleVariant,extremeMantleArt} from '../dist/extreme-mantle-catalog.js';
 
 test('四王乘十二職共有48個不重複戰袍資產規格',()=>{
  assert.equal(EXTREME_MANTLE_JOBS.length,12);
@@ -28,4 +28,15 @@ test('人物與選角的極限戰袍使用同一職業資產函式',()=>{
  assert.match(game,/extremeMantleArt\(character\.job,mantle\)/);
  assert.match(game,/extremeMantleArt\(player\.job,mantle\)/);
  assert.match(game,/extremeMantleArt\(player\.job,kind\)/);
+});
+
+
+test('重新設計版獨立於舊圖：優先使用有圖的V2時裝',()=>{
+ assert.deepEqual(EXTREME_MANTLE_V2_READY,['atk_knight']);
+ for(const id of EXTREME_MANTLE_V2_READY){
+  const [kind,job]=id.split('_');
+  const art=extremeMantleArt(job,kind);
+  assert.equal(art,`assets/extreme/mantles-v2/${kind}-${job}.webp`);
+  assert.ok(existsSync(new URL(`../dist/${art}`,import.meta.url)));
+ }
 });
