@@ -128,3 +128,8 @@
 
 - `dist/assets/extreme/mantles/matk-hunter.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
 - 累計 17/48；下一張依四王 × 十二職順序，勿重做。
+
+## 逐套備份 #18：冥界 × performer
+
+- `dist/assets/extreme/mantles/matk-performer.webp` 生成並啟用；同一 GitHub commit 連同對應測試、交接一起保存。
+- 累計 18/48；下一張依四王 × 十二職順序，勿重做。
