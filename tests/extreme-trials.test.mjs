@@ -3,20 +3,24 @@ import assert from 'node:assert/strict';
 import {extremeStage,beginExtremeRun,recordExtremeDamage,extremeStageResult,settleExtremeStage,normalizeExtremeProgress} from '../dist/extreme-trials.js';
 
 const player={level:210,location:'dawncity'};
-test('三種首領在第 1、10、100 階使用預期的線性成長',()=>{
+test('四種首領前 30 階平緩成長，31 階後提高極限門檻',()=>{
   assert.equal(extremeStage('atk',10).attackMultiplier,2.3499999999999996);
   assert.equal(extremeStage('matk',100).attackMultiplier,15.85);
-  assert.equal(extremeStage('hp',1).requiredDamage,3000000000);
-  assert.equal(extremeStage('hp',10).requiredDps,550000000);
-  assert.equal(extremeStage('clear',1).requiredKills,10);
-  assert.equal(extremeStage('clear',100).requiredKills,208);
-  assert.equal(extremeStage('clear',20).hpMultiplier,2.9000000000000004);
+  assert.equal(extremeStage('hp',1).requiredDamage,1500000000);
+  assert.equal(extremeStage('hp',10).requiredDps,95000000);
+  assert.equal(extremeStage('hp',30).requiredDps,195000000);
+  assert.equal(extremeStage('hp',31).requiredDps,245000000);
+  assert.equal(extremeStage('clear',1).requiredKills,6);
+  assert.equal(extremeStage('clear',30).requiredKills,20);
+  assert.equal(extremeStage('clear',31).requiredKills,22);
+  assert.equal(extremeStage('clear',100).requiredKills,160);
+  assert.ok(Math.abs(extremeStage('clear',30).hpMultiplier-1.58)<1e-9);
 });
 test('清怪王必須在 30 秒實際擊殺足量怪物',()=>{
   const run=beginExtremeRun(player,'clear',1,0).run;
-  run.stageKills=9;
+  run.stageKills=5;
   assert.equal(extremeStageResult(run,30000).status,'failed');
-  run.stageKills=10;
+  run.stageKills=6;
   assert.equal(extremeStageResult(run,30000).status,'cleared');
 });
 test('入場等級、地點及十階快速入場限制',()=>{
@@ -28,7 +32,7 @@ test('入場等級、地點及十階快速入場限制',()=>{
 });
 test('血量王 30 秒傷害不足失敗，達標才成功',()=>{
   const run=beginExtremeRun(player,'hp',1,1000).run;
-  recordExtremeDamage(run,2999999999);
+  recordExtremeDamage(run,1499999999);
   assert.equal(extremeStageResult(run,31000).status,'failed');
   recordExtremeDamage(run,1);
   assert.equal(extremeStageResult(run,31000).status,'cleared');
@@ -39,11 +43,14 @@ test('攻擊王 20 秒存活過關，死亡失敗',()=>{
   assert.equal(extremeStageResult(run,20000,{alive:false}).status,'failed');
   assert.equal(extremeStageResult(run,20000).status,'cleared');
 });
-test('首次突破只補發新階段獎勵，三王獨立紀錄',()=>{
+test('首次突破前 30 階可得徽記，31 階後只有稱號進度',()=>{
   let data=settleExtremeStage(null,'atk',10);
   assert.equal(data.coins,100);
   assert.equal(settleExtremeStage(data.progress,'atk',10).coins,0);
   data=settleExtremeStage(data.progress,'atk',12);
   assert.equal(data.coins,30);
   assert.equal(normalizeExtremeProgress(data.progress).matk.highest,0);
+  data=settleExtremeStage(data.progress,'atk',30);
+  assert.equal(data.coins,320);
+  assert.equal(settleExtremeStage(data.progress,'atk',100).coins,0);
 });
