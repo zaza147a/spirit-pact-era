@@ -11,17 +11,19 @@ test('角色獨立：同帳號兩個角色可以分別突破及領取自己的�
  assert.equal(extremeCharacterLedger(b).coins,100);
  assert.notEqual(a.extremeProgress,b.extremeProgress);
 });
-test('20／30／50／75／100 階里程碑逐步解鎖且不跨角色',()=>{
+test('20／25／30 階取得全部外觀，50／100 階追加稱號且不跨角色',()=>{
  const a={},b={};
  claimExtremeCharacterStage(a,'clear',20);syncExtremeHonorOwnership(a);
  assert.ok(extremeMilestoneFrames(extremeCharacterLedger(a)).includes('萬軍名稱框'));
  assert.equal(extremeUnlockedCosmetics(a,'background').length,0);
  claimExtremeCharacterStage(a,'clear',30);syncExtremeHonorOwnership(a);
  assert.ok(a.extremeBackgrounds.includes('clear_milestone'));
- claimExtremeCharacterStage(a,'clear',50);
+ claimExtremeCharacterStage(a,'clear',25);
  assert.ok(extremeUnlockedCosmetics(a,'mantle').includes('clear'));
- claimExtremeCharacterStage(a,'clear',75);
+ claimExtremeCharacterStage(a,'clear',30);
  assert.ok(extremeUnlockedCosmetics(a,'aura').includes('clear'));
+ claimExtremeCharacterStage(a,'clear',50);
+ assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes('萬軍破限者'));
  claimExtremeCharacterStage(a,'clear',100);
  assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes('千軍殲滅者'));
  assert.deepEqual(extremeUnlockedCosmetics(b,'aura'),[]);
@@ -32,11 +34,23 @@ test('商店購買、收藏及稱號都只作用於當前角色',()=>{
  assert.match(buyExtremeShopItem(a,'atk_frame').error,/先突破/);
  claimExtremeCharacterStage(a,'atk',30);
  const before=a.extremeCoins;
- assert.equal(buyExtremeShopItem(a,'atk_frame').ledger.coins,before-200);
+ assert.equal(buyExtremeShopItem(a,'atk_frame').ledger.coins,before-150);
  assert.match(buyExtremeShopItem(a,'atk_frame').error,/已永久收藏/);
  assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes('破軍挑戰者'));
  assert.equal(extremeCharacterLedger(b).purchases.length,0);
  assert.equal(extremeCharacterLedger(b).progress.atk.highest,0);
+});
+
+test('每一種王完成 30 階的徽記足夠購買該王全部商店收藏',()=>{
+ const player={};
+ for(const kind of ['atk','matk','hp','clear']){
+  const reward=claimExtremeCharacterStage(player,kind,30);
+  assert.equal(reward.coins,450);
+  assert.equal(buyExtremeShopItem(player,kind+'_frame').error,undefined);
+  assert.equal(buyExtremeShopItem(player,kind+'_background').error,undefined);
+ }
+ assert.equal(player.extremeCoins,200);
+ assert.equal(claimExtremeCharacterStage(player,'clear',100).coins,0);
 });
 
 test('存檔 JSON 往返與不同角色欄位不會互相繼承極限記錄',()=>{
