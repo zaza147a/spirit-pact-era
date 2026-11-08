@@ -130,3 +130,9 @@
 - 全新職業造型「天狼契王」：commanding astral beast-bonded spellblade king in unique high-collared split-shoulder armor with one enormous spectral celestial WOLF head emerging from the left pauldron, long straight two-tone staff-sword planted into floating star dial, sleek fitted trouser and angular short mantle, constellation chain extending from gloved hand to wolf spirit, black silver turquoise palette, regal three-quarter stance, no priest robes, no monk gloves。
 - `dist/assets/extreme/mantles-v2/matk-pactWarrior.webp`，接線／測試／交接同步更新；V2 累計 23/48。
 - 下一張 `matk-spiritCommander`；未更新正式版。
+
+## V2單套備份 #24：matk_spiritCommander（2026-11-09）
+
+- 全新職業造型「銀河馭靈師」：elegant female cosmic creature commander and summoner in sculptural outerwear made from flowing long double-triangle star-map banners, a small transparent floating mechanical celestial DRAGON winding around a gigantic orbital command baton, one hand raised directing cosmic familiars, slim fitted navy-white ceremonial uniform, intricate silver glass pauldrons, lilac cyan gold accents, distinct wing-like banner silhouette, no wolf, no sword, no harp。
+- `dist/assets/extreme/mantles-v2/matk-spiritCommander.webp`，接線／測試／交接同步更新；V2 累計 24/48。
+- 下一張 `hp-knight`；未更新正式版。
