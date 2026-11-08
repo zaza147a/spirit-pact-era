@@ -154,3 +154,9 @@
 - 血淵全新原創「赤脈螳螂刺客」：ultra-slim insectoid mantis biocarapace costume with two reverse-jointed blade gauntlets, spined dorsal fins, crouched high-speed stalking pose, black crimson skeletal seams。
 - 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-assassin.webp`；更新 V2_READY 與對應測試。V2 累計 27/48。
 - 下一套 `hp_rogue`；僅測試分支，未合併 main。
+
+## V2單套備份 #28：hp_rogue（2026-11-09）
+
+- 血淵全新原創「噬骨掠奪者」：rough scavenger wearing asymmetrical salvaged dragon bone shoulder mantle and jagged leather hood, handheld segmented bone chain-whip and hooked claw, acrobatic playful pose, ochre crimson。
+- 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-rogue.webp`；更新 V2_READY 與對應測試。V2 累計 28/48。
+- 下一套 `hp_hunter`；僅測試分支，未合併 main。
