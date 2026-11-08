@@ -252,3 +252,9 @@
 - 「碧音戰陣舞孃」：Elegant female harp performer weaving battle formations: asymmetrical emerald silk dancer outfit, large angular standing HARP with crystal strings making tiny green pennant glyphs, one leg in a flowing mid-dance pose, braided ribbons like chain banners. Luminous turquoise and pale gold, no swords, no bow, no armor shield.
 - `dist/assets/extreme/mantles-v2/clear-performer.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **42/48**。
 - 下一套 `clear_wizard`。僅測試分支，不合併 main。
+
+## V2單套備份 #43：clear_wizard（2026-11-09）
+
+- 「蒼翠軍略大法師」：Distinguished male battle mage commanding a fleet of emerald rectangular floating tactical map tablets with subtle geometric targeting lines, narrow forked ceremonial spell staff made of crystal and silver, sharply tailored dark-green high-collared officer coat with divided apron tails, strong vertical silhouette; no giant tome, no harp, no shield.
+- `dist/assets/extreme/mantles-v2/clear-wizard.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **43/48**。
+- 下一套 `clear_sage`。僅測試分支，不合併 main。
