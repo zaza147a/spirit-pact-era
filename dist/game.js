@@ -1325,7 +1325,7 @@ function enemyAttack(){
  if(petWasHit&&pet?.id===activePet()?.id&&classBuffs.pact?.until>gameNow()&&classBuffs.pact.counter&&activePet()?.hp>0&&attacker.hp>0){const selected=enemy;enemy=attacker;dealPetDamage(hitDamage(petStats(activePet()).def*classBuffs.pact.counter,attacker.def),'resonanceDamage');if(!attacker.hp)award();enemy=selected;}
  if(petEffects.counterUntil>gameNow()&&activePet()?.hp>0&&attacker.hp>0){const chosen=enemy;enemy=attacker;dealPetDamage(Math.min(petEffects.counterPower,Math.round(attacker.atk*.3)),'resonanceDamage');if(!attacker.hp)award();enemy=selectEncounterTarget(enemies,player.targetPriority,chosen)||chosen;}dirty=true;render();
 }
-function fleeMapBosses(){if(player.towerRun)return exitTower('主動離場');if(player.trialRun)return exitTrial('主動離場');const fleeing=enemies.filter(e=>e.boss&&e.hp>0);if(!fleeing.length)return;const current=enemy;if(fleeing.includes(current)){endReport('逃離首領');petEffects.bleedTicks=0;petEffects.burnTicks=0;petEffects.markHits=0;}enemies=enemies.filter(e=>!fleeing.includes(e));enemy=selectEncounterTarget(enemies,player.targetPriority)||{...current,hp:0};if(enemies.length&&!report)startReport();nextEncounterAt=gameNow()+replacementDelay();message(`已逃離 ${fleeing.map(e=>SPECIES[e.id].name).join('、')}，不扣除金幣、不發放獎勵。`,'','system');dirty=true;save();render();}
+function fleeMapBosses(){if(player.extremeRun)return exitExtreme('主動離場');if(player.towerRun)return exitTower('主動離場');if(player.trialRun)return exitTrial('主動離場');const fleeing=enemies.filter(e=>e.boss&&e.hp>0);if(!fleeing.length)return;const current=enemy;if(fleeing.includes(current)){endReport('逃離首領');petEffects.bleedTicks=0;petEffects.burnTicks=0;petEffects.markHits=0;}enemies=enemies.filter(e=>!fleeing.includes(e));enemy=selectEncounterTarget(enemies,player.targetPriority)||{...current,hp:0};if(enemies.length&&!report)startReport();nextEncounterAt=gameNow()+replacementDelay();message(`已逃離 ${fleeing.map(e=>SPECIES[e.id].name).join('、')}，不扣除金幣、不發放獎勵。`,'','system');dirty=true;save();render();}
 function capture(){if(!player||!enemy?.hp||!player.hp)return;if(enemy.boss)return toast('地圖首領無法捕捉，可選擇逃走');if(!isCaptureSanctuary(player.location))return toast('只有「夥伴之地」或「契靈之地」可以捕捉夥伴');const ratio=enemy.hp/enemy.maxHp;if(player.pets.length>=30)return toast('夥伴欄已滿（最多 30 隻）');if(!(player.bag.find(e=>e.id==='orb')?.qty>0)){const cost=ITEMS.orb.cost;if(player.gold<cost)return toast(`捕捉球已用完，金幣不足（需要 ${cost} 金）`);player.gold-=cost;addStack(player.bag,'orb',1);if(offlineMetrics){offlineMetrics.spent+=cost;offlineMetrics.purchased.orb=(offlineMetrics.purchased.orb||0)+1;}message(`捕捉球已用完，自動購買 1 顆，花費 ${cost} 金。`,'good','system');}if(!consumeStack(player.bag,'orb'))return;const chance=clamp(.55+Math.max(0,.5-ratio)*.7,.55,.85);if(Math.random()<chance){endReport('捕捉');const pet=makePet(enemy.id);pet.rarity=player.location===SPIRIT_SANCTUARY_MAP?'mythic':capturedQuality(player,companionRole(pet),pet.rarity);if(player.location===SPIRIT_SANCTUARY_MAP)blessSanctuaryPet(pet);pet.nickname=petForm(pet)||SPECIES[pet.species].name;pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;pet.equippedSkills=defaultPetSkills(companionRole(pet),pet.rarity);player.pets.push(pet);player.petBook[enemy.id]=(player.petBook[enemy.id]||0)+1;if(offlineMetrics)(offlineMetrics.captures??=[]).push({name:pet.nickname,rarity:pet.rarity});if(['uncommon','legendary','mythic'].includes(pet.rarity))showCaptureReward(pet);message(`捕捉成功！獲得 ${petForm(pet)||pet.nickname}（${petRarity(pet).name} · ${(fusedPair(pet)?.name||SPECIES[pet.species].roleName)}）。`,'rare');if(!player.activePetId){player.activePetId=pet.id;timers.pet=gameNow();message(`${pet.nickname} 自動設定為出戰夥伴。`,'good');}const caught=enemy;if(Number.isInteger(caught.slotIndex))encounterSlots[caught.slotIndex]=gameNow()+rand(250,1400);enemies=enemies.filter(e=>e!==caught);enemy=selectEncounterTarget(enemies,player.targetPriority)||{...caught,hp:0};if(enemies.length)startReport();nextEncounterAt=gameNow()+replacementDelay();}else message(`捕捉失敗，${SPECIES[enemy.id].name} 掙脫了捕捉球。`,'bad');dirty=true;save();render();}
 
 function combineEssence(tier){const result=synthesizeEssence(player.bag,tier,player.location);if(result.error)return toast(result.error);message(`合成 ${ITEMS[result.id].name} ×1。`,'rare','system');dirty=true;save();renderSide();}
@@ -2202,11 +2202,12 @@ function renderExtremeEncounter(){
 function spawnExtremeMinion(now=gameNow()){
  const run=player?.extremeRun;if(run?.kind!=='clear')return;
  const stage=extremeStage('clear',run.floor),base=DAWN_MONSTERS[0];
- const foe={...base,id:`extreme-clear-${++encounterSerial}`,name:`萬軍魔主・第 ${run.floor} 階軍勢`,
+ const serial=++encounterSerial;
+ const foe={...base,id:'extreme-clear-minion',name:`萬軍魔主・第 ${run.floor} 階軍勢`,
   extremeKind:'clear',boss:false,elite:false,map:'extreme',level:210,
   hp:Math.max(1,Math.round(base.hp*stage.hpMultiplier)),maxHp:Math.max(1,Math.round(base.hp*stage.hpMultiplier)),
   atk:0,matk:0,attackType:'physical',xp:0,gold:0,drops:[],
-  lastAttack:now,appearedAt:now,instanceId:`extreme-clear-${encounterSerial}`};
+  lastAttack:now,appearedAt:now,instanceId:`extreme-clear-${serial}`};
  SPECIES[foe.id]={name:foe.name,role:'attack',roleName:'極限清怪',level:210};
  enemies.push(foe);return foe;
 }
@@ -2252,6 +2253,8 @@ function tickExtreme(now){
  run.floor++;run.stageStartedAt=now;run.stageDamage=0;
  player.hp=stat('hp');player.mp=stat('mp');player.shield=0;
  for(const pet of activePetRoster(player)){pet.hp=petStats(pet).hp;pet.sp=petStats(pet).sp;delete pet.reviveAt;}
+ timers.attack=0;timers.skill=0;timers.actionDelay=0;timers.ultimate=0;
+ jobSkillTimers={};petSkillTimers={};casting=null;
  spawnExtremeBoss();dirty=true;save();render();renderSide(true);
 }
 function exitExtreme(reason='主動離場'){
