@@ -3,6 +3,13 @@ import {EXTREME_SHOP_ITEMS,extremeCharacterLedger} from './extreme-trials-reward
 
 const escapeText=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const format=n=>Math.round(n).toLocaleString('zh-TW');
+// Keep a bounded checkpoint selector even when records grow without a cap.
+export function extremeStartOptions(highest){
+ const maxStart=Math.floor(Math.max(0,highest)/10)*10;
+ const checkpoints=[1,10,20,30];
+ for(let i=Math.max(40,maxStart-190);i<=maxStart;i+=10)checkpoints.push(i);
+ return [...new Set(checkpoints.filter(n=>n===1||n<=maxStart))].sort((a,b)=>a-b);
+}
 
 // HTML only; host binds data-extreme-enter and data-extreme-exit to actual actions.
 export function renderExtremePanel(player,{now=0}={}){
@@ -19,8 +26,7 @@ export function renderExtremePanel(player,{now=0}={}){
   }
   return `<section class="item extreme-trial-panel"><h3>✦ 四域極限試煉</h3><p>極限試煉官・亞爾德 · 每隻角色各自紀錄四王最高階與首次突破獎勵，互不共用。第 30 階前可取得所有主要獎勵，第 31 階起僅追求稱號與突破紀錄。</p>`+
     Object.entries(EXTREME_TRIALS).map(([kind,config])=>{
-      const high=progress[kind].highest,maxStart=Math.floor(high/10)*10;
-      const options=[1,...Array.from({length:maxStart/10},(_,i)=>(i+1)*10)];
+      const high=progress[kind].highest,options=extremeStartOptions(high);
       const detail=kind==='clear'?'30 秒內擊殺指定數量怪物':kind==='hp'?'30 秒內達成傷害門檻':'存活 20 秒，攻擊每階增加 15%';
       return `<article class="extreme-boss-card"><img class="extreme-boss-thumb" src="assets/extreme/boss-${kind}.webp" alt="${escapeText(config.name)}立繪" loading="lazy"><div><h4>${escapeText(config.name)}</h4><p>${detail} · 歷史最高第 ${high} 階</p></div>`+
         `<label>入場階段 <select data-extreme-select="${kind}">${options.map(f=>`<option value="${f}">第 ${f} 階</option>`).join('')}</select></label>`+
