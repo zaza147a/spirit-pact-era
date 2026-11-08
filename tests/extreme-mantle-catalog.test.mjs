@@ -15,7 +15,7 @@ test('四王乘十二職共有48個不重複戰袍資產規格',()=>{
   assert.ok(existsSync(new URL(`../dist/${extremeMantleArt(job,kind)}`,import.meta.url)));
  }
  assert.equal(extremeMantleArt('unknown','atk'),null);
- assert.deepEqual(EXTREME_MANTLE_READY,['atk_knight','atk_crusader']);
+ assert.deepEqual(EXTREME_MANTLE_READY,['atk_knight','atk_crusader','atk_assassin']);
  for(const variant of EXTREME_MANTLE_CATALOG){
   const resolved=extremeMantleArt(variant.job,variant.kind);
   assert.ok(existsSync(new URL(`../dist/${resolved}`,import.meta.url)),resolved);

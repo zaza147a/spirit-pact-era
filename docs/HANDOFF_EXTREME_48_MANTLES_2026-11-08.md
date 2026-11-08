@@ -52,3 +52,9 @@
 - 圖片提交 `9c0897dacb29be47e0ef73ca0a7ef5b21762e88f`；啟用提交 `730ea9150b459790ed088248b1b1b859f5402d2f`、`5723ed7547fa3677ded94cde403ca0452c87c136`。
 - `EXTREME_MANTLE_READY` 現為 `['atk_knight','atk_crusader']`，其餘 46 組仍顯示既有通用原型；15/15 專項測試通過。
 - **累計真正職業獨立戰袍 2/48，剩 46**；下張 `atk-assassin.webp`。仍需瀏覽器畫面驗證，尚未發布正式版。
+
+## 2026-11-08 逐套備份 #3：破軍 × 刺客
+
+- 新增 `dist/assets/extreme/mantles/atk-assassin.webp`，完整透明全身雙短刃刺客戰袍。
+- `EXTREME_MANTLE_READY` 增至 3/48，只有已製作圖片啟用；其餘 45 套仍顯示原型。
+- 下一套 `atk-rogue.webp`；每張美術與接線、交接須作為**同一 GitHub commit** 保存。
