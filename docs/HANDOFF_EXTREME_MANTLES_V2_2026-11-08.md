@@ -167,6 +167,14 @@
 - 已生成透明 WebP：`dist/assets/extreme/mantles-v2/hp-hunter.webp`；更新 V2_READY 與對應測試。V2 累計 29/48。
 - 下一套 `hp_performer`；僅測試分支，未合併 main。
 
+## V2 規格稽核與安全畫布（2026-11-09）
+
+- 使用者指出部分圖片規格不一致。稽核發現 30 張 V2 圖雖都有透明通道，但原尺寸不一致；破軍 12 張為 1024×1536，冥界／血淵多張為非標準長寬，`matk-monk`、`hp-assassin`、`hp-hunter` 更是橫向或近橫向構圖。
+- 新增 `scripts/art/normalize-extreme-mantles-v2.py`：裁去透明外框、等比例縮放至最大 900×1370，置中於 1024×1536 RGBA 畫布；不可拉伸人物。既有 30 張已全部套用，原始藝術版本仍可於 Git 歷史還原。
+- 新增 `tests/extreme-mantle-image-spec.test.mjs` 強制所有啟用 V2 圖必須為 1024×1536。17/17 專項測試通過；30 張尺寸與安全留白統計通過。
+- **仍待美術重繪驗收**：`matk-monk`、`hp-assassin`、`hp-hunter` 三張原始構圖偏橫，暫以等比例內縮安全展示，可能顯得人物較小。尚未完成這三張的高品質直式重繪，不能宣稱視覺已完全合格。
+- 往後所有 V2 新圖都必須先執行規格正規化及尺寸檢查，並檢查透明色邊、頭頂／腳尖／武器有無裁切，確認後才更新 `EXTREME_MANTLE_V2_READY`、GitHub 和交接文件。
+
 ## V2單套備份 #30：hp_performer（2026-11-09）
 
 - 血淵全新原創「血晶戰歌舞者」：dramatic long crimson layered petal-armored gown with spiny ribcage corset, playing a curved giant blood-crystal cello with bone bow, fierce operatic gesture, scarlet pink and pearl。
