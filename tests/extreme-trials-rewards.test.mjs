@@ -38,3 +38,20 @@ test('商店購買、收藏及稱號都只作用於當前角色',()=>{
  assert.equal(extremeCharacterLedger(b).purchases.length,0);
  assert.equal(extremeCharacterLedger(b).progress.atk.highest,0);
 });
+
+test('存檔 JSON 往返與不同角色欄位不會互相繼承極限記錄',()=>{
+ const first={name:'角色甲'},second={name:'角色乙'};
+ claimExtremeCharacterStage(first,'matk',30);
+ buyExtremeShopItem(first,'matk_frame');
+ syncExtremeHonorOwnership(first);
+ const exported=JSON.stringify(first);
+ const restored=JSON.parse(exported);
+ const originalLedger=extremeCharacterLedger(first);
+ assert.deepEqual(extremeCharacterLedger(restored),originalLedger);
+ assert.equal(extremeCharacterLedger(second).progress.matk.highest,0);
+ assert.equal(extremeCharacterLedger(second).coins,0);
+ assert.deepEqual(extremeCharacterLedger(second).purchases,[]);
+ claimExtremeCharacterStage(restored,'matk',31);
+ assert.equal(extremeCharacterLedger(first).progress.matk.highest,30);
+ assert.equal(extremeCharacterLedger(restored).progress.matk.highest,31);
+});
