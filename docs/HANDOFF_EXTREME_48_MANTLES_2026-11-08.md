@@ -58,3 +58,8 @@
 - 新增 `dist/assets/extreme/mantles/atk-assassin.webp`，完整透明全身雙短刃刺客戰袍。
 - `EXTREME_MANTLE_READY` 增至 3/48，只有已製作圖片啟用；其餘 45 套仍顯示原型。
 - 下一套 `atk-rogue.webp`；每張美術與接線、交接須作為**同一 GitHub commit** 保存。
+
+## 逐套備份 #4：破軍 × rogue
+
+- 已完成 `dist/assets/extreme/mantles/atk-rogue.webp`，啟用和測試與圖片同一提交。
+- 累計 4/48；下一套依職業／四王清單順序，不能重做已完成項目。
