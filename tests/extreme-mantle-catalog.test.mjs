@@ -32,7 +32,7 @@ test('人物與選角的極限戰袍使用同一職業資產函式',()=>{
 
 
 test('重新設計版獨立於舊圖：優先使用有圖的V2時裝',()=>{
- assert.deepEqual(EXTREME_MANTLE_V2_READY,['atk_knight','atk_crusader','atk_assassin','atk_rogue','atk_hunter','atk_performer','atk_wizard','atk_sage','atk_priest','atk_monk','atk_pactWarrior','atk_spiritCommander','matk_knight','matk_crusader','matk_assassin','matk_rogue','matk_hunter','matk_performer','matk_wizard']);
+assert.deepEqual(EXTREME_MANTLE_V2_READY,['atk_knight','atk_crusader','atk_assassin','atk_rogue','atk_hunter','atk_performer','atk_wizard','atk_sage','atk_priest','atk_monk','atk_pactWarrior','atk_spiritCommander','matk_knight','matk_crusader','matk_assassin','matk_rogue','matk_hunter','matk_performer','matk_wizard','matk_sage']);
  for(const id of EXTREME_MANTLE_V2_READY){
   const [kind,job]=id.split('_');
   const art=extremeMantleArt(job,kind);

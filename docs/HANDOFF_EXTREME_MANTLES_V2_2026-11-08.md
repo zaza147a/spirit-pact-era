@@ -106,3 +106,9 @@
 - 「天測大法師」：白髮星象學者、巨型星座量規杖與矩形浮動星圖刻板，和舞孃飄逸樂器輪廓完全不同。
 - 圖片 `dist/assets/extreme/mantles-v2/matk-wizard.webp`，更新 V2_READY 與測試；V2 累計 19/48。
 - 下一張 `matk-sage`；僅測試分支，不動正式版。
+
+## V2單套備份 #20：matk_sage（2026-11-09）
+
+- 全新職業造型「星象賢者」：young analytical celestial alchemist, one arm covered by an enormous floating folding square star-map BOOK of brass hinges, the other manipulating a cluster of glass orbital cubes, tailored asymmetric short academic waistcoat over long split scholar apron, prism-spectacles, deep sapphire and amber, side-stepping pose, no staff, no harp。
+- `dist/assets/extreme/mantles-v2/matk-sage.webp`，接線／測試／交接同步更新；V2 累計 20/48。
+- 下一張 `matk-priest`；未更新正式版。
