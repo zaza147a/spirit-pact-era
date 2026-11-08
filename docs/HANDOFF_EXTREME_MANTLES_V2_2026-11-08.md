@@ -228,3 +228,9 @@
 - 萬軍「翡翠方陣聖騎」：十字軍八角透光方陣盾、短權槌與四條連鎖戰旗，以聖陣清怪；與破軍巨旗騎士差異明確。
 - `dist/assets/extreme/mantles-v2/clear-crusader.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **38/48**。
 - 下一套 `clear_assassin`。僅測試分支，不合併 main。
+
+## V2單套備份 #39：clear_assassin（2026-11-09）
+
+- 萬軍「鎖風破陣刺客」：青黑輕裝與連鎖雙短刃、戰術三角信旗、側身動態姿態，無重甲或大型軍旗。
+- `dist/assets/extreme/mantles-v2/clear-assassin.webp` 已正規化為 1024×1536 透明 WebP，更新 V2_READY 與專項測試，累計 **39/48**。
+- 下一套 `clear_rogue`。僅測試分支，不合併 main。
