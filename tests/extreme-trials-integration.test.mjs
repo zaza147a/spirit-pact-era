@@ -11,8 +11,8 @@ test('四王試煉已接進正式遊戲模組與曙光 NPC',()=>{
   assert.match(entry,/extreme-trials\.css/);
 });
 
-test('隔離野外生成、獎勵、離線與死亡復活',()=>{
-  for(const token of ['if(player.extremeRun)return;if(player.towerRun)','if(enemy?.extremeKind)return','if(player?.extremeRun||player?.towerRun)return false','if(p.extremeRun){delete p.extremeRun','if(player?.extremeRun)exitExtreme'])
+test('隔離野外生成與普通獎勵，離線保存有效試煉且禁止自動復活',()=>{
+  for(const token of ['if(player.extremeRun)return;if(player.towerRun)','if(enemy?.extremeKind)return','if(player?.extremeRun||player?.towerRun)return false','if(p.extremeRun&&!validExtremeCheckpoint(p.extremeRun))','checkpointExtreme();','if(result.status===\'failed\')return exitExtreme(result.reason)'])
     assert.ok(game.includes(token),token);
 });
 
