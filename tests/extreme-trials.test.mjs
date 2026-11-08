@@ -8,6 +8,16 @@ test('三種首領在第 1、10、100 階使用預期的線性成長',()=>{
   assert.equal(extremeStage('matk',100).attackMultiplier,15.85);
   assert.equal(extremeStage('hp',1).requiredDamage,3000000000);
   assert.equal(extremeStage('hp',10).requiredDps,550000000);
+  assert.equal(extremeStage('clear',1).requiredKills,10);
+  assert.equal(extremeStage('clear',100).requiredKills,208);
+  assert.equal(extremeStage('clear',20).hpMultiplier,2.9000000000000004);
+});
+test('清怪王必須在 30 秒實際擊殺足量怪物',()=>{
+  const run=beginExtremeRun(player,'clear',1,0).run;
+  run.stageKills=9;
+  assert.equal(extremeStageResult(run,30000).status,'failed');
+  run.stageKills=10;
+  assert.equal(extremeStageResult(run,30000).status,'cleared');
 });
 test('入場等級、地點及十階快速入場限制',()=>{
   assert.match(beginExtremeRun({...player,level:199},'atk',1,0).error,/200/);
