@@ -87,3 +87,10 @@
 - `dist/assets/extreme/mantles-v2/matk-rogue.webp`，已更新 V2_READY 和對應專項測試。
 - V2 累計 **16/48**，還剩 32 套；下一張 `matk-hunter`。
 - 本批仍限制測試分支，未合併 main 或更新正式網站。遠端 SHA 於成功備份後回報。
+
+## V2單套備份 #17：matk-hunter（2026-11-09）
+
+- 全新「星鏡獵手」：巨型天文望遠鏡式十字弩、星圖軍披、機械星鷹。藉由武器水平展開的輪廓與流氓、刺客明確區分。
+- `dist/assets/extreme/mantles-v2/matk-hunter.webp`，更新 V2_READY、測試清單。
+- V2 累計 **17/48**，尚缺 31 套；下一張 `matk-performer`。
+- 僅更新測試分支；未合併 main 或發布正式網站。
