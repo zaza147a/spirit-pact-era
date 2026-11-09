@@ -2161,17 +2161,22 @@ function init(){if(typeof document==='undefined'){self.onmessage=async event=>{t
   if(enter&&!enter.disabled){const selector=enter.closest('.extreme-boss-card')?.querySelector('[data-extreme-select]');return startExtreme(enter.dataset.extremeEnter,Number(selector?.value||1));}
   const buy=event.target.closest('[data-extreme-buy]');
   if(buy&&!buy.disabled){
+   const before=structuredClone(player);
    try{const result=buyExtremeShopItem(player,buy.dataset.extremeBuy);if(result.error)return toast(result.error);
-    syncExtremeHonorOwnership(player);save();render();renderSide(true);return toast(`已永久收藏：${result.item.name}`);}
+    syncExtremeHonorOwnership(player);
+    if(save()===false){player=before;render();renderSide(true);return toast('極限商店存檔失敗，徽記及收藏已還原');}
+    render();renderSide(true);return toast(`已永久收藏：${result.item.name}`);}
    catch(error){return toast('極限商店購買失敗：'+error.message);}
   }
   const cosmetic=event.target.closest('[data-extreme-cosmetic]');
   if(cosmetic&&!cosmetic.disabled){
    const type=cosmetic.dataset.extremeCosmetic,kind=cosmetic.dataset.extremeKind;
    if(!['mantle','aura'].includes(type)||kind&&!extremeUnlockedCosmetics(player,type).includes(kind))return;
+   const before=structuredClone(player);
    player[type==='mantle'?'extremeSelectedMantle':'extremeSelectedAura']=kind||null;
    if(type==='mantle'&&kind){player.towerCostume=null;player.selectedOutfit=null;player.cosmeticOutfit=null;}
-   save();render();renderSide(true);
+   if(save()===false){player=before;toast('極限外觀存檔失敗，已恢復原先選擇');}
+   render();renderSide(true);
   }
  });
  document.addEventListener('click',event=>{

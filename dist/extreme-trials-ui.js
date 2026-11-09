@@ -27,7 +27,7 @@ export function renderExtremePanel(player,{now=0}={}){
   return `<section class="item extreme-trial-panel"><h3>✦ 四域極限試煉</h3><p>極限試煉官・亞爾德 · 每隻角色各自紀錄四王最高階與首次突破獎勵，互不共用。從任何已解鎖的十階節點連續挑戰，可於離線持續戰鬥，首次失敗立即停止。第 30 階前可取得所有主要獎勵，第 31 階起僅追求稱號與突破紀錄。</p>`+
     Object.entries(EXTREME_TRIALS).map(([kind,config])=>{
       const high=progress[kind].highest,options=extremeStartOptions(high);
-      const detail=kind==='clear'?'30 秒內擊殺指定數量怪物':kind==='hp'?'30 秒內達成傷害門檻':'存活 20 秒，攻擊每階增加 15%';
+      const detail=kind==='clear'?'30 秒內擊殺指定數量怪物':kind==='hp'?'30 秒內達成傷害門檻':'存活 20 秒，前 30 階逐階提升攻擊，31 階後平滑加速';
       return `<article class="extreme-boss-card"><img class="extreme-boss-thumb" src="assets/extreme/boss-${kind}.webp" alt="${escapeText(config.name)}立繪" loading="lazy"><div><h4>${escapeText(config.name)}</h4><p>${detail} · 歷史最高第 ${high} 階</p></div>`+
         `<label>入場階段 <select data-extreme-select="${kind}">${options.map(f=>`<option value="${f}">第 ${f} 階</option>`).join('')}</select></label>`+
         `<button data-extreme-enter="${kind}" ${player?.level<200?'disabled title="需要 200 等"':''}>開始挑戰</button></article>`;
