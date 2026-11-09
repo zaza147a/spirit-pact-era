@@ -6,6 +6,7 @@ import {runtime} from './runtime31-helper.mjs';
 import {legacyOptimalPlayer,LEGACY_OPTIMAL_BUILD_NAMES} from './fixtures/legacy-optimal-player.mjs';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {claimExtremeCharacterStage,syncExtremeHonorOwnership} from '../dist/extreme-trials-rewards.js';
+import {selectTowerHonor,normalizeTowerHonorSelection} from '../dist/tower-honors.js';
 
 const kinds=['atk','matk','hp','clear'];
 const jobs=[...LEGACY_OPTIMAL_BUILD_NAMES,'pactWarrior','spiritCommander'];
@@ -111,5 +112,36 @@ test('四王稱號與名稱框在保存失敗時回復原選擇，未解鎖的�
   buttons[0].dataset.towerHonorValue='不存在的未解鎖稱號';
   buttons[0].onclick();
   assert.equal(c.api.state().player.towerHonorSelection.title,title);
+ }
+});
+
+test('12職四王外觀選擇經存檔重新載入仍保留、不同角色互不覆蓋',async()=>{
+ const archive=[];
+ for(const [jobIndex,job] of jobs.entries())for(const [kindIndex,kind] of kinds.entries()){
+  const p=fixture(job);
+  claimExtremeCharacterStage(p,kind,50);syncExtremeHonorOwnership(p);
+  const title=p.extraHonorTitles.find(value=>value.includes('【50階】'));
+  const frame=p.extremeFrames.find(value=>value.includes(({atk:'破軍',matk:'冥界',hp:'血淵',clear:'萬軍'})[kind]));
+  assert.ok(title&&frame,`${job}/${kind} unlocked`);
+  assert.equal(selectTowerHonor(p,'title',title),true);
+  assert.equal(selectTowerHonor(p,'frame',frame),true);
+  p.extremeSelectedMantle=kind;
+  p.extremeSelectedAura=kind;
+  p.extremeSelectedBackground=`${kind}_${(jobIndex+kindIndex)%2?'background':'milestone'}`;
+  archive.push(JSON.parse(JSON.stringify(p)));
+ }
+ assert.equal(archive.length,48);
+ for(let i=0;i<archive.length;i++){
+  const p=archive[i];
+  const kind=kinds[i%4],job=jobs[Math.floor(i/4)];
+  const c=await runtime();
+  c.api.setup(p);
+  const restored=c.api.state().player;
+  assert.equal(restored.extremeSelectedMantle,kind,`${job}/${kind} mantle`);
+  assert.equal(restored.extremeSelectedAura,kind,`${job}/${kind} aura`);
+  assert.equal(restored.extremeSelectedBackground,p.extremeSelectedBackground,`${job}/${kind} background`);
+  assert.equal(normalizeTowerHonorSelection(restored).title,p.towerHonorSelection.title,`${job}/${kind} title`);
+  assert.equal(normalizeTowerHonorSelection(restored).frame,p.towerHonorSelection.frame,`${job}/${kind} frame`);
+  if(i>0)assert.notEqual(restored,archive[i-1],`${job}/${kind} slot isolation`);
  }
 });
