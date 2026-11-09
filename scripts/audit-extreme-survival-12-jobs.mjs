@@ -1,11 +1,12 @@
 // Real offline combat, all 12 careers and both survival bosses, from floor 31.
-// Usage: node scripts/audit-extreme-survival-12-jobs.mjs [job]
+// Usage: node scripts/audit-extreme-survival-12-jobs.mjs [job] [fusion] [magic]
 import {runtime} from '../tests/runtime31-helper.mjs';
 import {legacyOptimalPlayer,LEGACY_OPTIMAL_BUILD_NAMES} from '../tests/fixtures/legacy-optimal-player.mjs';
 import {highLevelSpiritPlayer} from '../tests/fixtures/spirit-high-level-player.mjs';
 import {canonicalFusionKey,FUSION_TYPES} from '../dist/spirit-job-rules.js';
 import {equipExtremeBossCards} from '../tests/fixtures/extreme-boss-card-loadout.mjs';
 import {affixRange,SPECIAL_AFFIXES} from '../dist/loot.js';
+import {equipPactMagicLoadout} from '../tests/fixtures/extreme-pact-magic-loadout.mjs';
 
 const epoch=1_000_000,day=86_400_000;
 const jobs=[...LEGACY_OPTIMAL_BUILD_NAMES,'pactWarrior','spiritCommander']
@@ -31,12 +32,15 @@ function legalCommanderSurvival(p){
 }
 function fixture(job){
  if(!['pactWarrior','spiritCommander'].includes(job))return legacyOptimalPlayer(job);
- const fusion='attack-magic',partner=FUSION_TYPES.find(key=>key!==fusion);
+ const fusion=process.argv[3]||'attack-magic';
+ if(!FUSION_TYPES.includes(fusion))throw Error('unknown fusion '+fusion);
+ const partner=FUSION_TYPES.find(key=>key!==fusion);
  const p=highLevelSpiritPlayer({level:210,job,pairKey:[fusion,partner].sort().join('+'),dawnSigil:0});
  p.dawnSigil=8;
  const pet=p.pets.find(item=>canonicalFusionKey(item)===fusion);
  p.pets=[pet];p.activePetId=pet.id;p.secondaryPetId=null;
  p.petStances={[pet.id]:job==='pactWarrior'?'assimilate':'assist'};
+ if(job==='pactWarrior'&&(fusion.startsWith('magic-')||process.argv[4]==='magic'))equipPactMagicLoadout(p);
  if(job==='spiritCommander')legalCommanderSurvival(p);
  return p;
 }
@@ -56,7 +60,9 @@ for(const job of jobs)for(const kind of ['atk','matk']){
  const started=performance.now();
  try{
   const {player,summary}=await c.api.simulateOffline(p,epoch+day);
-  console.log(JSON.stringify({job,kind,highest:player.extremeProgress[kind].highest,
+  console.log(JSON.stringify({job,kind,fusion:job==='pactWarrior'||job==='spiritCommander'?(process.argv[3]||'attack-magic'):null,
+   magicLoadout:job==='pactWarrior'&&((process.argv[3]||'attack-magic').startsWith('magic-')||process.argv[4]==='magic'),
+   highest:player.extremeProgress[kind].highest,
    failed:player.extremeLastResult?.floor||null,reason:summary?.reason||null,
    simulatedMs:summary?.simulated||0,elapsedMs:Math.round(performance.now()-started),
    coins:player.extremeCoins,stillActive:Boolean(player.extremeRun)}));
