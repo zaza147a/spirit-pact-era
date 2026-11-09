@@ -8,6 +8,7 @@ import {canonicalFusionKey,FUSION_TYPES} from '../dist/spirit-job-rules.js';
 import {beginExtremeRun} from '../dist/extreme-trials.js';
 import {equipExtremeBossCards} from './fixtures/extreme-boss-card-loadout.mjs';
 import {affixRange,SPECIAL_AFFIXES} from '../dist/loot.js';
+import {equipPactMagicLoadout} from './fixtures/extreme-pact-magic-loadout.mjs';
 
 const start=1000000;
 const kinds=['atk','matk','hp','clear'].filter(k=>!process.argv[2]||process.argv[2]===k);
@@ -46,6 +47,7 @@ function createBuild(job){
  const pet=p.pets.find(item=>canonicalFusionKey(item)===fusion);
  p.pets=[pet];p.activePetId=pet.id;p.secondaryPetId=null;
  p.petStances={[pet.id]:job==='pactWarrior'?'assimilate':'assist'};
+ if(job==='pactWarrior'&&process.argv[5]==='magic')equipPactMagicLoadout(p);
  if(job==='spiritCommander'&&process.argv[5]==='survival')optimizeCommanderSurvival(p);
  return p;
 }

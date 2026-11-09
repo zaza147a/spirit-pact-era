@@ -261,8 +261,8 @@ const PACT_ASSIMILATION_RATIOS=Object.freeze(Object.fromEntries(Object.entries({
  'attack-magic':{atk:3.20,matk:.72},
  'attack-defense':{atk:3.20,matk:.72},
  'attack-support':{atk:3.20,matk:.72},
- 'magic-defense':{atk:1.01,matk:1.66},
- 'magic-support':{atk:1.01,matk:1.66},
+ 'magic-defense':{atk:1.01,matk:2.38},
+ 'magic-support':{atk:1.01,matk:2.17},
  'defense-support':{atk:6.93,matk:.71},
  default:{atk:1.42,matk:.71}
 }).map(([key,offense])=>[key,{...offense,def:.19,mdef:.19,hp:.15}])));

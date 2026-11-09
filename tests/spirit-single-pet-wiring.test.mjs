@@ -77,8 +77,8 @@ test('pact six-fusion assimilation retains separate physical and magical scales'
  const assimilation=between('const PACT_ASSIMILATION_RATIOS=','function commanderTransferredPetStats(');
  assert.match(assimilation,/spiritSinglePetProfile\(player,companion\)\?\.fusion/);
  assert.match(assimilation,/'attack-magic':\{atk:3\.20,matk:\.72\}/);
- assert.match(assimilation,/'magic-defense':\{atk:1\.01,matk:1\.66\}/);
- assert.match(assimilation,/'magic-support':\{atk:1\.01,matk:1\.66\}/);
+ assert.match(assimilation,/'magic-defense':\{atk:1\.01,matk:2\.38\}/);
+ assert.match(assimilation,/'magic-support':\{atk:1\.01,matk:2\.17\}/);
  assert.match(assimilation,/'defense-support':\{atk:6\.93,matk:\.71\}/);
  assert.match(assimilation,/def:\.19,mdef:\.19,hp:\.15/);
  const warrior={job:'pactWarrior',thirdJob:true};
