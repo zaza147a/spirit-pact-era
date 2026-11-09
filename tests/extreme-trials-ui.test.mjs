@@ -28,6 +28,8 @@ test('已移除商店購買按鈕，衣櫃在存檔失敗時仍回復原選擇',
  const source=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
  const wardrobe=source.slice(source.indexOf("const cosmetic=event.target.closest('[data-extreme-cosmetic]')"),source.indexOf("document.addEventListener('click',event=>{\n  if(!event.target.closest('[data-extreme-exit]')"));
  assert.doesNotMatch(source,/data-extreme-buy|buyExtremeShopItem|極限徽記/);
+ assert.doesNotMatch(source,/極限試煉商店解鎖/);
+ assert.match(source,/四王各通過第 30 階後會自動永久解鎖兩款背景/);
  assert.match(wardrobe,/const before=structuredClone\(player\)/);
  assert.match(wardrobe,/if\(save\(\)===false\)\{player=before;/);
  assert.match(wardrobe,/已恢復原先選擇/);
