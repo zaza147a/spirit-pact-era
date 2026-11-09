@@ -613,3 +613,9 @@
 - MATK 八圖及 CLEAR 修羅／騎士十張原低佔比素材已完成直式改造；仍需以更新後總覽進行主觀美術檢視（職業武器、五官、角色相似度），不能僅憑 alpha 數字宣稱美術驗收完成。
 - 本次只更新 `feature/endless-trials-three-bosses` 測試分支。`main`、GitHub Pages 正式網站與部署流程均未觸碰。
 - 上傳總覽時發現原 48 圖 JPG 約518KB，遠端二進位傳輸與本地 Git blob 雜湊不相符；已調整總覽產生腳本的 JPG 品質81／色度採樣2／最佳化選項，縮至約281KB，並額外獨立提交修正。推送後必須用 `git hash-object` 對照 `git ls-tree` 遠端 blob，避免產生損壞預覽。
+
+## 續作：可重複的 alpha 稽核（2026-11-09）
+
+- 新增 `scripts/art/audit-extreme-mantle-alpha.py`：依每張 WebP 的實際 RGBA、1024×1536、alpha≥128 bbox、四側安全留白百分比、48 檔數量及 SHA-256 唯一性檢查。預設回報 `REVIEW` 不令正常流程失敗；`--strict` 才在未達6%時回傳失敗，方便未來收尾驗收。
+- 實跑結果為 48 張、9 張 `REVIEW`；數值與上一節逐張清單一致。`node --test tests/extreme-*.test.mjs` 再驗證 36／36 通過。
+- 本輪再以原圖作參考重新生成 HP 舞孃，但生成仍然底部留白約80px（需至少93px），因此放棄新稿，不覆寫舊版。這是原始角色已定稿與逐像素留白的取捨；剩餘9張**仍待嚴格6%驗收**，沒有假稱已全數修正。
