@@ -859,3 +859,8 @@
 - 擴大回歸第一次發現 `tests/spirit-rank-outfits.test.mjs` 因僅讀 `spriteHtml` 前1100字元，極限首領／金幣外觀判斷新增後擠掉SSS外觀判斷而誤報失敗。直接查看真正 `spriteHtml` 可證實S／SS／SSS分支仍在預設肖像前，故**只修正測試截取範圍**至完整函式；六張WEBP規格512×768、alpha、排名外觀優先順序均通過，遊戲外觀程式未動。
 - 擴大回歸 `node --test tests/extreme-*.test.mjs tests/spirit-*.test.mjs tests/boss-card-runtime.test.mjs` **131／131 通過**；其中包含六融合全MATK連戰、王卡、君王三體100／60／60、戰袍程式規格、死亡／復活與離線接續等。沒有做瀏覽器視覺驗收。
 - 待續：完整四王30階之後的無盡高層、48張戰袍個別美術視覺驗收、201～210野外混首領與長時離線效能／回歸。main與正式網站均不動。
+
+## 48張極限戰袍V2技術規格抽查（2026-11-09）
+
+- `identify -format '%f %wx%h %[channels] %[opaque]' dist/assets/extreme/mantles-v2/*.webp` 掃描全部 **48／48**：4王 `atk/matk/hp/clear` × 12職每組各一張；**每張皆1024×1536、WebP可解碼、sRGBA通道、具非全不透明Alpha**，尺寸與透明背景規格一致。
+- 未發現格式／尺寸異常或缺失檔案；**此為技術檢查，不能代表人物比例、造型差異、武器輪廓、透明邊緣已通過美術視覺驗收**。本批保留全部既有圖片，沒有重繪或覆蓋任何素材。
