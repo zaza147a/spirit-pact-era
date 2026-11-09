@@ -1,0 +1,227 @@
+[
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-magic-1.webp",
+    "prompt": "ONE 16:9 finished hand-painted anime fantasy JRPG environment. Along an ancient glossy fractured obsidian road climbing a volcanic mountainside toward a smoking volcano. Weathered basalt waystones, faint ember seams, cold drifting ash, distant restrained orange lava glow under dramatic clouds. Strong traversable path and atmospheric depth, no city yet, no text, UI, watermark, panels or portrait. Opaque background.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720,
+    "note": "Prompt summary restored for first checkpoint."
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-magic-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. Cinderstar volcanic continent, journey page 2: Cold grey ash drifts across an ancient basalt bridge spanning a lava chasm. Along the bridge multiple cylindrical heat supply towers with dragon-inspired copper pipes recede into distance; nearest tower fire is weak, middle almost extinguished, far towers dark. Ember-orange lava below contrasts with cold ash-grey atmosphere. Same volcanic world as the obsidian ascent. Emphasize bridge and dying tower lights.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-magic-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. Cinderstar journey page 3: Arrival outside 燼星龍城, an imposing dragon-themed volcanic fortress built of black obsidian and bronze heating conduits. The city's enormous ancestral furnace is dim, windows mostly cold. A small elderly furnace keeper waits by the city gate beside a protected tiny last ember. Epic wide establishing shot, emotionally hopeful, lava fissures below, smoky dusk sky. Environment dominates, keeper small.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-attack-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Floating avian sky civilization with white stone and feather-shaped silver ornament, flying wind-sail ships and suspended navigation beacons, peach light against threatening blue thunderclouds.. Journey destination: 赤羽天都. Illustrate ONLY this page's narrative: 登上離開崖港的風帆船。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-attack-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Floating avian sky civilization with white stone and feather-shaped silver ornament, flying wind-sail ships and suspended navigation beacons, peach light against threatening blue thunderclouds.. Journey destination: 赤羽天都. Illustrate ONLY this page's narrative: 雷暴中，斷裂的航標指向相反星路。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-attack-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Floating avian sky civilization with white stone and feather-shaped silver ornament, flying wind-sail ships and suspended navigation beacons, peach light against threatening blue thunderclouds.. Journey destination: 赤羽天都. Illustrate ONLY this page's narrative: 穿過雲層，赤羽天都的巨大光環黯淡無光。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-defense-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Harsh sandstone frontier badlands, defensive layered fortress gates, turquoise luminous tectonic fissures, weary civilian evacuation wagons, protective sober atmosphere.. Journey destination: 玄關壁城. Illustrate ONLY this page's narrative: 踏上荒原中的舊軍道。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-defense-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Harsh sandstone frontier badlands, defensive layered fortress gates, turquoise luminous tectonic fissures, weary civilian evacuation wagons, protective sober atmosphere.. Journey destination: 玄關壁城. Illustrate ONLY this page's narrative: 在崩裂峽谷旁接應撤離車隊。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-defense-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Harsh sandstone frontier badlands, defensive layered fortress gates, turquoise luminous tectonic fissures, weary civilian evacuation wagons, protective sober atmosphere.. Journey destination: 玄關壁城. Illustrate ONLY this page's narrative: 玄關壁城層層城門聳立，鎮界錨已出現裂痕。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-attack-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Massive subterranean iron-forging civilization, mine rails and minecarts, black iron and brass pipes, amber furnace glow against cold blue cavern shadows, deserted mechanical forge.. Journey destination: 赤砧爐堡. Illustrate ONLY this page's narrative: 搭乘礦軌車深入山腹。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-attack-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Massive subterranean iron-forging civilization, mine rails and minecarts, black iron and brass pipes, amber furnace glow against cold blue cavern shadows, deserted mechanical forge.. Journey destination: 赤砧爐堡. Illustrate ONLY this page's narrative: 無人的鍛造廊裡，鐵鎚仍規律敲擊。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-attack-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Massive subterranean iron-forging civilization, mine rails and minecarts, black iron and brass pipes, amber furnace glow against cold blue cavern shadows, deserted mechanical forge.. Journey destination: 赤砧爐堡. Illustrate ONLY this page's narrative: 穿過鐵橋，赤砧爐堡的主爐仍在失控運轉。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/attack-support-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Gentle golden terraced harvest countryside, rustic wooden farming village and lush ancient forest, golden-green light, interrupted harvest festival.. Journey destination: 玉穗原鄉. Illustrate ONLY this page's narrative: 走過金色梯田與收割後的小路。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-attack-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: East Asian martial mountain village, crimson maple trees, old red war banners, stone courtyards and tiled wooden halls, serene but unusually deserted.. Journey destination: 丹旌武鄉. Illustrate ONLY this page's narrative: 丹旌武鄉的百旗迎風飄揚，練武場卻異常安靜。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-defense-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Immense subterranean crystalline civilization, luminous violet and cyan crystals, underground river and resonant towers, silver-blue reflected light and lost song.. Journey destination: 晶歌深城. Illustrate ONLY this page's narrative: 搭升降籠下降到地底晶穴。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-defense-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Immense subterranean crystalline civilization, luminous violet and cyan crystals, underground river and resonant towers, silver-blue reflected light and lost song.. Journey destination: 晶歌深城. Illustrate ONLY this page's narrative: 沿發光晶河前進，水聲掩蓋了原本的歌聲。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-defense-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Immense subterranean crystalline civilization, luminous violet and cyan crystals, underground river and resonant towers, silver-blue reflected light and lost song.. Journey destination: 晶歌深城. Illustrate ONLY this page's narrative: 晶歌深城的共鳴高塔一片寂靜。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-magic-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Ancient magical desert city, sandstone monuments, teal luminous non-readable magical geometric motifs, shifting mirage roads, segmented floating gate architecture.. Journey destination: 環符祕城. Illustrate ONLY this page's narrative: 穿越佈滿石碑的砂海。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-magic-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Ancient magical desert city, sandstone monuments, teal luminous non-readable magical geometric motifs, shifting mirage roads, segmented floating gate architecture.. Journey destination: 環符祕城. Illustrate ONLY this page's narrative: 追著不斷移動的符文道路走過蜃景。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-magic-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Ancient magical desert city, sandstone monuments, teal luminous non-readable magical geometric motifs, shifting mirage roads, segmented floating gate architecture.. Journey destination: 環符祕城. Illustrate ONLY this page's narrative: 環符祕城的分段城門正反覆重組。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-support-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: White-stone sacred maritime harbor with feather-inspired arcades, cold deep blue sea, dense fog, unlit lighthouse, subtle warm lantern accents.. Journey destination: 白羽聖港. Illustrate ONLY this page's narrative: 乘夜船越過深色海面。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-support-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: White-stone sacred maritime harbor with feather-inspired arcades, cold deep blue sea, dense fog, unlit lighthouse, subtle warm lantern accents.. Journey destination: 白羽聖港. Illustrate ONLY this page's narrative: 無光燈塔在霧中浮現，遠處有真假難辨的船影。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/magic-support-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: White-stone sacred maritime harbor with feather-inspired arcades, cold deep blue sea, dense fog, unlit lighthouse, subtle warm lantern accents.. Journey destination: 白羽聖港. Illustrate ONLY this page's narrative: 白羽聖港的拱廊下，守燈人望著失去航線的船冊。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-magic-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Dreamlike floating East Asian silk-weaver village above mountains, pearly cloud sea, pastel jade and lavender architecture, silk bridges and ribbons, cloud platforms losing support.. Journey destination: 雲織仙鄉. Illustrate ONLY this page's narrative: 乘天河小舟進入高空雲海。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-magic-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Dreamlike floating East Asian silk-weaver village above mountains, pearly cloud sea, pastel jade and lavender architecture, silk bridges and ribbons, cloud platforms losing support.. Journey destination: 雲織仙鄉. Illustrate ONLY this page's narrative: 斷裂雲橋與飄散絲帶橫在前方。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-magic-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Dreamlike floating East Asian silk-weaver village above mountains, pearly cloud sea, pastel jade and lavender architecture, silk bridges and ribbons, cloud platforms losing support.. Journey destination: 雲織仙鄉. Illustrate ONLY this page's narrative: 雲織仙鄉的屋舍正隨浮台緩緩下沉。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-support-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Ancient emerald world-tree civilization, enormous roots and tree-trunk dwellings, amber sap and tiny bioluminescent life lights, wounded inner gardens, sympathetic natural textures.. Journey destination: 翠庭樹城. Illustrate ONLY this page's narrative: 沿巨大的樹根進入古林。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-support-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Ancient emerald world-tree civilization, enormous roots and tree-trunk dwellings, amber sap and tiny bioluminescent life lights, wounded inner gardens, sympathetic natural textures.. Journey destination: 翠庭樹城. Illustrate ONLY this page's narrative: 枯萎內庭的深處，有生命光點持續流失。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/defense-support-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Ancient emerald world-tree civilization, enormous roots and tree-trunk dwellings, amber sap and tiny bioluminescent life lights, wounded inner gardens, sympathetic natural textures.. Journey destination: 翠庭樹城. Illustrate ONLY this page's narrative: 翠庭樹城依樹幹而建，最底層的燈火正在熄滅。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-defense-1.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Remote snowy alpine hot-spring village, timber mountain houses, icy suspension bridges, deep cobalt winter air and warm amber windows, last hot spring steaming.. Journey destination: 磐泉隱村. Illustrate ONLY this page's narrative: 隨雪地商隊沿山路向上。. Departure or travel scene; do not show arrival at the destination yet.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-defense-2.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Remote snowy alpine hot-spring village, timber mountain houses, icy suspension bridges, deep cobalt winter air and warm amber windows, last hot spring steaming.. Journey destination: 磐泉隱村. Illustrate ONLY this page's narrative: 越過結冰吊橋，谷底已看不見流水。. Show the distinctive obstacle encountered during travel, not the final town arrival.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "asset": "dist/assets/homecoming/journeys/support-defense-3.webp",
+    "prompt": "Use case: illustration-story. ONE finished landscape illustration, exact 16:9, for a polished hand-painted anime fantasy JRPG return journey. Detailed coherent architecture and materials, cinematic atmospheric lighting, strong readable focal point and depth, beautiful production game background. Scene is a single moment of travel, not a collage. No text, letters, UI, labels, watermark, borders, panels or large foreground portrait. Opaque background. World continuity: Remote snowy alpine hot-spring village, timber mountain houses, icy suspension bridges, deep cobalt winter air and warm amber windows, last hot spring steaming.. Journey destination: 磐泉隱村. Illustrate ONLY this page's narrative: 磐泉隱村只剩最後一口冒著熱氣的暖泉。. Wide establishing shot of arrival at the destination; emphasize the specific condition described.",
+    "tool": "built-in imagegen",
+    "width": 1280,
+    "height": 720
+  }
+]

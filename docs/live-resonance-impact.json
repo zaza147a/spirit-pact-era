@@ -1,0 +1,4543 @@
+{
+  "conditions": "Post live-event fix: all five affected original pacts. Five-boss: all 20 triplets, seed731, unenhanced prior-tier Lv200 reference. Field201 and actual boss210: SSS owner/pet reference gear, three seeds42/137/731, sigil0/IV respectively. No fixed contribution ratios. Changes: generic buff alias without double energy, performer defense-support effective healing, performer attack-defense 20s accumulation window.",
+  "summary": [
+    {
+      "kind": "fiveBoss",
+      "count": 100,
+      "wins": 100,
+      "alive": 100,
+      "failed": []
+    },
+    {
+      "kind": "field201",
+      "count": 15,
+      "wins": 0,
+      "alive": 15,
+      "failed": []
+    },
+    {
+      "kind": "boss210",
+      "count": 15,
+      "wins": 15,
+      "alive": 15,
+      "failed": []
+    }
+  ],
+  "rows": [
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 235.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 340910.455,
+      "contribution": {
+        "owner": {
+          "damage": 78954794,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 34702
+        },
+        "pet": {
+          "damage": 114508190,
+          "healing": 100321,
+          "shield": 0,
+          "tanking": 10948266
+        },
+        "ownerTotal": 78989496,
+        "petTotal": 125556777,
+        "total": 204546273,
+        "ownerShare": 0.38616932414114435
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 207.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338571.78833333333,
+      "contribution": {
+        "owner": {
+          "damage": 78893661,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 0
+        },
+        "pet": {
+          "damage": 114569323,
+          "healing": 78393,
+          "shield": 0,
+          "tanking": 9601696
+        },
+        "ownerTotal": 78893661,
+        "petTotal": 124249412,
+        "total": 203143073,
+        "ownerShare": 0.38836500715926453
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 239.18,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 341638.70166666666,
+      "contribution": {
+        "owner": {
+          "damage": 81670497,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 34702
+        },
+        "pet": {
+          "damage": 111792487,
+          "healing": 100321,
+          "shield": 0,
+          "tanking": 11385214
+        },
+        "ownerTotal": 81705199,
+        "petTotal": 123278022,
+        "total": 204983221,
+        "ownerShare": 0.3985945708209942
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 204.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 339351.13666666666,
+      "contribution": {
+        "owner": {
+          "damage": 76767727,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 0
+        },
+        "pet": {
+          "damage": 116695257,
+          "healing": 88401,
+          "shield": 0,
+          "tanking": 10059297
+        },
+        "ownerTotal": 76767727,
+        "petTotal": 126842955,
+        "total": 203610682,
+        "ownerShare": 0.37703192310902434
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 209.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338629.625,
+      "contribution": {
+        "owner": {
+          "damage": 81283515,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 34702
+        },
+        "pet": {
+          "damage": 112179469,
+          "healing": 78393,
+          "shield": 0,
+          "tanking": 9601696
+        },
+        "ownerTotal": 81318217,
+        "petTotal": 121859558,
+        "total": 203177775,
+        "ownerShare": 0.4002318511461207
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 241.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 342218.42833333334,
+      "contribution": {
+        "owner": {
+          "damage": 84115842,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 34702
+        },
+        "pet": {
+          "damage": 109347142,
+          "healing": 100321,
+          "shield": 0,
+          "tanking": 11733050
+        },
+        "ownerTotal": 84150544,
+        "petTotal": 121180513,
+        "total": 205331057,
+        "ownerShare": 0.40982862129814096
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 207.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 339940.7166666667,
+      "contribution": {
+        "owner": {
+          "damage": 78892783,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 0
+        },
+        "pet": {
+          "damage": 114570201,
+          "healing": 94590,
+          "shield": 0,
+          "tanking": 10406856
+        },
+        "ownerTotal": 78892783,
+        "petTotal": 125071647,
+        "total": 203964430,
+        "ownerShare": 0.3867967713782251
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 215.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 337732.11333333334,
+      "contribution": {
+        "owner": {
+          "damage": 82972635,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 104106
+        },
+        "pet": {
+          "damage": 110490349,
+          "healing": 75655,
+          "shield": 0,
+          "tanking": 8996523
+        },
+        "ownerTotal": 83076741,
+        "petTotal": 119562527,
+        "total": 202639268,
+        "ownerShare": 0.4099735545827179
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 189.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 336532.535,
+      "contribution": {
+        "owner": {
+          "damage": 75816086,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 34702
+        },
+        "pet": {
+          "damage": 117646898,
+          "healing": 76964,
+          "shield": 0,
+          "tanking": 8344871
+        },
+        "ownerTotal": 75850788,
+        "petTotal": 126068733,
+        "total": 201919521,
+        "ownerShare": 0.37564861299368874
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 211.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 339983.005,
+      "contribution": {
+        "owner": {
+          "damage": 80442367,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 0
+        },
+        "pet": {
+          "damage": 113020617,
+          "healing": 94590,
+          "shield": 0,
+          "tanking": 10432229
+        },
+        "ownerTotal": 80442367,
+        "petTotal": 123547436,
+        "total": 203989803,
+        "ownerShare": 0.394345039884175
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 238.02,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 337074.61833333335,
+      "contribution": {
+        "owner": {
+          "damage": 82116400,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 137173
+        },
+        "pet": {
+          "damage": 111346584,
+          "healing": 6188,
+          "shield": 0,
+          "tanking": 8638426
+        },
+        "ownerTotal": 82253573,
+        "petTotal": 119991198,
+        "total": 202244771,
+        "ownerShare": 0.4067030885065503
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 269.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 341635.9683333333,
+      "contribution": {
+        "owner": {
+          "damage": 93792671,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 137173
+        },
+        "pet": {
+          "damage": 99670313,
+          "healing": 100872,
+          "shield": 0,
+          "tanking": 11280552
+        },
+        "ownerTotal": 93929844,
+        "petTotal": 111051737,
+        "total": 204981581,
+        "ownerShare": 0.45823553287941515
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 228.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 339009.42833333334,
+      "contribution": {
+        "owner": {
+          "damage": 82413248,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 137173
+        },
+        "pet": {
+          "damage": 111049736,
+          "healing": 86462,
+          "shield": 0,
+          "tanking": 9719038
+        },
+        "ownerTotal": 82550421,
+        "petTotal": 120855236,
+        "total": 203405657,
+        "ownerShare": 0.40584132328237066
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 243.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 337747.0966666667,
+      "contribution": {
+        "owner": {
+          "damage": 84337472,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 206577
+        },
+        "pet": {
+          "damage": 109125512,
+          "healing": 74183,
+          "shield": 0,
+          "tanking": 8904514
+        },
+        "ownerTotal": 84544049,
+        "petTotal": 118104209,
+        "total": 202648258,
+        "ownerShare": 0.41719603136188815
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 208,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335647.31166666665,
+      "contribution": {
+        "owner": {
+          "damage": 80343955,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 206577
+        },
+        "pet": {
+          "damage": 113119029,
+          "healing": 77724,
+          "shield": 0,
+          "tanking": 7641102
+        },
+        "ownerTotal": 80550532,
+        "petTotal": 120837855,
+        "total": 201388387,
+        "ownerShare": 0.39997605224376714
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 236.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 339081.93833333335,
+      "contribution": {
+        "owner": {
+          "damage": 84421972,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 137173
+        },
+        "pet": {
+          "damage": 109041012,
+          "healing": 92066,
+          "shield": 0,
+          "tanking": 9756940
+        },
+        "ownerTotal": 84559145,
+        "petTotal": 118890018,
+        "total": 203449163,
+        "ownerShare": 0.41562788341380397
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 248,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338839.5316666667,
+      "contribution": {
+        "owner": {
+          "damage": 87597815,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 206577
+        },
+        "pet": {
+          "damage": 105865169,
+          "healing": 73752,
+          "shield": 0,
+          "tanking": 9560406
+        },
+        "ownerTotal": 87804392,
+        "petTotal": 115499327,
+        "total": 203303719,
+        "ownerShare": 0.4318877806657339
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 209.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335647.31166666665,
+      "contribution": {
+        "owner": {
+          "damage": 81560322,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 206577
+        },
+        "pet": {
+          "damage": 111902662,
+          "healing": 77724,
+          "shield": 0,
+          "tanking": 7641102
+        },
+        "ownerTotal": 81766899,
+        "petTotal": 119621488,
+        "total": 201388387,
+        "ownerShare": 0.4060159586063917
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 239.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 339674.545,
+      "contribution": {
+        "owner": {
+          "damage": 86453017,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 137173
+        },
+        "pet": {
+          "damage": 107009967,
+          "healing": 92066,
+          "shield": 0,
+          "tanking": 10112504
+        },
+        "ownerTotal": 86590190,
+        "petTotal": 117214537,
+        "total": 203804727,
+        "ownerShare": 0.42486840847415674
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "priest",
+      "pair": "attack-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 214.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 337897.235,
+      "contribution": {
+        "owner": {
+          "damage": 83493727,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 137173
+        },
+        "pet": {
+          "damage": 109969257,
+          "healing": 80766,
+          "shield": 0,
+          "tanking": 9057418
+        },
+        "ownerTotal": 83630900,
+        "petTotal": 119107441,
+        "total": 202738341,
+        "ownerShare": 0.4125065815745232
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "priest",
+      "pair": "attack-support",
+      "seed": 42,
+      "kills": 22,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 154826740.75,
+      "contribution": {
+        "owner": {
+          "damage": 6147041618,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 2229273
+        },
+        "pet": {
+          "damage": 2506786477,
+          "healing": 1154345,
+          "shield": 0,
+          "tanking": 632392732
+        },
+        "ownerTotal": 6149270891,
+        "petTotal": 3140333554,
+        "total": 9289604445,
+        "ownerShare": 0.6619518546141929
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "priest",
+      "pair": "attack-support",
+      "seed": 42,
+      "won": true,
+      "kills": 23,
+      "seconds": 77.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 53959045.65833333,
+      "contribution": {
+        "owner": {
+          "damage": 8563678637,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 3513987
+        },
+        "pet": {
+          "damage": 3449587854,
+          "healing": 3366368,
+          "shield": 0,
+          "tanking": 930024112
+        },
+        "ownerTotal": 8567192624,
+        "petTotal": 4382978334,
+        "total": 12950170958,
+        "ownerShare": 0.6615505425978639
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "priest",
+      "pair": "attack-support",
+      "seed": 137,
+      "kills": 23,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 154733155.78333333,
+      "contribution": {
+        "owner": {
+          "damage": 6166125700,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 1831146
+        },
+        "pet": {
+          "damage": 2551436404,
+          "healing": 960708,
+          "shield": 0,
+          "tanking": 563635389
+        },
+        "ownerTotal": 6167956846,
+        "petTotal": 3116032501,
+        "total": 9283989347,
+        "ownerShare": 0.6643649206677618
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "priest",
+      "pair": "attack-support",
+      "seed": 137,
+      "won": true,
+      "kills": 24,
+      "seconds": 77.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 54715326.420833334,
+      "contribution": {
+        "owner": {
+          "damage": 8591191554,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 3449899
+        },
+        "pet": {
+          "damage": 3528767003,
+          "healing": 3836904,
+          "shield": 0,
+          "tanking": 1004432981
+        },
+        "ownerTotal": 8594641453,
+        "petTotal": 4537036888,
+        "total": 13131678341,
+        "ownerShare": 0.6544968000141788
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "priest",
+      "pair": "attack-support",
+      "seed": 731,
+      "kills": 23,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 154095532.71666667,
+      "contribution": {
+        "owner": {
+          "damage": 6163470210,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 2491450
+        },
+        "pet": {
+          "damage": 2511619259,
+          "healing": 887924,
+          "shield": 0,
+          "tanking": 567263120
+        },
+        "ownerTotal": 6165961660,
+        "petTotal": 3079770303,
+        "total": 9245731963,
+        "ownerShare": 0.6668981628144999
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "priest",
+      "pair": "attack-support",
+      "seed": 731,
+      "won": true,
+      "kills": 24,
+      "seconds": 77.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 54214434.87083333,
+      "contribution": {
+        "owner": {
+          "damage": 8581063239,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 3831918
+        },
+        "pet": {
+          "damage": 3518165887,
+          "healing": 3583513,
+          "shield": 0,
+          "tanking": 904819812
+        },
+        "ownerTotal": 8584895157,
+        "petTotal": 4426569212,
+        "total": 13011464369,
+        "ownerShare": 0.6597946943968609
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 188.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2,
+      "score": 338430.28,
+      "contribution": {
+        "owner": {
+          "damage": 89391920,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 40393
+        },
+        "pet": {
+          "damage": 104071064,
+          "healing": 15687,
+          "shield": 47905,
+          "tanking": 9491199
+        },
+        "ownerTotal": 89432313,
+        "petTotal": 113625855,
+        "total": 203058168,
+        "ownerShare": 0.440427065214141
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 164.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335022.37333333335,
+      "contribution": {
+        "owner": {
+          "damage": 84787236,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 78841
+        },
+        "pet": {
+          "damage": 108675748,
+          "healing": 4813,
+          "shield": 39263,
+          "tanking": 7427523
+        },
+        "ownerTotal": 84866077,
+        "petTotal": 116147347,
+        "total": 201013424,
+        "ownerShare": 0.42219109207353234
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 185.96,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2,
+      "score": 337847.0933333333,
+      "contribution": {
+        "owner": {
+          "damage": 87494553,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 40393
+        },
+        "pet": {
+          "damage": 105968431,
+          "healing": 13060,
+          "shield": 48087,
+          "tanking": 9143732
+        },
+        "ownerTotal": 87534946,
+        "petTotal": 115173310,
+        "total": 202708256,
+        "ownerShare": 0.43182723647920884
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 192.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338503.5516666667,
+      "contribution": {
+        "owner": {
+          "damage": 90438854,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 40393
+        },
+        "pet": {
+          "damage": 103024130,
+          "healing": 12981,
+          "shield": 50532,
+          "tanking": 9535241
+        },
+        "ownerTotal": 90479247,
+        "petTotal": 112622884,
+        "total": 203102131,
+        "ownerShare": 0.44548644839181917
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 194.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1,
+      "score": 337620.3233333333,
+      "contribution": {
+        "owner": {
+          "damage": 88677850,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 78780
+        },
+        "pet": {
+          "damage": 104785134,
+          "healing": 17664,
+          "shield": 44210,
+          "tanking": 8968556
+        },
+        "ownerTotal": 88756630,
+        "petTotal": 113815564,
+        "total": 202572194,
+        "ownerShare": 0.43814813991697205
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 224.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3,
+      "score": 341728.49,
+      "contribution": {
+        "owner": {
+          "damage": 92522709,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 40697
+        },
+        "pet": {
+          "damage": 100940275,
+          "healing": 17664,
+          "shield": 55326,
+          "tanking": 11460423
+        },
+        "ownerTotal": 92563406,
+        "petTotal": 112473688,
+        "total": 205037094,
+        "ownerShare": 0.45144712205099824
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 232.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 342385.61833333335,
+      "contribution": {
+        "owner": {
+          "damage": 96417871,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 40697
+        },
+        "pet": {
+          "damage": 97045113,
+          "healing": 22997,
+          "shield": 55326,
+          "tanking": 11849367
+        },
+        "ownerTotal": 96458568,
+        "petTotal": 108972803,
+        "total": 205431371,
+        "ownerShare": 0.4695415677287185
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 194.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 336942.81333333335,
+      "contribution": {
+        "owner": {
+          "damage": 87318117,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 0
+        },
+        "pet": {
+          "damage": 106144867,
+          "healing": 13060,
+          "shield": 42714,
+          "tanking": 8646930
+        },
+        "ownerTotal": 87318117,
+        "petTotal": 114847571,
+        "total": 202165688,
+        "ownerShare": 0.4319136341276666
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 197.18,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338247.06333333335,
+      "contribution": {
+        "owner": {
+          "damage": 90517008,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 0
+        },
+        "pet": {
+          "damage": 102945976,
+          "healing": 13060,
+          "shield": 47604,
+          "tanking": 9424590
+        },
+        "ownerTotal": 90517008,
+        "petTotal": 112431230,
+        "total": 202948238,
+        "ownerShare": 0.4460103171725985
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 229.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 342178.68166666664,
+      "contribution": {
+        "owner": {
+          "damage": 94233089,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 0
+        },
+        "pet": {
+          "damage": 99229895,
+          "healing": 15635,
+          "shield": 55356,
+          "tanking": 11773234
+        },
+        "ownerTotal": 94233089,
+        "petTotal": 111074120,
+        "total": 205307209,
+        "ownerShare": 0.4589857777473367
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 188.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 21,
+      "score": 336736.055,
+      "contribution": {
+        "owner": {
+          "damage": 88700526,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 95674
+        },
+        "pet": {
+          "damage": 104762458,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 8482975
+        },
+        "ownerTotal": 88796200,
+        "petTotal": 113245433,
+        "total": 202041633,
+        "ownerShare": 0.4394945669440318
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 214.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 26,
+      "score": 336326.2966666667,
+      "contribution": {
+        "owner": {
+          "damage": 92870405,
+          "healing": 0,
+          "shield": 2330,
+          "tanking": 179147
+        },
+        "pet": {
+          "damage": 100592579,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 8151317
+        },
+        "ownerTotal": 93051882,
+        "petTotal": 108743896,
+        "total": 201795778,
+        "ownerShare": 0.46111907257048756
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 223.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338447.32666666666,
+      "contribution": {
+        "owner": {
+          "damage": 95995696,
+          "healing": 0,
+          "shield": 2330,
+          "tanking": 202452
+        },
+        "pet": {
+          "damage": 97467288,
+          "healing": 70305,
+          "shield": 0,
+          "tanking": 9330325
+        },
+        "ownerTotal": 96200478,
+        "petTotal": 106867918,
+        "total": 203068396,
+        "ownerShare": 0.473734366818951
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 186.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 21,
+      "score": 336209.07166666666,
+      "contribution": {
+        "owner": {
+          "damage": 87217830,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 95674
+        },
+        "pet": {
+          "damage": 106245154,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 8166785
+        },
+        "ownerTotal": 87313504,
+        "petTotal": 114411939,
+        "total": 201725443,
+        "ownerShare": 0.4328333734282591
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 191.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 337528.945,
+      "contribution": {
+        "owner": {
+          "damage": 90783393,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 100011
+        },
+        "pet": {
+          "damage": 102679591,
+          "healing": 49645,
+          "shield": 0,
+          "tanking": 8904727
+        },
+        "ownerTotal": 90883404,
+        "petTotal": 111633963,
+        "total": 202517367,
+        "ownerShare": 0.44876844562175255
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 220.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338421.31666666665,
+      "contribution": {
+        "owner": {
+          "damage": 93982099,
+          "healing": 0,
+          "shield": 2330,
+          "tanking": 202452
+        },
+        "pet": {
+          "damage": 99480885,
+          "healing": 72880,
+          "shield": 0,
+          "tanking": 9312144
+        },
+        "ownerTotal": 94186881,
+        "petTotal": 108865909,
+        "total": 203052790,
+        "ownerShare": 0.46385415832010973
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 224.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 23,
+      "score": 337366.98333333334,
+      "contribution": {
+        "owner": {
+          "damage": 92900303,
+          "healing": 0,
+          "shield": 1945,
+          "tanking": 155630
+        },
+        "pet": {
+          "damage": 100562681,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 8799631
+        },
+        "ownerTotal": 93057878,
+        "petTotal": 109362312,
+        "total": 202420190,
+        "ownerShare": 0.4597262654481255
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 235.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 339649.7916666667,
+      "contribution": {
+        "owner": {
+          "damage": 96827627,
+          "healing": 0,
+          "shield": 1945,
+          "tanking": 170182
+        },
+        "pet": {
+          "damage": 96635357,
+          "healing": 65701,
+          "shield": 0,
+          "tanking": 10089063
+        },
+        "ownerTotal": 96999754,
+        "petTotal": 106790121,
+        "total": 203789875,
+        "ownerShare": 0.47597926050055234
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 279.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 343427.25833333336,
+      "contribution": {
+        "owner": {
+          "damage": 102539154,
+          "healing": 0,
+          "shield": 1945,
+          "tanking": 170182
+        },
+        "pet": {
+          "damage": 90923830,
+          "healing": 88801,
+          "shield": 0,
+          "tanking": 12332443
+        },
+        "ownerTotal": 102711281,
+        "petTotal": 103345074,
+        "total": 206056355,
+        "ownerShare": 0.49846208819912396
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 231.42,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 340756.80833333335,
+      "contribution": {
+        "owner": {
+          "damage": 94838028,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 129767
+        },
+        "pet": {
+          "damage": 98624956,
+          "healing": 72829,
+          "shield": 0,
+          "tanking": 10788505
+        },
+        "ownerTotal": 94967795,
+        "petTotal": 109486290,
+        "total": 204454085,
+        "ownerShare": 0.464494485399986
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "attack-defense",
+      "seed": 42,
+      "kills": 22,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 152662318.51666668,
+      "contribution": {
+        "owner": {
+          "damage": 5065648903,
+          "healing": 0,
+          "shield": 2218,
+          "tanking": 1010996
+        },
+        "pet": {
+          "damage": 3246552719,
+          "healing": 324606,
+          "shield": 857131,
+          "tanking": 845342538
+        },
+        "ownerTotal": 5066662117,
+        "petTotal": 4093076994,
+        "total": 9159739111,
+        "ownerShare": 0.5531448063750426
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "attack-defense",
+      "seed": 42,
+      "won": true,
+      "kills": 23,
+      "seconds": 76.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1,
+      "score": 53532466.083333336,
+      "contribution": {
+        "owner": {
+          "damage": 7025228029,
+          "healing": 0,
+          "shield": 20167,
+          "tanking": 1989555
+        },
+        "pet": {
+          "damage": 4500834759,
+          "healing": 882014,
+          "shield": 2298402,
+          "tanking": 1316538934
+        },
+        "ownerTotal": 7027237751,
+        "petTotal": 5820554109,
+        "total": 12847791860,
+        "ownerShare": 0.5469607406139906
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "attack-defense",
+      "seed": 137,
+      "kills": 21,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 152785576.75,
+      "contribution": {
+        "owner": {
+          "damage": 5091098060,
+          "healing": 0,
+          "shield": 4174,
+          "tanking": 910709
+        },
+        "pet": {
+          "damage": 3305784813,
+          "healing": 167762,
+          "shield": 480393,
+          "tanking": 768688694
+        },
+        "ownerTotal": 5092012943,
+        "petTotal": 4075121662,
+        "total": 9167134605,
+        "ownerShare": 0.5554639658310112
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "attack-defense",
+      "seed": 137,
+      "won": true,
+      "kills": 23,
+      "seconds": 78.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 55627355.6875,
+      "contribution": {
+        "owner": {
+          "damage": 7270081958,
+          "healing": 0,
+          "shield": 15439,
+          "tanking": 1565325
+        },
+        "pet": {
+          "damage": 4778681115,
+          "healing": 909431,
+          "shield": 2184735,
+          "tanking": 1297127362
+        },
+        "ownerTotal": 7271662722,
+        "petTotal": 6078902643,
+        "total": 13350565365,
+        "ownerShare": 0.544670770352803
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "attack-defense",
+      "seed": 731,
+      "kills": 21,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 151007264.56666666,
+      "contribution": {
+        "owner": {
+          "damage": 5067254652,
+          "healing": 0,
+          "shield": 2772,
+          "tanking": 1458152
+        },
+        "pet": {
+          "damage": 3229054108,
+          "healing": 274028,
+          "shield": 614966,
+          "tanking": 761777196
+        },
+        "ownerTotal": 5068715576,
+        "petTotal": 3991720298,
+        "total": 9060435874,
+        "ownerShare": 0.5594339661456336
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "attack-defense",
+      "seed": 731,
+      "won": true,
+      "kills": 23,
+      "seconds": 77,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 53483039.32083333,
+      "contribution": {
+        "owner": {
+          "damage": 7053738617,
+          "healing": 0,
+          "shield": 9793,
+          "tanking": 2635790
+        },
+        "pet": {
+          "damage": 4493803255,
+          "healing": 936664,
+          "shield": 2437899,
+          "tanking": 1282367419
+        },
+        "ownerTotal": 7056384200,
+        "petTotal": 5779545237,
+        "total": 12835929437,
+        "ownerShare": 0.5497369111160532
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 220.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 336158.705,
+      "contribution": {
+        "owner": {
+          "damage": 93991810,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 236326
+        },
+        "pet": {
+          "damage": 99471174,
+          "healing": 79546,
+          "shield": 0,
+          "tanking": 7916367
+        },
+        "ownerTotal": 94228136,
+        "petTotal": 107467087,
+        "total": 201695223,
+        "ownerShare": 0.4671808017981665
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 196.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335459.365,
+      "contribution": {
+        "owner": {
+          "damage": 89114514,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 168260
+        },
+        "pet": {
+          "damage": 104348470,
+          "healing": 74032,
+          "shield": 0,
+          "tanking": 7570343
+        },
+        "ownerTotal": 89282774,
+        "petTotal": 111992845,
+        "total": 201275619,
+        "ownerShare": 0.443584644993689
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 227.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 336827.26666666666,
+      "contribution": {
+        "owner": {
+          "damage": 95839996,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 236326
+        },
+        "pet": {
+          "damage": 97622988,
+          "healing": 79546,
+          "shield": 0,
+          "tanking": 8317504
+        },
+        "ownerTotal": 96076322,
+        "petTotal": 106020038,
+        "total": 202096360,
+        "ownerShare": 0.4753985771935724
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 195.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335045.845,
+      "contribution": {
+        "owner": {
+          "damage": 89994074,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 202293
+        },
+        "pet": {
+          "damage": 103468910,
+          "healing": 77337,
+          "shield": 0,
+          "tanking": 7284893
+        },
+        "ownerTotal": 90196367,
+        "petTotal": 110831140,
+        "total": 201027507,
+        "ownerShare": 0.44867674253155815
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 199.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335459.365,
+      "contribution": {
+        "owner": {
+          "damage": 91615781,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 168260
+        },
+        "pet": {
+          "damage": 101847203,
+          "healing": 74032,
+          "shield": 0,
+          "tanking": 7570343
+        },
+        "ownerTotal": 91784041,
+        "petTotal": 109491578,
+        "total": 201275619,
+        "ownerShare": 0.45601171893551595
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 228.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 336841.94333333336,
+      "contribution": {
+        "owner": {
+          "damage": 97390414,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 236326
+        },
+        "pet": {
+          "damage": 96072570,
+          "healing": 88352,
+          "shield": 0,
+          "tanking": 8317504
+        },
+        "ownerTotal": 97626740,
+        "petTotal": 104478426,
+        "total": 202105166,
+        "ownerShare": 0.4830492061741757
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 197.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335635.73333333334,
+      "contribution": {
+        "owner": {
+          "damage": 91965774,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 202293
+        },
+        "pet": {
+          "damage": 101497210,
+          "healing": 80724,
+          "shield": 0,
+          "tanking": 7635439
+        },
+        "ownerTotal": 92168067,
+        "petTotal": 109213373,
+        "total": 201381440,
+        "ownerShare": 0.4576790542365771
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 204,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 334522.75833333336,
+      "contribution": {
+        "owner": {
+          "damage": 94543907,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 236326
+        },
+        "pet": {
+          "damage": 98919077,
+          "healing": 76979,
+          "shield": 0,
+          "tanking": 6937366
+        },
+        "ownerTotal": 94780233,
+        "petTotal": 105933422,
+        "total": 200713655,
+        "ownerShare": 0.472216167853652
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 172.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 333310.9716666667,
+      "contribution": {
+        "owner": {
+          "damage": 88687216,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 202293
+        },
+        "pet": {
+          "damage": 104775768,
+          "healing": 62281,
+          "shield": 0,
+          "tanking": 6259025
+        },
+        "ownerTotal": 88889509,
+        "petTotal": 111097074,
+        "total": 199986583,
+        "ownerShare": 0.444477362763881
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 202.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 336134.64666666667,
+      "contribution": {
+        "owner": {
+          "damage": 92692445,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 134227
+        },
+        "pet": {
+          "damage": 100770539,
+          "healing": 80195,
+          "shield": 0,
+          "tanking": 8003382
+        },
+        "ownerTotal": 92826672,
+        "petTotal": 108854116,
+        "total": 201680788,
+        "ownerShare": 0.46026531788441843
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 224.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 18,
+      "score": 336749.755,
+      "contribution": {
+        "owner": {
+          "damage": 92150206,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 198077
+        },
+        "pet": {
+          "damage": 101312778,
+          "healing": 12079,
+          "shield": 0,
+          "tanking": 8376713
+        },
+        "ownerTotal": 92348283,
+        "petTotal": 109701570,
+        "total": 202049853,
+        "ownerShare": 0.45705691753213007
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 266.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 341171.7133333333,
+      "contribution": {
+        "owner": {
+          "damage": 100019627,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 198077
+        },
+        "pet": {
+          "damage": 93443357,
+          "healing": 104731,
+          "shield": 0,
+          "tanking": 10937236
+        },
+        "ownerTotal": 100217704,
+        "petTotal": 104485324,
+        "total": 204703028,
+        "ownerShare": 0.48957607016931864
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 218.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 337352.2133333333,
+      "contribution": {
+        "owner": {
+          "damage": 91218971,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 202110
+        },
+        "pet": {
+          "damage": 102244013,
+          "healing": 89304,
+          "shield": 0,
+          "tanking": 8656930
+        },
+        "ownerTotal": 91421081,
+        "petTotal": 110990247,
+        "total": 202411328,
+        "ownerShare": 0.4516599041334287
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 227.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 337265.0366666667,
+      "contribution": {
+        "owner": {
+          "damage": 94663883,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 232110
+        },
+        "pet": {
+          "damage": 98799101,
+          "healing": 75571,
+          "shield": 0,
+          "tanking": 8588357
+        },
+        "ownerTotal": 94895993,
+        "petTotal": 107463029,
+        "total": 202359022,
+        "ownerShare": 0.4689486639246557
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 197.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 334500.5,
+      "contribution": {
+        "owner": {
+          "damage": 90562369,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 236143
+        },
+        "pet": {
+          "damage": 102900615,
+          "healing": 63625,
+          "shield": 0,
+          "tanking": 6937548
+        },
+        "ownerTotal": 90798512,
+        "petTotal": 109901788,
+        "total": 200700300,
+        "ownerShare": 0.4524084518060013
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 226.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338001.68166666664,
+      "contribution": {
+        "owner": {
+          "damage": 92938086,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 202110
+        },
+        "pet": {
+          "damage": 100524898,
+          "healing": 89304,
+          "shield": 0,
+          "tanking": 9046611
+        },
+        "ownerTotal": 93140196,
+        "petTotal": 109660813,
+        "total": 202801009,
+        "ownerShare": 0.4592688984106583
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 233.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338250.36,
+      "contribution": {
+        "owner": {
+          "damage": 95084032,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 168220
+        },
+        "pet": {
+          "damage": 98378952,
+          "healing": 78150,
+          "shield": 0,
+          "tanking": 9240862
+        },
+        "ownerTotal": 95252252,
+        "petTotal": 107697964,
+        "total": 202950216,
+        "ownerShare": 0.4693380173588975
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 199.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335090.13166666665,
+      "contribution": {
+        "owner": {
+          "damage": 92057676,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 236143
+        },
+        "pet": {
+          "damage": 101405308,
+          "healing": 78804,
+          "shield": 0,
+          "tanking": 7276148
+        },
+        "ownerTotal": 92293819,
+        "petTotal": 108760260,
+        "total": 201054079,
+        "ownerShare": 0.459049721642305
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 229.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 338583.50333333336,
+      "contribution": {
+        "owner": {
+          "damage": 94724739,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 204198
+        },
+        "pet": {
+          "damage": 98738245,
+          "healing": 89304,
+          "shield": 0,
+          "tanking": 9393616
+        },
+        "ownerTotal": 94928937,
+        "petTotal": 108221165,
+        "total": 203150102,
+        "ownerShare": 0.46728471246349657
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "attack-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 205.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 335637.30833333335,
+      "contribution": {
+        "owner": {
+          "damage": 93373598,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 197934
+        },
+        "pet": {
+          "damage": 100089386,
+          "healing": 80978,
+          "shield": 0,
+          "tanking": 7640489
+        },
+        "ownerTotal": 93571532,
+        "petTotal": 107810853,
+        "total": 201382385,
+        "ownerShare": 0.46464606127293606
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "attack-support",
+      "seed": 42,
+      "kills": 18,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 131190297.26666667,
+      "contribution": {
+        "owner": {
+          "damage": 4692127794,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 2414576
+        },
+        "pet": {
+          "damage": 2546642432,
+          "healing": 1177590,
+          "shield": 0,
+          "tanking": 629055444
+        },
+        "ownerTotal": 4694542370,
+        "petTotal": 3176875466,
+        "total": 7871417836,
+        "ownerShare": 0.596403655327439
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "attack-support",
+      "seed": 42,
+      "won": true,
+      "kills": 30,
+      "seconds": 106.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 63852778.045833334,
+      "contribution": {
+        "owner": {
+          "damage": 8997348867,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 4470209
+        },
+        "pet": {
+          "damage": 4902033483,
+          "healing": 5520863,
+          "shield": 0,
+          "tanking": 1415293309
+        },
+        "ownerTotal": 9001819076,
+        "petTotal": 6322847655,
+        "total": 15324666731,
+        "ownerShare": 0.5874071674126771
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "attack-support",
+      "seed": 137,
+      "kills": 19,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 132161811.65,
+      "contribution": {
+        "owner": {
+          "damage": 4715852066,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 2018988
+        },
+        "pet": {
+          "damage": 2603743842,
+          "healing": 904553,
+          "shield": 0,
+          "tanking": 607189250
+        },
+        "ownerTotal": 4717871054,
+        "petTotal": 3211837645,
+        "total": 7929708699,
+        "ownerShare": 0.5949614586214197
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "attack-support",
+      "seed": 137,
+      "won": true,
+      "kills": 29,
+      "seconds": 107.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 63733936.708333336,
+      "contribution": {
+        "owner": {
+          "damage": 9014039647,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 4115517
+        },
+        "pet": {
+          "damage": 4911786659,
+          "healing": 5270834,
+          "shield": 0,
+          "tanking": 1360932153
+        },
+        "ownerTotal": 9018155164,
+        "petTotal": 6277989646,
+        "total": 15296144810,
+        "ownerShare": 0.5895704621012934
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "attack-support",
+      "seed": 731,
+      "kills": 18,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 128892018.25,
+      "contribution": {
+        "owner": {
+          "damage": 4680988918,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 2043809
+        },
+        "pet": {
+          "damage": 2512359786,
+          "healing": 843075,
+          "shield": 0,
+          "tanking": 537285507
+        },
+        "ownerTotal": 4683032727,
+        "petTotal": 3050488368,
+        "total": 7733521095,
+        "ownerShare": 0.6055498743034075
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "attack-support",
+      "seed": 731,
+      "won": true,
+      "kills": 29,
+      "seconds": 105.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 63472262.94166667,
+      "contribution": {
+        "owner": {
+          "damage": 8941870642,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 5660258
+        },
+        "pet": {
+          "damage": 4881019666,
+          "healing": 5316093,
+          "shield": 0,
+          "tanking": 1399476447
+        },
+        "ownerTotal": 8947530900,
+        "petTotal": 6285812206,
+        "total": 15233343106,
+        "ownerShare": 0.5873648901452112
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 264.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 74,
+      "score": 332375.45666666667,
+      "contribution": {
+        "owner": {
+          "damage": 100297380,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 350517
+        },
+        "pet": {
+          "damage": 93165604,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 5611773
+        },
+        "ownerTotal": 100647897,
+        "petTotal": 98777377,
+        "total": 199425274,
+        "ownerShare": 0.5046897766829694
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 354.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 105,
+      "score": 335203,
+      "contribution": {
+        "owner": {
+          "damage": 111825937,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 419055
+        },
+        "pet": {
+          "damage": 81637047,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 7239761
+        },
+        "ownerTotal": 112244992,
+        "petTotal": 88876808,
+        "total": 201121800,
+        "ownerShare": 0.5580946073473885
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 383.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4,
+      "score": 338618.8383333333,
+      "contribution": {
+        "owner": {
+          "damage": 121353616,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 622294
+        },
+        "pet": {
+          "damage": 72109368,
+          "healing": 109923,
+          "shield": 0,
+          "tanking": 8976102
+        },
+        "ownerTotal": 121975910,
+        "petTotal": 81195393,
+        "total": 203171303,
+        "ownerShare": 0.6003599337057951
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 286.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 74,
+      "score": 332460.4216666667,
+      "contribution": {
+        "owner": {
+          "damage": 103229998,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 383574
+        },
+        "pet": {
+          "damage": 90232986,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 5629695
+        },
+        "ownerTotal": 103613572,
+        "petTotal": 95862681,
+        "total": 199476253,
+        "ownerShare": 0.5194281045573881
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 249.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 71,
+      "score": 331844.8566666667,
+      "contribution": {
+        "owner": {
+          "damage": 96011474,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 324809
+        },
+        "pet": {
+          "damage": 97451510,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 5319121
+        },
+        "ownerTotal": 96336283,
+        "petTotal": 102770631,
+        "total": 199106914,
+        "ownerShare": 0.48384197748150526
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 263.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2,
+      "score": 332757.7766666667,
+      "contribution": {
+        "owner": {
+          "damage": 100259528,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 465830
+        },
+        "pet": {
+          "damage": 93203456,
+          "healing": 68125,
+          "shield": 0,
+          "tanking": 5657727
+        },
+        "ownerTotal": 100725358,
+        "petTotal": 98929308,
+        "total": 199654666,
+        "ownerShare": 0.504497891374099
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 214.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 57,
+      "score": 329801.06,
+      "contribution": {
+        "owner": {
+          "damage": 91440808,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 258234
+        },
+        "pet": {
+          "damage": 102022176,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 4159418
+        },
+        "ownerTotal": 91699042,
+        "petTotal": 106181594,
+        "total": 197880636,
+        "ownerShare": 0.4634058382549367
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 350.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1,
+      "score": 336906.9533333333,
+      "contribution": {
+        "owner": {
+          "damage": 111637816,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 588261
+        },
+        "pet": {
+          "damage": 81825168,
+          "healing": 109923,
+          "shield": 0,
+          "tanking": 7983004
+        },
+        "ownerTotal": 112226077,
+        "petTotal": 89918095,
+        "total": 202144172,
+        "ownerShare": 0.5551783951505661
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 272.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 79,
+      "score": 331497.30333333334,
+      "contribution": {
+        "owner": {
+          "damage": 98071016,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 383574
+        },
+        "pet": {
+          "damage": 95391968,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 5051824
+        },
+        "ownerTotal": 98454590,
+        "petTotal": 100443792,
+        "total": 198898382,
+        "ownerShare": 0.49499945152897223
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 285.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1,
+      "score": 333464.87166666664,
+      "contribution": {
+        "owner": {
+          "damage": 103229998,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 526144
+        },
+        "pet": {
+          "damage": 90232986,
+          "healing": 78611,
+          "shield": 0,
+          "tanking": 6011184
+        },
+        "ownerTotal": 103756142,
+        "petTotal": 96322781,
+        "total": 200078923,
+        "ownerShare": 0.5185760721033069
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 260.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 73,
+      "score": 333217.78833333333,
+      "contribution": {
+        "owner": {
+          "damage": 97315501,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 291923
+        },
+        "pet": {
+          "damage": 96147483,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 6175766
+        },
+        "ownerTotal": 97607424,
+        "petTotal": 102323249,
+        "total": 199930673,
+        "ownerShare": 0.488206349407927
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 275.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2,
+      "score": 334471.3233333333,
+      "contribution": {
+        "owner": {
+          "damage": 104592513,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 487721
+        },
+        "pet": {
+          "damage": 88870471,
+          "healing": 94072,
+          "shield": 0,
+          "tanking": 6638017
+        },
+        "ownerTotal": 105080234,
+        "petTotal": 95602560,
+        "total": 200682794,
+        "ownerShare": 0.523613568983896
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 226.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 65,
+      "score": 332263.38166666665,
+      "contribution": {
+        "owner": {
+          "damage": 93833615,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 270948
+        },
+        "pet": {
+          "damage": 99629369,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 5624097
+        },
+        "ownerTotal": 94104563,
+        "petTotal": 105253466,
+        "total": 199358029,
+        "ownerShare": 0.47203798849756884
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 378.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3,
+      "score": 338063.445,
+      "contribution": {
+        "owner": {
+          "damage": 118729232,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 617084
+        },
+        "pet": {
+          "damage": 74733752,
+          "healing": 109923,
+          "shield": 0,
+          "tanking": 8648076
+        },
+        "ownerTotal": 119346316,
+        "petTotal": 83491751,
+        "total": 202838067,
+        "ownerShare": 0.5883822389216518
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 283.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 81,
+      "score": 331981.3516666667,
+      "contribution": {
+        "owner": {
+          "damage": 102436483,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 383574
+        },
+        "pet": {
+          "damage": 91026501,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 5342253
+        },
+        "ownerTotal": 102820057,
+        "petTotal": 96368754,
+        "total": 199188811,
+        "ownerShare": 0.5161939392268374
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 304.18,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4,
+      "score": 335070.0833333333,
+      "contribution": {
+        "owner": {
+          "damage": 107879082,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 504928
+        },
+        "pet": {
+          "damage": 85583902,
+          "healing": 87528,
+          "shield": 0,
+          "tanking": 6986610
+        },
+        "ownerTotal": 108384010,
+        "petTotal": 92658040,
+        "total": 201042050,
+        "ownerShare": 0.5391111461507679
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 263.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6,
+      "score": 334258.41833333333,
+      "contribution": {
+        "owner": {
+          "damage": 97200544,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 380751
+        },
+        "pet": {
+          "damage": 96262440,
+          "healing": 74931,
+          "shield": 0,
+          "tanking": 6636385
+        },
+        "ownerTotal": 97581295,
+        "petTotal": 102973756,
+        "total": 200555051,
+        "ownerShare": 0.4865561575908652
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 213.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 64,
+      "score": 330812.52,
+      "contribution": {
+        "owner": {
+          "damage": 88753251,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 270948
+        },
+        "pet": {
+          "damage": 104709733,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 4753580
+        },
+        "ownerTotal": 89024199,
+        "petTotal": 109463313,
+        "total": 198487512,
+        "ownerShare": 0.448512846490816
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 226.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1,
+      "score": 333100.93166666664,
+      "contribution": {
+        "owner": {
+          "damage": 93833615,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 335770
+        },
+        "pet": {
+          "damage": 99629369,
+          "healing": 66142,
+          "shield": 0,
+          "tanking": 5995663
+        },
+        "ownerTotal": 94169385,
+        "petTotal": 105691174,
+        "total": 199860559,
+        "ownerShare": 0.4711754308662771
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "magic-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 284.68,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2,
+      "score": 332906.975,
+      "contribution": {
+        "owner": {
+          "damage": 102436483,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 526144
+        },
+        "pet": {
+          "damage": 91026501,
+          "healing": 78611,
+          "shield": 0,
+          "tanking": 5676446
+        },
+        "ownerTotal": 102962627,
+        "petTotal": 96781558,
+        "total": 199744185,
+        "ownerShare": 0.5154724629405356
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "magic-support",
+      "seed": 42,
+      "kills": 24,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 9,
+      "score": 164106623.11666667,
+      "contribution": {
+        "owner": {
+          "damage": 5400225028,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 3201260
+        },
+        "pet": {
+          "damage": 4113801831,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 329169268
+        },
+        "ownerTotal": 5403426288,
+        "petTotal": 4442971099,
+        "total": 9846397387,
+        "ownerShare": 0.5487719087119147
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "magic-support",
+      "seed": 42,
+      "won": true,
+      "kills": 29,
+      "seconds": 82.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 34,
+      "score": 59950916.7,
+      "contribution": {
+        "owner": {
+          "damage": 7973341683,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 6426391
+        },
+        "pet": {
+          "damage": 6020264406,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 388187528
+        },
+        "ownerTotal": 7979768074,
+        "petTotal": 6408451934,
+        "total": 14388220008,
+        "ownerShare": 0.5546042574802975
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "magic-support",
+      "seed": 137,
+      "kills": 25,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 9,
+      "score": 163616249.33333334,
+      "contribution": {
+        "owner": {
+          "damage": 5388593173,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 3355714
+        },
+        "pet": {
+          "damage": 4114222999,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 310803074
+        },
+        "ownerTotal": 5391948887,
+        "petTotal": 4425026073,
+        "total": 9816974960,
+        "ownerShare": 0.5492474931401883
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "magic-support",
+      "seed": 137,
+      "won": true,
+      "kills": 30,
+      "seconds": 84.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 34,
+      "score": 61729158.02916667,
+      "contribution": {
+        "owner": {
+          "damage": 8193851718,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 5992038
+        },
+        "pet": {
+          "damage": 6189258044,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 425896127
+        },
+        "ownerTotal": 8199843756,
+        "petTotal": 6615154171,
+        "total": 14814997927,
+        "ownerShare": 0.5534826124447827
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "magic-support",
+      "seed": 731,
+      "kills": 25,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8,
+      "score": 163274425.86666667,
+      "contribution": {
+        "owner": {
+          "damage": 5386884431,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 2840933
+        },
+        "pet": {
+          "damage": 4108618918,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 298121270
+        },
+        "ownerTotal": 5389725364,
+        "petTotal": 4406740188,
+        "total": 9796465552,
+        "ownerShare": 0.5501703992517648
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "magic-support",
+      "seed": 731,
+      "won": true,
+      "kills": 29,
+      "seconds": 82.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 25,
+      "score": 60059120.295833334,
+      "contribution": {
+        "owner": {
+          "damage": 7953940541,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 4681180
+        },
+        "pet": {
+          "damage": 6016085887,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 439481263
+        },
+        "ownerTotal": 7958621721,
+        "petTotal": 6455567150,
+        "total": 14414188871,
+        "ownerShare": 0.5521380212390586
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 321.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 350177.5516666667,
+      "contribution": {
+        "owner": {
+          "damage": 111543239,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 115062
+        },
+        "pet": {
+          "damage": 81919745,
+          "healing": 17383,
+          "shield": 78372,
+          "tanking": 16432730
+        },
+        "ownerTotal": 111658301,
+        "petTotal": 98448230,
+        "total": 210106531,
+        "ownerShare": 0.5314366025109424
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 319.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 350354.5133333333,
+      "contribution": {
+        "owner": {
+          "damage": 110418364,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 196354
+        },
+        "pet": {
+          "damage": 83044620,
+          "healing": 17951,
+          "shield": 82294,
+          "tanking": 16453125
+        },
+        "ownerTotal": 110614718,
+        "petTotal": 99597990,
+        "total": 210212708,
+        "ownerShare": 0.5262037630950456
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 344.48,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 352768.075,
+      "contribution": {
+        "owner": {
+          "damage": 118868819,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 115001
+        },
+        "pet": {
+          "damage": 74594165,
+          "healing": 11403,
+          "shield": 93298,
+          "tanking": 17978159
+        },
+        "ownerTotal": 118983820,
+        "petTotal": 92677025,
+        "total": 211660845,
+        "ownerShare": 0.5621437446307086
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 341.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 352356.5,
+      "contribution": {
+        "owner": {
+          "damage": 117670384,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 196354
+        },
+        "pet": {
+          "damage": 75792600,
+          "healing": 17951,
+          "shield": 88798,
+          "tanking": 17647813
+        },
+        "ownerTotal": 117866738,
+        "petTotal": 93547162,
+        "total": 211413900,
+        "ownerShare": 0.5575165019896989
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 308.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 346831.87,
+      "contribution": {
+        "owner": {
+          "damage": 106118207,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 221648
+        },
+        "pet": {
+          "damage": 87344777,
+          "healing": 15473,
+          "shield": 73383,
+          "tanking": 14325634
+        },
+        "ownerTotal": 106339855,
+        "petTotal": 101759267,
+        "total": 208099122,
+        "ownerShare": 0.5110057840609246
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 324.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 349741.96,
+      "contribution": {
+        "owner": {
+          "damage": 113676331,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 149130
+        },
+        "pet": {
+          "damage": 79786653,
+          "healing": 11369,
+          "shield": 83184,
+          "tanking": 16138509
+        },
+        "ownerTotal": 113825461,
+        "petTotal": 96019715,
+        "total": 209845176,
+        "ownerShare": 0.5424259121401008
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 321.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 349770.0833333333,
+      "contribution": {
+        "owner": {
+          "damage": 112297329,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 155394
+        },
+        "pet": {
+          "damage": 81165655,
+          "healing": 17539,
+          "shield": 79102,
+          "tanking": 16147031
+        },
+        "ownerTotal": 112452723,
+        "petTotal": 97409327,
+        "total": 209862050,
+        "ownerShare": 0.535841153748379
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 319.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 346653.9,
+      "contribution": {
+        "owner": {
+          "damage": 110178810,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 190579
+        },
+        "pet": {
+          "damage": 83284174,
+          "healing": 6637,
+          "shield": 79154,
+          "tanking": 14252986
+        },
+        "ownerTotal": 110369389,
+        "petTotal": 97622951,
+        "total": 207992340,
+        "ownerShare": 0.5306416043975466
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 318.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 348506.4866666667,
+      "contribution": {
+        "owner": {
+          "damage": 110013283,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 115082
+        },
+        "pet": {
+          "damage": 83449701,
+          "healing": 13226,
+          "shield": 77362,
+          "tanking": 15435238
+        },
+        "ownerTotal": 110128365,
+        "petTotal": 98975527,
+        "total": 209103892,
+        "ownerShare": 0.5266681741150949
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 341.96,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 352495.17333333334,
+      "contribution": {
+        "owner": {
+          "damage": 117670384,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 196354
+        },
+        "pet": {
+          "damage": 75792600,
+          "healing": 4115,
+          "shield": 102634,
+          "tanking": 17731017
+        },
+        "ownerTotal": 117866738,
+        "petTotal": 93630366,
+        "total": 211497104,
+        "ownerShare": 0.5572971722582074
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 467.42,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 356010.3516666667,
+      "contribution": {
+        "owner": {
+          "damage": 131754646,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 313706
+        },
+        "pet": {
+          "damage": 61708338,
+          "healing": 96655,
+          "shield": 28618,
+          "tanking": 19704248
+        },
+        "ownerTotal": 132068352,
+        "petTotal": 81537859,
+        "total": 213606211,
+        "ownerShare": 0.6182795499331244
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 518.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 361989.435,
+      "contribution": {
+        "owner": {
+          "damage": 144683549,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 343705
+        },
+        "pet": {
+          "damage": 48779435,
+          "healing": 24312,
+          "shield": 120561,
+          "tanking": 23242099
+        },
+        "ownerTotal": 145027254,
+        "petTotal": 72166407,
+        "total": 217193661,
+        "ownerShare": 0.6677324436278091
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 518.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 360374.23333333334,
+      "contribution": {
+        "owner": {
+          "damage": 145167643,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 351509
+        },
+        "pet": {
+          "damage": 48295341,
+          "healing": 115130,
+          "shield": 28618,
+          "tanking": 22266299
+        },
+        "ownerTotal": 145519152,
+        "petTotal": 70705388,
+        "total": 216224540,
+        "ownerShare": 0.6730001691759872
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 513.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 364378.2783333333,
+      "contribution": {
+        "owner": {
+          "damage": 137794238,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 266281
+        },
+        "pet": {
+          "damage": 55668746,
+          "healing": 23996,
+          "shield": 120688,
+          "tanking": 24753018
+        },
+        "ownerTotal": 138060519,
+        "petTotal": 80566448,
+        "total": 218626967,
+        "ownerShare": 0.6314889736360839
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 513.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 363600.9733333333,
+      "contribution": {
+        "owner": {
+          "damage": 137846218,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 249309
+        },
+        "pet": {
+          "damage": 55616766,
+          "healing": 114806,
+          "shield": 32883,
+          "tanking": 24300602
+        },
+        "ownerTotal": 138095527,
+        "petTotal": 80065057,
+        "total": 218160584,
+        "ownerShare": 0.6329994376986083
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 565.08,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 367176.025,
+      "contribution": {
+        "owner": {
+          "damage": 153371747,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 308599
+        },
+        "pet": {
+          "damage": 40091237,
+          "healing": 26934,
+          "shield": 133683,
+          "tanking": 26373415
+        },
+        "ownerTotal": 153680346,
+        "petTotal": 66625269,
+        "total": 220305615,
+        "ownerShare": 0.6975779804795261
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 469.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1,
+      "score": 355812.74666666664,
+      "contribution": {
+        "owner": {
+          "damage": 131814743,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 321430
+        },
+        "pet": {
+          "damage": 61648241,
+          "healing": 0,
+          "shield": 105155,
+          "tanking": 19598079
+        },
+        "ownerTotal": 132136173,
+        "petTotal": 81351475,
+        "total": 213487648,
+        "ownerShare": 0.6189406002543061
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 471.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 355080.74,
+      "contribution": {
+        "owner": {
+          "damage": 132431612,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 450812
+        },
+        "pet": {
+          "damage": 61031372,
+          "healing": 98388,
+          "shield": 31784,
+          "tanking": 19004476
+        },
+        "ownerTotal": 132882424,
+        "petTotal": 80166020,
+        "total": 213048444,
+        "ownerShare": 0.6237192889331781
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 517.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 361706.0416666667,
+      "contribution": {
+        "owner": {
+          "damage": 145046740,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 379822
+        },
+        "pet": {
+          "damage": 48416244,
+          "healing": 29118,
+          "shield": 117187,
+          "tanking": 23034514
+        },
+        "ownerTotal": 145426562,
+        "petTotal": 71597063,
+        "total": 217023625,
+        "ownerShare": 0.6700955345299389
+      }
+    },
+    {
+      "kind": "fiveBoss",
+      "job": "performer",
+      "pair": "defense-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 513.02,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 364400.70166666666,
+      "contribution": {
+        "owner": {
+          "damage": 137846218,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 272803
+        },
+        "pet": {
+          "damage": 55616766,
+          "healing": 25307,
+          "shield": 124356,
+          "tanking": 24754971
+        },
+        "ownerTotal": 138119021,
+        "petTotal": 80521400,
+        "total": 218640421,
+        "ownerShare": 0.6317176868224197
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "defense-support",
+      "seed": 42,
+      "kills": 18,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 130624563.5,
+      "contribution": {
+        "owner": {
+          "damage": 4610028665,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 1329620
+        },
+        "pet": {
+          "damage": 2262616535,
+          "healing": 228857,
+          "shield": 973522,
+          "tanking": 962296611
+        },
+        "ownerTotal": 4611358285,
+        "petTotal": 3226115525,
+        "total": 7837473810,
+        "ownerShare": 0.5883730391693647
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "defense-support",
+      "seed": 42,
+      "won": true,
+      "kills": 23,
+      "seconds": 91.42,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 55211841.3375,
+      "contribution": {
+        "owner": {
+          "damage": 7636614713,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 3051784
+        },
+        "pet": {
+          "damage": 3915273545,
+          "healing": 722061,
+          "shield": 2998431,
+          "tanking": 1692181387
+        },
+        "ownerTotal": 7639666497,
+        "petTotal": 5611175424,
+        "total": 13250841921,
+        "ownerShare": 0.5765419693742342
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "defense-support",
+      "seed": 137,
+      "kills": 17,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 130011546.16666667,
+      "contribution": {
+        "owner": {
+          "damage": 4631467936,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 844990
+        },
+        "pet": {
+          "damage": 2309627948,
+          "healing": 108190,
+          "shield": 612050,
+          "tanking": 858031656
+        },
+        "ownerTotal": 4632312926,
+        "petTotal": 3168379844,
+        "total": 7800692770,
+        "ownerShare": 0.5938335302493909
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "defense-support",
+      "seed": 137,
+      "won": true,
+      "kills": 23,
+      "seconds": 92.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 55761956.12083333,
+      "contribution": {
+        "owner": {
+          "damage": 7705089694,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 2137240
+        },
+        "pet": {
+          "damage": 3958827274,
+          "healing": 794772,
+          "shield": 2830117,
+          "tanking": 1713190372
+        },
+        "ownerTotal": 7707226934,
+        "petTotal": 5675642535,
+        "total": 13382869469,
+        "ownerShare": 0.5759024215137849
+      }
+    },
+    {
+      "kind": "field201",
+      "job": "performer",
+      "pair": "defense-support",
+      "seed": 731,
+      "kills": 17,
+      "seconds": 59.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 129769631.33333333,
+      "contribution": {
+        "owner": {
+          "damage": 4643830758,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 835520
+        },
+        "pet": {
+          "damage": 2316133404,
+          "healing": 150027,
+          "shield": 573975,
+          "tanking": 824654196
+        },
+        "ownerTotal": 4644666278,
+        "petTotal": 3141511602,
+        "total": 7786177880,
+        "ownerShare": 0.596527121468743
+      }
+    },
+    {
+      "kind": "boss210",
+      "job": "performer",
+      "pair": "defense-support",
+      "seed": 731,
+      "won": true,
+      "kills": 22,
+      "seconds": 91.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0,
+      "score": 54785591.21666667,
+      "contribution": {
+        "owner": {
+          "damage": 7618711319,
+          "healing": 0,
+          "shield": 0,
+          "tanking": 2197742
+        },
+        "pet": {
+          "damage": 3868398429,
+          "healing": 610453,
+          "shield": 2765477,
+          "tanking": 1655858472
+        },
+        "ownerTotal": 7620909061,
+        "petTotal": 5527632831,
+        "total": 13148541892,
+        "ownerShare": 0.5796010784767556
+      }
+    }
+  ]
+}

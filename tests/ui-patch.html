@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>選單穩定性測試</title><body><button id="run">執行選單穩定性測試</button><div id="fixture"></div><pre id="result"></pre><script type="module">
+import {patchHtml} from './ui-patch.js';
+const root=document.querySelector('#fixture'),output=document.querySelector('#result');
+document.querySelector('#run').onclick=()=>{
+ const markup=n=>`<section><p>戰鬥更新 ${n}</p><label>稀有度<select data-filter="rarity"><option value="rare">稀有</option><option value="mythic">神話</option></select></label><label>數量<input data-count type="number" value="5"></label><details><summary>進化預覽</summary><p>${n}</p></details><div data-ui-key="list"><button data-target="one">敵人1 HP ${100-n}</button>${n%2?'<button data-target="two">敵人2</button>':''}</div></section>`;
+ patchHtml(root,markup(0));const select=root.querySelector('select'),input=root.querySelector('input'),details=root.querySelector('details'),enemy=root.querySelector('[data-target="one"]');select.value='mythic';select.focus();details.open=true;let passed=0;
+ for(let i=1;i<=100;i++){patchHtml(root,markup(i));if(select!==root.querySelector('select')||document.activeElement!==select||select.value!=='mythic'||!details.open||enemy!==root.querySelector('[data-target="one"]'))throw Error('選單或節點被重建');passed++;}
+ input.focus();input.value='123';patchHtml(root,markup(101));if(document.activeElement!==input||input.value!=='123')throw Error('輸入值被覆寫');
+ output.textContent=`PASS：${passed} 次戰鬥更新保持原 select 節點、焦點與選項；保持展開狀態、敵人節點及輸入值。`;
+};
+</script></body></html>

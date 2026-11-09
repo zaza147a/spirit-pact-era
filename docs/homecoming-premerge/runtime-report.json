@@ -1,0 +1,14 @@
+{
+  "sourceSha": "68e2b6fc72861fe9dea858c0ff96ff1743d75cae",
+  "run": 42239239986,
+  "passed": true,
+  "regressions": 215,
+  "consoleEvidence": [
+    "2026-11-06T15:02:15.3822866Z # tests 215",
+    "2026-11-06T15:02:15.3823229Z # pass 215",
+    "2026-11-06T15:02:15.3823403Z # fail 0",
+    "2026-11-06T15:02:15.8652768Z {\"passed\":true,\"sourceSha\":\"68e2b6fc72861fe9dea858c0ff96ff1743d75cae\",\"files\":574,\"bytes\":150480228,\"removedPng\":36,\"relativeModuleDependencies\":166,\"wikiStaged\":true,\"noUploadOrDeploy\":true}",
+    "2026-11-06T15:02:43.2891481Z {\"passed\":true,\"widths\":2,\"slots\":8}",
+    "2026-11-06T15:02:50.1942836Z {\"passed\":true,\"firstJob\":\"spiritist\",\"level\":1,\"slots\":[1,8],\"reloaded\":true,\"thirdJobs\":[\"pactWarrior\",\"spiritCommander\"],\"warehouse\":true,\"gearCompareModes\":true,\"secondTransfer\":true,\"thirdTransfer\":true}"
+  ]
+}

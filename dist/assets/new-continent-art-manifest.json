@@ -1,0 +1,97 @@
+{
+  "tool": "built-in imagegen",
+  "style": "transparent polished painterly/chibi fantasy sky-clockwork-aether RPG fullbody sprite atlases; no labels or UI",
+  "processing": "alpha-connected subject isolation, row-major assignment, proportional resizing with 20px padding into equal384pxcells; no repainting",
+  "assets": [
+    {
+      "file": "/workspace/sites/icarus-text-rpg/dist/assets/monsters-skyport.webp",
+      "size": [
+        1920,
+        768
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 1715281,
+      "columns": 5,
+      "rows": 2
+    },
+    {
+      "file": "/workspace/sites/icarus-text-rpg/dist/assets/monsters-gearfell.webp",
+      "size": [
+        1920,
+        768
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 1645794,
+      "columns": 5,
+      "rows": 2
+    },
+    {
+      "file": "/workspace/sites/icarus-text-rpg/dist/assets/monsters-aether.webp",
+      "size": [
+        1920,
+        768
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 1883233,
+      "columns": 5,
+      "rows": 2
+    },
+    {
+      "file": "/workspace/sites/icarus-text-rpg/dist/assets/monsters-stormforge.webp",
+      "size": [
+        1920,
+        768
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 1896112,
+      "columns": 5,
+      "rows": 2
+    },
+    {
+      "file": "/workspace/sites/icarus-text-rpg/dist/assets/monsters-zenith.webp",
+      "size": [
+        1920,
+        768
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 2078921,
+      "columns": 5,
+      "rows": 2
+    },
+    {
+      "file": "/workspace/sites/icarus-text-rpg/dist/assets/new-continent-bosses.webp",
+      "size": [
+        1920,
+        384
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "bytes": 1021100,
+      "columns": 5,
+      "rows": 1
+    }
+  ]
+}

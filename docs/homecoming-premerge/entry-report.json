@@ -1,0 +1,164 @@
+{
+  "passed": true,
+  "sourceSha": "68e2b6fc72861fe9dea858c0ff96ff1743d75cae",
+  "browserVersion": "141.0.7390.37",
+  "rows": [
+    {
+      "width": 1440,
+      "slots": [
+        {
+          "rowTop": 279.515625,
+          "nameTop": 584.515625,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/cosmetics/fixed-knight-0.webp?v=gold-frame-20261106",
+          "naturalWidth": 1024,
+          "naturalHeight": 1504
+        },
+        {
+          "rowTop": 279.515625,
+          "nameTop": 584.515625,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/cosmetics/fixed-knight-1.webp?v=gold-frame-20261106",
+          "naturalWidth": 1024,
+          "naturalHeight": 1504
+        },
+        {
+          "rowTop": 279.515625,
+          "nameTop": 584.515625,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/cosmetics/fixed-knight-2.webp?v=gold-frame-20261106",
+          "naturalWidth": 1024,
+          "naturalHeight": 1504
+        },
+        {
+          "rowTop": 279.515625,
+          "nameTop": 584.515625,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-S.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 744
+        },
+        {
+          "rowTop": 817.078125,
+          "nameTop": 1122.078125,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-SS.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 747
+        },
+        {
+          "rowTop": 817.078125,
+          "nameTop": 1122.078125,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-SSS.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 752
+        },
+        {
+          "rowTop": 817.078125,
+          "nameTop": 1122.078125,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-S.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 744
+        },
+        {
+          "rowTop": 817.078125,
+          "nameTop": 1122.078125,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-S.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 744
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "slots": [
+        {
+          "rowTop": 279.515625,
+          "nameTop": 584.515625,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/cosmetics/fixed-knight-0.webp?v=gold-frame-20261106",
+          "naturalWidth": 1024,
+          "naturalHeight": 1504
+        },
+        {
+          "rowTop": 279.515625,
+          "nameTop": 584.515625,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/cosmetics/fixed-knight-1.webp?v=gold-frame-20261106",
+          "naturalWidth": 1024,
+          "naturalHeight": 1504
+        },
+        {
+          "rowTop": 279.515625,
+          "nameTop": 584.515625,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/cosmetics/fixed-knight-2.webp?v=gold-frame-20261106",
+          "naturalWidth": 1024,
+          "naturalHeight": 1504
+        },
+        {
+          "rowTop": 279.515625,
+          "nameTop": 584.515625,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-S.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 744
+        },
+        {
+          "rowTop": 817.078125,
+          "nameTop": 1122.078125,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-SS.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 747
+        },
+        {
+          "rowTop": 817.078125,
+          "nameTop": 1122.078125,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-SSS.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 752
+        },
+        {
+          "rowTop": 817.078125,
+          "nameTop": 1122.078125,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-S.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 744
+        },
+        {
+          "rowTop": 817.078125,
+          "nameTop": 1122.078125,
+          "stageHeight": 260,
+          "fit": "contain",
+          "src": "assets/rank-outfits/knight-S.webp?v=6.5.0-spirit-20261104",
+          "naturalWidth": 512,
+          "naturalHeight": 744
+        }
+      ]
+    }
+  ],
+  "goldHeroAndReload": true,
+  "errors": [],
+  "requests": []
+}

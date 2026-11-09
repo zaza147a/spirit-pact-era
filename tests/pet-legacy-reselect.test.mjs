@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {migrateLegacyReselect,reselectionPet} from '../dist/pet-legacy-reselect.js';
+const old={version:50,location:'town',pets:[{id:'old',level:200,fusion:{main:'attack',sub:'magic'},gear:{head:{uid:'h'}},loyalty:500}]};
+test('legacy entitlement grants once and preserves gear',()=>{const p=structuredClone(old);migrateLegacyReselect(p);assert.equal(p.pets[0].fusionReselectRemaining,10);p.version=51;migrateLegacyReselect(p);assert.equal(p.pets[0].fusionReselectRemaining,10);let r=reselectionPet(p,p.pets[0],'magic-defense',()=>['newSkill']);assert.equal(r.remaining,9);assert.equal(p.pets[0].gear.head.uid,'h');assert.deepEqual(p.pets[0].equippedSkills,['newSkill']);});
+test('new saves and fresh level-ups cannot claim',()=>{const p=structuredClone(old);p.version=51;migrateLegacyReselect(p);assert.equal(p.pets[0].fusionReselectRemaining,0);});
+test('ten changes maximum',()=>{const p=structuredClone(old);migrateLegacyReselect(p);for(let i=0;i<10;i++){const target=i%2?'attack-magic':'magic-defense';assert.equal(reselectionPet(p,p.pets[0],target,()=>[]).remaining,9-i);}assert.ok(reselectionPet(p,p.pets[0],'magic-support',()=>[]).error);});

@@ -1,0 +1,1105 @@
+{
+  "passed": true,
+  "sourceSha": "7f54825da30d0f55627bcc6171b8d407fdbb8edd",
+  "browserVersion": "141.0.7390.37",
+  "scope": "reachable controlled quest fixtures; actual UI choices and native headed Chromium window minimization visibility; actual Worker without artificial victories",
+  "rows": [
+    {
+      "route": "attack-magic",
+      "step": "valve",
+      "choice": "fuel",
+      "next": "valve",
+      "phase": "active"
+    },
+    {
+      "route": "attack-magic",
+      "step": "valve",
+      "choice": "vent",
+      "next": "valve",
+      "phase": "active"
+    },
+    {
+      "route": "attack-magic",
+      "step": "valve",
+      "choice": "seal",
+      "next": "valve",
+      "phase": "active"
+    },
+    {
+      "route": "attack-magic",
+      "step": "valve",
+      "choice": "reset",
+      "next": "valve",
+      "phase": "active"
+    },
+    {
+      "route": "attack-magic",
+      "step": "valve",
+      "choice": "ignite",
+      "next": "breach",
+      "phase": "active"
+    },
+    {
+      "route": "attack-magic",
+      "step": "finish",
+      "choice": "elder",
+      "next": "finish",
+      "phase": "ready"
+    },
+    {
+      "route": "attack-magic",
+      "step": "finish",
+      "choice": "partner",
+      "next": "finish",
+      "phase": "ready"
+    },
+    {
+      "route": "magic-attack",
+      "step": "route",
+      "choice": "gust",
+      "next": "lost",
+      "phase": "active"
+    },
+    {
+      "route": "magic-attack",
+      "step": "route",
+      "choice": "feather",
+      "next": "beacon",
+      "phase": "active"
+    },
+    {
+      "route": "magic-attack",
+      "step": "lost",
+      "choice": "return",
+      "next": "route",
+      "phase": "active"
+    },
+    {
+      "route": "magic-attack",
+      "step": "beacon",
+      "choice": "east",
+      "next": "flock",
+      "phase": "active"
+    },
+    {
+      "route": "magic-attack",
+      "step": "beacon",
+      "choice": "west",
+      "next": "lost",
+      "phase": "active"
+    },
+    {
+      "route": "magic-attack",
+      "step": "flock",
+      "choice": "young",
+      "next": "landing",
+      "phase": "active"
+    },
+    {
+      "route": "magic-attack",
+      "step": "flock",
+      "choice": "adult",
+      "next": "detour",
+      "phase": "active"
+    },
+    {
+      "route": "magic-attack",
+      "step": "landing",
+      "choice": "report",
+      "next": "landing",
+      "phase": "ready"
+    },
+    {
+      "route": "magic-attack",
+      "step": "detour",
+      "choice": "call",
+      "next": "landing",
+      "phase": "active"
+    },
+    {
+      "route": "attack-defense",
+      "step": "load",
+      "choice": "medic",
+      "next": "bridge",
+      "phase": "active"
+    },
+    {
+      "route": "attack-defense",
+      "step": "bridge",
+      "choice": "repair",
+      "next": "last",
+      "phase": "active"
+    },
+    {
+      "route": "attack-defense",
+      "step": "bridge",
+      "choice": "detour",
+      "next": "ambush",
+      "phase": "active"
+    },
+    {
+      "route": "attack-defense",
+      "step": "last",
+      "choice": "cover",
+      "next": "gate",
+      "phase": "active"
+    },
+    {
+      "route": "attack-defense",
+      "step": "last",
+      "choice": "escort",
+      "next": "rear",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "entrance",
+      "choice": "cart",
+      "next": "workshop",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "entrance",
+      "choice": "duct",
+      "next": "workshop",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "workshop",
+      "choice": "cut",
+      "next": "prison",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "workshop",
+      "choice": "smash",
+      "next": "prison",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "prison",
+      "choice": "quiet",
+      "next": "shutdown",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "prison",
+      "choice": "fight",
+      "next": "patrol",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "shutdown",
+      "choice": "power",
+      "next": "cool",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "shutdown",
+      "choice": "red",
+      "next": "shutdown",
+      "phase": "active"
+    },
+    {
+      "route": "defense-attack",
+      "step": "cool",
+      "choice": "cool",
+      "next": "cool",
+      "phase": "ready"
+    },
+    {
+      "route": "attack-support",
+      "step": "market",
+      "choice": "herb",
+      "next": "market",
+      "phase": "active"
+    },
+    {
+      "route": "attack-support",
+      "step": "market",
+      "choice": "wheel",
+      "next": "market",
+      "phase": "active"
+    },
+    {
+      "route": "attack-support",
+      "step": "market",
+      "choice": "deliver",
+      "next": "cart",
+      "phase": "active"
+    },
+    {
+      "route": "attack-support",
+      "step": "cart",
+      "choice": "offer",
+      "next": "root",
+      "phase": "active"
+    },
+    {
+      "route": "attack-support",
+      "step": "cart",
+      "choice": "ask",
+      "next": "track",
+      "phase": "active"
+    },
+    {
+      "route": "attack-support",
+      "step": "root",
+      "choice": "clear",
+      "next": "feast",
+      "phase": "active"
+    },
+    {
+      "route": "attack-support",
+      "step": "root",
+      "choice": "chase",
+      "next": "warning",
+      "phase": "active"
+    },
+    {
+      "route": "attack-support",
+      "step": "track",
+      "choice": "water",
+      "next": "root",
+      "phase": "active"
+    },
+    {
+      "route": "attack-support",
+      "step": "feast",
+      "choice": "share",
+      "next": "feast",
+      "phase": "ready"
+    },
+    {
+      "route": "attack-support",
+      "step": "warning",
+      "choice": "listen",
+      "next": "root",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "read",
+      "choice": "begin",
+      "next": "heavy",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "heavy",
+      "choice": "back",
+      "next": "dash",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "heavy",
+      "choice": "rush",
+      "next": "retry",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "dash",
+      "choice": "side",
+      "next": "charge",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "dash",
+      "choice": "stand",
+      "next": "retry",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "retry",
+      "choice": "again",
+      "next": "heavy",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "charge",
+      "choice": "break",
+      "next": "master",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "charge",
+      "choice": "wait",
+      "next": "retry",
+      "phase": "active"
+    },
+    {
+      "route": "support-attack",
+      "step": "master",
+      "choice": "take",
+      "next": "duel",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "listen",
+      "choice": "hear",
+      "next": "first",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "first",
+      "choice": "water",
+      "next": "second",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "first",
+      "choice": "bell",
+      "next": "wrong",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "first",
+      "choice": "voice",
+      "next": "wrong",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "second",
+      "choice": "water",
+      "next": "wrong",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "second",
+      "choice": "bell",
+      "next": "third",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "second",
+      "choice": "voice",
+      "next": "wrong",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "wrong",
+      "choice": "retry",
+      "next": "first",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "third",
+      "choice": "voice",
+      "next": "release",
+      "phase": "active"
+    },
+    {
+      "route": "magic-defense",
+      "step": "third",
+      "choice": "bell",
+      "next": "wrong",
+      "phase": "active"
+    },
+    {
+      "route": "defense-magic",
+      "step": "witness",
+      "choice": "keeper",
+      "next": "witness",
+      "phase": "active"
+    },
+    {
+      "route": "defense-magic",
+      "step": "witness",
+      "choice": "child",
+      "next": "witness",
+      "phase": "active"
+    },
+    {
+      "route": "defense-magic",
+      "step": "witness",
+      "choice": "record",
+      "next": "witness",
+      "phase": "active"
+    },
+    {
+      "route": "defense-magic",
+      "step": "witness",
+      "choice": "judge",
+      "next": "judge",
+      "phase": "active"
+    },
+    {
+      "route": "defense-magic",
+      "step": "judge",
+      "choice": "blame",
+      "next": "explain",
+      "phase": "active"
+    },
+    {
+      "route": "defense-magic",
+      "step": "judge",
+      "choice": "law",
+      "next": "seal",
+      "phase": "active"
+    },
+    {
+      "route": "defense-magic",
+      "step": "explain",
+      "choice": "retry",
+      "next": "judge",
+      "phase": "active"
+    },
+    {
+      "route": "defense-magic",
+      "step": "seal",
+      "choice": "protect",
+      "next": "seal",
+      "phase": "ready"
+    },
+    {
+      "route": "defense-magic",
+      "step": "seal",
+      "choice": "isolate",
+      "next": "judge",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "book",
+      "choice": "sail",
+      "next": "red",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "red",
+      "choice": "hold",
+      "next": "redreveal",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "red",
+      "choice": "follow",
+      "next": "fog",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "redreveal",
+      "choice": "reject",
+      "next": "gull",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "redreveal",
+      "choice": "trust",
+      "next": "fog",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "fog",
+      "choice": "reset",
+      "next": "red",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "gull",
+      "choice": "guide",
+      "next": "tide",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "gull",
+      "choice": "ignore",
+      "next": "gull",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "tide",
+      "choice": "tow",
+      "next": "harbor",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "tide",
+      "choice": "wait",
+      "next": "rescue",
+      "phase": "active"
+    },
+    {
+      "route": "magic-support",
+      "step": "harbor",
+      "choice": "light",
+      "next": "harbor",
+      "phase": "ready"
+    },
+    {
+      "route": "magic-support",
+      "step": "rescue",
+      "choice": "rope",
+      "next": "harbor",
+      "phase": "active"
+    },
+    {
+      "route": "support-magic",
+      "step": "loom",
+      "choice": "spring",
+      "next": "loom",
+      "phase": "active"
+    },
+    {
+      "route": "support-magic",
+      "step": "loom",
+      "choice": "summer",
+      "next": "loom",
+      "phase": "active"
+    },
+    {
+      "route": "support-magic",
+      "step": "loom",
+      "choice": "autumn",
+      "next": "loom",
+      "phase": "active"
+    },
+    {
+      "route": "support-magic",
+      "step": "loom",
+      "choice": "winter",
+      "next": "loom",
+      "phase": "active"
+    },
+    {
+      "route": "support-magic",
+      "step": "loom",
+      "choice": "weave",
+      "next": "balance",
+      "phase": "active"
+    },
+    {
+      "route": "support-magic",
+      "step": "balance",
+      "choice": "both",
+      "next": "residents",
+      "phase": "active"
+    },
+    {
+      "route": "support-magic",
+      "step": "balance",
+      "choice": "one",
+      "next": "tilt",
+      "phase": "active"
+    },
+    {
+      "route": "support-magic",
+      "step": "residents",
+      "choice": "garden",
+      "next": "residents",
+      "phase": "ready"
+    },
+    {
+      "route": "support-magic",
+      "step": "residents",
+      "choice": "bridge",
+      "next": "residents",
+      "phase": "ready"
+    },
+    {
+      "route": "support-magic",
+      "step": "tilt",
+      "choice": "retry",
+      "next": "balance",
+      "phase": "active"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "people",
+      "next": "roots",
+      "phase": "active"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "trunk",
+      "next": "roots",
+      "phase": "active"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "seed",
+      "next": "roots",
+      "phase": "active"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "luxury",
+      "next": "roots",
+      "phase": "active"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "recover",
+      "next": "roots",
+      "phase": "active"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "protect",
+      "next": "defend",
+      "phase": "active"
+    },
+    {
+      "route": "defense-support",
+      "step": "ceremony",
+      "choice": "children",
+      "next": "ceremony",
+      "phase": "ready"
+    },
+    {
+      "route": "defense-support",
+      "step": "ceremony",
+      "choice": "all",
+      "next": "ceremony",
+      "phase": "ready"
+    },
+    {
+      "route": "support-defense",
+      "step": "plan",
+      "choice": "scout",
+      "next": "plan",
+      "phase": "active"
+    },
+    {
+      "route": "support-defense",
+      "step": "plan",
+      "choice": "ridge",
+      "next": "shelter",
+      "phase": "active"
+    },
+    {
+      "route": "support-defense",
+      "step": "plan",
+      "choice": "tunnel",
+      "next": "shelter",
+      "phase": "active"
+    },
+    {
+      "route": "support-defense",
+      "step": "shelter",
+      "choice": "warm",
+      "next": "spring",
+      "phase": "active"
+    },
+    {
+      "route": "support-defense",
+      "step": "spring",
+      "choice": "map",
+      "next": "map",
+      "phase": "active"
+    },
+    {
+      "route": "support-defense",
+      "step": "spring",
+      "choice": "melt",
+      "next": "home",
+      "phase": "active"
+    },
+    {
+      "route": "support-defense",
+      "step": "map",
+      "choice": "lower",
+      "next": "home",
+      "phase": "active"
+    },
+    {
+      "route": "support-defense",
+      "step": "map",
+      "choice": "upper",
+      "next": "ice",
+      "phase": "active"
+    },
+    {
+      "route": "support-defense",
+      "step": "home",
+      "choice": "deliver",
+      "next": "home",
+      "phase": "ready"
+    },
+    {
+      "route": "support-defense",
+      "step": "ice",
+      "choice": "retry",
+      "next": "map",
+      "phase": "active"
+    }
+  ],
+  "negative": [
+    {
+      "route": "attack-magic",
+      "step": "valve",
+      "choice": "ignite",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "attack-magic",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "attack-magic",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "attack-magic",
+      "guard": "invalid next"
+    },
+    {
+      "route": "attack-magic",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "magic-attack",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "magic-attack",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "magic-attack",
+      "guard": "invalid next"
+    },
+    {
+      "route": "magic-attack",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "attack-defense",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "attack-defense",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "attack-defense",
+      "guard": "invalid next"
+    },
+    {
+      "route": "attack-defense",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "defense-attack",
+      "step": "prison",
+      "choice": "quiet",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "defense-attack",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "defense-attack",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "defense-attack",
+      "guard": "invalid next"
+    },
+    {
+      "route": "defense-attack",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "attack-support",
+      "step": "market",
+      "choice": "wheel",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "attack-support",
+      "step": "market",
+      "choice": "deliver",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "attack-support",
+      "step": "market",
+      "choice": "herb",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "attack-support",
+      "step": "cart",
+      "choice": "offer",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "attack-support",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "attack-support",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "attack-support",
+      "guard": "invalid next"
+    },
+    {
+      "route": "attack-support",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "support-attack",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "support-attack",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "support-attack",
+      "guard": "invalid next"
+    },
+    {
+      "route": "support-attack",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "magic-defense",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "magic-defense",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "magic-defense",
+      "guard": "invalid next"
+    },
+    {
+      "route": "magic-defense",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "defense-magic",
+      "step": "witness",
+      "choice": "judge",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "defense-magic",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "defense-magic",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "defense-magic",
+      "guard": "invalid next"
+    },
+    {
+      "route": "defense-magic",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "magic-support",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "magic-support",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "magic-support",
+      "guard": "invalid next"
+    },
+    {
+      "route": "magic-support",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "support-magic",
+      "step": "loom",
+      "choice": "autumn",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "support-magic",
+      "step": "loom",
+      "choice": "winter",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "support-magic",
+      "step": "loom",
+      "choice": "weave",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "support-magic",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "support-magic",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "support-magic",
+      "guard": "invalid next"
+    },
+    {
+      "route": "support-magic",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "protect",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "people",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "trunk",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "seed",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "defense-support",
+      "step": "roots",
+      "choice": "luxury",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "defense-support",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "defense-support",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "defense-support",
+      "guard": "invalid next"
+    },
+    {
+      "route": "defense-support",
+      "guard": "invalid arrive"
+    },
+    {
+      "route": "support-defense",
+      "step": "plan",
+      "choice": "tunnel",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "support-defense",
+      "step": "plan",
+      "choice": "scout",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "support-defense",
+      "step": "spring",
+      "choice": "melt",
+      "guard": "unmet requirement"
+    },
+    {
+      "route": "support-defense",
+      "guard": "invalid choose"
+    },
+    {
+      "route": "support-defense",
+      "guard": "invalid claim"
+    },
+    {
+      "route": "support-defense",
+      "guard": "invalid next"
+    },
+    {
+      "route": "support-defense",
+      "guard": "invalid arrive"
+    }
+  ],
+  "lifecycle": [
+    {
+      "case": "native minimized homecoming window and return",
+      "seconds": 11,
+      "energyHidden": 61,
+      "energyReturned": 0,
+      "noStoryProgress": true,
+      "noOfflineReward": true
+    },
+    {
+      "case": "homecoming Worker exclusion",
+      "seconds": 12,
+      "summary": null
+    },
+    {
+      "case": "homecoming Worker exclusion",
+      "seconds": 3600,
+      "summary": null
+    },
+    {
+      "case": "homecoming Worker exclusion",
+      "seconds": 86401,
+      "summary": null
+    },
+    {
+      "case": "normal field real Worker settlement",
+      "simulatedMs": 12014,
+      "storyUnchanged": true
+    },
+    {
+      "case": "unlocked fourth hidden and real offline return",
+      "hiddenEnergy": 0.28800000000000003,
+      "afterHiddenEnergy": 0.28800000000000003,
+      "resumedEnergy": 0,
+      "storyUnchanged": true
+    }
+  ],
+  "errors": [],
+  "requests": []
+}

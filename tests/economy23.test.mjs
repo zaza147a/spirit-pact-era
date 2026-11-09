@@ -1,0 +1,44 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import vm from 'node:vm';
+import {GEAR_TIERS} from '../dist/progression.js';
+import {GEAR_BASE,PET_GEAR_BASE,RARITIES,rollGear,rollPetGear,primaryAffix,gearStatValue,affixRange,rebalanceGear,LOOT_ITEMS,SPECIAL_AFFIXES} from '../dist/loot.js';
+import {MAP_BOSSES,canEncounterBoss,bossRarity} from '../dist/map-bosses.js';
+import {CARDS} from '../dist/catalog.js';import {CARD_PROFILES} from '../dist/card-effects.js';
+import {WORLD_MONSTERS,ZONES} from '../dist/world-data.js';
+const dist=new URL('../dist/',import.meta.url);
+async function app(){const c={console,performance,Math:Object.create(Math)};let s=readFileSync(new URL('game.js',dist),'utf8');for(const m of s.matchAll(/^import \{([^}]+)\} from '([^']+)';$/gm)){const mod=await import(new URL(m[2],dist));for(const item of m[1].split(',').map(x=>x.trim())){const [original,alias]=item.split(/\s+as\s+/);c[original]=mod[original];c[alias||original]=mod[original];}}s=s.replace(/^import .*;\n/gm,'').replace(/\ninit\(\);\s*$/,'\nglobalThis.api={fresh,normalize,valid,spawn,addEncounter,enemyAttack,award,fleeMapBosses,capture,socket,unsocket,stat,rawStat,renderTierGuide,state:()=>({player,enemy,enemies,bossCooldowns}),setup:(p,e=null)=>{player=p;enemy=e;enemies=e?[e]:[];report=null;bossCooldowns={};activeSlot=null;}};render=()=>{};renderSide=()=>{};message=()=>{};toast=()=>{};save=()=>true;');vm.createContext(c);vm.runInContext(s,c);c.Math.random=()=>.5;c.rand=(lo,hi)=>hi;return c;}
+test('all eight named stages have matching shards and higher-tier common core beats lower-tier maximum mythic for every equipment type',()=>{
+ assert.deepEqual(GEAR_TIERS.map(t=>t.name),['晨曦','征途','星輝','天啟','聖域','創世','蒼穹','永恆','星瀾','聖誓','界源']);
+ for(const t of GEAR_TIERS)for(const kind of ['weapon','armor'])assert.ok(LOOT_ITEMS[`shard_${kind}_${t.tier}`].name.startsWith(t.name));
+ const all={...GEAR_BASE,...PET_GEAR_BASE};for(const id of Object.keys(all)){const roller=PET_GEAR_BASE[id]?rollPetGear:rollGear,key=primaryAffix(id);for(let tier=1;tier<11;tier++){const low=roller(id,GEAR_TIERS[tier-1].max,'mythic',()=>.999999),high=roller(id,GEAR_TIERS[tier].min,'common',()=>0);assert.ok(gearStatValue(high,key)>gearStatValue(low,key),`${id}/${tier}/${key}`);}}
+ // Published weapon-specific primary affix ranges differ between weapon types.
+ // Cross-weapon minimum/maximum comparisons are no longer valid; the per-item
+ // tier guarantee above remains mandatory for every weapon and armor piece.
+ const tier=GEAR_TIERS[8].min;
+ assert.ok(rollGear('twoSword',tier,'mythic',()=>.5).affixes.atk>rollGear('blade',tier,'mythic',()=>.5).affixes.atk);
+ assert.ok(rollGear('offDagger',tier,'mythic',()=>.5).affixes.atk<rollGear('rifle',tier,'mythic',()=>.5).affixes.atk);
+});
+test('rarity increases core bands and affix count; only mythic contains a special trait, old gear migration is stable',()=>{
+ for(const tier of GEAR_TIERS){let last=0;for(const quality of RARITIES){const g=rollGear('longBow',tier.min,quality.id,()=>.5);assert.equal(Object.keys(g.affixes).length,quality.count);assert.ok(g.affixes.atk>=last);last=g.affixes.atk;assert.equal(Object.keys(g.affixes).filter(k=>SPECIAL_AFFIXES.has(k)).length,quality.id==='mythic'?1:0);assert.equal(g.powerVersion,50);}}
+ const old={id:'oneStaff',uid:'stable',level:80,rarity:'legendary',affixes:{matk:12,INT:4,hit:3,DEX:2,crit:1},fusionMatch:true};const next=rebalanceGear(old);assert.equal(next.uid,old.uid);assert.equal(next.level,old.level);assert.equal(next.rarity,old.rarity);assert.ok(next.fusionMatch);assert.equal(next.affixes.INT>0,true);assert.deepEqual(rebalanceGear(next),next);assert.deepEqual(rebalanceGear(old),next);
+});
+test('every combat map has an independently rolled boss; cooldown and one-boss limit work; town never has a boss',()=>{
+ assert.equal(Object.keys(MAP_BOSSES).length,20);assert.equal(canEncounterBoss('petland',[],1000,0,()=>0),false);for(const id of ZONES.map(z=>z.id)){const b=MAP_BOSSES[id];assert.ok(CARDS[b.id].boss);assert.ok(canEncounterBoss(id,[],1000,0,()=>0));assert.equal(canEncounterBoss(id,[],1000,2000,()=>0),false);assert.equal(canEncounterBoss(id,[{...b,hp:1}],1000,0,()=>0),false);assert.equal(canEncounterBoss(id,[],1000,0,()=>.04),false);}assert.equal(canEncounterBoss('town',[],1000,0,()=>0),false);for(const r of [0,.6999])assert.equal(bossRarity(()=>r),'uncommon');assert.equal(bossRarity(()=>.7),'legendary');assert.equal(bossRarity(()=>.95),'mythic');
+});
+test('automatic boss escape avoids damage and all rewards even on initial spawn; manual escape keeps regular monsters',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('避戰','mage'));p.location='volcano';p.autoEscapeBoss=true;a.setup(p);const choose=c.canEncounterBoss;c.canEncounterBoss=(...args)=>choose(...args,()=>0);const snapshot=JSON.stringify({hp:p.hp,mp:p.mp,gold:p.gold,bag:p.bag,cards:p.cards,kills:p.kills});a.spawn();a.addEncounter(Date.now()+5000);assert.equal(a.state().enemies.length,0);assert.equal(a.state().enemy.hp,0);assert.equal(JSON.stringify({hp:p.hp,mp:p.mp,gold:p.gold,bag:p.bag,cards:p.cards,kills:p.kills}),snapshot);assert.ok(a.state().bossCooldowns.volcano>Date.now());
+ p.autoEscapeBoss=false;a.setup(p);a.addEncounter(1000);assert.ok(a.state().enemy.boss);const regular={...WORLD_MONSTERS[50],hp:100};a.state().enemies.push(regular);const gold=p.gold,kills=p.kills;a.fleeMapBosses();assert.equal(a.state().enemies.length,1);assert.equal(a.state().enemy.id,regular.id);assert.equal(p.gold,gold);assert.equal(p.kills,kills);
+});
+test('boss defeats always award one item with a 9:1 character/pet split at uncommon or above; normal enemies do not get guaranteed gear',async()=>{
+ for(const roll of [.0001,.72,.99]){const c=await app(),a=c.api,p=a.normalize(a.fresh('首領掉寶','archer'));p.level=99;p.location='celestial';a.setup(p,{...MAP_BOSSES.celestial,hp:0});c.Math.random=()=>roll;c.bossRarity=()=>bossRarity(()=>roll);a.award();const items=p.bag.filter(e=>e.uid);assert.equal(items.length,1);for(const item of items){assert.ok(['uncommon','legendary','mythic'].includes(item.rarity));assert.equal(item.tier,6);}assert.equal(p.cards.length,roll<.001?1:0);}
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('一般掉寶','mage'));p.level=99;p.location='celestial';a.setup(p,{...WORLD_MONSTERS[98],hp:0});c.Math.random=()=>.99;a.award();assert.equal(p.bag.filter(e=>e.uid).length,0);
+});
+test('regional cards retain distinct identities and legal armor cards improve defensive stats',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('卡片效果','mage'));p.level=99;a.setup(p);const hp=a.stat('hp'),def=a.stat('def');const card=Object.entries(CARDS).find(([id,c])=>id.startsWith('world_')&&c.slots.includes('armor')&&c.effects.hp);assert.ok(card);p.sockets.armor=card[0];assert.ok(a.stat('hp')>hp);assert.ok(a.stat('def')>=def);assert.notDeepEqual(CARD_PROFILES.forest.profiles,CARD_PROFILES.celestial.profiles);
+});
+test('legacy character migration rebalances all worn, bag and pet items once, retains independent state and boss escape choice',async()=>{
+ const c=await app(),a=c.api,p=a.fresh('舊裝換算','mage');p.version=22;p.autoEscapeBoss=true;p.gear.rightHand={id:'oneStaff',uid:'worn',level:50,rarity:'legendary',affixes:{matk:5,INT:2}};p.bag.push({id:'blade',uid:'bag',level:70,rarity:'common',affixes:{atk:5}});p.pets=[c.makePet('wisp')];p.pets[0].gear.head={id:'petCirclet',uid:'pet',level:50,rarity:'rare',affixes:{matk:5,INT:2}};a.normalize(p);assert.ok(a.valid(p));assert.equal(p.version,51);assert.equal(p.gear.rightHand.uid,'worn');assert.equal(p.bag.find(e=>e.uid==='bag').powerVersion,50);assert.equal(p.pets[0].gear.head.powerVersion,50);assert.ok(p.autoEscapeBoss);const once=JSON.stringify(p);a.normalize(p);assert.equal(JSON.stringify(p),once);
+});
+
+test('removing or replacing capacity cards clamps HP/SP and returns exact cards without destroying sockets or items',async()=>{
+ const c=await app(),a=c.api,p=a.normalize(a.fresh('插卡','mage'));p.level=50;p.gear.armor=rollGear('vest',50,'uncommon');p.gear.garment=rollGear('cloak',50,'uncommon');p.cards=[{id:'boss_abyss',qty:1},{id:'boss_frost',qty:1}];a.setup(p);a.socket('boss_abyss','garment');p.hp=a.stat('hp');p.mp=a.stat('mp');a.unsocket('garment');assert.equal(p.hp,a.stat('hp'));assert.equal(p.mp,a.stat('mp'));assert.equal(p.cards.find(x=>x.id==='boss_abyss').qty,1);a.socket('boss_abyss','garment');p.hp=a.stat('hp');p.mp=a.stat('mp');a.socket('boss_frost','armor');assert.ok(p.hp<=a.stat('hp'));assert.ok(p.mp<=a.stat('mp'));assert.equal(p.sockets.garment,'boss_abyss');assert.equal(p.sockets.armor,'boss_frost');assert.ok(p.gear.armor);
+});

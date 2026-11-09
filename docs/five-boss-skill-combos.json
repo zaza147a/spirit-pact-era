@@ -1,0 +1,5992 @@
+{
+  "conditions": "Actual consecutive five Lv191 Worldroot bosses with legal unenhanced Lv200 prior-tier mythic owner+pet gear; all 20 of six-choose-three pet skill sets for each of six canonical fusion roles and representative crusader/wizard/sage third jobs, one seed 731, 600-second window; further jobs/seeds/gear remain pending.",
+  "count": 360,
+  "wins": 348,
+  "medianWinSeconds": 277.34,
+  "summary": [
+    {
+      "job": "crusader",
+      "byPair": [
+        {
+          "pair": "attack-magic",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 213.22,
+          "maxWinSeconds": 308.98,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "attack-defense",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 265.4,
+          "maxWinSeconds": 325.42,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "attack-support",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 261.8,
+          "maxWinSeconds": 307.54,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "magic-defense",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 318.16,
+          "maxWinSeconds": 438.4,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "magic-support",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 336.82,
+          "maxWinSeconds": 429.46,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "defense-support",
+          "n": 20,
+          "wins": 17,
+          "medianWinSeconds": 453.18,
+          "maxWinSeconds": 598.86,
+          "choicesWithFailures": [
+            [
+              1,
+              2,
+              4
+            ],
+            [
+              1,
+              2,
+              5
+            ],
+            [
+              1,
+              4,
+              5
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "job": "wizard",
+      "byPair": [
+        {
+          "pair": "attack-magic",
+          "n": 20,
+          "wins": 19,
+          "medianWinSeconds": 216.56,
+          "maxWinSeconds": 321.4,
+          "choicesWithFailures": [
+            [
+              1,
+              2,
+              4
+            ]
+          ]
+        },
+        {
+          "pair": "attack-defense",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 276.78,
+          "maxWinSeconds": 345.82,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "attack-support",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 278.54,
+          "maxWinSeconds": 327.12,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "magic-defense",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 335.64,
+          "maxWinSeconds": 472.66,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "magic-support",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 354.06,
+          "maxWinSeconds": 454.58,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "defense-support",
+          "n": 20,
+          "wins": 12,
+          "medianWinSeconds": 472.56,
+          "maxWinSeconds": 590.08,
+          "choicesWithFailures": [
+            [
+              1,
+              2,
+              4
+            ],
+            [
+              1,
+              2,
+              5
+            ],
+            [
+              1,
+              3,
+              4
+            ],
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              1,
+              4,
+              5
+            ],
+            [
+              2,
+              3,
+              5
+            ],
+            [
+              2,
+              4,
+              5
+            ],
+            [
+              3,
+              4,
+              5
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "job": "sage",
+      "byPair": [
+        {
+          "pair": "attack-magic",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 206.92,
+          "maxWinSeconds": 289.8,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "attack-defense",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 255.22,
+          "maxWinSeconds": 315.56,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "attack-support",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 253.16,
+          "maxWinSeconds": 298.5,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "magic-defense",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 307.72,
+          "maxWinSeconds": 418.38,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "magic-support",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 311.28,
+          "maxWinSeconds": 397.26,
+          "choicesWithFailures": []
+        },
+        {
+          "pair": "defense-support",
+          "n": 20,
+          "wins": 20,
+          "medianWinSeconds": 506.62,
+          "maxWinSeconds": 594.84,
+          "choicesWithFailures": []
+        }
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 230.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 213.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 197.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 256.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 188.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 168.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 222.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 165.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 208.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 193.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 244.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 216.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 308.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 7
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 203.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 271.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 245.06,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 179.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 236.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 209.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-magic",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 200.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 238.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 209.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 234,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 241.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 243.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 270.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 287.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 238.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 249.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 276.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 237.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 265.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 275.02,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 232.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 241.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 267.02,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 273.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 285.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 325.42,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 276.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 264.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 240.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 268.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 237.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 245.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 279.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 241.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 251.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 218.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 248.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 269.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 307.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 7
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 261.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 273.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 241.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 268.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 284.18,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 245.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 277.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "attack-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 250.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 263.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 227.76,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 256.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 268.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 277.48,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 322.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 340.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 268.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 288.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 331.18,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 277.48,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 318.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 7
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 330.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 273.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 282.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 323.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 342.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 362.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 9
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 438.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 350.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 326.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 405.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 429.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 349.76,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 307.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 7
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 318.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 7
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 269.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 396.08,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 10
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 324.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 340.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 322.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 336.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 279.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 426.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 348.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 358.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 316.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 7
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 271.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 275.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "crusader",
+      "pair": "magic-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 340.06,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 436.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 416.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 453.18,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 452.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 405.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 10
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 437.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 436.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 416.48,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 10
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 417.08,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 456.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 536.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 14
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 16
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 16
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 558.76,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 15
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 559.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 15
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 16
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 534.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 14
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 536.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 14
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 598.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 16
+    },
+    {
+      "job": "crusader",
+      "pair": "defense-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 559.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 15
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 242.68,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 38
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 216.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 64
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 204.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 56
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 266.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 84
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 190.96,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 32
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 182.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 29
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 236.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 44
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 163.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 43
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 210.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 62
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 197.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 59
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 251.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 45
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 2,
+      "seconds": 99.22,
+      "alive": false,
+      "petDeaths": 0,
+      "potions": 14
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 321.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 56
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 209.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 63
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 289.02,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 84
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 252.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 76
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 192.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 32
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 247.08,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 42
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 223.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 33
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-magic",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 206.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 62
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 244.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 216.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 240.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 250.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 255.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 286.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 301.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 243.68,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 256.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 294.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 247.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 33
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 276.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 37
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 286.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 242.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 28
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 250.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 281.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 285.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 34
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 299.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 345.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 294.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 282.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 253.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 290.42,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 250.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 256.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 297.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 254.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 264.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 232.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 257.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 285.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 24
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 327.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 278.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 297.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 249.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 286.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 301.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 256.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 288.96,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "attack-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 264.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 276.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 241.02,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 271.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 280.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 291.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 337.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 363.68,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 286.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 299.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 348.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 285.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 13
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 335.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 17
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 346.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 283.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 297,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 337.96,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 360.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 17
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 375.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 472.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 368.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 335.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 104
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 428.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 132
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 454.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 363.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 118
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 317.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 103
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 337.78,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 283.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 85
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 434.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 344.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 104
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 365.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 332.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 100
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 354.06,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 293.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 89
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 454.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 358.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 113
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 386.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 327.6,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 275.68,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 81
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 294.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "magic-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 357.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 472.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 450.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 496.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 502.76,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 435.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 468.76,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 470.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 450.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 1
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 444.58,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 493.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 584.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 590.08,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 10
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "wizard",
+      "pair": "defense-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": false,
+      "kills": 4,
+      "seconds": 599.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 220.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 48
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 202.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 68
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 192.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 63
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 246.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 82
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 180.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 46
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 168.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 38
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 213.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 48
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 157.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 49
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 200.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 65
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 186.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 60
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 235.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 52
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 209.3,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 47
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 289.8,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 71
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 198.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 63
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 256.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 87
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 234.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 81
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 172.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 39
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 224.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 53
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 206.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 49
+    },
+    {
+      "job": "sage",
+      "pair": "attack-magic",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 193.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 65
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 227.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 9
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 203.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 10
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 221.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 236.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 237.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 9
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 262.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 13
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 275.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 230.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 9
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 241.18,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 269.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 229.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 47
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 255.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 49
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 266.76,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 224.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 45
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 237.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 258.76,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 263.1,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 53
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 274.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 315.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 270.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 256.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 234.54,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 265.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 233.22,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 241.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 271.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 238.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 246.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 216.48,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 242.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 259.06,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 298.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 253.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 266.42,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 232.16,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 259.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 275.14,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 240.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 268.08,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "attack-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 246.24,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 258.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 221.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 9
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 250.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 14
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 261.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 269.34,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 8
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 312.48,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 13
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 331.68,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 5
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 261.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 277.06,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 319.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 266.5,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 55
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 307.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 63
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 323.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 261.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 59
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 272.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 12
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 313.12,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 324.66,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 70
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 351.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 15
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 418.38,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 16
+    },
+    {
+      "job": "sage",
+      "pair": "magic-defense",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 337.2,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 11
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 303.52,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 103
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 363.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 130
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 397.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 10
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 319.26,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 109
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 280.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 93
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 297.9,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 254.08,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 89
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 365.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 6
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 296,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 104
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 315.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 290.36,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 98
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 313.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 260.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 90
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 390.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 313.98,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 108
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 337.82,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 2
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 291.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 251.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 87
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 259.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 3
+    },
+    {
+      "job": "sage",
+      "pair": "magic-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 311.28,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 4
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        2
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 423.44,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 399.72,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 436.94,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        1,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 440.4,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 387.06,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 420.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 422.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 400.88,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 402.92,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        0,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 438.64,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        3
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 509.04,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 573.86,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        2,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 569.7,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 529.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 532.56,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        1,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 594.84,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        3,
+        4
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 510.74,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        3,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 506.62,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        2,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 574.32,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    },
+    {
+      "job": "sage",
+      "pair": "defense-support",
+      "choice": [
+        3,
+        4,
+        5
+      ],
+      "seed": 731,
+      "won": true,
+      "kills": 5,
+      "seconds": 529.46,
+      "alive": true,
+      "petDeaths": 0,
+      "potions": 0
+    }
+  ]
+}

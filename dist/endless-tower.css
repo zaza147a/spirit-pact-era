@@ -1,0 +1,86 @@
+.tower-intro{border-color:rgba(206,165,87,.5);background:linear-gradient(130deg,rgba(48,57,99,.22),rgba(153,111,51,.12));}
+.tower-region{border-left:3px solid rgba(211,177,102,.55);}
+.tower-active{border:2px solid rgba(211,177,102,.75);}
+.tower-region button{min-height:36px;margin:6px 6px 0 0;}
+.tower-reward{border:2px solid rgba(211,177,102,.75);}
+.tower-cast-warning{margin:8px 0;padding:8px 10px;border:1px solid rgba(243,160,91,.65);border-radius:8px;background:rgba(103,47,27,.3);color:#ffdaa9;font-weight:600;font-size:.9em;}
+.tower-failure{border:1px solid rgba(229,115,107,.7);background:rgba(126,47,47,.18);}
+.tower-floor-picker{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px;}
+.tower-floor-picker label{display:flex;align-items:center;gap:8px;}
+.tower-floor-picker select{min-width:140px;max-width:100%;}
+.tower-objective-banner{margin:8px 0;padding:8px;border:1px solid rgba(153,204,247,.55);border-radius:8px;background:rgba(41,87,128,.25);font-weight:600;}
+@media(max-width:650px){.tower-region button{max-width:100%;white-space:normal;}}
+.tower-honor-choices{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0;}
+.tower-honor-choices button.active{border-color:#f6d899;background:rgba(215,172,88,.19);color:#ffefc8;}
+.tower-showcase-preview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0;padding:9px;background:#112537;border:1px solid #9d8157;border-radius:12px;}
+.tower-showcase-preview img{display:block;width:100%;height:100px;object-fit:contain;filter:drop-shadow(0 3px 6px #0008);}
+#gameShell #character>.hero .tower-showcase-display{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;align-self:center;gap:5px;width:min(100%,245px);max-width:100%;margin:7px auto;padding:6px 9px;border:2px double #d6b976;border-radius:12px;background:linear-gradient(115deg,#102238ed,#53402bee,#162e42ed);box-shadow:0 4px 13px #0007;box-sizing:border-box;}
+#gameShell #character>.hero .tower-showcase-display>span{font-size:11px!important;color:#ffe5a5!important;letter-spacing:.08em;line-height:1.35;}
+#gameShell #character>.hero .tower-showcase-display>div{display:flex;justify-content:space-evenly;align-items:center;gap:6px;width:100%;}
+#gameShell #character>.hero .tower-showcase-display img{display:block;width:28%;max-width:60px;height:58px;object-fit:contain;filter:drop-shadow(0 2px 4px #000c);}
+.slot-select h2.tower-honor-name{display:table;margin-left:auto;margin-right:auto;max-width:94%;padding:5px 15px;border-radius:9px;}
+.slot-select h2.tower-frame-dawn{border:2px solid #e7c66a;background:linear-gradient(110deg,#2c303c,#66512e,#2c303c);color:#fff1bf;}
+.slot-select h2.tower-frame-flame{border:2px solid #e7834a;background:linear-gradient(110deg,#351f30,#8c342b,#351f30);color:#ffe2bd;}
+.slot-select h2.tower-frame-frost{border:2px solid #9be4f5;background:linear-gradient(110deg,#223445,#416d92,#223445);color:#edfaff;}
+.slot-select .tower-honor-title{display:block;margin:4px auto 7px;color:#f5d89b;font-size:.76rem;letter-spacing:.08em;text-shadow:0 1px 3px #101722;}
+.slot-select h2.tower-frame-dawn,.slot-select h2.tower-frame-flame,.slot-select h2.tower-frame-frost{box-shadow:0 0 0 2px rgba(255,255,255,.12),0 4px 17px rgba(0,0,0,.3);}
+.tower-album-region{border:1px solid rgba(153,172,202,.28);padding:10px;margin:8px 0;border-radius:10px;}
+.tower-album-region>small{display:block;opacity:.75;margin-top:4px;}
+.tower-album-stamps{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px;margin-top:8px;}
+.tower-album-stamps span{border:1px solid rgba(144,155,177,.3);border-radius:5px;text-align:center;padding:4px 0;opacity:.4;font-size:.75rem;}
+.tower-album-stamps span.collected{background:rgba(214,172,88,.18);border-color:#dbb873;color:#ffe3a7;opacity:1;}
+.tower-shop-item{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid rgba(150,173,201,.18);padding:11px 3px;}
+.tower-shop-item small{display:block;opacity:.7;margin-top:3px;}
+.tower-shop-item button{flex-shrink:0;}
+.tower-background-preview{width:100%;min-height:95px;border-radius:9px;}
+.tower-background-dawn{background-image:url('assets/tower/background-dawn.webp?v=tower-art-1'),radial-gradient(circle at 65% 22%,#e9bc71,#785b6c 36%,#172b46);background-size:cover;}
+.tower-background-flame{background-image:url('assets/tower/background-flame.webp?v=tower-art-1'),radial-gradient(circle at 55% 27%,#fc9c48,#9c393a 34%,#23192d);background-size:cover;}
+.tower-background-frost{background-image:url('assets/tower/background-frost.webp?v=tower-art-1'),radial-gradient(circle at 55% 20%,#cbf4ff,#5b92c4 40%,#1a304d);background-size:cover;}
+.slot-select h2.tower-frame-collect-dawn{border:3px double #fff0ae;background:linear-gradient(120deg,#35303b,#97794b,#35303b);color:#fff6ca;box-shadow:0 0 15px #f5bf6970;}
+.slot-select h2.tower-frame-collect-flame{border:3px double #ffd18f;background:linear-gradient(120deg,#3c1b27,#ae493a,#3c1b27);color:#ffe9c9;box-shadow:0 0 15px #e8796470;}
+.slot-select h2.tower-frame-collect-frost{border:3px double #e5fbff;background:linear-gradient(120deg,#1c3550,#438fbb,#1c3550);color:#f0faff;box-shadow:0 0 15px #9cdeff70;}
+#gameShell #character .character-name.tower-honor-name{display:table;width:auto;max-width:100%!important;margin:5px auto 8px!important;padding:6px 13px!important;border-radius:10px!important;line-height:1.4;text-align:center;box-shadow:0 4px 15px #0007;position:relative;z-index:2;}
+#gameShell #character .character-name.tower-frame-dawn{border:2px solid #e7c66a!important;background:linear-gradient(110deg,#2c303c,#66512e,#2c303c)!important;color:#fff1bf!important;}
+#gameShell #character .character-name.tower-frame-flame{border:2px solid #e7834a!important;background:linear-gradient(110deg,#351f30,#8c342b,#351f30)!important;color:#ffe2bd!important;}
+#gameShell #character .character-name.tower-frame-frost{border:2px solid #9be4f5!important;background:linear-gradient(110deg,#223445,#416d92,#223445)!important;color:#edfaff!important;}
+#gameShell #character .character-name.tower-frame-collect-dawn{border:3px double #fff0ae!important;background:linear-gradient(120deg,#35303b,#97794b,#35303b)!important;color:#fff6ca!important;}
+#gameShell #character .character-name.tower-frame-collect-flame{border:3px double #ffd18f!important;background:linear-gradient(120deg,#3c1b27,#ae493a,#3c1b27)!important;color:#ffe9c9!important;}
+#gameShell #character .character-name.tower-frame-collect-frost{border:3px double #e5fbff!important;background:linear-gradient(120deg,#1c3550,#438fbb,#1c3550)!important;color:#f0faff!important;}
+#gameShell #character .tower-honor-title{display:block;text-align:center;margin:3px auto 8px;color:#f7d898;font-size:12px;font-weight:700;letter-spacing:.08em;text-shadow:0 2px 7px #000;}
+/* Equipped name frames also win against cosmetic-scene background overrides. */
+#gameShell #character>.hero.cosmetic-scene-active .character-name.tower-honor-name{display:table!important;width:auto!important;max-width:calc(100% - 12px)!important;margin:5px auto 8px!important;padding:6px 13px!important;border-radius:10px!important;line-height:1.4!important;text-align:center!important;text-shadow:0 2px 4px #000a!important;}
+#gameShell #character>.hero.cosmetic-scene-active .character-name.tower-frame-dawn{border:2px solid #e7c66a!important;background:linear-gradient(110deg,#2c303c,#66512e,#2c303c)!important;color:#fff1bf!important;}
+#gameShell #character>.hero.cosmetic-scene-active .character-name.tower-frame-flame{border:2px solid #e7834a!important;background:linear-gradient(110deg,#351f30,#8c342b,#351f30)!important;color:#ffe2bd!important;}
+#gameShell #character>.hero.cosmetic-scene-active .character-name.tower-frame-frost{border:2px solid #9be4f5!important;background:linear-gradient(110deg,#223445,#416d92,#223445)!important;color:#edfaff!important;}
+#gameShell #character>.hero.cosmetic-scene-active .character-name.tower-frame-collect-dawn{border:3px double #fff0ae!important;background:linear-gradient(120deg,#35303b,#97794b,#35303b)!important;color:#fff6ca!important;}
+#gameShell #character>.hero.cosmetic-scene-active .character-name.tower-frame-collect-flame{border:3px double #ffd18f!important;background:linear-gradient(120deg,#3c1b27,#ae493a,#3c1b27)!important;color:#ffe9c9!important;}
+#gameShell #character>.hero.cosmetic-scene-active .character-name.tower-frame-collect-frost{border:3px double #e5fbff!important;background:linear-gradient(120deg,#1c3550,#438fbb,#1c3550)!important;color:#f0faff!important;}
+.tower-gatekeeper{border:1px solid #c6a86d88;background:linear-gradient(120deg,#1b2c3d,#38304a);border-radius:12px;padding:12px;margin:12px 0;}
+.tower-gatekeeper p{color:#bcd2dc;line-height:1.7;}
+.trial-gatekeeper{border:1px solid #79b4d188;background:linear-gradient(120deg,#172d42,#253d58);border-radius:12px;padding:12px;margin:12px 0;}
+.trial-gatekeeper b{color:#d7edff;}
+.trial-gatekeeper p{color:#c0d8e9;line-height:1.7;}
+.trial-gatekeeper-profile{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center;}
+.trial-gatekeeper-profile img{display:block;width:96px;height:132px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 5px 8px #0008);}
+.trial-gatekeeper-profile b{color:#d7edff;display:block;font-size:16px;}
+@media(max-width:420px){.trial-gatekeeper-profile{grid-template-columns:72px minmax(0,1fr);gap:8px}.trial-gatekeeper-profile img{width:72px;height:100px}.trial-gatekeeper-profile b{font-size:13px}}
+#encounter:has(.tower-encounter) .enemy-lineup{display:grid!important;grid-template-columns:minmax(0,1fr)!important;overflow:hidden!important;}
+#encounter:has(.tower-encounter) .encounter-heading,#encounter:has(.tower-encounter)>.tiny{display:none!important;}
+#encounter .enemy-target.tower-encounter{flex:1 1 100%!important;width:100%!important;max-width:100%!important;min-width:0!important;min-height:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:stretch!important;gap:10px!important;text-align:left!important;position:relative;padding:14px!important;box-sizing:border-box!important;overflow:hidden!important;border:1px solid #bba371a0!important;border-radius:15px!important;background:linear-gradient(135deg,#12243be8,#28314de8 70%,#4a3642c9)!important;box-shadow:inset 0 1px #ffffff17,0 8px 24px #0005;}
+#encounter .tower-encounter-main{display:grid;grid-template-columns:clamp(105px,22%,170px) minmax(0,1fr);gap:14px;align-items:center;width:100%;min-width:0;}
+#encounter .tower-monster-portrait{display:flex;justify-content:center;align-items:center;min-width:0;min-height:150px;}
+#encounter .tower-monster-portrait .art-monster{position:static!important;display:block!important;grid-column:auto!important;grid-row:auto!important;top:auto!important;left:auto!important;width:100%!important;max-width:160px!important;height:150px!important;max-height:150px!important;object-fit:contain!important;filter:drop-shadow(0 7px 13px #0009);}
+#encounter .tower-encounter-info{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:6px;min-width:0;overflow-wrap:anywhere;}
+#encounter .tower-encounter-info>b{color:#ffe0a1;font-size:17px;line-height:1.5;}
+#encounter .tower-encounter-info>span,#encounter .tower-encounter-info>small{color:#d5e6ef;font-size:12px;}
+#encounter .tower-encounter-info .bar{width:100%!important;height:10px!important;margin:0!important;}
+#encounter .tower-encounter-info .tower-objective-banner{margin:0;padding:8px 10px;font-size:12px;line-height:1.65;overflow-wrap:anywhere;}
+#encounter .tower-encounter-info>.tower-cast-warning{display:block;width:100%;min-width:0;box-sizing:border-box;margin:0;overflow-wrap:anywhere;line-height:1.55;animation:tower-warning-pulse 2s ease-in-out infinite;}
+.tower-encounter.tower-flame{border-color:#db825e!important;background:linear-gradient(135deg,#221c2e,#4d2630)!important;}
+.tower-encounter.tower-frost{border-color:#91d3f6!important;background:linear-gradient(135deg,#152d40,#294b68)!important;}
+@keyframes tower-warning-pulse{50%{box-shadow:0 0 12px #e59a5966;}}
+@media(max-width:540px){#encounter .enemy-target.tower-encounter{padding:10px!important;gap:7px!important}#encounter .tower-encounter-main{grid-template-columns:90px minmax(0,1fr);gap:9px}#encounter .tower-monster-portrait{min-height:110px}#encounter .tower-monster-portrait .art-monster{height:110px!important;max-height:110px!important}#encounter .tower-encounter-info>b{font-size:13px}#encounter .tower-encounter-info .tower-objective-banner{font-size:11px;padding:6px 7px}}
+/* Character handbook tabs: four balanced columns instead of eight squeezed labels. */
+#side .section-tabs{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important;align-items:stretch;margin-bottom:15px;}
+#side .section-tabs button{min-width:0!important;min-height:45px;white-space:normal!important;word-break:keep-all;overflow-wrap:break-word;padding:9px 5px!important;flex:none!important;font-size:12px;line-height:1.45;border-radius:9px;}
+@media(max-width:420px){#side .section-tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important}#side .section-tabs button{min-height:42px;}}

@@ -1,0 +1,220 @@
+{
+  "engine": "webkit",
+  "passed": true,
+  "rows": [
+    {
+      "job": "knight",
+      "rank": "S",
+      "name": "赤槍遊騎",
+      "src": "assets/rank-outfits/knight-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "knight",
+      "rank": "SS",
+      "name": "龍紋槍衛",
+      "src": "assets/rank-outfits/knight-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "knight",
+      "rank": "SSS",
+      "name": "焰龍盧恩統御者",
+      "src": "assets/rank-outfits/knight-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "crusader",
+      "rank": "S",
+      "name": "青誓禁衛",
+      "src": "assets/rank-outfits/crusader-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "crusader",
+      "rank": "SS",
+      "name": "王庭聖盾",
+      "src": "assets/rank-outfits/crusader-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "crusader",
+      "rank": "SSS",
+      "name": "獅心皇家統帥",
+      "src": "assets/rank-outfits/crusader-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "wizard",
+      "rank": "S",
+      "name": "暮星術士",
+      "src": "assets/rank-outfits/wizard-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "wizard",
+      "rank": "SS",
+      "name": "雙極星詠",
+      "src": "assets/rank-outfits/wizard-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "wizard",
+      "rank": "SSS",
+      "name": "群星墜界者",
+      "src": "assets/rank-outfits/wizard-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "sage",
+      "rank": "S",
+      "name": "元素研習者",
+      "src": "assets/rank-outfits/sage-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "sage",
+      "rank": "SS",
+      "name": "魔導拳師",
+      "src": "assets/rank-outfits/sage-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "sage",
+      "rank": "SSS",
+      "name": "萬象符拳賢者",
+      "src": "assets/rank-outfits/sage-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "assassin",
+      "rank": "S",
+      "name": "暮刃潛行者",
+      "src": "assets/rank-outfits/assassin-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "assassin",
+      "rank": "SS",
+      "name": "蝕毒追獵者",
+      "src": "assets/rank-outfits/assassin-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "assassin",
+      "rank": "SSS",
+      "name": "終夜斬首者",
+      "src": "assets/rank-outfits/assassin-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "rogue",
+      "rank": "S",
+      "name": "黃巾掠影",
+      "src": "assets/rank-outfits/rogue-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "rogue",
+      "rank": "SS",
+      "name": "幻影遊掠者",
+      "src": "assets/rank-outfits/rogue-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "rogue",
+      "rank": "SSS",
+      "name": "星鎖劫影王",
+      "src": "assets/rank-outfits/rogue-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "priest",
+      "rank": "S",
+      "name": "晨禱療者",
+      "src": "assets/rank-outfits/priest-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "priest",
+      "rank": "SS",
+      "name": "聖域主祭",
+      "src": "assets/rank-outfits/priest-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "priest",
+      "rank": "SSS",
+      "name": "天穹聖典大主教",
+      "src": "assets/rank-outfits/priest-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "monk",
+      "rank": "S",
+      "name": "赤心修行者",
+      "src": "assets/rank-outfits/monk-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "monk",
+      "rank": "SS",
+      "name": "金剛氣鬥士",
+      "src": "assets/rank-outfits/monk-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "monk",
+      "rank": "SSS",
+      "name": "極意修羅",
+      "src": "assets/rank-outfits/monk-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "hunter",
+      "rank": "S",
+      "name": "林哨獵手",
+      "src": "assets/rank-outfits/hunter-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "hunter",
+      "rank": "SS",
+      "name": "銀羽鷹衛",
+      "src": "assets/rank-outfits/hunter-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "hunter",
+      "rank": "SSS",
+      "name": "天弓巡界者",
+      "src": "assets/rank-outfits/hunter-SSS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "performer",
+      "rank": "S",
+      "name": "旅歌奏者",
+      "src": "assets/rank-outfits/performer-S.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "performer",
+      "rank": "SS",
+      "name": "晶弦領奏者",
+      "src": "assets/rank-outfits/performer-SS.webp?v=6.5.0",
+      "loaded": true
+    },
+    {
+      "job": "performer",
+      "rank": "SSS",
+      "name": "萬籟星律詠者",
+      "src": "assets/rank-outfits/performer-SSS.webp?v=6.5.0",
+      "loaded": true
+    }
+  ],
+  "errors": [],
+  "sourceCommit": "d2e27e4980039f0ec7b9b1490ddb0c9f3cd05e42",
+  "workflowRun": 41298178024,
+  "artifactId": 13080137669
+}

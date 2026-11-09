@@ -1,0 +1,68 @@
+{
+  "generator": "built-in imagegen",
+  "background": "transparent",
+  "style": "Polished painterly anime fantasy RPG, heroic slightly chibi proportions, full-body 3/4 left, centered square, no text or ground",
+  "forms": [
+    {
+      "role": "attack",
+      "rarity": "legendary",
+      "name": "蒼穹曜翼獅鷲",
+      "file": "attack-legendary.webp",
+      "subject": "Ascended golden gryphon, ivory gold feathers tipped sky blue, sapphire ceremonial armor and solar crown"
+    },
+    {
+      "role": "attack",
+      "rarity": "mythic",
+      "name": "赤曜裂界龍皇",
+      "file": "attack-mythic.webp",
+      "subject": "Ascended crimson and obsidian quadruped dragon emperor, molten scarlet wing veins and crown armor"
+    },
+    {
+      "role": "magic",
+      "rarity": "legendary",
+      "name": "霜月九尾靈狐",
+      "file": "magic-legendary.webp",
+      "subject": "Ascended silver moon fox, nine flowing tails, icy blue tips, crescent gem and silver mage ornaments"
+    },
+    {
+      "role": "magic",
+      "rarity": "mythic",
+      "name": "星焰輪迴神凰",
+      "file": "magic-mythic.webp",
+      "subject": "Ascended violet blue cosmic phoenix, swept feather wings, magenta starfire edges and opal crown"
+    },
+    {
+      "role": "defense",
+      "rarity": "legendary",
+      "name": "琥珀山脈晶犀",
+      "file": "defense-legendary.webp",
+      "subject": "Ascended amber crystal rhinoceros, bronze stone hide, mountainlike crystal back and amber horns"
+    },
+    {
+      "role": "defense",
+      "rarity": "mythic",
+      "name": "終界玄岩泰坦",
+      "file": "defense-mythic.webp",
+      "subject": "Ascended squat obsidian golem titan, massive forearms, basalt shoulder crown and deep red luminous runes"
+    },
+    {
+      "role": "support",
+      "rarity": "legendary",
+      "name": "聖光星冠獨角獸",
+      "file": "support-legendary.webp",
+      "subject": "Ascended platinum unicorn, white silver horse, single spiral horn, pale gold mane and star crown"
+    },
+    {
+      "role": "support",
+      "rarity": "mythic",
+      "name": "太初玉麟聖君",
+      "file": "support-mythic.webp",
+      "subject": "Ascended white jade qilin sovereign, deerlike scaled body, dragon muzzle, gold antlers, cloud mane and four hoofed legs"
+    }
+  ],
+  "finalSize": [
+    512,
+    512
+  ],
+  "processing": "RGBA transparency preserved; alpha-bounds crop and proportional resize onto 512px transparent canvas with 20px margin; originals retained in generated_images"
+}

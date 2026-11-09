@@ -1,0 +1,95 @@
+import {ENHANCEMENT_ITEMS,DAWN_ITEMS,enhancedStat} from './sky-trials.js?v=6.5.0';
+import {FRONTIER_ITEMS} from './frontier.js?v=6.5.0';
+import {JUNK_ITEMS,PROOF_ITEMS} from './adventure-economy.js?v=6.5.0';
+import {SECOND_JOBS} from './jobs.js?v=6.5.0';
+import {GEAR_TIERS,gearTierForLevel} from './progression.js?v=6.5.0';
+const rand=(a,b,rng=Math.random)=>Math.floor(Math.min(.999999,Math.max(0,rng()))*(b-a+1))+a;
+export const STACK_IDS=['gold_bar','med','cell','orb','red_small','red_mid','red_large','blue_small','blue_mid','blue_large','scrap','herb','ore','crystal','relic'];
+export const STACK_SET=new Set(STACK_IDS);
+export const LOOT_ITEMS={...ENHANCEMENT_ITEMS,...DAWN_ITEMS,...JUNK_ITEMS,...PROOF_ITEMS,...FRONTIER_ITEMS,gold_bar:{name:'金條',junk:true,goldBar:true,cost:100_000_000,description:'每當金幣超過5億，系統將1億金幣兌換成1根金條；不會自動販售，可在雜物欄手動兌換。'},red_small:{name:'紅色藥水',heal:60,cost:24},red_mid:{name:'濃縮紅藥水',heal:180,cost:65},red_large:{name:'高級紅藥水',heal:420,healPct:.15,cost:140},blue_small:{name:'藍色藥水',energy:35,cost:30},blue_mid:{name:'濃縮藍藥水',energy:95,cost:85},blue_large:{name:'高級藍藥水',energy:220,energyPct:.1,cost:190},scrap:{name:'異獸碎片',junk:true,cost:5},herb:{name:'月光藥草',junk:true,cost:13},ore:{name:'赤晶礦塊',junk:true,cost:25},crystal:{name:'霜晶石',junk:true,cost:42},relic:{name:'墜星遺物',junk:true,cost:75}};
+LOOT_ITEMS.ascension_core={name:'蒼穹界限靈髓',evolution:true,cost:1200,description:'101–150級小怪8%、首領必掉，用於99級傳說／神話夥伴界限進化與異化'};STACK_IDS.push('ascension_core');STACK_SET.add('ascension_core');
+for(let i=1;i<=4;i++){const id=`essence_${i}`;LOOT_ITEMS[id]={name:['','初生靈核','凝聚靈核','覺醒靈核','超越靈核'][i],evolution:true,cost:0,description:`Lv.${(i-1)*20+1}–${i*20} 野外怪物掉落，供夥伴第 ${i} 次進化`};STACK_IDS.push(id);STACK_SET.add(id);}
+export const GEAR_BASE={
+ helm:{name:'輕型頭盔',slot:'headUpper',def:2,cost:45},visor:{name:'瞄準護目鏡',slot:'headMiddle',cost:50},mask:{name:'防護口罩',slot:'headLower',def:1,cost:40},
+ vest:{name:'旅行防具',slot:'armor',def:4,cost:75},plate:{name:'堅甲',slot:'armor',def:8,hp:15,cost:150},
+ blade:{name:'單手劍',slot:'rightHand',weaponType:'sword',atk:5,cost:45,jobs:['swordsman']},rifle:{name:'獵獸匕首',slot:'rightHand',weaponType:'dagger',atk:7,weaponTrait:'斬首者持盾連擊：主手短劍＋守衛盾牌時，攻速加成 +35%、暴擊傷害 +45%（均不隨強化）；雙短劍與逐影者不適用',cost:100,jobs:['thief']},twoSword:{name:'雙手巨劍',slot:'rightHand',weaponType:'greatsword',hands:2,atk:15,critDmg:5,weaponTrait:'重斬：固有暴擊傷害 +5%（不隨強化）',cost:185,jobs:['swordsman']},
+ oneSpear:{name:'單手槍',slot:'rightHand',weaponType:'spear',atk:7,critDmg:5,weaponTrait:'精準突刺：固有暴擊傷害 +5%（不隨強化）',cost:95,jobs:['swordsman']},twoSpear:{name:'雙手長槍',slot:'rightHand',weaponType:'greatspear',hands:2,atk:17,aspdPct:5,weaponTrait:'連續突刺：攻速加成 +5%（固定，不隨強化）',cost:190,jobs:['swordsman']},
+ offDagger:{name:'副手匕首',slot:'leftHand',weaponType:'dagger',atk:5,cost:95,jobs:['thief']},katar:{name:'拳刃',slot:'rightHand',weaponType:'katar',hands:2,atk:17,critDmg:60,ignoreDef:30,aspdPct:50,weaponTrait:'處刑鋒刃：固有暴擊傷害 +60%、無視防禦 +30%、攻速加成 +50%（均不隨強化；無視防禦受上限限制）；可強化主 ATK 詞條為標準的 110%',cost:195,jobs:['thief']},
+ oneStaff:{name:'單手法杖',slot:'rightHand',weaponType:'staff',matk:9,weaponTrait:'靈巧持盾：可強化主 MATK 詞條為標準法杖的 95%，可搭配盾牌提高生存',cost:85,jobs:['mage']},twoStaff:{name:'雙手法杖',slot:'rightHand',weaponType:'greatstaff',hands:2,matk:19,critDmg:5,weaponTrait:'秘法爆發：固有暴擊傷害 +5%（不隨強化）',cost:195,jobs:['mage']},
+ mace:{name:'單手權杖',slot:'rightHand',weaponType:'mace',atk:6,matk:5,cost:90,jobs:['acolyte']},
+ staffSword:{name:'杖劍',slot:'rightHand',weaponType:'staffsword',atk:6,matk:7,cost:115,jobs:['pactWarrior','spiritCommander'],weaponTrait:'雙相調律：同時擁有 ATK 與 MATK，杖劍主攻依契約型態擇一結算；靈契戰使同化人物輸出，雙靈指揮官將能力導流夥伴（不重複計算）'},
+ shortBow:{name:'獵人短弓',slot:'rightHand',weaponType:'bow',hands:2,atk:10,hit:3,aspdPct:20,weaponTrait:'連射：攻速加成 +20%（固定，不隨強化）',cost:90,jobs:['archer']},longBow:{name:'長弓',slot:'rightHand',weaponType:'bow',hands:2,atk:18,hit:5,critDmg:40,weaponTrait:'狙擊：固有暴擊傷害 +40%（不隨強化）',cost:190,jobs:['archer']},crossbow:{name:'重型十字弩',slot:'rightHand',weaponType:'crossbow',hands:2,atk:23,hit:2,ignoreDef:20,critDmg:60,aspdPct:-5,weaponTrait:'貫穿：固有暴擊傷害 +60%、無視防禦 +20%、攻速加成 -5%（均不隨強化；無視防禦受上限限制）',cost:215,jobs:['archer']},
+ shield:{name:'守衛盾牌',slot:'leftHand',def:7,cost:105},cloak:{name:'旅者披風',slot:'garment',def:2,cost:65},boots:{name:'輕步長靴',slot:'shoes',def:2,cost:65},
+ chip:{name:'戰術紋章',slot:'accessory1',atk:3,cost:95},ring:{name:'靈巧指環',slot:'accessory2',matk:3,cost:95}
+};
+Object.assign(GEAR_BASE,{spellFist:{name:'符紋魔拳套',slot:'rightHand',weaponType:'spellfist',hands:2,matk:12,aspdPct:5,weaponTrait:'符紋連擊：攻速加成 +5%（固定，不隨強化）',cost:190,jobs:['sage']},knuckles:{name:'修行拳套',slot:'rightHand',weaponType:'knuckle',hands:2,atk:12,cost:190,jobs:['monk']},instrument:{name:'旅歌豎琴',slot:'rightHand',weaponType:'instrument',hands:2,atk:12,critDmg:30,damageReduction:15,weaponTrait:'協奏庇護：固有暴擊傷害 +30%、最終減傷 +15%（均不隨強化，減傷受上限限制）',cost:190,jobs:['performer']}});
+for(const [id,meta] of Object.entries(SECOND_JOBS))for(const base of Object.values(GEAR_BASE))if(base.jobs?.includes(meta.parent)&&!base.jobs.includes(id))base.jobs.push(id);
+GEAR_BASE.katar.jobs=['assassin'];GEAR_BASE.offDagger.jobs=['assassin'];GEAR_BASE.twoSword.jobs=['knight'];GEAR_BASE.twoSpear.jobs=['knight'];GEAR_BASE.oneSpear.jobs=['knight','crusader'];GEAR_BASE.mace.jobs=['acolyte','priest'];GEAR_BASE.staffSword.jobs=['spiritist','pactWarrior','spiritCommander'];GEAR_BASE.crossbow.jobs=['hunter'];
+// Visible fixed weapon ATK/MATK, rather than a hidden final/source damage multiplier.
+// The base amount is at Lv.200 before enhancement and scales with weapon level.
+// This also applies to existing saved weapons without rewriting their legal affixes.
+export const WEAPON_FIXED_ATTACK={
+ rifle:{atk:-2200},shortBow:{atk:3300},longBow:{atk:500},crossbow:{atk:1100},
+ oneStaff:{matk:9800},spellFist:{matk:7200},instrument:{atk:5300}
+};
+export const WEAPON_FIXED_ATTACK_JOB={rifle:'rogue',shortBow:'hunter',longBow:'hunter',crossbow:'hunter',oneStaff:'sage',spellFist:'sage',instrument:'performer'};
+for(const [id,stats] of Object.entries(WEAPON_FIXED_ATTACK)){
+ const title={rogue:'逐影者',hunter:'遊俠',sage:'元素使',performer:'宮廷樂師'}[WEAPON_FIXED_ATTACK_JOB[id]];
+ const text=Object.entries(stats).map(([key,value])=>`${key.toUpperCase()} ${value>=0?'+':''}${value}（Lv.200 基準，隨武器等級與強化成長）`).join('、');
+ GEAR_BASE[id].weaponTrait=[GEAR_BASE[id].weaponTrait,`${title}專屬固定武器能力：${text}`].filter(Boolean).join('；');
+}
+export const PET_GEAR_BASE={petHelm:{name:'靈獸角冠',petSlot:'head',cost:65},petCirclet:{name:'靈獸星環',petSlot:'head',cost:65},petArmor:{name:'靈獸戰甲',petSlot:'body',cost:105},petRobe:{name:'靈獸法袍',petSlot:'body',cost:105},petBoots:{name:'靈獸迅足',petSlot:'shoes',cost:70},petGreaves:{name:'靈獸護足',petSlot:'shoes',cost:70}};
+export const PET_SLOTS={head:'頭部',body:'身體',shoes:'鞋'};
+export const RARITIES=[{id:'common',name:'普通',count:2,weight:700,color:'common'},{id:'rare',name:'稀有',count:3,weight:250,color:'rare'},{id:'uncommon',name:'罕見',count:4,weight:40,color:'uncommon'},{id:'legendary',name:'傳說',count:5,weight:9,color:'legendary'},{id:'mythic',name:'神話',count:6,weight:1,color:'mythic'}];
+export const TIER_NAMES=GEAR_TIERS.map(t=>t.name);
+export const AFFIX_NAMES={hp:'HP 生命',atk:'ATK 物攻',matk:'MATK 魔攻',def:'DEF 防禦',mdef:'MDEF 魔防',hit:'HIT 命中',flee:'FLEE 迴避',crit:'CRIT 暴擊率',STR:'STR 力量',AGI:'AGI 敏捷',VIT:'VIT 體質',INT:'INT 智力',DEX:'DEX 靈巧',LUK:'LUK 幸運',ignoreDef:'無視防禦',critDmg:'暴擊傷害',aspd:'ASPD 攻速',magicDamage:'魔法傷害加成',fleePct:'FLEE 加成',defPct:'防禦加成',hpPct:'HP 加成',aspdPct:'攻速加成',damageReduction:'最終減傷'};
+export const PERCENT_AFFIXES=new Set(['ignoreDef','critDmg','magicDamage','fleePct','defPct','hpPct','aspdPct','damageReduction','crit']);
+export const SPECIAL_AFFIXES=new Set(['ignoreDef','critDmg','aspdPct','crit','fleePct','damageReduction','hpPct','magicDamage','defPct','aspd']);
+export const gearTier=gearTierForLevel;
+export const gearGroup=id=>GEAR_BASE[id]?.weaponType?'weapon':'armor';
+export const shardId=(group,tier)=>`shard_${group}_${tier}`;
+for(let tier=1;tier<=11;tier++)for(const group of ['weapon','armor']){const id=shardId(group,tier);LOOT_ITEMS[id]={name:`${TIER_NAMES[tier-1]}${group==='weapon'?'鋒刃':'護甲'}碎晶`,craft:true,tier,group,cost:0};STACK_IDS.push(id);STACK_SET.add(id);}
+export const rarityForRoll=(value=Math.random()*1000)=>{let cursor=0;return RARITIES.find(r=>(cursor+=r.weight)>value)||RARITIES.at(-1);};
+export const gearLabel=item=>`${TIER_NAMES[gearTier(item.level)-1]}階 · Lv.${item.level||1} · ${RARITIES.find(r=>r.id===item.rarity)?.name||'普通'} · ${Object.keys(item.affixes||{}).length}詞`;
+export const affixLabel=(key,value)=>`${AFFIX_NAMES[key]||key} +${value}${PERCENT_AFFIXES.has(key)?'%':''}`;
+export const QUALITY_POWER={common:1,rare:1.12,uncommon:1.28,legendary:1.48,mythic:1.72};
+export const PRIMARY_VALUES={atk:12,matk:14,def:5,mdef:4,hp:45,hit:5,flee:5};
+function uniqueAttrs(rng){const keys=['STR','AGI','VIT','INT','DEX','LUK'];const first=keys.splice(rand(0,5,rng),1)[0];return [first,keys[rand(0,4,rng)]];}
+export const WEAPON_PRIMARY_AFFIX_BONUSES={oneStaff:.95,twoStaff:1.10,spellFist:1.10,twoSword:1.15,twoSpear:1.15,offDagger:.45,katar:1.10};
+export function affixRange(key,tier,rarity,itemId=null){const rank=Math.max(0,RARITIES.findIndex(r=>r.id===rarity)),quality=QUALITY_POWER[rarity]||1,power=GEAR_TIERS[tier-1].power;if(PRIMARY_VALUES[key]){const bonus=(['twoSword','twoSpear','offDagger','katar'].includes(itemId)&&key==='atk'||['oneStaff','twoStaff','spellFist'].includes(itemId)&&key==='matk')?(WEAPON_PRIMARY_AFFIX_BONUSES[itemId]||1):1,value=PRIMARY_VALUES[key]*power*quality*bonus;return [Math.ceil(value*.98),Math.ceil(value*1.02)];}const budgets={hpPct:8,damageReduction:7,fleePct:22,aspdPct:8,crit:24,critDmg:20,ignoreDef:16};if(budgets[key]){const v=budgets[key]*(.4+tier*.1);return [Math.max(1,Math.round(v*.95)),Math.max(1,Math.round(v*1.05))];}const value=key==='crit'?2+tier+rank:key==='aspd'?1+tier*.35+rank*.3:key==='critDmg'?4+tier*2+rank*2:key==='ignoreDef'||key==='magicDamage'?2+tier+rank:key.endsWith('Pct')?2+tier+rank:1+tier*.7+rank*.5;return [Math.max(1,Math.round(value)),Math.max(1,Math.round(value*1.12))];}
+function rollValue(key,tier,rarity,rng,itemId=null){const [min,max]=affixRange(key,tier,rarity,itemId);return rand(min,max,rng);}
+function upgradeTwoHandMagicAffix(item){const bonus=WEAPON_PRIMARY_AFFIX_BONUSES[item?.id];if(!item||!bonus)return item;if(item.id==='katar'){if(item.weaponPrimaryBonusVersion===4)return item;const previous=item.weaponPrimaryBonusVersion===1?1.60:item.weaponPrimaryBonusVersion===3?1.04:1;if(Number.isFinite(item.affixes?.atk))item.affixes.atk=Math.round(item.affixes.atk*bonus/previous);item.weaponPrimaryBonusVersion=4;return item;}if(item.weaponPrimaryBonusVersion===1)return item;const key=['twoSword','twoSpear','offDagger'].includes(item.id)?'atk':'matk';if(Number.isFinite(item.affixes?.[key]))item.affixes[key]=Math.round(item.affixes[key]*bonus);item.weaponPrimaryBonusVersion=1;return item;}
+export const primaryAffix=id=>{const base=GEAR_BASE[id]||PET_GEAR_BASE[id];if(id==='staffSword')return 'atk';return base?.petSlot?(base.petSlot==='head'?(id==='petCirclet'?'matk':'atk'):base.petSlot==='body'?'hp':'flee'):base?.weaponType?(base.weaponType==='mace'||base.matk>=(base.atk||0)?'matk':'atk'):'def';};
+function buildGear(id,level,forceRarity,rng,pet){const base=(pet?PET_GEAR_BASE:GEAR_BASE)[id];if(!base)return null;level=Math.max(1,Math.min(200,Math.floor(level)));const tier=gearTier(level),rarity=RARITIES.find(r=>r.id===forceRarity)||rarityForRoll(Math.min(.999999,rng())*1000),attrs=uniqueAttrs(rng),primary=primaryAffix(id),weapon=!!base.weaponType||pet&&base.petSlot==='head',core=pet?(base.petSlot==='head'?[primary,'hit','DEX']:base.petSlot==='body'?['hp','def','mdef']:['flee','hit','def']):id==='staffSword'?['atk','matk','hit','DEX']:weapon?[primary,'hit','DEX']:['def','mdef','flee'];
+ const pool=[...new Set([...core,...attrs,'VIT','INT','LUK','STR','AGI','DEX'])],chosen=id==='staffSword'?['atk','matk']:weapon?[primary,'hit']:[primary];while(chosen.length<Math.min(5,rarity.count)){const choices=pool.filter(k=>!chosen.includes(k));chosen.push(choices[rand(0,choices.length-1,rng)]);}if(rarity.id==='mythic'){const specials=weapon?['aspdPct','crit','critDmg','damageReduction']:['fleePct','damageReduction','hpPct'];chosen.push(specials[rand(0,specials.length-1,rng)]);}
+ const affixes=Object.fromEntries(chosen.map(k=>[k,rollValue(k,tier,rarity.id,rng,id)]));if(pet)for(const k of Object.keys(affixes))if(!SPECIAL_AFFIXES.has(k))affixes[k]=Math.round(affixes[k]*(['atk','matk'].includes(k)?1:10/3));
+ return {id,uid:`${pet?'pg':'g'}-${Date.now()}-${Math.random().toString(36).slice(2,10)}`,level,tier,rarity:rarity.id,name:`${rarity.name} ${TIER_NAMES[tier-1]}·${base.name}`,affixes,powerVersion:50,...(WEAPON_PRIMARY_AFFIX_BONUSES[id]?{weaponPrimaryBonusVersion:id==='katar'?4:1}:{})};}
+
+export function rollGear(id,level=1,forceRarity=null,rng=Math.random){return buildGear(id,level,forceRarity,rng,false);}
+export function rollPetGear(id,level=1,forceRarity=null,rng=Math.random){return buildGear(id,level,forceRarity,rng,true);}
+export function migrateWeaponDefenseAffix(item){
+ if(!item?.affixes||!GEAR_BASE[item.id]?.weaponType||!Object.hasOwn(item.affixes,'ignoreDef'))return item;
+ const tier=item.tier||gearTier(item.level||1),rarity=item.rarity||'mythic';
+ const [oldMin,oldMax]=affixRange('ignoreDef',tier,rarity),[newMin,newMax]=affixRange('damageReduction',tier,rarity);
+ const percentile=Math.max(0,Math.min(1,(Number(item.affixes.ignoreDef)-oldMin)/Math.max(1,oldMax-oldMin)));
+ const reduction=Math.round(newMin+percentile*(newMax-newMin));
+ const affixes={...item.affixes,damageReduction:Math.max(Number(item.affixes.damageReduction)||0,reduction)};
+ delete affixes.ignoreDef;
+ return {...item,affixes};
+}
+export function rebalanceGear(item){if(!item||item.powerVersion===50)return upgradeTwoHandMagicAffix(migrateWeaponDefenseAffix(item));let seed=2166136261;for(const ch of String(item.uid||item.id))seed=Math.imul(seed^ch.charCodeAt(0),16777619);const rng=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;},pet=!!PET_GEAR_BASE[item.id],base=GEAR_BASE[item.id]||PET_GEAR_BASE[item.id],upgraded=pet?rollPetGear(item.id,item.level,item.rarity,rng):rollGear(item.id,item.level,item.rarity,rng);if(!upgraded)return item;const count=RARITIES.find(r=>r.id===item.rarity)?.count||2,weapon=!!base.weaponType||pet&&base.petSlot==='head',keys=[primaryAffix(item.id),...(weapon?['hit']:[])];for(const key of [...Object.keys(item.affixes||{}),...Object.keys(upgraded.affixes)])if(!SPECIAL_AFFIXES.has(key)&&!keys.includes(key)&&keys.length<Math.min(5,count))keys.push(key);if(item.rarity==='mythic'){const allowed=weapon?['aspdPct','crit','critDmg','damageReduction']:['fleePct','damageReduction','hpPct'];keys.push(Object.keys(item.affixes||{}).find(k=>allowed.includes(k))||Object.keys(upgraded.affixes).find(k=>allowed.includes(k)));}upgraded.affixes=Object.fromEntries(keys.filter(Boolean).map(key=>[key,Math.round(rollValue(key,upgraded.tier,upgraded.rarity,rng,item.id)*(pet&&!SPECIAL_AFFIXES.has(key)&&!['atk','matk'].includes(key)?10/3:1))]));return upgradeTwoHandMagicAffix(migrateWeaponDefenseAffix({...item,...upgraded,uid:item.uid||upgraded.uid,fusionMatch:item.fusionMatch,swapProtected:item.swapProtected}));}
+export const asStack=(id,qty=1)=>({id,qty});
+export const normalizeBag=(bag,items)=>{const out=[];for(const item of Array.isArray(bag)?bag:[]){const entry=typeof item==='string'?{id:item}:item;if(!entry||!items[entry.id])continue;if(items[entry.id].slot||items[entry.id].petSlot){const invalidSpecial=!['legendary','mythic'].includes(entry.rarity)&&Object.keys(entry.affixes||{}).some(k=>SPECIAL_AFFIXES.has(k));const gear=entry.uid&&entry.rarity&&entry.affixes&&!invalidSpecial?entry:items[entry.id].petSlot?rollPetGear(entry.id,entry.level||1,entry.rarity):rollGear(entry.id,entry.level||1,entry.rarity);gear.tier=gearTier(gear.level);out.push(gear);}else{const quantity=Math.max(1,Math.min(100000,Math.floor(entry.qty||1))),old=out.find(x=>x.id===entry.id&&!x.uid);if(old)old.qty=Math.min(100000,old.qty+quantity);else out.push(asStack(entry.id,quantity));}}return out;};
+export function addStack(bag,id,qty=1){const existing=bag.find(x=>x.id===id&&!x.uid);if(existing)existing.qty+=qty;else bag.push(asStack(id,qty));}
+export function consumeStack(bag,id){const i=bag.findIndex(x=>x.id===id&&!x.uid&&x.qty>0);if(i<0)return false;bag[i].qty--;if(bag[i].qty<=0)bag.splice(i,1);return true;}
+
+export function gearStatValue(item,type,job=null){if(!item)return 0;const base=GEAR_BASE[item.id]||PET_GEAR_BASE[item.id],intrinsic=(item.powerVersion>=23&&type===primaryAffix(item.id)?0:base?.[type]||0),fixed=base?.weaponType&&['critDmg','ignoreDef','damageReduction','aspdPct'].includes(type)?intrinsic:0,weaponPower=(job===WEAPON_FIXED_ATTACK_JOB[item.id]?WEAPON_FIXED_ATTACK[item.id]?.[type]||0:0)*Math.min(200,Math.max(1,item.level||1))/200;return enhancedStat(item,type,intrinsic-fixed+(item.affixes?.[type]||0)+weaponPower)+fixed;}
+// characterShare changes only the conditional equipment-kind split; the total
+// equipment probability and existing loot bonus remain unchanged.
+export function equipmentDrop(boss=false,lootBonus=0,rng=Math.random,characterShare=.9){
+ const share=Math.max(0,Math.min(1,Number(characterShare)||0));
+ const roll=rng();
+ if(boss)return roll<share?'character':'pet';
+ const boost=Math.max(0,Math.min(4,1+lootBonus/100)),total=.2*boost;
+ return roll<total*share?'character':roll<total?'pet':null;
+}

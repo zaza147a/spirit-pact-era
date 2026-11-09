@@ -1,0 +1,471 @@
+{
+  "version": "6.3.0",
+  "generator": "built-in image_gen",
+  "kind": "25 independent trial boss sprites and 4 dawn continent monsters",
+  "assets": [
+    {
+      "id": "boss-151-1",
+      "name": "星潮巡獵者",
+      "subject": "sleek four-legged blue star-finned hunting beast",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: sleek four-legged blue star-finned hunting beast. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-b47f8ba3-a668-4bd5-8986-ddaeb69aefe7.png",
+      "path": "assets/sky-trials/boss-151-1.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "0579bf8c474b8af366d8948f8a1cd63e1e992cad5dac06e5f63d1312fc4d9947",
+      "sha256": "af66f3a275b651db06b8d8dfa0a2027cc446d149ae7f96f5ffc06a5413cc6798"
+    },
+    {
+      "id": "boss-151-2",
+      "name": "銀礁重衛",
+      "subject": "massive coral plated crab knight with silver shell",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: massive coral plated crab knight with silver shell. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-b4d1f5a7-d65b-4e89-ad62-1bfba426230a.png",
+      "path": "assets/sky-trials/boss-151-2.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "48c9c0ea16de8630f9220026b5cd8acdb47af0cb716a36ddd12765357cf39dde",
+      "sha256": "2781f51e7d069d0d934676536262643539ceaadb5f9371edc6dd9be610bd1a96"
+    },
+    {
+      "id": "boss-151-3",
+      "name": "潮鏡幻鯨",
+      "subject": "floating whale of blue mirrored crystalline water",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: floating whale of blue mirrored crystalline water. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-ad23fc88-dfc2-4fe9-a6e0-5fb5fa615a81.png",
+      "path": "assets/sky-trials/boss-151-3.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "0553972423751ec99e1b2ab4a68986b098d1b611d6ca6d6faaee61e42661e187",
+      "sha256": "150801f045b4198619dee9d4de2ecf944752258a65c25a13e62416258000bae6"
+    },
+    {
+      "id": "boss-151-4",
+      "name": "星瀾龍侯",
+      "subject": "majestic upright sea dragon duke with star scale crown",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: majestic upright sea dragon duke with star scale crown. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-59fe62ef-603f-4692-adf1-f89489268488.png",
+      "path": "assets/sky-trials/boss-151-4.webp",
+      "width": 768,
+      "height": 702,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "3468b68e834da7be80728ea11930071249b565e47493c904ecc67cad17639e69",
+      "sha256": "8de4b97fe7c67b332d4f57123c9200bdb2f3c7f2cde6a3feb653989f0006c329"
+    },
+    {
+      "id": "boss-151-5",
+      "name": "萬潮星冠",
+      "subject": "colossal celestial tidal serpent king with orbiting star crown",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: colossal celestial tidal serpent king with orbiting star crown. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-abbdca39-4505-433c-b92b-090b12eb9f21.png",
+      "path": "assets/sky-trials/boss-151-5.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "d9d2d663a6ff668ea3ebb8d3fe9ea28b1e1858f4873981c2e2be14f9de71bf22",
+      "sha256": "4e1c8a440d39519cf6381773f08eb07e5cc53362a0c57e308d57b2e249259c89"
+    },
+    {
+      "id": "boss-161-1",
+      "name": "古誓石獅",
+      "subject": "ancient moss stone lion with amber rune mane",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: ancient moss stone lion with amber rune mane. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-7a6b4e87-1511-486e-8d2d-d858b0b0fa7c.png",
+      "path": "assets/sky-trials/boss-161-1.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "5a7682960798642e104cc51318766c849ea469dc6b29543d7eac0218c4bcd7ec",
+      "sha256": "bac9e383f2a893c73aba51cacc99a228f70a37f39e9412120268bf32e5e75c9d"
+    },
+    {
+      "id": "boss-161-2",
+      "name": "斷碑審判者",
+      "subject": "walking broken stone stele golem carrying judgment hammer",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: walking broken stone stele golem carrying judgment hammer. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-97822abb-1606-4d69-871b-29c9674335c5.png",
+      "path": "assets/sky-trials/boss-161-2.webp",
+      "width": 768,
+      "height": 702,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "b5faf60e58a2d821d24f1a935df70c33aa4a8d9df5d353683ef0fe8ae445b973",
+      "sha256": "637ea1b67a434340569d30e87565eddcd53ced7d99b313fb58c719f7ce4c8ed5"
+    },
+    {
+      "id": "boss-161-3",
+      "name": "金枝誓獸",
+      "subject": "golden branching antler forest oath beast with jade armor",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: golden branching antler forest oath beast with jade armor. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-b9993144-3c67-41d6-8be6-4fbde36388eb.png",
+      "path": "assets/sky-trials/boss-161-3.webp",
+      "width": 768,
+      "height": 615,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "e24a0d95b2965612d4d6f9228902476cee9c6280bc6c0ce16acfe48f9625737a",
+      "sha256": "2396c8069bae58d2f7a9ae21b1157370c17f02a4e2ab8a0a23a31b3bdb2eac5e"
+    },
+    {
+      "id": "boss-161-4",
+      "name": "聖鎖巨像",
+      "subject": "massive stone colossus bound with golden sacred chains",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: massive stone colossus bound with golden sacred chains. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-6dc56a17-6e4b-4db2-ab75-e2551b4f7152.png",
+      "path": "assets/sky-trials/boss-161-4.webp",
+      "width": 768,
+      "height": 702,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "c876d226c98a1c6864ebb32199bdcb3487f598af1e0b3ddc05bc9ab6a280a9b5",
+      "sha256": "f82df99c793e144058a4e9afb9faedb7a4e0c337119c41a06c3d9d4ebb89366e"
+    },
+    {
+      "id": "boss-161-5",
+      "name": "太古誓皇",
+      "subject": "ancient emperor stone sphinx with enormous gilded wings",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: ancient emperor stone sphinx with enormous gilded wings. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-8d6e465e-9600-4f13-8da3-ad56210ebac7.png",
+      "path": "assets/sky-trials/boss-161-5.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "a9b9d6becd4dcbd76bee1dac25d5edf687fc6998e5366eac75501cf6f68d7857",
+      "sha256": "f2c87992727316591f79643be6a26af92fc5a61a039b566a29f22c51989b21b9"
+    },
+    {
+      "id": "boss-171-1",
+      "name": "夜幕蛛后",
+      "subject": "purple armored spider queen with crescent carapace",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: purple armored spider queen with crescent carapace. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-0482732e-68a8-4b02-9f2c-cd4aeb5490b4.png",
+      "path": "assets/sky-trials/boss-171-1.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "4339bef39e316b0668e4bd70553fb769f5f7fa897e0f1761ac1f6764d5f326fa",
+      "sha256": "c7fb160fe7d096755bce543bf045da118101cad9a006a21627af195b7a540ce3"
+    },
+    {
+      "id": "boss-171-2",
+      "name": "逆刻鐮衛",
+      "subject": "clockwork crescent scythe sentinel with dark blue cloak",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: clockwork crescent scythe sentinel with dark blue cloak. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-1f45c836-b8b8-4467-b565-3351f615829c.png",
+      "path": "assets/sky-trials/boss-171-2.webp",
+      "width": 768,
+      "height": 693,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "01b8164075f82d6a6c160cdd98d90398d70e43510eee0dfd4827546a9bb673a1",
+      "sha256": "047f89b31dc0de01c13f7a53a7723cb4cea6795a5cd8337521ddf144cfe5b186"
+    },
+    {
+      "id": "boss-171-3",
+      "name": "月蝕幽鹿",
+      "subject": "ethereal white deer with moon eclipse antlers and violet mist",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: ethereal white deer with moon eclipse antlers and violet mist. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-517e5a6b-90d6-4103-9e24-0d2077f4ebf4.png",
+      "path": "assets/sky-trials/boss-171-3.webp",
+      "width": 768,
+      "height": 640,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "d76f3bf8f1ad9adc499f30305d9dba8a4edb89bcb72387b0f8a911c0bff31982",
+      "sha256": "283d00c45f53c87cf200b458b80dce371b475ffed8de14dfcc8bcfe86ec489f0"
+    },
+    {
+      "id": "boss-171-4",
+      "name": "永夜鐘龍",
+      "subject": "black midnight clock dragon with large clock dial chest",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: black midnight clock dragon with large clock dial chest. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-efc9ed31-f3e7-47d4-a495-3244f13eb12e.png",
+      "path": "assets/sky-trials/boss-171-4.webp",
+      "width": 768,
+      "height": 640,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "9651e30e57d5a121c45d9c06172b96d5352fbf4ef4b5acd47817d1abdb674008",
+      "sha256": "24ac65327ab465958e93de4071b0c2a3b2617b3da59c3f3d2c38b416a48ae82d"
+    },
+    {
+      "id": "boss-171-5",
+      "name": "終時冥王",
+      "subject": "grand spectral king in ornate midnight armor with hourglass staff",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: grand spectral king in ornate midnight armor with hourglass staff. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-9276a74c-ba01-408e-8d17-91edda5096e2.png",
+      "path": "assets/sky-trials/boss-171-5.webp",
+      "width": 768,
+      "height": 702,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "3dcce6890312bd0441fa3a2388313e20d9a1036da788e7912e7697bf7f8bbf82",
+      "sha256": "ae53cfaa512c55a85143c60868cb98770852e97c6261d303778d7e2ba6a28d3c"
+    },
+    {
+      "id": "boss-181-1",
+      "name": "曜鱗先鋒",
+      "subject": "orange sun scaled bipedal dragon vanguard with spear",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: orange sun scaled bipedal dragon vanguard with spear. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-105c6389-3b3d-48eb-9810-17d4b02cb154.png",
+      "path": "assets/sky-trials/boss-181-1.webp",
+      "width": 768,
+      "height": 702,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "5f8ca3f1b21bbc354760cde1dbad675cab5b8cf4b3fe6948105a74e2001fbc01",
+      "sha256": "3adadf9eaab39f0a7d28972cb383cb704c5373026e5258127290ae8463434ad3"
+    },
+    {
+      "id": "boss-181-2",
+      "name": "熔冠獅王",
+      "subject": "lava mane lion king with molten metal crown",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: lava mane lion king with molten metal crown. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-968f95b5-473f-447a-aea9-86c02ebc32e1.png",
+      "path": "assets/sky-trials/boss-181-2.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "f50522e4b0a13dc266ea1ba5cd91a3a5aad11a93531824e08fcd322b3f66a199",
+      "sha256": "e08d79478bae7dda518e05768f2cc35e0b94ec31ee46411585c80a38ed661801"
+    },
+    {
+      "id": "boss-181-3",
+      "name": "赤曜翼皇",
+      "subject": "scarlet phoenix eagle emperor with radiant golden wing tips",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: scarlet phoenix eagle emperor with radiant golden wing tips. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-191eb743-efbb-493c-8b19-dc42c516d2c3.png",
+      "path": "assets/sky-trials/boss-181-3.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "9196726452da303186e437d2eafd6428aa1ddf2e3428e98ba39f3cc596e2fed6",
+      "sha256": "18323feab7a00591702c97c948fcef76185935d01c4252be5152facc87e92d91"
+    },
+    {
+      "id": "boss-181-4",
+      "name": "聖墓龍衛",
+      "subject": "enormous draconic tomb guardian wearing white gold sun armor",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: enormous draconic tomb guardian wearing white gold sun armor. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-86cc74e0-1c2e-454c-b01b-98b7a18630ba.png",
+      "path": "assets/sky-trials/boss-181-4.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "b3d78406e2d7f323a1afce3be2c858fb78f7112a4e618aa6d8c22db70fcad779",
+      "sha256": "071c460dde0692171dcefa05273fd0fa52e588e0e76768482ea525c93975f3dd"
+    },
+    {
+      "id": "boss-181-5",
+      "name": "焚日龍帝",
+      "subject": "majestic six horned solar dragon emperor with burning sun halo",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: majestic six horned solar dragon emperor with burning sun halo. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-a7c32a10-367e-41e0-8e49-8a9c79d2de2a.png",
+      "path": "assets/sky-trials/boss-181-5.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "50908e1a29433438bab33f3c1dabedcd1f2aafde8d2307bb46c7787b8a2fb8e1",
+      "sha256": "0aa84a17dd2bd7477b2b37e2d38c4a723ab470cd779337e612d17e6b87c744ae"
+    },
+    {
+      "id": "boss-191-1",
+      "name": "界源哨兵",
+      "subject": "floating cosmic sentinel of white crystal and indigo eye",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: floating cosmic sentinel of white crystal and indigo eye. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-bb7657a5-2032-476d-90fa-500551897829.png",
+      "path": "assets/sky-trials/boss-191-1.webp",
+      "width": 768,
+      "height": 702,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "f5663d9be7d455582abab802e75cdc9a766f39cb96f8d84bbabbd7f2b5f8ad8c",
+      "sha256": "1fdf26845d214bbf05b7a00e6e608226fd6b4ab8a8b0514d2992a4b256660b85"
+    },
+    {
+      "id": "boss-191-2",
+      "name": "虛空星蠍",
+      "subject": "giant black violet cosmic scorpion with galaxy stinger",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: giant black violet cosmic scorpion with galaxy stinger. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-a507a3e9-a2df-4e11-be67-94bb55de7b94.png",
+      "path": "assets/sky-trials/boss-191-2.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "2dba8c2b5a262f7aa48b9a4fe67c52e507b7d7e892442faa141d13486dde95ad",
+      "sha256": "27b37490d7f0d5972dbd307afd087699bee56163d35a1e4c19f99677455a2f81"
+    },
+    {
+      "id": "boss-191-3",
+      "name": "天軸巨神",
+      "subject": "towering celestial armored titan with rotating brass world axis rings",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: towering celestial armored titan with rotating brass world axis rings. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-c500da12-f54d-456a-a03c-88dbce4110d5.png",
+      "path": "assets/sky-trials/boss-191-3.webp",
+      "width": 768,
+      "height": 702,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "5d66c48f998d837fd4ea8155766bd48dd3e33bed8187ec67b10ef9edd65c6003",
+      "sha256": "33794df65e01f13a2797fefff893b0e3561e59db11171ca25a4ef5876d7e0293"
+    },
+    {
+      "id": "boss-191-4",
+      "name": "創界六翼龍",
+      "subject": "six winged cosmic white dragon with blue gold world creation rings",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: six winged cosmic white dragon with blue gold world creation rings. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-ea38cc47-36a3-44c2-b930-e35a23379814.png",
+      "path": "assets/sky-trials/boss-191-4.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "6e23577413b49408032d8af0809a7cfa6fcca27ed0098f1e067c17b49c375fea",
+      "sha256": "1c5f4c79e03978bbbeb6579df66c83f3303650a6f238d3d897da4ecba2e36beb"
+    },
+    {
+      "id": "boss-191-5",
+      "name": "天穹終焉者",
+      "subject": "ultimate celestial abyss monarch with obsidian armor luminous white horns and galactic mantle",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: ultimate celestial abyss monarch with obsidian armor luminous white horns and galactic mantle. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-91c6bd3e-1c81-42a7-9ce5-43caa5824747.png",
+      "path": "assets/sky-trials/boss-191-5.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "6fe49ebf229fc128bf7adcd460e89d0efb89b0483d34c99a6c95bce172b90a4f",
+      "sha256": "8931f455d4a694b5d4ba20d2a06c9da5616e113ef53c2ac85289f597d4e77d3c"
+    },
+    {
+      "id": "dawn-scout",
+      "name": "晨晶巡狩獸",
+      "subject": "small agile dawn crystal hunting fox beast with coral sunrise fur",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: small agile dawn crystal hunting fox beast with coral sunrise fur. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-7dc41185-4b4f-4cf5-a4c0-e1f2838746eb.png",
+      "path": "assets/sky-trials/dawn-scout.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "e6122c2c149063faf120a5487a8801b90cf3a7f5c5b12d2f7105091cb6217c49",
+      "sha256": "a382931f2dbe862fd73ed36831fe0fc8e7931a893d13c3e2ed758b4f270357e3"
+    },
+    {
+      "id": "dawn-ram",
+      "name": "曙岩角羊",
+      "subject": "sturdy pearlescent mountain ram with golden dawn mineral horns",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: sturdy pearlescent mountain ram with golden dawn mineral horns. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-c509e7cc-1d26-460b-8e2f-ff0d6ce85a27.png",
+      "path": "assets/sky-trials/dawn-ram.webp",
+      "width": 768,
+      "height": 675,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "f8ea2d5202c96509a71a223076afabe2384675813c8ba95c783f8736af67e2b0",
+      "sha256": "1c3ed92e77066e87d446d0a00606674dd1b1e5776b05e4c96129f4f0e7e44789"
+    },
+    {
+      "id": "dawn-ray",
+      "name": "流光翼魟",
+      "subject": "flying luminous manta ray with ribbonlike peach and skyblue wings",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: flying luminous manta ray with ribbonlike peach and skyblue wings. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-ca7c5cc3-c5c3-410a-8c7e-f48a11e41221.png",
+      "path": "assets/sky-trials/dawn-ray.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "b5582f2657e30f8eb24998ca67cdafc8ad09e9c8a6173b8ee8998330407bd8fc",
+      "sha256": "acffa0c26df052f473a2ef53a68e532e81eeff5d387fb8b37df12d6b58aecf75"
+    },
+    {
+      "id": "dawn-archon",
+      "name": "黎明裁界者",
+      "subject": "majestic dawn realm archon gryphon with opal armor and huge sunrise wings",
+      "prompt": "Use case: stylized-concept. Asset type: original JRPG monster boss fullbody sprite. Subject: majestic dawn realm archon gryphon with opal armor and huge sunrise wings. Polished hand-painted chibi fantasy RPG creature, highly readable bold silhouette, detailed clean linework, jewel colors, subtle cel shading, three quarter view facing left, centered isolated single creature entirely visible with generous transparent margin, no ground or scenery, no text or watermark. Genuinely transparent background.",
+      "source": "/workspace/scratch/9e5253b67cac/generated_images/exec-1ec86ecf-d7eb-434c-a0e0-7b79366c6c44.png",
+      "path": "assets/sky-trials/dawn-archon.webp",
+      "width": 768,
+      "height": 512,
+      "alpha": [
+        0,
+        255
+      ],
+      "sourceSha256": "fa09bec89681ee1d550c7cd2bf5eddb9ec15ea70c5e8465fb91892064dc7d13f",
+      "sha256": "b5adbad2be7cbbc78dc0d0f8262548ede6e8d431a6ada25459da80afba7f4e31"
+    }
+  ]
+}

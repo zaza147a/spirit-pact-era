@@ -1,0 +1,147 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {readFileSync} from 'node:fs';
+import {runtime} from './runtime31-helper.mjs';
+import {legacyOptimalPlayer,LEGACY_OPTIMAL_BUILD_NAMES} from './fixtures/legacy-optimal-player.mjs';
+import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
+import {claimExtremeCharacterStage,syncExtremeHonorOwnership} from '../dist/extreme-trials-rewards.js';
+import {selectTowerHonor,normalizeTowerHonorSelection} from '../dist/tower-honors.js';
+
+const kinds=['atk','matk','hp','clear'];
+const jobs=[...LEGACY_OPTIMAL_BUILD_NAMES,'pactWarrior','spiritCommander'];
+const source=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
+const marker="$('side').addEventListener('click',event=>{\n  const enter=event.target.closest('[data-extreme-enter]');";
+const start=source.indexOf(marker);
+const end=source.indexOf("\n document.addEventListener('click',event=>{",start);
+assert.ok(start>=0&&end>start,'extreme delegated click handler exists');
+const handlerSource=source.slice(start,end);
+
+const fixture=job=>LEGACY_OPTIMAL_BUILD_NAMES.includes(job)?legacyOptimalPlayer(job):
+ highLevelSpiritPlayer({level:210,job,pairKey:['attack-magic','attack-defense'].sort().join('+'),dawnSigil:0});
+
+test('48職業戰袍：點選、取消、未解鎖拒絕與存檔失敗回復',async()=>{
+ const c=await runtime();
+ const listeners=[];
+ c.document.getElementById=id=>id==='side'?{addEventListener:(name,cb)=>listeners.push(cb)}:null;
+ vm.runInContext(handlerSource,c);
+ assert.equal(listeners.length,1);
+ const click=(type,kind,disabled=false)=>{
+  const button={disabled,dataset:{extremeCosmetic:type,extremeKind:kind}};
+  listeners[0]({target:{closest:selector=>selector==='[data-extreme-cosmetic]'?button:null}});
+ };
+ for(const job of jobs)for(const kind of kinds){
+  const p=fixture(job);c.api.setup(p);
+  click('mantle',kind);
+  assert.equal(c.api.state().player.extremeSelectedMantle??null,null,`${job}/${kind} locked`);
+  claimExtremeCharacterStage(p,kind,30);syncExtremeHonorOwnership(p);
+  p.towerCostume='frost';p.selectedOutfit='SSS';p.cosmeticOutfit='test';
+  click('mantle',kind);
+  assert.equal(c.api.state().player.extremeSelectedMantle,kind,`${job}/${kind} selected`);
+  assert.equal(c.api.state().player.towerCostume,null);
+  assert.equal(c.api.state().player.selectedOutfit,null);
+  assert.equal(c.api.state().player.cosmeticOutfit,null);
+  click('aura',kind);
+  assert.equal(c.api.state().player.extremeSelectedAura,kind);
+  click('mantle','');
+  assert.equal(c.api.state().player.extremeSelectedMantle,null);
+  assert.equal(c.api.state().player.extremeSelectedAura,kind,'aura is independent');
+  click('mantle',kind);
+  c.api.setSaveForTest(()=>false);
+  click('mantle','');
+  assert.equal(c.api.state().player.extremeSelectedMantle,kind,'failed save reverts selection');
+  click('aura','');
+  assert.equal(c.api.state().player.extremeSelectedAura,kind,'failed save reverts aura');
+  c.api.setSaveForTest(()=>true);
+ }
+});
+
+test('四王八款極限背景切換會互斥其他背景，失敗時還原',async()=>{
+ const c=await runtime();
+ const buttons=['atk','matk','hp','clear'].flatMap(kind=>
+  [`${kind}_milestone`,`${kind}_background`].map(id=>({dataset:{extremeBackgroundPick:id}})));
+ c.document.getElementById=id=>id==='side'?{querySelectorAll:selector=>
+  selector==='[data-extreme-background-pick]'?buttons:[]}:null;
+ const start=source.indexOf("for(const b of $('side').querySelectorAll('[data-extreme-background-pick]'))");
+ const end=source.indexOf("\nif(tab==='pets')",start);
+ assert.ok(start>=0&&end>start);
+ vm.runInContext(source.slice(start,end),c);
+ for(const button of buttons){
+  const p=fixture('knight');
+  const kind=button.dataset.extremeBackgroundPick.split('_')[0];
+  claimExtremeCharacterStage(p,kind,30);syncExtremeHonorOwnership(p);
+  p.cosmeticBackground='gold-test';
+  c.api.setup(p);
+  button.onclick();
+  assert.equal(c.api.state().player.extremeSelectedBackground,button.dataset.extremeBackgroundPick);
+  assert.equal(c.api.state().player.cosmeticBackground,null);
+  c.api.setSaveForTest(()=>false);
+  button.onclick();
+  assert.equal(c.api.state().player.extremeSelectedBackground,button.dataset.extremeBackgroundPick);
+  c.api.setSaveForTest(()=>true);
+  button.onclick();
+  assert.equal(c.api.state().player.extremeSelectedBackground,null);
+ }
+});
+
+test('四王稱號與名稱框在保存失敗時回復原選擇，未解鎖的不可選',async()=>{
+ const c=await runtime();
+ const buttons=[{dataset:{towerHonorPick:'title',towerHonorValue:''}},{dataset:{towerHonorPick:'frame',towerHonorValue:''}}];
+ c.document.getElementById=id=>id==='side'?{querySelectorAll:selector=>selector==='[data-tower-honor-pick]'?buttons:[]}:null;
+ const start=source.indexOf("for(const b of $('side').querySelectorAll('[data-tower-honor-pick]'))");
+ const end=source.indexOf("\nfor(const b of $('side').querySelectorAll('[data-tower-showcase]'))",start);
+ assert.ok(start>=0&&end>start);
+ vm.runInContext(source.slice(start,end),c);
+ for(const kind of kinds){
+  const p=fixture('knight');
+  claimExtremeCharacterStage(p,kind,50);syncExtremeHonorOwnership(p);
+  c.api.setup(p);
+  const title=p.extraHonorTitles.find(value=>value.includes('【50階】'));
+  const frame=p.extremeFrames.find(value=>value.includes(({atk:'破軍',matk:'冥界',hp:'血淵',clear:'萬軍'})[kind]));
+  assert.ok(title&&frame,kind);
+  buttons[0].dataset.towerHonorValue=title;buttons[1].dataset.towerHonorValue=frame;
+  buttons[0].onclick();buttons[1].onclick();
+  assert.equal(p.towerHonorSelection.title,title);
+  assert.equal(p.towerHonorSelection.frame,frame);
+  c.api.setSaveForTest(()=>false);
+  buttons[0].dataset.towerHonorValue='';buttons[1].dataset.towerHonorValue='';
+  buttons[0].onclick();buttons[1].onclick();
+  assert.equal(c.api.state().player.towerHonorSelection.title,title,kind);
+  assert.equal(c.api.state().player.towerHonorSelection.frame,frame,kind);
+  c.api.setSaveForTest(()=>true);
+  buttons[0].dataset.towerHonorValue='不存在的未解鎖稱號';
+  buttons[0].onclick();
+  assert.equal(c.api.state().player.towerHonorSelection.title,title);
+ }
+});
+
+test('12職四王外觀選擇經存檔重新載入仍保留、不同角色互不覆蓋',async()=>{
+ const archive=[];
+ for(const [jobIndex,job] of jobs.entries())for(const [kindIndex,kind] of kinds.entries()){
+  const p=fixture(job);
+  claimExtremeCharacterStage(p,kind,50);syncExtremeHonorOwnership(p);
+  const title=p.extraHonorTitles.find(value=>value.includes('【50階】'));
+  const frame=p.extremeFrames.find(value=>value.includes(({atk:'破軍',matk:'冥界',hp:'血淵',clear:'萬軍'})[kind]));
+  assert.ok(title&&frame,`${job}/${kind} unlocked`);
+  assert.equal(selectTowerHonor(p,'title',title),true);
+  assert.equal(selectTowerHonor(p,'frame',frame),true);
+  p.extremeSelectedMantle=kind;
+  p.extremeSelectedAura=kind;
+  p.extremeSelectedBackground=`${kind}_${(jobIndex+kindIndex)%2?'background':'milestone'}`;
+  archive.push(JSON.parse(JSON.stringify(p)));
+ }
+ assert.equal(archive.length,48);
+ for(let i=0;i<archive.length;i++){
+  const p=archive[i];
+  const kind=kinds[i%4],job=jobs[Math.floor(i/4)];
+  const c=await runtime();
+  c.api.setup(p);
+  const restored=c.api.state().player;
+  assert.equal(restored.extremeSelectedMantle,kind,`${job}/${kind} mantle`);
+  assert.equal(restored.extremeSelectedAura,kind,`${job}/${kind} aura`);
+  assert.equal(restored.extremeSelectedBackground,p.extremeSelectedBackground,`${job}/${kind} background`);
+  assert.equal(normalizeTowerHonorSelection(restored).title,p.towerHonorSelection.title,`${job}/${kind} title`);
+  assert.equal(normalizeTowerHonorSelection(restored).frame,p.towerHonorSelection.frame,`${job}/${kind} frame`);
+  if(i>0)assert.notEqual(restored,archive[i-1],`${job}/${kind} slot isolation`);
+ }
+});

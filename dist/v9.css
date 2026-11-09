@@ -1,0 +1,4 @@
+.bag-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:10px 0 14px}
+.bag-filters button{padding:10px 5px;font-size:12px;border-radius:8px;border:1px solid #49637d;background:#152a3d;color:#d8eaff}
+.bag-filters button.active{background:#264e65;border-color:#68b4dd;color:white}
+.character .numbers{grid-template-columns:repeat(2,minmax(0,1fr))}

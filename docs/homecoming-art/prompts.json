@@ -1,0 +1,102 @@
+{
+  "tool": "built-in imagegen",
+  "monsters": [
+    {
+      "id": "furnace",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent monster sprite for a polished traditional fantasy JRPG browser RPG. Create the unique boss 噬焰空殼, an enormous empty obsidian furnace carapace creature that devours sacred fire: four heavy basalt legs, hollow ribcage furnace with barely visible orange stolen embers, cracked dragonlike stone mask, curled chimney horns, charred iron claws. Full body three-quarter view facing slightly left, dynamic grounded combat stance, entire silhouette contained with generous 8% margins, consistent finely painted anime game illustration with crisp readable forms, restrained rich detail, dramatic orange rimlight. Square 1024x1024 composition. Only one creature; actual transparent alpha background, no ground plane, no scenery, no letters, no logo, no border, no atlas, no collage.",
+      "transparent_background": true
+    },
+    {
+      "id": "siege",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone RPG combat character sprite. Polished hand-painted anime fantasy JRPG art, richly detailed but clean readable silhouette. Square composition, full body three-quarter combat pose facing slightly left, all limbs and weapons within frame with 8 percent clear margins. Actual transparent alpha background. No scenery, no platform, no letters, no border, no logo, no collage, one character only. 裂隙攻城獸: massive six-legged siege beast made of fractured layered sandstone and dark iron, a blunt battering-ram armored head, glowing turquoise fissures, heavy clawed feet, broken chains. Distinct earthy fortress-breach monster, not a dragon.",
+      "transparent_background": true
+    },
+    {
+      "id": "scout",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone RPG combat character sprite. Polished hand-painted anime fantasy JRPG art, richly detailed but clean readable silhouette. Square composition, full body three-quarter combat pose facing slightly left, all limbs and weapons within frame with 8 percent clear margins. Actual transparent alpha background. No scenery, no platform, no letters, no border, no logo, no collage, one character only. 裂隙斥候: lean hunched nonhuman rock goblin scout in patched slate armor and faded sand cloak, short hooked spear, angular stone face with teal eyes, agile crawling stance, small crystal compass attached belt. Dangerous but clearly a regular enemy, no blood.",
+      "transparent_background": true
+    },
+    {
+      "id": "patrol",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone RPG combat character sprite. Polished hand-painted anime fantasy JRPG art, richly detailed but clean readable silhouette. Square composition, full body three-quarter combat pose facing slightly left, all limbs and weapons within frame with 8 percent clear margins. Actual transparent alpha background. No scenery, no platform, no letters, no border, no logo, no collage, one character only. 空鎧巡兵: tall empty industrial furnace armor automaton, hollow neck and glowing amber grille instead of face, articulated brass and black iron plates, one oversized forge-hammer arm and a clamp hand, soot, engraved maker marks, heavy locked marching stance.",
+      "transparent_background": true
+    },
+    {
+      "id": "master",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone RPG combat character sprite. Polished hand-painted anime fantasy JRPG art, richly detailed but clean readable silhouette. Square composition, full body three-quarter combat pose facing slightly left, all limbs and weapons within frame with 8 percent clear margins. Actual transparent alpha background. No scenery, no platform, no letters, no border, no logo, no collage, one character only. 守旗師父: dignified elderly male martial arts master with silver hair and short white beard, dark crimson and cream embroidered training robes, cloth wrist wraps, long faded red battle banner on a wooden staff, stable open-palm stance. Kind human mentor and nonlethal sparring opponent, not a hostile demon; full head to shoes and entire banner within canvas.",
+      "transparent_background": true
+    },
+    {
+      "id": "crystal",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone RPG combat character sprite. Polished hand-painted anime fantasy JRPG art, richly detailed but clean readable silhouette. Square composition, full body three-quarter combat pose facing slightly left, all limbs and weapons within frame with 8 percent clear margins. Actual transparent alpha background. No scenery, no platform, no letters, no border, no logo, no collage, one character only. 噤聲晶核: floating boss made of concentric shattered violet and indigo crystalline rings around a sealed dark hollow central prism, harp-stringlike silver fissures, shards hanging like suspended musical notes but NO literal symbols or text. Ominous silence, glowing cyan fractures, delicate yet powerful angular silhouette, entire formation within frame.",
+      "transparent_background": true
+    },
+    {
+      "id": "parasite",
+      "prompt": "Use case: stylized-concept. Asset type: one standalone RPG combat character sprite. Polished hand-painted anime fantasy JRPG art, richly detailed but clean readable silhouette. Square composition, full body three-quarter combat pose facing slightly left, all limbs and weapons within frame with 8 percent clear margins. Actual transparent alpha background. No scenery, no platform, no letters, no border, no logo, no collage, one character only. 噬脈寄生靈: forest parasite enemy shaped like a twisted pale root mantis with mossy bark plates, thorn forelegs, translucent sickly green sap abdomen, dangling tendril antennae. Stylized fantasy creature, readable game silhouette, no gore, not too horrific.",
+      "transparent_background": true
+    }
+  ],
+  "scenes": [
+    {
+      "id": "attack-magic",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. Inside an ancient obsidian dragon-city furnace hall: a cold central ancestral crucible, two brass analog gauges with simple unlettered dials, red fuel hopper, blue pressure release valve connected by visible pipes, a tiny living orange flame-stone on a stone pedestal. Warm ember light against black basalt; valves are the compositional focal point, not a diagram.",
+      "transparent_background": false
+    },
+    {
+      "id": "magic-attack",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. Atop an airy floating bird city above storm clouds: a cracked navigation beacon with silver feather caught beside its lens, wind streamers pointing across two distinct cloud channels, small young birds sheltering in a lee-side nest and adults circling farther away. Radiant peach sky, dangerous blue thunderheads in distance, navigable depth.",
+      "transparent_background": false
+    },
+    {
+      "id": "attack-defense",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. A canyon fortress evacuation checkpoint at dusk: civilian wagons crossing a partially repaired timber bridge, supply crates and medical tent foreground, guardian walls and a heavy gate behind, turquoise fissures splitting distant sandstone. A few small cloaked civilian figures, no huge central characters. Emotional protective mood, practical rescue logistics.",
+      "transparent_background": false
+    },
+    {
+      "id": "defense-attack",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. Underground iron forge fortress interior: a shadowed old exhaust duct opens above a silent minecart rail, empty armor patrol silhouettes far away, locked artisan workshop lit by amber lamps, control chamber with unlabeled red lever and cool water sluice visible deeper inside. Quiet stealth mood, brass pipes, wrought iron, coherent architectural depth.",
+      "transparent_background": false
+    },
+    {
+      "id": "attack-support",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. A friendly terraced farming village barter square during an interrupted harvest festival: grain sacks at a farmer stall, bundles of fresh medicinal herbs at apothecary stall, spare wooden wagon wheel beside carpenter bench, a broken merchant cart and overgrown irrigation canal beyond. Golden green palette, rustic detailed material textures, helpful villagers small in background.",
+      "transparent_background": false
+    },
+    {
+      "id": "support-attack",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. A maple-covered martial village practice courtyard in afternoon light: three weathered wooden training dummies in distinct readable postures (raised overhead strike, forward low lunge, sheathed charged stance), cloth practice wraps and old red battle banner near stone steps leading to a secluded shrine. Serene crimson maple leaves, no literal movement arrows or diagrams.",
+      "transparent_background": false
+    },
+    {
+      "id": "magic-defense",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. An underground crystal city memory archive: a silver-blue stream flowing through a small channel in foreground, a suspended bronze resonant bell in middle distance, a circular platform for singers farther behind, connected by translucent violet crystal columns. Unlettered memory stones glow softly, luminous acoustical space, storytelling order through depth, not a chart.",
+      "transparent_background": false
+    },
+    {
+      "id": "defense-magic",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. A desert rune-city civic archive beside an imposing turquoise barrier: old unlettered parchment oath scrolls and a glowing ancestral seal on foreground desk, a small child's matching luminous heirloom seal nearby, masked gatekeeper in distant doorway, three archival alcoves and distorted registry crystal. Scholarly investigation mood, cyan and amber light, no readable runes or text.",
+      "transparent_background": false
+    },
+    {
+      "id": "magic-support",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. A white-feather harbor at blue dawn in dense fog: viewpoint from lighthouse balcony holding an open unlettered illustrated ship register; below are three very different boats (small red-lit phantom boat partly dissolving, white gull merchant vessel with paired warm signal lamps and medical crates, a damaged ship with broken main mast and towrope). Coherent calm harbor composition, mysterious but hopeful.",
+      "transparent_background": false
+    },
+    {
+      "id": "support-magic",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. A floating cloud-weaver village workshop above the mountains: four-corner loom strung with spring green silk, summer blue rainlike threads, autumn golden strands and winter silver-white strands, opposite corners clearly connected physically. Two strong balanced supports hold a miniature floating house platform. Lush cloud architecture outside, dreamlike pastel jade and lilac light, no UI.",
+      "transparent_background": false
+    },
+    {
+      "id": "defense-support",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. Inside an enormous hollow world tree: a shallow root basin holding six luminous amber sap droplets in glasslike seed cups foreground, three branching chambers in background: small rescued villagers, a split main root braced by living vines, and a tender new green seedling. Deep emerald sanctuary light with golden sap, tender rescue scene, no combat creature or text.",
+      "transparent_background": false
+    },
+    {
+      "id": "support-defense",
+      "prompt": "Use case: illustration-story. Asset type: single key quest scene illustration for a polished anime fantasy JRPG browser game. Landscape 1536x1024, detailed hand-painted environment, cinematic warm/cool lighting, coherent perspective, rich materials and readable focal point, beautiful finished game background, NO text NO UI NO letters NO watermark NO logo NO panels. Do not put a large hero portrait in front; emphasize environment and tangible interactive quest objects. A snow-covered hidden hot-spring village rescue staging post: wooden sled with a few sealed fuel canisters and folded fur blankets, weathered unlettered ancient spring map pinned to a board, nearby cave entrance and a distant mountain ridge form two real alternate paths; warm steam from a lower spring contrasts with cold blue blizzard. Small refuge hut with warmly lit window, hopeful survival atmosphere.",
+      "transparent_background": false
+    }
+  ]
+}
