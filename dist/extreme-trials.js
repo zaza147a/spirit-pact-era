@@ -20,7 +20,9 @@ export function extremeStage(kind,floor){
       hpMultiplier:1+early*config.hpStep+late*config.post30HpStep,simultaneous:config.simultaneous}
     :kind==='hp'
     ?{floor,seconds:config.seconds,requiredDps:safeCount(requiredDps),requiredDamage:safeCount(requiredDps*config.seconds)}
-    :{floor,seconds:config.seconds,attackMultiplier:config.baseMultiplier+(floor-1)*config.stepMultiplier};
+    :{floor,seconds:config.seconds,
+      // 前30階保留原本入門曲線；之後增幅逐層加速，沒有50/100階的突然斷點。
+      attackMultiplier:config.baseMultiplier+(floor-1)*config.stepMultiplier+.003*Math.max(0,floor-30)**2};
 }
 
 export function normalizeExtremeProgress(value){

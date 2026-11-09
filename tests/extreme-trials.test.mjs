@@ -5,7 +5,9 @@ import {extremeStage,beginExtremeRun,recordExtremeDamage,extremeStageResult,sett
 const player={level:210,location:'dawncity'};
 test('四種首領前 30 階平緩成長，31 階後提高極限門檻',()=>{
   assert.equal(extremeStage('atk',10).attackMultiplier,2.3499999999999996);
-  assert.equal(extremeStage('matk',100).attackMultiplier,15.85);
+  assert.ok(Math.abs(extremeStage('matk',100).attackMultiplier-30.55)<1e-9);
+  assert.equal(extremeStage('atk',30).attackMultiplier,5.35);
+  assert.ok(extremeStage('atk',50).attackMultiplier>extremeStage('atk',40).attackMultiplier);
   assert.equal(extremeStage('hp',1).requiredDamage,1500000000);
   assert.equal(extremeStage('hp',10).requiredDps,90500000);
   assert.equal(extremeStage('hp',30).requiredDps,180500000);
