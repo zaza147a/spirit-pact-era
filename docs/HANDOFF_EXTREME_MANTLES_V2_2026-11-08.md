@@ -1015,3 +1015,9 @@
 - 透過 ImageMagick `identify` 獨立掃描 `dist/assets/extreme/mantles-v2/` **48／48張皆1024×1536、srgba透明通道**。另外將 WebP VP8X **alpha flag** 納入 `tests/extreme-mantle-image-spec.test.mjs`，避免日後圖片被換成同尺寸但失去透明屬性；連同渲染映射及樓層UI測試 **5／5通過**。
 - 人工查看既有 `hp-performer.webp`、`clear-knight.webp`：構圖、色系與武器辨識明確；但畫面中人物背後的大範圍光效帶有明顯階梯／橫向色帶邊緣。這是**待實際遊戲背景上目視確認的美術疑點**，不是圖片尺寸或 alpha 格式失敗。本批尊重「已完成圖片不重做」要求，**不自動修圖、不改任何圖片**。
 - 本次僅強化圖片規格回歸測試與交接文件，遊戲邏輯、其他資產、職業平衡、極限四王與獎勵均未更動；正式版/main不變。
+
+## 固定獎勵API殘留清理（2026-11-09）
+
+- 從遠端 `c2f4320f4cac7a4b9bff74fe142498f18480925e` 續查四王固定獎勵與離線/重登流程。發現 `dist/extreme-trials.js` 的 `settleExtremeStage()` 在**重複通關**仍回傳已淘汰的 `coins:0` 欄位；首次通關已不回傳此欄位。移除重複通關的舊回傳欄位，使兩條路徑都不再暴露極限幣值。這不更動通關記錄、獎勵、玩家狀態或平衡。
+- `tests/extreme-trials.test.mjs` 增加重複通關回傳結果不得含 `coins` 的斷言；固定樓層獎勵/進場規則測試 **17／17通過**，整套 `node --test tests/extreme-*.test.mjs` **77／77通過**（約20.6秒）。全域掃描 `dist/extreme-*` 與 `dist/game.js` 的極限貨幣名稱僅剩舊存檔清理 `delete extremeCoins`、`delete extremePurchases`，應保留作舊檔遷移，不屬商店入口。
+- 48張美術、職業/融合寵/四王強度、固定層數外觀與稱號、main及正式網站均未變更。瀏覽器實機背景下的光效邊緣仍待視覺驗收。

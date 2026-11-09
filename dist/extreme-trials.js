@@ -76,7 +76,7 @@ export function extremeStageResult(run,now,{alive=true}={}){
 export function settleExtremeStage(progress,kind,floor){
   if(!EXTREME_TRIALS[kind]||!floorValue(floor))throw Error('無效的通關資料');
   const next=normalizeExtremeProgress(progress),old=next[kind].highest;
-  if(floor<=old)return {progress:next,firstClears:[],coins:0};
+  if(floor<=old)return {progress:next,firstClears:[]};
   next[kind].highest=floor;
   return {progress:next,firstClears:[floor]};
 }

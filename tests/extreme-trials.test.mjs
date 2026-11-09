@@ -49,6 +49,7 @@ test('每階僅記錄首次突破，所有階段都不發放貨幣',()=>{
   let data=settleExtremeStage(null,'atk',10);
   assert.deepEqual(data.firstClears,[10]);
   assert.deepEqual(settleExtremeStage(data.progress,'atk',10).firstClears,[]);
+  assert.equal(Object.hasOwn(settleExtremeStage(data.progress,'atk',10),'coins'),false,'repeated floors must not expose removed currency');
   data=settleExtremeStage(data.progress,'atk',12);
   assert.deepEqual(data.firstClears,[12]);
   assert.equal(normalizeExtremeProgress(data.progress).matk.highest,0);
