@@ -33,3 +33,8 @@
 - 本次更正以原main `22d7cf55e89df1087cfc5ee769982e23ddee194e` 為父提交，先推送備份分支 `fix/extreme-roster-and-mantle-layout-20261109` 至 `bc7779b426444ce2c22336803de4be1c7628b33a`，再以expected SHA安全快轉main至同一版，未覆寫其他main功能。
 - `node --test tests/extreme-*.test.mjs` **98／98通過**；包含角色戰袍獨立上方區域、CLEAR首領圖片尺寸與軍勢DOM必須位於首領卡內的新增驗證。
 - 實際正式網站CSS／JS與遊戲登入後畫面**尚待部署完成並再次確認**。不能僅憑靜態測試宣稱玩家端小怪已恢復顯示。
+
+### 正式站新版靜態資源驗證（2026-11-09）
+
+- 正式站 `index.html` 已讀到 `extreme-trials.css?v=2-mantle-layout-and-roster`，不再是舊CSS版本；正式 `game.js` 也已讀到「場上軍勢 · 點擊指定目標」標記，正式 `extreme-trials.css` 可讀到 `padding:188px 10px 12px!important` 的獨立立繪排版。
+- 因此前端最新版已由 GitHub Pages 提供；但**尚未以實際已登入角色進行畫面點選驗收**，若玩家仍發現小怪消失，需要保留截圖與當時關卡、清快取後再追查。
