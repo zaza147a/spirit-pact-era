@@ -62,7 +62,8 @@ def main():
     draw.text((23, 14), "EXTREME MANTLES V2 / 48 ARTWORKS / 2026-11-09", font=HEADING, fill=(241, 241, 229))
     for row, (kind, label, color) in enumerate(KINDS):
         draw_row(full, kind, label, color, top=52 + 260 * row, cell_width=129, art_height=198, left=20)
-    full.save(OUTPUT / "extreme-mantles-v2-contact-sheet.jpg", quality=90, subsampling=0)
+    # Keep the 48-tile preview compact so browsers and GitHub can render it reliably.
+    full.save(OUTPUT / "extreme-mantles-v2-contact-sheet.jpg", quality=81, subsampling=2, optimize=True)
     print("Generated 4 series sheets (12 each) and 1 compact overview (48).")
 
 
