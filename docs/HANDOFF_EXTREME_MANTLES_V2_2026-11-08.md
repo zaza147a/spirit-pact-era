@@ -819,3 +819,12 @@
 - 萬靈 `dawn-archon` 專卡依測試比較仍高於其他可用武器部位王卡 `boss_astral`、`boss_zenith`；新範圍2.8～3.0億鎖定在 `tests/extreme-trials-commander-weapon-cards.test.mjs`。
 - 兩新職在修改後的 HP與CLEAR王**第1～30階實際完整連戰均通關**、各450首次徽記。`node --test tests/extreme-*.test.mjs tests/spirit-single-pet-wiring.test.mjs tests/spirit-pact-warrior-target-ratios.test.mjs tests/spirit-commander-card-sync.test.mjs tests/spirit-commander-boss-skill-wiring.test.mjs tests/boss-card-runtime.test.mjs` **76／76通過**。
 - 重要待辦：六融合中魔防、魔輔固定測試裝不足的差異尚未解決，需先改用各自物魔最適裝備、夥伴神話詞條與單王／CLEAR／201+野外實戰，再議是否需要調校；主分支與正式版不得合併部署。
+
+## 魔法融合君王：直接採魔法裝備校準（2026-11-09）
+
+- 使用者要求「提升君王魔法寵的能力，直接改成魔法裝備」。新增 `tests/fixtures/extreme-pact-magic-loadout.mjs`，為**測試存檔**裝備合法INT150、STR1（其餘VIT120/AGI100/DEX70/LUK3）；人物仍用新職限定杖劍但將詞條改為ATK/MATK/INT/DEX/VIT與神話攻速；六件防具採合法雙防、INT/VIT及HP%。夥伴改用 `petCirclet` 靈獸星環（MATK主詞條）與 `petRobe` 靈獸法袍、神話SSS、MATK導向一般詞條及合法特殊詞條；不篡改實際玩家存檔與裝備。
+- 真正換上合法魔法裝備後，魔法＋防禦從基礎物理測資約1.04億提高到**2.387億**，魔法＋輔助提高到**2.566億**；仍低於君王約3.2億定位，證明不只是STR配點問題。
+- 因此只補強這兩條**已明示的魔法攻擊同化**（`dist/game.js`）：魔防MATK係數 `1.66→2.38`、魔輔 `1.66→2.17`；其餘四融合攻擊同化、`def:.19/mdef:.19/hp:.15` 生存同化、君王90%王卡、萬靈60%王卡均不動。
+- 同樣210級SSS／契印8／十槽合法王卡／魔法裝：HP王第30階30.5秒，魔防總傷害 `9760437460`，**3.200億DPS**；魔輔 `9751212663`，**3.197億DPS**。兩組 HP與CLEAR王真正從1階連打到30階皆通關，各450首次徽記。
+- `tests/extreme-pact-magic-loadout.test.mjs` 驗證合法六詞條、SSS、魔法裝備與DPS範圍；`tests/extreme-trials-class-30-probe.mjs` 支援最後參數 `magic-build`，連戰探針使用第五個參數 `magic`。完整極限相關回歸 **78／78通過**。
+- 這是為公平比較魔法融合而建立的**配裝樣板**，遊戲不會自動替角色換裝；六融合的其他合法最佳裝、野外首領混戰及玩家真實存檔仍應繼續驗收。main／正式網站不動。
