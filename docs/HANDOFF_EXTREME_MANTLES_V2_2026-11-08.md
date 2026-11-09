@@ -465,3 +465,9 @@
 - 重新以 alpha≥128 查看最外圍第 0 列／欄，上述 11 張皆無高不透明像素真正貼至畫布最外一格；目前沒有直接裁切證據。然而在四邊 30px 安全範圍中，除 `clear-wizard` 的高 alpha（≥240）像素為 0 外，其餘十張均有實體或高不透明特效進入安全範圍，不能視為合格的 6% 留白。
 - 戰袍衣櫃預覽圖片 CSS 為 108×114px、`object-fit:contain`。依 alpha≥128 可見內容高度換算，最小五張在預覽中僅約 71–76px：`matk-hunter`(70.6)、`matk-spiritCommander`(71.9)、`matk-performer`(72.6)、`matk-rogue`(75.3)、`matk-sage`(76.4)；其餘偏小者由 `matk-pactWarrior`、`matk-assassin`、`matk-wizard`、`clear-monk`、`clear-knight` 依序處理。
 - 建議先以保持原比例的透明安全邊框處理十張高 alpha 貼邊素材，另以參考原圖重構偏寬的 MATK 構圖；不宜直接放大造成武器裁切。本次只新增稽核結論，未修改圖片、遊戲程式或正式版。36/36 測試通過。
+
+## 安全留白返工 B1：hp-performer（2026-11-09）
+
+- 以既有 HP 舞孃直式血骨大提琴演奏圖作唯一主參考，僅收縮構圖、保留歌唱姿勢、骨弦琴、琴弓與裙裝。避免重新設定角色或非等比拉伸。
+- 新圖 `dist/assets/extreme/mantles-v2/hp-performer.webp`，1024×1536 RGBA WebP。alpha≥128 可見邊界約 x=177–866、y=113–1456，與前版 y=10–1528 相比，已增加明顯上下留白；底部剩 80px，接近但仍未滿原規劃 6%（約 92px），需持續注意。
+- 單張獨立 GitHub 提交並更新本交接；下一步檢查其餘高 alpha 貼邊素材。正式版未修改。
