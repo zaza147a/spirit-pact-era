@@ -75,3 +75,10 @@
 - 原本選用規則及遊戲內顯示不變；對於有其他背景種類的角色，金幣典藏背景優先層級與遊戲內目前的 `applyCosmeticScene` 一致。
 - `dist/index.html` 的 `game.js` 版本更新為 `7.1.9-gold-entry-background-20261110`，避免快取停留在舊 JavaScript。
 - 先前 V2 戰袍尺寸修正 GitHub `main` 提交 `0edf3c5285e5383e4cddf2d20c34dde522224f99`；**GitHub Pages 尚停在 `e864afc`，未找到該次提交對應的 Publish workflow run**。必須由正式工作流程重新部署並查證網站載入新版資源才算完成。
+
+## 第七次修正：人物放大後壓住皇冠與光環錯位（2026-11-10）
+
+- 玩家正式版截圖確認人物鞋子壓住名稱框皇冠徽章，且戰袍光環與人物不對齊。保留桌面 `190×235px` 肖像，將負下邊距 `-15px` 修正為 **正下邊距 `26px`**，避免人物侵入後續名稱框區塊；窄版改為 `22px`。
+- 光環中心桌面由 `top:112px` 調整為 `126px`、裝飾由 `top:2px` 改 `16px`；窄版對應 `110px`、`15px`，保持與放大後肖像中心一致。
+- CSS 快取識別改 `2-mantle-nameplate-clearance-20261110`；僅改本次V2戰袍角色欄，不影響首頁、原48張圖、其他裝扮。
+- 注意先前 `0edf3c5` 和 `3a684d3` 兩筆 Git Trees API 寫入意外將根目錄及 `dist/docs/tests` 縮為局部檔案；後續 `740db8e` 已依 `e864afc` 重建完整樹並僅保留6筆預期修改。今後使用 Git Trees API **務必提供每層完整 tree entries，驗證 `git diff --name-status` 無大規模刪檔**。
