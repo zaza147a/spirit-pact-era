@@ -1111,3 +1111,4 @@
 - 新增僅監控 `feature/endless-trials-three-bosses` 的 `.github/workflows/extreme-mantles-browser-acceptance.yml`：GitHub Actions安裝Chromium、跑48圖片格式／79專項測試及上述96張真實瀏覽器截圖，並上傳 artifact；**不觸發正式網站部署，也不合併main**。
 - 本地成功安裝Playwright套件，但Chromium下載來源返回空／不完整ZIP，故**此處沒有真正執行96張瀏覽器截圖**。腳本通過 `node --check` 語法檢查，待 GitHub Runner實際執行後核對結果；若失敗，根據 Actions日誌修正，不能先宣稱實機驗收通過。
 - 首次 GitHub Actions [42602057938](https://github.com/zaza147a/spirit-pact-era/actions/runs/42602057938)：圖片規格與79項專測成功、Chromium 安裝成功，但瀏覽器腳本在完成首職（產出8張截圖）後，切換第二職時因未先回到選角頁，`[data-slot-select="0"]` 不可見而超時。**這是測試流程瑕疵，不是48張圖片驗收成功，也不是戰袍故障。** 已追加每個職業最後返回選角畫面，再重跑。
+- 第二輪 [42602493975](https://github.com/zaza147a/spirit-pact-era/actions/runs/42602493975)：已跑完舊十職約80張角色／首頁實際截圖，第一個新職業匯入失敗。追查 `dist/game.js` 的 `valid(p)` 才發現測試名稱「極限戰袍驗收-pactWarrior」超出遊戲角色名稱16字上限，**是測試存檔本身不合法**，非新職業美術缺失。已縮短測試角色名為 `驗收-${job}`，不改遊戲存檔驗證或角色規則，重新驗收。
