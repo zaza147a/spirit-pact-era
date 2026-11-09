@@ -16,8 +16,8 @@ export const THIRD_JOBS=Object.fromEntries(Object.entries(defs).map(([job,d])=>[
 const labels={atkPct:'ATK%',hpPct:'HP%',aspdPct:'攻速%',hitPct:'命中%',defPct:'DEF%',matkPct:'MATK%',castReduction:'詠唱縮短',mpPct:'SP%',spRegen:'每4秒回SP',aspd:'ASPD',autoSpellChance:'自詠機率',mdefPct:'MDEF%',crit:'暴擊率%',critDmg:'暴擊傷害%',fleePct:'FLEE%',lootPct:'裝備掉率%',goldPct:'金幣收益%',healingPct:'治療%',teamDamagePct:'主人與夥伴傷害%'};
 const buffModifiers={knight:{atkPct:20,hitPct:15},crusader:{defPct:25,aspd:10},wizard:{matkPct:20,castReduction:.1},assassin:{critDmg:25,aspdPct:12},rogue:{atkPct:20,lootPct:15},monk:{atkPct:20,aspdPct:10}};
 export function thirdSkills(job){const [name,main,wide,finish,utility,stance,power,targets,event,passives]=defs[job],magic=['wizard','sage','priest'].includes(job),wizard=job==='wizard',base={branch:'third',thirdOnly:true,maxRank:10,weapons:[],kind:magic?'magic':'physical',mp:3,event,desc:'三轉專屬；主攻依ASPD動作間隔，承接本職共鳴。'},make=(id,title,extra)=>({...base,id:id+'_'+job,name:title,...extra});
- const calibratedWide={knight:12,performer:15,monk:10,rogue:7,crusader:9,hunter:7,wizard:1.5};
- const calibratedFinish={knight:20,performer:20,monk:20,rogue:20,crusader:15,hunter:20};
+ const calibratedWide={knight:10,performer:15,monk:8,rogue:7,crusader:9,hunter:7,wizard:2.2};
+ const calibratedFinish={knight:23,performer:20,monk:23,rogue:20,crusader:15,hunter:20};
  const wideRatio=job==='pactWarrior'?4.2:(calibratedWide[job]??6.5),finishRatio=job==='pactWarrior'?7.5:(calibratedFinish[job]??(wizard?2.8:12));
  const list=[make('thirdMain',main,{unlock:1,power,attackCycle:true,cooldown:0,aoe:true,targets,mp:wizard?18:3,...(wizard?{castMs:2200,recovery:600}:{}),...(job==='crusader'?{source:'holyShield'}:{}),...(job==='rogue'?{steal:true}:{})}),make('thirdWide',wide,{unlock:5,power:power*wideRatio,mp:18,cooldown:8000,aoe:true,targets:wizard?5:4,...(wizard?{castMs:2600,recovery:1200}:{}),desc:'三轉範圍攻擊；同時打擊多體，每體獨立計傷，需承受技能動作間隔。'}),make('thirdFinish',finish,{unlock:40,power:power*finishRatio,mp:24,cooldown:12000,targets:1,...(wizard?{castMs:3000,recovery:1200}:{}),desc:'三轉單體終結技；高倍率、高消耗，適合首領與厚血目標。'})];
  if(job==='assassin'){

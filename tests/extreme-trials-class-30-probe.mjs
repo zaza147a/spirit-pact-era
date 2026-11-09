@@ -49,12 +49,12 @@ for(const kind of kinds)for(const job of jobs){
  c.api.setup(p);
  if(job==='pactWarrior'||job==='spiritCommander')for(const pet of p.pets){const stats=c.api.petStats(pet);pet.hp=stats.hp;pet.sp=stats.sp;}
  c.api.spawnExtremeBoss();c.api.checkpointExtreme();
- const duration=kind==='atk'||kind==='matk'?20500:30500;
+ const duration=kind==='atk'||kind==='matk'?20500:kind==='clear'&&process.env.EXTREME_CLEAR_KILLS_SNAPSHOT==='1'?29900:30500;
  try{
   const {player,summary}=await c.api.simulateOffline(p,epoch+duration);
   console.log(JSON.stringify({kind,job,weaponCard:p.sockets.rightHand,fusion:job==='pactWarrior'||job==='spiritCommander'?(process.argv[4]||'attack-magic'):null,cleared:(player.extremeProgress?.[kind]?.highest||0)>=30,
    highest:player.extremeProgress?.[kind]?.highest||0,next:player.extremeRun?.floor||null,
    durationMs:summary?.simulated||0,reason:summary?.reason||null,
-   damage:summary?.damage?.total||0}));
+   damage:summary?.damage?.total||0,...(kind==='clear'&&process.env.EXTREME_CLEAR_KILLS_SNAPSHOT==='1'?{stageKills:player.extremeRun?.stageKills??null}:{})}));
  }catch(error){console.log(JSON.stringify({kind,job,error:String(error)}));}
 }
