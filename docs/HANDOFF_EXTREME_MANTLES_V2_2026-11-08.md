@@ -1103,3 +1103,10 @@
 - 安裝驗證精確去背模型：IS-Net 可運作但在原本透明背景上無改善；BiRefNet-general-lite 可運作但會重算 RGB；大型 BiRefNet 記憶體不足(exit 137)。**自動模型輸出均不覆蓋原畫**。
 - 逐組合成畫面確認 `clear-hunter.webp` 有肉眼可見的極淡矩形霧底，其原檔背景 Alpha 約 1–8。新增可重現的 `scripts/art/trim-extreme-mantle-alpha.py`，只對此張清零 Alpha 1–20，保護原始 Alpha >20 的**所有 RGB 與 Alpha 解碼像素完全一致**，保存 lossless WebP，覆核深底完整角色、弓、旗幟、光效。低於門檻的極淡光色也會一併清除，因此不可對其餘47張直接批次使用。
 - 此輪不調整職業 DPS、四王倍率、獎勵、五連戰或遊戲 UI。實際登入選角／角色欄瀏覽器截圖仍待可存取的測試預覽環境；現有代理圖**不是實際瀏覽器驗收**。
+
+## 48 張戰袍真實瀏覽器驗收執行器（2026-11-09，待 GitHub Actions 執行結果）
+
+- 從遠端 `c999016430dc85c703ddb10a1240f57c54a7738e` 確認續作，`main=e774939cb9b6f1ee329f7525ae634e7c752a2514` 不變；不覆寫本地其他未提交檔案。
+- 補上 `scripts/browser/extreme-mantles-48-acceptance.mjs`：在真實瀏覽器內載入12職測試角色，依序解鎖／點選四王戰袍，驗證角色欄和返回選角兩個頁面載入的同一張1024×1536圖片，輸出48×2張截圖、逐條JSON結果與瀏覽器錯誤。測試不連雲端帳號、不會改使用者存檔。
+- 新增僅監控 `feature/endless-trials-three-bosses` 的 `.github/workflows/extreme-mantles-browser-acceptance.yml`：GitHub Actions安裝Chromium、跑48圖片格式／79專項測試及上述96張真實瀏覽器截圖，並上傳 artifact；**不觸發正式網站部署，也不合併main**。
+- 本地成功安裝Playwright套件，但Chromium下載來源返回空／不完整ZIP，故**此處沒有真正執行96張瀏覽器截圖**。腳本通過 `node --check` 語法檢查，待 GitHub Runner實際執行後核對結果；若失敗，根據 Actions日誌修正，不能先宣稱實機驗收通過。
