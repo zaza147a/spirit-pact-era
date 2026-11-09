@@ -1113,3 +1113,10 @@
 - 首次 GitHub Actions [42602057938](https://github.com/zaza147a/spirit-pact-era/actions/runs/42602057938)：圖片規格與79項專測成功、Chromium 安裝成功，但瀏覽器腳本在完成首職（產出8張截圖）後，切換第二職時因未先回到選角頁，`[data-slot-select="0"]` 不可見而超時。**這是測試流程瑕疵，不是48張圖片驗收成功，也不是戰袍故障。** 已追加每個職業最後返回選角畫面，再重跑。
 - 第二輪 [42602493975](https://github.com/zaza147a/spirit-pact-era/actions/runs/42602493975)：已跑完舊十職約80張角色／首頁實際截圖，第一個新職業匯入失敗。追查 `dist/game.js` 的 `valid(p)` 才發現測試名稱「極限戰袍驗收-pactWarrior」超出遊戲角色名稱16字上限，**是測試存檔本身不合法**，非新職業美術缺失。已縮短測試角色名為 `驗收-${job}`，不改遊戲存檔驗證或角色規則，重新驗收。
 - 第三輪 [42603516581](https://github.com/zaza147a/spirit-pact-era/actions/runs/42603516581)：舊十職與君王實際畫面切換成功，最後一職 `spiritCommander` 的識別字較長，`驗收-spiritCommander` **仍超出16字元**，再次被匯入規則拒絕。改用完全獨立職業識別字、固定短名 `戰袍QA-1` 至 `戰袍QA-12`，避免同類腳本錯誤，重新完整跑48/96。
+
+## 48 件戰袍瀏覽器整套驗收成功（2026-11-09）
+
+- 第四輪 GitHub Actions **[42603999644](https://github.com/zaza147a/spirit-pact-era/actions/runs/42603999644) 成功**：`Verify 48 asset formats and extreme trial behavior`、`Install isolated browser runner`、`Visit the real game UI for 48 outfits and both views`、`Upload all visual evidence and results` 均 success。
+- 12 職×4 王種共 **48 次實際遊戲穿戴**；每次在角色欄驗證圖片解碼與原始1024×1536尺寸，再返回首頁驗證同一職業戰袍正常載入，合計 **96 張實際 Chromium 截圖**。測試沒有使用正式帳號或雲端存檔。
+- 證據保存在 GitHub Actions artifact **[extreme-mantles-48-browser-evidence](https://github.com/zaza147a/spirit-pact-era/actions/runs/42603999644/artifacts/13666992059)**（包含48件×兩畫面截圖和 `result.json`）。後續人工仍可逐張評估美感／比例；自動化成功不代表美術主觀批准。
+- 48張美術圖中此輪只有 `clear-hunter.webp` 曾做低Alpha微霧清理；其餘47張保留，絕不把舊工具顯示的透明RGB誤判成需要重製。沒有改變職業平衡、四王強度、獎勵、五連戰。未合併main或更新正式站。
