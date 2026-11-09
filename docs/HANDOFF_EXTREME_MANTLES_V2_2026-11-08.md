@@ -1282,3 +1282,9 @@
 - 更新 `tests/extreme-trials-universal-shield.test.mjs`，實測普通盾新掉落立即自動分解，神話盾進背包並在整理後留存，已被換裝保護的普通盾仍留存；盾牌專項 **7／7通過**，極限試煉專項 **92／92通過**，背包／離線裝備／倉庫衝突相關 **15／15通過**。
 - 本批不改任何盾牌屬性、掉落機率、職業平衡、四王強度或獎勵。將先推送獨立修正分支並核對遠端，再依既有授權更新main及確認Pages部署結果；未驗證成功前不能稱正式版已更新。
 - 全專案其餘測試（沿用前次排除的3個超長且不屬本次的模擬）最終 **957／957通過、0失敗、0跳過**，約176.3秒。此版本未執行新的高層平衡或200五連戰測試。
+
+### 盾牌稀有度修正正式發布確認（2026-11-09）
+
+- 從正式main `ac1be0af2b8bdd60543fdbef84c13b131ea762c1` 建立備份分支 `fix/shield-auto-salvage-rarity-20261109`，先推送並核對 `570a48d56390a0cf3578f8bf2e5a643f68f1a748`，再以expected SHA快轉正式main至相同提交。
+- GitHub Actions [Publish Spirit Pact Era #42633269697](https://github.com/zaza147a/spirit-pact-era/actions/runs/42633269697) **completed/success**。正式網站 `https://zaza147a.github.io/spirit-pact-era/salvage-rules.js?v=7.1.9` 已實際讀到不再含 `gear.id==='shield'` 的 `shouldAutoSalvage()` 守衛；保留 `swapProtected`／`fusionMatch` 安全判斷。
+- 本段為部署成功後的交接補記；若後續僅改 `docs/**`，依現有發布流程 `paths-ignore` 不會重複部署。
