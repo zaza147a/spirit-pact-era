@@ -1268,3 +1268,9 @@
 - `tickExtreme()` 同時服務實際戰鬥及離線模擬，原有成功流程會自動發放首次突破獎勵、進下一階並建立checkpoint。提前過關後，同一段離線時間可以通過多個樓層，因此同步更正舊測試固定假設「30秒僅可通過一階」；對既有DPS／排名快照改驗證實際通關和固定技能倍率，**不重做高層平衡**。
 - 增加HP、CLEAR在1秒左右達標立即通過／未達標仍等待／戰敗不得通關，以及實際離線15秒內完成通關的測試；`node --test tests/extreme-*.test.mjs` **92／92通過**。全專案其餘測試（沿用前次排除的3個超長且不屬本次範圍的模擬）**957／957通過、0失敗、0跳過**，約154.6秒。
 - 本次變更範圍：`dist/extreme-trials.js`、四個極限試煉測試檔及本交接文件。若推送正式版，必須先確認當下main SHA、在獨立修正分支備份、合併後再次驗證Pages是否success；本段記錄的是測試結果，不能預先宣稱已部署成功。
+
+### HP／CLEAR 提前通關正式發布確認（2026-11-09）
+
+- 已從main `c5c65b8bb16ad966de6e3c1214f4ee54731c7f99` 建立安全修正分支 `fix/extreme-immediate-clear-20261109`，推送提交 `a11ff4480941172cfb8921d0d6ab42c997481454` 並核對遠端後，經使用者授權以預期SHA快轉同一提交至正式 `main`；修正分支仍保留備份。
+- GitHub Actions [Publish Spirit Pact Era #42624525102](https://github.com/zaza147a/spirit-pact-era/actions/runs/42624525102) **completed/success**。正式網站 `https://zaza147a.github.io/spirit-pact-era/extreme-trials.js?v=7.1.9` 已實際確認具有HP／CLEAR兩個達標立即 `cleared` 判斷，且位於30秒檢查之前。
+- 正式發布只調整達標判斷時點，**沒有修改四王強度、職業平衡、擊殺需求、傷害門檻、固定獎勵與圖片**。本段為部署成功後的文檔補記，文件單獨更新按Pages工作流程 `paths-ignore: docs/**` 不會觸發新的遊戲部署。
