@@ -452,3 +452,10 @@
 - 使用 `scripts/art/build-extreme-mantle-sheets.py` 重建縮小版 48 張總覽與四系列短圖（5 份）；實際改變內容為 `hp-assassin` 與 `matk-priest` 對應格，其他 46 圖不動。
 - 48/48 圖檔存在、全部 1024×1536、48 個 SHA-256 均不同。`node --test tests/extreme-*.test.mjs` **36/36 通過**。
 - 按先前 GitHub 預覽灰色遮蓋的回報，仍保留短圖 2180×370 與完整縮圖 1600×1100，供使用者分別檢查；未合併 main 或更新正式版。
+
+## A1–A2 後續 48 圖細項稽核（2026-11-09）
+
+- 再次核對測試分支最新 48/48 個 V2 WebP：48 個 SHA-256 各異、尺寸 1024×1536、透明 RGBA。`node --test tests/extreme-*.test.mjs` 36/36 通過；五張總覽 JPG 尺寸也正確。
+- 使用 alpha≥128 的實際可見內容作為面積估計；高度小於畫布 80% 尚有 10 張：`clear-knight`、`clear-monk`、`matk-assassin`、`matk-hunter`、`matk-pactWarrior`、`matk-performer`、`matk-rogue`、`matk-sage`、`matk-spiritCommander`、`matk-wizard`。此為構圖大小警示，並非壞檔。
+- 用四邊 30px 區域內 alpha>16 檢查安全留白，11 張需肉眼確認是否含裁切／貼邊：`clear-assassin`、`clear-crusader`、`clear-priest`、`clear-wizard`、`hp-assassin`、`hp-crusader`、`hp-knight`、`hp-performer`、`hp-priest`、`hp-rogue`、`matk-priest`。尤其新改 `hp-assassin`、`matk-priest` 的可見內容上下邊界僅約 13–22px，未滿原先希望的安全留白。
+- 目前無缺圖、無錯誤尺寸與測試失敗；安全留白與選角實際尺寸尚不能宣稱驗收合格。此段僅記錄結果，不調整素材；正式版無變更。
