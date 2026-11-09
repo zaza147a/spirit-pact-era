@@ -47,6 +47,18 @@ test('盾牌比較預覽會計入卸下雙手武器，結束後不更改原本�
  assert.equal(p.gear.leftHand,null);
 });
 
+test('雙手武器改持盾牌時，角色防禦提高但失去原武器的實際攻擊能力',async()=>{
+ const c=await runtime(),p=c.api.fresh('盾牌取捨','knight');
+ p.level=210;p.gear.rightHand=rollGear('twoSword',200,'mythic',()=>.5);
+ p.gear.leftHand=null;p.bag.push(rollGear('shield',200,'mythic',()=>.5));
+ c.api.setup(p);
+ const before={atk:c.api.stat('atk'),def:c.api.stat('def')};
+ c.api.useItem(p.bag.length-1);c.api.clearStatSnapshots();
+ assert.equal(p.gear.rightHand,null);
+ assert.ok(c.api.stat('atk')<before.atk);
+ assert.ok(c.api.stat('def')>before.def);
+});
+
 test('一般副手匕首仍需要主手短劍，不能繞過雙手互斥限制',async()=>{
  const c=await runtime(),p=c.api.fresh('副手匕首','assassin');
  p.level=210;p.gear.rightHand=rollGear('blade',1,'common');
