@@ -30,6 +30,12 @@ function build(job){
 
 for(const kind of kinds)for(const job of jobs){
  const c=await runtime(),p=build(job);
+ // Compare legal saves with the strongest actual auto-cast priority. Do not
+ // overwrite the user's checked-in save: this is an in-memory combat setting.
+ if(process.env.EXTREME_LEGACY_ROTATION!=='1'&&p.autoSkills?.order){
+  const priority=id=>id.startsWith('thirdFinish_')?0:id.startsWith('thirdWide_')?1:id.startsWith('thirdMain_')?2:-1;
+  p.autoSkills.order.sort((a,b)=>priority(a)-priority(b));
+ }
  equipExtremeBossCards(p);
  const weaponCard=process.argv[5];
  if(weaponCard){

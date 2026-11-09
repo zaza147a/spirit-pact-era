@@ -7,22 +7,23 @@ const run=(kind,job)=>JSON.parse(execFileSync(process.execPath,['tests/extreme-t
  cwd:new URL('..',import.meta.url),encoding:'utf8',timeout:120000
 }).trim());
 
-test('騎士與舞孃單首領加成直接標於三轉主攻／終結技且範圍不生效',()=>{
- for(const [job,bonus] of [['knight',.10],['performer',.06]]){
+test('騎士與舞孃以可見倍率調整取代10%／6%單王額外加成',()=>{
+ for(const [job,wideRatio] of [['knight',12],['performer',15]]){
   const skills=thirdSkills(job);
-  for(const id of [`thirdMain_${job}`,`thirdFinish_${job}`]){
+  for(const id of [`thirdMain_${job}`,`thirdFinish_${job}`,`thirdWide_${job}`]){
    const skill=skills.find(s=>s.id===id);
-   assert.equal(skill.focusedBossBonus,bonus,id);
-   assert.match(skill.desc,/面對單獨首領時.*額外\+/);
+   assert.equal(skill.focusedBossBonus,undefined,id);
+   assert.doesNotMatch(skill.desc,/面對單獨首領時.*額外\+/);
   }
-  assert.equal(skills.find(s=>s.id===`thirdWide_${job}`).focusedBossBonus,undefined);
+  assert.equal(skills.find(s=>s.id===`thirdFinish_${job}`).thirdGrowth.ratio,20);
+  assert.equal(skills.find(s=>s.id===`thirdWide_${job}`).thirdGrowth.ratio,wideRatio);
  }
 });
 
-test('騎士與舞孃CLEAR王傷害維持原始基準且能通過30階',()=>{
- for(const [job,baseline] of [['knight',18780297775],['performer',15929785883]]){
+test('騎士與舞孃新倍率實際提高CLEAR王傷害且能通過30階',()=>{
+ for(const [job,minimum] of [['knight',19000000000],['performer',17000000000]]){
   const result=run('clear',job);
   assert.equal(result.cleared,true,job);
-  assert.equal(result.damage,baseline,`${job} CLEAR should remain unchanged`);
+  assert.ok(result.damage>=minimum,`${job} CLEAR should benefit from AoE multiplier`);
  }
 });
