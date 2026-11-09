@@ -1251,3 +1251,12 @@
   2. `tests/character-tabs-tower-presentation.test.mjs` 舊的靜態正規表示式仍要求 `save();render()` 直接相連，未納入先前修正的「保存失敗即還原榮譽選擇」分支；改驗證失敗回復與成功重繪均存在。單檔 **9／9通過**。
 - 在上述兩項**僅修改測試、不改遊戲程式**的前提下，臨時合併樹執行其餘全部 `.test.mjs`（排除 `pet-progression-151-200-v6540`、`pet-sustain-full-v6539`、`pet-sustain-trial200-v6539` 三項既有超長且與本次無關的模擬）：**956／956通過、0失敗、0跳過**（約155秒）。此為廣泛回歸，不能冒稱前述三個排除項也已測試。
 - GitHub 更新順序：先將兩個測試修正與本交接文件推送 `feature/endless-trials-three-bosses`，逐次驗證遠端SHA；再基於**最新兩分支SHA**重新做三方合併，保留main角色排序，完成後才推送main、檢查GitHub Pages。未成功完成前，不得寫「正式版已更新」。
+
+## 正式上線結果：四王極限試煉與48張V2戰袍（2026-11-09）
+
+- 授權後測試修正及交接文件已先推送測試分支 `2b62c0a1d3ae652608ff35efdfbc1ec3ae67fb4d`，並重新核對遠端 `main=e774939cb9b6f1ee329f7525ae634e7c752a2514`。
+- 最新三方合併無衝突，預期合併樹 `f331f34d066d12f616f307b28ce43210394c0187`；GitHub遠端建立之樹 SHA **完全一致**，完整保留main後續的首頁角色排序程式、測試及操作按鈕，沒有覆寫正式版領先分支的內容。
+- GitHub建立雙親合併提交 **`0e951ad8a40cc502123e38266beaa3c4234b9ba3`**（第一親 `e774939` 正式main、第二親 `2b62c0a` 試煉分支），以 expected SHA 安全更新 `main` 並再次 `git ls-remote` 核對；試煉測試分支保留原SHA作為恢復點。
+- 上線前完整回歸：合併樹極限專項 **91／91通過**、角色排序等整合 **55／55通過**、全專案其餘測試 **956／956通過**（0失敗，排除3個另行規劃的超長夥伴模擬／200五連戰）；沒有調整高層平衡、四王強度、角色技能及48張原畫。
+- GitHub Actions [Publish Spirit Pact Era #42622319994](https://github.com/zaza147a/spirit-pact-era/actions/runs/42622319994) `completed/success`，第一次正式部署成功；正式網站 `https://zaza147a.github.io/spirit-pact-era/game.js?v=7.1.9` 已可讀出 `extremeSelectedMantle` 與 `readCharacterOrder`，確認正式靜態資源同時含極限戰袍和角色排序。
+- 本段為正式部署後補記。之後若僅推送文件到main可能再次啟動Pages工作流程，須另確認最新部署結果；不要將前一筆成功套用到未確認的新執行紀錄。
