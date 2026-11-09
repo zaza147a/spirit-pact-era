@@ -1110,3 +1110,4 @@
 - 補上 `scripts/browser/extreme-mantles-48-acceptance.mjs`：在真實瀏覽器內載入12職測試角色，依序解鎖／點選四王戰袍，驗證角色欄和返回選角兩個頁面載入的同一張1024×1536圖片，輸出48×2張截圖、逐條JSON結果與瀏覽器錯誤。測試不連雲端帳號、不會改使用者存檔。
 - 新增僅監控 `feature/endless-trials-three-bosses` 的 `.github/workflows/extreme-mantles-browser-acceptance.yml`：GitHub Actions安裝Chromium、跑48圖片格式／79專項測試及上述96張真實瀏覽器截圖，並上傳 artifact；**不觸發正式網站部署，也不合併main**。
 - 本地成功安裝Playwright套件，但Chromium下載來源返回空／不完整ZIP，故**此處沒有真正執行96張瀏覽器截圖**。腳本通過 `node --check` 語法檢查，待 GitHub Runner實際執行後核對結果；若失敗，根據 Actions日誌修正，不能先宣稱實機驗收通過。
+- 首次 GitHub Actions [42602057938](https://github.com/zaza147a/spirit-pact-era/actions/runs/42602057938)：圖片規格與79項專測成功、Chromium 安裝成功，但瀏覽器腳本在完成首職（產出8張截圖）後，切換第二職時因未先回到選角頁，`[data-slot-select="0"]` 不可見而超時。**這是測試流程瑕疵，不是48張圖片驗收成功，也不是戰袍故障。** 已追加每個職業最後返回選角畫面，再重跑。

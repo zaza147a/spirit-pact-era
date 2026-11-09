@@ -71,6 +71,8 @@ try{
    await page.locator('[data-tab="character"]').click();
    await page.locator('[data-character-section="outfits"]').click();
   }
+  // After the last mantle, return to the lobby before importing the next job.
+  await page.locator('#returnEntryBtn').click();
  }
  assert.equal(results.length,48);
  assert.deepEqual(errors,[],'Browser page errors');
