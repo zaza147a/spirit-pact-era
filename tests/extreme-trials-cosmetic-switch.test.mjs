@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
+import {EXTREME_MANTLE_CATALOG,EXTREME_MANTLE_V2_READY,extremeMantleArt} from '../dist/extreme-mantle-catalog.js';
 
 const game=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
 
@@ -16,5 +17,20 @@ test('四王八張背景、四首領與48件獨立戰袍實體素材皆存在',(
  for(const kind of ['atk','matk','hp','clear']){
   for(const asset of [`boss-${kind}.webp`,`background-${kind}-milestone.webp`,`background-${kind}-collector.webp`])
    assert.ok(existsSync(new URL(`../dist/assets/extreme/${asset}`,import.meta.url)),asset);
+ }
+ assert.equal(EXTREME_MANTLE_CATALOG.length,48);
+ assert.equal(new Set(EXTREME_MANTLE_V2_READY).size,48);
+ for(const entry of EXTREME_MANTLE_CATALOG){
+  const filename=`${entry.kind}-${entry.job}.webp`;
+  const asset=new URL(`../dist/assets/extreme/mantles-v2/${filename}`,import.meta.url);
+  assert.ok(existsSync(asset),filename);
+  assert.equal(extremeMantleArt(entry.job,entry.kind),`assets/extreme/mantles-v2/${filename}`);
+  const bytes=readFileSync(asset);
+  assert.equal(bytes.toString('ascii',0,4),'RIFF',filename);
+  assert.equal(bytes.toString('ascii',8,12),'WEBP',filename);
+  assert.equal(bytes.toString('ascii',12,16),'VP8X',filename);
+  assert.ok((bytes[20]&0x10)!==0,`${filename} must preserve transparency`);
+  assert.equal(bytes.readUIntLE(24,3)+1,1024,filename);
+  assert.equal(bytes.readUIntLE(27,3)+1,1536,filename);
  }
 });
