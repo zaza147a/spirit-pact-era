@@ -1,0 +1,91 @@
+name: Publish Spirit Pact Era
+# A failed-job rerun can duplicate the fixed-name github-pages artifact; retry with a fresh run.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'README.md'
+      - '.gitignore'
+      - 'audit-*.json'
+      - '.github/workflows/pages-full-regression.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Syntax check core runtime
+        run: |
+          node --check dist/game.js
+          node --check dist/loot.js
+          node --check dist/catalog.js
+          node --check dist/offline-rules.js
+      - name: Fast release regression
+        run: |
+          node --test --test-concurrency=2 \
+            tests/v20.test.mjs \
+            tests/character-slot-legacy-ledger.test.mjs \
+            tests/inventory.test.mjs \
+            tests/skill-runtime-v402.test.mjs \
+            tests/spirit-job-rules.test.mjs \
+            tests/spirit-dual-offense.test.mjs \
+            tests/spirit-staffsword-monster-drop.test.mjs \
+            tests/warehouse-offline-conflict.test.mjs \
+            tests/wiki-and-trial-boss-ui.test.mjs
+      - name: Stage automatically synced WIKI
+        run: |
+          mkdir -p dist/wiki
+          cp wiki/index.html dist/wiki/index.html
+          test -s dist/wiki/index.html
+          test -s dist/catalog.js
+          test -s dist/loot.js
+          node --input-type=module -e "import fs from 'node:fs'; const s=fs.readFileSync('dist/wiki/index.html','utf8'); const paths=[...s.matchAll(/from '\\.\\.\\/([^']+)'/g)].map(x=>x[1].split(/[?#]/,1)[0]); for(const p of paths){ if(!fs.existsSync('dist/'+p)) throw Error('Missing WIKI dependency '+p); } console.log('WIKI dependency check:',paths.length,'modules')"
+      - name: Stage public site without test-only files
+        run: |
+          mkdir -p pages-site
+          cp -a dist/. pages-site/
+          # WebP files are the runtime assets; their matching PNG sources are not deployed.
+          for png in pages-site/assets/true-forms/{S,SS,SSS}/*.png; do
+            test -f "${png%.png}.webp" || { echo "Missing WebP for $png"; exit 1; }
+            rm -f "$png"
+          done
+          rm -f pages-site/effects-lab.html
+          rm -f pages-site/weapon-compensation-test.html
+          rm -f pages-site/balance-sim.mjs
+          rm -f pages-site/test-saves/weapon-compensation-assassin-200.json
+          rmdir pages-site/test-saves 2>/dev/null || true
+          test -s pages-site/index.html
+          test -s pages-site/spirit-sanctuary.js
+          test -s pages-site/wiki/index.html
+          du -sh pages-site
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload game
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: pages-site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          # deploy-pages has a hard maximum of 600000ms; higher values are ignored.
+          timeout: 600000

@@ -1,0 +1,48 @@
+name: Feature browser acceptance
+on:
+  push:
+    branches: [feature/humanoid-pet-evolution]
+    paths: ["dist/**", "scripts/browser/**", "scripts/balance-v24.mjs", "scripts/reference-builds-v508.mjs", ".github/workflows/browser-acceptance.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: browser-acceptance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, webkit]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install pinned browser test runtime
+        run: npm install --no-save --package-lock=false playwright@1.62.1
+      - name: Install browser engine
+        run: npx playwright install --with-deps ${{ matrix.engine }}
+      - name: Export disposable saves for physical device acceptance
+        run: node scripts/browser/export-device-fixtures.mjs
+      - name: Test shared warehouse and concurrent character transfers
+        env:
+          BROWSER_ENGINE: ${{ matrix.engine }}
+        run: node scripts/browser/warehouse-acceptance.mjs
+      - name: Test every refreshed class outfit and saved cosmetic selection
+        env:
+          BROWSER_ENGINE: ${{ matrix.engine }}
+        run: node scripts/browser/outfit-acceptance.mjs
+      - name: Test actual feature app without deploying
+        env:
+          BROWSER_ENGINE: ${{ matrix.engine }}
+        run: node scripts/browser/acceptance.mjs
+      - name: Preserve screenshots and browser report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: feature-browser-acceptance-${{ matrix.engine }}
+          path: browser-qa/

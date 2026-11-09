@@ -1,0 +1,1 @@
+import{readFileSync}from'node:fs';import{gunzipSync}from'node:zlib';export function readTrialReport(){const r=JSON.parse(readFileSync('docs/sky-trials-v630.json'));return r.samplesFile?JSON.parse(gunzipSync(readFileSync(r.samplesFile.path))):r;}
