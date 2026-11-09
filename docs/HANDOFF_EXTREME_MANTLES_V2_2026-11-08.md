@@ -383,3 +383,10 @@
 - 萬軍刺客由銀髮蒙面女刺客、連鎖彎刃改為墨青短髮男性軍團影刃；黑綠分段輕甲、象牙白飄帶、左右手各持一柄翡翠直刺短匕，疾走斜向突擊。
 - 保留萬軍翡翠／象牙／古金色系、細密厚塗材質和小型菱形戰術標記，與重鎧騎士／十字軍的武器、輪廓及動作明顯區隔。
 - 圖檔：`dist/assets/extreme/mantles-v2/clear-assassin.webp`，1024×1536 RGBA 透明 WebP。四張指定返工 `hp-assassin`、`clear-knight`、`clear-crusader`、`clear-assassin` 已全數備妥，接續四圖規格與回歸測試。所有修改僅測試分支，不合併 main。
+
+## 四十八張圖規格複查與主教差異化 P1（2026-11-09）
+
+- 48/48 均存在，皆為 1024×1536、RGBA、WebP，alpha 最小值為 0；此為檔案格式檢查，不等同遊戲內視覺驗收。
+- 以 alpha 非透明外框高度小於畫布 80% 作為需人工檢視的保守門檻，12 張：`hp-crusader`、`hp-knight`、`hp-performer`、`hp-rogue`、`matk-assassin`、`matk-hunter`、`matk-pactWarrior`、`matk-performer`、`matk-rogue`、`matk-sage`、`matk-spiritCommander`、`matk-wizard`。這些不是尺寸錯誤，而是人物可能顯得較小；應逐張看姿勢，不能粗暴拉伸。
+- 主教 ATK 為持軍旗長杖的男性，輪廓明顯不同；MATK、HP、CLEAR 先前皆偏向淺髮、正面、聖環、拖地禮服，辨識度不足。
+- P1 `hp-priest`：改為酒紅短編髮女性前線戰地醫官，骨白護甲、分叉短戰袍、腰間藥劑、血心提燈與紅色六角治癒護盾；以站姿動作、腿部和道具和 MATK 的星象長裙拉開差異。原版保留 Git 歷史。下一張 P2 `clear-priest`。
