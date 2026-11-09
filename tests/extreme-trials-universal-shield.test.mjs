@@ -89,16 +89,24 @@ test('背包滿2000格仍可一進一出替換；超量時不得卸下雙手武�
  assert.equal(q.bag.length,2001);
 });
 
-test('已換下和新掉落的盾牌都不被自動分解，其他裝備仍遵循原有設定',async()=>{
- const shield=rollGear('shield',1,'common'),weapon=rollGear('blade',1,'common');
+test('盾牌依稀有度自動分解，神話及換裝保護盾仍保留',async()=>{
+ const shield=rollGear('shield',1,'common'),mythicShield=rollGear('shield',200,'mythic');
+ const protectedShield={...rollGear('shield',1,'common'),swapProtected:true};
+ const weapon=rollGear('blade',1,'common');
  assert.equal(GEAR_BASE.shield.jobs,undefined);
- assert.equal(shouldAutoSalvage(shield,extremeSalvage),false);
+ assert.equal(shouldAutoSalvage(shield,extremeSalvage),true,'選擇只保留神話時普通盾必須分解');
+ assert.equal(shouldAutoSalvage(mythicShield,extremeSalvage),false,'神話盾保留');
+ assert.equal(shouldAutoSalvage(protectedShield,extremeSalvage),false,'換裝退回背包的盾不可誤刪');
  assert.equal(shouldAutoSalvage(weapon,extremeSalvage),true);
  const c=await runtime(),p=c.api.fresh('分解盾牌','knight');
  p.autoSalvage=true;Object.assign(p,extremeSalvage);
  p.bag=[];c.api.setup(p);
  c.api.awardGear(shield);
- assert.ok(p.bag.some(item=>item.uid===shield.uid));
+ assert.ok(!p.bag.some(item=>item.uid===shield.uid),'新掉落普通盾應被自動分解');
+ c.api.awardGear(mythicShield);
+ assert.ok(p.bag.some(item=>item.uid===mythicShield.uid));
+ p.bag.push(protectedShield);
  c.api.salvageBagEquipment();
- assert.ok(p.bag.some(item=>item.uid===shield.uid));
+ assert.ok(p.bag.some(item=>item.uid===mythicShield.uid));
+ assert.ok(p.bag.some(item=>item.uid===protectedShield.uid));
 });
