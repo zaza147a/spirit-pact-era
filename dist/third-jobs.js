@@ -26,15 +26,15 @@ export function thirdSkills(job){const [name,main,wide,finish,utility,stance,pow
   for(const skill of list.slice(0,2))skill.desc+=` 主目標傷害 ${Math.round(skill.primaryTargetPower*100)}%，副目標傷害 ${Math.round(skill.secondaryTargetPower*100)}%。`;
  }
  if(job==='pactWarrior'){
-  // One main target at full skill power, exactly two secondary targets at 75%.
+  // One main target at full skill power, exactly two secondary targets at 60%.
   for(const skill of list.slice(0,2)){
-   Object.assign(skill,{targets:3,primaryTargetPower:1,secondaryTargetPower:.75});
-   skill.desc+=' 主目標100%，其餘兩體各75%；最多三體。';
+   Object.assign(skill,{targets:3,primaryTargetPower:1,secondaryTargetPower:.60});
+   skill.desc+=' 主目標100%，其餘兩體各60%；最多三體。';
   }
  }
  if(job==='knight'||job==='performer'){
   // Displayed, boss-only single-target specialization; never boosts AOE waves.
-  const bonus=job==='knight'?.097:.055;
+  const bonus=job==='knight'?.10:.06;
   for(const skill of [list[0],list[2]]){
    skill.focusedBossBonus=bonus;
    skill.desc+=` 面對單獨首領時，此技能主目標傷害額外+${Math.round(bonus*1000)/10}%。`;

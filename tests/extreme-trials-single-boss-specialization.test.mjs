@@ -8,7 +8,7 @@ const run=(kind,job)=>JSON.parse(execFileSync(process.execPath,['tests/extreme-t
 }).trim());
 
 test('騎士與舞孃單首領加成直接標於三轉主攻／終結技且範圍不生效',()=>{
- for(const [job,bonus] of [['knight',.097],['performer',.055]]){
+ for(const [job,bonus] of [['knight',.10],['performer',.06]]){
   const skills=thirdSkills(job);
   for(const id of [`thirdMain_${job}`,`thirdFinish_${job}`]){
    const skill=skills.find(s=>s.id===id);
