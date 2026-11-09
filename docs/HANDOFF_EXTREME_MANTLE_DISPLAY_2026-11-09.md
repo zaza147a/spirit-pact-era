@@ -27,3 +27,9 @@
 - 第二張CLEAR王截圖證實：首領圖已縮到正常尺寸，**小怪仍完全不顯示**。原先軍勢 `.extreme-minion-grid` 置於首領卡外部；此次將軍勢列表嵌入 `.tower-encounter` 卡片內的 `extreme-minion-roster`，在Boss資訊下方顯示「場上軍勢 · 點擊指定目標」。保留每隻小怪點擊選取與HP資訊。
 - `dist/index.html` 更新CSS和 `game.js` 載入版本，避免玩家拿到新CSS卻仍使用舊JS。新增結構測試，保證軍勢網格在首領卡**內部**，可避免舊布局再度出現。
 - 先前已推送main的提交 `22d7cf55e89df1087cfc5ee769982e23ddee194e` 仍是第一版；本段是後續修正，新的分支／SHA／部署狀態需要另行核對後才可宣稱上線。
+
+### 追加更正提交與驗收
+
+- 本次更正以原main `22d7cf55e89df1087cfc5ee769982e23ddee194e` 為父提交，先推送備份分支 `fix/extreme-roster-and-mantle-layout-20261109` 至 `bc7779b426444ce2c22336803de4be1c7628b33a`，再以expected SHA安全快轉main至同一版，未覆寫其他main功能。
+- `node --test tests/extreme-*.test.mjs` **98／98通過**；包含角色戰袍獨立上方區域、CLEAR首領圖片尺寸與軍勢DOM必須位於首領卡內的新增驗證。
+- 實際正式網站CSS／JS與遊戲登入後畫面**尚待部署完成並再次確認**。不能僅憑靜態測試宣稱玩家端小怪已恢復顯示。
