@@ -54,3 +54,8 @@
 - 沒有修改戰袍圖片、怪物、角色技能、戰鬥/解鎖資料或其他外觀種類。CSS查詢版本升 `2-mantle-aura-lobby-scale`，新增入口尺寸與光環位置的回歸斷言。
 - 本段實際GitHub分支、main提交SHA和正式站部署／視覺驗收需於操作完成後記錄。不能拿前次靜態資源確認冒稱本次已部署。
 - 本地極限試煉完整專項 `node --test tests/extreme-*.test.mjs`：**100／100通過、0失敗**。已保留前述清怪可視性與戰袍置中驗證，新增首頁放大與光環置中斷言。
+
+### 第四次修正 GitHub 備份（2026-11-10）
+
+- 從最新main `cac96f7d2270b28d7d21b9f3b022d028ba6bc9bf` 建立 `fix/extreme-mantle-lobby-aura-parity-20261110`，先推送 `e864afc9cdeb3e0a7538fee6c0c4a8a038fce479`；再用expected SHA快轉正式 `main` 至同一版，兩處修改皆未觸碰48張原畫。
+- 更新後第一次正式網站 `index.html` 尚讀到舊CSS版本 `2-mantle-centered-clear-height`，**表示新部署／快取尚未切換，不能宣稱已完成線上驗收**。後續應核對 `index.html` 出現 `2-mantle-aura-lobby-scale`、CSS出現 `scale(1.18)` 與 `top:106px`，並使用擁有該外觀存檔的瀏覽器核對人物與光環位置。
