@@ -1847,8 +1847,10 @@ for(const b of $('side').querySelectorAll('[data-junk-sell]'))b.onchange=()=>{co
 for(const b of $('side').querySelectorAll('[data-retrain]'))b.onclick=()=>retrain(b.dataset.retrain);for(const b of $('side').querySelectorAll('[data-auto-revive]'))b.onchange=()=>{player.autoRevive=b.checked;save();};for(const b of $('side').querySelectorAll('[data-potion-priority]'))b.onchange=()=>{player.potionPriority[b.dataset.potionPriority]=b.value;save();};for(const b of $('side').querySelectorAll('[data-pet-lock]'))b.onclick=()=>{const pet=player.pets.find(p=>p.id===b.dataset.petLock);if(pet){pet.locked=!pet.locked;selectedReleasePets.delete(pet.id);save();renderSide(true);}};for(const b of $('side').querySelectorAll('[data-swap-unprotect]'))b.onclick=()=>{const g=player.bag.find(g=>g.uid===b.dataset.swapUnprotect);if(g){delete g.swapProtected;save();renderSide(true);}};
 for(const b of $('side').querySelectorAll('[data-open]'))b.onclick=()=>openPanel(b.dataset.open);for(const b of $('side').querySelectorAll('[data-preset]'))b.onclick=()=>{const enabled=b.dataset.preset==='safe';player.autoPotions={playerHp:enabled,playerSp:enabled,petHp:enabled,petSp:enabled};if(enabled){player.autoEscapeBoss=true;player.autoUltimate=true;fleeMapBosses();}save();renderSide(true);toast(enabled?'已套用穩健掛機；自動購買設定不變':'已改為手動補給');};
 for(const b of $('side').querySelectorAll('[data-tower-honor-pick]'))b.onclick=()=>{
+  const previous=structuredClone(player.towerHonorSelection||{});
   if(!selectTowerHonor(player,b.dataset.towerHonorPick,b.dataset.towerHonorValue)){toast('尚未解鎖此榮譽');renderSide(true);return;}
-  save();render();renderSide(true);toast('已更新天穹稱號／名稱框，角色畫面立即生效');
+  if(save()===false){player.towerHonorSelection=previous;render();renderSide(true);return toast('稱號／名稱框儲存失敗，已恢復原先選擇');}
+  render();renderSide(true);toast('已更新天穹稱號／名稱框，角色畫面立即生效');
 };
 for(const b of $('side').querySelectorAll('[data-tower-showcase]'))b.onclick=()=>{
  const before=structuredClone(player.towerCollection||{});

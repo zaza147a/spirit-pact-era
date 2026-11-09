@@ -49,6 +49,8 @@ test('48職業戰袍：點選、取消、未解鎖拒絕與存檔失敗回復',a
   c.api.setSaveForTest(()=>false);
   click('mantle','');
   assert.equal(c.api.state().player.extremeSelectedMantle,kind,'failed save reverts selection');
+  click('aura','');
+  assert.equal(c.api.state().player.extremeSelectedAura,kind,'failed save reverts aura');
   c.api.setSaveForTest(()=>true);
  }
 });
@@ -78,5 +80,36 @@ test('四王八款極限背景切換會互斥其他背景，失敗時還原',asy
   c.api.setSaveForTest(()=>true);
   button.onclick();
   assert.equal(c.api.state().player.extremeSelectedBackground,null);
+ }
+});
+
+test('四王稱號與名稱框在保存失敗時回復原選擇，未解鎖的不可選',async()=>{
+ const c=await runtime();
+ const buttons=[{dataset:{towerHonorPick:'title',towerHonorValue:''}},{dataset:{towerHonorPick:'frame',towerHonorValue:''}}];
+ c.document.getElementById=id=>id==='side'?{querySelectorAll:selector=>selector==='[data-tower-honor-pick]'?buttons:[]}:null;
+ const start=source.indexOf("for(const b of $('side').querySelectorAll('[data-tower-honor-pick]'))");
+ const end=source.indexOf("\nfor(const b of $('side').querySelectorAll('[data-tower-showcase]'))",start);
+ assert.ok(start>=0&&end>start);
+ vm.runInContext(source.slice(start,end),c);
+ for(const kind of kinds){
+  const p=fixture('knight');
+  claimExtremeCharacterStage(p,kind,50);syncExtremeHonorOwnership(p);
+  c.api.setup(p);
+  const title=p.extraHonorTitles.find(value=>value.includes('【50階】'));
+  const frame=p.extremeFrames.find(value=>value.includes(({atk:'破軍',matk:'冥界',hp:'血淵',clear:'萬軍'})[kind]));
+  assert.ok(title&&frame,kind);
+  buttons[0].dataset.towerHonorValue=title;buttons[1].dataset.towerHonorValue=frame;
+  buttons[0].onclick();buttons[1].onclick();
+  assert.equal(p.towerHonorSelection.title,title);
+  assert.equal(p.towerHonorSelection.frame,frame);
+  c.api.setSaveForTest(()=>false);
+  buttons[0].dataset.towerHonorValue='';buttons[1].dataset.towerHonorValue='';
+  buttons[0].onclick();buttons[1].onclick();
+  assert.equal(c.api.state().player.towerHonorSelection.title,title,kind);
+  assert.equal(c.api.state().player.towerHonorSelection.frame,frame,kind);
+  c.api.setSaveForTest(()=>true);
+  buttons[0].dataset.towerHonorValue='不存在的未解鎖稱號';
+  buttons[0].onclick();
+  assert.equal(c.api.state().player.towerHonorSelection.title,title);
  }
 });
