@@ -28,9 +28,18 @@ test('四王八張背景、四首領與48件獨立戰袍實體素材皆存在',(
   const bytes=readFileSync(asset);
   assert.equal(bytes.toString('ascii',0,4),'RIFF',filename);
   assert.equal(bytes.toString('ascii',8,12),'WEBP',filename);
-  assert.equal(bytes.toString('ascii',12,16),'VP8X',filename);
-  assert.ok((bytes[20]&0x10)!==0,`${filename} must preserve transparency`);
-  assert.equal(bytes.readUIntLE(24,3)+1,1024,filename);
-  assert.equal(bytes.readUIntLE(27,3)+1,1536,filename);
+  const format=bytes.toString('ascii',12,16);
+  if(format==='VP8X'){
+   assert.ok((bytes[20]&0x10)!==0,`${filename} must preserve transparency`);
+   assert.equal(bytes.readUIntLE(24,3)+1,1024,filename);
+   assert.equal(bytes.readUIntLE(27,3)+1,1536,filename);
+  }else{
+   assert.equal(format,'VP8L',`${filename} must be extended or lossless WebP`);
+   assert.equal(bytes[20],0x2f,filename);
+   const dimensions=bytes.readUInt32LE(21);
+   assert.ok((dimensions>>>28)&1,`${filename} must preserve transparency`);
+   assert.equal((dimensions&0x3fff)+1,1024,filename);
+   assert.equal(((dimensions>>>14)&0x3fff)+1,1536,filename);
+  }
  }
 });
