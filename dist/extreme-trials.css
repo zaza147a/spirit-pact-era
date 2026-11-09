@@ -89,14 +89,14 @@
 .extreme-outfit-equipped{object-fit:contain!important;object-position:center bottom!important}
 /* A real centered image row is safer than absolute positioning over name frames and badges. */
 #gameShell .character .hero:has(img.art-hero.extreme-outfit-equipped){position:relative;min-height:0;padding:12px 10px!important;text-align:center}
-#gameShell .character .hero img.art-hero.extreme-outfit-equipped{position:relative!important;display:block!important;left:auto!important;top:auto!important;width:138px!important;max-width:100%!important;height:190px!important;margin:0 auto 12px!important;transform:none!important;object-fit:contain!important;object-position:center!important}
-/* Aura follows the mantle's 190px portrait row, not the height of the entire hero card. */
-#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{left:50%!important;top:106px!important;width:154px!important;height:154px!important;transform:translate(-50%,-50%);z-index:0}
-#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::after{left:calc(50% - 91px)!important;right:auto!important;top:10px!important;width:182px!important;height:176px!important;z-index:2}
+#gameShell .character .hero img.art-hero.extreme-outfit-equipped{position:relative!important;display:block!important;left:auto!important;top:auto!important;width:190px!important;max-width:100%!important;height:235px!important;margin:-18px auto -15px!important;transform:none!important;object-fit:contain!important;object-position:center!important}
+/* Aura follows the visibly enlarged V2 portrait, not the height of the entire hero card. */
+#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{left:50%!important;top:112px!important;width:188px!important;height:188px!important;transform:translate(-50%,-50%);z-index:0}
+#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::after{left:calc(50% - 112px)!important;right:auto!important;top:2px!important;width:224px!important;height:210px!important;z-index:2}
 /* V2 art has more transparent margins than older outfits; enlarge only its lobby portrait. */
 .slot-select img.art-entry.extreme-outfit-equipped{transform:scale(1.18)!important;transform-origin:center center!important}
-@media(max-width:600px){#gameShell .character .hero img.art-hero.extreme-outfit-equipped{width:115px!important;height:160px!important}}
-@media(max-width:600px){#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:92px!important;width:134px!important;height:134px!important}#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::after{top:8px!important;height:148px!important}}
+@media(max-width:600px){#gameShell .character .hero img.art-hero.extreme-outfit-equipped{width:158px!important;height:198px!important;margin:-10px auto -12px!important}}
+@media(max-width:600px){#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:98px!important;width:158px!important;height:158px!important}#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::after{top:3px!important;width:190px!important;height:188px!important;left:calc(50% - 95px)!important}}
 .extreme-entry-scene{background-size:cover!important;background-position:center!important;border-radius:13px}
 .slot-card[class*="extreme-entry-aura-"] .slot-art-stage{box-shadow:inset 0 0 25px var(--extreme-entry-color,#ffb454),0 0 16px var(--extreme-entry-color,#ffb454)}
 .slot-card.extreme-entry-aura-matk{--extreme-entry-color:#aa91ff}.slot-card.extreme-entry-aura-hp{--extreme-entry-color:#ff6487}.slot-card.extreme-entry-aura-clear{--extreme-entry-color:#50f0d1}

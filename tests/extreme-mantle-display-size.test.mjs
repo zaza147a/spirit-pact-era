@@ -7,14 +7,14 @@ const html=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
 
 test('V2 戰袍角色欄獨立放大，維持原畫比例與定位',()=>{
  assert.match(css,/#gameShell \.character \.hero:has\(img\.art-hero\.extreme-outfit-equipped\)\{[^}]*padding:12px 10px!important;[^}]*text-align:center/);
- assert.match(css,/#gameShell \.character \.hero img\.art-hero\.extreme-outfit-equipped\{[^}]*position:relative!important;[^}]*left:auto!important;[^}]*width:138px!important;[^}]*height:190px!important;[^}]*margin:0 auto 12px!important;[^}]*object-fit:contain!important/);
- assert.match(css,/@media\(max-width:600px\)\{[^\n]*extreme-outfit-equipped[^\n]*height:160px!important/);
+ assert.match(css,/#gameShell \.character \.hero img\.art-hero\.extreme-outfit-equipped\{[^}]*position:relative!important;[^}]*left:auto!important;[^}]*width:190px!important;[^}]*height:235px!important;[^}]*margin:-18px auto -15px!important;[^}]*object-fit:contain!important/);
+ assert.match(css,/@media\(max-width:600px\)\{[^\n]*extreme-outfit-equipped[^\n]*height:198px!important/);
  assert.doesNotMatch(css,/#gameShell \.character \.hero img\.art-hero\.extreme-outfit-equipped\{[^}]*object-fit:cover/);
 });
 
 test('衣櫃預覽同步放大且新樣式具備快取版本',()=>{
  assert.match(css,/\.extreme-wardrobe-button img\{height:150px;width:126px;object-fit:contain/);
- assert.match(html,/extreme-trials\.css\?v=2-mantle-aura-lobby-scale/);
+ assert.match(html,/extreme-trials\.css\?v=2-mantle-hero-parity-20261110/);
  assert.match(html,/game\.js\?v=7\.1\.9-extreme-roster/);
 });
 
@@ -24,8 +24,8 @@ test('首頁V2戰袍放大，但原本角色立繪與背景不受影響',()=>{
 });
 
 test('穿戴V2戰袍時光環定位以人物肖像區為準，非整張角色卡高度',()=>{
- assert.match(css,/#gameShell #character \.hero\[class\*="extreme-aura-"\]:has\(img\.extreme-outfit-equipped\)::before\{[^}]*top:106px!important;[^}]*width:154px!important;[^}]*height:154px!important/);
- assert.match(css,/#gameShell #character \.hero\[class\*="extreme-aura-"\]:has\(img\.extreme-outfit-equipped\)::after\{[^}]*top:10px!important;[^}]*height:176px!important/);
+ assert.match(css,/#gameShell #character \.hero\[class\*="extreme-aura-"\]:has\(img\.extreme-outfit-equipped\)::before\{[^}]*top:112px!important;[^}]*width:188px!important;[^}]*height:188px!important/);
+ assert.match(css,/#gameShell #character \.hero\[class\*="extreme-aura-"\]:has\(img\.extreme-outfit-equipped\)::after\{[^}]*top:2px!important;[^}]*height:210px!important/);
  assert.match(css,/@media\(max-width:600px\)\{#gameShell #character \.hero\[class\*="extreme-aura-"\]/);
 });
 

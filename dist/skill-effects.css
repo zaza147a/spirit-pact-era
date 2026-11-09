@@ -1,8 +1,0 @@
-/* Low-cost, one-element skill sigils. Text-only glyph; opacity/transform animation. */
-.skill-vfx--sigil{position:fixed;z-index:1002;pointer-events:none;user-select:none;display:grid;place-items:center;width:36px;height:36px;margin:-18px 0 0 -18px;border:1px solid currentColor;border-radius:10px;background:#102633e8;font-size:25px;font-weight:800;line-height:1;white-space:nowrap;contain:layout paint style;will-change:transform,opacity;animation:skill-sigil-pop .48s ease-out both}
-@keyframes skill-sigil-pop{0%{opacity:0;transform:translate3d(0,9px,0) scale(.65)}25%{opacity:1;transform:translate3d(0,-5px,0) scale(1.08)}65%{opacity:1;transform:translate3d(0,-9px,0) scale(1)}100%{opacity:0;transform:translate3d(0,-16px,0) scale(.9)}}
-@media(max-width:700px){.skill-vfx--sigil{width:30px;height:30px;margin:-15px 0 0 -15px;font-size:21px}}
-@media(prefers-reduced-motion:reduce){.skill-vfx--sigil{animation-duration:.2s}}
-.actiongrid .effects-toggle{background:#26374c;color:#a9dbfa;border:1px solid #6a98b8;font-weight:700;min-height:40px}
-.actiongrid .effects-toggle[aria-pressed=true]{background:#214d49;color:#a7ffcf;border-color:#49c5a5}
-.actiongrid .effects-toggle:focus-visible{outline:3px solid #ffe18b;outline-offset:2px}
