@@ -994,3 +994,10 @@
 - 額外直接呼叫遊戲 `decorateTowerHonorEntry()`，對十二職×四王共**48種登入選角情境**驗證：已穿戴的戰袍替換為同一張V2 WebP、選角光環class及典藏背景URL與角色欄一致。兩項整合測試**2／2通過**。
 - 注意這是**真正的遊戲渲染函式搭配DOM替身**，不是Chromium實際截圖；此執行環境雖有Playwright模組但未找到可用瀏覽器核心，故人物視覺大小、光暈邊緣與手機排版仍需實機目視驗收。48張圖片原檔與平衡參數均未更動，main／正式版不變。
 - 全套 `node --test tests/extreme-*.test.mjs` **77／77通過**（約24.0秒）；本批僅新增整合測試及交接文件，沒有更動程式中的遊戲／UI邏輯。
+
+## 固定階數獎勵跨功能回歸追驗（2026-11-09）
+
+- 再度核對遠端測試分支 `feature/endless-trials-three-bosses` 為 `81b297e7897098966281e5c02e941a0982bb735e`，驗收從這個已推送版本繼續；未合併 main、未部署正式站。
+- 對全部 **196 個 `*.test.mjs`** 執行 `node --test --test-concurrency=4 tests/*.test.mjs`；前 **621 項顯示通過、零項顯示失敗**，之後執行長時間沒有新結果，已手動中止（exit 130）。**不能視為全專案測試通過**；後續需按檔案分組隔離耗時測試並完成其餘項目。
+- 將角色舊存檔遷移、八角色欄位隔離、收藏衣櫃、SSS戰袍、進化圖、外觀切換等六個相關測試檔獨立執行：`node --test tests/cosmetic-gallery.test.mjs tests/spirit-rank-outfits.test.mjs tests/character-slot-legacy-ledger.test.mjs tests/extreme-trials-cosmetic-switch.test.mjs tests/humanoid-save-art-integration.test.mjs tests/rank-outfit-refresh.test.mjs`，**19／19 通過，零失敗**。既有極限試煉專項仍為 **77／77 通過**。
+- 本批只有驗收與交接記錄，**未修改任何王、職業、融合寵、獎勵、存檔邏輯及美術素材**。48戰袍的真正瀏覽器視覺驗收仍待有瀏覽器核心的環境。
