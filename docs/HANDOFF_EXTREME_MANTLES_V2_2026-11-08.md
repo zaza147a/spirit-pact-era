@@ -1008,3 +1008,10 @@
 - 三個大型模擬需另排長時間測試，未計入上述937項：`pet-progression-151-200-v6540.test.mjs`（10職×3融合寵定位×五段×進場/備戰×野外/首領，共600組各60秒遊戲模擬）、`pet-sustain-full-v6539.test.mjs`（10職×4夥伴類型×野外/首領，共80組各90秒）、`pet-sustain-trial200-v6539.test.mjs`（200試煉生存）。原先整批90秒超時造成測試子行程被中斷，訊息「Promise resolution is still pending」是執行中斷的附帶訊息，**不可稱為斷言失敗或通過**。
 - 第四批初跑找到 `tower-costumes-game-integration.test.mjs` 和 `tower-costumes.test.mjs` 各一項舊測試規格落後：新角色外觀渲染需要 `hero.classList.toggle()`，舊DOM替身未提供；新版切換金幣時裝會同時取消 `towerCostume` 和 `extremeSelectedMantle`，舊靜態測試只比對單行舊語法。已**只更新兩處測試**以配合現在真實行為，個別測試 **11／11通過**、完整第四批 **236／236通過**。並未變更 `dist` 遊戲程式及美術。
 - 目前正式版/main不變；本批只修正既有測試對新版外觀介面的假設及更新交接文件。實際瀏覽器圖片視覺仍待驗收。
+
+## 戰袍透明規格再驗與固定獎勵專項重跑（2026-11-09）
+
+- 遠端測試分支檢查起點 `fd2519a4dde019fde273639ddfcd4ece952d2065`。重新執行 `node --test tests/extreme-*.test.mjs` **77／77通過**，含12職×四王戰袍、25階解鎖、30階光環/背景與舊存檔的固定獎勵同步；沒有再執行與本批無關的151～200升級及夥伴長時生存基準測試。
+- 透過 ImageMagick `identify` 獨立掃描 `dist/assets/extreme/mantles-v2/` **48／48張皆1024×1536、srgba透明通道**。另外將 WebP VP8X **alpha flag** 納入 `tests/extreme-mantle-image-spec.test.mjs`，避免日後圖片被換成同尺寸但失去透明屬性；連同渲染映射及樓層UI測試 **5／5通過**。
+- 人工查看既有 `hp-performer.webp`、`clear-knight.webp`：構圖、色系與武器辨識明確；但畫面中人物背後的大範圍光效帶有明顯階梯／橫向色帶邊緣。這是**待實際遊戲背景上目視確認的美術疑點**，不是圖片尺寸或 alpha 格式失敗。本批尊重「已完成圖片不重做」要求，**不自動修圖、不改任何圖片**。
+- 本次僅強化圖片規格回歸測試與交接文件，遊戲邏輯、其他資產、職業平衡、極限四王與獎勵均未更動；正式版/main不變。

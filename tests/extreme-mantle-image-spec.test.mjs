@@ -14,6 +14,7 @@ function webpSize(file){
   const type=bytes.toString('ascii',cursor,cursor+4);
   const len=bytes.readUInt32LE(cursor+4);
   if(type==='VP8X'){
+   assert.ok(bytes[cursor+8]&0x10,`${file} is missing the VP8X alpha flag`);
    const w=1+bytes.readUIntLE(cursor+12,3);
    const h=1+bytes.readUIntLE(cursor+15,3);
    return [w,h];
