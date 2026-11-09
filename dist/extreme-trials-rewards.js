@@ -45,19 +45,42 @@ export function buyExtremeShopItem(player,id){
 }
 
 const extremeTitleNames={atk:'破軍',matk:'冥界',hp:'血淵',clear:'萬軍'};
-const extremeFiveFloorTitle=(kind,floor)=>`${extremeTitleNames[kind]}第${floor}階突破者`;
+// Each row is a visible ascent from an elite warrior to a transcendent ruler.
+// Index 0 is floor 35; later entries advance by exactly five floors.
+export const EXTREME_ASCENT_TITLES=Object.freeze({
+ atk:['鐵血先鋒','百戰猛將','破陣戰侯','破限戰王','無雙戰皇','鎮域武帝','撼天戰尊','裂界武聖','星穹戰神','太初神將','萬界神皇','永劫戰主','至高武神','不滅戰神'],
+ matk:['幽冥使徒','暗燼咒師','黃泉巫侯','破限法王','深淵魔皇','冥獄法帝','蝕星魔尊','虛空聖賢','星滅魔神','太初冥主','萬界咒皇','永夜神座','寂滅之源','不朽魔神'],
+ hp:['鐵壁守衛','不屈戰將','浴血戰侯','破限守王','鎮岳霸皇','萬劫盾帝','撼天聖盾','不滅戰尊','星穹龍神','太初守護','萬界壁壘','永劫聖軀','無上不朽','亙古神軀'],
+ clear:['獵群先鋒','百敵斬將','千軍統侯','破限統王','萬軍霸皇','無雙戰帝','鎮界統帥','滅世軍神','星穹戰主','太初兵聖','萬界征服者','永劫軍皇','寰宇主宰','終焉統神']
+});
+export function extremeFiveFloorTitle(kind,floor){
+ const rank=Number.isSafeInteger(floor)&&floor>=35&&floor%5===0?(floor-35)/5:-1;
+ if(rank<0||!EXTREME_ASCENT_TITLES[kind])return null;
+ const elevated=floor<=100?EXTREME_ASCENT_TITLES[kind][rank]:
+  floor<150?'超越神話':floor<200?'無上神格':floor<300?'太初神座':
+  floor<400?'創世神域':floor<500?'寰宇至尊':'永恆至高';
+ return `${extremeTitleNames[kind]}·${elevated}【${floor}階】`;
+}
+const oldNamedTitles={atk:['破軍破限者','物理不滅者'],matk:['冥界破限者','魔法不滅者'],hp:['血淵破限者','極限征服者'],clear:['萬軍破限者','千軍殲滅者']};
+function upgradeOldExtremeTitle(title){
+ for(const [kind,[fifty,hundred]] of Object.entries(oldNamedTitles)){
+  if(title===fifty)return extremeFiveFloorTitle(kind,50);
+  if(title===hundred)return extremeFiveFloorTitle(kind,100);
+ }
+ const match=/^(破軍|冥界|血淵|萬軍)第(\d+)階突破者$/.exec(title);
+ if(!match)return title;
+ const kind=Object.keys(extremeTitleNames).find(key=>extremeTitleNames[key]===match[1]);
+ return extremeFiveFloorTitle(kind,Number(match[2]))||title;
+}
 export function extremeMilestoneTitles(ledger){
- const names={atk:['破軍挑戰者','破軍破限者','物理不滅者'],matk:['冥界挑戰者','冥界破限者','魔法不滅者'],hp:['血戰挑戰者','血淵破限者','極限征服者'],clear:['萬軍挑戰者','萬軍破限者','千軍殲滅者']};
- return Object.entries(names).flatMap(([kind,[novice,advanced,master]])=>{
+ const noviceNames={atk:'破軍挑戰者',matk:'冥界挑戰者',hp:'血戰挑戰者',clear:'萬軍挑戰者'};
+ return Object.entries(noviceNames).flatMap(([kind,novice])=>{
   const highest=ledger?.progress?.[kind]?.highest||0;
   const milestones=[];
   for(let floor=35;floor<=Math.min(500,highest);floor+=5){
-   // 50 and 100 already have named legacy titles; count those as their
-   // respective five-floor awards, without creating duplicate variants.
-   if(floor!==50&&floor!==100)milestones.push(extremeFiveFloorTitle(kind,floor));
+   milestones.push(extremeFiveFloorTitle(kind,floor));
   }
-  return [...(highest>=10?[novice]:[]),...milestones,
-   ...(highest>=50?[advanced]:[]),...(highest>=100?[master]:[])];
+  return [...(highest>=10?[novice]:[]),...milestones];
  });
 }
 
@@ -78,7 +101,11 @@ export function extremeUnlockedCosmetics(player,type){
 
 export function syncExtremeHonorOwnership(player){
  const ledger=extremeCharacterLedger(player);
- player.extraHonorTitles=[...new Set([...(player.extraHonorTitles||[]),...extremeMilestoneTitles(ledger)])];
+ player.extraHonorTitles=[...new Set([...(player.extraHonorTitles||[]).map(upgradeOldExtremeTitle),...extremeMilestoneTitles(ledger)])];
+ if(player.towerHonorSelection?.title){
+  player.towerHonorSelection={...player.towerHonorSelection,
+   title:upgradeOldExtremeTitle(player.towerHonorSelection.title)};
+ }
  player.extremeFrames=[...extremeMilestoneFrames(ledger),...EXTREME_SHOP_ITEMS.filter(item=>item.type==='frame'&&ledger.purchases.includes(item.id)).map(item=>item.name)];
  player.extremeBackgrounds=[...extremeUnlockedCosmetics(player,'background').map(kind=>kind+'_milestone'),...EXTREME_SHOP_ITEMS.filter(item=>item.type==='background'&&ledger.purchases.includes(item.id)).map(item=>item.id)];
  player.extremeCoins=ledger.coins;

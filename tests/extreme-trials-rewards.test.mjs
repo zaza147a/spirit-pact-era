@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,extremeMilestoneTitles,extremeMilestoneFrames,extremeUnlockedCosmetics,syncExtremeHonorOwnership} from '../dist/extreme-trials-rewards.js';
+import {extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,extremeMilestoneTitles,extremeMilestoneFrames,extremeUnlockedCosmetics,syncExtremeHonorOwnership,extremeFiveFloorTitle,EXTREME_ASCENT_TITLES} from '../dist/extreme-trials-rewards.js';
 import {towerHonorFrameClass} from '../dist/tower-honors.js';
 import {selectTowerHonor,towerHonorOptions} from '../dist/tower-honors.js';
 import {readFileSync} from 'node:fs';
@@ -26,14 +26,14 @@ test('20／25／30 階取得全部外觀，50／100 階追加稱號且不跨角�
  claimExtremeCharacterStage(a,'clear',30);
  assert.ok(extremeUnlockedCosmetics(a,'aura').includes('clear'));
  claimExtremeCharacterStage(a,'clear',50);
- assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes('萬軍破限者'));
+ assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes(extremeFiveFloorTitle('clear',50)));
  claimExtremeCharacterStage(a,'clear',100);
- assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes('千軍殲滅者'));
+ assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes(extremeFiveFloorTitle('clear',100)));
  assert.deepEqual(extremeUnlockedCosmetics(b,'aura'),[]);
 });
 
 test('四王35／40／45／50階及之後每5階各新增一個可選稱號，不重複疊加',()=>{
- const prefixes={atk:'破軍',matk:'冥界',hp:'血淵',clear:'萬軍'};
+  const prefixes={atk:'破軍',matk:'冥界',hp:'血淵',clear:'萬軍'};
  for(const [kind,prefix] of Object.entries(prefixes)){
   const p={};
   claimExtremeCharacterStage(p,kind,30);
@@ -45,7 +45,7 @@ test('四王35／40／45／50階及之後每5階各新增一個可選稱號，�
    const titles=extremeMilestoneTitles(extremeCharacterLedger(p));
    assert.equal(titles.length,before.length+floors.filter(f=>f<=floor).length,
     `${kind} ${floor} each five-floor step adds exactly one title`);
-   if(![50,100].includes(floor))assert.ok(titles.includes(`${prefix}第${floor}階突破者`));
+   assert.ok(titles.includes(extremeFiveFloorTitle(kind,floor)),`${prefix} ${floor}`);
    const available=towerHonorOptions(p,'title');
    assert.ok(available.includes(titles.at(-1)));
    assert.equal(selectTowerHonor(p,'title',titles.at(-1)),true);
@@ -64,14 +64,37 @@ test('極高層讀取有界，500階之後每5階仍可逐次獲得新稱號',()
  const p={};
  claimExtremeCharacterStage(p,'clear',505);
  syncExtremeHonorOwnership(p);
- assert.ok(p.extraHonorTitles.includes('萬軍第505階突破者'));
+ assert.ok(p.extraHonorTitles.includes(extremeFiveFloorTitle('clear',505)));
  claimExtremeCharacterStage(p,'clear',510);
  syncExtremeHonorOwnership(p);
- assert.ok(p.extraHonorTitles.includes('萬軍第510階突破者'));
- assert.ok(p.extraHonorTitles.includes('萬軍第505階突破者'));
+ assert.ok(p.extraHonorTitles.includes(extremeFiveFloorTitle('clear',510)));
+ assert.ok(p.extraHonorTitles.includes(extremeFiveFloorTitle('clear',505)));
  const huge={extremeProgress:{clear:{highest:1000000000}}};
  assert.ok(extremeMilestoneTitles(extremeCharacterLedger(huge)).length<110);
  assert.equal(extremeCharacterLedger(huge).coins,0);
+});
+
+test('四王史詩稱號不同且含階數；舊稱號與已選擇稱號可無損升級',()=>{
+ for(const [kind,titles] of Object.entries(EXTREME_ASCENT_TITLES)){
+  assert.equal(titles.length,14);
+  assert.equal(new Set(titles).size,14);
+  for(let i=0;i<titles.length;i++){
+   const floor=35+i*5;
+   assert.ok(extremeFiveFloorTitle(kind,floor).includes(`【${floor}階】`));
+   assert.ok(extremeFiveFloorTitle(kind,floor).includes(titles[i]));
+  }
+ }
+ const p={extremeProgress:{atk:{highest:105}},extraHonorTitles:[
+  '破軍第35階突破者','破軍破限者','物理不滅者'],
+  towerHonorSelection:{title:'破軍第35階突破者',frame:null}};
+ syncExtremeHonorOwnership(p);
+ assert.ok(p.extraHonorTitles.includes(extremeFiveFloorTitle('atk',35)));
+ assert.ok(p.extraHonorTitles.includes(extremeFiveFloorTitle('atk',50)));
+ assert.ok(p.extraHonorTitles.includes(extremeFiveFloorTitle('atk',100)));
+ assert.ok(!p.extraHonorTitles.includes('破軍第35階突破者'));
+ assert.ok(!p.extraHonorTitles.includes('破軍破限者'));
+ assert.equal(p.towerHonorSelection.title,extremeFiveFloorTitle('atk',35));
+ assert.equal(p.extremeCoins,0);
 });
 
 test('商店購買、收藏及稱號都只作用於當前角色',()=>{
