@@ -532,3 +532,9 @@
 - 已從最新 48 張現行 WebP 重新執行 `python scripts/art/build-extreme-mantle-sheets.py`。本次變動為 48 圖總覽 `docs/assets/extreme-mantles-v2-contact-sheet.jpg` 以及 HP、CLEAR 各 12 張短圖；ATK、MATK 短圖未變動。
 - 六圖分別備份至遠端：HP 主教 `b771023`、HP 流氓 `24c1b2a`、HP 騎士 `b737d2f`、CLEAR 主教 `a4f0b69`、CLEAR 十字軍 `0fca0f4`、CLEAR 刺客 `163791a`。每次 `node --test tests/extreme-*.test.mjs` 均 36/36 通過。
 - 後續先查 `hp-crusader`、`clear-wizard` 等剩餘貼邊；再處理 MATK 八張和 CLEAR 修羅／騎士的低佔比。人物／武器完整與比例優先，不可強制無條件縮小或放大。正式版不動。
+
+## 安全留白返工 B10：hp-crusader（2026-11-09）
+
+- 以現行銀白辮髮女性血淵十字軍為主參考，維持冠飾、血骨白紅重甲、巨大龍肋骨聖盾、長柄骨槌及長袍，縮整幅畫面保留完整裝備。
+- `dist/assets/extreme/mantles-v2/hp-crusader.webp` 為 1024×1536 透明 RGBA WebP。alpha≥128 bbox=(115,137,928,1411)，四側留白約 115／137／95／124px，四邊達到6%；主體高度83%。
+- 下一張 `clear-wizard`；僅測試分支，不合併 main。
