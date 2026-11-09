@@ -526,3 +526,9 @@
 - 保留短墨青髮男性刺客、雙翡翠短直匕、黑綠分段輕甲、象牙白軍團披帶與動態突進；避免再次改成銀髮或手持重武器。
 - `dist/assets/extreme/mantles-v2/clear-assassin.webp` 透明 RGBA WebP 1024×1536。alpha≥128 bbox=(60,205,956,1378)，留白約左60／上205／右67／下157px，左側約5.9%（非常接近6%），其餘超過6%，武器披帶腳尖完整。另一版雖留白更大但人物高度只有67%，故未採用，保留較飽滿的76%高度版本。
 - 第一批六張已獨立完成，下一步確認其他貼邊素材及 10 張偏小人物比例；僅測試分支。
+
+## B4–B9 第一批安全留白總覽同步（2026-11-09）
+
+- 已從最新 48 張現行 WebP 重新執行 `python scripts/art/build-extreme-mantle-sheets.py`。本次變動為 48 圖總覽 `docs/assets/extreme-mantles-v2-contact-sheet.jpg` 以及 HP、CLEAR 各 12 張短圖；ATK、MATK 短圖未變動。
+- 六圖分別備份至遠端：HP 主教 `b771023`、HP 流氓 `24c1b2a`、HP 騎士 `b737d2f`、CLEAR 主教 `a4f0b69`、CLEAR 十字軍 `0fca0f4`、CLEAR 刺客 `163791a`。每次 `node --test tests/extreme-*.test.mjs` 均 36/36 通過。
+- 後續先查 `hp-crusader`、`clear-wizard` 等剩餘貼邊；再處理 MATK 八張和 CLEAR 修羅／騎士的低佔比。人物／武器完整與比例優先，不可強制無條件縮小或放大。正式版不動。
