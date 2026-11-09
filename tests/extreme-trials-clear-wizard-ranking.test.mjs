@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
-import {thirdSkills} from '../dist/third-jobs.js';
+import {thirdSkills,THIRD_MAIN_CURVES} from '../dist/third-jobs.js';
 
 function snapshot(job){
  const output=execFileSync(process.execPath,['tests/extreme-trials-class-30-probe.mjs','clear',job],{
@@ -19,12 +19,12 @@ test('騎士與修羅以公開終結倍率取代部分AOE倍率',()=>{
  }
 });
 
-test('CLEAR王第30階大法師實際擊殺數高於萬靈、騎士與修羅',()=>{
+test('大法師AOE回撤後CLEAR仍可達36隻，且不假稱仍為第一',()=>{
  const wizard=snapshot('wizard'),commander=snapshot('spiritCommander');
  const knight=snapshot('knight'),monk=snapshot('monk');
- assert.ok(wizard.stageKills>=38,`wizard kills ${wizard.stageKills}`);
- for(const result of [commander,knight,monk]){
-  assert.ok(wizard.stageKills>result.stageKills,
-   `wizard ${wizard.stageKills} must beat ${result.job} ${result.stageKills}`);
- }
+ assert.equal(thirdSkills('wizard').find(s=>s.id==='thirdWide_wizard').thirdGrowth.ratio,1.5);
+ assert.equal(THIRD_MAIN_CURVES.wizard.at(-1),6.65);
+ assert.equal(wizard.stageKills,36);
+ assert.ok(commander.stageKills>wizard.stageKills,'萬靈仍為CLEAR第一');
+ assert.ok(wizard.stageKills>knight.stageKills&&wizard.stageKills>monk.stageKills);
 });
