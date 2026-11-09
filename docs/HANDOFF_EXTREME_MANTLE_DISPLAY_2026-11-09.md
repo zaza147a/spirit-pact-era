@@ -67,3 +67,11 @@
 - **首頁已於上一批校正，不再變更其放大比例**。其他金幣／SSS／天穹造型、48張WebP和試煉邏輯均不修改。CSS快取字串更換為 `2-mantle-hero-parity-20261110`。
 - 本段新的分支／正式部署驗證需要在推送後補記；本地測試與實際畫面是兩種不同驗收。
 - 已重跑 `node --test tests/extreme-*.test.mjs`：**100／100通過**，包含新增的V2專用尺寸與光環聯動斷言。
+
+## 第六次修正：金幣典藏背景同步首頁選角（2026-11-10）
+
+- 使用者指出已購買、已選用的金幣典藏背景沒有出現在首頁選角卡片。原因：`decorateTowerHonorEntry` 僅設定極限試煉背景，忽略 `cosmeticBackground`。
+- 在首頁選角渲染時讀取 `readCosmeticCollection(localStorage).backgrounds`，只有角色已選用且確實持有的金幣背景才使用 `cosmeticBackgroundArt` 作為卡片背景，連動 `cosmeticBrightness`，並沿用 `extreme-entry-scene` 的展示設定。
+- 原本選用規則及遊戲內顯示不變；對於有其他背景種類的角色，金幣典藏背景優先層級與遊戲內目前的 `applyCosmeticScene` 一致。
+- `dist/index.html` 的 `game.js` 版本更新為 `7.1.9-gold-entry-background-20261110`，避免快取停留在舊 JavaScript。
+- 先前 V2 戰袍尺寸修正 GitHub `main` 提交 `0edf3c5285e5383e4cddf2d20c34dde522224f99`；**GitHub Pages 尚停在 `e864afc`，未找到該次提交對應的 Publish workflow run**。必須由正式工作流程重新部署並查證網站載入新版資源才算完成。
