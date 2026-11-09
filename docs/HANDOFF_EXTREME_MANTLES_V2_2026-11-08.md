@@ -893,3 +893,10 @@
 - ImageMagick逐張抽查透明Alpha包圍盒，雖所有畫布均為1024×1536，**部分主體較窄或偏短**：`clear-monk`可見寬646／1024、`clear-knight`寬681、`hp-performer`寬625、`clear-assassin`及`clear-crusader`高1138／1536；各自縮放時可能產生主體體感尺寸差異。全尺寸抽查`clear-assassin`、`hp-performer`可見半透明發光區存在塊狀邊緣，應列入後續人工視覺複查，尚**不能宣稱48張美術全部驗收過關**。本輪沒有重繪或覆蓋任何素材。
 - 發現原 `tests/extreme-trials-cosmetic-switch.test.mjs` 雖寫「48件素材皆存在」，卻只檢查首領與背景共12圖，**未逐一檢查戰袍**；已補上由 `EXTREME_MANTLE_CATALOG` 實際枚舉48件，核對V2映射、檔案存在、RIFF/WEBP/VP8X、Alpha旗標及1024×1536尺寸。原有時裝切換互斥測試保留；完整極限測試 **68／68通過**。
 - 待續：若需修正上述尺寸體感或光暈邊緣，先在遊戲UI實際截圖比較並逐張確認才重製，以免覆蓋已驗收圖片。此輪只改測試與交接文件，main和正式版不動。
+
+## 極限戰袍V2首頁／角色欄渲染一致性追查（2026-11-09）
+
+- 針對之前列出的5張主體體感較小圖片，檢查`dist/game.js` 的`decorateTowerHonorEntry()`與`applyCosmeticHero()`：首頁選角與角色欄皆以已解鎖的 `extremeSelectedMantle` 對應 `extremeMantleArt(job,kind)`，替換為帶`extreme-outfit-equipped`的同一張V2 WebP圖片；沒有發現兩處載錯不同圖片的分支。
+- `dist/entry-portrait-clarity.css`首頁圖採`object-fit:contain`、選角立繪區固定260px高；`dist/cosmetic-gallery.css`角色欄圖亦採等比`contain`，`dist/extreme-trials.css`明確限制極限戰袍使用等比顯示。前輪透明主體實際邊界的較大差異仍存在：如HP舞孃有效寬度625/1024，ATK舞孃888/1024，**同畫布尺寸不等於視覺主體等大**。
+- 新增 `tests/extreme-mantle-render-parity.test.mjs`，鎖定48張V2圖片映射、選角與角色欄共用素材、同等比顯示及非pixelated渲染；兩項新測試通過。這是**程式碼路徑與CSS靜態驗收**，此執行環境未提供可用的本地瀏覽器核心，尚未取得實際瀏覽器截圖，因此不聲稱已完成畫面級人工美術驗收。
+- 本批只新增測試與交接紀錄；**不修改立繪資產、不調CSS比例、不覆蓋已驗收圖片**。若接下來取得分支預覽可互動頁面或遊戲截圖，需優先實際比較HP舞孃與CLEAR修羅／騎士的角色欄及首頁尺寸。
