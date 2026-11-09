@@ -459,3 +459,9 @@
 - 使用 alpha≥128 的實際可見內容作為面積估計；高度小於畫布 80% 尚有 10 張：`clear-knight`、`clear-monk`、`matk-assassin`、`matk-hunter`、`matk-pactWarrior`、`matk-performer`、`matk-rogue`、`matk-sage`、`matk-spiritCommander`、`matk-wizard`。此為構圖大小警示，並非壞檔。
 - 用四邊 30px 區域內 alpha>16 檢查安全留白，11 張需肉眼確認是否含裁切／貼邊：`clear-assassin`、`clear-crusader`、`clear-priest`、`clear-wizard`、`hp-assassin`、`hp-crusader`、`hp-knight`、`hp-performer`、`hp-priest`、`hp-rogue`、`matk-priest`。尤其新改 `hp-assassin`、`matk-priest` 的可見內容上下邊界僅約 13–22px，未滿原先希望的安全留白。
 - 目前無缺圖、無錯誤尺寸與測試失敗；安全留白與選角實際尺寸尚不能宣稱驗收合格。此段僅記錄結果，不調整素材；正式版無變更。
+
+## 邊緣性質複核與修正優先序（2026-11-09）
+
+- 重新以 alpha≥128 查看最外圍第 0 列／欄，上述 11 張皆無高不透明像素真正貼至畫布最外一格；目前沒有直接裁切證據。然而在四邊 30px 安全範圍中，除 `clear-wizard` 的高 alpha（≥240）像素為 0 外，其餘十張均有實體或高不透明特效進入安全範圍，不能視為合格的 6% 留白。
+- 戰袍衣櫃預覽圖片 CSS 為 108×114px、`object-fit:contain`。依 alpha≥128 可見內容高度換算，最小五張在預覽中僅約 71–76px：`matk-hunter`(70.6)、`matk-spiritCommander`(71.9)、`matk-performer`(72.6)、`matk-rogue`(75.3)、`matk-sage`(76.4)；其餘偏小者由 `matk-pactWarrior`、`matk-assassin`、`matk-wizard`、`clear-monk`、`clear-knight` 依序處理。
+- 建議先以保持原比例的透明安全邊框處理十張高 alpha 貼邊素材，另以參考原圖重構偏寬的 MATK 構圖；不宜直接放大造成武器裁切。本次只新增稽核結論，未修改圖片、遊戲程式或正式版。36/36 測試通過。
