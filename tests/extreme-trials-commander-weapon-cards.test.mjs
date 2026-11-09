@@ -19,5 +19,5 @@ test('萬靈同一套十槽王卡配置下，210專卡單體輸出優於全部�
  const exclusive=outcomes.get('dawn-archon');
  for(const [id,damage] of outcomes)if(id!=='dawn-archon')assert.ok(exclusive>damage,`${id}: ${damage} >= 210 card ${exclusive}`);
  const dps=exclusive/30.5/1e8;
- assert.ok(dps>=3.3&&dps<=3.5,`210 card DPS ${dps}`);
+ assert.ok(dps>=2.8&&dps<=3.0,`210 card DPS ${dps}`);
 });

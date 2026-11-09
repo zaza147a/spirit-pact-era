@@ -23,7 +23,7 @@ export const BOSS_MECHANIC_TEXT=Object.freeze({
  nightclock:'生命低於50%且受到攻擊時恢復最大生命12%（24秒冷卻）',
  sungrave:'遠距物理或魔法每5次攻擊追加70%曜龍追擊；近戰物理每6次追加40%追擊',
  worldroot:'舞孃每4次主攻追加90%協奏音刃（3.5秒冷卻）；其他職業每5次追加35%共鳴攻擊（5秒冷卻）',
- dawnrift:'只限靈契君王與萬靈宗師：靈契君王每3次主攻引爆90%同化裁決；萬靈宗師唯一夥伴每3次主攻追加150%靈魂追擊'
+ dawnrift:'只限靈契君王與萬靈宗師：靈契君王每3次主攻引爆90%同化裁決；萬靈宗師唯一夥伴每3次主攻追加60%靈魂追擊'
 });
 export const bossCardEquipAllowed=(card,slot,job)=>!!card?.slots?.includes(slot)&&
  (card.map!=='dawnrift'||NEW_JOBS.has(job));
@@ -76,7 +76,7 @@ export function bossCardHitBonus(player,cards,event){
    }break;
    case 'dawnrift':
     if(player.job==='pactWarrior'&&owner)add(.90,{every:3});
-    else if(player.job==='spiritCommander'&&pet&&petId)add(1.50,{every:3});
+    else if(player.job==='spiritCommander'&&pet&&petId)add(.60,{every:3});
     break;
   }
  }

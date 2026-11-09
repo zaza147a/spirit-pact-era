@@ -31,7 +31,7 @@ assert.equal(hit(pact,{now:1_000_300}),0,'extra damage must not recursively trig
 const commander=player('spiritCommander','dawnrift');
 assert.equal(hit(commander,{source:'pet',petId:'first'}),0);
 assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_100}),0);
-assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_200}),1500,'唯一夥伴每三次命中追加追擊');
+assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_200}),600,'唯一夥伴每三次命中追加追擊');
 assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_300}),0,'追擊不得每次無條件觸發');
 
 const ranger=player('hunter','skyport');
