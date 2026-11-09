@@ -55,7 +55,7 @@ function createBuild(job){
 for(const kind of kinds)for(const job of jobs){
  const c=await runtime(),p=createBuild(job);
  equipExtremeBossCards(p);
- p.location='dawncity';p.extremeProgress={};p.extremeCoins=0;
+ p.location='dawncity';p.extremeProgress={};
  const entry=beginExtremeRun(p,kind,1,start);
  if(entry.error){console.log(JSON.stringify({kind,job,error:entry.error}));continue;}
  p.extremeRun=entry.run;p.location='dawnrift';p.offline={at:start,enabled:true};
@@ -68,6 +68,6 @@ for(const kind of kinds)for(const job of jobs){
   const highest=player.extremeProgress?.[kind]?.highest||0;
   console.log(JSON.stringify({kind,job,fusion:process.argv[4]||'attack-magic',survival:process.argv[5]==='survival',highest,cleared30:highest>=30,
    runFloor:player.extremeRun?.floor||null,simulatedMs:summary?.simulated||0,
-   extremeCoins:player.extremeCoins||0,reason:summary?.reason||null}));
+   currencyPresent:Object.hasOwn(player,'extremeCoins'),reason:summary?.reason||null}));
  }catch(error){console.log(JSON.stringify({kind,job,error:String(error)}));}
 }

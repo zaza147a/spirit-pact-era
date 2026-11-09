@@ -1,17 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {extremeCharacterLedger,claimExtremeCharacterStage,buyExtremeShopItem,extremeMilestoneTitles,extremeMilestoneFrames,extremeUnlockedCosmetics,syncExtremeHonorOwnership,extremeFiveFloorTitle,EXTREME_ASCENT_TITLES} from '../dist/extreme-trials-rewards.js';
+import {extremeCharacterLedger,claimExtremeCharacterStage,EXTREME_FLOOR_COLLECTIBLES,extremeMilestoneTitles,extremeMilestoneFrames,extremeUnlockedCosmetics,syncExtremeHonorOwnership,extremeFiveFloorTitle,EXTREME_ASCENT_TITLES} from '../dist/extreme-trials-rewards.js';
 import {towerHonorFrameClass} from '../dist/tower-honors.js';
 import {selectTowerHonor,towerHonorOptions} from '../dist/tower-honors.js';
 import {readFileSync} from 'node:fs';
 
 test('角色獨立：同帳號兩個角色可以分別突破及領取自己的首次獎勵',()=>{
  const a={},b={};
- assert.equal(claimExtremeCharacterStage(a,'atk',10).coins,100);
- assert.equal(claimExtremeCharacterStage(a,'atk',10).coins,0);
- assert.equal(claimExtremeCharacterStage(b,'atk',10).coins,100);
- assert.equal(extremeCharacterLedger(a).coins,100);
- assert.equal(extremeCharacterLedger(b).coins,100);
+ assert.deepEqual(claimExtremeCharacterStage(a,'atk',10).firstClears,[10]);
+ assert.deepEqual(claimExtremeCharacterStage(a,'atk',10).firstClears,[]);
+ assert.deepEqual(claimExtremeCharacterStage(b,'atk',10).firstClears,[10]);
+ assert.equal(extremeCharacterLedger(a).progress.atk.highest,10);
+ assert.equal(extremeCharacterLedger(b).progress.atk.highest,10);
  assert.notEqual(a.extremeProgress,b.extremeProgress);
 });
 test('20／25／30 階取得全部外觀，50／100 階追加稱號且不跨角色',()=>{
@@ -51,11 +51,11 @@ test('四王35／40／45／50階及之後每5階各新增一個可選稱號，�
    assert.equal(selectTowerHonor(p,'title',titles.at(-1)),true);
    assert.equal(p.towerHonorSelection.title,titles.at(-1));
    const size=available.length;
-   assert.equal(claimExtremeCharacterStage(p,kind,floor).coins,0);
+   assert.deepEqual(claimExtremeCharacterStage(p,kind,floor).firstClears,[]);
    syncExtremeHonorOwnership(p);
    assert.equal(towerHonorOptions(p,'title').length,size,'re-clear must not duplicate a title');
   }
-  assert.equal(p.extremeCoins,450);
+  assert.equal(p.extremeCoins,undefined);
   assert.equal(towerHonorOptions(JSON.parse(JSON.stringify(p)),'title').length,towerHonorOptions(p,'title').length);
  }
 });
@@ -71,7 +71,7 @@ test('極高層讀取有界，500階之後每5階仍可逐次獲得新稱號',()
  assert.ok(p.extraHonorTitles.includes(extremeFiveFloorTitle('clear',505)));
  const huge={extremeProgress:{clear:{highest:1000000000}}};
  assert.ok(extremeMilestoneTitles(extremeCharacterLedger(huge)).length<110);
- assert.equal(extremeCharacterLedger(huge).coins,0);
+ assert.equal(extremeCharacterLedger(huge).progress.clear.highest,1000000000);
 });
 
 test('四王史詩稱號不同且含階數；舊稱號與已選擇稱號可無損升級',()=>{
@@ -94,45 +94,63 @@ test('四王史詩稱號不同且含階數；舊稱號與已選擇稱號可無�
  assert.ok(!p.extraHonorTitles.includes('破軍第35階突破者'));
  assert.ok(!p.extraHonorTitles.includes('破軍破限者'));
  assert.equal(p.towerHonorSelection.title,extremeFiveFloorTitle('atk',35));
- assert.equal(p.extremeCoins,0);
+ assert.equal(p.extremeCoins,undefined);
 });
 
-test('商店購買、收藏及稱號都只作用於當前角色',()=>{
+test('典藏名稱框與背景只看固定層數，不用貨幣也不用購買',()=>{
  const a={},b={};
- assert.match(buyExtremeShopItem(a,'atk_frame').error,/先突破/);
- claimExtremeCharacterStage(a,'atk',30);
- const before=a.extremeCoins;
- assert.equal(buyExtremeShopItem(a,'atk_frame').ledger.coins,before-150);
- assert.match(buyExtremeShopItem(a,'atk_frame').error,/已永久收藏/);
+ claimExtremeCharacterStage(a,'atk',19);syncExtremeHonorOwnership(a);
+ assert.ok(!a.extremeFrames.includes('破軍典藏名稱框'));
+ claimExtremeCharacterStage(a,'atk',20);syncExtremeHonorOwnership(a);
+ assert.ok(a.extremeFrames.includes('破軍典藏名稱框'));
+ assert.ok(!a.extremeBackgrounds.includes('atk_background'));
+ claimExtremeCharacterStage(a,'atk',30);syncExtremeHonorOwnership(a);
+ assert.ok(a.extremeBackgrounds.includes('atk_background'));
  assert.ok(extremeMilestoneTitles(extremeCharacterLedger(a)).includes('破軍挑戰者'));
- assert.equal(extremeCharacterLedger(b).purchases.length,0);
  assert.equal(extremeCharacterLedger(b).progress.atk.highest,0);
+ assert.equal(a.extremeCoins,undefined);
 });
 
-test('每一種王完成 30 階的徽記足夠購買該王全部商店收藏',()=>{
+test('四王每隻到30階自動解鎖全部8款典藏外觀',()=>{
  const player={};
  for(const kind of ['atk','matk','hp','clear']){
-  const reward=claimExtremeCharacterStage(player,kind,30);
-  assert.equal(reward.coins,450);
-  assert.equal(buyExtremeShopItem(player,kind+'_frame').error,undefined);
-  assert.equal(buyExtremeShopItem(player,kind+'_background').error,undefined);
+  claimExtremeCharacterStage(player,kind,30);
  }
- assert.equal(player.extremeCoins,200);
- assert.equal(claimExtremeCharacterStage(player,'clear',100).coins,0);
+ syncExtremeHonorOwnership(player);
+ assert.equal(EXTREME_FLOOR_COLLECTIBLES.length,8);
+ for(const item of EXTREME_FLOOR_COLLECTIBLES){
+  assert.ok(item.type==='frame'?player.extremeFrames.includes(item.name):player.extremeBackgrounds.includes(item.id),item.id);
+ }
+ assert.equal(player.extremeCoins,undefined);
+ assert.equal(player.extremePurchases,undefined);
+ assert.deepEqual(claimExtremeCharacterStage(player,'clear',100).firstClears,[100]);
+});
+
+test('舊版本徽記與已購買紀錄自動淘汰，依歷史通關補齊獎勵',()=>{
+ const previous={extremeProgress:{hp:{highest:30},atk:{highest:20}},
+  extremeCoins:345,extremePurchases:['hp_frame'],extremeSelectedBackground:'hp_background'};
+ syncExtremeHonorOwnership(previous);
+ assert.equal(previous.extremeCoins,undefined);
+ assert.equal(previous.extremePurchases,undefined);
+ assert.ok(previous.extremeFrames.includes('hp_frame')===false);
+ assert.ok(previous.extremeFrames.includes('血淵典藏名稱框'));
+ assert.ok(previous.extremeFrames.includes('破軍典藏名稱框'));
+ assert.ok(previous.extremeBackgrounds.includes('hp_background'));
+ assert.ok(!previous.extremeBackgrounds.includes('atk_background'));
+ assert.equal(previous.extremeSelectedBackground,'hp_background');
 });
 
 test('存檔 JSON 往返與不同角色欄位不會互相繼承極限記錄',()=>{
  const first={name:'角色甲'},second={name:'角色乙'};
  claimExtremeCharacterStage(first,'matk',30);
- buyExtremeShopItem(first,'matk_frame');
  syncExtremeHonorOwnership(first);
  const exported=JSON.stringify(first);
  const restored=JSON.parse(exported);
  const originalLedger=extremeCharacterLedger(first);
  assert.deepEqual(extremeCharacterLedger(restored),originalLedger);
  assert.equal(extremeCharacterLedger(second).progress.matk.highest,0);
- assert.equal(extremeCharacterLedger(second).coins,0);
- assert.deepEqual(extremeCharacterLedger(second).purchases,[]);
+ assert.ok(restored.extremeFrames.includes('冥界典藏名稱框'));
+ assert.ok(restored.extremeBackgrounds.includes('matk_background'));
  claimExtremeCharacterStage(restored,'matk',31);
  assert.equal(extremeCharacterLedger(first).progress.matk.highest,30);
  assert.equal(extremeCharacterLedger(restored).progress.matk.highest,31);

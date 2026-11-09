@@ -48,7 +48,7 @@ for(const job of jobs)for(const kind of ['atk','matk']){
  const c=await runtime(),p=fixture(job);
  equipExtremeBossCards(p);
  p.level=210;p.thirdJob=true;p.location='dawnrift';
- p.extremeProgress={[kind]:{highest:30}};p.extremeCoins=450;
+ p.extremeProgress={[kind]:{highest:30}};
  p.extremeRun={kind,floor:31,startedAt:epoch,stageStartedAt:epoch,
   stageDamage:0,stageKills:0,status:'active'};
  p.offline={at:epoch,enabled:true};
@@ -65,6 +65,6 @@ for(const job of jobs)for(const kind of ['atk','matk']){
    highest:player.extremeProgress[kind].highest,
    failed:player.extremeLastResult?.floor||null,reason:summary?.reason||null,
    simulatedMs:summary?.simulated||0,elapsedMs:Math.round(performance.now()-started),
-   coins:player.extremeCoins,stillActive:Boolean(player.extremeRun)}));
+   stillActive:Boolean(player.extremeRun)}));
  }catch(error){console.log(JSON.stringify({job,kind,error:String(error)}));process.exitCode=1;}
 }

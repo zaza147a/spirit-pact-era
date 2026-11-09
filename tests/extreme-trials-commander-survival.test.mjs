@@ -10,6 +10,6 @@ for(const fusion of ['attack-magic','attack-defense','attack-support','magic-def
   const result=JSON.parse(output.trim());
   assert.equal(result.cleared30,true,JSON.stringify(result));
   assert.equal(result.highest,30);
-  assert.equal(result.extremeCoins,450);
+  assert.equal(result.currencyPresent,false);
  });
 }

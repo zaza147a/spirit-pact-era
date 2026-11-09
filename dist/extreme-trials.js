@@ -72,21 +72,11 @@ export function extremeStageResult(run,now,{alive=true}={}){
   return {status:'cleared',floor:run.floor};
 }
 
-export function extremeFirstClearReward(floor){
-  if(!floorValue(floor))throw Error('無效的獎勵階段');
-  return floor<=10?10:floor<=20?15:floor<=30?20:0;
-}
-
-// 只為真正超過歷史最高的階段發獎，避免快速入場與重打重複領取。
+// All cosmetics unlock by the highest cleared floor. No currency is earned.
 export function settleExtremeStage(progress,kind,floor){
   if(!EXTREME_TRIALS[kind]||!floorValue(floor))throw Error('無效的通關資料');
   const next=normalizeExtremeProgress(progress),old=next[kind].highest;
   if(floor<=old)return {progress:next,firstClears:[],coins:0};
-  // A corrupt/imported jump must not allocate millions of entries. Beyond
-  // stage 30 there is no currency, so only the reached floor is needed.
-  const rewardedFrom=Math.max(old+1,1),rewardedTo=Math.min(floor,30);
-  const rewarded=rewardedTo>=rewardedFrom?Array.from({length:rewardedTo-rewardedFrom+1},(_,i)=>rewardedFrom+i):[];
-  const firstClears=floor<=30?rewarded:[...rewarded,floor];
   next[kind].highest=floor;
-  return {progress:next,firstClears,coins:rewarded.reduce((sum,n)=>sum+extremeFirstClearReward(n),0)};
+  return {progress:next,firstClears:[floor]};
 }

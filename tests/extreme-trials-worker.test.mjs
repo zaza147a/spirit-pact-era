@@ -44,7 +44,7 @@ test('真正離線 Worker 載入遊戲模組，從 checkpoint 通關並回傳角
  assert.equal(result.summary.extremeFloors,1);
  assert.equal(result.player.extremeRun.floor,2);
  assert.equal(result.player.extremeProgress.atk.highest,1);
- assert.equal(result.player.extremeCoins,10);
+ assert.equal(result.player.extremeCoins,undefined);
  assert.equal(result.player.location,'dawnrift');
  assert.equal(result.summary.gold,0);
 });

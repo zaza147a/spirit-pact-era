@@ -12,7 +12,7 @@ test('實際戰鬥引擎：存活二十秒後進入下一階並在角色存檔�
  c.api.setAutoForTest(false);c.setTime(1e6+20000);
  c.api.combatTick(1e6+20000);
  assert.equal(p.extremeProgress.atk.highest,1);
- assert.equal(p.extremeCoins,10);
+ assert.equal(p.extremeCoins,undefined);
  assert.equal(p.extremeRun.floor,2);
  assert.equal(c.api.state().enemy.extremeKind,'atk');
 });

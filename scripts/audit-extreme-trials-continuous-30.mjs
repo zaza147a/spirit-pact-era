@@ -30,7 +30,6 @@ async function audit(job,kind){
   return {job,kind,highest,completed30:highest>=30,
     ended:!p.extremeRun,nextFloor:p.extremeRun?.floor||null,
     reason:result.summary?.reason||'',simulatedSeconds:Math.round((result.summary?.simulated||0)/1000),
-    coins:p.extremeCoins||0,coinsEarned:result.summary?.extremeCoins||0,
     goldDelta:p.gold-gold,xpDelta:p.xp-xp,valid:c.api.valid(p),
     lastResult:p.extremeLastResult||null};
  }catch(error){return {job,kind,error:String(error)};}

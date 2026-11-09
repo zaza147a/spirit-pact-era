@@ -26,12 +26,12 @@ function ready(c,kind,floor){
  return p;
 }
 
-test('離線極限試煉延續原敵人與計時，勝利後自動進下一階並只領首次徽記',async()=>{
+test('離線極限試煉延續原敵人與計時，突破後自動進下一階並解鎖階段獎勵',async()=>{
  const c=await runtime(),p=ready(c,'atk',1),gold=p.gold,xp=p.xp;
  const {player,summary}=await c.api.simulateOffline(p,epoch+20500);
  assert.ok(summary);
  assert.equal(summary.extremeFloors,1);
- assert.equal(summary.extremeCoins,10);
+ assert.equal(summary.extremeCoins,undefined);
  assert.equal(player.extremeProgress.atk.highest,1);
  assert.equal(player.extremeRun?.floor,2);
  assert.equal(player.location,'dawnrift');
@@ -53,21 +53,21 @@ test('離線極限試煉首次失敗就停止、回城、保留已獲進度',asy
  assert.equal(c.api.valid(player),true);
 });
 
-test('跨兩次登入與 JSON 存檔，戰鬥繼續推進且每階徽記只領一次',async()=>{
+test('跨兩次登入與 JSON 存檔，戰鬥繼續推進且不生成貨幣',async()=>{
  const firstRuntime=await runtime(),initial=ready(firstRuntime,'atk',1);
  const first=(await firstRuntime.api.simulateOffline(initial,epoch+20500)).player;
  assert.equal(first.extremeRun.floor,2);
- assert.equal(first.extremeCoins,10);
+ assert.equal(first.extremeCoins,undefined);
  const serialized=JSON.stringify(first);
  const secondRuntime=await runtime(),restored=JSON.parse(serialized);
  restored.offline={at:epoch+20500,enabled:true};
  const result=await secondRuntime.api.simulateOffline(restored,epoch+41000);
  assert.equal(result.summary.extremeFloors,1);
- assert.equal(result.summary.extremeCoins,10);
+ assert.equal(result.summary.extremeCoins,undefined);
  assert.equal(result.player.extremeRun.floor,3);
  assert.equal(result.player.extremeProgress.atk.highest,2);
- assert.equal(result.player.extremeCoins,20);
- assert.equal(first.extremeCoins,10);
+ assert.equal(result.player.extremeCoins,undefined);
+ assert.equal(first.extremeCoins,undefined);
  assert.ok(result.player.extremeRun.checkpoint.at>=epoch+41000);
 });
 

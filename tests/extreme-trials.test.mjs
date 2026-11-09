@@ -45,16 +45,16 @@ test('攻擊王 20 秒存活過關，死亡失敗',()=>{
   assert.equal(extremeStageResult(run,20000,{alive:false}).status,'failed');
   assert.equal(extremeStageResult(run,20000).status,'cleared');
 });
-test('首次突破前 30 階可得徽記，31 階後只有稱號進度',()=>{
+test('每階僅記錄首次突破，所有階段都不發放貨幣',()=>{
   let data=settleExtremeStage(null,'atk',10);
-  assert.equal(data.coins,100);
-  assert.equal(settleExtremeStage(data.progress,'atk',10).coins,0);
+  assert.deepEqual(data.firstClears,[10]);
+  assert.deepEqual(settleExtremeStage(data.progress,'atk',10).firstClears,[]);
   data=settleExtremeStage(data.progress,'atk',12);
-  assert.equal(data.coins,30);
+  assert.deepEqual(data.firstClears,[12]);
   assert.equal(normalizeExtremeProgress(data.progress).matk.highest,0);
   data=settleExtremeStage(data.progress,'atk',30);
-  assert.equal(data.coins,320);
-  assert.equal(settleExtremeStage(data.progress,'atk',100).coins,0);
+  assert.equal(data.progress.atk.highest,30);
+  assert.deepEqual(settleExtremeStage(data.progress,'atk',100).firstClears,[100]);
 });
 
 test('30 階後不封頂，極高層數不溢位、不建立巨大首次獎勵陣列',()=>{
@@ -67,6 +67,5 @@ test('30 階後不封頂，極高層數不溢位、不建立巨大首次獎勵�
  assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:floor}}},'atk',floor,0).run);
  const claimed=settleExtremeStage(null,'hp',floor);
  assert.equal(claimed.progress.hp.highest,floor);
- assert.equal(claimed.coins,450);
- assert.ok(claimed.firstClears.length<=31);
+ assert.deepEqual(claimed.firstClears,[floor]);
 });

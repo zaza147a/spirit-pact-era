@@ -40,7 +40,7 @@ async function audit(job,kind){
  return {job,kind,deathAt,alive:deathAt===null,maxHit,
   stageDamage:p.extremeRun?.stageDamage||0,stageKills:p.extremeRun?.stageKills||0,
   averageDps:Math.round((p.extremeRun?.stageDamage||0)/(duration/1000)),
-  hpRemaining:p.hp,coinsEarned:p.extremeCoins||0,goldDelta:p.gold-startGold,xpDelta:p.xp-startXp};
+  hpRemaining:p.hp,goldDelta:p.gold-startGold,xpDelta:p.xp-startXp};
 }
 const rows=[];
 for(const job of originals)for(const kind of ['atk','matk','hp','clear']){
