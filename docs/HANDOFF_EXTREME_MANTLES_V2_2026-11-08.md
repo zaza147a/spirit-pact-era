@@ -423,3 +423,9 @@
 
 - 保留血淵流氓銀白亂辮、邪氣笑容、暗紅寬簷帽、破披風、骨爪與可彎曲紅髓骨鎖鏈，調整側向騰空姿勢為正面縱向疾走。
 - 鎖鏈沿左側形成向上收束的 S 弧，不再橫跨整張畫布，腳與全身完整可見。`dist/assets/extreme/mantles-v2/hp-rogue.webp` 為 1024×1536 透明 WebP。四張 HP 大橫向構圖 H1–H4 已各自保存 GitHub 並更新交接，接著複核四張的 alpha 及 36 項回歸；正式版未修改。
+
+## 48 張最新總覽同步（2026-11-09）
+
+- 重製 `docs/assets/extreme-mantles-v2-contact-sheet.jpg`，從測試分支目前最新 `dist/assets/extreme/mantles-v2/` 48 張 WebP 依 ATK／MATK／HP／CLEAR × 十二職順序產生，排除舊預覽素材。
+- 總覽尺寸 2544×1529 JPG，暗底、四系列分區及每一格職業名；本次涵蓋近期的 HP 騎士／十字軍／舞孃／流氓直式重繪、HP 與 CLEAR 主教、CLEAR 大法師等更新。
+- 總覽只供視覺比對；完整透明度與 1024×1536 原圖應以各自 WebP 為準。保持測試分支，未合併 main 或更新正式網站。
