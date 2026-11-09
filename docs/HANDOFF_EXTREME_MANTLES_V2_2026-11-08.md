@@ -429,3 +429,9 @@
 - 重製 `docs/assets/extreme-mantles-v2-contact-sheet.jpg`，從測試分支目前最新 `dist/assets/extreme/mantles-v2/` 48 張 WebP 依 ATK／MATK／HP／CLEAR × 十二職順序產生，排除舊預覽素材。
 - 總覽尺寸 2544×1529 JPG，暗底、四系列分區及每一格職業名；本次涵蓋近期的 HP 騎士／十字軍／舞孃／流氓直式重繪、HP 與 CLEAR 主教、CLEAR 大法師等更新。
 - 總覽只供視覺比對；完整透明度與 1024×1536 原圖應以各自 WebP 為準。保持測試分支，未合併 main 或更新正式網站。
+
+## 修正大型總覽預覽灰色遮蓋（2026-11-09）
+
+- 使用者反映 GitHub／原始圖片預覽在第二排附近以下顯示大片灰色區域；原 JPG 可完整解碼，因此改提供較低尺寸總覽與分系列短圖，避免依賴單一超寬高預覽。
+- 重新產生 `docs/assets/extreme-mantles-v2-contact-sheet.jpg` 為 1600×1100；另新增 `docs/assets/extreme-mantles-v2-atk-12.jpg`、`-matk-12.jpg`、`-hp-12.jpg`、`-clear-12.jpg`，四張均 2180×370，每張 12 職獨立一列。
+- 新增可重複使用的 `scripts/art/build-extreme-mantle-sheets.py`，直接從 48 張現行透明 WebP 重建五份總覽；不改遊戲美術或角色選角顯示。分系列檢視的各張圖已在本地解碼與視覺檢查，GitHub 預覽最終行為仍需使用者確認。
