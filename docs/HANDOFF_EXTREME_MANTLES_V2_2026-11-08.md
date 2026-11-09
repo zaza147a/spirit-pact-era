@@ -483,3 +483,9 @@
 - 以原新繪女性血淵處刑影刃作主參考，保留銀黑短髮紅辮、雙反手紅髓龍牙匕首、骨肩甲與黑紅披肩，只把原近乎滿版的主體收斂成有透明邊框的完整立繪。
 - `dist/assets/extreme/mantles-v2/hp-assassin.webp` 1024×1536 RGBA WebP，alpha≥128 可見邊界約 x=156–880、y=127–1447；底邊留白 89px，接近 6% 的 92px 目標，頭部與兩側均更安全。
 - 單張測試與 GitHub 提交，後續逐步處理其他原來高 alpha 貼邊的戰袍；不合併 main。
+
+## B1–B3 留白修正後總覽同步（2026-11-09）
+
+- 使用 `scripts/art/build-extreme-mantle-sheets.py` 重建完整 48 張縮圖，以及 HP、MATK 分系列短圖；其餘 ATK、CLEAR 短圖未改動。
+- 三張最新 alpha≥128 主體邊界：`hp-performer`=(177,113,866,1456)、`matk-priest`=(89,139,934,1421)、`hp-assassin`=(156,127,880,1447)。其中 MATK 主教已完整達成大約 6% 透明邊框，其餘兩張底部仍略近但已大幅改善。
+- 36/36 極限戰袍與試煉回歸通過。下一步依高 alpha 靠邊程度優先檢查 `hp-priest`、`hp-rogue`、`hp-knight`、`clear-priest` 等；之後才重構低佔比的 MATK 圖。仍不合併 main。
