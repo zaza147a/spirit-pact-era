@@ -1224,3 +1224,19 @@
 - 合併樹上 `node --test tests/extreme-*.test.mjs` **91／91通過**；另含角色排序、舊存檔、離線checkpoint／Worker、外觀及獎勵的17檔整合回歸 **55／55通過**，0失敗、0跳過。測試分支上原有48款戰袍／四王核心功能在模擬合併後仍可通過；**此為程式回歸，並非正式合併或雲端帳號E2E驗收**。
 - GitHub Pages 發布工作流程 `.github/workflows/github-pages.yml` 的自動推送觸發分支為 `main`，極限戰袍工作流程只監聽 `feature/endless-trials-three-bosses`；沒有因本次只讀模擬推送正式站。發布流程另有手動觸發入口，仍須嚴禁未授權操作。
 - 結論：目前可供後續合併前審核，但真正合併時應以**保留 main 角色排序的三方合併**進行，合併後需再驗收角色排序×戰袍選角畫面。使用者已決定不做高層平衡、不做盾牌專項及200五連戰；本次沒有改動任何遊戲數值、圖片或程式。**未合併main，未更新正式網站**。
+
+## MAIN 領先分支的完整提交與檔案逐一核對（2026-11-09）
+
+- 依使用者指示專門追查 **main 中分支尚無的更新**：遠端重新核實 `main=e774939cb9b6f1ee329f7525ae634e7c752a2514`、測試分支 `678a298d022110f78c81d7a065689db3141ba5b6`，共同祖先 `87f729522ca387241b6edaeef15fc176401a4d8f`。兩者尚未合併，且不是單純快轉關係。
+- `git log origin/feature/endless-trials-three-bosses..origin/main` 得到**全部7筆 main 專屬提交**（依時間由舊至新）：
+  1. `4be251d` Add persistent character card display ordering
+  2. `2eaf21e` Cover character ordering UI interaction
+  3. `f8531d2` Run character ordering acceptance in Chromium CI
+  4. `7bd3708` Record successful browser acceptance
+  5. `43d4cf4` Document incomplete full regression before merge
+  6. `e2f7cf5` Record release regression passing 60 tests
+  7. `e774939` Merge homepage character ordering (#34)
+- 共同祖先到 main 的**全部實質變更只有7個檔案、191行新增、0行刪除**：`.github/workflows/character-order-browser.yml`、`dist/character-order.js`、`dist/game.js`（新增排序 import 和首頁排序／上下移按鈕事件）、`docs/HANDOFF_CHARACTER_ORDER_2026-11-09.md`、`scripts/browser/character-order-acceptance.mjs`、`tests/character-order-ui.test.mjs`、`tests/character-order.test.mjs`。沒有發現 main 另有未帶入的四王強度、融合寵平衡、試煉獎勵等提交。
+- 重新檢視前批 `git merge-tree --write-tree` 的**純模擬合併樹** `f12731e867dd9e937ad57377629f0b2090836032`：六個新增專屬檔與 main 完全相同（`git diff` 為空），`dist/game.js` 的排序 import、`renderEntryWithoutOrdering` 包裝與移動按鈕事件亦完整保留，同時存在極限戰袍、光環相關繪製與切換。先前合併樹 **91／91極限專測、55／55含角色排序跨模組回歸**皆通過。
+- 這些檢查僅說明**程式與檔案可以三方合併**，不代表正式上線或與正式帳號的瀏覽器端到端檢驗。未來若 main 再有新提交，必須重新取得遠端SHA、重新做合併模擬；不得使用舊模擬樹直接發布。
+- **無任何遊戲程式、圖片、平衡及獎勵更動；只將核對明細寫入交接文件並推送測試分支，不合併main、不部署正式網站**。
