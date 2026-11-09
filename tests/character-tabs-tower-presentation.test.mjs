@@ -64,7 +64,8 @@ test('equipped character name frame wins over portrait background styling',async
 test('honor selection immediately rerenders the character portrait without reloading',async()=>{
  const game=await readFile('dist/game.js','utf8');
  assert.match(game,/selectTowerHonor\(player,b\.dataset\.towerHonorPick,b\.dataset\.towerHonorValue\)/);
- assert.match(game,/save\(\);render\(\);renderSide\(true\);toast\('已更新天穹稱號／名稱框，角色畫面立即生效'\)/);
+ assert.match(game,/if\(save\(\)===false\)\{player\.towerHonorSelection=previous;render\(\);renderSide\(true\);return toast\('稱號／名稱框儲存失敗，已恢復原先選擇'\);\}/);
+ assert.match(game,/render\(\);renderSide\(true\);toast\('已更新天穹稱號／名稱框，角色畫面立即生效'\)/);
 });
 test('purchased three-region showcase renders its own character card and toggle',async()=>{
  const game=await readFile('dist/game.js','utf8');
