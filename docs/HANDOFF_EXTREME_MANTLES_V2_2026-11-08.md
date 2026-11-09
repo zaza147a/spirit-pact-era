@@ -1207,3 +1207,11 @@
 - `tests/extreme-trials-wardrobe-interaction.test.mjs` 新增完整 **12職×四王＝48組** 的獨立存檔JSON序列化／重新載入測試：各組在第50階固定獎勵同步後選取戰袍、光環、其中一款背景、對應稱號與名稱框，再交給遊戲 runtime 恢復，逐一斷言全部五類選擇未遺失，角色之間互不共用選擇。新單檔 **4／4通過**。
 - 極限試煉全套 `node --test tests/extreme-*.test.mjs` **91／91通過、0失敗、0跳過**，約23.9秒。這些是實際載入遊戲模組／JSON存檔的回歸，不冒稱額外48組真實瀏覽器登入點擊；先前96張Chromium畫面驗收紀錄維持有效。
 - 本批只新增一項整合測試和交接紀錄，**不改職業平衡、四王強度、獎勵、原畫或遊戲UI**，不合併main、不部署正式站。下一步可視需要做正式合併前的剩餘跨模組檢查；先前全專案937項已過、另有與本次無關的耗時夥伴成長／生存模擬未計入，不能宣稱全專案196檔均已通過。
+
+## 接續批次：角色存檔／試煉離線／跨外觀整合複核（2026-11-09）
+
+- 第一批新增測試及交接文件已推送 `1f5c7fb48631e7ca23a4d70f4282f07f079c9b90`，再次從 GitHub 遠端核對提交 SHA 後才進行本批。
+- 以 `node --test --test-concurrency=4` 執行15個相互關聯的測試檔：`character-slot-legacy-ledger`、`tower-costumes`、`humanoid-save-art-integration`、`tower-costumes-game-integration`、`rank-outfit-refresh`、`cosmetic-gallery`、`extreme-trials-integration`、`extreme-trials-slots`、`extreme-trials-long-offline`、`extreme-trials-checkpoint-resume`、`extreme-trials-cosmetic-switch`、`extreme-trials-offline`、`extreme-trials-worker`、`spirit-rank-outfits`、`extreme-trials-wardrobe-interaction`（各檔位於 `tests/`，副檔名 `.test.mjs`）。結果 **50／50通過、0失敗、0跳過**（約11.1秒）。
+- 已覆蓋不同角色的存檔隔離、舊存檔正規化、極限戰袍／一般時裝／金幣時裝互斥、極限衣櫃、離線Worker與checkpoint回復、失敗停止、固定階數獎勵、50階稱號／名稱框，以及12職×四王外觀序列化／載入；沒有發現需修改程式的回歸問題。
+- **驗收界線**：這是遊戲模組的整合測試與序列化，先前48件戰袍各兩畫面的96張真實Chromium截圖已驗收；本批沒有新增雲端登入介面端到端測試，也不聲稱所有專案196個測試檔都重新跑完。先前3個耗時夥伴模擬及200五連戰依使用者本次排除，不應作為本批完成障礙。
+- 使用者明確指示**高層不需要平衡**；不因高層診斷結果調整十二職、融合寵、四王強度或獎勵。此批只記錄驗收，不修改任何資產／程式；**不合併main、不更新正式網站**。
