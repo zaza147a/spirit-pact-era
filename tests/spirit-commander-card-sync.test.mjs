@@ -14,4 +14,7 @@ assert.equal(synced.crit,35);
 assert.equal(synced.critDmg,165);
 assert.equal(synced.aspdPct,5);
 assert.deepEqual(base,original,'card synchronization must not modify source pet stats');
+const resourceCards=synchronizeCommanderCards(base,{mp:120,mpPct:25,aspd:3});
+assert.equal(resourceCards.sp,1400,'flat MP must become companion SP before percentage scaling');
+assert.equal(resourceCards.aspd,183,'flat ASPD must be inherited by the sole companion');
 console.log('PASS: full commander card effects apply once to the pet without mutating base');

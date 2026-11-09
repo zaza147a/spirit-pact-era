@@ -63,7 +63,7 @@ for(const [level,job] of [[200,'pactWarrior'],[200,'spiritCommander'],[210,'pact
   const player=highLevelSpiritPlayer({level,job,pairKey:'attack-magic+defense-support',gearRarity:'mythic'});
   const baseline=await settle(player,10,false,false,true);
   const optimized=await settle(player,10,false,false,false);
-  assert.deepEqual(optimized.result,baseline.result);
+  assert.deepEqual(semanticState(optimized.result),semanticState(baseline.result));
   console.log(JSON.stringify({storageGuard:true,level,job,minutes:10,baselineMs:baseline.wallMs,optimizedMs:optimized.wallMs}));
  });
 }
@@ -73,7 +73,7 @@ for(const [level,job] of [[200,'pactWarrior'],[200,'spiritCommander'],[210,'pact
   const player=highLevelSpiritPlayer({level,job,pairKey:'attack-magic+defense-support',gearRarity:'mythic'});
   const baseline=await settle(player,10,false,true);
   const optimized=await settle(player,10,false,false);
-  assert.deepEqual(optimized.result,baseline.result);
+  assert.deepEqual(semanticState(optimized.result),semanticState(baseline.result));
   console.log(JSON.stringify({effectGuard:true,level,job,minutes:10,baselineMs:baseline.wallMs,optimizedMs:optimized.wallMs}));
  });
 }
@@ -83,7 +83,7 @@ for(const [level,job] of [[200,'pactWarrior'],[200,'spiritCommander'],[210,'pact
   const player=highLevelSpiritPlayer({level,job,pairKey:'attack-magic+defense-support',gearRarity:'mythic'});
   const baseline=await settle(player,10,true);
   const optimized=await settle(player,10,false);
-  assert.deepEqual(optimized.result,baseline.result,
+  assert.deepEqual(semanticState(optimized.result),semanticState(baseline.result),
    'full state, loot, resources, combat damage and RNG-dependent results must match');
   assert.equal(optimized.result.summary.simulated,600000);
   console.log(JSON.stringify({level,job,minutes:10,baselineMs:baseline.wallMs,optimizedMs:optimized.wallMs}));

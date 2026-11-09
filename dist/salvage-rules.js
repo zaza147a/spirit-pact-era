@@ -1,7 +1,7 @@
 import {rankOf} from './sky-trials.js?v=6.5.0';
 import {RARITIES,gearTier,GEAR_BASE,TIER_NAMES} from './loot.js?v=6.5.45';
 export const SALVAGE_STATS=['STR','AGI','VIT','INT','DEX','LUK','atk','matk','def','hit','flee','crit'];
-export function shouldAutoSalvage(gear,settings){if(!gear||gear.swapProtected||gear.fusionMatch||!settings?.autoSalvage)return false;
+export function shouldAutoSalvage(gear,settings){if(!gear||gear.id==='shield'||gear.swapProtected||gear.fusionMatch||!settings?.autoSalvage)return false;
  if(rankOf(gear))return false;
  const jobs=GEAR_BASE[gear.id]?.jobs;if(settings.salvageOtherJobs&&Array.isArray(jobs)&&!jobs.includes(settings.job))return true;
  const conditions=[];

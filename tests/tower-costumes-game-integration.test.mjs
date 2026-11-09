@@ -40,7 +40,7 @@ test('actual home and character-select portrait use identical tower reward URL',
  const made=[];
  context.document.createElement=()=>{const el={className:'',src:'',alt:''};made.push(el);return el;};
  const homeArt={className:'art-sprite art-hero',replaceWith(el){this.replacement=el;}};
- const home={style:{},classList:{add(){}},querySelector:selector=>selector==='.art-sprite'?homeArt:null};
+ const home={style:{},classList:{add(){},toggle(){}},querySelector:selector=>selector==='.art-sprite'?homeArt:null};
  const characterNode=context.document.getElementById('character');
  characterNode.querySelector=selector=>selector==='.hero'?home:null;
  characterNode.dataset={};
