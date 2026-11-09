@@ -1001,3 +1001,10 @@
 - 對全部 **196 個 `*.test.mjs`** 執行 `node --test --test-concurrency=4 tests/*.test.mjs`；前 **621 項顯示通過、零項顯示失敗**，之後執行長時間沒有新結果，已手動中止（exit 130）。**不能視為全專案測試通過**；後續需按檔案分組隔離耗時測試並完成其餘項目。
 - 將角色舊存檔遷移、八角色欄位隔離、收藏衣櫃、SSS戰袍、進化圖、外觀切換等六個相關測試檔獨立執行：`node --test tests/cosmetic-gallery.test.mjs tests/spirit-rank-outfits.test.mjs tests/character-slot-legacy-ledger.test.mjs tests/extreme-trials-cosmetic-switch.test.mjs tests/humanoid-save-art-integration.test.mjs tests/rank-outfit-refresh.test.mjs`，**19／19 通過，零失敗**。既有極限試煉專項仍為 **77／77 通過**。
 - 本批只有驗收與交接記錄，**未修改任何王、職業、融合寵、獎勵、存檔邏輯及美術素材**。48戰袍的真正瀏覽器視覺驗收仍待有瀏覽器核心的環境。
+
+## 全專案測試拆批、舊天穹時裝測試同步（2026-11-09）
+
+- 從遠端 `96ac5159ee1c9c68021fa95c6d59593baff69887` 接續驗收。196個測試檔依檔名字序分四批，每批49檔。第一批 **236／236通過**；第二批 **218／218通過**；第三批排除下述三項大型戰鬥稽核後 **247／247通過**；第四批完成修正後 **236／236通過**。總計 **937項有效通過／零失敗**，但**尚非196檔全數完成**。
+- 三個大型模擬需另排長時間測試，未計入上述937項：`pet-progression-151-200-v6540.test.mjs`（10職×3融合寵定位×五段×進場/備戰×野外/首領，共600組各60秒遊戲模擬）、`pet-sustain-full-v6539.test.mjs`（10職×4夥伴類型×野外/首領，共80組各90秒）、`pet-sustain-trial200-v6539.test.mjs`（200試煉生存）。原先整批90秒超時造成測試子行程被中斷，訊息「Promise resolution is still pending」是執行中斷的附帶訊息，**不可稱為斷言失敗或通過**。
+- 第四批初跑找到 `tower-costumes-game-integration.test.mjs` 和 `tower-costumes.test.mjs` 各一項舊測試規格落後：新角色外觀渲染需要 `hero.classList.toggle()`，舊DOM替身未提供；新版切換金幣時裝會同時取消 `towerCostume` 和 `extremeSelectedMantle`，舊靜態測試只比對單行舊語法。已**只更新兩處測試**以配合現在真實行為，個別測試 **11／11通過**、完整第四批 **236／236通過**。並未變更 `dist` 遊戲程式及美術。
+- 目前正式版/main不變；本批只修正既有測試對新版外觀介面的假設及更新交接文件。實際瀏覽器圖片視覺仍待驗收。

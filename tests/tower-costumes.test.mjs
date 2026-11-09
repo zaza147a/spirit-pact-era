@@ -53,5 +53,5 @@ test('game includes wardrobe controls and matching character/home and lobby port
  for(const part of ['renderTowerCostumeGallery()','data-tower-costume','towerFrostArt(character.job)','towerFrostArt(player.job)','chooseTowerCostume(player,']){
   assert.ok(script.includes(part),`missing tower-costume UI link: ${part}`);
  }
- assert.match(script,/if\(outfit&&player\[key\]\)player\.towerCostume=null/);
+ assert.match(script,/if\(outfit&&player\[key\]\)\{player\.towerCostume=null;player\.extremeSelectedMantle=null;/);
 });
