@@ -258,13 +258,13 @@ function spiritHitProcEffects(proc,owner,source,maxHp){
  }
 }
 const PACT_ASSIMILATION_RATIOS=Object.freeze(Object.fromEntries(Object.entries({
- 'attack-magic':{atk:3.55,matk:.80},
- 'attack-defense':{atk:3.55,matk:.80},
- 'attack-support':{atk:3.55,matk:.80},
- 'magic-defense':{atk:1.14,matk:1.87},
- 'magic-support':{atk:1.14,matk:1.87},
- 'defense-support':{atk:7.81,matk:.80},
- default:{atk:1.60,matk:.80}
+ 'attack-magic':{atk:3.20,matk:.72},
+ 'attack-defense':{atk:3.20,matk:.72},
+ 'attack-support':{atk:3.20,matk:.72},
+ 'magic-defense':{atk:1.01,matk:1.66},
+ 'magic-support':{atk:1.01,matk:1.66},
+ 'defense-support':{atk:6.93,matk:.71},
+ default:{atk:1.42,matk:.71}
 }).map(([key,offense])=>[key,{...offense,def:.19,mdef:.19,hp:.15}])));
 function pactAssimilationBonus(type){
  if(player?.job!=='pactWarrior')return 0;
