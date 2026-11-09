@@ -724,3 +724,11 @@
 - **重新跑完整48組第1–30階實戰結果：47/48 通關。** 舊十職40/40、君王4/4、萬靈 ATK/HP/CLEAR 3/4 均連過30，且每個通關挑戰各得450枚首次徽記。萬靈HP原先因缺卡只能到16階，裝王卡（含210專卡）後可連過30；此為實際測試證據，不只是倍率估計。
 - 萬靈 MATK 仍失敗：初始攻魔融合最高0階；補測六種融合寵完整王卡配置，最高是攻防融合與防輔融合第8階，都是**契約雙方戰敗**，尚未找到第1–30階完整通關配置。下一步要以合法最佳夥伴 HP%／MDEF／FLEE 與人物防禦轉移、卡片部位取捨重測；目前不能宣稱12職四王100%全過，也不能從基本隨機SSS詞條推論平衡必須調低首領。
 - 重申：本輪只更動測試與交接文檔，48張戰袍與遊戲平衡均未更動，且尚未做瀏覽器衣櫃／選角實機驗收；不可合併 `main` 或部署正式版。
+
+## 萬靈卡片繼承核查與修正（2026-11-09）
+
+- 從遠端 `54aa764` 接續，先檢查 `dist/commander-card-sync.js`、`dist/game.js` 和王卡觸發器；本輪只允許推送 `feature/endless-trials-three-bosses`。
+- **第一部分：資源／攻速欄位。** 人物卡片的固定 `mp` 轉移到夥伴 `sp` 時，原先只套 `mpPct`、遺漏固定值；改成先加固定值，再套百分比。卡片同步清單補 `aspd`，並在夥伴 ASPD 計入固定加成。兩種卡片效果目前並非主流王卡詞條，但應完整支援合法卡片欄位；補充單元測試。
+- **第二部分：技能王卡觸發。** `petAutoAbility` 原本主攻／終結／範圍攻擊未將魔法屬性、夥伴 ID、技能 ID 傳給 `bossCardHitBonus`，導致需魔法條件的王卡以及210萬靈專卡計次不可靠；主攻與飛濺每次真實命中一律帶自己的夥伴攻擊資料，且以 `finally` 恢復原攻擊上下文，避免污染後續攻擊。沒有新增額外暴擊判定，技能本身不會被誤認為暴擊。
+- 新增 `tests/spirit-commander-boss-skill-wiring.test.mjs`，確認主攻／範圍命中使用同一王卡路徑、狀態隔離，並驗證210專卡每三次夥伴有效命中追加310%；`tests/spirit-commander-card-sync.test.mjs` 補測 MP／ASPD。
+- 修正後 `node --test tests/spirit-commander-card-sync.test.mjs tests/spirit-commander-boss-skill-wiring.test.mjs tests/boss-card-runtime.test.mjs tests/extreme-*.test.mjs`：**43／43 通過**。這些測試不等於完整的四王連戰，仍需另跑實戰探針確認變化。

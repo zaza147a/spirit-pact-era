@@ -301,7 +301,7 @@ function pactAssimilationBonus(type){
 }
 function commanderTransferredPetStats(pet,base){
  if(player?.job!=='spiritCommander'||pet?.hp<=0)return base;
- const cardEffects=Object.fromEntries(['atk','matk','hp','mp','def','mdef','hit','flee',
+ const cardEffects=Object.fromEntries(['atk','matk','hp','mp','def','mdef','hit','flee','aspd',
   'atkPct','matkPct','hpPct','mpPct','defPct','mdefPct','fleePct','aspdPct',
   'crit','critDmg','ignoreDef','magicDamage','damageReduction',
   'STR','AGI','VIT','INT','DEX','LUK'].map(key=>[key,cardBonus(key)]));
@@ -562,7 +562,35 @@ function petAutoAbility(pet,s,now){const dual=player.job==='spiritist'||player.j
   else if(skill.kind==='blessing'){fx.blessingUntil=now+effect.duration;fx.blessingPower=effect.value;outcome=`主人傷害 +${(effect.value*100).toFixed(1)}%，持續 ${effect.duration/1000}秒`;}
   else if(skill.kind==='regen'){fx.regenTicks=skill.ticks||5;fx.regenPower=effect.value;fx.regenInterval=skill.interval||1500;fx.regenNext=now+fx.regenInterval;outcome=`持續恢復 ${fx.regenTicks} 次，每次 ${effect.value} HP`;}
   else if(skill.kind==='heal'||skill.kind==='mana'){const hp=skill.kind==='heal'?healPetParty(effect.value):0,mp=skill.kind==='mana'?Math.min(stat('mp')-player.mp,effect.value):0;player.mp+=mp;if(skill.petRestore)pet.sp=Math.min(s.sp,pet.sp+Math.round(s.sp*skill.petRestore));record(report,'effectiveMana',mp);outcome=`恢復 HP ${hp}、SP ${mp}`;}
-  else {const magical=skill.kind==='magic'||['magic','support'].includes(role),mainBoost=spiritForm?.slot===0?(s.commanderMainSkillMultiplier||1):1,rolled=hitDamage(effect.value*(spiritForm?.primary||1)*mainBoost,monsterDefenseAgainst(enemy,magical)*(1-Math.min(90,(s.ignoreDef||0)+(skill.ignoreDef||0))/100)),damage=dealPetDamage(rolled,'petDamage',pet,combatPetFactor(pet.id));if(skill.splash||spiritForm){const primary=enemy,dead=[];for(const foe of multiTargets(enemies,primary,spiritForm?.targets||4,encounterLimit(player.location)).slice(1)){enemy=foe;dealPetDamage(hitDamage(effect.value*(spiritForm?.secondary??skill.splash??1)*mainBoost,monsterDefenseAgainst(foe,magical)*(1-Math.min(90,(s.ignoreDef||0)+(skill.ignoreDef||0))/100)),'petDamage',pet,combatPetFactor(pet.id));if(!foe.hp)dead.push(foe);}finishVictims(dead);enemy=primary;}outcome=damageText(rolled*(1+classBuffPower('pet')),damage);if(skill.kind==='drain'){let healed=Math.min(stat('hp')-player.hp,Math.round(damage*.45),Math.ceil(stat('hp')*.12));player.hp+=healed;if(pet.fusion){const self=Math.min(s.hp-pet.hp,Math.round(damage*.45),Math.ceil(s.hp*.12));pet.hp+=self;healed+=self;}record(report,'effectiveHeal',healed);outcome+=`、恢復 ${healed} HP`;}}
+  else {
+   const magical=skill.kind==='magic'||['magic','support'].includes(role);
+   // Each direct or splash skill hit is a real pet hit for equipped boss cards.
+   // Preserve the previous context so a later owner attack cannot inherit it.
+   const cardHit=amount=>{
+    const previous=bossHitMeta;
+    bossHitMeta={magical,critical:false,petId:pet.id,range:'pet',skillId:skill.id};
+    try{return dealPetDamage(amount,'petDamage',pet,combatPetFactor(pet.id));}
+    finally{bossHitMeta=previous;}
+   };
+   const mainBoost=spiritForm?.slot===0?(s.commanderMainSkillMultiplier||1):1;
+   const rolled=hitDamage(effect.value*(spiritForm?.primary||1)*mainBoost,monsterDefenseAgainst(enemy,magical)*(1-Math.min(90,(s.ignoreDef||0)+(skill.ignoreDef||0))/100));
+   const damage=cardHit(rolled);
+   if(skill.splash||spiritForm){
+    const primary=enemy,dead=[];
+    for(const foe of multiTargets(enemies,primary,spiritForm?.targets||4,encounterLimit(player.location)).slice(1)){
+     enemy=foe;
+     cardHit(hitDamage(effect.value*(spiritForm?.secondary??skill.splash??1)*mainBoost,monsterDefenseAgainst(foe,magical)*(1-Math.min(90,(s.ignoreDef||0)+(skill.ignoreDef||0))/100)));
+     if(!foe.hp)dead.push(foe);
+    }
+    finishVictims(dead);enemy=primary;
+   }
+   outcome=damageText(rolled*(1+classBuffPower('pet')),damage);
+   if(skill.kind==='drain'){
+    let healed=Math.min(stat('hp')-player.hp,Math.round(damage*.45),Math.ceil(stat('hp')*.12));player.hp+=healed;
+    if(pet.fusion){const self=Math.min(s.hp-pet.hp,Math.round(damage*.45),Math.ceil(s.hp*.12));pet.hp+=self;healed+=self;}
+    record(report,'effectiveHeal',healed);outcome+=`、恢復 ${healed} HP`;
+   }
+  }
   // Commander converts supportive pet skills into hybrid support + offense.
   // The ordinary heal/shield/mark effects remain; the added strike cannot
   // recursively invoke itself and its hit count respects the encounter cap.
