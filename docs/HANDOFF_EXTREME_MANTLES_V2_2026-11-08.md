@@ -732,3 +732,10 @@
 - **第二部分：技能王卡觸發。** `petAutoAbility` 原本主攻／終結／範圍攻擊未將魔法屬性、夥伴 ID、技能 ID 傳給 `bossCardHitBonus`，導致需魔法條件的王卡以及210萬靈專卡計次不可靠；主攻與飛濺每次真實命中一律帶自己的夥伴攻擊資料，且以 `finally` 恢復原攻擊上下文，避免污染後續攻擊。沒有新增額外暴擊判定，技能本身不會被誤認為暴擊。
 - 新增 `tests/spirit-commander-boss-skill-wiring.test.mjs`，確認主攻／範圍命中使用同一王卡路徑、狀態隔離，並驗證210專卡每三次夥伴有效命中追加310%；`tests/spirit-commander-card-sync.test.mjs` 補測 MP／ASPD。
 - 修正後 `node --test tests/spirit-commander-card-sync.test.mjs tests/spirit-commander-boss-skill-wiring.test.mjs tests/boss-card-runtime.test.mjs tests/extreme-*.test.mjs`：**43／43 通過**。這些測試不等於完整的四王連戰，仍需另跑實戰探針確認變化。
+
+### 修正後真實連戰結果與遠端備份
+
+- 功能修正與測試已上傳遠端提交 `290c34c`（GitHub 連接器寫入，與本地 `b3f9d5b` 檔案樹一致）；`main`、正式網站及48張戰袍未動。
+- 重跑 `node tests/extreme-trials-1-to-30-probe.mjs`，使用12職、四王、十槽合法王卡，**47／48 完成第30階**：舊十職40/40、靈契君王4/4、萬靈宗師ATK／HP／CLEAR 3/4；萬靈MATK預設攻魔融合在第1階契約雙方戰敗。
+- 額外重測萬靈MATK「攻防融合」十槽王卡配置：最高第8階，仍因契約雙方戰敗停止，與修正前相同。新修正讓技能王卡觸發判定正確，但**沒有解決萬靈MATK承傷缺口**；不應擅自聲稱全12職四王可通關30階。
+- 後續先確認夥伴最佳合法SSS HP%／MDEF／FLEE詞條、人物轉移雙防及不同融合的實際承傷，再決定是否需要調整技能或首領攻擊；不要因隨機基礎SSS裝測試失敗就直接調低MATK首領。
