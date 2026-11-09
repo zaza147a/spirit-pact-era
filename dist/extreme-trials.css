@@ -111,13 +111,8 @@
 #gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="atk-assassin.webp"])::before{top:184px!important}
 #gameShell #character .hero[class*="extreme-aura-"]::after{display:none!important}
 #gameShell #character[data-cosmetic-aura="off"]>.hero[class*="extreme-aura-"]::before{display:none!important}
-/* The three new full-canvas illustrations occupy more pixels than the original 48-set silhouettes. */
-#gameShell .character .hero img.art-hero.extreme-outfit-equipped[src$="matk-pactWarrior.webp"],
-#gameShell .character .hero img.art-hero.extreme-outfit-equipped[src$="clear-pactWarrior.webp"]{transform:scale(.88)!important;transform-origin:center bottom!important}
-#gameShell .character .hero img.art-hero.extreme-outfit-equipped[src$="matk-assassin.webp"]{transform:scale(.92)!important;transform-origin:center bottom!important}
-.slot-select img.art-entry.extreme-outfit-equipped[src$="matk-pactWarrior.webp"],
-.slot-select img.art-entry.extreme-outfit-equipped[src$="clear-pactWarrior.webp"]{transform:scale(1.04)!important}
-.slot-select img.art-entry.extreme-outfit-equipped[src$="matk-assassin.webp"]{transform:scale(1.09)!important}
+/* All four replacement portraits now include their own transparent safety margins.
+   Keep one common scale for the character panel and lobby. */
 @media(max-width:600px){
  #gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:185px!important;width:140px!important;height:36px!important}
  #gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="atk-assassin.webp"])::before{top:160px!important}

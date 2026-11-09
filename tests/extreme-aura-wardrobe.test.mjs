@@ -33,8 +33,9 @@ test('極限試煉光環壓扁到腳下，寵物原有金幣契印不被額外�
  assert.match(gold,/#companion\[data-gold-tier="4"\]>.hero::after/);
 });
 
-test('三張新女性立繪按內容佔比單獨縮放，其他45張不改',()=>{
- assert.match(ground,/src\$="clear-pactWarrior\.webp"\]\{transform:scale\(\.88\)!important/);
- assert.match(ground,/src\$="matk-assassin\.webp"\]\{transform:scale\(\.92\)!important/);
+test('四張重製立繪使用統一顯示比例，刺客 ATK 保留獨立腳位定位',()=>{
+ assert.doesNotMatch(ground,/src\$="clear-pactWarrior\.webp"\]\{transform:scale\(\.88\)!important/);
+ assert.doesNotMatch(ground,/src\$="matk-assassin\.webp"\]\{transform:scale\(\.92\)!important/);
+ assert.match(ground,/All four replacement portraits now include their own transparent safety margins/);
  assert.match(ground,/src\$="atk-assassin\.webp"\]\)::before\{top:184px!important/);
 });
