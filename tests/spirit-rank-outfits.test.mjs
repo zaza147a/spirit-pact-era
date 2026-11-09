@@ -9,7 +9,9 @@ const ranks=['S','SS','SSS'];
 const game=readFileSync(resolve(root,'dist/game.js'),'utf8');
 const outfit=readFileSync(resolve(root,'dist/rank-outfits.js'),'utf8');
 const html=readFileSync(resolve(root,'dist/index.html'),'utf8');
-const sprite=game.slice(game.indexOf('function spriteHtml('),game.indexOf('function spriteHtml(')+1100);
+// New extreme-trials and costume branches extend spriteHtml's prefix;
+// inspect the whole function rather than the old fixed 1100-character window.
+const sprite=game.slice(game.indexOf('function spriteHtml('),game.indexOf('function mainSkillState('));
 assert.ok(sprite.indexOf('rankOutfitArt(id,outfit)')>=0,'rank outfit branch missing');
 assert.ok(sprite.indexOf('rankOutfitArt(id,outfit)')<sprite.indexOf('if(spiritPortrait)return'),'rank outfit must precede default portrait');
 for(const job of jobs){

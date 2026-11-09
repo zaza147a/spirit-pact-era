@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 
-for(const fusion of ['attack-magic','defense-support']){
+for(const fusion of ['attack-magic','attack-defense','attack-support','magic-defense','magic-support','defense-support']){
  test(`萬靈${fusion}合法高生存SSS詞條與十槽王卡可連過MATK王30階`,()=>{
   const output=execFileSync(process.execPath,[
    'tests/extreme-trials-1-to-30-probe.mjs','matk','spiritCommander',fusion,'survival'
