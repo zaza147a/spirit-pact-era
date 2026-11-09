@@ -390,3 +390,9 @@
 - 以 alpha 非透明外框高度小於畫布 80% 作為需人工檢視的保守門檻，12 張：`hp-crusader`、`hp-knight`、`hp-performer`、`hp-rogue`、`matk-assassin`、`matk-hunter`、`matk-pactWarrior`、`matk-performer`、`matk-rogue`、`matk-sage`、`matk-spiritCommander`、`matk-wizard`。這些不是尺寸錯誤，而是人物可能顯得較小；應逐張看姿勢，不能粗暴拉伸。
 - 主教 ATK 為持軍旗長杖的男性，輪廓明顯不同；MATK、HP、CLEAR 先前皆偏向淺髮、正面、聖環、拖地禮服，辨識度不足。
 - P1 `hp-priest`：改為酒紅短編髮女性前線戰地醫官，骨白護甲、分叉短戰袍、腰間藥劑、血心提燈與紅色六角治癒護盾；以站姿動作、腿部和道具和 MATK 的星象長裙拉開差異。原版保留 Git 歷史。下一張 P2 `clear-priest`。
+
+## 主教差異化 P2：clear-priest（2026-11-09）
+
+- 萬軍主教由白髮、頭紗、聖環、綠白大禮服改為栗髮男性翡翠戰陣軍牧；收腰長軍官外套、立領、肩章、長靴及分叉披肩，前踏指揮陣列。
+- 道具為左手展開的翡翠戰術聖典和右手引導的小型軍旗法陣，完全不用原有頭後大聖環與雙手捧香爐的靜態姿勢。保留 CLEAR 系列翡翠／象牙／金色及同一高細節厚塗材質。
+- `hp-priest`、`clear-priest` 各自獨立 Git 提交，與保留的 `atk-priest` 武裝男性軍旗牧師和 `matk-priest` 星象女性長裙牧師形成四套不同輪廓。48 張圖數不變，尚需使用者視覺偏好與遊戲內裁切人工驗收。
