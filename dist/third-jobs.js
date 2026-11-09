@@ -25,6 +25,13 @@ export function thirdSkills(job){const [name,main,wide,finish,utility,stance,pow
   Object.assign(list[1],{primaryTargetPower:1.20,secondaryTargetPower:.70});
   for(const skill of list.slice(0,2))skill.desc+=` 主目標傷害 ${Math.round(skill.primaryTargetPower*100)}%，副目標傷害 ${Math.round(skill.secondaryTargetPower*100)}%。`;
  }
+ if(job==='pactWarrior'){
+  // One main target at full skill power, exactly two secondary targets at 75%.
+  for(const skill of list.slice(0,2)){
+   Object.assign(skill,{targets:3,primaryTargetPower:1,secondaryTargetPower:.75});
+   skill.desc+=' 主目標100%，其餘兩體各75%；最多三體。';
+  }
+ }
  for(const [i,ratio]of [[0,1],[1,wideRatio],[2,finishRatio]]){list[i].thirdGrowth={job,ratio};list[i].desc+=' 技能倍率隨Base151–200逐級成長；下方顯示目前實際倍率。';}
  let util={kind:'shield',power:2.5,cooldown:2800,exclusiveGroup:'personalShield',mp:16};
  if(['crusader','priest','monk'].includes(job))util={kind:'heal',power:job==='monk'?3:4,cooldown:7500,mp:18,healSource:job==='priest'?'matk':'atk',partyHeal:job!=='monk'};

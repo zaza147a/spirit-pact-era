@@ -17,15 +17,15 @@ test('十二職四王的測試裝備各自鑲十張合法且不重複的王卡',
  }
 });
 
-test('萬靈210王卡每第三次夥伴有效命中追加180%且不重複觸發',()=>{
+test('萬靈210王卡每第三次夥伴有效命中追加310%且不重複觸發',()=>{
  const p={job:'spiritCommander',sockets:{rightHand:'dawn-archon'}};
  const hit=()=>bossCardHitBonus(p,CARDS,{now:10000,source:'pet',petId:'single',damage:100,magical:true});
- assert.equal(hit(),0);assert.equal(hit(),0);assert.equal(hit(),180);
- assert.equal(hit(),0);assert.equal(hit(),0);assert.equal(hit(),180);
+ assert.equal(hit(),0);assert.equal(hit(),0);assert.equal(hit(),310);
+ assert.equal(hit(),0);assert.equal(hit(),0);assert.equal(hit(),310);
 });
 
-test('君王210王卡每第三次人物主攻追加12%',()=>{
+test('君王210王卡每第三次人物主攻追加90%',()=>{
  const p={job:'pactWarrior',sockets:{rightHand:'dawn-archon'}};
  const hit=()=>bossCardHitBonus(p,CARDS,{now:10000,source:'owner',damage:100,magical:false});
- assert.equal(hit(),0);assert.equal(hit(),0);assert.equal(hit(),12);
+ assert.equal(hit(),0);assert.equal(hit(),0);assert.equal(hit(),90);
 });

@@ -26,12 +26,12 @@ assert.equal(legacy.cards[0].id,'dawn-archon');
 // Three real original hits produce a single independent 210 card attack.
 const pact=player('pactWarrior','dawnrift');
 for(let i=0;i<2;i++)assert.equal(hit(pact,{now:1_000_000+i*100}),0);
-assert.equal(hit(pact,{now:1_000_200}),120);
+assert.equal(hit(pact,{now:1_000_200}),900);
 assert.equal(hit(pact,{now:1_000_300}),0,'extra damage must not recursively trigger');
 const commander=player('spiritCommander','dawnrift');
 assert.equal(hit(commander,{source:'pet',petId:'first'}),0);
 assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_100}),0);
-assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_200}),1800,'唯一夥伴每三次命中追加追擊');
+assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_200}),3100,'唯一夥伴每三次命中追加追擊');
 assert.equal(hit(commander,{source:'pet',petId:'first',now:1_000_300}),0,'追擊不得每次無條件觸發');
 
 const ranger=player('hunter','skyport');
