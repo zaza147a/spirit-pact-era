@@ -2655,8 +2655,9 @@ function bindCosmeticGalleryEvents(){
  document.addEventListener('click',event=>{
   const towerButton=event.target.closest('[data-tower-costume]');
   if(towerButton&&player&&$('side')?.contains(towerButton)){
-    const prior={towerCostume:player.towerCostume,selectedOutfit:player.selectedOutfit,cosmeticOutfit:player.cosmeticOutfit};
+    const prior={towerCostume:player.towerCostume,selectedOutfit:player.selectedOutfit,cosmeticOutfit:player.cosmeticOutfit,extremeSelectedMantle:player.extremeSelectedMantle};
     if(!chooseTowerCostume(player,towerButton.dataset.towerCostume==='frost'?'frost':null))return toast('請先以此職業通關第30層');
+    if(player.towerCostume==='frost')player.extremeSelectedMantle=null;
     if(save()===false){Object.assign(player,prior);return toast('存檔失敗，已恢復原外觀');}
     render();return;
   }
@@ -2666,7 +2667,7 @@ function bindCosmeticGalleryEvents(){
   const key=outfit?'cosmeticOutfit':'cosmeticBackground',collection=readCosmeticCollection(localStorage);
   if(id==='default'){player.cosmeticBackground=null;player.extremeSelectedBackground=null;selectTowerBackground(player,'');save();render();return;}
   const owned=collection[outfit?'outfits':'backgrounds'].includes(id);
-  if(owned){player[key]=player[key]===id?null:id;if(outfit&&player[key])player.towerCostume=null;if(!outfit){player.extremeSelectedBackground=null;selectTowerBackground(player,'');}save();render();return;}
+  if(owned){player[key]=player[key]===id?null:id;if(outfit&&player[key]){player.towerCostume=null;player.extremeSelectedMantle=null;}if(!outfit){player.extremeSelectedBackground=null;selectTowerBackground(player,'');}save();render();return;}
   const oldGold=player.gold,oldBag=structuredClone(player.bag);
   const result=buyCosmetic(player,collection,outfit?'outfit':'background',id);
   if(result.error)return toast(result.error);
@@ -2674,10 +2675,11 @@ function bindCosmeticGalleryEvents(){
   let previous=null;try{previous=localStorage.getItem(COSMETIC_STORAGE_KEY);localStorage.setItem(COSMETIC_STORAGE_KEY,JSON.stringify(result.collection));}
   catch(error){player.gold=oldGold;player.bag=oldBag;return toast('收藏紀錄無法儲存，未扣款');}
   player[key]=id;
-  if(outfit)player.towerCostume=null;
+  const oldExtremeMantle=player.extremeSelectedMantle;
+  if(outfit){player.towerCostume=null;player.extremeSelectedMantle=null;}
   if(!outfit){player.extremeSelectedBackground=null;selectTowerBackground(player,'');}
   if(!save()){
-   player.gold=oldGold;player.bag=oldBag;player[key]=null;
+   player.gold=oldGold;player.bag=oldBag;player[key]=null;player.extremeSelectedMantle=oldExtremeMantle;
    if(previous===null)localStorage.removeItem(COSMETIC_STORAGE_KEY);else localStorage.setItem(COSMETIC_STORAGE_KEY,previous);
    return toast('存檔失敗，已退還金幣');
   }
@@ -2689,7 +2691,7 @@ function bindCosmeticGalleryEvents(){
   if(event.target.matches('[data-cosmetic-aura]')){player.cosmeticAura=event.target.checked;save();render();}
  });
 }
-function bindTrialControls(){for(const b of $('side').querySelectorAll('[data-tower-enter]'))b.onclick=()=>startTower(Number(b.dataset.towerEnter));for(const b of $('side').querySelectorAll('[data-tower-exit]'))b.onclick=()=>{if(confirm('確定結束天穹終境挑戰？'))exitTower('主動離場');};bindWarehouseControls();for(const b of $('side').querySelectorAll('[data-continuous-trial]'))b.onclick=()=>startTrial(b.dataset.continuousTrial,true);for(const b of $('side').querySelectorAll('[data-enter-trial]'))b.onclick=()=>startTrial(b.dataset.enterTrial);for(const b of document.querySelectorAll('[data-trial-stop-after]'))b.onclick=toggleTrialStopAfterRound;for(const b of document.querySelectorAll('[data-trial-exit]'))b.onclick=()=>{if(confirm('確定離開試煉？不退還入場券，已取得的結晶保留。'))exitTrial('主動離場');};for(const b of $('side').querySelectorAll('[data-enhance-slot]'))b.onclick=()=>doEnhance(b.dataset.enhanceSlot);for(const b of $('side').querySelectorAll('[data-enhance-pet]'))b.onclick=()=>doPetEnhance(b.dataset.enhancePet);for(const b of $('side').querySelectorAll('[data-reconcile-pet-evolution]'))b.onclick=completePendingPetEvolution;for(const b of $('side').querySelectorAll('[data-reselect-fusion]'))b.onclick=()=>doLegacyFusionReselect(b.dataset.reselectFusion);for(const b of $('side').querySelectorAll('[data-upgrade-sigil]'))b.onclick=()=>doUpgradeSigil();for(const b of $('side').querySelectorAll('[data-outfit]'))b.onclick=()=>{const r=b.dataset.outfit;if(r!=='default'&&!player.outfitUnlocks?.includes(r))return;player.selectedOutfit=r==='default'?null:r;player.cosmeticOutfit=null;save();render();renderSide(true);};}
+function bindTrialControls(){for(const b of $('side').querySelectorAll('[data-tower-enter]'))b.onclick=()=>startTower(Number(b.dataset.towerEnter));for(const b of $('side').querySelectorAll('[data-tower-exit]'))b.onclick=()=>{if(confirm('確定結束天穹終境挑戰？'))exitTower('主動離場');};bindWarehouseControls();for(const b of $('side').querySelectorAll('[data-continuous-trial]'))b.onclick=()=>startTrial(b.dataset.continuousTrial,true);for(const b of $('side').querySelectorAll('[data-enter-trial]'))b.onclick=()=>startTrial(b.dataset.enterTrial);for(const b of document.querySelectorAll('[data-trial-stop-after]'))b.onclick=toggleTrialStopAfterRound;for(const b of document.querySelectorAll('[data-trial-exit]'))b.onclick=()=>{if(confirm('確定離開試煉？不退還入場券，已取得的結晶保留。'))exitTrial('主動離場');};for(const b of $('side').querySelectorAll('[data-enhance-slot]'))b.onclick=()=>doEnhance(b.dataset.enhanceSlot);for(const b of $('side').querySelectorAll('[data-enhance-pet]'))b.onclick=()=>doPetEnhance(b.dataset.enhancePet);for(const b of $('side').querySelectorAll('[data-reconcile-pet-evolution]'))b.onclick=completePendingPetEvolution;for(const b of $('side').querySelectorAll('[data-reselect-fusion]'))b.onclick=()=>doLegacyFusionReselect(b.dataset.reselectFusion);for(const b of $('side').querySelectorAll('[data-upgrade-sigil]'))b.onclick=()=>doUpgradeSigil();for(const b of $('side').querySelectorAll('[data-outfit]'))b.onclick=()=>{const r=b.dataset.outfit;if(r!=='default'&&!player.outfitUnlocks?.includes(r))return;player.selectedOutfit=r==='default'?null:r;player.cosmeticOutfit=null;if(player.selectedOutfit)player.extremeSelectedMantle=null;save();render();renderSide(true);};}
 
 function openCharacterRename(){
  const modal=$('renameModal');
