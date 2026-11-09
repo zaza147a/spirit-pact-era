@@ -46,3 +46,11 @@
 - 角色欄上一版採絕對定位 `left:50%`，玩家實際截圖仍顯偏移；改為戰袍圖片 `position:relative`、`display:block`、`left:auto`、`margin:0 auto`，作為角色卡正常文件流的第一個居中元素，稱號／名稱框自然排在下方，不與圖像疊在一起。維持完整原圖與 `object-fit:contain`。
 - 更新 `dist/index.html` 的CSS查詢版本到 `2-mantle-centered-clear-height`，靜態測試新增 `#encounter` 高度與裁切規則斷言。此處是新的待發布修改，不能以先前部署檢查當成本次已上線證明。
 - 重新執行 `node --test tests/extreme-*.test.mjs`：**98／98通過、0失敗**。目前執行環境未安裝 Playwright Chromium 可執行檔，因此這次無法在本機瀏覽器對實際角色存檔截圖驗收；需要正式站有對應存檔的瀏覽器再次驗證。
+
+## 第四次修正：首頁V2戰袍偏小、遊戲內人物與光環錯位（2026-11-10）
+
+- 玩家首頁並排截圖：相同角色選單尺寸下，V2極限戰袍畫面可見人物比其他時裝明顯小；針對 `.slot-select img.art-entry.extreme-outfit-equipped` 僅額外 `scale(1.18)`，仍採 `object-fit:contain` 並保留全部原畫，不影響其它角色／時裝。
+- 玩家遊戲內截圖：人物改為正常文件流、置於卡片上部後，光環的 `::before`／`::after` 偽元素仍沿用整張 `.hero` 卡片的 `top:48%`／`top:10%`，隨稱號及名稱框把光環視覺中心往下拉；只針對同時有 `extreme-aura-*` 與 `img.extreme-outfit-equipped` 的角色卡，將光環固定於上方190px肖像區域（桌面中心約106px、直徑154px，較窄螢幕中心92px、直徑134px）。
+- 沒有修改戰袍圖片、怪物、角色技能、戰鬥/解鎖資料或其他外觀種類。CSS查詢版本升 `2-mantle-aura-lobby-scale`，新增入口尺寸與光環位置的回歸斷言。
+- 本段實際GitHub分支、main提交SHA和正式站部署／視覺驗收需於操作完成後記錄。不能拿前次靜態資源確認冒稱本次已部署。
+- 本地極限試煉完整專項 `node --test tests/extreme-*.test.mjs`：**100／100通過、0失敗**。已保留前述清怪可視性與戰袍置中驗證，新增首頁放大與光環置中斷言。

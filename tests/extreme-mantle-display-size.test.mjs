@@ -14,8 +14,19 @@ test('V2 戰袍角色欄獨立放大，維持原畫比例與定位',()=>{
 
 test('衣櫃預覽同步放大且新樣式具備快取版本',()=>{
  assert.match(css,/\.extreme-wardrobe-button img\{height:150px;width:126px;object-fit:contain/);
- assert.match(html,/extreme-trials\.css\?v=2-mantle-centered-clear-height/);
+ assert.match(html,/extreme-trials\.css\?v=2-mantle-aura-lobby-scale/);
  assert.match(html,/game\.js\?v=7\.1\.9-extreme-roster/);
+});
+
+test('首頁V2戰袍放大，但原本角色立繪與背景不受影響',()=>{
+ assert.match(css,/\.slot-select img\.art-entry\.extreme-outfit-equipped\{transform:scale\(1\.18\)!important;transform-origin:center center!important\}/);
+ assert.doesNotMatch(css,/\.slot-select img\.art-entry\{transform:scale\(1\.18\)/);
+});
+
+test('穿戴V2戰袍時光環定位以人物肖像區為準，非整張角色卡高度',()=>{
+ assert.match(css,/#gameShell #character \.hero\[class\*="extreme-aura-"\]:has\(img\.extreme-outfit-equipped\)::before\{[^}]*top:106px!important;[^}]*width:154px!important;[^}]*height:154px!important/);
+ assert.match(css,/#gameShell #character \.hero\[class\*="extreme-aura-"\]:has\(img\.extreme-outfit-equipped\)::after\{[^}]*top:10px!important;[^}]*height:176px!important/);
+ assert.match(css,/@media\(max-width:600px\)\{#gameShell #character \.hero\[class\*="extreme-aura-"\]/);
 });
 
 test('萬軍魔主的專用首領圖限制在同一戰鬥肖像框，不會擠走清怪目標',()=>{
