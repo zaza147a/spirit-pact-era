@@ -7,10 +7,35 @@ import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {canonicalFusionKey,FUSION_TYPES} from '../dist/spirit-job-rules.js';
 import {beginExtremeRun} from '../dist/extreme-trials.js';
 import {equipExtremeBossCards} from './fixtures/extreme-boss-card-loadout.mjs';
+import {affixRange,SPECIAL_AFFIXES} from '../dist/loot.js';
 
 const start=1000000;
 const kinds=['atk','matk','hp','clear'].filter(k=>!process.argv[2]||process.argv[2]===k);
 const jobs=[...LEGACY_OPTIMAL_BUILD_NAMES,'pactWarrior','spiritCommander'].filter(j=>!process.argv[3]||process.argv[3]===j);
+
+// Optional diagnostic: replace random SSS affixes with legal high-roll survival
+// affixes for each item's actual pool. Does not alter the normal baseline fixture.
+function optimizeCommanderSurvival(p){
+ const apply=(item,keys,special,pet)=>{
+  const affixes=Object.fromEntries(keys.map(key=>{
+   const rolled=affixRange(key,item.tier,item.rarity,item.id)[1];
+   return [key,pet&&!SPECIAL_AFFIXES.has(key)&&!['atk','matk'].includes(key)?Math.round(rolled*10/3):rolled];
+  }));
+  affixes[special]=affixRange(special,item.tier,item.rarity,item.id)[1];
+  item.affixes=affixes;
+ };
+ for(const [slot,item] of Object.entries(p.gear)){
+  if(!item)continue;
+  const weapon=slot==='rightHand'||slot==='leftHand'&&item.id!=='shield';
+  if(weapon)continue;
+  apply(item,['def','mdef','flee','VIT','INT'],'hpPct',false);
+ }
+ for(const pet of p.pets)for(const [slot,item] of Object.entries(pet.gear)){
+  if(slot==='head')apply(item,['atk','hit','DEX','VIT','INT'],'damageReduction',true);
+  if(slot==='body')apply(item,['hp','def','mdef','VIT','INT'],'hpPct',true);
+  if(slot==='shoes')apply(item,['flee','hit','def','VIT','INT'],'hpPct',true);
+ }
+}
 
 function createBuild(job){
  if(!['pactWarrior','spiritCommander'].includes(job))return legacyOptimalPlayer(job);
@@ -21,6 +46,7 @@ function createBuild(job){
  const pet=p.pets.find(item=>canonicalFusionKey(item)===fusion);
  p.pets=[pet];p.activePetId=pet.id;p.secondaryPetId=null;
  p.petStances={[pet.id]:job==='pactWarrior'?'assimilate':'assist'};
+ if(job==='spiritCommander'&&process.argv[5]==='survival')optimizeCommanderSurvival(p);
  return p;
 }
 
@@ -38,7 +64,7 @@ for(const kind of kinds)for(const job of jobs){
  try{
   const {player,summary}=await c.api.simulateOffline(p,start+duration);
   const highest=player.extremeProgress?.[kind]?.highest||0;
-  console.log(JSON.stringify({kind,job,highest,cleared30:highest>=30,
+  console.log(JSON.stringify({kind,job,fusion:process.argv[4]||'attack-magic',survival:process.argv[5]==='survival',highest,cleared30:highest>=30,
    runFloor:player.extremeRun?.floor||null,simulatedMs:summary?.simulated||0,
    extremeCoins:player.extremeCoins||0,reason:summary?.reason||null}));
  }catch(error){console.log(JSON.stringify({kind,job,error:String(error)}));}
