@@ -38,3 +38,11 @@
 
 - 正式站 `index.html` 已讀到 `extreme-trials.css?v=2-mantle-layout-and-roster`，不再是舊CSS版本；正式 `game.js` 也已讀到「場上軍勢 · 點擊指定目標」標記，正式 `extreme-trials.css` 可讀到 `padding:188px 10px 12px!important` 的獨立立繪排版。
 - 因此前端最新版已由 GitHub Pages 提供；但**尚未以實際已登入角色進行畫面點選驗收**，若玩家仍發現小怪消失，需要保留截圖與當時關卡、清快取後再追查。
+
+## 第三次修正：小怪被固定戰鬥視窗裁切、角色卡偏移（2026-11-09）
+
+- 玩家再次截圖證實：軍勢已進入Boss卡片，但只露出卡片上半截，下半截被面板邊界裁切。根因是通用 `compact-v5.css` 把桌面 `.encounter` 設為高度236px（較矮螢幕202px），`entry-fusion.css` 為350px最大高，`endless-tower.css` 又設 `.enemy-lineup` 與首領卡 `overflow:hidden!important`；光把軍勢移入Boss卡並不足以解決。
+- 現在只有**存在 `.extreme-minion-roster` 的清怪試煉**讓 `#encounter`、`.enemy-lineup`、`.tower-encounter` 設 `height:auto!important`、`max-height:none!important`、`overflow:visible!important`；五個軍勢目標固定小型卡片高度114px，避免戰鬥面板裁切。其他王、一般野外、天空／無盡塔照舊固定高度。
+- 角色欄上一版採絕對定位 `left:50%`，玩家實際截圖仍顯偏移；改為戰袍圖片 `position:relative`、`display:block`、`left:auto`、`margin:0 auto`，作為角色卡正常文件流的第一個居中元素，稱號／名稱框自然排在下方，不與圖像疊在一起。維持完整原圖與 `object-fit:contain`。
+- 更新 `dist/index.html` 的CSS查詢版本到 `2-mantle-centered-clear-height`，靜態測試新增 `#encounter` 高度與裁切規則斷言。此處是新的待發布修改，不能以先前部署檢查當成本次已上線證明。
+- 重新執行 `node --test tests/extreme-*.test.mjs`：**98／98通過、0失敗**。目前執行環境未安裝 Playwright Chromium 可執行檔，因此這次無法在本機瀏覽器對實際角色存檔截圖驗收；需要正式站有對應存檔的瀏覽器再次驗證。
