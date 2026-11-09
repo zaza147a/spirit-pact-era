@@ -107,10 +107,20 @@
   z-index:0!important;animation:extreme-aura-breathe 3s ease-in-out infinite!important;
 }
 #gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:216px!important}
+/* The approved assassin ATK lunge has higher feet inside its transparent canvas. */
+#gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="atk-assassin.webp"])::before{top:184px!important}
 #gameShell #character .hero[class*="extreme-aura-"]::after{display:none!important}
 #gameShell #character[data-cosmetic-aura="off"]>.hero[class*="extreme-aura-"]::before{display:none!important}
+/* The three new full-canvas illustrations occupy more pixels than the original 48-set silhouettes. */
+#gameShell .character .hero img.art-hero.extreme-outfit-equipped[src$="matk-pactWarrior.webp"],
+#gameShell .character .hero img.art-hero.extreme-outfit-equipped[src$="clear-pactWarrior.webp"]{transform:scale(.88)!important;transform-origin:center bottom!important}
+#gameShell .character .hero img.art-hero.extreme-outfit-equipped[src$="matk-assassin.webp"]{transform:scale(.92)!important;transform-origin:center bottom!important}
+.slot-select img.art-entry.extreme-outfit-equipped[src$="matk-pactWarrior.webp"],
+.slot-select img.art-entry.extreme-outfit-equipped[src$="clear-pactWarrior.webp"]{transform:scale(1.04)!important}
+.slot-select img.art-entry.extreme-outfit-equipped[src$="matk-assassin.webp"]{transform:scale(1.09)!important}
 @media(max-width:600px){
  #gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:185px!important;width:140px!important;height:36px!important}
+ #gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="atk-assassin.webp"])::before{top:160px!important}
 }
 .extreme-entry-scene{background-size:cover!important;background-position:center!important;border-radius:13px}
 .slot-card[class*="extreme-entry-aura-"] .slot-art-stage{box-shadow:inset 0 0 25px var(--extreme-entry-color,#ffb454),0 0 16px var(--extreme-entry-color,#ffb454)}

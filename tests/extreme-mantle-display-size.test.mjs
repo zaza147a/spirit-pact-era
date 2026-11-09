@@ -14,7 +14,7 @@ test('V2 戰袍角色欄獨立放大，維持原畫比例與定位',()=>{
 
 test('衣櫃預覽同步放大且新樣式具備快取版本',()=>{
  assert.match(css,/\.extreme-wardrobe-button img\{height:150px;width:126px;object-fit:contain/);
- assert.match(html,/extreme-trials\.css\?v=2-ground-aura-20261110/);
+ assert.match(html,/extreme-trials\.css\?v=2-foot-alignment-20261110/);
  assert.match(html,/game\.js\?v=7\.1\.9-ground-aura-20261110/);
 });
 

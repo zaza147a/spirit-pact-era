@@ -24,10 +24,17 @@ test('角色與寵物皆遵從可關閉的光環狀態',()=>{
  assert.match(ground,/#gameShell #character\[data-cosmetic-aura="off"\]>.hero\[class\*="extreme-aura-"\]::before\{display:none!important\}/);
 });
 
-test('極限試煉光環壓扁到腳下，金幣契印亦為地面投影',()=>{
+test('極限試煉光環壓扁到腳下，寵物原有金幣契印不被額外改動',()=>{
  assert.match(ground,/height:42px!important/);
  assert.match(ground,/top:216px!important/);
+ assert.match(ground,/has\(img\[src\$="atk-assassin\.webp"\]\)::before\{top:184px!important\}/);
  assert.match(ground,/::after\{display:none!important\}/);
- assert.match(gold,/Projection on the floor beneath the boots\/paws/);
- assert.match(gold,/height:43px/);
+ assert.doesNotMatch(gold,/Projection on the floor beneath the boots\/paws/);
+ assert.match(gold,/#companion\[data-gold-tier="4"\]>.hero::after/);
+});
+
+test('三張新女性立繪按內容佔比單獨縮放，其他45張不改',()=>{
+ assert.match(ground,/src\$="clear-pactWarrior\.webp"\]\{transform:scale\(\.88\)!important/);
+ assert.match(ground,/src\$="matk-assassin\.webp"\]\{transform:scale\(\.92\)!important/);
+ assert.match(ground,/src\$="atk-assassin\.webp"\]\)::before\{top:184px!important/);
 });
