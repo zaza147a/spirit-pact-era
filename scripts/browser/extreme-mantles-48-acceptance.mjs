@@ -38,7 +38,7 @@ try{
  for(const job of jobs){
   const p=LEGACY_OPTIMAL_BUILD_NAMES.includes(job)?legacyOptimalPlayer(job):highLevelSpiritPlayer({level:210,job,dawnSigil:0});
   // The game's imported character name is limited to 16 characters.
-  p.name=`驗收-${job}`;
+  p.name=`戰袍QA-${jobs.indexOf(job)+1}`;
   p.manualPaused=true;
   p.offline={at:Date.now(),enabled:false};
   p.dawnNotified=true;
