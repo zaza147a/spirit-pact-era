@@ -15,5 +15,5 @@ test('lobby honors owned, equipped gold collectible background',()=>{
 });
 
 test('lobby game module cache is bumped',()=>{
- assert.match(index,/game\.js\?v=7\.1\.9-gold-entry-background-20261110/);
+ assert.match(index,/game\.js\?v=7\.1\.9-ground-aura-20261110/);
 });

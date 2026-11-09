@@ -97,6 +97,21 @@
 .slot-select img.art-entry.extreme-outfit-equipped{transform:scale(1.18)!important;transform-origin:center center!important}
 @media(max-width:600px){#gameShell .character .hero img.art-hero.extreme-outfit-equipped{width:158px!important;height:198px!important;margin:-10px auto 22px!important}}
 @media(max-width:600px){#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:110px!important;width:158px!important;height:158px!important}#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::after{top:15px!important;width:190px!important;height:188px!important;left:calc(50% - 95px)!important}}
+/* A floor sigil belongs beneath the boots, never behind the character's torso. */
+#gameShell #character .hero[class*="extreme-aura-"]::before,
+#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{
+  content:""!important;top:160px!important;left:50%!important;width:min(82%,165px)!important;height:42px!important;
+  aspect-ratio:auto!important;border-radius:50%!important;transform:translate(-50%,-50%)!important;
+  background:radial-gradient(ellipse,var(--extreme-aura-color) 0%,transparent 65%)!important;
+  box-shadow:0 0 17px var(--extreme-aura-color),inset 0 0 15px var(--extreme-aura-color)!important;
+  z-index:0!important;animation:extreme-aura-breathe 3s ease-in-out infinite!important;
+}
+#gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:216px!important}
+#gameShell #character .hero[class*="extreme-aura-"]::after{display:none!important}
+#gameShell #character[data-cosmetic-aura="off"]>.hero[class*="extreme-aura-"]::before{display:none!important}
+@media(max-width:600px){
+ #gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:185px!important;width:140px!important;height:36px!important}
+}
 .extreme-entry-scene{background-size:cover!important;background-position:center!important;border-radius:13px}
 .slot-card[class*="extreme-entry-aura-"] .slot-art-stage{box-shadow:inset 0 0 25px var(--extreme-entry-color,#ffb454),0 0 16px var(--extreme-entry-color,#ffb454)}
 .slot-card.extreme-entry-aura-matk{--extreme-entry-color:#aa91ff}.slot-card.extreme-entry-aura-hp{--extreme-entry-color:#ff6487}.slot-card.extreme-entry-aura-clear{--extreme-entry-color:#50f0d1}

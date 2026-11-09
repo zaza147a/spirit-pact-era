@@ -21,4 +21,9 @@
 #gameShell #character>.hero.cosmetic-scene-active .eyebrow{position:relative;z-index:1;padding:2px 7px;border-radius:4px;background:#06132199;color:#f2e6c8;text-shadow:0 1px 3px #000}
 #gameShell #character>.hero.cosmetic-scene-active .gold-collector-title{position:relative;z-index:1;max-width:calc(100% - 12px);padding:3px 10px;border-radius:7px;background:#1f1a13e8;border:1px solid #b59153;color:#ffe2a1;text-shadow:0 1px 3px #000,0 0 7px #0009;box-shadow:0 2px 8px #0005;font-weight:700;white-space:normal;overflow-wrap:anywhere}
 #character[data-cosmetic-aura="off"]>.hero::before,#character[data-cosmetic-aura="off"]>.hero::after{display:none!important}
+#companion[data-cosmetic-aura="off"]>.hero::before,#companion[data-cosmetic-aura="off"]>.hero::after{display:none!important}
+.cosmetic-aura-controls{margin-top:14px;padding:12px;border:1px solid #806f4e;border-radius:10px;background:#112130}
+.cosmetic-aura-controls h4{margin:0 0 8px;color:#f1d69e}
+.cosmetic-aura-controls .cosmetic-control{margin-top:7px}
+.cosmetic-aura-controls small{display:block;margin-top:9px;color:#a9c3cb}
 @media(max-width:490px){.cosmetic-portrait{height:150px}.cosmetic-grid{gap:5px}.cosmetic-tile{padding:5px}.cosmetic-background-grid{grid-template-columns:1fr 1fr}}
