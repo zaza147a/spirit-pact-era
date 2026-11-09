@@ -673,3 +673,9 @@
 - 保留黑色不對稱側削髮與長辮男性修羅、翠綠雙拳甲、裸露雙臂、綠白胸甲、白色寬鬆武鬥褲、翠色軍旗及發光菱形符紋；稍微收整全圖，拳勢與裝備完整，不增加手持武器。
 - `clear-monk.webp` 1024×1536 RGBA 透明 WebP；alpha≥128 bbox=(201,138,839,1395)，四邊留白201／138／185／141px，全部達6%，主體高度81.8%。
 - 最後九張 D1–D9 全部各自驗證；`python scripts/art/audit-extreme-mantle-alpha.py --strict` 完整稽核 **48張、0 REVIEW**，四側全部≥6%；`node --test tests/extreme-*.test.mjs` **36／36通過**。下一步重新產生五張總覽並確認遠端 Git blob 完全一致。
+
+## 最終總覽與規格驗收（2026-11-09）
+
+- 已由目前全部48張透明 WebP 重新生成 `docs/assets/extreme-mantles-v2-contact-sheet.jpg` 及 ATK／MATK／HP／CLEAR 四張獨立12圖總覽。48張總覽使用81品質縮幅 JPG，避免早期預覽下半部異常；已人工查看總覽完整顯示四排各12張。
+- 全圖尺寸1024×1536、RGBA、WebP、48個不同SHA-256及 alpha≥128 四側6%安全留白全部通過：`python scripts/art/audit-extreme-mantle-alpha.py --strict` 為48張、0 REVIEW。`node --test tests/extreme-*.test.mjs` 為36／36通過。
+- 每張返工素材D1–D9都有獨立測試、提交及推送記錄；這次只提交總覽及此交接文件，遠端確認後即可由新對話從此版接續美術主觀驗收。`main` 及正式網站均不變更。
