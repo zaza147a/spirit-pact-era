@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 
 const cases=[
- ['monk',2.3,Infinity],['performer',2.3,Infinity],['crusader',2.3,Infinity],
+ ['monk',2.3,Infinity],['performer',2.38,2.42],['crusader',2.3,Infinity],['knight',2.48,2.52],
  ['pactWarrior',3.3,3.7],['spiritCommander',3.3,3.5]
 ];
 for(const [job,lower,upper] of cases){

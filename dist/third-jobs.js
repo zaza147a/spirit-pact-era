@@ -32,6 +32,14 @@ export function thirdSkills(job){const [name,main,wide,finish,utility,stance,pow
    skill.desc+=' 主目標100%，其餘兩體各75%；最多三體。';
   }
  }
+ if(job==='knight'||job==='performer'){
+  // Displayed, boss-only single-target specialization; never boosts AOE waves.
+  const bonus=job==='knight'?.097:.055;
+  for(const skill of [list[0],list[2]]){
+   skill.focusedBossBonus=bonus;
+   skill.desc+=` 面對單獨首領時，此技能主目標傷害額外+${Math.round(bonus*1000)/10}%。`;
+  }
+ }
  for(const [i,ratio]of [[0,1],[1,wideRatio],[2,finishRatio]]){list[i].thirdGrowth={job,ratio};list[i].desc+=' 技能倍率隨Base151–200逐級成長；下方顯示目前實際倍率。';}
  let util={kind:'shield',power:2.5,cooldown:2800,exclusiveGroup:'personalShield',mp:16};
  if(['crusader','priest','monk'].includes(job))util={kind:'heal',power:job==='monk'?3:4,cooldown:7500,mp:18,healSource:job==='priest'?'matk':'atk',partyHeal:job!=='monk'};
