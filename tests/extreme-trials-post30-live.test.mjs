@@ -26,6 +26,11 @@ test('ATK與MATK王31階後可連續推進，50階仍無額外徽記',async()=>{
   assert.equal(player.extremeRun.floor,51,kind);
   assert.equal(player.extremeCoins,450,kind);
   assert.equal(summary.simulated,400000,kind);
+  const prefix=kind==='atk'?'破軍':'冥界';
+  for(const floor of [35,40,45]){
+   assert.ok(player.extraHonorTitles.includes(`${prefix}第${floor}階突破者`),`${kind} ${floor}`);
+  }
+  assert.ok(player.extraHonorTitles.includes(kind==='atk'?'破軍破限者':'冥界破限者'));
  }
 });
 

@@ -24,6 +24,11 @@ export function claimExtremeCharacterStage(player,kind,floor){
  const previous=extremeCharacterLedger(player),result=settleExtremeStage(previous.progress,kind,floor);
  player.extremeProgress=result.progress;
  player.extremeCoins=previous.coins+result.coins;
+ // Keep every five-floor title earned during an endless run. Do not generate
+ // millions of retrospective titles when importing an extreme high-floor save.
+ if(floor>500&&floor>=35&&floor%5===0&&result.firstClears.includes(floor)){
+  player.extraHonorTitles=[...new Set([...(player.extraHonorTitles||[]),extremeFiveFloorTitle(kind,floor)])];
+ }
  return {coins:result.coins,firstClears:result.firstClears,ledger:extremeCharacterLedger(player)};
 }
 
@@ -39,11 +44,20 @@ export function buyExtremeShopItem(player,id){
  return {item,ledger:extremeCharacterLedger(player)};
 }
 
+const extremeTitleNames={atk:'破軍',matk:'冥界',hp:'血淵',clear:'萬軍'};
+const extremeFiveFloorTitle=(kind,floor)=>`${extremeTitleNames[kind]}第${floor}階突破者`;
 export function extremeMilestoneTitles(ledger){
  const names={atk:['破軍挑戰者','破軍破限者','物理不滅者'],matk:['冥界挑戰者','冥界破限者','魔法不滅者'],hp:['血戰挑戰者','血淵破限者','極限征服者'],clear:['萬軍挑戰者','萬軍破限者','千軍殲滅者']};
  return Object.entries(names).flatMap(([kind,[novice,advanced,master]])=>{
   const highest=ledger?.progress?.[kind]?.highest||0;
-  return [...(highest>=10?[novice]:[]),...(highest>=50?[advanced]:[]),...(highest>=100?[master]:[])];
+  const milestones=[];
+  for(let floor=35;floor<=Math.min(500,highest);floor+=5){
+   // 50 and 100 already have named legacy titles; count those as their
+   // respective five-floor awards, without creating duplicate variants.
+   if(floor!==50&&floor!==100)milestones.push(extremeFiveFloorTitle(kind,floor));
+  }
+  return [...(highest>=10?[novice]:[]),...milestones,
+   ...(highest>=50?[advanced]:[]),...(highest>=100?[master]:[])];
  });
 }
 
