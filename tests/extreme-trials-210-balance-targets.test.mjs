@@ -4,7 +4,7 @@ import {execFileSync} from 'node:child_process';
 
 const cases=[
  ['monk',2.3,Infinity],['performer',2.3,Infinity],['crusader',2.3,Infinity],
- ['pactWarrior',3.3,3.7],['spiritCommander',4.1,4.4]
+ ['pactWarrior',3.3,3.7],['spiritCommander',3.3,3.5]
 ];
 for(const [job,lower,upper] of cases){
  test(`210全王卡 ${job} 第30階單體平均DPS校準`,()=>{

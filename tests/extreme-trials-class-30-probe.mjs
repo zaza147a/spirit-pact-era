@@ -6,6 +6,8 @@ import {legacyOptimalPlayer,LEGACY_OPTIMAL_BUILD_NAMES} from './fixtures/legacy-
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {canonicalFusionKey,FUSION_TYPES} from '../dist/spirit-job-rules.js';
 import {equipExtremeBossCards} from './fixtures/extreme-boss-card-loadout.mjs';
+import {CARDS} from '../dist/catalog.js';
+import {bossCardEquipAllowed} from '../dist/boss-card-runtime.js';
 
 const epoch=1000000;
 const kinds=['atk','matk','hp','clear'].filter(kind=>!process.argv[2]||process.argv[2]===kind);
@@ -27,6 +29,11 @@ function build(job){
 for(const kind of kinds)for(const job of jobs){
  const c=await runtime(),p=build(job);
  equipExtremeBossCards(p);
+ const weaponCard=process.argv[5];
+ if(weaponCard){
+  if(!CARDS[weaponCard]?.boss||!bossCardEquipAllowed(CARDS[weaponCard],'rightHand',job))throw Error(`illegal weapon boss card ${weaponCard}`);
+  p.sockets.rightHand=weaponCard;
+ }
  p.level=210;p.thirdJob=true;p.location='dawnrift';
  p.extremeProgress={[kind]:{highest:29}};
  p.extremeRun={kind,floor:30,startedAt:epoch,stageStartedAt:epoch,status:'active',stageDamage:0,stageKills:0};
@@ -37,7 +44,7 @@ for(const kind of kinds)for(const job of jobs){
  const duration=kind==='atk'||kind==='matk'?20500:30500;
  try{
   const {player,summary}=await c.api.simulateOffline(p,epoch+duration);
-  console.log(JSON.stringify({kind,job,fusion:job==='pactWarrior'||job==='spiritCommander'?(process.argv[4]||'attack-magic'):null,cleared:(player.extremeProgress?.[kind]?.highest||0)>=30,
+  console.log(JSON.stringify({kind,job,weaponCard:p.sockets.rightHand,fusion:job==='pactWarrior'||job==='spiritCommander'?(process.argv[4]||'attack-magic'):null,cleared:(player.extremeProgress?.[kind]?.highest||0)>=30,
    highest:player.extremeProgress?.[kind]?.highest||0,next:player.extremeRun?.floor||null,
    durationMs:summary?.simulated||0,reason:summary?.reason||null,
    damage:summary?.damage?.total||0}));

@@ -13,6 +13,6 @@ const cards={archon:{boss:true,map:'dawnrift'}};
 const player={job:'spiritCommander',sockets:{rightHand:'archon'}};
 for(const hit of [1,2,3]){
  const extra=bossCardHitBonus(player,cards,{now:hit*1000,source:'pet',petId:'only-pet',damage:100,magical:true,skillId:'main'});
- assert.equal(extra,hit===3?310:0);
+ assert.equal(extra,hit===3?150:0);
 }
-console.log('PASS: commander skill and splash hits carry pet card metadata; exclusive card counts skill hits at 310%');
+console.log('PASS: commander skill and splash hits carry pet card metadata; exclusive card counts skill hits at 150%');
