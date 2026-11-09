@@ -1872,8 +1872,11 @@ for(const b of $('side').querySelectorAll('[data-tower-background-pick]'))b.oncl
 };
 for(const b of $('side').querySelectorAll('[data-extreme-background-pick]'))b.onclick=()=>{
  if(!player.extremeBackgrounds?.includes(b.dataset.extremeBackgroundPick))return toast('尚未收藏此極限背景');
+ const before=structuredClone(player);
  player.extremeSelectedBackground=player.extremeSelectedBackground===b.dataset.extremeBackgroundPick?null:b.dataset.extremeBackgroundPick;
- player.cosmeticBackground=null;selectTowerBackground(player,'');save();render();renderSide(true);
+ player.cosmeticBackground=null;selectTowerBackground(player,'');
+ if(save()===false){player=before;toast('極限背景儲存失敗，已恢復原先選擇');}
+ render();renderSide(true);
 };
 if(tab==='pets')for(const b of $('side').querySelectorAll('[data-pet]')){const p=player.pets.find(x=>x.id===b.dataset.pet);const head=b.closest('.item')?.querySelector('.itemhead');if(head){head.querySelector('.art-pet')?.remove();head.insertAdjacentHTML('afterbegin',petSprite(p,'pet'));}}
 for(const b of document.querySelectorAll('[data-add]'))b.onclick=()=>applyPointsFromInput(b.dataset.add,$('side').querySelector(`[data-allocation-amount="${b.dataset.add}"]`));

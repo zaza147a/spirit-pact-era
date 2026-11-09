@@ -52,3 +52,31 @@ test('48職業戰袍：點選、取消、未解鎖拒絕與存檔失敗回復',a
   c.api.setSaveForTest(()=>true);
  }
 });
+
+test('四王八款極限背景切換會互斥其他背景，失敗時還原',async()=>{
+ const c=await runtime();
+ const buttons=['atk','matk','hp','clear'].flatMap(kind=>
+  [`${kind}_milestone`,`${kind}_background`].map(id=>({dataset:{extremeBackgroundPick:id}})));
+ c.document.getElementById=id=>id==='side'?{querySelectorAll:selector=>
+  selector==='[data-extreme-background-pick]'?buttons:[]}:null;
+ const start=source.indexOf("for(const b of $('side').querySelectorAll('[data-extreme-background-pick]'))");
+ const end=source.indexOf("\nif(tab==='pets')",start);
+ assert.ok(start>=0&&end>start);
+ vm.runInContext(source.slice(start,end),c);
+ for(const button of buttons){
+  const p=fixture('knight');
+  const kind=button.dataset.extremeBackgroundPick.split('_')[0];
+  claimExtremeCharacterStage(p,kind,30);syncExtremeHonorOwnership(p);
+  p.cosmeticBackground='gold-test';
+  c.api.setup(p);
+  button.onclick();
+  assert.equal(c.api.state().player.extremeSelectedBackground,button.dataset.extremeBackgroundPick);
+  assert.equal(c.api.state().player.cosmeticBackground,null);
+  c.api.setSaveForTest(()=>false);
+  button.onclick();
+  assert.equal(c.api.state().player.extremeSelectedBackground,button.dataset.extremeBackgroundPick);
+  c.api.setSaveForTest(()=>true);
+  button.onclick();
+  assert.equal(c.api.state().player.extremeSelectedBackground,null);
+ }
+});
