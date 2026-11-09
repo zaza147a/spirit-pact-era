@@ -42,6 +42,7 @@ export function extremeEntryError(player,kind,floor){
   if(player.towerRun||player.trialRun||player.extremeRun)return '目前已有其他挑戰進行中';
   if(player.location!=='dawncity')return '請前往曙光聖港尋找極限試煉官';
   const highest=normalizeExtremeProgress(player.extremeProgress)[kind].highest;
+  if(highest>0&&floor===highest+1)return null;
   if(floor>Math.max(1,Math.floor(highest/10)*10))return '尚未解鎖此起始階段';
   if(floor!==1&&floor%10!==0)return '僅能從第 1 階或已解鎖的十階節點入場';
   return null;

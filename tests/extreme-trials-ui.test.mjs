@@ -14,7 +14,8 @@ test('不限層數的入場選單仍保留早期節點且最多約二十餘項',
 
 test('四隻首領選擇與獨立最高階段',()=>{
   const html=renderExtremePanel({level:210,extremeProgress:{atk:{highest:20},matk:{highest:4},hp:{highest:10}}});
-  assert.equal((html.match(/data-extreme-enter=/g)||[]).length,4);
+  assert.equal((html.match(/data-extreme-enter=/g)||[]).length,7,'四個原挑戰按鈕及三個已有進度的接續按鈕');
+  assert.equal((html.match(/data-extreme-floor=/g)||[]).length,3);
   assert.match(html,/階段獎勵 · 自動永久解鎖/);
   assert.match(html,/破軍典藏名稱框/);
   assert.doesNotMatch(html,/極限商店|極限徽記|data-extreme-buy|永久購買/);

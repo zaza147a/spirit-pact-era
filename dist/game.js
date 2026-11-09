@@ -2184,7 +2184,7 @@ function init(){if(typeof document==='undefined'){self.onmessage=async event=>{t
  $('side').addEventListener('click',event=>{const button=event.target.closest('[data-tower-floor-go]');if(!button||button.disabled)return;const selector=button.closest('.tower-region')?.querySelector('[data-tower-floor-select]');if(selector&&!selector.disabled)startTower(Number(selector.value));});
  $('side').addEventListener('click',event=>{
   const enter=event.target.closest('[data-extreme-enter]');
-  if(enter&&!enter.disabled){const selector=enter.closest('.extreme-boss-card')?.querySelector('[data-extreme-select]');return startExtreme(enter.dataset.extremeEnter,Number(selector?.value||1));}
+  if(enter&&!enter.disabled){const selector=enter.closest('.extreme-boss-card')?.querySelector('[data-extreme-select]');return startExtreme(enter.dataset.extremeEnter,Number(enter.dataset.extremeFloor||selector?.value||1));}
   const cosmetic=event.target.closest('[data-extreme-cosmetic]');
   if(cosmetic&&!cosmetic.disabled){
    const type=cosmetic.dataset.extremeCosmetic,kind=cosmetic.dataset.extremeKind;

@@ -33,7 +33,12 @@ test('入場等級、地點及十階快速入場限制',()=>{
   assert.match(beginExtremeRun({...player,location:'town'},'atk',1,0).error,/曙光/);
   assert.ok(beginExtremeRun(player,'atk',1,0).run);
   assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:20}}},'atk',20,0).run);
-  assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:19}}},'atk',20,0).error);
+  assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:19}}},'atk',20,0).run,'最高通關19階可接續20階');
+  assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:19}}},'atk',21,0).error,'不能直接越過20階');
+  assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:37}}},'atk',38,0).run,'最高通關37階可直接挑戰38階');
+  assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:37}}},'atk',30,0).run,'原本十階節點仍可選');
+  assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:37}}},'atk',39,0).error,'不可跳過未通關階數');
+  assert.ok(beginExtremeRun({...player,extremeProgress:{atk:{highest:37}}},'atk',37,0).error,'非十階節點只能由最新進度下一階開始');
 });
 test('血量王 30 秒傷害不足失敗，達標才成功',()=>{
   const run=beginExtremeRun(player,'hp',1,1000).run;

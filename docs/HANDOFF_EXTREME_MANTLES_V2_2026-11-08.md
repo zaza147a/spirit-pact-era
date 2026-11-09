@@ -1288,3 +1288,11 @@
 - 從正式main `ac1be0af2b8bdd60543fdbef84c13b131ea762c1` 建立備份分支 `fix/shield-auto-salvage-rarity-20261109`，先推送並核對 `570a48d56390a0cf3578f8bf2e5a643f68f1a748`，再以expected SHA快轉正式main至相同提交。
 - GitHub Actions [Publish Spirit Pact Era #42633269697](https://github.com/zaza147a/spirit-pact-era/actions/runs/42633269697) **completed/success**。正式網站 `https://zaza147a.github.io/spirit-pact-era/salvage-rules.js?v=7.1.9` 已實際讀到不再含 `gear.id==='shield'` 的 `shouldAutoSalvage()` 守衛；保留 `swapProtected`／`fusionMatch` 安全判斷。
 - 本段為部署成功後的交接補記；若後續僅改 `docs/**`，依現有發布流程 `paths-ignore` 不會重複部署。
+
+## 新增：由各王最高通關層下一階接續（2026-11-09）
+
+- 最新需求：「試煉多加一個從目前挑戰過的最高層開始挑戰」。採用**已成功通關的最高層 +1** 作為新入口；例如 ATK 王最高通關37階，按「從最高進度繼續 · 第38階」即開打第38階，不重打第37階。四王 ATK／MATK／HP／CLEAR 的紀錄完全獨立，未通關第一階者維持只有原「開始挑戰」。
+- `dist/extreme-trials-ui.js`：每個已有通關紀錄的首領增加專用接續按鈕，原「開始挑戰」及每10階既有快速選層不變；未達200級時兩個入口皆禁用。
+- `dist/game.js`：同一委派事件處理器，優先採用新按鈕的 `data-extreme-floor`，否則仍讀原選層下拉框；沒有增加額外輪詢或存檔。
+- `dist/extreme-trials.js`：合法入場在原先等級、地點、其他挑戰限制之後，允許 `floor===highest+1`；禁止跳過尚未通關階層及重玩非十階節點，既有十階快速入場仍有效。連續挑戰、離線計算、失敗中止和獎勵規則未變。
+- 驗收加入 `tests/extreme-trials-resume-latest.test.mjs`（四王不同最高階、無紀錄、等級和地點限制、按鈕事件），同步更新 `tests/extreme-trials.test.mjs` 和 `tests/extreme-trials-ui.test.mjs` 的舊入口斷言。獨立分支及正式部署SHA與通過數應在實際驗證之後補記，**尚未發布時不得視為已上線**。

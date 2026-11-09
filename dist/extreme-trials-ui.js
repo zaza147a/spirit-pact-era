@@ -29,7 +29,8 @@ export function renderExtremePanel(player,{now=0}={}){
       const detail=kind==='clear'?'30 秒內擊殺指定數量怪物':kind==='hp'?'30 秒內達成傷害門檻':'存活 20 秒，前 30 階逐階提升攻擊，31 階後平滑加速';
       return `<article class="extreme-boss-card"><img class="extreme-boss-thumb" src="assets/extreme/boss-${kind}.webp" alt="${escapeText(config.name)}立繪" loading="lazy"><div><h4>${escapeText(config.name)}</h4><p>${detail} · 歷史最高第 ${high} 階</p></div>`+
         `<label>入場階段 <select data-extreme-select="${kind}">${options.map(f=>`<option value="${f}">第 ${f} 階</option>`).join('')}</select></label>`+
-        `<button data-extreme-enter="${kind}" ${player?.level<200?'disabled title="需要 200 等"':''}>開始挑戰</button></article>`;
+        `<button data-extreme-enter="${kind}" ${player?.level<200?'disabled title="需要 200 等"':''}>開始挑戰</button>`+
+        (high>0?`<button data-extreme-enter="${kind}" data-extreme-floor="${high+1}" ${player?.level<200?'disabled title="需要 200 等"':''}>從最高進度繼續 · 第 ${high+1} 階</button>`:'')+`</article>`;
     }).join('')+`<p>每隻王的固定解鎖：第 10 階稱號、第 20 階兩款名稱框、第 25 階專屬戰袍、第 30 階光環及兩款背景；第 35 階起每五階再獲得更高階稱號。所有獎勵直接解鎖，不消耗任何貨幣。試煉不提供一般經驗值、金幣或怪物掉落。</p>`+
     `<h3>階段獎勵 · 自動永久解鎖</h3>`+
     EXTREME_FLOOR_COLLECTIBLES.map(item=>{
