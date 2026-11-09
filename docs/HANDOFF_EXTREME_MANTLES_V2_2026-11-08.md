@@ -435,3 +435,8 @@
 - 使用者反映 GitHub／原始圖片預覽在第二排附近以下顯示大片灰色區域；原 JPG 可完整解碼，因此改提供較低尺寸總覽與分系列短圖，避免依賴單一超寬高預覽。
 - 重新產生 `docs/assets/extreme-mantles-v2-contact-sheet.jpg` 為 1600×1100；另新增 `docs/assets/extreme-mantles-v2-atk-12.jpg`、`-matk-12.jpg`、`-hp-12.jpg`、`-clear-12.jpg`，四張均 2180×370，每張 12 職獨立一列。
 - 新增可重複使用的 `scripts/art/build-extreme-mantle-sheets.py`，直接從 48 張現行透明 WebP 重建五份總覽；不改遊戲美術或角色選角顯示。分系列檢視的各張圖已在本地解碼與視覺檢查，GitHub 預覽最終行為仍需使用者確認。
+
+## 使用者指定額外重製 A1：hp-assassin（2026-11-09）
+
+- 血淵刺客由上一版銀黑髮男性、低身突擊雙骨匕改為銀黑短髮加血紅單辮的女性處刑影刃；一高一低雙持紅髓龍牙反手匕首，紅色短披肩及不對稱肋骨肩甲。
+- 保留血淵的黑紅、象牙骨、精細厚塗材質，明確區隔使用寬簷帽及骨鎖鏈的 HP 流氓。更新 `dist/assets/extreme/mantles-v2/hp-assassin.webp`，1024×1536 透明 WebP。下一張 `matk-priest` 重做；每張獨立保存 GitHub，僅測試分支。
