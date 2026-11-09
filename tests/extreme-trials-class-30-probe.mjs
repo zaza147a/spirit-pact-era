@@ -5,6 +5,7 @@ import {runtime} from './runtime31-helper.mjs';
 import {legacyOptimalPlayer,LEGACY_OPTIMAL_BUILD_NAMES} from './fixtures/legacy-optimal-player.mjs';
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {canonicalFusionKey,FUSION_TYPES} from '../dist/spirit-job-rules.js';
+import {equipExtremeBossCards} from './fixtures/extreme-boss-card-loadout.mjs';
 
 const epoch=1000000;
 const kinds=['atk','matk','hp','clear'].filter(kind=>!process.argv[2]||process.argv[2]===kind);
@@ -25,6 +26,7 @@ function build(job){
 
 for(const kind of kinds)for(const job of jobs){
  const c=await runtime(),p=build(job);
+ equipExtremeBossCards(p);
  p.level=210;p.thirdJob=true;p.location='dawnrift';
  p.extremeProgress={[kind]:{highest:29}};
  p.extremeRun={kind,floor:30,startedAt:epoch,stageStartedAt:epoch,status:'active',stageDamage:0,stageKills:0};

@@ -6,6 +6,7 @@ import {legacyOptimalPlayer,LEGACY_OPTIMAL_BUILD_NAMES} from './fixtures/legacy-
 import {highLevelSpiritPlayer} from './fixtures/spirit-high-level-player.mjs';
 import {canonicalFusionKey,FUSION_TYPES} from '../dist/spirit-job-rules.js';
 import {beginExtremeRun} from '../dist/extreme-trials.js';
+import {equipExtremeBossCards} from './fixtures/extreme-boss-card-loadout.mjs';
 
 const start=1000000;
 const kinds=['atk','matk','hp','clear'].filter(k=>!process.argv[2]||process.argv[2]===k);
@@ -25,6 +26,7 @@ function createBuild(job){
 
 for(const kind of kinds)for(const job of jobs){
  const c=await runtime(),p=createBuild(job);
+ equipExtremeBossCards(p);
  p.location='dawncity';p.extremeProgress={};p.extremeCoins=0;
  const entry=beginExtremeRun(p,kind,1,start);
  if(entry.error){console.log(JSON.stringify({kind,job,error:entry.error}));continue;}
