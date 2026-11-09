@@ -1044,3 +1044,11 @@
 - `node --test tests/extreme-*.test.mjs` **77／77 通過**。本批沒有更動任何 WebP、角色／夥伴平衡、四王強度、稱號與獎勵規則。
 - 目前執行環境沒有可用 Chromium／Firefox 執行檔；前批角色欄192情境及選角48情境依舊是 DOM 替身驗證，**實際瀏覽器48張逐張截圖／切換與透明殘留的視覺驗收尚未完成**。A31／B16／C1 的原圖疑點仍維持，不能因測試通過而變更分類或批次覆寫已核准角色造型。
 - 只提交並推送 `feature/endless-trials-three-bosses`，必須核對遠端最新 SHA 成功後才接下一批。`main`／正式 GitHub Pages 不動。
+
+## 接續批次：48 張實際圖框尺寸深淺底預覽（2026-11-09）
+
+- 新增 `scripts/art/build-extreme-mantle-ui-proof.py`，只讀取48張現有 V2 WebP，不改任何原圖；採和 CSS `object-fit:contain` 相同的「完整畫布等比縮放置中」，產生選角桌面圖片框 **200×240px**、角色衣櫃圖片框 **108×114px** 的深／淺雙背景比較圖。
+- 產出 `docs/assets/extreme-mantles-ui-proof-{atk,matk,hp,clear}.jpg`（選角大小）及 `docs/assets/extreme-mantles-wardrobe-proof-{atk,matk,hp,clear}.jpg`（衣櫃大小），共八份，可直接在 GitHub 逐系列查看全48張、對比兩種底色。
+- 已逐份檢查縮圖輸出，全部12職有圖，未見因 `contain` 導致的裁斷或橫向拉伸；但其中部分淡色與半透明光效在淺底對比偏弱。這是**CSS尺寸的像素合成驗收代理**，不包含遊戲DOM、背景光環、畫面縮放、點擊事件或實際Chromium截圖，不得冒稱真正的瀏覽器UI驗收。
+- 前次 A31／B16／C1 是原圖放大目視瑕疵分類，沒有因縮圖看起來較乾淨而將其擅自降級。後續應先就A類白灰背景檢查能否只修改遮罩而不損及法術、武器、髮絲；嚴禁批次重畫已定稿角色。
+- 本批只新增八份檢視圖、可重建腳本及交接；不更動原48張、職業、四王、獎勵與`main`／正式網站。
