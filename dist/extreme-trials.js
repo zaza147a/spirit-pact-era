@@ -64,6 +64,10 @@ export function extremeStageResult(run,now,{alive=true}={}){
   if(!run||run.status!=='active')return {status:'invalid'};
   const stage=extremeStage(run.kind,run.floor);
   if(!alive)return {status:'failed',reason:'戰敗'};
+  if(run.kind==='hp'&&(run.stageDamage||0)>=stage.requiredDamage)
+    return {status:'cleared',floor:run.floor};
+  if(run.kind==='clear'&&(run.stageKills||0)>=stage.requiredKills)
+    return {status:'cleared',floor:run.floor};
   if(now-run.stageStartedAt<stage.seconds*1000)return {status:'active'};
   if(run.kind==='hp'&&(run.stageDamage||0)<stage.requiredDamage)
     return {status:'failed',reason:'階段傷害不足',required:stage.requiredDamage,actual:run.stageDamage||0};

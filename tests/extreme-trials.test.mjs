@@ -21,8 +21,11 @@ test('四種首領前 30 階平緩成長，31 階後提高極限門檻',()=>{
 test('清怪王必須在 30 秒實際擊殺足量怪物',()=>{
   const run=beginExtremeRun(player,'clear',1,0).run;
   run.stageKills=5;
+  assert.equal(extremeStageResult(run,1000).status,'active','擊殺數不足不能提前通關');
   assert.equal(extremeStageResult(run,30000).status,'failed');
   run.stageKills=6;
+  assert.equal(extremeStageResult(run,1000).status,'cleared','達標立即通關，不等待30秒');
+  assert.equal(extremeStageResult(run,1000,{alive:false}).status,'failed','戰敗時不能補領通關');
   assert.equal(extremeStageResult(run,30000).status,'cleared');
 });
 test('入場等級、地點及十階快速入場限制',()=>{
@@ -35,8 +38,11 @@ test('入場等級、地點及十階快速入場限制',()=>{
 test('血量王 30 秒傷害不足失敗，達標才成功',()=>{
   const run=beginExtremeRun(player,'hp',1,1000).run;
   recordExtremeDamage(run,1499999999);
+  assert.equal(extremeStageResult(run,2000).status,'active','傷害不足不能提前通關');
   assert.equal(extremeStageResult(run,31000).status,'failed');
   recordExtremeDamage(run,1);
+  assert.equal(extremeStageResult(run,2000).status,'cleared','達標立即通關，不等待30秒');
+  assert.equal(extremeStageResult(run,2000,{alive:false}).status,'failed','戰敗時不能補領通關');
   assert.equal(extremeStageResult(run,31000).status,'cleared');
 });
 test('攻擊王 20 秒存活過關，死亡失敗',()=>{

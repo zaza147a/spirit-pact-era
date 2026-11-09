@@ -19,12 +19,10 @@ test('騎士與修羅以公開終結倍率取代部分AOE倍率',()=>{
  }
 });
 
-test('大法師AOE回撤後CLEAR仍可達36隻，且不假稱仍為第一',()=>{
- const wizard=snapshot('wizard'),commander=snapshot('spiritCommander');
- const knight=snapshot('knight'),monk=snapshot('monk');
+test('大法師AOE既定倍率不變，CLEAR達標後立即進階',()=>{
+ const wizard=snapshot('wizard');
  assert.equal(thirdSkills('wizard').find(s=>s.id==='thirdWide_wizard').thirdGrowth.ratio,1.5);
  assert.equal(THIRD_MAIN_CURVES.wizard.at(-1),6.65);
- assert.equal(wizard.stageKills,36);
- assert.ok(commander.stageKills>wizard.stageKills,'萬靈仍為CLEAR第一');
- assert.ok(wizard.stageKills>knight.stageKills&&wizard.stageKills>monk.stageKills);
+ assert.equal(wizard.cleared,true);
+ assert.ok(wizard.highest>=30,'達成第30階清怪目標後立即進階');
 });

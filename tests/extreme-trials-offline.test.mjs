@@ -86,9 +86,20 @@ test('清怪王離線時恢復五個獨立目標，擊殺即補位並連續進�
  const c=await runtime(),p=ready(c,'clear',1),beforeGold=p.gold;
  assert.equal(p.extremeRun.checkpoint.enemies.length,5);
  const {player,summary}=await c.api.simulateOffline(p,epoch+31500);
- assert.equal(summary.extremeFloors,1);
- assert.equal(player.extremeRun.floor,2);
+ assert.ok(summary.extremeFloors>=1,'達標立即過關，可在同一段離線時間連續進階');
+ assert.equal(player.extremeProgress.clear.highest,summary.extremeFloors);
+ assert.equal(player.extremeRun.floor,summary.extremeFloors+1);
  assert.equal(player.extremeRun.checkpoint.enemies.length,5);
  assert.ok(player.extremeRun.checkpoint.enemies.every(e=>e.hp>0&&e.extremeKind==='clear'));
  assert.equal(player.gold,beforeGold);
+});
+
+test('HP及CLEAR王離線達標後在30秒期限前立即通關',async()=>{
+ for(const kind of ['hp','clear']){
+  const c=await runtime(),p=ready(c,kind,1);
+  const {player,summary}=await c.api.simulateOffline(p,epoch+15000);
+  assert.ok(player.extremeProgress?.[kind]?.highest>=1,`${kind} should clear before 30 seconds`);
+  assert.ok(summary.extremeFloors>=1,`${kind} should record immediate stage clears`);
+  assert.equal(summary.extremeCoins,undefined);
+ }
 });
