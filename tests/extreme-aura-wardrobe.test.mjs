@@ -18,7 +18,8 @@ test('角色外觀提供人物與寵物獨立光環開關，背景頁不重複',
 
 test('角色與寵物皆遵從可關閉的光環狀態',()=>{
  assert.match(game,/dataset\.cosmeticAura=player\.cosmeticAura!==false\?'on':'off'/);
- assert.match(game,/dataset\.cosmeticAura=player\.petCosmeticAura!==false\?'on':'off'/);
+ assert.match(game,/companionAuraRoot\?\.dataset\)companionAuraRoot\.dataset\.cosmeticAura=player\.petCosmeticAura!==false\?'on':'off'/);
+ assert.match(game,/顯示夥伴光環/);
  assert.match(css,/#companion\[data-cosmetic-aura="off"\]>.hero::before/);
  assert.match(css,/#character\[data-cosmetic-aura="off"\]>.hero::before/);
  assert.match(ground,/#gameShell #character\[data-cosmetic-aura="off"\]>.hero\[class\*="extreme-aura-"\]::before\{display:none!important\}/);
