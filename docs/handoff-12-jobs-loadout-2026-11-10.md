@@ -379,3 +379,10 @@
 - **ATK物理承傷由166提升到169層**：單手杖＋盾、原最佳防輔融合／攻速詞，將副手王卡 `boss_starshore` 改為 `boss_volcano`。MATK129／HP33／CLEAR37未超過。
 - `tests/current-extreme-results-integrity.test.mjs` 新增45筆王卡合法性／首次失敗完整檢驗，測試全過。
 - 靈契君王、萬靈宗師已開始相同王卡單插槽掃描；每職／每卡單獨 JSON 可中斷續跑。**僅單卡替換，尚未探索兩張以上卡片聯動或技能優先順序**。
+
+## 分段交接 49：君王、萬靈單卡敏感度中途保全
+
+- 已啟動靈契君王 `pactWarrior`、萬靈宗師 `spiritCommander` 的各部位合法王卡替換；`docs/current-extreme-card-<job>-<mode>-<slot>-<cardId>-20261111.json` 每張卡獨立輸出，成功結算後即落盤。
+- **本段為中途檢查點，不代表兩職已全部完成**。結果檔只有實際成功完成的卡片，缺的檔案尚待繼續試煉，任何高分都不能稱全局最佳。
+- 續跑指令：`EXTREME_JOB=pactWarrior node scripts/current-extreme-card-refinement.mjs` 或把職業改成 `spiritCommander`。搜尋器會依現有檔案的簽章跳過已完成候選。
+- 大法師四域45項王卡試煉已完成及推送，詳分段48。正式 `main`、`dist` 均無變更。

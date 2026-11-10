@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"pactWarrior\",\"fusions\":[\"magic-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"cardSlot\":\"leftHand\",\"cardId\":\"boss_volcano\"}",
+  "job": "pactWarrior",
+  "weaponId": null,
+  "cardSlot": "leftHand",
+  "cardId": "boss_volcano",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "pactWarrior",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 167,
+      "ticks": 33480,
+      "simulatedSeconds": 3348,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 168
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "pactWarrior",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 167,
+      "ticks": 33480,
+      "simulatedSeconds": 3348,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 168
+    }
+  }
+}
