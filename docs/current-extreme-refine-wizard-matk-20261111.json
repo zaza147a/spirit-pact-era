@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"wizard\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\"}",
+  "job": "wizard",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 114,
+      "ticks": 22888,
+      "simulatedSeconds": 2288.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 115
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 129,
+      "ticks": 25976,
+      "simulatedSeconds": 2597.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 130
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 118,
+      "ticks": 23720,
+      "simulatedSeconds": 2372,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 119
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 117,
+      "ticks": 23584,
+      "simulatedSeconds": 2358.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 118
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 89,
+      "ticks": 17840,
+      "simulatedSeconds": 1784,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 90
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 129,
+      "ticks": 25976,
+      "simulatedSeconds": 2597.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 130
+    }
+  }
+}
