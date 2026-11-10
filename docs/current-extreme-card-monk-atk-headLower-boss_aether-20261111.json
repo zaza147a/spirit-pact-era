@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"monk\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"luk-vit\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"cardSlot\":\"headLower\",\"cardId\":\"boss_aether\"}",
+  "job": "monk",
+  "weaponId": null,
+  "cardSlot": "headLower",
+  "cardId": "boss_aether",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "monk",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 160,
+      "ticks": 32184,
+      "simulatedSeconds": 3218.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 161
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "monk",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 160,
+      "ticks": 32184,
+      "simulatedSeconds": 3218.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 161
+    }
+  }
+}
