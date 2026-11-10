@@ -1,11 +1,12 @@
 name: Extreme mantles 48 real browser acceptance (test branch)
 on:
   push:
-    branches: [feature/endless-trials-three-bosses]
+    branches: [feature/endless-trials-three-bosses, fix/extreme-foot-aura-scale-20261110]
     paths:
       - 'scripts/browser/extreme-mantles-48-acceptance.mjs'
       - '.github/workflows/extreme-mantles-browser-acceptance.yml'
       - 'dist/assets/extreme/mantles-v2/**'
+      - 'dist/extreme-trials.css'
   workflow_dispatch:
 permissions:
   contents: read

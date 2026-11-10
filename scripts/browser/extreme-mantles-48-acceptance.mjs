@@ -27,6 +27,12 @@ await new Promise(done=>server.listen(0,'127.0.0.1',done));
 const base=`http://127.0.0.1:${server.address().port}`;
 const jobs=[...LEGACY_OPTIMAL_BUILD_NAMES,'pactWarrior','spiritCommander'];
 const kinds=['atk','matk','hp','clear'];
+const footTargets={
+ 'assassin-atk':{desktop:184,mobile:160},
+ 'assassin-matk':{desktop:203,mobile:178},
+ 'pactWarrior-matk':{desktop:194,mobile:170},
+ 'pactWarrior-clear':{desktop:206,mobile:181}
+};
 const errors=[],results=[];
 let browser;
 try{
@@ -60,6 +66,25 @@ try{
    await art.evaluate(img=>img.decode());
    assert.ok((await art.getAttribute('src')).endsWith(extremeMantleArt(job,kind)),`${filename} wrong character image`);
    assert.deepEqual(await art.evaluate(img=>[img.naturalWidth,img.naturalHeight]),[1024,1536],`${filename} broken image`);
+   const foot=footTargets[filename];
+   if(foot){
+    await page.locator(`[data-extreme-cosmetic="aura"][data-extreme-kind="${kind}"]`).click();
+    const hero=page.locator('#character .hero');
+    const position=async()=>hero.evaluate(el=>({top:parseFloat(getComputedStyle(el,'::before').top),display:getComputedStyle(el,'::before').display}));
+    assert.equal((await position()).top,foot.desktop,`${filename} desktop aura foot position`);
+    await page.locator('[data-cosmetic-aura]').uncheck();
+    assert.equal(await page.locator('#character').getAttribute('data-cosmetic-aura'),'off');
+    assert.equal(await page.locator('#companion').getAttribute('data-cosmetic-aura'),'on','companion toggle is independent');
+    await page.locator('[data-cosmetic-aura]').check();
+    await page.locator('[data-pet-cosmetic-aura]').uncheck();
+    assert.equal(await page.locator('#companion').getAttribute('data-cosmetic-aura'),'off');
+    assert.equal(await page.locator('#character').getAttribute('data-cosmetic-aura'),'on','character toggle is independent');
+    await page.locator('[data-pet-cosmetic-aura]').check();
+    await page.setViewportSize({width:390,height:844});
+    assert.equal((await position()).top,foot.mobile,`${filename} mobile aura foot position`);
+    await page.screenshot({path:resolve(out,`${filename}-mobile-aura.png`),fullPage:true});
+    await page.setViewportSize({width:1440,height:1000});
+   }
    await page.screenshot({path:resolve(out,`${filename}-character.png`),fullPage:true});
    await page.locator('#returnEntryBtn').click();
    const lobby=page.locator('[data-slot-select="0"] img.extreme-outfit-equipped').first();
