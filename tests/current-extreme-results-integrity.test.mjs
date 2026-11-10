@@ -2,8 +2,10 @@
 // Historical five-boss/DPS/field tests are deliberately excluded.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,readdirSync} from 'node:fs';
 import {WEAPON_VARIANTS,currentEndgamePlayer} from './fixtures/current-210-endgame-player.mjs';
+import {CARDS} from '../dist/catalog.js';
+import {cardAllowedInSlot} from '../dist/card-effects.js';
 
 const jobs=['knight','crusader','wizard','sage','assassin','rogue','priest','monk','hunter','performer','pactWarrior','spiritCommander'];
 const modes=['atk','matk','hp','clear'];
@@ -49,5 +51,18 @@ test('weapon comparisons only use legal equipped forms and stop at first failure
    assert.ok(r.results.every(x=>x.weaponId===weaponId&&x.stopped==='first-failure'&&x.nextFloor===x.highest+1),file);
    assert.deepEqual(new Set(r.results.map(x=>x.weaponChoice)),new Set(['critDmg','aspdPct']),file);
   }
+ }
+});
+
+test('wizard card-swap sensitivity samples use only legal boss cards and first failures',()=>{
+ const files=readdirSync('docs').filter(name=>name.startsWith('current-extreme-card-wizard-')&&name.endsWith('-20261111.json'));
+ assert.equal(files.length,45);
+ for(const file of files){
+  const r=data(`docs/${file}`);
+  assert.equal(r.completed,1,file);
+  const x=r.results[0];
+  assert.ok(CARDS[x.cardId]?.boss&&cardAllowedInSlot(CARDS[x.cardId],x.cardSlot,'wizard'),file);
+  assert.equal(x.stopped,'first-failure',file);
+  assert.equal(x.nextFloor,x.highest+1,file);
  }
 });

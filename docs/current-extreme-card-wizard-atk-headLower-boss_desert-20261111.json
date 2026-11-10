@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"wizard\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"weaponId\":\"oneStaff\",\"cardSlot\":\"headLower\",\"cardId\":\"boss_desert\"}",
+  "job": "wizard",
+  "weaponId": "oneStaff",
+  "cardSlot": "headLower",
+  "cardId": "boss_desert",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "headLower",
+      "cardId": "boss_desert",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 145,
+      "ticks": 29128,
+      "simulatedSeconds": 2912.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 146
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "headLower",
+      "cardId": "boss_desert",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 145,
+      "ticks": 29128,
+      "simulatedSeconds": 2912.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 146
+    }
+  }
+}

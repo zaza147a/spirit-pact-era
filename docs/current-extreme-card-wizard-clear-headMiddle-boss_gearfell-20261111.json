@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"wizard\",\"fusions\":[\"attack-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"clear\"],\"seed\":\"20261110\",\"cardSlot\":\"headMiddle\",\"cardId\":\"boss_gearfell\"}",
+  "job": "wizard",
+  "weaponId": null,
+  "cardSlot": "headMiddle",
+  "cardId": "boss_gearfell",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "wizard",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headMiddle",
+      "cardId": "boss_gearfell",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 4209,
+      "simulatedSeconds": 420.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "wizard",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headMiddle",
+      "cardId": "boss_gearfell",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 4209,
+      "simulatedSeconds": 420.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    }
+  }
+}

@@ -372,3 +372,10 @@
 - 新增 `scripts/current-extreme-card-refinement.mjs`：讀取目前三輪各模式最佳融合／配點／武器，對各可用部位逐張替換成其他合法首領卡，實際跑正式四域至首次失敗；每張卡、每模式單獨保存 `docs/current-extreme-card-<job>-<kind>-<slot>-<cardId>-20261111.json`，支援中斷續跑。
 - **大法師HP單體輸出首批11項完成**：`docs/current-extreme-card-wizard-hp-*-20261111.json`，最佳仍為HP33層，其他單張王卡替換未超過。ATK、MATK、CLEAR的王卡候選仍在進行。
 - **限制**：這是單一插槽的局部敏感度搜尋，尚不是多張王卡組合的全局最優，也還沒搜尋所有融合／配點／技能順序；`main`／`dist` 未修改。
+
+## 分段交接 48：大法師四域王卡局部替換全部完成
+
+- `docs/current-extreme-card-wizard-{atk,matk,hp,clear}-*-20261111.json` 共**45次正式試煉**，每次只替換一個部位的合法首領卡，保留三輪各域目前最強的融合／配點／武器，均首次失敗。
+- **ATK物理承傷由166提升到169層**：單手杖＋盾、原最佳防輔融合／攻速詞，將副手王卡 `boss_starshore` 改為 `boss_volcano`。MATK129／HP33／CLEAR37未超過。
+- `tests/current-extreme-results-integrity.test.mjs` 新增45筆王卡合法性／首次失敗完整檢驗，測試全過。
+- 靈契君王、萬靈宗師已開始相同王卡單插槽掃描；每職／每卡單獨 JSON 可中斷續跑。**僅單卡替換，尚未探索兩張以上卡片聯動或技能優先順序**。
