@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"priest\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\"}",
+  "job": "priest",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 164,
+      "ticks": 32936,
+      "simulatedSeconds": 3293.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 165
+    },
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 151,
+      "ticks": 30352,
+      "simulatedSeconds": 3035.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 152
+    },
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 175,
+      "ticks": 35192,
+      "simulatedSeconds": 3519.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 176
+    },
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 174,
+      "ticks": 34856,
+      "simulatedSeconds": 3485.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 175
+    },
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 106,
+      "ticks": 21272,
+      "simulatedSeconds": 2127.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 107
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 175,
+      "ticks": 35192,
+      "simulatedSeconds": 3519.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 176
+    }
+  }
+}

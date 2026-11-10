@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"priest\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\"}",
+  "job": "priest",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 109,
+      "ticks": 21960,
+      "simulatedSeconds": 2196,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 110
+    },
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 120,
+      "ticks": 24160,
+      "simulatedSeconds": 2416,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 121
+    },
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 122,
+      "ticks": 24560,
+      "simulatedSeconds": 2456,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 123
+    },
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 123,
+      "ticks": 24736,
+      "simulatedSeconds": 2473.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 124
+    },
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 107,
+      "ticks": 21576,
+      "simulatedSeconds": 2157.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 108
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 123,
+      "ticks": 24736,
+      "simulatedSeconds": 2473.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 124
+    }
+  }
+}
