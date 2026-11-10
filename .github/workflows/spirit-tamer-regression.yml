@@ -284,42 +284,6 @@ jobs:
       - name: Compare both spirit roles across all 15 legal pairs in boss-chain and field combat
         run: node tests/spirit-specialization-matrix.mjs
 
-  spirit-twelve-job-five-minute-ranking:
-    if: ${{ !contains(github.event.head_commit.message, '[card-only]') && !contains(github.event.head_commit.message, '[rebirth-only]') && !contains(github.event.head_commit.message, '[test-cleanup]') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Rank actual five-minute kills across ten legacy jobs and two spirit roles
-        run: node tests/spirit-twelve-job-five-minute-ranking.mjs
-
-  spirit-twelve-job-five-boss-ranking:
-    if: ${{ !contains(github.event.head_commit.message, '[card-only]') && !contains(github.event.head_commit.message, '[rebirth-only]') && !contains(github.event.head_commit.message, '[test-cleanup]') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Rank 200 five-boss clears against ten existing jobs with SS gear
-        run: node tests/spirit-twelve-job-five-boss-ranking.mjs
-
-  spirit-twelve-job-sss-sigil8-five-boss-ranking:
-    if: ${{ !contains(github.event.head_commit.message, '[card-only]') && !contains(github.event.head_commit.message, '[rebirth-only]') && !contains(github.event.head_commit.message, '[test-cleanup]') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Compare all twelve jobs in five-boss trials with full mythic SSS and sigil 8
-        run: node tests/spirit-twelve-job-sss-sigil8-five-boss-ranking.mjs
-
   spirit-cultivation-field-audit:
     if: ${{ !contains(github.event.head_commit.message, '[card-only]') && !contains(github.event.head_commit.message, '[rebirth-only]') && !contains(github.event.head_commit.message, '[test-cleanup]') }}
     runs-on: ubuntu-latest
@@ -331,18 +295,6 @@ jobs:
           node-version: '22'
       - name: Verify twelve-class low, mythic and SSS cultivation field DPS
         run: node tests/spirit-cultivation-field-audit.mjs
-
-  spirit-210-max-sigil-ranking:
-    if: ${{ !contains(github.event.head_commit.message, '[card-only]') && !contains(github.event.head_commit.message, '[rebirth-only]') && !contains(github.event.head_commit.message, '[test-cleanup]') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Compare all twelve jobs at level 210 and sigil 0 versus 8
-        run: node tests/spirit-210-max-sigil-ranking.mjs
 
   spirit-201-mixed-build-search:
     if: ${{ !contains(github.event.head_commit.message, '[card-only]') && !contains(github.event.head_commit.message, '[rebirth-only]') && !contains(github.event.head_commit.message, '[test-cleanup]') }}

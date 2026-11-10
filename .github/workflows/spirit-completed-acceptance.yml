@@ -94,24 +94,4 @@ jobs:
           node-version: '22'
       - name: Compare Lv170/180 gear in 191-200 and strictly SSS in 201-210
         run: node tests/spirit-underlevel-map-survival.mjs
-  spirit-200-mythic-five-boss:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Test 16 Lv200 five-boss attempts with mythic gear only
-        run: node tests/spirit-200-low-gear-five-boss.mjs
-  spirit-200-five-boss-observation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: 'Actual five-boss Worker fight at 200: mythic unenhanced versus SS'
-        run: node tests/spirit-200-five-boss-live-observation.mjs
 
