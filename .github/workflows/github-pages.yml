@@ -68,6 +68,20 @@ jobs:
             test -f "${png%.png}.webp" || { echo "Missing WebP for $png"; exit 1; }
             rm -f "$png"
           done
+          # All 48 class-specific V2 mantles supersede the original illustrations.
+          # Validate the complete V2 set before excluding the legacy art from Pages.
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import { EXTREME_MANTLE_JOBS, EXTREME_MANTLE_KINDS, EXTREME_MANTLE_V2_READY } from './dist/extreme-mantle-catalog.js';
+          const all = EXTREME_MANTLE_KINDS.flatMap(kind => EXTREME_MANTLE_JOBS.map(job => `${kind}_${job}`));
+          for (const id of all) {
+            if (!EXTREME_MANTLE_V2_READY.includes(id)) throw Error(`V2 mantle not enabled: ${id}`);
+            const [kind, ...parts] = id.split('_');
+            if (!fs.existsSync(`pages-site/assets/extreme/mantles-v2/${kind}-${parts.join('_')}.webp`)) throw Error(`V2 mantle missing: ${id}`);
+          }
+          console.log(`Validated ${all.length} V2 mantle images; legacy mantle assets may be omitted.`);
+          NODE
+          find pages-site/assets/extreme/mantles -maxdepth 1 -type f -name '*.webp' -delete
           rm -f pages-site/effects-lab.html
           rm -f pages-site/weapon-compensation-test.html
           rm -f pages-site/balance-sim.mjs
