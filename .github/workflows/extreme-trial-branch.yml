@@ -1,0 +1,48 @@
+name: Extreme trial card search - test branch only
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-trial-branch.yml']
+permissions:
+  contents: write
+concurrency:
+  group: extreme-trial-card-search
+  cancel-in-progress: false
+jobs:
+  priest-atk:
+    if: github.ref == 'refs/heads/test/12-jobs-optimal-loadout-20261110'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run real ATK trial card refinement
+        env:
+          EXTREME_JOB: priest
+          EXTREME_MODES: atk
+          EXTREME_CARD_CONCURRENCY: '3'
+        run: node scripts/current-extreme-card-refinement.mjs
+      - name: Validate generated results
+        run: node --test tests/current-extreme-results-integrity.test.mjs
+      - name: Commit completed results to test branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/current-extreme-card-priest-atk-*-20261111.json
+          if git diff --cached --quiet; then
+            echo "No new trial reports"
+          else
+            git commit -m "test: save priest ATK extreme-trial card results [skip ci]"
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          fi
+      - name: Upload trial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: priest-atk-extreme-card-results
+          path: docs/current-extreme-card-priest-atk-*-20261111.json
+          if-no-files-found: warn
