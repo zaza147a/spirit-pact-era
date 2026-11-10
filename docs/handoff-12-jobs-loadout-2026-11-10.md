@@ -117,3 +117,12 @@
 - 本輪固定配點、預設杖劍、首領卡選擇規則下，`attack-support + aspdPct` 的候選最高：**HP 35、CLEAR 37**。
 - **使用者已實測君王 HP ≥40**，故本輪尚未找到真正最佳配置；不得將 35 層作為君王最高層或用來做職業平衡。
 - 下一階段要搜尋 STR/INT 主攻切換、438 點合法配點、可用首領卡組合、技能優先順序與多亂數種子，並保留使用者 HP40 這一個最低驗收門檻。
+
+## 分段交接 11：君王配點搜尋達到使用者實測
+
+- `tests/fixtures/current-210-endgame-player.mjs` 新增合法 438 點／單項150的副屬性配置候選：`reference`、`agi-vit`、`luk-vit`、`dex-vit`、`agi-luk`、`vit-luk`、`dex-luk`。
+- `scripts/current-extreme-candidate-search.mjs` 及連續測試器可透過 `EXTREME_PROFILES`／`EXTREME_ATTRIBUTE_PROFILE` 搜尋與複測。
+- 在君王 `attack-support` 配合暴傷／攻速兩種詞，十四候選、28 次真實 HP/CLEAR 試煉中，`agi-luk + aspdPct` 得到 **HP 40（41傷害不足）、CLEAR 43（44擊殺不足）**。
+- 此組人物基礎配點：**STR 150、AGI 150、LUK 141，其餘1**。結果 `docs/current-extreme-king-attributes-20261110.json`。
+- 已達使用者君王 HP40 的已知下界，證明先前固定 VIT 配點會低估君王；**這仍是有界候選搜尋，並非全局最佳或跨種子穩定成績**。
+- 下一段：固定此候選先做多種子複測，再搜尋其他職業與更多合法武器／首領卡／技能優先序。
