@@ -175,3 +175,10 @@
 - 對應檢查點分別是 `docs/current-extreme-sage-search-20261110.json`、`docs/current-extreme-assassin-search-20261110.json`、`docs/current-extreme-rogue-search-20261110.json`、`docs/current-extreme-monk-search-20261110.json`。
 - 所有輸出每完成一套即落盤；若程序消失可將 `EXTREME_JOB` 設為檔名職業、`EXTREME_OUTPUT` 指向同一結果檔，並指定 `EXTREME_CONCURRENCY=2 EXTREME_PROFILES=reference,agi-luk EXTREME_MODES=atk,matk,hp,clear` 重新執行 `node scripts/current-extreme-candidate-search.mjs`；會自動跳過已完成配置。
 - **上述四職尚未完成24套，`best` 只是當下檢查點；禁止用於排名。** 完成時再更新最高層與提交完整資料。
+
+## 分段交接 19：斬首24套完整候選
+
+- `docs/current-extreme-assassin-search-20261110.json` 完成六融合×兩武器詞×兩配點，共24套／96項正式極限試煉；最高值均為首次失敗後所得。
+- 本輪最高 **ATK 143**（防輔＋暴傷）、**MATK 121**（防輔＋攻速）、**HP 35**（攻魔＋暴傷）、**CLEAR 36**（攻魔＋暴傷）。完整最佳配點與失敗原因見 `best`。
+- 仍不是全部武器、王卡及配點的全球最優；僅是與其他職相同範圍的有界候選比較。
+- 遊俠接替斬首空出的資源；賢者、逐影及修羅尚在執行。
