@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈契紀元｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-10-current-v18"><style>
+<title>靈契紀元｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-10-current-v19"><style>
 :root{color-scheme:dark;--bg:#0c111e;--panel:#172033;--line:#2c3b52;--text:#e9eef9;--muted:#afbdd1;--gold:#eac481;--accent:#6fb6ef}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0c111e,#15233b);color:var(--text);font:15px/1.65 system-ui,"Noto Sans TC",sans-serif;min-height:100vh}
 header{padding:28px max(18px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#0c1426}header h1{font-size:28px;margin:0;color:var(--gold)}header p{margin:4px 0;color:var(--muted)}
@@ -19,7 +19,7 @@ code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}
 .job-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0}.job-overview>div{border:1px solid var(--line);background:#1b2a41;border-radius:10px;padding:12px}.job-overview b{color:var(--gold)}.skill-group{margin:20px 0}.skill-group h4{color:var(--gold)}.skill-card{border:1px solid #38516e;background:#142338;border-radius:12px;margin:12px 0;padding:14px}.skill-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:6px}.skill-head b{font-size:17px;color:#f5d5a0}.skill-table th,.skill-table td{text-align:center;white-space:nowrap;padding:8px 10px}.skill-table th:first-child,.skill-table td:first-child{text-align:left;position:sticky;left:0;background:#1c2e47;z-index:1}.skill-table td{font-variant-numeric:tabular-nums}.skill-table{min-width:650px}.skill-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);margin-top:10px}.skill-note{font-size:12px;color:var(--muted);margin-top:8px}@media(max-width:600px){.skill-card{padding:10px}.skill-table th,.skill-table td{padding:7px 9px}}
 .log-date{color:var(--gold);font-weight:700}.log-entry{padding:12px 0;border-top:1px solid var(--line)}.log-entry:first-of-type{border-top:0}.log-entry ul{margin:7px 0 0;padding-left:22px}
 </style></head><body>
-<header><h1>✦ 靈契紀元冒險資料庫</h1><p>怪物 · 卡片 · 裝備 · 夥伴 · 共鳴 · 職業 · 返鄉 · 試煉 · 更新日誌</p><p class="small">正式版資料同步：2026.11.10 · 遊戲主線 V7.1.9</p></header>
+<header><h1>✦ 靈契紀元冒險資料庫</h1><p>怪物 · 卡片 · 裝備 · 夥伴 · 共鳴 · 職業 · 返鄉 · 試煉 · 更新日誌</p><p class="small">正式版資料同步：2026.11.10 · 遊戲主線 V7.1.11</p></header>
 <main><div class="toolbar" id="nav"><button data-tab="monsters" aria-selected="true">怪物</button><button data-tab="cards">卡片</button><button data-tab="gear">裝備詞條</button><button data-tab="pet">夥伴</button><button data-tab="resonance">共鳴玩法</button><button data-tab="evolution">夥伴進化</button><button data-tab="jobs">職業介紹與技能</button><button data-tab="spirit">君王／萬靈機制</button><button data-tab="homecoming">返鄉任務</button><button data-tab="extreme">極限試煉</button><button data-tab="rules">遊戲機制</button><button data-tab="changelog">更新日誌</button></div>
 <div class="toolbar" id="filters"><input id="search" type="search" placeholder="搜尋名稱、等級、屬性或地圖"><select id="continent" aria-label="選擇大陸"><option value="">所有大陸</option><option value="icarus">伊卡洛斯大陸（等級 1–99）</option><option value="sky">蒼穹彼岸（等級 101–200）</option><option value="dawn">曙界新陸（等級 201–210）</option></select><select id="zone" aria-label="選擇地圖"><option value="">所有地圖</option></select><select id="cardType" hidden aria-label="卡片種類"><option value="">全部卡片</option><option value="boss">所有首領卡片</option><option value="normal">一般卡片</option></select><select id="cardSlot" hidden aria-label="卡片裝備部位"><option value="">全部卡片部位</option></select><select id="rarity" hidden><option value="common">普通</option><option value="rare">稀有</option><option value="uncommon">罕見</option><option value="legendary">傳說</option><option value="mythic">神話</option></select><select id="tier" hidden></select></div>
 <div id="cardLevelPanel" hidden class="item" style="margin:0 0 16px">
@@ -123,6 +123,8 @@ const RELEASE_NOTES=[
  {date:'2026-11-10',items:[
   '新增全職業共通的210等／契印8離隊夥伴修練：經驗不受等級差懲罰，另可獲得忠誠。',
   '210級首領「黎明裁界者」核心可在村莊商店兌換忠誠結晶，每顆指定夥伴忠誠+1。',
+  '忠誠結晶支援自行輸入數量，批次兌換首領核心與批次指定夥伴使用；限制材料數量與忠誠500上限。',
+  '返鄉任務新增十二種正反融合型態的已完成／未完成清單，避免重複培養；WIKI補充君王同化、萬靈協戰機制。',
   '修正極限戰袍大小、角色腳下光環定位及夥伴原有光環，更新四張極限立繪。',
   '修正金幣背景在選角畫面顯示與新版主程式快取。']},
  {date:'2026-11-09',items:[
