@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"priest\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"dex-vit\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"cardSlot\":\"headLower\",\"cardId\":\"boss_desert\"}",
+  "job": "priest",
+  "weaponId": null,
+  "cardSlot": "headLower",
+  "cardId": "boss_desert",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_desert",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 169,
+      "ticks": 33832,
+      "simulatedSeconds": 3383.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 170
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "priest",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_desert",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 169,
+      "ticks": 33832,
+      "simulatedSeconds": 3383.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 170
+    }
+  }
+}
