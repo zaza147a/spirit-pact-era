@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"assassin\",\"fusions\":[\"attack-magic\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\",\"weaponId\":\"rifle+offDagger\",\"cardSlot\":\"rightHand\",\"cardId\":\"boss_astral\"}",
+  "job": "assassin",
+  "weaponId": "rifle+offDagger",
+  "cardSlot": "rightHand",
+  "cardId": "boss_astral",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle+offDagger",
+      "cardSlot": "rightHand",
+      "cardId": "boss_astral",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3550,
+      "simulatedSeconds": 355,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle+offDagger",
+      "cardSlot": "rightHand",
+      "cardId": "boss_astral",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3550,
+      "simulatedSeconds": 355,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    }
+  }
+}
