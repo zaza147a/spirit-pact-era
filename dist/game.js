@@ -1538,33 +1538,40 @@ function renderTrainingPanel(){
 }
 function renderLoyaltyCharmPanel(){
  const quantity=player.bag.find(e=>e.id==='companion_loyalty_charm')?.qty||0;
- return `<section class="item"><h3>✦ 夥伴忠誠結晶</h3><p>持有 ${quantity} 顆；每顆可指定一隻夥伴忠誠度 +1，最高 ${LOYALTY_MAX}。</p>${quantity?player.pets.map(p=>`<button data-loyalty-use="${escapeHtml(p.id)}" ${(p.loyalty||0)>=LOYALTY_MAX?'disabled':''}>${escapeHtml(p.nickname)} · ${p.loyalty||0}／${LOYALTY_MAX} · 使用 1 顆</button>`).join(''):'<small>可在村莊商店以 210 級首領素材兌換。</small>'}</section>`;
+ return `<section class="item"><h3>✦ 夥伴忠誠結晶</h3><p>持有 ${quantity} 顆；每顆可指定一隻夥伴忠誠度 +1，最高 ${LOYALTY_MAX}。</p><label>本次使用數量 <input type="number" min="1" max="${Math.max(1,quantity)}" step="1" value="1" data-loyalty-use-quantity aria-label="忠誠結晶使用數量" style="width:100px;min-width:0"></label>${quantity?player.pets.map(p=>`<button data-loyalty-use="${escapeHtml(p.id)}" ${(p.loyalty||0)>=LOYALTY_MAX?'disabled':''}>${escapeHtml(p.nickname)} · ${p.loyalty||0}／${LOYALTY_MAX} · 指定使用</button>`).join(''):'<small>可在村莊商店以 210 級首領素材兌換。</small>'}</section>`;
 }
 function renderLoyaltyExchange(){
  const cores=player.bag.find(e=>e.id==='dawn_archon_core')?.qty||0;
  const charms=player.bag.find(e=>e.id==='companion_loyalty_charm')?.qty||0;
- return `<section class="item"><h3>✦ 忠誠素材兌換</h3><p>曙界 210 級首領「黎明裁界者」掉落的「${ITEMS.dawn_archon_core.name}」×1，可兌換「${ITEMS.companion_loyalty_charm.name}」×1。使用後指定夥伴忠誠度 +1（上限 ${LOYALTY_MAX}）。</p><p>素材 ${cores} 個 · 忠誠結晶 ${charms} 顆</p><button data-loyalty-exchange ${Number(player.dawnSigil)<8||!cores?'disabled':''}>兌換 1 顆忠誠結晶</button>${Number(player.dawnSigil)<8?'<small>須先達契印 8，避免消耗契印升級素材。</small>':''}</section>`;
+ return `<section class="item"><h3>✦ 忠誠素材兌換</h3><p>曙界 210 級首領「黎明裁界者」掉落的「${ITEMS.dawn_archon_core.name}」×1，可兌換「${ITEMS.companion_loyalty_charm.name}」×1。使用後指定夥伴忠誠度 +1（上限 ${LOYALTY_MAX}）。</p><p>素材 ${cores} 個 · 忠誠結晶 ${charms} 顆</p><label>兌換數量 <input type="number" min="1" max="${Math.max(1,cores)}" step="1" value="1" data-loyalty-exchange-quantity aria-label="忠誠結晶兌換數量" style="width:100px;min-width:0"></label><button data-loyalty-exchange ${Number(player.dawnSigil)<8||!cores?'disabled':''}>兌換忠誠結晶</button>${Number(player.dawnSigil)<8?'<small>須先達契印 8，避免消耗契印升級素材。</small>':''}</section>`;
 }
-function exchangeLoyaltyCharm(){
+function validLoyaltyQuantity(value,max){const n=Number(value);return Number.isSafeInteger(n)&&n>=1&&n<=max?n:null;}
+function exchangeLoyaltyCharm(requested=1){
  if(!isTown(player.location)||Number(player.dawnSigil)<8)return toast('需達契印8並回到村莊商店兌換');
- if(!(player.bag.find(e=>e.id==='dawn_archon_core')?.qty>0))return toast('缺少210級首領掉落的裁界者核心');
+ const cores=player.bag.find(e=>e.id==='dawn_archon_core')?.qty||0;
+ if(!cores)return toast('缺少210級首領掉落的裁界者核心');
+ const quantity=validLoyaltyQuantity(requested,cores);
+ if(!quantity)return toast(`請輸入1～${cores}之間的整數兌換數量`);
  const before=structuredClone(player);
- if(!consumeStack(player.bag,'dawn_archon_core'))return;
- addStack(player.bag,'companion_loyalty_charm',1);
+ for(let i=0;i<quantity;i++)if(!consumeStack(player.bag,'dawn_archon_core')){player=before;return;}
+ addStack(player.bag,'companion_loyalty_charm',quantity);
  dirty=true;if(save()===false){player=before;return;}
- message('兌換夥伴忠誠結晶 ×1，可在夥伴管理指定使用。','good');renderSide(true);
+ message(`兌換夥伴忠誠結晶 ×${quantity}，可在夥伴管理指定使用。`,'good');renderSide(true);
 }
-function useLoyaltyCharm(petId){
+function useLoyaltyCharm(petId,requested=1){
  const pet=player.pets.find(p=>p.id===petId);
  if(!pet)return toast('找不到指定夥伴');
  normalizeLoyalty(pet);
  if(pet.loyalty>=LOYALTY_MAX)return toast('此夥伴忠誠度已達上限');
- if(!(player.bag.find(e=>e.id==='companion_loyalty_charm')?.qty>0))return toast('忠誠結晶不足');
+ const charms=player.bag.find(e=>e.id==='companion_loyalty_charm')?.qty||0;
+ if(!charms)return toast('忠誠結晶不足');
+ const quantity=validLoyaltyQuantity(requested,Math.min(charms,LOYALTY_MAX-pet.loyalty));
+ if(!quantity)return toast(`請輸入1～${Math.min(charms,LOYALTY_MAX-pet.loyalty)}之間的整數使用數量`);
  const before=structuredClone(player);
- if(!consumeStack(player.bag,'companion_loyalty_charm'))return;
- pet.loyalty=Math.min(LOYALTY_MAX,pet.loyalty+1);
+ for(let i=0;i<quantity;i++)if(!consumeStack(player.bag,'companion_loyalty_charm')){player=before;return;}
+ pet.loyalty=Math.min(LOYALTY_MAX,pet.loyalty+quantity);
  dirty=true;if(save()===false){player=before;return;}
- message(`${pet.nickname} 忠誠度 +1（${pet.loyalty}／${LOYALTY_MAX}）。`,'good');renderSide(true);
+ message(`${pet.nickname} 忠誠度 +${quantity}（${pet.loyalty}／${LOYALTY_MAX}）。`,'good');renderSide(true);
 }
 function renderPetManagement(){const spiritHint=spiritGrowthGuide(player,activePetRoster(player));return `${renderTrainingPanel()}${renderLoyaltyCharmPanel()}${spiritHint?`<div class="item report-notice"><b>✧ ${spiritHint.stage}</b><p>${spiritHint.message}</p></div>`:''}<div class="item"><h3>夥伴管理 ${player.pets.length}／30</h3><p>管理捕捉、鎖定、出戰與放生。鎖定及出戰中的夥伴不會被批次放生。能力與技能請到「當前出戰夥伴」。</p><div class="panel-shortcuts"><button data-release-select="all">全選可放生</button><button data-release-select="none">取消全選</button><button data-release-batch>放生已選（${selectedReleasePets.size}）</button></div><label>依品質放生<select data-release-rarity>${PET_RARITIES.map(r=>`<option value="${r.id}" ${releaseRarity===r.id?'selected':''}>${r.name}及以下</option>`).join('')}</select></label><button data-release-below class="danger">確認放生所選品質及以下</button><p>捕捉品質：普通70%／稀有25%／罕見4%／傳說1%，不直接捕捉神話。</p></div>${player.pets.map(p=>{const active=p.id===player.activePetId,secondary=false,step=nextPetEvolution(p),ready=step&&p.level>=step.level;return `<div class="item" data-ui-key="pet-${p.id}"><label><input type="checkbox" data-release-check="${p.id}" ${selectedReleasePets.has(p.id)?'checked':''} ${active||secondary||p.locked||p.id===player.trainingPetId?'disabled':''}>選擇放生</label><div class="itemhead"><b>${petIcon(p)} ${escapeHtml(petForm(p)||p.nickname)}</b><span class="grade-${p.rarity}">${petRarity(p).name}</span></div><p>Lv.${p.level} · ${fusedPair(p)?.name||SPECIES[p.species].roleName} · ${active?'夥伴出戰中':p.id===player.trainingPetId?'離隊修練中':p.locked?'已鎖定':'未出戰'}${ready?' · 可回村莊進化':''}</p><button data-pet="${p.id}">${active?'收回':'設為出戰夥伴'}</button><button data-rename-pet="${p.id}">✎ 改名</button><button data-pet-lock="${p.id}">${p.locked?'解除鎖定':'鎖定'}</button><button data-release="${p.id}" ${p.locked||p.id===player.trainingPetId?'disabled':''}>放生</button>${ready?`<button ${isTown(player.location)?`data-evolve="${p.id}"`:'data-town'}>${isTown(player.location)?'村莊進化':'回村莊進化'}</button>`:''}</div>`;}).join('')||'<div class="item">尚無夥伴。</div>'}${isTown(player.location)?'<details class="item"><summary>村莊進化規則與靈核合成</summary>'+renderEvolution(false)+'</details>':'<p>進化只能回村莊進行。</p>'}`;}
 function renderActiveCompanion(){const p=selectedGearPet();if(!p)return '<div class="item">尚無出戰夥伴，請先到夥伴管理選擇夥伴。</div>';const stats=petStats(p);return `<div class="item loyalty-panel"><b>忠誠度 ${p.loyalty||0}／${LOYALTY_MAX}</b><p>出戰且存活、怪物與夥伴等差±40以內，每累積${LOYALTY_PER_POINT}隻+1；擊敗首領另有50%機率直接+1；目前進度 ${p.loyaltyKills||0}／${LOYALTY_PER_POINT}。界限進化消耗${ASCENSION_LOYALTY}忠誠度。${p.fusion?'已完成融合進化 · 上限200':p.ascended?'已完成界限進化／異化 · 上限150 · 額外核心能力+15%':'上限99；需完成99級界限進化／異化後才開放150'}</p></div><div class="item"><h3>${escapeHtml(petForm(p)||p.nickname)}</h3>${p.sealedProgress?`<p>已封存Lv.${p.sealedProgress.level}的舊進度，完成界限進化／異化後恢復；超過目前等級的夥伴裝備暫不生效。</p>`:''}${petSprite(p,'pet')}<p>${petRarity(p).name} · ${fusedPair(p)?.name||SPECIES[p.species].roleName} · Lv.${p.level}</p>${petAttackBadge(p,stats)}${fusionEquipmentHint(companionRole(p),!!fusedPair(p))?`<p class="attack-gear-hint">${fusionEquipmentHint(companionRole(p),true)}</p>`:""}<div class="pet-live-shield"><b>◇ 夥伴目前護盾 ${Math.max(0,effectsForPet(p).shield||0)}</b>${meter(effectsForPet(p).shield||0,Math.round(stats.hp*.25),'shield')}</div><div class="numbers">${['hp','sp','atk','matk','def','mdef','aspd','hit','flee','crit','critDmg','ignoreDef','damageReduction','aspdPct'].map(key=>`<div><small>${({hp:"生命值",sp:"魔力值",atk:"物理攻擊",matk:"魔法攻擊",def:"物理防禦",mdef:"魔法防禦",aspd:"攻擊速度",hit:"命中",flee:"迴避",crit:"暴擊率",critDmg:"暴擊傷害",ignoreDef:"無視防禦",damageReduction:"最終減傷",aspdPct:"攻速加成"})[key]}</small><b>${stats[key]}${["crit","critDmg","ignoreDef","damageReduction","aspdPct"].includes(key)?"%":""}</b></div>`).join('')}</div>${nextPetEvolution(p)&&p.level>=nextPetEvolution(p).level?'<p class="evolution-ready">已達進化等級，請回村莊進化。</p>':''}</div>`+renderPetSkillConfig();}
@@ -1875,8 +1882,8 @@ tab=requestedTab;if(characterView)html=renderCharacterTabs()+html;if(tab==='evol
 for(const b of $('side').querySelectorAll('[data-character-section]'))b.onclick=()=>{characterSection=b.dataset.characterSection;renderSide(true);};
 for(const b of $('side').querySelectorAll('[data-pet-section]'))b.onclick=()=>{petSection=b.dataset.petSection;renderSide(true);};for(const b of $('side').querySelectorAll('[data-dual-config]'))b.onclick=()=>{petGearTargetId=b.dataset.dualConfig;renderSide(true);};for(const b of $('side').querySelectorAll('[data-pet-stance]'))b.onclick=()=>{const [id,stance]=b.dataset.petStance.split(':');setPetStance(id,stance);};for(const b of $('side').querySelectorAll('[data-secondary-pet]'))b.onclick=()=>setSecondaryPet(b.dataset.secondaryPet);
 for(const s of $('side').querySelectorAll('[data-training-pet]'))s.onchange=()=>{const id=s.value;const pet=player.pets.find(p=>p.id===id);if(id&&(!trainingUnlocked(player)||!pet||pet.id===player.activePetId||pet.id===player.secondaryPetId||pet.hp<=0||pet.level>=200))return toast('此夥伴不符合離隊修練條件');player.trainingPetId=id||null;selectedReleasePets.delete(id);dirty=true;save();renderSide(true);};
-for(const b of $('side').querySelectorAll('[data-loyalty-use]'))b.onclick=()=>useLoyaltyCharm(b.dataset.loyaltyUse);
-for(const b of $('side').querySelectorAll('[data-loyalty-exchange]'))b.onclick=exchangeLoyaltyCharm;
+for(const b of $('side').querySelectorAll('[data-loyalty-use]'))b.onclick=()=>useLoyaltyCharm(b.dataset.loyaltyUse,$('side').querySelector('[data-loyalty-use-quantity]')?.value);
+for(const b of $('side').querySelectorAll('[data-loyalty-exchange]'))b.onclick=()=>exchangeLoyaltyCharm($('side').querySelector('[data-loyalty-exchange-quantity]')?.value);
 for(const b of $('side').querySelectorAll('[data-rename-pet]'))b.onclick=()=>openPetRename(b.dataset.renamePet);
 for(const b of $('side').querySelectorAll('[data-quest-accept]'))b.onclick=()=>zoneQuestAction(b.dataset.questAccept);
 for(const b of $('side').querySelectorAll('[data-quest-turnin]'))b.onclick=()=>zoneQuestAction(b.dataset.questTurnin,true);
