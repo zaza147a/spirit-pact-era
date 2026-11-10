@@ -12,6 +12,7 @@ const weaponChoice=process.env.EXTREME_WEAPON||'critDmg';
 const modes=(process.env.EXTREME_MODES||'atk,matk,hp,clear').split(',');
 const ceiling=Number(process.env.EXTREME_FLOOR_CEILING||150);
 const maxSimSeconds=Number(process.env.EXTREME_SIM_SECONDS||7200);
+const seed=Number(process.env.EXTREME_SEED||20261110);
 assert.ok(SECOND_JOBS[job]&&FUSIONS.includes(fusion));
 assert.ok(['critDmg','aspdPct'].includes(weaponChoice));
 assert.ok(modes.every(x=>['atk','matk','hp','clear'].includes(x)));
@@ -19,6 +20,9 @@ assert.ok(Number.isInteger(ceiling)&&ceiling>0&&ceiling<=500);
 
 async function run(kind){
  const c=await runtime(),p=currentEndgamePlayer(job,{fusion,weaponChoice});
+ let state=seed>>>0;
+ const random=()=>((state=(Math.imul(state,1664525)+1013904223)>>>0)/4294967296);
+ c.Math.random=random;c.rand=(lo,hi)=>Math.floor(random()*(hi-lo+1))+lo;
  p.location='dawncity';p.extremeProgress={};p.extremeRun=null;
  const started=1_000_000;let now=started,ticks=0;
  c.setTime(started);c.api.setup(p,null);
@@ -28,8 +32,8 @@ async function run(kind){
   now+=100;c.setTime(now);c.api.combatTick(now);ticks++;
  }
  const highest=p.extremeProgress?.[kind]?.highest||0;
- const result={job,fusion,weaponChoice,kind,highest,ticks,simulatedSeconds:(now-started)/1000,
-  stopped:p.extremeRun?'safety-ceiling':'first-failure',failure:p.extremeLastResult?.reason||null,
+ const result={job,fusion,weaponChoice,seed,kind,highest,ticks,simulatedSeconds:(now-started)/1000,
+  stopped:!p.extremeRun?'first-failure':p.extremeRun.floor>ceiling?'floor-ceiling':'time-ceiling',failure:p.extremeLastResult?.reason||null,
   nextFloor:p.extremeRun?.floor||p.extremeLastResult?.floor||null};
  if(result.stopped==='first-failure')assert.equal(result.nextFloor,highest+1);
  return result;
