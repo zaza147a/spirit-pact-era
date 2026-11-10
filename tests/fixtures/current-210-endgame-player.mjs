@@ -6,6 +6,8 @@ import {optimizeAffixes,selectBossCards,validateOwnerLoadout} from './twelve-job
 import {attackAttribute} from './twelve-job-loadout-policy.mjs';
 import {GEAR_BASE,rollGear} from '../../dist/loot.js';
 import {parentJob} from '../../dist/jobs.js';
+import {CARDS} from '../../dist/catalog.js';
+import {cardAllowedInSlot} from '../../dist/card-effects.js';
 
 export const FUSIONS=['attack-magic','attack-defense','attack-support','magic-defense','magic-support','defense-support'];
 export const ATTRIBUTE_PROFILES=['reference','agi-vit','luk-vit','dex-vit','agi-luk','vit-luk','dex-luk'];
@@ -20,7 +22,7 @@ export const WEAPON_VARIANTS={
  pactWarrior:['staffSword'],spiritCommander:['staffSword'],
 };
 
-export function currentEndgamePlayer(job,{fusion='attack-magic',weaponChoice='critDmg',attributeProfile='reference',weaponId=null}={}){
+export function currentEndgamePlayer(job,{fusion='attack-magic',weaponChoice='critDmg',attributeProfile='reference',weaponId=null,cardOverrides={}}={}){
  assert.ok(FUSIONS.includes(fusion));
  assert.ok(ATTRIBUTE_PROFILES.includes(attributeProfile));
  assert.ok(WEAPON_VARIANTS[job]);
@@ -62,6 +64,12 @@ export function currentEndgamePlayer(job,{fusion='attack-magic',weaponChoice='cr
   player.gear[slot]=optimizeAffixes(item,{job,weaponChoice});
  }
  selectBossCards(player);
+ for(const [slot,cardId] of Object.entries(cardOverrides)){
+  assert.ok(player.gear[slot],`no equipment for card slot ${slot}`);
+  assert.ok(CARDS[cardId]?.boss&&cardAllowedInSlot(CARDS[cardId],slot,job),`illegal boss card ${cardId}/${slot}/${job}`);
+  player.sockets[slot]=cardId;
+ }
+ assert.equal(new Set(Object.values(player.sockets).filter(Boolean)).size,Object.values(player.sockets).filter(Boolean).length,'duplicate boss cards');
  validateOwnerLoadout(player);
  assert.equal(Object.values(player.attributes).reduce((sum,v)=>sum+v-1,0),438);
  assert.ok(Object.values(player.attributes).every(v=>Number.isInteger(v)&&v>=1&&v<=150));

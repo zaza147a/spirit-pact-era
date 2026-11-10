@@ -3,6 +3,8 @@ import {SECOND_JOBS} from '../dist/jobs.js';
 import {HOMECOMING_ROUTES} from '../dist/homecoming-data.js';
 import {currentEndgamePlayer,FUSIONS,WEAPON_VARIANTS} from './fixtures/current-210-endgame-player.mjs';
 import {GEAR_BASE} from '../dist/loot.js';
+import {CARDS} from '../dist/catalog.js';
+import {cardAllowedInSlot} from '../dist/card-effects.js';
 
 let count=0;
 for(const job of Object.keys(SECOND_JOBS))for(const fusion of FUSIONS)for(const weaponChoice of ['critDmg','aspdPct']){
@@ -28,3 +30,18 @@ for(const [job,variants] of Object.entries(WEAPON_VARIANTS))for(const weaponId o
 }
 assert.equal(weaponVariants,23);
 console.log(`current 210 endgame weapon variants: ${weaponVariants}/23 legal loadouts`);
+let cardVariants=0;
+for(const job of Object.keys(SECOND_JOBS)){
+ const baseline=currentEndgamePlayer(job);
+ for(const [slot,item] of Object.entries(baseline.gear)){
+  if(!item)continue;
+  for(const [cardId,card] of Object.entries(CARDS)){
+   if(!card.boss||cardId===baseline.sockets[slot]||!cardAllowedInSlot(card,slot,job))continue;
+   const p=currentEndgamePlayer(job,{cardOverrides:{[slot]:cardId}});
+   assert.equal(p.sockets[slot],cardId);
+   cardVariants++;
+  }
+ }
+}
+assert.ok(cardVariants>100);
+console.log(`current 210 endgame legal boss-card substitutions: ${cardVariants} checked`);

@@ -364,3 +364,11 @@
 - 六個有多武器職業（盧恩、皇家、大法師、賢者、斬首、遊俠）的所有替代合法武器已完成：11種替代型態×4模式×2武器詞=**88項**額外真實試煉；總計第一／二輪的1,392項+88項=**1,480項**。
 - `tests/current-extreme-results-integrity.test.mjs` 新增武器比較校驗：各替代武器／四域／兩特殊詞都是合法裝備，且必須首次失敗；其他六職沒有別的合法武器形態。
 - 新比較表 `docs/current-extreme-twelve-jobs-weapon-refined-20261111.md` 應作目前最新記錄；仍缺所有融合×配點×武器交叉搜尋、首領卡組合與技能排序，多種子也未全覆蓋，**不得宣稱全局最佳**。
+
+## 分段交接 47：合法王卡逐部位替換測試器與大法師HP首批
+
+- `tests/fixtures/current-210-endgame-player.mjs` 增加 `cardOverrides`（單部位合法王卡替換，重複卡拒絕）；連續試煉與候選搜尋器支援 `EXTREME_CARD_SLOT`／`EXTREME_CARD_ID`，原本未指定時不影響舊結果。
+- `tests/current-210-endgame-fixture.test.mjs` 遍歷十二職合法王卡替代，共**139種合法替換**均通過構造及驗證。
+- 新增 `scripts/current-extreme-card-refinement.mjs`：讀取目前三輪各模式最佳融合／配點／武器，對各可用部位逐張替換成其他合法首領卡，實際跑正式四域至首次失敗；每張卡、每模式單獨保存 `docs/current-extreme-card-<job>-<kind>-<slot>-<cardId>-20261111.json`，支援中斷續跑。
+- **大法師HP單體輸出首批11項完成**：`docs/current-extreme-card-wizard-hp-*-20261111.json`，最佳仍為HP33層，其他單張王卡替換未超過。ATK、MATK、CLEAR的王卡候選仍在進行。
+- **限制**：這是單一插槽的局部敏感度搜尋，尚不是多張王卡組合的全局最優，也還沒搜尋所有融合／配點／技能順序；`main`／`dist` 未修改。
