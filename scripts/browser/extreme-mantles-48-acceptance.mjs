@@ -72,10 +72,10 @@ try{
     const hero=page.locator('#character .hero');
     const position=async()=>hero.evaluate(el=>({top:parseFloat(getComputedStyle(el,'::before').top),display:getComputedStyle(el,'::before').display}));
     assert.equal((await position()).top,foot.desktop,`${filename} desktop aura foot position`);
-    await page.locator('[data-cosmetic-aura]').uncheck();
+    await page.locator('input[data-cosmetic-aura]').uncheck();
     assert.equal(await page.locator('#character').getAttribute('data-cosmetic-aura'),'off');
     assert.equal(await page.locator('#companion').getAttribute('data-cosmetic-aura'),'on','companion toggle is independent');
-    await page.locator('[data-cosmetic-aura]').check();
+    await page.locator('input[data-cosmetic-aura]').check();
     await page.locator('[data-pet-cosmetic-aura]').uncheck();
     assert.equal(await page.locator('#companion').getAttribute('data-cosmetic-aura'),'off');
     assert.equal(await page.locator('#character').getAttribute('data-cosmetic-aura'),'on','character toggle is independent');
