@@ -291,3 +291,9 @@
 - `docs/current-extreme-refine-assassin-{atk,matk,hp,clear}-20261111.json` 四域新增配點共20次，均首次失敗。
 - **ATK物理承傷由143提升到146層**，仍是防輔融合＋暴傷武器詞，新最佳配點 `agi-vit`；MATK121、HP35、CLEAR36未超過。
 - 逐影和修羅繼續第二輪補測，仍須更多融合×配點交叉搜尋。
+
+## 分段交接 36：逐影第二輪配點補測
+
+- `docs/current-extreme-refine-rogue-{atk,matk,hp,clear}-20261111.json` 20項均為完整首次失敗結果。
+- **ATK由153大幅提升到169層**：防輔融合＋暴傷＋`agi-vit`；**MATK由122提升到131層**：魔防融合＋攻速＋`vit-luk`。HP34及CLEAR37保持。
+- 這再次證明第一輪候選會低估非主流配點，更新總表前須完成全部職業的第二輪補測；修羅與遊俠正在執行。
