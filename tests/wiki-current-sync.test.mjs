@@ -35,3 +35,13 @@ test('game and WIKI display one version and summarize latest published mechanics
  assert.match(game,/game\.js\?v=7\.1\.11-wiki-changelog-20261110/);
  for(const summary of ['批次兌換首領核心','十二種正反融合型態','君王同化、萬靈協戰'])assert.ok(html.includes(summary),summary);
 });
+test('spirit WIKI derives fusion resonance percentages and cooldowns from runtime rules',()=>{
+ assert.match(html,/import \{SPIRIT_PROC_RULES\} from '\.\.\/spirit-single-pet-procs\.js'/);
+ assert.match(html,/rule\.bonusPct/);
+ assert.match(html,/rule\.ignoreDef/);
+ assert.match(html,/rule\.shieldPct/);
+ assert.match(html,/rule\.healPct/);
+ assert.match(html,/rule\.cooldownReductionMs/);
+ assert.match(html,/rule\.cooldownMs/);
+ assert.match(html,/spirit-pair/);
+});
