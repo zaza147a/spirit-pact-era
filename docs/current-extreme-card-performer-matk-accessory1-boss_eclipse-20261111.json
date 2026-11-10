@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"performer\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"cardSlot\":\"accessory1\",\"cardId\":\"boss_eclipse\"}",
+  "job": "performer",
+  "weaponId": null,
+  "cardSlot": "accessory1",
+  "cardId": "boss_eclipse",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "performer",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory1",
+      "cardId": "boss_eclipse",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 129,
+      "ticks": 25872,
+      "simulatedSeconds": 2587.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 130
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "performer",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory1",
+      "cardId": "boss_eclipse",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 129,
+      "ticks": 25872,
+      "simulatedSeconds": 2587.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 130
+    }
+  }
+}

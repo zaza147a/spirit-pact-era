@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"performer\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"vit-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"cardSlot\":\"rightHand\",\"cardId\":\"boss_astral\"}",
+  "job": "performer",
+  "weaponId": null,
+  "cardSlot": "rightHand",
+  "cardId": "boss_astral",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "performer",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "rightHand",
+      "cardId": "boss_astral",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 148,
+      "ticks": 29680,
+      "simulatedSeconds": 2968,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 149
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "performer",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "rightHand",
+      "cardId": "boss_astral",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 148,
+      "ticks": 29680,
+      "simulatedSeconds": 2968,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 149
+    }
+  }
+}

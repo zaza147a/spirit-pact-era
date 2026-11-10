@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"performer\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"cardSlot\":\"shoes\",\"cardId\":\"boss_nightclock\"}",
+  "job": "performer",
+  "weaponId": null,
+  "cardSlot": "shoes",
+  "cardId": "boss_nightclock",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "performer",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 119,
+      "ticks": 23968,
+      "simulatedSeconds": 2396.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 120
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "performer",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 119,
+      "ticks": 23968,
+      "simulatedSeconds": 2396.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 120
+    }
+  }
+}

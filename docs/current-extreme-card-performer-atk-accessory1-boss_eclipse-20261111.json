@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"performer\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"vit-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"cardSlot\":\"accessory1\",\"cardId\":\"boss_eclipse\"}",
+  "job": "performer",
+  "weaponId": null,
+  "cardSlot": "accessory1",
+  "cardId": "boss_eclipse",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "performer",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory1",
+      "cardId": "boss_eclipse",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 142,
+      "ticks": 28464,
+      "simulatedSeconds": 2846.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 143
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "performer",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory1",
+      "cardId": "boss_eclipse",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 142,
+      "ticks": 28464,
+      "simulatedSeconds": 2846.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 143
+    }
+  }
+}
