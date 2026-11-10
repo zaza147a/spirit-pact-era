@@ -141,3 +141,10 @@
 - 本次有界搜尋的各域最高通關層：**ATK 170**（攻防融合＋暴傷）、**MATK 131**（攻防融合＋攻速）、**HP 33**（防輔融合＋攻速）、**CLEAR 35**（防輔融合＋暴傷）。各域可能使用不同配點，精確配置以結果 JSON 的 `best` 為準。
 - **不是主教全局最優**：尚未比對其他五種合法配點、全部可用武器型態、王卡替代組合、技能順序與多種子；不得拿這一輪有界結果作最終全職排名。
 - 下一段：逐職搜尋其餘十一職，君王還須補完 ATK／MATK；搜尋器可在中斷後依完全相同環境變數與輸出路徑續跑。每一職完成後更新此交接並推送測試分支，正式 `main` 不變。
+
+## 分段交接 14：盧恩／皇家搜尋進行中（可續跑檢查點）
+
+- 已啟動 `knight` 與 `crusader` 兩職，搜尋條件：六融合 × `critDmg`／`aspdPct` × `reference`／`agi-luk`，每套均跑 ATK/MATK/HP/CLEAR 四域，種子20261110。
+- `docs/current-extreme-knight-search-20261110.json` 與 `docs/current-extreme-crusader-search-20261110.json` 在每套配置完成後自動更新，**目前仍為 PARTIAL**，不得用 `best` 作最終成績。
+- 原執行指令：`EXTREME_JOB=knight EXTREME_CONCURRENCY=2 EXTREME_PROFILES=reference,agi-luk EXTREME_MODES=atk,matk,hp,clear EXTREME_OUTPUT=docs/current-extreme-knight-search-20261110.json node scripts/current-extreme-candidate-search.mjs`；皇家以 `crusader` 取代 `knight`。可重啟續跑，既有結果不會重算。
+- 下一段須等待兩職各完成24套，記錄四域最強候選，更新交接並再次推送；不修改 `main`。
