@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"assassin\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"weaponId\":\"rifle\",\"cardSlot\":\"garment\",\"cardId\":\"boss_abyss\"}",
+  "job": "assassin",
+  "weaponId": "rifle",
+  "cardSlot": "garment",
+  "cardId": "boss_abyss",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "rifle",
+      "cardSlot": "garment",
+      "cardId": "boss_abyss",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 144,
+      "ticks": 28888,
+      "simulatedSeconds": 2888.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 145
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "rifle",
+      "cardSlot": "garment",
+      "cardId": "boss_abyss",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 144,
+      "ticks": 28888,
+      "simulatedSeconds": 2888.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 145
+    }
+  }
+}
