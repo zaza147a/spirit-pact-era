@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"spiritCommander\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\"}",
+  "job": "spiritCommander",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 151,
+      "ticks": 30328,
+      "simulatedSeconds": 3032.8,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 152
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 151,
+      "ticks": 30344,
+      "simulatedSeconds": 3034.4,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 152
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 126,
+      "ticks": 25344,
+      "simulatedSeconds": 2534.4,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 127
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 145,
+      "ticks": 29152,
+      "simulatedSeconds": 2915.2,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 146
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 138,
+      "ticks": 27648,
+      "simulatedSeconds": 2764.8,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 139
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 151,
+      "ticks": 30328,
+      "simulatedSeconds": 3032.8,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 152
+    }
+  }
+}

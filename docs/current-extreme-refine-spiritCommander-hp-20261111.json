@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"spiritCommander\",\"fusions\":[\"attack-magic\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\"}",
+  "job": "spiritCommander",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 38,
+      "ticks": 3817,
+      "simulatedSeconds": 381.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 39
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 38,
+      "ticks": 3929,
+      "simulatedSeconds": 392.9,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 39
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 38,
+      "ticks": 4037,
+      "simulatedSeconds": 403.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 39
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 38,
+      "ticks": 3884,
+      "simulatedSeconds": 388.4,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 39
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 37,
+      "ticks": 3744,
+      "simulatedSeconds": 374.4,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 38
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 38,
+      "ticks": 3817,
+      "simulatedSeconds": 381.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 39
+    }
+  }
+}

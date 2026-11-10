@@ -315,3 +315,12 @@
 - `docs/current-extreme-refine-performer-{atk,matk,hp,clear}-20261111.json` 完成20次首次失敗結算。
 - **ATK由135提升139層**：攻防融合＋攻速詞＋`vit-luk`；MATK123／HP36／CLEAR38沒有提升。
 - 萬靈宗師為最後一職的第二輪配點補測，完成後必須將第一輪12職比較表標為歷史基準，新增最新整合表。
+
+## 分段交接 40：十二職第二輪配點補測全部完成
+
+- 萬靈宗師 `docs/current-extreme-refine-spiritCommander-{atk,matk,hp,clear}-20261111.json` 四模式共20項全部首次失敗；**CLEAR由41提升42層**（攻魔融合＋暴傷詞＋`dex-vit`）；ATK177／MATK153／HP38保持。
+- 第二輪十二職×四域×五種新配點=**240項**完成，與第一輪的1,152項合計**1,392項真實極限試煉**，均從第1層到首次失敗。
+- 新增最新比較表 `docs/current-extreme-twelve-jobs-refined-20261111.md`；第一輪 `docs/current-extreme-twelve-jobs-comparison-20261110.md` 仍保留作歷史基準，不得再當最新排名。
+- 新增 `tests/current-extreme-results-integrity.test.mjs`；連同當前合法配裝與四域入口回歸，**4／4測試通過**，查驗12職第一輪24套/職與第二輪各模式5套/職、全部首次失敗與正確配點搜尋簽章。
+- **尚未完成真正全局最優**：次佳融合×其餘配點、所有合法武器型態、更多王卡組合、技能優先序及多種子複測；現階段也未新增十二大陸怪物／250等／四轉本源點技能。
+- **接續建議**：先增強搜尋器的合法武器型態及王卡組合生成，分批搜尋可能超過本輪各域最強的候選；每批結果交接 GitHub 測試分支，仍不得直接改 `dist` 平衡或合併 `main`。
