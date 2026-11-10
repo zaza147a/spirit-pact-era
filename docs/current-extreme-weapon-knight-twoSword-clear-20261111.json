@@ -1,0 +1,61 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"knight\",\"fusions\":[\"attack-support\"],\"weapons\":[\"critDmg\",\"aspdPct\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"clear\"],\"seed\":\"20261110\",\"weaponId\":\"twoSword\"}",
+  "job": "knight",
+  "weaponId": "twoSword",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weaponId if given; cards fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 2,
+  "completed": 2,
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "twoSword",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 38,
+      "ticks": 4163,
+      "simulatedSeconds": 416.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 39
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "twoSword",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 4014,
+      "simulatedSeconds": 401.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "knight",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "twoSword",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 38,
+      "ticks": 4163,
+      "simulatedSeconds": 416.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 39
+    }
+  }
+}

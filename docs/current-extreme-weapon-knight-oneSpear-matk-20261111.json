@@ -1,0 +1,61 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"knight\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"critDmg\",\"aspdPct\"],\"profiles\":[\"reference\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"weaponId\":\"oneSpear\"}",
+  "job": "knight",
+  "weaponId": "oneSpear",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weaponId if given; cards fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 2,
+  "completed": 2,
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneSpear",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 136,
+      "ticks": 27360,
+      "simulatedSeconds": 2736,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 137
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 151,
+      "ticks": 30304,
+      "simulatedSeconds": 3030.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 152
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 151,
+      "ticks": 30304,
+      "simulatedSeconds": 3030.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 152
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"knight\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"critDmg\",\"aspdPct\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\",\"weaponId\":\"oneSpear\"}",
+  "job": "knight",
+  "weaponId": "oneSpear",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weaponId if given; cards fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 2,
+  "completed": 2,
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneSpear",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3863,
+      "simulatedSeconds": 386.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3978,
+      "simulatedSeconds": 397.8,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneSpear",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3863,
+      "simulatedSeconds": 386.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    }
+  }
+}

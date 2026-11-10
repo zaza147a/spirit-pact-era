@@ -1,0 +1,61 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"knight\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"critDmg\",\"aspdPct\"],\"profiles\":[\"reference\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"weaponId\":\"twoSword\"}",
+  "job": "knight",
+  "weaponId": "twoSword",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weaponId if given; cards fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 2,
+  "completed": 2,
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": "twoSword",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 117,
+      "ticks": 23544,
+      "simulatedSeconds": 2354.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 118
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "twoSword",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 120,
+      "ticks": 24120,
+      "simulatedSeconds": 2412,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 121
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "twoSword",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 120,
+      "ticks": 24120,
+      "simulatedSeconds": 2412,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 121
+    }
+  }
+}
