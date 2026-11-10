@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"pactWarrior\",\"fusions\":[\"magic-defense\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\"}",
+  "job": "pactWarrior",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "pactWarrior",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 156,
+      "ticks": 31336,
+      "simulatedSeconds": 3133.6,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 157
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 138,
+      "ticks": 27728,
+      "simulatedSeconds": 2772.8,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 139
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 146,
+      "ticks": 29384,
+      "simulatedSeconds": 2938.4,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 147
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 142,
+      "ticks": 28456,
+      "simulatedSeconds": 2845.6,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 143
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 101,
+      "ticks": 20304,
+      "simulatedSeconds": 2030.4,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 102
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "pactWarrior",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 156,
+      "ticks": 31336,
+      "simulatedSeconds": 3133.6,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 157
+    }
+  }
+}

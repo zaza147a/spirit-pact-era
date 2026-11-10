@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"pactWarrior\",\"fusions\":[\"attack-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"clear\"],\"seed\":\"20261110\"}",
+  "job": "pactWarrior",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 4284,
+      "simulatedSeconds": 428.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 20,
+      "ticks": 3933,
+      "simulatedSeconds": 393.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 21
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 11,
+      "ticks": 2640,
+      "simulatedSeconds": 264,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 12
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 19,
+      "ticks": 3825,
+      "simulatedSeconds": 382.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 20
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 22,
+      "ticks": 4415,
+      "simulatedSeconds": 441.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 23
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 4284,
+      "simulatedSeconds": 428.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    }
+  }
+}

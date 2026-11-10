@@ -246,3 +246,11 @@
 - 新增 `docs/current-extreme-twelve-jobs-comparison-20261110.md`，列出全部十二職四域比較、測試條件、精確限制和下一步。這是**第一輪兩配點、有界候選最佳**，不是全局最優；不可用於直接砍君王或當成250等四轉平衡結果。
 - `node --test tests/current-210-endgame-fixture.test.mjs tests/current-extreme-trials-entry.test.mjs` 全過（兩檔，144／144合法配置）；`git diff main...HEAD -- dist` 無異動。正式 `main` 不變。
 - **仍待下一輪**：擴展全部合法配點／不同可用武器／更完整王卡及技能順序／多種子複測，才能稱「每職最佳配置」；四轉本源技能、250等與十二大陸怪物尚未在此測試分支動工。本輪沒有修改正式遊戲平衡。
+
+## 分段交接 29（2026-11-11）：五種其餘合法配點針對性補測
+
+- 新增 `scripts/current-extreme-profile-refinement.mjs`：讀取十二職第一輪各域最佳融合／武器詞，固定該候選，使用 `agi-vit`、`luk-vit`、`dex-vit`、`vit-luk`、`dex-luk` 五種先前沒跑的合法配點，在正式四域各自從第1層測到首次失敗。各域各5套、全部20項／職。
+- 分域輸出到 `docs/current-extreme-refine-<job>-<mode>-20261111.json`，沿用檢查點恢復機制，不覆蓋第一輪報告；`EXTREME_JOB=<job> node scripts/current-extreme-profile-refinement.mjs` 即可恢復未完成的域。
+- **靈契君王補測完成**：四域各5套、合計20項均為首次失敗；在固定第一輪各域最佳融合／武器詞的條件下，沒有超過原先 **ATK178／MATK156／HP40／CLEAR43**。原本已複測 HP40／41、CLEAR43 的已知下界仍成立。
+- 皇家守衛與大主教正在執行同一補測；各職其他融合搭配新增配點、不同武器型態、卡片及技能排序仍未全面搜索，**不可據此宣稱全局最優**。
+- 本段只新增獨立測試程式和文件，`dist` 與正式 `main` 不變。
