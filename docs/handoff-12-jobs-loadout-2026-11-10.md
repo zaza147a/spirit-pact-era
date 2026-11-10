@@ -48,3 +48,14 @@
 - 測試：本輪 12 職配裝政策、`extreme-trials-integration`、`homecoming-state` 均通過。
 - 刪除的檔案仍能由 Git 歷史還原，但不再存在本測試分支最新版本中。
 - 下一段仍須完成真實單體、清怪與承傷測試；不要將目前的配裝政策檢驗解讀為完整戰鬥驗收。
+
+## 分段交接 03：舊最優存檔依賴完全退役
+
+- 應使用者要求，**無盡之塔歷史跑分工具亦移除**；保留 `dist` 遊戲內功能，日後需要測試時以新規格重建。
+- 刪除原 `legacy-best-v6559` 十職 Lv210 存檔、舊君王／萬靈 `spirit-single-pet-optimal-210` 存檔與壓力報告。
+- 移除所有直接引用上述檔案的舊分析、極限試煉探針、舊瀏覽器驗收，以及後續依賴探針的排名驗證。
+- 移除已完成的新職業／返鄉合併前專用 Actions（`spirit-premerge-browser.yml`、`homecoming-premerge.yml`），以及已停用的舊披風、返鄉待測矩陣工作流程。
+- 使用 `rg` 確認 `.github`、`scripts`、`tests`、`dist` 無 `legacy-optimal-player`、`legacy-best-v6559`、`spirit-single-pet-optimal-210`、`spirit-premerge-acceptance` 或舊塔腳本引用。
+- 新配裝政策測試、返鄉狀態、極限試煉整合、無盡之塔遊戲功能整合均通過。
+- **未刪除任何 `dist` 遊戲功能。** 仍保有與舊最優存檔無關的必要功能回歸測試。
+- 尚未重跑十二職業單體／承傷／清怪實戰；不引用舊報告數據。
