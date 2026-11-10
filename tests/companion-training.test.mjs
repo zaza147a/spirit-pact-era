@@ -37,8 +37,12 @@ test('training pauses for inactive/dead/invalid pets and excludes trials',()=>{
  owner.activePetId='front';owner.pets[0].hp=0;assert.equal(trainingPet(owner),null);
  owner.pets[0].hp=100;owner.pets[1].hp=0;assert.equal(normalizeTraining(owner),null);
 });
-test('game UI wires exchange and targeted +1 loyalty use, gated to village and sigil 8',()=>{
+test('game UI wires bulk exchange and targeted loyalty use, gated to village and sigil 8',()=>{
  const source=readFileSync(new URL('../dist/game.js',import.meta.url),'utf8');
- for(const fragment of ['renderLoyaltyExchange()','data-loyalty-exchange','data-loyalty-use','consumeStack(player.bag,\'dawn_archon_core\')','addStack(player.bag,\'companion_loyalty_charm\',1)','pet.loyalty=Math.min(LOYALTY_MAX,pet.loyalty+1)','awardTraineeProgress(defeated)','awardTraineeProgress(defeated);'])assert.ok(source.includes(fragment),fragment);
+ for(const fragment of ['renderLoyaltyExchange()','data-loyalty-exchange','data-loyalty-use','data-loyalty-exchange-quantity','data-loyalty-use-quantity','validLoyaltyQuantity(requested,cores)','validLoyaltyQuantity(requested,Math.min(charms,LOYALTY_MAX-pet.loyalty))','addStack(player.bag,\'companion_loyalty_charm\',quantity)','pet.loyalty=Math.min(LOYALTY_MAX,pet.loyalty+quantity)','awardTraineeProgress(defeated)','awardTraineeProgress(defeated);'])assert.ok(source.includes(fragment),fragment);
  assert.ok(source.includes('if(!isTown(player.location)||Number(player.dawnSigil)<8)'));
+});
+test('homecoming clearly lists each ordered fusion type and completed status',()=>{
+ const source=readFileSync(new URL('../dist/homecoming-ui.js',import.meta.url),'utf8');
+ for(const fragment of ['fusionLabel(r.id)','融合型態完成清單','phase===\'claimed\'','✓ 已完成','○ 未完成','正反融合分別為不同外觀'])assert.ok(source.includes(fragment),fragment);
 });
