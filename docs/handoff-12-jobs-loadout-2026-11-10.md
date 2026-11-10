@@ -210,3 +210,10 @@
 - 搜尋條件與前八職相同：六融合 × 兩武器詞 × `reference`／`agi-luk` 配點 × ATK/MATK/HP/CLEAR，種子20261110，每職24套。每完成一套即更新結果檔，任何 `PARTIAL` 不可當最終成績。
 - 若中斷，設定 `EXTREME_JOB=<job> EXTREME_CONCURRENCY=2 EXTREME_PROFILES=reference,agi-luk EXTREME_MODES=atk,matk,hp,clear EXTREME_OUTPUT=docs/current-extreme-<job>-search-20261110.json` 後執行 `node scripts/current-extreme-candidate-search.mjs`，自動跳過完成配置。
 - 君王另有 `docs/current-extreme-king-multiseed-20261110.json` 的 HP40／CLEAR43 穩定下界；新24套搜尋須與此比較，不能把較弱候選當成最高通關。
+
+## 分段交接 24：遊俠24套完整候選
+
+- `docs/current-extreme-hunter-search-20261110.json` 已完成24套／96項正式四域極限試煉，所有最高值均以首次失敗確定。
+- 本輪最高 **ATK 133**（防輔＋攻速）、**MATK 114**（防輔＋攻速）、**HP 35**（攻輔＋攻速）、**CLEAR 37**（攻輔＋攻速）。精確配點與失敗原因見 JSON `best`。
+- 這是同一種子、兩配點、預設武器及首領卡組合的有界搜尋，不能作遊俠最終上限或調整職業傷害的唯一根據。
+- 剩餘天籟、靈契君王、萬靈宗師仍進行中；最終還需核對十二職 JSON 的完整度、上限停機、產生比較表並測試。
