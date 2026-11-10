@@ -475,3 +475,10 @@
 - 遊俠物理承傷 ATK **149→164層**：防輔融合、短弓攻速特性、`vit-luk` 配點，頭上卡換 `boss_starter`，第165層戰敗。
 - 遊俠魔法承傷 MATK **125→134層**：防輔融合、十字弓攻速特性、`luk-vit` 配點，頭上卡換 `boss_starter`，第135層戰敗。
 - 注意王卡更換不能單獨代表融合／武器全域最優解；後續對這些改善組合做相同種子的複測。
+
+## 分段交接 64：大主教 ATK 首領卡實戰批次完成
+
+- GitHub Actions 執行紀錄 [42870266650](https://github.com/zaza147a/spirit-pact-era/actions/runs/42870266650) 結論為 success；使用既有 `scripts/current-extreme-card-refinement.mjs`，成功上傳 12 份 `docs/current-extreme-card-priest-atk-*-20261111.json` 單卡替換結果。
+- 此段只記錄已驗證的工作流程成功及原始報告數量；各張卡的最高層數仍須以 JSON 逐筆整理，不臆測排名。既有整體最佳排名未因此直接改寫。
+- 接續批次由 `.github/workflows/extreme-trial-branch.yml` 自動串接 13 個未完成 ATK/MATK 模式；每完成一模式必須先驗證、提交結果及新增編號交接，失敗則停止。
+- 正式版 `main` 與 `dist` 均未修改。
