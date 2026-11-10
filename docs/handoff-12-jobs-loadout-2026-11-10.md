@@ -285,3 +285,9 @@
 - `docs/current-extreme-refine-sage-{atk,matk,hp,clear}-20261111.json` 共20項全部首次失敗。
 - 固定原最佳融合／武器詞後，新增五種配點都沒超過 **ATK157／MATK144／HP34／CLEAR36**；仍待跨融合與武器型態交叉驗證。
 - 斬首與逐影正在第二輪補測。
+
+## 分段交接 35：斬首者第二輪配點補測
+
+- `docs/current-extreme-refine-assassin-{atk,matk,hp,clear}-20261111.json` 四域新增配點共20次，均首次失敗。
+- **ATK物理承傷由143提升到146層**，仍是防輔融合＋暴傷武器詞，新最佳配點 `agi-vit`；MATK121、HP35、CLEAR36未超過。
+- 逐影和修羅繼續第二輪補測，仍須更多融合×配點交叉搜尋。

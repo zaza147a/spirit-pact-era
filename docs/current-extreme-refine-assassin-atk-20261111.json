@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"assassin\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\"}",
+  "job": "assassin",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 146,
+      "ticks": 29384,
+      "simulatedSeconds": 2938.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 147
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 126,
+      "ticks": 25280,
+      "simulatedSeconds": 2528,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 127
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 128,
+      "ticks": 25664,
+      "simulatedSeconds": 2566.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 129
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 135,
+      "ticks": 27096,
+      "simulatedSeconds": 2709.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 136
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 95,
+      "ticks": 19080,
+      "simulatedSeconds": 1908,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 96
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 146,
+      "ticks": 29384,
+      "simulatedSeconds": 2938.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 147
+    }
+  }
+}

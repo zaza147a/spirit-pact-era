@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"assassin\",\"fusions\":[\"attack-magic\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"clear\"],\"seed\":\"20261110\"}",
+  "job": "assassin",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 35,
+      "ticks": 3979,
+      "simulatedSeconds": 397.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 36
+    },
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 29,
+      "ticks": 5009,
+      "simulatedSeconds": 500.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 30
+    },
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 30,
+      "ticks": 5297,
+      "simulatedSeconds": 529.7,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 31
+    },
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 29,
+      "ticks": 5027,
+      "simulatedSeconds": 502.7,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 30
+    },
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 30,
+      "ticks": 5064,
+      "simulatedSeconds": 506.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 31
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 35,
+      "ticks": 3979,
+      "simulatedSeconds": 397.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 36
+    }
+  }
+}
