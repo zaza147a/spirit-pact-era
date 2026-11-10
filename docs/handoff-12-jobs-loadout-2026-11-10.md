@@ -148,3 +148,10 @@
 - `docs/current-extreme-knight-search-20261110.json` 與 `docs/current-extreme-crusader-search-20261110.json` 在每套配置完成後自動更新，**目前仍為 PARTIAL**，不得用 `best` 作最終成績。
 - 原執行指令：`EXTREME_JOB=knight EXTREME_CONCURRENCY=2 EXTREME_PROFILES=reference,agi-luk EXTREME_MODES=atk,matk,hp,clear EXTREME_OUTPUT=docs/current-extreme-knight-search-20261110.json node scripts/current-extreme-candidate-search.mjs`；皇家以 `crusader` 取代 `knight`。可重啟續跑，既有結果不會重算。
 - 下一段須等待兩職各完成24套，記錄四域最強候選，更新交接並再次推送；不修改 `main`。
+
+## 分段交接 15：盧恩騎士24套完整候選
+
+- `docs/current-extreme-knight-search-20261110.json` 已由 `PARTIAL` 轉為 `BOUNDED SEARCH COMPLETE`：六融合 × 兩武器詞 × 兩種配點，共24套／96次四域真實試煉，均記錄首次失敗及下一層。
+- 本輪各域最高：**ATK 187**（防輔＋暴傷）、**MATK 137**（攻防＋暴傷）、**HP 34**（攻防＋暴傷）、**CLEAR 38**（攻輔＋暴傷）。詳細最佳配點位於 JSON 的 `best`。
+- 這是固定一個亂數種子、兩種配點及預設可用武器／王卡下的**有界最強候選**，不構成全局最優證明；其餘配點、武器型態、王卡及技能順序還待優化。
+- 皇家搜尋仍進行中；空出的測試程序開始巫師（同24套四域條件）。
