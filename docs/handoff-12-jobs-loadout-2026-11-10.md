@@ -297,3 +297,9 @@
 - `docs/current-extreme-refine-rogue-{atk,matk,hp,clear}-20261111.json` 20項均為完整首次失敗結果。
 - **ATK由153大幅提升到169層**：防輔融合＋暴傷＋`agi-vit`；**MATK由122提升到131層**：魔防融合＋攻速＋`vit-luk`。HP34及CLEAR37保持。
 - 這再次證明第一輪候選會低估非主流配點，更新總表前須完成全部職業的第二輪補測；修羅與遊俠正在執行。
+
+## 分段交接 37：修羅第二輪配點補測
+
+- `docs/current-extreme-refine-monk-{atk,matk,hp,clear}-20261111.json` 20項真實試煉全部首次失敗。
+- **ATK由169提升174層**（防輔＋暴傷＋`luk-vit`），**MATK由131提升134層**（防輔＋攻速＋`dex-vit`）；HP34／CLEAR38保持。
+- 遊俠、天籟二輪繼續；新配點沒有改裝備詞條、卡片或遊戲本體。
