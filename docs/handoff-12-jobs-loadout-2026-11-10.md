@@ -417,3 +417,8 @@
 - `docs/current-extreme-card-performer-{hp,clear}-*-20261111.json` **22項**局部合法王卡替換，均首次失敗。
 - HP36／CLEAR38仍是原王卡配置最強，沒有單張卡能突破；逐影的HP／CLEAR已啟動同樣的搜尋。
 - 萬靈四域仍在跑物理與魔法承傷的較長關卡；不應因進度慢而以部分結果替代完整排行。
+
+## 分段交接 55：逐影HP／CLEAR單卡替換
+
+- `docs/current-extreme-card-rogue-{hp,clear}-*-20261111.json` **24項**合法單王卡替換均正式試煉至首次失敗。
+- HP34／CLEAR37未被任何單卡替換超越；修羅已接手HP／CLEAR王卡搜尋，萬靈仍在進行全四域。
