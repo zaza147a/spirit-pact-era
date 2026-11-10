@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"crusader\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\"}",
+  "job": "crusader",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 168,
+      "ticks": 33688,
+      "simulatedSeconds": 3368.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 169
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 160,
+      "ticks": 32144,
+      "simulatedSeconds": 3214.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 161
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 165,
+      "ticks": 33168,
+      "simulatedSeconds": 3316.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 166
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 161,
+      "ticks": 32328,
+      "simulatedSeconds": 3232.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 162
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 128,
+      "ticks": 25752,
+      "simulatedSeconds": 2575.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 129
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 168,
+      "ticks": 33688,
+      "simulatedSeconds": 3368.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 169
+    }
+  }
+}

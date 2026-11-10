@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"crusader\",\"fusions\":[\"attack-magic\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"clear\"],\"seed\":\"20261110\"}",
+  "job": "crusader",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 34,
+      "ticks": 3810,
+      "simulatedSeconds": 381,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3863,
+      "simulatedSeconds": 386.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 34,
+      "ticks": 3773,
+      "simulatedSeconds": 377.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3906,
+      "simulatedSeconds": 390.6,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3892,
+      "simulatedSeconds": 389.2,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3863,
+      "simulatedSeconds": 386.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    }
+  }
+}
