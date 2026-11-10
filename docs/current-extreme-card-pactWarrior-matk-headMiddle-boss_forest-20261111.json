@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"pactWarrior\",\"fusions\":[\"magic-defense\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"reference\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"cardSlot\":\"headMiddle\",\"cardId\":\"boss_forest\"}",
+  "job": "pactWarrior",
+  "weaponId": null,
+  "cardSlot": "headMiddle",
+  "cardId": "boss_forest",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "pactWarrior",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headMiddle",
+      "cardId": "boss_forest",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 158,
+      "ticks": 31728,
+      "simulatedSeconds": 3172.8,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 159
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "pactWarrior",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headMiddle",
+      "cardId": "boss_forest",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 158,
+      "ticks": 31728,
+      "simulatedSeconds": 3172.8,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 159
+    }
+  }
+}
