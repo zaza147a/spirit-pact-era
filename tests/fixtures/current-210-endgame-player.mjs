@@ -4,14 +4,43 @@ import {homecomingPlayer} from './homecoming-player.mjs';
 import {HOMECOMING_ROUTES} from '../../dist/homecoming-data.js';
 import {optimizeAffixes,selectBossCards,validateOwnerLoadout} from './twelve-job-loadout-policy.mjs';
 import {attackAttribute} from './twelve-job-loadout-policy.mjs';
+import {GEAR_BASE,rollGear} from '../../dist/loot.js';
+import {parentJob} from '../../dist/jobs.js';
 
 export const FUSIONS=['attack-magic','attack-defense','attack-support','magic-defense','magic-support','defense-support'];
 export const ATTRIBUTE_PROFILES=['reference','agi-vit','luk-vit','dex-vit','agi-luk','vit-luk','dex-luk'];
+export const WEAPON_VARIANTS={
+ knight:['blade','twoSword','oneSpear','twoSpear'],
+ crusader:['blade','oneSpear'],
+ wizard:['oneStaff','twoStaff'],
+ sage:['oneStaff','twoStaff','spellFist'],
+ assassin:['rifle','katar','rifle+offDagger'],
+ rogue:['rifle'],priest:['mace'],monk:['knuckles'],
+ hunter:['shortBow','longBow','crossbow'],performer:['instrument'],
+ pactWarrior:['staffSword'],spiritCommander:['staffSword'],
+};
 
-export function currentEndgamePlayer(job,{fusion='attack-magic',weaponChoice='critDmg',attributeProfile='reference'}={}){
+export function currentEndgamePlayer(job,{fusion='attack-magic',weaponChoice='critDmg',attributeProfile='reference',weaponId=null}={}){
  assert.ok(FUSIONS.includes(fusion));
  assert.ok(ATTRIBUTE_PROFILES.includes(attributeProfile));
+ assert.ok(WEAPON_VARIANTS[job]);
+ assert.ok(weaponId===null||WEAPON_VARIANTS[job].includes(weaponId),`illegal weapon for ${job}: ${weaponId}`);
  const player=homecomingPlayer(job,fusion);
+ if(weaponId){
+  const dual=weaponId==='rifle+offDagger',main=dual?'rifle':weaponId;
+  const metadata=GEAR_BASE[main];
+  assert.ok(metadata?.weaponType&&metadata.slot==='rightHand');
+  assert.ok(metadata.jobs.includes(job)||metadata.jobs.includes(parentJob(job)));
+  const generated=rollGear(main,200,'mythic',()=>.5);
+  generated.enhancement='SSS';
+  player.gear.rightHand=generated;
+  const left=dual?'offDagger':metadata.hands===2?null:'shield';
+  if(left){
+   const off=rollGear(left,200,'mythic',()=>.5);
+   off.enhancement='SSS';
+   player.gear.leftHand=off;
+  }else player.gear.leftHand=null;
+ }
  if(attributeProfile!=='reference'){
   const main=attackAttribute(job),mapping={
    'agi-vit':['AGI','VIT'],'luk-vit':['LUK','VIT'],'dex-vit':['DEX','VIT'],

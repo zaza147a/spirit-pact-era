@@ -324,3 +324,11 @@
 - 新增 `tests/current-extreme-results-integrity.test.mjs`；連同當前合法配裝與四域入口回歸，**4／4測試通過**，查驗12職第一輪24套/職與第二輪各模式5套/職、全部首次失敗與正確配點搜尋簽章。
 - **尚未完成真正全局最優**：次佳融合×其餘配點、所有合法武器型態、更多王卡組合、技能優先序及多種子複測；現階段也未新增十二大陸怪物／250等／四轉本源點技能。
 - **接續建議**：先增強搜尋器的合法武器型態及王卡組合生成，分批搜尋可能超過本輪各域最強的候選；每批結果交接 GitHub 測試分支，仍不得直接改 `dist` 平衡或合併 `main`。
+
+## 分段交接 41：合法武器型態測試器、巫師單手杖試驗
+
+- `tests/fixtures/current-210-endgame-player.mjs` 新增 `WEAPON_VARIANTS`，涵蓋12職共**23種合法武器配置**，包含雙手、單手＋盾、斬首雙短，並保留原先單夥伴／神話SSS／六詞規格。`tests/current-210-endgame-fixture.test.mjs` 已驗證23／23種合法換裝。
+- `scripts/current-extreme-continuous-benchmark.mjs` 和 `scripts/current-extreme-candidate-search.mjs` 新增可選的 `EXTREME_WEAPON_ID`，保留不指定時原有測試資料與簽章的相容性。
+- `scripts/current-extreme-weapon-refinement.mjs` 固定各模式前兩輪最佳融合與合法配點，比較其他同職合法武器型態，暴傷／攻速均試，實際在四域從1層至首次失敗，分武器、模式保存可續跑檔案。
+- **大法師首批武器比較完成**：`docs/current-extreme-weapon-wizard-oneStaff-{atk,matk,hp,clear}-20261111.json` 共8次真實試煉；改為**單手法杖＋盾，ATK物理承傷由155提升到166層**；MATK129／HP33／CLEAR37未超越。
+- **仍非全局最優**：這一輪武器比較固定前兩輪每個模式最佳融合與配點，尚需其他融合×武器×配點交叉搜尋及王卡替代方案；`main` 未改。

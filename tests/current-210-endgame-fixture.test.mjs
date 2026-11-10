@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import {SECOND_JOBS} from '../dist/jobs.js';
 import {HOMECOMING_ROUTES} from '../dist/homecoming-data.js';
-import {currentEndgamePlayer,FUSIONS} from './fixtures/current-210-endgame-player.mjs';
+import {currentEndgamePlayer,FUSIONS,WEAPON_VARIANTS} from './fixtures/current-210-endgame-player.mjs';
+import {GEAR_BASE} from '../dist/loot.js';
 
 let count=0;
 for(const job of Object.keys(SECOND_JOBS))for(const fusion of FUSIONS)for(const weaponChoice of ['critDmg','aspdPct']){
@@ -15,3 +16,15 @@ for(const job of Object.keys(SECOND_JOBS))for(const fusion of FUSIONS)for(const 
 }
 assert.equal(count,144);
 console.log(`current 210 endgame loadouts: ${count}/144 legal fixture configurations`);
+let weaponVariants=0;
+for(const [job,variants] of Object.entries(WEAPON_VARIANTS))for(const weaponId of variants){
+ const p=currentEndgamePlayer(job,{weaponId});
+ assert.equal(p.gear.rightHand.id,weaponId==='rifle+offDagger'?'rifle':weaponId);
+ assert.equal(p.pets.length,1);
+ assert.equal(p.gear.rightHand.enhancement,'SSS');
+ assert.ok(GEAR_BASE[p.gear.rightHand.id].hands!==2||!p.gear.leftHand);
+ assert.equal(weaponId==='rifle+offDagger',p.gear.leftHand?.id==='offDagger');
+ weaponVariants++;
+}
+assert.equal(weaponVariants,23);
+console.log(`current 210 endgame weapon variants: ${weaponVariants}/23 legal loadouts`);
