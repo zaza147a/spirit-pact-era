@@ -1,0 +1,61 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"crusader\",\"fusions\":[\"attack-magic\"],\"weapons\":[\"critDmg\",\"aspdPct\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\",\"weaponId\":\"oneSpear\"}",
+  "job": "crusader",
+  "weaponId": "oneSpear",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weaponId if given; cards fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 2,
+  "completed": 2,
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneSpear",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3997,
+      "simulatedSeconds": 399.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3857,
+      "simulatedSeconds": 385.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneSpear",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3997,
+      "simulatedSeconds": 399.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  }
+}
