@@ -309,3 +309,9 @@
 - `docs/current-extreme-refine-hunter-{atk,matk,hp,clear}-20261111.json` 20項全部首次失敗。
 - **ATK由133提升147層**（防輔＋攻速＋`vit-luk`）；**MATK由114提升122層**（防輔＋攻速＋`luk-vit`）。HP35／CLEAR37未超過。
 - 天籟與萬靈宗師繼續第二輪，萬靈因夥伴承傷需要較長的模擬時間。
+
+## 分段交接 39：天籟第二輪配點補測
+
+- `docs/current-extreme-refine-performer-{atk,matk,hp,clear}-20261111.json` 完成20次首次失敗結算。
+- **ATK由135提升139層**：攻防融合＋攻速詞＋`vit-luk`；MATK123／HP36／CLEAR38沒有提升。
+- 萬靈宗師為最後一職的第二輪配點補測，完成後必須將第一輪12職比較表標為歷史基準，新增最新整合表。

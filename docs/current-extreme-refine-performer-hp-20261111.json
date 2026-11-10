@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"performer\",\"fusions\":[\"magic-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\"}",
+  "job": "performer",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 35,
+      "ticks": 3852,
+      "simulatedSeconds": 385.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 36
+    },
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 32,
+      "ticks": 4248,
+      "simulatedSeconds": 424.8,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 33
+    },
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 32,
+      "ticks": 4288,
+      "simulatedSeconds": 428.8,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 33
+    },
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 32,
+      "ticks": 4208,
+      "simulatedSeconds": 420.8,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 33
+    },
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 32,
+      "ticks": 4248,
+      "simulatedSeconds": 424.8,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 33
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 35,
+      "ticks": 3852,
+      "simulatedSeconds": 385.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 36
+    }
+  }
+}
