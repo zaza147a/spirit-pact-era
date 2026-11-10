@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"crusader\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"cardSlot\":\"leftHand\",\"cardId\":\"boss_volcano\"}",
+  "job": "crusader",
+  "weaponId": null,
+  "cardSlot": "leftHand",
+  "cardId": "boss_volcano",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 152,
+      "ticks": 30504,
+      "simulatedSeconds": 3050.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 153
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 152,
+      "ticks": 30504,
+      "simulatedSeconds": 3050.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 153
+    }
+  }
+}
