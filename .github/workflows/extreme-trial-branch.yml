@@ -9,40 +9,275 @@ concurrency:
   group: extreme-trial-card-search
   cancel-in-progress: false
 jobs:
-  priest-atk:
+  priest:
     if: github.ref == 'refs/heads/test/12-jobs-optimal-loadout-20261110'
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: test/12-jobs-optimal-loadout-20261110
           persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Run real ATK trial card refinement
+      - name: Run and commit each real trial mode
+        shell: bash
         env:
           EXTREME_JOB: priest
-          EXTREME_MODES: atk
-          EXTREME_CARD_CONCURRENCY: '3'
-        run: node scripts/current-extreme-card-refinement.mjs
-      - name: Validate generated results
-        run: node --test tests/current-extreme-results-integrity.test.mjs
-      - name: Commit completed results to test branch
+          EXTREME_CARD_CONCURRENCY: '4'
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/current-extreme-card-priest-atk-*-20261111.json
-          if git diff --cached --quiet; then
-            echo "No new trial reports"
-          else
-            git commit -m "test: save priest ATK extreme-trial card results [skip ci]"
+          for mode in matk; do
+            export EXTREME_MODES="$mode"
+            node scripts/current-extreme-card-refinement.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            node scripts/current-extreme-handoff-stage.mjs "$EXTREME_JOB" "$mode"
+            git add docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-card-"$EXTREME_JOB"-"$mode"-*-20261111.json
+            git commit -m "test: complete $EXTREME_JOB $mode boss-card trial and handoff [skip ci]"
             git push origin HEAD:test/12-jobs-optimal-loadout-20261110
-          fi
+          done
       - name: Upload trial evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: priest-atk-extreme-card-results
-          path: docs/current-extreme-card-priest-atk-*-20261111.json
+          name: priest-extreme-card-results
+          path: docs/current-extreme-card-priest-*-20261111.json
+          if-no-files-found: warn
+  knight:
+    needs: priest
+    if: github.ref == 'refs/heads/test/12-jobs-optimal-loadout-20261110'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and commit each real trial mode
+        shell: bash
+        env:
+          EXTREME_JOB: knight
+          EXTREME_CARD_CONCURRENCY: '4'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk; do
+            export EXTREME_MODES="$mode"
+            node scripts/current-extreme-card-refinement.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            node scripts/current-extreme-handoff-stage.mjs "$EXTREME_JOB" "$mode"
+            git add docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-card-"$EXTREME_JOB"-"$mode"-*-20261111.json
+            git commit -m "test: complete $EXTREME_JOB $mode boss-card trial and handoff [skip ci]"
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - name: Upload trial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: knight-extreme-card-results
+          path: docs/current-extreme-card-knight-*-20261111.json
+          if-no-files-found: warn
+  crusader:
+    needs: knight
+    if: github.ref == 'refs/heads/test/12-jobs-optimal-loadout-20261110'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and commit each real trial mode
+        shell: bash
+        env:
+          EXTREME_JOB: crusader
+          EXTREME_CARD_CONCURRENCY: '4'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk; do
+            export EXTREME_MODES="$mode"
+            node scripts/current-extreme-card-refinement.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            node scripts/current-extreme-handoff-stage.mjs "$EXTREME_JOB" "$mode"
+            git add docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-card-"$EXTREME_JOB"-"$mode"-*-20261111.json
+            git commit -m "test: complete $EXTREME_JOB $mode boss-card trial and handoff [skip ci]"
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - name: Upload trial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crusader-extreme-card-results
+          path: docs/current-extreme-card-crusader-*-20261111.json
+          if-no-files-found: warn
+  sage:
+    needs: crusader
+    if: github.ref == 'refs/heads/test/12-jobs-optimal-loadout-20261110'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and commit each real trial mode
+        shell: bash
+        env:
+          EXTREME_JOB: sage
+          EXTREME_CARD_CONCURRENCY: '4'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk; do
+            export EXTREME_MODES="$mode"
+            node scripts/current-extreme-card-refinement.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            node scripts/current-extreme-handoff-stage.mjs "$EXTREME_JOB" "$mode"
+            git add docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-card-"$EXTREME_JOB"-"$mode"-*-20261111.json
+            git commit -m "test: complete $EXTREME_JOB $mode boss-card trial and handoff [skip ci]"
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - name: Upload trial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sage-extreme-card-results
+          path: docs/current-extreme-card-sage-*-20261111.json
+          if-no-files-found: warn
+  assassin:
+    needs: sage
+    if: github.ref == 'refs/heads/test/12-jobs-optimal-loadout-20261110'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and commit each real trial mode
+        shell: bash
+        env:
+          EXTREME_JOB: assassin
+          EXTREME_CARD_CONCURRENCY: '4'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk; do
+            export EXTREME_MODES="$mode"
+            node scripts/current-extreme-card-refinement.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            node scripts/current-extreme-handoff-stage.mjs "$EXTREME_JOB" "$mode"
+            git add docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-card-"$EXTREME_JOB"-"$mode"-*-20261111.json
+            git commit -m "test: complete $EXTREME_JOB $mode boss-card trial and handoff [skip ci]"
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - name: Upload trial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: assassin-extreme-card-results
+          path: docs/current-extreme-card-assassin-*-20261111.json
+          if-no-files-found: warn
+  rogue:
+    needs: assassin
+    if: github.ref == 'refs/heads/test/12-jobs-optimal-loadout-20261110'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and commit each real trial mode
+        shell: bash
+        env:
+          EXTREME_JOB: rogue
+          EXTREME_CARD_CONCURRENCY: '4'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk; do
+            export EXTREME_MODES="$mode"
+            node scripts/current-extreme-card-refinement.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            node scripts/current-extreme-handoff-stage.mjs "$EXTREME_JOB" "$mode"
+            git add docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-card-"$EXTREME_JOB"-"$mode"-*-20261111.json
+            git commit -m "test: complete $EXTREME_JOB $mode boss-card trial and handoff [skip ci]"
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - name: Upload trial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rogue-extreme-card-results
+          path: docs/current-extreme-card-rogue-*-20261111.json
+          if-no-files-found: warn
+  monk:
+    needs: rogue
+    if: github.ref == 'refs/heads/test/12-jobs-optimal-loadout-20261110'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and commit each real trial mode
+        shell: bash
+        env:
+          EXTREME_JOB: monk
+          EXTREME_CARD_CONCURRENCY: '4'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk; do
+            export EXTREME_MODES="$mode"
+            node scripts/current-extreme-card-refinement.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            node scripts/current-extreme-handoff-stage.mjs "$EXTREME_JOB" "$mode"
+            git add docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-card-"$EXTREME_JOB"-"$mode"-*-20261111.json
+            git commit -m "test: complete $EXTREME_JOB $mode boss-card trial and handoff [skip ci]"
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - name: Upload trial evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: monk-extreme-card-results
+          path: docs/current-extreme-card-monk-*-20261111.json
           if-no-files-found: warn
