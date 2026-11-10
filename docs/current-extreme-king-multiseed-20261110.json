@@ -1,0 +1,18 @@
+{
+  "status": "validated bounded candidate, not a global optimum",
+  "job": "pactWarrior",
+  "fusion": "attack-support",
+  "weaponChoice": "aspdPct",
+  "attributeProfile": "agi-luk",
+  "attributes": {"STR":150,"AGI":150,"LUK":141,"INT":1,"DEX":1,"VIT":1},
+  "conditions": "real game extreme trials, Lv210 full mythic SSS, sigil8, 12 homecoming routes claimed, one SSS fused pet, boss cards",
+  "results": [
+    {"seed":20261110,"hp":40,"clear":43},
+    {"seed":471122,"hp":41,"clear":43},
+    {"seed":93217,"hp":41,"clear":43},
+    {"seed":81733,"hp":41,"clear":43}
+  ],
+  "minimum": {"hp":40,"clear":43},
+  "maximum": {"hp":41,"clear":43},
+  "next": "Repeat weapon/card/skill variants and optimize all 12 jobs separately for each of four modes."
+}
