@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈契紀元｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-10-current-v19"><style>
+<title>靈契紀元｜冒險資料庫</title><meta name="wiki-ui-version" content="2026-11-10-current-v20"><style>
 :root{color-scheme:dark;--bg:#0c111e;--panel:#172033;--line:#2c3b52;--text:#e9eef9;--muted:#afbdd1;--gold:#eac481;--accent:#6fb6ef}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0c111e,#15233b);color:var(--text);font:15px/1.65 system-ui,"Noto Sans TC",sans-serif;min-height:100vh}
 header{padding:28px max(18px,calc((100vw - 1200px)/2));border-bottom:1px solid var(--line);background:#0c1426}header h1{font-size:28px;margin:0;color:var(--gold)}header p{margin:4px 0;color:var(--muted)}
@@ -20,7 +20,7 @@ code{color:#a6dcff}a{color:var(--accent)}.empty{color:var(--muted);padding:28px}
 .log-date{color:var(--gold);font-weight:700}.log-entry{padding:12px 0;border-top:1px solid var(--line)}.log-entry:first-of-type{border-top:0}.log-entry ul{margin:7px 0 0;padding-left:22px}
 .spirit-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}.spirit-mechanic{background:#111c30;border:1px solid #344b69;border-radius:10px;padding:12px}.spirit-mechanic h4{color:#f0cf93;margin:0 0 7px}.spirit-mechanic p{margin:5px 0}.spirit-values{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.spirit-values span{background:#273e59;color:#d9eaff;padding:3px 8px;border-radius:7px;font-size:13px}.spirit-trigger{font-size:13px;color:#b9cee8}.spirit-fusion-card{grid-column:span 2}@media(max-width:650px){.spirit-pair{grid-template-columns:1fr}.spirit-fusion-card{grid-column:span 1}}
 </style></head><body>
-<header><h1>✦ 靈契紀元冒險資料庫</h1><p>怪物 · 卡片 · 裝備 · 夥伴 · 共鳴 · 職業 · 返鄉 · 試煉 · 更新日誌</p><p class="small">正式版資料同步：2026.11.10 · 遊戲主線 V7.1.11</p></header>
+<header><h1>✦ 靈契紀元冒險資料庫</h1><p>怪物 · 卡片 · 裝備 · 夥伴 · 共鳴 · 職業 · 返鄉 · 試煉 · 更新日誌</p><p class="small">正式版資料同步：2026.11.10 · 遊戲主線 V7.1.12</p></header>
 <main><div class="toolbar" id="nav"><button data-tab="monsters" aria-selected="true">怪物</button><button data-tab="cards">卡片</button><button data-tab="gear">裝備詞條</button><button data-tab="pet">夥伴</button><button data-tab="resonance">共鳴玩法</button><button data-tab="evolution">夥伴進化</button><button data-tab="jobs">職業介紹與技能</button><button data-tab="spirit">君王／萬靈機制</button><button data-tab="homecoming">返鄉任務</button><button data-tab="extreme">極限試煉</button><button data-tab="rules">遊戲機制</button><button data-tab="changelog">更新日誌</button></div>
 <div class="toolbar" id="filters"><input id="search" type="search" placeholder="搜尋名稱、等級、屬性或地圖"><select id="continent" aria-label="選擇大陸"><option value="">所有大陸</option><option value="icarus">伊卡洛斯大陸（等級 1–99）</option><option value="sky">蒼穹彼岸（等級 101–200）</option><option value="dawn">曙界新陸（等級 201–210）</option></select><select id="zone" aria-label="選擇地圖"><option value="">所有地圖</option></select><select id="cardType" hidden aria-label="卡片種類"><option value="">全部卡片</option><option value="boss">所有首領卡片</option><option value="normal">一般卡片</option></select><select id="cardSlot" hidden aria-label="卡片裝備部位"><option value="">全部卡片部位</option></select><select id="rarity" hidden><option value="common">普通</option><option value="rare">稀有</option><option value="uncommon">罕見</option><option value="legendary">傳說</option><option value="mythic">神話</option></select><select id="tier" hidden></select></div>
 <div id="cardLevelPanel" hidden class="item" style="margin:0 0 16px">
@@ -127,6 +127,7 @@ const RELEASE_NOTES=[
   '210級首領「黎明裁界者」核心可在村莊商店兌換忠誠結晶，每顆指定夥伴忠誠+1。',
   '忠誠結晶支援自行輸入數量，批次兌換首領核心與批次指定夥伴使用；限制材料數量與忠誠500上限。',
   '返鄉任務新增十二種正反融合型態的已完成／未完成清單，避免重複培養；WIKI補充君王同化、萬靈協戰機制。',
+  '君王／萬靈六種融合共鳴補齊觸發傷害%、無視防禦、護盾、回復、次數與冷卻數值，改善雙欄比較排版。',
   '修正極限戰袍大小、角色腳下光環定位及夥伴原有光環，更新四張極限立繪。',
   '修正金幣背景在選角畫面顯示與新版主程式快取。']},
  {date:'2026-11-09',items:[
