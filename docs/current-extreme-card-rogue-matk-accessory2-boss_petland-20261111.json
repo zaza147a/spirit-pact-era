@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"rogue\",\"fusions\":[\"magic-defense\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"vit-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"cardSlot\":\"accessory2\",\"cardId\":\"boss_petland\"}",
+  "job": "rogue",
+  "weaponId": null,
+  "cardSlot": "accessory2",
+  "cardId": "boss_petland",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "rogue",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_petland",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 107,
+      "ticks": 21584,
+      "simulatedSeconds": 2158.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 108
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "rogue",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_petland",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 107,
+      "ticks": 21584,
+      "simulatedSeconds": 2158.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 108
+    }
+  }
+}
