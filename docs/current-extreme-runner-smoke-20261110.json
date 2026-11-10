@@ -1,0 +1,14 @@
+{
+  "status": "single-candidate runner validation only, NOT optimal ranking",
+  "job": "knight",
+  "fusion": "attack-magic",
+  "weaponChoice": "critDmg",
+  "condition": "Lv210, mythical SSS 200 gear, sigil8, all homecoming claimed, single mythical SSS fused pet; current real extreme trial mechanics",
+  "modes": [
+    {"kind":"atk","highest":139,"failedFloor":140,"failure":"戰敗"},
+    {"kind":"matk","highest":120,"failedFloor":121,"failure":"戰敗"},
+    {"kind":"hp","highest":33,"failedFloor":34,"failure":"階段傷害不足"},
+    {"kind":"clear","highest":35,"failedFloor":36,"failure":"階段擊殺數不足"}
+  ],
+  "warning": "Only one fixed fusion/weapon/attribute selection and one run per mode. No class comparison or optimality claim."
+}
