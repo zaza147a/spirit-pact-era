@@ -1,6 +1,6 @@
 // Bounded candidate search over *real* extreme trials; never a proof of global optimum.
 import {spawn} from 'node:child_process';
-import {writeFileSync} from 'node:fs';
+import {writeFileSync,readFileSync,existsSync} from 'node:fs';
 import assert from 'node:assert/strict';
 import {FUSIONS,ATTRIBUTE_PROFILES} from '../tests/fixtures/current-210-endgame-player.mjs';
 import {SECOND_JOBS} from '../dist/jobs.js';
@@ -16,7 +16,19 @@ assert.ok(SECOND_JOBS[job]&&fusions.every(x=>FUSIONS.includes(x))&&weapons.every
 assert.ok(profiles.every(x=>ATTRIBUTE_PROFILES.includes(x)));
 assert.ok(modes.every(x=>['atk','matk','hp','clear'].includes(x)));
 const tasks=fusions.flatMap(fusion=>weapons.flatMap(weaponChoice=>profiles.map(attributeProfile=>({fusion,weaponChoice,attributeProfile}))));
-let cursor=0;const results=[];
+const signature=JSON.stringify({job,fusions,weapons,profiles,modes,seed:process.env.EXTREME_SEED||'20261110'});
+const previous=existsSync(output)?JSON.parse(readFileSync(output,'utf8')):null;
+if(previous)assert.equal(previous.signature,signature,'Existing checkpoint belongs to different search settings');
+let cursor=0;const results=previous?.results||[];
+const key=x=>[x.fusion,x.weaponChoice,x.attributeProfile].join('/');
+const completed=new Set(tasks.filter(task=>modes.every(kind=>results.some(r=>key(r)===key(task)&&r.kind===kind))).map(key));
+function checkpoint(done=false){
+ const best=Object.fromEntries(modes.map(kind=>[kind,results.filter(x=>x.kind===kind).sort((a,b)=>b.highest-a.highest)[0]||null]));
+ const report={status:done?'BOUNDED SEARCH COMPLETE, not global optimum':'PARTIAL - resumable checkpoint',signature,job,conditions:'Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure',modes,tasks:tasks.length,completed:completed.size,results,best};
+ writeFileSync(output,JSON.stringify(report,null,2)+'\n');
+ return best;
+}
+const pending=tasks.filter(task=>!completed.has(key(task)));
 function one({fusion,weaponChoice,attributeProfile}){return new Promise((resolve,reject)=>{
  const proc=spawn(process.execPath,['scripts/current-extreme-continuous-benchmark.mjs'],{
   env:{...process.env,EXTREME_JOB:job,EXTREME_FUSION:fusion,EXTREME_WEAPON:weaponChoice,EXTREME_ATTRIBUTE_PROFILE:attributeProfile,EXTREME_MODES:modes.join(','),EXTREME_FLOOR_CEILING:'250'},stdio:['ignore','pipe','pipe']});
@@ -26,13 +38,11 @@ function one({fusion,weaponChoice,attributeProfile}){return new Promise((resolve
   try{
    const rows=output.trim().split('\n').map(JSON.parse);
    assert.deepEqual(rows.map(x=>x.kind),modes);
-   results.push(...rows);console.log(JSON.stringify({fusion,weaponChoice,attributeProfile,scores:rows.map(x=>({kind:x.kind,highest:x.highest,stopped:x.stopped}))}));resolve();
+   results.push(...rows);completed.add(key({fusion,weaponChoice,attributeProfile}));checkpoint();console.log(JSON.stringify({fusion,weaponChoice,attributeProfile,scores:rows.map(x=>({kind:x.kind,highest:x.highest,stopped:x.stopped}))}));resolve();
   }catch(err){reject(err);}
  });
 });}
-async function worker(){while(cursor<tasks.length)await one(tasks[cursor++]);}
-await Promise.all(Array.from({length:Math.min(concurrency,tasks.length)},worker));
-const best=Object.fromEntries(modes.map(kind=>[kind,results.filter(x=>x.kind===kind).sort((a,b)=>b.highest-a.highest)[0]]));
-const report={status:'BOUNDED SEARCH, NOT globally optimized',job,conditions:'Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure',modes,tasks:tasks.length,results,best};
-writeFileSync(output,JSON.stringify(report,null,2)+'\n');
+async function worker(){while(cursor<pending.length)await one(pending[cursor++]);}
+await Promise.all(Array.from({length:Math.min(concurrency,pending.length)},worker));
+const best=checkpoint(true);
 console.log(JSON.stringify({complete:true,job,tasks:tasks.length,best:Object.fromEntries(modes.map(k=>[k,{highest:best[k].highest,fusion:best[k].fusion,weaponChoice:best[k].weaponChoice}]))}));
