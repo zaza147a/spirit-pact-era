@@ -18,16 +18,33 @@ test('角色外觀提供人物與寵物獨立光環開關，背景頁不重複',
 
 test('角色與寵物皆遵從可關閉的光環狀態',()=>{
  assert.match(game,/dataset\.cosmeticAura=player\.cosmeticAura!==false\?'on':'off'/);
- assert.match(game,/dataset\.cosmeticAura=player\.petCosmeticAura!==false\?'on':'off'/);
+ assert.match(game,/companionAuraRoot\?\.dataset\)companionAuraRoot\.dataset\.cosmeticAura=player\.petCosmeticAura!==false\?'on':'off'/);
+ assert.match(game,/顯示夥伴光環/);
  assert.match(css,/#companion\[data-cosmetic-aura="off"\]>.hero::before/);
  assert.match(css,/#character\[data-cosmetic-aura="off"\]>.hero::before/);
  assert.match(ground,/#gameShell #character\[data-cosmetic-aura="off"\]>.hero\[class\*="extreme-aura-"\]::before\{display:none!important\}/);
 });
 
-test('極限試煉光環壓扁到腳下，金幣契印亦為地面投影',()=>{
+test('極限試煉光環壓扁到腳下，寵物原有金幣契印不被額外改動',()=>{
  assert.match(ground,/height:42px!important/);
  assert.match(ground,/top:216px!important/);
+ assert.match(ground,/has\(img\[src\$="atk-assassin\.webp"\]\)::before\{top:184px!important\}/);
  assert.match(ground,/::after\{display:none!important\}/);
- assert.match(gold,/Projection on the floor beneath the boots\/paws/);
- assert.match(gold,/height:43px/);
+ assert.doesNotMatch(gold,/Projection on the floor beneath the boots\/paws/);
+ assert.match(gold,/#companion\[data-gold-tier="4"\]>.hero::after/);
+});
+
+test('四張重製立繪使用統一顯示比例，各自對齊腳底接觸面',()=>{
+ assert.doesNotMatch(ground,/src\$="clear-pactWarrior\.webp"\]\{transform:scale\(\.88\)!important/);
+ assert.doesNotMatch(ground,/src\$="matk-assassin\.webp"\]\{transform:scale\(\.92\)!important/);
+ assert.match(ground,/All four replacement portraits now include their own transparent safety margins/);
+ for(const [image,desktop,mobile] of [
+  ['atk-assassin',184,160],['matk-assassin',203,178],
+  ['matk-pactWarrior',194,170],['clear-pactWarrior',206,181]
+ ]){
+  const selector=`:has(img[src$="${image}.webp"])::before{top:`;
+  assert.ok(ground.includes(`${selector}${desktop}px!important}`),`${image} desktop foot baseline`);
+  assert.ok(ground.includes(`${selector}${mobile}px!important}`),`${image} mobile foot baseline`);
+ }
+ assert.match(ground,/src\$="atk-assassin\.webp"\]\)::before\{top:184px!important/);
 });

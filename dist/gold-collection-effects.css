@@ -65,17 +65,6 @@
 #companion[data-gold-tier="4"]>.hero strong{
   text-shadow:0 1px 3px #0c1724,0 0 5px rgba(12,23,36,.75);
 }
-/* Projection on the floor beneath the boots/paws, not a halo through the torso. */
-#character[data-gold-tier="3"]>.hero::after,
-#character[data-gold-tier="4"]>.hero::after,
-#companion[data-gold-tier="4"]>.hero::after{
-  height:43px;
-  background-size:100% 100%;
-  border-radius:50%;
-  opacity:.9;
-}
-#character[data-gold-tier="3"]>.hero:has(.extreme-outfit-equipped)::after,
-#character[data-gold-tier="4"]>.hero:has(.extreme-outfit-equipped)::after{top:198px}
 @media(min-width:1001px) and(max-height:700px){
   #character[data-gold-tier="3"]>.hero,
   #character[data-gold-tier="4"]>.hero,

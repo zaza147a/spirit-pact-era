@@ -107,10 +107,22 @@
   z-index:0!important;animation:extreme-aura-breathe 3s ease-in-out infinite!important;
 }
 #gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:216px!important}
+/* Foot-contact positions measured against each 1024x1536 transparent portrait.
+   The four replacements share canvas size, not the same boot baseline. */
+#gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="atk-assassin.webp"])::before{top:184px!important}
+#gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="matk-assassin.webp"])::before{top:203px!important}
+#gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="matk-pactWarrior.webp"])::before{top:194px!important}
+#gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="clear-pactWarrior.webp"])::before{top:206px!important}
 #gameShell #character .hero[class*="extreme-aura-"]::after{display:none!important}
 #gameShell #character[data-cosmetic-aura="off"]>.hero[class*="extreme-aura-"]::before{display:none!important}
+/* All four replacement portraits now include their own transparent safety margins.
+   Keep one common scale for the character panel and lobby. */
 @media(max-width:600px){
  #gameShell #character .hero[class*="extreme-aura-"]:has(img.extreme-outfit-equipped)::before{top:185px!important;width:140px!important;height:36px!important}
+ #gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="atk-assassin.webp"])::before{top:160px!important}
+ #gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="matk-assassin.webp"])::before{top:178px!important}
+ #gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="matk-pactWarrior.webp"])::before{top:170px!important}
+ #gameShell #character .hero[class*="extreme-aura-"]:has(img[src$="clear-pactWarrior.webp"])::before{top:181px!important}
 }
 .extreme-entry-scene{background-size:cover!important;background-position:center!important;border-radius:13px}
 .slot-card[class*="extreme-entry-aura-"] .slot-art-stage{box-shadow:inset 0 0 25px var(--extreme-entry-color,#ffb454),0 0 16px var(--extreme-entry-color,#ffb454)}
