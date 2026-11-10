@@ -168,3 +168,10 @@
 - `docs/current-extreme-wizard-search-20261110.json` 已完整結算24套／96項正式試煉；四域最高 **ATK 155**（防輔＋攻速）、**MATK 118**（防輔＋攻速）、**HP 33**（魔防＋暴傷）、**CLEAR 37**（攻輔＋暴傷）。
 - 每項最高皆由首次失敗確定；本輪仍僅兩組配點、預設武器／卡片、一個亂數種子，不能當作大法師全局最佳。
 - 賢者繼續執行；斬首接替大法師進行同規格搜尋，之後逐一轉往剩餘職業。
+
+## 分段交接 18：四職並行斷點保全
+
+- 已啟動 `sage`、`assassin`、`rogue`、`monk` 四職的真實四域候選搜尋，均使用六融合、兩武器詞、`reference`／`agi-luk`、種子20261110；各自共24套，執行中 JSON 為 `PARTIAL`。
+- 對應檢查點分別是 `docs/current-extreme-sage-search-20261110.json`、`docs/current-extreme-assassin-search-20261110.json`、`docs/current-extreme-rogue-search-20261110.json`、`docs/current-extreme-monk-search-20261110.json`。
+- 所有輸出每完成一套即落盤；若程序消失可將 `EXTREME_JOB` 設為檔名職業、`EXTREME_OUTPUT` 指向同一結果檔，並指定 `EXTREME_CONCURRENCY=2 EXTREME_PROFILES=reference,agi-luk EXTREME_MODES=atk,matk,hp,clear` 重新執行 `node scripts/current-extreme-candidate-search.mjs`；會自動跳過已完成配置。
+- **上述四職尚未完成24套，`best` 只是當下檢查點；禁止用於排名。** 完成時再更新最高層與提交完整資料。
