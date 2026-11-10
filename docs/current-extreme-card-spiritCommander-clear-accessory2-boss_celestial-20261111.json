@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"spiritCommander\",\"fusions\":[\"attack-magic\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"dex-vit\"],\"modes\":[\"clear\"],\"seed\":\"20261110\",\"cardSlot\":\"accessory2\",\"cardId\":\"boss_celestial\"}",
+  "job": "spiritCommander",
+  "weaponId": null,
+  "cardSlot": "accessory2",
+  "cardId": "boss_celestial",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 4532,
+      "simulatedSeconds": 453.2,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 4532,
+      "simulatedSeconds": 453.2,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    }
+  }
+}

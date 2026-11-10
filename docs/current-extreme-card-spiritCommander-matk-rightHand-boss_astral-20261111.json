@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"spiritCommander\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"cardSlot\":\"rightHand\",\"cardId\":\"boss_astral\"}",
+  "job": "spiritCommander",
+  "weaponId": null,
+  "cardSlot": "rightHand",
+  "cardId": "boss_astral",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "rightHand",
+      "cardId": "boss_astral",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 153,
+      "ticks": 30680,
+      "simulatedSeconds": 3068,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 154
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "rightHand",
+      "cardId": "boss_astral",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 153,
+      "ticks": 30680,
+      "simulatedSeconds": 3068,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 154
+    }
+  }
+}

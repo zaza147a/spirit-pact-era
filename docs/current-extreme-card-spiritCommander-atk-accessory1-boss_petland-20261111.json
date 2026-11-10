@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"spiritCommander\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"cardSlot\":\"accessory1\",\"cardId\":\"boss_petland\"}",
+  "job": "spiritCommander",
+  "weaponId": null,
+  "cardSlot": "accessory1",
+  "cardId": "boss_petland",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory1",
+      "cardId": "boss_petland",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 168,
+      "ticks": 33776,
+      "simulatedSeconds": 3377.6,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 169
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "spiritCommander",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory1",
+      "cardId": "boss_petland",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 168,
+      "ticks": 33776,
+      "simulatedSeconds": 3377.6,
+      "stopped": "first-failure",
+      "failure": "契約雙方戰敗",
+      "nextFloor": 169
+    }
+  }
+}
