@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"crusader\",\"fusions\":[\"attack-magic\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"clear\"],\"seed\":\"20261110\",\"cardSlot\":\"accessory2\",\"cardId\":\"boss_petland\"}",
+  "job": "crusader",
+  "weaponId": null,
+  "cardSlot": "accessory2",
+  "cardId": "boss_petland",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_petland",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 35,
+      "ticks": 3842,
+      "simulatedSeconds": 384.2,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 36
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_petland",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 35,
+      "ticks": 3842,
+      "simulatedSeconds": 384.2,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 36
+    }
+  }
+}
