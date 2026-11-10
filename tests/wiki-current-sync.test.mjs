@@ -29,3 +29,9 @@ test('recent release note dates are descending and loyalty rules are consistent'
  for(const [level,expected] of [[150,2],[180,1.5],[199,1]])assert.equal(trainingRate(level),expected);
  assert.ok(html.includes('裁界者核心'));
 });
+test('game and WIKI display one version and summarize latest published mechanics',()=>{
+ const game=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
+ for(const page of [game,html])assert.ok(page.includes('V7.1.11'));
+ assert.match(game,/game\.js\?v=7\.1\.11-wiki-changelog-20261110/);
+ for(const summary of ['批次兌換首領核心','十二種正反融合型態','君王同化、萬靈協戰'])assert.ok(html.includes(summary),summary);
+});
