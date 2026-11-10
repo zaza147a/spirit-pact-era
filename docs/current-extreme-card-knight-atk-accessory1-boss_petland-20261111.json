@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"knight\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"reference\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"weaponId\":\"blade\",\"cardSlot\":\"accessory1\",\"cardId\":\"boss_petland\"}",
+  "job": "knight",
+  "weaponId": "blade",
+  "cardSlot": "accessory1",
+  "cardId": "boss_petland",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "blade",
+      "cardSlot": "accessory1",
+      "cardId": "boss_petland",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 190,
+      "ticks": 38144,
+      "simulatedSeconds": 3814.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 191
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "knight",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "blade",
+      "cardSlot": "accessory1",
+      "cardId": "boss_petland",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 190,
+      "ticks": 38144,
+      "simulatedSeconds": 3814.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 191
+    }
+  }
+}
