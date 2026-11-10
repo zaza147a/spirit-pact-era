@@ -1,0 +1,61 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"sage\",\"fusions\":[\"magic-support\"],\"weapons\":[\"critDmg\",\"aspdPct\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\",\"weaponId\":\"oneStaff\"}",
+  "job": "sage",
+  "weaponId": "oneStaff",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weaponId if given; cards fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 2,
+  "completed": 2,
+  "results": [
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3967,
+      "simulatedSeconds": 396.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4053,
+      "simulatedSeconds": 405.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3967,
+      "simulatedSeconds": 396.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  }
+}
