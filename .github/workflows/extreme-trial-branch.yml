@@ -38,6 +38,8 @@ jobs:
             git add docs/handoff-12-jobs-loadout-2026-11-10.md
             git add docs/current-extreme-card-"$EXTREME_JOB"-"$mode"-*-20261111.json
             git commit -m "test: complete $EXTREME_JOB $mode boss-card trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
             git push origin HEAD:test/12-jobs-optimal-loadout-20261110
           done
       - name: Upload trial evidence
