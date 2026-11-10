@@ -356,3 +356,11 @@
 - `docs/current-extreme-weapon-crusader-oneSpear-{atk,matk,hp,clear}-20261111.json` 四域兩種特殊詞共8次真實試煉，全部首次失敗。
 - 換成**單手槍＋盾**後，**ATK物理承傷由222提升到229層**（魔防融合＋攻速詞、`reference`配點）；MATK168／HP33／CLEAR36維持原最強結果。
 - 斬首短劍＋盾／雙短相較拳刃的正式試煉正在執行；本段是對原裝備武器型態的修正，沒有碰正式版。
+
+## 分段交接 46：斬首短劍、雙短、拳刃比較及武器批次驗收
+
+- `docs/current-extreme-weapon-assassin-{rifle,rifle-offDagger}-{atk,matk,hp,clear}-20261111.json` 共16項真實極限試煉，均首次失敗。
+- **單短劍＋盾**讓 **ATK由146升到171層**（防輔＋攻速＋`agi-vit`）、**MATK由121升到134層**（防輔＋暴傷＋`reference`）；**雙短劍**讓HP單體輸出由35升到36層（攻魔＋暴傷＋`agi-luk`）；CLEAR維持36。
+- 六個有多武器職業（盧恩、皇家、大法師、賢者、斬首、遊俠）的所有替代合法武器已完成：11種替代型態×4模式×2武器詞=**88項**額外真實試煉；總計第一／二輪的1,392項+88項=**1,480項**。
+- `tests/current-extreme-results-integrity.test.mjs` 新增武器比較校驗：各替代武器／四域／兩特殊詞都是合法裝備，且必須首次失敗；其他六職沒有別的合法武器形態。
+- 新比較表 `docs/current-extreme-twelve-jobs-weapon-refined-20261111.md` 應作目前最新記錄；仍缺所有融合×配點×武器交叉搜尋、首領卡組合與技能排序，多種子也未全覆蓋，**不得宣稱全局最佳**。
