@@ -1,0 +1,61 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"hunter\",\"fusions\":[\"attack-support\"],\"weapons\":[\"critDmg\",\"aspdPct\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"clear\"],\"seed\":\"20261110\",\"weaponId\":\"shortBow\"}",
+  "job": "hunter",
+  "weaponId": "shortBow",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weaponId if given; cards fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 2,
+  "completed": 2,
+  "results": [
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "shortBow",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 3995,
+      "simulatedSeconds": 399.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    },
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 4147,
+      "simulatedSeconds": 414.7,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "shortBow",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 3995,
+      "simulatedSeconds": 399.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    }
+  }
+}
