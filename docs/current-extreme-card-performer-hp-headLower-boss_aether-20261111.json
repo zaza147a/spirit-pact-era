@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"performer\",\"fusions\":[\"magic-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\",\"cardSlot\":\"headLower\",\"cardId\":\"boss_aether\"}",
+  "job": "performer",
+  "weaponId": null,
+  "cardSlot": "headLower",
+  "cardId": "boss_aether",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 36,
+      "ticks": 3862,
+      "simulatedSeconds": 386.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 37
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 36,
+      "ticks": 3862,
+      "simulatedSeconds": 386.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 37
+    }
+  }
+}
