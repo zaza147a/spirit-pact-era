@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"knight\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"weaponId\":\"blade\",\"cardSlot\":\"accessory1\",\"cardId\":\"boss_eclipse\"}",
+  "job": "knight",
+  "weaponId": "blade",
+  "cardSlot": "accessory1",
+  "cardId": "boss_eclipse",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "blade",
+      "cardSlot": "accessory1",
+      "cardId": "boss_eclipse",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 161,
+      "ticks": 32296,
+      "simulatedSeconds": 3229.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 162
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "blade",
+      "cardSlot": "accessory1",
+      "cardId": "boss_eclipse",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 161,
+      "ticks": 32296,
+      "simulatedSeconds": 3229.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 162
+    }
+  }
+}
