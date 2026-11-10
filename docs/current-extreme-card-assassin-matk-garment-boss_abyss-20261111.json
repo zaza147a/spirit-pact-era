@@ -1,0 +1,52 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"assassin\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"reference\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"weaponId\":\"rifle\",\"cardSlot\":\"garment\",\"cardId\":\"boss_abyss\"}",
+  "job": "assassin",
+  "weaponId": "rifle",
+  "cardSlot": "garment",
+  "cardId": "boss_abyss",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 1,
+  "completed": 1,
+  "results": [
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "garment",
+      "cardId": "boss_abyss",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 124,
+      "ticks": 24912,
+      "simulatedSeconds": 2491.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 125
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "garment",
+      "cardId": "boss_abyss",
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 124,
+      "ticks": 24912,
+      "simulatedSeconds": 2491.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 125
+    }
+  }
+}
