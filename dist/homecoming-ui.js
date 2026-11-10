@@ -5,6 +5,8 @@ import {fourthPair,FOURTH_SKILLS,fourthUnlocked} from './companion-fourth-skill.
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(id,action,label,choice)=>`<button data-homecoming="${action}" data-route="${id}"${choice===undefined?'':` data-choice="${esc(choice)}"`}>${esc(label)}</button>`;
 const labels={heat:'熱量',pressure:'壓力',beacons:'航標',supplies:'補給',rescued:'救援',alarm:'警戒',key:'鑰匙',grain:'穀物',herb:'藥草',wheel:'車輪',wins:'演武',notes:'音節',keeper:'守門人證詞',child:'孩童證詞',record:'舊誓文',spring:'春風',summer:'夏雨',autumn:'秋霜',winter:'冬雪',sap:'樹液',people:'居民',trunk:'主根',seed:'幼苗',fuel:'燃料',scouted:'偵察'};
+const fusionLabels={attack:'攻擊',magic:'魔法',defense:'防禦',support:'輔助'};
+const fusionLabel=id=>id.split('-').map(role=>fusionLabels[role]||role).join('＋');
 export function homecomingTracker(p){
  const quests=Object.values(p?.homecoming?.routes||{}),letters=quests.filter(q=>q.phase==='letter').length,active=quests.filter(q=>!['letter','claimed'].includes(q.phase)).length;
  if(!quests.length)return '';
@@ -12,12 +14,14 @@ export function homecomingTracker(p){
 }
 export function renderHomecomingPanel(p){
  const b=homecomingBonuses(p),pet=p.pets?.find(x=>x.id===p.activePetId);
- const summary=`<div class="item"><h3>十二大陸・返鄉契約</h3><p>高階人形（SSS）與契印 8 開啟返鄉來信。首次逐頁旅行後抵達城鎮；每條故事需帶上對應外觀的出戰夥伴，並在線上手動推進。</p><p>已完成 ${b.count}／12。人物永久傳承：傷害 +${(b.damage*100).toFixed(2)}%、HP +${Math.round(b.hp*100)}%、雙防 +${Math.round(b.def*100)}%、技能受療 +${Math.round(b.recovery*100)}%。</p><p class="muted">旅行插畫 36／36；人物傳承與第四格專屬技能已生效。故事圖片會在對話後彈出，也可隨時重看。</p></div>`;
+ const completed=HOMECOMING_ROUTES.filter(r=>p.homecoming?.routes?.[r.id]?.phase==='claimed');
+ const completionList=HOMECOMING_ROUTES.map(r=>`<span class="pill" title="${esc(r.companion)}">${p.homecoming?.routes?.[r.id]?.phase==='claimed'?'✓ 已完成':'○ 未完成'} · ${esc(fusionLabel(r.id))}</span>`).join('');
+ const summary=`<div class="item"><h3>十二大陸・返鄉契約</h3><p>高階人形（SSS）與契印 8 開啟返鄉來信。首次逐頁旅行後抵達城鎮；每條故事需帶上對應外觀的出戰夥伴，並在線上手動推進。</p><p>已完成 ${b.count}／12。人物永久傳承：傷害 +${(b.damage*100).toFixed(2)}%、HP +${Math.round(b.hp*100)}%、雙防 +${Math.round(b.def*100)}%、技能受療 +${Math.round(b.recovery*100)}%。</p><p><b>融合型態完成清單（${completed.length}／12）</b></p><div class="stats">${completionList}</div><p class="muted">同能力的正反融合分別為不同外觀與返鄉故事，因此各自顯示完成狀態。旅行插畫 36／36；人物傳承與第四格專屬技能已生效。故事圖片會在對話後彈出，也可隨時重看。</p></div>`;
  const current=homecomingIdentity(pet),quests=p.homecoming?.routes||{};
  const priority=r=>{const q=quests[r.id];return q?.phase==='traveling'?0:r.id===current&&q?1:q&&q.phase!=='claimed'?2:q?3:4;};
  const ordered=[...HOMECOMING_ROUTES].sort((a,b)=>priority(a)-priority(b));
  const renderRoute=r=>{
- const q=p.homecoming?.routes?.[r.id];let html=`<section class="item homecoming-card" data-homecoming-route="${r.id}" style="--homecoming-color:${r.color}"><small>${esc(r.continent)}・${esc(r.companion)}</small><h3>${esc(r.title)}</h3>`;
+ const q=p.homecoming?.routes?.[r.id];let html=`<section class="item homecoming-card" data-homecoming-route="${r.id}" style="--homecoming-color:${r.color}"><small>${esc(r.continent)}・${esc(r.companion)} · 融合型態：${esc(fusionLabel(r.id))}</small><h3>${esc(r.title)} ${q?.phase==='claimed'?'✓ 已完成':''}</h3>`;
  if(!q)return html+'<p class="muted">達成條件後，在安全城鎮收到家鄉來信。</p></section>';
  const match=eligibleHomecoming(p,pet)&&homecomingIdentity(pet)===r.id;
  if(!match&&q.phase!=='claimed')html+='<p class="muted">請出戰這條路線對應的高階人形夥伴。</p>';
