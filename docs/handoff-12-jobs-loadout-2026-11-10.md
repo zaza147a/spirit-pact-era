@@ -203,3 +203,10 @@
 - 本輪最高 **ATK 169**（防輔＋暴傷）、**MATK 131**（防輔＋攻速）、**HP 34**（攻輔＋暴傷）、**CLEAR 38**（攻輔＋暴傷）；完整最佳屬性與失敗原因見 JSON。
 - 仍僅是固定種子、兩合法配點、預設武器／卡片的有界候選，不可稱為全局最優。
 - 萬靈宗師接替修羅空出的資源，與遊俠、天籟、君王並行；四職全部有自己的可續跑檢查點。
+
+## 分段交接 23：最後四職搜尋中途保全
+
+- 目前進行 `hunter`、`performer`、`pactWarrior`、`spiritCommander`；結果分別保存於 `docs/current-extreme-hunter-search-20261110.json`、`docs/current-extreme-performer-search-20261110.json`、`docs/current-extreme-pactWarrior-search-20261110.json`、`docs/current-extreme-spiritCommander-search-20261110.json`。
+- 搜尋條件與前八職相同：六融合 × 兩武器詞 × `reference`／`agi-luk` 配點 × ATK/MATK/HP/CLEAR，種子20261110，每職24套。每完成一套即更新結果檔，任何 `PARTIAL` 不可當最終成績。
+- 若中斷，設定 `EXTREME_JOB=<job> EXTREME_CONCURRENCY=2 EXTREME_PROFILES=reference,agi-luk EXTREME_MODES=atk,matk,hp,clear EXTREME_OUTPUT=docs/current-extreme-<job>-search-20261110.json` 後執行 `node scripts/current-extreme-candidate-search.mjs`，自動跳過完成配置。
+- 君王另有 `docs/current-extreme-king-multiseed-20261110.json` 的 HP40／CLEAR43 穩定下界；新24套搜尋須與此比較，不能把較弱候選當成最高通關。
