@@ -231,3 +231,10 @@
 - `docs/current-extreme-pactWarrior-search-20261110.json` 與 `docs/current-extreme-spiritCommander-search-20261110.json` 仍屬 `PARTIAL`；兩職單獨執行，按六融合 × 兩武器詞 × 兩配點 × 四域，每完成候選就落盤，可依分段23的設定續跑。
 - **特別注意**：君王先前四種子 HP40／CLEAR43 的候選是已知下界。這一輪搜尋包含所有融合及兩種配點，但不能以單種子低分候選否定既有下界。
 - 待兩職完整完成，必須核對全部12職 `completed===tasks===24`、四項 `best.stopped==='first-failure'`，才可輸出暫定比較；不可稱為全局最佳。
+
+## 分段交接 27：靈契君王24套四域完整候選
+
+- `docs/current-extreme-pactWarrior-search-20261110.json` 完成24套／96項正式四域試煉，均從第1層跑到首次失敗。
+- 本輪最高 **ATK 178**（魔輔＋攻速）、**MATK 156**（魔防＋暴傷）、**HP 40**（攻輔＋攻速）、**CLEAR 43**（攻輔＋攻速），配點見 JSON `best`。
+- `HP40／CLEAR43` 與之前 `attack-support`＋`aspdPct`＋`agi-luk` 的結果相符，且該配置早已在四種子下得到 HP40／41／41／41、CLEAR43／43／43／43；**不可用本輪其他較差融合推翻已知下界**。
+- 這仍只是兩種配點、固定杖劍／卡片與單種子之有界最強；君王其他配點及首領卡可再優化。萬靈宗師仍進行中，完成後才能建立十二職本輪同條件比較表。
