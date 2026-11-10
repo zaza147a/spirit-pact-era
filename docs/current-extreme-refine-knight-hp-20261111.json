@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"knight\",\"fusions\":[\"attack-defense\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\"}",
+  "job": "knight",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3629,
+      "simulatedSeconds": 362.9,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 26,
+      "ticks": 5308,
+      "simulatedSeconds": 530.8,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 27
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 24,
+      "ticks": 4725,
+      "simulatedSeconds": 472.5,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 25
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 26,
+      "ticks": 5321,
+      "simulatedSeconds": 532.1,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 27
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 26,
+      "ticks": 5104,
+      "simulatedSeconds": 510.4,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 27
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3629,
+      "simulatedSeconds": 362.9,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  }
+}
