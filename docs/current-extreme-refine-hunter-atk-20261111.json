@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"hunter\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\"}",
+  "job": "hunter",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 143,
+      "ticks": 28768,
+      "simulatedSeconds": 2876.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 144
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 143,
+      "ticks": 28760,
+      "simulatedSeconds": 2876,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 144
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 136,
+      "ticks": 27304,
+      "simulatedSeconds": 2730.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 137
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 147,
+      "ticks": 29424,
+      "simulatedSeconds": 2942.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 148
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 65,
+      "ticks": 13088,
+      "simulatedSeconds": 1308.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 66
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 147,
+      "ticks": 29424,
+      "simulatedSeconds": 2942.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 148
+    }
+  }
+}

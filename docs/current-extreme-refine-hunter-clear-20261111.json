@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"hunter\",\"fusions\":[\"attack-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"clear\"],\"seed\":\"20261110\"}",
+  "job": "hunter",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "clear"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 4367,
+      "simulatedSeconds": 436.7,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 30,
+      "ticks": 5318,
+      "simulatedSeconds": 531.8,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 31
+    },
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 30,
+      "ticks": 5858,
+      "simulatedSeconds": 585.8,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 31
+    },
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 30,
+      "ticks": 5378,
+      "simulatedSeconds": 537.8,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 31
+    },
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 30,
+      "ticks": 5318,
+      "simulatedSeconds": 531.8,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 31
+    }
+  ],
+  "best": {
+    "clear": {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 4367,
+      "simulatedSeconds": 436.7,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    }
+  }
+}
