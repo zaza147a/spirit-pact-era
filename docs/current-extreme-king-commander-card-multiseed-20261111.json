@@ -1,0 +1,31 @@
+{
+  "status": "FOUR SEED REPLICATION, not global optimum",
+  "source": "scripts/current-extreme-continuous-benchmark.mjs: real Extreme HP mode from floor 1 to first failure",
+  "date": "2026-11-11",
+  "mode": "hp",
+  "attributeProfile": "agi-luk",
+  "seeds": [20261110, 471122, 93217, 81733],
+  "candidates": [
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "floors": [41, 40, 40, 41],
+      "mean": 40.5,
+      "allStopped": "first-failure"
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "floors": [42, 41, 38, 41],
+      "mean": 40.5,
+      "allStopped": "first-failure"
+    }
+  ],
+  "interpretation": "Commander highest individual floor 42, but across four same seeds both jobs mean 40.5. Not evidence of sustained superiority; only single-card local search, not multi-card global optimization."
+}
