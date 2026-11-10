@@ -1,0 +1,99 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"sage\",\"fusions\":[\"magic-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"agi-vit\",\"luk-vit\",\"dex-vit\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"hp\"],\"seed\":\"20261110\"}",
+  "job": "sage",
+  "conditions": "Chosen unordered pet fusions x 2 weapon special affixes x chosen legal attribute profiles; other weapon types/card choices still fixed; real extreme trial from floor1 to failure",
+  "modes": [
+    "hp"
+  ],
+  "tasks": 5,
+  "completed": 5,
+  "results": [
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4138,
+      "simulatedSeconds": 413.8,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 25,
+      "ticks": 4950,
+      "simulatedSeconds": 495,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 26
+    },
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 24,
+      "ticks": 4720,
+      "simulatedSeconds": 472,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 25
+    },
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 26,
+      "ticks": 5267,
+      "simulatedSeconds": 526.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 27
+    },
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 29,
+      "ticks": 5987,
+      "simulatedSeconds": 598.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 30
+    }
+  ],
+  "best": {
+    "hp": {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4138,
+      "simulatedSeconds": 413.8,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  }
+}
