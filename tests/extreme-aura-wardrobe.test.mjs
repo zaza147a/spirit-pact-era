@@ -34,9 +34,17 @@ test('極限試煉光環壓扁到腳下，寵物原有金幣契印不被額外�
  assert.match(gold,/#companion\[data-gold-tier="4"\]>.hero::after/);
 });
 
-test('四張重製立繪使用統一顯示比例，刺客 ATK 保留獨立腳位定位',()=>{
+test('四張重製立繪使用統一顯示比例，各自對齊腳底接觸面',()=>{
  assert.doesNotMatch(ground,/src\$="clear-pactWarrior\.webp"\]\{transform:scale\(\.88\)!important/);
  assert.doesNotMatch(ground,/src\$="matk-assassin\.webp"\]\{transform:scale\(\.92\)!important/);
  assert.match(ground,/All four replacement portraits now include their own transparent safety margins/);
+ for(const [image,desktop,mobile] of [
+  ['atk-assassin',184,160],['matk-assassin',203,178],
+  ['matk-pactWarrior',194,170],['clear-pactWarrior',206,181]
+ ]){
+  const selector=`:has(img[src$="${image}.webp"])::before{top:`;
+  assert.ok(ground.includes(`${selector}${desktop}px!important}`),`${image} desktop foot baseline`);
+  assert.ok(ground.includes(`${selector}${mobile}px!important}`),`${image} mobile foot baseline`);
+ }
  assert.match(ground,/src\$="atk-assassin\.webp"\]\)::before\{top:184px!important/);
 });
