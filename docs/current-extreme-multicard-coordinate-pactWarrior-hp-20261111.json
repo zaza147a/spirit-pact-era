@@ -1,0 +1,79 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "pactWarrior",
+  "mode": "hp",
+  "fusion": "attack-support",
+  "weapon": "aspdPct",
+  "profile": "agi-luk",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 7,
+  "baseline": {
+    "overrides": {},
+    "highest": 41,
+    "ticks": 3952
+  },
+  "winner": {
+    "overrides": {},
+    "highest": 41,
+    "ticks": 3952
+  },
+  "history": [
+    {
+      "overrides": {},
+      "highest": 41,
+      "ticks": 3952
+    },
+    {
+      "overrides": {
+        "headUpper": "boss_skyport"
+      },
+      "highest": 40,
+      "ticks": 3717
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest"
+      },
+      "highest": 41,
+      "ticks": 3970
+    },
+    {
+      "overrides": {
+        "headLower": "boss_aether"
+      },
+      "highest": 40,
+      "ticks": 3711
+    },
+    {
+      "overrides": {
+        "armor": "boss_stormforge"
+      },
+      "highest": 41,
+      "ticks": 3952
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral"
+      },
+      "highest": 37,
+      "ticks": 3848
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_zenith"
+      },
+      "highest": 40,
+      "ticks": 3885
+    }
+  ]
+}
