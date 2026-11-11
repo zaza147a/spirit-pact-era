@@ -1,0 +1,81 @@
+name: Extreme new jobs ATK MATK legal attribute screen
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-newjobs-defense-attributes.yml']
+permissions:
+  contents: write
+jobs:
+  pactWarrior:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Screen seven legal attributes in real ATK and MATK trials
+        env:
+          EXTREME_JOB: pactWarrior
+          EXTREME_FUSIONS: attack-support
+          EXTREME_WEAPONS: aspdPct
+          EXTREME_PROFILES: reference,agi-vit,luk-vit,dex-vit,agi-luk,vit-luk,dex-luk
+          EXTREME_MODES: atk,matk
+          EXTREME_OUTPUT: docs/current-extreme-seeded-v3-pactWarrior-defense-attributes-20261111.json
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-candidate-search.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：君王 ATK/MATK 七配點實戰
+
+          - 固定攻擊＋輔助融合寵、攻速武器，七種合法配點 × 物理/魔法承傷共 14 場。
+          - 報告 `docs/current-extreme-seeded-v3-pactWarrior-defense-attributes-20261111.json`；有限搜尋非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save pactWarrior ATK MATK attribute trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  spiritCommander:
+    needs: pactWarrior
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Screen seven legal attributes in real ATK and MATK trials
+        env:
+          EXTREME_JOB: spiritCommander
+          EXTREME_FUSIONS: attack-magic
+          EXTREME_WEAPONS: aspdPct
+          EXTREME_PROFILES: reference,agi-vit,luk-vit,dex-vit,agi-luk,vit-luk,dex-luk
+          EXTREME_MODES: atk,matk
+          EXTREME_OUTPUT: docs/current-extreme-seeded-v3-spiritCommander-defense-attributes-20261111.json
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-candidate-search.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：萬靈 ATK/MATK 七配點實戰
+
+          - 固定攻擊＋魔法融合寵、攻速武器，七種合法配點 × 物理/魔法承傷共 14 場。
+          - 報告 `docs/current-extreme-seeded-v3-spiritCommander-defense-attributes-20261111.json`；有限搜尋非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save spiritCommander ATK MATK attribute trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
