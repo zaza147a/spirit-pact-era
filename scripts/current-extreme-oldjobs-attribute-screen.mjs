@@ -7,7 +7,9 @@ import {ATTRIBUTE_PROFILES} from '../tests/fixtures/current-210-endgame-player.m
 const job=process.env.EXTREME_JOB;
 assert.ok(['knight','crusader','wizard','sage','assassin','rogue','monk','hunter','performer','priest'].includes(job));
 const summary={job,profiles:ATTRIBUTE_PROFILES,modes:{},conditions:'Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search'};
-for(const mode of ['hp','clear']){
+const modes=(process.env.EXTREME_MODES||'hp,clear').split(',');
+assert.ok(modes.every(mode=>['atk','matk','hp','clear'].includes(mode)));
+for(const mode of modes){
  const source=JSON.parse(readFileSync(`docs/current-extreme-seeded-v3-${job}-${mode}-20261111.json`,'utf8'));
  const c=source.candidate;
  assert.equal(c.job,job);assert.equal(c.kind,mode);
@@ -22,4 +24,4 @@ for(const mode of ['hp','clear']){
  summary.modes[mode]={baseline:c,output,best:report.best[mode],scores:report.results.map(x=>({profile:x.attributeProfile,highest:x.highest})).sort((a,b)=>b.highest-a.highest)};
  console.log(JSON.stringify({job,mode,best:summary.modes[mode].best.highest,profile:summary.modes[mode].best.attributeProfile}));
 }
-writeFileSync(`docs/current-extreme-seeded-v3-attribute-${job}-summary-20261111.json`,JSON.stringify(summary,null,2)+'\n');
+writeFileSync(`docs/current-extreme-seeded-v3-attribute-${job}-${modes.join('-')}-summary-20261111.json`,JSON.stringify(summary,null,2)+'\n');
