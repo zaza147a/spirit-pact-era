@@ -4,7 +4,7 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 const cases=[['knight','atk'],['crusader','atk'],['pactWarrior','hp'],['spiritCommander','hp']];
 const repeats=Number(process.env.EXTREME_REPEATS||3);
-const output='docs/current-extreme-repeatability-audit-20261111.json';
+const output='docs/current-extreme-repeatability-audit-v2-20261111.json';
 const report={seed:20261110,repeats,cases:[]};
 for(const [job,mode] of cases){
  const saved=JSON.parse(readFileSync(`docs/current-extreme-multiseed-${job}-${mode}-20261111.json`));
