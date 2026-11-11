@@ -11,6 +11,11 @@
             205,
             196
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 196,
           "baselineCandidate": {
             "job": "knight",
@@ -48,13 +53,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 205
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             151,
             139,
             142
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 144,
           "baselineCandidate": {
@@ -93,13 +104,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 164
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             35,
             34,
             35
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 34.666666666666664,
           "baselineCandidate": {
@@ -117,6 +134,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 36
           },
+          "attributeWinner": {
+            "job": "knight",
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": "twoSword",
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 35,
+            "ticks": 3920,
+            "simulatedSeconds": 392,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 36
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 35,
             "winner": {
@@ -133,6 +168,11 @@
             38,
             39
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 38.333333333333336,
           "baselineCandidate": {
             "job": "knight",
@@ -148,6 +188,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 39
           },
+          "attributeWinner": {
+            "job": "knight",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 38,
+            "ticks": 3958,
+            "simulatedSeconds": 395.8,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 39
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 38,
             "winner": {
@@ -170,6 +228,11 @@
             235,
             227,
             231
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 231,
           "baselineCandidate": {
@@ -208,13 +271,25 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 236
-          }
+          },
+          "attributeCensored": [
+            {
+              "profile": "vit-luk",
+              "highest": 250,
+              "stopped": "floor-ceiling"
+            }
+          ]
         },
         "matk": {
           "baselineSeeds": [
             166,
             161,
             172
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 166.33333333333334,
           "baselineCandidate": {
@@ -253,13 +328,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 167
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             33,
             33,
             33
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 33,
           "baselineCandidate": {
@@ -276,6 +357,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 34
           },
+          "attributeWinner": {
+            "job": "crusader",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 33,
+            "ticks": 4027,
+            "simulatedSeconds": 402.7,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 34
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 33,
             "winner": {
@@ -292,6 +391,11 @@
             36,
             36
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 36,
           "baselineCandidate": {
             "job": "crusader",
@@ -307,6 +411,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 37
           },
+          "attributeWinner": {
+            "job": "crusader",
+            "fusion": "attack-magic",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 36,
+            "ticks": 3856,
+            "simulatedSeconds": 385.6,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 37
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 36,
             "winner": {
@@ -327,6 +449,11 @@
             174,
             160,
             176
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 170,
           "baselineCandidate": {
@@ -365,13 +492,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 179
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             112,
             118,
             118
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 116,
           "baselineCandidate": {
@@ -405,13 +538,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 117
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             33,
             33,
             33
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 33,
           "baselineCandidate": {
@@ -427,13 +566,36 @@
             "stopped": "first-failure",
             "failure": "階段傷害不足",
             "nextFloor": 34
-          }
+          },
+          "attributeWinner": {
+            "job": "wizard",
+            "fusion": "magic-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 33,
+            "ticks": 4212,
+            "simulatedSeconds": 421.2,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 34
+          },
+          "attributeCensored": []
         },
         "clear": {
           "baselineSeeds": [
             36,
             37,
             36
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 36.333333333333336,
           "baselineCandidate": {
@@ -449,7 +611,25 @@
             "stopped": "first-failure",
             "failure": "階段擊殺數不足",
             "nextFloor": 38
-          }
+          },
+          "attributeWinner": {
+            "job": "wizard",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 36,
+            "ticks": 3973,
+            "simulatedSeconds": 397.3,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 37
+          },
+          "attributeCensored": []
         }
       }
     },
@@ -461,6 +641,11 @@
             176,
             181,
             192
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 183,
           "baselineCandidate": {
@@ -499,13 +684,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 196
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             146,
             134,
             138
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 139.33333333333334,
           "baselineCandidate": {
@@ -544,13 +735,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 153
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             33,
             34,
             34
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 33.666666666666664,
           "baselineCandidate": {
@@ -567,6 +764,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 35
           },
+          "attributeWinner": {
+            "job": "sage",
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 33,
+            "ticks": 3806,
+            "simulatedSeconds": 380.6,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 34
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 33,
             "winner": {
@@ -584,6 +799,11 @@
             36,
             37,
             36
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 36.333333333333336,
           "baselineCandidate": {
@@ -603,6 +823,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 38
           },
+          "attributeWinner": {
+            "job": "sage",
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "rightHand",
+            "cardId": "boss_astral",
+            "attributeProfile": "agi-vit",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 36,
+            "ticks": 4111,
+            "simulatedSeconds": 411.1,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 37
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 36,
             "winner": {
@@ -625,6 +863,11 @@
             158,
             138,
             144
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 146.66666666666666,
           "baselineCandidate": {
@@ -663,13 +906,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 171
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             130,
             134,
             139
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 134.33333333333334,
           "baselineCandidate": {
@@ -708,13 +957,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 135
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             36,
             36,
             36
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 36,
           "baselineCandidate": {
@@ -732,6 +987,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 37
           },
+          "attributeWinner": {
+            "job": "assassin",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": "rifle+offDagger",
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 36,
+            "ticks": 3737,
+            "simulatedSeconds": 373.7,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 37
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 36,
             "winner": {
@@ -748,6 +1021,11 @@
             36,
             36
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 36,
           "baselineCandidate": {
             "job": "assassin",
@@ -763,6 +1041,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 37
           },
+          "attributeWinner": {
+            "job": "assassin",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 36,
+            "ticks": 3941,
+            "simulatedSeconds": 394.1,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 37
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 36,
             "winner": {
@@ -783,6 +1079,11 @@
             139,
             169,
             145
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 151,
           "baselineCandidate": {
@@ -821,13 +1122,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 167
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             130,
             136,
             116
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 127.33333333333333,
           "baselineCandidate": {
@@ -861,13 +1168,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 131
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             34,
             33,
             33
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 33.333333333333336,
           "baselineCandidate": {
@@ -884,6 +1197,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 35
           },
+          "attributeWinner": {
+            "job": "rogue",
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 34,
+            "ticks": 3873,
+            "simulatedSeconds": 387.3,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 35
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 34,
             "winner": {
@@ -900,6 +1231,11 @@
             37,
             37
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 37,
           "baselineCandidate": {
             "job": "rogue",
@@ -915,6 +1251,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 38
           },
+          "attributeWinner": {
+            "job": "rogue",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 37,
+            "ticks": 4246,
+            "simulatedSeconds": 424.6,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 38
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 37,
             "winner": {
@@ -935,6 +1289,11 @@
             160,
             175,
             164
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 166.33333333333334,
           "baselineCandidate": {
@@ -968,13 +1327,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 175
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             126,
             131,
             130
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 129,
           "baselineCandidate": {
@@ -1008,13 +1373,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 130
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             34,
             34,
             34
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 34,
           "baselineCandidate": {
@@ -1031,6 +1402,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 35
           },
+          "attributeWinner": {
+            "job": "monk",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 34,
+            "ticks": 3867,
+            "simulatedSeconds": 386.7,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 35
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 34,
             "winner": {
@@ -1047,6 +1436,11 @@
             38,
             37
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 37.333333333333336,
           "baselineCandidate": {
             "job": "monk",
@@ -1062,6 +1456,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 39
           },
+          "attributeWinner": {
+            "job": "monk",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 37,
+            "ticks": 3869,
+            "simulatedSeconds": 386.9,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 38
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 37,
             "winner": {
@@ -1082,6 +1494,11 @@
             154,
             134,
             133
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 140.33333333333334,
           "baselineCandidate": {
@@ -1120,13 +1537,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 155
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             124,
             115,
             109
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 116,
           "baselineCandidate": {
@@ -1165,13 +1588,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 125
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             34,
             34,
             34
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 34,
           "baselineCandidate": {
@@ -1188,6 +1617,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 36
           },
+          "attributeWinner": {
+            "job": "hunter",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 34,
+            "ticks": 4190,
+            "simulatedSeconds": 419,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 35
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 34,
             "winner": {
@@ -1204,6 +1651,11 @@
             37,
             37
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 36.666666666666664,
           "baselineCandidate": {
             "job": "hunter",
@@ -1219,6 +1671,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 38
           },
+          "attributeWinner": {
+            "job": "hunter",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 37,
+            "ticks": 4666,
+            "simulatedSeconds": 466.6,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 38
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 37,
             "winner": {
@@ -1239,6 +1709,11 @@
             134,
             151,
             127
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 137.33333333333334,
           "baselineCandidate": {
@@ -1277,13 +1752,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 135
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             117,
             126,
             127
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 123.33333333333333,
           "baselineCandidate": {
@@ -1322,13 +1803,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 126
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             36,
             36,
             36
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 36,
           "baselineCandidate": {
@@ -1345,6 +1832,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 37
           },
+          "attributeWinner": {
+            "job": "performer",
+            "fusion": "magic-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 36,
+            "ticks": 3803,
+            "simulatedSeconds": 380.3,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 37
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 36,
             "winner": {
@@ -1361,6 +1866,11 @@
             39,
             38
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 38.333333333333336,
           "baselineCandidate": {
             "job": "performer",
@@ -1376,6 +1886,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 39
           },
+          "attributeWinner": {
+            "job": "performer",
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 38,
+            "ticks": 3805,
+            "simulatedSeconds": 380.5,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 39
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 38,
             "winner": {
@@ -1398,6 +1926,11 @@
             177,
             170,
             164
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 170.33333333333334,
           "baselineCandidate": {
@@ -1436,13 +1969,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 178
-          }
+          },
+          "attributeCensored": []
         },
         "matk": {
           "baselineSeeds": [
             106,
             118,
             111
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 111.66666666666667,
           "baselineCandidate": {
@@ -1481,13 +2020,19 @@
             "stopped": "first-failure",
             "failure": "戰敗",
             "nextFloor": 117
-          }
+          },
+          "attributeCensored": []
         },
         "hp": {
           "baselineSeeds": [
             34,
             34,
             34
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 34,
           "baselineCandidate": {
@@ -1507,6 +2052,24 @@
             "failure": "階段傷害不足",
             "nextFloor": 35
           },
+          "attributeWinner": {
+            "job": "priest",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 34,
+            "ticks": 4088,
+            "simulatedSeconds": 408.8,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 35
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 34,
             "winner": {
@@ -1525,6 +2088,11 @@
             34,
             35
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 34.333333333333336,
           "baselineCandidate": {
             "job": "priest",
@@ -1540,6 +2108,24 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 36
           },
+          "attributeWinner": {
+            "job": "priest",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 34,
+            "ticks": 3927,
+            "simulatedSeconds": 392.7,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 35
+          },
+          "attributeCensored": [],
           "multicard": {
             "baseline": 34,
             "winner": {
@@ -1562,6 +2148,11 @@
             181,
             159,
             173
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 171,
           "baselineCandidate": {
@@ -1606,6 +2197,11 @@
             154,
             145
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 149.66666666666666,
           "baselineCandidate": {
             "job": "pactWarrior",
@@ -1648,6 +2244,11 @@
             40,
             40,
             41
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 40.333333333333336,
           "baselineCandidate": {
@@ -1699,6 +2300,11 @@
             43,
             43,
             42
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 42.666666666666664,
           "baselineCandidate": {
@@ -1753,6 +2359,11 @@
             171,
             171
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 172,
           "baselineCandidate": {
             "job": "spiritCommander",
@@ -1796,6 +2407,11 @@
             149,
             144
           ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
           "baselineMean": 147,
           "baselineCandidate": {
             "job": "spiritCommander",
@@ -1838,6 +2454,11 @@
             41,
             40,
             40
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 40.333333333333336,
           "baselineCandidate": {
@@ -1889,6 +2510,11 @@
             40,
             41,
             41
+          ],
+          "baselineStops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
           ],
           "baselineMean": 40.666666666666664,
           "baselineCandidate": {
