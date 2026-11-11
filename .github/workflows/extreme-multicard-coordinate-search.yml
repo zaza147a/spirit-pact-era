@@ -1,4 +1,4 @@
-name: Extreme trial two new jobs multi-card coordinate search
+name: Extreme trial two new jobs multi-card coordinate search (conflict-safe retry)
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
@@ -30,6 +30,8 @@ jobs:
           for mode in hp clear; do
             EXTREME_MODE="$mode" EXTREME_OUTPUT="docs/current-extreme-multicard-coordinate-pactWarrior-$mode-20261111.json" node scripts/current-extreme-multicard-coordinate-search.mjs
           done
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
           cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
 
           ## 分段交接：君王多王卡座標搜尋
@@ -42,8 +44,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/
           git commit -m "test: record pactWarrior multi-card real trials [skip ci]"
-          git fetch origin test/12-jobs-optimal-loadout-20261110
-          git rebase origin/test/12-jobs-optimal-loadout-20261110
           git push origin HEAD:test/12-jobs-optimal-loadout-20261110
   spiritCommander:
     needs: pactWarrior
@@ -70,6 +70,8 @@ jobs:
           for mode in hp clear; do
             EXTREME_MODE="$mode" EXTREME_OUTPUT="docs/current-extreme-multicard-coordinate-spiritCommander-$mode-20261111.json" node scripts/current-extreme-multicard-coordinate-search.mjs
           done
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
           cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
 
           ## 分段交接：萬靈多王卡座標搜尋
@@ -82,6 +84,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/
           git commit -m "test: record spiritCommander multi-card real trials [skip ci]"
-          git fetch origin test/12-jobs-optimal-loadout-20261110
-          git rebase origin/test/12-jobs-optimal-loadout-20261110
           git push origin HEAD:test/12-jobs-optimal-loadout-20261110
