@@ -1,0 +1,71 @@
+{
+  "job": "pactWarrior",
+  "mode": "clear",
+  "candidate": {
+    "job": "pactWarrior",
+    "fusion": "attack-support",
+    "weaponChoice": "aspdPct",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "clear",
+    "highest": 43,
+    "ticks": 4139,
+    "simulatedSeconds": 413.9,
+    "stopped": "first-failure",
+    "failure": "階段擊殺數不足",
+    "nextFloor": 44
+  },
+  "results": [
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 43,
+      "ticks": 4139,
+      "simulatedSeconds": 413.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 44
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 3789,
+      "simulatedSeconds": 378.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 43,
+      "ticks": 4109,
+      "simulatedSeconds": 410.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 44
+    }
+  ]
+}
