@@ -1,0 +1,143 @@
+{
+  "job": "monk",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "monk",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 3870,
+        "simulatedSeconds": 387,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-monk-hp-20261111.json",
+      "best": {
+        "job": "monk",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 3867,
+        "simulatedSeconds": 386.7,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 34
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 33
+        },
+        {
+          "profile": "reference",
+          "highest": 33
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 31
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 31
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 31
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 31
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "monk",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 38,
+        "ticks": 4177,
+        "simulatedSeconds": 417.7,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 39
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-monk-clear-20261111.json",
+      "best": {
+        "job": "monk",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 3869,
+        "simulatedSeconds": 386.9,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 37
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 36
+        },
+        {
+          "profile": "reference",
+          "highest": 36
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 31
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 31
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 30
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 30
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
