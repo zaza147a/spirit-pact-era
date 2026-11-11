@@ -1,0 +1,71 @@
+{
+  "job": "rogue",
+  "mode": "matk",
+  "candidate": {
+    "job": "rogue",
+    "fusion": "magic-defense",
+    "weaponChoice": "aspdPct",
+    "attributeProfile": "vit-luk",
+    "seed": 20261110,
+    "kind": "matk",
+    "highest": 131,
+    "ticks": 26280,
+    "simulatedSeconds": 2628,
+    "stopped": "first-failure",
+    "failure": "戰敗",
+    "nextFloor": 132
+  },
+  "results": [
+    {
+      "job": "rogue",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 130,
+      "ticks": 26144,
+      "simulatedSeconds": 2614.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 131
+    },
+    {
+      "job": "rogue",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "vit-luk",
+      "seed": 20261111,
+      "kind": "matk",
+      "highest": 136,
+      "ticks": 27376,
+      "simulatedSeconds": 2737.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 137
+    },
+    {
+      "job": "rogue",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "vit-luk",
+      "seed": 20261112,
+      "kind": "matk",
+      "highest": 116,
+      "ticks": 23312,
+      "simulatedSeconds": 2331.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 117
+    }
+  ]
+}
