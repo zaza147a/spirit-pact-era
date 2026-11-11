@@ -1,0 +1,178 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"wizard\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\",\"agi-vit\",\"luk-vit\",\"dex-vit\",\"agi-luk\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"weaponId\":\"oneStaff\",\"cardSlot\":\"leftHand\",\"cardId\":\"boss_volcano\"}",
+  "job": "wizard",
+  "weaponId": "oneStaff",
+  "cardSlot": "leftHand",
+  "cardId": "boss_volcano",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 7,
+  "completed": 7,
+  "results": [
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 160,
+      "ticks": 32168,
+      "simulatedSeconds": 3216.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 161
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 178,
+      "ticks": 35672,
+      "simulatedSeconds": 3567.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 179
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 174,
+      "ticks": 34896,
+      "simulatedSeconds": 3489.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 175
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 174,
+      "ticks": 34896,
+      "simulatedSeconds": 3489.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 175
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 121,
+      "ticks": 24232,
+      "simulatedSeconds": 2423.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 122
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 123,
+      "ticks": 24680,
+      "simulatedSeconds": 2468,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 124
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 160,
+      "ticks": 32168,
+      "simulatedSeconds": 3216.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 161
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneStaff",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 178,
+      "ticks": 35672,
+      "simulatedSeconds": 3567.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 179
+    }
+  }
+}
