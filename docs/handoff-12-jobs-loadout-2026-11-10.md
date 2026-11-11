@@ -1722,3 +1722,9 @@
 - 三種子 × ATK/MATK/HP/CLEAR 共 12 場實際遊戲極限試煉。
 - 報告 `docs/current-extreme-12jobs-winner-three-seed-crusader-20261111.json`；分辨首次失敗與執行截尾。
 - 目前只驗證已搜尋候選，不宣稱全域最優；main 未變更。
+
+## 分段交接：wizard 四試煉三種子勝出候選複測
+
+- 三種子 × ATK/MATK/HP/CLEAR 共 12 場實際遊戲極限試煉。
+- 報告 `docs/current-extreme-12jobs-winner-three-seed-wizard-20261111.json`；分辨首次失敗與執行截尾。
+- 目前只驗證已搜尋候選，不宣稱全域最優；main 未變更。

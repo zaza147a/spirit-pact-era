@@ -1,0 +1,307 @@
+{
+  "job": "wizard",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "oneStaff",
+        "attributeProfile": "agi-vit",
+        "cardOverrides": {
+          "leftHand": "boss_volcano"
+        }
+      },
+      "trials": [
+        {
+          "job": "wizard",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "agi-vit",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 178,
+          "ticks": 35672,
+          "simulatedSeconds": 3567.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 179
+        },
+        {
+          "job": "wizard",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "agi-vit",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 173,
+          "ticks": 34776,
+          "simulatedSeconds": 3477.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 174
+        },
+        {
+          "job": "wizard",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "agi-vit",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 190,
+          "ticks": 38136,
+          "simulatedSeconds": 3813.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 191
+        }
+      ],
+      "conclusive": true,
+      "mean": 180.33333333333334,
+      "range": [
+        173,
+        190
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "wizard",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 116,
+          "ticks": 23392,
+          "simulatedSeconds": 2339.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 117
+        },
+        {
+          "job": "wizard",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 111,
+          "ticks": 22392,
+          "simulatedSeconds": 2239.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 112
+        },
+        {
+          "job": "wizard",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 118,
+          "ticks": 23776,
+          "simulatedSeconds": 2377.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 119
+        }
+      ],
+      "conclusive": true,
+      "mean": 115,
+      "range": [
+        111,
+        118
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "magic-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "wizard",
+          "fusion": "magic-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 33,
+          "ticks": 4212,
+          "simulatedSeconds": 421.2,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 34
+        },
+        {
+          "job": "wizard",
+          "fusion": "magic-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 33,
+          "ticks": 4252,
+          "simulatedSeconds": 425.2,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 34
+        },
+        {
+          "job": "wizard",
+          "fusion": "magic-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 33,
+          "ticks": 4252,
+          "simulatedSeconds": 425.2,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 34
+        }
+      ],
+      "conclusive": true,
+      "mean": 33,
+      "range": [
+        33,
+        33
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "wizard",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 36,
+          "ticks": 3973,
+          "simulatedSeconds": 397.3,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 37
+        },
+        {
+          "job": "wizard",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 4359,
+          "simulatedSeconds": 435.9,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        },
+        {
+          "job": "wizard",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 36,
+          "ticks": 4080,
+          "simulatedSeconds": 408,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 37
+        }
+      ],
+      "conclusive": true,
+      "mean": 36.333333333333336,
+      "range": [
+        36,
+        37
+      ]
+    }
+  }
+}
