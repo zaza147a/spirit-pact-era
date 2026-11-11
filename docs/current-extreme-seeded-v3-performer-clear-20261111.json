@@ -1,0 +1,71 @@
+{
+  "job": "performer",
+  "mode": "clear",
+  "candidate": {
+    "job": "performer",
+    "fusion": "magic-support",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "clear",
+    "highest": 38,
+    "ticks": 3874,
+    "simulatedSeconds": 387.4,
+    "stopped": "first-failure",
+    "failure": "階段擊殺數不足",
+    "nextFloor": 39
+  },
+  "results": [
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 38,
+      "ticks": 3805,
+      "simulatedSeconds": 380.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 39
+    },
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 39,
+      "ticks": 4095,
+      "simulatedSeconds": 409.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 40
+    },
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 38,
+      "ticks": 3805,
+      "simulatedSeconds": 380.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 39
+    }
+  ]
+}
