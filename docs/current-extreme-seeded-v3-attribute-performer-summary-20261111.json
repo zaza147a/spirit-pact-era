@@ -1,0 +1,143 @@
+{
+  "job": "performer",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "performer",
+        "fusion": "magic-support",
+        "weaponChoice": "aspdPct",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 36,
+        "ticks": 3803,
+        "simulatedSeconds": 380.3,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 37
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-performer-hp-20261111.json",
+      "best": {
+        "job": "performer",
+        "fusion": "magic-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 36,
+        "ticks": 3803,
+        "simulatedSeconds": 380.3,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 37
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 36
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 34
+        },
+        {
+          "profile": "reference",
+          "highest": 34
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 33
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 32
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 32
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 32
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "performer",
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 38,
+        "ticks": 3874,
+        "simulatedSeconds": 387.4,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 39
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-performer-clear-20261111.json",
+      "best": {
+        "job": "performer",
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 38,
+        "ticks": 3805,
+        "simulatedSeconds": 380.5,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 39
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 38
+        },
+        {
+          "profile": "reference",
+          "highest": 37
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 37
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 34
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 34
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 34
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 34
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
