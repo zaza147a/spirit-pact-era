@@ -1,0 +1,61 @@
+{
+  "job": "priest",
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "priest",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": "accessory2",
+        "cardId": "boss_celestial",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 4132,
+        "simulatedSeconds": 413.2,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "profile": "agi-luk",
+      "output": "docs/current-extreme-multicard-coordinate-priest-hp-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {
+          "accessory2": "boss_celestial"
+        },
+        "highest": 34,
+        "ticks": 4088
+      }
+    },
+    "clear": {
+      "baseline": {
+        "job": "priest",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 35,
+        "ticks": 4247,
+        "simulatedSeconds": 424.7,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 36
+      },
+      "profile": "agi-luk",
+      "output": "docs/current-extreme-multicard-coordinate-priest-clear-20261111.json",
+      "evaluations": 11,
+      "winner": {
+        "overrides": {
+          "rightHand": "boss_astral"
+        },
+        "highest": 35,
+        "ticks": 4021
+      }
+    }
+  },
+  "description": "Actual trials; bounded greedy multi-card coordinate search; not global optimum"
+}

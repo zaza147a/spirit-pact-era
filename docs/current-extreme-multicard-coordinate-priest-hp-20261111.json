@@ -1,0 +1,84 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "priest",
+  "mode": "hp",
+  "fusion": "defense-support",
+  "weapon": "aspdPct",
+  "weaponId": null,
+  "profile": "agi-luk",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 6,
+  "baseline": {
+    "overrides": {
+      "accessory2": "boss_celestial"
+    },
+    "highest": 34,
+    "ticks": 4088
+  },
+  "winner": {
+    "overrides": {
+      "accessory2": "boss_celestial"
+    },
+    "highest": 34,
+    "ticks": 4088
+  },
+  "history": [
+    {
+      "overrides": {
+        "accessory2": "boss_celestial"
+      },
+      "highest": 34,
+      "ticks": 4088
+    },
+    {
+      "overrides": {
+        "accessory2": "boss_celestial",
+        "headUpper": "boss_skyport"
+      },
+      "highest": 34,
+      "ticks": 4088
+    },
+    {
+      "overrides": {
+        "accessory2": "boss_celestial",
+        "headMiddle": "boss_gearfell"
+      },
+      "highest": 33,
+      "ticks": 4093
+    },
+    {
+      "overrides": {
+        "accessory2": "boss_celestial",
+        "headLower": "boss_desert"
+      },
+      "highest": 33,
+      "ticks": 4093
+    },
+    {
+      "overrides": {
+        "accessory2": "boss_celestial",
+        "armor": "boss_stormforge"
+      },
+      "highest": 34,
+      "ticks": 4088
+    },
+    {
+      "overrides": {
+        "accessory2": "boss_celestial",
+        "rightHand": "boss_astral"
+      },
+      "highest": 34,
+      "ticks": 3726
+    }
+  ]
+}
