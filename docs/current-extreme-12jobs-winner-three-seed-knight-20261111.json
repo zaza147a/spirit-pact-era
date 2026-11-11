@@ -1,0 +1,323 @@
+{
+  "job": "knight",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": "blade",
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {
+          "leftHand": "boss_volcano"
+        }
+      },
+      "trials": [
+        {
+          "job": "knight",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "blade",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 204,
+          "ticks": 40992,
+          "simulatedSeconds": 4099.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 205
+        },
+        {
+          "job": "knight",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "blade",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 205,
+          "ticks": 41144,
+          "simulatedSeconds": 4114.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 206
+        },
+        {
+          "job": "knight",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "blade",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 202,
+          "ticks": 40544,
+          "simulatedSeconds": 4054.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 203
+        }
+      ],
+      "conclusive": true,
+      "mean": 203.66666666666666,
+      "range": [
+        202,
+        205
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "attack-defense",
+        "weaponChoice": "aspdPct",
+        "weaponId": "blade",
+        "attributeProfile": "luk-vit",
+        "cardOverrides": {
+          "accessory1": "boss_eclipse"
+        }
+      },
+      "trials": [
+        {
+          "job": "knight",
+          "fusion": "attack-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": "blade",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory1": "boss_eclipse"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 163,
+          "ticks": 32696,
+          "simulatedSeconds": 3269.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 164
+        },
+        {
+          "job": "knight",
+          "fusion": "attack-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": "blade",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory1": "boss_eclipse"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 144,
+          "ticks": 28984,
+          "simulatedSeconds": 2898.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 145
+        },
+        {
+          "job": "knight",
+          "fusion": "attack-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": "blade",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory1": "boss_eclipse"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 151,
+          "ticks": 30272,
+          "simulatedSeconds": 3027.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 152
+        }
+      ],
+      "conclusive": true,
+      "mean": 152.66666666666666,
+      "range": [
+        144,
+        163
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": "twoSword",
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "knight",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": "twoSword",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 35,
+          "ticks": 3920,
+          "simulatedSeconds": 392,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 36
+        },
+        {
+          "job": "knight",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": "twoSword",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 3511,
+          "simulatedSeconds": 351.1,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "knight",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": "twoSword",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 35,
+          "ticks": 3863,
+          "simulatedSeconds": 386.3,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 36
+        }
+      ],
+      "conclusive": true,
+      "mean": 34.666666666666664,
+      "range": [
+        34,
+        35
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {
+          "headMiddle": "boss_forest"
+        }
+      },
+      "trials": [
+        {
+          "job": "knight",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headMiddle": "boss_forest"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 39,
+          "ticks": 4359,
+          "simulatedSeconds": 435.9,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 40
+        },
+        {
+          "job": "knight",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headMiddle": "boss_forest"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 38,
+          "ticks": 4026,
+          "simulatedSeconds": 402.6,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 39
+        },
+        {
+          "job": "knight",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headMiddle": "boss_forest"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 38,
+          "ticks": 3988,
+          "simulatedSeconds": 398.8,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 39
+        }
+      ],
+      "conclusive": true,
+      "mean": 38.333333333333336,
+      "range": [
+        38,
+        39
+      ]
+    }
+  }
+}
