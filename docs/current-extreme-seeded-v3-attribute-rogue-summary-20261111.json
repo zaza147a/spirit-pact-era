@@ -1,0 +1,143 @@
+{
+  "job": "rogue",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "rogue",
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 3897,
+        "simulatedSeconds": 389.7,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-rogue-hp-20261111.json",
+      "best": {
+        "job": "rogue",
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 3873,
+        "simulatedSeconds": 387.3,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 34
+        },
+        {
+          "profile": "reference",
+          "highest": 33
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 33
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 29
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 28
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 27
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 27
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "rogue",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4182,
+        "simulatedSeconds": 418.2,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-rogue-clear-20261111.json",
+      "best": {
+        "job": "rogue",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4246,
+        "simulatedSeconds": 424.6,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 37
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 36
+        },
+        {
+          "profile": "reference",
+          "highest": 36
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 28
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 26
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 24
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 22
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
