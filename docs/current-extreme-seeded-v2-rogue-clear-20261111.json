@@ -1,0 +1,71 @@
+{
+  "job": "rogue",
+  "mode": "clear",
+  "candidate": {
+    "job": "rogue",
+    "fusion": "attack-support",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "clear",
+    "highest": 37,
+    "ticks": 4182,
+    "simulatedSeconds": 418.2,
+    "stopped": "first-failure",
+    "failure": "階段擊殺數不足",
+    "nextFloor": 38
+  },
+  "results": [
+    {
+      "job": "rogue",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 4303,
+      "simulatedSeconds": 430.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    },
+    {
+      "job": "rogue",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 4182,
+      "simulatedSeconds": 418.2,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    },
+    {
+      "job": "rogue",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 37,
+      "ticks": 4182,
+      "simulatedSeconds": 418.2,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 38
+    }
+  ]
+}
