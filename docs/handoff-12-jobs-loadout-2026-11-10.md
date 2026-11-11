@@ -1476,3 +1476,9 @@
 - 真實極限試煉 HP/CLEAR，六種融合寵 × 兩種武器特性，共 12 組候選、24 場測試，固定種子 20261110。
 - 結果：`docs/current-extreme-seeded-v3-fusion-search-spiritCommander-20261111.json`；其中 best 為此次有限搜尋最佳，不代表全域最優。
 - 未變更正式版。
+
+## 分段交接：靈契君王 HP 同卡同配點融合寵搜尋
+
+- 六種融合寵 × 兩種武器特性；保留已驗證的頭上王卡 boss_skyport 與 agi-luk 配點，固定種子 20261110，實際極限試煉 HP 至首次失敗。
+- 原始 JSON：`docs/current-extreme-seeded-v3-matched-card-pactWarrior-hp-20261111.json`。本輪只在指定王卡及配點條件下搜尋，不代表全域最優。
+- 正式版未變更。
