@@ -1630,3 +1630,8 @@
 
 - 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-monk-summary-20261111.json`。
 - 此為有限搜尋，非全域最佳；main 未變更。
+
+## 分段交接：hunter 多王卡 HP/CLEAR 實測
+
+- 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-hunter-summary-20261111.json`。
+- 此為有限搜尋，非全域最佳；main 未變更。

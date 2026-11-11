@@ -1,0 +1,73 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "hunter",
+  "mode": "clear",
+  "fusion": "attack-support",
+  "weapon": "aspdPct",
+  "weaponId": null,
+  "profile": "reference",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 6,
+  "baseline": {
+    "overrides": {},
+    "highest": 37,
+    "ticks": 4666
+  },
+  "winner": {
+    "overrides": {},
+    "highest": 37,
+    "ticks": 4666
+  },
+  "history": [
+    {
+      "overrides": {},
+      "highest": 37,
+      "ticks": 4666
+    },
+    {
+      "overrides": {
+        "headUpper": "boss_starter"
+      },
+      "highest": 36,
+      "ticks": 4573
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_gearfell"
+      },
+      "highest": 36,
+      "ticks": 4368
+    },
+    {
+      "overrides": {
+        "headLower": "boss_aether"
+      },
+      "highest": 36,
+      "ticks": 4392
+    },
+    {
+      "overrides": {
+        "armor": "boss_stormforge"
+      },
+      "highest": 37,
+      "ticks": 4666
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral"
+      },
+      "highest": 35,
+      "ticks": 4594
+    }
+  ]
+}
