@@ -1,0 +1,166 @@
+{
+  "job": "rogue",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "atk": {
+      "baseline": {
+        "job": "rogue",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": "shoes",
+        "cardId": "boss_nightclock",
+        "attributeProfile": "agi-vit",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 182,
+        "ticks": 36424,
+        "simulatedSeconds": 3642.4,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 183
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-rogue-atk-20261111.json",
+      "best": {
+        "job": "rogue",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": "shoes",
+        "cardId": "boss_nightclock",
+        "cardOverrides": {
+          "shoes": "boss_nightclock"
+        },
+        "attributeProfile": "luk-vit",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 166,
+        "ticks": 33312,
+        "simulatedSeconds": 3331.2,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 167
+      },
+      "censored": [],
+      "scores": [
+        {
+          "profile": "luk-vit",
+          "highest": 166,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 154,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 152,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 139,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "reference",
+          "highest": 139,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 98,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 86,
+          "stopped": "first-failure"
+        }
+      ]
+    },
+    "matk": {
+      "baseline": {
+        "job": "rogue",
+        "fusion": "magic-defense",
+        "weaponChoice": "aspdPct",
+        "attributeProfile": "vit-luk",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 131,
+        "ticks": 26280,
+        "simulatedSeconds": 2628,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 132
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-rogue-matk-20261111.json",
+      "best": {
+        "job": "rogue",
+        "fusion": "magic-defense",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "cardOverrides": {},
+        "attributeProfile": "vit-luk",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 130,
+        "ticks": 26144,
+        "simulatedSeconds": 2614.4,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 131
+      },
+      "censored": [],
+      "scores": [
+        {
+          "profile": "vit-luk",
+          "highest": 130,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 127,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 123,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "reference",
+          "highest": 123,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 121,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 79,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 78,
+          "stopped": "first-failure"
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}

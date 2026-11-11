@@ -1,0 +1,178 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"rogue\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"reference\",\"agi-vit\",\"luk-vit\",\"dex-vit\",\"agi-luk\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"cardSlot\":\"shoes\",\"cardId\":\"boss_nightclock\"}",
+  "job": "rogue",
+  "weaponId": null,
+  "cardSlot": "shoes",
+  "cardId": "boss_nightclock",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 7,
+  "completed": 7,
+  "results": [
+    {
+      "job": "rogue",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "cardOverrides": {
+        "shoes": "boss_nightclock"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 152,
+      "ticks": 30504,
+      "simulatedSeconds": 3050.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 153
+    },
+    {
+      "job": "rogue",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "cardOverrides": {
+        "shoes": "boss_nightclock"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 166,
+      "ticks": 33312,
+      "simulatedSeconds": 3331.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 167
+    },
+    {
+      "job": "rogue",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "cardOverrides": {
+        "shoes": "boss_nightclock"
+      },
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 139,
+      "ticks": 27952,
+      "simulatedSeconds": 2795.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 140
+    },
+    {
+      "job": "rogue",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "cardOverrides": {
+        "shoes": "boss_nightclock"
+      },
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 139,
+      "ticks": 27952,
+      "simulatedSeconds": 2795.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 140
+    },
+    {
+      "job": "rogue",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "cardOverrides": {
+        "shoes": "boss_nightclock"
+      },
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 86,
+      "ticks": 17280,
+      "simulatedSeconds": 1728,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 87
+    },
+    {
+      "job": "rogue",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "cardOverrides": {
+        "shoes": "boss_nightclock"
+      },
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 154,
+      "ticks": 30896,
+      "simulatedSeconds": 3089.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 155
+    },
+    {
+      "job": "rogue",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "cardOverrides": {
+        "shoes": "boss_nightclock"
+      },
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 98,
+      "ticks": 19768,
+      "simulatedSeconds": 1976.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 99
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "rogue",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "shoes",
+      "cardId": "boss_nightclock",
+      "cardOverrides": {
+        "shoes": "boss_nightclock"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 166,
+      "ticks": 33312,
+      "simulatedSeconds": 3331.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 167
+    }
+  }
+}
