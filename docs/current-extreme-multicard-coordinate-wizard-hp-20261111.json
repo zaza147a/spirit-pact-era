@@ -1,0 +1,73 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "wizard",
+  "mode": "hp",
+  "fusion": "magic-defense",
+  "weapon": "critDmg",
+  "weaponId": null,
+  "profile": "agi-luk",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 6,
+  "baseline": {
+    "overrides": {},
+    "highest": 33,
+    "ticks": 4212
+  },
+  "winner": {
+    "overrides": {},
+    "highest": 33,
+    "ticks": 4212
+  },
+  "history": [
+    {
+      "overrides": {},
+      "highest": 33,
+      "ticks": 4212
+    },
+    {
+      "overrides": {
+        "headUpper": "boss_skyport"
+      },
+      "highest": 33,
+      "ticks": 4212
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_gearfell"
+      },
+      "highest": 32,
+      "ticks": 4212
+    },
+    {
+      "overrides": {
+        "headLower": "boss_desert"
+      },
+      "highest": 32,
+      "ticks": 4212
+    },
+    {
+      "overrides": {
+        "armor": "boss_stormforge"
+      },
+      "highest": 33,
+      "ticks": 4212
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral"
+      },
+      "highest": 33,
+      "ticks": 3812
+    }
+  ]
+}
