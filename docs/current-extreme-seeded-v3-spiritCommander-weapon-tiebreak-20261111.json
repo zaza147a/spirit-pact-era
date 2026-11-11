@@ -1,0 +1,303 @@
+{
+  "conditions": "Actual trials, attack-magic fusion, accessory2 boss_celestial, agi-luk attributes; three seeds, bounded weapon comparison",
+  "rows": [
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 41,
+      "ticks": 4135,
+      "simulatedSeconds": 413.5,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 42
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 43,
+      "ticks": 4658,
+      "simulatedSeconds": 465.8,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 44
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 42,
+      "ticks": 4352,
+      "simulatedSeconds": 435.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 43
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 43,
+      "ticks": 4658,
+      "simulatedSeconds": 465.8,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 44
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 39,
+      "ticks": 3470,
+      "simulatedSeconds": 347,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 40
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 43,
+      "ticks": 4649,
+      "simulatedSeconds": 464.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 44
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 41,
+      "ticks": 4253,
+      "simulatedSeconds": 425.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 42
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 43,
+      "ticks": 4766,
+      "simulatedSeconds": 476.6,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 44
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 40,
+      "ticks": 3893,
+      "simulatedSeconds": 389.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 41
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 4424,
+      "simulatedSeconds": 442.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 40,
+      "ticks": 3902,
+      "simulatedSeconds": 390.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 41
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 4487,
+      "simulatedSeconds": 448.7,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    }
+  ],
+  "summary": {
+    "hp": [
+      {
+        "weaponChoice": "aspdPct",
+        "seedResults": [
+          {
+            "seed": 20261110,
+            "highest": 41,
+            "ticks": 4135
+          },
+          {
+            "seed": 20261111,
+            "highest": 42,
+            "ticks": 4352
+          },
+          {
+            "seed": 20261112,
+            "highest": 39,
+            "ticks": 3470
+          }
+        ],
+        "mean": 40.666666666666664,
+        "min": 39
+      },
+      {
+        "weaponChoice": "critDmg",
+        "seedResults": [
+          {
+            "seed": 20261110,
+            "highest": 41,
+            "ticks": 4253
+          },
+          {
+            "seed": 20261111,
+            "highest": 40,
+            "ticks": 3893
+          },
+          {
+            "seed": 20261112,
+            "highest": 40,
+            "ticks": 3902
+          }
+        ],
+        "mean": 40.333333333333336,
+        "min": 40
+      }
+    ],
+    "clear": [
+      {
+        "weaponChoice": "aspdPct",
+        "seedResults": [
+          {
+            "seed": 20261110,
+            "highest": 43,
+            "ticks": 4658
+          },
+          {
+            "seed": 20261111,
+            "highest": 43,
+            "ticks": 4658
+          },
+          {
+            "seed": 20261112,
+            "highest": 43,
+            "ticks": 4649
+          }
+        ],
+        "mean": 43,
+        "min": 43
+      },
+      {
+        "weaponChoice": "critDmg",
+        "seedResults": [
+          {
+            "seed": 20261110,
+            "highest": 43,
+            "ticks": 4766
+          },
+          {
+            "seed": 20261111,
+            "highest": 42,
+            "ticks": 4424
+          },
+          {
+            "seed": 20261112,
+            "highest": 42,
+            "ticks": 4487
+          }
+        ],
+        "mean": 42.333333333333336,
+        "min": 42
+      }
+    ]
+  }
+}

@@ -1494,3 +1494,9 @@
 - 六融合寵 × 兩武器特性，固定 accessory2 王卡 boss_celestial、agi-luk 配點與種子 20261110，HP 實戰至首次失敗。
 - 完整報告：`docs/current-extreme-seeded-v3-matched-card-spiritCommander-hp-20261111.json`；屬有限候選搜尋，非全域最優。
 - 正式版 main 未變更。
+
+## 分段交接：萬靈宗師攻速與暴傷武器三種子複驗
+
+- 固定攻擊＋魔法融合寵、飾品2王卡 boss_celestial、agi-luk 配點，三組亂數種子實測 HP 與 CLEAR，共 12 場。
+- 原始報告：`docs/current-extreme-seeded-v3-spiritCommander-weapon-tiebreak-20261111.json`，以 mean/min 比較候選；並非全域最優。
+- 正式版 main 未變更。
