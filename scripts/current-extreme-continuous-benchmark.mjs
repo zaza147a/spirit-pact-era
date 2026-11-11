@@ -27,6 +27,9 @@ async function run(kind){
  const c=await runtime(),p=currentEndgamePlayer(job,{fusion,weaponChoice,attributeProfile,weaponId,cardOverrides:cardSlot?{[cardSlot]:cardId}:{}});
  let state=seed>>>0;
  const random=()=>((state=(Math.imul(state,1664525)+1013904223)>>>0)/4294967296);
+ // Imported ESM helpers execute outside the VM. Seed both realms so they share one RNG stream.
+ const nativeRandom=Math.random;
+ Math.random=random;
  c.Math.random=random;c.rand=(lo,hi)=>Math.floor(random()*(hi-lo+1))+lo;
  p.location='dawncity';p.extremeProgress={};p.extremeRun=null;
  const started=1_000_000;let now=started,ticks=0;
@@ -41,6 +44,7 @@ async function run(kind){
   stopped:!p.extremeRun?'first-failure':p.extremeRun.floor>ceiling?'floor-ceiling':'time-ceiling',failure:p.extremeLastResult?.reason||null,
   nextFloor:p.extremeRun?.floor||p.extremeLastResult?.floor||null};
  if(result.stopped==='first-failure')assert.equal(result.nextFloor,highest+1);
+ Math.random=nativeRandom;
  return result;
 }
 for(const kind of modes)console.log(JSON.stringify(await run(kind)));
