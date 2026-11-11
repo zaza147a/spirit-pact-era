@@ -1,0 +1,143 @@
+{
+  "job": "wizard",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "wizard",
+        "fusion": "magic-defense",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 33,
+        "ticks": 4212,
+        "simulatedSeconds": 421.2,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 34
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-wizard-hp-20261111.json",
+      "best": {
+        "job": "wizard",
+        "fusion": "magic-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 33,
+        "ticks": 4212,
+        "simulatedSeconds": 421.2,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 34
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 33
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 32
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 31
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 31
+        },
+        {
+          "profile": "reference",
+          "highest": 31
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 31
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 31
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "wizard",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4440,
+        "simulatedSeconds": 444,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-wizard-clear-20261111.json",
+      "best": {
+        "job": "wizard",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 36,
+        "ticks": 3973,
+        "simulatedSeconds": 397.3,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 37
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 36
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 35
+        },
+        {
+          "profile": "reference",
+          "highest": 32
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 32
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 32
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 32
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 32
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
