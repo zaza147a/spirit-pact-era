@@ -1,0 +1,83 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "sage",
+  "mode": "clear",
+  "fusion": "magic-support",
+  "weapon": "critDmg",
+  "weaponId": null,
+  "profile": "agi-vit",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 6,
+  "baseline": {
+    "overrides": {
+      "rightHand": "boss_astral"
+    },
+    "highest": 36,
+    "ticks": 4111
+  },
+  "winner": {
+    "overrides": {
+      "rightHand": "boss_astral"
+    },
+    "highest": 36,
+    "ticks": 4111
+  },
+  "history": [
+    {
+      "overrides": {
+        "rightHand": "boss_astral"
+      },
+      "highest": 36,
+      "ticks": 4111
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral",
+        "headUpper": "boss_skyport"
+      },
+      "highest": 36,
+      "ticks": 4111
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral",
+        "headMiddle": "boss_gearfell"
+      },
+      "highest": 35,
+      "ticks": 4032
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral",
+        "headLower": "boss_desert"
+      },
+      "highest": 35,
+      "ticks": 3981
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral",
+        "armor": "boss_stormforge"
+      },
+      "highest": 36,
+      "ticks": 4111
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_zenith"
+      },
+      "highest": 35,
+      "ticks": 3980
+    }
+  ]
+}

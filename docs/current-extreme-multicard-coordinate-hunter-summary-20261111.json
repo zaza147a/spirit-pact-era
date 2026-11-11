@@ -1,0 +1,54 @@
+{
+  "job": "hunter",
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "hunter",
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 35,
+        "ticks": 4111,
+        "simulatedSeconds": 411.1,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 36
+      },
+      "profile": "reference",
+      "output": "docs/current-extreme-multicard-coordinate-hunter-hp-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {},
+        "highest": 34,
+        "ticks": 4190
+      }
+    },
+    "clear": {
+      "baseline": {
+        "job": "hunter",
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4232,
+        "simulatedSeconds": 423.2,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "profile": "reference",
+      "output": "docs/current-extreme-multicard-coordinate-hunter-clear-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {},
+        "highest": 37,
+        "ticks": 4666
+      }
+    }
+  },
+  "description": "Actual trials; bounded greedy multi-card coordinate search; not global optimum"
+}

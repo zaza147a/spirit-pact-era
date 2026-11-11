@@ -1,0 +1,61 @@
+{
+  "job": "sage",
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "sage",
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 4092,
+        "simulatedSeconds": 409.2,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "profile": "agi-luk",
+      "output": "docs/current-extreme-multicard-coordinate-sage-hp-20261111.json",
+      "evaluations": 11,
+      "winner": {
+        "overrides": {
+          "rightHand": "boss_astral"
+        },
+        "highest": 34,
+        "ticks": 3651
+      }
+    },
+    "clear": {
+      "baseline": {
+        "job": "sage",
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": "rightHand",
+        "cardId": "boss_astral",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4011,
+        "simulatedSeconds": 401.1,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "profile": "agi-vit",
+      "output": "docs/current-extreme-multicard-coordinate-sage-clear-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {
+          "rightHand": "boss_astral"
+        },
+        "highest": 36,
+        "ticks": 4111
+      }
+    }
+  },
+  "description": "Actual trials; bounded greedy multi-card coordinate search; not global optimum"
+}

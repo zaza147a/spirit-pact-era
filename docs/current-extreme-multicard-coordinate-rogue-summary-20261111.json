@@ -1,0 +1,54 @@
+{
+  "job": "rogue",
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "rogue",
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 3897,
+        "simulatedSeconds": 389.7,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "profile": "agi-luk",
+      "output": "docs/current-extreme-multicard-coordinate-rogue-hp-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {},
+        "highest": 34,
+        "ticks": 3873
+      }
+    },
+    "clear": {
+      "baseline": {
+        "job": "rogue",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4182,
+        "simulatedSeconds": 418.2,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "profile": "agi-luk",
+      "output": "docs/current-extreme-multicard-coordinate-rogue-clear-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {},
+        "highest": 37,
+        "ticks": 4246
+      }
+    }
+  },
+  "description": "Actual trials; bounded greedy multi-card coordinate search; not global optimum"
+}
