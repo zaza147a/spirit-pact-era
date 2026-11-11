@@ -1,0 +1,36 @@
+name: Extreme trial same-seed reproducibility audit
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-repeatability-audit.yml']
+permissions:
+  contents: write
+jobs:
+  repeatability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Reproduce identical candidates and commit evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          node scripts/current-extreme-repeatability-audit.mjs
+          node --test tests/current-extreme-results-integrity.test.mjs
+          git add docs/current-extreme-repeatability-audit-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record repeated same-seed trial outcomes and handoff [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: repeatability-audit
+          path: docs/current-extreme-repeatability-audit-20261111.json
+          if-no-files-found: warn
