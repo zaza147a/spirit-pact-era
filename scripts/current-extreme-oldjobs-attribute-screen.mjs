@@ -20,8 +20,11 @@ for(const mode of modes){
  const report=JSON.parse(readFileSync(output,'utf8'));
  assert.equal(report.completed,ATTRIBUTE_PROFILES.length);
  assert.equal(report.results.length,ATTRIBUTE_PROFILES.length);
- assert.ok(report.results.every(r=>r.stopped==='first-failure'));
- summary.modes[mode]={baseline:c,output,best:report.best[mode],scores:report.results.map(x=>({profile:x.attributeProfile,highest:x.highest})).sort((a,b)=>b.highest-a.highest)};
- console.log(JSON.stringify({job,mode,best:summary.modes[mode].best.highest,profile:summary.modes[mode].best.attributeProfile}));
+ assert.ok(report.results.every(r=>['first-failure','time-ceiling','floor-ceiling'].includes(r.stopped)));
+ const conclusive=report.results.filter(r=>r.stopped==='first-failure');
+ const censored=report.results.filter(r=>r.stopped!=='first-failure');
+ const best=conclusive.sort((a,b)=>b.highest-a.highest)[0]||null;
+ summary.modes[mode]={baseline:c,output,best,censored:censored.map(x=>({profile:x.attributeProfile,highest:x.highest,stopped:x.stopped})),scores:report.results.map(x=>({profile:x.attributeProfile,highest:x.highest,stopped:x.stopped})).sort((a,b)=>b.highest-a.highest)};
+ console.log(JSON.stringify({job,mode,best:best?.highest??null,profile:best?.attributeProfile??null,censored:censored.length}));
 }
 writeFileSync(`docs/current-extreme-seeded-v3-attribute-${job}-${modes.join('-')}-summary-20261111.json`,JSON.stringify(summary,null,2)+'\n');
