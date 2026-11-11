@@ -1,0 +1,1938 @@
+{
+  "title": "12 jobs x four real Extreme Trial modes: measured candidate inventory",
+  "warning": "Different seed, equipment, card, and attribute constraints cannot be ranked against each other as a global optimum. Baseline three-seed means are comparable within their tested setup; other scores are bounded screens.",
+  "rows": [
+    {
+      "job": "knight",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            187,
+            205,
+            196
+          ],
+          "baselineMean": 196,
+          "baselineCandidate": {
+            "job": "knight",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "blade",
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 204,
+            "ticks": 40872,
+            "simulatedSeconds": 4087.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 205
+          },
+          "attributeWinner": {
+            "job": "knight",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "blade",
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            },
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 204,
+            "ticks": 40992,
+            "simulatedSeconds": 4099.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 205
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            151,
+            139,
+            142
+          ],
+          "baselineMean": 144,
+          "baselineCandidate": {
+            "job": "knight",
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": "blade",
+            "cardSlot": "accessory1",
+            "cardId": "boss_eclipse",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 161,
+            "ticks": 32296,
+            "simulatedSeconds": 3229.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 162
+          },
+          "attributeWinner": {
+            "job": "knight",
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": "blade",
+            "cardSlot": "accessory1",
+            "cardId": "boss_eclipse",
+            "cardOverrides": {
+              "accessory1": "boss_eclipse"
+            },
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 163,
+            "ticks": 32696,
+            "simulatedSeconds": 3269.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 164
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            35,
+            34,
+            35
+          ],
+          "baselineMean": 34.666666666666664,
+          "baselineCandidate": {
+            "job": "knight",
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": "twoSword",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 35,
+            "ticks": 3935,
+            "simulatedSeconds": 393.5,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 36
+          },
+          "multicard": {
+            "baseline": 35,
+            "winner": {
+              "overrides": {},
+              "highest": 35,
+              "ticks": 3920
+            },
+            "evaluations": 6
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            38,
+            38,
+            39
+          ],
+          "baselineMean": 38.333333333333336,
+          "baselineCandidate": {
+            "job": "knight",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 38,
+            "ticks": 3984,
+            "simulatedSeconds": 398.4,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 39
+          },
+          "multicard": {
+            "baseline": 38,
+            "winner": {
+              "overrides": {
+                "headMiddle": "boss_forest"
+              },
+              "highest": 39,
+              "ticks": 4359
+            },
+            "evaluations": 11
+          }
+        }
+      }
+    },
+    {
+      "job": "crusader",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            235,
+            227,
+            231
+          ],
+          "baselineMean": 231,
+          "baselineCandidate": {
+            "job": "crusader",
+            "fusion": "magic-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneSpear",
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 244,
+            "ticks": 48896,
+            "simulatedSeconds": 4889.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 245
+          },
+          "attributeWinner": {
+            "job": "crusader",
+            "fusion": "magic-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneSpear",
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            },
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 235,
+            "ticks": 47144,
+            "simulatedSeconds": 4714.4,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 236
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            166,
+            161,
+            172
+          ],
+          "baselineMean": 166.33333333333334,
+          "baselineCandidate": {
+            "job": "crusader",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "headLower",
+            "cardId": "boss_aether",
+            "attributeProfile": "agi-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 178,
+            "ticks": 35728,
+            "simulatedSeconds": 3572.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 179
+          },
+          "attributeWinner": {
+            "job": "crusader",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "headLower",
+            "cardId": "boss_aether",
+            "cardOverrides": {
+              "headLower": "boss_aether"
+            },
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 166,
+            "ticks": 33288,
+            "simulatedSeconds": 3328.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 167
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            33,
+            33,
+            33
+          ],
+          "baselineMean": 33,
+          "baselineCandidate": {
+            "job": "crusader",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 33,
+            "ticks": 3999,
+            "simulatedSeconds": 399.9,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 34
+          },
+          "multicard": {
+            "baseline": 33,
+            "winner": {
+              "overrides": {},
+              "highest": 33,
+              "ticks": 4027
+            },
+            "evaluations": 6
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            36,
+            36,
+            36
+          ],
+          "baselineMean": 36,
+          "baselineCandidate": {
+            "job": "crusader",
+            "fusion": "attack-magic",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 36,
+            "ticks": 3892,
+            "simulatedSeconds": 389.2,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 37
+          },
+          "multicard": {
+            "baseline": 36,
+            "winner": {
+              "overrides": {},
+              "highest": 36,
+              "ticks": 3856
+            },
+            "evaluations": 6
+          }
+        }
+      }
+    },
+    {
+      "job": "wizard",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            174,
+            160,
+            176
+          ],
+          "baselineMean": 170,
+          "baselineCandidate": {
+            "job": "wizard",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneStaff",
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 169,
+            "ticks": 33888,
+            "simulatedSeconds": 3388.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 170
+          },
+          "attributeWinner": {
+            "job": "wizard",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneStaff",
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            },
+            "attributeProfile": "agi-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 178,
+            "ticks": 35672,
+            "simulatedSeconds": 3567.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 179
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            112,
+            118,
+            118
+          ],
+          "baselineMean": 116,
+          "baselineCandidate": {
+            "job": "wizard",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 129,
+            "ticks": 25976,
+            "simulatedSeconds": 2597.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 130
+          },
+          "attributeWinner": {
+            "job": "wizard",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "cardOverrides": {},
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 116,
+            "ticks": 23392,
+            "simulatedSeconds": 2339.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 117
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            33,
+            33,
+            33
+          ],
+          "baselineMean": 33,
+          "baselineCandidate": {
+            "job": "wizard",
+            "fusion": "magic-defense",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 33,
+            "ticks": 4212,
+            "simulatedSeconds": 421.2,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 34
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            36,
+            37,
+            36
+          ],
+          "baselineMean": 36.333333333333336,
+          "baselineCandidate": {
+            "job": "wizard",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 37,
+            "ticks": 4440,
+            "simulatedSeconds": 444,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 38
+          }
+        }
+      }
+    },
+    {
+      "job": "sage",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            176,
+            181,
+            192
+          ],
+          "baselineMean": 183,
+          "baselineCandidate": {
+            "job": "sage",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneStaff",
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 190,
+            "ticks": 38128,
+            "simulatedSeconds": 3812.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 191
+          },
+          "attributeWinner": {
+            "job": "sage",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneStaff",
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            },
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 195,
+            "ticks": 39048,
+            "simulatedSeconds": 3904.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 196
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            146,
+            134,
+            138
+          ],
+          "baselineMean": 139.33333333333334,
+          "baselineCandidate": {
+            "job": "sage",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "oneStaff",
+            "cardSlot": "armor",
+            "cardId": "boss_stormforge",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 154,
+            "ticks": 30944,
+            "simulatedSeconds": 3094.4,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 155
+          },
+          "attributeWinner": {
+            "job": "sage",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "oneStaff",
+            "cardSlot": "armor",
+            "cardId": "boss_stormforge",
+            "cardOverrides": {
+              "armor": "boss_stormforge"
+            },
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 152,
+            "ticks": 30568,
+            "simulatedSeconds": 3056.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 153
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            33,
+            34,
+            34
+          ],
+          "baselineMean": 33.666666666666664,
+          "baselineCandidate": {
+            "job": "sage",
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 34,
+            "ticks": 4092,
+            "simulatedSeconds": 409.2,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 35
+          },
+          "multicard": {
+            "baseline": 33,
+            "winner": {
+              "overrides": {
+                "rightHand": "boss_astral"
+              },
+              "highest": 34,
+              "ticks": 3651
+            },
+            "evaluations": 11
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            36,
+            37,
+            36
+          ],
+          "baselineMean": 36.333333333333336,
+          "baselineCandidate": {
+            "job": "sage",
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "rightHand",
+            "cardId": "boss_astral",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 37,
+            "ticks": 4011,
+            "simulatedSeconds": 401.1,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 38
+          },
+          "multicard": {
+            "baseline": 36,
+            "winner": {
+              "overrides": {
+                "rightHand": "boss_astral"
+              },
+              "highest": 36,
+              "ticks": 4111
+            },
+            "evaluations": 6
+          }
+        }
+      }
+    },
+    {
+      "job": "assassin",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            158,
+            138,
+            144
+          ],
+          "baselineMean": 146.66666666666666,
+          "baselineCandidate": {
+            "job": "assassin",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "rifle",
+            "cardSlot": "headLower",
+            "cardId": "boss_aether",
+            "attributeProfile": "agi-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 174,
+            "ticks": 34960,
+            "simulatedSeconds": 3496,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 175
+          },
+          "attributeWinner": {
+            "job": "assassin",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "rifle",
+            "cardSlot": "headLower",
+            "cardId": "boss_aether",
+            "cardOverrides": {
+              "headLower": "boss_aether"
+            },
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 170,
+            "ticks": 34088,
+            "simulatedSeconds": 3408.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 171
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            130,
+            134,
+            139
+          ],
+          "baselineMean": 134.33333333333334,
+          "baselineCandidate": {
+            "job": "assassin",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "rifle",
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 137,
+            "ticks": 27576,
+            "simulatedSeconds": 2757.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 138
+          },
+          "attributeWinner": {
+            "job": "assassin",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "rifle",
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "cardOverrides": {
+              "accessory2": "boss_celestial"
+            },
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 134,
+            "ticks": 26952,
+            "simulatedSeconds": 2695.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 135
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            36,
+            36,
+            36
+          ],
+          "baselineMean": 36,
+          "baselineCandidate": {
+            "job": "assassin",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": "rifle+offDagger",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 36,
+            "ticks": 3735,
+            "simulatedSeconds": 373.5,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 37
+          },
+          "multicard": {
+            "baseline": 36,
+            "winner": {
+              "overrides": {},
+              "highest": 36,
+              "ticks": 3737
+            },
+            "evaluations": 6
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            36,
+            36,
+            36
+          ],
+          "baselineMean": 36,
+          "baselineCandidate": {
+            "job": "assassin",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 36,
+            "ticks": 3969,
+            "simulatedSeconds": 396.9,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 37
+          },
+          "multicard": {
+            "baseline": 36,
+            "winner": {
+              "overrides": {},
+              "highest": 36,
+              "ticks": 3941
+            },
+            "evaluations": 6
+          }
+        }
+      }
+    },
+    {
+      "job": "rogue",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            139,
+            169,
+            145
+          ],
+          "baselineMean": 151,
+          "baselineCandidate": {
+            "job": "rogue",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "shoes",
+            "cardId": "boss_nightclock",
+            "attributeProfile": "agi-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 182,
+            "ticks": 36424,
+            "simulatedSeconds": 3642.4,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 183
+          },
+          "attributeWinner": {
+            "job": "rogue",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "shoes",
+            "cardId": "boss_nightclock",
+            "cardOverrides": {
+              "shoes": "boss_nightclock"
+            },
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 166,
+            "ticks": 33312,
+            "simulatedSeconds": 3331.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 167
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            130,
+            136,
+            116
+          ],
+          "baselineMean": 127.33333333333333,
+          "baselineCandidate": {
+            "job": "rogue",
+            "fusion": "magic-defense",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 131,
+            "ticks": 26280,
+            "simulatedSeconds": 2628,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 132
+          },
+          "attributeWinner": {
+            "job": "rogue",
+            "fusion": "magic-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "cardOverrides": {},
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 130,
+            "ticks": 26144,
+            "simulatedSeconds": 2614.4,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 131
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            34,
+            33,
+            33
+          ],
+          "baselineMean": 33.333333333333336,
+          "baselineCandidate": {
+            "job": "rogue",
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 34,
+            "ticks": 3897,
+            "simulatedSeconds": 389.7,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 35
+          },
+          "multicard": {
+            "baseline": 34,
+            "winner": {
+              "overrides": {},
+              "highest": 34,
+              "ticks": 3873
+            },
+            "evaluations": 6
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            37,
+            37,
+            37
+          ],
+          "baselineMean": 37,
+          "baselineCandidate": {
+            "job": "rogue",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 37,
+            "ticks": 4182,
+            "simulatedSeconds": 418.2,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 38
+          },
+          "multicard": {
+            "baseline": 37,
+            "winner": {
+              "overrides": {},
+              "highest": 37,
+              "ticks": 4246
+            },
+            "evaluations": 6
+          }
+        }
+      }
+    },
+    {
+      "job": "monk",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            160,
+            175,
+            164
+          ],
+          "baselineMean": 166.33333333333334,
+          "baselineCandidate": {
+            "job": "monk",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 174,
+            "ticks": 34968,
+            "simulatedSeconds": 3496.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 175
+          },
+          "attributeWinner": {
+            "job": "monk",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "cardOverrides": {},
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 174,
+            "ticks": 34952,
+            "simulatedSeconds": 3495.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 175
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            126,
+            131,
+            130
+          ],
+          "baselineMean": 129,
+          "baselineCandidate": {
+            "job": "monk",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 134,
+            "ticks": 26920,
+            "simulatedSeconds": 2692,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 135
+          },
+          "attributeWinner": {
+            "job": "monk",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "cardOverrides": {},
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 129,
+            "ticks": 25880,
+            "simulatedSeconds": 2588,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 130
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            34,
+            34,
+            34
+          ],
+          "baselineMean": 34,
+          "baselineCandidate": {
+            "job": "monk",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 34,
+            "ticks": 3870,
+            "simulatedSeconds": 387,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 35
+          },
+          "multicard": {
+            "baseline": 34,
+            "winner": {
+              "overrides": {},
+              "highest": 34,
+              "ticks": 3867
+            },
+            "evaluations": 6
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            37,
+            38,
+            37
+          ],
+          "baselineMean": 37.333333333333336,
+          "baselineCandidate": {
+            "job": "monk",
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 38,
+            "ticks": 4177,
+            "simulatedSeconds": 417.7,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 39
+          },
+          "multicard": {
+            "baseline": 37,
+            "winner": {
+              "overrides": {},
+              "highest": 37,
+              "ticks": 3869
+            },
+            "evaluations": 6
+          }
+        }
+      }
+    },
+    {
+      "job": "hunter",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            154,
+            134,
+            133
+          ],
+          "baselineMean": 140.33333333333334,
+          "baselineCandidate": {
+            "job": "hunter",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "shortBow",
+            "cardSlot": "headUpper",
+            "cardId": "boss_starter",
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 164,
+            "ticks": 32840,
+            "simulatedSeconds": 3284,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 165
+          },
+          "attributeWinner": {
+            "job": "hunter",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "shortBow",
+            "cardSlot": "headUpper",
+            "cardId": "boss_starter",
+            "cardOverrides": {
+              "headUpper": "boss_starter"
+            },
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 154,
+            "ticks": 30872,
+            "simulatedSeconds": 3087.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 155
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            124,
+            115,
+            109
+          ],
+          "baselineMean": 116,
+          "baselineCandidate": {
+            "job": "hunter",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "crossbow",
+            "cardSlot": "headUpper",
+            "cardId": "boss_starter",
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 134,
+            "ticks": 26952,
+            "simulatedSeconds": 2695.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 135
+          },
+          "attributeWinner": {
+            "job": "hunter",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "crossbow",
+            "cardSlot": "headUpper",
+            "cardId": "boss_starter",
+            "cardOverrides": {
+              "headUpper": "boss_starter"
+            },
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 124,
+            "ticks": 24880,
+            "simulatedSeconds": 2488,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 125
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            34,
+            34,
+            34
+          ],
+          "baselineMean": 34,
+          "baselineCandidate": {
+            "job": "hunter",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 35,
+            "ticks": 4111,
+            "simulatedSeconds": 411.1,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 36
+          },
+          "multicard": {
+            "baseline": 34,
+            "winner": {
+              "overrides": {},
+              "highest": 34,
+              "ticks": 4190
+            },
+            "evaluations": 6
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            36,
+            37,
+            37
+          ],
+          "baselineMean": 36.666666666666664,
+          "baselineCandidate": {
+            "job": "hunter",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 37,
+            "ticks": 4232,
+            "simulatedSeconds": 423.2,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 38
+          },
+          "multicard": {
+            "baseline": 37,
+            "winner": {
+              "overrides": {},
+              "highest": 37,
+              "ticks": 4666
+            },
+            "evaluations": 6
+          }
+        }
+      }
+    },
+    {
+      "job": "performer",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            134,
+            151,
+            127
+          ],
+          "baselineMean": 137.33333333333334,
+          "baselineCandidate": {
+            "job": "performer",
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "armor",
+            "cardId": "boss_stormforge",
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 153,
+            "ticks": 30728,
+            "simulatedSeconds": 3072.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 154
+          },
+          "attributeWinner": {
+            "job": "performer",
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "armor",
+            "cardId": "boss_stormforge",
+            "cardOverrides": {
+              "armor": "boss_stormforge"
+            },
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 134,
+            "ticks": 26880,
+            "simulatedSeconds": 2688,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 135
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            117,
+            126,
+            127
+          ],
+          "baselineMean": 123.33333333333333,
+          "baselineCandidate": {
+            "job": "performer",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "rightHand",
+            "cardId": "boss_astral",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 129,
+            "ticks": 25976,
+            "simulatedSeconds": 2597.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 130
+          },
+          "attributeWinner": {
+            "job": "performer",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "rightHand",
+            "cardId": "boss_astral",
+            "cardOverrides": {
+              "rightHand": "boss_astral"
+            },
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 125,
+            "ticks": 25072,
+            "simulatedSeconds": 2507.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 126
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            36,
+            36,
+            36
+          ],
+          "baselineMean": 36,
+          "baselineCandidate": {
+            "job": "performer",
+            "fusion": "magic-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 36,
+            "ticks": 3803,
+            "simulatedSeconds": 380.3,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 37
+          },
+          "multicard": {
+            "baseline": 36,
+            "winner": {
+              "overrides": {},
+              "highest": 36,
+              "ticks": 3803
+            },
+            "evaluations": 6
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            38,
+            39,
+            38
+          ],
+          "baselineMean": 38.333333333333336,
+          "baselineCandidate": {
+            "job": "performer",
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 38,
+            "ticks": 3874,
+            "simulatedSeconds": 387.4,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 39
+          },
+          "multicard": {
+            "baseline": 38,
+            "winner": {
+              "overrides": {
+                "headUpper": "boss_starter"
+              },
+              "highest": 39,
+              "ticks": 4219
+            },
+            "evaluations": 11
+          }
+        }
+      }
+    },
+    {
+      "job": "priest",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            177,
+            170,
+            164
+          ],
+          "baselineMean": 170.33333333333334,
+          "baselineCandidate": {
+            "job": "priest",
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "headMiddle",
+            "cardId": "boss_gearfell",
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 182,
+            "ticks": 36576,
+            "simulatedSeconds": 3657.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 183
+          },
+          "attributeWinner": {
+            "job": "priest",
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "headMiddle",
+            "cardId": "boss_gearfell",
+            "cardOverrides": {
+              "headMiddle": "boss_gearfell"
+            },
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 177,
+            "ticks": 35544,
+            "simulatedSeconds": 3554.4,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 178
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            106,
+            118,
+            111
+          ],
+          "baselineMean": 111.66666666666667,
+          "baselineCandidate": {
+            "job": "priest",
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 133,
+            "ticks": 26728,
+            "simulatedSeconds": 2672.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 134
+          },
+          "attributeWinner": {
+            "job": "priest",
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            },
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 116,
+            "ticks": 23392,
+            "simulatedSeconds": 2339.2,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 117
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            34,
+            34,
+            34
+          ],
+          "baselineMean": 34,
+          "baselineCandidate": {
+            "job": "priest",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 34,
+            "ticks": 4132,
+            "simulatedSeconds": 413.2,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 35
+          },
+          "multicard": {
+            "baseline": 34,
+            "winner": {
+              "overrides": {
+                "accessory2": "boss_celestial"
+              },
+              "highest": 34,
+              "ticks": 4088
+            },
+            "evaluations": 6
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            34,
+            34,
+            35
+          ],
+          "baselineMean": 34.333333333333336,
+          "baselineCandidate": {
+            "job": "priest",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 35,
+            "ticks": 4247,
+            "simulatedSeconds": 424.7,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 36
+          },
+          "multicard": {
+            "baseline": 34,
+            "winner": {
+              "overrides": {
+                "rightHand": "boss_astral"
+              },
+              "highest": 35,
+              "ticks": 4021
+            },
+            "evaluations": 11
+          }
+        }
+      }
+    },
+    {
+      "job": "pactWarrior",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            181,
+            159,
+            173
+          ],
+          "baselineMean": 171,
+          "baselineCandidate": {
+            "job": "pactWarrior",
+            "fusion": "magic-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "shoes",
+            "cardId": "boss_nightclock",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 181,
+            "ticks": 36328,
+            "simulatedSeconds": 3632.8,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 182
+          },
+          "attributeWinner": {
+            "job": "pactWarrior",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "cardOverrides": {},
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 173,
+            "ticks": 34640,
+            "simulatedSeconds": 3464,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 174
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            150,
+            154,
+            145
+          ],
+          "baselineMean": 149.66666666666666,
+          "baselineCandidate": {
+            "job": "pactWarrior",
+            "fusion": "magic-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "rightHand",
+            "cardId": "boss_zenith",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 159,
+            "ticks": 31848,
+            "simulatedSeconds": 3184.8,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 160
+          },
+          "attributeWinner": {
+            "job": "pactWarrior",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "cardOverrides": {},
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 158,
+            "ticks": 31688,
+            "simulatedSeconds": 3168.8,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 159
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            40,
+            40,
+            41
+          ],
+          "baselineMean": 40.333333333333336,
+          "baselineCandidate": {
+            "job": "pactWarrior",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "headUpper",
+            "cardId": "boss_skyport",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 41,
+            "ticks": 4035,
+            "simulatedSeconds": 403.5,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 42
+          },
+          "attributeWinner": {
+            "job": "pactWarrior",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "headUpper",
+            "cardId": "boss_skyport",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 40,
+            "ticks": 3717,
+            "simulatedSeconds": 371.7,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 41
+          },
+          "multicard": {
+            "baseline": 41,
+            "winner": {
+              "overrides": {},
+              "highest": 41,
+              "ticks": 3952
+            },
+            "evaluations": 7
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            43,
+            43,
+            42
+          ],
+          "baselineMean": 42.666666666666664,
+          "baselineCandidate": {
+            "job": "pactWarrior",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 43,
+            "ticks": 4139,
+            "simulatedSeconds": 413.9,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 44
+          },
+          "attributeWinner": {
+            "job": "pactWarrior",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "headUpper",
+            "cardId": "boss_skyport",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 42,
+            "ticks": 3916,
+            "simulatedSeconds": 391.6,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 43
+          },
+          "multicard": {
+            "baseline": 43,
+            "winner": {
+              "overrides": {},
+              "highest": 43,
+              "ticks": 4094
+            },
+            "evaluations": 7
+          }
+        }
+      }
+    },
+    {
+      "job": "spiritCommander",
+      "modes": {
+        "atk": {
+          "baselineSeeds": [
+            174,
+            171,
+            171
+          ],
+          "baselineMean": 172,
+          "baselineCandidate": {
+            "job": "spiritCommander",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "leftHand",
+            "cardId": "boss_volcano",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 184,
+            "ticks": 36928,
+            "simulatedSeconds": 3692.8,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 185
+          },
+          "attributeWinner": {
+            "job": "spiritCommander",
+            "fusion": "attack-magic",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "cardOverrides": {},
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "atk",
+            "highest": 103,
+            "ticks": 20640,
+            "simulatedSeconds": 2064,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 104
+          }
+        },
+        "matk": {
+          "baselineSeeds": [
+            148,
+            149,
+            144
+          ],
+          "baselineMean": 147,
+          "baselineCandidate": {
+            "job": "spiritCommander",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "accessory1",
+            "cardId": "boss_petland",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 154,
+            "ticks": 30880,
+            "simulatedSeconds": 3088,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 155
+          },
+          "attributeWinner": {
+            "job": "spiritCommander",
+            "fusion": "attack-magic",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": null,
+            "cardId": null,
+            "cardOverrides": {},
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 93,
+            "ticks": 18704,
+            "simulatedSeconds": 1870.4,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 94
+          }
+        },
+        "hp": {
+          "baselineSeeds": [
+            41,
+            40,
+            40
+          ],
+          "baselineMean": 40.333333333333336,
+          "baselineCandidate": {
+            "job": "spiritCommander",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 42,
+            "ticks": 4433,
+            "simulatedSeconds": 443.3,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 43
+          },
+          "attributeWinner": {
+            "job": "spiritCommander",
+            "fusion": "attack-magic",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 42,
+            "ticks": 4658,
+            "simulatedSeconds": 465.8,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 43
+          },
+          "multicard": {
+            "baseline": 39,
+            "winner": {
+              "overrides": {},
+              "highest": 39,
+              "ticks": 3983
+            },
+            "evaluations": 7
+          }
+        },
+        "clear": {
+          "baselineSeeds": [
+            40,
+            41,
+            41
+          ],
+          "baselineMean": 40.666666666666664,
+          "baselineCandidate": {
+            "job": "spiritCommander",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 42,
+            "ticks": 4856,
+            "simulatedSeconds": 485.6,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 43
+          },
+          "attributeWinner": {
+            "job": "spiritCommander",
+            "fusion": "attack-magic",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "attributeProfile": "vit-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 43,
+            "ticks": 4748,
+            "simulatedSeconds": 474.8,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 44
+          },
+          "multicard": {
+            "baseline": 41,
+            "winner": {
+              "overrides": {},
+              "highest": 41,
+              "ticks": 4388
+            },
+            "evaluations": 7
+          }
+        }
+      }
+    }
+  ]
+}

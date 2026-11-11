@@ -1680,3 +1680,9 @@
 
 - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
 - 報告 `docs/current-extreme-seeded-v3-attribute-priest-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+
+## 分段交接：12 職業四試煉證據總表
+
+- `docs/current-extreme-12jobs-four-modes-progress-20261111.json` 匯總 12 職業 × ATK/MATK/HP/CLEAR 的 seeded-v3 基準、合法配點搜尋及多王卡有限搜尋結果。
+- 每筆結果保留原始測試條件；截尾/未測資料不可當成已確認最佳層數，跨配置不可直接比較。
+- 此表為已測候選總表，非全域最佳解。main 未變更。
