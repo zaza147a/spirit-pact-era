@@ -1,0 +1,144 @@
+{
+  "job": "knight",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "knight",
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": "twoSword",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 35,
+        "ticks": 3935,
+        "simulatedSeconds": 393.5,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 36
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-knight-hp-20261111.json",
+      "best": {
+        "job": "knight",
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": "twoSword",
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 35,
+        "ticks": 3920,
+        "simulatedSeconds": 392,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 36
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 35
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 34
+        },
+        {
+          "profile": "reference",
+          "highest": 34
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 26
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 26
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 26
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 25
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "knight",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 38,
+        "ticks": 3984,
+        "simulatedSeconds": 398.4,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 39
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-knight-clear-20261111.json",
+      "best": {
+        "job": "knight",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 38,
+        "ticks": 3958,
+        "simulatedSeconds": 395.8,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 39
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 38
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 37
+        },
+        {
+          "profile": "reference",
+          "highest": 37
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 27
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 25
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 24
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 23
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}

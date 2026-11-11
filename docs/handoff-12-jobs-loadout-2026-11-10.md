@@ -1518,3 +1518,9 @@
 - 固定攻擊＋魔法融合寵、攻速武器、飾品2王卡 boss_celestial，三種子實測 HP/CLEAR 共 12 場。
 - 原始結果：`docs/current-extreme-seeded-v3-spiritCommander-attribute-tiebreak-20261111.json`，比較平均與最低層數，非全域最優。
 - 正式版 main 未變更。
+
+## 分段交接：knight 七種合法配點 HP/CLEAR 實戰搜尋
+
+- 依據 seeded-v3 各模式基準候選，固定融合寵、武器與單卡覆蓋條件；七種合法配點 × HP/CLEAR，共 14 場實戰，種子 20261110。
+- 完整結果：`docs/current-extreme-seeded-v3-attribute-knight-summary-20261111.json`，以及 HP/CLEAR 分別的候選明細。有限搜尋，不代表全域最優。
+- 正式版 main 未變更。
