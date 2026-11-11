@@ -1591,3 +1591,9 @@
 - 在 AGI＋LUK、攻擊＋輔助、攻速武器條件下，逐部位替換王卡並保留先前改善的卡片；每個部位最多六張、最多五個部位、兩輪，HP/CLEAR 真實試煉。
 - 報告：`docs/current-extreme-multicard-coordinate-pactWarrior-hp-20261111.json`、`docs/current-extreme-multicard-coordinate-pactWarrior-clear-20261111.json`。
 - 有限貪婪搜尋，不代表全域最優。main 未變更。
+
+## 分段交接：騎士多王卡實戰搜尋
+
+- 沿用 seeded-v3 HP/CLEAR 的合法武器、融合寵、王卡候選，以及配點搜尋勝出者；逐部位實測多卡替換。
+- 報告：`docs/current-extreme-multicard-coordinate-knight-summary-20261111.json`；有限搜尋，非全域最優。
+- main 未變更。

@@ -1,0 +1,73 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "knight",
+  "mode": "hp",
+  "fusion": "attack-defense",
+  "weapon": "critDmg",
+  "weaponId": "twoSword",
+  "profile": "agi-luk",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 6,
+  "baseline": {
+    "overrides": {},
+    "highest": 35,
+    "ticks": 3920
+  },
+  "winner": {
+    "overrides": {},
+    "highest": 35,
+    "ticks": 3920
+  },
+  "history": [
+    {
+      "overrides": {},
+      "highest": 35,
+      "ticks": 3920
+    },
+    {
+      "overrides": {
+        "headUpper": "boss_skyport"
+      },
+      "highest": 34,
+      "ticks": 3610
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest"
+      },
+      "highest": 34,
+      "ticks": 3562
+    },
+    {
+      "overrides": {
+        "headLower": "boss_aether"
+      },
+      "highest": 35,
+      "ticks": 3884
+    },
+    {
+      "overrides": {
+        "armor": "boss_stormforge"
+      },
+      "highest": 35,
+      "ticks": 3920
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral"
+      },
+      "highest": 33,
+      "ticks": 3676
+    }
+  ]
+}

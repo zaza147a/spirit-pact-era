@@ -1,0 +1,57 @@
+{
+  "job": "knight",
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "knight",
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": "twoSword",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 35,
+        "ticks": 3935,
+        "simulatedSeconds": 393.5,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 36
+      },
+      "profile": "agi-luk",
+      "output": "docs/current-extreme-multicard-coordinate-knight-hp-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {},
+        "highest": 35,
+        "ticks": 3920
+      }
+    },
+    "clear": {
+      "baseline": {
+        "job": "knight",
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 38,
+        "ticks": 3984,
+        "simulatedSeconds": 398.4,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 39
+      },
+      "profile": "agi-luk",
+      "output": "docs/current-extreme-multicard-coordinate-knight-clear-20261111.json",
+      "evaluations": 11,
+      "winner": {
+        "overrides": {
+          "headMiddle": "boss_forest"
+        },
+        "highest": 39,
+        "ticks": 4359
+      }
+    }
+  },
+  "description": "Actual trials; bounded greedy multi-card coordinate search; not global optimum"
+}

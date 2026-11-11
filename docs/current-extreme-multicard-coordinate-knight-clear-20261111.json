@@ -1,0 +1,117 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "knight",
+  "mode": "clear",
+  "fusion": "attack-support",
+  "weapon": "critDmg",
+  "weaponId": null,
+  "profile": "agi-luk",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 11,
+  "baseline": {
+    "overrides": {},
+    "highest": 38,
+    "ticks": 3958
+  },
+  "winner": {
+    "overrides": {
+      "headMiddle": "boss_forest"
+    },
+    "highest": 39,
+    "ticks": 4359
+  },
+  "history": [
+    {
+      "overrides": {},
+      "highest": 38,
+      "ticks": 3958
+    },
+    {
+      "overrides": {
+        "headUpper": "boss_skyport"
+      },
+      "highest": 38,
+      "ticks": 4071
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest"
+      },
+      "highest": 39,
+      "ticks": 4359
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest",
+        "headLower": "boss_aether"
+      },
+      "highest": 38,
+      "ticks": 4071
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest",
+        "armor": "boss_stormforge"
+      },
+      "highest": 39,
+      "ticks": 4359
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest",
+        "rightHand": "boss_astral"
+      },
+      "highest": 37,
+      "ticks": 4308
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest",
+        "headUpper": "boss_skyport"
+      },
+      "highest": 38,
+      "ticks": 4102
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_gearfell"
+      },
+      "highest": 38,
+      "ticks": 3958
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest",
+        "headLower": "boss_aether"
+      },
+      "highest": 38,
+      "ticks": 4071
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest",
+        "armor": "boss_stormforge"
+      },
+      "highest": 39,
+      "ticks": 4359
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest",
+        "rightHand": "boss_astral"
+      },
+      "highest": 37,
+      "ticks": 4308
+    }
+  ]
+}
