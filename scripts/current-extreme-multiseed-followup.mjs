@@ -30,7 +30,7 @@ for(const mode of modes){
   candidates.push(...data.results);
  }
  const winner=candidates.sort((a,b)=>b.highest-a.highest)[0];
- const path=`docs/current-extreme-seeded-v2-${job}-${mode}-20261111.json`;
+ const path=`docs/current-extreme-seeded-v3-${job}-${mode}-20261111.json`;
  let results=[];
  if(existsSync(path)){
   const old=JSON.parse(readFileSync(path));
