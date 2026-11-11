@@ -1500,3 +1500,9 @@
 - 固定攻擊＋魔法融合寵、飾品2王卡 boss_celestial、agi-luk 配點，三組亂數種子實測 HP 與 CLEAR，共 12 場。
 - 原始報告：`docs/current-extreme-seeded-v3-spiritCommander-weapon-tiebreak-20261111.json`，以 mean/min 比較候選；並非全域最優。
 - 正式版 main 未變更。
+
+## 分段交接：靈契君王七種合法配點實戰搜尋
+
+- 固定攻擊＋輔助、攻速武器、頭上王卡 boss_skyport，七種配點分別跑 HP/CLEAR 共 14 場，固定種子 20261110。
+- 報告：`docs/current-extreme-seeded-v3-pactWarrior-attribute-search-20261111.json`；此為限定配點搜尋，非全域最優。
+- 正式版 main 未變更。
