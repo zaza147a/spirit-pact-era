@@ -1,4 +1,4 @@
-name: Extreme 12-job four-mode evidence report (source audit)
+name: Extreme 12-job four-mode evidence report (preserve regenerated report)
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
@@ -21,8 +21,8 @@ jobs:
           set -euo pipefail
           node scripts/current-extreme-12jobs-four-modes-report.mjs
           git fetch origin test/12-jobs-optimal-loadout-20261110
-          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
-          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          git reset --mixed origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs/handoff-12-jobs-loadout-2026-11-10.md
           cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
 
           ## 分段交接：12 職業四試煉證據總表
