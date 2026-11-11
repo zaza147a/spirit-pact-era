@@ -1,0 +1,331 @@
+{
+  "job": "priest",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "dex-vit",
+        "cardOverrides": {
+          "headMiddle": "boss_gearfell"
+        }
+      },
+      "trials": [
+        {
+          "job": "priest",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headMiddle": "boss_gearfell"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 177,
+          "ticks": 35544,
+          "simulatedSeconds": 3554.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 178
+        },
+        {
+          "job": "priest",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headMiddle": "boss_gearfell"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 170,
+          "ticks": 34056,
+          "simulatedSeconds": 3405.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 171
+        },
+        {
+          "job": "priest",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headMiddle": "boss_gearfell"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 164,
+          "ticks": 32824,
+          "simulatedSeconds": 3282.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 165
+        }
+      ],
+      "conclusive": true,
+      "mean": 170.33333333333334,
+      "range": [
+        164,
+        177
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "attack-defense",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "dex-vit",
+        "cardOverrides": {
+          "leftHand": "boss_volcano"
+        }
+      },
+      "trials": [
+        {
+          "job": "priest",
+          "fusion": "attack-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 116,
+          "ticks": 23392,
+          "simulatedSeconds": 2339.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 117
+        },
+        {
+          "job": "priest",
+          "fusion": "attack-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 134,
+          "ticks": 26888,
+          "simulatedSeconds": 2688.8,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 135
+        },
+        {
+          "job": "priest",
+          "fusion": "attack-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 121,
+          "ticks": 24336,
+          "simulatedSeconds": 2433.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 122
+        }
+      ],
+      "conclusive": true,
+      "mean": 123.66666666666667,
+      "range": [
+        116,
+        134
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {
+          "accessory2": "boss_celestial"
+        }
+      },
+      "trials": [
+        {
+          "job": "priest",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory2": "boss_celestial"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 4088,
+          "simulatedSeconds": 408.8,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "priest",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory2": "boss_celestial"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 4126,
+          "simulatedSeconds": 412.6,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "priest",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory2": "boss_celestial"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 4086,
+          "simulatedSeconds": 408.6,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        }
+      ],
+      "conclusive": true,
+      "mean": 34,
+      "range": [
+        34,
+        34
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {
+          "rightHand": "boss_astral"
+        }
+      },
+      "trials": [
+        {
+          "job": "priest",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 35,
+          "ticks": 4021,
+          "simulatedSeconds": 402.1,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 36
+        },
+        {
+          "job": "priest",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 35,
+          "ticks": 4029,
+          "simulatedSeconds": 402.9,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 36
+        },
+        {
+          "job": "priest",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 35,
+          "ticks": 4065,
+          "simulatedSeconds": 406.5,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 36
+        }
+      ],
+      "conclusive": true,
+      "mean": 35,
+      "range": [
+        35,
+        35
+      ]
+    }
+  }
+}
