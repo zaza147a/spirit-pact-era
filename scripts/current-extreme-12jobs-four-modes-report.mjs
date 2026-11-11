@@ -14,7 +14,7 @@ for(const job of jobs){
   const out={baselineSeeds:baseline,baselineStops:base.results?.map(x=>x.stopped)||[],baselineMean:baseline.length?baseline.reduce((a,b)=>a+b,0)/baseline.length:null,baselineCandidate:candidate};
   const attr=job==='pactWarrior'||job==='spiritCommander'?
     `docs/current-extreme-seeded-v3-${job}-${mode==='atk'||mode==='matk'?'defense-attributes':'attribute-search'}-20261111.json`:
-    `docs/current-extreme-seeded-v3-attribute-${job}-${mode==='atk'||mode==='matk'?'atk-matk-':'-'}summary-20261111.json`;
+    `docs/current-extreme-seeded-v3-attribute-${job}-${mode==='atk'||mode==='matk'?'atk-matk-':''}summary-20261111.json`;
   if(existsSync(attr)){
    const a=JSON.parse(readFileSync(attr,'utf8'));
    if(a.modes?.[mode]){out.attributeWinner=a.modes[mode].best;out.attributeCensored=a.modes[mode].censored||[];}
@@ -26,6 +26,8 @@ for(const job of jobs){
  }
  rows.push(row);
 }
+const missingAttributes=rows.flatMap(row=>Object.entries(row.modes).filter(([mode,value])=>!value.attributeWinner).map(([mode])=>row.job+'/'+mode));
+console.log('Missing attribute sources:',JSON.stringify(missingAttributes));
 const report={title:'12 jobs x four real Extreme Trial modes: measured candidate inventory',warning:'Different seed, equipment, card, and attribute constraints cannot be ranked against each other as a global optimum. Baseline three-seed means are comparable within their tested setup; other scores are bounded screens.',rows};
 writeFileSync('docs/current-extreme-12jobs-four-modes-progress-20261111.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({jobs:rows.length,baselineModes:rows.flatMap(x=>Object.values(x.modes)).filter(x=>x.baselineMean!==null).length,attributeModes:rows.flatMap(x=>Object.values(x.modes)).filter(x=>x.attributeWinner).length,multicardModes:rows.flatMap(x=>Object.values(x.modes)).filter(x=>x.multicard).length}));
