@@ -2,7 +2,7 @@ name: Extreme 12 jobs final three-seed ranking
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
-    paths: ['docs/current-extreme-12jobs-winner-three-seed-spiritCommander-20261111.json']
+    paths: ['docs/current-extreme-12jobs-winner-three-seed-spiritCommander-20261111.json', '.github/workflows/extreme-12jobs-three-seed-ranking.yml']
 permissions:
   contents: write
 jobs:
