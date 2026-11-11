@@ -1,0 +1,146 @@
+{
+  "job": "sage",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "sage",
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 4092,
+        "simulatedSeconds": 409.2,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-sage-hp-20261111.json",
+      "best": {
+        "job": "sage",
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 33,
+        "ticks": 3806,
+        "simulatedSeconds": 380.6,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 34
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 33
+        },
+        {
+          "profile": "reference",
+          "highest": 32
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 32
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 28
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 27
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 27
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 26
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "sage",
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": "rightHand",
+        "cardId": "boss_astral",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4011,
+        "simulatedSeconds": 401.1,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-sage-clear-20261111.json",
+      "best": {
+        "job": "sage",
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": "rightHand",
+        "cardId": "boss_astral",
+        "attributeProfile": "agi-vit",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 36,
+        "ticks": 4111,
+        "simulatedSeconds": 411.1,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 37
+      },
+      "scores": [
+        {
+          "profile": "agi-vit",
+          "highest": 36
+        },
+        {
+          "profile": "reference",
+          "highest": 36
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 36
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 30
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 30
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 27
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 26
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
