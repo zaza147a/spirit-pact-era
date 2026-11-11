@@ -1,0 +1,39 @@
+name: Extreme trial multi-card legality smoke
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-multicard-smoke.yml']
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify two simultaneous legal boss-card overrides in real trials
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-multicard-smoke.mjs
+          node --test tests/current-extreme-results-integrity.test.mjs
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：多王卡覆蓋引擎接入
+
+          - `scripts/current-extreme-continuous-benchmark.mjs` 新增 `EXTREME_CARD_OVERRIDES` JSON 多部位覆蓋，維持舊版單卡環境變數相容；合法部位、王卡與不可重複限制沿用原本 fixture。
+          - `scripts/current-extreme-multicard-smoke.mjs` 在君王及萬靈兩職各測試 HP/CLEAR 的基準與兩張王卡同時替換，共 8 場真實試煉。
+          - 實測檔：`docs/current-extreme-multicard-smoke-20261111.json`。這是功能驗證，不是全卡搜尋，也不代表最優。
+          - 正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record real multi-card trial smoke [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
