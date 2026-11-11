@@ -1,0 +1,266 @@
+name: Extreme trial remaining eight jobs multi-card search
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-remaining-jobs-multicard.yml']
+permissions:
+  contents: write
+concurrency:
+  group: extreme-remaining-jobs-multicard
+  cancel-in-progress: false
+jobs:
+  wizard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run bounded multi-card optimization in actual Extreme Trials
+        env:
+          EXTREME_JOB: wizard
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：wizard 多王卡實戰搜尋
+
+          - 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+          - 報告：`docs/current-extreme-multicard-coordinate-wizard-summary-20261111.json`，以及 HP/CLEAR 明細。
+          - 有限貪婪搜尋，非全域最優；正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record wizard multi-card trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  sage:
+    needs: wizard
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run bounded multi-card optimization in actual Extreme Trials
+        env:
+          EXTREME_JOB: sage
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：sage 多王卡實戰搜尋
+
+          - 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+          - 報告：`docs/current-extreme-multicard-coordinate-sage-summary-20261111.json`，以及 HP/CLEAR 明細。
+          - 有限貪婪搜尋，非全域最優；正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record sage multi-card trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  assassin:
+    needs: sage
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run bounded multi-card optimization in actual Extreme Trials
+        env:
+          EXTREME_JOB: assassin
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：assassin 多王卡實戰搜尋
+
+          - 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+          - 報告：`docs/current-extreme-multicard-coordinate-assassin-summary-20261111.json`，以及 HP/CLEAR 明細。
+          - 有限貪婪搜尋，非全域最優；正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record assassin multi-card trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  rogue:
+    needs: assassin
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run bounded multi-card optimization in actual Extreme Trials
+        env:
+          EXTREME_JOB: rogue
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：rogue 多王卡實戰搜尋
+
+          - 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+          - 報告：`docs/current-extreme-multicard-coordinate-rogue-summary-20261111.json`，以及 HP/CLEAR 明細。
+          - 有限貪婪搜尋，非全域最優；正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record rogue multi-card trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  monk:
+    needs: rogue
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run bounded multi-card optimization in actual Extreme Trials
+        env:
+          EXTREME_JOB: monk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：monk 多王卡實戰搜尋
+
+          - 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+          - 報告：`docs/current-extreme-multicard-coordinate-monk-summary-20261111.json`，以及 HP/CLEAR 明細。
+          - 有限貪婪搜尋，非全域最優；正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record monk multi-card trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  hunter:
+    needs: monk
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run bounded multi-card optimization in actual Extreme Trials
+        env:
+          EXTREME_JOB: hunter
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：hunter 多王卡實戰搜尋
+
+          - 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+          - 報告：`docs/current-extreme-multicard-coordinate-hunter-summary-20261111.json`，以及 HP/CLEAR 明細。
+          - 有限貪婪搜尋，非全域最優；正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record hunter multi-card trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  performer:
+    needs: hunter
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run bounded multi-card optimization in actual Extreme Trials
+        env:
+          EXTREME_JOB: performer
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：performer 多王卡實戰搜尋
+
+          - 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+          - 報告：`docs/current-extreme-multicard-coordinate-performer-summary-20261111.json`，以及 HP/CLEAR 明細。
+          - 有限貪婪搜尋，非全域最優；正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record performer multi-card trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  priest:
+    needs: performer
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run bounded multi-card optimization in actual Extreme Trials
+        env:
+          EXTREME_JOB: priest
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：priest 多王卡實戰搜尋
+
+          - 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+          - 報告：`docs/current-extreme-multicard-coordinate-priest-summary-20261111.json`，以及 HP/CLEAR 明細。
+          - 有限貪婪搜尋，非全域最優；正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record priest multi-card trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
