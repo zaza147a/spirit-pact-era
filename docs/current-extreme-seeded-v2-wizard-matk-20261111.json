@@ -1,0 +1,71 @@
+{
+  "job": "wizard",
+  "mode": "matk",
+  "candidate": {
+    "job": "wizard",
+    "fusion": "defense-support",
+    "weaponChoice": "aspdPct",
+    "attributeProfile": "luk-vit",
+    "seed": 20261110,
+    "kind": "matk",
+    "highest": 129,
+    "ticks": 25976,
+    "simulatedSeconds": 2597.6,
+    "stopped": "first-failure",
+    "failure": "戰敗",
+    "nextFloor": 130
+  },
+  "results": [
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 106,
+      "ticks": 21336,
+      "simulatedSeconds": 2133.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 107
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "luk-vit",
+      "seed": 20261111,
+      "kind": "matk",
+      "highest": 113,
+      "ticks": 22688,
+      "simulatedSeconds": 2268.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 114
+    },
+    {
+      "job": "wizard",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "luk-vit",
+      "seed": 20261112,
+      "kind": "matk",
+      "highest": 104,
+      "ticks": 20920,
+      "simulatedSeconds": 2092,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 105
+    }
+  ]
+}
