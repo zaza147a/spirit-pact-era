@@ -1603,3 +1603,9 @@
 - 沿用 seeded-v3 HP/CLEAR 的合法武器、融合寵、王卡候選，以及配點搜尋勝出者；逐部位實測多卡替換。
 - 報告：`docs/current-extreme-multicard-coordinate-crusader-summary-20261111.json`；有限搜尋，非全域最優。
 - main 未變更。
+
+## 分段交接：wizard 多王卡實戰搜尋
+
+- 固定 seeded-v3 既有合法武器、融合寵、七種配點篩選勝出者，逐部位實測 HP/CLEAR 王卡替換。
+- 報告：`docs/current-extreme-multicard-coordinate-wizard-summary-20261111.json`，以及 HP/CLEAR 明細。
+- 有限貪婪搜尋，非全域最優；正式版 main 未變更。
