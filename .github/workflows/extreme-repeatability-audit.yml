@@ -1,5 +1,5 @@
 name: Extreme trial same-seed reproducibility audit
-# Re-run after seeding both VM and imported ESM randomness.
+# Re-run after seeding player construction as well as both RNG realms.
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
@@ -24,7 +24,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           node scripts/current-extreme-repeatability-audit.mjs
           node --test tests/current-extreme-results-integrity.test.mjs
-          git add docs/current-extreme-repeatability-audit-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+          git add docs/current-extreme-repeatability-audit-v2-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
           git commit -m "test: record repeated same-seed trial outcomes and handoff [skip ci]"
           git fetch origin test/12-jobs-optimal-loadout-20261110
           git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -33,5 +33,5 @@ jobs:
         if: always()
         with:
           name: repeatability-audit
-          path: docs/current-extreme-repeatability-audit-20261111.json
+          path: docs/current-extreme-repeatability-audit-v2-20261111.json
           if-no-files-found: warn
