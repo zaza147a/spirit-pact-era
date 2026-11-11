@@ -1,4 +1,5 @@
 name: Extreme trial same-seed reproducibility audit
+# Re-run after seeding both VM and imported ESM randomness.
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
