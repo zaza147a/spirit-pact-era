@@ -11,13 +11,13 @@ for(const job of jobs){
   const base=JSON.parse(readFileSync(path,'utf8'));
   const baseline=base.results?.map(x=>x.highest)||[];
   const candidate=base.candidate;
-  const out={baselineSeeds:baseline,baselineMean:baseline.length?baseline.reduce((a,b)=>a+b,0)/baseline.length:null,baselineCandidate:candidate};
+  const out={baselineSeeds:baseline,baselineStops:base.results?.map(x=>x.stopped)||[],baselineMean:baseline.length?baseline.reduce((a,b)=>a+b,0)/baseline.length:null,baselineCandidate:candidate};
   const attr=job==='pactWarrior'||job==='spiritCommander'?
     `docs/current-extreme-seeded-v3-${job}-${mode==='atk'||mode==='matk'?'defense-attributes':'attribute-search'}-20261111.json`:
-    `docs/current-extreme-seeded-v3-attribute-${job}-${mode==='atk'||mode==='matk'?'atk-matk':'hp-clear'}-summary-20261111.json`;
+    `docs/current-extreme-seeded-v3-attribute-${job}-${mode==='atk'||mode==='matk'?'atk-matk-':''}summary-20261111.json`;
   if(existsSync(attr)){
    const a=JSON.parse(readFileSync(attr,'utf8'));
-   if(a.modes?.[mode])out.attributeWinner=a.modes[mode].best;
+   if(a.modes?.[mode]){out.attributeWinner=a.modes[mode].best;out.attributeCensored=a.modes[mode].censored||[];}
    else if(a.best?.[mode])out.attributeWinner=a.best[mode];
   }
   const card=`docs/current-extreme-multicard-coordinate-${job}-${mode}-20261111.json`;
