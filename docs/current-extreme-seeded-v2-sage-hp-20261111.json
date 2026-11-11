@@ -1,0 +1,71 @@
+{
+  "job": "sage",
+  "mode": "hp",
+  "candidate": {
+    "job": "sage",
+    "fusion": "magic-support",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 34,
+    "ticks": 4092,
+    "simulatedSeconds": 409.2,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 35
+  },
+  "results": [
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3806,
+      "simulatedSeconds": 380.6,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 4094,
+      "simulatedSeconds": 409.4,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "sage",
+      "fusion": "magic-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 4130,
+      "simulatedSeconds": 413,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    }
+  ]
+}
