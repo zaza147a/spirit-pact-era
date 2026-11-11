@@ -11,9 +11,9 @@
         "ticks": 41384
       },
       "observed": {
-        "highest": 194,
-        "ticks": 38960,
-        "nextFloor": 195
+        "highest": 190,
+        "ticks": 38120,
+        "nextFloor": 191
       }
     },
     {
@@ -25,9 +25,9 @@
         "ticks": 41384
       },
       "observed": {
-        "highest": 211,
-        "ticks": 42264,
-        "nextFloor": 212
+        "highest": 190,
+        "ticks": 38120,
+        "nextFloor": 191
       }
     },
     {
@@ -39,9 +39,9 @@
         "ticks": 41384
       },
       "observed": {
-        "highest": 193,
-        "ticks": 38712,
-        "nextFloor": 194
+        "highest": 190,
+        "ticks": 38120,
+        "nextFloor": 191
       }
     },
     {
@@ -53,9 +53,9 @@
         "ticks": 47544
       },
       "observed": {
-        "highest": 221,
-        "ticks": 44288,
-        "nextFloor": 222
+        "highest": 207,
+        "ticks": 41576,
+        "nextFloor": 208
       }
     },
     {
@@ -67,9 +67,9 @@
         "ticks": 47544
       },
       "observed": {
-        "highest": 237,
-        "ticks": 47568,
-        "nextFloor": 238
+        "highest": 207,
+        "ticks": 41576,
+        "nextFloor": 208
       }
     },
     {
@@ -81,9 +81,9 @@
         "ticks": 47544
       },
       "observed": {
-        "highest": 201,
-        "ticks": 40328,
-        "nextFloor": 202
+        "highest": 207,
+        "ticks": 41576,
+        "nextFloor": 208
       }
     },
     {
@@ -95,9 +95,9 @@
         "ticks": 4035
       },
       "observed": {
-        "highest": 41,
-        "ticks": 4035,
-        "nextFloor": 42
+        "highest": 40,
+        "ticks": 3710,
+        "nextFloor": 41
       }
     },
     {
@@ -109,9 +109,9 @@
         "ticks": 4035
       },
       "observed": {
-        "highest": 41,
-        "ticks": 4035,
-        "nextFloor": 42
+        "highest": 40,
+        "ticks": 3710,
+        "nextFloor": 41
       }
     },
     {
@@ -123,9 +123,9 @@
         "ticks": 4035
       },
       "observed": {
-        "highest": 41,
-        "ticks": 4035,
-        "nextFloor": 42
+        "highest": 40,
+        "ticks": 3710,
+        "nextFloor": 41
       }
     },
     {
@@ -137,9 +137,9 @@
         "ticks": 4433
       },
       "observed": {
-        "highest": 42,
-        "ticks": 4433,
-        "nextFloor": 43
+        "highest": 40,
+        "ticks": 3923,
+        "nextFloor": 41
       }
     },
     {
@@ -151,9 +151,9 @@
         "ticks": 4433
       },
       "observed": {
-        "highest": 42,
-        "ticks": 4433,
-        "nextFloor": 43
+        "highest": 40,
+        "ticks": 3923,
+        "nextFloor": 41
       }
     },
     {
@@ -165,9 +165,9 @@
         "ticks": 4433
       },
       "observed": {
-        "highest": 42,
-        "ticks": 4433,
-        "nextFloor": 43
+        "highest": 40,
+        "ticks": 3923,
+        "nextFloor": 41
       }
     }
   ]
