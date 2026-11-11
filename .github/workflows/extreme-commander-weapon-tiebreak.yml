@@ -1,0 +1,58 @@
+name: Extreme commander HP weapon three-seed tie-break
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-commander-weapon-tiebreak.yml']
+permissions:
+  contents: write
+jobs:
+  tiebreak:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run matched weapon comparison across three seeds and two modes
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'EOF'
+          import {spawnSync} from 'node:child_process';
+          import {writeFileSync} from 'node:fs';
+          const rows=[];
+          for(const weaponChoice of ['aspdPct','critDmg']){
+            for(const seed of [20261110,20261111,20261112]){
+              const r=spawnSync(process.execPath,['scripts/current-extreme-continuous-benchmark.mjs'],{
+                env:{...process.env,EXTREME_JOB:'spiritCommander',EXTREME_FUSION:'attack-magic',EXTREME_WEAPON:weaponChoice,EXTREME_ATTRIBUTE_PROFILE:'agi-luk',EXTREME_CARD_SLOT:'accessory2',EXTREME_CARD_ID:'boss_celestial',EXTREME_SEED:String(seed),EXTREME_MODES:'hp,clear',EXTREME_FLOOR_CEILING:'250'},encoding:'utf8'});
+              if(r.status!==0)throw Error(r.stderr||r.stdout);
+              const data=r.stdout.trim().split('\n').map(JSON.parse);
+              if(data.length!==2||data.some(x=>x.stopped!=='first-failure'))throw Error('Trial incomplete: '+r.stdout);
+              rows.push(...data);
+              console.log(weaponChoice,seed,data.map(x=>x.kind+':'+x.highest).join(' '));
+            }
+          }
+          const summary=Object.fromEntries(['hp','clear'].map(kind=>[kind,['aspdPct','critDmg'].map(weaponChoice=>{
+            const a=rows.filter(x=>x.kind===kind&&x.weaponChoice===weaponChoice);
+            return {weaponChoice,seedResults:a.map(x=>({seed:x.seed,highest:x.highest,ticks:x.ticks})),mean:a.reduce((s,x)=>s+x.highest,0)/a.length,min:Math.min(...a.map(x=>x.highest))};
+          }).sort((a,b)=>b.mean-a.mean||b.min-a.min)]));
+          writeFileSync('docs/current-extreme-seeded-v3-spiritCommander-weapon-tiebreak-20261111.json',JSON.stringify({conditions:'Actual trials, attack-magic fusion, accessory2 boss_celestial, agi-luk attributes; three seeds, bounded weapon comparison',rows,summary},null,2)+'\n');
+          EOF
+          node --test tests/current-extreme-results-integrity.test.mjs
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：萬靈宗師攻速與暴傷武器三種子複驗
+
+          - 固定攻擊＋魔法融合寵、飾品2王卡 boss_celestial、agi-luk 配點，三組亂數種子實測 HP 與 CLEAR，共 12 場。
+          - 原始報告：`docs/current-extreme-seeded-v3-spiritCommander-weapon-tiebreak-20261111.json`，以 mean/min 比較候選；並非全域最優。
+          - 正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: verify commander weapon tie over three seeds [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
