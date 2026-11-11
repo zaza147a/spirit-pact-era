@@ -1,0 +1,315 @@
+{
+  "job": "assassin",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "rifle",
+        "attributeProfile": "luk-vit",
+        "cardOverrides": {
+          "headLower": "boss_aether"
+        }
+      },
+      "trials": [
+        {
+          "job": "assassin",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "rifle",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headLower": "boss_aether"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 170,
+          "ticks": 34088,
+          "simulatedSeconds": 3408.8,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 171
+        },
+        {
+          "job": "assassin",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "rifle",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headLower": "boss_aether"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 158,
+          "ticks": 31696,
+          "simulatedSeconds": 3169.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 159
+        },
+        {
+          "job": "assassin",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "rifle",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headLower": "boss_aether"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 156,
+          "ticks": 31392,
+          "simulatedSeconds": 3139.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 157
+        }
+      ],
+      "conclusive": true,
+      "mean": 161.33333333333334,
+      "range": [
+        156,
+        170
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": "rifle",
+        "attributeProfile": "luk-vit",
+        "cardOverrides": {
+          "accessory2": "boss_celestial"
+        }
+      },
+      "trials": [
+        {
+          "job": "assassin",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "rifle",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory2": "boss_celestial"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 134,
+          "ticks": 26952,
+          "simulatedSeconds": 2695.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 135
+        },
+        {
+          "job": "assassin",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "rifle",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory2": "boss_celestial"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 122,
+          "ticks": 24560,
+          "simulatedSeconds": 2456,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 123
+        },
+        {
+          "job": "assassin",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "rifle",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory2": "boss_celestial"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 142,
+          "ticks": 28496,
+          "simulatedSeconds": 2849.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 143
+        }
+      ],
+      "conclusive": true,
+      "mean": 132.66666666666666,
+      "range": [
+        122,
+        142
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "weaponId": "rifle+offDagger",
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "assassin",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": "rifle+offDagger",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 36,
+          "ticks": 3737,
+          "simulatedSeconds": 373.7,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 37
+        },
+        {
+          "job": "assassin",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": "rifle+offDagger",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 36,
+          "ticks": 3729,
+          "simulatedSeconds": 372.9,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 37
+        },
+        {
+          "job": "assassin",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": "rifle+offDagger",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 36,
+          "ticks": 3721,
+          "simulatedSeconds": 372.1,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 37
+        }
+      ],
+      "conclusive": true,
+      "mean": 36,
+      "range": [
+        36,
+        36
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "assassin",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 36,
+          "ticks": 3941,
+          "simulatedSeconds": 394.1,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 37
+        },
+        {
+          "job": "assassin",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 36,
+          "ticks": 3986,
+          "simulatedSeconds": 398.6,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 37
+        },
+        {
+          "job": "assassin",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 36,
+          "ticks": 3940,
+          "simulatedSeconds": 394,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 37
+        }
+      ],
+      "conclusive": true,
+      "mean": 36,
+      "range": [
+        36,
+        36
+      ]
+    }
+  }
+}
