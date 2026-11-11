@@ -1,0 +1,48 @@
+name: Extreme trial matched-card candidate search
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-matched-card-search.yml']
+permissions:
+  contents: write
+concurrency:
+  group: extreme-matched-card-search
+  cancel-in-progress: false
+jobs:
+  pactWarrior:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Search all six fusions and two affixes with matched HP boss card and attributes
+        env:
+          EXTREME_JOB: pactWarrior
+          EXTREME_MODES: hp
+          EXTREME_CARD_SLOT: headUpper
+          EXTREME_CARD_ID: boss_skyport
+          EXTREME_PROFILES: agi-luk
+          EXTREME_OUTPUT: docs/current-extreme-seeded-v3-matched-card-pactWarrior-hp-20261111.json
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-candidate-search.mjs
+          node --test tests/current-extreme-results-integrity.test.mjs
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：靈契君王 HP 同卡同配點融合寵搜尋
+
+          - 六種融合寵 × 兩種武器特性；保留已驗證的頭上王卡 boss_skyport 與 agi-luk 配點，固定種子 20261110，實際極限試煉 HP 至首次失敗。
+          - 原始 JSON：`docs/current-extreme-seeded-v3-matched-card-pactWarrior-hp-20261111.json`。本輪只在指定王卡及配點條件下搜尋，不代表全域最優。
+          - 正式版未變更。
+          EOF
+          git add docs/
+          git commit -m "test: matched-card pactWarrior HP fusion search [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
