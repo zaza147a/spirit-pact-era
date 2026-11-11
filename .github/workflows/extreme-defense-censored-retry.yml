@@ -1,0 +1,304 @@
+name: Extreme remaining nine ATK MATK censored-safe screen
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-defense-censored-retry.yml']
+permissions:
+  contents: write
+jobs:
+  crusader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: crusader
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：crusader ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-crusader-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-crusader-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-crusader-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-crusader-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve crusader endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  wizard:
+    needs: crusader
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: wizard
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：wizard ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-wizard-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-wizard-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-wizard-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-wizard-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve wizard endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  sage:
+    needs: wizard
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: sage
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：sage ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-sage-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-sage-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-sage-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-sage-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve sage endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  assassin:
+    needs: sage
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: assassin
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：assassin ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-assassin-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-assassin-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-assassin-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-assassin-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve assassin endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  rogue:
+    needs: assassin
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: rogue
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：rogue ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-rogue-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-rogue-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-rogue-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-rogue-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve rogue endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  monk:
+    needs: rogue
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: monk
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：monk ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-monk-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-monk-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-monk-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-monk-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve monk endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  hunter:
+    needs: monk
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: hunter
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：hunter ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-hunter-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-hunter-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-hunter-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-hunter-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve hunter endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  performer:
+    needs: hunter
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: performer
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：performer ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-performer-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-performer-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-performer-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-performer-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve performer endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  priest:
+    needs: performer
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Real ATK MATK seven-profile screen with censored outcomes tracked
+        env:
+          EXTREME_JOB: priest
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：priest ATK/MATK 配點實戰（含截尾結果）
+
+          - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-priest-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-priest-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-priest-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-priest-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: preserve priest endurance results including censored trials [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
