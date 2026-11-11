@@ -584,7 +584,16 @@
             "failure": "階段傷害不足",
             "nextFloor": 34
           },
-          "attributeCensored": []
+          "attributeCensored": [],
+          "multicard": {
+            "baseline": 33,
+            "winner": {
+              "overrides": {},
+              "highest": 33,
+              "ticks": 4212
+            },
+            "evaluations": 6
+          }
         },
         "clear": {
           "baselineSeeds": [
@@ -629,7 +638,16 @@
             "failure": "階段擊殺數不足",
             "nextFloor": 37
           },
-          "attributeCensored": []
+          "attributeCensored": [],
+          "multicard": {
+            "baseline": 36,
+            "winner": {
+              "overrides": {},
+              "highest": 36,
+              "ticks": 3973
+            },
+            "evaluations": 6
+          }
         }
       }
     },
