@@ -1,0 +1,71 @@
+{
+  "job": "crusader",
+  "mode": "hp",
+  "candidate": {
+    "job": "crusader",
+    "fusion": "attack-magic",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 33,
+    "ticks": 3999,
+    "simulatedSeconds": 399.9,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 34
+  },
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4064,
+      "simulatedSeconds": 406.4,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4015,
+      "simulatedSeconds": 401.5,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4037,
+      "simulatedSeconds": 403.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  ]
+}
