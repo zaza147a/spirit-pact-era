@@ -1578,3 +1578,10 @@
 - 依據 seeded-v3 各模式基準候選，固定融合寵、武器與單卡覆蓋條件；七種合法配點 × HP/CLEAR，共 14 場實戰，種子 20261110。
 - 完整結果：`docs/current-extreme-seeded-v3-attribute-priest-summary-20261111.json`，以及 HP/CLEAR 分別的候選明細。有限搜尋，不代表全域最優。
 - 正式版 main 未變更。
+
+## 分段交接：多王卡覆蓋引擎接入
+
+- `scripts/current-extreme-continuous-benchmark.mjs` 新增 `EXTREME_CARD_OVERRIDES` JSON 多部位覆蓋，維持舊版單卡環境變數相容；合法部位、王卡與不可重複限制沿用原本 fixture。
+- `scripts/current-extreme-multicard-smoke.mjs` 在君王及萬靈兩職各測試 HP/CLEAR 的基準與兩張王卡同時替換，共 8 場真實試煉。
+- 實測檔：`docs/current-extreme-multicard-smoke-20261111.json`。這是功能驗證，不是全卡搜尋，也不代表最優。
+- 正式版 main 未變更。
