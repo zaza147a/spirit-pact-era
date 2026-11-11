@@ -1,0 +1,71 @@
+{
+  "job": "crusader",
+  "mode": "clear",
+  "candidate": {
+    "job": "crusader",
+    "fusion": "attack-magic",
+    "weaponChoice": "aspdPct",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "clear",
+    "highest": 36,
+    "ticks": 3892,
+    "simulatedSeconds": 389.2,
+    "stopped": "first-failure",
+    "failure": "階段擊殺數不足",
+    "nextFloor": 37
+  },
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3874,
+      "simulatedSeconds": 387.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3881,
+      "simulatedSeconds": 388.1,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "crusader",
+      "fusion": "attack-magic",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3881,
+      "simulatedSeconds": 388.1,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    }
+  ]
+}
