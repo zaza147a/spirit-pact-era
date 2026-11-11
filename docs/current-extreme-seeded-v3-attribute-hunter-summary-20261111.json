@@ -1,0 +1,143 @@
+{
+  "job": "hunter",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "hunter",
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 35,
+        "ticks": 4111,
+        "simulatedSeconds": 411.1,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 36
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-hunter-hp-20261111.json",
+      "best": {
+        "job": "hunter",
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "reference",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 4190,
+        "simulatedSeconds": 419,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "scores": [
+        {
+          "profile": "reference",
+          "highest": 34
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 34
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 34
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 31
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 31
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 31
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 31
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "hunter",
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4232,
+        "simulatedSeconds": 423.2,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-hunter-clear-20261111.json",
+      "best": {
+        "job": "hunter",
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "reference",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 37,
+        "ticks": 4666,
+        "simulatedSeconds": 466.6,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 38
+      },
+      "scores": [
+        {
+          "profile": "reference",
+          "highest": 37
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 37
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 36
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 30
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 30
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 30
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 30
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
