@@ -1,0 +1,71 @@
+{
+  "job": "wizard",
+  "mode": "hp",
+  "candidate": {
+    "job": "wizard",
+    "fusion": "magic-defense",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 33,
+    "ticks": 4212,
+    "simulatedSeconds": 421.2,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 34
+  },
+  "results": [
+    {
+      "job": "wizard",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4212,
+      "simulatedSeconds": 421.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "wizard",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4252,
+      "simulatedSeconds": 425.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "wizard",
+      "fusion": "magic-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 4252,
+      "simulatedSeconds": 425.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  ]
+}
