@@ -24,13 +24,14 @@ assert.ok(modes.every(x=>['atk','matk','hp','clear'].includes(x)));
 assert.ok(Number.isInteger(ceiling)&&ceiling>0&&ceiling<=500);
 
 async function run(kind){
- const c=await runtime(),p=currentEndgamePlayer(job,{fusion,weaponChoice,attributeProfile,weaponId,cardOverrides:cardSlot?{[cardSlot]:cardId}:{}});
+ const c=await runtime();
  let state=seed>>>0;
  const random=()=>((state=(Math.imul(state,1664525)+1013904223)>>>0)/4294967296);
  // Imported ESM helpers execute outside the VM. Seed both realms so they share one RNG stream.
  const nativeRandom=Math.random;
  Math.random=random;
  c.Math.random=random;c.rand=(lo,hi)=>Math.floor(random()*(hi-lo+1))+lo;
+ const p=currentEndgamePlayer(job,{fusion,weaponChoice,attributeProfile,weaponId,cardOverrides:cardSlot?{[cardSlot]:cardId}:{}});
  p.location='dawncity';p.extremeProgress={};p.extremeRun=null;
  const started=1_000_000;let now=started,ticks=0;
  c.setTime(started);c.api.setup(p,null);
