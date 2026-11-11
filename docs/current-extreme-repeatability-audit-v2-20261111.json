@@ -1,0 +1,174 @@
+{
+  "seed": 20261110,
+  "repeats": 3,
+  "cases": [
+    {
+      "job": "knight",
+      "mode": "atk",
+      "iteration": 1,
+      "original": {
+        "highest": 206,
+        "ticks": 41384
+      },
+      "observed": {
+        "highest": 187,
+        "ticks": 37592,
+        "nextFloor": 188
+      }
+    },
+    {
+      "job": "knight",
+      "mode": "atk",
+      "iteration": 2,
+      "original": {
+        "highest": 206,
+        "ticks": 41384
+      },
+      "observed": {
+        "highest": 187,
+        "ticks": 37592,
+        "nextFloor": 188
+      }
+    },
+    {
+      "job": "knight",
+      "mode": "atk",
+      "iteration": 3,
+      "original": {
+        "highest": 206,
+        "ticks": 41384
+      },
+      "observed": {
+        "highest": 187,
+        "ticks": 37592,
+        "nextFloor": 188
+      }
+    },
+    {
+      "job": "crusader",
+      "mode": "atk",
+      "iteration": 1,
+      "original": {
+        "highest": 237,
+        "ticks": 47544
+      },
+      "observed": {
+        "highest": 235,
+        "ticks": 47144,
+        "nextFloor": 236
+      }
+    },
+    {
+      "job": "crusader",
+      "mode": "atk",
+      "iteration": 2,
+      "original": {
+        "highest": 237,
+        "ticks": 47544
+      },
+      "observed": {
+        "highest": 235,
+        "ticks": 47144,
+        "nextFloor": 236
+      }
+    },
+    {
+      "job": "crusader",
+      "mode": "atk",
+      "iteration": 3,
+      "original": {
+        "highest": 237,
+        "ticks": 47544
+      },
+      "observed": {
+        "highest": 235,
+        "ticks": 47144,
+        "nextFloor": 236
+      }
+    },
+    {
+      "job": "pactWarrior",
+      "mode": "hp",
+      "iteration": 1,
+      "original": {
+        "highest": 41,
+        "ticks": 4035
+      },
+      "observed": {
+        "highest": 40,
+        "ticks": 3717,
+        "nextFloor": 41
+      }
+    },
+    {
+      "job": "pactWarrior",
+      "mode": "hp",
+      "iteration": 2,
+      "original": {
+        "highest": 41,
+        "ticks": 4035
+      },
+      "observed": {
+        "highest": 40,
+        "ticks": 3717,
+        "nextFloor": 41
+      }
+    },
+    {
+      "job": "pactWarrior",
+      "mode": "hp",
+      "iteration": 3,
+      "original": {
+        "highest": 41,
+        "ticks": 4035
+      },
+      "observed": {
+        "highest": 40,
+        "ticks": 3717,
+        "nextFloor": 41
+      }
+    },
+    {
+      "job": "spiritCommander",
+      "mode": "hp",
+      "iteration": 1,
+      "original": {
+        "highest": 42,
+        "ticks": 4433
+      },
+      "observed": {
+        "highest": 41,
+        "ticks": 4253,
+        "nextFloor": 42
+      }
+    },
+    {
+      "job": "spiritCommander",
+      "mode": "hp",
+      "iteration": 2,
+      "original": {
+        "highest": 42,
+        "ticks": 4433
+      },
+      "observed": {
+        "highest": 41,
+        "ticks": 4253,
+        "nextFloor": 42
+      }
+    },
+    {
+      "job": "spiritCommander",
+      "mode": "hp",
+      "iteration": 3,
+      "original": {
+        "highest": 42,
+        "ticks": 4433
+      },
+      "observed": {
+        "highest": 41,
+        "ticks": 4253,
+        "nextFloor": 42
+      }
+    }
+  ]
+}
