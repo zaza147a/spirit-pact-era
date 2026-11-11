@@ -1,0 +1,337 @@
+name: Extreme legacy ATK MATK attribute retry with safe results commits
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-legacy-defense-safe-retry.yml']
+permissions:
+  contents: write
+jobs:
+  knight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: knight
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：knight ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-knight-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-knight-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-knight-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-knight-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record knight ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  crusader:
+    needs: knight
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: crusader
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：crusader ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-crusader-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-crusader-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-crusader-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-crusader-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record crusader ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  wizard:
+    needs: crusader
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: wizard
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：wizard ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-wizard-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-wizard-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-wizard-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-wizard-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record wizard ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  sage:
+    needs: wizard
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: sage
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：sage ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-sage-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-sage-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-sage-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-sage-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record sage ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  assassin:
+    needs: sage
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: assassin
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：assassin ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-assassin-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-assassin-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-assassin-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-assassin-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record assassin ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  rogue:
+    needs: assassin
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: rogue
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：rogue ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-rogue-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-rogue-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-rogue-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-rogue-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record rogue ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  monk:
+    needs: rogue
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: monk
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：monk ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-monk-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-monk-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-monk-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-monk-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record monk ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  hunter:
+    needs: monk
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: hunter
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：hunter ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-hunter-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-hunter-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-hunter-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-hunter-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record hunter ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  performer:
+    needs: hunter
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: performer
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：performer ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-performer-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-performer-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-performer-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-performer-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record performer ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  priest:
+    needs: performer
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual ATK and MATK trials and preserve concurrent results
+        env:
+          EXTREME_JOB: priest
+          EXTREME_MODES: atk,matk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-oldjobs-attribute-screen.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：priest ATK/MATK 配點實戰（安全重跑）
+
+          - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+          - 報告 `docs/current-extreme-seeded-v3-attribute-priest-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/current-extreme-seeded-v3-attribute-priest-atk-20261111.json" "docs/current-extreme-seeded-v3-attribute-priest-matk-20261111.json" "docs/current-extreme-seeded-v3-attribute-priest-atk-matk-summary-20261111.json" docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "test: record priest ATK MATK attributes without deleting concurrent reports [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
