@@ -1,0 +1,178 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"sage\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"reference\",\"agi-vit\",\"luk-vit\",\"dex-vit\",\"agi-luk\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"weaponId\":\"oneStaff\",\"cardSlot\":\"armor\",\"cardId\":\"boss_stormforge\"}",
+  "job": "sage",
+  "weaponId": "oneStaff",
+  "cardSlot": "armor",
+  "cardId": "boss_stormforge",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 7,
+  "completed": 7,
+  "results": [
+    {
+      "job": "sage",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "cardSlot": "armor",
+      "cardId": "boss_stormforge",
+      "cardOverrides": {
+        "armor": "boss_stormforge"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 141,
+      "ticks": 28384,
+      "simulatedSeconds": 2838.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 142
+    },
+    {
+      "job": "sage",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "cardSlot": "armor",
+      "cardId": "boss_stormforge",
+      "cardOverrides": {
+        "armor": "boss_stormforge"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 152,
+      "ticks": 30568,
+      "simulatedSeconds": 3056.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 153
+    },
+    {
+      "job": "sage",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "cardSlot": "armor",
+      "cardId": "boss_stormforge",
+      "cardOverrides": {
+        "armor": "boss_stormforge"
+      },
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 152,
+      "ticks": 30568,
+      "simulatedSeconds": 3056.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 153
+    },
+    {
+      "job": "sage",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "cardSlot": "armor",
+      "cardId": "boss_stormforge",
+      "cardOverrides": {
+        "armor": "boss_stormforge"
+      },
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 146,
+      "ticks": 29312,
+      "simulatedSeconds": 2931.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 147
+    },
+    {
+      "job": "sage",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "cardSlot": "armor",
+      "cardId": "boss_stormforge",
+      "cardOverrides": {
+        "armor": "boss_stormforge"
+      },
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 146,
+      "ticks": 29312,
+      "simulatedSeconds": 2931.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 147
+    },
+    {
+      "job": "sage",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "cardSlot": "armor",
+      "cardId": "boss_stormforge",
+      "cardOverrides": {
+        "armor": "boss_stormforge"
+      },
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 120,
+      "ticks": 24096,
+      "simulatedSeconds": 2409.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 121
+    },
+    {
+      "job": "sage",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "cardSlot": "armor",
+      "cardId": "boss_stormforge",
+      "cardOverrides": {
+        "armor": "boss_stormforge"
+      },
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 126,
+      "ticks": 25368,
+      "simulatedSeconds": 2536.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 127
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "sage",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "oneStaff",
+      "cardSlot": "armor",
+      "cardId": "boss_stormforge",
+      "cardOverrides": {
+        "armor": "boss_stormforge"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 152,
+      "ticks": 30568,
+      "simulatedSeconds": 3056.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 153
+    }
+  }
+}
