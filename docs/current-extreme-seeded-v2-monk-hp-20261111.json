@@ -1,0 +1,71 @@
+{
+  "job": "monk",
+  "mode": "hp",
+  "candidate": {
+    "job": "monk",
+    "fusion": "attack-support",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 34,
+    "ticks": 3870,
+    "simulatedSeconds": 387,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 35
+  },
+  "results": [
+    {
+      "job": "monk",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3927,
+      "simulatedSeconds": 392.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "monk",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3927,
+      "simulatedSeconds": 392.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "monk",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3927,
+      "simulatedSeconds": 392.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    }
+  ]
+}
