@@ -1,0 +1,24 @@
+// Compare equal-seed legal candidates; never replace a stronger verified baseline.
+import {readFileSync,writeFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+const source=JSON.parse(readFileSync('docs/current-extreme-12jobs-four-modes-three-seed-ranking-20261111.json','utf8'));
+const baseline=JSON.parse(readFileSync('docs/current-extreme-12jobs-four-modes-progress-20261111.json','utf8'));
+const modes=['atk','matk','hp','clear'];
+const rows=source.rows.map(row=>{
+ const b=baseline.rows.find(x=>x.job===row.job);assert.ok(b);
+ const result={job:row.job,modes:{}};
+ for(const mode of modes){
+  const previous=b.modes[mode],tested=row.modes[mode];
+  assert.ok(previous.baselineSeeds.length===3);
+  assert.ok(previous.baselineStops.every(s=>s==='first-failure'));
+  assert.ok(tested.conclusive);
+  const old=previous.baselineMean,newMean=tested.mean;
+  const keepBaseline=old>newMean;
+  result.modes[mode]={chosen:keepBaseline?'seeded-v3-baseline':'three-seed-search-candidate',baselineMean:old,searchMean:newMean,improvement:Math.max(old,newMean)-old,verifiedMean:Math.max(old,newMean),verifiedRange:keepBaseline?[Math.min(...previous.baselineSeeds),Math.max(...previous.baselineSeeds)]:tested.range,configuration:keepBaseline?previous.baselineCandidate:tested.configuration,baselineSeeds:previous.baselineSeeds,searchSeeds:tested.highest};
+ }
+ return result;
+});
+const ranking=Object.fromEntries(modes.map(mode=>[mode,rows.slice().sort((a,b)=>b.modes[mode].verifiedMean-a.modes[mode].verifiedMean).map(r=>({job:r.job,mean:r.modes[mode].verifiedMean,range:r.modes[mode].verifiedRange,chosen:r.modes[mode].chosen}))]));
+const report={purpose:'Choose the better measured legal configuration per job/mode across the same three RNG seeds; still bounded, not global optimal',jobs:12,comparisons:48,rows,ranking,baselineRetained:rows.flatMap(r=>Object.values(r.modes)).filter(m=>m.chosen==='seeded-v3-baseline').length};
+writeFileSync('docs/current-extreme-12jobs-best-verified-three-seed-20261111.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({comparisons:48,baselineRetained:report.baselineRetained,leaders:Object.fromEntries(modes.map(m=>[m,ranking[m][0]]))}));
