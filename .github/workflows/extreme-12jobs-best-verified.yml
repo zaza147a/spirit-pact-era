@@ -1,4 +1,4 @@
-name: Extreme 12 jobs best verified same-seed configurations
+name: Extreme 12 jobs best verified same-seed configurations (include weapon tiebreak)
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
