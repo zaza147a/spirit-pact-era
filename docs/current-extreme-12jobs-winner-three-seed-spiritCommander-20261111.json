@@ -1,0 +1,315 @@
+{
+  "job": "spiritCommander",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {
+          "leftHand": "boss_volcano"
+        }
+      },
+      "trials": [
+        {
+          "job": "spiritCommander",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 178,
+          "ticks": 35656,
+          "simulatedSeconds": 3565.6,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 179
+        },
+        {
+          "job": "spiritCommander",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 176,
+          "ticks": 35352,
+          "simulatedSeconds": 3535.2,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 177
+        },
+        {
+          "job": "spiritCommander",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 171,
+          "ticks": 34264,
+          "simulatedSeconds": 3426.4,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 172
+        }
+      ],
+      "conclusive": true,
+      "mean": 175,
+      "range": [
+        171,
+        178
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "reference",
+        "cardOverrides": {
+          "accessory1": "boss_petland"
+        }
+      },
+      "trials": [
+        {
+          "job": "spiritCommander",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory1": "boss_petland"
+          },
+          "attributeProfile": "reference",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 145,
+          "ticks": 29104,
+          "simulatedSeconds": 2910.4,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 146
+        },
+        {
+          "job": "spiritCommander",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory1": "boss_petland"
+          },
+          "attributeProfile": "reference",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 140,
+          "ticks": 28080,
+          "simulatedSeconds": 2808,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 141
+        },
+        {
+          "job": "spiritCommander",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "accessory1": "boss_petland"
+          },
+          "attributeProfile": "reference",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 148,
+          "ticks": 29656,
+          "simulatedSeconds": 2965.6,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 149
+        }
+      ],
+      "conclusive": true,
+      "mean": 144.33333333333334,
+      "range": [
+        140,
+        148
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "spiritCommander",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 38,
+          "ticks": 3857,
+          "simulatedSeconds": 385.7,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 39
+        },
+        {
+          "job": "spiritCommander",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 38,
+          "ticks": 3983,
+          "simulatedSeconds": 398.3,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 39
+        },
+        {
+          "job": "spiritCommander",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 37,
+          "ticks": 3632,
+          "simulatedSeconds": 363.2,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 38
+        }
+      ],
+      "conclusive": true,
+      "mean": 37.666666666666664,
+      "range": [
+        37,
+        38
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "spiritCommander",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 40,
+          "ticks": 4245,
+          "simulatedSeconds": 424.5,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 41
+        },
+        {
+          "job": "spiritCommander",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 40,
+          "ticks": 4235,
+          "simulatedSeconds": 423.5,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 41
+        },
+        {
+          "job": "spiritCommander",
+          "fusion": "attack-magic",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 40,
+          "ticks": 4271,
+          "simulatedSeconds": 427.1,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 41
+        }
+      ],
+      "conclusive": true,
+      "mean": 40,
+      "range": [
+        40,
+        40
+      ]
+    }
+  }
+}
