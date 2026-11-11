@@ -1,0 +1,315 @@
+{
+  "job": "hunter",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "shortBow",
+        "attributeProfile": "dex-vit",
+        "cardOverrides": {
+          "headUpper": "boss_starter"
+        }
+      },
+      "trials": [
+        {
+          "job": "hunter",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "shortBow",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headUpper": "boss_starter"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 154,
+          "ticks": 30872,
+          "simulatedSeconds": 3087.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 155
+        },
+        {
+          "job": "hunter",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "shortBow",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headUpper": "boss_starter"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 134,
+          "ticks": 26896,
+          "simulatedSeconds": 2689.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 135
+        },
+        {
+          "job": "hunter",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "shortBow",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headUpper": "boss_starter"
+          },
+          "attributeProfile": "dex-vit",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 133,
+          "ticks": 26784,
+          "simulatedSeconds": 2678.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 134
+        }
+      ],
+      "conclusive": true,
+      "mean": 140.33333333333334,
+      "range": [
+        133,
+        154
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "crossbow",
+        "attributeProfile": "luk-vit",
+        "cardOverrides": {
+          "headUpper": "boss_starter"
+        }
+      },
+      "trials": [
+        {
+          "job": "hunter",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "crossbow",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headUpper": "boss_starter"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 124,
+          "ticks": 24880,
+          "simulatedSeconds": 2488,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 125
+        },
+        {
+          "job": "hunter",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "crossbow",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headUpper": "boss_starter"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 115,
+          "ticks": 23072,
+          "simulatedSeconds": 2307.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 116
+        },
+        {
+          "job": "hunter",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "crossbow",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "headUpper": "boss_starter"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 109,
+          "ticks": 21944,
+          "simulatedSeconds": 2194.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 110
+        }
+      ],
+      "conclusive": true,
+      "mean": 116,
+      "range": [
+        109,
+        124
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "reference",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "hunter",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "reference",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 4190,
+          "simulatedSeconds": 419,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "hunter",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "reference",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 4209,
+          "simulatedSeconds": 420.9,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "hunter",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "reference",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 33,
+          "ticks": 3906,
+          "simulatedSeconds": 390.6,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 34
+        }
+      ],
+      "conclusive": true,
+      "mean": 33.666666666666664,
+      "range": [
+        33,
+        34
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "reference",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "hunter",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "reference",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 4666,
+          "simulatedSeconds": 466.6,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        },
+        {
+          "job": "hunter",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "reference",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 4652,
+          "simulatedSeconds": 465.2,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        },
+        {
+          "job": "hunter",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "reference",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 4662,
+          "simulatedSeconds": 466.2,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        }
+      ],
+      "conclusive": true,
+      "mean": 37,
+      "range": [
+        37,
+        37
+      ]
+    }
+  }
+}
