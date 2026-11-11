@@ -1,0 +1,38 @@
+name: Extreme 12-job four-mode final evidence report
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['docs/current-extreme-seeded-v3-attribute-priest-atk-matk-summary-20261111.json']
+permissions:
+  contents: write
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Consolidate all 12 jobs x four modes from actual saved trial evidence
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-12jobs-four-modes-report.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree docs .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：12 職業四試煉證據總表
+
+          - `docs/current-extreme-12jobs-four-modes-progress-20261111.json` 匯總 12 職業 × ATK/MATK/HP/CLEAR 的 seeded-v3 基準、合法配點搜尋及多王卡有限搜尋結果。
+          - 每筆結果保留原始測試條件；截尾/未測資料不可當成已確認最佳層數，跨配置不可直接比較。
+          - 此表為已測候選總表，非全域最佳解。main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/current-extreme-12jobs-four-modes-progress-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+          git commit -m "report: consolidate 12-job four-mode measured trial evidence [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
