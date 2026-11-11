@@ -1,0 +1,71 @@
+{
+  "job": "rogue",
+  "mode": "hp",
+  "candidate": {
+    "job": "rogue",
+    "fusion": "attack-defense",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 34,
+    "ticks": 3897,
+    "simulatedSeconds": 389.7,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 35
+  },
+  "results": [
+    {
+      "job": "rogue",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3873,
+      "simulatedSeconds": 387.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "rogue",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3594,
+      "simulatedSeconds": 359.4,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    },
+    {
+      "job": "rogue",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 33,
+      "ticks": 3592,
+      "simulatedSeconds": 359.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 34
+    }
+  ]
+}
