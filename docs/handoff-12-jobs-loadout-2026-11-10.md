@@ -1630,3 +1630,8 @@
 
 - 固定攻擊＋魔法融合寵、攻速武器，七種合法配點 × 物理/魔法承傷共 14 場。
 - 報告 `docs/current-extreme-seeded-v3-spiritCommander-defense-attributes-20261111.json`；有限搜尋非全域最優，main 未變更。
+
+## 分段交接：knight ATK/MATK 配點實戰（安全重跑）
+
+- 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
+- 報告 `docs/current-extreme-seeded-v3-attribute-knight-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。

@@ -1,0 +1,155 @@
+{
+  "job": "knight",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "atk": {
+      "baseline": {
+        "job": "knight",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": "blade",
+        "cardSlot": "leftHand",
+        "cardId": "boss_volcano",
+        "attributeProfile": "reference",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 204,
+        "ticks": 40872,
+        "simulatedSeconds": 4087.2,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 205
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-knight-atk-20261111.json",
+      "best": {
+        "job": "knight",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": "blade",
+        "cardSlot": "leftHand",
+        "cardId": "boss_volcano",
+        "cardOverrides": {
+          "leftHand": "boss_volcano"
+        },
+        "attributeProfile": "vit-luk",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 204,
+        "ticks": 40992,
+        "simulatedSeconds": 4099.2,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 205
+      },
+      "scores": [
+        {
+          "profile": "vit-luk",
+          "highest": 204
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 187
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 187
+        },
+        {
+          "profile": "reference",
+          "highest": 187
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 187
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 144
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 142
+        }
+      ]
+    },
+    "matk": {
+      "baseline": {
+        "job": "knight",
+        "fusion": "attack-defense",
+        "weaponChoice": "aspdPct",
+        "weaponId": "blade",
+        "cardSlot": "accessory1",
+        "cardId": "boss_eclipse",
+        "attributeProfile": "reference",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 161,
+        "ticks": 32296,
+        "simulatedSeconds": 3229.6,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 162
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-knight-matk-20261111.json",
+      "best": {
+        "job": "knight",
+        "fusion": "attack-defense",
+        "weaponChoice": "aspdPct",
+        "weaponId": "blade",
+        "cardSlot": "accessory1",
+        "cardId": "boss_eclipse",
+        "cardOverrides": {
+          "accessory1": "boss_eclipse"
+        },
+        "attributeProfile": "luk-vit",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 163,
+        "ticks": 32696,
+        "simulatedSeconds": 3269.6,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 164
+      },
+      "scores": [
+        {
+          "profile": "luk-vit",
+          "highest": 163
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 151
+        },
+        {
+          "profile": "reference",
+          "highest": 151
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 144
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 143
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 111
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 108
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
