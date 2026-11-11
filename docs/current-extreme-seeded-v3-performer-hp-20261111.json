@@ -1,0 +1,71 @@
+{
+  "job": "performer",
+  "mode": "hp",
+  "candidate": {
+    "job": "performer",
+    "fusion": "magic-support",
+    "weaponChoice": "aspdPct",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 36,
+    "ticks": 3803,
+    "simulatedSeconds": 380.3,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 37
+  },
+  "results": [
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 36,
+      "ticks": 3803,
+      "simulatedSeconds": 380.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 36,
+      "ticks": 3803,
+      "simulatedSeconds": 380.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "performer",
+      "fusion": "magic-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 36,
+      "ticks": 3814,
+      "simulatedSeconds": 381.4,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 37
+    }
+  ]
+}
