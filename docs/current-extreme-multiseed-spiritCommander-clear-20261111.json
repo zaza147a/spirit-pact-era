@@ -1,0 +1,71 @@
+{
+  "job": "spiritCommander",
+  "mode": "clear",
+  "candidate": {
+    "job": "spiritCommander",
+    "fusion": "attack-magic",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "dex-vit",
+    "seed": 20261110,
+    "kind": "clear",
+    "highest": 42,
+    "ticks": 4856,
+    "simulatedSeconds": 485.6,
+    "stopped": "first-failure",
+    "failure": "階段擊殺數不足",
+    "nextFloor": 43
+  },
+  "results": [
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 4856,
+      "simulatedSeconds": 485.6,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "dex-vit",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 40,
+      "ticks": 4244,
+      "simulatedSeconds": 424.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 41
+    },
+    {
+      "job": "spiritCommander",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "dex-vit",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 40,
+      "ticks": 4271,
+      "simulatedSeconds": 427.1,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 41
+    }
+  ]
+}
