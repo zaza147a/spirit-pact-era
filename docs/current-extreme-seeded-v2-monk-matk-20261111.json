@@ -1,0 +1,71 @@
+{
+  "job": "monk",
+  "mode": "matk",
+  "candidate": {
+    "job": "monk",
+    "fusion": "defense-support",
+    "weaponChoice": "aspdPct",
+    "attributeProfile": "dex-vit",
+    "seed": 20261110,
+    "kind": "matk",
+    "highest": 134,
+    "ticks": 26920,
+    "simulatedSeconds": 2692,
+    "stopped": "first-failure",
+    "failure": "戰敗",
+    "nextFloor": 135
+  },
+  "results": [
+    {
+      "job": "monk",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 123,
+      "ticks": 24688,
+      "simulatedSeconds": 2468.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 124
+    },
+    {
+      "job": "monk",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "dex-vit",
+      "seed": 20261111,
+      "kind": "matk",
+      "highest": 131,
+      "ticks": 26288,
+      "simulatedSeconds": 2628.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 132
+    },
+    {
+      "job": "monk",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "dex-vit",
+      "seed": 20261112,
+      "kind": "matk",
+      "highest": 120,
+      "ticks": 24176,
+      "simulatedSeconds": 2417.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 121
+    }
+  ]
+}
