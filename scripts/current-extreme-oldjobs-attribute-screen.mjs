@@ -22,4 +22,4 @@ for(const mode of ['hp','clear']){
  summary.modes[mode]={baseline:c,output,best:report.best[mode],scores:report.results.map(x=>({profile:x.attributeProfile,highest:x.highest})).sort((a,b)=>b.highest-a.highest)};
  console.log(JSON.stringify({job,mode,best:summary.modes[mode].best.highest,profile:summary.modes[mode].best.attributeProfile}));
 }
-writeFileSync(`docs/current-extreme-seeded-v3-attribute-${job}-${modes.join('-')}-summary-20261111.json`,JSON.stringify(summary,null,2)+'\n');
+writeFileSync(`docs/current-extreme-seeded-v3-attribute-${job}-summary-20261111.json`,JSON.stringify(summary,null,2)+'\n');

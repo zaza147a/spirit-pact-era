@@ -4,6 +4,7 @@
   "mode": "hp",
   "fusion": "attack-support",
   "weapon": "aspdPct",
+  "weaponId": null,
   "profile": "agi-luk",
   "seed": 20261110,
   "maxSlots": 5,
