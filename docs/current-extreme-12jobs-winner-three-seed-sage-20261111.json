@@ -1,0 +1,331 @@
+{
+  "job": "sage",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "oneStaff",
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {
+          "leftHand": "boss_volcano"
+        }
+      },
+      "trials": [
+        {
+          "job": "sage",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 195,
+          "ticks": 39048,
+          "simulatedSeconds": 3904.8,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 196
+        },
+        {
+          "job": "sage",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 194,
+          "ticks": 38888,
+          "simulatedSeconds": 3888.8,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 195
+        },
+        {
+          "job": "sage",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "leftHand": "boss_volcano"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 181,
+          "ticks": 36256,
+          "simulatedSeconds": 3625.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 182
+        }
+      ],
+      "conclusive": true,
+      "mean": 190,
+      "range": [
+        181,
+        195
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": "oneStaff",
+        "attributeProfile": "luk-vit",
+        "cardOverrides": {
+          "armor": "boss_stormforge"
+        }
+      },
+      "trials": [
+        {
+          "job": "sage",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "armor": "boss_stormforge"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 152,
+          "ticks": 30568,
+          "simulatedSeconds": 3056.8,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 153
+        },
+        {
+          "job": "sage",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "armor": "boss_stormforge"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 129,
+          "ticks": 25984,
+          "simulatedSeconds": 2598.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 130
+        },
+        {
+          "job": "sage",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": "oneStaff",
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "armor": "boss_stormforge"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 147,
+          "ticks": 29536,
+          "simulatedSeconds": 2953.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 148
+        }
+      ],
+      "conclusive": true,
+      "mean": 142.66666666666666,
+      "range": [
+        129,
+        152
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {
+          "rightHand": "boss_astral"
+        }
+      },
+      "trials": [
+        {
+          "job": "sage",
+          "fusion": "magic-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 3651,
+          "simulatedSeconds": 365.1,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "sage",
+          "fusion": "magic-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 3692,
+          "simulatedSeconds": 369.2,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "sage",
+          "fusion": "magic-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 3692,
+          "simulatedSeconds": 369.2,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        }
+      ],
+      "conclusive": true,
+      "mean": 34,
+      "range": [
+        34,
+        34
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "magic-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-vit",
+        "cardOverrides": {
+          "rightHand": "boss_astral"
+        }
+      },
+      "trials": [
+        {
+          "job": "sage",
+          "fusion": "magic-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-vit",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 36,
+          "ticks": 4111,
+          "simulatedSeconds": 411.1,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 37
+        },
+        {
+          "job": "sage",
+          "fusion": "magic-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-vit",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 35,
+          "ticks": 3851,
+          "simulatedSeconds": 385.1,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 36
+        },
+        {
+          "job": "sage",
+          "fusion": "magic-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_astral"
+          },
+          "attributeProfile": "agi-vit",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 35,
+          "ticks": 3851,
+          "simulatedSeconds": 385.1,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 36
+        }
+      ],
+      "conclusive": true,
+      "mean": 35.333333333333336,
+      "range": [
+        35,
+        36
+      ]
+    }
+  }
+}
