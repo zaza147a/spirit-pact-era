@@ -1,0 +1,72 @@
+{
+  "job": "assassin",
+  "mode": "hp",
+  "candidate": {
+    "job": "assassin",
+    "fusion": "attack-magic",
+    "weaponChoice": "critDmg",
+    "weaponId": "rifle+offDagger",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 36,
+    "ticks": 3735,
+    "simulatedSeconds": 373.5,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 37
+  },
+  "results": [
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle+offDagger",
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 36,
+      "ticks": 3737,
+      "simulatedSeconds": 373.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle+offDagger",
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 36,
+      "ticks": 3729,
+      "simulatedSeconds": 372.9,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle+offDagger",
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 36,
+      "ticks": 3721,
+      "simulatedSeconds": 372.1,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 37
+    }
+  ]
+}
