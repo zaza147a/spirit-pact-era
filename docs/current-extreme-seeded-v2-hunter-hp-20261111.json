@@ -1,0 +1,71 @@
+{
+  "job": "hunter",
+  "mode": "hp",
+  "candidate": {
+    "job": "hunter",
+    "fusion": "attack-support",
+    "weaponChoice": "aspdPct",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 35,
+    "ticks": 4111,
+    "simulatedSeconds": 411.1,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 36
+  },
+  "results": [
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3812,
+      "simulatedSeconds": 381.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3812,
+      "simulatedSeconds": 381.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "hunter",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3812,
+      "simulatedSeconds": 381.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    }
+  ]
+}
