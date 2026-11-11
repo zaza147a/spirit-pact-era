@@ -12,6 +12,11 @@ const weaponChoice=process.env.EXTREME_WEAPON||'critDmg';
 const weaponId=process.env.EXTREME_WEAPON_ID||null;
 const cardSlot=process.env.EXTREME_CARD_SLOT||null;
 const cardId=process.env.EXTREME_CARD_ID||null;
+const extraCardOverrides=JSON.parse(process.env.EXTREME_CARD_OVERRIDES||'{}');
+assert.ok(extraCardOverrides&&typeof extraCardOverrides==='object'&&!Array.isArray(extraCardOverrides),'EXTREME_CARD_OVERRIDES must be a JSON object');
+assert.ok(Object.entries(extraCardOverrides).every(([slot,id])=>typeof slot==='string'&&typeof id==='string'),'card overrides require slot/id strings');
+assert.ok(!cardSlot||!Object.hasOwn(extraCardOverrides,cardSlot)||extraCardOverrides[cardSlot]===cardId,'conflicting card overrides');
+const cardOverrides={...extraCardOverrides,...(cardSlot?{[cardSlot]:cardId}:{})};
 const attributeProfile=process.env.EXTREME_ATTRIBUTE_PROFILE||'reference';
 const modes=(process.env.EXTREME_MODES||'atk,matk,hp,clear').split(',');
 const ceiling=Number(process.env.EXTREME_FLOOR_CEILING||150);
@@ -31,7 +36,7 @@ async function run(kind){
  const nativeRandom=Math.random;
  Math.random=random;
  c.Math.random=random;c.rand=(lo,hi)=>Math.floor(random()*(hi-lo+1))+lo;
- const p=currentEndgamePlayer(job,{fusion,weaponChoice,attributeProfile,weaponId,cardOverrides:cardSlot?{[cardSlot]:cardId}:{}});
+ const p=currentEndgamePlayer(job,{fusion,weaponChoice,attributeProfile,weaponId,cardOverrides});
  p.location='dawncity';p.extremeProgress={};p.extremeRun=null;
  const started=1_000_000;let now=started,ticks=0;
  c.setTime(started);c.api.setup(p,null);
@@ -41,7 +46,7 @@ async function run(kind){
   now+=100;c.setTime(now);c.api.combatTick(now);ticks++;
  }
  const highest=p.extremeProgress?.[kind]?.highest||0;
- const result={job,fusion,weaponChoice,weaponId,cardSlot,cardId,attributeProfile,seed,kind,highest,ticks,simulatedSeconds:(now-started)/1000,
+ const result={job,fusion,weaponChoice,weaponId,cardSlot,cardId,cardOverrides,attributeProfile,seed,kind,highest,ticks,simulatedSeconds:(now-started)/1000,
   stopped:!p.extremeRun?'first-failure':p.extremeRun.floor>ceiling?'floor-ceiling':'time-ceiling',failure:p.extremeLastResult?.reason||null,
   nextFloor:p.extremeRun?.floor||p.extremeLastResult?.floor||null};
  if(result.stopped==='first-failure')assert.equal(result.nextFloor,highest+1);
