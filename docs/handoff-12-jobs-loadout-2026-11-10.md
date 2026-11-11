@@ -1665,3 +1665,8 @@
 
 - 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
 - 報告 `docs/current-extreme-seeded-v3-attribute-monk-atk-matk-summary-20261111.json`；非全域最優，main 未變更。
+
+## 分段交接：hunter ATK/MATK 配點實戰（含截尾結果）
+
+- 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+- 報告 `docs/current-extreme-seeded-v3-attribute-hunter-atk-matk-summary-20261111.json`；非全域最優，main 未變更。

@@ -1,0 +1,178 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"hunter\",\"fusions\":[\"defense-support\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\",\"agi-vit\",\"luk-vit\",\"dex-vit\",\"agi-luk\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"weaponId\":\"shortBow\",\"cardSlot\":\"headUpper\",\"cardId\":\"boss_starter\"}",
+  "job": "hunter",
+  "weaponId": "shortBow",
+  "cardSlot": "headUpper",
+  "cardId": "boss_starter",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 7,
+  "completed": 7,
+  "results": [
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "cardSlot": "headUpper",
+      "cardId": "boss_starter",
+      "cardOverrides": {
+        "headUpper": "boss_starter"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 140,
+      "ticks": 28168,
+      "simulatedSeconds": 2816.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 141
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "cardSlot": "headUpper",
+      "cardId": "boss_starter",
+      "cardOverrides": {
+        "headUpper": "boss_starter"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 154,
+      "ticks": 30872,
+      "simulatedSeconds": 3087.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 155
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "cardSlot": "headUpper",
+      "cardId": "boss_starter",
+      "cardOverrides": {
+        "headUpper": "boss_starter"
+      },
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 117,
+      "ticks": 23448,
+      "simulatedSeconds": 2344.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 118
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "cardSlot": "headUpper",
+      "cardId": "boss_starter",
+      "cardOverrides": {
+        "headUpper": "boss_starter"
+      },
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 117,
+      "ticks": 23448,
+      "simulatedSeconds": 2344.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 118
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "cardSlot": "headUpper",
+      "cardId": "boss_starter",
+      "cardOverrides": {
+        "headUpper": "boss_starter"
+      },
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 83,
+      "ticks": 16736,
+      "simulatedSeconds": 1673.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 84
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "cardSlot": "headUpper",
+      "cardId": "boss_starter",
+      "cardOverrides": {
+        "headUpper": "boss_starter"
+      },
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 154,
+      "ticks": 30872,
+      "simulatedSeconds": 3087.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 155
+    },
+    {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "cardSlot": "headUpper",
+      "cardId": "boss_starter",
+      "cardOverrides": {
+        "headUpper": "boss_starter"
+      },
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 90,
+      "ticks": 18176,
+      "simulatedSeconds": 1817.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 91
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "hunter",
+      "fusion": "defense-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": "shortBow",
+      "cardSlot": "headUpper",
+      "cardId": "boss_starter",
+      "cardOverrides": {
+        "headUpper": "boss_starter"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 154,
+      "ticks": 30872,
+      "simulatedSeconds": 3087.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 155
+    }
+  }
+}

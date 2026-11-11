@@ -1,0 +1,171 @@
+{
+  "job": "hunter",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "atk": {
+      "baseline": {
+        "job": "hunter",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "shortBow",
+        "cardSlot": "headUpper",
+        "cardId": "boss_starter",
+        "attributeProfile": "vit-luk",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 164,
+        "ticks": 32840,
+        "simulatedSeconds": 3284,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 165
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-hunter-atk-20261111.json",
+      "best": {
+        "job": "hunter",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "shortBow",
+        "cardSlot": "headUpper",
+        "cardId": "boss_starter",
+        "cardOverrides": {
+          "headUpper": "boss_starter"
+        },
+        "attributeProfile": "dex-vit",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 154,
+        "ticks": 30872,
+        "simulatedSeconds": 3087.2,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 155
+      },
+      "censored": [],
+      "scores": [
+        {
+          "profile": "dex-vit",
+          "highest": 154,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 154,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 140,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 117,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "reference",
+          "highest": 117,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 90,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 83,
+          "stopped": "first-failure"
+        }
+      ]
+    },
+    "matk": {
+      "baseline": {
+        "job": "hunter",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "crossbow",
+        "cardSlot": "headUpper",
+        "cardId": "boss_starter",
+        "attributeProfile": "luk-vit",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 134,
+        "ticks": 26952,
+        "simulatedSeconds": 2695.2,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 135
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-hunter-matk-20261111.json",
+      "best": {
+        "job": "hunter",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": "crossbow",
+        "cardSlot": "headUpper",
+        "cardId": "boss_starter",
+        "cardOverrides": {
+          "headUpper": "boss_starter"
+        },
+        "attributeProfile": "luk-vit",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 124,
+        "ticks": 24880,
+        "simulatedSeconds": 2488,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 125
+      },
+      "censored": [],
+      "scores": [
+        {
+          "profile": "luk-vit",
+          "highest": 124,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "reference",
+          "highest": 111,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 111,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 104,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 104,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 80,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 71,
+          "stopped": "first-failure"
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
