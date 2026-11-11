@@ -1,0 +1,71 @@
+{
+  "job": "monk",
+  "mode": "atk",
+  "candidate": {
+    "job": "monk",
+    "fusion": "defense-support",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "luk-vit",
+    "seed": 20261110,
+    "kind": "atk",
+    "highest": 174,
+    "ticks": 34968,
+    "simulatedSeconds": 3496.8,
+    "stopped": "first-failure",
+    "failure": "戰敗",
+    "nextFloor": 175
+  },
+  "results": [
+    {
+      "job": "monk",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 161,
+      "ticks": 32240,
+      "simulatedSeconds": 3224,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 162
+    },
+    {
+      "job": "monk",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "luk-vit",
+      "seed": 20261111,
+      "kind": "atk",
+      "highest": 160,
+      "ticks": 32176,
+      "simulatedSeconds": 3217.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 161
+    },
+    {
+      "job": "monk",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "luk-vit",
+      "seed": 20261112,
+      "kind": "atk",
+      "highest": 167,
+      "ticks": 33448,
+      "simulatedSeconds": 3344.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 168
+    }
+  ]
+}
