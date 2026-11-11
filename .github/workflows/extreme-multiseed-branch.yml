@@ -1,0 +1,430 @@
+name: Extreme trial multiseed verification - test branch
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-multiseed-branch.yml']
+permissions:
+  contents: write
+concurrency:
+  group: extreme-trial-multiseed
+  cancel-in-progress: false
+jobs:
+  knight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: knight
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-knight
+          path: docs/current-extreme-multiseed-knight-*.json
+          if-no-files-found: warn
+  crusader:
+    needs: knight
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: crusader
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-crusader
+          path: docs/current-extreme-multiseed-crusader-*.json
+          if-no-files-found: warn
+  wizard:
+    needs: crusader
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: wizard
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-wizard
+          path: docs/current-extreme-multiseed-wizard-*.json
+          if-no-files-found: warn
+  sage:
+    needs: wizard
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: sage
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-sage
+          path: docs/current-extreme-multiseed-sage-*.json
+          if-no-files-found: warn
+  assassin:
+    needs: sage
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: assassin
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-assassin
+          path: docs/current-extreme-multiseed-assassin-*.json
+          if-no-files-found: warn
+  rogue:
+    needs: assassin
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: rogue
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-rogue
+          path: docs/current-extreme-multiseed-rogue-*.json
+          if-no-files-found: warn
+  monk:
+    needs: rogue
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: monk
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-monk
+          path: docs/current-extreme-multiseed-monk-*.json
+          if-no-files-found: warn
+  hunter:
+    needs: monk
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: hunter
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-hunter
+          path: docs/current-extreme-multiseed-hunter-*.json
+          if-no-files-found: warn
+  performer:
+    needs: hunter
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: performer
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-performer
+          path: docs/current-extreme-multiseed-performer-*.json
+          if-no-files-found: warn
+  priest:
+    needs: performer
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: priest
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-priest
+          path: docs/current-extreme-multiseed-priest-*.json
+          if-no-files-found: warn
+  pactWarrior:
+    needs: priest
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: pactWarrior
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-pactWarrior
+          path: docs/current-extreme-multiseed-pactWarrior-*.json
+          if-no-files-found: warn
+  spiritCommander:
+    needs: pactWarrior
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run actual trial, verify and commit each mode
+        env:
+          EXTREME_JOB: spiritCommander
+          EXTREME_SEEDS: '20261110,20261111,20261112'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for mode in atk matk hp clear; do
+            EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
+            node --test tests/current-extreme-results-integrity.test.mjs
+            git add docs/current-extreme-multiseed-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
+            git fetch origin test/12-jobs-optimal-loadout-20261110
+            git rebase origin/test/12-jobs-optimal-loadout-20261110
+            git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiseed-spiritCommander
+          path: docs/current-extreme-multiseed-spiritCommander-*.json
+          if-no-files-found: warn
