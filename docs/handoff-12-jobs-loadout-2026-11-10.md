@@ -1488,3 +1488,9 @@
 - 攻擊＋防禦、攻擊＋輔助，固定頭上王卡 boss_skyport、agi-luk 配點、攻速武器；每種融合寵於 20261110／20261111／20261112 實測 HP 與 CLEAR，合計 12 場。
 - 逐場層數與平均：`docs/current-extreme-seeded-v3-pactWarrior-fusion-tiebreak-20261111.json`。
 - 此為兩候選有限比較，不代表完整配裝全域最優；正式版未變更。
+
+## 分段交接：萬靈宗師 HP 同卡同配點融合寵搜尋
+
+- 六融合寵 × 兩武器特性，固定 accessory2 王卡 boss_celestial、agi-luk 配點與種子 20261110，HP 實戰至首次失敗。
+- 完整報告：`docs/current-extreme-seeded-v3-matched-card-spiritCommander-hp-20261111.json`；屬有限候選搜尋，非全域最優。
+- 正式版 main 未變更。
