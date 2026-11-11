@@ -2,7 +2,7 @@ name: Extreme 12-job four-mode final evidence report
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
-    paths: ['docs/current-extreme-seeded-v3-attribute-priest-atk-matk-summary-20261111.json']
+    paths: ['docs/current-extreme-seeded-v3-attribute-priest-atk-matk-summary-20261111.json', '.github/workflows/extreme-12jobs-final-evidence.yml']
 permissions:
   contents: write
 jobs:
