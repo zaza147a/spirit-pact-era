@@ -1,0 +1,71 @@
+{
+  "job": "assassin",
+  "mode": "clear",
+  "candidate": {
+    "job": "assassin",
+    "fusion": "attack-magic",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "clear",
+    "highest": 36,
+    "ticks": 3969,
+    "simulatedSeconds": 396.9,
+    "stopped": "first-failure",
+    "failure": "階段擊殺數不足",
+    "nextFloor": 37
+  },
+  "results": [
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3969,
+      "simulatedSeconds": 396.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3985,
+      "simulatedSeconds": 398.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    },
+    {
+      "job": "assassin",
+      "fusion": "attack-magic",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 36,
+      "ticks": 3956,
+      "simulatedSeconds": 395.6,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 37
+    }
+  ]
+}
