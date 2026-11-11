@@ -1,0 +1,231 @@
+name: Extreme remaining seven legacy jobs multi-card retry
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-remaining-seven-multicard-retry.yml']
+permissions:
+  contents: write
+jobs:
+  sage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and preserve actual Extreme Trial results
+        env:
+          EXTREME_JOB: sage
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：sage 多王卡 HP/CLEAR 實測
+
+          - 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-sage-summary-20261111.json`。
+          - 此為有限搜尋，非全域最佳；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save sage multi-card real trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  assassin:
+    needs: sage
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and preserve actual Extreme Trial results
+        env:
+          EXTREME_JOB: assassin
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：assassin 多王卡 HP/CLEAR 實測
+
+          - 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-assassin-summary-20261111.json`。
+          - 此為有限搜尋，非全域最佳；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save assassin multi-card real trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  rogue:
+    needs: assassin
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and preserve actual Extreme Trial results
+        env:
+          EXTREME_JOB: rogue
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：rogue 多王卡 HP/CLEAR 實測
+
+          - 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-rogue-summary-20261111.json`。
+          - 此為有限搜尋，非全域最佳；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save rogue multi-card real trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  monk:
+    needs: rogue
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and preserve actual Extreme Trial results
+        env:
+          EXTREME_JOB: monk
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：monk 多王卡 HP/CLEAR 實測
+
+          - 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-monk-summary-20261111.json`。
+          - 此為有限搜尋，非全域最佳；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save monk multi-card real trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  hunter:
+    needs: monk
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and preserve actual Extreme Trial results
+        env:
+          EXTREME_JOB: hunter
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：hunter 多王卡 HP/CLEAR 實測
+
+          - 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-hunter-summary-20261111.json`。
+          - 此為有限搜尋，非全域最佳；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save hunter multi-card real trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  performer:
+    needs: hunter
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and preserve actual Extreme Trial results
+        env:
+          EXTREME_JOB: performer
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：performer 多王卡 HP/CLEAR 實測
+
+          - 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-performer-summary-20261111.json`。
+          - 此為有限搜尋，非全域最佳；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save performer multi-card real trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  priest:
+    needs: performer
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run and preserve actual Extreme Trial results
+        env:
+          EXTREME_JOB: priest
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-legacy-multicard.mjs
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git reset --soft origin/test/12-jobs-optimal-loadout-20261110
+          git restore --source=origin/test/12-jobs-optimal-loadout-20261110 --staged --worktree .github/workflows scripts
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：priest 多王卡 HP/CLEAR 實測
+
+          - 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-priest-summary-20261111.json`。
+          - 此為有限搜尋，非全域最佳；main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: save priest multi-card real trial results [skip ci]"
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
