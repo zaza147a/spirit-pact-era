@@ -1470,3 +1470,9 @@
 - 真實極限試煉 HP/CLEAR，六種融合寵 × 兩種武器特性，共 12 組候選、24 場測試，固定種子 20261110。
 - 結果：`docs/current-extreme-seeded-v3-fusion-search-pactWarrior-20261111.json`；其中 best 為此次有限搜尋最佳，不代表全域最優。
 - 未變更正式版。
+
+## 分段交接：固定種子融合寵與武器特性搜尋（萬靈宗師）
+
+- 真實極限試煉 HP/CLEAR，六種融合寵 × 兩種武器特性，共 12 組候選、24 場測試，固定種子 20261110。
+- 結果：`docs/current-extreme-seeded-v3-fusion-search-spiritCommander-20261111.json`；其中 best 為此次有限搜尋最佳，不代表全域最優。
+- 未變更正式版。
