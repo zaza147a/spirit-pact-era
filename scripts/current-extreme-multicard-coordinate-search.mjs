@@ -46,7 +46,7 @@ for(let pass=0;pass<passes;pass++){
   for(const [id] of candidates){
    const overrides={...accepted,[slot]:id};
    const row=trial(overrides);evaluations++;
-   if(row.highest>slotBest.highest||(row.highest===slotBest.highest&&row.ticks<slotBest.ticks)){
+   if(row.highest>slotBest.highest){
     slotBest=row;slotAccepted=overrides;
    }
   }
