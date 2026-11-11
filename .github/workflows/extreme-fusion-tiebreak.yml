@@ -1,0 +1,60 @@
+name: Extreme trial top fusion three-seed tie-break
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-fusion-tiebreak.yml']
+permissions:
+  contents: write
+jobs:
+  tiebreak:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Compare tied HP candidates and CLEAR under identical seeds
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'EOF'
+          import {spawnSync} from 'node:child_process';
+          import {writeFileSync} from 'node:fs';
+          const rows=[];
+          for(const fusion of ['attack-defense','attack-support']){
+            for(const seed of [20261110,20261111,20261112]){
+              const r=spawnSync(process.execPath,['scripts/current-extreme-continuous-benchmark.mjs'],{
+                env:{...process.env,EXTREME_JOB:'pactWarrior',EXTREME_FUSION:fusion,EXTREME_WEAPON:'aspdPct',EXTREME_ATTRIBUTE_PROFILE:'agi-luk',EXTREME_CARD_SLOT:'headUpper',EXTREME_CARD_ID:'boss_skyport',EXTREME_SEED:String(seed),EXTREME_MODES:'hp,clear',EXTREME_FLOOR_CEILING:'250'},encoding:'utf8'});
+              if(r.status!==0)throw Error(r.stderr||r.stdout);
+              const data=r.stdout.trim().split('\n').map(JSON.parse);
+              if(data.length!==2||data.some(x=>x.stopped!=='first-failure'))throw Error('Trial incomplete: '+r.stdout);
+              rows.push(...data);
+              console.log(fusion,seed,data.map(x=>x.kind+':'+x.highest).join(' '));
+            }
+          }
+          const summary=Object.fromEntries(['hp','clear'].map(kind=>[kind,['attack-defense','attack-support'].map(fusion=>{
+            const a=rows.filter(x=>x.kind===kind&&x.fusion===fusion);
+            return {fusion,seedResults:a.map(x=>({seed:x.seed,highest:x.highest,ticks:x.ticks})),mean:a.reduce((s,x)=>s+x.highest,0)/a.length,min:Math.min(...a.map(x=>x.highest))};
+          }).sort((a,b)=>b.mean-a.mean||b.min-a.min)]));
+          const report={conditions:'Real extreme trials; same boss_skyport headUpper card, agi-luk attributes, aspdPct weapon affix, three seeds; bounded two-fusion comparison only',rows,summary};
+          const path='docs/current-extreme-seeded-v3-pactWarrior-fusion-tiebreak-20261111.json';
+          writeFileSync(path,JSON.stringify(report,null,2)+'\n');
+          EOF
+          node --test tests/current-extreme-results-integrity.test.mjs
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：君王兩種並列融合寵三種子複驗
+
+          - 攻擊＋防禦、攻擊＋輔助，固定頭上王卡 boss_skyport、agi-luk 配點、攻速武器；每種融合寵於 20261110／20261111／20261112 實測 HP 與 CLEAR，合計 12 場。
+          - 逐場層數與平均：`docs/current-extreme-seeded-v3-pactWarrior-fusion-tiebreak-20261111.json`。
+          - 此為兩候選有限比較，不代表完整配裝全域最優；正式版未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: verify tied pactWarrior fusions over three seeds [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
