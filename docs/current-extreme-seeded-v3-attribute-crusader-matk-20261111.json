@@ -1,0 +1,178 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"crusader\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"reference\",\"agi-vit\",\"luk-vit\",\"dex-vit\",\"agi-luk\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"cardSlot\":\"headLower\",\"cardId\":\"boss_aether\"}",
+  "job": "crusader",
+  "weaponId": null,
+  "cardSlot": "headLower",
+  "cardId": "boss_aether",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 7,
+  "completed": 7,
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "cardOverrides": {
+        "headLower": "boss_aether"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 159,
+      "ticks": 31896,
+      "simulatedSeconds": 3189.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 160
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "cardOverrides": {
+        "headLower": "boss_aether"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 166,
+      "ticks": 33288,
+      "simulatedSeconds": 3328.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 167
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "cardOverrides": {
+        "headLower": "boss_aether"
+      },
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 166,
+      "ticks": 33288,
+      "simulatedSeconds": 3328.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 167
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "cardOverrides": {
+        "headLower": "boss_aether"
+      },
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 166,
+      "ticks": 33288,
+      "simulatedSeconds": 3328.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 167
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "cardOverrides": {
+        "headLower": "boss_aether"
+      },
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 118,
+      "ticks": 23688,
+      "simulatedSeconds": 2368.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 119
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "cardOverrides": {
+        "headLower": "boss_aether"
+      },
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 118,
+      "ticks": 23688,
+      "simulatedSeconds": 2368.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 119
+    },
+    {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "cardOverrides": {
+        "headLower": "boss_aether"
+      },
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 166,
+      "ticks": 33336,
+      "simulatedSeconds": 3333.6,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 167
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "crusader",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": "headLower",
+      "cardId": "boss_aether",
+      "cardOverrides": {
+        "headLower": "boss_aether"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 166,
+      "ticks": 33288,
+      "simulatedSeconds": 3328.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 167
+    }
+  }
+}

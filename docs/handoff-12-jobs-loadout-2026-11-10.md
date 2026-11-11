@@ -1635,3 +1635,8 @@
 
 - 七種合法配點 × ATK/MATK 共 14 場，固定各模式既有 seeded-v3 裝備、融合寵與王卡。
 - 報告 `docs/current-extreme-seeded-v3-attribute-knight-atk-matk-summary-20261111.json`；有限搜尋，非全域最優；main 未變更。
+
+## 分段交接：crusader ATK/MATK 配點實戰（含截尾結果）
+
+- 七種配點 × 兩項試煉共 14 場；time-ceiling/floor-ceiling 標記為截尾，不冒充已確定最高層。
+- 報告 `docs/current-extreme-seeded-v3-attribute-crusader-atk-matk-summary-20261111.json`；非全域最優，main 未變更。

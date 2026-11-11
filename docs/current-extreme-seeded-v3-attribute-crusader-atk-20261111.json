@@ -1,0 +1,178 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"crusader\",\"fusions\":[\"magic-defense\"],\"weapons\":[\"aspdPct\"],\"profiles\":[\"reference\",\"agi-vit\",\"luk-vit\",\"dex-vit\",\"agi-luk\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"atk\"],\"seed\":\"20261110\",\"weaponId\":\"oneSpear\",\"cardSlot\":\"leftHand\",\"cardId\":\"boss_volcano\"}",
+  "job": "crusader",
+  "weaponId": "oneSpear",
+  "cardSlot": "leftHand",
+  "cardId": "boss_volcano",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "atk"
+  ],
+  "tasks": 7,
+  "completed": 7,
+  "results": [
+    {
+      "job": "crusader",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 235,
+      "ticks": 47144,
+      "simulatedSeconds": 4714.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 236
+    },
+    {
+      "job": "crusader",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 234,
+      "ticks": 46968,
+      "simulatedSeconds": 4696.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 235
+    },
+    {
+      "job": "crusader",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 235,
+      "ticks": 47144,
+      "simulatedSeconds": 4714.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 236
+    },
+    {
+      "job": "crusader",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 235,
+      "ticks": 47144,
+      "simulatedSeconds": 4714.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 236
+    },
+    {
+      "job": "crusader",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 160,
+      "ticks": 32184,
+      "simulatedSeconds": 3218.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 161
+    },
+    {
+      "job": "crusader",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 177,
+      "ticks": 35544,
+      "simulatedSeconds": 3554.4,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 178
+    },
+    {
+      "job": "crusader",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 250,
+      "ticks": 50000,
+      "simulatedSeconds": 5000,
+      "stopped": "floor-ceiling",
+      "failure": null,
+      "nextFloor": 251
+    }
+  ],
+  "best": {
+    "atk": {
+      "job": "crusader",
+      "fusion": "magic-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": "oneSpear",
+      "cardSlot": "leftHand",
+      "cardId": "boss_volcano",
+      "cardOverrides": {
+        "leftHand": "boss_volcano"
+      },
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "atk",
+      "highest": 250,
+      "ticks": 50000,
+      "simulatedSeconds": 5000,
+      "stopped": "floor-ceiling",
+      "failure": null,
+      "nextFloor": 251
+    }
+  }
+}
