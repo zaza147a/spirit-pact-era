@@ -1,0 +1,178 @@
+{
+  "status": "BOUNDED SEARCH COMPLETE, not global optimum",
+  "signature": "{\"job\":\"assassin\",\"fusions\":[\"defense-support\"],\"weapons\":[\"critDmg\"],\"profiles\":[\"reference\",\"agi-vit\",\"luk-vit\",\"dex-vit\",\"agi-luk\",\"vit-luk\",\"dex-luk\"],\"modes\":[\"matk\"],\"seed\":\"20261110\",\"weaponId\":\"rifle\",\"cardSlot\":\"accessory2\",\"cardId\":\"boss_celestial\"}",
+  "job": "assassin",
+  "weaponId": "rifle",
+  "cardSlot": "accessory2",
+  "cardId": "boss_celestial",
+  "conditions": "Chosen unordered pet fusions x weapon special affixes x legal attribute profiles; explicit weapon or one boss card override if given; real extreme trial from floor1 to failure",
+  "modes": [
+    "matk"
+  ],
+  "tasks": 7,
+  "completed": 7,
+  "results": [
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "cardOverrides": {
+        "accessory2": "boss_celestial"
+      },
+      "attributeProfile": "dex-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 121,
+      "ticks": 24392,
+      "simulatedSeconds": 2439.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 122
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "cardOverrides": {
+        "accessory2": "boss_celestial"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 134,
+      "ticks": 26952,
+      "simulatedSeconds": 2695.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 135
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "cardOverrides": {
+        "accessory2": "boss_celestial"
+      },
+      "attributeProfile": "vit-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 121,
+      "ticks": 24352,
+      "simulatedSeconds": 2435.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 122
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "cardOverrides": {
+        "accessory2": "boss_celestial"
+      },
+      "attributeProfile": "reference",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 130,
+      "ticks": 26192,
+      "simulatedSeconds": 2619.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 131
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "cardOverrides": {
+        "accessory2": "boss_celestial"
+      },
+      "attributeProfile": "agi-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 130,
+      "ticks": 26192,
+      "simulatedSeconds": 2619.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 131
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "cardOverrides": {
+        "accessory2": "boss_celestial"
+      },
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 94,
+      "ticks": 18840,
+      "simulatedSeconds": 1884,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 95
+    },
+    {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "cardOverrides": {
+        "accessory2": "boss_celestial"
+      },
+      "attributeProfile": "dex-luk",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 99,
+      "ticks": 19888,
+      "simulatedSeconds": 1988.8,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 100
+    }
+  ],
+  "best": {
+    "matk": {
+      "job": "assassin",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": "rifle",
+      "cardSlot": "accessory2",
+      "cardId": "boss_celestial",
+      "cardOverrides": {
+        "accessory2": "boss_celestial"
+      },
+      "attributeProfile": "luk-vit",
+      "seed": 20261110,
+      "kind": "matk",
+      "highest": 134,
+      "ticks": 26952,
+      "simulatedSeconds": 2695.2,
+      "stopped": "first-failure",
+      "failure": "戰敗",
+      "nextFloor": 135
+    }
+  }
+}
