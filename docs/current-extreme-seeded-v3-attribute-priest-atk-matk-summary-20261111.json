@@ -1,0 +1,171 @@
+{
+  "job": "priest",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "atk": {
+      "baseline": {
+        "job": "priest",
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": "headMiddle",
+        "cardId": "boss_gearfell",
+        "attributeProfile": "dex-vit",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 182,
+        "ticks": 36576,
+        "simulatedSeconds": 3657.6,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 183
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-priest-atk-20261111.json",
+      "best": {
+        "job": "priest",
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": "headMiddle",
+        "cardId": "boss_gearfell",
+        "cardOverrides": {
+          "headMiddle": "boss_gearfell"
+        },
+        "attributeProfile": "dex-vit",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 177,
+        "ticks": 35544,
+        "simulatedSeconds": 3554.4,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 178
+      },
+      "censored": [],
+      "scores": [
+        {
+          "profile": "dex-vit",
+          "highest": 177,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 166,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "reference",
+          "highest": 157,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 157,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 154,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 112,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 101,
+          "stopped": "first-failure"
+        }
+      ]
+    },
+    "matk": {
+      "baseline": {
+        "job": "priest",
+        "fusion": "attack-defense",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": "leftHand",
+        "cardId": "boss_volcano",
+        "attributeProfile": "reference",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 133,
+        "ticks": 26728,
+        "simulatedSeconds": 2672.8,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 134
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-priest-matk-20261111.json",
+      "best": {
+        "job": "priest",
+        "fusion": "attack-defense",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": "leftHand",
+        "cardId": "boss_volcano",
+        "cardOverrides": {
+          "leftHand": "boss_volcano"
+        },
+        "attributeProfile": "dex-vit",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 116,
+        "ticks": 23392,
+        "simulatedSeconds": 2339.2,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 117
+      },
+      "censored": [],
+      "scores": [
+        {
+          "profile": "dex-vit",
+          "highest": 116,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 113,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 113,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 108,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "reference",
+          "highest": 106,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 106,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 97,
+          "stopped": "first-failure"
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
