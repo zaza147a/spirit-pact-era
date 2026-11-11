@@ -1512,3 +1512,9 @@
 - 固定攻擊＋魔法、攻速武器、飾品2王卡 boss_celestial，七種配點分別跑 HP/CLEAR 共 14 場，固定種子 20261110。
 - 報告：`docs/current-extreme-seeded-v3-spiritCommander-attribute-search-20261111.json`；此為限定配點搜尋，非全域最優。
 - 正式版 main 未變更。
+
+## 分段交接：萬靈宗師 VIT＋LUK 與 AGI＋LUK 三種子驗證
+
+- 固定攻擊＋魔法融合寵、攻速武器、飾品2王卡 boss_celestial，三種子實測 HP/CLEAR 共 12 場。
+- 原始結果：`docs/current-extreme-seeded-v3-spiritCommander-attribute-tiebreak-20261111.json`，比較平均與最低層數，非全域最優。
+- 正式版 main 未變更。
