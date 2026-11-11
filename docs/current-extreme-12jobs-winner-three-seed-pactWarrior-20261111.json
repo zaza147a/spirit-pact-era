@@ -1,0 +1,315 @@
+{
+  "job": "pactWarrior",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "magic-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {
+          "shoes": "boss_nightclock"
+        }
+      },
+      "trials": [
+        {
+          "job": "pactWarrior",
+          "fusion": "magic-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "shoes": "boss_nightclock"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 177,
+          "ticks": 35480,
+          "simulatedSeconds": 3548,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 178
+        },
+        {
+          "job": "pactWarrior",
+          "fusion": "magic-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "shoes": "boss_nightclock"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 181,
+          "ticks": 36272,
+          "simulatedSeconds": 3627.2,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 182
+        },
+        {
+          "job": "pactWarrior",
+          "fusion": "magic-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "shoes": "boss_nightclock"
+          },
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 168,
+          "ticks": 33768,
+          "simulatedSeconds": 3376.8,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 169
+        }
+      ],
+      "conclusive": true,
+      "mean": 175.33333333333334,
+      "range": [
+        168,
+        181
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "magic-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "luk-vit",
+        "cardOverrides": {
+          "rightHand": "boss_zenith"
+        }
+      },
+      "trials": [
+        {
+          "job": "pactWarrior",
+          "fusion": "magic-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_zenith"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 147,
+          "ticks": 29512,
+          "simulatedSeconds": 2951.2,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 148
+        },
+        {
+          "job": "pactWarrior",
+          "fusion": "magic-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_zenith"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 132,
+          "ticks": 26504,
+          "simulatedSeconds": 2650.4,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 133
+        },
+        {
+          "job": "pactWarrior",
+          "fusion": "magic-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "rightHand": "boss_zenith"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 135,
+          "ticks": 27144,
+          "simulatedSeconds": 2714.4,
+          "stopped": "first-failure",
+          "failure": "契約雙方戰敗",
+          "nextFloor": 136
+        }
+      ],
+      "conclusive": true,
+      "mean": 138,
+      "range": [
+        132,
+        147
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "pactWarrior",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 41,
+          "ticks": 3952,
+          "simulatedSeconds": 395.2,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 42
+        },
+        {
+          "job": "pactWarrior",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 41,
+          "ticks": 3923,
+          "simulatedSeconds": 392.3,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 42
+        },
+        {
+          "job": "pactWarrior",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 40,
+          "ticks": 3614,
+          "simulatedSeconds": 361.4,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 41
+        }
+      ],
+      "conclusive": true,
+      "mean": 40.666666666666664,
+      "range": [
+        40,
+        41
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "pactWarrior",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 43,
+          "ticks": 4094,
+          "simulatedSeconds": 409.4,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 44
+        },
+        {
+          "job": "pactWarrior",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 43,
+          "ticks": 4079,
+          "simulatedSeconds": 407.9,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 44
+        },
+        {
+          "job": "pactWarrior",
+          "fusion": "attack-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 42,
+          "ticks": 3787,
+          "simulatedSeconds": 378.7,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 43
+        }
+      ],
+      "conclusive": true,
+      "mean": 42.666666666666664,
+      "range": [
+        42,
+        43
+      ]
+    }
+  }
+}
