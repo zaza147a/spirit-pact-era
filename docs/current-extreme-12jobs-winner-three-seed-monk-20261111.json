@@ -1,0 +1,299 @@
+{
+  "job": "monk",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "monk",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 174,
+          "ticks": 34952,
+          "simulatedSeconds": 3495.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 175
+        },
+        {
+          "job": "monk",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 180,
+          "ticks": 36168,
+          "simulatedSeconds": 3616.8,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 181
+        },
+        {
+          "job": "monk",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 172,
+          "ticks": 34536,
+          "simulatedSeconds": 3453.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 173
+        }
+      ],
+      "conclusive": true,
+      "mean": 175.33333333333334,
+      "range": [
+        172,
+        180
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "luk-vit",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "monk",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "luk-vit",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 129,
+          "ticks": 25880,
+          "simulatedSeconds": 2588,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 130
+        },
+        {
+          "job": "monk",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "luk-vit",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 130,
+          "ticks": 26136,
+          "simulatedSeconds": 2613.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 131
+        },
+        {
+          "job": "monk",
+          "fusion": "defense-support",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "luk-vit",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 125,
+          "ticks": 25184,
+          "simulatedSeconds": 2518.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 126
+        }
+      ],
+      "conclusive": true,
+      "mean": 128,
+      "range": [
+        125,
+        130
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "monk",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 3867,
+          "simulatedSeconds": 386.7,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "monk",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 3867,
+          "simulatedSeconds": 386.7,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "monk",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 3755,
+          "simulatedSeconds": 375.5,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        }
+      ],
+      "conclusive": true,
+      "mean": 34,
+      "range": [
+        34,
+        34
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "monk",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 3869,
+          "simulatedSeconds": 386.9,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        },
+        {
+          "job": "monk",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 38,
+          "ticks": 4171,
+          "simulatedSeconds": 417.1,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 39
+        },
+        {
+          "job": "monk",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 3871,
+          "simulatedSeconds": 387.1,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        }
+      ],
+      "conclusive": true,
+      "mean": 37.333333333333336,
+      "range": [
+        37,
+        38
+      ]
+    }
+  }
+}
