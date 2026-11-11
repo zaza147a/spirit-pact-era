@@ -1,0 +1,307 @@
+{
+  "job": "rogue",
+  "purpose": "Three-seed confirmation of bounded trial winners; not proof of global optimum",
+  "seeds": [
+    20261110,
+    20261111,
+    20261112
+  ],
+  "modes": {
+    "atk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "luk-vit",
+        "cardOverrides": {
+          "shoes": "boss_nightclock"
+        }
+      },
+      "trials": [
+        {
+          "job": "rogue",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "shoes": "boss_nightclock"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261110,
+          "kind": "atk",
+          "highest": 166,
+          "ticks": 33312,
+          "simulatedSeconds": 3331.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 167
+        },
+        {
+          "job": "rogue",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "shoes": "boss_nightclock"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261111,
+          "kind": "atk",
+          "highest": 142,
+          "ticks": 28536,
+          "simulatedSeconds": 2853.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 143
+        },
+        {
+          "job": "rogue",
+          "fusion": "defense-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {
+            "shoes": "boss_nightclock"
+          },
+          "attributeProfile": "luk-vit",
+          "seed": 20261112,
+          "kind": "atk",
+          "highest": 149,
+          "ticks": 29968,
+          "simulatedSeconds": 2996.8,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 150
+        }
+      ],
+      "conclusive": true,
+      "mean": 152.33333333333334,
+      "range": [
+        142,
+        166
+      ]
+    },
+    "matk": {
+      "chosen": "attribute-screen",
+      "configuration": {
+        "fusion": "magic-defense",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "attributeProfile": "vit-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "rogue",
+          "fusion": "magic-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261110,
+          "kind": "matk",
+          "highest": 130,
+          "ticks": 26144,
+          "simulatedSeconds": 2614.4,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 131
+        },
+        {
+          "job": "rogue",
+          "fusion": "magic-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261111,
+          "kind": "matk",
+          "highest": 136,
+          "ticks": 27376,
+          "simulatedSeconds": 2737.6,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 137
+        },
+        {
+          "job": "rogue",
+          "fusion": "magic-defense",
+          "weaponChoice": "aspdPct",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "vit-luk",
+          "seed": 20261112,
+          "kind": "matk",
+          "highest": 116,
+          "ticks": 23312,
+          "simulatedSeconds": 2331.2,
+          "stopped": "first-failure",
+          "failure": "戰敗",
+          "nextFloor": 117
+        }
+      ],
+      "conclusive": true,
+      "mean": 127.33333333333333,
+      "range": [
+        116,
+        136
+      ]
+    },
+    "hp": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-defense",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "rogue",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "hp",
+          "highest": 34,
+          "ticks": 3873,
+          "simulatedSeconds": 387.3,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 35
+        },
+        {
+          "job": "rogue",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "hp",
+          "highest": 33,
+          "ticks": 3594,
+          "simulatedSeconds": 359.4,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 34
+        },
+        {
+          "job": "rogue",
+          "fusion": "attack-defense",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "hp",
+          "highest": 33,
+          "ticks": 3592,
+          "simulatedSeconds": 359.2,
+          "stopped": "first-failure",
+          "failure": "階段傷害不足",
+          "nextFloor": 34
+        }
+      ],
+      "conclusive": true,
+      "mean": 33.333333333333336,
+      "range": [
+        33,
+        34
+      ]
+    },
+    "clear": {
+      "chosen": "multicard-coordinate",
+      "configuration": {
+        "fusion": "attack-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "attributeProfile": "agi-luk",
+        "cardOverrides": {}
+      },
+      "trials": [
+        {
+          "job": "rogue",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261110,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 4246,
+          "simulatedSeconds": 424.6,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        },
+        {
+          "job": "rogue",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261111,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 4239,
+          "simulatedSeconds": 423.9,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        },
+        {
+          "job": "rogue",
+          "fusion": "attack-support",
+          "weaponChoice": "critDmg",
+          "weaponId": null,
+          "cardSlot": null,
+          "cardId": null,
+          "cardOverrides": {},
+          "attributeProfile": "agi-luk",
+          "seed": 20261112,
+          "kind": "clear",
+          "highest": 37,
+          "ticks": 4243,
+          "simulatedSeconds": 424.3,
+          "stopped": "first-failure",
+          "failure": "階段擊殺數不足",
+          "nextFloor": 38
+        }
+      ],
+      "conclusive": true,
+      "mean": 37,
+      "range": [
+        37,
+        37
+      ]
+    }
+  }
+}
