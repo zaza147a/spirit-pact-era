@@ -30,7 +30,7 @@ for(const mode of modes){
   candidates.push(...data.results);
  }
  const winner=candidates.sort((a,b)=>b.highest-a.highest)[0];
- const path=`docs/current-extreme-multiseed-${job}-${mode}-20261111.json`;
+ const path=`docs/current-extreme-seeded-v2-${job}-${mode}-20261111.json`;
  let results=[];
  if(existsSync(path)){
   const old=JSON.parse(readFileSync(path));
@@ -53,6 +53,7 @@ for(const mode of modes){
  const avg=results.reduce((s,r)=>s+r.highest,0)/results.length;
  const handoff='docs/handoff-12-jobs-loadout-2026-11-10.md';
  const prev=readFileSync(handoff,'utf8');
+ if(prev.includes(`原始報告：\`${path}\``))continue;
  const number=[...prev.matchAll(/^## 分段交接 (\d+)：/gm)].map(x=>+x[1]).reduce((a,b)=>Math.max(a,b),0)+1;
- appendFileSync(handoff,`\n## 分段交接 ${number}：${job} ${mode.toUpperCase()} 多種子實戰複測\n\n- 使用目前已驗證的固定基準／合法單卡最佳候選，種子 ${seeds.join('、')}，實際極限試煉均至首次失敗。\n- 最高層數：${results.map(x=>x.highest).join('、')}；平均 ${avg.toFixed(2)} 層。原始報告：\`${path}\`。\n- 本段為跨種子穩定性驗證，並非跨多張卡、全部融合與配點的全域搜尋。正式版未變更。\n`);
+ appendFileSync(handoff,`\n## 分段交接 ${number}：${job} ${mode.toUpperCase()} 多種子實戰複測\n\n- 使用目前已驗證的固定基準／合法單卡最佳候選，種子 ${seeds.join('、')}，實際極限試煉均至首次失敗。\n- 最高層數：${results.map(x=>x.highest).join('、')}；平均 ${avg.toFixed(2)} 層。原始報告：\`${path}\`。\n- 本段為雙端共用固定種子亂數的跨種子穩定性驗證，並非跨多張卡、全部融合與配點的全域搜尋。正式版未變更。\n`);
 }
