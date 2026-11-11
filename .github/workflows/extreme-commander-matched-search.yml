@@ -1,0 +1,45 @@
+name: Extreme trial commander matched-card fusion search
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-commander-matched-search.yml']
+permissions:
+  contents: write
+jobs:
+  commander:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Search six fusions and two weapon affixes with commander HP boss card
+        env:
+          EXTREME_JOB: spiritCommander
+          EXTREME_MODES: hp
+          EXTREME_CARD_SLOT: accessory2
+          EXTREME_CARD_ID: boss_celestial
+          EXTREME_PROFILES: agi-luk
+          EXTREME_OUTPUT: docs/current-extreme-seeded-v3-matched-card-spiritCommander-hp-20261111.json
+        run: |
+          set -euo pipefail
+          node scripts/current-extreme-candidate-search.mjs
+          node --test tests/current-extreme-results-integrity.test.mjs
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：萬靈宗師 HP 同卡同配點融合寵搜尋
+
+          - 六融合寵 × 兩武器特性，固定 accessory2 王卡 boss_celestial、agi-luk 配點與種子 20261110，HP 實戰至首次失敗。
+          - 完整報告：`docs/current-extreme-seeded-v3-matched-card-spiritCommander-hp-20261111.json`；屬有限候選搜尋，非全域最優。
+          - 正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: matched-card spiritCommander HP fusion search [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
