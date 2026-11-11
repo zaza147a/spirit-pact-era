@@ -1,0 +1,71 @@
+{
+  "job": "priest",
+  "mode": "clear",
+  "candidate": {
+    "job": "priest",
+    "fusion": "defense-support",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "clear",
+    "highest": 35,
+    "ticks": 4247,
+    "simulatedSeconds": 424.7,
+    "stopped": "first-failure",
+    "failure": "階段擊殺數不足",
+    "nextFloor": 36
+  },
+  "results": [
+    {
+      "job": "priest",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 35,
+      "ticks": 4247,
+      "simulatedSeconds": 424.7,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 36
+    },
+    {
+      "job": "priest",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 35,
+      "ticks": 4306,
+      "simulatedSeconds": 430.6,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 36
+    },
+    {
+      "job": "priest",
+      "fusion": "defense-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 35,
+      "ticks": 4225,
+      "simulatedSeconds": 422.5,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 36
+    }
+  ]
+}
