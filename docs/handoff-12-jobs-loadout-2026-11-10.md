@@ -1616,17 +1616,7 @@
 - 報告：`docs/current-extreme-multicard-coordinate-spiritCommander-hp-20261111.json`、`docs/current-extreme-multicard-coordinate-spiritCommander-clear-20261111.json`。
 - 有限貪婪搜尋，不代表全域最優。main 未變更。
 
-## 分段交接：knight ATK/MATK 配點實戰
+## 分段交接：sage 多王卡 HP/CLEAR 實測
 
-- 各七種合法配點、固定 seeded-v3 各模式基準武器/融合寵/王卡；14 場實戰。
-- 結果 `docs/current-extreme-seeded-v3-attribute-knight-atk-matk-summary-20261111.json`，有限搜尋非全域最優；main 未變更。
-
-## 分段交接：crusader ATK/MATK 配點實戰
-
-- 各七種合法配點、固定 seeded-v3 各模式基準武器/融合寵/王卡；14 場實戰。
-- 結果 `docs/current-extreme-seeded-v3-attribute-crusader-atk-matk-summary-20261111.json`，有限搜尋非全域最優；main 未變更。
-
-## 分段交接：wizard ATK/MATK 配點實戰
-
-- 各七種合法配點、固定 seeded-v3 各模式基準武器/融合寵/王卡；14 場實戰。
-- 結果 `docs/current-extreme-seeded-v3-attribute-wizard-atk-matk-summary-20261111.json`，有限搜尋非全域最優；main 未變更。
+- 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-sage-summary-20261111.json`。
+- 此為有限搜尋，非全域最佳；main 未變更。
