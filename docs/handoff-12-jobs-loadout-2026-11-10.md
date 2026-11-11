@@ -1788,3 +1788,9 @@
 - 報告 `docs/current-extreme-12jobs-four-modes-three-seed-ranking-20261111.json`，共 144 場真實極限試煉。
 - 各模式僅排名三種子全部首次失敗的候選，截尾結果另外列出。
 - 此為已搜尋候選的驗證排序，非全域最優；main 未變更。
+
+## 分段交接：12 職業四模式已驗證最佳候選
+
+- 對照 `docs/current-extreme-12jobs-four-modes-progress-20261111.json` seeded-v3 三種子基準與 `docs/current-extreme-12jobs-four-modes-three-seed-ranking-20261111.json` 新候選複測。
+- 每職業每模式選擇相同三種子平均層數較高的合法配置，避免較弱的新搜尋覆蓋舊基準。
+- 輸出 `docs/current-extreme-12jobs-best-verified-three-seed-20261111.json`；已測最佳不等於全域最優。main 未變更。

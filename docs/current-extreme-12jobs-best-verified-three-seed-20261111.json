@@ -1,0 +1,1992 @@
+{
+  "purpose": "Choose the better measured legal configuration per job/mode across the same three RNG seeds; still bounded, not global optimal",
+  "jobs": 12,
+  "comparisons": 48,
+  "rows": [
+    {
+      "job": "knight",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 196,
+          "searchMean": 203.66666666666666,
+          "improvement": 7.666666666666657,
+          "verifiedMean": 203.66666666666666,
+          "verifiedRange": [
+            202,
+            205
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "blade",
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "baselineSeeds": [
+            187,
+            205,
+            196
+          ],
+          "searchSeeds": [
+            204,
+            205,
+            202
+          ]
+        },
+        "matk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 144,
+          "searchMean": 152.66666666666666,
+          "improvement": 8.666666666666657,
+          "verifiedMean": 152.66666666666666,
+          "verifiedRange": [
+            144,
+            163
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": "blade",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "accessory1": "boss_eclipse"
+            }
+          },
+          "baselineSeeds": [
+            151,
+            139,
+            142
+          ],
+          "searchSeeds": [
+            163,
+            144,
+            151
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 34.666666666666664,
+          "searchMean": 34.666666666666664,
+          "improvement": 0,
+          "verifiedMean": 34.666666666666664,
+          "verifiedRange": [
+            34,
+            35
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": "twoSword",
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            35,
+            34,
+            35
+          ],
+          "searchSeeds": [
+            35,
+            34,
+            35
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 38.333333333333336,
+          "searchMean": 38.333333333333336,
+          "improvement": 0,
+          "verifiedMean": 38.333333333333336,
+          "verifiedRange": [
+            38,
+            39
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "headMiddle": "boss_forest"
+            }
+          },
+          "baselineSeeds": [
+            38,
+            38,
+            39
+          ],
+          "searchSeeds": [
+            39,
+            38,
+            38
+          ]
+        }
+      }
+    },
+    {
+      "job": "crusader",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 231,
+          "searchMean": 231,
+          "improvement": 0,
+          "verifiedMean": 231,
+          "verifiedRange": [
+            227,
+            235
+          ],
+          "configuration": {
+            "fusion": "magic-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneSpear",
+            "attributeProfile": "reference",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "baselineSeeds": [
+            235,
+            227,
+            231
+          ],
+          "searchSeeds": [
+            235,
+            227,
+            231
+          ]
+        },
+        "matk": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 166.33333333333334,
+          "searchMean": 162,
+          "improvement": 0,
+          "verifiedMean": 166.33333333333334,
+          "verifiedRange": [
+            161,
+            172
+          ],
+          "configuration": {
+            "job": "crusader",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "headLower",
+            "cardId": "boss_aether",
+            "attributeProfile": "agi-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 178,
+            "ticks": 35728,
+            "simulatedSeconds": 3572.8,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 179
+          },
+          "baselineSeeds": [
+            166,
+            161,
+            172
+          ],
+          "searchSeeds": [
+            166,
+            172,
+            148
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 33,
+          "searchMean": 33,
+          "improvement": 0,
+          "verifiedMean": 33,
+          "verifiedRange": [
+            33,
+            33
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            33,
+            33,
+            33
+          ],
+          "searchSeeds": [
+            33,
+            33,
+            33
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 36,
+          "searchMean": 36,
+          "improvement": 0,
+          "verifiedMean": 36,
+          "verifiedRange": [
+            36,
+            36
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            36,
+            36,
+            36
+          ],
+          "searchSeeds": [
+            36,
+            36,
+            36
+          ]
+        }
+      }
+    },
+    {
+      "job": "wizard",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 170,
+          "searchMean": 180.33333333333334,
+          "improvement": 10.333333333333343,
+          "verifiedMean": 180.33333333333334,
+          "verifiedRange": [
+            173,
+            190
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneStaff",
+            "attributeProfile": "agi-vit",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "baselineSeeds": [
+            174,
+            160,
+            176
+          ],
+          "searchSeeds": [
+            178,
+            173,
+            190
+          ]
+        },
+        "matk": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 116,
+          "searchMean": 115,
+          "improvement": 0,
+          "verifiedMean": 116,
+          "verifiedRange": [
+            112,
+            118
+          ],
+          "configuration": {
+            "job": "wizard",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "luk-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 129,
+            "ticks": 25976,
+            "simulatedSeconds": 2597.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 130
+          },
+          "baselineSeeds": [
+            112,
+            118,
+            118
+          ],
+          "searchSeeds": [
+            116,
+            111,
+            118
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 33,
+          "searchMean": 33,
+          "improvement": 0,
+          "verifiedMean": 33,
+          "verifiedRange": [
+            33,
+            33
+          ],
+          "configuration": {
+            "fusion": "magic-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            33,
+            33,
+            33
+          ],
+          "searchSeeds": [
+            33,
+            33,
+            33
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 36.333333333333336,
+          "searchMean": 36.333333333333336,
+          "improvement": 0,
+          "verifiedMean": 36.333333333333336,
+          "verifiedRange": [
+            36,
+            37
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            36,
+            37,
+            36
+          ],
+          "searchSeeds": [
+            36,
+            37,
+            36
+          ]
+        }
+      }
+    },
+    {
+      "job": "sage",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 183,
+          "searchMean": 190,
+          "improvement": 7,
+          "verifiedMean": 190,
+          "verifiedRange": [
+            181,
+            195
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneStaff",
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "baselineSeeds": [
+            176,
+            181,
+            192
+          ],
+          "searchSeeds": [
+            195,
+            194,
+            181
+          ]
+        },
+        "matk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 139.33333333333334,
+          "searchMean": 142.66666666666666,
+          "improvement": 3.3333333333333144,
+          "verifiedMean": 142.66666666666666,
+          "verifiedRange": [
+            129,
+            152
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "oneStaff",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "armor": "boss_stormforge"
+            }
+          },
+          "baselineSeeds": [
+            146,
+            134,
+            138
+          ],
+          "searchSeeds": [
+            152,
+            129,
+            147
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 33.666666666666664,
+          "searchMean": 34,
+          "improvement": 0.3333333333333357,
+          "verifiedMean": 34,
+          "verifiedRange": [
+            34,
+            34
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "rightHand": "boss_astral"
+            }
+          },
+          "baselineSeeds": [
+            33,
+            34,
+            34
+          ],
+          "searchSeeds": [
+            34,
+            34,
+            34
+          ]
+        },
+        "clear": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 36.333333333333336,
+          "searchMean": 35.333333333333336,
+          "improvement": 0,
+          "verifiedMean": 36.333333333333336,
+          "verifiedRange": [
+            36,
+            37
+          ],
+          "configuration": {
+            "job": "sage",
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "rightHand",
+            "cardId": "boss_astral",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 37,
+            "ticks": 4011,
+            "simulatedSeconds": 401.1,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 38
+          },
+          "baselineSeeds": [
+            36,
+            37,
+            36
+          ],
+          "searchSeeds": [
+            36,
+            35,
+            35
+          ]
+        }
+      }
+    },
+    {
+      "job": "assassin",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 146.66666666666666,
+          "searchMean": 161.33333333333334,
+          "improvement": 14.666666666666686,
+          "verifiedMean": 161.33333333333334,
+          "verifiedRange": [
+            156,
+            170
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "rifle",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "headLower": "boss_aether"
+            }
+          },
+          "baselineSeeds": [
+            158,
+            138,
+            144
+          ],
+          "searchSeeds": [
+            170,
+            158,
+            156
+          ]
+        },
+        "matk": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 134.33333333333334,
+          "searchMean": 132.66666666666666,
+          "improvement": 0,
+          "verifiedMean": 134.33333333333334,
+          "verifiedRange": [
+            130,
+            139
+          ],
+          "configuration": {
+            "job": "assassin",
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "rifle",
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 137,
+            "ticks": 27576,
+            "simulatedSeconds": 2757.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 138
+          },
+          "baselineSeeds": [
+            130,
+            134,
+            139
+          ],
+          "searchSeeds": [
+            134,
+            122,
+            142
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 36,
+          "searchMean": 36,
+          "improvement": 0,
+          "verifiedMean": 36,
+          "verifiedRange": [
+            36,
+            36
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": "rifle+offDagger",
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            36,
+            36,
+            36
+          ],
+          "searchSeeds": [
+            36,
+            36,
+            36
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 36,
+          "searchMean": 36,
+          "improvement": 0,
+          "verifiedMean": 36,
+          "verifiedRange": [
+            36,
+            36
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            36,
+            36,
+            36
+          ],
+          "searchSeeds": [
+            36,
+            36,
+            36
+          ]
+        }
+      }
+    },
+    {
+      "job": "rogue",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 151,
+          "searchMean": 152.33333333333334,
+          "improvement": 1.3333333333333428,
+          "verifiedMean": 152.33333333333334,
+          "verifiedRange": [
+            142,
+            166
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "shoes": "boss_nightclock"
+            }
+          },
+          "baselineSeeds": [
+            139,
+            169,
+            145
+          ],
+          "searchSeeds": [
+            166,
+            142,
+            149
+          ]
+        },
+        "matk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 127.33333333333333,
+          "searchMean": 127.33333333333333,
+          "improvement": 0,
+          "verifiedMean": 127.33333333333333,
+          "verifiedRange": [
+            116,
+            136
+          ],
+          "configuration": {
+            "fusion": "magic-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            130,
+            136,
+            116
+          ],
+          "searchSeeds": [
+            130,
+            136,
+            116
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 33.333333333333336,
+          "searchMean": 33.333333333333336,
+          "improvement": 0,
+          "verifiedMean": 33.333333333333336,
+          "verifiedRange": [
+            33,
+            34
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            34,
+            33,
+            33
+          ],
+          "searchSeeds": [
+            34,
+            33,
+            33
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 37,
+          "searchMean": 37,
+          "improvement": 0,
+          "verifiedMean": 37,
+          "verifiedRange": [
+            37,
+            37
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            37,
+            37,
+            37
+          ],
+          "searchSeeds": [
+            37,
+            37,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "job": "monk",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 166.33333333333334,
+          "searchMean": 175.33333333333334,
+          "improvement": 9,
+          "verifiedMean": 175.33333333333334,
+          "verifiedRange": [
+            172,
+            180
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            160,
+            175,
+            164
+          ],
+          "searchSeeds": [
+            174,
+            180,
+            172
+          ]
+        },
+        "matk": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 129,
+          "searchMean": 128,
+          "improvement": 0,
+          "verifiedMean": 129,
+          "verifiedRange": [
+            126,
+            131
+          ],
+          "configuration": {
+            "job": "monk",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 134,
+            "ticks": 26920,
+            "simulatedSeconds": 2692,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 135
+          },
+          "baselineSeeds": [
+            126,
+            131,
+            130
+          ],
+          "searchSeeds": [
+            129,
+            130,
+            125
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 34,
+          "searchMean": 34,
+          "improvement": 0,
+          "verifiedMean": 34,
+          "verifiedRange": [
+            34,
+            34
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            34,
+            34,
+            34
+          ],
+          "searchSeeds": [
+            34,
+            34,
+            34
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 37.333333333333336,
+          "searchMean": 37.333333333333336,
+          "improvement": 0,
+          "verifiedMean": 37.333333333333336,
+          "verifiedRange": [
+            37,
+            38
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            37,
+            38,
+            37
+          ],
+          "searchSeeds": [
+            37,
+            38,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "job": "hunter",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 140.33333333333334,
+          "searchMean": 140.33333333333334,
+          "improvement": 0,
+          "verifiedMean": 140.33333333333334,
+          "verifiedRange": [
+            133,
+            154
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "shortBow",
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "headUpper": "boss_starter"
+            }
+          },
+          "baselineSeeds": [
+            154,
+            134,
+            133
+          ],
+          "searchSeeds": [
+            154,
+            134,
+            133
+          ]
+        },
+        "matk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 116,
+          "searchMean": 116,
+          "improvement": 0,
+          "verifiedMean": 116,
+          "verifiedRange": [
+            109,
+            124
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "crossbow",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "headUpper": "boss_starter"
+            }
+          },
+          "baselineSeeds": [
+            124,
+            115,
+            109
+          ],
+          "searchSeeds": [
+            124,
+            115,
+            109
+          ]
+        },
+        "hp": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 34,
+          "searchMean": 33.666666666666664,
+          "improvement": 0,
+          "verifiedMean": 34,
+          "verifiedRange": [
+            34,
+            34
+          ],
+          "configuration": {
+            "job": "hunter",
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 35,
+            "ticks": 4111,
+            "simulatedSeconds": 411.1,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 36
+          },
+          "baselineSeeds": [
+            34,
+            34,
+            34
+          ],
+          "searchSeeds": [
+            34,
+            34,
+            33
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 36.666666666666664,
+          "searchMean": 37,
+          "improvement": 0.3333333333333357,
+          "verifiedMean": 37,
+          "verifiedRange": [
+            37,
+            37
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "reference",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            36,
+            37,
+            37
+          ],
+          "searchSeeds": [
+            37,
+            37,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "job": "performer",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 137.33333333333334,
+          "searchMean": 137.33333333333334,
+          "improvement": 0,
+          "verifiedMean": 137.33333333333334,
+          "verifiedRange": [
+            127,
+            151
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "armor": "boss_stormforge"
+            }
+          },
+          "baselineSeeds": [
+            134,
+            151,
+            127
+          ],
+          "searchSeeds": [
+            134,
+            151,
+            127
+          ]
+        },
+        "matk": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 123.33333333333333,
+          "searchMean": 120.33333333333333,
+          "improvement": 0,
+          "verifiedMean": 123.33333333333333,
+          "verifiedRange": [
+            117,
+            127
+          ],
+          "configuration": {
+            "job": "performer",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "rightHand",
+            "cardId": "boss_astral",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 129,
+            "ticks": 25976,
+            "simulatedSeconds": 2597.6,
+            "stopped": "first-failure",
+            "failure": "戰敗",
+            "nextFloor": 130
+          },
+          "baselineSeeds": [
+            117,
+            126,
+            127
+          ],
+          "searchSeeds": [
+            125,
+            122,
+            114
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 36,
+          "searchMean": 36,
+          "improvement": 0,
+          "verifiedMean": 36,
+          "verifiedRange": [
+            36,
+            36
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            36,
+            36,
+            36
+          ],
+          "searchSeeds": [
+            36,
+            36,
+            36
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 38.333333333333336,
+          "searchMean": 38.333333333333336,
+          "improvement": 0,
+          "verifiedMean": 38.333333333333336,
+          "verifiedRange": [
+            38,
+            39
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "headUpper": "boss_starter"
+            }
+          },
+          "baselineSeeds": [
+            38,
+            39,
+            38
+          ],
+          "searchSeeds": [
+            39,
+            38,
+            38
+          ]
+        }
+      }
+    },
+    {
+      "job": "priest",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 170.33333333333334,
+          "searchMean": 170.33333333333334,
+          "improvement": 0,
+          "verifiedMean": 170.33333333333334,
+          "verifiedRange": [
+            164,
+            177
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "headMiddle": "boss_gearfell"
+            }
+          },
+          "baselineSeeds": [
+            177,
+            170,
+            164
+          ],
+          "searchSeeds": [
+            177,
+            170,
+            164
+          ]
+        },
+        "matk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 111.66666666666667,
+          "searchMean": 123.66666666666667,
+          "improvement": 12,
+          "verifiedMean": 123.66666666666667,
+          "verifiedRange": [
+            116,
+            134
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "baselineSeeds": [
+            106,
+            118,
+            111
+          ],
+          "searchSeeds": [
+            116,
+            134,
+            121
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 34,
+          "searchMean": 34,
+          "improvement": 0,
+          "verifiedMean": 34,
+          "verifiedRange": [
+            34,
+            34
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "accessory2": "boss_celestial"
+            }
+          },
+          "baselineSeeds": [
+            34,
+            34,
+            34
+          ],
+          "searchSeeds": [
+            34,
+            34,
+            34
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 34.333333333333336,
+          "searchMean": 35,
+          "improvement": 0.6666666666666643,
+          "verifiedMean": 35,
+          "verifiedRange": [
+            35,
+            35
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "rightHand": "boss_astral"
+            }
+          },
+          "baselineSeeds": [
+            34,
+            34,
+            35
+          ],
+          "searchSeeds": [
+            35,
+            35,
+            35
+          ]
+        }
+      }
+    },
+    {
+      "job": "pactWarrior",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 171,
+          "searchMean": 175.33333333333334,
+          "improvement": 4.333333333333343,
+          "verifiedMean": 175.33333333333334,
+          "verifiedRange": [
+            168,
+            181
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {
+              "shoes": "boss_nightclock"
+            }
+          },
+          "baselineSeeds": [
+            181,
+            159,
+            173
+          ],
+          "searchSeeds": [
+            177,
+            181,
+            168
+          ]
+        },
+        "matk": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 149.66666666666666,
+          "searchMean": 138,
+          "improvement": 0,
+          "verifiedMean": 149.66666666666666,
+          "verifiedRange": [
+            145,
+            154
+          ],
+          "configuration": {
+            "job": "pactWarrior",
+            "fusion": "magic-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "rightHand",
+            "cardId": "boss_zenith",
+            "attributeProfile": "reference",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 159,
+            "ticks": 31848,
+            "simulatedSeconds": 3184.8,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 160
+          },
+          "baselineSeeds": [
+            150,
+            154,
+            145
+          ],
+          "searchSeeds": [
+            147,
+            132,
+            135
+          ]
+        },
+        "hp": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 40.333333333333336,
+          "searchMean": 40.666666666666664,
+          "improvement": 0.3333333333333286,
+          "verifiedMean": 40.666666666666664,
+          "verifiedRange": [
+            40,
+            41
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            40,
+            40,
+            41
+          ],
+          "searchSeeds": [
+            41,
+            41,
+            40
+          ]
+        },
+        "clear": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 42.666666666666664,
+          "searchMean": 42.666666666666664,
+          "improvement": 0,
+          "verifiedMean": 42.666666666666664,
+          "verifiedRange": [
+            42,
+            43
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "baselineSeeds": [
+            43,
+            43,
+            42
+          ],
+          "searchSeeds": [
+            43,
+            43,
+            42
+          ]
+        }
+      }
+    },
+    {
+      "job": "spiritCommander",
+      "modes": {
+        "atk": {
+          "chosen": "three-seed-search-candidate",
+          "baselineMean": 172,
+          "searchMean": 175,
+          "improvement": 3,
+          "verifiedMean": 175,
+          "verifiedRange": [
+            171,
+            178
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "baselineSeeds": [
+            174,
+            171,
+            171
+          ],
+          "searchSeeds": [
+            178,
+            176,
+            171
+          ]
+        },
+        "matk": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 147,
+          "searchMean": 144.33333333333334,
+          "improvement": 0,
+          "verifiedMean": 147,
+          "verifiedRange": [
+            144,
+            149
+          ],
+          "configuration": {
+            "job": "spiritCommander",
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "cardSlot": "accessory1",
+            "cardId": "boss_petland",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "matk",
+            "highest": 154,
+            "ticks": 30880,
+            "simulatedSeconds": 3088,
+            "stopped": "first-failure",
+            "failure": "契約雙方戰敗",
+            "nextFloor": 155
+          },
+          "baselineSeeds": [
+            148,
+            149,
+            144
+          ],
+          "searchSeeds": [
+            145,
+            140,
+            148
+          ]
+        },
+        "hp": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 40.333333333333336,
+          "searchMean": 37.666666666666664,
+          "improvement": 0,
+          "verifiedMean": 40.333333333333336,
+          "verifiedRange": [
+            40,
+            41
+          ],
+          "configuration": {
+            "job": "spiritCommander",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "cardSlot": "accessory2",
+            "cardId": "boss_celestial",
+            "attributeProfile": "agi-luk",
+            "seed": 20261110,
+            "kind": "hp",
+            "highest": 42,
+            "ticks": 4433,
+            "simulatedSeconds": 443.3,
+            "stopped": "first-failure",
+            "failure": "階段傷害不足",
+            "nextFloor": 43
+          },
+          "baselineSeeds": [
+            41,
+            40,
+            40
+          ],
+          "searchSeeds": [
+            38,
+            38,
+            37
+          ]
+        },
+        "clear": {
+          "chosen": "seeded-v3-baseline",
+          "baselineMean": 40.666666666666664,
+          "searchMean": 40,
+          "improvement": 0,
+          "verifiedMean": 40.666666666666664,
+          "verifiedRange": [
+            40,
+            41
+          ],
+          "configuration": {
+            "job": "spiritCommander",
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "attributeProfile": "dex-vit",
+            "seed": 20261110,
+            "kind": "clear",
+            "highest": 42,
+            "ticks": 4856,
+            "simulatedSeconds": 485.6,
+            "stopped": "first-failure",
+            "failure": "階段擊殺數不足",
+            "nextFloor": 43
+          },
+          "baselineSeeds": [
+            40,
+            41,
+            41
+          ],
+          "searchSeeds": [
+            40,
+            40,
+            40
+          ]
+        }
+      }
+    }
+  ],
+  "ranking": {
+    "atk": [
+      {
+        "job": "crusader",
+        "mean": 231,
+        "range": [
+          227,
+          235
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "knight",
+        "mean": 203.66666666666666,
+        "range": [
+          202,
+          205
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "sage",
+        "mean": 190,
+        "range": [
+          181,
+          195
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "wizard",
+        "mean": 180.33333333333334,
+        "range": [
+          173,
+          190
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "monk",
+        "mean": 175.33333333333334,
+        "range": [
+          172,
+          180
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "pactWarrior",
+        "mean": 175.33333333333334,
+        "range": [
+          168,
+          181
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "spiritCommander",
+        "mean": 175,
+        "range": [
+          171,
+          178
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "priest",
+        "mean": 170.33333333333334,
+        "range": [
+          164,
+          177
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "assassin",
+        "mean": 161.33333333333334,
+        "range": [
+          156,
+          170
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "rogue",
+        "mean": 152.33333333333334,
+        "range": [
+          142,
+          166
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "hunter",
+        "mean": 140.33333333333334,
+        "range": [
+          133,
+          154
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "performer",
+        "mean": 137.33333333333334,
+        "range": [
+          127,
+          151
+        ],
+        "chosen": "three-seed-search-candidate"
+      }
+    ],
+    "matk": [
+      {
+        "job": "crusader",
+        "mean": 166.33333333333334,
+        "range": [
+          161,
+          172
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "knight",
+        "mean": 152.66666666666666,
+        "range": [
+          144,
+          163
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "pactWarrior",
+        "mean": 149.66666666666666,
+        "range": [
+          145,
+          154
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "spiritCommander",
+        "mean": 147,
+        "range": [
+          144,
+          149
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "sage",
+        "mean": 142.66666666666666,
+        "range": [
+          129,
+          152
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "assassin",
+        "mean": 134.33333333333334,
+        "range": [
+          130,
+          139
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "monk",
+        "mean": 129,
+        "range": [
+          126,
+          131
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "rogue",
+        "mean": 127.33333333333333,
+        "range": [
+          116,
+          136
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "priest",
+        "mean": 123.66666666666667,
+        "range": [
+          116,
+          134
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "performer",
+        "mean": 123.33333333333333,
+        "range": [
+          117,
+          127
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "wizard",
+        "mean": 116,
+        "range": [
+          112,
+          118
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "hunter",
+        "mean": 116,
+        "range": [
+          109,
+          124
+        ],
+        "chosen": "three-seed-search-candidate"
+      }
+    ],
+    "hp": [
+      {
+        "job": "pactWarrior",
+        "mean": 40.666666666666664,
+        "range": [
+          40,
+          41
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "spiritCommander",
+        "mean": 40.333333333333336,
+        "range": [
+          40,
+          41
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "assassin",
+        "mean": 36,
+        "range": [
+          36,
+          36
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "performer",
+        "mean": 36,
+        "range": [
+          36,
+          36
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "knight",
+        "mean": 34.666666666666664,
+        "range": [
+          34,
+          35
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "sage",
+        "mean": 34,
+        "range": [
+          34,
+          34
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "monk",
+        "mean": 34,
+        "range": [
+          34,
+          34
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "hunter",
+        "mean": 34,
+        "range": [
+          34,
+          34
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "priest",
+        "mean": 34,
+        "range": [
+          34,
+          34
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "rogue",
+        "mean": 33.333333333333336,
+        "range": [
+          33,
+          34
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "crusader",
+        "mean": 33,
+        "range": [
+          33,
+          33
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "wizard",
+        "mean": 33,
+        "range": [
+          33,
+          33
+        ],
+        "chosen": "three-seed-search-candidate"
+      }
+    ],
+    "clear": [
+      {
+        "job": "pactWarrior",
+        "mean": 42.666666666666664,
+        "range": [
+          42,
+          43
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "spiritCommander",
+        "mean": 40.666666666666664,
+        "range": [
+          40,
+          41
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "knight",
+        "mean": 38.333333333333336,
+        "range": [
+          38,
+          39
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "performer",
+        "mean": 38.333333333333336,
+        "range": [
+          38,
+          39
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "monk",
+        "mean": 37.333333333333336,
+        "range": [
+          37,
+          38
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "rogue",
+        "mean": 37,
+        "range": [
+          37,
+          37
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "hunter",
+        "mean": 37,
+        "range": [
+          37,
+          37
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "wizard",
+        "mean": 36.333333333333336,
+        "range": [
+          36,
+          37
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "sage",
+        "mean": 36.333333333333336,
+        "range": [
+          36,
+          37
+        ],
+        "chosen": "seeded-v3-baseline"
+      },
+      {
+        "job": "crusader",
+        "mean": 36,
+        "range": [
+          36,
+          36
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "assassin",
+        "mean": 36,
+        "range": [
+          36,
+          36
+        ],
+        "chosen": "three-seed-search-candidate"
+      },
+      {
+        "job": "priest",
+        "mean": 35,
+        "range": [
+          35,
+          35
+        ],
+        "chosen": "three-seed-search-candidate"
+      }
+    ]
+  },
+  "baselineRetained": 11
+}
