@@ -1,0 +1,73 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "crusader",
+  "mode": "clear",
+  "fusion": "attack-magic",
+  "weapon": "aspdPct",
+  "weaponId": null,
+  "profile": "luk-vit",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 6,
+  "baseline": {
+    "overrides": {},
+    "highest": 36,
+    "ticks": 3856
+  },
+  "winner": {
+    "overrides": {},
+    "highest": 36,
+    "ticks": 3856
+  },
+  "history": [
+    {
+      "overrides": {},
+      "highest": 36,
+      "ticks": 3856
+    },
+    {
+      "overrides": {
+        "headUpper": "boss_skyport"
+      },
+      "highest": 36,
+      "ticks": 3905
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest"
+      },
+      "highest": 36,
+      "ticks": 3886
+    },
+    {
+      "overrides": {
+        "headLower": "boss_aether"
+      },
+      "highest": 36,
+      "ticks": 3847
+    },
+    {
+      "overrides": {
+        "armor": "boss_stormforge"
+      },
+      "highest": 36,
+      "ticks": 3856
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral"
+      },
+      "highest": 35,
+      "ticks": 3968
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "job": "crusader",
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "crusader",
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 33,
+        "ticks": 3999,
+        "simulatedSeconds": 399.9,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 34
+      },
+      "profile": "luk-vit",
+      "output": "docs/current-extreme-multicard-coordinate-crusader-hp-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {},
+        "highest": 33,
+        "ticks": 4027
+      }
+    },
+    "clear": {
+      "baseline": {
+        "job": "crusader",
+        "fusion": "attack-magic",
+        "weaponChoice": "aspdPct",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 36,
+        "ticks": 3892,
+        "simulatedSeconds": 389.2,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 37
+      },
+      "profile": "luk-vit",
+      "output": "docs/current-extreme-multicard-coordinate-crusader-clear-20261111.json",
+      "evaluations": 6,
+      "winner": {
+        "overrides": {},
+        "highest": 36,
+        "ticks": 3856
+      }
+    }
+  },
+  "description": "Actual trials; bounded greedy multi-card coordinate search; not global optimum"
+}

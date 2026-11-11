@@ -1,0 +1,73 @@
+{
+  "status": "BOUNDED MULTI-CARD COORDINATE SEARCH; NOT GLOBAL OPTIMUM",
+  "job": "crusader",
+  "mode": "hp",
+  "fusion": "attack-magic",
+  "weapon": "critDmg",
+  "weaponId": null,
+  "profile": "luk-vit",
+  "seed": 20261110,
+  "maxSlots": 5,
+  "maxCards": 6,
+  "passes": 2,
+  "slots": [
+    "headUpper",
+    "headMiddle",
+    "headLower",
+    "armor",
+    "rightHand"
+  ],
+  "evaluations": 6,
+  "baseline": {
+    "overrides": {},
+    "highest": 33,
+    "ticks": 4027
+  },
+  "winner": {
+    "overrides": {},
+    "highest": 33,
+    "ticks": 4027
+  },
+  "history": [
+    {
+      "overrides": {},
+      "highest": 33,
+      "ticks": 4027
+    },
+    {
+      "overrides": {
+        "headUpper": "boss_skyport"
+      },
+      "highest": 33,
+      "ticks": 4034
+    },
+    {
+      "overrides": {
+        "headMiddle": "boss_forest"
+      },
+      "highest": 33,
+      "ticks": 4039
+    },
+    {
+      "overrides": {
+        "headLower": "boss_aether"
+      },
+      "highest": 33,
+      "ticks": 4048
+    },
+    {
+      "overrides": {
+        "armor": "boss_stormforge"
+      },
+      "highest": 33,
+      "ticks": 4027
+    },
+    {
+      "overrides": {
+        "rightHand": "boss_astral"
+      },
+      "highest": 32,
+      "ticks": 4014
+    }
+  ]
+}

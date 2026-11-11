@@ -1597,3 +1597,9 @@
 - 沿用 seeded-v3 HP/CLEAR 的合法武器、融合寵、王卡候選，以及配點搜尋勝出者；逐部位實測多卡替換。
 - 報告：`docs/current-extreme-multicard-coordinate-knight-summary-20261111.json`；有限搜尋，非全域最優。
 - main 未變更。
+
+## 分段交接：十字軍多王卡實戰搜尋
+
+- 沿用 seeded-v3 HP/CLEAR 的合法武器、融合寵、王卡候選，以及配點搜尋勝出者；逐部位實測多卡替換。
+- 報告：`docs/current-extreme-multicard-coordinate-crusader-summary-20261111.json`；有限搜尋，非全域最優。
+- main 未變更。
