@@ -1,0 +1,58 @@
+name: Extreme commander attribute three-seed comparison
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-commander-attribute-tiebreak.yml']
+permissions:
+  contents: write
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Compare VIT-LUK and AGI-LUK in actual HP and CLEAR over three seeds
+        run: |
+          set -euo pipefail
+          node --input-type=module <<'EOF'
+          import {spawnSync} from 'node:child_process';
+          import {writeFileSync} from 'node:fs';
+          const rows=[];
+          for(const attributeProfile of ['vit-luk','agi-luk']){
+            for(const seed of [20261110,20261111,20261112]){
+              const r=spawnSync(process.execPath,['scripts/current-extreme-continuous-benchmark.mjs'],{
+                env:{...process.env,EXTREME_JOB:'spiritCommander',EXTREME_FUSION:'attack-magic',EXTREME_WEAPON:'aspdPct',EXTREME_ATTRIBUTE_PROFILE:attributeProfile,EXTREME_CARD_SLOT:'accessory2',EXTREME_CARD_ID:'boss_celestial',EXTREME_SEED:String(seed),EXTREME_MODES:'hp,clear',EXTREME_FLOOR_CEILING:'250'},encoding:'utf8'});
+              if(r.status!==0)throw Error(r.stderr||r.stdout);
+              const data=r.stdout.trim().split('\n').map(JSON.parse);
+              if(data.length!==2||data.some(x=>x.stopped!=='first-failure'))throw Error('Trial incomplete: '+r.stdout);
+              rows.push(...data);
+              console.log(attributeProfile,seed,data.map(x=>x.kind+':'+x.highest).join(' '));
+            }
+          }
+          const summary=Object.fromEntries(['hp','clear'].map(kind=>[kind,['vit-luk','agi-luk'].map(attributeProfile=>{
+            const a=rows.filter(x=>x.kind===kind&&x.attributeProfile===attributeProfile);
+            return {attributeProfile,seedResults:a.map(x=>({seed:x.seed,highest:x.highest,ticks:x.ticks})),mean:a.reduce((s,x)=>s+x.highest,0)/a.length,min:Math.min(...a.map(x=>x.highest))};
+          }).sort((a,b)=>b.mean-a.mean||b.min-a.min)]));
+          writeFileSync('docs/current-extreme-seeded-v3-spiritCommander-attribute-tiebreak-20261111.json',JSON.stringify({conditions:'Actual trials; attack-magic fusion, aspdPct weapon, accessory2 boss_celestial; compare vit-luk and agi-luk over three seeds, two modes',rows,summary},null,2)+'\n');
+          EOF
+          node --test tests/current-extreme-results-integrity.test.mjs
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：萬靈宗師 VIT＋LUK 與 AGI＋LUK 三種子驗證
+
+          - 固定攻擊＋魔法融合寵、攻速武器、飾品2王卡 boss_celestial，三種子實測 HP/CLEAR 共 12 場。
+          - 原始結果：`docs/current-extreme-seeded-v3-spiritCommander-attribute-tiebreak-20261111.json`，比較平均與最低層數，非全域最優。
+          - 正式版 main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: compare commander top attribute profiles across seeds [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
