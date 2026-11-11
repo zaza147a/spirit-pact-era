@@ -1,0 +1,87 @@
+name: Extreme trial two new jobs multi-card coordinate search
+on:
+  push:
+    branches: [test/12-jobs-optimal-loadout-20261110]
+    paths: ['.github/workflows/extreme-multicard-coordinate-search.yml']
+permissions:
+  contents: write
+jobs:
+  pactWarrior:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Bounded multi-card HP and CLEAR real trial optimization
+        env:
+          EXTREME_JOB: pactWarrior
+          EXTREME_FUSION: attack-support
+          EXTREME_ATTRIBUTE_PROFILE: agi-luk
+          EXTREME_WEAPON: aspdPct
+          EXTREME_CARD_MAX_SLOTS: '5'
+          EXTREME_CARD_MAX_CARDS: '6'
+          EXTREME_CARD_PASSES: '2'
+        run: |
+          set -euo pipefail
+          for mode in hp clear; do
+            EXTREME_MODE="$mode" EXTREME_OUTPUT="docs/current-extreme-multicard-coordinate-pactWarrior-$mode-20261111.json" node scripts/current-extreme-multicard-coordinate-search.mjs
+          done
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：君王多王卡座標搜尋
+
+          - 在 AGI＋LUK、攻擊＋輔助、攻速武器條件下，逐部位替換王卡並保留先前改善的卡片；每個部位最多六張、最多五個部位、兩輪，HP/CLEAR 真實試煉。
+          - 報告：`docs/current-extreme-multicard-coordinate-pactWarrior-hp-20261111.json`、`docs/current-extreme-multicard-coordinate-pactWarrior-clear-20261111.json`。
+          - 有限貪婪搜尋，不代表全域最優。main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record pactWarrior multi-card real trials [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
+  spiritCommander:
+    needs: pactWarrior
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/12-jobs-optimal-loadout-20261110
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Bounded multi-card HP and CLEAR real trial optimization
+        env:
+          EXTREME_JOB: spiritCommander
+          EXTREME_FUSION: attack-magic
+          EXTREME_ATTRIBUTE_PROFILE: agi-luk
+          EXTREME_WEAPON: aspdPct
+          EXTREME_CARD_MAX_SLOTS: '5'
+          EXTREME_CARD_MAX_CARDS: '6'
+          EXTREME_CARD_PASSES: '2'
+        run: |
+          set -euo pipefail
+          for mode in hp clear; do
+            EXTREME_MODE="$mode" EXTREME_OUTPUT="docs/current-extreme-multicard-coordinate-spiritCommander-$mode-20261111.json" node scripts/current-extreme-multicard-coordinate-search.mjs
+          done
+          cat >> docs/handoff-12-jobs-loadout-2026-11-10.md <<'EOF'
+
+          ## 分段交接：萬靈多王卡座標搜尋
+
+          - 在 AGI＋LUK、攻擊＋魔法、攻速武器條件下，逐部位替換王卡並保留先前改善的卡片；每個部位最多六張、最多五個部位、兩輪，HP/CLEAR 真實試煉。
+          - 報告：`docs/current-extreme-multicard-coordinate-spiritCommander-hp-20261111.json`、`docs/current-extreme-multicard-coordinate-spiritCommander-clear-20261111.json`。
+          - 有限貪婪搜尋，不代表全域最優。main 未變更。
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "test: record spiritCommander multi-card real trials [skip ci]"
+          git fetch origin test/12-jobs-optimal-loadout-20261110
+          git rebase origin/test/12-jobs-optimal-loadout-20261110
+          git push origin HEAD:test/12-jobs-optimal-loadout-20261110
