@@ -1,0 +1,72 @@
+{
+  "job": "knight",
+  "mode": "hp",
+  "candidate": {
+    "job": "knight",
+    "fusion": "attack-defense",
+    "weaponChoice": "critDmg",
+    "weaponId": "twoSword",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "hp",
+    "highest": 35,
+    "ticks": 3935,
+    "simulatedSeconds": 393.5,
+    "stopped": "first-failure",
+    "failure": "階段傷害不足",
+    "nextFloor": 36
+  },
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": "twoSword",
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 35,
+      "ticks": 3920,
+      "simulatedSeconds": 392,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 36
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": "twoSword",
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 34,
+      "ticks": 3511,
+      "simulatedSeconds": 351.1,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 35
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-defense",
+      "weaponChoice": "critDmg",
+      "weaponId": "twoSword",
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 35,
+      "ticks": 3863,
+      "simulatedSeconds": 386.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 36
+    }
+  ]
+}
