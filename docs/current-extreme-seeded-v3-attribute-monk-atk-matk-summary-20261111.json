@@ -1,0 +1,161 @@
+{
+  "job": "monk",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "atk": {
+      "baseline": {
+        "job": "monk",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "luk-vit",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 174,
+        "ticks": 34968,
+        "simulatedSeconds": 3496.8,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 175
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-monk-atk-20261111.json",
+      "best": {
+        "job": "monk",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "cardOverrides": {},
+        "attributeProfile": "vit-luk",
+        "seed": 20261110,
+        "kind": "atk",
+        "highest": 174,
+        "ticks": 34952,
+        "simulatedSeconds": 3495.2,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 175
+      },
+      "censored": [],
+      "scores": [
+        {
+          "profile": "vit-luk",
+          "highest": 174,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 165,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 160,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 157,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "reference",
+          "highest": 157,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 107,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 104,
+          "stopped": "first-failure"
+        }
+      ]
+    },
+    "matk": {
+      "baseline": {
+        "job": "monk",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "attributeProfile": "dex-vit",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 134,
+        "ticks": 26920,
+        "simulatedSeconds": 2692,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 135
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-monk-matk-20261111.json",
+      "best": {
+        "job": "monk",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "cardOverrides": {},
+        "attributeProfile": "luk-vit",
+        "seed": 20261110,
+        "kind": "matk",
+        "highest": 129,
+        "ticks": 25880,
+        "simulatedSeconds": 2588,
+        "stopped": "first-failure",
+        "failure": "戰敗",
+        "nextFloor": 130
+      },
+      "censored": [],
+      "scores": [
+        {
+          "profile": "luk-vit",
+          "highest": 129,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 126,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 124,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 122,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "reference",
+          "highest": 122,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "agi-luk",
+          "highest": 91,
+          "stopped": "first-failure"
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 87,
+          "stopped": "first-failure"
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
