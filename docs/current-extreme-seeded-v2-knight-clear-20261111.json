@@ -1,0 +1,71 @@
+{
+  "job": "knight",
+  "mode": "clear",
+  "candidate": {
+    "job": "knight",
+    "fusion": "attack-support",
+    "weaponChoice": "critDmg",
+    "attributeProfile": "agi-luk",
+    "seed": 20261110,
+    "kind": "clear",
+    "highest": 38,
+    "ticks": 3984,
+    "simulatedSeconds": 398.4,
+    "stopped": "first-failure",
+    "failure": "階段擊殺數不足",
+    "nextFloor": 39
+  },
+  "results": [
+    {
+      "job": "knight",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 38,
+      "ticks": 3984,
+      "simulatedSeconds": 398.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 39
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 38,
+      "ticks": 4053,
+      "simulatedSeconds": 405.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 39
+    },
+    {
+      "job": "knight",
+      "fusion": "attack-support",
+      "weaponChoice": "critDmg",
+      "weaponId": null,
+      "cardSlot": null,
+      "cardId": null,
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 38,
+      "ticks": 4013,
+      "simulatedSeconds": 401.3,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 39
+    }
+  ]
+}
