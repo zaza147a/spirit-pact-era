@@ -1,4 +1,4 @@
-name: Extreme 12-job four-mode evidence report (corrected attribute inventory)
+name: Extreme 12-job four-mode evidence report (source audit)
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
