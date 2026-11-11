@@ -1,0 +1,144 @@
+{
+  "job": "assassin",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "assassin",
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "weaponId": "rifle+offDagger",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 36,
+        "ticks": 3735,
+        "simulatedSeconds": 373.5,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 37
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-assassin-hp-20261111.json",
+      "best": {
+        "job": "assassin",
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "weaponId": "rifle+offDagger",
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 36,
+        "ticks": 3737,
+        "simulatedSeconds": 373.7,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 37
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 36
+        },
+        {
+          "profile": "reference",
+          "highest": 35
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 35
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 30
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 30
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 30
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 30
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "assassin",
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 36,
+        "ticks": 3969,
+        "simulatedSeconds": 396.9,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 37
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-assassin-clear-20261111.json",
+      "best": {
+        "job": "assassin",
+        "fusion": "attack-magic",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 36,
+        "ticks": 3941,
+        "simulatedSeconds": 394.1,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 37
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 36
+        },
+        {
+          "profile": "reference",
+          "highest": 35
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 35
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 30
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 30
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 30
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 28
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
