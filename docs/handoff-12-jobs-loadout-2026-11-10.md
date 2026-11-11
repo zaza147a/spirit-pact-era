@@ -1616,17 +1616,12 @@
 - 報告：`docs/current-extreme-multicard-coordinate-spiritCommander-hp-20261111.json`、`docs/current-extreme-multicard-coordinate-spiritCommander-clear-20261111.json`。
 - 有限貪婪搜尋，不代表全域最優。main 未變更。
 
-## 分段交接：sage 多王卡 HP/CLEAR 實測
+## 分段交接：knight ATK/MATK 配點實戰
 
-- 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-sage-summary-20261111.json`。
-- 此為有限搜尋，非全域最佳；main 未變更。
+- 各七種合法配點、固定 seeded-v3 各模式基準武器/融合寵/王卡；14 場實戰。
+- 結果 `docs/current-extreme-seeded-v3-attribute-knight-atk-matk-summary-20261111.json`，有限搜尋非全域最優；main 未變更。
 
-## 分段交接：assassin 多王卡 HP/CLEAR 實測
+## 分段交接：君王 ATK/MATK 七配點實戰
 
-- 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-assassin-summary-20261111.json`。
-- 此為有限搜尋，非全域最佳；main 未變更。
-
-## 分段交接：rogue 多王卡 HP/CLEAR 實測
-
-- 使用合法裝備與配點，逐部位搜尋王卡；報告 `docs/current-extreme-multicard-coordinate-rogue-summary-20261111.json`。
-- 此為有限搜尋，非全域最佳；main 未變更。
+- 固定攻擊＋輔助融合寵、攻速武器，七種合法配點 × 物理/魔法承傷共 14 場。
+- 報告 `docs/current-extreme-seeded-v3-pactWarrior-defense-attributes-20261111.json`；有限搜尋非全域最優，main 未變更。
