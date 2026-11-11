@@ -1,0 +1,146 @@
+{
+  "job": "priest",
+  "profiles": [
+    "reference",
+    "agi-vit",
+    "luk-vit",
+    "dex-vit",
+    "agi-luk",
+    "vit-luk",
+    "dex-luk"
+  ],
+  "modes": {
+    "hp": {
+      "baseline": {
+        "job": "priest",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": "accessory2",
+        "cardId": "boss_celestial",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 4132,
+        "simulatedSeconds": 413.2,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-priest-hp-20261111.json",
+      "best": {
+        "job": "priest",
+        "fusion": "defense-support",
+        "weaponChoice": "aspdPct",
+        "weaponId": null,
+        "cardSlot": "accessory2",
+        "cardId": "boss_celestial",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "hp",
+        "highest": 34,
+        "ticks": 4088,
+        "simulatedSeconds": 408.8,
+        "stopped": "first-failure",
+        "failure": "階段傷害不足",
+        "nextFloor": 35
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 34
+        },
+        {
+          "profile": "reference",
+          "highest": 33
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 33
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 29
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 26
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 25
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 24
+        }
+      ]
+    },
+    "clear": {
+      "baseline": {
+        "job": "priest",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 35,
+        "ticks": 4247,
+        "simulatedSeconds": 424.7,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 36
+      },
+      "output": "docs/current-extreme-seeded-v3-attribute-priest-clear-20261111.json",
+      "best": {
+        "job": "priest",
+        "fusion": "defense-support",
+        "weaponChoice": "critDmg",
+        "weaponId": null,
+        "cardSlot": null,
+        "cardId": null,
+        "attributeProfile": "agi-luk",
+        "seed": 20261110,
+        "kind": "clear",
+        "highest": 34,
+        "ticks": 3927,
+        "simulatedSeconds": 392.7,
+        "stopped": "first-failure",
+        "failure": "階段擊殺數不足",
+        "nextFloor": 35
+      },
+      "scores": [
+        {
+          "profile": "agi-luk",
+          "highest": 34
+        },
+        {
+          "profile": "agi-vit",
+          "highest": 33
+        },
+        {
+          "profile": "reference",
+          "highest": 33
+        },
+        {
+          "profile": "luk-vit",
+          "highest": 22
+        },
+        {
+          "profile": "dex-luk",
+          "highest": 22
+        },
+        {
+          "profile": "vit-luk",
+          "highest": 21
+        },
+        {
+          "profile": "dex-vit",
+          "highest": 20
+        }
+      ]
+    }
+  },
+  "conditions": "Actual Extreme Trial; retain per-mode seeded-v3 baseline fusion, weapon, optional single boss card; vary legal attribute profile only; fixed seed 20261110; bounded search"
+}
