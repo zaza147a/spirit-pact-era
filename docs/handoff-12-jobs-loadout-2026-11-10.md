@@ -1620,3 +1620,8 @@
 
 - 各七種合法配點、固定 seeded-v3 各模式基準武器/融合寵/王卡；14 場實戰。
 - 結果 `docs/current-extreme-seeded-v3-attribute-knight-atk-matk-summary-20261111.json`，有限搜尋非全域最優；main 未變更。
+
+## 分段交接：crusader ATK/MATK 配點實戰
+
+- 各七種合法配點、固定 seeded-v3 各模式基準武器/融合寵/王卡；14 場實戰。
+- 結果 `docs/current-extreme-seeded-v3-attribute-crusader-atk-matk-summary-20261111.json`，有限搜尋非全域最優；main 未變更。
