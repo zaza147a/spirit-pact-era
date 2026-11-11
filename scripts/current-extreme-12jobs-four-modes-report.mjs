@@ -14,7 +14,7 @@ for(const job of jobs){
   const out={baselineSeeds:baseline,baselineStops:base.results?.map(x=>x.stopped)||[],baselineMean:baseline.length?baseline.reduce((a,b)=>a+b,0)/baseline.length:null,baselineCandidate:candidate};
   const attr=job==='pactWarrior'||job==='spiritCommander'?
     `docs/current-extreme-seeded-v3-${job}-${mode==='atk'||mode==='matk'?'defense-attributes':'attribute-search'}-20261111.json`:
-    `docs/current-extreme-seeded-v3-attribute-${job}-${mode==='atk'||mode==='matk'?'atk-matk-':''}summary-20261111.json`;
+    `docs/current-extreme-seeded-v3-attribute-${job}-${mode==='atk'||mode==='matk'?'atk-matk-':'-'}summary-20261111.json`;
   if(existsSync(attr)){
    const a=JSON.parse(readFileSync(attr,'utf8'));
    if(a.modes?.[mode]){out.attributeWinner=a.modes[mode].best;out.attributeCensored=a.modes[mode].censored||[];}
