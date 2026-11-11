@@ -1,4 +1,4 @@
-name: Extreme trial multiseed verification - seeded v2
+name: Extreme trial multiseed verification - seeded v3
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
@@ -31,7 +31,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -41,7 +41,7 @@ jobs:
         if: always()
         with:
           name: multiseed-knight
-          path: docs/current-extreme-seeded-v2-knight-*.json
+          path: docs/current-extreme-seeded-v3-knight-*.json
           if-no-files-found: warn
   crusader:
     needs: knight
@@ -66,7 +66,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -76,7 +76,7 @@ jobs:
         if: always()
         with:
           name: multiseed-crusader
-          path: docs/current-extreme-seeded-v2-crusader-*.json
+          path: docs/current-extreme-seeded-v3-crusader-*.json
           if-no-files-found: warn
   wizard:
     needs: crusader
@@ -101,7 +101,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -111,7 +111,7 @@ jobs:
         if: always()
         with:
           name: multiseed-wizard
-          path: docs/current-extreme-seeded-v2-wizard-*.json
+          path: docs/current-extreme-seeded-v3-wizard-*.json
           if-no-files-found: warn
   sage:
     needs: wizard
@@ -136,7 +136,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -146,7 +146,7 @@ jobs:
         if: always()
         with:
           name: multiseed-sage
-          path: docs/current-extreme-seeded-v2-sage-*.json
+          path: docs/current-extreme-seeded-v3-sage-*.json
           if-no-files-found: warn
   assassin:
     needs: sage
@@ -171,7 +171,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -181,7 +181,7 @@ jobs:
         if: always()
         with:
           name: multiseed-assassin
-          path: docs/current-extreme-seeded-v2-assassin-*.json
+          path: docs/current-extreme-seeded-v3-assassin-*.json
           if-no-files-found: warn
   rogue:
     needs: assassin
@@ -206,7 +206,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -216,7 +216,7 @@ jobs:
         if: always()
         with:
           name: multiseed-rogue
-          path: docs/current-extreme-seeded-v2-rogue-*.json
+          path: docs/current-extreme-seeded-v3-rogue-*.json
           if-no-files-found: warn
   monk:
     needs: rogue
@@ -241,7 +241,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -251,7 +251,7 @@ jobs:
         if: always()
         with:
           name: multiseed-monk
-          path: docs/current-extreme-seeded-v2-monk-*.json
+          path: docs/current-extreme-seeded-v3-monk-*.json
           if-no-files-found: warn
   hunter:
     needs: monk
@@ -276,7 +276,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -286,7 +286,7 @@ jobs:
         if: always()
         with:
           name: multiseed-hunter
-          path: docs/current-extreme-seeded-v2-hunter-*.json
+          path: docs/current-extreme-seeded-v3-hunter-*.json
           if-no-files-found: warn
   performer:
     needs: hunter
@@ -311,7 +311,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -321,7 +321,7 @@ jobs:
         if: always()
         with:
           name: multiseed-performer
-          path: docs/current-extreme-seeded-v2-performer-*.json
+          path: docs/current-extreme-seeded-v3-performer-*.json
           if-no-files-found: warn
   priest:
     needs: performer
@@ -346,7 +346,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -356,7 +356,7 @@ jobs:
         if: always()
         with:
           name: multiseed-priest
-          path: docs/current-extreme-seeded-v2-priest-*.json
+          path: docs/current-extreme-seeded-v3-priest-*.json
           if-no-files-found: warn
   pactWarrior:
     needs: priest
@@ -381,7 +381,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -391,7 +391,7 @@ jobs:
         if: always()
         with:
           name: multiseed-pactWarrior
-          path: docs/current-extreme-seeded-v2-pactWarrior-*.json
+          path: docs/current-extreme-seeded-v3-pactWarrior-*.json
           if-no-files-found: warn
   spiritCommander:
     needs: pactWarrior
@@ -416,7 +416,7 @@ jobs:
           for mode in atk matk hp clear; do
             EXTREME_MODES="$mode" node scripts/current-extreme-multiseed-followup.mjs
             node --test tests/current-extreme-results-integrity.test.mjs
-            git add docs/current-extreme-seeded-v2-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
+            git add docs/current-extreme-seeded-v3-"$EXTREME_JOB"-"$mode"-20261111.json docs/handoff-12-jobs-loadout-2026-11-10.md
             git commit -m "test: verify $EXTREME_JOB $mode cross-seed trial and handoff [skip ci]"
             git fetch origin test/12-jobs-optimal-loadout-20261110
             git rebase origin/test/12-jobs-optimal-loadout-20261110
@@ -426,5 +426,5 @@ jobs:
         if: always()
         with:
           name: multiseed-spiritCommander
-          path: docs/current-extreme-seeded-v2-spiritCommander-*.json
+          path: docs/current-extreme-seeded-v3-spiritCommander-*.json
           if-no-files-found: warn
