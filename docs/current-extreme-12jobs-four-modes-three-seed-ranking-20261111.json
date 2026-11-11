@@ -1,0 +1,1714 @@
+{
+  "purpose": "Three-seed real Extreme Trial confirmation of the 12-job bounded search winners; not global optimization",
+  "jobs": 12,
+  "trialCount": 144,
+  "ranking": {
+    "atk": [
+      {
+        "job": "crusader",
+        "mean": 231,
+        "range": [
+          227,
+          235
+        ]
+      },
+      {
+        "job": "knight",
+        "mean": 203.66666666666666,
+        "range": [
+          202,
+          205
+        ]
+      },
+      {
+        "job": "sage",
+        "mean": 190,
+        "range": [
+          181,
+          195
+        ]
+      },
+      {
+        "job": "wizard",
+        "mean": 180.33333333333334,
+        "range": [
+          173,
+          190
+        ]
+      },
+      {
+        "job": "monk",
+        "mean": 175.33333333333334,
+        "range": [
+          172,
+          180
+        ]
+      },
+      {
+        "job": "pactWarrior",
+        "mean": 175.33333333333334,
+        "range": [
+          168,
+          181
+        ]
+      },
+      {
+        "job": "spiritCommander",
+        "mean": 175,
+        "range": [
+          171,
+          178
+        ]
+      },
+      {
+        "job": "priest",
+        "mean": 170.33333333333334,
+        "range": [
+          164,
+          177
+        ]
+      },
+      {
+        "job": "assassin",
+        "mean": 161.33333333333334,
+        "range": [
+          156,
+          170
+        ]
+      },
+      {
+        "job": "rogue",
+        "mean": 152.33333333333334,
+        "range": [
+          142,
+          166
+        ]
+      },
+      {
+        "job": "hunter",
+        "mean": 140.33333333333334,
+        "range": [
+          133,
+          154
+        ]
+      },
+      {
+        "job": "performer",
+        "mean": 137.33333333333334,
+        "range": [
+          127,
+          151
+        ]
+      }
+    ],
+    "matk": [
+      {
+        "job": "crusader",
+        "mean": 162,
+        "range": [
+          148,
+          172
+        ]
+      },
+      {
+        "job": "knight",
+        "mean": 152.66666666666666,
+        "range": [
+          144,
+          163
+        ]
+      },
+      {
+        "job": "spiritCommander",
+        "mean": 144.33333333333334,
+        "range": [
+          140,
+          148
+        ]
+      },
+      {
+        "job": "sage",
+        "mean": 142.66666666666666,
+        "range": [
+          129,
+          152
+        ]
+      },
+      {
+        "job": "pactWarrior",
+        "mean": 138,
+        "range": [
+          132,
+          147
+        ]
+      },
+      {
+        "job": "assassin",
+        "mean": 132.66666666666666,
+        "range": [
+          122,
+          142
+        ]
+      },
+      {
+        "job": "monk",
+        "mean": 128,
+        "range": [
+          125,
+          130
+        ]
+      },
+      {
+        "job": "rogue",
+        "mean": 127.33333333333333,
+        "range": [
+          116,
+          136
+        ]
+      },
+      {
+        "job": "priest",
+        "mean": 123.66666666666667,
+        "range": [
+          116,
+          134
+        ]
+      },
+      {
+        "job": "performer",
+        "mean": 120.33333333333333,
+        "range": [
+          114,
+          125
+        ]
+      },
+      {
+        "job": "hunter",
+        "mean": 116,
+        "range": [
+          109,
+          124
+        ]
+      },
+      {
+        "job": "wizard",
+        "mean": 115,
+        "range": [
+          111,
+          118
+        ]
+      }
+    ],
+    "hp": [
+      {
+        "job": "pactWarrior",
+        "mean": 40.666666666666664,
+        "range": [
+          40,
+          41
+        ]
+      },
+      {
+        "job": "spiritCommander",
+        "mean": 37.666666666666664,
+        "range": [
+          37,
+          38
+        ]
+      },
+      {
+        "job": "assassin",
+        "mean": 36,
+        "range": [
+          36,
+          36
+        ]
+      },
+      {
+        "job": "performer",
+        "mean": 36,
+        "range": [
+          36,
+          36
+        ]
+      },
+      {
+        "job": "knight",
+        "mean": 34.666666666666664,
+        "range": [
+          34,
+          35
+        ]
+      },
+      {
+        "job": "sage",
+        "mean": 34,
+        "range": [
+          34,
+          34
+        ]
+      },
+      {
+        "job": "monk",
+        "mean": 34,
+        "range": [
+          34,
+          34
+        ]
+      },
+      {
+        "job": "priest",
+        "mean": 34,
+        "range": [
+          34,
+          34
+        ]
+      },
+      {
+        "job": "hunter",
+        "mean": 33.666666666666664,
+        "range": [
+          33,
+          34
+        ]
+      },
+      {
+        "job": "rogue",
+        "mean": 33.333333333333336,
+        "range": [
+          33,
+          34
+        ]
+      },
+      {
+        "job": "crusader",
+        "mean": 33,
+        "range": [
+          33,
+          33
+        ]
+      },
+      {
+        "job": "wizard",
+        "mean": 33,
+        "range": [
+          33,
+          33
+        ]
+      }
+    ],
+    "clear": [
+      {
+        "job": "pactWarrior",
+        "mean": 42.666666666666664,
+        "range": [
+          42,
+          43
+        ]
+      },
+      {
+        "job": "spiritCommander",
+        "mean": 40,
+        "range": [
+          40,
+          40
+        ]
+      },
+      {
+        "job": "knight",
+        "mean": 38.333333333333336,
+        "range": [
+          38,
+          39
+        ]
+      },
+      {
+        "job": "performer",
+        "mean": 38.333333333333336,
+        "range": [
+          38,
+          39
+        ]
+      },
+      {
+        "job": "monk",
+        "mean": 37.333333333333336,
+        "range": [
+          37,
+          38
+        ]
+      },
+      {
+        "job": "rogue",
+        "mean": 37,
+        "range": [
+          37,
+          37
+        ]
+      },
+      {
+        "job": "hunter",
+        "mean": 37,
+        "range": [
+          37,
+          37
+        ]
+      },
+      {
+        "job": "wizard",
+        "mean": 36.333333333333336,
+        "range": [
+          36,
+          37
+        ]
+      },
+      {
+        "job": "crusader",
+        "mean": 36,
+        "range": [
+          36,
+          36
+        ]
+      },
+      {
+        "job": "assassin",
+        "mean": 36,
+        "range": [
+          36,
+          36
+        ]
+      },
+      {
+        "job": "sage",
+        "mean": 35.333333333333336,
+        "range": [
+          35,
+          36
+        ]
+      },
+      {
+        "job": "priest",
+        "mean": 35,
+        "range": [
+          35,
+          35
+        ]
+      }
+    ]
+  },
+  "censored": [],
+  "rows": [
+    {
+      "job": "knight",
+      "modes": {
+        "atk": {
+          "mean": 203.66666666666666,
+          "range": [
+            202,
+            205
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "blade",
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "highest": [
+            204,
+            205,
+            202
+          ]
+        },
+        "matk": {
+          "mean": 152.66666666666666,
+          "range": [
+            144,
+            163
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": "blade",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "accessory1": "boss_eclipse"
+            }
+          },
+          "highest": [
+            163,
+            144,
+            151
+          ]
+        },
+        "hp": {
+          "mean": 34.666666666666664,
+          "range": [
+            34,
+            35
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": "twoSword",
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            35,
+            34,
+            35
+          ]
+        },
+        "clear": {
+          "mean": 38.333333333333336,
+          "range": [
+            38,
+            39
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "headMiddle": "boss_forest"
+            }
+          },
+          "highest": [
+            39,
+            38,
+            38
+          ]
+        }
+      }
+    },
+    {
+      "job": "crusader",
+      "modes": {
+        "atk": {
+          "mean": 231,
+          "range": [
+            227,
+            235
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneSpear",
+            "attributeProfile": "reference",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "highest": [
+            235,
+            227,
+            231
+          ]
+        },
+        "matk": {
+          "mean": 162,
+          "range": [
+            148,
+            172
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "headLower": "boss_aether"
+            }
+          },
+          "highest": [
+            166,
+            172,
+            148
+          ]
+        },
+        "hp": {
+          "mean": 33,
+          "range": [
+            33,
+            33
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {}
+          },
+          "highest": [
+            33,
+            33,
+            33
+          ]
+        },
+        "clear": {
+          "mean": 36,
+          "range": [
+            36,
+            36
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {}
+          },
+          "highest": [
+            36,
+            36,
+            36
+          ]
+        }
+      }
+    },
+    {
+      "job": "wizard",
+      "modes": {
+        "atk": {
+          "mean": 180.33333333333334,
+          "range": [
+            173,
+            190
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneStaff",
+            "attributeProfile": "agi-vit",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "highest": [
+            178,
+            173,
+            190
+          ]
+        },
+        "matk": {
+          "mean": 115,
+          "range": [
+            111,
+            118
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            116,
+            111,
+            118
+          ]
+        },
+        "hp": {
+          "mean": 33,
+          "range": [
+            33,
+            33
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            33,
+            33,
+            33
+          ]
+        },
+        "clear": {
+          "mean": 36.333333333333336,
+          "range": [
+            36,
+            37
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            36,
+            37,
+            36
+          ]
+        }
+      }
+    },
+    {
+      "job": "sage",
+      "modes": {
+        "atk": {
+          "mean": 190,
+          "range": [
+            181,
+            195
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "oneStaff",
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "highest": [
+            195,
+            194,
+            181
+          ]
+        },
+        "matk": {
+          "mean": 142.66666666666666,
+          "range": [
+            129,
+            152
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "oneStaff",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "armor": "boss_stormforge"
+            }
+          },
+          "highest": [
+            152,
+            129,
+            147
+          ]
+        },
+        "hp": {
+          "mean": 34,
+          "range": [
+            34,
+            34
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "rightHand": "boss_astral"
+            }
+          },
+          "highest": [
+            34,
+            34,
+            34
+          ]
+        },
+        "clear": {
+          "mean": 35.333333333333336,
+          "range": [
+            35,
+            36
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-vit",
+            "cardOverrides": {
+              "rightHand": "boss_astral"
+            }
+          },
+          "highest": [
+            36,
+            35,
+            35
+          ]
+        }
+      }
+    },
+    {
+      "job": "assassin",
+      "modes": {
+        "atk": {
+          "mean": 161.33333333333334,
+          "range": [
+            156,
+            170
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "rifle",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "headLower": "boss_aether"
+            }
+          },
+          "highest": [
+            170,
+            158,
+            156
+          ]
+        },
+        "matk": {
+          "mean": 132.66666666666666,
+          "range": [
+            122,
+            142
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": "rifle",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "accessory2": "boss_celestial"
+            }
+          },
+          "highest": [
+            134,
+            122,
+            142
+          ]
+        },
+        "hp": {
+          "mean": 36,
+          "range": [
+            36,
+            36
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": "rifle+offDagger",
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            36,
+            36,
+            36
+          ]
+        },
+        "clear": {
+          "mean": 36,
+          "range": [
+            36,
+            36
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            36,
+            36,
+            36
+          ]
+        }
+      }
+    },
+    {
+      "job": "rogue",
+      "modes": {
+        "atk": {
+          "mean": 152.33333333333334,
+          "range": [
+            142,
+            166
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "shoes": "boss_nightclock"
+            }
+          },
+          "highest": [
+            166,
+            142,
+            149
+          ]
+        },
+        "matk": {
+          "mean": 127.33333333333333,
+          "range": [
+            116,
+            136
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            130,
+            136,
+            116
+          ]
+        },
+        "hp": {
+          "mean": 33.333333333333336,
+          "range": [
+            33,
+            34
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            34,
+            33,
+            33
+          ]
+        },
+        "clear": {
+          "mean": 37,
+          "range": [
+            37,
+            37
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            37,
+            37,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "job": "monk",
+      "modes": {
+        "atk": {
+          "mean": 175.33333333333334,
+          "range": [
+            172,
+            180
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            174,
+            180,
+            172
+          ]
+        },
+        "matk": {
+          "mean": 128,
+          "range": [
+            125,
+            130
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {}
+          },
+          "highest": [
+            129,
+            130,
+            125
+          ]
+        },
+        "hp": {
+          "mean": 34,
+          "range": [
+            34,
+            34
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            34,
+            34,
+            34
+          ]
+        },
+        "clear": {
+          "mean": 37.333333333333336,
+          "range": [
+            37,
+            38
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            37,
+            38,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "job": "hunter",
+      "modes": {
+        "atk": {
+          "mean": 140.33333333333334,
+          "range": [
+            133,
+            154
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "shortBow",
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "headUpper": "boss_starter"
+            }
+          },
+          "highest": [
+            154,
+            134,
+            133
+          ]
+        },
+        "matk": {
+          "mean": 116,
+          "range": [
+            109,
+            124
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": "crossbow",
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "headUpper": "boss_starter"
+            }
+          },
+          "highest": [
+            124,
+            115,
+            109
+          ]
+        },
+        "hp": {
+          "mean": 33.666666666666664,
+          "range": [
+            33,
+            34
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "reference",
+            "cardOverrides": {}
+          },
+          "highest": [
+            34,
+            34,
+            33
+          ]
+        },
+        "clear": {
+          "mean": 37,
+          "range": [
+            37,
+            37
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "reference",
+            "cardOverrides": {}
+          },
+          "highest": [
+            37,
+            37,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "job": "performer",
+      "modes": {
+        "atk": {
+          "mean": 137.33333333333334,
+          "range": [
+            127,
+            151
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "armor": "boss_stormforge"
+            }
+          },
+          "highest": [
+            134,
+            151,
+            127
+          ]
+        },
+        "matk": {
+          "mean": 120.33333333333333,
+          "range": [
+            114,
+            125
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "rightHand": "boss_astral"
+            }
+          },
+          "highest": [
+            125,
+            122,
+            114
+          ]
+        },
+        "hp": {
+          "mean": 36,
+          "range": [
+            36,
+            36
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            36,
+            36,
+            36
+          ]
+        },
+        "clear": {
+          "mean": 38.333333333333336,
+          "range": [
+            38,
+            39
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "headUpper": "boss_starter"
+            }
+          },
+          "highest": [
+            39,
+            38,
+            38
+          ]
+        }
+      }
+    },
+    {
+      "job": "priest",
+      "modes": {
+        "atk": {
+          "mean": 170.33333333333334,
+          "range": [
+            164,
+            177
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "headMiddle": "boss_gearfell"
+            }
+          },
+          "highest": [
+            177,
+            170,
+            164
+          ]
+        },
+        "matk": {
+          "mean": 123.66666666666667,
+          "range": [
+            116,
+            134
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-defense",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "dex-vit",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "highest": [
+            116,
+            134,
+            121
+          ]
+        },
+        "hp": {
+          "mean": 34,
+          "range": [
+            34,
+            34
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "accessory2": "boss_celestial"
+            }
+          },
+          "highest": [
+            34,
+            34,
+            34
+          ]
+        },
+        "clear": {
+          "mean": 35,
+          "range": [
+            35,
+            35
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {
+              "rightHand": "boss_astral"
+            }
+          },
+          "highest": [
+            35,
+            35,
+            35
+          ]
+        }
+      }
+    },
+    {
+      "job": "pactWarrior",
+      "modes": {
+        "atk": {
+          "mean": 175.33333333333334,
+          "range": [
+            168,
+            181
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {
+              "shoes": "boss_nightclock"
+            }
+          },
+          "highest": [
+            177,
+            181,
+            168
+          ]
+        },
+        "matk": {
+          "mean": 138,
+          "range": [
+            132,
+            147
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "magic-defense",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "luk-vit",
+            "cardOverrides": {
+              "rightHand": "boss_zenith"
+            }
+          },
+          "highest": [
+            147,
+            132,
+            135
+          ]
+        },
+        "hp": {
+          "mean": 40.666666666666664,
+          "range": [
+            40,
+            41
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            41,
+            41,
+            40
+          ]
+        },
+        "clear": {
+          "mean": 42.666666666666664,
+          "range": [
+            42,
+            43
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "agi-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            43,
+            43,
+            42
+          ]
+        }
+      }
+    },
+    {
+      "job": "spiritCommander",
+      "modes": {
+        "atk": {
+          "mean": 175,
+          "range": [
+            171,
+            178
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {
+              "leftHand": "boss_volcano"
+            }
+          },
+          "highest": [
+            178,
+            176,
+            171
+          ]
+        },
+        "matk": {
+          "mean": 144.33333333333334,
+          "range": [
+            140,
+            148
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "defense-support",
+            "weaponChoice": "aspdPct",
+            "weaponId": null,
+            "attributeProfile": "reference",
+            "cardOverrides": {
+              "accessory1": "boss_petland"
+            }
+          },
+          "highest": [
+            145,
+            140,
+            148
+          ]
+        },
+        "hp": {
+          "mean": 37.666666666666664,
+          "range": [
+            37,
+            38
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            38,
+            38,
+            37
+          ]
+        },
+        "clear": {
+          "mean": 40,
+          "range": [
+            40,
+            40
+          ],
+          "conclusive": true,
+          "stops": [
+            "first-failure",
+            "first-failure",
+            "first-failure"
+          ],
+          "configuration": {
+            "fusion": "attack-magic",
+            "weaponChoice": "critDmg",
+            "weaponId": null,
+            "attributeProfile": "vit-luk",
+            "cardOverrides": {}
+          },
+          "highest": [
+            40,
+            40,
+            40
+          ]
+        }
+      }
+    }
+  ]
+}

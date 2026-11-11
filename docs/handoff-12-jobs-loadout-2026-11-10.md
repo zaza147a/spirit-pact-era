@@ -1782,3 +1782,9 @@
 - 三種子 × ATK/MATK/HP/CLEAR 共 12 場實際遊戲極限試煉。
 - 報告 `docs/current-extreme-12jobs-winner-three-seed-spiritCommander-20261111.json`；分辨首次失敗與執行截尾。
 - 目前只驗證已搜尋候選，不宣稱全域最優；main 未變更。
+
+## 分段交接：12 職業 × 四試煉 × 三種子完整複驗
+
+- 報告 `docs/current-extreme-12jobs-four-modes-three-seed-ranking-20261111.json`，共 144 場真實極限試煉。
+- 各模式僅排名三種子全部首次失敗的候選，截尾結果另外列出。
+- 此為已搜尋候選的驗證排序，非全域最優；main 未變更。
