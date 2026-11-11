@@ -1482,3 +1482,9 @@
 - 六種融合寵 × 兩種武器特性；保留已驗證的頭上王卡 boss_skyport 與 agi-luk 配點，固定種子 20261110，實際極限試煉 HP 至首次失敗。
 - 原始 JSON：`docs/current-extreme-seeded-v3-matched-card-pactWarrior-hp-20261111.json`。本輪只在指定王卡及配點條件下搜尋，不代表全域最優。
 - 正式版未變更。
+
+## 分段交接：君王兩種並列融合寵三種子複驗
+
+- 攻擊＋防禦、攻擊＋輔助，固定頭上王卡 boss_skyport、agi-luk 配點、攻速武器；每種融合寵於 20261110／20261111／20261112 實測 HP 與 CLEAR，合計 12 場。
+- 逐場層數與平均：`docs/current-extreme-seeded-v3-pactWarrior-fusion-tiebreak-20261111.json`。
+- 此為兩候選有限比較，不代表完整配裝全域最優；正式版未變更。

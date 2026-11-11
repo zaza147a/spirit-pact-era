@@ -1,0 +1,303 @@
+{
+  "conditions": "Real extreme trials; same boss_skyport headUpper card, agi-luk attributes, aspdPct weapon affix, three seeds; bounded two-fusion comparison only",
+  "rows": [
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 40,
+      "ticks": 3952,
+      "simulatedSeconds": 395.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 41
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 41,
+      "ticks": 3822,
+      "simulatedSeconds": 382.2,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 42
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 40,
+      "ticks": 3952,
+      "simulatedSeconds": 395.2,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 41
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 41,
+      "ticks": 3766,
+      "simulatedSeconds": 376.6,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 42
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 39,
+      "ticks": 3623,
+      "simulatedSeconds": 362.3,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 40
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-defense",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 41,
+      "ticks": 3789,
+      "simulatedSeconds": 378.9,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 42
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "hp",
+      "highest": 40,
+      "ticks": 3717,
+      "simulatedSeconds": 371.7,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 41
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261110,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 3916,
+      "simulatedSeconds": 391.6,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "hp",
+      "highest": 40,
+      "ticks": 3761,
+      "simulatedSeconds": 376.1,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 41
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261111,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 3834,
+      "simulatedSeconds": 383.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "hp",
+      "highest": 41,
+      "ticks": 4039,
+      "simulatedSeconds": 403.9,
+      "stopped": "first-failure",
+      "failure": "階段傷害不足",
+      "nextFloor": 42
+    },
+    {
+      "job": "pactWarrior",
+      "fusion": "attack-support",
+      "weaponChoice": "aspdPct",
+      "weaponId": null,
+      "cardSlot": "headUpper",
+      "cardId": "boss_skyport",
+      "attributeProfile": "agi-luk",
+      "seed": 20261112,
+      "kind": "clear",
+      "highest": 42,
+      "ticks": 3904,
+      "simulatedSeconds": 390.4,
+      "stopped": "first-failure",
+      "failure": "階段擊殺數不足",
+      "nextFloor": 43
+    }
+  ],
+  "summary": {
+    "hp": [
+      {
+        "fusion": "attack-support",
+        "seedResults": [
+          {
+            "seed": 20261110,
+            "highest": 40,
+            "ticks": 3717
+          },
+          {
+            "seed": 20261111,
+            "highest": 40,
+            "ticks": 3761
+          },
+          {
+            "seed": 20261112,
+            "highest": 41,
+            "ticks": 4039
+          }
+        ],
+        "mean": 40.333333333333336,
+        "min": 40
+      },
+      {
+        "fusion": "attack-defense",
+        "seedResults": [
+          {
+            "seed": 20261110,
+            "highest": 40,
+            "ticks": 3952
+          },
+          {
+            "seed": 20261111,
+            "highest": 40,
+            "ticks": 3952
+          },
+          {
+            "seed": 20261112,
+            "highest": 39,
+            "ticks": 3623
+          }
+        ],
+        "mean": 39.666666666666664,
+        "min": 39
+      }
+    ],
+    "clear": [
+      {
+        "fusion": "attack-support",
+        "seedResults": [
+          {
+            "seed": 20261110,
+            "highest": 42,
+            "ticks": 3916
+          },
+          {
+            "seed": 20261111,
+            "highest": 42,
+            "ticks": 3834
+          },
+          {
+            "seed": 20261112,
+            "highest": 42,
+            "ticks": 3904
+          }
+        ],
+        "mean": 42,
+        "min": 42
+      },
+      {
+        "fusion": "attack-defense",
+        "seedResults": [
+          {
+            "seed": 20261110,
+            "highest": 41,
+            "ticks": 3822
+          },
+          {
+            "seed": 20261111,
+            "highest": 41,
+            "ticks": 3766
+          },
+          {
+            "seed": 20261112,
+            "highest": 41,
+            "ticks": 3789
+          }
+        ],
+        "mean": 41,
+        "min": 41
+      }
+    ]
+  }
+}
