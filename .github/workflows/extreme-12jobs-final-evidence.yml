@@ -1,4 +1,4 @@
-name: Extreme 12-job four-mode evidence report (preserve regenerated report)
+name: Extreme 12-job four-mode evidence report (all 24 card results)
 on:
   push:
     branches: [test/12-jobs-optimal-loadout-20261110]
